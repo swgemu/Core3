@@ -42,6 +42,9 @@
 
 
 object_tangible_theme_park_shared_invisible_object = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/shared_invisible_object.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_mission_spawn_01m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_theme_park_shared_invisible_object = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3509014052,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_shared_invisible_object, "object/tangible/theme_park/shared_invisible_object.iff")

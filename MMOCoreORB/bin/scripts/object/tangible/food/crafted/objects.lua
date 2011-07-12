@@ -42,6 +42,9 @@
 
 
 object_tangible_food_crafted_shared_dessert_air_cake = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_air_cake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_cake_slice_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_food_crafted_shared_dessert_air_cake = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4020591662,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_air_cake, "object/tangible/food/crafted/shared_dessert_air_cake.iff")
 
 object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_almond_kwevvu_crisp_munchies.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_muffin.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies = Share
 
 	clientObjectCRC = 2785624477,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_almond_kwevvu_crisp_munchies, "object/tangible/food/crafted/shared_dessert_almond_kwevvu_crisp_munchies.iff")
 
 object_tangible_food_crafted_shared_dessert_bantha_butter = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_bantha_butter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_food_crafted_shared_dessert_bantha_butter = SharedTangibleObject
 
 	clientObjectCRC = 1764032352,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_bantha_butter, "object/tangible/food/crafted/shared_dessert_bantha_butter.iff")
 
 object_tangible_food_crafted_shared_dessert_blap_biscuit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_blap_biscuit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_muffin.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_food_crafted_shared_dessert_blap_biscuit = SharedTangibleObjectT
 
 	clientObjectCRC = 834290076,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_blap_biscuit, "object/tangible/food/crafted/shared_dessert_blap_biscuit.iff")
 
 object_tangible_food_crafted_shared_dessert_blob_candy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_blob_candy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_fruit_melon.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_food_crafted_shared_dessert_blob_candy = SharedTangibleObjectTem
 
 	clientObjectCRC = 254187661,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_blob_candy, "object/tangible/food/crafted/shared_dessert_blob_candy.iff")
 
 object_tangible_food_crafted_shared_dessert_bofa_treat = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_bofa_treat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_fruit_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_food_crafted_shared_dessert_bofa_treat = SharedTangibleObjectTem
 
 	clientObjectCRC = 2010692823,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_bofa_treat, "object/tangible/food/crafted/shared_dessert_bofa_treat.iff")
 
 object_tangible_food_crafted_shared_dessert_cavaellin_creams = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_cavaellin_creams.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_berries_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_food_crafted_shared_dessert_cavaellin_creams = SharedTangibleObj
 
 	clientObjectCRC = 1999279141,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_cavaellin_creams, "object/tangible/food/crafted/shared_dessert_cavaellin_creams.iff")
 
 object_tangible_food_crafted_shared_dessert_chandad = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_chandad.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_food_crafted_shared_dessert_chandad = SharedTangibleObjectTempla
 
 	clientObjectCRC = 3279557459,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_chandad, "object/tangible/food/crafted/shared_dessert_chandad.iff")
 
 object_tangible_food_crafted_shared_dessert_citros_snow_cake = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_citros_snow_cake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_food_crafted_shared_dessert_citros_snow_cake = SharedTangibleObj
 
 	clientObjectCRC = 4084605779,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_citros_snow_cake, "object/tangible/food/crafted/shared_dessert_citros_snow_cake.iff")
 
 object_tangible_food_crafted_shared_dessert_corellian_fried_icecream = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_corellian_fried_icecream.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_bowl_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_food_crafted_shared_dessert_corellian_fried_icecream = SharedTan
 
 	clientObjectCRC = 998986934,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_corellian_fried_icecream, "object/tangible/food/crafted/shared_dessert_corellian_fried_icecream.iff")
 
 object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_deneelian_fizz_pudding.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_fruit_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding = SharedTangi
 
 	clientObjectCRC = 2123466191,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_deneelian_fizz_pudding, "object/tangible/food/crafted/shared_dessert_deneelian_fizz_pudding.iff")
 
 object_tangible_food_crafted_shared_dessert_dweezel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_dweezel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_muffin.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_food_crafted_shared_dessert_dweezel = SharedTangibleObjectTempla
 
 	clientObjectCRC = 1922269771,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_dweezel, "object/tangible/food/crafted/shared_dessert_dweezel.iff")
 
 object_tangible_food_crafted_shared_dessert_felbar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_felbar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_food_crafted_shared_dessert_felbar = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1695031231,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_felbar, "object/tangible/food/crafted/shared_dessert_felbar.iff")
 
 object_tangible_food_crafted_shared_dessert_glazed_glucose_pate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_glazed_glucose_pate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_bowl_serving_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_food_crafted_shared_dessert_glazed_glucose_pate = SharedTangible
 
 	clientObjectCRC = 2513718406,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_glazed_glucose_pate, "object/tangible/food/crafted/shared_dessert_glazed_glucose_pate.iff")
 
 object_tangible_food_crafted_shared_dessert_gorrnar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_gorrnar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_food_crafted_shared_dessert_gorrnar = SharedTangibleObjectTempla
 
 	clientObjectCRC = 1661429797,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_gorrnar, "object/tangible/food/crafted/shared_dessert_gorrnar.iff")
 
 object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_kiwik_clusjo_swirl.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_bowl_serving_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl = SharedTangibleO
 
 	clientObjectCRC = 1507202736,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_kiwik_clusjo_swirl, "object/tangible/food/crafted/shared_dessert_kiwik_clusjo_swirl.iff")
 
 object_tangible_food_crafted_shared_dessert_nanana_twist = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_nanana_twist.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_fruit_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_food_crafted_shared_dessert_nanana_twist = SharedTangibleObjectT
 
 	clientObjectCRC = 151593405,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_nanana_twist, "object/tangible/food/crafted/shared_dessert_nanana_twist.iff")
 
 object_tangible_food_crafted_shared_dessert_para_roll = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_para_roll.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_food_crafted_shared_dessert_para_roll = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3718080232,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_para_roll, "object/tangible/food/crafted/shared_dessert_para_roll.iff")
 
 object_tangible_food_crafted_shared_dessert_parwan_nutricake = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_parwan_nutricake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_dessert_parwan_nutricake.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_food_crafted_shared_dessert_parwan_nutricake = SharedTangibleObj
 
 	clientObjectCRC = 3299488351,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_parwan_nutricake, "object/tangible/food/crafted/shared_dessert_parwan_nutricake.iff")
 
 object_tangible_food_crafted_shared_dessert_pastebread = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_pastebread.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_food_crafted_shared_dessert_pastebread = SharedTangibleObjectTem
 
 	clientObjectCRC = 3214438726,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pastebread, "object/tangible/food/crafted/shared_dessert_pastebread.iff")
 
 object_tangible_food_crafted_shared_dessert_pikatta_pie = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_pikatta_pie.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_dessert_pikatta_pie.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_food_crafted_shared_dessert_pikatta_pie = SharedTangibleObjectTe
 
 	clientObjectCRC = 443057003,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pikatta_pie, "object/tangible/food/crafted/shared_dessert_pikatta_pie.iff")
 
 object_tangible_food_crafted_shared_dessert_pkneb = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_pkneb.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_food_crafted_shared_dessert_pkneb = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 128351778,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pkneb, "object/tangible/food/crafted/shared_dessert_pkneb.iff")
 
 object_tangible_food_crafted_shared_dessert_puffcake = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_puffcake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_cake_slice_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_food_crafted_shared_dessert_puffcake = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2099760655,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_puffcake, "object/tangible/food/crafted/shared_dessert_puffcake.iff")
 
 object_tangible_food_crafted_shared_dessert_pyollian_cake = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_pyollian_cake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_food_crafted_shared_dessert_pyollian_cake = SharedTangibleObject
 
 	clientObjectCRC = 2379589648,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_pyollian_cake, "object/tangible/food/crafted/shared_dessert_pyollian_cake.iff")
 
 object_tangible_food_crafted_shared_dessert_ryshcate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_ryshcate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_food_crafted_shared_dessert_ryshcate = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1800464858,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_ryshcate, "object/tangible/food/crafted/shared_dessert_ryshcate.iff")
 
 object_tangible_food_crafted_shared_dessert_smugglers_delight = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_smugglers_delight.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_pie_full_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_food_crafted_shared_dessert_smugglers_delight = SharedTangibleOb
 
 	clientObjectCRC = 921981708,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_smugglers_delight, "object/tangible/food/crafted/shared_dessert_smugglers_delight.iff")
 
 object_tangible_food_crafted_shared_dessert_sweesonberry_rolls = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_sweesonberry_rolls.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_muffin.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_food_crafted_shared_dessert_sweesonberry_rolls = SharedTangibleO
 
 	clientObjectCRC = 3216510743,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_sweesonberry_rolls, "object/tangible/food/crafted/shared_dessert_sweesonberry_rolls.iff")
 
 object_tangible_food_crafted_shared_dessert_sweet_cake_mix = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_sweet_cake_mix.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_food_crafted_shared_dessert_sweet_cake_mix = SharedTangibleObjec
 
 	clientObjectCRC = 1272384230,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_sweet_cake_mix, "object/tangible/food/crafted/shared_dessert_sweet_cake_mix.iff")
 
 object_tangible_food_crafted_shared_dessert_tranna_nougat_cream = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_tranna_nougat_cream.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_bowl_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_food_crafted_shared_dessert_tranna_nougat_cream = SharedTangible
 
 	clientObjectCRC = 1498097624,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_tranna_nougat_cream, "object/tangible/food/crafted/shared_dessert_tranna_nougat_cream.iff")
 
 object_tangible_food_crafted_shared_dessert_vagnerian_canape = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_vagnerian_canape.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_food_crafted_shared_dessert_vagnerian_canape = SharedTangibleObj
 
 	clientObjectCRC = 2118223714,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_vagnerian_canape, "object/tangible/food/crafted/shared_dessert_vagnerian_canape.iff")
 
 object_tangible_food_crafted_shared_dessert_wedding_cake = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_wedding_cake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_cake_slice_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_food_crafted_shared_dessert_wedding_cake = SharedTangibleObjectT
 
 	clientObjectCRC = 3493029754,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_wedding_cake, "object/tangible/food/crafted/shared_dessert_wedding_cake.iff")
 
 object_tangible_food_crafted_shared_dessert_won_won = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dessert_won_won.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_filled_pastry.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_food_crafted_shared_dessert_won_won = SharedTangibleObjectTempla
 
 	clientObjectCRC = 2478713849,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dessert_won_won, "object/tangible/food/crafted/shared_dessert_won_won.iff")
 
 object_tangible_food_crafted_shared_dish_ahrisa = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_ahrisa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_muffin.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_food_crafted_shared_dish_ahrisa = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 407534571,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_ahrisa, "object/tangible/food/crafted/shared_dish_ahrisa.iff")
 
 object_tangible_food_crafted_shared_dish_bivoli_tempari = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_bivoli_tempari.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_dish_bivoli_tempari.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_food_crafted_shared_dish_bivoli_tempari = SharedTangibleObjectTe
 
 	clientObjectCRC = 166570214,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_bivoli_tempari, "object/tangible/food/crafted/shared_dish_bivoli_tempari.iff")
 
 object_tangible_food_crafted_shared_dish_blood_chowder = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_blood_chowder.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_food_crafted_shared_dish_blood_chowder = SharedTangibleObjectTem
 
 	clientObjectCRC = 3058470690,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_blood_chowder, "object/tangible/food/crafted/shared_dish_blood_chowder.iff")
 
 object_tangible_food_crafted_shared_dish_braised_canron = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_braised_canron.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_food_crafted_shared_dish_braised_canron = SharedTangibleObjectTe
 
 	clientObjectCRC = 1863318524,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_braised_canron, "object/tangible/food/crafted/shared_dish_braised_canron.iff")
 
 object_tangible_food_crafted_shared_dish_cho_nor_hoola = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_cho_nor_hoola.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_tangible_food_crafted_shared_dish_cho_nor_hoola = SharedTangibleObjectTem
 
 	clientObjectCRC = 2528298667,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_cho_nor_hoola, "object/tangible/food/crafted/shared_dish_cho_nor_hoola.iff")
 
 object_tangible_food_crafted_shared_dish_crispic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_crispic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_dish_crispic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_tangible_food_crafted_shared_dish_crispic = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1201766714,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_crispic, "object/tangible/food/crafted/shared_dish_crispic.iff")
 
 object_tangible_food_crafted_shared_dish_dustcrepe = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_dustcrepe.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_dish_dustcrepe.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,11 +2337,15 @@ object_tangible_food_crafted_shared_dish_dustcrepe = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3723091380,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_dustcrepe, "object/tangible/food/crafted/shared_dish_dustcrepe.iff")
 
 object_tangible_food_crafted_shared_dish_exo_protein_wafers = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_exo_protein_wafers.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_muffin.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2237,11 +2396,15 @@ object_tangible_food_crafted_shared_dish_exo_protein_wafers = SharedTangibleObje
 
 	clientObjectCRC = 2915488362,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_exo_protein_wafers, "object/tangible/food/crafted/shared_dish_exo_protein_wafers.iff")
 
 object_tangible_food_crafted_shared_dish_fire_stew = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_fire_stew.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2292,11 +2455,15 @@ object_tangible_food_crafted_shared_dish_fire_stew = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1075172541,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_fire_stew, "object/tangible/food/crafted/shared_dish_fire_stew.iff")
 
 object_tangible_food_crafted_shared_dish_fried_endwa = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_fried_endwa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_skewer.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2347,11 +2514,15 @@ object_tangible_food_crafted_shared_dish_fried_endwa = SharedTangibleObjectTempl
 
 	clientObjectCRC = 509609425,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_fried_endwa, "object/tangible/food/crafted/shared_dish_fried_endwa.iff")
 
 object_tangible_food_crafted_shared_dish_gruuvan_shaal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_gruuvan_shaal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_kabob.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2402,11 +2573,15 @@ object_tangible_food_crafted_shared_dish_gruuvan_shaal = SharedTangibleObjectTem
 
 	clientObjectCRC = 3655863733,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_gruuvan_shaal, "object/tangible/food/crafted/shared_dish_gruuvan_shaal.iff")
 
 object_tangible_food_crafted_shared_dish_havla = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_havla.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_muffin.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2457,11 +2632,15 @@ object_tangible_food_crafted_shared_dish_havla = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3540915880,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_havla, "object/tangible/food/crafted/shared_dish_havla.iff")
 
 object_tangible_food_crafted_shared_dish_kanali_wafers = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_kanali_wafers.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_dish_kanali_wafers.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2512,11 +2691,15 @@ object_tangible_food_crafted_shared_dish_kanali_wafers = SharedTangibleObjectTem
 
 	clientObjectCRC = 2212622551,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_kanali_wafers, "object/tangible/food/crafted/shared_dish_kanali_wafers.iff")
 
 object_tangible_food_crafted_shared_dish_karkan_ribenes = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_karkan_ribenes.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_plate_s1_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2567,11 +2750,15 @@ object_tangible_food_crafted_shared_dish_karkan_ribenes = SharedTangibleObjectTe
 
 	clientObjectCRC = 3901856789,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_karkan_ribenes, "object/tangible/food/crafted/shared_dish_karkan_ribenes.iff")
 
 object_tangible_food_crafted_shared_dish_meatlump = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_meatlump.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_sausage_links.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2622,11 +2809,15 @@ object_tangible_food_crafted_shared_dish_meatlump = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2825035524,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_meatlump, "object/tangible/food/crafted/shared_dish_meatlump.iff")
 
 object_tangible_food_crafted_shared_dish_ormachek = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_ormachek.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2677,11 +2868,15 @@ object_tangible_food_crafted_shared_dish_ormachek = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2722923063,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_ormachek, "object/tangible/food/crafted/shared_dish_ormachek.iff")
 
 object_tangible_food_crafted_shared_dish_patot_panak = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_patot_panak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2732,11 +2927,15 @@ object_tangible_food_crafted_shared_dish_patot_panak = SharedTangibleObjectTempl
 
 	clientObjectCRC = 191716043,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_patot_panak, "object/tangible/food/crafted/shared_dish_patot_panak.iff")
 
 object_tangible_food_crafted_shared_dish_protato = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_protato.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2787,11 +2986,15 @@ object_tangible_food_crafted_shared_dish_protato = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2558957614,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_protato, "object/tangible/food/crafted/shared_dish_protato.iff")
 
 object_tangible_food_crafted_shared_dish_puk = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_puk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_fruit_s5.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2842,11 +3045,15 @@ object_tangible_food_crafted_shared_dish_puk = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2037089871,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_puk, "object/tangible/food/crafted/shared_dish_puk.iff")
 
 object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_rakririan_burnout_sauce.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_poison_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2897,11 +3104,15 @@ object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce = SharedTangibl
 
 	clientObjectCRC = 1023909182,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_rakririan_burnout_sauce, "object/tangible/food/crafted/shared_dish_rakririan_burnout_sauce.iff")
 
 object_tangible_food_crafted_shared_dish_ramorrean_capanata = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_ramorrean_capanata.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_ground.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2952,11 +3163,15 @@ object_tangible_food_crafted_shared_dish_ramorrean_capanata = SharedTangibleObje
 
 	clientObjectCRC = 1904202530,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_ramorrean_capanata, "object/tangible/food/crafted/shared_dish_ramorrean_capanata.iff")
 
 object_tangible_food_crafted_shared_dish_rations = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_rations.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3007,11 +3222,15 @@ object_tangible_food_crafted_shared_dish_rations = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1720551551,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_rations, "object/tangible/food/crafted/shared_dish_rations.iff")
 
 object_tangible_food_crafted_shared_dish_scrimpi = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_scrimpi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_kabob.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3062,11 +3281,15 @@ object_tangible_food_crafted_shared_dish_scrimpi = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1144916999,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_scrimpi, "object/tangible/food/crafted/shared_dish_scrimpi.iff")
 
 object_tangible_food_crafted_shared_dish_soypro = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_soypro.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_ground.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3117,11 +3340,15 @@ object_tangible_food_crafted_shared_dish_soypro = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 4017404858,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_soypro, "object/tangible/food/crafted/shared_dish_soypro.iff")
 
 object_tangible_food_crafted_shared_dish_stewed_gwouch = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_stewed_gwouch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3172,11 +3399,15 @@ object_tangible_food_crafted_shared_dish_stewed_gwouch = SharedTangibleObjectTem
 
 	clientObjectCRC = 356304761,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_stewed_gwouch, "object/tangible/food/crafted/shared_dish_stewed_gwouch.iff")
 
 object_tangible_food_crafted_shared_dish_synthsteak = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_synthsteak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_plate_s1_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3227,11 +3458,15 @@ object_tangible_food_crafted_shared_dish_synthsteak = SharedTangibleObjectTempla
 
 	clientObjectCRC = 513761366,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_synthsteak, "object/tangible/food/crafted/shared_dish_synthsteak.iff")
 
 object_tangible_food_crafted_shared_dish_teltier_noodles = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_teltier_noodles.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3282,11 +3517,15 @@ object_tangible_food_crafted_shared_dish_teltier_noodles = SharedTangibleObjectT
 
 	clientObjectCRC = 601858027,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_teltier_noodles, "object/tangible/food/crafted/shared_dish_teltier_noodles.iff")
 
 object_tangible_food_crafted_shared_dish_terratta = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_terratta.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_dish_terratta.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3337,11 +3576,15 @@ object_tangible_food_crafted_shared_dish_terratta = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1953777354,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_terratta, "object/tangible/food/crafted/shared_dish_terratta.iff")
 
 object_tangible_food_crafted_shared_dish_thakitillo = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_thakitillo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_fruit_s5.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3392,11 +3635,15 @@ object_tangible_food_crafted_shared_dish_thakitillo = SharedTangibleObjectTempla
 
 	clientObjectCRC = 2182149536,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_thakitillo, "object/tangible/food/crafted/shared_dish_thakitillo.iff")
 
 object_tangible_food_crafted_shared_dish_travel_biscuits = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_travel_biscuits.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_muffin.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3447,11 +3694,15 @@ object_tangible_food_crafted_shared_dish_travel_biscuits = SharedTangibleObjectT
 
 	clientObjectCRC = 2831837498,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_travel_biscuits, "object/tangible/food/crafted/shared_dish_travel_biscuits.iff")
 
 object_tangible_food_crafted_shared_dish_trimpian = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_trimpian.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_dish_trimpian.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3502,11 +3753,15 @@ object_tangible_food_crafted_shared_dish_trimpian = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2709111425,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_trimpian, "object/tangible/food/crafted/shared_dish_trimpian.iff")
 
 object_tangible_food_crafted_shared_dish_vegeparsine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_vegeparsine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_fruit_item.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3557,11 +3812,15 @@ object_tangible_food_crafted_shared_dish_vegeparsine = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2526756449,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_vegeparsine, "object/tangible/food/crafted/shared_dish_vegeparsine.iff")
 
 object_tangible_food_crafted_shared_dish_veghash = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_veghash.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_dish_casserole_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3612,11 +3871,15 @@ object_tangible_food_crafted_shared_dish_veghash = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 37093667,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_veghash, "object/tangible/food/crafted/shared_dish_veghash.iff")
 
 object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_vercupti_of_agazza_boleruuee.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3667,11 +3930,15 @@ object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee = SharedTa
 
 	clientObjectCRC = 3271121360,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_vercupti_of_agazza_boleruuee, "object/tangible/food/crafted/shared_dish_vercupti_of_agazza_boleruuee.iff")
 
 object_tangible_food_crafted_shared_dish_wastril_bread = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_wastril_bread.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3722,11 +3989,15 @@ object_tangible_food_crafted_shared_dish_wastril_bread = SharedTangibleObjectTem
 
 	clientObjectCRC = 2578711144,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_wastril_bread, "object/tangible/food/crafted/shared_dish_wastril_bread.iff")
 
 object_tangible_food_crafted_shared_dish_xermaauc = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_dish_xermaauc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3777,11 +4048,15 @@ object_tangible_food_crafted_shared_dish_xermaauc = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 202720794,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_dish_xermaauc, "object/tangible/food/crafted/shared_dish_xermaauc.iff")
 
 object_tangible_food_crafted_shared_drink_accarragm = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_accarragm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3832,11 +4107,15 @@ object_tangible_food_crafted_shared_drink_accarragm = SharedTangibleObjectTempla
 
 	clientObjectCRC = 4146017985,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_accarragm, "object/tangible/food/crafted/shared_drink_accarragm.iff")
 
 object_tangible_food_crafted_shared_drink_aitha = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_aitha.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_cup_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3887,11 +4166,15 @@ object_tangible_food_crafted_shared_drink_aitha = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 2316612245,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_aitha, "object/tangible/food/crafted/shared_drink_aitha.iff")
 
 object_tangible_food_crafted_shared_drink_alcohol = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_alcohol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3942,11 +4225,15 @@ object_tangible_food_crafted_shared_drink_alcohol = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 4157864214,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_alcohol, "object/tangible/food/crafted/shared_drink_alcohol.iff")
 
 object_tangible_food_crafted_shared_drink_aludium_pu36 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_aludium_pu36.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_water.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3997,11 +4284,15 @@ object_tangible_food_crafted_shared_drink_aludium_pu36 = SharedTangibleObjectTem
 
 	clientObjectCRC = 3758052832,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff", "object/tangible/food/crafted/shared_drink_alcohol.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_aludium_pu36, "object/tangible/food/crafted/shared_drink_aludium_pu36.iff")
 
 object_tangible_food_crafted_shared_drink_angerian_fishak_surprise = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_angerian_fishak_surprise.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4052,11 +4343,15 @@ object_tangible_food_crafted_shared_drink_angerian_fishak_surprise = SharedTangi
 
 	clientObjectCRC = 3229633223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_angerian_fishak_surprise, "object/tangible/food/crafted/shared_drink_angerian_fishak_surprise.iff")
 
 object_tangible_food_crafted_shared_drink_antakarian_fire_dancer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_antakarian_fire_dancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_glass_s1_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4107,11 +4402,15 @@ object_tangible_food_crafted_shared_drink_antakarian_fire_dancer = SharedTangibl
 
 	clientObjectCRC = 2154164402,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_antakarian_fire_dancer, "object/tangible/food/crafted/shared_drink_antakarian_fire_dancer.iff")
 
 object_tangible_food_crafted_shared_drink_bantha_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_bantha_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_cup_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4162,11 +4461,15 @@ object_tangible_food_crafted_shared_drink_bantha_blaster = SharedTangibleObjectT
 
 	clientObjectCRC = 2599646659,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_bantha_blaster, "object/tangible/food/crafted/shared_drink_bantha_blaster.iff")
 
 object_tangible_food_crafted_shared_drink_bespin_port = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_bespin_port.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_winebottle_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4217,11 +4520,15 @@ object_tangible_food_crafted_shared_drink_bespin_port = SharedTangibleObjectTemp
 
 	clientObjectCRC = 1402973041,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_bespin_port, "object/tangible/food/crafted/shared_drink_bespin_port.iff")
 
 object_tangible_food_crafted_shared_drink_blue_milk = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_blue_milk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_cup_s5.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4272,11 +4579,15 @@ object_tangible_food_crafted_shared_drink_blue_milk = SharedTangibleObjectTempla
 
 	clientObjectCRC = 352131413,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_blue_milk, "object/tangible/food/crafted/shared_drink_blue_milk.iff")
 
 object_tangible_food_crafted_shared_drink_breath_of_heaven = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_breath_of_heaven.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_winebottle_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4327,11 +4638,15 @@ object_tangible_food_crafted_shared_drink_breath_of_heaven = SharedTangibleObjec
 
 	clientObjectCRC = 2001723418,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_breath_of_heaven, "object/tangible/food/crafted/shared_drink_breath_of_heaven.iff")
 
 object_tangible_food_crafted_shared_drink_caf = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_caf.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_cup_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4382,11 +4697,15 @@ object_tangible_food_crafted_shared_drink_caf = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 2701899786,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_caf, "object/tangible/food/crafted/shared_drink_caf.iff")
 
 object_tangible_food_crafted_shared_drink_charde = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_charde.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4437,11 +4756,15 @@ object_tangible_food_crafted_shared_drink_charde = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 406392603,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_charde, "object/tangible/food/crafted/shared_drink_charde.iff")
 
 object_tangible_food_crafted_shared_drink_corellian_ale = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_corellian_ale.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4492,11 +4815,15 @@ object_tangible_food_crafted_shared_drink_corellian_ale = SharedTangibleObjectTe
 
 	clientObjectCRC = 3769443904,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_corellian_ale, "object/tangible/food/crafted/shared_drink_corellian_ale.iff")
 
 object_tangible_food_crafted_shared_drink_corellian_brandy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_corellian_brandy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4547,11 +4874,15 @@ object_tangible_food_crafted_shared_drink_corellian_brandy = SharedTangibleObjec
 
 	clientObjectCRC = 2481855553,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_corellian_brandy, "object/tangible/food/crafted/shared_drink_corellian_brandy.iff")
 
 object_tangible_food_crafted_shared_drink_cortyg = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_cortyg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4602,11 +4933,15 @@ object_tangible_food_crafted_shared_drink_cortyg = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2737019510,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_cortyg, "object/tangible/food/crafted/shared_drink_cortyg.iff")
 
 object_tangible_food_crafted_shared_drink_deuterium_pyro = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_deuterium_pyro.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_winebottle_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4657,11 +4992,15 @@ object_tangible_food_crafted_shared_drink_deuterium_pyro = SharedTangibleObjectT
 
 	clientObjectCRC = 3050569282,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_deuterium_pyro, "object/tangible/food/crafted/shared_drink_deuterium_pyro.iff")
 
 object_tangible_food_crafted_shared_drink_double_dip_outer_rim_rumdrop = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_double_dip_outer_rim_rumdrop.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4712,11 +5051,15 @@ object_tangible_food_crafted_shared_drink_double_dip_outer_rim_rumdrop = SharedT
 
 	clientObjectCRC = 2758987936,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_double_dip_outer_rim_rumdrop, "object/tangible/food/crafted/shared_drink_double_dip_outer_rim_rumdrop.iff")
 
 object_tangible_food_crafted_shared_drink_durindfire = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_durindfire.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_winebottle_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4767,11 +5110,15 @@ object_tangible_food_crafted_shared_drink_durindfire = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2621798949,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_durindfire, "object/tangible/food/crafted/shared_drink_durindfire.iff")
 
 object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_elshandruu_pica_thundercloud.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4822,11 +5169,15 @@ object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud = SharedT
 
 	clientObjectCRC = 3434180885,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_elshandruu_pica_thundercloud, "object/tangible/food/crafted/shared_drink_elshandruu_pica_thundercloud.iff")
 
 object_tangible_food_crafted_shared_drink_flameout = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_flameout.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4877,11 +5228,15 @@ object_tangible_food_crafted_shared_drink_flameout = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2965669451,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_flameout, "object/tangible/food/crafted/shared_drink_flameout.iff")
 
 object_tangible_food_crafted_shared_drink_garrmorl = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_garrmorl.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_cup_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4932,11 +5287,15 @@ object_tangible_food_crafted_shared_drink_garrmorl = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3403096201,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_garrmorl, "object/tangible/food/crafted/shared_drink_garrmorl.iff")
 
 object_tangible_food_crafted_shared_drink_gralinyn_juice = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_gralinyn_juice.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4987,11 +5346,15 @@ object_tangible_food_crafted_shared_drink_gralinyn_juice = SharedTangibleObjectT
 
 	clientObjectCRC = 3730504288,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_gralinyn_juice, "object/tangible/food/crafted/shared_drink_gralinyn_juice.iff")
 
 object_tangible_food_crafted_shared_drink_ice_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_ice_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_winebottle_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5042,11 +5405,15 @@ object_tangible_food_crafted_shared_drink_ice_blaster = SharedTangibleObjectTemp
 
 	clientObjectCRC = 4204858859,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_ice_blaster, "object/tangible/food/crafted/shared_drink_ice_blaster.iff")
 
 object_tangible_food_crafted_shared_drink_ithorian_mist = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_ithorian_mist.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5097,11 +5464,15 @@ object_tangible_food_crafted_shared_drink_ithorian_mist = SharedTangibleObjectTe
 
 	clientObjectCRC = 1406762352,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_ithorian_mist, "object/tangible/food/crafted/shared_drink_ithorian_mist.iff")
 
 object_tangible_food_crafted_shared_drink_jaar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_jaar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_cup_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5152,11 +5523,15 @@ object_tangible_food_crafted_shared_drink_jaar = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 355298575,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_jaar, "object/tangible/food/crafted/shared_drink_jaar.iff")
 
 object_tangible_food_crafted_shared_drink_jawa_beer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_jawa_beer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_glass_s1_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5207,11 +5582,15 @@ object_tangible_food_crafted_shared_drink_jawa_beer = SharedTangibleObjectTempla
 
 	clientObjectCRC = 3314105882,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_jawa_beer, "object/tangible/food/crafted/shared_drink_jawa_beer.iff")
 
 object_tangible_food_crafted_shared_drink_kylessian_fruit_distillate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_kylessian_fruit_distillate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5262,11 +5641,15 @@ object_tangible_food_crafted_shared_drink_kylessian_fruit_distillate = SharedTan
 
 	clientObjectCRC = 3748723548,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff", "object/tangible/food/crafted/shared_drink_alcohol.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_kylessian_fruit_distillate, "object/tangible/food/crafted/shared_drink_kylessian_fruit_distillate.iff")
 
 object_tangible_food_crafted_shared_drink_mandalorian_wine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_mandalorian_wine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_winebottle_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5317,11 +5700,15 @@ object_tangible_food_crafted_shared_drink_mandalorian_wine = SharedTangibleObjec
 
 	clientObjectCRC = 475983499,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_mandalorian_wine, "object/tangible/food/crafted/shared_drink_mandalorian_wine.iff")
 
 object_tangible_food_crafted_shared_drink_ruby_bliel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_ruby_bliel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5372,11 +5759,15 @@ object_tangible_food_crafted_shared_drink_ruby_bliel = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4051771038,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_ruby_bliel, "object/tangible/food/crafted/shared_drink_ruby_bliel.iff")
 
 object_tangible_food_crafted_shared_drink_skannbult_likker = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_skannbult_likker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5427,11 +5818,15 @@ object_tangible_food_crafted_shared_drink_skannbult_likker = SharedTangibleObjec
 
 	clientObjectCRC = 3068541916,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_skannbult_likker, "object/tangible/food/crafted/shared_drink_skannbult_likker.iff")
 
 object_tangible_food_crafted_shared_drink_spiced_tea = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_spiced_tea.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_cup_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5482,11 +5877,15 @@ object_tangible_food_crafted_shared_drink_spiced_tea = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3551363941,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_spiced_tea, "object/tangible/food/crafted/shared_drink_spiced_tea.iff")
 
 object_tangible_food_crafted_shared_drink_starshine_surprise = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_starshine_surprise.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5537,11 +5936,15 @@ object_tangible_food_crafted_shared_drink_starshine_surprise = SharedTangibleObj
 
 	clientObjectCRC = 789489529,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_starshine_surprise, "object/tangible/food/crafted/shared_drink_starshine_surprise.iff")
 
 object_tangible_food_crafted_shared_drink_sullustan_gin = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_sullustan_gin.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink_alcoholic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5592,11 +5995,15 @@ object_tangible_food_crafted_shared_drink_sullustan_gin = SharedTangibleObjectTe
 
 	clientObjectCRC = 2478328705,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff", "object/tangible/food/crafted/shared_drink_alcohol.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_sullustan_gin, "object/tangible/food/crafted/shared_drink_sullustan_gin.iff")
 
 object_tangible_food_crafted_shared_drink_tatooine_sunburn = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_tatooine_sunburn.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_winebottle_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5647,11 +6054,15 @@ object_tangible_food_crafted_shared_drink_tatooine_sunburn = SharedTangibleObjec
 
 	clientObjectCRC = 1008892971,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_tatooine_sunburn, "object/tangible/food/crafted/shared_drink_tatooine_sunburn.iff")
 
 object_tangible_food_crafted_shared_drink_tilla_tiil = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_tilla_tiil.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_winebottle_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5702,11 +6113,15 @@ object_tangible_food_crafted_shared_drink_tilla_tiil = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2374587508,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_tilla_tiil, "object/tangible/food/crafted/shared_drink_tilla_tiil.iff")
 
 object_tangible_food_crafted_shared_drink_tssolok = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_tssolok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_glass_s2_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5757,11 +6172,15 @@ object_tangible_food_crafted_shared_drink_tssolok = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 721473598,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_tssolok, "object/tangible/food/crafted/shared_drink_tssolok.iff")
 
 object_tangible_food_crafted_shared_drink_vasarian_brandy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_vasarian_brandy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_winebottle_s05.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5812,11 +6231,15 @@ object_tangible_food_crafted_shared_drink_vasarian_brandy = SharedTangibleObject
 
 	clientObjectCRC = 780459444,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_vasarian_brandy, "object/tangible/food/crafted/shared_drink_vasarian_brandy.iff")
 
 object_tangible_food_crafted_shared_drink_vayerbok = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_vayerbok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5867,11 +6290,15 @@ object_tangible_food_crafted_shared_drink_vayerbok = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 4128399839,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_vayerbok, "object/tangible/food/crafted/shared_drink_vayerbok.iff")
 
 object_tangible_food_crafted_shared_drink_veronian_berry_wine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/shared_drink_veronian_berry_wine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5922,6 +6349,7 @@ object_tangible_food_crafted_shared_drink_veronian_berry_wine = SharedTangibleOb
 
 	clientObjectCRC = 4052111265,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_shared_drink_veronian_berry_wine, "object/tangible/food/crafted/shared_drink_veronian_berry_wine.iff")

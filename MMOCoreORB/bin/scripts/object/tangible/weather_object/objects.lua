@@ -42,6 +42,9 @@
 
 
 object_tangible_weather_object_shared_weather_object_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/weather_object/shared_weather_object_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_waypoint_white.prt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_weather_object_shared_weather_object_base = SharedTangibleObject
 
 	clientObjectCRC = 638400460,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_weather_object_shared_weather_object_base, "object/tangible/weather_object/shared_weather_object_base.iff")

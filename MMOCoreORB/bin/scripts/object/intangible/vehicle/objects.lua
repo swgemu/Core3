@@ -42,6 +42,9 @@
 
 
 object_intangible_vehicle_shared_jetpack_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/vehicle/shared_jetpack_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/jetpack_mandalorian_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_intangible_vehicle_shared_jetpack_pcd = SharedIntangibleObjectTemplate:ne
 
 	clientObjectCRC = 2096609656,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_jetpack_pcd, "object/intangible/vehicle/shared_jetpack_pcd.iff")
 
 object_intangible_vehicle_shared_landspeeder_av21_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/vehicle/shared_landspeeder_av21_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/landspeeder_av21.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_intangible_vehicle_shared_landspeeder_av21_pcd = SharedIntangibleObjectTe
 
 	clientObjectCRC = 3762629621,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_av21_pcd, "object/intangible/vehicle/shared_landspeeder_av21_pcd.iff")
 
 object_intangible_vehicle_shared_landspeeder_x31_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/vehicle/shared_landspeeder_x31_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/landspeeder_luke.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_intangible_vehicle_shared_landspeeder_x31_pcd = SharedIntangibleObjectTem
 
 	clientObjectCRC = 3148893162,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_x31_pcd, "object/intangible/vehicle/shared_landspeeder_x31_pcd.iff")
 
 object_intangible_vehicle_shared_landspeeder_x34_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/landspeeder_luke.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_intangible_vehicle_shared_landspeeder_x34_pcd = SharedIntangibleObjectTem
 
 	clientObjectCRC = 2364632781,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_landspeeder_x34_pcd, "object/intangible/vehicle/shared_landspeeder_x34_pcd.iff")
 
 object_intangible_vehicle_shared_speederbike_flash_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/vehicle/shared_speederbike_flash_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/flash_speeder.apt",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_intangible_vehicle_shared_speederbike_flash_pcd = SharedIntangibleObjectT
 
 	clientObjectCRC = 1448247515,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_flash_pcd, "object/intangible/vehicle/shared_speederbike_flash_pcd.iff")
 
 object_intangible_vehicle_shared_speederbike_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/vehicle/shared_speederbike_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/speeder_bike.apt",
 	arrangementDescriptorFilename = "",
 
@@ -307,11 +330,15 @@ object_intangible_vehicle_shared_speederbike_pcd = SharedIntangibleObjectTemplat
 
 	clientObjectCRC = 3659586517,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_pcd, "object/intangible/vehicle/shared_speederbike_pcd.iff")
 
 object_intangible_vehicle_shared_speederbike_swoop_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/swoop_bike.apt",
 	arrangementDescriptorFilename = "",
 
@@ -352,11 +379,15 @@ object_intangible_vehicle_shared_speederbike_swoop_pcd = SharedIntangibleObjectT
 
 	clientObjectCRC = 2233671002,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/vehicle/shared_vehicle_pcd_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_speederbike_swoop_pcd, "object/intangible/vehicle/shared_speederbike_swoop_pcd.iff")
 
 object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/vehicle/shared_vehicle_pcd_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pv_speeder_bike.sat",
 	arrangementDescriptorFilename = "",
 
@@ -397,6 +428,7 @@ object_intangible_vehicle_shared_vehicle_pcd_base = SharedIntangibleObjectTempla
 
 	clientObjectCRC = 2853503513,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_vehicle_shared_vehicle_pcd_base, "object/intangible/vehicle/shared_vehicle_pcd_base.iff")

@@ -42,6 +42,9 @@
 
 
 object_mobile_naboo_npc_shared_thrawn = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/naboo_npc/shared_thrawn.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/chiss_m.sat",
@@ -116,11 +119,15 @@ object_mobile_naboo_npc_shared_thrawn = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 721694525,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_naboo_npc_shared_thrawn, "object/mobile/naboo_npc/shared_thrawn.iff")
 
 object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/naboo_npc/shared_veers.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -195,6 +202,7 @@ object_mobile_naboo_npc_shared_veers = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 548983473,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_naboo_npc_shared_veers, "object/mobile/naboo_npc/shared_veers.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_sign_player_base_shared_player_sign_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/base/shared_player_sign_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_sign_player_base_shared_player_sign_base = SharedTangibleObjectT
 
 	clientObjectCRC = 1607004274,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_base_shared_player_sign_base, "object/tangible/sign/player/base/shared_player_sign_base.iff")
 
 object_tangible_sign_player_base_shared_shop_sign_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/base/shared_shop_sign_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_gravestone_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_sign_player_base_shared_shop_sign_base = SharedTangibleObjectTem
 
 	clientObjectCRC = 1431689328,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_base_shared_shop_sign_base, "object/tangible/sign/player/base/shared_shop_sign_base.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_sign_player_shared_house_address = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/shared_house_address.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_sign_player_shared_house_address = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2527534357,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_house_address, "object/tangible/sign/player/shared_house_address.iff")
 
 object_tangible_sign_player_shared_house_address_corellia = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/shared_house_address_corellia.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_corl_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_sign_player_shared_house_address_corellia = SharedTangibleObject
 
 	clientObjectCRC = 1770300189,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_house_address_corellia, "object/tangible/sign/player/shared_house_address_corellia.iff")
 
 object_tangible_sign_player_shared_house_address_naboo = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/shared_house_address_naboo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_nboo_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_sign_player_shared_house_address_naboo = SharedTangibleObjectTem
 
 	clientObjectCRC = 3585850510,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_house_address_naboo, "object/tangible/sign/player/shared_house_address_naboo.iff")
 
 object_tangible_sign_player_shared_house_address_tatooine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/shared_house_address_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_tato_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_sign_player_shared_house_address_tatooine = SharedTangibleObject
 
 	clientObjectCRC = 1439154818,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_house_address_tatooine, "object/tangible/sign/player/shared_house_address_tatooine.iff")
 
 object_tangible_sign_player_shared_shop_sign_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/shared_shop_sign_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_sign_shop_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_sign_player_shared_shop_sign_s01 = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 3889554743,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff", "object/tangible/sign/player/base/shared_shop_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_shop_sign_s01, "object/tangible/sign/player/shared_shop_sign_s01.iff")
 
 object_tangible_sign_player_shared_shop_sign_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/shared_shop_sign_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_sign_shop_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_sign_player_shared_shop_sign_s02 = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1019366816,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff", "object/tangible/sign/player/base/shared_shop_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_shop_sign_s02, "object/tangible/sign/player/shared_shop_sign_s02.iff")
 
 object_tangible_sign_player_shared_shop_sign_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/shared_shop_sign_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_sign_shop_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_sign_player_shared_shop_sign_s03 = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1976511021,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff", "object/tangible/sign/player/base/shared_shop_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_shop_sign_s03, "object/tangible/sign/player/shared_shop_sign_s03.iff")
 
 object_tangible_sign_player_shared_shop_sign_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/shared_shop_sign_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_sign_shop_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,6 +508,7 @@ object_tangible_sign_player_shared_shop_sign_s04 = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2385248569,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff", "object/tangible/sign/player/base/shared_shop_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_shared_shop_sign_s04, "object/tangible/sign/player/shared_shop_sign_s04.iff")

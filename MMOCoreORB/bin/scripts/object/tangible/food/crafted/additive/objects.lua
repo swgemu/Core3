@@ -42,6 +42,9 @@
 
 
 object_tangible_food_crafted_additive_shared_additive_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/additive/shared_additive_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_food_crafted_additive_shared_additive_base = SharedTangibleObjec
 
 	clientObjectCRC = 4284585922,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_base, "object/tangible/food/crafted/additive/shared_additive_base.iff")
 
 object_tangible_food_crafted_additive_shared_additive_heavy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/additive/shared_additive_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_bacta_tank_advanced.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_food_crafted_additive_shared_additive_heavy = SharedTangibleObje
 
 	clientObjectCRC = 2284977295,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff", "object/tangible/food/crafted/additive/shared_additive_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_heavy, "object/tangible/food/crafted/additive/shared_additive_heavy.iff")
 
 object_tangible_food_crafted_additive_shared_additive_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/additive/shared_additive_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_food_crafted_additive_shared_additive_light = SharedTangibleObje
 
 	clientObjectCRC = 1231667281,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff", "object/tangible/food/crafted/additive/shared_additive_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff", "object/tangible/food/crafted/additive/shared_additive_medium.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_light, "object/tangible/food/crafted/additive/shared_additive_light.iff")
 
 object_tangible_food_crafted_additive_shared_additive_medium = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/crafted/additive/shared_additive_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_bacta_tank.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_food_crafted_additive_shared_additive_medium = SharedTangibleObj
 
 	clientObjectCRC = 282579048,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_dish_base.iff", "object/tangible/food/crafted/additive/shared_additive_base.iff", "object/tangible/food/crafted/additive/shared_additive_heavy.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_crafted_additive_shared_additive_medium, "object/tangible/food/crafted/additive/shared_additive_medium.iff")

@@ -42,6 +42,9 @@
 
 
 object_static_structure_nobuild_shared_nobuild_128 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/nobuild/shared_nobuild_128.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_structure_nobuild_shared_nobuild_128 = SharedStaticObjectTemplate:
 
 	clientObjectCRC = 1784128829,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/nobuild/base/shared_nobuild_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_nobuild_shared_nobuild_128, "object/static/structure/nobuild/shared_nobuild_128.iff")
 
 object_static_structure_nobuild_shared_nobuild_32 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/nobuild/shared_nobuild_32.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_structure_nobuild_shared_nobuild_32 = SharedStaticObjectTemplate:n
 
 	clientObjectCRC = 1076938945,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/nobuild/base/shared_nobuild_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_nobuild_shared_nobuild_32, "object/static/structure/nobuild/shared_nobuild_32.iff")
 
 object_static_structure_nobuild_shared_nobuild_4 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/nobuild/shared_nobuild_4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_static_structure_nobuild_shared_nobuild_4 = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 2917289526,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/nobuild/base/shared_nobuild_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_nobuild_shared_nobuild_4, "object/static/structure/nobuild/shared_nobuild_4.iff")
 
 object_static_structure_nobuild_shared_nobuild_64 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/nobuild/shared_nobuild_64.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_cylinder_30.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,6 +232,7 @@ object_static_structure_nobuild_shared_nobuild_64 = SharedStaticObjectTemplate:n
 
 	clientObjectCRC = 2237054144,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/nobuild/base/shared_nobuild_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_nobuild_shared_nobuild_64, "object/static/structure/nobuild/shared_nobuild_64.iff")

@@ -42,6 +42,9 @@
 
 
 object_object_base_shared_base_object = SharedObjectTemplate:new {
+	clientTemplateFileName = "object/object/base/shared_base_object.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_object_base_shared_base_object = SharedObjectTemplate:new {
 
 	clientObjectCRC = 2637095427,
 	derivedFromTemplates = {}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_object_base_shared_base_object, "object/object/base/shared_base_object.iff")
 
 object_object_base_shared_object_default = SharedObjectTemplate:new {
+	clientTemplateFileName = "object/object/base/shared_object_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -127,6 +134,7 @@ object_object_base_shared_object_default = SharedObjectTemplate:new {
 
 	clientObjectCRC = 1571647223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_object_base_shared_object_default, "object/object/base/shared_object_default.iff")

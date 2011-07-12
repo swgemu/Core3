@@ -42,6 +42,9 @@
 
 
 object_tangible_transport_base_shared_transport_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/transport/base/shared_transport_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_transport_base_shared_transport_base = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3243898728,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_transport_base_shared_transport_base, "object/tangible/transport/base/shared_transport_base.iff")

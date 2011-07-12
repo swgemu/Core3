@@ -42,6 +42,9 @@
 
 
 object_tangible_travel_travel_ticket_base_shared_base_travel_ticket = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/travel/travel_ticket/base/shared_base_travel_ticket.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_travel_travel_ticket_base_shared_base_travel_ticket = SharedTang
 
 	clientObjectCRC = 3667975811,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_travel_travel_ticket_base_shared_base_travel_ticket, "object/tangible/travel/travel_ticket/base/shared_base_travel_ticket.iff")

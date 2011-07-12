@@ -42,6 +42,9 @@
 
 
 object_ship_player_shared_player_awing = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_awing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/awing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -92,11 +95,15 @@ object_ship_player_shared_player_awing = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2823165423,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_awing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_awing, "object/ship/player/shared_player_awing.iff")
 
 object_ship_player_shared_player_basic_hutt_light = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_basic_hutt_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -147,11 +154,15 @@ object_ship_player_shared_player_basic_hutt_light = SharedShipObjectTemplate:new
 
 	clientObjectCRC = 770455739,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_basic_hutt_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_basic_hutt_light, "object/ship/player/shared_player_basic_hutt_light.iff")
 
 object_ship_player_shared_player_basic_tiefighter = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_basic_tiefighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -202,11 +213,15 @@ object_ship_player_shared_player_basic_tiefighter = SharedShipObjectTemplate:new
 
 	clientObjectCRC = 2430870087,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_tiefighter.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_basic_tiefighter, "object/ship/player/shared_player_basic_tiefighter.iff")
 
 object_ship_player_shared_player_basic_z95 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_basic_z95.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -257,11 +272,15 @@ object_ship_player_shared_player_basic_z95 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 960125460,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_z95.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_basic_z95, "object/ship/player/shared_player_basic_z95.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_heavy_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -312,11 +331,15 @@ object_ship_player_shared_player_blacksun_heavy_s01 = SharedShipObjectTemplate:n
 
 	clientObjectCRC = 2406012699,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_heavy_s01.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heavy_s01, "object/ship/player/shared_player_blacksun_heavy_s01.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_heavy_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -367,11 +390,15 @@ object_ship_player_shared_player_blacksun_heavy_s02 = SharedShipObjectTemplate:n
 
 	clientObjectCRC = 1417641868,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_heavy_s02.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heavy_s02, "object/ship/player/shared_player_blacksun_heavy_s02.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s03 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_heavy_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -422,11 +449,15 @@ object_ship_player_shared_player_blacksun_heavy_s03 = SharedShipObjectTemplate:n
 
 	clientObjectCRC = 494016513,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_heavy_s03.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heavy_s03, "object/ship/player/shared_player_blacksun_heavy_s03.iff")
 
 object_ship_player_shared_player_blacksun_heavy_s04 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_heavy_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -477,11 +508,15 @@ object_ship_player_shared_player_blacksun_heavy_s04 = SharedShipObjectTemplate:n
 
 	clientObjectCRC = 3868275477,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_heavy_s04.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_heavy_s04, "object/ship/player/shared_player_blacksun_heavy_s04.iff")
 
 object_ship_player_shared_player_blacksun_light_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_light_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -532,11 +567,15 @@ object_ship_player_shared_player_blacksun_light_s01 = SharedShipObjectTemplate:n
 
 	clientObjectCRC = 2468301121,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_light_s01.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_light_s01, "object/ship/player/shared_player_blacksun_light_s01.iff")
 
 object_ship_player_shared_player_blacksun_light_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_light_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -587,11 +626,15 @@ object_ship_player_shared_player_blacksun_light_s02 = SharedShipObjectTemplate:n
 
 	clientObjectCRC = 1208541654,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_light_s02.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_light_s02, "object/ship/player/shared_player_blacksun_light_s02.iff")
 
 object_ship_player_shared_player_blacksun_light_s03 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_light_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -642,11 +685,15 @@ object_ship_player_shared_player_blacksun_light_s03 = SharedShipObjectTemplate:n
 
 	clientObjectCRC = 17139291,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_light_s03.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_light_s03, "object/ship/player/shared_player_blacksun_light_s03.iff")
 
 object_ship_player_shared_player_blacksun_light_s04 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_light_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -697,11 +744,15 @@ object_ship_player_shared_player_blacksun_light_s04 = SharedShipObjectTemplate:n
 
 	clientObjectCRC = 4209421647,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_light_s04.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_light_s04, "object/ship/player/shared_player_blacksun_light_s04.iff")
 
 object_ship_player_shared_player_blacksun_medium_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_medium_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -752,11 +803,15 @@ object_ship_player_shared_player_blacksun_medium_s01 = SharedShipObjectTemplate:
 
 	clientObjectCRC = 2060411448,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_medium_s01.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medium_s01, "object/ship/player/shared_player_blacksun_medium_s01.iff")
 
 object_ship_player_shared_player_blacksun_medium_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_medium_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -807,11 +862,15 @@ object_ship_player_shared_player_blacksun_medium_s02 = SharedShipObjectTemplate:
 
 	clientObjectCRC = 2715339439,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_medium_s02.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medium_s02, "object/ship/player/shared_player_blacksun_medium_s02.iff")
 
 object_ship_player_shared_player_blacksun_medium_s03 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_medium_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -862,11 +921,15 @@ object_ship_player_shared_player_blacksun_medium_s03 = SharedShipObjectTemplate:
 
 	clientObjectCRC = 3906317602,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_medium_s03.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medium_s03, "object/ship/player/shared_player_blacksun_medium_s03.iff")
 
 object_ship_player_shared_player_blacksun_medium_s04 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_blacksun_medium_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -917,11 +980,15 @@ object_ship_player_shared_player_blacksun_medium_s04 = SharedShipObjectTemplate:
 
 	clientObjectCRC = 322340406,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_blacksun_medium_s04.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_blacksun_medium_s04, "object/ship/player/shared_player_blacksun_medium_s04.iff")
 
 object_ship_player_shared_player_bwing = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_bwing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -972,11 +1039,15 @@ object_ship_player_shared_player_bwing = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3129407218,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_bwing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_bwing, "object/ship/player/shared_player_bwing.iff")
 
 object_ship_player_shared_player_corvette = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_corvette.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1027,11 +1098,15 @@ object_ship_player_shared_player_corvette = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1738437900,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_corvette, "object/ship/player/shared_player_corvette.iff")
 
 object_ship_player_shared_player_decimator = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_decimator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1082,11 +1157,15 @@ object_ship_player_shared_player_decimator = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3150522393,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_decimator, "object/ship/player/shared_player_decimator.iff")
 
 object_ship_player_shared_player_firespray = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_firespray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kse_firespray_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1137,11 +1216,15 @@ object_ship_player_shared_player_firespray = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4073039210,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_firespray.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_firespray, "object/ship/player/shared_player_firespray.iff")
 
 object_ship_player_shared_player_hutt_heavy_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_hutt_heavy_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1192,11 +1275,15 @@ object_ship_player_shared_player_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 354676203,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_hutt_heavy_s01.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_heavy_s01, "object/ship/player/shared_player_hutt_heavy_s01.iff")
 
 object_ship_player_shared_player_hutt_heavy_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_hutt_heavy_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1247,11 +1334,15 @@ object_ship_player_shared_player_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3459532156,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_hutt_heavy_s02.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_heavy_s02, "object/ship/player/shared_player_hutt_heavy_s02.iff")
 
 object_ship_player_shared_player_hutt_light_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_hutt_light_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1302,11 +1393,15 @@ object_ship_player_shared_player_hutt_light_s01 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 156529585,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_hutt_light_s01.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_light_s01, "object/ship/player/shared_player_hutt_light_s01.iff")
 
 object_ship_player_shared_player_hutt_light_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_hutt_light_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1357,11 +1452,15 @@ object_ship_player_shared_player_hutt_light_s02 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3527662374,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_hutt_light_s02.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_light_s02, "object/ship/player/shared_player_hutt_light_s02.iff")
 
 object_ship_player_shared_player_hutt_medium_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_hutt_medium_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1412,11 +1511,15 @@ object_ship_player_shared_player_hutt_medium_s01 = SharedShipObjectTemplate:new 
 
 	clientObjectCRC = 996310896,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_hutt_medium_s01.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_medium_s01, "object/ship/player/shared_player_hutt_medium_s01.iff")
 
 object_ship_player_shared_player_hutt_medium_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_hutt_medium_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1467,11 +1570,15 @@ object_ship_player_shared_player_hutt_medium_s02 = SharedShipObjectTemplate:new 
 
 	clientObjectCRC = 3765819367,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_hutt_medium_s02.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_medium_s02, "object/ship/player/shared_player_hutt_medium_s02.iff")
 
 object_ship_player_shared_player_hutt_turret_ship = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_hutt_turret_ship.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s03.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1522,11 +1629,15 @@ object_ship_player_shared_player_hutt_turret_ship = SharedShipObjectTemplate:new
 
 	clientObjectCRC = 2830008910,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_hutt_turret_ship.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_hutt_turret_ship, "object/ship/player/shared_player_hutt_turret_ship.iff")
 
 object_ship_player_shared_player_prototype_hutt_light = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_prototype_hutt_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1577,11 +1688,15 @@ object_ship_player_shared_player_prototype_hutt_light = SharedShipObjectTemplate
 
 	clientObjectCRC = 1541926498,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_basic_hutt_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_prototype_hutt_light, "object/ship/player/shared_player_prototype_hutt_light.iff")
 
 object_ship_player_shared_player_prototype_tiefighter = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_prototype_tiefighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1632,11 +1747,15 @@ object_ship_player_shared_player_prototype_tiefighter = SharedShipObjectTemplate
 
 	clientObjectCRC = 3874485406,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_tiefighter.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_prototype_tiefighter, "object/ship/player/shared_player_prototype_tiefighter.iff")
 
 object_ship_player_shared_player_prototype_z95 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_prototype_z95.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1687,11 +1806,15 @@ object_ship_player_shared_player_prototype_z95 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4125787031,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_z95.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_prototype_z95, "object/ship/player/shared_player_prototype_z95.iff")
 
 object_ship_player_shared_player_sorosuub_space_yacht = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_sorosuub_space_yacht.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1742,11 +1865,15 @@ object_ship_player_shared_player_sorosuub_space_yacht = SharedShipObjectTemplate
 
 	clientObjectCRC = 4077746601,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_sorosuub_space_yacht, "object/ship/player/shared_player_sorosuub_space_yacht.iff")
 
 object_ship_player_shared_player_tie_in = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_tie_in.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter_in.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1797,11 +1924,15 @@ object_ship_player_shared_player_tie_in = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 500982809,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_tie_in.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tie_in, "object/ship/player/shared_player_tie_in.iff")
 
 object_ship_player_shared_player_tie_light_duty = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_tie_light_duty.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1852,11 +1983,15 @@ object_ship_player_shared_player_tie_light_duty = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 349740221,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_tiefighter.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tie_light_duty, "object/ship/player/shared_player_tie_light_duty.iff")
 
 object_ship_player_shared_player_tieadvanced = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_tieadvanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_advanced.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1907,11 +2042,15 @@ object_ship_player_shared_player_tieadvanced = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 537219045,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_tieadvanced.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieadvanced, "object/ship/player/shared_player_tieadvanced.iff")
 
 object_ship_player_shared_player_tieaggressor = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_tieaggressor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_aggressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1962,11 +2101,15 @@ object_ship_player_shared_player_tieaggressor = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3313666579,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_tieaggressor.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieaggressor, "object/ship/player/shared_player_tieaggressor.iff")
 
 object_ship_player_shared_player_tiebomber = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_tiebomber.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_bomber_b.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2017,11 +2160,15 @@ object_ship_player_shared_player_tiebomber = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1403833964,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_tiebomber.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tiebomber, "object/ship/player/shared_player_tiebomber.iff")
 
 object_ship_player_shared_player_tiefighter = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_tiefighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2072,11 +2219,15 @@ object_ship_player_shared_player_tiefighter = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1253337464,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_tiefighter.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tiefighter, "object/ship/player/shared_player_tiefighter.iff")
 
 object_ship_player_shared_player_tieinterceptor = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_tieinterceptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_interceptor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2127,11 +2278,15 @@ object_ship_player_shared_player_tieinterceptor = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4021866633,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_tieinterceptor.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieinterceptor, "object/ship/player/shared_player_tieinterceptor.iff")
 
 object_ship_player_shared_player_tieoppressor = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_tieoppressor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_oppressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2182,11 +2337,15 @@ object_ship_player_shared_player_tieoppressor = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3411039109,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_tieoppressor.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_tieoppressor, "object/ship/player/shared_player_tieoppressor.iff")
 
 object_ship_player_shared_player_xwing = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_xwing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2237,11 +2396,15 @@ object_ship_player_shared_player_xwing = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3426854753,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_xwing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_xwing, "object/ship/player/shared_player_xwing.iff")
 
 object_ship_player_shared_player_ykl37r = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_ykl37r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2292,11 +2455,15 @@ object_ship_player_shared_player_ykl37r = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4283603432,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_ykl37r, "object/ship/player/shared_player_ykl37r.iff")
 
 object_ship_player_shared_player_yt1300 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_yt1300.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2347,11 +2514,15 @@ object_ship_player_shared_player_yt1300 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2643423122,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_yt1300, "object/ship/player/shared_player_yt1300.iff")
 
 object_ship_player_shared_player_yt1300_decorated_01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_yt1300_decorated_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2402,11 +2573,15 @@ object_ship_player_shared_player_yt1300_decorated_01 = SharedShipObjectTemplate:
 
 	clientObjectCRC = 3619233988,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_yt1300_decorated_01, "object/ship/player/shared_player_yt1300_decorated_01.iff")
 
 object_ship_player_shared_player_ywing = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_ywing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ywing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2457,11 +2632,15 @@ object_ship_player_shared_player_ywing = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1044450567,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_ywing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_ywing, "object/ship/player/shared_player_ywing.iff")
 
 object_ship_player_shared_player_ywing_longprobe = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_ywing_longprobe.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ywing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2512,11 +2691,15 @@ object_ship_player_shared_player_ywing_longprobe = SharedShipObjectTemplate:new 
 
 	clientObjectCRC = 711184758,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_ywing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_ywing_longprobe, "object/ship/player/shared_player_ywing_longprobe.iff")
 
 object_ship_player_shared_player_z95 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/player/shared_player_z95.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2567,6 +2750,7 @@ object_ship_player_shared_player_z95 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3298750759,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_z95.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_player_shared_player_z95, "object/ship/player/shared_player_z95.iff")

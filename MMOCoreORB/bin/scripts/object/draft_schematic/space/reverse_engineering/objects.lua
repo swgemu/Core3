@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_space_reverse_engineering_shared_analysis_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reverse_engineering/shared_analysis_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_space_reverse_engineering_shared_analysis_tool = SharedDr
 
 	clientObjectCRC = 4256991250,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_armor_analysis_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reverse_engineering/shared_armor_analysis_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_space_reverse_engineering_shared_armor_analysis_tool = Sh
 
 	clientObjectCRC = 3368050000,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_armor_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_armor_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_booster_analysis_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reverse_engineering/shared_booster_analysis_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_space_reverse_engineering_shared_booster_analysis_tool = 
 
 	clientObjectCRC = 1558712471,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_booster_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_booster_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_capacitor_analysis_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reverse_engineering/shared_capacitor_analysis_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_space_reverse_engineering_shared_capacitor_analysis_tool 
 
 	clientObjectCRC = 4158784961,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_capacitor_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_capacitor_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_droid_interface_analysis_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reverse_engineering/shared_droid_interface_analysis_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_space_reverse_engineering_shared_droid_interface_analysis
 
 	clientObjectCRC = 1820998508,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_droid_interface_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_droid_interface_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_engine_analysis_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reverse_engineering/shared_engine_analysis_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_space_reverse_engineering_shared_engine_analysis_tool = S
 
 	clientObjectCRC = 3400518634,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_engine_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_engine_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_reactor_analysis_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reverse_engineering/shared_reactor_analysis_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_space_reverse_engineering_shared_reactor_analysis_tool = 
 
 	clientObjectCRC = 1274882415,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_reactor_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_reactor_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_retrofit_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reverse_engineering/shared_retrofit_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_space_reverse_engineering_shared_retrofit_kit = SharedDra
 
 	clientObjectCRC = 3323192675,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_retrofit_kit, "object/draft_schematic/space/reverse_engineering/shared_retrofit_kit.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_shields_analysis_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reverse_engineering/shared_shields_analysis_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_space_reverse_engineering_shared_shields_analysis_tool = 
 
 	clientObjectCRC = 2342685561,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_shields_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_shields_analysis_tool.iff")
 
 object_draft_schematic_space_reverse_engineering_shared_weapon_analysis_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reverse_engineering/shared_weapon_analysis_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,6 +526,7 @@ object_draft_schematic_space_reverse_engineering_shared_weapon_analysis_tool = S
 
 	clientObjectCRC = 3831959480,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reverse_engineering_shared_weapon_analysis_tool, "object/draft_schematic/space/reverse_engineering/shared_weapon_analysis_tool.iff")

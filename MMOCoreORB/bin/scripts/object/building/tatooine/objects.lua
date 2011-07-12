@@ -42,6 +42,9 @@
 
 
 object_building_tatooine_shared_association_hall_civilian_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_association_hall_civilian_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -95,11 +98,15 @@ object_building_tatooine_shared_association_hall_civilian_tatooine = SharedBuild
 
 	clientObjectCRC = 3483054122,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_association_hall.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_association_hall_civilian_tatooine, "object/building/tatooine/shared_association_hall_civilian_tatooine.iff")
 
 object_building_tatooine_shared_association_hall_civilian_tatooine_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_association_hall_civilian_tatooine_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -153,11 +160,15 @@ object_building_tatooine_shared_association_hall_civilian_tatooine_02 = SharedBu
 
 	clientObjectCRC = 3781643094,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_association_hall.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_association_hall_civilian_tatooine_02, "object/building/tatooine/shared_association_hall_civilian_tatooine_02.iff")
 
 object_building_tatooine_shared_bank_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_bank_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_tato_bank_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -211,11 +222,15 @@ object_building_tatooine_shared_bank_tatooine = SharedBuildingObjectTemplate:new
 
 	clientObjectCRC = 533531985,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_bank.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_bank_tatooine, "object/building/tatooine/shared_bank_tatooine.iff")
 
 object_building_tatooine_shared_cantina_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_cantina_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -269,11 +284,15 @@ object_building_tatooine_shared_cantina_tatooine = SharedBuildingObjectTemplate:
 
 	clientObjectCRC = 1072782602,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cantina.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cantina_tatooine, "object/building/tatooine/shared_cantina_tatooine.iff")
 
 object_building_tatooine_shared_capitol_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_capitol_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -327,11 +346,15 @@ object_building_tatooine_shared_capitol_tatooine = SharedBuildingObjectTemplate:
 
 	clientObjectCRC = 1064279242,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_capitol_tatooine, "object/building/tatooine/shared_capitol_tatooine.iff")
 
 object_building_tatooine_shared_cave_tatooine_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_cave_tatooine_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -385,11 +408,15 @@ object_building_tatooine_shared_cave_tatooine_style_01 = SharedBuildingObjectTem
 
 	clientObjectCRC = 3062222401,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cave_tatooine_style_01, "object/building/tatooine/shared_cave_tatooine_style_01.iff")
 
 object_building_tatooine_shared_cave_tatooine_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_cave_tatooine_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -443,11 +470,15 @@ object_building_tatooine_shared_cave_tatooine_style_02 = SharedBuildingObjectTem
 
 	clientObjectCRC = 1838311126,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cave_tatooine_style_02, "object/building/tatooine/shared_cave_tatooine_style_02.iff")
 
 object_building_tatooine_shared_cloning_facility_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_cloning_facility_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -501,11 +532,15 @@ object_building_tatooine_shared_cloning_facility_tatooine = SharedBuildingObject
 
 	clientObjectCRC = 749651154,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cloning_facility_tatooine, "object/building/tatooine/shared_cloning_facility_tatooine.iff")
 
 object_building_tatooine_shared_cloning_facility_tatooine_small = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_cloning_facility_tatooine_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -559,11 +594,15 @@ object_building_tatooine_shared_cloning_facility_tatooine_small = SharedBuilding
 
 	clientObjectCRC = 1267595977,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cloning_facility.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_cloning_facility_tatooine_small, "object/building/tatooine/shared_cloning_facility_tatooine_small.iff")
 
 object_building_tatooine_shared_filler_building_block_64x16_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_block_64x16_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_block_bldg_64x16_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -617,11 +656,15 @@ object_building_tatooine_shared_filler_building_block_64x16_style_01 = SharedBui
 
 	clientObjectCRC = 1977133003,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_block_64x16_style_01, "object/building/tatooine/shared_filler_building_block_64x16_style_01.iff")
 
 object_building_tatooine_shared_filler_building_block_64x16_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_block_64x16_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_block_bldg_64x16_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -675,11 +718,15 @@ object_building_tatooine_shared_filler_building_block_64x16_style_02 = SharedBui
 
 	clientObjectCRC = 2932805468,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_block_64x16_style_02, "object/building/tatooine/shared_filler_building_block_64x16_style_02.iff")
 
 object_building_tatooine_shared_filler_building_block_64x32_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_block_64x32_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_block_bldg_64x32_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -733,11 +780,15 @@ object_building_tatooine_shared_filler_building_block_64x32_style_01 = SharedBui
 
 	clientObjectCRC = 3491257899,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_block_64x32_style_01, "object/building/tatooine/shared_filler_building_block_64x32_style_01.iff")
 
 object_building_tatooine_shared_filler_building_block_64x32_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_block_64x32_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_block_bldg_64x32_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -791,11 +842,15 @@ object_building_tatooine_shared_filler_building_block_64x32_style_02 = SharedBui
 
 	clientObjectCRC = 185595580,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_block_64x32_style_02, "object/building/tatooine/shared_filler_building_block_64x32_style_02.iff")
 
 object_building_tatooine_shared_filler_building_slave_quarters_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_slave_quarters_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_block_bldg_32x16_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -849,11 +904,15 @@ object_building_tatooine_shared_filler_building_slave_quarters_style_01 = Shared
 
 	clientObjectCRC = 3086665699,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_slave_quarters_style_01, "object/building/tatooine/shared_filler_building_slave_quarters_style_01.iff")
 
 object_building_tatooine_shared_filler_building_tatt_style01_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_tatt_style01_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_building_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -907,11 +966,15 @@ object_building_tatooine_shared_filler_building_tatt_style01_01 = SharedBuilding
 
 	clientObjectCRC = 2338066597,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_01, "object/building/tatooine/shared_filler_building_tatt_style01_01.iff")
 
 object_building_tatooine_shared_filler_building_tatt_style01_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_tatt_style01_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_building_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -965,11 +1028,15 @@ object_building_tatooine_shared_filler_building_tatt_style01_02 = SharedBuilding
 
 	clientObjectCRC = 1347139634,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_02, "object/building/tatooine/shared_filler_building_tatt_style01_02.iff")
 
 object_building_tatooine_shared_filler_building_tatt_style01_03 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_tatt_style01_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_building_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1023,11 +1090,15 @@ object_building_tatooine_shared_filler_building_tatt_style01_03 = SharedBuilding
 
 	clientObjectCRC = 424075199,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_03, "object/building/tatooine/shared_filler_building_tatt_style01_03.iff")
 
 object_building_tatooine_shared_filler_building_tatt_style01_04 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_tatt_style01_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_building_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1081,11 +1152,15 @@ object_building_tatooine_shared_filler_building_tatt_style01_04 = SharedBuilding
 
 	clientObjectCRC = 3802526891,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_04, "object/building/tatooine/shared_filler_building_tatt_style01_04.iff")
 
 object_building_tatooine_shared_filler_building_tatt_style01_05 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_tatt_style01_05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_building_s05.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1139,11 +1214,15 @@ object_building_tatooine_shared_filler_building_tatt_style01_05 = SharedBuilding
 
 	clientObjectCRC = 2879951654,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_05, "object/building/tatooine/shared_filler_building_tatt_style01_05.iff")
 
 object_building_tatooine_shared_filler_building_tatt_style01_06 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_tatt_style01_06.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_building_s06.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1197,11 +1276,15 @@ object_building_tatooine_shared_filler_building_tatt_style01_06 = SharedBuilding
 
 	clientObjectCRC = 1891580849,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_06, "object/building/tatooine/shared_filler_building_tatt_style01_06.iff")
 
 object_building_tatooine_shared_filler_building_tatt_style01_07 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_tatt_style01_07.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_building_s07.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1255,11 +1338,15 @@ object_building_tatooine_shared_filler_building_tatt_style01_07 = SharedBuilding
 
 	clientObjectCRC = 967990332,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_07, "object/building/tatooine/shared_filler_building_tatt_style01_07.iff")
 
 object_building_tatooine_shared_filler_building_tatt_style01_08 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_tatt_style01_08.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_building_s08.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1313,11 +1400,15 @@ object_building_tatooine_shared_filler_building_tatt_style01_08 = SharedBuilding
 
 	clientObjectCRC = 2209902638,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_08, "object/building/tatooine/shared_filler_building_tatt_style01_08.iff")
 
 object_building_tatooine_shared_filler_building_tatt_style01_09 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_tatt_style01_09.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_building_s09.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1371,11 +1462,15 @@ object_building_tatooine_shared_filler_building_tatt_style01_09 = SharedBuilding
 
 	clientObjectCRC = 3400865699,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_09, "object/building/tatooine/shared_filler_building_tatt_style01_09.iff")
 
 object_building_tatooine_shared_filler_building_tatt_style01_10 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_tatt_style01_10.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_building_s10.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1429,11 +1524,15 @@ object_building_tatooine_shared_filler_building_tatt_style01_10 = SharedBuilding
 
 	clientObjectCRC = 3648617040,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_10, "object/building/tatooine/shared_filler_building_tatt_style01_10.iff")
 
 object_building_tatooine_shared_filler_building_tatt_style01_11 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_filler_building_tatt_style01_11.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_building_s11.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1487,11 +1586,15 @@ object_building_tatooine_shared_filler_building_tatt_style01_11 = SharedBuilding
 
 	clientObjectCRC = 2423528925,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_filler_building_tatt_style01_11, "object/building/tatooine/shared_filler_building_tatt_style01_11.iff")
 
 object_building_tatooine_shared_fort_tusken = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_fort_tusken.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1545,11 +1648,15 @@ object_building_tatooine_shared_fort_tusken = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 1194412824,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_fort_tusken, "object/building/tatooine/shared_fort_tusken.iff")
 
 object_building_tatooine_shared_guild_combat_tatooine_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_guild_combat_tatooine_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1603,11 +1710,15 @@ object_building_tatooine_shared_guild_combat_tatooine_style_01 = SharedBuildingO
 
 	clientObjectCRC = 1273926318,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_combat_tatooine_style_01, "object/building/tatooine/shared_guild_combat_tatooine_style_01.iff")
 
 object_building_tatooine_shared_guild_commerce_tatooine_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_guild_commerce_tatooine_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1661,11 +1772,15 @@ object_building_tatooine_shared_guild_commerce_tatooine_style_01 = SharedBuildin
 
 	clientObjectCRC = 113904481,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_commerce_tatooine_style_01, "object/building/tatooine/shared_guild_commerce_tatooine_style_01.iff")
 
 object_building_tatooine_shared_guild_theater_tatooine_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_guild_theater_tatooine_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1719,11 +1834,15 @@ object_building_tatooine_shared_guild_theater_tatooine_style_01 = SharedBuilding
 
 	clientObjectCRC = 3289028168,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_theater.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_theater_tatooine_style_01, "object/building/tatooine/shared_guild_theater_tatooine_style_01.iff")
 
 object_building_tatooine_shared_guild_university_tatooine_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_guild_university_tatooine_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1777,11 +1896,15 @@ object_building_tatooine_shared_guild_university_tatooine_style_01 = SharedBuild
 
 	clientObjectCRC = 970934772,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_university_tatooine_style_01, "object/building/tatooine/shared_guild_university_tatooine_style_01.iff")
 
 object_building_tatooine_shared_guild_university_tatooine_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_guild_university_tatooine_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1835,11 +1958,15 @@ object_building_tatooine_shared_guild_university_tatooine_style_02 = SharedBuild
 
 	clientObjectCRC = 3804815715,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_guild.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_guild_university_tatooine_style_02, "object/building/tatooine/shared_guild_university_tatooine_style_02.iff")
 
 object_building_tatooine_shared_hospital_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_hospital_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1893,11 +2020,15 @@ object_building_tatooine_shared_hospital_tatooine = SharedBuildingObjectTemplate
 
 	clientObjectCRC = 4066183619,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hospital_tatooine, "object/building/tatooine/shared_hospital_tatooine.iff")
 
 object_building_tatooine_shared_hospital_tatooine_s02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_hospital_tatooine_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1951,11 +2082,15 @@ object_building_tatooine_shared_hospital_tatooine_s02 = SharedBuildingObjectTemp
 
 	clientObjectCRC = 2745462757,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hospital_tatooine_s02, "object/building/tatooine/shared_hospital_tatooine_s02.iff")
 
 object_building_tatooine_shared_hotel_tatooine_general = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_hotel_tatooine_general.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2009,11 +2144,15 @@ object_building_tatooine_shared_hotel_tatooine_general = SharedBuildingObjectTem
 
 	clientObjectCRC = 776066139,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_hotel.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hotel_tatooine_general, "object/building/tatooine/shared_hotel_tatooine_general.iff")
 
 object_building_tatooine_shared_hotel_tatooine_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_hotel_tatooine_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2067,11 +2206,15 @@ object_building_tatooine_shared_hotel_tatooine_style_01 = SharedBuildingObjectTe
 
 	clientObjectCRC = 4181798094,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_hotel.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_hotel_tatooine_style_01, "object/building/tatooine/shared_hotel_tatooine_style_01.iff")
 
 object_building_tatooine_shared_housing_tatt_style01_large = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_housing_tatt_style01_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2125,11 +2268,15 @@ object_building_tatooine_shared_housing_tatt_style01_large = SharedBuildingObjec
 
 	clientObjectCRC = 3970726045,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style01_large, "object/building/tatooine/shared_housing_tatt_style01_large.iff")
 
 object_building_tatooine_shared_housing_tatt_style01_med = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_housing_tatt_style01_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2183,11 +2330,15 @@ object_building_tatooine_shared_housing_tatt_style01_med = SharedBuildingObjectT
 
 	clientObjectCRC = 2662523338,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style01_med, "object/building/tatooine/shared_housing_tatt_style01_med.iff")
 
 object_building_tatooine_shared_housing_tatt_style01_small = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_housing_tatt_style01_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2241,11 +2392,15 @@ object_building_tatooine_shared_housing_tatt_style01_small = SharedBuildingObjec
 
 	clientObjectCRC = 3635932340,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style01_small, "object/building/tatooine/shared_housing_tatt_style01_small.iff")
 
 object_building_tatooine_shared_housing_tatt_style02_large = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_housing_tatt_style02_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2299,11 +2454,15 @@ object_building_tatooine_shared_housing_tatt_style02_large = SharedBuildingObjec
 
 	clientObjectCRC = 3801672984,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style02_large, "object/building/tatooine/shared_housing_tatt_style02_large.iff")
 
 object_building_tatooine_shared_housing_tatt_style02_med = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_housing_tatt_style02_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2357,11 +2516,15 @@ object_building_tatooine_shared_housing_tatt_style02_med = SharedBuildingObjectT
 
 	clientObjectCRC = 2356282071,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style02_med, "object/building/tatooine/shared_housing_tatt_style02_med.iff")
 
 object_building_tatooine_shared_housing_tatt_style02_small = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_housing_tatt_style02_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2415,11 +2578,15 @@ object_building_tatooine_shared_housing_tatt_style02_small = SharedBuildingObjec
 
 	clientObjectCRC = 3598940465,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style02_small, "object/building/tatooine/shared_housing_tatt_style02_small.iff")
 
 object_building_tatooine_shared_housing_tatt_style03_large = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_housing_tatt_style03_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2473,11 +2640,15 @@ object_building_tatooine_shared_housing_tatt_style03_large = SharedBuildingObjec
 
 	clientObjectCRC = 456420086,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style03_large, "object/building/tatooine/shared_housing_tatt_style03_large.iff")
 
 object_building_tatooine_shared_housing_tatt_style03_med = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_housing_tatt_style03_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2531,11 +2702,15 @@ object_building_tatooine_shared_housing_tatt_style03_med = SharedBuildingObjectT
 
 	clientObjectCRC = 2121443505,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style03_med, "object/building/tatooine/shared_housing_tatt_style03_med.iff")
 
 object_building_tatooine_shared_housing_tatt_style03_small = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_housing_tatt_style03_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2589,11 +2764,15 @@ object_building_tatooine_shared_housing_tatt_style03_small = SharedBuildingObjec
 
 	clientObjectCRC = 791674591,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_housing_tatt_style03_small, "object/building/tatooine/shared_housing_tatt_style03_small.iff")
 
 object_building_tatooine_shared_junkshop_watto = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_junkshop_watto.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2647,11 +2826,15 @@ object_building_tatooine_shared_junkshop_watto = SharedBuildingObjectTemplate:ne
 
 	clientObjectCRC = 4014265599,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_junkshop_watto, "object/building/tatooine/shared_junkshop_watto.iff")
 
 object_building_tatooine_shared_lair_environment_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_lair_environment_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2705,11 +2888,15 @@ object_building_tatooine_shared_lair_environment_tatooine = SharedBuildingObject
 
 	clientObjectCRC = 2616325223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_lair_environment_tatooine, "object/building/tatooine/shared_lair_environment_tatooine.iff")
 
 object_building_tatooine_shared_lucky_despot = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_lucky_despot.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2763,11 +2950,15 @@ object_building_tatooine_shared_lucky_despot = SharedBuildingObjectTemplate:new 
 
 	clientObjectCRC = 1100188829,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_hotel.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_lucky_despot, "object/building/tatooine/shared_lucky_despot.iff")
 
 object_building_tatooine_shared_merchant_tent_tato_s01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_merchant_tent_tato_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2821,11 +3012,15 @@ object_building_tatooine_shared_merchant_tent_tato_s01 = SharedBuildingObjectTem
 
 	clientObjectCRC = 2745583203,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_housing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_merchant_tent_tato_s01, "object/building/tatooine/shared_merchant_tent_tato_s01.iff")
 
 object_building_tatooine_shared_palace_tatooine_jabba = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_palace_tatooine_jabba.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2879,11 +3074,15 @@ object_building_tatooine_shared_palace_tatooine_jabba = SharedBuildingObjectTemp
 
 	clientObjectCRC = 4034000230,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_palace_tatooine_jabba, "object/building/tatooine/shared_palace_tatooine_jabba.iff")
 
 object_building_tatooine_shared_parking_garage_tatooine_style_1 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_parking_garage_tatooine_style_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_tato_garage_s01_u01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2937,11 +3136,15 @@ object_building_tatooine_shared_parking_garage_tatooine_style_1 = SharedBuilding
 
 	clientObjectCRC = 2278884651,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_parking_garage.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_parking_garage_tatooine_style_1, "object/building/tatooine/shared_parking_garage_tatooine_style_1.iff")
 
 object_building_tatooine_shared_poi_tato_farm_32x32_s01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_poi_tato_farm_32x32_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_tato_farm_32x32_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2995,11 +3198,15 @@ object_building_tatooine_shared_poi_tato_farm_32x32_s01 = SharedBuildingObjectTe
 
 	clientObjectCRC = 1014253665,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_poi_tato_farm_32x32_s01, "object/building/tatooine/shared_poi_tato_farm_32x32_s01.iff")
 
 object_building_tatooine_shared_salon_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_salon_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -3053,11 +3260,15 @@ object_building_tatooine_shared_salon_tatooine = SharedBuildingObjectTemplate:ne
 
 	clientObjectCRC = 616531993,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_salon.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_salon_tatooine, "object/building/tatooine/shared_salon_tatooine.iff")
 
 object_building_tatooine_shared_shuttleport_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_shuttleport_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_tato_shuttleport_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3111,11 +3322,15 @@ object_building_tatooine_shared_shuttleport_tatooine = SharedBuildingObjectTempl
 
 	clientObjectCRC = 3505295527,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_shuttleport_tatooine, "object/building/tatooine/shared_shuttleport_tatooine.iff")
 
 object_building_tatooine_shared_starport_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_starport_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -3169,11 +3384,15 @@ object_building_tatooine_shared_starport_tatooine = SharedBuildingObjectTemplate
 
 	clientObjectCRC = 351600928,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_starport.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_starport_tatooine, "object/building/tatooine/shared_starport_tatooine.iff")
 
 object_building_tatooine_shared_tower_jabbas_palace = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/tatooine/shared_tower_jabbas_palace.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_jabbas_palace_tower.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3227,6 +3446,7 @@ object_building_tatooine_shared_tower_jabbas_palace = SharedBuildingObjectTempla
 
 	clientObjectCRC = 2860552089,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_tatooine_shared_tower_jabbas_palace, "object/building/tatooine/shared_tower_jabbas_palace.iff")

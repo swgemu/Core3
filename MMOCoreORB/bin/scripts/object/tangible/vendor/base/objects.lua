@@ -42,6 +42,9 @@
 
 
 object_tangible_vendor_base_shared_base_vendor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/vendor/base/shared_base_vendor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_mission.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_vendor_base_shared_base_vendor = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2776424308,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_vendor_base_shared_base_vendor, "object/tangible/vendor/base/shared_base_vendor.iff")

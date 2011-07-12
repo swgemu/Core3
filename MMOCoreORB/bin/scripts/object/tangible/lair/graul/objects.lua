@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_graul_shared_lair_graul = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/graul/shared_lair_graul.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_graul_shared_lair_graul = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 1881708167,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_graul_shared_lair_graul, "object/tangible/lair/graul/shared_lair_graul.iff")
 
 object_tangible_lair_graul_shared_lair_graul_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/graul/shared_lair_graul_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_graul_shared_lair_graul_jungle = SharedTangibleObjectTempla
 
 	clientObjectCRC = 1200430930,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_graul_shared_lair_graul_jungle, "object/tangible/lair/graul/shared_lair_graul_jungle.iff")

@@ -42,6 +42,9 @@
 
 
 object_building_poi_farm_shared_tatooine_flora_large = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/poi/farm/shared_tatooine_flora_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -95,6 +98,7 @@ object_building_poi_farm_shared_tatooine_flora_large = SharedBuildingObjectTempl
 
 	clientObjectCRC = 2341623398,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff", "object/building/poi/base/shared_base_poi_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_farm_shared_tatooine_flora_large, "object/building/poi/farm/shared_tatooine_flora_large.iff")

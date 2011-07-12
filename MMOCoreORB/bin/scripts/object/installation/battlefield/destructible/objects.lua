@@ -42,6 +42,9 @@
 
 
 object_installation_battlefield_destructible_shared_antenna_tatt_style_1 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_antenna_tatt_style_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_imprv_tato_antenna_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_installation_battlefield_destructible_shared_antenna_tatt_style_1 = Share
 
 	clientObjectCRC = 1010668003,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_antenna_tatt_style_1, "object/installation/battlefield/destructible/shared_antenna_tatt_style_1.iff")
 
 object_installation_battlefield_destructible_shared_antenna_tatt_style_2 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_antenna_tatt_style_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_imprv_tato_antenna_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_installation_battlefield_destructible_shared_antenna_tatt_style_2 = Share
 
 	clientObjectCRC = 3878304116,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_antenna_tatt_style_2, "object/installation/battlefield/destructible/shared_antenna_tatt_style_2.iff")
 
 object_installation_battlefield_destructible_shared_battlefield_constructor = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_battlefield_constructor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_corl_power_bubble_node.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_installation_battlefield_destructible_shared_battlefield_constructor = Sh
 
 	clientObjectCRC = 2493653890,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_battlefield_constructor, "object/installation/battlefield/destructible/shared_battlefield_constructor.iff")
 
 object_installation_battlefield_destructible_shared_bfield_banner_freestand_impl = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_banner_freestand_impl.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_installation_battlefield_destructible_shared_bfield_banner_freestand_impl
 
 	clientObjectCRC = 2039684051,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_banner_freestand_impl, "object/installation/battlefield/destructible/shared_bfield_banner_freestand_impl.iff")
 
 object_installation_battlefield_destructible_shared_bfield_banner_freestand_rebl = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_banner_freestand_rebl.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_installation_battlefield_destructible_shared_bfield_banner_freestand_rebl
 
 	clientObjectCRC = 520990553,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_banner_freestand_rebl, "object/installation/battlefield/destructible/shared_bfield_banner_freestand_rebl.iff")
 
 object_installation_battlefield_destructible_shared_bfield_base_gate_impl = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_base_gate_impl.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_base_gate_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_installation_battlefield_destructible_shared_bfield_base_gate_impl = Shar
 
 	clientObjectCRC = 2617968651,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_base_gate_impl, "object/installation/battlefield/destructible/shared_bfield_base_gate_impl.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_imperial = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_column_imperial.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_huge_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_installation_battlefield_destructible_shared_bfield_column_imperial = Sha
 
 	clientObjectCRC = 2654774665,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_column_imperial, "object/installation/battlefield/destructible/shared_bfield_column_imperial.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_impl_med = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_column_impl_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_med_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_installation_battlefield_destructible_shared_bfield_column_impl_med = Sha
 
 	clientObjectCRC = 1286651525,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_column_impl_med, "object/installation/battlefield/destructible/shared_bfield_column_impl_med.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_impl_weak = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_column_impl_weak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_weak_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_installation_battlefield_destructible_shared_bfield_column_impl_weak = Sh
 
 	clientObjectCRC = 2786325575,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_column_impl_weak, "object/installation/battlefield/destructible/shared_bfield_column_impl_weak.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_rebel = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_column_rebel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_huge_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_installation_battlefield_destructible_shared_bfield_column_rebel = Shared
 
 	clientObjectCRC = 3243521441,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebel, "object/installation/battlefield/destructible/shared_bfield_column_rebel.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_rebl_med = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_column_rebl_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_med_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_med = Sha
 
 	clientObjectCRC = 4256393755,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_med, "object/installation/battlefield/destructible/shared_bfield_column_rebl_med.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_rebl_strong = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_column_rebl_strong.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_strong_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_strong = 
 
 	clientObjectCRC = 2202504027,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_strong, "object/installation/battlefield/destructible/shared_bfield_column_rebl_strong.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_rebl_weak = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_column_rebl_weak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_weak_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_installation_battlefield_destructible_shared_bfield_column_rebl_weak = Sh
 
 	clientObjectCRC = 473496206,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_column_rebl_weak, "object/installation/battlefield/destructible/shared_bfield_column_rebl_weak.iff")
 
 object_installation_battlefield_destructible_shared_bfield_column_strong = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_column_strong.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_strong_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_installation_battlefield_destructible_shared_bfield_column_strong = Share
 
 	clientObjectCRC = 3725708837,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_column_strong, "object/installation/battlefield/destructible/shared_bfield_column_strong.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_cleft_wall_lg = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_cleft_wall_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_cleft_wall_lg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_cleft_wall_lg 
 
 	clientObjectCRC = 3467497655,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_cleft_wall_lg, "object/installation/battlefield/destructible/shared_bfield_gungan_cleft_wall_lg.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_damaged_narrow_arch = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_damaged_narrow_arch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_narrow_arch_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_narrow
 
 	clientObjectCRC = 2072399894,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_narrow_arch, "object/installation/battlefield/destructible/shared_bfield_gungan_damaged_narrow_arch.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wall_lg = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_damaged_wall_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_wall_lg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wall_l
 
 	clientObjectCRC = 3127732580,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wall_lg, "object/installation/battlefield/destructible/shared_bfield_gungan_damaged_wall_lg.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wide_arch = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_damaged_wide_arch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_damaged_wide_arch_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wide_a
 
 	clientObjectCRC = 3148938953,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_damaged_wide_arch, "object/installation/battlefield/destructible/shared_bfield_gungan_damaged_wide_arch.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_pillar_damaged = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_pillar_damaged.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_pillar_damaged_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_pillar_damaged
 
 	clientObjectCRC = 2861241123,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_pillar_damaged, "object/installation/battlefield/destructible/shared_bfield_gungan_pillar_damaged.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_pillar_ruined = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_pillar_ruined.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_pillar_ruined_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_pillar_ruined 
 
 	clientObjectCRC = 3046900101,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_pillar_ruined, "object/installation/battlefield/destructible/shared_bfield_gungan_pillar_ruined.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_relic = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_relic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_relic_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_relic = Shared
 
 	clientObjectCRC = 3317620099,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_relic, "object/installation/battlefield/destructible/shared_bfield_gungan_relic.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01a = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s01a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01a = 
 
 	clientObjectCRC = 3260516219,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01a, "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s01a.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01b = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s01b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01b = 
 
 	clientObjectCRC = 423636972,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s01b, "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s01b.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02a = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s02a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02a = 
 
 	clientObjectCRC = 4012871923,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02a, "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s02a.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02b = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s02b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02b = 
 
 	clientObjectCRC = 876099684,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_statue_s02b, "object/installation/battlefield/destructible/shared_bfield_gungan_statue_s02b.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_target_shield_gen = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_target_shield_gen.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_shield_gen_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_target_shield_
 
 	clientObjectCRC = 2410944935,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_target_shield_gen, "object/installation/battlefield/destructible/shared_bfield_gungan_target_shield_gen.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_lg_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_lg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg
 
 	clientObjectCRC = 4289393973,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s01, "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_lg_s01.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_lg_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_lg_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg
 
 	clientObjectCRC = 616390050,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_lg_s02, "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_lg_s02.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_sm_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_sm_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm
 
 	clientObjectCRC = 656107195,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s01, "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_sm_s01.iff")
 
 object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_sm_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_wall_ruined_sm_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm
 
 	clientObjectCRC = 4228697644,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_gungan_wall_ruined_sm_s02, "object/installation/battlefield/destructible/shared_bfield_gungan_wall_ruined_sm_s02.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_fence = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_nightsister_fence.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dath_night_sister_fence_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_fence = S
 
 	clientObjectCRC = 1198047599,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_fence, "object/installation/battlefield/destructible/shared_bfield_nightsister_fence.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_nightsister_freestand_banner01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 
 	clientObjectCRC = 712214351,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner01, "object/installation/battlefield/destructible/shared_bfield_nightsister_freestand_banner01.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_nightsister_freestand_banner02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 
 	clientObjectCRC = 4049874904,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner02, "object/installation/battlefield/destructible/shared_bfield_nightsister_freestand_banner02.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner03 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_nightsister_freestand_banner03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dath_night_sister_banner_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_freestand
 
 	clientObjectCRC = 3093907541,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_freestand_banner03, "object/installation/battlefield/destructible/shared_bfield_nightsister_freestand_banner03.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_gate = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_nightsister_gate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dath_night_sister_gate_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_gate = Sh
 
 	clientObjectCRC = 2788699463,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_gate, "object/installation/battlefield/destructible/shared_bfield_nightsister_gate.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_hut = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_nightsister_hut.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dath_night_sister_hut_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_hut = Sha
 
 	clientObjectCRC = 1444171901,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_hut, "object/installation/battlefield/destructible/shared_bfield_nightsister_hut.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_altar = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_nightsister_target_sith_altar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/atf_sith_altar.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_si
 
 	clientObjectCRC = 3112050906,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_altar, "object/installation/battlefield/destructible/shared_bfield_nightsister_target_sith_altar.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_crystal = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_nightsister_target_sith_crystal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/atf_sith_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_si
 
 	clientObjectCRC = 483726355,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_sith_crystal, "object/installation/battlefield/destructible/shared_bfield_nightsister_target_sith_crystal.iff")
 
 object_installation_battlefield_destructible_shared_bfield_nightsister_target_tower = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_nightsister_target_tower.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dath_night_sister_guard_tower_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,11 +2337,15 @@ object_installation_battlefield_destructible_shared_bfield_nightsister_target_to
 
 	clientObjectCRC = 3796911801,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_nightsister_target_tower, "object/installation/battlefield/destructible/shared_bfield_nightsister_target_tower.iff")
 
 object_installation_battlefield_destructible_shared_bfield_target_power_generator = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_target_power_generator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_pow_fusion_ion_u0.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2237,11 +2396,15 @@ object_installation_battlefield_destructible_shared_bfield_target_power_generato
 
 	clientObjectCRC = 2393390431,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_generator, "object/installation/battlefield/destructible/shared_bfield_target_power_generator.iff")
 
 object_installation_battlefield_destructible_shared_bfield_target_power_transformer_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_target_power_transformer_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_corl_power_transformer_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2292,11 +2455,15 @@ object_installation_battlefield_destructible_shared_bfield_target_power_transfor
 
 	clientObjectCRC = 3659920532,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_transformer_01, "object/installation/battlefield/destructible/shared_bfield_target_power_transformer_01.iff")
 
 object_installation_battlefield_destructible_shared_bfield_target_power_transformer_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_target_power_transformer_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_corl_power_transformer_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2347,11 +2514,15 @@ object_installation_battlefield_destructible_shared_bfield_target_power_transfor
 
 	clientObjectCRC = 20077571,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_target_power_transformer_02, "object/installation/battlefield/destructible/shared_bfield_target_power_transformer_02.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_barbed = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_wall_barbed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_corl_imprv_wall_4x16_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2402,11 +2573,15 @@ object_installation_battlefield_destructible_shared_bfield_wall_barbed = SharedI
 
 	clientObjectCRC = 4261137937,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_wall_barbed, "object/installation/battlefield/destructible/shared_bfield_wall_barbed.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_connector = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_wall_connector.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_huge_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2457,11 +2632,15 @@ object_installation_battlefield_destructible_shared_bfield_wall_connector = Shar
 
 	clientObjectCRC = 2122168983,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_wall_connector, "object/installation/battlefield/destructible/shared_bfield_wall_connector.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_impl_weak = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_wall_impl_weak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2512,11 +2691,15 @@ object_installation_battlefield_destructible_shared_bfield_wall_impl_weak = Shar
 
 	clientObjectCRC = 3072454055,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_wall_impl_weak, "object/installation/battlefield/destructible/shared_bfield_wall_impl_weak.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_med = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_wall_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2567,11 +2750,15 @@ object_installation_battlefield_destructible_shared_bfield_wall_med = SharedInst
 
 	clientObjectCRC = 2827387119,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_wall_med, "object/installation/battlefield/destructible/shared_bfield_wall_med.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_rebl_med = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_wall_rebl_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2622,11 +2809,15 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_med = Share
 
 	clientObjectCRC = 3711597492,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_med, "object/installation/battlefield/destructible/shared_bfield_wall_rebl_med.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_rebl_strong = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_wall_rebl_strong.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2677,11 +2868,15 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_strong = Sh
 
 	clientObjectCRC = 2237630314,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_strong, "object/installation/battlefield/destructible/shared_bfield_wall_rebl_strong.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_rebl_weak = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_wall_rebl_weak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2732,11 +2927,15 @@ object_installation_battlefield_destructible_shared_bfield_wall_rebl_weak = Shar
 
 	clientObjectCRC = 218817390,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_wall_rebl_weak, "object/installation/battlefield/destructible/shared_bfield_wall_rebl_weak.iff")
 
 object_installation_battlefield_destructible_shared_bfield_wall_strong = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_bfield_wall_strong.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2787,11 +2986,15 @@ object_installation_battlefield_destructible_shared_bfield_wall_strong = SharedI
 
 	clientObjectCRC = 1471201695,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_bfield_wall_strong, "object/installation/battlefield/destructible/shared_bfield_wall_strong.iff")
 
 object_installation_battlefield_destructible_shared_gungan_sacred_head = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_gungan_sacred_head.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_sacred_head_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2842,11 +3045,15 @@ object_installation_battlefield_destructible_shared_gungan_sacred_head = SharedI
 
 	clientObjectCRC = 2515256237,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_gungan_sacred_head, "object/installation/battlefield/destructible/shared_gungan_sacred_head.iff")
 
 object_installation_battlefield_destructible_shared_imperial_gate_house = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_imperial_gate_house.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_base_gate_house_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2897,11 +3104,15 @@ object_installation_battlefield_destructible_shared_imperial_gate_house = Shared
 
 	clientObjectCRC = 4180449547,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_imperial_gate_house, "object/installation/battlefield/destructible/shared_imperial_gate_house.iff")
 
 object_installation_battlefield_destructible_shared_rebel_gate_house = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_rebel_gate_house.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_base_gate_house_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2952,11 +3163,15 @@ object_installation_battlefield_destructible_shared_rebel_gate_house = SharedIns
 
 	clientObjectCRC = 3637065132,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_rebel_gate_house, "object/installation/battlefield/destructible/shared_rebel_gate_house.iff")
 
 object_installation_battlefield_destructible_shared_small_turret = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_small_turret.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3007,11 +3222,15 @@ object_installation_battlefield_destructible_shared_small_turret = SharedInstall
 
 	clientObjectCRC = 422378636,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_small_turret, "object/installation/battlefield/destructible/shared_small_turret.iff")
 
 object_installation_battlefield_destructible_shared_turret_dish_small = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_turret_dish_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3062,11 +3281,15 @@ object_installation_battlefield_destructible_shared_turret_dish_small = SharedIn
 
 	clientObjectCRC = 209537017,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_turret_dish_small, "object/installation/battlefield/destructible/shared_turret_dish_small.iff")
 
 object_installation_battlefield_destructible_shared_turret_tower_small = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/shared_turret_tower_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3117,6 +3340,7 @@ object_installation_battlefield_destructible_shared_turret_tower_small = SharedI
 
 	clientObjectCRC = 718314234,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_shared_turret_tower_small, "object/installation/battlefield/destructible/shared_turret_tower_small.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_skreeg_shared_lair_skreeg = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/skreeg/shared_lair_skreeg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_skreeg_shared_lair_skreeg = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3525197879,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_skreeg_shared_lair_skreeg, "object/tangible/lair/skreeg/shared_lair_skreeg.iff")
 
 object_tangible_lair_skreeg_shared_lair_skreeg_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/skreeg/shared_lair_skreeg_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_skreeg_shared_lair_skreeg_jungle = SharedTangibleObjectTemp
 
 	clientObjectCRC = 962440956,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_jungle, "object/tangible/lair/skreeg/shared_lair_skreeg_jungle.iff")
 
 object_tangible_lair_skreeg_shared_lair_skreeg_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/skreeg/shared_lair_skreeg_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_skreeg_shared_lair_skreeg_swamp = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2757887034,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_skreeg_shared_lair_skreeg_swamp, "object/tangible/lair/skreeg/shared_lair_skreeg_swamp.iff")

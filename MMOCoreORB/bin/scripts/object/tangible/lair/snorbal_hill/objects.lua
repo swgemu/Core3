@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/snorbal_hill/shared_lair_snorbal_hill.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill = SharedTangibleObjec
 
 	clientObjectCRC = 80246849,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_hill_shared_lair_snorbal_hill, "object/tangible/lair/snorbal_hill/shared_lair_snorbal_hill.iff")

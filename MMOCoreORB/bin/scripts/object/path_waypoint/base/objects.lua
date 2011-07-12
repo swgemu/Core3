@@ -42,6 +42,9 @@
 
 
 object_path_waypoint_base_shared_path_waypoint_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/path_waypoint/base/shared_path_waypoint_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_path_waypoint_base_shared_path_waypoint_base = SharedTangibleObjectTempla
 
 	clientObjectCRC = 3574077008,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_path_waypoint_base_shared_path_waypoint_base, "object/path_waypoint/base/shared_path_waypoint_base.iff")

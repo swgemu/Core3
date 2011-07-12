@@ -42,6 +42,9 @@
 
 
 object_installation_faction_perk_turret_base_shared_faction_turret_base = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_installation_faction_perk_turret_base_shared_faction_turret_base = Shared
 
 	clientObjectCRC = 1860325711,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_turret_base_shared_faction_turret_base, "object/installation/faction_perk/turret/base/shared_faction_turret_base.iff")

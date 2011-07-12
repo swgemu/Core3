@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_guild_deed_shared_corellia_guild_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/guild_deed/shared_corellia_guild_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_deed_guild_deed_shared_corellia_guild_deed = SharedTangibleObjec
 
 	clientObjectCRC = 4111019383,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_corellia_guild_deed, "object/tangible/deed/guild_deed/shared_corellia_guild_deed.iff")
 
 object_tangible_deed_guild_deed_shared_generic_guild_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/guild_deed/shared_generic_guild_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_deed_guild_deed_shared_generic_guild_deed = SharedTangibleObject
 
 	clientObjectCRC = 3345639792,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_generic_guild_deed, "object/tangible/deed/guild_deed/shared_generic_guild_deed.iff")
 
 object_tangible_deed_guild_deed_shared_naboo_guild_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/guild_deed/shared_naboo_guild_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_deed_guild_deed_shared_naboo_guild_deed = SharedTangibleObjectTe
 
 	clientObjectCRC = 2398572808,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_naboo_guild_deed, "object/tangible/deed/guild_deed/shared_naboo_guild_deed.iff")
 
 object_tangible_deed_guild_deed_shared_tatooine_guild_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/guild_deed/shared_tatooine_guild_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_deed_guild_deed_shared_tatooine_guild_deed = SharedTangibleObjec
 
 	clientObjectCRC = 847751074,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_tatooine_guild_deed, "object/tangible/deed/guild_deed/shared_tatooine_guild_deed.iff")
 
 object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/guild_deed/shared_tatooine_guild_style_02_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed = SharedTang
 
 	clientObjectCRC = 1677139943,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_building_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_guild_deed_shared_tatooine_guild_style_02_deed, "object/tangible/deed/guild_deed/shared_tatooine_guild_style_02_deed.iff")

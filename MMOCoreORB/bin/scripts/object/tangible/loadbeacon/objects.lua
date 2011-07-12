@@ -42,6 +42,9 @@
 
 
 object_tangible_loadbeacon_shared_loadbeacon_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loadbeacon/shared_loadbeacon_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_waypoint_green.prt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_loadbeacon_shared_loadbeacon_base = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1191572337,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loadbeacon_shared_loadbeacon_base, "object/tangible/loadbeacon/shared_loadbeacon_base.iff")

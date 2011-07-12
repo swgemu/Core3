@@ -42,6 +42,9 @@
 
 
 object_installation_turret_shared_turret_block_large = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/turret/shared_turret_block_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_installation_turret_shared_turret_block_large = SharedInstallationObjectT
 
 	clientObjectCRC = 3901317905,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_block_large, "object/installation/turret/shared_turret_block_large.iff")
 
 object_installation_turret_shared_turret_block_med = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/turret/shared_turret_block_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_m_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_installation_turret_shared_turret_block_med = SharedInstallationObjectTem
 
 	clientObjectCRC = 1652270840,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_block_med, "object/installation/turret/shared_turret_block_med.iff")
 
 object_installation_turret_shared_turret_block_sm = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/turret/shared_turret_block_sm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_installation_turret_shared_turret_block_sm = SharedInstallationObjectTemp
 
 	clientObjectCRC = 3880132119,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_block_sm, "object/installation/turret/shared_turret_block_sm.iff")
 
 object_installation_turret_shared_turret_dish_large = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/turret/shared_turret_dish_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_installation_turret_shared_turret_dish_large = SharedInstallationObjectTe
 
 	clientObjectCRC = 264371583,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_dish_large, "object/installation/turret/shared_turret_dish_large.iff")
 
 object_installation_turret_shared_turret_dish_sm = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/turret/shared_turret_dish_sm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_installation_turret_shared_turret_dish_sm = SharedInstallationObjectTempl
 
 	clientObjectCRC = 3645535897,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_dish_sm, "object/installation/turret/shared_turret_dish_sm.iff")
 
 object_installation_turret_shared_turret_tower_large = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/turret/shared_turret_tower_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_lg_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_installation_turret_shared_turret_tower_large = SharedInstallationObjectT
 
 	clientObjectCRC = 1938857030,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_tower_large, "object/installation/turret/shared_turret_tower_large.iff")
 
 object_installation_turret_shared_turret_tower_med = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/turret/shared_turret_tower_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_m_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_installation_turret_shared_turret_tower_med = SharedInstallationObjectTem
 
 	clientObjectCRC = 3178460661,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_tower_med, "object/installation/turret/shared_turret_tower_med.iff")
 
 object_installation_turret_shared_turret_tower_sm = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/turret/shared_turret_tower_sm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_def_turret_sm_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,6 +508,7 @@ object_installation_turret_shared_turret_tower_sm = SharedInstallationObjectTemp
 
 	clientObjectCRC = 3118272463,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/turret/base/shared_turret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_turret_shared_turret_tower_sm, "object/installation/turret/shared_turret_tower_sm.iff")

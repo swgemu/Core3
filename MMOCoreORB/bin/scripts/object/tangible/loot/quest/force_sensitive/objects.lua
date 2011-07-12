@@ -42,6 +42,9 @@
 
 
 object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/force_sensitive/shared_camp_frequency_datapad.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad = Share
 
 	clientObjectCRC = 535228363,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_frequency_datapad, "object/tangible/loot/quest/force_sensitive/shared_camp_frequency_datapad.iff")
 
 object_tangible_loot_quest_force_sensitive_shared_camp_remote = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/force_sensitive/shared_camp_remote.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_radio_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_loot_quest_force_sensitive_shared_camp_remote = SharedTangibleOb
 
 	clientObjectCRC = 2972904337,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_remote, "object/tangible/loot/quest/force_sensitive/shared_camp_remote.iff")
 
 object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/force_sensitive/shared_camp_waypoint_datapad.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad = Shared
 
 	clientObjectCRC = 3049740856,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_camp_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/shared_camp_waypoint_datapad.iff")
 
 object_tangible_loot_quest_force_sensitive_shared_theater_datapad = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/force_sensitive/shared_theater_datapad.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_loot_quest_force_sensitive_shared_theater_datapad = SharedTangib
 
 	clientObjectCRC = 3130494948,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_shared_theater_datapad, "object/tangible/loot/quest/force_sensitive/shared_theater_datapad.iff")
 
 object_tangible_loot_quest_force_sensitive_sharred_force_crystal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/force_sensitive/sharred_force_crystal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_force_crystal.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_loot_quest_force_sensitive_sharred_force_crystal = SharedTangibl
 
 	clientObjectCRC = 2042144998,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_sharred_force_crystal, "object/tangible/loot/quest/force_sensitive/sharred_force_crystal.iff")
 
 object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/force_sensitive/sharred_waypoint_datapad.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,6 +390,7 @@ object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad = SharedTang
 
 	clientObjectCRC = 1900348707,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_force_sensitive_sharred_waypoint_datapad, "object/tangible/loot/quest/force_sensitive/sharred_waypoint_datapad.iff")

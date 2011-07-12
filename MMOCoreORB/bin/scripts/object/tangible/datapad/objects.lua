@@ -42,6 +42,9 @@
 
 
 object_tangible_datapad_shared_character_datapad = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/datapad/shared_character_datapad.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -92,11 +95,15 @@ object_tangible_datapad_shared_character_datapad = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1941590017,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_character_datapad, "object/tangible/datapad/shared_character_datapad.iff")
 
 object_tangible_datapad_shared_droid_datapad_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/datapad/shared_droid_datapad_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -147,11 +154,15 @@ object_tangible_datapad_shared_droid_datapad_1 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3496173420,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_1, "object/tangible/datapad/shared_droid_datapad_1.iff")
 
 object_tangible_datapad_shared_droid_datapad_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/datapad/shared_droid_datapad_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -202,11 +213,15 @@ object_tangible_datapad_shared_droid_datapad_2 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 192215035,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_2, "object/tangible/datapad/shared_droid_datapad_2.iff")
 
 object_tangible_datapad_shared_droid_datapad_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/datapad/shared_droid_datapad_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -257,11 +272,15 @@ object_tangible_datapad_shared_droid_datapad_3 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1115263094,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_3, "object/tangible/datapad/shared_droid_datapad_3.iff")
 
 object_tangible_datapad_shared_droid_datapad_4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/datapad/shared_droid_datapad_4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -312,11 +331,15 @@ object_tangible_datapad_shared_droid_datapad_4 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3113925474,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_4, "object/tangible/datapad/shared_droid_datapad_4.iff")
 
 object_tangible_datapad_shared_droid_datapad_5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/datapad/shared_droid_datapad_5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -367,11 +390,15 @@ object_tangible_datapad_shared_droid_datapad_5 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 4036484335,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_5, "object/tangible/datapad/shared_droid_datapad_5.iff")
 
 object_tangible_datapad_shared_droid_datapad_6 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/datapad/shared_droid_datapad_6.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -422,6 +449,7 @@ object_tangible_datapad_shared_droid_datapad_6 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 729838712,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_datapad_shared_droid_datapad_6, "object/tangible/datapad/shared_droid_datapad_6.iff")

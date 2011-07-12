@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bicep_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sing_mt_clan_bicep_l_s01.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep
 
 	clientObjectCRC = 4164574755,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_l, "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bicep_l.iff")
 
 object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bicep_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sing_mt_clan_bicep_r_s01.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep
 
 	clientObjectCRC = 2297371568,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bicep_r, "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bicep_r.iff")
 
 object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bracer_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sing_mt_clan_bracer_l_s01.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_l.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_brace
 
 	clientObjectCRC = 1037485621,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_l, "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bracer_l.iff")
 
 object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bracer_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sing_mt_clan_bracer_r_s01.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_r.iff",
 
@@ -257,6 +272,7 @@ object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_brace
 
 	clientObjectCRC = 1292075942,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_singing_mountain_clan_shared_armor_smc_s01_bracer_r, "object/tangible/wearables/armor/singing_mountain_clan/shared_armor_smc_s01_bracer_r.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_fishing_bait_shared_bait_chum = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/bait/shared_bait_chum.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_fishing_bait_shared_bait_chum = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 1907354318,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/bait/base/shared_bait_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_chum, "object/tangible/fishing/bait/shared_bait_chum.iff")
 
 object_tangible_fishing_bait_shared_bait_grub = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/bait/shared_bait_grub.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_fishing_bait_shared_bait_grub = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 2852582475,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/bait/base/shared_bait_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_grub, "object/tangible/fishing/bait/shared_bait_grub.iff")
 
 object_tangible_fishing_bait_shared_bait_insect = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/bait/shared_bait_insect.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_fishing_bait_shared_bait_insect = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 574609963,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/bait/base/shared_bait_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_insect, "object/tangible/fishing/bait/shared_bait_insect.iff")
 
 object_tangible_fishing_bait_shared_bait_worm = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/bait/shared_bait_worm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_fishing_bait_shared_bait_worm = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 529269810,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/bait/base/shared_bait_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_shared_bait_worm, "object/tangible/fishing/bait/shared_bait_worm.iff")

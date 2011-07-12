@@ -42,6 +42,9 @@
 
 
 object_static_creature_shared_corellia_bageraset = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_corellia_bageraset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bageraset_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_creature_shared_corellia_bageraset = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 2705862416,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_corellia_bageraset, "object/static/creature/shared_corellia_bageraset.iff")
 
 object_static_creature_shared_corellia_carrion_spat = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_corellia_carrion_spat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/carrion_spat_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_creature_shared_corellia_carrion_spat = SharedStaticObjectTemplate
 
 	clientObjectCRC = 477184105,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_corellia_carrion_spat, "object/static/creature/shared_corellia_carrion_spat.iff")
 
 object_static_creature_shared_corellia_dalyrake = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_corellia_dalyrake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/dalyrake.sat",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_static_creature_shared_corellia_dalyrake = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 2747990145,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_corellia_dalyrake, "object/static/creature/shared_corellia_dalyrake.iff")
 
 object_static_creature_shared_corellia_durni = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_corellia_durni.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/durni_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_static_creature_shared_corellia_durni = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3048728047,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_corellia_durni, "object/static/creature/shared_corellia_durni.iff")
 
 object_static_creature_shared_corellia_gulingaw = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_corellia_gulingaw.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/gulginaw_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_static_creature_shared_corellia_gulingaw = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 2954563063,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_corellia_gulingaw, "object/static/creature/shared_corellia_gulingaw.iff")
 
 object_static_creature_shared_corellia_krahbu = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_corellia_krahbu.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/krahbu_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -307,11 +330,15 @@ object_static_creature_shared_corellia_krahbu = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2683543667,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_corellia_krahbu, "object/static/creature/shared_corellia_krahbu.iff")
 
 object_static_creature_shared_corellia_murra = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_corellia_murra.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/murra_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -352,11 +379,15 @@ object_static_creature_shared_corellia_murra = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2344476589,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_corellia_murra, "object/static/creature/shared_corellia_murra.iff")
 
 object_static_creature_shared_corellia_paralope = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_corellia_paralope.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/swirl_prong_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -397,11 +428,15 @@ object_static_creature_shared_corellia_paralope = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 1375326208,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_corellia_paralope, "object/static/creature/shared_corellia_paralope.iff")
 
 object_static_creature_shared_corellia_slice_hound = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_corellia_slice_hound.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/corellian_slice_hound_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -442,11 +477,15 @@ object_static_creature_shared_corellia_slice_hound = SharedStaticObjectTemplate:
 
 	clientObjectCRC = 3137870482,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_corellia_slice_hound, "object/static/creature/shared_corellia_slice_hound.iff")
 
 object_static_creature_shared_corellia_wrix = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_corellia_wrix.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/gurreck_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -487,11 +526,15 @@ object_static_creature_shared_corellia_wrix = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 4063038895,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_corellia_wrix, "object/static/creature/shared_corellia_wrix.iff")
 
 object_static_creature_shared_dantooine_bol = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dantooine_bol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bol_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +575,15 @@ object_static_creature_shared_dantooine_bol = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 854757845,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dantooine_bol, "object/static/creature/shared_dantooine_bol.iff")
 
 object_static_creature_shared_dantooine_huurton = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dantooine_huurton.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/huurton.sat",
 	arrangementDescriptorFilename = "",
 
@@ -577,11 +624,15 @@ object_static_creature_shared_dantooine_huurton = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 1931905486,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dantooine_huurton, "object/static/creature/shared_dantooine_huurton.iff")
 
 object_static_creature_shared_dantooine_picket = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dantooine_picket.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/piket_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -622,11 +673,15 @@ object_static_creature_shared_dantooine_picket = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 2303273158,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dantooine_picket, "object/static/creature/shared_dantooine_picket.iff")
 
 object_static_creature_shared_dantooine_quenker = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dantooine_quenker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/quenker.sat",
 	arrangementDescriptorFilename = "",
 
@@ -667,11 +722,15 @@ object_static_creature_shared_dantooine_quenker = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 2156453868,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dantooine_quenker, "object/static/creature/shared_dantooine_quenker.iff")
 
 object_static_creature_shared_dantooine_thune = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dantooine_thune.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thune_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -712,11 +771,15 @@ object_static_creature_shared_dantooine_thune = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3211038446,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dantooine_thune, "object/static/creature/shared_dantooine_thune.iff")
 
 object_static_creature_shared_dantooine_voritor_lizard = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dantooine_voritor_lizard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/voritor_lizard_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -757,11 +820,15 @@ object_static_creature_shared_dantooine_voritor_lizard = SharedStaticObjectTempl
 
 	clientObjectCRC = 2989515482,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dantooine_voritor_lizard, "object/static/creature/shared_dantooine_voritor_lizard.iff")
 
 object_static_creature_shared_dathomir_baz_nitch = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dathomir_baz_nitch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/baz_nitch.sat",
 	arrangementDescriptorFilename = "",
 
@@ -802,11 +869,15 @@ object_static_creature_shared_dathomir_baz_nitch = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 3739778750,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dathomir_baz_nitch, "object/static/creature/shared_dathomir_baz_nitch.iff")
 
 object_static_creature_shared_dathomir_bolma = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dathomir_bolma.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bolma_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -847,11 +918,15 @@ object_static_creature_shared_dathomir_bolma = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2130373686,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dathomir_bolma, "object/static/creature/shared_dathomir_bolma.iff")
 
 object_static_creature_shared_dathomir_brackaset = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dathomir_brackaset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/brackaset_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -892,11 +967,15 @@ object_static_creature_shared_dathomir_brackaset = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 148699511,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dathomir_brackaset, "object/static/creature/shared_dathomir_brackaset.iff")
 
 object_static_creature_shared_dathomir_gaping_spider = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dathomir_gaping_spider.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/gaping_spider.sat",
 	arrangementDescriptorFilename = "",
 
@@ -937,11 +1016,15 @@ object_static_creature_shared_dathomir_gaping_spider = SharedStaticObjectTemplat
 
 	clientObjectCRC = 2407684045,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dathomir_gaping_spider, "object/static/creature/shared_dathomir_gaping_spider.iff")
 
 object_static_creature_shared_dathomir_kwi = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dathomir_kwi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kwi_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -982,11 +1065,15 @@ object_static_creature_shared_dathomir_kwi = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2475425069,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dathomir_kwi, "object/static/creature/shared_dathomir_kwi.iff")
 
 object_static_creature_shared_dathomir_purbole = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dathomir_purbole.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/purbole.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1114,15 @@ object_static_creature_shared_dathomir_purbole = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 1615874421,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dathomir_purbole, "object/static/creature/shared_dathomir_purbole.iff")
 
 object_static_creature_shared_dathomir_rancor = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_dathomir_rancor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rancor_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1072,11 +1163,15 @@ object_static_creature_shared_dathomir_rancor = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1734426995,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_dathomir_rancor, "object/static/creature/shared_dathomir_rancor.iff")
 
 object_static_creature_shared_droids_21b_medical = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_21b_medical.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/droid_21b.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1117,11 +1212,15 @@ object_static_creature_shared_droids_21b_medical = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 634197524,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_21b_medical, "object/static/creature/shared_droids_21b_medical.iff")
 
 object_static_creature_shared_droids_c118 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_c118.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cll8.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1162,11 +1261,15 @@ object_static_creature_shared_droids_c118 = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3764580571,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_c118, "object/static/creature/shared_droids_c118.iff")
 
 object_static_creature_shared_droids_dz70 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_dz70.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/dz70.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1207,11 +1310,15 @@ object_static_creature_shared_droids_dz70 = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1268246832,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_dz70, "object/static/creature/shared_droids_dz70.iff")
 
 object_static_creature_shared_droids_eg6 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_eg6.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eg6.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1252,11 +1359,15 @@ object_static_creature_shared_droids_eg6 = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3476817295,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_eg6, "object/static/creature/shared_droids_eg6.iff")
 
 object_static_creature_shared_droids_imperial_it0 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_imperial_it0.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ito.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1297,11 +1408,15 @@ object_static_creature_shared_droids_imperial_it0 = SharedStaticObjectTemplate:n
 
 	clientObjectCRC = 470452239,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_imperial_it0, "object/static/creature/shared_droids_imperial_it0.iff")
 
 object_static_creature_shared_droids_le_repair = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_le_repair.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/le_repair.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1342,11 +1457,15 @@ object_static_creature_shared_droids_le_repair = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 1273875386,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_le_repair, "object/static/creature/shared_droids_le_repair.iff")
 
 object_static_creature_shared_droids_lin_demolition = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_lin_demolition.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/lin_demolition.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1387,11 +1506,15 @@ object_static_creature_shared_droids_lin_demolition = SharedStaticObjectTemplate
 
 	clientObjectCRC = 3987492608,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_lin_demolition, "object/static/creature/shared_droids_lin_demolition.iff")
 
 object_static_creature_shared_droids_mse_droid = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_mse_droid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mouse_droid.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1432,11 +1555,15 @@ object_static_creature_shared_droids_mse_droid = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 1766014260,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_mse_droid, "object/static/creature/shared_droids_mse_droid.iff")
 
 object_static_creature_shared_droids_protocol_droid_gold = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_protocol_droid_gold.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/protocol_droid_gold.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1477,11 +1604,15 @@ object_static_creature_shared_droids_protocol_droid_gold = SharedStaticObjectTem
 
 	clientObjectCRC = 3769609842,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_protocol_droid_gold, "object/static/creature/shared_droids_protocol_droid_gold.iff")
 
 object_static_creature_shared_droids_r2 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_r2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/astromech_r2.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1653,15 @@ object_static_creature_shared_droids_r2 = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1386398217,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_r2, "object/static/creature/shared_droids_r2.iff")
 
 object_static_creature_shared_droids_r2_waiter = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_r2_waiter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/astromech_r2_waiter_s1.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1567,11 +1702,15 @@ object_static_creature_shared_droids_r2_waiter = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 74591773,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_r2_waiter, "object/static/creature/shared_droids_r2_waiter.iff")
 
 object_static_creature_shared_droids_r5 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_droids_r5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/astromech_r5.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1612,11 +1751,15 @@ object_static_creature_shared_droids_r5 = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2839669021,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_droids_r5, "object/static/creature/shared_droids_r5.iff")
 
 object_static_creature_shared_endor_arachne = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_endor_arachne.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/angler_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1657,11 +1800,15 @@ object_static_creature_shared_endor_arachne = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 4031936600,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_endor_arachne, "object/static/creature/shared_endor_arachne.iff")
 
 object_static_creature_shared_endor_blurrg = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_endor_blurrg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/blurrg_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1702,11 +1849,15 @@ object_static_creature_shared_endor_blurrg = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2777768022,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_endor_blurrg, "object/static/creature/shared_endor_blurrg.iff")
 
 object_static_creature_shared_endor_boar_wolf = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_endor_boar_wolf.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/boar_wolf.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1747,11 +1898,15 @@ object_static_creature_shared_endor_boar_wolf = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2997015768,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_endor_boar_wolf, "object/static/creature/shared_endor_boar_wolf.iff")
 
 object_static_creature_shared_endor_bolma = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_endor_bolma.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bolma.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1792,11 +1947,15 @@ object_static_creature_shared_endor_bolma = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 4030049897,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_endor_bolma, "object/static/creature/shared_endor_bolma.iff")
 
 object_static_creature_shared_endor_bordok = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_endor_bordok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bordok_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1837,11 +1996,15 @@ object_static_creature_shared_endor_bordok = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 153161597,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_endor_bordok, "object/static/creature/shared_endor_bordok.iff")
 
 object_static_creature_shared_endor_gurrek = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_endor_gurrek.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/gurreck_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1882,11 +2045,15 @@ object_static_creature_shared_endor_gurrek = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1525067606,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_endor_gurrek, "object/static/creature/shared_endor_gurrek.iff")
 
 object_static_creature_shared_endor_roba = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_endor_roba.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/roba.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1927,11 +2094,15 @@ object_static_creature_shared_endor_roba = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3844520985,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_endor_roba, "object/static/creature/shared_endor_roba.iff")
 
 object_static_creature_shared_imperial_at_st = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_imperial_at_st.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/at_st.sat",
 	arrangementDescriptorFilename = "",
 
@@ -1972,11 +2143,15 @@ object_static_creature_shared_imperial_at_st = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3191722300,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_imperial_at_st, "object/static/creature/shared_imperial_at_st.iff")
 
 object_static_creature_shared_lok_gurk = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_lok_gurk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/gurk_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2192,15 @@ object_static_creature_shared_lok_gurk = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 315951279,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_lok_gurk, "object/static/creature/shared_lok_gurk.iff")
 
 object_static_creature_shared_lok_gurnaset = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_lok_gurnaset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/gurnaset_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2062,11 +2241,15 @@ object_static_creature_shared_lok_gurnaset = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 4271066089,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_lok_gurnaset, "object/static/creature/shared_lok_gurnaset.iff")
 
 object_static_creature_shared_lok_kusak = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_lok_kusak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kusak_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2107,11 +2290,15 @@ object_static_creature_shared_lok_kusak = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3580345318,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_lok_kusak, "object/static/creature/shared_lok_kusak.iff")
 
 object_static_creature_shared_lok_langlatch = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_lok_langlatch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/langlatch.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2152,11 +2339,15 @@ object_static_creature_shared_lok_langlatch = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2773469649,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_lok_langlatch, "object/static/creature/shared_lok_langlatch.iff")
 
 object_static_creature_shared_lok_pharple = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_lok_pharple.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pharple.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2197,11 +2388,15 @@ object_static_creature_shared_lok_pharple = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 357241664,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_lok_pharple, "object/static/creature/shared_lok_pharple.iff")
 
 object_static_creature_shared_lok_snorbal = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_lok_snorbal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/snorbal_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2242,11 +2437,15 @@ object_static_creature_shared_lok_snorbal = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1617735804,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_lok_snorbal, "object/static/creature/shared_lok_snorbal.iff")
 
 object_static_creature_shared_lok_vesp = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_lok_vesp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/vesp.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2287,11 +2486,15 @@ object_static_creature_shared_lok_vesp = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 14297223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_lok_vesp, "object/static/creature/shared_lok_vesp.iff")
 
 object_static_creature_shared_naboo_bolle_bol = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_naboo_bolle_bol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bolle_bol_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2332,11 +2535,15 @@ object_static_creature_shared_naboo_bolle_bol = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1767558298,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_naboo_bolle_bol, "object/static/creature/shared_naboo_bolle_bol.iff")
 
 object_static_creature_shared_naboo_falumpaset = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_naboo_falumpaset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/falumpaset_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2377,11 +2584,15 @@ object_static_creature_shared_naboo_falumpaset = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 226349579,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_naboo_falumpaset, "object/static/creature/shared_naboo_falumpaset.iff")
 
 object_static_creature_shared_naboo_fambaa = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_naboo_fambaa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/fambaa_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2422,11 +2633,15 @@ object_static_creature_shared_naboo_fambaa = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2354504429,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_naboo_fambaa, "object/static/creature/shared_naboo_fambaa.iff")
 
 object_static_creature_shared_naboo_gualama = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_naboo_gualama.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/gualama_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2467,11 +2682,15 @@ object_static_creature_shared_naboo_gualama = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1571631502,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_naboo_gualama, "object/static/creature/shared_naboo_gualama.iff")
 
 object_static_creature_shared_naboo_kaadu = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_naboo_kaadu.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kaadu_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2512,11 +2731,15 @@ object_static_creature_shared_naboo_kaadu = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2364724606,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_naboo_kaadu, "object/static/creature/shared_naboo_kaadu.iff")
 
 object_static_creature_shared_naboo_shaupaut = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_naboo_shaupaut.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/shaupaut.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2557,11 +2780,15 @@ object_static_creature_shared_naboo_shaupaut = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1920843509,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_naboo_shaupaut, "object/static/creature/shared_naboo_shaupaut.iff")
 
 object_static_creature_shared_naboo_tusk_cat = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_naboo_tusk_cat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tusk_cat_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2602,11 +2829,15 @@ object_static_creature_shared_naboo_tusk_cat = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3593979400,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_naboo_tusk_cat, "object/static/creature/shared_naboo_tusk_cat.iff")
 
 object_static_creature_shared_naboo_veermok = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_naboo_veermok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/veermok.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2647,11 +2878,15 @@ object_static_creature_shared_naboo_veermok = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3885148339,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_naboo_veermok, "object/static/creature/shared_naboo_veermok.iff")
 
 object_static_creature_shared_rori_bearded_jax = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_rori_bearded_jax.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bearded_jax.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2692,11 +2927,15 @@ object_static_creature_shared_rori_bearded_jax = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 1608440478,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_rori_bearded_jax, "object/static/creature/shared_rori_bearded_jax.iff")
 
 object_static_creature_shared_rori_forest_mite = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_rori_forest_mite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bark_mite_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2737,11 +2976,15 @@ object_static_creature_shared_rori_forest_mite = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 3736933444,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_rori_forest_mite, "object/static/creature/shared_rori_forest_mite.iff")
 
 object_static_creature_shared_rori_pugoriss = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_rori_pugoriss.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pugoriss.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2782,11 +3025,15 @@ object_static_creature_shared_rori_pugoriss = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 115117462,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_rori_pugoriss, "object/static/creature/shared_rori_pugoriss.iff")
 
 object_static_creature_shared_rori_squall = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_rori_squall.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/squall.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2827,11 +3074,15 @@ object_static_creature_shared_rori_squall = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2689990897,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_rori_squall, "object/static/creature/shared_rori_squall.iff")
 
 object_static_creature_shared_rori_vrobal = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_rori_vrobal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/roba_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2872,11 +3123,15 @@ object_static_creature_shared_rori_vrobal = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2296435059,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_rori_vrobal, "object/static/creature/shared_rori_vrobal.iff")
 
 object_static_creature_shared_talus_guf_drolg = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_talus_guf_drolg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/guf_drolg_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2917,11 +3172,15 @@ object_static_creature_shared_talus_guf_drolg = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3737643958,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_talus_guf_drolg, "object/static/creature/shared_talus_guf_drolg.iff")
 
 object_static_creature_shared_talus_kima = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_talus_kima.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kima.sat",
 	arrangementDescriptorFilename = "",
 
@@ -2962,11 +3221,15 @@ object_static_creature_shared_talus_kima = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 595006750,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_talus_kima, "object/static/creature/shared_talus_kima.iff")
 
 object_static_creature_shared_talus_sludge_panther = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_talus_sludge_panther.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/corellian_sand_panther_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3007,11 +3270,15 @@ object_static_creature_shared_talus_sludge_panther = SharedStaticObjectTemplate:
 
 	clientObjectCRC = 347380569,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_talus_sludge_panther, "object/static/creature/shared_talus_sludge_panther.iff")
 
 object_static_creature_shared_tatooine_bantha_nosaddle = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_bantha_nosaddle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bantha.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3052,11 +3319,15 @@ object_static_creature_shared_tatooine_bantha_nosaddle = SharedStaticObjectTempl
 
 	clientObjectCRC = 3938599478,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_bantha_nosaddle, "object/static/creature/shared_tatooine_bantha_nosaddle.iff")
 
 object_static_creature_shared_tatooine_bantha_saddle = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_bantha_saddle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bantha_hue_saddle.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3097,11 +3368,15 @@ object_static_creature_shared_tatooine_bantha_saddle = SharedStaticObjectTemplat
 
 	clientObjectCRC = 3837912821,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_bantha_saddle, "object/static/creature/shared_tatooine_bantha_saddle.iff")
 
 object_static_creature_shared_tatooine_cu_pa = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_cu_pa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cu_pa_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3142,11 +3417,15 @@ object_static_creature_shared_tatooine_cu_pa = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1883442736,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_cu_pa, "object/static/creature/shared_tatooine_cu_pa.iff")
 
 object_static_creature_shared_tatooine_dewback = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_dewback.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/dewback_saddle_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3187,11 +3466,15 @@ object_static_creature_shared_tatooine_dewback = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 720218946,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_dewback, "object/static/creature/shared_tatooine_dewback.iff")
 
 object_static_creature_shared_tatooine_dewback_nosaddle = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_dewback_nosaddle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/dewback.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3232,11 +3515,15 @@ object_static_creature_shared_tatooine_dewback_nosaddle = SharedStaticObjectTemp
 
 	clientObjectCRC = 73737599,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_dewback_nosaddle, "object/static/creature/shared_tatooine_dewback_nosaddle.iff")
 
 object_static_creature_shared_tatooine_eopie = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_eopie.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eopie_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3277,11 +3564,15 @@ object_static_creature_shared_tatooine_eopie = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2624628846,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_eopie, "object/static/creature/shared_tatooine_eopie.iff")
 
 object_static_creature_shared_tatooine_jawa = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_jawa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/jawa_m.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3322,11 +3613,15 @@ object_static_creature_shared_tatooine_jawa = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 10526857,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_jawa, "object/static/creature/shared_tatooine_jawa.iff")
 
 object_static_creature_shared_tatooine_ronto = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_ronto.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ronto_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3367,11 +3662,15 @@ object_static_creature_shared_tatooine_ronto = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2864148327,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_ronto, "object/static/creature/shared_tatooine_ronto.iff")
 
 object_static_creature_shared_tatooine_sarlacc = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_sarlacc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sarlacc.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3412,11 +3711,15 @@ object_static_creature_shared_tatooine_sarlacc = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 424564253,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_sarlacc, "object/static/creature/shared_tatooine_sarlacc.iff")
 
 object_static_creature_shared_tatooine_squill = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_squill.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/squill.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3457,11 +3760,15 @@ object_static_creature_shared_tatooine_squill = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1422492223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_squill, "object/static/creature/shared_tatooine_squill.iff")
 
 object_static_creature_shared_tatooine_womp_rat = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_womp_rat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/womp_rat.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3502,11 +3809,15 @@ object_static_creature_shared_tatooine_womp_rat = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 3864955184,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_womp_rat, "object/static/creature/shared_tatooine_womp_rat.iff")
 
 object_static_creature_shared_tatooine_worrt = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_tatooine_worrt.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/worrt_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3547,11 +3858,15 @@ object_static_creature_shared_tatooine_worrt = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1929245972,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_tatooine_worrt, "object/static/creature/shared_tatooine_worrt.iff")
 
 object_static_creature_shared_yavin4_choku = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_yavin4_choku.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/choku_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3592,11 +3907,15 @@ object_static_creature_shared_yavin4_choku = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3688075301,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_yavin4_choku, "object/static/creature/shared_yavin4_choku.iff")
 
 object_static_creature_shared_yavin4_kliknik = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_yavin4_kliknik.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kliknik.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3637,11 +3956,15 @@ object_static_creature_shared_yavin4_kliknik = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 4080884107,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_yavin4_kliknik, "object/static/creature/shared_yavin4_kliknik.iff")
 
 object_static_creature_shared_yavin4_mamien = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_yavin4_mamien.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mamien_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3682,11 +4005,15 @@ object_static_creature_shared_yavin4_mamien = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3561928854,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_yavin4_mamien, "object/static/creature/shared_yavin4_mamien.iff")
 
 object_static_creature_shared_yavin4_mawgax = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_yavin4_mawgax.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mawgax_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3727,11 +4054,15 @@ object_static_creature_shared_yavin4_mawgax = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2479758005,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_yavin4_mawgax, "object/static/creature/shared_yavin4_mawgax.iff")
 
 object_static_creature_shared_yavin4_skreeg = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_yavin4_skreeg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/skreeg.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3772,11 +4103,15 @@ object_static_creature_shared_yavin4_skreeg = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 836656341,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_yavin4_skreeg, "object/static/creature/shared_yavin4_skreeg.iff")
 
 object_static_creature_shared_yavin4_tybis = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/creature/shared_yavin4_tybis.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tybis_hue.sat",
 	arrangementDescriptorFilename = "",
 
@@ -3817,6 +4152,7 @@ object_static_creature_shared_yavin4_tybis = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1663198408,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_creature_shared_yavin4_tybis, "object/static/creature/shared_yavin4_tybis.iff")

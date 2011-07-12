@@ -42,6 +42,9 @@
 
 
 object_weapon_mine_shared_wp_mine_anti_vehicle = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/mine/shared_wp_mine_anti_vehicle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mine_anti_vehicle.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_mine_shared_wp_mine_anti_vehicle = SharedWeaponObjectTemplate:new 
 
 	clientObjectCRC = 1109205423,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/mine/base/shared_mine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_mine_shared_wp_mine_anti_vehicle, "object/weapon/mine/shared_wp_mine_anti_vehicle.iff")
 
 object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/mine/shared_wp_mine_drx55.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mine_drx55.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -155,11 +162,15 @@ object_weapon_mine_shared_wp_mine_drx55 = SharedWeaponObjectTemplate:new {
 
 	clientObjectCRC = 1308699589,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/mine/base/shared_mine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_mine_shared_wp_mine_drx55, "object/weapon/mine/shared_wp_mine_drx55.iff")
 
 object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/mine/shared_wp_mine_xg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mine_xg.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -214,6 +225,7 @@ object_weapon_mine_shared_wp_mine_xg = SharedWeaponObjectTemplate:new {
 
 	clientObjectCRC = 350273897,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/mine/base/shared_mine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_mine_shared_wp_mine_xg, "object/weapon/mine/shared_wp_mine_xg.iff")

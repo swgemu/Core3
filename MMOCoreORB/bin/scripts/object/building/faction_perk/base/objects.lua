@@ -42,6 +42,9 @@
 
 
 object_building_faction_perk_base_shared_factional_building_base = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/faction_perk/base/shared_factional_building_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -95,6 +98,7 @@ object_building_faction_perk_base_shared_factional_building_base = SharedBuildin
 
 	clientObjectCRC = 275299294,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_base_shared_factional_building_base, "object/building/faction_perk/base/shared_factional_building_base.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_factory_deed_shared_factory_clothing_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/factory_deed/shared_factory_clothing_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_deed_factory_deed_shared_factory_clothing_deed = SharedTangibleO
 
 	clientObjectCRC = 1812501477,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_factory_deed_shared_factory_clothing_deed, "object/tangible/deed/factory_deed/shared_factory_clothing_deed.iff")
 
 object_tangible_deed_factory_deed_shared_factory_food_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/factory_deed/shared_factory_food_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_deed_factory_deed_shared_factory_food_deed = SharedTangibleObjec
 
 	clientObjectCRC = 3488359653,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_factory_deed_shared_factory_food_deed, "object/tangible/deed/factory_deed/shared_factory_food_deed.iff")
 
 object_tangible_deed_factory_deed_shared_factory_item_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/factory_deed/shared_factory_item_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_deed_factory_deed_shared_factory_item_deed = SharedTangibleObjec
 
 	clientObjectCRC = 4246665338,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_factory_deed_shared_factory_item_deed, "object/tangible/deed/factory_deed/shared_factory_item_deed.iff")
 
 object_tangible_deed_factory_deed_shared_factory_structure_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/factory_deed/shared_factory_structure_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_deed_factory_deed_shared_factory_structure_deed = SharedTangible
 
 	clientObjectCRC = 2385714184,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_factory_deed_shared_factory_structure_deed, "object/tangible/deed/factory_deed/shared_factory_structure_deed.iff")

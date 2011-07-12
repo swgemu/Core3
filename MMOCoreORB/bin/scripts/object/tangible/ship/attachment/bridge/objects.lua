@@ -42,6 +42,9 @@
 
 
 object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/bridge/shared_star_destroyer_bridge.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/star_destroyer_bridge.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge = SharedTang
 
 	clientObjectCRC = 1389700188,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_bridge_shared_star_destroyer_bridge, "object/tangible/ship/attachment/bridge/shared_star_destroyer_bridge.iff")

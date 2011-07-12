@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna = SharedTangibleObjectTem
 
 	clientObjectCRC = 2758659354,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna.iff")
 
 object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest = SharedTangibleOb
 
 	clientObjectCRC = 2456561117,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_forest, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_forest.iff")
 
 object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp = SharedTangibleObj
 
 	clientObjectCRC = 1635796730,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dwarf_nuna_shared_lair_dwarf_nuna_swamp, "object/tangible/lair/dwarf_nuna/shared_lair_dwarf_nuna_swamp.iff")

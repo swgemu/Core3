@@ -42,6 +42,9 @@
 
 
 object_tangible_droid_battery_base_shared_base_battery = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/droid_battery/base/shared_base_battery.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_droid_battery_base_shared_base_battery = SharedTangibleObjectTem
 
 	clientObjectCRC = 4005418239,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_droid_battery_base_shared_base_battery, "object/tangible/droid_battery/base/shared_base_battery.iff")

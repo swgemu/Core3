@@ -42,6 +42,9 @@
 
 
 object_cell_shared_cell = SharedCellObjectTemplate:new {
+	clientTemplateFileName = "object/cell/shared_cell.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_cell_shared_cell = SharedCellObjectTemplate:new {
 
 	clientObjectCRC = 206832110,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/cell/base/shared_base_cell.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_cell_shared_cell, "object/cell/shared_cell.iff")

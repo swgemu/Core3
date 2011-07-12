@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_gurnaset_shared_lair_gurnaset = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gurnaset/shared_lair_gurnaset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3508293768,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset, "object/tangible/lair/gurnaset/shared_lair_gurnaset.iff")
 
 object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gurnaset/shared_lair_gurnaset_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland = SharedTangibleObj
 
 	clientObjectCRC = 535348522,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_grassland, "object/tangible/lair/gurnaset/shared_lair_gurnaset_grassland.iff")
 
 object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gurnaset/shared_lair_gurnaset_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain = SharedTangibleObje
 
 	clientObjectCRC = 3153084894,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gurnaset_shared_lair_gurnaset_mountain, "object/tangible/lair/gurnaset/shared_lair_gurnaset_mountain.iff")

@@ -42,6 +42,9 @@
 
 
 object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_1 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 
 	clientObjectCRC = 2242761962,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_1, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_1.iff")
 
 object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_2 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 
 	clientObjectCRC = 1589279869,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_2, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_2.iff")
 
 object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_installation_mining_ore_construction_shared_construction_mining_ore_harve
 
 	clientObjectCRC = 1103585647,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_ore_construction_shared_construction_mining_ore_harvester_style_heavy, "object/installation/mining_ore/construction/shared_construction_mining_ore_harvester_style_heavy.iff")

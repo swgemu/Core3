@@ -42,6 +42,9 @@
 
 
 object_tangible_component_item_quest_item_shared_corrective_inducer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_corrective_inducer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_item_quest_item_shared_corrective_inducer = SharedTang
 
 	clientObjectCRC = 2184126369,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_corrective_inducer, "object/tangible/component/item/quest_item/shared_corrective_inducer.iff")
 
 object_tangible_component_item_quest_item_shared_current_motivator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_current_motivator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_item_quest_item_shared_current_motivator = SharedTangi
 
 	clientObjectCRC = 899191445,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_current_motivator, "object/tangible/component/item/quest_item/shared_current_motivator.iff")
 
 object_tangible_component_item_quest_item_shared_cycle_control = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_cycle_control.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_component_item_quest_item_shared_cycle_control = SharedTangibleO
 
 	clientObjectCRC = 361454355,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_cycle_control, "object/tangible/component/item/quest_item/shared_cycle_control.iff")
 
 object_tangible_component_item_quest_item_shared_decoherence_sensor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_decoherence_sensor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_component_item_quest_item_shared_decoherence_sensor = SharedTang
 
 	clientObjectCRC = 2146196136,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_decoherence_sensor, "object/tangible/component/item/quest_item/shared_decoherence_sensor.iff")
 
 object_tangible_component_item_quest_item_shared_directional_sensor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_directional_sensor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_component_item_quest_item_shared_directional_sensor = SharedTang
 
 	clientObjectCRC = 3309489661,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_directional_sensor, "object/tangible/component/item/quest_item/shared_directional_sensor.iff")
 
 object_tangible_component_item_quest_item_shared_loop_auditor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_loop_auditor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_component_item_quest_item_shared_loop_auditor = SharedTangibleOb
 
 	clientObjectCRC = 111523036,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_loop_auditor, "object/tangible/component/item/quest_item/shared_loop_auditor.iff")
 
 object_tangible_component_item_quest_item_shared_momentum_compensator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_momentum_compensator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_component_item_quest_item_shared_momentum_compensator = SharedTa
 
 	clientObjectCRC = 2600965554,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_momentum_compensator, "object/tangible/component/item/quest_item/shared_momentum_compensator.iff")
 
 object_tangible_component_item_quest_item_shared_particle_sensor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_particle_sensor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_component_item_quest_item_shared_particle_sensor = SharedTangibl
 
 	clientObjectCRC = 1180256886,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_particle_sensor, "object/tangible/component/item/quest_item/shared_particle_sensor.iff")
 
 object_tangible_component_item_quest_item_shared_signal_cleanup_unit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_signal_cleanup_unit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_component_item_quest_item_shared_signal_cleanup_unit = SharedTan
 
 	clientObjectCRC = 754272347,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_signal_cleanup_unit, "object/tangible/component/item/quest_item/shared_signal_cleanup_unit.iff")
 
 object_tangible_component_item_quest_item_shared_signal_rerouter = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_signal_rerouter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_component_item_quest_item_shared_signal_rerouter = SharedTangibl
 
 	clientObjectCRC = 2201370721,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_signal_rerouter, "object/tangible/component/item/quest_item/shared_signal_rerouter.iff")
 
 object_tangible_component_item_quest_item_shared_spin_alignment_inducer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_spin_alignment_inducer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_component_item_quest_item_shared_spin_alignment_inducer = Shared
 
 	clientObjectCRC = 529542099,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_spin_alignment_inducer, "object/tangible/component/item/quest_item/shared_spin_alignment_inducer.iff")
 
 object_tangible_component_item_quest_item_shared_transductive_shunt = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_transductive_shunt.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_component_item_quest_item_shared_transductive_shunt = SharedTang
 
 	clientObjectCRC = 3561575461,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_transductive_shunt, "object/tangible/component/item/quest_item/shared_transductive_shunt.iff")
 
 object_tangible_component_item_quest_item_shared_tuning_cell = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_tuning_cell.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_component_item_quest_item_shared_tuning_cell = SharedTangibleObj
 
 	clientObjectCRC = 815023209,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_tuning_cell, "object/tangible/component/item/quest_item/shared_tuning_cell.iff")
 
 object_tangible_component_item_quest_item_shared_variance_throttle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_variance_throttle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_component_item_quest_item_shared_variance_throttle = SharedTangi
 
 	clientObjectCRC = 3604740995,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_variance_throttle, "object/tangible/component/item/quest_item/shared_variance_throttle.iff")
 
 object_tangible_component_item_quest_item_shared_voltage_inducer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/quest_item/shared_voltage_inducer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,6 +921,7 @@ object_tangible_component_item_quest_item_shared_voltage_inducer = SharedTangibl
 
 	clientObjectCRC = 373412997,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_quest_item_shared_voltage_inducer, "object/tangible/component/item/quest_item/shared_voltage_inducer.iff")

@@ -42,6 +42,9 @@
 
 
 object_static_space_asteroid_shared_asteroid_acid_large_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_acid_large_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_acid_large_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_space_asteroid_shared_asteroid_acid_large_01 = SharedStaticObjectT
 
 	clientObjectCRC = 2146976297,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_large_01, "object/static/space/asteroid/shared_asteroid_acid_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_acid_large_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_acid_large_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_acid_large_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_space_asteroid_shared_asteroid_acid_large_02 = SharedStaticObjectT
 
 	clientObjectCRC = 2767186622,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_large_02, "object/static/space/asteroid/shared_asteroid_acid_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_acid_medium_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_acid_medium_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_acid_medium_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_static_space_asteroid_shared_asteroid_acid_medium_01 = SharedStaticObject
 
 	clientObjectCRC = 162308775,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_medium_01, "object/static/space/asteroid/shared_asteroid_acid_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_acid_medium_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_acid_medium_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_acid_medium_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_static_space_asteroid_shared_asteroid_acid_medium_02 = SharedStaticObject
 
 	clientObjectCRC = 3535473200,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_medium_02, "object/static/space/asteroid/shared_asteroid_acid_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_acid_small_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_acid_small_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_acid_small_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_static_space_asteroid_shared_asteroid_acid_small_01 = SharedStaticObjectT
 
 	clientObjectCRC = 2850972277,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_small_01, "object/static/space/asteroid/shared_asteroid_acid_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_acid_small_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_acid_small_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_acid_small_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -307,11 +330,15 @@ object_static_space_asteroid_shared_asteroid_acid_small_02 = SharedStaticObjectT
 
 	clientObjectCRC = 1928973026,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_acid_small_02, "object/static/space/asteroid/shared_asteroid_acid_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_large_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_ice_large_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_ice_large_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -352,11 +379,15 @@ object_static_space_asteroid_shared_asteroid_ice_large_01 = SharedStaticObjectTe
 
 	clientObjectCRC = 1920047316,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_large_01, "object/static/space/asteroid/shared_asteroid_ice_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_large_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_ice_large_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_ice_large_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -397,11 +428,15 @@ object_static_space_asteroid_shared_asteroid_ice_large_02 = SharedStaticObjectTe
 
 	clientObjectCRC = 2842046531,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_large_02, "object/static/space/asteroid/shared_asteroid_ice_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_medium_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_ice_medium_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_ice_medium_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -442,11 +477,15 @@ object_static_space_asteroid_shared_asteroid_ice_medium_01 = SharedStaticObjectT
 
 	clientObjectCRC = 2981878132,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_medium_01, "object/static/space/asteroid/shared_asteroid_ice_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_medium_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_ice_medium_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_ice_medium_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -487,11 +526,15 @@ object_static_space_asteroid_shared_asteroid_ice_medium_02 = SharedStaticObjectT
 
 	clientObjectCRC = 1789686243,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_medium_02, "object/static/space/asteroid/shared_asteroid_ice_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_small_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_ice_small_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_ice_small_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +575,15 @@ object_static_space_asteroid_shared_asteroid_ice_small_01 = SharedStaticObjectTe
 
 	clientObjectCRC = 2758260872,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_small_01, "object/static/space/asteroid/shared_asteroid_ice_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_ice_small_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_ice_small_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_ice_small_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -577,11 +624,15 @@ object_static_space_asteroid_shared_asteroid_ice_small_02 = SharedStaticObjectTe
 
 	clientObjectCRC = 2138050591,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_ice_small_02, "object/static/space/asteroid/shared_asteroid_ice_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_large_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_iron_large_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_iron_large_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -622,11 +673,15 @@ object_static_space_asteroid_shared_asteroid_iron_large_01 = SharedStaticObjectT
 
 	clientObjectCRC = 1650332563,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_large_01, "object/static/space/asteroid/shared_asteroid_iron_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_large_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_iron_large_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_iron_large_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -667,11 +722,15 @@ object_static_space_asteroid_shared_asteroid_iron_large_02 = SharedStaticObjectT
 
 	clientObjectCRC = 3108616964,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_large_02, "object/static/space/asteroid/shared_asteroid_iron_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_medium_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_iron_medium_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_iron_medium_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -712,11 +771,15 @@ object_static_space_asteroid_shared_asteroid_iron_medium_01 = SharedStaticObject
 
 	clientObjectCRC = 3525395716,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_01, "object/static/space/asteroid/shared_asteroid_iron_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_medium_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_iron_medium_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_iron_medium_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -757,11 +820,15 @@ object_static_space_asteroid_shared_asteroid_iron_medium_02 = SharedStaticObject
 
 	clientObjectCRC = 154594707,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_02, "object/static/space/asteroid/shared_asteroid_iron_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_medium_03 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_iron_medium_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_iron_medium_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -802,11 +869,15 @@ object_static_space_asteroid_shared_asteroid_iron_medium_03 = SharedStaticObject
 
 	clientObjectCRC = 1077643806,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_medium_03, "object/static/space/asteroid/shared_asteroid_iron_medium_03.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_small_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_iron_small_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_iron_small_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -847,11 +918,15 @@ object_static_space_asteroid_shared_asteroid_iron_small_01 = SharedStaticObjectT
 
 	clientObjectCRC = 3024630735,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_small_01, "object/static/space/asteroid/shared_asteroid_iron_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_iron_small_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_iron_small_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_iron_small_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -892,11 +967,15 @@ object_static_space_asteroid_shared_asteroid_iron_small_02 = SharedStaticObjectT
 
 	clientObjectCRC = 1868536664,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_iron_small_02, "object/static/space/asteroid/shared_asteroid_iron_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_large_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_large_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_all_large_01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -937,11 +1016,15 @@ object_static_space_asteroid_shared_asteroid_large_01 = SharedStaticObjectTempla
 
 	clientObjectCRC = 1475082056,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_large_01, "object/static/space/asteroid/shared_asteroid_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_large_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_large_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_all_large_02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -982,11 +1065,15 @@ object_static_space_asteroid_shared_asteroid_large_02 = SharedStaticObjectTempla
 
 	clientObjectCRC = 2365349855,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_large_02, "object/static/space/asteroid/shared_asteroid_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_mammoth_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_mammoth_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_all_mammoth_01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1114,15 @@ object_static_space_asteroid_shared_asteroid_mammoth_01 = SharedStaticObjectTemp
 
 	clientObjectCRC = 2771529923,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_mammoth_01, "object/static/space/asteroid/shared_asteroid_mammoth_01.iff")
 
 object_static_space_asteroid_shared_asteroid_mammoth_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_mammoth_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_all_mammoth_02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1072,11 +1163,15 @@ object_static_space_asteroid_shared_asteroid_mammoth_02 = SharedStaticObjectTemp
 
 	clientObjectCRC = 2116393044,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_mammoth_02, "object/static/space/asteroid/shared_asteroid_mammoth_02.iff")
 
 object_static_space_asteroid_shared_asteroid_medium_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_medium_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_all_medium_01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1117,11 +1212,15 @@ object_static_space_asteroid_shared_asteroid_medium_01 = SharedStaticObjectTempl
 
 	clientObjectCRC = 2754779391,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_medium_01, "object/static/space/asteroid/shared_asteroid_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_medium_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_medium_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_all_medium_02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1162,11 +1261,15 @@ object_static_space_asteroid_shared_asteroid_medium_02 = SharedStaticObjectTempl
 
 	clientObjectCRC = 2133143656,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_medium_02, "object/static/space/asteroid/shared_asteroid_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_large_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_metal_large_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_metal_large_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1207,11 +1310,15 @@ object_static_space_asteroid_shared_asteroid_metal_large_01 = SharedStaticObject
 
 	clientObjectCRC = 513619551,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_large_01, "object/static/space/asteroid/shared_asteroid_metal_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_large_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_metal_large_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_metal_large_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1252,11 +1359,15 @@ object_static_space_asteroid_shared_asteroid_metal_large_02 = SharedStaticObject
 
 	clientObjectCRC = 3314196168,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_large_02, "object/static/space/asteroid/shared_asteroid_metal_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_medium_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_metal_medium_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_metal_medium_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1297,11 +1408,15 @@ object_static_space_asteroid_shared_asteroid_metal_medium_01 = SharedStaticObjec
 
 	clientObjectCRC = 3300659079,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_medium_01, "object/static/space/asteroid/shared_asteroid_metal_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_medium_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_metal_medium_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_metal_medium_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1342,11 +1457,15 @@ object_static_space_asteroid_shared_asteroid_metal_medium_02 = SharedStaticObjec
 
 	clientObjectCRC = 531343120,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_medium_02, "object/static/space/asteroid/shared_asteroid_metal_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_small_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_metal_small_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_metal_small_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1387,11 +1506,15 @@ object_static_space_asteroid_shared_asteroid_metal_small_01 = SharedStaticObject
 
 	clientObjectCRC = 3364558339,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_small_01, "object/static/space/asteroid/shared_asteroid_metal_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_metal_small_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_metal_small_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_metal_small_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1432,11 +1555,15 @@ object_static_space_asteroid_shared_asteroid_metal_small_02 = SharedStaticObject
 
 	clientObjectCRC = 329039508,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_metal_small_02, "object/static/space/asteroid/shared_asteroid_metal_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_large_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_molten_large_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_moltenrock_large_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1477,11 +1604,15 @@ object_static_space_asteroid_shared_asteroid_molten_large_01 = SharedStaticObjec
 
 	clientObjectCRC = 319418639,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_large_01, "object/static/space/asteroid/shared_asteroid_molten_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_large_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_molten_large_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_moltenrock_large_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1653,15 @@ object_static_space_asteroid_shared_asteroid_molten_large_02 = SharedStaticObjec
 
 	clientObjectCRC = 3357432216,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_large_02, "object/static/space/asteroid/shared_asteroid_molten_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_medium_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_molten_medium_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_moltenrock_medium_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1567,11 +1702,15 @@ object_static_space_asteroid_shared_asteroid_molten_medium_01 = SharedStaticObje
 
 	clientObjectCRC = 1639373140,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_medium_01, "object/static/space/asteroid/shared_asteroid_molten_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_medium_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_molten_medium_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_moltenrock_medium_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1612,11 +1751,15 @@ object_static_space_asteroid_shared_asteroid_molten_medium_02 = SharedStaticObje
 
 	clientObjectCRC = 3131142595,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_medium_02, "object/static/space/asteroid/shared_asteroid_molten_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_small_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_molten_small_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_moltenrock_small_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1657,11 +1800,15 @@ object_static_space_asteroid_shared_asteroid_molten_small_01 = SharedStaticObjec
 
 	clientObjectCRC = 3307196755,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_small_01, "object/static/space/asteroid/shared_asteroid_molten_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_molten_small_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_molten_small_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_moltenrock_small_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1702,11 +1849,15 @@ object_static_space_asteroid_shared_asteroid_molten_small_02 = SharedStaticObjec
 
 	clientObjectCRC = 503871940,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_molten_small_02, "object/static/space/asteroid/shared_asteroid_molten_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_large_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_obsidian_large_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_obsidian_large_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1747,11 +1898,15 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_01 = SharedStaticObj
 
 	clientObjectCRC = 1492758381,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_large_01, "object/static/space/asteroid/shared_asteroid_obsidian_large_01.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_large_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_obsidian_large_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_obsidian_large_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1792,11 +1947,15 @@ object_static_space_asteroid_shared_asteroid_obsidian_large_02 = SharedStaticObj
 
 	clientObjectCRC = 2213414906,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_large_02, "object/static/space/asteroid/shared_asteroid_obsidian_large_02.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_medium_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_obsidian_medium_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_obsidian_medium_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1837,11 +1996,15 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_01 = SharedStaticOb
 
 	clientObjectCRC = 2384789570,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_medium_01, "object/static/space/asteroid/shared_asteroid_obsidian_medium_01.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_medium_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_obsidian_medium_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_obsidian_medium_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1882,11 +2045,15 @@ object_static_space_asteroid_shared_asteroid_obsidian_medium_02 = SharedStaticOb
 
 	clientObjectCRC = 1429383381,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_medium_02, "object/static/space/asteroid/shared_asteroid_obsidian_medium_02.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_small_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_obsidian_small_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_obsidian_small_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1927,11 +2094,15 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_01 = SharedStaticObj
 
 	clientObjectCRC = 2398064433,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_small_01, "object/static/space/asteroid/shared_asteroid_obsidian_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_obsidian_small_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_obsidian_small_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_obsidian_small_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1972,11 +2143,15 @@ object_static_space_asteroid_shared_asteroid_obsidian_small_02 = SharedStaticObj
 
 	clientObjectCRC = 1442326438,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_obsidian_small_02, "object/static/space/asteroid/shared_asteroid_obsidian_small_02.iff")
 
 object_static_space_asteroid_shared_asteroid_small_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_small_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_all_small_01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2192,15 @@ object_static_space_asteroid_shared_asteroid_small_01 = SharedStaticObjectTempla
 
 	clientObjectCRC = 2180896532,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_small_01, "object/static/space/asteroid/shared_asteroid_small_01.iff")
 
 object_static_space_asteroid_shared_asteroid_small_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_asteroid_small_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/asteroid_all_small_02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2062,11 +2241,15 @@ object_static_space_asteroid_shared_asteroid_small_02 = SharedStaticObjectTempla
 
 	clientObjectCRC = 1525317507,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_asteroid_small_02, "object/static/space/asteroid/shared_asteroid_small_02.iff")
 
 object_static_space_asteroid_shared_planetoid_ice_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_planetoid_ice_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/planetoid_ice_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2107,11 +2290,15 @@ object_static_space_asteroid_shared_planetoid_ice_01 = SharedStaticObjectTemplat
 
 	clientObjectCRC = 3193266020,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_planetoid_ice_01, "object/static/space/asteroid/shared_planetoid_ice_01.iff")
 
 object_static_space_asteroid_shared_planetoid_iron_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_planetoid_iron_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/planetoid_iron_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2152,11 +2339,15 @@ object_static_space_asteroid_shared_planetoid_iron_01 = SharedStaticObjectTempla
 
 	clientObjectCRC = 2558377422,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_planetoid_iron_01, "object/static/space/asteroid/shared_planetoid_iron_01.iff")
 
 object_static_space_asteroid_shared_planetoid_molten_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/asteroid/shared_planetoid_molten_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/planetoid_moltenrock_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2197,6 +2388,7 @@ object_static_space_asteroid_shared_planetoid_molten_01 = SharedStaticObjectTemp
 
 	clientObjectCRC = 2070404336,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_asteroid_shared_planetoid_molten_01, "object/static/space/asteroid/shared_planetoid_molten_01.iff")

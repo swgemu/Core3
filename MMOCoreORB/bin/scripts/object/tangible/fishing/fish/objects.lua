@@ -42,6 +42,9 @@
 
 
 object_tangible_fishing_fish_shared_blackfish = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/fish/shared_blackfish.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_fish_blackfish.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_fishing_fish_shared_blackfish = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 408623623,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_blackfish, "object/tangible/fishing/fish/shared_blackfish.iff")
 
 object_tangible_fishing_fish_shared_blowfish = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/fish/shared_blowfish.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_fish_blowfish.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_fishing_fish_shared_blowfish = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2010790033,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_blowfish, "object/tangible/fishing/fish/shared_blowfish.iff")
 
 object_tangible_fishing_fish_shared_bluefish = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/fish/shared_bluefish.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_fish_bluefish.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_fishing_fish_shared_bluefish = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2990319970,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_bluefish, "object/tangible/fishing/fish/shared_bluefish.iff")
 
 object_tangible_fishing_fish_shared_faa = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/fish/shared_faa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_fish_faa.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_fishing_fish_shared_faa = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2004254750,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_faa, "object/tangible/fishing/fish/shared_faa.iff")
 
 object_tangible_fishing_fish_shared_fish_generic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/fish/shared_fish_generic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_fish_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_fishing_fish_shared_fish_generic = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1061978988,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_fish_generic, "object/tangible/fishing/fish/shared_fish_generic.iff")
 
 object_tangible_fishing_fish_shared_laa = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/fish/shared_laa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_fish_laa.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_fishing_fish_shared_laa = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2598448090,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_laa, "object/tangible/fishing/fish/shared_laa.iff")
 
 object_tangible_fishing_fish_shared_ray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/fish/shared_ray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_fish_ray.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_fishing_fish_shared_ray = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1789117227,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_ray, "object/tangible/fishing/fish/shared_ray.iff")
 
 object_tangible_fishing_fish_shared_striped = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/fish/shared_striped.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_fish_striped_tropical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,6 +508,7 @@ object_tangible_fishing_fish_shared_striped = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2919980156,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/fishing/fish/base/shared_fish_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_shared_striped, "object/tangible/fishing/fish/shared_striped.iff")

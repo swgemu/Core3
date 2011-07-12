@@ -42,6 +42,9 @@
 
 
 object_static_structure_military_shared_bunker_crate_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_bunker_crate_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_impl_crate_big_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_structure_military_shared_bunker_crate_style_01 = SharedStaticObje
 
 	clientObjectCRC = 2482416832,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker_crate_style_01, "object/static/structure/military/shared_bunker_crate_style_01.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_bunker_pillar_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_structure_military_shared_bunker_pillar_style_01 = SharedStaticObj
 
 	clientObjectCRC = 1580787523,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker_pillar_style_01, "object/static/structure/military/shared_bunker_pillar_style_01.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_bunker_pillar_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_static_structure_military_shared_bunker_pillar_style_02 = SharedStaticObj
 
 	clientObjectCRC = 2234470356,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker_pillar_style_02, "object/static/structure/military/shared_bunker_pillar_style_02.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_03 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_bunker_pillar_style_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_static_structure_military_shared_bunker_pillar_style_03 = SharedStaticObj
 
 	clientObjectCRC = 3424790617,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker_pillar_style_03, "object/static/structure/military/shared_bunker_pillar_style_03.iff")
 
 object_static_structure_military_shared_bunker_pillar_style_04 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_bunker_pillar_style_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_impl_bunker_pillar_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_static_structure_military_shared_bunker_pillar_style_04 = SharedStaticObj
 
 	clientObjectCRC = 935396173,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_bunker_pillar_style_04, "object/static/structure/military/shared_bunker_pillar_style_04.iff")
 
 object_static_structure_military_shared_military_column_med_imperial_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_column_med_imperial_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_med_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -307,11 +330,15 @@ object_static_structure_military_shared_military_column_med_imperial_style_01 = 
 
 	clientObjectCRC = 3131562949,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_med_imperial_style_01, "object/static/structure/military/shared_military_column_med_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_column_med_rebel_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_column_med_rebel_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_med_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -352,11 +379,15 @@ object_static_structure_military_shared_military_column_med_rebel_style_01 = Sha
 
 	clientObjectCRC = 2048366214,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_med_rebel_style_01, "object/static/structure/military/shared_military_column_med_rebel_style_01.iff")
 
 object_static_structure_military_shared_military_column_strong_imperial_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_column_strong_imperial_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_strong_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -397,11 +428,15 @@ object_static_structure_military_shared_military_column_strong_imperial_style_01
 
 	clientObjectCRC = 2024230445,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_strong_imperial_style_01, "object/static/structure/military/shared_military_column_strong_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_column_strong_rebel_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_column_strong_rebel_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_strong_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -442,11 +477,15 @@ object_static_structure_military_shared_military_column_strong_rebel_style_01 = 
 
 	clientObjectCRC = 3057024962,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_strong_rebel_style_01, "object/static/structure/military/shared_military_column_strong_rebel_style_01.iff")
 
 object_static_structure_military_shared_military_column_weak_imperial_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_column_weak_imperial_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_weak_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -487,11 +526,15 @@ object_static_structure_military_shared_military_column_weak_imperial_style_01 =
 
 	clientObjectCRC = 3932437109,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_weak_imperial_style_01, "object/static/structure/military/shared_military_column_weak_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_column_weak_rebel_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_column_weak_rebel_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_column_weak_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +575,15 @@ object_static_structure_military_shared_military_column_weak_rebel_style_01 = Sh
 
 	clientObjectCRC = 165391475,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_column_weak_rebel_style_01, "object/static/structure/military/shared_military_column_weak_rebel_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_imperial_16_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_med_imperial_16_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_16_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -577,11 +624,15 @@ object_static_structure_military_shared_military_wall_med_imperial_16_style_01 =
 
 	clientObjectCRC = 3143955172,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_imperial_16_style_01, "object/static/structure/military/shared_military_wall_med_imperial_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_imperial_32_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_med_imperial_32_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_32_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -622,11 +673,15 @@ object_static_structure_military_shared_military_wall_med_imperial_32_style_01 =
 
 	clientObjectCRC = 514067204,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_imperial_32_style_01, "object/static/structure/military/shared_military_wall_med_imperial_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_imperial_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_med_imperial_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_med_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -667,11 +722,15 @@ object_static_structure_military_shared_military_wall_med_imperial_style_01 = Sh
 
 	clientObjectCRC = 790640751,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_imperial_style_01, "object/static/structure/military/shared_military_wall_med_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_rebl_16_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_med_rebl_16_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_16_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -712,11 +771,15 @@ object_static_structure_military_shared_military_wall_med_rebl_16_style_01 = Sha
 
 	clientObjectCRC = 3655812348,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_rebl_16_style_01, "object/static/structure/military/shared_military_wall_med_rebl_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_rebl_32_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_med_rebl_32_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_32_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -757,11 +820,15 @@ object_static_structure_military_shared_military_wall_med_rebl_32_style_01 = Sha
 
 	clientObjectCRC = 2082979100,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_rebl_32_style_01, "object/static/structure/military/shared_military_wall_med_rebl_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_med_rebl_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_med_rebl_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_med_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -802,11 +869,15 @@ object_static_structure_military_shared_military_wall_med_rebl_style_01 = Shared
 
 	clientObjectCRC = 3715555896,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_med_rebl_style_01, "object/static/structure/military/shared_military_wall_med_rebl_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_imperial_16_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_strong_imperial_16_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_16_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -847,11 +918,15 @@ object_static_structure_military_shared_military_wall_strong_imperial_16_style_0
 
 	clientObjectCRC = 1838610467,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_imperial_16_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_imperial_32_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_strong_imperial_32_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_32_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -892,11 +967,15 @@ object_static_structure_military_shared_military_wall_strong_imperial_32_style_0
 
 	clientObjectCRC = 3361079747,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_imperial_32_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_imperial_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_strong_imperial_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_strong_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -937,11 +1016,15 @@ object_static_structure_military_shared_military_wall_strong_imperial_style_01 =
 
 	clientObjectCRC = 1483242756,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_imperial_style_01, "object/static/structure/military/shared_military_wall_strong_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_rebl_16_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_strong_rebl_16_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_16_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -982,11 +1065,15 @@ object_static_structure_military_shared_military_wall_strong_rebl_16_style_01 = 
 
 	clientObjectCRC = 3699886546,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_rebl_16_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_rebl_32_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_strong_rebl_32_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_32_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1114,15 @@ object_static_structure_military_shared_military_wall_strong_rebl_32_style_01 = 
 
 	clientObjectCRC = 2034708530,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_rebl_32_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_strong_rebl_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_strong_rebl_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_strong_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1072,11 +1163,15 @@ object_static_structure_military_shared_military_wall_strong_rebl_style_01 = Sha
 
 	clientObjectCRC = 456208313,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_strong_rebl_style_01, "object/static/structure/military/shared_military_wall_strong_rebl_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_imperial_16_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_weak_imperial_16_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_16_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1117,11 +1212,15 @@ object_static_structure_military_shared_military_wall_weak_imperial_16_style_01 
 
 	clientObjectCRC = 1733519188,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_imperial_16_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_imperial_32_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_weak_imperial_32_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_32_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1162,11 +1261,15 @@ object_static_structure_military_shared_military_wall_weak_imperial_32_style_01 
 
 	clientObjectCRC = 3264454324,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_imperial_32_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_imperial_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_weak_imperial_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_weak_impl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1207,11 +1310,15 @@ object_static_structure_military_shared_military_wall_weak_imperial_style_01 = S
 
 	clientObjectCRC = 1600110720,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_imperial_style_01, "object/static/structure/military/shared_military_wall_weak_imperial_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_rebl_16_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_weak_rebl_16_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_16_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1252,11 +1359,15 @@ object_static_structure_military_shared_military_wall_weak_rebl_16_style_01 = Sh
 
 	clientObjectCRC = 4029534530,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_rebl_16_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_16_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_rebl_32_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_weak_rebl_32_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_32_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1297,11 +1408,15 @@ object_static_structure_military_shared_military_wall_weak_rebl_32_style_01 = Sh
 
 	clientObjectCRC = 1441605794,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_rebl_32_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_32_style_01.iff")
 
 object_static_structure_military_shared_military_wall_weak_rebl_style_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/military/shared_military_wall_weak_rebl_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_wall_weak_rebl_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1342,6 +1457,7 @@ object_static_structure_military_shared_military_wall_weak_rebl_style_01 = Share
 
 	clientObjectCRC = 1462224892,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_military_shared_military_wall_weak_rebl_style_01, "object/static/structure/military/shared_military_wall_weak_rebl_style_01.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_component_clothing_shared_cargo_pocket = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_cargo_pocket.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_cargo_pocket.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_clothing_shared_cargo_pocket = SharedTangibleObjectTem
 
 	clientObjectCRC = 3621976108,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_cargo_pocket, "object/tangible/component/clothing/shared_cargo_pocket.iff")
 
 object_tangible_component_clothing_shared_clasp_heavy_duty = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_clasp_heavy_duty.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_acc_slaving_collar.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_clothing_shared_clasp_heavy_duty = SharedTangibleObjec
 
 	clientObjectCRC = 948917712,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_clasp_heavy_duty, "object/tangible/component/clothing/shared_clasp_heavy_duty.iff")
 
 object_tangible_component_clothing_shared_clothing_treatment_crystalline = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_clothing_treatment_crystalline.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_crystalline.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_component_clothing_shared_clothing_treatment_crystalline = Share
 
 	clientObjectCRC = 1281925235,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_clothing_treatment_crystalline, "object/tangible/component/clothing/shared_clothing_treatment_crystalline.iff")
 
 object_tangible_component_clothing_shared_component_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_component_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dye_generic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_component_clothing_shared_component_base = SharedTangibleObjectT
 
 	clientObjectCRC = 347363744,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_component_base, "object/tangible/component/clothing/shared_component_base.iff")
 
 object_tangible_component_clothing_shared_fiberplast_panel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_fiberplast_panel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_component_clothing_shared_fiberplast_panel = SharedTangibleObjec
 
 	clientObjectCRC = 967991397,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_fiberplast_panel, "object/tangible/component/clothing/shared_fiberplast_panel.iff")
 
 object_tangible_component_clothing_shared_jewelry_setting = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_jewelry_setting.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_jewelry_setting.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_component_clothing_shared_jewelry_setting = SharedTangibleObject
 
 	clientObjectCRC = 3580972841,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_jewelry_setting, "object/tangible/component/clothing/shared_jewelry_setting.iff")
 
 object_tangible_component_clothing_shared_leather_heavy_duty = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_leather_heavy_duty.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_component_clothing_shared_leather_heavy_duty = SharedTangibleObj
 
 	clientObjectCRC = 2558785369,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_leather_heavy_duty, "object/tangible/component/clothing/shared_leather_heavy_duty.iff")
 
 object_tangible_component_clothing_shared_metal_fasteners = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_metal_fasteners.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_sandstat.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_component_clothing_shared_metal_fasteners = SharedTangibleObject
 
 	clientObjectCRC = 1732023387,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_metal_fasteners, "object/tangible/component/clothing/shared_metal_fasteners.iff")
 
 object_tangible_component_clothing_shared_padding_segment = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_padding_segment.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_disguise_disguise_kit_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_component_clothing_shared_padding_segment = SharedTangibleObject
 
 	clientObjectCRC = 449019087,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_padding_segment, "object/tangible/component/clothing/shared_padding_segment.iff")
 
 object_tangible_component_clothing_shared_reinforced_fiber_panels = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_component_clothing_shared_reinforced_fiber_panels = SharedTangib
 
 	clientObjectCRC = 142903413,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_reinforced_fiber_panels, "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff")
 
 object_tangible_component_clothing_shared_shoe_sole = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_shoe_sole.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_shoe_sole.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_component_clothing_shared_shoe_sole = SharedTangibleObjectTempla
 
 	clientObjectCRC = 845264699,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_shoe_sole, "object/tangible/component/clothing/shared_shoe_sole.iff")
 
 object_tangible_component_clothing_shared_synthetic_cloth = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_synthetic_cloth.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_component_clothing_shared_synthetic_cloth = SharedTangibleObject
 
 	clientObjectCRC = 2133284732,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_synthetic_cloth, "object/tangible/component/clothing/shared_synthetic_cloth.iff")
 
 object_tangible_component_clothing_shared_trim = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/clothing/shared_trim.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,6 +803,7 @@ object_tangible_component_clothing_shared_trim = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3684307948,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_clothing_shared_trim, "object/tangible/component/clothing/shared_trim.iff")

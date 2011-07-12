@@ -42,6 +42,9 @@
 
 
 object_mobile_tatooine_npc_shared_aaph_koden = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_aaph_koden.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/zab_f.sat",
@@ -116,11 +119,15 @@ object_mobile_tatooine_npc_shared_aaph_koden = SharedCreatureObjectTemplate:new 
 
 	clientObjectCRC = 2210665097,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_aaph_koden, "object/mobile/tatooine_npc/shared_aaph_koden.iff")
 
 object_mobile_tatooine_npc_shared_binna_jode = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_binna_jode.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
@@ -195,11 +202,15 @@ object_mobile_tatooine_npc_shared_binna_jode = SharedCreatureObjectTemplate:new 
 
 	clientObjectCRC = 3420862161,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_binna_jode, "object/mobile/tatooine_npc/shared_binna_jode.iff")
 
 object_mobile_tatooine_npc_shared_blerx_tango = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_blerx_tango.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -274,11 +285,15 @@ object_mobile_tatooine_npc_shared_blerx_tango = SharedCreatureObjectTemplate:new
 
 	clientObjectCRC = 2463657324,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_blerx_tango, "object/mobile/tatooine_npc/shared_blerx_tango.iff")
 
 object_mobile_tatooine_npc_shared_boshek = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_boshek.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -353,11 +368,15 @@ object_mobile_tatooine_npc_shared_boshek = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 1226761307,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_boshek, "object/mobile/tatooine_npc/shared_boshek.iff")
 
 object_mobile_tatooine_npc_shared_brea_tonnika = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_brea_tonnika.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
@@ -432,11 +451,15 @@ object_mobile_tatooine_npc_shared_brea_tonnika = SharedCreatureObjectTemplate:ne
 
 	clientObjectCRC = 4285124243,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_brea_tonnika, "object/mobile/tatooine_npc/shared_brea_tonnika.iff")
 
 object_mobile_tatooine_npc_shared_capt_loftus = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_capt_loftus.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -511,11 +534,15 @@ object_mobile_tatooine_npc_shared_capt_loftus = SharedCreatureObjectTemplate:new
 
 	clientObjectCRC = 4289563473,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_capt_loftus, "object/mobile/tatooine_npc/shared_capt_loftus.iff")
 
 object_mobile_tatooine_npc_shared_farious_gletch = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_farious_gletch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -590,11 +617,15 @@ object_mobile_tatooine_npc_shared_farious_gletch = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 1952005063,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_farious_gletch, "object/mobile/tatooine_npc/shared_farious_gletch.iff")
 
 object_mobile_tatooine_npc_shared_figrin_dan = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_figrin_dan.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bith_m.sat",
@@ -669,11 +700,15 @@ object_mobile_tatooine_npc_shared_figrin_dan = SharedCreatureObjectTemplate:new 
 
 	clientObjectCRC = 861642395,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_figrin_dan, "object/mobile/tatooine_npc/shared_figrin_dan.iff")
 
 object_mobile_tatooine_npc_shared_fixer = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_fixer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -748,11 +783,15 @@ object_mobile_tatooine_npc_shared_fixer = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 119383383,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_fixer, "object/mobile/tatooine_npc/shared_fixer.iff")
 
 object_mobile_tatooine_npc_shared_hedon_istee = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_hedon_istee.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -827,11 +866,15 @@ object_mobile_tatooine_npc_shared_hedon_istee = SharedCreatureObjectTemplate:new
 
 	clientObjectCRC = 4094763986,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_hedon_istee, "object/mobile/tatooine_npc/shared_hedon_istee.iff")
 
 object_mobile_tatooine_npc_shared_ikka_gesul = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_ikka_gesul.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
@@ -906,11 +949,15 @@ object_mobile_tatooine_npc_shared_ikka_gesul = SharedCreatureObjectTemplate:new 
 
 	clientObjectCRC = 1541010497,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_ikka_gesul, "object/mobile/tatooine_npc/shared_ikka_gesul.iff")
 
 object_mobile_tatooine_npc_shared_jilljoo_jab = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_jilljoo_jab.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
@@ -985,11 +1032,15 @@ object_mobile_tatooine_npc_shared_jilljoo_jab = SharedCreatureObjectTemplate:new
 
 	clientObjectCRC = 3479474175,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_jilljoo_jab, "object/mobile/tatooine_npc/shared_jilljoo_jab.iff")
 
 object_mobile_tatooine_npc_shared_kaeline_ungasan = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_kaeline_ungasan.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -1064,11 +1115,15 @@ object_mobile_tatooine_npc_shared_kaeline_ungasan = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 28682516,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_kaeline_ungasan, "object/mobile/tatooine_npc/shared_kaeline_ungasan.iff")
 
 object_mobile_tatooine_npc_shared_kitster_banai = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_kitster_banai.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -1143,11 +1198,15 @@ object_mobile_tatooine_npc_shared_kitster_banai = SharedCreatureObjectTemplate:n
 
 	clientObjectCRC = 1703616350,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_kitster_banai, "object/mobile/tatooine_npc/shared_kitster_banai.iff")
 
 object_mobile_tatooine_npc_shared_kormund_thrylle = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_kormund_thrylle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -1222,11 +1281,15 @@ object_mobile_tatooine_npc_shared_kormund_thrylle = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 1211559365,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_kormund_thrylle, "object/mobile/tatooine_npc/shared_kormund_thrylle.iff")
 
 object_mobile_tatooine_npc_shared_lilas_dinhint = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_lilas_dinhint.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -1301,11 +1364,15 @@ object_mobile_tatooine_npc_shared_lilas_dinhint = SharedCreatureObjectTemplate:n
 
 	clientObjectCRC = 253776339,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_lilas_dinhint, "object/mobile/tatooine_npc/shared_lilas_dinhint.iff")
 
 object_mobile_tatooine_npc_shared_lt_harburik = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_lt_harburik.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -1380,11 +1447,15 @@ object_mobile_tatooine_npc_shared_lt_harburik = SharedCreatureObjectTemplate:new
 
 	clientObjectCRC = 1553404717,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_lt_harburik, "object/mobile/tatooine_npc/shared_lt_harburik.iff")
 
 object_mobile_tatooine_npc_shared_mat_rags = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_mat_rags.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -1459,11 +1530,15 @@ object_mobile_tatooine_npc_shared_mat_rags = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 1901596031,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_mat_rags, "object/mobile/tatooine_npc/shared_mat_rags.iff")
 
 object_mobile_tatooine_npc_shared_melios_purl = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_melios_purl.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -1538,11 +1613,15 @@ object_mobile_tatooine_npc_shared_melios_purl = SharedCreatureObjectTemplate:new
 
 	clientObjectCRC = 4049550118,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_melios_purl, "object/mobile/tatooine_npc/shared_melios_purl.iff")
 
 object_mobile_tatooine_npc_shared_mikos_denari = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_mikos_denari.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -1617,11 +1696,15 @@ object_mobile_tatooine_npc_shared_mikos_denari = SharedCreatureObjectTemplate:ne
 
 	clientObjectCRC = 2971142656,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_mikos_denari, "object/mobile/tatooine_npc/shared_mikos_denari.iff")
 
 object_mobile_tatooine_npc_shared_nitra_vendallan = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_nitra_vendallan.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
@@ -1696,11 +1779,15 @@ object_mobile_tatooine_npc_shared_nitra_vendallan = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 3562269968,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_nitra_vendallan, "object/mobile/tatooine_npc/shared_nitra_vendallan.iff")
 
 object_mobile_tatooine_npc_shared_om_aynat = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_om_aynat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -1775,11 +1862,15 @@ object_mobile_tatooine_npc_shared_om_aynat = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 197060903,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_om_aynat, "object/mobile/tatooine_npc/shared_om_aynat.iff")
 
 object_mobile_tatooine_npc_shared_pfilbee_jhorn = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_pfilbee_jhorn.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -1854,11 +1945,15 @@ object_mobile_tatooine_npc_shared_pfilbee_jhorn = SharedCreatureObjectTemplate:n
 
 	clientObjectCRC = 3055869175,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_pfilbee_jhorn, "object/mobile/tatooine_npc/shared_pfilbee_jhorn.iff")
 
 object_mobile_tatooine_npc_shared_phinea_shantee = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_phinea_shantee.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -1933,11 +2028,15 @@ object_mobile_tatooine_npc_shared_phinea_shantee = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 1801428554,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_phinea_shantee, "object/mobile/tatooine_npc/shared_phinea_shantee.iff")
 
 object_mobile_tatooine_npc_shared_rakir_banai = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_rakir_banai.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -2012,11 +2111,15 @@ object_mobile_tatooine_npc_shared_rakir_banai = SharedCreatureObjectTemplate:new
 
 	clientObjectCRC = 2174990588,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_rakir_banai, "object/mobile/tatooine_npc/shared_rakir_banai.iff")
 
 object_mobile_tatooine_npc_shared_senni_tonnika = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_senni_tonnika.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
@@ -2091,11 +2194,15 @@ object_mobile_tatooine_npc_shared_senni_tonnika = SharedCreatureObjectTemplate:n
 
 	clientObjectCRC = 3876719112,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_senni_tonnika, "object/mobile/tatooine_npc/shared_senni_tonnika.iff")
 
 object_mobile_tatooine_npc_shared_tekil_barje = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_tekil_barje.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -2170,11 +2277,15 @@ object_mobile_tatooine_npc_shared_tekil_barje = SharedCreatureObjectTemplate:new
 
 	clientObjectCRC = 153136187,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_tekil_barje, "object/mobile/tatooine_npc/shared_tekil_barje.iff")
 
 object_mobile_tatooine_npc_shared_tour_aryon = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_tour_aryon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
@@ -2249,11 +2360,15 @@ object_mobile_tatooine_npc_shared_tour_aryon = SharedCreatureObjectTemplate:new 
 
 	clientObjectCRC = 651899937,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_tour_aryon, "object/mobile/tatooine_npc/shared_tour_aryon.iff")
 
 object_mobile_tatooine_npc_shared_vardias_tyne = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_vardias_tyne.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -2328,11 +2443,15 @@ object_mobile_tatooine_npc_shared_vardias_tyne = SharedCreatureObjectTemplate:ne
 
 	clientObjectCRC = 2121259164,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_vardias_tyne, "object/mobile/tatooine_npc/shared_vardias_tyne.iff")
 
 object_mobile_tatooine_npc_shared_wilhalm_skrim = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_wilhalm_skrim.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -2407,11 +2526,15 @@ object_mobile_tatooine_npc_shared_wilhalm_skrim = SharedCreatureObjectTemplate:n
 
 	clientObjectCRC = 4249752702,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_wilhalm_skrim, "object/mobile/tatooine_npc/shared_wilhalm_skrim.iff")
 
 object_mobile_tatooine_npc_shared_windom_starkiller = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/tatooine_npc/shared_windom_starkiller.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -2486,6 +2609,7 @@ object_mobile_tatooine_npc_shared_windom_starkiller = SharedCreatureObjectTempla
 
 	clientObjectCRC = 1129472596,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_tatooine_npc_shared_windom_starkiller, "object/mobile/tatooine_npc/shared_windom_starkiller.iff")

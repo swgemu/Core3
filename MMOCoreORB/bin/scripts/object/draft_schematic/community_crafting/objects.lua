@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_community_crafting_shared_base_community_crafting = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/community_crafting/shared_base_community_crafting.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_community_crafting_shared_base_community_crafting = Share
 
 	clientObjectCRC = 3199067220,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_shared_base_community_crafting, "object/draft_schematic/community_crafting/shared_base_community_crafting.iff")
 
 object_draft_schematic_community_crafting_shared_village_defenses = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/community_crafting/shared_village_defenses.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_community_crafting_shared_village_defenses = SharedDraftS
 
 	clientObjectCRC = 2022784928,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/community_crafting/shared_base_community_crafting.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_shared_village_defenses, "object/draft_schematic/community_crafting/shared_village_defenses.iff")
 
 object_draft_schematic_community_crafting_shared_village_shields = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/community_crafting/shared_village_shields.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,6 +183,7 @@ object_draft_schematic_community_crafting_shared_village_shields = SharedDraftSc
 
 	clientObjectCRC = 2318897333,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/community_crafting/shared_base_community_crafting.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_community_crafting_shared_village_shields, "object/draft_schematic/community_crafting/shared_village_shields.iff")

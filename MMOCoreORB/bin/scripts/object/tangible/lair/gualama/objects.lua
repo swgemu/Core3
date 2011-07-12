@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_gualama_shared_lair_gualama = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gualama/shared_lair_gualama.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_gualama_shared_lair_gualama = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1781219126,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gualama_shared_lair_gualama, "object/tangible/lair/gualama/shared_lair_gualama.iff")
 
 object_tangible_lair_gualama_shared_lair_gualama_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gualama/shared_lair_gualama_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_gualama_shared_lair_gualama_grassland = SharedTangibleObjec
 
 	clientObjectCRC = 464760681,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gualama_shared_lair_gualama_grassland, "object/tangible/lair/gualama/shared_lair_gualama_grassland.iff")

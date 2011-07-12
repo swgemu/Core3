@@ -8,6 +8,8 @@
 #include "SharedTangibleObjectTemplate.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/footprint/StructureFootprint.h"
+#include "params/PaletteColorCustomizationVariables.h"
+#include "params/RangedIntCustomizationVariables.h"
 
 SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 
@@ -37,12 +39,253 @@ SharedTangibleObjectTemplate::~SharedTangibleObjectTemplate() {
 	delete resourceWeights;
 }
 
+void SharedTangibleObjectTemplate::parseFileData(IffStream* iffStream) {
+	iffStream->openChunk('PCNT');
+
+	int variableCount = iffStream->getInt();
+
+	iffStream->closeChunk('PCNT');
+
+	for (int i = 0; i < variableCount; ++i) {
+		Chunk* chunk = iffStream->openChunk();
+
+		if (chunk == NULL)
+			continue;
+
+		if (chunk->getChunkID() == 'XXXX') {
+			String varName;
+			chunk->readString(varName);
+
+			parseVariableData(varName, chunk);
+		} else {
+			Logger::console.error("WTF AM I OPENING AGAIN");
+		}
+
+		iffStream->closeChunk();
+	}
+}
+
+void SharedTangibleObjectTemplate::parseVariableData(const String& varName, LuaObject* data) {
+	lua_State* state = data->getLuaState();
+	TemplateManager* templateManager = TemplateManager::instance();
+
+	if (varName == "certificationsRequired") {
+		LuaObject certifications(state);
+
+		for (int i = 1; i <= certifications.getTableSize(); ++i) {
+			certificationsRequired.add(certifications.getStringAt(i));
+		}
+
+		certifications.pop();
+	} else if (varName == "structureFootprintFileName") {
+		structureFootprint = templateManager->loadStructureFootprint(Lua::getStringParameter(state));
+	} else if (varName == "targetable") {
+		targetable = Lua::getByteParameter(state);
+	} else if (varName == "playerUseMask") {
+		playerUseMask = Lua::getShortParameter(state);
+	} else if (varName == "useCount") {
+		useCount = Lua::getIntParameter(state);
+	} else if (varName == "maxCondition") {
+		maxCondition = Lua::getIntParameter(state);
+	} else if (varName == "level") {
+		level = Lua::getIntParameter(state);
+	} else if (varName == "optionsBitmask") {
+		optionsBitmask = Lua::getIntParameter(state);
+	} else if (varName == "pvpStatusBitmask") {
+		pvpStatusBitmask = Lua::getIntParameter(state);
+	} else if (varName == "sliceable") {
+		sliceable = Lua::getIntParameter(state);
+	} else if (varName == "numberExperimentalProperties") {
+		LuaObject numberExperimentalPropertiesList(state);
+
+		for (int i = 1; i <= numberExperimentalPropertiesList.getTableSize(); ++i) {
+			numberExperimentalProperties->add(numberExperimentalPropertiesList.getIntAt(i));
+		}
+
+		numberExperimentalPropertiesList.pop();
+	} else if (varName == "experimentalProperties") {
+		LuaObject experimentalPropertiesList(state);
+
+		for (int i = 1; i <= experimentalPropertiesList.getTableSize(); ++i) {
+			experimentalProperties->add(experimentalPropertiesList.getStringAt(i));
+		}
+
+		experimentalPropertiesList.pop();
+	} else if (varName == "experimentalWeights") {
+		LuaObject experimentalWeightsList(state);
+		
+		for (int i = 1; i <= experimentalWeightsList.getTableSize(); ++i) {
+			experimentalWeights->add(experimentalWeightsList.getIntAt(i));
+		}
+
+		experimentalWeightsList.pop();
+	} else if (varName == "experimentalGroupTitles") {
+		LuaObject experimentalGroupTitlesList(state);
+
+		for (int i = 1; i <= experimentalGroupTitlesList.getTableSize(); ++i) {
+			experimentalGroupTitles->add(experimentalGroupTitlesList.getStringAt(i));
+		}
+
+		experimentalGroupTitlesList.pop();
+	} else if (varName == "experimentalSubGroupTitles") {
+		LuaObject experimentalSubGroupTitlesList(state);
+		
+		for (int i = 1; i <= experimentalSubGroupTitlesList.getTableSize(); ++i) {
+			experimentalSubGroupTitles->add(experimentalSubGroupTitlesList.getStringAt(i));
+		}
+
+		experimentalSubGroupTitlesList.pop();
+	} else if (varName == "experimentalMin") {
+		LuaObject experimentalMinList(state);
+
+		for (int i = 1; i <= experimentalMinList.getTableSize(); ++i) {
+			experimentalMin->add(experimentalMinList.getIntAt(i));
+		}
+
+		experimentalMinList.pop();
+	} else if (varName == "experimentalMax") {
+		LuaObject experimentalMaxList(state);
+
+		for (int i = 1; i <= experimentalMaxList.getTableSize(); ++i) {
+			experimentalMax->add(experimentalMaxList.getIntAt(i));
+		}
+
+		experimentalMaxList.pop();
+	} else if (varName == "experimentalPrecision") {
+		LuaObject experimentalPrecisionList(state);
+
+		for (int i = 1; i <= experimentalPrecisionList.getTableSize(); ++i) {
+			experimentalPrecision->add(experimentalPrecisionList.getIntAt(i));
+		}
+		experimentalPrecisionList.pop();
+	} else {
+		data->pop();
+	}
+
+}
+
+void SharedTangibleObjectTemplate::parseVariableData(const String& varName, Chunk* data) {
+	TemplateManager* templateManager = TemplateManager::instance();
+
+	if (varName == "paletteColorCustomizationVariables") {
+//		paletteColorCustomizationVariables.parse(data);
+		PaletteColorCustomizationVariables pccv;
+		pccv.parse(data); //need to parse cant skip
+	} else if (varName == "rangedIntCustomizationVariables") {
+//		rangedIntCustomizationVariables.parse(data);
+
+		RangedIntCustomizationVariables ricv;
+		ricv.parse(data);
+	} else if (varName == "constStringCustomizationVariables") {
+/*		uint8 unk = data->getUnsignedByte();
+		uint32 num = data->getUnsignedInt();
+
+		if (num != 0) {
+			QString fileName = data->getIffStream()->getFileName().c_str();
+			SWGForensics::instance->printToConsole("EUREKA found constStringCustomizationVariables" + fileName);
+			SWGForensics::instance->runTraverse = false;
+		}*/
+	} else if (varName == "socketDestinations") {
+//		socketDestinations.parse(data);
+	} else if (varName == "structureFootprintFileName") {		
+		StringParam structureFootprintFileName;
+
+		if (structureFootprintFileName.parse(data))
+			templateManager->loadStructureFootprint(structureFootprintFileName.get());
+	} else if (varName == "useStructureFootprintOutline") {
+/*		useStructureFootprintOutline.parse(data);
+		variables[varName] = &useStructureFootprintOutline;*/
+	} else if (varName == "targetable") {
+		targetable.parse(data);
+//		variables[varName] = &targetable;
+	} else if (varName == "certificationsRequired") {
+/*		certificationsRequired.parse(data);
+		variables[varName] = &certificationsRequired;*/
+	} else if (varName == "customizationVariableMapping") {
+/*		customizationVariableMapping.parse(data);
+		variables[varName] = &customizationVariableMapping;*/
+	}
+}
+
+void SharedTangibleObjectTemplate::readObject(IffStream* iffStream) {
+	uint32 nextType = iffStream->getNextFormType();
+
+	if (nextType != 'STOT') {
+		SharedObjectTemplate::readObject(iffStream);
+
+		return;
+	}
+
+	iffStream->openForm('STOT');
+
+	uint32 derv = iffStream->getNextFormType();
+
+	if (derv == 'DERV') {
+		loadDerv(iffStream);
+
+		derv = iffStream->getNextFormType();
+	}
+
+	/*while (derv != 0) {
+		if (derv != '
+	}*/
+
+	iffStream->openForm(derv);
+
+	try {
+		parseFileData(iffStream);
+	} catch (Exception& e) {
+		String msg;
+		msg += "exception caught parsing file data ->";
+		msg += e.getMessage();
+
+		Logger::console.error(msg);
+	}
+
+	iffStream->closeForm(derv);
+
+	if (iffStream->getRemainingSubChunksNumber() > 0) {
+		readObject(iffStream);
+	}
+
+
+	iffStream->closeForm('STOT');
+}
+
+
 void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 	SharedObjectTemplate::readObject(templateData);
 
 	TemplateManager* templateManager = TemplateManager::instance();
 
-	LuaObject certifications = templateData->getObjectField("certificationsRequired");
+	lua_State* L = templateData->getLuaState();
+
+	if (!templateData->isValidTable())
+		return;
+
+	int i = 0;
+	
+	lua_pushnil(L);  
+	while (lua_next(L, -2) != 0) {
+		// 'key' is at index -2 and 'value' at index -1 
+		//printf("%s - %s\n",
+		//		lua_tostring(L, -2), lua_typename(L, lua_type(L, -1)));
+
+		int type = lua_type(L, -2);
+
+		if (type == LUA_TSTRING) {
+			size_t len = 0;
+			const char* varName = lua_tolstring(L, -2, &len);
+
+			parseVariableData(varName, templateData);
+		} else
+			lua_pop(L, 1);
+		
+
+		++i;
+	}
+
+	/*LuaObject certifications = templateData->getObjectField("certificationsRequired");
 
 	for (int i = 1; i <= certifications.getTableSize(); ++i) {
 		certificationsRequired.add(certifications.getStringAt(i));
@@ -114,7 +357,7 @@ void SharedTangibleObjectTemplate::readObject(LuaObject* templateData) {
 	for (int i = 1; i <= experimentalPrecisionList.getTableSize(); ++i) {
 		experimentalPrecision->add(experimentalPrecisionList.getIntAt(i));
 	}
-	experimentalPrecisionList.pop();
+	experimentalPrecisionList.pop();*/
 
 	// Add experimental properties groups to the draft schematic
 	uint32 weightIterator = 0;

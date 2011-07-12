@@ -42,6 +42,9 @@
 
 
 object_static_terrain_corellia_shared_rock_bowl_agrilat_double = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_bowl_agrilat_double.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_agrlt_bowl_dbl.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_terrain_corellia_shared_rock_bowl_agrilat_double = SharedStaticObj
 
 	clientObjectCRC = 2001053430,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_bowl_agrilat_double, "object/static/terrain/corellia/shared_rock_bowl_agrilat_double.iff")
 
 object_static_terrain_corellia_shared_rock_bowl_agrilat_single = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_bowl_agrilat_single.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_agrlt_bowl_single.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_terrain_corellia_shared_rock_bowl_agrilat_single = SharedStaticObj
 
 	clientObjectCRC = 269158049,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_bowl_agrilat_single, "object/static/terrain/corellia/shared_rock_bowl_agrilat_single.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystal_agrilat_arch_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_crystl_arch_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small = SharedSt
 
 	clientObjectCRC = 443205623,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_agrilat_arch_small, "object/static/terrain/corellia/shared_rock_crystal_agrilat_arch_small.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystal_arch_agrilat_half_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_crystl_arch_half_med.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium = Sh
 
 	clientObjectCRC = 3222394313,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_half_medium, "object/static/terrain/corellia/shared_rock_crystal_arch_agrilat_half_medium.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystal_arch_agrilat_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_crystl_arch_med.apt",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium = SharedS
 
 	clientObjectCRC = 925475782,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_arch_agrilat_medium, "object/static/terrain/corellia/shared_rock_crystal_arch_agrilat_medium.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_crystl_geyser_lrg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -307,11 +330,15 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large = Shared
 
 	clientObjectCRC = 1782875920,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_large, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_large.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_main.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_agrlt_geyser_main.apt",
 	arrangementDescriptorFilename = "",
 
@@ -352,11 +379,15 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main = SharedS
 
 	clientObjectCRC = 667239859,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_main, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_main.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_crystl_geyser_med.apt",
 	arrangementDescriptorFilename = "",
 
@@ -397,11 +428,15 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium = Share
 
 	clientObjectCRC = 2360913555,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_medium, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_medium.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_crystl_geyser_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -442,11 +477,15 @@ object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small = Shared
 
 	clientObjectCRC = 1583289145,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_geyser_agrilat_small, "object/static/terrain/corellia/shared_rock_crystal_geyser_agrilat_small.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystal_mound_agrilat_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_crystl_mound_lrg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -487,11 +526,15 @@ object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large = SharedS
 
 	clientObjectCRC = 1649037373,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_large, "object/static/terrain/corellia/shared_rock_crystal_mound_agrilat_large.iff")
 
 object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystal_mound_agrilat_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_crystl_mound_med.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +575,15 @@ object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium = Shared
 
 	clientObjectCRC = 2758241835,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystal_mound_agrilat_medium, "object/static/terrain/corellia/shared_rock_crystal_mound_agrilat_medium.iff")
 
 object_static_terrain_corellia_shared_rock_crystl_shrpbush_main = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystl_shrpbush_main.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_crystl_shrpbush_main.apt",
 	arrangementDescriptorFilename = "",
 
@@ -577,11 +624,15 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_main = SharedStaticOb
 
 	clientObjectCRC = 563211563,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_main, "object/static/terrain/corellia/shared_rock_crystl_shrpbush_main.iff")
 
 object_static_terrain_corellia_shared_rock_crystl_shrpbush_med = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystl_shrpbush_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_crystl_shrpbush_med.apt",
 	arrangementDescriptorFilename = "",
 
@@ -622,11 +673,15 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_med = SharedStaticObj
 
 	clientObjectCRC = 2674710016,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_med, "object/static/terrain/corellia/shared_rock_crystl_shrpbush_med.iff")
 
 object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/corellia/shared_rock_crystl_shrpbush_sm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_crystl_shrpbush_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -667,6 +722,7 @@ object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm = SharedStaticObje
 
 	clientObjectCRC = 751683644,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_corellia_shared_rock_crystl_shrpbush_sm, "object/static/terrain/corellia/shared_rock_crystl_shrpbush_sm.iff")

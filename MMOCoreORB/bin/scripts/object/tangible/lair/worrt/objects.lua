@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_worrt_shared_lair_worrt = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/worrt/shared_lair_worrt.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_worrt_shared_lair_worrt = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 3340605461,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_trash_dark.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_worrt_shared_lair_worrt, "object/tangible/lair/worrt/shared_lair_worrt.iff")
 
 object_tangible_lair_worrt_shared_lair_worrt_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/worrt/shared_lair_worrt_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_worrt_shared_lair_worrt_desert = SharedTangibleObjectTempla
 
 	clientObjectCRC = 870158284,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_trash_dark.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_worrt_shared_lair_worrt_desert, "object/tangible/lair/worrt/shared_lair_worrt_desert.iff")

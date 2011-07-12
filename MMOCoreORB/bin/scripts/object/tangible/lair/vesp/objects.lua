@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_vesp_shared_lair_vesp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vesp/shared_lair_vesp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_vesp_shared_lair_vesp = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2116978464,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vesp_shared_lair_vesp, "object/tangible/lair/vesp/shared_lair_vesp.iff")
 
 object_tangible_lair_vesp_shared_lair_vesp_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vesp/shared_lair_vesp_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_vesp_shared_lair_vesp_desert = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2079570981,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vesp_shared_lair_vesp_desert, "object/tangible/lair/vesp/shared_lair_vesp_desert.iff")
 
 object_tangible_lair_vesp_shared_lair_vesp_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vesp/shared_lair_vesp_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_vesp_shared_lair_vesp_mountain = SharedTangibleObjectTempla
 
 	clientObjectCRC = 4143757009,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vesp_shared_lair_vesp_mountain, "object/tangible/lair/vesp/shared_lair_vesp_mountain.iff")

@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_food_shared_base_food_schematic = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_base_food_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_draft_schematic_food_shared_base_food_schematic = SharedDraftSchematicObj
 
 	clientObjectCRC = 3534105211,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_base_food_schematic, "object/draft_schematic/food/shared_base_food_schematic.iff")
 
 object_draft_schematic_food_shared_dessert_air_cake = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_air_cake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_food_shared_dessert_air_cake = SharedDraftSchematicObject
 
 	clientObjectCRC = 1232265308,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_air_cake, "object/draft_schematic/food/shared_dessert_air_cake.iff")
 
 object_draft_schematic_food_shared_dessert_almond_kwevvu_crisp_munchies = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_almond_kwevvu_crisp_munchies.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_food_shared_dessert_almond_kwevvu_crisp_munchies = Shared
 
 	clientObjectCRC = 1643860574,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_almond_kwevvu_crisp_munchies, "object/draft_schematic/food/shared_dessert_almond_kwevvu_crisp_munchies.iff")
 
 object_draft_schematic_food_shared_dessert_bantha_butter = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_bantha_butter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_food_shared_dessert_bantha_butter = SharedDraftSchematicO
 
 	clientObjectCRC = 1534089256,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_bantha_butter, "object/draft_schematic/food/shared_dessert_bantha_butter.iff")
 
 object_draft_schematic_food_shared_dessert_blap_biscuit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_blap_biscuit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_food_shared_dessert_blap_biscuit = SharedDraftSchematicOb
 
 	clientObjectCRC = 2877457110,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_blap_biscuit, "object/draft_schematic/food/shared_dessert_blap_biscuit.iff")
 
 object_draft_schematic_food_shared_dessert_blob_candy = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_blob_candy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_food_shared_dessert_blob_candy = SharedDraftSchematicObje
 
 	clientObjectCRC = 4218540665,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_blob_candy, "object/draft_schematic/food/shared_dessert_blob_candy.iff")
 
 object_draft_schematic_food_shared_dessert_bofa_treat = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_bofa_treat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_food_shared_dessert_bofa_treat = SharedDraftSchematicObje
 
 	clientObjectCRC = 2207249955,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_bofa_treat, "object/draft_schematic/food/shared_dessert_bofa_treat.iff")
 
 object_draft_schematic_food_shared_dessert_cavaellin_creams = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_cavaellin_creams.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_food_shared_dessert_cavaellin_creams = SharedDraftSchemat
 
 	clientObjectCRC = 3781117254,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_cavaellin_creams, "object/draft_schematic/food/shared_dessert_cavaellin_creams.iff")
 
 object_draft_schematic_food_shared_dessert_chandad = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_chandad.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_food_shared_dessert_chandad = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 2230715855,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_chandad, "object/draft_schematic/food/shared_dessert_chandad.iff")
 
 object_draft_schematic_food_shared_dessert_citros_snow_cake = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_citros_snow_cake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_food_shared_dessert_citros_snow_cake = SharedDraftSchemat
 
 	clientObjectCRC = 1694757424,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_citros_snow_cake, "object/draft_schematic/food/shared_dessert_citros_snow_cake.iff")
 
 object_draft_schematic_food_shared_dessert_corellian_fried_icecream = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_corellian_fried_icecream.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_food_shared_dessert_corellian_fried_icecream = SharedDraf
 
 	clientObjectCRC = 4175174885,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_corellian_fried_icecream, "object/draft_schematic/food/shared_dessert_corellian_fried_icecream.iff")
 
 object_draft_schematic_food_shared_dessert_deneelian_fizz_pudding = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_deneelian_fizz_pudding.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_food_shared_dessert_deneelian_fizz_pudding = SharedDraftS
 
 	clientObjectCRC = 3417631805,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_deneelian_fizz_pudding, "object/draft_schematic/food/shared_dessert_deneelian_fizz_pudding.iff")
 
 object_draft_schematic_food_shared_dessert_dweezel = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_dweezel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,11 +673,15 @@ object_draft_schematic_food_shared_dessert_dweezel = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 891262167,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_dweezel, "object/draft_schematic/food/shared_dessert_dweezel.iff")
 
 object_draft_schematic_food_shared_dessert_felbar = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_felbar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -667,11 +722,15 @@ object_draft_schematic_food_shared_dessert_felbar = SharedDraftSchematicObjectTe
 
 	clientObjectCRC = 2718719593,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_felbar, "object/draft_schematic/food/shared_dessert_felbar.iff")
 
 object_draft_schematic_food_shared_dessert_glazed_glucose_pate = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_glazed_glucose_pate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -712,11 +771,15 @@ object_draft_schematic_food_shared_dessert_glazed_glucose_pate = SharedDraftSche
 
 	clientObjectCRC = 4027079478,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_glazed_glucose_pate, "object/draft_schematic/food/shared_dessert_glazed_glucose_pate.iff")
 
 object_draft_schematic_food_shared_dessert_gorrnar = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_gorrnar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -757,11 +820,15 @@ object_draft_schematic_food_shared_dessert_gorrnar = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 613121721,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_gorrnar, "object/draft_schematic/food/shared_dessert_gorrnar.iff")
 
 object_draft_schematic_food_shared_dessert_kiwik_clusjo_swirl = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_kiwik_clusjo_swirl.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -802,11 +869,15 @@ object_draft_schematic_food_shared_dessert_kiwik_clusjo_swirl = SharedDraftSchem
 
 	clientObjectCRC = 147823633,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_kiwik_clusjo_swirl, "object/draft_schematic/food/shared_dessert_kiwik_clusjo_swirl.iff")
 
 object_draft_schematic_food_shared_dessert_nanana_twist = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_nanana_twist.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -847,11 +918,15 @@ object_draft_schematic_food_shared_dessert_nanana_twist = SharedDraftSchematicOb
 
 	clientObjectCRC = 2469520119,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_nanana_twist, "object/draft_schematic/food/shared_dessert_nanana_twist.iff")
 
 object_draft_schematic_food_shared_dessert_para_roll = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_para_roll.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -892,11 +967,15 @@ object_draft_schematic_food_shared_dessert_para_roll = SharedDraftSchematicObjec
 
 	clientObjectCRC = 3783790420,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_para_roll, "object/draft_schematic/food/shared_dessert_para_roll.iff")
 
 object_draft_schematic_food_shared_dessert_parwan_nutricake = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_parwan_nutricake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -937,11 +1016,15 @@ object_draft_schematic_food_shared_dessert_parwan_nutricake = SharedDraftSchemat
 
 	clientObjectCRC = 1390404412,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_parwan_nutricake, "object/draft_schematic/food/shared_dessert_parwan_nutricake.iff")
 
 object_draft_schematic_food_shared_dessert_pastebread = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_pastebread.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -982,11 +1065,15 @@ object_draft_schematic_food_shared_dessert_pastebread = SharedDraftSchematicObje
 
 	clientObjectCRC = 1271872434,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_pastebread, "object/draft_schematic/food/shared_dessert_pastebread.iff")
 
 object_draft_schematic_food_shared_dessert_pikatta_pie = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_pikatta_pie.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1027,11 +1114,15 @@ object_draft_schematic_food_shared_dessert_pikatta_pie = SharedDraftSchematicObj
 
 	clientObjectCRC = 3617520830,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_pikatta_pie, "object/draft_schematic/food/shared_dessert_pikatta_pie.iff")
 
 object_draft_schematic_food_shared_dessert_pkneb = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_pkneb.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1072,11 +1163,15 @@ object_draft_schematic_food_shared_dessert_pkneb = SharedDraftSchematicObjectTem
 
 	clientObjectCRC = 223277237,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_pkneb, "object/draft_schematic/food/shared_dessert_pkneb.iff")
 
 object_draft_schematic_food_shared_dessert_puffcake = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_puffcake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1117,11 +1212,15 @@ object_draft_schematic_food_shared_dessert_puffcake = SharedDraftSchematicObject
 
 	clientObjectCRC = 3689968253,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_puffcake, "object/draft_schematic/food/shared_dessert_puffcake.iff")
 
 object_draft_schematic_food_shared_dessert_pyollian_cake = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_pyollian_cake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1162,11 +1261,15 @@ object_draft_schematic_food_shared_dessert_pyollian_cake = SharedDraftSchematicO
 
 	clientObjectCRC = 3212906328,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_pyollian_cake, "object/draft_schematic/food/shared_dessert_pyollian_cake.iff")
 
 object_draft_schematic_food_shared_dessert_ryshcate = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_ryshcate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1207,11 +1310,15 @@ object_draft_schematic_food_shared_dessert_ryshcate = SharedDraftSchematicObject
 
 	clientObjectCRC = 3448198568,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_ryshcate, "object/draft_schematic/food/shared_dessert_ryshcate.iff")
 
 object_draft_schematic_food_shared_dessert_smugglers_delight = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_smugglers_delight.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1252,11 +1359,15 @@ object_draft_schematic_food_shared_dessert_smugglers_delight = SharedDraftSchema
 
 	clientObjectCRC = 2092844576,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_smugglers_delight, "object/draft_schematic/food/shared_dessert_smugglers_delight.iff")
 
 object_draft_schematic_food_shared_dessert_sweesonberry_rolls = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_sweesonberry_rolls.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1297,11 +1408,15 @@ object_draft_schematic_food_shared_dessert_sweesonberry_rolls = SharedDraftSchem
 
 	clientObjectCRC = 4003562934,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_sweesonberry_rolls, "object/draft_schematic/food/shared_dessert_sweesonberry_rolls.iff")
 
 object_draft_schematic_food_shared_dessert_sweet_cake_mix = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_sweet_cake_mix.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1342,11 +1457,15 @@ object_draft_schematic_food_shared_dessert_sweet_cake_mix = SharedDraftSchematic
 
 	clientObjectCRC = 3267367960,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_sweet_cake_mix, "object/draft_schematic/food/shared_dessert_sweet_cake_mix.iff")
 
 object_draft_schematic_food_shared_dessert_tranna_nougat_cream = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_tranna_nougat_cream.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1387,11 +1506,15 @@ object_draft_schematic_food_shared_dessert_tranna_nougat_cream = SharedDraftSche
 
 	clientObjectCRC = 1016541288,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_tranna_nougat_cream, "object/draft_schematic/food/shared_dessert_tranna_nougat_cream.iff")
 
 object_draft_schematic_food_shared_dessert_vagnerian_canape = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_vagnerian_canape.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1432,11 +1555,15 @@ object_draft_schematic_food_shared_dessert_vagnerian_canape = SharedDraftSchemat
 
 	clientObjectCRC = 3895744001,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_vagnerian_canape, "object/draft_schematic/food/shared_dessert_vagnerian_canape.iff")
 
 object_draft_schematic_food_shared_dessert_wedding_cake = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_wedding_cake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1477,11 +1604,15 @@ object_draft_schematic_food_shared_dessert_wedding_cake = SharedDraftSchematicOb
 
 	clientObjectCRC = 1242276912,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_wedding_cake, "object/draft_schematic/food/shared_dessert_wedding_cake.iff")
 
 object_draft_schematic_food_shared_dessert_won_won = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dessert_won_won.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1522,11 +1653,15 @@ object_draft_schematic_food_shared_dessert_won_won = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 3560062309,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dessert_won_won, "object/draft_schematic/food/shared_dessert_won_won.iff")
 
 object_draft_schematic_food_shared_dish_ahrisa = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_ahrisa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1567,11 +1702,15 @@ object_draft_schematic_food_shared_dish_ahrisa = SharedDraftSchematicObjectTempl
 
 	clientObjectCRC = 2183154251,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_ahrisa, "object/draft_schematic/food/shared_dish_ahrisa.iff")
 
 object_draft_schematic_food_shared_dish_bivoli_tempari = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_bivoli_tempari.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1612,11 +1751,15 @@ object_draft_schematic_food_shared_dish_bivoli_tempari = SharedDraftSchematicObj
 
 	clientObjectCRC = 3290158899,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_bivoli_tempari, "object/draft_schematic/food/shared_dish_bivoli_tempari.iff")
 
 object_draft_schematic_food_shared_dish_blood_chowder = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_blood_chowder.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1657,11 +1800,15 @@ object_draft_schematic_food_shared_dish_blood_chowder = SharedDraftSchematicObje
 
 	clientObjectCRC = 1109116374,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_blood_chowder, "object/draft_schematic/food/shared_dish_blood_chowder.iff")
 
 object_draft_schematic_food_shared_dish_braised_canron = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_braised_canron.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1702,11 +1849,15 @@ object_draft_schematic_food_shared_dish_braised_canron = SharedDraftSchematicObj
 
 	clientObjectCRC = 2734261289,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_braised_canron, "object/draft_schematic/food/shared_dish_braised_canron.iff")
 
 object_draft_schematic_food_shared_dish_cho_nor_hoola = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_cho_nor_hoola.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1747,11 +1898,15 @@ object_draft_schematic_food_shared_dish_cho_nor_hoola = SharedDraftSchematicObje
 
 	clientObjectCRC = 1659210847,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_cho_nor_hoola, "object/draft_schematic/food/shared_dish_cho_nor_hoola.iff")
 
 object_draft_schematic_food_shared_dish_crispic = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_crispic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1792,11 +1947,15 @@ object_draft_schematic_food_shared_dish_crispic = SharedDraftSchematicObjectTemp
 
 	clientObjectCRC = 654822514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_crispic, "object/draft_schematic/food/shared_dish_crispic.iff")
 
 object_draft_schematic_food_shared_dish_dustcrepe = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_dustcrepe.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1837,11 +1996,15 @@ object_draft_schematic_food_shared_dish_dustcrepe = SharedDraftSchematicObjectTe
 
 	clientObjectCRC = 451779682,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_dustcrepe, "object/draft_schematic/food/shared_dish_dustcrepe.iff")
 
 object_draft_schematic_food_shared_dish_exo_protein_wafers = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_exo_protein_wafers.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1882,11 +2045,15 @@ object_draft_schematic_food_shared_dish_exo_protein_wafers = SharedDraftSchemati
 
 	clientObjectCRC = 4045225099,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_exo_protein_wafers, "object/draft_schematic/food/shared_dish_exo_protein_wafers.iff")
 
 object_draft_schematic_food_shared_dish_fire_stew = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_fire_stew.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1927,11 +2094,15 @@ object_draft_schematic_food_shared_dish_fire_stew = SharedDraftSchematicObjectTe
 
 	clientObjectCRC = 2266076523,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_fire_stew, "object/draft_schematic/food/shared_dish_fire_stew.iff")
 
 object_draft_schematic_food_shared_dish_fried_endwa = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_fried_endwa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1972,11 +2143,15 @@ object_draft_schematic_food_shared_dish_fried_endwa = SharedDraftSchematicObject
 
 	clientObjectCRC = 3099048355,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_fried_endwa, "object/draft_schematic/food/shared_dish_fried_endwa.iff")
 
 object_draft_schematic_food_shared_dish_gruuvan_shaal = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_gruuvan_shaal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2017,11 +2192,15 @@ object_draft_schematic_food_shared_dish_gruuvan_shaal = SharedDraftSchematicObje
 
 	clientObjectCRC = 767510337,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_gruuvan_shaal, "object/draft_schematic/food/shared_dish_gruuvan_shaal.iff")
 
 object_draft_schematic_food_shared_dish_havla = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_havla.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2062,11 +2241,15 @@ object_draft_schematic_food_shared_dish_havla = SharedDraftSchematicObjectTempla
 
 	clientObjectCRC = 811374233,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_havla, "object/draft_schematic/food/shared_dish_havla.iff")
 
 object_draft_schematic_food_shared_dish_kanali_wafers = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_kanali_wafers.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2107,11 +2290,15 @@ object_draft_schematic_food_shared_dish_kanali_wafers = SharedDraftSchematicObje
 
 	clientObjectCRC = 2008463907,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_kanali_wafers, "object/draft_schematic/food/shared_dish_kanali_wafers.iff")
 
 object_draft_schematic_food_shared_dish_karkan_ribenes = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_karkan_ribenes.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2152,11 +2339,15 @@ object_draft_schematic_food_shared_dish_karkan_ribenes = SharedDraftSchematicObj
 
 	clientObjectCRC = 627565504,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_karkan_ribenes, "object/draft_schematic/food/shared_dish_karkan_ribenes.iff")
 
 object_draft_schematic_food_shared_dish_meatlump = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_meatlump.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2197,11 +2388,15 @@ object_draft_schematic_food_shared_dish_meatlump = SharedDraftSchematicObjectTem
 
 	clientObjectCRC = 2726957459,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_meatlump, "object/draft_schematic/food/shared_dish_meatlump.iff")
 
 object_draft_schematic_food_shared_dish_ormachek = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_ormachek.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2242,11 +2437,15 @@ object_draft_schematic_food_shared_dish_ormachek = SharedDraftSchematicObjectTem
 
 	clientObjectCRC = 2829323424,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_ormachek, "object/draft_schematic/food/shared_dish_ormachek.iff")
 
 object_draft_schematic_food_shared_dish_patot_panak = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_patot_panak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2287,11 +2486,15 @@ object_draft_schematic_food_shared_dish_patot_panak = SharedDraftSchematicObject
 
 	clientObjectCRC = 2914707129,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_patot_panak, "object/draft_schematic/food/shared_dish_patot_panak.iff")
 
 object_draft_schematic_food_shared_dish_protato = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_protato.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2332,11 +2535,15 @@ object_draft_schematic_food_shared_dish_protato = SharedDraftSchematicObjectTemp
 
 	clientObjectCRC = 4162901350,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_protato, "object/draft_schematic/food/shared_dish_protato.iff")
 
 object_draft_schematic_food_shared_dish_puk = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_puk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2377,11 +2584,15 @@ object_draft_schematic_food_shared_dish_puk = SharedDraftSchematicObjectTemplate
 
 	clientObjectCRC = 497945491,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_puk, "object/draft_schematic/food/shared_dish_puk.iff")
 
 object_draft_schematic_food_shared_dish_rakririan_burnout_sauce = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_rakririan_burnout_sauce.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2422,11 +2633,15 @@ object_draft_schematic_food_shared_dish_rakririan_burnout_sauce = SharedDraftSch
 
 	clientObjectCRC = 1517322434,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_rakririan_burnout_sauce, "object/draft_schematic/food/shared_dish_rakririan_burnout_sauce.iff")
 
 object_draft_schematic_food_shared_dish_ramorrean_capanata = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_ramorrean_capanata.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2467,11 +2682,15 @@ object_draft_schematic_food_shared_dish_ramorrean_capanata = SharedDraftSchemati
 
 	clientObjectCRC = 765738435,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_ramorrean_capanata, "object/draft_schematic/food/shared_dish_ramorrean_capanata.iff")
 
 object_draft_schematic_food_shared_dish_rations = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_rations.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2512,11 +2731,15 @@ object_draft_schematic_food_shared_dish_rations = SharedDraftSchematicObjectTemp
 
 	clientObjectCRC = 103531831,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_rations, "object/draft_schematic/food/shared_dish_rations.iff")
 
 object_draft_schematic_food_shared_dish_scrimpi = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_scrimpi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2557,11 +2780,15 @@ object_draft_schematic_food_shared_dish_scrimpi = SharedDraftSchematicObjectTemp
 
 	clientObjectCRC = 613957967,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_scrimpi, "object/draft_schematic/food/shared_dish_scrimpi.iff")
 
 object_draft_schematic_food_shared_dish_soypro = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_soypro.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2602,11 +2829,15 @@ object_draft_schematic_food_shared_dish_soypro = SharedDraftSchematicObjectTempl
 
 	clientObjectCRC = 1964935706,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_soypro, "object/draft_schematic/food/shared_dish_soypro.iff")
 
 object_draft_schematic_food_shared_dish_stewed_gwouch = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_stewed_gwouch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2647,11 +2878,15 @@ object_draft_schematic_food_shared_dish_stewed_gwouch = SharedDraftSchematicObje
 
 	clientObjectCRC = 3781922189,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_stewed_gwouch, "object/draft_schematic/food/shared_dish_stewed_gwouch.iff")
 
 object_draft_schematic_food_shared_dish_synthsteak = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_synthsteak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2692,11 +2927,15 @@ object_draft_schematic_food_shared_dish_synthsteak = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 1494447818,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_synthsteak, "object/draft_schematic/food/shared_dish_synthsteak.iff")
 
 object_draft_schematic_food_shared_dish_teltier_noodles = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_teltier_noodles.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2737,11 +2976,15 @@ object_draft_schematic_food_shared_dish_teltier_noodles = SharedDraftSchematicOb
 
 	clientObjectCRC = 3118947489,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_teltier_noodles, "object/draft_schematic/food/shared_dish_teltier_noodles.iff")
 
 object_draft_schematic_food_shared_dish_terratta = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_terratta.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2782,11 +3025,15 @@ object_draft_schematic_food_shared_dish_terratta = SharedDraftSchematicObjectTem
 
 	clientObjectCRC = 2124204125,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_terratta, "object/draft_schematic/food/shared_dish_terratta.iff")
 
 object_draft_schematic_food_shared_dish_thakitillo = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_thakitillo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2827,11 +3074,15 @@ object_draft_schematic_food_shared_dish_thakitillo = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 3315393340,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_thakitillo, "object/draft_schematic/food/shared_dish_thakitillo.iff")
 
 object_draft_schematic_food_shared_dish_travel_biscuits = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_travel_biscuits.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2872,11 +3123,15 @@ object_draft_schematic_food_shared_dish_travel_biscuits = SharedDraftSchematicOb
 
 	clientObjectCRC = 854764144,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_travel_biscuits, "object/draft_schematic/food/shared_dish_travel_biscuits.iff")
 
 object_draft_schematic_food_shared_dish_trimpian = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_trimpian.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2917,11 +3172,15 @@ object_draft_schematic_food_shared_dish_trimpian = SharedDraftSchematicObjectTem
 
 	clientObjectCRC = 2878426134,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_trimpian, "object/draft_schematic/food/shared_dish_trimpian.iff")
 
 object_draft_schematic_food_shared_dish_vegeparsine = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_vegeparsine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2962,11 +3221,15 @@ object_draft_schematic_food_shared_dish_vegeparsine = SharedDraftSchematicObject
 
 	clientObjectCRC = 810320403,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_vegeparsine, "object/draft_schematic/food/shared_dish_vegeparsine.iff")
 
 object_draft_schematic_food_shared_dish_veghash = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_veghash.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3007,11 +3270,15 @@ object_draft_schematic_food_shared_dish_veghash = SharedDraftSchematicObjectTemp
 
 	clientObjectCRC = 1653623915,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_veghash, "object/draft_schematic/food/shared_dish_veghash.iff")
 
 object_draft_schematic_food_shared_dish_vercupti_of_agazza_boleruuee = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_vercupti_of_agazza_boleruuee.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3052,11 +3319,15 @@ object_draft_schematic_food_shared_dish_vercupti_of_agazza_boleruuee = SharedDra
 
 	clientObjectCRC = 3313024144,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_vercupti_of_agazza_boleruuee, "object/draft_schematic/food/shared_dish_vercupti_of_agazza_boleruuee.iff")
 
 object_draft_schematic_food_shared_dish_wastril_bread = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_wastril_bread.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3097,11 +3368,15 @@ object_draft_schematic_food_shared_dish_wastril_bread = SharedDraftSchematicObje
 
 	clientObjectCRC = 1843611804,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_wastril_bread, "object/draft_schematic/food/shared_dish_wastril_bread.iff")
 
 object_draft_schematic_food_shared_dish_xermaauc = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_dish_xermaauc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3142,11 +3417,15 @@ object_draft_schematic_food_shared_dish_xermaauc = SharedDraftSchematicObjectTem
 
 	clientObjectCRC = 117295245,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_dish_xermaauc, "object/draft_schematic/food/shared_dish_xermaauc.iff")
 
 object_draft_schematic_food_shared_drink_accarragm = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_accarragm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3187,11 +3466,15 @@ object_draft_schematic_food_shared_drink_accarragm = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 2962432093,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_accarragm, "object/draft_schematic/food/shared_drink_accarragm.iff")
 
 object_draft_schematic_food_shared_drink_aitha = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_aitha.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3232,11 +3515,15 @@ object_draft_schematic_food_shared_drink_aitha = SharedDraftSchematicObjectTempl
 
 	clientObjectCRC = 276726581,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_aitha, "object/draft_schematic/food/shared_drink_aitha.iff")
 
 object_draft_schematic_food_shared_drink_alcohol = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_alcohol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3277,11 +3564,15 @@ object_draft_schematic_food_shared_drink_alcohol = SharedDraftSchematicObjectTem
 
 	clientObjectCRC = 4248532865,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_alcohol, "object/draft_schematic/food/shared_drink_alcohol.iff")
 
 object_draft_schematic_food_shared_drink_aludium_pu36 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_aludium_pu36.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3322,11 +3613,15 @@ object_draft_schematic_food_shared_drink_aludium_pu36 = SharedDraftSchematicObje
 
 	clientObjectCRC = 732438292,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_aludium_pu36, "object/draft_schematic/food/shared_drink_aludium_pu36.iff")
 
 object_draft_schematic_food_shared_drink_angerian_fishak_surprise = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_angerian_fishak_surprise.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3367,11 +3662,15 @@ object_draft_schematic_food_shared_drink_angerian_fishak_surprise = SharedDraftS
 
 	clientObjectCRC = 1973756725,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_angerian_fishak_surprise, "object/draft_schematic/food/shared_drink_angerian_fishak_surprise.iff")
 
 object_draft_schematic_food_shared_drink_antakarian_fire_dancer = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_antakarian_fire_dancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3412,11 +3711,15 @@ object_draft_schematic_food_shared_drink_antakarian_fire_dancer = SharedDraftSch
 
 	clientObjectCRC = 3876777294,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_antakarian_fire_dancer, "object/draft_schematic/food/shared_drink_antakarian_fire_dancer.iff")
 
 object_draft_schematic_food_shared_drink_bantha_blaster = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_bantha_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3457,11 +3760,15 @@ object_draft_schematic_food_shared_drink_bantha_blaster = SharedDraftSchematicOb
 
 	clientObjectCRC = 13350537,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_bantha_blaster, "object/draft_schematic/food/shared_drink_bantha_blaster.iff")
 
 object_draft_schematic_food_shared_drink_bespin_port = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_bespin_port.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3502,11 +3809,15 @@ object_draft_schematic_food_shared_drink_bespin_port = SharedDraftSchematicObjec
 
 	clientObjectCRC = 1871364813,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_bespin_port, "object/draft_schematic/food/shared_drink_bespin_port.iff")
 
 object_draft_schematic_food_shared_drink_blue_milk = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_blue_milk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3547,11 +3858,15 @@ object_draft_schematic_food_shared_drink_blue_milk = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 1399918537,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_blue_milk, "object/draft_schematic/food/shared_drink_blue_milk.iff")
 
 object_draft_schematic_food_shared_drink_breath_of_heaven = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_breath_of_heaven.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3592,11 +3907,15 @@ object_draft_schematic_food_shared_drink_breath_of_heaven = SharedDraftSchematic
 
 	clientObjectCRC = 4267245284,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_breath_of_heaven, "object/draft_schematic/food/shared_drink_breath_of_heaven.iff")
 
 object_draft_schematic_food_shared_drink_caf = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_caf.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3637,11 +3956,15 @@ object_draft_schematic_food_shared_drink_caf = SharedDraftSchematicObjectTemplat
 
 	clientObjectCRC = 3676820545,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_caf, "object/draft_schematic/food/shared_drink_caf.iff")
 
 object_draft_schematic_food_shared_drink_charde = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_charde.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3682,11 +4005,15 @@ object_draft_schematic_food_shared_drink_charde = SharedDraftSchematicObjectTemp
 
 	clientObjectCRC = 2023703123,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_charde, "object/draft_schematic/food/shared_drink_charde.iff")
 
 object_draft_schematic_food_shared_drink_corellian_ale = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_corellian_ale.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3727,11 +4054,15 @@ object_draft_schematic_food_shared_drink_corellian_ale = SharedDraftSchematicObj
 
 	clientObjectCRC = 760961429,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_corellian_ale, "object/draft_schematic/food/shared_drink_corellian_ale.iff")
 
 object_draft_schematic_food_shared_drink_corellian_brandy = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_corellian_brandy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3772,11 +4103,15 @@ object_draft_schematic_food_shared_drink_corellian_brandy = SharedDraftSchematic
 
 	clientObjectCRC = 452526783,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_corellian_brandy, "object/draft_schematic/food/shared_drink_corellian_brandy.iff")
 
 object_draft_schematic_food_shared_drink_cortyg = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_cortyg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3817,11 +4152,15 @@ object_draft_schematic_food_shared_drink_cortyg = SharedDraftSchematicObjectTemp
 
 	clientObjectCRC = 3280328510,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_cortyg, "object/draft_schematic/food/shared_drink_cortyg.iff")
 
 object_draft_schematic_food_shared_drink_deuterium_pyro = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_deuterium_pyro.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3862,11 +4201,15 @@ object_draft_schematic_food_shared_drink_deuterium_pyro = SharedDraftSchematicOb
 
 	clientObjectCRC = 803945736,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_deuterium_pyro, "object/draft_schematic/food/shared_drink_deuterium_pyro.iff")
 
 object_draft_schematic_food_shared_drink_double_dip_outer_rim_rumdrop = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_double_dip_outer_rim_rumdrop.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3907,11 +4250,15 @@ object_draft_schematic_food_shared_drink_double_dip_outer_rim_rumdrop = SharedDr
 
 	clientObjectCRC = 1003536549,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_double_dip_outer_rim_rumdrop, "object/draft_schematic/food/shared_drink_double_dip_outer_rim_rumdrop.iff")
 
 object_draft_schematic_food_shared_drink_durindfire = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_durindfire.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3952,11 +4299,15 @@ object_draft_schematic_food_shared_drink_durindfire = SharedDraftSchematicObject
 
 	clientObjectCRC = 982697559,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_durindfire, "object/draft_schematic/food/shared_drink_durindfire.iff")
 
 object_draft_schematic_food_shared_drink_elshandruu_pica_thundercloud = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_elshandruu_pica_thundercloud.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3997,11 +4348,15 @@ object_draft_schematic_food_shared_drink_elshandruu_pica_thundercloud = SharedDr
 
 	clientObjectCRC = 1393778960,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_elshandruu_pica_thundercloud, "object/draft_schematic/food/shared_drink_elshandruu_pica_thundercloud.iff")
 
 object_draft_schematic_food_shared_drink_flameout = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_flameout.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4042,11 +4397,15 @@ object_draft_schematic_food_shared_drink_flameout = SharedDraftSchematicObjectTe
 
 	clientObjectCRC = 2009122717,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_flameout, "object/draft_schematic/food/shared_drink_flameout.iff")
 
 object_draft_schematic_food_shared_drink_garrmorl = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_garrmorl.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4087,11 +4446,15 @@ object_draft_schematic_food_shared_drink_garrmorl = SharedDraftSchematicObjectTe
 
 	clientObjectCRC = 231956831,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_garrmorl, "object/draft_schematic/food/shared_drink_garrmorl.iff")
 
 object_draft_schematic_food_shared_drink_gralinyn_juice = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_gralinyn_juice.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4132,11 +4495,15 @@ object_draft_schematic_food_shared_drink_gralinyn_juice = SharedDraftSchematicOb
 
 	clientObjectCRC = 1147287850,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_gralinyn_juice, "object/draft_schematic/food/shared_drink_gralinyn_juice.iff")
 
 object_draft_schematic_food_shared_drink_ice_blaster = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_ice_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4177,11 +4544,15 @@ object_draft_schematic_food_shared_drink_ice_blaster = SharedDraftSchematicObjec
 
 	clientObjectCRC = 3333710935,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_ice_blaster, "object/draft_schematic/food/shared_drink_ice_blaster.iff")
 
 object_draft_schematic_food_shared_drink_ithorian_mist = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_ithorian_mist.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4222,11 +4593,15 @@ object_draft_schematic_food_shared_drink_ithorian_mist = SharedDraftSchematicObj
 
 	clientObjectCRC = 2653880997,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_ithorian_mist, "object/draft_schematic/food/shared_drink_ithorian_mist.iff")
 
 object_draft_schematic_food_shared_drink_jaar = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_jaar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4267,11 +4642,15 @@ object_draft_schematic_food_shared_drink_jaar = SharedDraftSchematicObjectTempla
 
 	clientObjectCRC = 4135578942,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_jaar, "object/draft_schematic/food/shared_drink_jaar.iff")
 
 object_draft_schematic_food_shared_drink_jawa_beer = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_jawa_beer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4312,11 +4691,15 @@ object_draft_schematic_food_shared_drink_jawa_beer = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 2181376134,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_jawa_beer, "object/draft_schematic/food/shared_drink_jawa_beer.iff")
 
 object_draft_schematic_food_shared_drink_kylessian_fruit_distillate = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_kylessian_fruit_distillate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4357,11 +4740,15 @@ object_draft_schematic_food_shared_drink_kylessian_fruit_distillate = SharedDraf
 
 	clientObjectCRC = 472363791,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_kylessian_fruit_distillate, "object/draft_schematic/food/shared_drink_kylessian_fruit_distillate.iff")
 
 object_draft_schematic_food_shared_drink_mandalorian_wine = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_mandalorian_wine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4402,11 +4789,15 @@ object_draft_schematic_food_shared_drink_mandalorian_wine = SharedDraftSchematic
 
 	clientObjectCRC = 2504650869,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_mandalorian_wine, "object/draft_schematic/food/shared_drink_mandalorian_wine.iff")
 
 object_draft_schematic_food_shared_drink_ruby_bliel = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_ruby_bliel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4447,11 +4838,15 @@ object_draft_schematic_food_shared_drink_ruby_bliel = SharedDraftSchematicObject
 
 	clientObjectCRC = 1465295596,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_ruby_bliel, "object/draft_schematic/food/shared_drink_ruby_bliel.iff")
 
 object_draft_schematic_food_shared_drink_skannbult_likker = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_skannbult_likker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4492,11 +4887,15 @@ object_draft_schematic_food_shared_drink_skannbult_likker = SharedDraftSchematic
 
 	clientObjectCRC = 1072768290,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_skannbult_likker, "object/draft_schematic/food/shared_drink_skannbult_likker.iff")
 
 object_draft_schematic_food_shared_drink_spiced_tea = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_spiced_tea.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4537,11 +4936,15 @@ object_draft_schematic_food_shared_drink_spiced_tea = SharedDraftSchematicObject
 
 	clientObjectCRC = 1970945815,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_spiced_tea, "object/draft_schematic/food/shared_drink_spiced_tea.iff")
 
 object_draft_schematic_food_shared_drink_starshine_surprise = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_starshine_surprise.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4582,11 +4985,15 @@ object_draft_schematic_food_shared_drink_starshine_surprise = SharedDraftSchemat
 
 	clientObjectCRC = 3111876122,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_starshine_surprise, "object/draft_schematic/food/shared_drink_starshine_surprise.iff")
 
 object_draft_schematic_food_shared_drink_sullustan_gin = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_sullustan_gin.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4627,11 +5034,15 @@ object_draft_schematic_food_shared_drink_sullustan_gin = SharedDraftSchematicObj
 
 	clientObjectCRC = 1582183508,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_sullustan_gin, "object/draft_schematic/food/shared_drink_sullustan_gin.iff")
 
 object_draft_schematic_food_shared_drink_tatooine_sunburn = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_tatooine_sunburn.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4672,11 +5083,15 @@ object_draft_schematic_food_shared_drink_tatooine_sunburn = SharedDraftSchematic
 
 	clientObjectCRC = 3040174805,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_tatooine_sunburn, "object/draft_schematic/food/shared_drink_tatooine_sunburn.iff")
 
 object_draft_schematic_food_shared_drink_tilla_tiil = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_tilla_tiil.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4717,11 +5132,15 @@ object_draft_schematic_food_shared_drink_tilla_tiil = SharedDraftSchematicObject
 
 	clientObjectCRC = 727640070,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_tilla_tiil, "object/draft_schematic/food/shared_drink_tilla_tiil.iff")
 
 object_draft_schematic_food_shared_drink_tssolok = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_tssolok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4762,11 +5181,15 @@ object_draft_schematic_food_shared_drink_tssolok = SharedDraftSchematicObjectTem
 
 	clientObjectCRC = 568876713,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_tssolok, "object/draft_schematic/food/shared_drink_tssolok.iff")
 
 object_draft_schematic_food_shared_drink_vasarian_brandy = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_vasarian_brandy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4807,11 +5230,15 @@ object_draft_schematic_food_shared_drink_vasarian_brandy = SharedDraftSchematicO
 
 	clientObjectCRC = 483425020,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_vasarian_brandy, "object/draft_schematic/food/shared_drink_vasarian_brandy.iff")
 
 object_draft_schematic_food_shared_drink_vayerbok = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_vayerbok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4852,11 +5279,15 @@ object_draft_schematic_food_shared_drink_vayerbok = SharedDraftSchematicObjectTe
 
 	clientObjectCRC = 823533577,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_vayerbok, "object/draft_schematic/food/shared_drink_vayerbok.iff")
 
 object_draft_schematic_food_shared_drink_veronian_berry_wine = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/shared_drink_veronian_berry_wine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -4897,6 +5328,7 @@ object_draft_schematic_food_shared_drink_veronian_berry_wine = SharedDraftSchema
 
 	clientObjectCRC = 3150731917,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_shared_drink_veronian_berry_wine, "object/draft_schematic/food/shared_drink_veronian_berry_wine.iff")

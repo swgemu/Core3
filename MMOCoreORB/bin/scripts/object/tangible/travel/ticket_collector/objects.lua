@@ -42,6 +42,9 @@
 
 
 object_tangible_travel_ticket_collector_shared_ticket_collector = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/travel/ticket_collector/shared_ticket_collector.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/protocol_droid_silver.sat",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_travel_ticket_collector_shared_ticket_collector = SharedTangible
 
 	clientObjectCRC = 4243633165,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_travel_ticket_collector_shared_ticket_collector, "object/tangible/travel/ticket_collector/shared_ticket_collector.iff")

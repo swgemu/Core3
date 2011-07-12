@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_instrument_shared_instrument_bandfill = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_bandfill.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_instrument_shared_instrument_bandfill = SharedDraftSchema
 
 	clientObjectCRC = 1069929316,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_bandfill, "object/draft_schematic/instrument/shared_instrument_bandfill.iff")
 
 object_draft_schematic_instrument_shared_instrument_base = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_instrument_shared_instrument_base = SharedDraftSchematicO
 
 	clientObjectCRC = 3133647251,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_base, "object/draft_schematic/instrument/shared_instrument_base.iff")
 
 object_draft_schematic_instrument_shared_instrument_drums = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_drums.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_instrument_shared_instrument_drums = SharedDraftSchematic
 
 	clientObjectCRC = 592945841,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_drums, "object/draft_schematic/instrument/shared_instrument_drums.iff")
 
 object_draft_schematic_instrument_shared_instrument_fanfar = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_fanfar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_instrument_shared_instrument_fanfar = SharedDraftSchemati
 
 	clientObjectCRC = 1598981907,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_fanfar, "object/draft_schematic/instrument/shared_instrument_fanfar.iff")
 
 object_draft_schematic_instrument_shared_instrument_fizz = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_fizz.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_instrument_shared_instrument_fizz = SharedDraftSchematicO
 
 	clientObjectCRC = 1476982860,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_fizz, "object/draft_schematic/instrument/shared_instrument_fizz.iff")
 
 object_draft_schematic_instrument_shared_instrument_flute_droopy = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_flute_droopy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_instrument_shared_instrument_flute_droopy = SharedDraftSc
 
 	clientObjectCRC = 3913461118,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_flute_droopy, "object/draft_schematic/instrument/shared_instrument_flute_droopy.iff")
 
 object_draft_schematic_instrument_shared_instrument_kloo_horn = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_kloo_horn.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_instrument_shared_instrument_kloo_horn = SharedDraftSchem
 
 	clientObjectCRC = 4207775926,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_kloo_horn, "object/draft_schematic/instrument/shared_instrument_kloo_horn.iff")
 
 object_draft_schematic_instrument_shared_instrument_mandoviol = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_mandoviol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_instrument_shared_instrument_mandoviol = SharedDraftSchem
 
 	clientObjectCRC = 1835965889,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_mandoviol, "object/draft_schematic/instrument/shared_instrument_mandoviol.iff")
 
 object_draft_schematic_instrument_shared_instrument_nalargon = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_nalargon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_instrument_shared_instrument_nalargon = SharedDraftSchema
 
 	clientObjectCRC = 2180987107,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_nalargon, "object/draft_schematic/instrument/shared_instrument_nalargon.iff")
 
 object_draft_schematic_instrument_shared_instrument_omni_box = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_omni_box.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_instrument_shared_instrument_omni_box = SharedDraftSchema
 
 	clientObjectCRC = 3365239168,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_omni_box, "object/draft_schematic/instrument/shared_instrument_omni_box.iff")
 
 object_draft_schematic_instrument_shared_instrument_organ_figrin_dan = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_organ_figrin_dan.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_instrument_shared_instrument_organ_figrin_dan = SharedDra
 
 	clientObjectCRC = 12716542,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_organ_figrin_dan, "object/draft_schematic/instrument/shared_instrument_organ_figrin_dan.iff")
 
 object_draft_schematic_instrument_shared_instrument_organ_max_rebo = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_organ_max_rebo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_instrument_shared_instrument_organ_max_rebo = SharedDraft
 
 	clientObjectCRC = 747863128,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_organ_max_rebo, "object/draft_schematic/instrument/shared_instrument_organ_max_rebo.iff")
 
 object_draft_schematic_instrument_shared_instrument_slitherhorn = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_slitherhorn.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,11 +673,15 @@ object_draft_schematic_instrument_shared_instrument_slitherhorn = SharedDraftSch
 
 	clientObjectCRC = 2027141215,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_slitherhorn, "object/draft_schematic/instrument/shared_instrument_slitherhorn.iff")
 
 object_draft_schematic_instrument_shared_instrument_traz = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/shared_instrument_traz.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -667,6 +722,7 @@ object_draft_schematic_instrument_shared_instrument_traz = SharedDraftSchematicO
 
 	clientObjectCRC = 1146643573,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_shared_instrument_traz, "object/draft_schematic/instrument/shared_instrument_traz.iff")

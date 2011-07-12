@@ -12,9 +12,9 @@
 
 class SharedWeaponObjectTemplate: public SharedTangibleObjectTemplate {
 protected:
-	String weaponEffect;
-	int weaponEffectIndex;
-	int attackType;
+	StringParam weaponEffect;
+	IntegerParam weaponEffectIndex;
+	IntegerParam attackType;
 
 	int damageType;
 
@@ -62,6 +62,12 @@ public:
 	}
 
 	void readObject(LuaObject* templateData);
+	void readObject(IffStream* iffStream);
+
+	void parseVariableData(const String& varName, Chunk* data);
+	void parseVariableData(const String& varName, LuaObject* templateData);
+
+	void parseFileData(IffStream* iffStream);
 
 	inline String getXpType() const {
 		return xpType;

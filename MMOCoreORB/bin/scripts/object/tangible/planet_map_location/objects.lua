@@ -42,6 +42,9 @@
 
 
 object_tangible_planet_map_location_shared_map_location_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/planet_map_location/shared_map_location_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_waypoint_ai_s02_blue.prt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_planet_map_location_shared_map_location_base = SharedTangibleObj
 
 	clientObjectCRC = 60452333,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_planet_map_location_shared_map_location_base, "object/tangible/planet_map_location/shared_map_location_base.iff")

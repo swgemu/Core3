@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_base_shared_antpile_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_antpile_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_base_shared_antpile_dark = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 326994159,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_antpile_dark, "object/tangible/lair/base/shared_antpile_dark.iff")
 
 object_tangible_lair_base_shared_antpile_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_antpile_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_base_shared_antpile_light = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1286978231,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_antpile_light, "object/tangible/lair/base/shared_antpile_light.iff")
 
 object_tangible_lair_base_shared_bramble_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_bramble_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_base_shared_bramble_dark = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 2767616602,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_bramble_dark, "object/tangible/lair/base/shared_bramble_dark.iff")
 
 object_tangible_lair_base_shared_bramble_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_bramble_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_lair_base_shared_bramble_light = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1681838796,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_bramble_light, "object/tangible/lair/base/shared_bramble_light.iff")
 
 object_tangible_lair_base_shared_cave_small_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_cave_small_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_lair_base_shared_cave_small_dark = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1710583853,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_cave_small_dark, "object/tangible/lair/base/shared_cave_small_dark.iff")
 
 object_tangible_lair_base_shared_cave_small_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_cave_small_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_lair_base_shared_cave_small_light = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1048520930,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_cave_small_light, "object/tangible/lair/base/shared_cave_small_light.iff")
 
 object_tangible_lair_base_shared_earthmound_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_earthmound_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_lair_base_shared_earthmound_dark = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2097596216,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_earthmound_dark, "object/tangible/lair/base/shared_earthmound_dark.iff")
 
 object_tangible_lair_base_shared_earthmound_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_earthmound_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_lair_base_shared_earthmound_light = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2815494954,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_earthmound_light, "object/tangible/lair/base/shared_earthmound_light.iff")
 
 object_tangible_lair_base_shared_lair_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_lair_base_shared_lair_base = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3530316477,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base, "object/tangible/lair/base/shared_lair_base.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_griffon_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_cave_griffon_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_dark = SharedTangibleObj
 
 	clientObjectCRC = 3488597328,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_dark, "object/tangible/lair/base/shared_lair_base_cave_griffon_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_griffon_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_cave_griffon_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_lair_base_shared_lair_base_cave_griffon_light = SharedTangibleOb
 
 	clientObjectCRC = 4201633082,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cave_griffon_light, "object/tangible/lair/base/shared_lair_base_cave_griffon_light.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_lion_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_cave_lion_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_lair_base_shared_lair_base_cave_lion_dark = SharedTangibleObject
 
 	clientObjectCRC = 552648551,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_dark, "object/tangible/lair/base/shared_lair_base_cave_lion_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_cave_lion_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_lair_base_shared_lair_base_cave_lion_light = SharedTangibleObjec
 
 	clientObjectCRC = 418609662,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_cave_lion_light, "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff")
 
 object_tangible_lair_base_shared_lair_base_crevice_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_crevice_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_lair_base_shared_lair_base_crevice_dark = SharedTangibleObjectTe
 
 	clientObjectCRC = 3148303792,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_crevice_dark, "object/tangible/lair/base/shared_lair_base_crevice_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_crevice_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_crevice_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_lair_base_shared_lair_base_crevice_light = SharedTangibleObjectT
 
 	clientObjectCRC = 1096244737,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_crevice_light, "object/tangible/lair/base/shared_lair_base_crevice_light.iff")
 
 object_tangible_lair_base_shared_lair_base_den_earthen_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_den_earthen_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_lair_base_shared_lair_base_den_earthen_dark = SharedTangibleObje
 
 	clientObjectCRC = 3561390098,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_dark, "object/tangible/lair/base/shared_lair_base_den_earthen_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_den_earthen_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_den_earthen_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_lair_base_shared_lair_base_den_earthen_light = SharedTangibleObj
 
 	clientObjectCRC = 879789867,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_den_earthen_light, "object/tangible/lair/base/shared_lair_base_den_earthen_light.iff")
 
 object_tangible_lair_base_shared_lair_base_hovel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_hovel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_sandstone_hovel_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_lair_base_shared_lair_base_hovel = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 734574174,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_hovel, "object/tangible/lair/base/shared_lair_base_hovel.iff")
 
 object_tangible_lair_base_shared_lair_base_imperial_guard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_imperial_guard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_lair_base_shared_lair_base_imperial_guard = SharedTangibleObject
 
 	clientObjectCRC = 3776501697,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_imperial_guard, "object/tangible/lair/base/shared_lair_base_imperial_guard.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_bramble_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_mound_bramble_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_dark = SharedTangibleOb
 
 	clientObjectCRC = 2387382663,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_dark, "object/tangible/lair/base/shared_lair_base_mound_bramble_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_bramble_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_mound_bramble_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_tatt.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_lair_base_shared_lair_base_mound_bramble_light = SharedTangibleO
 
 	clientObjectCRC = 1769762810,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mound_bramble_light, "object/tangible/lair/base/shared_lair_base_mound_bramble_light.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_insect_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_mound_insect_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_lair_base_shared_lair_base_mound_insect_dark = SharedTangibleObj
 
 	clientObjectCRC = 3360926461,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_dark, "object/tangible/lair/base/shared_lair_base_mound_insect_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_mound_insect_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_lair_base_shared_lair_base_mound_insect_light = SharedTangibleOb
 
 	clientObjectCRC = 1481058367,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_mound_insect_light, "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_nest_ground_lg_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark = SharedTangibleO
 
 	clientObjectCRC = 1671618921,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_dark, "object/tangible/lair/base/shared_lair_base_nest_ground_lg_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_ground_lg_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_nest_ground_lg_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_lair_base_shared_lair_base_nest_ground_lg_light = SharedTangible
 
 	clientObjectCRC = 1936204112,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nest_ground_lg_light, "object/tangible/lair/base/shared_lair_base_nest_ground_lg_light.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_nest_tree_lg_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark = SharedTangibleObj
 
 	clientObjectCRC = 3610220706,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_dark, "object/tangible/lair/base/shared_lair_base_nest_tree_lg_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_nest_tree_lg_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_nest_tree_lg_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_lair_base_shared_lair_base_nest_tree_lg_light = SharedTangibleOb
 
 	clientObjectCRC = 1344999922,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_nest_tree_lg_light, "object/tangible/lair/base/shared_lair_base_nest_tree_lg_light.iff")
 
 object_tangible_lair_base_shared_lair_base_rancor_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_rancor_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_lair_base_shared_lair_base_rancor_dark = SharedTangibleObjectTem
 
 	clientObjectCRC = 738621096,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_rancor_dark, "object/tangible/lair/base/shared_lair_base_rancor_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_rancor_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_rancor_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_lair_base_shared_lair_base_rancor_light = SharedTangibleObjectTe
 
 	clientObjectCRC = 3677760922,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_rancor_light, "object/tangible/lair/base/shared_lair_base_rancor_light.iff")
 
 object_tangible_lair_base_shared_lair_base_trash_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_trash_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_lair_base_shared_lair_base_trash_dark = SharedTangibleObjectTemp
 
 	clientObjectCRC = 960523007,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_trash_dark, "object/tangible/lair/base/shared_lair_base_trash_dark.iff")
 
 object_tangible_lair_base_shared_lair_base_trash_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_lair_base_trash_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_lair_base_shared_lair_base_trash_light = SharedTangibleObjectTem
 
 	clientObjectCRC = 3338586753,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_lair_base_trash_light, "object/tangible/lair/base/shared_lair_base_trash_light.iff")
 
 object_tangible_lair_base_shared_nest_tree = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_nest_tree.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_lair_base_shared_nest_tree = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1002824904,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_nest_tree, "object/tangible/lair/base/shared_nest_tree.iff")
 
 object_tangible_lair_base_shared_objective_banner_corellia = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_banner_corellia.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_corl_banner_govt_tall.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_lair_base_shared_objective_banner_corellia = SharedTangibleObjec
 
 	clientObjectCRC = 1575829275,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_corellia, "object/tangible/lair/base/shared_objective_banner_corellia.iff")
 
 object_tangible_lair_base_shared_objective_banner_generic_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_banner_generic_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_banner_generic_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_lair_base_shared_objective_banner_generic_1 = SharedTangibleObje
 
 	clientObjectCRC = 1806591986,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_generic_1, "object/tangible/lair/base/shared_objective_banner_generic_1.iff")
 
 object_tangible_lair_base_shared_objective_banner_generic_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_banner_generic_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_banner_generic_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_lair_base_shared_objective_banner_generic_2 = SharedTangibleObje
 
 	clientObjectCRC = 2964967269,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_generic_2, "object/tangible/lair/base/shared_objective_banner_generic_2.iff")
 
 object_tangible_lair_base_shared_objective_banner_imperial = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_banner_imperial.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_lair_base_shared_objective_banner_imperial = SharedTangibleObjec
 
 	clientObjectCRC = 3154468577,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_imperial, "object/tangible/lair/base/shared_objective_banner_imperial.iff")
 
 object_tangible_lair_base_shared_objective_banner_rebel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_banner_rebel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_tangible_lair_base_shared_objective_banner_rebel = SharedTangibleObjectTe
 
 	clientObjectCRC = 3574902738,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_rebel, "object/tangible/lair/base/shared_objective_banner_rebel.iff")
 
 object_tangible_lair_base_shared_objective_banner_tatooine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_banner_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_tato_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_tangible_lair_base_shared_objective_banner_tatooine = SharedTangibleObjec
 
 	clientObjectCRC = 1638817412,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_banner_tatooine, "object/tangible/lair/base/shared_objective_banner_tatooine.iff")
 
 object_tangible_lair_base_shared_objective_dantari_fire_pit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_dantari_fire_pit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dant_fire_pit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,11 +2337,15 @@ object_tangible_lair_base_shared_objective_dantari_fire_pit = SharedTangibleObje
 
 	clientObjectCRC = 1367098929,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_dantari_fire_pit, "object/tangible/lair/base/shared_objective_dantari_fire_pit.iff")
 
 object_tangible_lair_base_shared_objective_dantari_monolith = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_dantari_monolith.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dant_totem_pole.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2237,11 +2396,15 @@ object_tangible_lair_base_shared_objective_dantari_monolith = SharedTangibleObje
 
 	clientObjectCRC = 426269176,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_dantari_monolith, "object/tangible/lair/base/shared_objective_dantari_monolith.iff")
 
 object_tangible_lair_base_shared_objective_data_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_data_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2292,11 +2455,15 @@ object_tangible_lair_base_shared_objective_data_terminal = SharedTangibleObjectT
 
 	clientObjectCRC = 1140811690,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_data_terminal, "object/tangible/lair/base/shared_objective_data_terminal.iff")
 
 object_tangible_lair_base_shared_objective_gungan_statue = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_gungan_statue.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_statue_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2347,11 +2514,15 @@ object_tangible_lair_base_shared_objective_gungan_statue = SharedTangibleObjectT
 
 	clientObjectCRC = 2446722637,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_gungan_statue, "object/tangible/lair/base/shared_objective_gungan_statue.iff")
 
 object_tangible_lair_base_shared_objective_main_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_main_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2402,11 +2573,15 @@ object_tangible_lair_base_shared_objective_main_terminal = SharedTangibleObjectT
 
 	clientObjectCRC = 3090575675,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_main_terminal, "object/tangible/lair/base/shared_objective_main_terminal.iff")
 
 object_tangible_lair_base_shared_objective_mts_clan_monolith = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_mts_clan_monolith.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dath_mtn_clan_pillar_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2457,11 +2632,15 @@ object_tangible_lair_base_shared_objective_mts_clan_monolith = SharedTangibleObj
 
 	clientObjectCRC = 4290984139,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_mts_clan_monolith, "object/tangible/lair/base/shared_objective_mts_clan_monolith.iff")
 
 object_tangible_lair_base_shared_objective_power_generator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_power_generator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_corl_power_transformer_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2512,11 +2691,15 @@ object_tangible_lair_base_shared_objective_power_generator = SharedTangibleObjec
 
 	clientObjectCRC = 468482047,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_power_generator, "object/tangible/lair/base/shared_objective_power_generator.iff")
 
 object_tangible_lair_base_shared_objective_power_node = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_power_node.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_corl_power_bubble_node.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2567,11 +2750,15 @@ object_tangible_lair_base_shared_objective_power_node = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2086368006,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_power_node, "object/tangible/lair/base/shared_objective_power_node.iff")
 
 object_tangible_lair_base_shared_objective_power_transformer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_objective_power_transformer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_corl_power_transformer_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2622,11 +2809,15 @@ object_tangible_lair_base_shared_objective_power_transformer = SharedTangibleObj
 
 	clientObjectCRC = 3115996224,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_objective_power_transformer, "object/tangible/lair/base/shared_objective_power_transformer.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2677,11 +2868,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones = SharedTangibleObjectTempla
 
 	clientObjectCRC = 3142299424,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones, "object/tangible/lair/base/shared_poi_all_lair_bones.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2732,11 +2927,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green = SharedTang
 
 	clientObjectCRC = 2845871690,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2787,11 +2986,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red = SharedTangib
 
 	clientObjectCRC = 1770695820,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2842,11 +3045,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small = SharedTang
 
 	clientObjectCRC = 3803873203,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_bones_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2897,11 +3104,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray = SharedTangibleObj
 
 	clientObjectCRC = 430580141,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2952,11 +3163,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_green = SharedTangibleOb
 
 	clientObjectCRC = 965028408,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_green, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3007,11 +3222,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard = SharedTangible
 
 	clientObjectCRC = 3554933816,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3062,11 +3281,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_fog_red = SharedTangibleObje
 
 	clientObjectCRC = 1163934021,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_fog_red, "object/tangible/lair/base/shared_poi_all_lair_bones_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3117,11 +3340,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large = SharedTangibleObject
 
 	clientObjectCRC = 1362281265,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large, "object/tangible/lair/base/shared_poi_all_lair_bones_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3172,11 +3399,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green = Shar
 
 	clientObjectCRC = 3202178196,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3227,11 +3458,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red = Shared
 
 	clientObjectCRC = 287273685,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3282,11 +3517,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small = Shar
 
 	clientObjectCRC = 4123503981,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_bones_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3337,11 +3576,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray = SharedTangi
 
 	clientObjectCRC = 2627450629,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3392,11 +3635,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green = SharedTang
 
 	clientObjectCRC = 1994000829,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3447,11 +3694,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard = SharedTa
 
 	clientObjectCRC = 1283439590,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bones_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3502,11 +3753,15 @@ object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red = SharedTangib
 
 	clientObjectCRC = 4286037128,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_bones_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_bones_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3557,11 +3812,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large = SharedTangibleObj
 
 	clientObjectCRC = 2971623955,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large, "object/tangible/lair/base/shared_poi_all_lair_brambles_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3612,11 +3871,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green = S
 
 	clientObjectCRC = 3450920549,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3667,11 +3930,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red = Sha
 
 	clientObjectCRC = 3728817132,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3722,11 +3989,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small = S
 
 	clientObjectCRC = 2259300252,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3777,11 +4048,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog = SharedTangibl
 
 	clientObjectCRC = 1837327181,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3832,11 +4107,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray = SharedTa
 
 	clientObjectCRC = 1099426587,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3887,11 +4166,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green = SharedT
 
 	clientObjectCRC = 1255201415,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3942,11 +4225,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard = Share
 
 	clientObjectCRC = 1330750206,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3997,11 +4284,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red = SharedTan
 
 	clientObjectCRC = 3991876404,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4052,11 +4343,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small = SharedTangibleObj
 
 	clientObjectCRC = 2231694906,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4107,11 +4402,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green = S
 
 	clientObjectCRC = 3553159285,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4162,11 +4461,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red = Sha
 
 	clientObjectCRC = 1553145843,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4217,11 +4520,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small = S
 
 	clientObjectCRC = 2563905932,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4272,11 +4579,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray = SharedTa
 
 	clientObjectCRC = 1638603949,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4327,11 +4638,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green = SharedT
 
 	clientObjectCRC = 4261730919,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4382,11 +4697,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard = Share
 
 	clientObjectCRC = 3128216527,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_brambles_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4437,11 +4756,15 @@ object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red = SharedTan
 
 	clientObjectCRC = 1159215224,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_brambles_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_brambles_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4492,11 +4815,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large = SharedTangibleObj
 
 	clientObjectCRC = 759277072,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4547,11 +4874,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green = S
 
 	clientObjectCRC = 3507525090,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4602,11 +4933,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red = Sha
 
 	clientObjectCRC = 2858454846,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4657,11 +4992,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small = S
 
 	clientObjectCRC = 2584372251,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4712,11 +5051,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray = SharedTa
 
 	clientObjectCRC = 1743001105,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4767,11 +5110,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green = SharedT
 
 	clientObjectCRC = 2877828053,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4822,11 +5169,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard = Share
 
 	clientObjectCRC = 3521947503,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4877,11 +5228,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red = SharedTan
 
 	clientObjectCRC = 3824541289,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4932,11 +5287,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small = SharedTangibleObj
 
 	clientObjectCRC = 425341497,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4987,11 +5346,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green = S
 
 	clientObjectCRC = 3479741426,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5042,11 +5405,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red = Sha
 
 	clientObjectCRC = 682797857,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5097,11 +5464,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small = S
 
 	clientObjectCRC = 2222084619,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5152,11 +5523,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray = SharedTa
 
 	clientObjectCRC = 1204347303,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5207,11 +5582,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green = SharedT
 
 	clientObjectCRC = 526134069,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5262,11 +5641,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard = Share
 
 	clientObjectCRC = 617205342,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_dead_log_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5317,11 +5700,15 @@ object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red = SharedTan
 
 	clientObjectCRC = 1258476837,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_dead_log_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_dead_log_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5372,11 +5759,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large = SharedTangibleObje
 
 	clientObjectCRC = 2517129351,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large, "object/tangible/lair/base/shared_poi_all_lair_garbage_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5427,11 +5818,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green = Sh
 
 	clientObjectCRC = 2898447287,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5482,11 +5877,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red = Shar
 
 	clientObjectCRC = 182921096,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5537,11 +5936,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small = Sh
 
 	clientObjectCRC = 3889707598,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5592,11 +5995,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray = SharedTan
 
 	clientObjectCRC = 823883732,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5647,11 +6054,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green = SharedTa
 
 	clientObjectCRC = 922224736,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5702,11 +6113,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard = Shared
 
 	clientObjectCRC = 2638567972,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5757,11 +6172,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red = SharedTang
 
 	clientObjectCRC = 2777489717,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5812,11 +6231,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small = SharedTangibleObje
 
 	clientObjectCRC = 2719206574,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5867,11 +6290,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green = Sh
 
 	clientObjectCRC = 2998599079,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5922,11 +6349,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red = Shar
 
 	clientObjectCRC = 2285175703,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5977,11 +6408,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small = Sh
 
 	clientObjectCRC = 4188015710,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6032,11 +6467,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray = SharedTan
 
 	clientObjectCRC = 288850018,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6087,11 +6526,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green = SharedTa
 
 	clientObjectCRC = 2183923840,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6142,11 +6585,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard = Shared
 
 	clientObjectCRC = 1751134997,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_garbage_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6197,11 +6644,15 @@ object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red = SharedTang
 
 	clientObjectCRC = 226110073,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_garbage_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_garbage_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6252,11 +6703,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large = SharedTangibleO
 
 	clientObjectCRC = 2912626123,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6307,11 +6762,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green =
 
 	clientObjectCRC = 1861288469,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6362,11 +6821,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red = S
 
 	clientObjectCRC = 2385068823,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6417,11 +6880,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small =
 
 	clientObjectCRC = 636220396,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6472,11 +6939,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray = Shared
 
 	clientObjectCRC = 1730491297,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6527,11 +6998,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green = Share
 
 	clientObjectCRC = 1789762517,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6582,11 +7057,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard = Sha
 
 	clientObjectCRC = 4292415468,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6637,11 +7116,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red = SharedT
 
 	clientObjectCRC = 2995341818,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6692,11 +7175,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small = SharedTangibleO
 
 	clientObjectCRC = 2575348194,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6747,11 +7234,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green =
 
 	clientObjectCRC = 1888039941,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6802,11 +7293,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red = S
 
 	clientObjectCRC = 217802504,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6857,11 +7352,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small =
 
 	clientObjectCRC = 999540220,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6912,11 +7411,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray = Shared
 
 	clientObjectCRC = 1191822359,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6967,11 +7470,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green = Share
 
 	clientObjectCRC = 3732511541,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7022,11 +7529,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard = Sha
 
 	clientObjectCRC = 184313565,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_insecthill_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7077,11 +7588,15 @@ object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red = SharedT
 
 	clientObjectCRC = 444482230,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_insecthill_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_insecthill_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7132,11 +7647,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large = SharedTangibleObjectT
 
 	clientObjectCRC = 228848137,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large, "object/tangible/lair/base/shared_poi_all_lair_leaf_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7187,11 +7706,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green = Share
 
 	clientObjectCRC = 289667785,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7242,11 +7765,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red = SharedT
 
 	clientObjectCRC = 2898038316,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7297,11 +7824,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small = Share
 
 	clientObjectCRC = 1515785008,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7352,11 +7883,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray = SharedTangib
 
 	clientObjectCRC = 1207051318,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7407,11 +7942,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green = SharedTangi
 
 	clientObjectCRC = 630831669,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7462,11 +8001,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard = SharedTan
 
 	clientObjectCRC = 3855500740,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7517,11 +8060,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red = SharedTangibl
 
 	clientObjectCRC = 3523558187,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_medium = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7572,11 +8119,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_medium = SharedTangibleObject
 
 	clientObjectCRC = 3643744513,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_medium, "object/tangible/lair/base/shared_poi_all_lair_leaf_medium.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7627,11 +8178,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small = SharedTangibleObjectT
 
 	clientObjectCRC = 968386080,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7682,11 +8237,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green = Share
 
 	clientObjectCRC = 255577305,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7737,11 +8296,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red = SharedT
 
 	clientObjectCRC = 779004467,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7792,11 +8355,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small = Share
 
 	clientObjectCRC = 1143029024,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7847,11 +8414,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray = SharedTangib
 
 	clientObjectCRC = 1742656384,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7902,11 +8473,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green = SharedTangi
 
 	clientObjectCRC = 2437790421,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7957,11 +8532,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard = SharedTan
 
 	clientObjectCRC = 283847925,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_leaf_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8012,11 +8591,15 @@ object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red = SharedTangibl
 
 	clientObjectCRC = 2062692455,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_leaf_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_leaf_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8067,11 +8650,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large = SharedTangibleObject
 
 	clientObjectCRC = 420187503,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large, "object/tangible/lair/base/shared_poi_all_lair_mound_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8122,11 +8709,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green = Shar
 
 	clientObjectCRC = 1540415537,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8177,11 +8768,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red = Shared
 
 	clientObjectCRC = 3337919854,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8232,11 +8827,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small = Shar
 
 	clientObjectCRC = 281678280,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_mound_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8287,11 +8886,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray = SharedTangi
 
 	clientObjectCRC = 2881445329,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8342,11 +8945,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green = SharedTang
 
 	clientObjectCRC = 2554716200,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8397,11 +9004,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard = SharedTa
 
 	clientObjectCRC = 877609923,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8452,11 +9063,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red = SharedTangib
 
 	clientObjectCRC = 2718548559,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_mound_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8507,11 +9122,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small = SharedTangibleObject
 
 	clientObjectCRC = 756029766,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small, "object/tangible/lair/base/shared_poi_all_lair_mound_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8562,11 +9181,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green = Shar
 
 	clientObjectCRC = 1168692769,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8617,11 +9240,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red = Shared
 
 	clientObjectCRC = 1143388529,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8672,11 +9299,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small = Shar
 
 	clientObjectCRC = 246556632,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_mound_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8727,11 +9358,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray = SharedTangi
 
 	clientObjectCRC = 2341710439,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8782,11 +9417,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green = SharedTang
 
 	clientObjectCRC = 747757768,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8837,11 +9476,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard = SharedTa
 
 	clientObjectCRC = 3244960498,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_mound_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8892,11 +9535,15 @@ object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red = SharedTangib
 
 	clientObjectCRC = 184469763,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_mound_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_mound_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8947,11 +9594,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large = SharedTangibleObjectT
 
 	clientObjectCRC = 2815445201,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large, "object/tangible/lair/base/shared_poi_all_lair_nest_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9002,11 +9653,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green = Share
 
 	clientObjectCRC = 1869084369,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9057,11 +9712,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red = SharedT
 
 	clientObjectCRC = 622648314,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9112,11 +9771,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small = Share
 
 	clientObjectCRC = 612173608,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_nest_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9167,11 +9830,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray = SharedTangib
 
 	clientObjectCRC = 2401663752,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9222,11 +9889,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green = SharedTangi
 
 	clientObjectCRC = 2319776020,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9277,11 +9948,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard = SharedTan
 
 	clientObjectCRC = 2568051560,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9332,11 +10007,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red = SharedTangibl
 
 	clientObjectCRC = 2703235151,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_nest_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9387,11 +10066,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small = SharedTangibleObjectT
 
 	clientObjectCRC = 2479611128,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small, "object/tangible/lair/base/shared_poi_all_lair_nest_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9442,11 +10125,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green = Share
 
 	clientObjectCRC = 1897906369,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9497,11 +10184,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red = SharedT
 
 	clientObjectCRC = 2815360997,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9552,11 +10243,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small = Share
 
 	clientObjectCRC = 973418808,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_nest_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9607,11 +10302,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray = SharedTangib
 
 	clientObjectCRC = 2936704190,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9662,11 +10361,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green = SharedTangi
 
 	clientObjectCRC = 1049688564,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9717,11 +10420,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard = SharedTan
 
 	clientObjectCRC = 1815360089,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9772,11 +10479,15 @@ object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red = SharedTangibl
 
 	clientObjectCRC = 165090051,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_nest_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_nest_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9827,11 +10538,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large = SharedTangibl
 
 	clientObjectCRC = 4005767247,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9882,11 +10597,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green
 
 	clientObjectCRC = 643219996,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9937,11 +10656,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red =
 
 	clientObjectCRC = 58803054,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -9992,11 +10715,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small
 
 	clientObjectCRC = 1833710565,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10047,11 +10774,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray = Shar
 
 	clientObjectCRC = 534560840,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10102,11 +10833,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green = Sha
 
 	clientObjectCRC = 1440907914,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10157,11 +10892,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard = S
 
 	clientObjectCRC = 1731875387,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10212,11 +10951,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red = Share
 
 	clientObjectCRC = 1658858306,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10267,11 +11010,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small = SharedTangibl
 
 	clientObjectCRC = 3671637094,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10322,11 +11069,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green
 
 	clientObjectCRC = 942601228,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10377,11 +11128,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red =
 
 	clientObjectCRC = 2169726833,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10432,11 +11187,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small
 
 	clientObjectCRC = 1932789237,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10487,11 +11246,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray = Shar
 
 	clientObjectCRC = 1072707582,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10542,11 +11305,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green = Sha
 
 	clientObjectCRC = 3778445930,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10597,11 +11364,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard = S
 
 	clientObjectCRC = 2451520266,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rock_shelter_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10652,11 +11423,15 @@ object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red = Share
 
 	clientObjectCRC = 3390513166,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rock_shelter_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rock_shelter_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10707,11 +11482,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large = SharedTangibleObject
 
 	clientObjectCRC = 2207500291,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large, "object/tangible/lair/base/shared_poi_all_lair_rocks_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10762,11 +11541,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green = Shar
 
 	clientObjectCRC = 2753825733,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10817,11 +11600,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red = Shared
 
 	clientObjectCRC = 708322841,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10872,11 +11659,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small = Shar
 
 	clientObjectCRC = 4013881916,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10927,11 +11718,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray = SharedTangi
 
 	clientObjectCRC = 4032828716,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -10982,11 +11777,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green = SharedTang
 
 	clientObjectCRC = 349273422,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11037,11 +11836,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard = SharedTa
 
 	clientObjectCRC = 3536893154,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11092,11 +11895,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red = SharedTangib
 
 	clientObjectCRC = 1849334540,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11147,11 +11954,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small = SharedTangibleObject
 
 	clientObjectCRC = 3079167018,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11202,11 +12013,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green = Shar
 
 	clientObjectCRC = 3126607317,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11257,11 +12072,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red = Shared
 
 	clientObjectCRC = 2833908230,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11312,11 +12131,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small = Shar
 
 	clientObjectCRC = 4047948844,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11367,11 +12190,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray = SharedTangi
 
 	clientObjectCRC = 3494699674,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11422,11 +12249,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green = SharedTang
 
 	clientObjectCRC = 2684714414,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11477,11 +12308,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard = SharedTa
 
 	clientObjectCRC = 670424531,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rocks_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11532,11 +12367,15 @@ object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red = SharedTangib
 
 	clientObjectCRC = 3335360576,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_rocks_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_rocks_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11587,11 +12426,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large = SharedTangibleObje
 
 	clientObjectCRC = 1820503108,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large, "object/tangible/lair/base/shared_poi_all_lair_thicket_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11642,11 +12485,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray = Sha
 
 	clientObjectCRC = 3034883500,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11697,11 +12544,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green = Sh
 
 	clientObjectCRC = 3085171685,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11752,11 +12603,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red = Shar
 
 	clientObjectCRC = 3961426279,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11807,11 +12662,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small = Sh
 
 	clientObjectCRC = 4244179484,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11862,11 +12721,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray = SharedTan
 
 	clientObjectCRC = 939589773,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11917,11 +12780,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green = SharedTa
 
 	clientObjectCRC = 239509871,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -11972,11 +12839,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard = Shared
 
 	clientObjectCRC = 255891767,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12027,11 +12898,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red = SharedTang
 
 	clientObjectCRC = 619312831,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12082,11 +12957,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small = SharedTangibleObje
 
 	clientObjectCRC = 1486436461,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12137,11 +13016,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green = Sh
 
 	clientObjectCRC = 2845560309,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12192,11 +13075,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red = Shar
 
 	clientObjectCRC = 1858909560,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12247,11 +13134,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small = Sh
 
 	clientObjectCRC = 3800120332,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12302,11 +13193,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray = SharedTan
 
 	clientObjectCRC = 405665595,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12357,11 +13252,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green = SharedTa
 
 	clientObjectCRC = 3130171791,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12412,11 +13311,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard = Shared
 
 	clientObjectCRC = 4200984582,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_thicket_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12467,11 +13370,15 @@ object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red = SharedTang
 
 	clientObjectCRC = 2350841331,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_thicket_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_thicket_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12522,11 +13429,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large = SharedTangibleObjec
 
 	clientObjectCRC = 4287958045,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large, "object/tangible/lair/base/shared_poi_all_lair_warren_large.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12577,11 +13488,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green = Sha
 
 	clientObjectCRC = 637821318,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12632,11 +13547,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red = Share
 
 	clientObjectCRC = 28715451,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12687,11 +13606,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small = Sha
 
 	clientObjectCRC = 1830719615,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_warren_large_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12742,11 +13665,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray = SharedTang
 
 	clientObjectCRC = 2592614872,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12797,11 +13724,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green = SharedTan
 
 	clientObjectCRC = 2143459599,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_green, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12852,11 +13783,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard = SharedT
 
 	clientObjectCRC = 4001697696,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12907,11 +13842,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red = SharedTangi
 
 	clientObjectCRC = 1387351494,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_large_fog_red, "object/tangible/lair/base/shared_poi_all_lair_warren_large_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -12962,11 +13901,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small = SharedTangibleObjec
 
 	clientObjectCRC = 3415119924,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small, "object/tangible/lair/base/shared_poi_all_lair_warren_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13017,11 +13960,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green = Sha
 
 	clientObjectCRC = 947672982,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13072,11 +14019,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red = Share
 
 	clientObjectCRC = 2204372388,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13127,11 +14078,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small = Sha
 
 	clientObjectCRC = 1936107119,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_warren_small_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13182,11 +14137,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray = SharedTang
 
 	clientObjectCRC = 3131367022,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13237,11 +14196,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green = SharedTan
 
 	clientObjectCRC = 3407256047,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_green, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13292,11 +14255,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard = SharedT
 
 	clientObjectCRC = 463496849,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_warren_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13347,11 +14314,15 @@ object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red = SharedTangi
 
 	clientObjectCRC = 4198909578,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_warren_small_fog_red, "object/tangible/lair/base/shared_poi_all_lair_warren_small_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13402,11 +14373,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1183728413,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden, "object/tangible/lair/base/shared_poi_all_lair_wooden.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13457,11 +14432,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed = SharedTangibleO
 
 	clientObjectCRC = 4124016419,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13512,11 +14491,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green =
 
 	clientObjectCRC = 329214614,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13567,11 +14550,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red = S
 
 	clientObjectCRC = 238872353,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13622,11 +14609,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small =
 
 	clientObjectCRC = 1485151087,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13677,11 +14668,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray = Shared
 
 	clientObjectCRC = 2993244082,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13732,11 +14727,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green = Share
 
 	clientObjectCRC = 545761367,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13787,11 +14786,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard = Sha
 
 	clientObjectCRC = 269409995,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden_destroyed.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13842,11 +14845,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red = SharedT
 
 	clientObjectCRC = 4267544421,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_destroyed_fog_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_destroyed_fog_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13897,11 +14904,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green = SharedTan
 
 	clientObjectCRC = 3398422442,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
 	arrangementDescriptorFilename = "",
 
@@ -13952,11 +14963,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red = SharedTangi
 
 	clientObjectCRC = 2885574443,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_red.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
 	arrangementDescriptorFilename = "",
 
@@ -14007,11 +15022,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small = SharedTan
 
 	clientObjectCRC = 2174041683,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_evil_fire_small, "object/tangible/lair/base/shared_poi_all_lair_wooden_evil_fire_small.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_gray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
 	arrangementDescriptorFilename = "",
 
@@ -14062,11 +15081,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray = SharedTangibleOb
 
 	clientObjectCRC = 2521819744,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_gray, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_gray.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_green.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
 	arrangementDescriptorFilename = "",
 
@@ -14117,11 +15140,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green = SharedTangibleO
 
 	clientObjectCRC = 2366487147,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_green, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_green.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_mustard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
 	arrangementDescriptorFilename = "",
 
@@ -14172,11 +15199,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard = SharedTangibl
 
 	clientObjectCRC = 4226721130,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_mustard, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_mustard.iff")
 
 object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_wooden.apt",
 	arrangementDescriptorFilename = "",
 
@@ -14227,11 +15258,15 @@ object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red = SharedTangibleObj
 
 	clientObjectCRC = 1520141032,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_poi_all_lair_wooden_fog_red, "object/tangible/lair/base/shared_poi_all_lair_wooden_fog_red.iff")
 
 object_tangible_lair_base_shared_rancor_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_rancor_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -14282,11 +15317,15 @@ object_tangible_lair_base_shared_rancor_dark = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2089078932,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_rancor_dark, "object/tangible/lair/base/shared_rancor_dark.iff")
 
 object_tangible_lair_base_shared_rancor_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_rancor_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -14337,11 +15376,15 @@ object_tangible_lair_base_shared_rancor_light = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 554154653,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_rancor_light, "object/tangible/lair/base/shared_rancor_light.iff")
 
 object_tangible_lair_base_shared_trash_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/base/shared_trash_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -14392,6 +15435,7 @@ object_tangible_lair_base_shared_trash_dark = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 496750489,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_base_shared_trash_dark, "object/tangible/lair/base/shared_trash_dark.iff")

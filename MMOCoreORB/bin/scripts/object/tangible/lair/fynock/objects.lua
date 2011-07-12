@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_fynock_shared_lair_fynock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/fynock/shared_lair_fynock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_fynock_shared_lair_fynock = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2394100347,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_fynock_shared_lair_fynock, "object/tangible/lair/fynock/shared_lair_fynock.iff")
 
 object_tangible_lair_fynock_shared_lair_fynock_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/fynock/shared_lair_fynock_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_fynock_shared_lair_fynock_forest = SharedTangibleObjectTemp
 
 	clientObjectCRC = 577876063,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_fynock_shared_lair_fynock_forest, "object/tangible/lair/fynock/shared_lair_fynock_forest.iff")

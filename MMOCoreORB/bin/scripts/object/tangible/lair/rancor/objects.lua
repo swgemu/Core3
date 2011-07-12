@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_rancor_shared_lair_rancor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/rancor/shared_lair_rancor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_rancor_shared_lair_rancor = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2318276825,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rancor_shared_lair_rancor, "object/tangible/lair/rancor/shared_lair_rancor.iff")
 
 object_tangible_lair_rancor_shared_lair_rancor_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/rancor/shared_lair_rancor_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_rancor_shared_lair_rancor_desert = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2929914812,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rancor_shared_lair_rancor_desert, "object/tangible/lair/rancor/shared_lair_rancor_desert.iff")
 
 object_tangible_lair_rancor_shared_lair_rancor_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/rancor/shared_lair_rancor_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_rancor_shared_lair_rancor_mountain = SharedTangibleObjectTe
 
 	clientObjectCRC = 2174078931,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rancor_shared_lair_rancor_mountain, "object/tangible/lair/rancor/shared_lair_rancor_mountain.iff")

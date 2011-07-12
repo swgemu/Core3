@@ -42,6 +42,9 @@
 
 
 object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/theme_park/shared_event_transport.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_event_transport.sat",
@@ -116,11 +119,15 @@ object_creature_npc_theme_park_shared_event_transport = SharedCreatureObjectTemp
 
 	clientObjectCRC = 1686537229,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_event_transport, "object/creature/npc/theme_park/shared_event_transport.iff")
 
 object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/theme_park/shared_event_transport_theed_hangar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_event_transport.sat",
@@ -195,11 +202,15 @@ object_creature_npc_theme_park_shared_event_transport_theed_hangar = SharedCreat
 
 	clientObjectCRC = 3010351388,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_event_transport_theed_hangar, "object/creature/npc/theme_park/shared_event_transport_theed_hangar.iff")
 
 object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/theme_park/shared_lambda_shuttle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/lamda_shuttle_faction_perk.sat",
@@ -274,11 +285,15 @@ object_creature_npc_theme_park_shared_lambda_shuttle = SharedCreatureObjectTempl
 
 	clientObjectCRC = 3752954766,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_lambda_shuttle, "object/creature/npc/theme_park/shared_lambda_shuttle.iff")
 
 object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/theme_park/shared_lambda_shuttle_faction_perk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/lamda_shuttle_faction_perk.sat",
@@ -353,11 +368,15 @@ object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk = SharedCreatu
 
 	clientObjectCRC = 3655546204,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_lambda_shuttle_faction_perk, "object/creature/npc/theme_park/shared_lambda_shuttle_faction_perk.iff")
 
 object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/theme_park/shared_player_shuttle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_shuttle.sat",
@@ -432,11 +451,15 @@ object_creature_npc_theme_park_shared_player_shuttle = SharedCreatureObjectTempl
 
 	clientObjectCRC = 1984806965,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_player_shuttle, "object/creature/npc/theme_park/shared_player_shuttle.iff")
 
 object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/theme_park/shared_player_transport.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_transport.sat",
@@ -511,11 +534,15 @@ object_creature_npc_theme_park_shared_player_transport = SharedCreatureObjectTem
 
 	clientObjectCRC = 1196401137,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_player_transport, "object/creature/npc/theme_park/shared_player_transport.iff")
 
 object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/theme_park/shared_player_transport_theed_hangar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/player_transport_theed_hangar.sat",
@@ -590,6 +617,7 @@ object_creature_npc_theme_park_shared_player_transport_theed_hangar = SharedCrea
 
 	clientObjectCRC = 773296996,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_theme_park_shared_player_transport_theed_hangar, "object/creature/npc/theme_park/shared_player_transport_theed_hangar.iff")

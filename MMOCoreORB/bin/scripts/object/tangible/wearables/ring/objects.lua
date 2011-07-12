@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_ring_shared_aakuan_ring = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/ring/shared_aakuan_ring.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ring_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_ring_shared_aakuan_ring = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 923373873,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_aakuan_ring, "object/tangible/wearables/ring/shared_aakuan_ring.iff")
 
 object_tangible_wearables_ring_shared_ring_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/ring/shared_ring_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_ring_shared_ring_base = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 4136025825,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_base, "object/tangible/wearables/ring/shared_ring_base.iff")
 
 object_tangible_wearables_ring_shared_ring_mark_hero = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/ring/shared_ring_mark_hero.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ring_quest_hero.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_ring_shared_ring_mark_hero = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3368096094,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_mark_hero, "object/tangible/wearables/ring/shared_ring_mark_hero.iff")
 
 object_tangible_wearables_ring_shared_ring_nightsister = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/ring/shared_ring_nightsister.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ring_s03.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_ring_shared_ring_nightsister = SharedTangibleObjectTem
 
 	clientObjectCRC = 186168033,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_nightsister, "object/tangible/wearables/ring/shared_ring_nightsister.iff")
 
 object_tangible_wearables_ring_shared_ring_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/ring/shared_ring_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ring_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_ring_shared_ring_s01 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1300460406,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s01, "object/tangible/wearables/ring/shared_ring_s01.iff")
 
 object_tangible_wearables_ring_shared_ring_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/ring/shared_ring_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ring_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_ring_shared_ring_s02 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2526338017,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s02, "object/tangible/wearables/ring/shared_ring_s02.iff")
 
 object_tangible_wearables_ring_shared_ring_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/ring/shared_ring_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ring_s03.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_ring_shared_ring_s03 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3751394412,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s03, "object/tangible/wearables/ring/shared_ring_s03.iff")
 
 object_tangible_wearables_ring_shared_ring_s03_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/ring/shared_ring_s03_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ring_s03.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_ring_shared_ring_s03_quest = SharedTangibleObjectTempl
 
 	clientObjectCRC = 266162342,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff", "object/tangible/wearables/ring/shared_ring_s03.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s03_quest, "object/tangible/wearables/ring/shared_ring_s03_quest.iff")
 
 object_tangible_wearables_ring_shared_ring_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/ring/shared_ring_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ring_s04.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/ring_either.iff",
 
@@ -532,6 +567,7 @@ object_tangible_wearables_ring_shared_ring_s04 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 612013944,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_ring_either.iff", "object/tangible/wearables/ring/shared_ring_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_ring_shared_ring_s04, "object/tangible/wearables/ring/shared_ring_s04.iff")

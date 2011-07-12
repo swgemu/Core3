@@ -42,6 +42,9 @@
 
 
 object_tangible_container_base_shared_base_container = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/base/shared_base_container.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_container_base_shared_base_container = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1607613666,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_base_shared_base_container, "object/tangible/container/base/shared_base_container.iff")
 
 object_tangible_container_base_shared_base_container_slotted = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/base/shared_base_container_slotted.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_container_base_shared_base_container_slotted = SharedTangibleObj
 
 	clientObjectCRC = 2617825065,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_base_shared_base_container_slotted, "object/tangible/container/base/shared_base_container_slotted.iff")
 
 object_tangible_container_base_shared_base_container_volume = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/base/shared_base_container_volume.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_container_base_shared_base_container_volume = SharedTangibleObje
 
 	clientObjectCRC = 2281415090,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_base_shared_base_container_volume, "object/tangible/container/base/shared_base_container_volume.iff")

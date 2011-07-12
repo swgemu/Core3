@@ -42,6 +42,9 @@
 
 
 object_tangible_sign_base_shared_base_sign = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/base/shared_base_sign.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_gravestone_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_sign_base_shared_base_sign = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 675816768,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_base_shared_base_sign, "object/tangible/sign/base/shared_base_sign.iff")

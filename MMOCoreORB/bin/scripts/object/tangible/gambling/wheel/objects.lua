@@ -42,6 +42,9 @@
 
 
 object_tangible_gambling_wheel_shared_roulette = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gambling/wheel/shared_roulette.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_gaming_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_gambling_wheel_shared_roulette = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2596039133,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/gambling/base/shared_gambling_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gambling_wheel_shared_roulette, "object/tangible/gambling/wheel/shared_roulette.iff")

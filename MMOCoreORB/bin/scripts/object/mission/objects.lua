@@ -42,6 +42,9 @@
 
 
 object_mission_shared_mission_data_object = SharedMissionDataObjectTemplate:new {
+	clientTemplateFileName = "object/mission/shared_mission_data_object.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_mission_shared_mission_data_object = SharedMissionDataObjectTemplate:new 
 
 	clientObjectCRC = 3205608574,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mission_shared_mission_data_object, "object/mission/shared_mission_data_object.iff")
 
 object_mission_shared_mission_list_entry_object = SharedMissionListEntryObjectTemplate:new {
+	clientTemplateFileName = "object/mission/shared_mission_list_entry_object.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_destroy.spr",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_mission_shared_mission_list_entry_object = SharedMissionListEntryObjectTe
 
 	clientObjectCRC = 2729425872,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mission_shared_mission_list_entry_object, "object/mission/shared_mission_list_entry_object.iff")
 
 object_mission_shared_mission_object = SharedMissionObjectTemplate:new {
+	clientTemplateFileName = "object/mission/shared_mission_object.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_destroy.spr",
 	arrangementDescriptorFilename = "",
 
@@ -172,6 +183,7 @@ object_mission_shared_mission_object = SharedMissionObjectTemplate:new {
 
 	clientObjectCRC = 3741732474,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/mission/base/shared_base_mission.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mission_shared_mission_object, "object/mission/shared_mission_object.iff")

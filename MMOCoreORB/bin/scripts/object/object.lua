@@ -41,13 +41,23 @@
 --which carries forward this exception.
 
 Object = {
-	objectName = "Object" 
 }
 
 -- for creation of new instances
 function Object:new (o)
 	o = o or { }
+	
+	for k,v in pairs(self) do 
+		if o[k] == nil then 
+			o[k] = v 
+		end 
+	end
+	
 	setmetatable(o, self)
     self.__index = self
+    --return o
+    
+    
+    
     return o
 end

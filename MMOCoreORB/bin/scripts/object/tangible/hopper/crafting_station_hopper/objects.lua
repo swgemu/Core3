@@ -42,6 +42,9 @@
 
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
@@ -92,11 +95,15 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	clientObjectCRC = 1942668017,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_large, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_large.iff")
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_medium = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
@@ -147,11 +154,15 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	clientObjectCRC = 1814389996,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_medium, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_medium.iff")
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
@@ -202,11 +213,15 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	clientObjectCRC = 1204901592,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_small, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_small.iff")
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_large = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
@@ -257,11 +272,15 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	clientObjectCRC = 2805227646,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_large, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_large.iff")
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_medium = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
@@ -312,11 +331,15 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	clientObjectCRC = 2417546969,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_medium, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_medium.iff")
 
 object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
@@ -367,6 +390,7 @@ object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredien
 
 	clientObjectCRC = 2469393495,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_crafting_station_hopper_shared_crafting_station_ingredient_hopper_structure_small, "object/tangible/hopper/crafting_station_hopper/shared_crafting_station_ingredient_hopper_structure_small.iff")

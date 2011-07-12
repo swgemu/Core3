@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bicep_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_bicep_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_armor_s03_bicep_l_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bicep_l =
 
 	clientObjectCRC = 2273272421,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bicep_l, "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_bicep_l.iff")
 
 object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bicep_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_bicep_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_armor_s03_bicep_r_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bicep_r =
 
 	clientObjectCRC = 4155123702,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bicep_r, "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_bicep_r.iff")
 
 object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_boots = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_boots.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_armor_s03_boots_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_boots = S
 
 	clientObjectCRC = 3974465933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_boots, "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_boots.iff")
 
 object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bracer_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_bracer_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_armor_s03_bracer_l_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_l.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bracer_l 
 
 	clientObjectCRC = 2685476975,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bracer_l, "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_bracer_l.iff")
 
 object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bracer_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_bracer_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_armor_s03_bracer_r_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_r.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bracer_r 
 
 	clientObjectCRC = 3502532092,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_bracer_r, "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_bracer_r.iff")
 
 object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_chest_plate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_chest_plate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_armor_s03_chest_plate_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_chest_pla
 
 	clientObjectCRC = 379409880,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_chest_plate, "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_chest_plate.iff")
 
 object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_gloves = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_gloves.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_armor_s03_gloves_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_gloves = 
 
 	clientObjectCRC = 2451608631,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_gloves, "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_gloves.iff")
 
 object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_helmet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_helmet.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_armor_s03_helmet_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_helmet = 
 
 	clientObjectCRC = 618689855,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_helmet, "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_helmet.iff")
 
 object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_leggings = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_leggings.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_armor_s03_leggings_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
@@ -532,6 +567,7 @@ object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_leggings 
 
 	clientObjectCRC = 792067440,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_pants.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ithorian_sentinel_shared_ith_armor_s03_leggings, "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_leggings.iff")

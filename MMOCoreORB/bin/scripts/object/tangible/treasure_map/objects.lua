@@ -42,6 +42,9 @@
 
 
 object_tangible_treasure_map_shared_treasure_map_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/treasure_map/shared_treasure_map_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_treasure_map_shared_treasure_map_base = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2463455571,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_treasure_map_shared_treasure_map_base, "object/tangible/treasure_map/shared_treasure_map_base.iff")
 
 object_tangible_treasure_map_shared_treasure_map_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/treasure_map/shared_treasure_map_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_treasure_map_shared_treasure_map_quest = SharedTangibleObjectTem
 
 	clientObjectCRC = 239886061,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_treasure_map_shared_treasure_map_quest, "object/tangible/treasure_map/shared_treasure_map_quest.iff")

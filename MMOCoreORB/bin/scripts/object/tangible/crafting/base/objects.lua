@@ -42,6 +42,9 @@
 
 
 object_tangible_crafting_base_shared_base_public_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/base/shared_base_public_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_crafting_base_shared_base_public_station = SharedTangibleObjectT
 
 	clientObjectCRC = 405889283,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_public_station, "object/tangible/crafting/base/shared_base_public_station.iff")
 
 object_tangible_crafting_base_shared_base_repair = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/base/shared_base_repair.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_crafting_base_shared_base_repair = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 4267815739,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_repair, "object/tangible/crafting/base/shared_base_repair.iff")
 
 object_tangible_crafting_base_shared_base_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/base/shared_base_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_crafting_base_shared_base_station = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 722014891,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_station, "object/tangible/crafting/base/shared_base_station.iff")
 
 object_tangible_crafting_base_shared_base_tool = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/base/shared_base_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_crafting_base_shared_base_tool = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 589813491,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_base_shared_base_tool, "object/tangible/crafting/base/shared_base_tool.iff")

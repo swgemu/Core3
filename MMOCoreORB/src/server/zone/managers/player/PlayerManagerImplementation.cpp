@@ -455,13 +455,14 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		info("created hair object");
 	}
 
-	Vector<float>* scale = playerCreature->getObjectTemplate()->getScale();
+	float minHeight = playerCreature->getObjectTemplate()->getMinScale();
+	float maxHeight = playerCreature->getObjectTemplate()->getMaxScale();
 	float height = callback->getHeight();
 
-	if (height < scale->get(0))
-		height = scale->get(0);
-	else if (height > scale->get(1))
-		height = scale->get(1);
+	if (height < minHeight)
+		height = minHeight;
+	else if (height > maxHeight)
+		height = maxHeight;
 
 	playerCreature->setHeight(callback->getHeight());
 

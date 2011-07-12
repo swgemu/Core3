@@ -42,12 +42,12 @@
 
 SharedCreatureObjectTemplate = SharedTangibleObjectTemplate:new {
 	templateType = SCOT,
+	
+--[[
 	gender = 0,
 	niche = 0,
 	species = 0,
 	race = 0,
-	
-	optionsBitmask = 0, --Set it back to 0 for creatures
 
 	acceleration = { },
 	speed = { },
@@ -72,6 +72,8 @@ SharedCreatureObjectTemplate = SharedTangibleObjectTemplate:new {
 	collisionLength = 0,
 	cameraHeight = 0, 
 	
+]]
+	
 	clientCRC = 0, 
 	
 	level = 10,
@@ -79,6 +81,7 @@ SharedCreatureObjectTemplate = SharedTangibleObjectTemplate:new {
 	lootGroup = { },
 	
 	baseHAM = { 300, 300, 300, 300, 300, 300, 300, 300, 300 },
+	optionsBitmask = 0, --Set it back to 0 for creatures
 	skillMods = { }
 	
 

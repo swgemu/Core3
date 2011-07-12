@@ -60,6 +60,8 @@ CustomizationVariableMap = {
 
 SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 	templateType = STOT,
+
+--[[
 	paletteColorCustomizationVariables = { },
 	rangedIntCustomizationVariables = { },
 
@@ -69,6 +71,11 @@ SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 
 	useStructureFootprintOutline = 0,
 	targetable = 0,
+	
+	certificationsRequired = { },
+	customizationVariableMapping = { },
+	
+]]
 	
 	playerUseMask = ALL,
 	
@@ -81,9 +88,6 @@ SharedTangibleObjectTemplate = SharedObjectTemplate:new {
 	optionsBitmask = 256, --Default all objects to not display ham bars.
 	pvpStatusBitmask = 0,
 	objectMenuComponent = "TangibleObjectMenuComponent",
-
-	certificationsRequired = { },
-	customizationVariableMapping = { },
 
 	sliceable = 0
 }

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_kliknik_shared_lair_kliknik = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kliknik/shared_lair_kliknik.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_kliknik_shared_lair_kliknik = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2186183651,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kliknik_shared_lair_kliknik, "object/tangible/lair/kliknik/shared_lair_kliknik.iff")
 
 object_tangible_lair_kliknik_shared_lair_kliknik_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kliknik/shared_lair_kliknik_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_kliknik_shared_lair_kliknik_forest = SharedTangibleObjectTe
 
 	clientObjectCRC = 33728532,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kliknik_shared_lair_kliknik_forest, "object/tangible/lair/kliknik/shared_lair_kliknik_forest.iff")

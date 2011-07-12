@@ -42,6 +42,9 @@
 
 
 object_building_poi_hq_shared_hutt_lrg = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/poi/hq/shared_hutt_lrg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -95,11 +98,15 @@ object_building_poi_hq_shared_hutt_lrg = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 2883928313,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff", "object/building/poi/base/shared_base_poi_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_hutt_lrg, "object/building/poi/hq/shared_hutt_lrg.iff")
 
 object_building_poi_hq_shared_hutt_med = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/poi/hq/shared_hutt_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -153,11 +160,15 @@ object_building_poi_hq_shared_hutt_med = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 3359402016,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff", "object/building/poi/base/shared_base_poi_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_hutt_med, "object/building/poi/hq/shared_hutt_med.iff")
 
 object_building_poi_hq_shared_hutt_sm = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/poi/hq/shared_hutt_sm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -211,11 +222,15 @@ object_building_poi_hq_shared_hutt_sm = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 1295187033,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff", "object/building/poi/base/shared_base_poi_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_hutt_sm, "object/building/poi/hq/shared_hutt_sm.iff")
 
 object_building_poi_hq_shared_imperial_lrg = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/poi/hq/shared_imperial_lrg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -269,11 +284,15 @@ object_building_poi_hq_shared_imperial_lrg = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 1970934894,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff", "object/building/poi/base/shared_base_poi_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_imperial_lrg, "object/building/poi/hq/shared_imperial_lrg.iff")
 
 object_building_poi_hq_shared_imperial_med = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/poi/hq/shared_imperial_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -327,11 +346,15 @@ object_building_poi_hq_shared_imperial_med = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 379796663,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff", "object/building/poi/base/shared_base_poi_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_imperial_med, "object/building/poi/hq/shared_imperial_med.iff")
 
 object_building_poi_hq_shared_imperial_sm = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/poi/hq/shared_imperial_sm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -385,11 +408,15 @@ object_building_poi_hq_shared_imperial_sm = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 759219915,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff", "object/building/poi/base/shared_base_poi_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_imperial_sm, "object/building/poi/hq/shared_imperial_sm.iff")
 
 object_building_poi_hq_shared_rebel_lrg = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/poi/hq/shared_rebel_lrg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -443,11 +470,15 @@ object_building_poi_hq_shared_rebel_lrg = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 1900138383,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff", "object/building/poi/base/shared_base_poi_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_rebel_lrg, "object/building/poi/hq/shared_rebel_lrg.iff")
 
 object_building_poi_hq_shared_rebel_med = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/poi/hq/shared_rebel_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -501,11 +532,15 @@ object_building_poi_hq_shared_rebel_med = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 312010582,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff", "object/building/poi/base/shared_base_poi_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_rebel_med, "object/building/poi/hq/shared_rebel_med.iff")
 
 object_building_poi_hq_shared_rebel_sm = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/poi/hq/shared_rebel_sm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rock_pebbleclump_a3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -559,6 +594,7 @@ object_building_poi_hq_shared_rebel_sm = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 2752460800,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_military_building.iff", "object/building/poi/base/shared_base_poi_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_poi_hq_shared_rebel_sm, "object/building/poi/hq/shared_rebel_sm.iff")

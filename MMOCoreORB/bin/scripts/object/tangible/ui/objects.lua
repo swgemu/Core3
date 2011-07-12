@@ -42,6 +42,9 @@
 
 
 object_tangible_ui_shared_ui_char_cust_pedestal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ui/shared_ui_char_cust_pedestal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_pedestal.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_ui_shared_ui_char_cust_pedestal = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 580259338,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_char_cust_pedestal, "object/tangible/ui/shared_ui_char_cust_pedestal.iff")
 
 object_tangible_ui_shared_ui_planet_corellia = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ui/shared_ui_planet_corellia.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_planet_sel_corl.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_ui_shared_ui_planet_corellia = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 565167488,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_corellia, "object/tangible/ui/shared_ui_planet_corellia.iff")
 
 object_tangible_ui_shared_ui_planet_imperial = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ui/shared_ui_planet_imperial.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_faction_imperial.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_ui_shared_ui_planet_imperial = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 3225920634,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_imperial, "object/tangible/ui/shared_ui_planet_imperial.iff")
 
 object_tangible_ui_shared_ui_planet_naboo = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ui/shared_ui_planet_naboo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_planet_sel_nboo.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_ui_shared_ui_planet_naboo = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3585856086,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_naboo, "object/tangible/ui/shared_ui_planet_naboo.iff")
 
 object_tangible_ui_shared_ui_planet_privateer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ui/shared_ui_planet_privateer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_faction_neutral.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_ui_shared_ui_planet_privateer = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 4127966392,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_privateer, "object/tangible/ui/shared_ui_planet_privateer.iff")
 
 object_tangible_ui_shared_ui_planet_rebel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ui/shared_ui_planet_rebel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_faction_rebel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_ui_shared_ui_planet_rebel = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3636261575,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_rebel, "object/tangible/ui/shared_ui_planet_rebel.iff")
 
 object_tangible_ui_shared_ui_planet_rori = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ui/shared_ui_planet_rori.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_planet_sel_rori.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_ui_shared_ui_planet_rori = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2331720771,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_rori, "object/tangible/ui/shared_ui_planet_rori.iff")
 
 object_tangible_ui_shared_ui_planet_talus = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ui/shared_ui_planet_talus.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_planet_sel_talu.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_ui_shared_ui_planet_talus = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3437864060,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_talus, "object/tangible/ui/shared_ui_planet_talus.iff")
 
 object_tangible_ui_shared_ui_planet_tatooine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ui/shared_ui_planet_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_planet_sel_tato.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,6 +567,7 @@ object_tangible_ui_shared_ui_planet_tatooine = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 502047775,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ui_shared_ui_planet_tatooine, "object/tangible/ui/shared_ui_planet_tatooine.iff")

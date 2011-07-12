@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_backpack_shared_backpack_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/backpack/shared_backpack_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/backpack_s01_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_backpack_shared_backpack_s01 = SharedTangibleObjectTem
 
 	clientObjectCRC = 4059441362,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s01, "object/tangible/wearables/backpack/shared_backpack_s01.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/backpack/shared_backpack_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/backpack_s03_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_backpack_shared_backpack_s03 = SharedTangibleObjectTem
 
 	clientObjectCRC = 1676470216,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s03, "object/tangible/wearables/backpack/shared_backpack_s03.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s03_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/backpack/shared_backpack_s03_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/backpack_s03_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_backpack_shared_backpack_s03_quest = SharedTangibleObj
 
 	clientObjectCRC = 1103784358,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff", "object/tangible/wearables/backpack/shared_backpack_s03.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s03_quest, "object/tangible/wearables/backpack/shared_backpack_s03_quest.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/backpack/shared_backpack_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/backpack_s04_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_backpack_shared_backpack_s04 = SharedTangibleObjectTem
 
 	clientObjectCRC = 2551172316,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s04, "object/tangible/wearables/backpack/shared_backpack_s04.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/backpack/shared_backpack_s05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/backpack_s05_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_backpack_shared_backpack_s05 = SharedTangibleObjectTem
 
 	clientObjectCRC = 3506613073,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s05, "object/tangible/wearables/backpack/shared_backpack_s05.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s06 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/backpack/shared_backpack_s06.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/backpack_s06_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_backpack_shared_backpack_s06 = SharedTangibleObjectTem
 
 	clientObjectCRC = 169149382,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s06, "object/tangible/wearables/backpack/shared_backpack_s06.iff")
 
 object_tangible_wearables_backpack_shared_backpack_s06_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/backpack/shared_backpack_s06_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/backpack_s06_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_backpack_shared_backpack_s06_quest = SharedTangibleObj
 
 	clientObjectCRC = 1402459945,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff", "object/tangible/wearables/backpack/shared_backpack_s06.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_backpack_s06_quest, "object/tangible/wearables/backpack/shared_backpack_s06_quest.iff")
 
 object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/backpack/shared_singing_mountain_clan_backpack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sing_mt_clan_backpack_s01.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -477,6 +508,7 @@ object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack = Share
 
 	clientObjectCRC = 1811378952,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_backpack_shared_singing_mountain_clan_backpack, "object/tangible/wearables/backpack/shared_singing_mountain_clan_backpack.iff")

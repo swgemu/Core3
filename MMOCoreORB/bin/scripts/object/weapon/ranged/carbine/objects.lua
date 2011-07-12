@@ -42,6 +42,9 @@
 
 
 object_weapon_ranged_carbine_shared_carbine_cdef = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_cdef.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_dh17.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_ranged_carbine_shared_carbine_cdef = SharedWeaponObjectTemplate:ne
 
 	clientObjectCRC = 583942574,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_cdef, "object/weapon/ranged/carbine/shared_carbine_cdef.iff")
 
 object_weapon_ranged_carbine_shared_carbine_cdef_corsec = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_cdef_corsec.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_dh17.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -155,11 +162,15 @@ object_weapon_ranged_carbine_shared_carbine_cdef_corsec = SharedWeaponObjectTemp
 
 	clientObjectCRC = 227072559,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_cdef_corsec, "object/weapon/ranged/carbine/shared_carbine_cdef_corsec.iff")
 
 object_weapon_ranged_carbine_shared_carbine_dh17 = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_dh17.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_dh17.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -214,11 +225,15 @@ object_weapon_ranged_carbine_shared_carbine_dh17 = SharedWeaponObjectTemplate:ne
 
 	clientObjectCRC = 683543232,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dh17, "object/weapon/ranged/carbine/shared_carbine_dh17.iff")
 
 object_weapon_ranged_carbine_shared_carbine_dh17_black = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_dh17_black.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_dh17_black.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -273,11 +288,15 @@ object_weapon_ranged_carbine_shared_carbine_dh17_black = SharedWeaponObjectTempl
 
 	clientObjectCRC = 648744456,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_black, "object/weapon/ranged/carbine/shared_carbine_dh17_black.iff")
 
 object_weapon_ranged_carbine_shared_carbine_dh17_snubnose = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_dh17_snubnose.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_dh17_snubnose.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -332,11 +351,15 @@ object_weapon_ranged_carbine_shared_carbine_dh17_snubnose = SharedWeaponObjectTe
 
 	clientObjectCRC = 1881783933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dh17_snubnose, "object/weapon/ranged/carbine/shared_carbine_dh17_snubnose.iff")
 
 object_weapon_ranged_carbine_shared_carbine_dxr6 = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_dxr6.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_dxr6.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -391,11 +414,15 @@ object_weapon_ranged_carbine_shared_carbine_dxr6 = SharedWeaponObjectTemplate:ne
 
 	clientObjectCRC = 2050793147,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_dxr6, "object/weapon/ranged/carbine/shared_carbine_dxr6.iff")
 
 object_weapon_ranged_carbine_shared_carbine_e11 = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_e11.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_e11.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -450,11 +477,15 @@ object_weapon_ranged_carbine_shared_carbine_e11 = SharedWeaponObjectTemplate:new
 
 	clientObjectCRC = 3034123480,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_e11, "object/weapon/ranged/carbine/shared_carbine_e11.iff")
 
 object_weapon_ranged_carbine_shared_carbine_e11_quest = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_e11_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_e11.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -509,11 +540,15 @@ object_weapon_ranged_carbine_shared_carbine_e11_quest = SharedWeaponObjectTempla
 
 	clientObjectCRC = 861424280,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff", "object/weapon/ranged/carbine/shared_carbine_e11.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_e11_quest, "object/weapon/ranged/carbine/shared_carbine_e11_quest.iff")
 
 object_weapon_ranged_carbine_shared_carbine_e11_victor_quest = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_e11_victor_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_e11.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -568,11 +603,15 @@ object_weapon_ranged_carbine_shared_carbine_e11_victor_quest = SharedWeaponObjec
 
 	clientObjectCRC = 1297312489,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff", "object/weapon/ranged/carbine/shared_carbine_e11.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_e11_victor_quest, "object/weapon/ranged/carbine/shared_carbine_e11_victor_quest.iff")
 
 object_weapon_ranged_carbine_shared_carbine_ee3 = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_ee3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_ee3.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -627,11 +666,15 @@ object_weapon_ranged_carbine_shared_carbine_ee3 = SharedWeaponObjectTemplate:new
 
 	clientObjectCRC = 749154215,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_ee3, "object/weapon/ranged/carbine/shared_carbine_ee3.iff")
 
 object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_elite.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -686,11 +729,15 @@ object_weapon_ranged_carbine_shared_carbine_elite = SharedWeaponObjectTemplate:n
 
 	clientObjectCRC = 971375722,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_elite, "object/weapon/ranged/carbine/shared_carbine_elite.iff")
 
 object_weapon_ranged_carbine_shared_carbine_laser = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_laser.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_laser.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -745,11 +792,15 @@ object_weapon_ranged_carbine_shared_carbine_laser = SharedWeaponObjectTemplate:n
 
 	clientObjectCRC = 2121432077,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_laser, "object/weapon/ranged/carbine/shared_carbine_laser.iff")
 
 object_weapon_ranged_carbine_shared_carbine_nym_slugthrower = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/carbine/shared_carbine_nym_slugthrower.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_carbine_slug_carbine_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -804,6 +855,7 @@ object_weapon_ranged_carbine_shared_carbine_nym_slugthrower = SharedWeaponObject
 
 	clientObjectCRC = 1757923070,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/carbine/base/shared_carbine_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_carbine_shared_carbine_nym_slugthrower, "object/weapon/ranged/carbine/shared_carbine_nym_slugthrower.iff")

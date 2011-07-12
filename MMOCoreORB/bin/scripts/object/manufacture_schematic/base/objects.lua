@@ -42,6 +42,9 @@
 
 
 object_manufacture_schematic_base_shared_base_manufacture_schematic = SharedManufactureSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/manufacture_schematic/base/shared_base_manufacture_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_manf_schematic.iff",
 
@@ -82,11 +85,15 @@ object_manufacture_schematic_base_shared_base_manufacture_schematic = SharedManu
 
 	clientObjectCRC = 3062041799,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_manufacture_schematic_base_shared_base_manufacture_schematic, "object/manufacture_schematic/base/shared_base_manufacture_schematic.iff")
 
 object_manufacture_schematic_base_shared_manufacture_schematic_default = SharedManufactureSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/manufacture_schematic/base/shared_manufacture_schematic_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_manf_schematic.iff",
 
@@ -127,6 +134,7 @@ object_manufacture_schematic_base_shared_manufacture_schematic_default = SharedM
 
 	clientObjectCRC = 933697332,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/manufacture_schematic/base/shared_base_manufacture_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_manufacture_schematic_base_shared_manufacture_schematic_default, "object/manufacture_schematic/base/shared_manufacture_schematic_default.iff")

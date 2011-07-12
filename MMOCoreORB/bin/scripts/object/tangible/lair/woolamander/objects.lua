@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_woolamander_shared_lair_woolamander = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/woolamander/shared_lair_woolamander.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_woolamander_shared_lair_woolamander = SharedTangibleObjectT
 
 	clientObjectCRC = 2207514475,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_woolamander_shared_lair_woolamander, "object/tangible/lair/woolamander/shared_lair_woolamander.iff")
 
 object_tangible_lair_woolamander_shared_lair_woolamander_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/woolamander/shared_lair_woolamander_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_woolamander_shared_lair_woolamander_jungle = SharedTangible
 
 	clientObjectCRC = 2613243319,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_woolamander_shared_lair_woolamander_jungle, "object/tangible/lair/woolamander/shared_lair_woolamander_jungle.iff")

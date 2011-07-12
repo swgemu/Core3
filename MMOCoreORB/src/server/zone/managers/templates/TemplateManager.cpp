@@ -271,6 +271,7 @@ void TemplateManager::loadTreArchive() {
 
 void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject* templateData) {
 	uint32 templateType = templateData->getIntField("templateType");
+	String clientTemplateFile = templateData->getStringField("clientTemplateFileName");
 
 	SharedObjectTemplate* templateObject = templateFactory.createObject(templateType);
 
@@ -280,9 +281,20 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 		return;
 	}
 
-	//info("loading " + fullName);
+	//info("loading " + fullName, true);
 
 	templateObject->setFullTemplateString(fullName);
+
+	if (!clientTemplateFile.isEmpty()) {
+		IffStream* iffStream = openIffFile(clientTemplateFile);
+
+		if (iffStream != NULL) {
+			templateObject->readObject(iffStream);
+		}
+
+		delete iffStream;
+	}
+	
 	templateObject->readObject(templateData);
 
 	//info("loaded " + fullName);
@@ -730,7 +742,6 @@ int TemplateManager::addClientTemplate(lua_State* L) {
 	uint32 crc = (uint32) ascii.hashCode();
 
 	TemplateManager::instance()->clientTemplateCRCMap->put(crc, ascii);
-
 	return 0;
 }
 

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_dune_lizard_shared_lair_dune_lizard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/dune_lizard/shared_lair_dune_lizard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_dune_lizard_shared_lair_dune_lizard = SharedTangibleObjectT
 
 	clientObjectCRC = 2444927445,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_nest_ground_lg_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dune_lizard_shared_lair_dune_lizard, "object/tangible/lair/dune_lizard/shared_lair_dune_lizard.iff")
 
 object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/dune_lizard/shared_lair_dune_lizard_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert = SharedTangible
 
 	clientObjectCRC = 2514665274,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_nest_ground_lg_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dune_lizard_shared_lair_dune_lizard_desert, "object/tangible/lair/dune_lizard/shared_lair_dune_lizard_desert.iff")

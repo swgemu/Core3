@@ -42,6 +42,9 @@
 
 
 object_tangible_container_general_shared_cargo_pocket = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/general/shared_cargo_pocket.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_cargo_pocket.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_container_general_shared_cargo_pocket = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3378300955,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_cargo_pocket, "object/tangible/container/general/shared_cargo_pocket.iff")
 
 object_tangible_container_general_shared_satchel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/general/shared_satchel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_bag_ingredients_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_container_general_shared_satchel = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2917538,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_satchel, "object/tangible/container/general/shared_satchel.iff")
 
 object_tangible_container_general_shared_tech_armoire = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/general/shared_tech_armoire.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_armoire_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_container_general_shared_tech_armoire = SharedTangibleObjectTemp
 
 	clientObjectCRC = 997788135,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_tech_armoire, "object/tangible/container/general/shared_tech_armoire.iff")
 
 object_tangible_container_general_shared_tech_bookcase = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/general/shared_tech_bookcase.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_bookcase_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_container_general_shared_tech_bookcase = SharedTangibleObjectTem
 
 	clientObjectCRC = 3363389476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_tech_bookcase, "object/tangible/container/general/shared_tech_bookcase.iff")
 
 object_tangible_container_general_shared_tech_chest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/general/shared_tech_chest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_chest_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_container_general_shared_tech_chest = SharedTangibleObjectTempla
 
 	clientObjectCRC = 542811322,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_general_shared_tech_chest, "object/tangible/container/general/shared_tech_chest.iff")

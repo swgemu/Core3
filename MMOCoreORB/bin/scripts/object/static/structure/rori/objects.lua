@@ -42,6 +42,9 @@
 
 
 object_static_structure_rori_shared_rori_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/rori/shared_rori_imprv_bannerpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -81,11 +84,15 @@ object_static_structure_rori_shared_rori_imprv_bannerpole_s01 = SharedStaticObje
 
 	clientObjectCRC = 361465227,
 	derivedFromTemplates = {}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_rori_shared_rori_imprv_bannerpole_s01, "object/static/structure/rori/shared_rori_imprv_bannerpole_s01.iff")
 
 object_static_structure_rori_shared_rori_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/rori/shared_rori_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -125,6 +132,7 @@ object_static_structure_rori_shared_rori_imprv_flagpole_s01 = SharedStaticObject
 
 	clientObjectCRC = 3974035646,
 	derivedFromTemplates = {}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_rori_shared_rori_imprv_flagpole_s01, "object/static/structure/rori/shared_rori_imprv_flagpole_s01.iff")

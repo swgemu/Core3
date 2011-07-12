@@ -42,6 +42,9 @@
 
 
 object_building_player_city_shared_bank_corellia = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_bank_corellia.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_bank_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_building_player_city_shared_bank_corellia = SharedInstallationObjectTempl
 
 	clientObjectCRC = 1845141471,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_corellia, "object/building/player/city/shared_bank_corellia.iff")
 
 object_building_player_city_shared_bank_naboo = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_bank_naboo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_bank_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_building_player_city_shared_bank_naboo = SharedInstallationObjectTemplate
 
 	clientObjectCRC = 3868143603,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_naboo, "object/building/player/city/shared_bank_naboo.iff")
 
 object_building_player_city_shared_bank_tatooine = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_bank_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_bank_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_building_player_city_shared_bank_tatooine = SharedInstallationObjectTempl
 
 	clientObjectCRC = 1371143744,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_bank_tatooine, "object/building/player/city/shared_bank_tatooine.iff")
 
 object_building_player_city_shared_cantina_corellia = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_cantina_corellia.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -260,11 +275,15 @@ object_building_player_city_shared_cantina_corellia = SharedBuildingObjectTempla
 
 	clientObjectCRC = 3739527551,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_corellia, "object/building/player/city/shared_cantina_corellia.iff")
 
 object_building_player_city_shared_cantina_naboo = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_cantina_naboo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -318,11 +337,15 @@ object_building_player_city_shared_cantina_naboo = SharedBuildingObjectTemplate:
 
 	clientObjectCRC = 2025646266,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_naboo, "object/building/player/city/shared_cantina_naboo.iff")
 
 object_building_player_city_shared_cantina_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_cantina_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -376,11 +399,15 @@ object_building_player_city_shared_cantina_tatooine = SharedBuildingObjectTempla
 
 	clientObjectCRC = 3802646752,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cantina_tatooine, "object/building/player/city/shared_cantina_tatooine.iff")
 
 object_building_player_city_shared_cityhall_corellia = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_cityhall_corellia.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -434,11 +461,15 @@ object_building_player_city_shared_cityhall_corellia = SharedBuildingObjectTempl
 
 	clientObjectCRC = 4031190701,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_corellia, "object/building/player/city/shared_cityhall_corellia.iff")
 
 object_building_player_city_shared_cityhall_naboo = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_cityhall_naboo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -492,11 +523,15 @@ object_building_player_city_shared_cityhall_naboo = SharedBuildingObjectTemplate
 
 	clientObjectCRC = 3442426219,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_naboo, "object/building/player/city/shared_cityhall_naboo.iff")
 
 object_building_player_city_shared_cityhall_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_cityhall_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -550,11 +585,15 @@ object_building_player_city_shared_cityhall_tatooine = SharedBuildingObjectTempl
 
 	clientObjectCRC = 3422844722,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cityhall_tatooine, "object/building/player/city/shared_cityhall_tatooine.iff")
 
 object_building_player_city_shared_cloning_corellia = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_cloning_corellia.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -608,11 +647,15 @@ object_building_player_city_shared_cloning_corellia = SharedBuildingObjectTempla
 
 	clientObjectCRC = 1360449531,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_corellia, "object/building/player/city/shared_cloning_corellia.iff")
 
 object_building_player_city_shared_cloning_naboo = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_cloning_naboo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -666,11 +709,15 @@ object_building_player_city_shared_cloning_naboo = SharedBuildingObjectTemplate:
 
 	clientObjectCRC = 2221199199,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_naboo, "object/building/player/city/shared_cloning_naboo.iff")
 
 object_building_player_city_shared_cloning_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_cloning_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -724,11 +771,15 @@ object_building_player_city_shared_cloning_tatooine = SharedBuildingObjectTempla
 
 	clientObjectCRC = 1834331748,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_cloning_tatooine, "object/building/player/city/shared_cloning_tatooine.iff")
 
 object_building_player_city_shared_garden_corellia_lrg_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_lrg_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -779,11 +830,15 @@ object_building_player_city_shared_garden_corellia_lrg_01 = SharedInstallationOb
 
 	clientObjectCRC = 3782826017,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_01, "object/building/player/city/shared_garden_corellia_lrg_01.iff")
 
 object_building_player_city_shared_garden_corellia_lrg_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_lrg_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -834,11 +889,15 @@ object_building_player_city_shared_garden_corellia_lrg_02 = SharedInstallationOb
 
 	clientObjectCRC = 980349110,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_02, "object/building/player/city/shared_garden_corellia_lrg_02.iff")
 
 object_building_player_city_shared_garden_corellia_lrg_03 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_lrg_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -889,11 +948,15 @@ object_building_player_city_shared_garden_corellia_lrg_03 = SharedInstallationOb
 
 	clientObjectCRC = 1935906619,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_03, "object/building/player/city/shared_garden_corellia_lrg_03.iff")
 
 object_building_player_city_shared_garden_corellia_lrg_04 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_lrg_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -944,11 +1007,15 @@ object_building_player_city_shared_garden_corellia_lrg_04 = SharedInstallationOb
 
 	clientObjectCRC = 2290138159,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_04, "object/building/player/city/shared_garden_corellia_lrg_04.iff")
 
 object_building_player_city_shared_garden_corellia_lrg_05 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_lrg_05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -999,11 +1066,15 @@ object_building_player_city_shared_garden_corellia_lrg_05 = SharedInstallationOb
 
 	clientObjectCRC = 3247299490,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_lrg_05, "object/building/player/city/shared_garden_corellia_lrg_05.iff")
 
 object_building_player_city_shared_garden_corellia_med_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_med_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1054,11 +1125,15 @@ object_building_player_city_shared_garden_corellia_med_01 = SharedInstallationOb
 
 	clientObjectCRC = 1120922265,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_01, "object/building/player/city/shared_garden_corellia_med_01.iff")
 
 object_building_player_city_shared_garden_corellia_med_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_med_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1109,11 +1184,15 @@ object_building_player_city_shared_garden_corellia_med_02 = SharedInstallationOb
 
 	clientObjectCRC = 2581086734,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_02, "object/building/player/city/shared_garden_corellia_med_02.iff")
 
 object_building_player_city_shared_garden_corellia_med_03 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_med_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1164,11 +1243,15 @@ object_building_player_city_shared_garden_corellia_med_03 = SharedInstallationOb
 
 	clientObjectCRC = 3503629699,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_03, "object/building/player/city/shared_garden_corellia_med_03.iff")
 
 object_building_player_city_shared_garden_corellia_med_04 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_med_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1219,11 +1302,15 @@ object_building_player_city_shared_garden_corellia_med_04 = SharedInstallationOb
 
 	clientObjectCRC = 724962967,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_04, "object/building/player/city/shared_garden_corellia_med_04.iff")
 
 object_building_player_city_shared_garden_corellia_med_05 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_med_05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1274,11 +1361,15 @@ object_building_player_city_shared_garden_corellia_med_05 = SharedInstallationOb
 
 	clientObjectCRC = 1648060698,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_med_05, "object/building/player/city/shared_garden_corellia_med_05.iff")
 
 object_building_player_city_shared_garden_corellia_sml_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_sml_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1329,11 +1420,15 @@ object_building_player_city_shared_garden_corellia_sml_01 = SharedInstallationOb
 
 	clientObjectCRC = 782388533,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_01, "object/building/player/city/shared_garden_corellia_sml_01.iff")
 
 object_building_player_city_shared_garden_corellia_sml_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_sml_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1384,11 +1479,15 @@ object_building_player_city_shared_garden_corellia_sml_02 = SharedInstallationOb
 
 	clientObjectCRC = 4122338722,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_02, "object/building/player/city/shared_garden_corellia_sml_02.iff")
 
 object_building_player_city_shared_garden_corellia_sml_03 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_sml_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1439,11 +1538,15 @@ object_building_player_city_shared_garden_corellia_sml_03 = SharedInstallationOb
 
 	clientObjectCRC = 3166208559,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_03, "object/building/player/city/shared_garden_corellia_sml_03.iff")
 
 object_building_player_city_shared_garden_corellia_sml_04 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_sml_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1494,11 +1597,15 @@ object_building_player_city_shared_garden_corellia_sml_04 = SharedInstallationOb
 
 	clientObjectCRC = 1197189435,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_04, "object/building/player/city/shared_garden_corellia_sml_04.iff")
 
 object_building_player_city_shared_garden_corellia_sml_05 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_corellia_sml_05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1549,11 +1656,15 @@ object_building_player_city_shared_garden_corellia_sml_05 = SharedInstallationOb
 
 	clientObjectCRC = 240570038,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_corellia_sml_05, "object/building/player/city/shared_garden_corellia_sml_05.iff")
 
 object_building_player_city_shared_garden_dantooine_lrg_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_dantooine_lrg_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1604,11 +1715,15 @@ object_building_player_city_shared_garden_dantooine_lrg_01 = SharedInstallationO
 
 	clientObjectCRC = 2412094562,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dantooine_lrg_01, "object/building/player/city/shared_garden_dantooine_lrg_01.iff")
 
 object_building_player_city_shared_garden_dantooine_med_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_dantooine_med_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1659,11 +1774,15 @@ object_building_player_city_shared_garden_dantooine_med_01 = SharedInstallationO
 
 	clientObjectCRC = 745739994,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dantooine_med_01, "object/building/player/city/shared_garden_dantooine_med_01.iff")
 
 object_building_player_city_shared_garden_dantooine_sml_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_dantooine_sml_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1714,11 +1833,15 @@ object_building_player_city_shared_garden_dantooine_sml_01 = SharedInstallationO
 
 	clientObjectCRC = 1075753334,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dantooine_sml_01, "object/building/player/city/shared_garden_dantooine_sml_01.iff")
 
 object_building_player_city_shared_garden_dathomir_lrg_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_dathomir_lrg_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1769,11 +1892,15 @@ object_building_player_city_shared_garden_dathomir_lrg_01 = SharedInstallationOb
 
 	clientObjectCRC = 247337676,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dathomir_lrg_01, "object/building/player/city/shared_garden_dathomir_lrg_01.iff")
 
 object_building_player_city_shared_garden_dathomir_med_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_dathomir_med_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1824,11 +1951,15 @@ object_building_player_city_shared_garden_dathomir_med_01 = SharedInstallationOb
 
 	clientObjectCRC = 2903023732,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dathomir_med_01, "object/building/player/city/shared_garden_dathomir_med_01.iff")
 
 object_building_player_city_shared_garden_dathomir_sml_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_dathomir_sml_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1879,11 +2010,15 @@ object_building_player_city_shared_garden_dathomir_sml_01 = SharedInstallationOb
 
 	clientObjectCRC = 3244623832,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_dathomir_sml_01, "object/building/player/city/shared_garden_dathomir_sml_01.iff")
 
 object_building_player_city_shared_garden_endor_lrg_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_endor_lrg_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1934,11 +2069,15 @@ object_building_player_city_shared_garden_endor_lrg_01 = SharedInstallationObjec
 
 	clientObjectCRC = 2039109063,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endor_lrg_01, "object/building/player/city/shared_garden_endor_lrg_01.iff")
 
 object_building_player_city_shared_garden_endor_med_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_endor_med_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1989,11 +2128,15 @@ object_building_player_city_shared_garden_endor_med_01 = SharedInstallationObjec
 
 	clientObjectCRC = 3661424511,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endor_med_01, "object/building/player/city/shared_garden_endor_med_01.iff")
 
 object_building_player_city_shared_garden_endor_sml_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_endor_sml_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2044,11 +2187,15 @@ object_building_player_city_shared_garden_endor_sml_01 = SharedInstallationObjec
 
 	clientObjectCRC = 3058778323,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_endor_sml_01, "object/building/player/city/shared_garden_endor_sml_01.iff")
 
 object_building_player_city_shared_garden_naboo_large = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2099,11 +2246,15 @@ object_building_player_city_shared_garden_naboo_large = SharedInstallationObject
 
 	clientObjectCRC = 2557845591,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_large, "object/building/player/city/shared_garden_naboo_large.iff")
 
 object_building_player_city_shared_garden_naboo_lrg_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_lrg_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2154,11 +2305,15 @@ object_building_player_city_shared_garden_naboo_lrg_01 = SharedInstallationObjec
 
 	clientObjectCRC = 1417631619,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_01, "object/building/player/city/shared_garden_naboo_lrg_01.iff")
 
 object_building_player_city_shared_garden_naboo_lrg_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_lrg_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2209,11 +2364,15 @@ object_building_player_city_shared_garden_naboo_lrg_02 = SharedInstallationObjec
 
 	clientObjectCRC = 2406022932,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_02, "object/building/player/city/shared_garden_naboo_lrg_02.iff")
 
 object_building_player_city_shared_garden_naboo_lrg_03 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_lrg_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2264,11 +2423,15 @@ object_building_player_city_shared_garden_naboo_lrg_03 = SharedInstallationObjec
 
 	clientObjectCRC = 3328546969,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_03, "object/building/player/city/shared_garden_naboo_lrg_03.iff")
 
 object_building_player_city_shared_garden_naboo_lrg_04 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_lrg_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2319,11 +2482,15 @@ object_building_player_city_shared_garden_naboo_lrg_04 = SharedInstallationObjec
 
 	clientObjectCRC = 1032237965,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_04, "object/building/player/city/shared_garden_naboo_lrg_04.iff")
 
 object_building_player_city_shared_garden_naboo_lrg_05 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_lrg_05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2374,11 +2541,15 @@ object_building_player_city_shared_garden_naboo_lrg_05 = SharedInstallationObjec
 
 	clientObjectCRC = 1955320832,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_lrg_05, "object/building/player/city/shared_garden_naboo_lrg_05.iff")
 
 object_building_player_city_shared_garden_naboo_med_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_med_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2429,11 +2600,15 @@ object_building_player_city_shared_garden_naboo_med_01 = SharedInstallationObjec
 
 	clientObjectCRC = 4157203771,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_01, "object/building/player/city/shared_garden_naboo_med_01.iff")
 
 object_building_player_city_shared_garden_naboo_med_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_med_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2484,11 +2659,15 @@ object_building_player_city_shared_garden_naboo_med_02 = SharedInstallationObjec
 
 	clientObjectCRC = 752766380,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_02, "object/building/player/city/shared_garden_naboo_med_02.iff")
 
 object_building_player_city_shared_garden_naboo_med_03 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_med_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2539,11 +2718,15 @@ object_building_player_city_shared_garden_naboo_med_03 = SharedInstallationObjec
 
 	clientObjectCRC = 1708337697,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_03, "object/building/player/city/shared_garden_naboo_med_03.iff")
 
 object_building_player_city_shared_garden_naboo_med_04 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_med_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2594,11 +2777,15 @@ object_building_player_city_shared_garden_naboo_med_04 = SharedInstallationObjec
 
 	clientObjectCRC = 2653946165,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_04, "object/building/player/city/shared_garden_naboo_med_04.iff")
 
 object_building_player_city_shared_garden_naboo_med_05 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_med_05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2649,11 +2836,15 @@ object_building_player_city_shared_garden_naboo_med_05 = SharedInstallationObjec
 
 	clientObjectCRC = 3611125432,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_med_05, "object/building/player/city/shared_garden_naboo_med_05.iff")
 
 object_building_player_city_shared_garden_naboo_sml_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_sml_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2704,11 +2895,15 @@ object_building_player_city_shared_garden_naboo_sml_01 = SharedInstallationObjec
 
 	clientObjectCRC = 2611233431,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_01, "object/building/player/city/shared_garden_naboo_sml_01.iff")
 
 object_building_player_city_shared_garden_naboo_sml_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_sml_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2759,11 +2954,15 @@ object_building_player_city_shared_garden_naboo_sml_02 = SharedInstallationObjec
 
 	clientObjectCRC = 1085532672,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_02, "object/building/player/city/shared_garden_naboo_sml_02.iff")
 
 object_building_player_city_shared_garden_naboo_sml_03 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_sml_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2814,11 +3013,15 @@ object_building_player_city_shared_garden_naboo_sml_03 = SharedInstallationObjec
 
 	clientObjectCRC = 163483021,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_03, "object/building/player/city/shared_garden_naboo_sml_03.iff")
 
 object_building_player_city_shared_garden_naboo_sml_04 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_sml_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2869,11 +3072,15 @@ object_building_player_city_shared_garden_naboo_sml_04 = SharedInstallationObjec
 
 	clientObjectCRC = 4066223769,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_04, "object/building/player/city/shared_garden_naboo_sml_04.iff")
 
 object_building_player_city_shared_garden_naboo_sml_05 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_naboo_sml_05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2924,11 +3131,15 @@ object_building_player_city_shared_garden_naboo_sml_05 = SharedInstallationObjec
 
 	clientObjectCRC = 3142631700,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_naboo_sml_05, "object/building/player/city/shared_garden_naboo_sml_05.iff")
 
 object_building_player_city_shared_garden_tatooine_lrg_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_lrg_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2979,11 +3190,15 @@ object_building_player_city_shared_garden_tatooine_lrg_01 = SharedInstallationOb
 
 	clientObjectCRC = 2152696910,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_01, "object/building/player/city/shared_garden_tatooine_lrg_01.iff")
 
 object_building_player_city_shared_garden_tatooine_lrg_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_lrg_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3034,11 +3249,15 @@ object_building_player_city_shared_garden_tatooine_lrg_02 = SharedInstallationOb
 
 	clientObjectCRC = 1532503257,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_02, "object/building/player/city/shared_garden_tatooine_lrg_02.iff")
 
 object_building_player_city_shared_garden_tatooine_lrg_03 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_lrg_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3089,11 +3308,15 @@ object_building_player_city_shared_garden_tatooine_lrg_03 = SharedInstallationOb
 
 	clientObjectCRC = 307577684,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_03, "object/building/player/city/shared_garden_tatooine_lrg_03.iff")
 
 object_building_player_city_shared_garden_tatooine_lrg_04 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_lrg_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3144,11 +3367,15 @@ object_building_player_city_shared_garden_tatooine_lrg_04 = SharedInstallationOb
 
 	clientObjectCRC = 3921045568,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_04, "object/building/player/city/shared_garden_tatooine_lrg_04.iff")
 
 object_building_player_city_shared_garden_tatooine_lrg_05 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_lrg_05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_lrg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3199,11 +3426,15 @@ object_building_player_city_shared_garden_tatooine_lrg_05 = SharedInstallationOb
 
 	clientObjectCRC = 2696613837,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_lrg_05, "object/building/player/city/shared_garden_tatooine_lrg_05.iff")
 
 object_building_player_city_shared_garden_tatooine_med_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_med_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3254,11 +3485,15 @@ object_building_player_city_shared_garden_tatooine_med_01 = SharedInstallationOb
 
 	clientObjectCRC = 603537142,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_01, "object/building/player/city/shared_garden_tatooine_med_01.iff")
 
 object_building_player_city_shared_garden_tatooine_med_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_med_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3309,11 +3544,15 @@ object_building_player_city_shared_garden_tatooine_med_02 = SharedInstallationOb
 
 	clientObjectCRC = 4176385633,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_02, "object/building/player/city/shared_garden_tatooine_med_02.iff")
 
 object_building_player_city_shared_garden_tatooine_med_03 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_med_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3364,11 +3603,15 @@ object_building_player_city_shared_garden_tatooine_med_03 = SharedInstallationOb
 
 	clientObjectCRC = 2984505836,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_03, "object/building/player/city/shared_garden_tatooine_med_03.iff")
 
 object_building_player_city_shared_garden_tatooine_med_04 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_med_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3419,11 +3662,15 @@ object_building_player_city_shared_garden_tatooine_med_04 = SharedInstallationOb
 
 	clientObjectCRC = 1241570040,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_04, "object/building/player/city/shared_garden_tatooine_med_04.iff")
 
 object_building_player_city_shared_garden_tatooine_med_05 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_med_05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_med_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3474,11 +3721,15 @@ object_building_player_city_shared_garden_tatooine_med_05 = SharedInstallationOb
 
 	clientObjectCRC = 51232117,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_med_05, "object/building/player/city/shared_garden_tatooine_med_05.iff")
 
 object_building_player_city_shared_garden_tatooine_sml_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_sml_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3529,11 +3780,15 @@ object_building_player_city_shared_garden_tatooine_sml_01 = SharedInstallationOb
 
 	clientObjectCRC = 1335138650,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_01, "object/building/player/city/shared_garden_tatooine_sml_01.iff")
 
 object_building_player_city_shared_garden_tatooine_sml_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_sml_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3584,11 +3839,15 @@ object_building_player_city_shared_garden_tatooine_sml_02 = SharedInstallationOb
 
 	clientObjectCRC = 2491625933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_02, "object/building/player/city/shared_garden_tatooine_sml_02.iff")
 
 object_building_player_city_shared_garden_tatooine_sml_03 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_sml_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3639,11 +3898,15 @@ object_building_player_city_shared_garden_tatooine_sml_03 = SharedInstallationOb
 
 	clientObjectCRC = 3717092928,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_03, "object/building/player/city/shared_garden_tatooine_sml_03.iff")
 
 object_building_player_city_shared_garden_tatooine_sml_04 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_sml_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3694,11 +3957,15 @@ object_building_player_city_shared_garden_tatooine_sml_04 = SharedInstallationOb
 
 	clientObjectCRC = 644709716,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_04, "object/building/player/city/shared_garden_tatooine_sml_04.iff")
 
 object_building_player_city_shared_garden_tatooine_sml_05 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_garden_tatooine_sml_05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garden_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3749,11 +4016,15 @@ object_building_player_city_shared_garden_tatooine_sml_05 = SharedInstallationOb
 
 	clientObjectCRC = 1868569305,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_garden_tatooine_sml_05, "object/building/player/city/shared_garden_tatooine_sml_05.iff")
 
 object_building_player_city_shared_hospital_corellia = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_hospital_corellia.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -3807,11 +4078,15 @@ object_building_player_city_shared_hospital_corellia = SharedBuildingObjectTempl
 
 	clientObjectCRC = 3101511526,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_corellia, "object/building/player/city/shared_hospital_corellia.iff")
 
 object_building_player_city_shared_hospital_naboo = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_hospital_naboo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -3865,11 +4140,15 @@ object_building_player_city_shared_hospital_naboo = SharedBuildingObjectTemplate
 
 	clientObjectCRC = 1387695986,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_naboo, "object/building/player/city/shared_hospital_naboo.iff")
 
 object_building_player_city_shared_hospital_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_hospital_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -3923,11 +4202,15 @@ object_building_player_city_shared_hospital_tatooine = SharedBuildingObjectTempl
 
 	clientObjectCRC = 2224959225,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_hospital_tatooine, "object/building/player/city/shared_hospital_tatooine.iff")
 
 object_building_player_city_shared_shuttleport_corellia = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_shuttleport_corellia.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_shuttleport_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3978,11 +4261,15 @@ object_building_player_city_shared_shuttleport_corellia = SharedInstallationObje
 
 	clientObjectCRC = 3046076056,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport_corellia, "object/building/player/city/shared_shuttleport_corellia.iff")
 
 object_building_player_city_shared_shuttleport_naboo = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_shuttleport_naboo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_shuttleport_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4033,11 +4320,15 @@ object_building_player_city_shared_shuttleport_naboo = SharedInstallationObjectT
 
 	clientObjectCRC = 893676466,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport_naboo, "object/building/player/city/shared_shuttleport_naboo.iff")
 
 object_building_player_city_shared_shuttleport_tatooine = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_shuttleport_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_shuttleport_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4088,11 +4379,15 @@ object_building_player_city_shared_shuttleport_tatooine = SharedInstallationObje
 
 	clientObjectCRC = 2311851783,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_shuttleport_tatooine, "object/building/player/city/shared_shuttleport_tatooine.iff")
 
 object_building_player_city_shared_theater_corellia = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_theater_corellia.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -4146,11 +4441,15 @@ object_building_player_city_shared_theater_corellia = SharedBuildingObjectTempla
 
 	clientObjectCRC = 3302987664,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_theater_corellia, "object/building/player/city/shared_theater_corellia.iff")
 
 object_building_player_city_shared_theater_naboo = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_theater_naboo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -4204,11 +4503,15 @@ object_building_player_city_shared_theater_naboo = SharedBuildingObjectTemplate:
 
 	clientObjectCRC = 2697086195,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_theater_naboo, "object/building/player/city/shared_theater_naboo.iff")
 
 object_building_player_city_shared_theater_tatooine = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/city/shared_theater_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -4262,6 +4565,7 @@ object_building_player_city_shared_theater_tatooine = SharedBuildingObjectTempla
 
 	clientObjectCRC = 4171036175,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_city_shared_theater_tatooine, "object/building/player/city/shared_theater_tatooine.iff")

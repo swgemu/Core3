@@ -42,6 +42,9 @@
 
 
 object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/powerup/weapon/fs_quest_sad/shared_melee_speed_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_melee_weapon.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest = SharedTan
 
 	clientObjectCRC = 3511795045,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/powerup/base/shared_base.iff", "object/tangible/powerup/base/shared_weapon_base.iff", "object/tangible/powerup/weapon/shared_melee.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_powerup_weapon_fs_quest_sad_shared_melee_speed_quest, "object/tangible/powerup/weapon/fs_quest_sad/shared_melee_speed_quest.iff")

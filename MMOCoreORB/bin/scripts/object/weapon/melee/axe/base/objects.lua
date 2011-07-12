@@ -42,6 +42,9 @@
 
 
 object_weapon_melee_axe_base_shared_axe_base = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/axe/base/shared_axe_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -96,6 +99,7 @@ object_weapon_melee_axe_base_shared_axe_base = SharedWeaponObjectTemplate:new {
 
 	clientObjectCRC = 2307905353,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_axe_base_shared_axe_base, "object/weapon/melee/axe/base/shared_axe_base.iff")

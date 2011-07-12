@@ -42,6 +42,9 @@
 
 
 object_tangible_component_food_secrets_shared_secret_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/food/secrets/shared_secret_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_food_secrets_shared_secret_base = SharedTangibleObject
 
 	clientObjectCRC = 4005001840,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_base, "object/tangible/component/food/secrets/shared_secret_base.iff")
 
 object_tangible_component_food_secrets_shared_secret_imperial_biochem = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/food/secrets/shared_secret_imperial_biochem.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_food_secrets_shared_secret_imperial_biochem = SharedTa
 
 	clientObjectCRC = 2542399223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/food/secrets/shared_secret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_imperial_biochem, "object/tangible/component/food/secrets/shared_secret_imperial_biochem.iff")
 
 object_tangible_component_food_secrets_shared_secret_rebel_biochem = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/food/secrets/shared_secret_rebel_biochem.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_component_food_secrets_shared_secret_rebel_biochem = SharedTangi
 
 	clientObjectCRC = 1836800845,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/food/secrets/shared_secret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_food_secrets_shared_secret_rebel_biochem, "object/tangible/component/food/secrets/shared_secret_rebel_biochem.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/quest/quest_start/shared_ep3_clone_relics_jedi_starfighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter = Sha
 
 	clientObjectCRC = 186615068,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter, "object/tangible/quest/quest_start/shared_ep3_clone_relics_jedi_starfighter.iff")
 
 object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_container = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/quest/quest_start/shared_ep3_clone_relics_jedi_starfighter_container.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_bith_headandbody.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_conta
 
 	clientObjectCRC = 2168280310,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_jedi_starfighter_container, "object/tangible/quest/quest_start/shared_ep3_clone_relics_jedi_starfighter_container.iff")
 
 object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/quest/quest_start/shared_ep3_clone_relics_nym_starmap.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap = SharedTa
 
 	clientObjectCRC = 3381934181,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap, "object/tangible/quest/quest_start/shared_ep3_clone_relics_nym_starmap.iff")
 
 object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/quest/quest_start/shared_ep3_clone_relics_nym_starmap_container.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_crate_basic_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container 
 
 	clientObjectCRC = 4074372055,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_quest_quest_start_shared_ep3_clone_relics_nym_starmap_container, "object/tangible/quest/quest_start/shared_ep3_clone_relics_nym_starmap_container.iff")

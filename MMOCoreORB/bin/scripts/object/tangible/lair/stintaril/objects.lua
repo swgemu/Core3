@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_stintaril_shared_lair_stintaril = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/stintaril/shared_lair_stintaril.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_stintaril_shared_lair_stintaril = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3535581753,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril, "object/tangible/lair/stintaril/shared_lair_stintaril.iff")
 
 object_tangible_lair_stintaril_shared_lair_stintaril_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/stintaril/shared_lair_stintaril_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_stintaril_shared_lair_stintaril_jungle = SharedTangibleObje
 
 	clientObjectCRC = 3799137931,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_jungle, "object/tangible/lair/stintaril/shared_lair_stintaril_jungle.iff")
 
 object_tangible_lair_stintaril_shared_lair_stintaril_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/stintaril/shared_lair_stintaril_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_stintaril_shared_lair_stintaril_swamp = SharedTangibleObjec
 
 	clientObjectCRC = 3834490330,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_stintaril_shared_lair_stintaril_swamp, "object/tangible/lair/stintaril/shared_lair_stintaril_swamp.iff")

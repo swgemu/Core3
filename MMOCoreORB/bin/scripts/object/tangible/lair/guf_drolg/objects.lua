@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_guf_drolg_shared_lair_guf_drolg = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/guf_drolg/shared_lair_guf_drolg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2875084691,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg.iff")
 
 object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland = SharedTangibleO
 
 	clientObjectCRC = 4195556845,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_grassland, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_grassland.iff")
 
 object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle = SharedTangibleObje
 
 	clientObjectCRC = 3851962696,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_guf_drolg_shared_lair_guf_drolg_jungle, "object/tangible/lair/guf_drolg/shared_lair_guf_drolg_jungle.iff")

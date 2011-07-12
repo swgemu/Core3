@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_shared_test_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/shared_test_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_deed_shared_test_deed = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3516023581,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_shared_test_deed, "object/tangible/deed/shared_test_deed.iff")

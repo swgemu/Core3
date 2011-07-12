@@ -42,6 +42,9 @@
 
 
 object_installation_faction_perk_minefield_base_shared_minefield_base = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/faction_perk/minefield/base/shared_minefield_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_lamp_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_installation_faction_perk_minefield_base_shared_minefield_base = SharedIn
 
 	clientObjectCRC = 1321802406,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_minefield_base_shared_minefield_base, "object/installation/faction_perk/minefield/base/shared_minefield_base.iff")

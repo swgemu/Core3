@@ -42,6 +42,9 @@
 
 
 object_tangible_harvesting_shared_shellfish_harvester = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/harvesting/shared_shellfish_harvester.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_organic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_harvesting_shared_shellfish_harvester = SharedTangibleObjectTemp
 
 	clientObjectCRC = 867105366,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_harvesting_shared_shellfish_harvester, "object/tangible/harvesting/shared_shellfish_harvester.iff")

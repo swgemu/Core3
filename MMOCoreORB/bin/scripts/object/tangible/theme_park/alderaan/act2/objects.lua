@@ -42,6 +42,9 @@
 
 
 object_tangible_theme_park_alderaan_act2_shared_decoder_comp_housing = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_housing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_instrument_calibrator.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_housing = SharedTan
 
 	clientObjectCRC = 2668141954,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_housing, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_housing.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_decoder_comp_power = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_power.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_power = SharedTangi
 
 	clientObjectCRC = 1253904609,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_power, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_power.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_decoder_comp_processor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_processor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_processor = SharedT
 
 	clientObjectCRC = 1745145484,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_processor, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_processor.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_decoder_comp_reader = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_reader.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_reader = SharedTang
 
 	clientObjectCRC = 551792434,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_reader, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_reader.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_decoder_comp_screen = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_screen.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_diagnostic_screen.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_screen = SharedTang
 
 	clientObjectCRC = 1766910306,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_screen, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_screen.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_decoder_comp_translation = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_translation.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_theme_park_alderaan_act2_shared_decoder_comp_translation = Share
 
 	clientObjectCRC = 3061856066,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act2_shared_decoder_comp_translation, "object/tangible/theme_park/alderaan/act2/shared_decoder_comp_translation.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_interface_override_device = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act2/shared_interface_override_device.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_impulse_detector_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_theme_park_alderaan_act2_shared_interface_override_device = Shar
 
 	clientObjectCRC = 1110698456,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act2_shared_interface_override_device, "object/tangible/theme_park/alderaan/act2/shared_interface_override_device.iff")
 
 object_tangible_theme_park_alderaan_act2_shared_relay_station_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act2/shared_relay_station_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,6 +508,7 @@ object_tangible_theme_park_alderaan_act2_shared_relay_station_terminal = SharedT
 
 	clientObjectCRC = 1889725651,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act2_shared_relay_station_terminal, "object/tangible/theme_park/alderaan/act2/shared_relay_station_terminal.iff")

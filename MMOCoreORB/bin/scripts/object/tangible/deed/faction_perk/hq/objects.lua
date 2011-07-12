@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_faction_perk_hq_shared_hq_deed_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_deed_faction_perk_hq_shared_hq_deed_base = SharedTangibleObjectT
 
 	clientObjectCRC = 2279437035,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_deed_base, "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/hq/shared_hq_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_deed_faction_perk_hq_shared_hq_s01 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 814071482,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s01, "object/tangible/deed/faction_perk/hq/shared_hq_s01.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s01_pvp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/hq/shared_hq_s01_pvp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_deed_faction_perk_hq_shared_hq_s01_pvp = SharedTangibleObjectTem
 
 	clientObjectCRC = 1776913046,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s01_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s01_pvp.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/hq/shared_hq_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_deed_faction_perk_hq_shared_hq_s02 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3952219693,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s02, "object/tangible/deed/faction_perk/hq/shared_hq_s02.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s02_pvp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/hq/shared_hq_s02_pvp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_deed_faction_perk_hq_shared_hq_s02_pvp = SharedTangibleObjectTem
 
 	clientObjectCRC = 2066311563,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s02_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s02_pvp.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/hq/shared_hq_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_deed_faction_perk_hq_shared_hq_s03 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2728358304,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s03, "object/tangible/deed/faction_perk/hq/shared_hq_s03.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/hq/shared_hq_s03_pvp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp = SharedTangibleObjectTem
 
 	clientObjectCRC = 2301215725,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s03_pvp.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/hq/shared_hq_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_deed_faction_perk_hq_shared_hq_s04 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1501321908,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s04, "object/tangible/deed/faction_perk/hq/shared_hq_s04.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s04_pvp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/hq/shared_hq_s04_pvp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_deed_faction_perk_hq_shared_hq_s04_pvp = SharedTangibleObjectTem
 
 	clientObjectCRC = 1588113329,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s04_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s04_pvp.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/hq/shared_hq_s05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_deed_faction_perk_hq_shared_hq_s05 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 275856697,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s05, "object/tangible/deed/faction_perk/hq/shared_hq_s05.iff")
 
 object_tangible_deed_faction_perk_hq_shared_hq_s05_pvp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/hq/shared_hq_s05_pvp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,6 +685,7 @@ object_tangible_deed_faction_perk_hq_shared_hq_s05_pvp = SharedTangibleObjectTem
 
 	clientObjectCRC = 2896692695,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/faction_perk/hq/shared_hq_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_hq_shared_hq_s05_pvp, "object/tangible/deed/faction_perk/hq/shared_hq_s05_pvp.iff")

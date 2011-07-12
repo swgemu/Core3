@@ -42,6 +42,9 @@
 
 
 object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barracks = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/barracks/shared_bfield_gungan_barracks.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_relic_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barra
 
 	clientObjectCRC = 529503793,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_gungan_barracks, "object/installation/battlefield/destructible/barracks/shared_bfield_gungan_barracks.iff")
 
 object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_barracks = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/barracks/shared_bfield_nightsister_barracks.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dath_night_sister_tent_house_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_
 
 	clientObjectCRC = 745421256,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_barracks_shared_bfield_nightsister_barracks, "object/installation/battlefield/destructible/barracks/shared_bfield_nightsister_barracks.iff")
 
 object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barracks = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/barracks/shared_rebel_infantry_barracks.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barr
 
 	clientObjectCRC = 3854704940,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_barracks_shared_rebel_infantry_barracks, "object/installation/battlefield/destructible/barracks/shared_rebel_infantry_barracks.iff")
 
 object_installation_battlefield_destructible_barracks_shared_storm_trooper_barracks = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/barracks/shared_storm_trooper_barracks.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_installation_battlefield_destructible_barracks_shared_storm_trooper_barra
 
 	clientObjectCRC = 3586973666,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_barracks_shared_storm_trooper_barracks, "object/installation/battlefield/destructible/barracks/shared_storm_trooper_barracks.iff")

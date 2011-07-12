@@ -42,6 +42,9 @@
 
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/one_year_anniversary/shared_painting_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_painting_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_01 = SharedT
 
 	clientObjectCRC = 3479300551,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_01, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_01.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/one_year_anniversary/shared_painting_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_painting_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_02 = SharedT
 
 	clientObjectCRC = 343294288,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_02, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_02.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/one_year_anniversary/shared_painting_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_painting_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_03 = SharedT
 
 	clientObjectCRC = 1568351965,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_03, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_03.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/one_year_anniversary/shared_painting_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_painting_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_04 = SharedT
 
 	clientObjectCRC = 2794982857,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_04, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_04.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/one_year_anniversary/shared_painting_05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_painting_s05.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_05 = SharedT
 
 	clientObjectCRC = 4019546692,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_05, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_05.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_06 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/one_year_anniversary/shared_painting_06.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_painting_s06.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_06 = SharedT
 
 	clientObjectCRC = 880984787,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_06, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_06.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_07 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/one_year_anniversary/shared_painting_07.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_painting_s07.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_07 = SharedT
 
 	clientObjectCRC = 2106565982,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_07, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_07.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_08 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/one_year_anniversary/shared_painting_08.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_painting_s08.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_08 = SharedT
 
 	clientObjectCRC = 3347417420,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_08, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_08.iff")
 
 object_tangible_veteran_reward_one_year_anniversary_shared_painting_09 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/one_year_anniversary/shared_painting_09.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_painting_s09.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,6 +567,7 @@ object_tangible_veteran_reward_one_year_anniversary_shared_painting_09 = SharedT
 
 	clientObjectCRC = 2391338689,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_one_year_anniversary_shared_painting_09, "object/tangible/veteran_reward/one_year_anniversary/shared_painting_09.iff")

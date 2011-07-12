@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_blistmok_shared_lair_blistmok = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/blistmok/shared_lair_blistmok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_blistmok_shared_lair_blistmok = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 642963853,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_blistmok_shared_lair_blistmok, "object/tangible/lair/blistmok/shared_lair_blistmok.iff")
 
 object_tangible_lair_blistmok_shared_lair_blistmok_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/blistmok/shared_lair_blistmok_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_blistmok_shared_lair_blistmok_mountain = SharedTangibleObje
 
 	clientObjectCRC = 920509188,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_mountain, "object/tangible/lair/blistmok/shared_lair_blistmok_mountain.iff")
 
 object_tangible_lair_blistmok_shared_lair_blistmok_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/blistmok/shared_lair_blistmok_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_blistmok_shared_lair_blistmok_wasteland = SharedTangibleObj
 
 	clientObjectCRC = 1298589466,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_blistmok_shared_lair_blistmok_wasteland, "object/tangible/lair/blistmok/shared_lair_blistmok_wasteland.iff")

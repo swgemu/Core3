@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_nuna_shared_lair_nuna = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/nuna/shared_lair_nuna.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_nuna_shared_lair_nuna = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1870027501,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna, "object/tangible/lair/nuna/shared_lair_nuna.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/nuna/shared_lair_nuna_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_nuna_shared_lair_nuna_forest = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 3366083630,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_forest, "object/tangible/lair/nuna/shared_lair_nuna_forest.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/nuna/shared_lair_nuna_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_nuna_shared_lair_nuna_grassland = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2100068580,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_grassland, "object/tangible/lair/nuna/shared_lair_nuna_grassland.iff")
 
 object_tangible_lair_nuna_shared_lair_nuna_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/nuna/shared_lair_nuna_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_nuna_shared_lair_nuna_swamp = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 222503390,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_nuna_shared_lair_nuna_swamp, "object/tangible/lair/nuna/shared_lair_nuna_swamp.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_component_droid_repair_shared_capacitor_high_discharge = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/droid/repair/shared_capacitor_high_discharge.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mine_drx55.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_droid_repair_shared_capacitor_high_discharge = SharedT
 
 	clientObjectCRC = 475400384,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/repair/shared_capacitor_low_discharge.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_capacitor_high_discharge, "object/tangible/component/droid/repair/shared_capacitor_high_discharge.iff")
 
 object_tangible_component_droid_repair_shared_capacitor_low_discharge = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/droid/repair/shared_capacitor_low_discharge.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_jewelry_setting.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_droid_repair_shared_capacitor_low_discharge = SharedTa
 
 	clientObjectCRC = 3184279961,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_capacitor_low_discharge, "object/tangible/component/droid/repair/shared_capacitor_low_discharge.iff")
 
 object_tangible_component_droid_repair_shared_diagnostic_circuit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_component_droid_repair_shared_diagnostic_circuit = SharedTangibl
 
 	clientObjectCRC = 1770332803,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_diagnostic_circuit, "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff")
 
 object_tangible_component_droid_repair_shared_diagnostic_circuit_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/droid/repair/shared_diagnostic_circuit_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_component_droid_repair_shared_diagnostic_circuit_advanced = Shar
 
 	clientObjectCRC = 1133144792,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_diagnostic_circuit_advanced, "object/tangible/component/droid/repair/shared_diagnostic_circuit_advanced.iff")
 
 object_tangible_component_droid_repair_shared_power_supply_redundant = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/droid/repair/shared_power_supply_redundant.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_weapon_targeting_computer.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_component_droid_repair_shared_power_supply_redundant = SharedTan
 
 	clientObjectCRC = 2336135433,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_power_supply_redundant, "object/tangible/component/droid/repair/shared_power_supply_redundant.iff")
 
 object_tangible_component_droid_repair_shared_power_supply_redundant_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/droid/repair/shared_power_supply_redundant_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_impulse_detector_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_component_droid_repair_shared_power_supply_redundant_advanced = 
 
 	clientObjectCRC = 1755831948,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/repair/shared_power_supply_redundant.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_power_supply_redundant_advanced, "object/tangible/component/droid/repair/shared_power_supply_redundant_advanced.iff")
 
 object_tangible_component_droid_repair_shared_repair_unit_casing = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/droid/repair/shared_repair_unit_casing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_component_droid_repair_shared_repair_unit_casing = SharedTangibl
 
 	clientObjectCRC = 2421721438,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_repair_unit_casing, "object/tangible/component/droid/repair/shared_repair_unit_casing.iff")
 
 object_tangible_component_droid_repair_shared_repair_unit_casing_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/droid/repair/shared_repair_unit_casing_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_component_droid_repair_shared_repair_unit_casing_advanced = Shar
 
 	clientObjectCRC = 295372848,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/repair/shared_repair_unit_casing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_repair_unit_casing_advanced, "object/tangible/component/droid/repair/shared_repair_unit_casing_advanced.iff")
 
 object_tangible_component_droid_repair_shared_unit_delivery_cartridge = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/droid/repair/shared_unit_delivery_cartridge.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_component_droid_repair_shared_unit_delivery_cartridge = SharedTa
 
 	clientObjectCRC = 3230177189,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_unit_delivery_cartridge, "object/tangible/component/droid/repair/shared_unit_delivery_cartridge.iff")
 
 object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/droid/repair/shared_unit_delivery_cartridge_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,6 +626,7 @@ object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced =
 
 	clientObjectCRC = 1878973727,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/droid/repair/shared_unit_delivery_cartridge.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_droid_repair_shared_unit_delivery_cartridge_advanced, "object/tangible/component/droid/repair/shared_unit_delivery_cartridge_advanced.iff")

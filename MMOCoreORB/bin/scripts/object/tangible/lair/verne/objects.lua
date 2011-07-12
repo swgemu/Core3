@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_verne_shared_lair_verne = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/verne/shared_lair_verne.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_verne_shared_lair_verne = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 1856597850,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_verne_shared_lair_verne, "object/tangible/lair/verne/shared_lair_verne.iff")
 
 object_tangible_lair_verne_shared_lair_verne_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/verne/shared_lair_verne_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_verne_shared_lair_verne_forest = SharedTangibleObjectTempla
 
 	clientObjectCRC = 2461392200,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_verne_shared_lair_verne_forest, "object/tangible/lair/verne/shared_lair_verne_forest.iff")

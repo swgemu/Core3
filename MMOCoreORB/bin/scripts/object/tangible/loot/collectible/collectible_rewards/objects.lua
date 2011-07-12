@@ -42,6 +42,9 @@
 
 
 object_tangible_loot_collectible_collectible_rewards_shared_blue_rug = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/collectible_rewards/shared_blue_rug.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_rug_rectangle_m_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_loot_collectible_collectible_rewards_shared_blue_rug = SharedTan
 
 	clientObjectCRC = 2581547421,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_blue_rug, "object/tangible/loot/collectible/collectible_rewards/shared_blue_rug.iff")
 
 object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculpture_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/collectible_rewards/shared_collectible_sculpture_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_sculpture_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculptur
 
 	clientObjectCRC = 1595043156,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_collectible_sculpture_s01, "object/tangible/loot/collectible/collectible_rewards/shared_collectible_sculpture_s01.iff")
 
 object_tangible_loot_collectible_collectible_rewards_shared_collectible_table = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/collectible_rewards/shared_collectible_table.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_light_table.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_loot_collectible_collectible_rewards_shared_collectible_table = 
 
 	clientObjectCRC = 1553506726,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_collectible_table, "object/tangible/loot/collectible/collectible_rewards/shared_collectible_table.iff")
 
 object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/collectible_rewards/shared_fs_tracking_device.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_power_output_analyzer.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device =
 
 	clientObjectCRC = 3016575876,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_fs_tracking_device, "object/tangible/loot/collectible/collectible_rewards/shared_fs_tracking_device.iff")
 
 object_tangible_loot_collectible_collectible_rewards_shared_gong = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/collectible_rewards/shared_gong.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_giant_gong.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_loot_collectible_collectible_rewards_shared_gong = SharedTangibl
 
 	clientObjectCRC = 1260578344,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_gong, "object/tangible/loot/collectible/collectible_rewards/shared_gong.iff")
 
 object_tangible_loot_collectible_collectible_rewards_shared_orange_rug = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/collectible_rewards/shared_orange_rug.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_rug_rectangle_m_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,6 +390,7 @@ object_tangible_loot_collectible_collectible_rewards_shared_orange_rug = SharedT
 
 	clientObjectCRC = 1620517273,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_collectible_rewards_shared_orange_rug, "object/tangible/loot/collectible/collectible_rewards/shared_orange_rug.iff")

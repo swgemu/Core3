@@ -42,6 +42,9 @@
 
 
 object_tangible_container_quest_crafting_contract_shared_armor_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/quest/crafting_contract/shared_armor_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_armor_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_container_quest_crafting_contract_shared_armor_crate = SharedTan
 
 	clientObjectCRC = 4232935338,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_armor_crate, "object/tangible/container/quest/crafting_contract/shared_armor_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_clothing_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/quest/crafting_contract/shared_clothing_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_clothing_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_container_quest_crafting_contract_shared_clothing_crate = Shared
 
 	clientObjectCRC = 2488721733,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_clothing_crate, "object/tangible/container/quest/crafting_contract/shared_clothing_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_droid_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/quest/crafting_contract/shared_droid_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_electronics_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_container_quest_crafting_contract_shared_droid_crate = SharedTan
 
 	clientObjectCRC = 594486839,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_droid_crate, "object/tangible/container/quest/crafting_contract/shared_droid_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_food_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/quest/crafting_contract/shared_food_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_food_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_container_quest_crafting_contract_shared_food_crate = SharedTang
 
 	clientObjectCRC = 2851563770,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_food_crate, "object/tangible/container/quest/crafting_contract/shared_food_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_furniture_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/quest/crafting_contract/shared_furniture_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_container_quest_crafting_contract_shared_furniture_crate = Share
 
 	clientObjectCRC = 3179098251,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_furniture_crate, "object/tangible/container/quest/crafting_contract/shared_furniture_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_generic_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/quest/crafting_contract/shared_generic_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_items_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_container_quest_crafting_contract_shared_generic_crate = SharedT
 
 	clientObjectCRC = 2299347618,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_generic_crate, "object/tangible/container/quest/crafting_contract/shared_generic_crate.iff")
 
 object_tangible_container_quest_crafting_contract_shared_weapon_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/quest/crafting_contract/shared_weapon_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_weapons_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,6 +449,7 @@ object_tangible_container_quest_crafting_contract_shared_weapon_crate = SharedTa
 
 	clientObjectCRC = 2938212328,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_quest_crafting_contract_shared_weapon_crate, "object/tangible/container/quest/crafting_contract/shared_weapon_crate.iff")

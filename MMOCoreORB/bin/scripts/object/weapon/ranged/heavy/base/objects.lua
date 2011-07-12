@@ -42,6 +42,9 @@
 
 
 object_weapon_ranged_heavy_base_shared_heavy_weapon_base = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/empty.iff",
 	attackType = 1,
@@ -96,6 +99,7 @@ object_weapon_ranged_heavy_base_shared_heavy_weapon_base = SharedWeaponObjectTem
 
 	clientObjectCRC = 2361541818,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_base_shared_heavy_weapon_base, "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff")

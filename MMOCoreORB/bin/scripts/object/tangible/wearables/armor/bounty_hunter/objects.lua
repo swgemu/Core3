@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_belt.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_bounty_hunter_belt_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt = 
 
 	clientObjectCRC = 148447404,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_belt, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_belt.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bicep_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_bounty_hunter_bicep_l_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_l
 
 	clientObjectCRC = 3816261065,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_l, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bicep_l.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bicep_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_bounty_hunter_bicep_r_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_r
 
 	clientObjectCRC = 2476916826,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bicep_r, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bicep_r.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_boots = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_boots.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_bounty_hunter_boots_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_boots =
 
 	clientObjectCRC = 564000134,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_boots, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_boots.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bracer_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_bounty_hunter_bracer_l_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_l.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_
 
 	clientObjectCRC = 391592996,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_l, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bracer_l.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bracer_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_bounty_hunter_bracer_r_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_r.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_
 
 	clientObjectCRC = 1736604087,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_bracer_r, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_bracer_r.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_chest_plate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_chest_plate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_bounty_hunter_chest_plate_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_chest_p
 
 	clientObjectCRC = 1339202211,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_chest_plate, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_chest_plate.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_gloves = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_gloves.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_bounty_hunter_gloves_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_gloves 
 
 	clientObjectCRC = 2249951613,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_gauntlets.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_gloves, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_gloves.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_helmet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_helmet.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_bounty_hunter_helmet_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -532,11 +567,15 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_helmet 
 
 	clientObjectCRC = 819685493,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_helmet, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_helmet.iff")
 
 object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_leggings = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_leggings.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_bounty_hunter_leggings_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pant_leggings.iff",
 
@@ -587,6 +626,7 @@ object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_legging
 
 	clientObjectCRC = 2557731131,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_bounty_hunter_shared_armor_bounty_hunter_leggings, "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_leggings.iff")

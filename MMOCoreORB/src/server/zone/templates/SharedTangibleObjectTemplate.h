@@ -23,7 +23,7 @@ protected:
 
 	Reference<StructureFootprint*> structureFootprint;
 
-	bool targetable;
+	BoolParam targetable;
 
 	uint16 playerUseMask;
 
@@ -58,6 +58,12 @@ public:
 	~SharedTangibleObjectTemplate();
 
 	void readObject(LuaObject* templateData);
+	void readObject(IffStream* iffStream);
+
+	void parseFileData(IffStream* str);
+
+	void parseVariableData(const String& varName, Chunk* data);
+	void parseVariableData(const String& varName, LuaObject* data);
 
 	inline int getMaxCondition() const {
 		return maxCondition;

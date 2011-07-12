@@ -42,6 +42,9 @@
 
 
 object_intangible_faction_perk_shared_shuttle_extract = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/faction_perk/shared_shuttle_extract.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_destroy.spr",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_intangible_faction_perk_shared_shuttle_extract = SharedIntangibleObjectTe
 
 	clientObjectCRC = 2608329477,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_faction_perk_shared_shuttle_extract, "object/intangible/faction_perk/shared_shuttle_extract.iff")

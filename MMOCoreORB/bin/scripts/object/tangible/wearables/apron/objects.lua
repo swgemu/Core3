@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_apron_shared_apron_chef_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/apron/shared_apron_chef_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/apron_chef_jacket_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jacket_longsleeve.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_apron_shared_apron_chef_s01 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 1238323119,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jacket_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_chef_s01, "object/tangible/wearables/apron/shared_apron_chef_s01.iff")
 
 object_tangible_wearables_apron_shared_apron_porcellus = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/apron/shared_apron_porcellus.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/apron_porcellus_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_apron_shared_apron_porcellus = SharedTangibleObjectTem
 
 	clientObjectCRC = 3631236476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_porcellus, "object/tangible/wearables/apron/shared_apron_porcellus.iff")
 
 object_tangible_wearables_apron_shared_apron_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/apron/shared_apron_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/apron_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_apron_shared_apron_s01 = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 129788759,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_s01, "object/tangible/wearables/apron/shared_apron_s01.iff")
 
 object_tangible_wearables_apron_shared_apron_s01_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/apron/shared_apron_s01_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/apron_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -257,6 +272,7 @@ object_tangible_wearables_apron_shared_apron_s01_quest = SharedTangibleObjectTem
 
 	clientObjectCRC = 3378416176,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff", "object/tangible/wearables/apron/shared_apron_s01.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_apron_shared_apron_s01_quest, "object/tangible/wearables/apron/shared_apron_s01_quest.iff")

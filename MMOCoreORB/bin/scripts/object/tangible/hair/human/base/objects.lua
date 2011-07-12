@@ -42,6 +42,9 @@
 
 
 object_tangible_hair_human_base_shared_hair_human_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/human/base/shared_hair_human_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -92,11 +95,15 @@ object_tangible_hair_human_base_shared_hair_human_base = SharedTangibleObjectTem
 
 	clientObjectCRC = 1278154793,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_human_base_shared_hair_human_base, "object/tangible/hair/human/base/shared_hair_human_base.iff")
 
 object_tangible_hair_human_base_shared_hair_human_female_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/human/base/shared_hair_human_female_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -147,11 +154,15 @@ object_tangible_hair_human_base_shared_hair_human_female_base = SharedTangibleOb
 
 	clientObjectCRC = 504761774,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/human/base/shared_hair_human_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_human_base_shared_hair_human_female_base, "object/tangible/hair/human/base/shared_hair_human_female_base.iff")
 
 object_tangible_hair_human_base_shared_hair_human_male_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/human/base/shared_hair_human_male_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -202,6 +213,7 @@ object_tangible_hair_human_base_shared_hair_human_male_base = SharedTangibleObje
 
 	clientObjectCRC = 2205118344,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/human/base/shared_hair_human_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_human_base_shared_hair_human_male_base, "object/tangible/hair/human/base/shared_hair_human_male_base.iff")

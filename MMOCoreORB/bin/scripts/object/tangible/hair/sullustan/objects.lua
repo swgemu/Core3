@@ -42,6 +42,9 @@
 
 
 object_tangible_hair_sullustan_shared_sul_hair_s01_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s01_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -92,11 +95,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s01_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2917568319,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s01_f, "object/tangible/hair/sullustan/shared_sul_hair_s01_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s01_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s01_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s01_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -147,11 +154,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s01_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 924328110,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s01_m, "object/tangible/hair/sullustan/shared_sul_hair_s01_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s02_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s02_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -202,11 +213,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s02_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2082420492,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s02_f, "object/tangible/hair/sullustan/shared_sul_hair_s02_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s02_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s02_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s02_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -257,11 +272,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s02_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3873544349,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s02_m, "object/tangible/hair/sullustan/shared_sul_hair_s02_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s03_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s03_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -312,11 +331,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s03_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 860380957,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s03_f, "object/tangible/hair/sullustan/shared_sul_hair_s03_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s03_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s03_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s03_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -367,11 +390,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s03_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2847338636,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s03_m, "object/tangible/hair/sullustan/shared_sul_hair_s03_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s04_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s04_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -422,11 +449,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s04_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3677182685,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s04_f, "object/tangible/hair/sullustan/shared_sul_hair_s04_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s04_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s04_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s04_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -477,11 +508,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s04_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1104409932,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s04_m, "object/tangible/hair/sullustan/shared_sul_hair_s04_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s05_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s05_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s05_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -532,11 +567,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s05_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2491036364,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s05_f, "object/tangible/hair/sullustan/shared_sul_hair_s05_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s05_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s05_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s05_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -587,11 +626,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s05_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 243572061,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s05_m, "object/tangible/hair/sullustan/shared_sul_hair_s05_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s06_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s06_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s06_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -642,11 +685,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s06_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1166248703,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s06_f, "object/tangible/hair/sullustan/shared_sul_hair_s06_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s06_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s06_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s06_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -697,11 +744,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s06_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3749520750,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s06_m, "object/tangible/hair/sullustan/shared_sul_hair_s06_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s07_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s07_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -752,11 +803,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s07_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 181723886,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s07_f, "object/tangible/hair/sullustan/shared_sul_hair_s07_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s07_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s07_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s07_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -807,11 +862,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s07_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2418691455,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s07_m, "object/tangible/hair/sullustan/shared_sul_hair_s07_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s08_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s08_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s08_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -862,11 +921,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s08_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2441649352,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s08_f, "object/tangible/hair/sullustan/shared_sul_hair_s08_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s08_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s08_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s08_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -917,11 +980,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s08_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 192295769,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s08_m, "object/tangible/hair/sullustan/shared_sul_hair_s08_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s09_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s09_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s09_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -972,11 +1039,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s09_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3739219161,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s09_f, "object/tangible/hair/sullustan/shared_sul_hair_s09_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s09_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s09_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s09_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1027,11 +1098,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s09_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1143036744,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s09_m, "object/tangible/hair/sullustan/shared_sul_hair_s09_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s10_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s10_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s10_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1082,11 +1157,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s10_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3104848868,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s10_f, "object/tangible/hair/sullustan/shared_sul_hair_s10_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s10_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s10_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s10_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1137,11 +1216,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s10_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 602838133,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s10_m, "object/tangible/hair/sullustan/shared_sul_hair_s10_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s11_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s11_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s11_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1192,11 +1275,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s11_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4131869685,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s11_f, "object/tangible/hair/sullustan/shared_sul_hair_s11_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s11_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s11_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s11_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1247,11 +1334,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s11_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1824128100,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s11_m, "object/tangible/hair/sullustan/shared_sul_hair_s11_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s12_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s12_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s12_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1302,11 +1393,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s12_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 666823622,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s12_f, "object/tangible/hair/sullustan/shared_sul_hair_s12_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s12_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s12_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s12_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1357,11 +1452,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s12_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3175105623,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s12_m, "object/tangible/hair/sullustan/shared_sul_hair_s12_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s13_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s13_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s13_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1412,11 +1511,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s13_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1760134103,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s13_f, "object/tangible/hair/sullustan/shared_sul_hair_s13_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s13_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s13_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s13_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1467,11 +1570,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s13_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4061604934,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s13_m, "object/tangible/hair/sullustan/shared_sul_hair_s13_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s14_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s14_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s14_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1522,11 +1629,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s14_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2156693015,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s14_f, "object/tangible/hair/sullustan/shared_sul_hair_s14_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s14_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s14_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s14_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1577,11 +1688,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s14_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 443689350,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s14_m, "object/tangible/hair/sullustan/shared_sul_hair_s14_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s15_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s15_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s15_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1632,11 +1747,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s15_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3487297030,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s15_f, "object/tangible/hair/sullustan/shared_sul_hair_s15_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s15_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s15_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s15_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1687,11 +1806,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s15_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1428504983,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s15_m, "object/tangible/hair/sullustan/shared_sul_hair_s15_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s16_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s16_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s16_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1742,11 +1865,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s16_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 505566773,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s16_f, "object/tangible/hair/sullustan/shared_sul_hair_s16_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s16_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s16_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s16_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1797,11 +1924,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s16_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2229074340,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s16_m, "object/tangible/hair/sullustan/shared_sul_hair_s16_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s17_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s17_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s17_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1852,11 +1983,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s17_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1366638116,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s17_f, "object/tangible/hair/sullustan/shared_sul_hair_s17_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s17_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s17_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s17_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1907,11 +2042,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s17_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3414921653,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s17_m, "object/tangible/hair/sullustan/shared_sul_hair_s17_m.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s18_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s18_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s18_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -1962,11 +2101,15 @@ object_tangible_hair_sullustan_shared_sul_hair_s18_f = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3391700994,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s18_f, "object/tangible/hair/sullustan/shared_sul_hair_s18_f.iff")
 
 object_tangible_hair_sullustan_shared_sul_hair_s18_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/sullustan/shared_sul_hair_s18_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sul_hair_s18_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -2017,6 +2160,7 @@ object_tangible_hair_sullustan_shared_sul_hair_s18_m = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1356328851,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_base.iff", "object/tangible/hair/sullustan/base/shared_hair_sullustan_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_sullustan_shared_sul_hair_s18_m, "object/tangible/hair/sullustan/shared_sul_hair_s18_m.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_vehicle_deed_shared_jetpack_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_jetpack_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_deed_vehicle_deed_shared_jetpack_deed = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2560190060,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_jetpack_deed, "object/tangible/deed/vehicle_deed/shared_jetpack_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_landspeeder_av21_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed = SharedTangibleO
 
 	clientObjectCRC = 3746524983,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_av21_deed, "object/tangible/deed/vehicle_deed/shared_landspeeder_av21_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_landspeeder_x31_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_landspeeder_x31_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_x31_deed = SharedTangibleOb
 
 	clientObjectCRC = 3199159464,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_x31_deed, "object/tangible/deed/vehicle_deed/shared_landspeeder_x31_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_landspeeder_x34_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed = SharedTangibleOb
 
 	clientObjectCRC = 905926205,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_landspeeder_x34_deed, "object/tangible/deed/vehicle_deed/shared_landspeeder_x34_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_speederbike_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_speederbike_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_deed_vehicle_deed_shared_speederbike_deed = SharedTangibleObject
 
 	clientObjectCRC = 4075476273,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_deed, "object/tangible/deed/vehicle_deed/shared_speederbike_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_speederbike_flash_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed = SharedTangible
 
 	clientObjectCRC = 1892530279,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed, "object/tangible/deed/vehicle_deed/shared_speederbike_flash_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_speederbike_swoop_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed = SharedTangible
 
 	clientObjectCRC = 495473751,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_speederbike_swoop_deed, "object/tangible/deed/vehicle_deed/shared_speederbike_swoop_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_vehicle_deed_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pv_landspeeder_luke.sat",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_deed_vehicle_deed_shared_vehicle_deed_base = SharedTangibleObjec
 
 	clientObjectCRC = 504910832,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_vehicle_deed_base, "object/tangible/deed/vehicle_deed/shared_vehicle_deed_base.iff")
 
 object_tangible_deed_vehicle_deed_shared_vehicular_prototype_bike_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_vehicular_prototype_bike_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pv_speeder_bike.sat",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_deed_vehicle_deed_shared_vehicular_prototype_bike_deed = SharedT
 
 	clientObjectCRC = 1262265566,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_vehicular_prototype_bike_deed, "object/tangible/deed/vehicle_deed/shared_vehicular_prototype_bike_deed.iff")
 
 object_tangible_deed_vehicle_deed_shared_vehicular_prototype_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/vehicle_deed/shared_vehicular_prototype_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/monstrosity.sat",
 	arrangementDescriptorFilename = "",
 
@@ -587,6 +626,7 @@ object_tangible_deed_vehicle_deed_shared_vehicular_prototype_deed = SharedTangib
 
 	clientObjectCRC = 3990622047,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_vehicle_deed_shared_vehicular_prototype_deed, "object/tangible/deed/vehicle_deed/shared_vehicular_prototype_deed.iff")

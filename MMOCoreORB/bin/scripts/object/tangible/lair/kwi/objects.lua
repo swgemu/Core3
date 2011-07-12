@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_kwi_shared_lair_kwi = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kwi/shared_lair_kwi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_kwi_shared_lair_kwi = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2075620240,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi, "object/tangible/lair/kwi/shared_lair_kwi.iff")
 
 object_tangible_lair_kwi_shared_lair_kwi_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kwi/shared_lair_kwi_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_kwi_shared_lair_kwi_desert = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 3436978198,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi_desert, "object/tangible/lair/kwi/shared_lair_kwi_desert.iff")
 
 object_tangible_lair_kwi_shared_lair_kwi_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kwi/shared_lair_kwi_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_kwi_shared_lair_kwi_forest = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 3879200403,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi_forest, "object/tangible/lair/kwi/shared_lair_kwi_forest.iff")
 
 object_tangible_lair_kwi_shared_lair_kwi_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kwi/shared_lair_kwi_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_kwi_shared_lair_kwi_mountain = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1326626395,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kwi_shared_lair_kwi_mountain, "object/tangible/lair/kwi/shared_lair_kwi_mountain.iff")

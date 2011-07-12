@@ -42,6 +42,9 @@
 
 
 object_weapon_melee_unarmed_shared_unarmed_default = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/unarmed/shared_unarmed_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_default_weapon.iff",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_melee_unarmed_shared_unarmed_default = SharedWeaponObjectTemplate:
 
 	clientObjectCRC = 1334573707,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/creature/shared_creature_default_weapon.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_unarmed_shared_unarmed_default, "object/weapon/melee/unarmed/shared_unarmed_default.iff")
 
 object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/unarmed/shared_unarmed_default_player.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_default_weapon.iff",
 	attackType = 1,
@@ -155,6 +162,7 @@ object_weapon_melee_unarmed_shared_unarmed_default_player = SharedWeaponObjectTe
 
 	clientObjectCRC = 1891079953,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/creature/shared_creature_default_weapon.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_unarmed_shared_unarmed_default_player, "object/weapon/melee/unarmed/shared_unarmed_default_player.iff")

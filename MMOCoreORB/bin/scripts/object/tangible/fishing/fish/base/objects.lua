@@ -42,6 +42,9 @@
 
 
 object_tangible_fishing_fish_base_shared_fish_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/fish/base/shared_fish_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_fish_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_fishing_fish_base_shared_fish_base = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3666883788,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_fish_base_shared_fish_base, "object/tangible/fishing/fish/base/shared_fish_base.iff")

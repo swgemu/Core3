@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_flewt_shared_lair_flewt = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/flewt/shared_lair_flewt.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_flewt_shared_lair_flewt = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2542789035,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_flewt_shared_lair_flewt, "object/tangible/lair/flewt/shared_lair_flewt.iff")
 
 object_tangible_lair_flewt_shared_lair_flewt_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/flewt/shared_lair_flewt_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_flewt_shared_lair_flewt_forest = SharedTangibleObjectTempla
 
 	clientObjectCRC = 1133603735,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_flewt_shared_lair_flewt_forest, "object/tangible/lair/flewt/shared_lair_flewt_forest.iff")
 
 object_tangible_lair_flewt_shared_lair_flewt_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/flewt/shared_lair_flewt_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_flewt_shared_lair_flewt_grassland = SharedTangibleObjectTem
 
 	clientObjectCRC = 2897911206,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_flewt_shared_lair_flewt_grassland, "object/tangible/lair/flewt/shared_lair_flewt_grassland.iff")

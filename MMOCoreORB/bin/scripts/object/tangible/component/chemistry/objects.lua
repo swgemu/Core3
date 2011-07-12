@@ -42,6 +42,9 @@
 
 
 object_tangible_component_chemistry_shared_biologic_effect_controller = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_chemistry_shared_biologic_effect_controller = SharedTa
 
 	clientObjectCRC = 3704098001,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_biologic_effect_controller, "object/tangible/component/chemistry/shared_biologic_effect_controller.iff")
 
 object_tangible_component_chemistry_shared_biologic_effect_controller_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_chemistry_shared_biologic_effect_controller_advanced =
 
 	clientObjectCRC = 2300334388,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_biologic_effect_controller_advanced, "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff")
 
 object_tangible_component_chemistry_shared_chemistry_component = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_chemistry_component.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_component_chemistry_shared_chemistry_component = SharedTangibleO
 
 	clientObjectCRC = 1107717367,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_chemistry_component, "object/tangible/component/chemistry/shared_chemistry_component.iff")
 
 object_tangible_component_chemistry_shared_dispersal_mechanism = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_dispersal_mechanism.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_component_chemistry_shared_dispersal_mechanism = SharedTangibleO
 
 	clientObjectCRC = 2561274877,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism, "object/tangible/component/chemistry/shared_dispersal_mechanism.iff")
 
 object_tangible_component_chemistry_shared_dispersal_mechanism_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_dispersal_mechanism_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_component_chemistry_shared_dispersal_mechanism_advanced = Shared
 
 	clientObjectCRC = 1183326232,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism_advanced, "object/tangible/component/chemistry/shared_dispersal_mechanism_advanced.iff")
 
 object_tangible_component_chemistry_shared_dispersal_mechanism_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_dispersal_mechanism_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_component_chemistry_shared_dispersal_mechanism_quest = SharedTan
 
 	clientObjectCRC = 3662200732,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff", "object/tangible/component/chemistry/shared_dispersal_mechanism_advanced.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_dispersal_mechanism_quest, "object/tangible/component/chemistry/shared_dispersal_mechanism_quest.iff")
 
 object_tangible_component_chemistry_shared_endrost = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_endrost.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_fs_quest_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_component_chemistry_shared_endrost = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1566810278,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_endrost, "object/tangible/component/chemistry/shared_endrost.iff")
 
 object_tangible_component_chemistry_shared_infection_amplifier = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_infection_amplifier.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_component_chemistry_shared_infection_amplifier = SharedTangibleO
 
 	clientObjectCRC = 1679113487,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_infection_amplifier, "object/tangible/component/chemistry/shared_infection_amplifier.iff")
 
 object_tangible_component_chemistry_shared_infection_amplifier_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_infection_amplifier_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_component_chemistry_shared_infection_amplifier_advanced = Shared
 
 	clientObjectCRC = 1129599787,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_infection_amplifier_advanced, "object/tangible/component/chemistry/shared_infection_amplifier_advanced.iff")
 
 object_tangible_component_chemistry_shared_infection_amplifier_donkuwah = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_infection_amplifier_donkuwah.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_component_chemistry_shared_infection_amplifier_donkuwah = Shared
 
 	clientObjectCRC = 2542466646,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_infection_amplifier_donkuwah, "object/tangible/component/chemistry/shared_infection_amplifier_donkuwah.iff")
 
 object_tangible_component_chemistry_shared_janta_blood = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_janta_blood.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_component_chemistry_shared_janta_blood = SharedTangibleObjectTem
 
 	clientObjectCRC = 1058893195,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_janta_blood, "object/tangible/component/chemistry/shared_janta_blood.iff")
 
 object_tangible_component_chemistry_shared_liquid_delivery_suspension = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension = SharedTa
 
 	clientObjectCRC = 3358009919,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension, "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff")
 
 object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced =
 
 	clientObjectCRC = 1862978449,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension_advanced, "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff")
 
 object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_liquid_delivery_suspension_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest = Sh
 
 	clientObjectCRC = 2125828642,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_liquid_delivery_suspension.iff", "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_liquid_delivery_suspension_quest, "object/tangible/component/chemistry/shared_liquid_delivery_suspension_quest.iff")
 
 object_tangible_component_chemistry_shared_quest_stimpack_a = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_quest_stimpack_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_component_chemistry_shared_quest_stimpack_a = SharedTangibleObje
 
 	clientObjectCRC = 478044743,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_quest_stimpack_a, "object/tangible/component/chemistry/shared_quest_stimpack_a.iff")
 
 object_tangible_component_chemistry_shared_rancor_bile = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_rancor_bile.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_component_chemistry_shared_rancor_bile = SharedTangibleObjectTem
 
 	clientObjectCRC = 317047330,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_dispersal_mechanism.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_rancor_bile, "object/tangible/component/chemistry/shared_rancor_bile.iff")
 
 object_tangible_component_chemistry_shared_release_mechanism_duration = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_release_mechanism_duration.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_component_chemistry_shared_release_mechanism_duration = SharedTa
 
 	clientObjectCRC = 1870489005,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_release_mechanism_duration, "object/tangible/component/chemistry/shared_release_mechanism_duration.iff")
 
 object_tangible_component_chemistry_shared_release_mechanism_duration_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_release_mechanism_duration_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_component_chemistry_shared_release_mechanism_duration_advanced =
 
 	clientObjectCRC = 282084455,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_release_mechanism_duration_advanced, "object/tangible/component/chemistry/shared_release_mechanism_duration_advanced.iff")
 
 object_tangible_component_chemistry_shared_resilience_compound = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_resilience_compound.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_component_chemistry_shared_resilience_compound = SharedTangibleO
 
 	clientObjectCRC = 2132263971,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_resilience_compound, "object/tangible/component/chemistry/shared_resilience_compound.iff")
 
 object_tangible_component_chemistry_shared_resilience_compound_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_resilience_compound_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_healing_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_component_chemistry_shared_resilience_compound_advanced = Shared
 
 	clientObjectCRC = 101893931,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_resilience_compound.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_resilience_compound_advanced, "object/tangible/component/chemistry/shared_resilience_compound_advanced.iff")
 
 object_tangible_component_chemistry_shared_solid_delivery_shell = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_solid_delivery_shell.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_component_chemistry_shared_solid_delivery_shell = SharedTangible
 
 	clientObjectCRC = 2203679790,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_solid_delivery_shell, "object/tangible/component/chemistry/shared_solid_delivery_shell.iff")
 
 object_tangible_component_chemistry_shared_solid_delivery_shell_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_solid_delivery_shell_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_component_chemistry_shared_solid_delivery_shell_advanced = Share
 
 	clientObjectCRC = 2952575979,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_solid_delivery_shell.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_solid_delivery_shell_advanced, "object/tangible/component/chemistry/shared_solid_delivery_shell_advanced.iff")
 
 object_tangible_component_chemistry_shared_spider_venom = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/chemistry/shared_spider_venom.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_drink.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,6 +1393,7 @@ object_tangible_component_chemistry_shared_spider_venom = SharedTangibleObjectTe
 
 	clientObjectCRC = 3428815879,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/chemistry/shared_infection_amplifier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_chemistry_shared_spider_venom, "object/tangible/component/chemistry/shared_spider_venom.iff")

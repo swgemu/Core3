@@ -42,6 +42,9 @@
 
 
 object_creature_base_shared_base_creature = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/base/shared_base_creature.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {2,2},
 	animationMapFilename = "",
 	appearanceFilename = "",
@@ -116,11 +119,15 @@ object_creature_base_shared_base_creature = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 697154328,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_base_shared_base_creature, "object/creature/base/shared_base_creature.iff")
 
 object_creature_base_shared_creature_default = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/base/shared_creature_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {2,2},
 	animationMapFilename = "",
 	appearanceFilename = "",
@@ -195,6 +202,7 @@ object_creature_base_shared_creature_default = SharedCreatureObjectTemplate:new 
 
 	clientObjectCRC = 937448992,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_base_shared_creature_default, "object/creature/base/shared_creature_default.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_loot_tool_shared_binoculars_broken_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_binoculars_broken_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_electrobinoculars_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_loot_tool_shared_binoculars_broken_s1 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 511989855,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_binoculars_broken_s1, "object/tangible/loot/tool/shared_binoculars_broken_s1.iff")
 
 object_tangible_loot_tool_shared_binoculars_broken_s2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_binoculars_broken_s2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_electrobinoculars_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_loot_tool_shared_binoculars_broken_s2 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3314806984,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_binoculars_broken_s2, "object/tangible/loot/tool/shared_binoculars_broken_s2.iff")
 
 object_tangible_loot_tool_shared_calibrator_broken = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_calibrator_broken.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_instrument_calibrator.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_loot_tool_shared_calibrator_broken = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1384767705,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_calibrator_broken, "object/tangible/loot/tool/shared_calibrator_broken.iff")
 
 object_tangible_loot_tool_shared_comlink_naboo_broken = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_comlink_naboo_broken.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_radio_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_loot_tool_shared_comlink_naboo_broken = SharedTangibleObjectTemp
 
 	clientObjectCRC = 1058991151,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_comlink_naboo_broken, "object/tangible/loot/tool/shared_comlink_naboo_broken.iff")
 
 object_tangible_loot_tool_shared_datapad_broken = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_datapad_broken.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_datapad_s2_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_loot_tool_shared_datapad_broken = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 3897890885,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_datapad_broken, "object/tangible/loot/tool/shared_datapad_broken.iff")
 
 object_tangible_loot_tool_shared_impulse_detector_broken_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_impulse_detector_broken_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_impulse_detector_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_loot_tool_shared_impulse_detector_broken_s1 = SharedTangibleObje
 
 	clientObjectCRC = 3205052430,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_impulse_detector_broken_s1, "object/tangible/loot/tool/shared_impulse_detector_broken_s1.iff")
 
 object_tangible_loot_tool_shared_impulse_detector_broken_s2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_impulse_detector_broken_s2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_impulse_detector_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_loot_tool_shared_impulse_detector_broken_s2 = SharedTangibleObje
 
 	clientObjectCRC = 1679724697,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_impulse_detector_broken_s2, "object/tangible/loot/tool/shared_impulse_detector_broken_s2.iff")
 
 object_tangible_loot_tool_shared_impulse_detector_broken_s3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_impulse_detector_broken_s3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_impulse_detector_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_loot_tool_shared_impulse_detector_broken_s3 = SharedTangibleObje
 
 	clientObjectCRC = 756283156,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_impulse_detector_broken_s3, "object/tangible/loot/tool/shared_impulse_detector_broken_s3.iff")
 
 object_tangible_loot_tool_shared_recording_rod_broken = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_recording_rod_broken.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_recording_rod.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_loot_tool_shared_recording_rod_broken = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3085465916,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_recording_rod_broken, "object/tangible/loot/tool/shared_recording_rod_broken.iff")
 
 object_tangible_loot_tool_shared_sandstat_broken = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_sandstat_broken.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_sandstat.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_loot_tool_shared_sandstat_broken = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2766599802,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_sandstat_broken, "object/tangible/loot/tool/shared_sandstat_broken.iff")
 
 object_tangible_loot_tool_shared_taloscope_broken = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_taloscope_broken.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_meson_taloscope.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_loot_tool_shared_taloscope_broken = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1847347593,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_taloscope_broken, "object/tangible/loot/tool/shared_taloscope_broken.iff")
 
 object_tangible_loot_tool_shared_usable_datapad = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_usable_datapad.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_datapad_s2_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_loot_tool_shared_usable_datapad = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 990061346,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_usable_datapad, "object/tangible/loot/tool/shared_usable_datapad.iff")
 
 object_tangible_loot_tool_shared_viewscreen_broken_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_viewscreen_broken_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_loot_tool_shared_viewscreen_broken_s1 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3503789827,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_viewscreen_broken_s1, "object/tangible/loot/tool/shared_viewscreen_broken_s1.iff")
 
 object_tangible_loot_tool_shared_viewscreen_broken_s2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/tool/shared_viewscreen_broken_s2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,6 +862,7 @@ object_tangible_loot_tool_shared_viewscreen_broken_s2 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 197148564,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_tool_shared_viewscreen_broken_s2, "object/tangible/loot/tool/shared_viewscreen_broken_s2.iff")

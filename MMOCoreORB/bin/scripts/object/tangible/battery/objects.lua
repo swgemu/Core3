@@ -42,6 +42,9 @@
 
 
 object_tangible_battery_shared_battery = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/battery/shared_battery.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_energy_solid_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_battery_shared_battery = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2246798191,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_battery_shared_battery, "object/tangible/battery/shared_battery.iff")

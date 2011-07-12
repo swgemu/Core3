@@ -42,6 +42,9 @@
 
 
 object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_advanced_droid_harness.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness = Sha
 
 	clientObjectCRC = 2841202755,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_droid_harness, "object/tangible/ship/crafted/droid_interface/shared_advanced_droid_harness.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_advanced_ship_circuitry.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry = Sh
 
 	clientObjectCRC = 3849212575,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_advanced_ship_circuitry, "object/tangible/ship/crafted/droid_interface/shared_advanced_ship_circuitry.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/astromech_r2.sat",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface = Share
 
 	clientObjectCRC = 1488124234,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	clientObjectCRC = 1094447812,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	clientObjectCRC = 1600874546,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk1, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	clientObjectCRC = 2222768293,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk2, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	clientObjectCRC = 3446777640,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk3, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	clientObjectCRC = 915573820,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk4, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomp
 
 	clientObjectCRC = 2141186993,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_base_droid_interface_subcomponent_mk5, "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_basic_droid_interface.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/astromech_r2.sat",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface = Shar
 
 	clientObjectCRC = 3467786259,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_basic_droid_interface, "object/tangible/ship/crafted/droid_interface/shared_basic_droid_interface.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_ddi_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk1 = SharedTangibleObje
 
 	clientObjectCRC = 1368476927,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk1, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_ddi_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk2 = SharedTangibleObje
 
 	clientObjectCRC = 2324096104,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk2, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_ddi_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk3 = SharedTangibleObje
 
 	clientObjectCRC = 3280700389,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk3, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_ddi_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk4 = SharedTangibleObje
 
 	clientObjectCRC = 946383089,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk4, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_ddi_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_ddi_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_ship_crafted_droid_interface_shared_ddi_mk5 = SharedTangibleObje
 
 	clientObjectCRC = 1902497660,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_ddi_mk5, "object/tangible/ship/crafted/droid_interface/shared_ddi_mk5.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_droid_brain_interface.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface = Shar
 
 	clientObjectCRC = 1290028693,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_interface, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_interface.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1 = Sh
 
 	clientObjectCRC = 2273558131,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk1.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk1, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2 = Sh
 
 	clientObjectCRC = 1553209060,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk2, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3 = Sh
 
 	clientObjectCRC = 362377577,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk3, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4 = Sh
 
 	clientObjectCRC = 4000995965,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk4, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5 = Sh
 
 	clientObjectCRC = 2809609712,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_brain_upgrade_mk5, "object/tangible/ship/crafted/droid_interface/shared_droid_brain_upgrade_mk5.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_droid_harness = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_ship_crafted_droid_interface_shared_droid_harness = SharedTangib
 
 	clientObjectCRC = 930004332,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_droid_harness, "object/tangible/ship/crafted/droid_interface/shared_droid_harness.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 
 	clientObjectCRC = 82900645,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk1.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk1, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk1.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 
 	clientObjectCRC = 3756482098,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk2, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk2.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 
 	clientObjectCRC = 2531932607,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk3, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk3.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 
 	clientObjectCRC = 1829311147,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk4, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk4.iff")
 
 object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,6 +1629,7 @@ object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk
 
 	clientObjectCRC = 604271910,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent.iff", "object/tangible/ship/crafted/droid_interface/shared_base_droid_interface_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_droid_interface_shared_maintenance_reduction_kit_mk5, "object/tangible/ship/crafted/droid_interface/shared_maintenance_reduction_kit_mk5.iff")

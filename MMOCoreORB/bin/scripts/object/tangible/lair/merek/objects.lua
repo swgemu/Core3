@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_merek_shared_lair_merek = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/merek/shared_lair_merek.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_merek_shared_lair_merek = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 150449973,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek, "object/tangible/lair/merek/shared_lair_merek.iff")
 
 object_tangible_lair_merek_shared_lair_merek_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/merek/shared_lair_merek_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_merek_shared_lair_merek_jungle = SharedTangibleObjectTempla
 
 	clientObjectCRC = 1521427454,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek_jungle, "object/tangible/lair/merek/shared_lair_merek_jungle.iff")
 
 object_tangible_lair_merek_shared_lair_merek_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/merek/shared_lair_merek_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_merek_shared_lair_merek_swamp = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 4083623500,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_merek_shared_lair_merek_swamp, "object/tangible/lair/merek/shared_lair_merek_swamp.iff")

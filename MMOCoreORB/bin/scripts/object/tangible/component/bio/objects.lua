@@ -42,6 +42,9 @@
 
 
 object_tangible_component_bio_shared_base_bio_component_clothing_casual = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_bio_shared_base_bio_component_clothing_casual = Shared
 
 	clientObjectCRC = 219382584,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_casual, "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff")
 
 object_tangible_component_bio_shared_base_bio_component_clothing_field = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_bio_shared_base_bio_component_clothing_field = SharedT
 
 	clientObjectCRC = 2494958129,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_field, "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff")
 
 object_tangible_component_bio_shared_base_bio_component_clothing_formal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_base_bio_component_clothing_formal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_component_bio_shared_base_bio_component_clothing_formal = Shared
 
 	clientObjectCRC = 3815377986,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_base_bio_component_clothing_formal, "object/tangible/component/bio/shared_base_bio_component_clothing_formal.iff")
 
 object_tangible_component_bio_shared_base_bio_component_food = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_base_bio_component_food.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_component_bio_shared_base_bio_component_food = SharedTangibleObj
 
 	clientObjectCRC = 2633814515,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_base_bio_component_food, "object/tangible/component/bio/shared_base_bio_component_food.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_charisma = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_casual_charisma.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_charisma = Sh
 
 	clientObjectCRC = 1272895118,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_charisma, "object/tangible/component/bio/shared_bio_component_clothing_casual_charisma.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_charisma_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_casual_charisma_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_charisma_2 = 
 
 	clientObjectCRC = 2790898256,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_charisma_2, "object/tangible/component/bio/shared_bio_component_clothing_casual_charisma_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_casual_entertainer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_chromatic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer =
 
 	clientObjectCRC = 1970227985,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer, "object/tangible/component/bio/shared_bio_component_clothing_casual_entertainer.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_casual_entertainer_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_chromatic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer_2
 
 	clientObjectCRC = 3713366872,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_entertainer_2, "object/tangible/component/bio/shared_bio_component_clothing_casual_entertainer_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_medic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_casual_medic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_patches_enhanced.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_medic = Share
 
 	clientObjectCRC = 55693017,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_medic, "object/tangible/component/bio/shared_bio_component_clothing_casual_medic.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_medic_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_casual_medic_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_patches_enhanced.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_medic_2 = Sha
 
 	clientObjectCRC = 608421917,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_medic_2, "object/tangible/component/bio/shared_bio_component_clothing_casual_medic_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_taming = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_casual_taming.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_taming = Shar
 
 	clientObjectCRC = 3483367767,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_taming, "object/tangible/component/bio/shared_bio_component_clothing_casual_taming.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_taming_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_casual_taming_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_taming_2 = Sh
 
 	clientObjectCRC = 2121215649,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_taming_2, "object/tangible/component/bio/shared_bio_component_clothing_casual_taming_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_training = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_casual_training.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_food_flavoring.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_training = Sh
 
 	clientObjectCRC = 861669010,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_training, "object/tangible/component/bio/shared_bio_component_clothing_casual_training.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_casual_training_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_casual_training_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_food_flavoring.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_component_bio_shared_bio_component_clothing_casual_training_2 = 
 
 	clientObjectCRC = 3979863035,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_casual.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_casual_training_2, "object/tangible/component/bio/shared_bio_component_clothing_casual_training_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_armor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_armor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_food_flavoring.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_armor = Shared
 
 	clientObjectCRC = 1523403607,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_armor, "object/tangible/component/bio/shared_bio_component_clothing_field_armor.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_armor_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_armor_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_food_flavoring.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_armor_2 = Shar
 
 	clientObjectCRC = 3097107766,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_armor_2, "object/tangible/component/bio/shared_bio_component_clothing_field_armor_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_bleeding = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_bleeding.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_patches.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_bleeding = Sha
 
 	clientObjectCRC = 4173771067,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_bleeding, "object/tangible/component/bio/shared_bio_component_clothing_field_bleeding.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_bleeding_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_bleeding_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_patches.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_bleeding_2 = S
 
 	clientObjectCRC = 1801496294,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_bleeding_2, "object/tangible/component/bio/shared_bio_component_clothing_field_bleeding_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_camo = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_camo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_camo = SharedT
 
 	clientObjectCRC = 3468672511,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_camo, "object/tangible/component/bio/shared_bio_component_clothing_field_camo.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_camo_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_camo_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_camo_2 = Share
 
 	clientObjectCRC = 1895651741,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_camo_2, "object/tangible/component/bio/shared_bio_component_clothing_field_camo_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_cover = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_cover.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_crystalline.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_cover = Shared
 
 	clientObjectCRC = 1495044005,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_cover, "object/tangible/component/bio/shared_bio_component_clothing_field_cover.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_cover_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_cover_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_crystalline.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_cover_2 = Shar
 
 	clientObjectCRC = 467211451,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_cover_2, "object/tangible/component/bio/shared_bio_component_clothing_field_cover_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_defense = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_defense.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_patches.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_defense = Shar
 
 	clientObjectCRC = 4223028089,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_defense, "object/tangible/component/bio/shared_bio_component_clothing_field_defense.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_defense_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_defense_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_patches.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_defense_2 = Sh
 
 	clientObjectCRC = 58582226,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_defense_2, "object/tangible/component/bio/shared_bio_component_clothing_field_defense_2.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_intimidate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_intimidate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_intimidate = S
 
 	clientObjectCRC = 2984936227,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_intimidate, "object/tangible/component/bio/shared_bio_component_clothing_field_intimidate.iff")
 
 object_tangible_component_bio_shared_bio_component_clothing_field_intimidate_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_clothing_field_intimidate_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_clothing_treatment_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_component_bio_shared_bio_component_clothing_field_intimidate_2 =
 
 	clientObjectCRC = 3980420512,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_clothing_field.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_clothing_field_intimidate_2, "object/tangible/component/bio/shared_bio_component_clothing_field_intimidate_2.iff")
 
 object_tangible_component_bio_shared_bio_component_food_heavy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_component_bio_shared_bio_component_food_heavy = SharedTangibleOb
 
 	clientObjectCRC = 2498712826,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_heavy, "object/tangible/component/bio/shared_bio_component_food_heavy.iff")
 
 object_tangible_component_bio_shared_bio_component_food_heavy_filling = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_heavy_filling.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_component_bio_shared_bio_component_food_heavy_filling = SharedTa
 
 	clientObjectCRC = 1999617734,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_heavy.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_filling, "object/tangible/component/bio/shared_bio_component_food_heavy_filling.iff")
 
 object_tangible_component_bio_shared_bio_component_food_heavy_flavor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_heavy_flavor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_component_bio_shared_bio_component_food_heavy_flavor = SharedTan
 
 	clientObjectCRC = 3777049958,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_heavy.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_flavor, "object/tangible/component/bio/shared_bio_component_food_heavy_flavor.iff")
 
 object_tangible_component_bio_shared_bio_component_food_heavy_nutrition = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_heavy_nutrition.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_component_bio_shared_bio_component_food_heavy_nutrition = Shared
 
 	clientObjectCRC = 3750501285,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_heavy.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_nutrition, "object/tangible/component/bio/shared_bio_component_food_heavy_nutrition.iff")
 
 object_tangible_component_bio_shared_bio_component_food_heavy_quantity = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_heavy_quantity.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_component_bio_shared_bio_component_food_heavy_quantity = SharedT
 
 	clientObjectCRC = 3677884855,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_heavy.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_heavy_quantity, "object/tangible/component/bio/shared_bio_component_food_heavy_quantity.iff")
 
 object_tangible_component_bio_shared_bio_component_food_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_component_bio_shared_bio_component_food_light = SharedTangibleOb
 
 	clientObjectCRC = 1438083108,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_light, "object/tangible/component/bio/shared_bio_component_food_light.iff")
 
 object_tangible_component_bio_shared_bio_component_food_light_filling = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_light_filling.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_component_bio_shared_bio_component_food_light_filling = SharedTa
 
 	clientObjectCRC = 4207262465,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_light_filling, "object/tangible/component/bio/shared_bio_component_food_light_filling.iff")
 
 object_tangible_component_bio_shared_bio_component_food_light_flavor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_light_flavor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_component_bio_shared_bio_component_food_light_flavor = SharedTan
 
 	clientObjectCRC = 4041478053,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_light_flavor, "object/tangible/component/bio/shared_bio_component_food_light_flavor.iff")
 
 object_tangible_component_bio_shared_bio_component_food_light_nutrition = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_light_nutrition.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_component_bio_shared_bio_component_food_light_nutrition = Shared
 
 	clientObjectCRC = 2945552565,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_light_nutrition, "object/tangible/component/bio/shared_bio_component_food_light_nutrition.iff")
 
 object_tangible_component_bio_shared_bio_component_food_light_quantity = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_light_quantity.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_component_bio_shared_bio_component_food_light_quantity = SharedT
 
 	clientObjectCRC = 1778167946,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_light_quantity, "object/tangible/component/bio/shared_bio_component_food_light_quantity.iff")
 
 object_tangible_component_bio_shared_bio_component_food_medium = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_tangible_component_bio_shared_bio_component_food_medium = SharedTangibleO
 
 	clientObjectCRC = 3076711804,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_medium, "object/tangible/component/bio/shared_bio_component_food_medium.iff")
 
 object_tangible_component_bio_shared_bio_component_food_medium_filling = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_medium_filling.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_tangible_component_bio_shared_bio_component_food_medium_filling = SharedT
 
 	clientObjectCRC = 856029112,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_medium.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_medium_filling, "object/tangible/component/bio/shared_bio_component_food_medium_filling.iff")
 
 object_tangible_component_bio_shared_bio_component_food_medium_flavor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_medium_flavor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,11 +2337,15 @@ object_tangible_component_bio_shared_bio_component_food_medium_flavor = SharedTa
 
 	clientObjectCRC = 1373118882,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_medium.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_medium_flavor, "object/tangible/component/bio/shared_bio_component_food_medium_flavor.iff")
 
 object_tangible_component_bio_shared_bio_component_food_medium_nutrition = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_medium_nutrition.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2237,11 +2396,15 @@ object_tangible_component_bio_shared_bio_component_food_medium_nutrition = Share
 
 	clientObjectCRC = 624506486,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_medium.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_medium_nutrition, "object/tangible/component/bio/shared_bio_component_food_medium_nutrition.iff")
 
 object_tangible_component_bio_shared_bio_component_food_medium_quantity = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/bio/shared_bio_component_food_medium_quantity.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_solid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2292,6 +2455,7 @@ object_tangible_component_bio_shared_bio_component_food_medium_quantity = Shared
 
 	clientObjectCRC = 3606276380,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/bio/shared_base_bio_component_food.iff", "object/tangible/component/bio/shared_bio_component_food_medium.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_bio_shared_bio_component_food_medium_quantity, "object/tangible/component/bio/shared_bio_component_food_medium_quantity.iff")

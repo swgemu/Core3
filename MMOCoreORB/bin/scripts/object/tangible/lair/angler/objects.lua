@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_angler_shared_lair_angler = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/angler/shared_lair_angler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_angler_shared_lair_angler = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1988238968,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler, "object/tangible/lair/angler/shared_lair_angler.iff")
 
 object_tangible_lair_angler_shared_lair_angler_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/angler/shared_lair_angler_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_angler_shared_lair_angler_jungle = SharedTangibleObjectTemp
 
 	clientObjectCRC = 20648312,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_jungle, "object/tangible/lair/angler/shared_lair_angler_jungle.iff")
 
 object_tangible_lair_angler_shared_lair_angler_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/angler/shared_lair_angler_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_angler_shared_lair_angler_swamp = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2297908648,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_swamp, "object/tangible/lair/angler/shared_lair_angler_swamp.iff")
 
 object_tangible_lair_angler_shared_lair_angler_underwater = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/angler/shared_lair_angler_underwater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_angler_shared_lair_angler_underwater = SharedTangibleObject
 
 	clientObjectCRC = 3099411810,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_angler_shared_lair_angler_underwater, "object/tangible/lair/angler/shared_lair_angler_underwater.iff")

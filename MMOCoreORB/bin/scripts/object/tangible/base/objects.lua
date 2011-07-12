@@ -42,6 +42,9 @@
 
 
 object_tangible_base_shared_tangible_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/base/shared_tangible_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_base_shared_tangible_base = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3825894482,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_base, "object/tangible/base/shared_tangible_base.iff")
 
 object_tangible_base_shared_tangible_craftable = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/base/shared_tangible_craftable.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_base_shared_tangible_craftable = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1525014593,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_craftable, "object/tangible/base/shared_tangible_craftable.iff")
 
 object_tangible_base_shared_tangible_default = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/base/shared_tangible_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_base_shared_tangible_default = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 1350067174,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_base_shared_tangible_default, "object/tangible/base/shared_tangible_default.iff")

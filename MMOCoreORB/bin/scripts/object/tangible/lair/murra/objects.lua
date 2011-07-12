@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_murra_shared_lair_murra = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/murra/shared_lair_murra.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_murra_shared_lair_murra = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 1522261205,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_murra_shared_lair_murra, "object/tangible/lair/murra/shared_lair_murra.iff")
 
 object_tangible_lair_murra_shared_lair_murra_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/murra/shared_lair_murra_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_murra_shared_lair_murra_grassland = SharedTangibleObjectTem
 
 	clientObjectCRC = 1680788890,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_murra_shared_lair_murra_grassland, "object/tangible/lair/murra/shared_lair_murra_grassland.iff")
 
 object_tangible_lair_murra_shared_lair_murra_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/murra/shared_lair_murra_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_murra_shared_lair_murra_mountain = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3942109536,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_murra_shared_lair_murra_mountain, "object/tangible/lair/murra/shared_lair_murra_mountain.iff")

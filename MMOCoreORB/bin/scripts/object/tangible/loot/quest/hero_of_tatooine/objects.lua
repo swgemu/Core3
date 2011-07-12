@@ -42,6 +42,9 @@
 
 
 object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/hero_of_tatooine/shared_mark_altruism.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_altruism.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism = SharedTangibl
 
 	clientObjectCRC = 2895321218,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_altruism, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_altruism.iff")
 
 object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/hero_of_tatooine/shared_mark_courage.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_courage.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage = SharedTangible
 
 	clientObjectCRC = 1173220327,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_courage, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_courage.iff")
 
 object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/hero_of_tatooine/shared_mark_honor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_honor.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor = SharedTangibleOb
 
 	clientObjectCRC = 1842983256,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_honor, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_honor.iff")
 
 object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/hero_of_tatooine/shared_mark_intellect.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_intellect.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect = SharedTangib
 
 	clientObjectCRC = 2725337290,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_mark_intellect, "object/tangible/loot/quest/hero_of_tatooine/shared_mark_intellect.iff")
 
 object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/hero_of_tatooine/shared_squill_skull.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_bith_head.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull = SharedTangible
 
 	clientObjectCRC = 577481974,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull, "object/tangible/loot/quest/hero_of_tatooine/shared_squill_skull.iff")

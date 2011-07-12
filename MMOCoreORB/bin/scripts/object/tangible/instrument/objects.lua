@@ -42,6 +42,9 @@
 
 
 object_tangible_instrument_shared_bandfill = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_bandfill.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_bandfill.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
@@ -92,11 +95,15 @@ object_tangible_instrument_shared_bandfill = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 838757271,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_bandfill, "object/tangible/instrument/shared_bandfill.iff")
 
 object_tangible_instrument_shared_fanfar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_fanfar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_fanfar.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
@@ -147,11 +154,15 @@ object_tangible_instrument_shared_fanfar = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2024043623,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_fanfar, "object/tangible/instrument/shared_fanfar.iff")
 
 object_tangible_instrument_shared_fizz = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_fizz.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_fizz.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
@@ -202,11 +213,15 @@ object_tangible_instrument_shared_fizz = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 197364379,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_fizz, "object/tangible/instrument/shared_fizz.iff")
 
 object_tangible_instrument_shared_flute_droopy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_flute_droopy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_flute_droopy.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
@@ -257,11 +272,15 @@ object_tangible_instrument_shared_flute_droopy = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1186559398,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_flute_droopy, "object/tangible/instrument/shared_flute_droopy.iff")
 
 object_tangible_instrument_shared_instrument_organ_figrin_dan = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_instrument_organ_figrin_dan.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rebos_organ.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_instrument_shared_instrument_organ_figrin_dan = SharedTangibleOb
 
 	clientObjectCRC = 2221793724,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_instrument_organ_figrin_dan, "object/tangible/instrument/shared_instrument_organ_figrin_dan.iff")
 
 object_tangible_instrument_shared_instrument_organ_max_rebo = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_instrument_organ_max_rebo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_instrument_shared_instrument_organ_max_rebo = SharedTangibleObje
 
 	clientObjectCRC = 3369165758,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_instrument_organ_max_rebo, "object/tangible/instrument/shared_instrument_organ_max_rebo.iff")
 
 object_tangible_instrument_shared_kloo_horn = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_kloo_horn.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_kloo_horn.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
@@ -422,11 +449,15 @@ object_tangible_instrument_shared_kloo_horn = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 4261135292,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_kloo_horn, "object/tangible/instrument/shared_kloo_horn.iff")
 
 object_tangible_instrument_shared_mandoviol = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_mandoviol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_mandoviol.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
@@ -477,11 +508,15 @@ object_tangible_instrument_shared_mandoviol = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1784205003,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_mandoviol, "object/tangible/instrument/shared_mandoviol.iff")
 
 object_tangible_instrument_shared_nalargon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_nalargon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_instrument_shared_nalargon = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2412019728,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_nalargon, "object/tangible/instrument/shared_nalargon.iff")
 
 object_tangible_instrument_shared_ommni_box = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_ommni_box.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_ommni_box.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_instrument_shared_ommni_box = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2010287603,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_ommni_box, "object/tangible/instrument/shared_ommni_box.iff")
 
 object_tangible_instrument_shared_organ_max_rebo = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_organ_max_rebo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_instrument_shared_organ_max_rebo = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1225824678,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_organ_max_rebo, "object/tangible/instrument/shared_organ_max_rebo.iff")
 
 object_tangible_instrument_shared_slitherhorn = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_slitherhorn.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_slitherhorn.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
@@ -697,11 +744,15 @@ object_tangible_instrument_shared_slitherhorn = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 3533891079,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_slitherhorn, "object/tangible/instrument/shared_slitherhorn.iff")
 
 object_tangible_instrument_shared_traz = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/shared_traz.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_traz.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
@@ -752,6 +803,7 @@ object_tangible_instrument_shared_traz = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 395515554,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/instrument/base/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_shared_traz, "object/tangible/instrument/shared_traz.iff")

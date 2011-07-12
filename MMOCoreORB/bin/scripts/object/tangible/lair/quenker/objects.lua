@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_quenker_shared_lair_quenker = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/quenker/shared_lair_quenker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_quenker_shared_lair_quenker = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1829714494,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_quenker_shared_lair_quenker, "object/tangible/lair/quenker/shared_lair_quenker.iff")
 
 object_tangible_lair_quenker_shared_lair_quenker_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/quenker/shared_lair_quenker_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_quenker_shared_lair_quenker_grassland = SharedTangibleObjec
 
 	clientObjectCRC = 571906509,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_quenker_shared_lair_quenker_grassland, "object/tangible/lair/quenker/shared_lair_quenker_grassland.iff")

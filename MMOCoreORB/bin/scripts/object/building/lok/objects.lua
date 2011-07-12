@@ -42,6 +42,9 @@
 
 
 object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/lok/shared_cave_03_nym_pirates.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -95,11 +98,15 @@ object_building_lok_shared_cave_03_nym_pirates = SharedBuildingObjectTemplate:ne
 
 	clientObjectCRC = 1658229769,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_lok_shared_cave_03_nym_pirates, "object/building/lok/shared_cave_03_nym_pirates.iff")
 
 object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/lok/shared_mining_cave_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -153,11 +160,15 @@ object_building_lok_shared_mining_cave_01 = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 223465819,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_cave.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_lok_shared_mining_cave_01, "object/building/lok/shared_mining_cave_01.iff")
 
 object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/lok/shared_nym_stronghold.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -211,6 +222,7 @@ object_building_lok_shared_nym_stronghold = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 2289463992,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_palace.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_lok_shared_nym_stronghold, "object/building/lok/shared_nym_stronghold.iff")

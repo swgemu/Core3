@@ -42,6 +42,9 @@
 
 
 object_tangible_gambling_table_shared_table_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gambling/table/shared_table_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_game_dejarik_gameboard.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_gambling_table_shared_table_base = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 294893544,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/gambling/base/shared_gambling_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gambling_table_shared_table_base, "object/tangible/gambling/table/shared_table_base.iff")

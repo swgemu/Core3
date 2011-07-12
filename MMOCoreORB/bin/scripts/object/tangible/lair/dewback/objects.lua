@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_dewback_shared_lair_dewback = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/dewback/shared_lair_dewback.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_dewback_shared_lair_dewback = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 62836419,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dewback_shared_lair_dewback, "object/tangible/lair/dewback/shared_lair_dewback.iff")
 
 object_tangible_lair_dewback_shared_lair_dewback_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/dewback/shared_lair_dewback_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_dewback_shared_lair_dewback_desert = SharedTangibleObjectTe
 
 	clientObjectCRC = 605037773,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dewback_shared_lair_dewback_desert, "object/tangible/lair/dewback/shared_lair_dewback_desert.iff")

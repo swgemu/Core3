@@ -42,6 +42,9 @@
 
 
 object_tangible_dungeon_shared_cave_stalagmite_ice_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_cave_stalagmite_ice_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_cave_stalagmite_ice_a1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_dungeon_shared_cave_stalagmite_ice_style_01 = SharedTangibleObje
 
 	clientObjectCRC = 1546847010,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_cave_stalagmite_ice_style_01, "object/tangible/dungeon/shared_cave_stalagmite_ice_style_01.iff")
 
 object_tangible_dungeon_shared_chemical_storage = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_chemical_storage.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_tank_gas.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_dungeon_shared_chemical_storage = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 2171896668,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_chemical_storage, "object/tangible/dungeon/shared_chemical_storage.iff")
 
 object_tangible_dungeon_shared_coal_bin_container = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_coal_bin_container.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bunker_mine_bucket_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_dungeon_shared_coal_bin_container = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1342811705,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_coal_bin_container, "object/tangible/dungeon/shared_coal_bin_container.iff")
 
 object_tangible_dungeon_shared_computer_desktop = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_computer_desktop.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medical_console.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_dungeon_shared_computer_desktop = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1483156059,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_computer_desktop, "object/tangible/dungeon/shared_computer_desktop.iff")
 
 object_tangible_dungeon_shared_computer_mainframe = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_computer_mainframe.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tech_console_sectional_b.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_dungeon_shared_computer_mainframe = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2299324292,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_computer_mainframe, "object/tangible/dungeon/shared_computer_mainframe.iff")
 
 object_tangible_dungeon_shared_droid_maint_module = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_droid_maint_module.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_dungeon_shared_droid_maint_module = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 3106365328,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_droid_maint_module, "object/tangible/dungeon/shared_droid_maint_module.iff")
 
 object_tangible_dungeon_shared_keypad_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_keypad_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_keypad_door_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_dungeon_shared_keypad_terminal = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 307119363,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_keypad_terminal, "object/tangible/dungeon/shared_keypad_terminal.iff")
 
 object_tangible_dungeon_shared_poison_gas_cloud = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_poison_gas_cloud.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_miasma_of_fog_greenish.prt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_dungeon_shared_poison_gas_cloud = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1380579021,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_poison_gas_cloud, "object/tangible/dungeon/shared_poison_gas_cloud.iff")
 
 object_tangible_dungeon_shared_poison_stabilizer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_poison_stabilizer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_dungeon_shared_poison_stabilizer = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2249389472,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_poison_stabilizer, "object/tangible/dungeon/shared_poison_stabilizer.iff")
 
 object_tangible_dungeon_shared_terminal_free_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_terminal_free_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_dungeon_shared_terminal_free_s1 = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 2707720646,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_terminal_free_s1, "object/tangible/dungeon/shared_terminal_free_s1.iff")
 
 object_tangible_dungeon_shared_trash_container = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_trash_container.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_dungeon_shared_trash_container = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1529401041,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_trash_container, "object/tangible/dungeon/shared_trash_container.iff")
 
 object_tangible_dungeon_shared_wall_terminal_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_wall_terminal_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_dungeon_shared_wall_terminal_s1 = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 4069617127,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_wall_terminal_s1, "object/tangible/dungeon/shared_wall_terminal_s1.iff")
 
 object_tangible_dungeon_shared_wall_terminal_s2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_wall_terminal_s2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_dungeon_shared_wall_terminal_s2 = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 696698224,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_wall_terminal_s2, "object/tangible/dungeon/shared_wall_terminal_s2.iff")
 
 object_tangible_dungeon_shared_wall_terminal_s3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_wall_terminal_s3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_dungeon_shared_wall_terminal_s3 = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1619763965,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_wall_terminal_s3, "object/tangible/dungeon/shared_wall_terminal_s3.iff")
 
 object_tangible_dungeon_shared_wall_terminal_s4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dungeon/shared_wall_terminal_s4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,6 +921,7 @@ object_tangible_dungeon_shared_wall_terminal_s4 = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 2607319529,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dungeon_shared_wall_terminal_s4, "object/tangible/dungeon/shared_wall_terminal_s4.iff")

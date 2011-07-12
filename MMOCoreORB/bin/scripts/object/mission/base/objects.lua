@@ -42,6 +42,9 @@
 
 
 object_mission_base_shared_base_mission = SharedMissionObjectTemplate:new {
+	clientTemplateFileName = "object/mission/base/shared_base_mission.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_mission_base_shared_base_mission = SharedMissionObjectTemplate:new {
 
 	clientObjectCRC = 3240843527,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mission_base_shared_base_mission, "object/mission/base/shared_base_mission.iff")
 
 object_mission_base_shared_mission_default = SharedMissionObjectTemplate:new {
+	clientTemplateFileName = "object/mission/base/shared_mission_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,6 +134,7 @@ object_mission_base_shared_mission_default = SharedMissionObjectTemplate:new {
 
 	clientObjectCRC = 2210569821,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/mission/base/shared_base_mission.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mission_base_shared_mission_default, "object/mission/base/shared_mission_default.iff")

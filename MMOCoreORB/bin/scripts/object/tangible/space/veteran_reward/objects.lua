@@ -42,6 +42,9 @@
 
 
 object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/veteran_reward/shared_sorosuub_space_yacht_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed = SharedTa
 
 	clientObjectCRC = 2280159140,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_veteran_reward_shared_sorosuub_space_yacht_deed, "object/tangible/space/veteran_reward/shared_sorosuub_space_yacht_deed.iff")

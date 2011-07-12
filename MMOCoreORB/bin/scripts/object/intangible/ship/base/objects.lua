@@ -42,6 +42,9 @@
 
 
 object_intangible_ship_base_shared_ship_control_device_base = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/base/shared_ship_control_device_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_intangible_ship_base_shared_ship_control_device_base = SharedIntangibleOb
 
 	clientObjectCRC = 1318932514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_base_shared_ship_control_device_base, "object/intangible/ship/base/shared_ship_control_device_base.iff")

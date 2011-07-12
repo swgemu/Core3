@@ -42,6 +42,9 @@
 
 
 object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/singing_mountain_clan/shared_hair_singing_mountain_clan_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sing_mt_clan_hair_s01.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -92,11 +95,15 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s01
 
 	clientObjectCRC = 2584119077,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s01, "object/tangible/hair/singing_mountain_clan/shared_hair_singing_mountain_clan_s01.iff")
 
 object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/singing_mountain_clan/shared_hair_singing_mountain_clan_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sing_mt_clan_hair_s02.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -147,11 +154,15 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s02
 
 	clientObjectCRC = 1091645362,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s02, "object/tangible/hair/singing_mountain_clan/shared_hair_singing_mountain_clan_s02.iff")
 
 object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/singing_mountain_clan/shared_hair_singing_mountain_clan_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sing_mt_clan_hair_s03.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -202,11 +213,15 @@ object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s03
 
 	clientObjectCRC = 136071231,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_singing_mountain_clan_shared_hair_singing_mountain_clan_s03, "object/tangible/hair/singing_mountain_clan/shared_hair_singing_mountain_clan_s03.iff")
 
 object_tangible_hair_singing_mountain_clan_shared_singing_mountain_clan_bangs_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/singing_mountain_clan/shared_singing_mountain_clan_bangs_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sing_mt_clan_bangs_s01.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -257,6 +272,7 @@ object_tangible_hair_singing_mountain_clan_shared_singing_mountain_clan_bangs_s0
 
 	clientObjectCRC = 2007410332,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_singing_mountain_clan_shared_singing_mountain_clan_bangs_s01, "object/tangible/hair/singing_mountain_clan/shared_singing_mountain_clan_bangs_s01.iff")

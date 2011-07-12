@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_durni_shared_lair_durni = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/durni/shared_lair_durni.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_durni_shared_lair_durni = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 3048400862,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_durni_shared_lair_durni, "object/tangible/lair/durni/shared_lair_durni.iff")
 
 object_tangible_lair_durni_shared_lair_durni_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/durni/shared_lair_durni_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_durni_shared_lair_durni_grassland = SharedTangibleObjectTem
 
 	clientObjectCRC = 2005132249,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_durni_shared_lair_durni_grassland, "object/tangible/lair/durni/shared_lair_durni_grassland.iff")
 
 object_tangible_lair_durni_shared_lair_durni_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/durni/shared_lair_durni_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_durni_shared_lair_durni_mountain = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3607200677,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_durni_shared_lair_durni_mountain, "object/tangible/lair/durni/shared_lair_durni_mountain.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_scout_camokit_shared_camokit_corellia = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camokit/shared_camokit_corellia.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_scout_camokit_shared_camokit_corellia = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2196629790,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_corellia, "object/tangible/scout/camokit/shared_camokit_corellia.iff")
 
 object_tangible_scout_camokit_shared_camokit_dantooine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camokit/shared_camokit_dantooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_disguise_disguise_kit_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_scout_camokit_shared_camokit_dantooine = SharedTangibleObjectTem
 
 	clientObjectCRC = 1054553582,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_dantooine, "object/tangible/scout/camokit/shared_camokit_dantooine.iff")
 
 object_tangible_scout_camokit_shared_camokit_dathomir = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camokit/shared_camokit_dathomir.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_disguise_disguise_kit_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_scout_camokit_shared_camokit_dathomir = SharedTangibleObjectTemp
 
 	clientObjectCRC = 372534846,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_dathomir, "object/tangible/scout/camokit/shared_camokit_dathomir.iff")
 
 object_tangible_scout_camokit_shared_camokit_endor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camokit/shared_camokit_endor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_scout_camokit_shared_camokit_endor = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2201297332,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_endor, "object/tangible/scout/camokit/shared_camokit_endor.iff")
 
 object_tangible_scout_camokit_shared_camokit_lok = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camokit/shared_camokit_lok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_scout_camokit_shared_camokit_lok = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 3919662514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_lok, "object/tangible/scout/camokit/shared_camokit_lok.iff")
 
 object_tangible_scout_camokit_shared_camokit_naboo = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camokit/shared_camokit_naboo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_scout_camokit_shared_camokit_naboo = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1097832374,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_naboo, "object/tangible/scout/camokit/shared_camokit_naboo.iff")
 
 object_tangible_scout_camokit_shared_camokit_rori = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camokit/shared_camokit_rori.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_disguise_disguise_kit_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_scout_camokit_shared_camokit_rori = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2868366256,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_rori, "object/tangible/scout/camokit/shared_camokit_rori.iff")
 
 object_tangible_scout_camokit_shared_camokit_talus = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camokit/shared_camokit_talus.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_scout_camokit_shared_camokit_talus = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1480450460,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_talus, "object/tangible/scout/camokit/shared_camokit_talus.iff")
 
 object_tangible_scout_camokit_shared_camokit_tatooine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camokit/shared_camokit_tatooine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_scout_camokit_shared_camokit_tatooine = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3199109249,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_tatooine, "object/tangible/scout/camokit/shared_camokit_tatooine.iff")
 
 object_tangible_scout_camokit_shared_camokit_yavin = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camokit/shared_camokit_yavin.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,6 +626,7 @@ object_tangible_scout_camokit_shared_camokit_yavin = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1119412885,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camokit_shared_camokit_yavin, "object/tangible/scout/camokit/shared_camokit_yavin.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_swirl_prong_shared_lair_swirl_prong = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/swirl_prong/shared_lair_swirl_prong.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong = SharedTangibleObjectT
 
 	clientObjectCRC = 4003634872,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong.iff")
 
 object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/swirl_prong/shared_lair_swirl_prong_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland = SharedTangi
 
 	clientObjectCRC = 1455751773,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_swirl_prong_shared_lair_swirl_prong_grassland, "object/tangible/lair/swirl_prong/shared_lair_swirl_prong_grassland.iff")

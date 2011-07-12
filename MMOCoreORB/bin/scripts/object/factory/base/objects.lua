@@ -42,6 +42,9 @@
 
 
 object_factory_base_shared_base_factory = SharedFactoryObjectTemplate:new {
+	clientTemplateFileName = "object/factory/base/shared_base_factory.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_items_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_factory_base_shared_base_factory = SharedFactoryObjectTemplate:new {
 
 	clientObjectCRC = 2878298230,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_factory_base_shared_base_factory, "object/factory/base/shared_base_factory.iff")
 
 object_factory_base_shared_factory_default = SharedFactoryObjectTemplate:new {
+	clientTemplateFileName = "object/factory/base/shared_factory_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_items_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_factory_base_shared_factory_default = SharedFactoryObjectTemplate:new {
 
 	clientObjectCRC = 4005028874,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_factory_base_shared_factory_default, "object/factory/base/shared_factory_default.iff")

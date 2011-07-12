@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_horned_rasp_shared_lair_horned_rasp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/horned_rasp/shared_lair_horned_rasp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp = SharedTangibleObjectT
 
 	clientObjectCRC = 4201023069,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp.iff")
 
 object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland = SharedTangi
 
 	clientObjectCRC = 1788421902,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_grassland, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_grassland.iff")
 
 object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle = SharedTangible
 
 	clientObjectCRC = 2453418917,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_rasp_shared_lair_horned_rasp_jungle, "object/tangible/lair/horned_rasp/shared_lair_horned_rasp_jungle.iff")

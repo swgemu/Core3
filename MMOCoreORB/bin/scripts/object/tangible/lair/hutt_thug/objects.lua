@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/hutt_thug/shared_lair_hutt_thug_npc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc = SharedTangibleObjectT
 
 	clientObjectCRC = 2374143434,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_bramble_dark.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_hutt_thug_shared_lair_hutt_thug_npc, "object/tangible/lair/hutt_thug/shared_lair_hutt_thug_npc.iff")

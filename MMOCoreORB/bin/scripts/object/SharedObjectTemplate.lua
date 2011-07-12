@@ -41,13 +41,10 @@
 --which carries forward this exception.
 
 SharedObjectTemplate = Object:new {
+--[[
  	 objectName = "",
 	 detailedDescription = "",
 	 lookAtText = "",
-	 
-	 planetMapCategory = "",
-	 planetMapSubCategory = "",
-	 autoRegisterWithPlanetMap = 1,
 
 	 snapToTerrain = 0,
 	 containerType= 0,
@@ -80,6 +77,13 @@ SharedObjectTemplate = Object:new {
 	 totalCellNumber = 0,
 
 	 clientObjectCRC = 0,
+
+]]
+	
+	 clientTemplateFileName = "", 
+	 planetMapCategory = "",
+	 planetMapSubCategory = "",
+	 autoRegisterWithPlanetMap = 1,
 	 
 	 zoneComponent = "ZoneComponent",
 	 objectMenuComponent = "ObjectMenuComponent",

@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_test_shared_dan_test_component = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/test/shared_dan_test_component.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_test_shared_dan_test_component = SharedDraftSchematicObje
 
 	clientObjectCRC = 945497402,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_test_shared_dan_test_component, "object/draft_schematic/test/shared_dan_test_component.iff")
 
 object_draft_schematic_test_shared_dan_test_pistol = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/test/shared_dan_test_pistol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,6 +134,7 @@ object_draft_schematic_test_shared_dan_test_pistol = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 1485880165,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_test_shared_dan_test_pistol, "object/draft_schematic/test/shared_dan_test_pistol.iff")

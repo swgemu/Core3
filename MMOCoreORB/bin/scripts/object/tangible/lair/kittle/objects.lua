@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_kittle_shared_lair_kittle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kittle/shared_lair_kittle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_kittle_shared_lair_kittle = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 4291838693,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kittle_shared_lair_kittle, "object/tangible/lair/kittle/shared_lair_kittle.iff")
 
 object_tangible_lair_kittle_shared_lair_kittle_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kittle/shared_lair_kittle_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_kittle_shared_lair_kittle_forest = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2947041437,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kittle_shared_lair_kittle_forest, "object/tangible/lair/kittle/shared_lair_kittle_forest.iff")
 
 object_tangible_lair_kittle_shared_lair_kittle_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kittle/shared_lair_kittle_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_kittle_shared_lair_kittle_grassland = SharedTangibleObjectT
 
 	clientObjectCRC = 4088792736,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kittle_shared_lair_kittle_grassland, "object/tangible/lair/kittle/shared_lair_kittle_grassland.iff")

@@ -11,10 +11,17 @@
 #include "engine/engine.h"
 
 #include "LuaTemplate.h"
+#include "IffTemplate.h"
 #include "ChildObject.h"
 #include "server/zone/managers/templates/PlanetMapCategory.h"
 #include "server/zone/templates/slots/SlotDescriptor.h"
 #include "server/zone/templates/slots/ArrangementDescriptor.h"
+
+#include "params/primitives/IntegerParam.h"
+#include "params/StringIdParam.h"
+#include "params/primitives/StringParam.h"
+#include "params/primitives/BoolParam.h"
+#include "params/primitives/FloatParam.h"
 
 class PortalLayout;
 class AppearanceTemplate;
@@ -26,42 +33,42 @@ namespace server {
   namespace templates {
 
 
-class SharedObjectTemplate : public LuaTemplate {
+class SharedObjectTemplate : public LuaTemplate, public IffTemplate {
 protected:
-	String objectName;
-	String detailedDescription;
-	String lookAtText;
+	StringIdParam objectName;
+	StringIdParam detailedDescription;
+	StringIdParam lookAtText;
 
-	bool snapToTerrain;
-	int containerType;
-	int containerVolumeLimit;
+	BoolParam snapToTerrain;
+	IntegerParam containerType;
+	IntegerParam containerVolumeLimit;
 
-	String tintPallete;
+	StringParam tintPallete;
 	/*Vector<String>* slotDescriptors;
 	Vector<String>* arrangementDescriptors;*/
 	Reference<ArrangementDescriptor*> arrangementDescriptors;
 	Reference<SlotDescriptor*> slotDescriptors;
-	String appearanceFilename;
-	String portalLayoutFilename;
+	StringParam appearanceFilename;
+	StringParam portalLayoutFilename;
 	int totalCellNumber;
-	String clientDataFile;
+	StringParam clientDataFile;
 
-	int collisionMaterialFlags;
-	int collisionMaterialPassFlags;
-	Vector<float> scale;
-	int collisionMaterialBlockFlags;
-	int collisionActionFlags;
-	int collisionActionPassFlags;
-	int collisionActionBlockFlags;
-	int gameObjectType;
+	IntegerParam collisionMaterialFlags;
+	IntegerParam collisionMaterialPassFlags;
+	FloatParam scale;
+	IntegerParam collisionMaterialBlockFlags;
+	IntegerParam collisionActionFlags;
+	IntegerParam collisionActionPassFlags;
+	IntegerParam collisionActionBlockFlags;
+	IntegerParam gameObjectType;
 	int clientGameObjectType;
-	bool sendToClient;
-	float scaleThresholdBeforeExtentTest;
-	float clearFloraRadius;
-	int surfaceType;
-	float noBuildRadius;
-	bool onlyVisibleInTools;
-	float locationReservationRadius;
+	BoolParam sendToClient;
+	FloatParam scaleThresholdBeforeExtentTest;
+	FloatParam clearFloraRadius;
+	IntegerParam surfaceType;
+	FloatParam noBuildRadius;
+	BoolParam onlyVisibleInTools;
+	FloatParam locationReservationRadius;
 	uint32 clientObjectCRC;
 
 	Reference<PlanetMapCategory*> planetMapCategory;
@@ -78,34 +85,36 @@ protected:
 	bool loadedPortalLayout, loadedAppearanceTemplate;
 	String containerComponent, zoneComponent, objectMenuComponent;
 
+	SortedVector<String> loadedDerivedFiles;
+
 public:
-	const static int SHOT = 0x1;
-	const static int STOT = 0x2;
-	const static int SBMK = 0x4;
-	const static int SBOT = 0x8;
-	const static int STAT = 0x10;
-	const static int SIOT = 0x20;
-	const static int CCLT = 0x40;
-	const static int SCOU = 0x80;
-	const static int SDSC = 0x100;
-	const static int SFOT = 0x200;
-	const static int SGRP = 0x400;
-	const static int SITN = 0x800;
-	const static int SGLD = 0x1000;
-	const static int SJED = 0x2000;
-	const static int SMSC = 0x4000;
-	const static int SMSO = 0x8000;
-	const static int SMSD = 0x10000;
-	const static int SMLE = 0x20000;
-	const static int SPLY = 0x40000;
-	const static int RCCT = 0x80000;
-	const static int SSHP = 0x100000;
-	const static int SUNI = 0x200000;
-	const static int SWAY = 0x400000;
-	const static int STOK = 0x800000;
-	const static int SWOT = 0x1000000;
-	const static int SCNC = 0x2000000;
-	const static int SCOT = 0x4000000;
+	const static int SHOT = 'SHOT';
+	const static int STOT = 'STOT';
+	const static int SBMK = 'SBMK';
+	const static int SBOT = 'SBOT';
+	const static int STAT = 'STAT';
+	const static int SIOT = 'SIOT';
+	const static int CCLT = 'CCLT';
+	const static int SCOU = 'SCOU';
+	const static int SDSC = 'SDSC';
+	const static int SFOT = 'SFOT';
+	const static int SGRP = 'SGRP';
+	const static int SITN = 'SITN';
+	const static int SGLD = 'SGLD';
+	const static int SJED = 'SJED';
+	const static int SMSC = 'SMSC';
+	const static int SMSO = 'SMSO';
+	const static int SMSD = 'SMSD';
+	const static int SMLE = 'SMLE';
+	const static int SPLY = 'SPLY';
+	const static int RCCT = 'RCCT';
+	const static int SSHP = 'SSHP';
+	const static int SUNI = 'SUNI';
+	const static int SWAY = 'SWAY';
+	const static int STOK = 'STOK';
+	const static int SWOT = 'SWOT';
+	const static int SCNC = 'SCNC';
+	const static int SCOT = 'SCOT';
 	const static int CHARACTERBUILDERTERMINAL = 0x4000001;
 	const static int SURVEYTOOL = 0x4000002;
 	const static int RESOURCESPAWN = 0x4000003;
@@ -141,17 +150,20 @@ public:
 	const static int VENDORCREATURE = 0x4000021;
 
 public:
-	SharedObjectTemplate() {
-		portalLayout = NULL;
-		appearanceTemplate = NULL;
-		loadedPortalLayout = false, loadedAppearanceTemplate = false;
-	}
+	SharedObjectTemplate();
 
 	virtual ~SharedObjectTemplate() {
 
 	}
 
 	void readObject(LuaObject* templateData);
+	void readObject(IffStream* iffStream);
+
+	void parseVariableData(const String& varName, Chunk* data);
+	void parseVariableData(const String& varName, LuaObject* templateData);
+
+	void loadDerv(IffStream* iffStream);
+	void parseFileData(IffStream* iffStream);
 
     inline String getAppearanceFilename() const {
 		return appearanceFilename;
@@ -197,8 +209,8 @@ public:
 		return containerVolumeLimit;
 	}
 
-    inline String& getDetailedDescription() {
-		return detailedDescription;
+    inline String getDetailedDescription() {
+		return detailedDescription.getFullString();
 	}
 
     inline int getGameObjectType() const {
@@ -214,7 +226,7 @@ public:
 	}
 
     inline String getLookAtText() const {
-		return lookAtText;
+		return lookAtText.getFullString();
 	}
 
     inline float getNoBuildRadius() const {
@@ -222,7 +234,7 @@ public:
 	}
 
     inline String getObjectName() const {
-		return objectName;
+		return objectName.getFullString();
 	}
 
     inline bool getOnlyVisibleInTools() const {
@@ -243,8 +255,16 @@ public:
     		return arrangementDescriptors->getArrangementSlots();
 	}
 
-    inline Vector<float>* getScale() {
+    /*inline Vector<float>* getScale() {
 		return &scale;
+	}*/
+
+	inline float getMinScale() {
+		return scale.getMin();
+	}
+
+	inline float getMaxScale() {
+		return scale.getMax();
 	}
 
     inline float getScaleThresholdBeforeExtentTest() const {

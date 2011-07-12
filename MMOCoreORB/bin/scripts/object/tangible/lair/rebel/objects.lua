@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_rebel_shared_lair_rebel_npc = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/rebel/shared_lair_rebel_npc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_lair_rebel_shared_lair_rebel_npc = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 3833889530,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_imperial_guard.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rebel_shared_lair_rebel_npc, "object/tangible/lair/rebel/shared_lair_rebel_npc.iff")

@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_a = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_a = SharedDraf
 
 	clientObjectCRC = 2910061894,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_a, "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_a.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_b = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_b = SharedDraf
 
 	clientObjectCRC = 1986244049,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_b, "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_b.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_c = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_c = SharedDraf
 
 	clientObjectCRC = 1064225372,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_c, "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_c.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_d.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d = SharedDraf
 
 	clientObjectCRC = 3297632584,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_stimpack_d, "object/draft_schematic/bio_engineer/utilities/shared_pet_stimpack_d.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/utilities/shared_pet_vitapack_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a = SharedDraf
 
 	clientObjectCRC = 996406481,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_a, "object/draft_schematic/bio_engineer/utilities/shared_pet_vitapack_a.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_b = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/utilities/shared_pet_vitapack_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_b = SharedDraf
 
 	clientObjectCRC = 3765722182,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_b, "object/draft_schematic/bio_engineer/utilities/shared_pet_vitapack_b.iff")
 
 object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_c = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/utilities/shared_pet_vitapack_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,6 +379,7 @@ object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_c = SharedDraf
 
 	clientObjectCRC = 2843294667,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_utilities_shared_pet_vitapack_c, "object/draft_schematic/bio_engineer/utilities/shared_pet_vitapack_c.iff")

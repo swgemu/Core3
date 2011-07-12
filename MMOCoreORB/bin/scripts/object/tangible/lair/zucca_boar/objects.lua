@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_zucca_boar_shared_lair_zucca_boar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/zucca_boar/shared_lair_zucca_boar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar = SharedTangibleObjectTem
 
 	clientObjectCRC = 3052352906,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar.iff")
 
 object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert = SharedTangibleOb
 
 	clientObjectCRC = 415973727,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_desert, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_desert.iff")
 
 object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_dune.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune = SharedTangibleObje
 
 	clientObjectCRC = 3550514923,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_dune, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_dune.iff")
 
 object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland = SharedTangibl
 
 	clientObjectCRC = 102331287,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_cave_lion_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_zucca_boar_shared_lair_zucca_boar_wasteland, "object/tangible/lair/zucca_boar/shared_lair_zucca_boar_wasteland.iff")

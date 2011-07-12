@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ris/shared_armor_ris_bicep_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_ris_s01_bicep_l_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l = SharedTangibleObj
 
 	clientObjectCRC = 1200831709,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bicep_l, "object/tangible/wearables/armor/ris/shared_armor_ris_bicep_l.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ris/shared_armor_ris_bicep_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_ris_s01_bicep_r_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r = SharedTangibleObj
 
 	clientObjectCRC = 927365454,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bicep_r, "object/tangible/wearables/armor/ris/shared_armor_ris_bicep_r.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_boots = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ris/shared_armor_ris_boots.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_ris_s01_boots_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_armor_ris_shared_armor_ris_boots = SharedTangibleObjec
 
 	clientObjectCRC = 1126436738,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_boots, "object/tangible/wearables/armor/ris/shared_armor_ris_boots.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ris/shared_armor_ris_bracer_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_ris_s01_bracer_l_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_upper_l.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l = SharedTangibleOb
 
 	clientObjectCRC = 298125558,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_upper_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bracer_l, "object/tangible/wearables/armor/ris/shared_armor_ris_bracer_l.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ris/shared_armor_ris_bracer_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_ris_s01_bracer_r_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_upper_r.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r = SharedTangibleOb
 
 	clientObjectCRC = 1628458341,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_upper_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_bracer_r, "object/tangible/wearables/armor/ris/shared_armor_ris_bracer_r.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ris/shared_armor_ris_chest_plate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_ris_s01_chest_plate_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate = SharedTangibl
 
 	clientObjectCRC = 1813559161,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_chest_plate, "object/tangible/wearables/armor/ris/shared_armor_ris_chest_plate.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_gloves = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ris/shared_armor_ris_gloves.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_ris_s01_gloves_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets_long.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_armor_ris_shared_armor_ris_gloves = SharedTangibleObje
 
 	clientObjectCRC = 2596696196,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gauntlets_long.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_gloves, "object/tangible/wearables/armor/ris/shared_armor_ris_gloves.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_helmet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ris/shared_armor_ris_helmet.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_ris_s01_helmet_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_armor_ris_shared_armor_ris_helmet = SharedTangibleObje
 
 	clientObjectCRC = 738627980,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_helmet, "object/tangible/wearables/armor/ris/shared_armor_ris_helmet.iff")
 
 object_tangible_wearables_armor_ris_shared_armor_ris_leggings = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/ris/shared_armor_ris_leggings.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_ris_s01_leggings_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
@@ -532,6 +567,7 @@ object_tangible_wearables_armor_ris_shared_armor_ris_leggings = SharedTangibleOb
 
 	clientObjectCRC = 2665600489,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_ris_shared_armor_ris_leggings, "object/tangible/wearables/armor/ris/shared_armor_ris_leggings.iff")

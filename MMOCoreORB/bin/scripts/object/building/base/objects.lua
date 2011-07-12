@@ -42,6 +42,9 @@
 
 
 object_building_base_shared_base_aircar = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_aircar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -95,11 +98,15 @@ object_building_base_shared_base_aircar = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 892199285,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_aircar, "object/building/base/shared_base_aircar.iff")
 
 object_building_base_shared_base_arena = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_arena.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -153,11 +160,15 @@ object_building_base_shared_base_arena = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 1304404449,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_arena, "object/building/base/shared_base_arena.iff")
 
 object_building_base_shared_base_arena_large = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_arena_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -211,11 +222,15 @@ object_building_base_shared_base_arena_large = SharedBuildingObjectTemplate:new 
 
 	clientObjectCRC = 2838642045,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_arena_large, "object/building/base/shared_base_arena_large.iff")
 
 object_building_base_shared_base_association_hall = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_association_hall.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -269,11 +284,15 @@ object_building_base_shared_base_association_hall = SharedBuildingObjectTemplate
 
 	clientObjectCRC = 2010161339,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_association_hall, "object/building/base/shared_base_association_hall.iff")
 
 object_building_base_shared_base_bank = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_bank.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -327,11 +346,15 @@ object_building_base_shared_base_bank = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 930886639,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_bank, "object/building/base/shared_base_bank.iff")
 
 object_building_base_shared_base_bubble_naboo = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_bubble_naboo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -385,11 +408,15 @@ object_building_base_shared_base_bubble_naboo = SharedBuildingObjectTemplate:new
 
 	clientObjectCRC = 3077444681,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_bubble_naboo, "object/building/base/shared_base_bubble_naboo.iff")
 
 object_building_base_shared_base_building = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_building.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -443,11 +470,15 @@ object_building_base_shared_base_building = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 563265939,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_building, "object/building/base/shared_base_building.iff")
 
 object_building_base_shared_base_cantina = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_cantina.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -501,11 +532,15 @@ object_building_base_shared_base_cantina = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 2078697879,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_cantina, "object/building/base/shared_base_cantina.iff")
 
 object_building_base_shared_base_capitol = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_capitol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -559,11 +594,15 @@ object_building_base_shared_base_capitol = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 1349240925,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_capitol, "object/building/base/shared_base_capitol.iff")
 
 object_building_base_shared_base_cave = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_cave.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -617,11 +656,15 @@ object_building_base_shared_base_cave = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 4040885581,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_cave, "object/building/base/shared_base_cave.iff")
 
 object_building_base_shared_base_cloning_facility = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_cloning_facility.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -675,11 +718,15 @@ object_building_base_shared_base_cloning_facility = SharedBuildingObjectTemplate
 
 	clientObjectCRC = 2798966210,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_cloning_facility, "object/building/base/shared_base_cloning_facility.iff")
 
 object_building_base_shared_base_filler_building = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_filler_building.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -733,11 +780,15 @@ object_building_base_shared_base_filler_building = SharedBuildingObjectTemplate:
 
 	clientObjectCRC = 2827665869,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_filler_building, "object/building/base/shared_base_filler_building.iff")
 
 object_building_base_shared_base_guild = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_guild.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -791,11 +842,15 @@ object_building_base_shared_base_guild = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 4220933361,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_guild, "object/building/base/shared_base_guild.iff")
 
 object_building_base_shared_base_hangar = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_hangar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -849,11 +904,15 @@ object_building_base_shared_base_hangar = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 116432474,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_hangar, "object/building/base/shared_base_hangar.iff")
 
 object_building_base_shared_base_hospital = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_hospital.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -907,11 +966,15 @@ object_building_base_shared_base_hospital = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 4250674570,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_hospital, "object/building/base/shared_base_hospital.iff")
 
 object_building_base_shared_base_hotel = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_hotel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -965,11 +1028,15 @@ object_building_base_shared_base_hotel = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 205766799,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_hotel, "object/building/base/shared_base_hotel.iff")
 
 object_building_base_shared_base_housing = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_housing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1023,11 +1090,15 @@ object_building_base_shared_base_housing = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 266190245,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_housing, "object/building/base/shared_base_housing.iff")
 
 object_building_base_shared_base_military_building = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_military_building.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1081,11 +1152,15 @@ object_building_base_shared_base_military_building = SharedBuildingObjectTemplat
 
 	clientObjectCRC = 952281337,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_military_building, "object/building/base/shared_base_military_building.iff")
 
 object_building_base_shared_base_municipal = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_municipal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1139,11 +1214,15 @@ object_building_base_shared_base_municipal = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 1132404592,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_municipal, "object/building/base/shared_base_municipal.iff")
 
 object_building_base_shared_base_palace = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_palace.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1197,11 +1276,15 @@ object_building_base_shared_base_palace = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 1617161179,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_palace, "object/building/base/shared_base_palace.iff")
 
 object_building_base_shared_base_parking_garage = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_parking_garage.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1255,11 +1338,15 @@ object_building_base_shared_base_parking_garage = SharedBuildingObjectTemplate:n
 
 	clientObjectCRC = 1335851436,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_parking_garage, "object/building/base/shared_base_parking_garage.iff")
 
 object_building_base_shared_base_player_building = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_player_building.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1313,11 +1400,15 @@ object_building_base_shared_base_player_building = SharedBuildingObjectTemplate:
 
 	clientObjectCRC = 763835545,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_player_building, "object/building/base/shared_base_player_building.iff")
 
 object_building_base_shared_base_power_generator = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_power_generator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1371,11 +1462,15 @@ object_building_base_shared_base_power_generator = SharedBuildingObjectTemplate:
 
 	clientObjectCRC = 3206316286,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_power_generator, "object/building/base/shared_base_power_generator.iff")
 
 object_building_base_shared_base_salon = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_salon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1429,11 +1524,15 @@ object_building_base_shared_base_salon = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 1766589263,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_salon, "object/building/base/shared_base_salon.iff")
 
 object_building_base_shared_base_shuttleport = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_shuttleport.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1487,11 +1586,15 @@ object_building_base_shared_base_shuttleport = SharedBuildingObjectTemplate:new 
 
 	clientObjectCRC = 4237016019,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_shuttleport, "object/building/base/shared_base_shuttleport.iff")
 
 object_building_base_shared_base_starport = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_starport.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1545,11 +1648,15 @@ object_building_base_shared_base_starport = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 1063888932,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_starport, "object/building/base/shared_base_starport.iff")
 
 object_building_base_shared_base_theater = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_theater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1603,11 +1710,15 @@ object_building_base_shared_base_theater = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 3832915200,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_theater, "object/building/base/shared_base_theater.iff")
 
 object_building_base_shared_base_tower = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_base_tower.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1661,11 +1772,15 @@ object_building_base_shared_base_tower = SharedBuildingObjectTemplate:new {
 
 	clientObjectCRC = 4264143494,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_base_tower, "object/building/base/shared_base_tower.iff")
 
 object_building_base_shared_building_default = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/base/shared_building_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1719,6 +1834,7 @@ object_building_base_shared_building_default = SharedBuildingObjectTemplate:new 
 
 	clientObjectCRC = 2497050652,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_base_shared_building_default, "object/building/base/shared_building_default.iff")

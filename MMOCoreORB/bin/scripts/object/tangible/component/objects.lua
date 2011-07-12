@@ -42,6 +42,9 @@
 
 
 object_tangible_component_shared_barrel_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/shared_barrel_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/test_muzzle.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_shared_barrel_blaster = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 3456087885,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_shared_barrel_blaster, "object/tangible/component/shared_barrel_blaster.iff")
 
 object_tangible_component_shared_blaster_barrel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/shared_blaster_barrel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/test_muzzle.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_shared_blaster_barrel = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 2450471928,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_shared_blaster_barrel, "object/tangible/component/shared_blaster_barrel.iff")
 
 object_tangible_component_shared_blaster_pistol_barrel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/shared_blaster_pistol_barrel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_muzzle_sm_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_component_shared_blaster_pistol_barrel = SharedTangibleObjectTem
 
 	clientObjectCRC = 3845827705,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_shared_blaster_pistol_barrel, "object/tangible/component/shared_blaster_pistol_barrel.iff")
 
 object_tangible_component_shared_blaster_power_handler = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/shared_blaster_power_handler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_component_shared_blaster_power_handler = SharedTangibleObjectTem
 
 	clientObjectCRC = 2638681735,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_shared_blaster_power_handler, "object/tangible/component/shared_blaster_power_handler.iff")
 
 object_tangible_component_shared_scope_weapon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/shared_scope_weapon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_scope_sm_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_component_shared_scope_weapon = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 3899287284,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_barrel.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_shared_scope_weapon, "object/tangible/component/shared_scope_weapon.iff")

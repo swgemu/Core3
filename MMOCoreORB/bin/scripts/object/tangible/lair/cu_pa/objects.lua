@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_cu_pa_shared_lair_cu_pa = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/cu_pa/shared_lair_cu_pa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2944625946,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa, "object/tangible/lair/cu_pa/shared_lair_cu_pa.iff")
 
 object_tangible_lair_cu_pa_shared_lair_cu_pa_dune = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/cu_pa/shared_lair_cu_pa_dune.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa_dune = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 3403514963,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_dune, "object/tangible/lair/cu_pa/shared_lair_cu_pa_dune.iff")
 
 object_tangible_lair_cu_pa_shared_lair_cu_pa_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/cu_pa/shared_lair_cu_pa_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa_mountain = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3513164342,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_mountain, "object/tangible/lair/cu_pa/shared_lair_cu_pa_mountain.iff")
 
 object_tangible_lair_cu_pa_shared_lair_cu_pa_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/cu_pa/shared_lair_cu_pa_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_cu_pa_shared_lair_cu_pa_wasteland = SharedTangibleObjectTem
 
 	clientObjectCRC = 770810726,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_cu_pa_shared_lair_cu_pa_wasteland, "object/tangible/lair/cu_pa/shared_lair_cu_pa_wasteland.iff")

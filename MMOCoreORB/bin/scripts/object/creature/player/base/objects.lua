@@ -42,6 +42,9 @@
 
 
 object_creature_player_base_shared_base_player = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/player/base/shared_base_player.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {36,12},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "",
@@ -116,6 +119,7 @@ object_creature_player_base_shared_base_player = SharedCreatureObjectTemplate:ne
 
 	clientObjectCRC = 957124474,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_player_base_shared_base_player, "object/creature/player/base/shared_base_player.iff")

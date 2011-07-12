@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_munition_component_shared_ammo_projectile = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_ammo_projectile.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_munition_component_shared_ammo_projectile = SharedDraftSc
 
 	clientObjectCRC = 4036740128,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_ammo_projectile, "object/draft_schematic/munition/component/shared_ammo_projectile.iff")
 
 object_draft_schematic_munition_component_shared_ammo_projectile_entanglement = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_ammo_projectile_entanglement.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_munition_component_shared_ammo_projectile_entanglement = 
 
 	clientObjectCRC = 443220500,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_ammo_projectile_entanglement, "object/draft_schematic/munition/component/shared_ammo_projectile_entanglement.iff")
 
 object_draft_schematic_munition_component_shared_base_munition_enhancer = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_base_munition_enhancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_munition_component_shared_base_munition_enhancer = Shared
 
 	clientObjectCRC = 3506113789,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_base_munition_enhancer, "object/draft_schematic/munition/component/shared_base_munition_enhancer.iff")
 
 object_draft_schematic_munition_component_shared_enhanced_charge_composition = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_enhanced_charge_composition.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_munition_component_shared_enhanced_charge_composition = S
 
 	clientObjectCRC = 3153150043,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff", "object/draft_schematic/munition/shared_base_munition_enhancer.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_charge_composition, "object/draft_schematic/munition/component/shared_enhanced_charge_composition.iff")
 
 object_draft_schematic_munition_component_shared_enhanced_charge_shaping = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_enhanced_charge_shaping.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_munition_component_shared_enhanced_charge_shaping = Share
 
 	clientObjectCRC = 3158528693,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff", "object/draft_schematic/munition/shared_base_munition_enhancer.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_charge_shaping, "object/draft_schematic/munition/component/shared_enhanced_charge_shaping.iff")
 
 object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_channeling = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_enhanced_destructive_pulse_channeling.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_chan
 
 	clientObjectCRC = 2401022295,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff", "object/draft_schematic/munition/shared_base_munition_enhancer.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_destructive_pulse_channeling, "object/draft_schematic/munition/component/shared_enhanced_destructive_pulse_channeling.iff")
 
 object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_enhanced_fragmentation_sleeve.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve =
 
 	clientObjectCRC = 3256653222,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff", "object/draft_schematic/munition/shared_base_munition_enhancer.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_enhanced_fragmentation_sleeve, "object/draft_schematic/munition/component/shared_enhanced_fragmentation_sleeve.iff")
 
 object_draft_schematic_munition_component_shared_warhead_chemical = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_warhead_chemical.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_munition_component_shared_warhead_chemical = SharedDraftS
 
 	clientObjectCRC = 1156003088,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_chemical, "object/draft_schematic/munition/component/shared_warhead_chemical.iff")
 
 object_draft_schematic_munition_component_shared_warhead_fusing_mechanism = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_warhead_fusing_mechanism.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_munition_component_shared_warhead_fusing_mechanism = Shar
 
 	clientObjectCRC = 3955180920,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_fusing_mechanism, "object/draft_schematic/munition/component/shared_warhead_fusing_mechanism.iff")
 
 object_draft_schematic_munition_component_shared_warhead_heavy = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_warhead_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_munition_component_shared_warhead_heavy = SharedDraftSche
 
 	clientObjectCRC = 2232358950,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_heavy, "object/draft_schematic/munition/component/shared_warhead_heavy.iff")
 
 object_draft_schematic_munition_component_shared_warhead_light = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_warhead_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_munition_component_shared_warhead_light = SharedDraftSche
 
 	clientObjectCRC = 1146561784,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_light, "object/draft_schematic/munition/component/shared_warhead_light.iff")
 
 object_draft_schematic_munition_component_shared_warhead_medium = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_warhead_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_munition_component_shared_warhead_medium = SharedDraftSch
 
 	clientObjectCRC = 536805307,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_medium, "object/draft_schematic/munition/component/shared_warhead_medium.iff")
 
 object_draft_schematic_munition_component_shared_warhead_stabilizer = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/munition/component/shared_warhead_stabilizer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,6 +673,7 @@ object_draft_schematic_munition_component_shared_warhead_stabilizer = SharedDraf
 
 	clientObjectCRC = 4065626322,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/munition/shared_base_munition.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_munition_component_shared_warhead_stabilizer, "object/draft_schematic/munition/component/shared_warhead_stabilizer.iff")

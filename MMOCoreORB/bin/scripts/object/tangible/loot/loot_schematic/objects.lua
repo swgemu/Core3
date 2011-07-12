@@ -42,6 +42,9 @@
 
 
 object_tangible_loot_loot_schematic_shared_agitator_motor_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_agitator_motor_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_loot_loot_schematic_shared_agitator_motor_schematic = SharedTang
 
 	clientObjectCRC = 3973368814,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_agitator_motor_schematic, "object/tangible/loot/loot_schematic/shared_agitator_motor_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_assorted_fruit_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic = SharedTang
 
 	clientObjectCRC = 33357504,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_assorted_fruit_schematic, "object/tangible/loot/loot_schematic/shared_assorted_fruit_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bacta_tank_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_bacta_tank_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_loot_loot_schematic_shared_bacta_tank_schematic = SharedTangible
 
 	clientObjectCRC = 2176567440,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bacta_tank_schematic, "object/tangible/loot/loot_schematic/shared_bacta_tank_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_basket_closed_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_basket_closed_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_loot_loot_schematic_shared_basket_closed_schematic = SharedTangi
 
 	clientObjectCRC = 275009907,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_basket_closed_schematic, "object/tangible/loot/loot_schematic/shared_basket_closed_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bottle_fat_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_bottle_fat_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_loot_loot_schematic_shared_bottle_fat_schematic = SharedTangible
 
 	clientObjectCRC = 2981833750,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bottle_fat_schematic, "object/tangible/loot/loot_schematic/shared_bottle_fat_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bottle_pear_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_bottle_pear_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_loot_loot_schematic_shared_bottle_pear_schematic = SharedTangibl
 
 	clientObjectCRC = 49511220,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bottle_pear_schematic, "object/tangible/loot/loot_schematic/shared_bottle_pear_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bottle_tall_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_bottle_tall_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_loot_loot_schematic_shared_bottle_tall_schematic = SharedTangibl
 
 	clientObjectCRC = 1843384540,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bottle_tall_schematic, "object/tangible/loot/loot_schematic/shared_bottle_tall_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bowl_carved_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_bowl_carved_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_loot_loot_schematic_shared_bowl_carved_schematic = SharedTangibl
 
 	clientObjectCRC = 2666433962,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bowl_carved_schematic, "object/tangible/loot/loot_schematic/shared_bowl_carved_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bowl_plain_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_bowl_plain_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_loot_loot_schematic_shared_bowl_plain_schematic = SharedTangible
 
 	clientObjectCRC = 2499138491,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bowl_plain_schematic, "object/tangible/loot/loot_schematic/shared_bowl_plain_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_bubble_tank_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_bubble_tank_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_loot_loot_schematic_shared_bubble_tank_schematic = SharedTangibl
 
 	clientObjectCRC = 352538230,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_bubble_tank_schematic, "object/tangible/loot/loot_schematic/shared_bubble_tank_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_campfire_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_campfire_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_loot_loot_schematic_shared_campfire_schematic = SharedTangibleOb
 
 	clientObjectCRC = 2177174238,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_campfire_schematic, "object/tangible/loot/loot_schematic/shared_campfire_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_cantina_chair_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_cantina_chair_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_loot_loot_schematic_shared_cantina_chair_schematic = SharedTangi
 
 	clientObjectCRC = 1817381441,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_cantina_chair_schematic, "object/tangible/loot/loot_schematic/shared_cantina_chair_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_chair_cafe_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_chair_cafe_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_loot_loot_schematic_shared_chair_cafe_schematic = SharedTangible
 
 	clientObjectCRC = 1634921548,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_chair_cafe_schematic, "object/tangible/loot/loot_schematic/shared_chair_cafe_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_chemical_recycler_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic = SharedT
 
 	clientObjectCRC = 3816949248,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_chemical_recycler_schematic, "object/tangible/loot/loot_schematic/shared_chemical_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_command_console_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_command_console_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_loot_loot_schematic_shared_command_console_schematic = SharedTan
 
 	clientObjectCRC = 1441840530,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_command_console_schematic, "object/tangible/loot/loot_schematic/shared_command_console_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_corellian_corvette_landspeeder_av21_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_s
 
 	clientObjectCRC = 2788504736,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_landspeeder_av21_schematic, "object/tangible/loot/loot_schematic/shared_corellian_corvette_landspeeder_av21_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_corellian_corvette_rifle_berserker_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_sc
 
 	clientObjectCRC = 2378673848,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_corellian_corvette_rifle_berserker_schematic, "object/tangible/loot/loot_schematic/shared_corellian_corvette_rifle_berserker_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_corellian_flagpole_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic = Shared
 
 	clientObjectCRC = 3464694105,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_corellian_flagpole_schematic, "object/tangible/loot/loot_schematic/shared_corellian_flagpole_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_couch_blue_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_couch_blue_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_loot_loot_schematic_shared_couch_blue_schematic = SharedTangible
 
 	clientObjectCRC = 2109385771,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_couch_blue_schematic, "object/tangible/loot/loot_schematic/shared_couch_blue_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_creature_recycler_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_creature_recycler_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_loot_loot_schematic_shared_creature_recycler_schematic = SharedT
 
 	clientObjectCRC = 3869986987,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_creature_recycler_schematic, "object/tangible/loot/loot_schematic/shared_creature_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_belt_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schema
 
 	clientObjectCRC = 3186214418,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_belt_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_belt_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_l_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_sch
 
 	clientObjectCRC = 4262840848,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_r_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_sch
 
 	clientObjectCRC = 712860035,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bicep_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bicep_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_boots_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schem
 
 	clientObjectCRC = 2564896139,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_boots_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_boots_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_l_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_sc
 
 	clientObjectCRC = 4001355238,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_r_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_sc
 
 	clientObjectCRC = 974618229,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_bracer_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_bracer_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_chest_plate_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate
 
 	clientObjectCRC = 3084811322,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_chest_plate_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_chest_plate_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_gloves_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_sche
 
 	clientObjectCRC = 4286535235,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_gloves_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_gloves_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_helmet_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_sche
 
 	clientObjectCRC = 4021975943,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_helmet_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_helmet_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_leggings_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_sc
 
 	clientObjectCRC = 204385497,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_bounty_hunter_leggings_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_bounty_hunter_leggings_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_drink_mandalorian_wine_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_sc
 
 	clientObjectCRC = 818256163,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_drink_mandalorian_wine_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_drink_mandalorian_wine_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_executioners_hack_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schemat
 
 	clientObjectCRC = 2390933673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_executioners_hack_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_executioners_hack_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_belt_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schemati
 
 	clientObjectCRC = 3163168550,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_belt_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_belt_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_l_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schem
 
 	clientObjectCRC = 3952203976,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_r_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schem
 
 	clientObjectCRC = 1073312603,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bicep_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bicep_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_boots_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schemat
 
 	clientObjectCRC = 4294515772,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_boots_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_boots_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_l_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_sche
 
 	clientObjectCRC = 834256381,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_l_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_l_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_r_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_sche
 
 	clientObjectCRC = 3855685230,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_bracer_r_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_bracer_r_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_chest_plate_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,11 +2337,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_s
 
 	clientObjectCRC = 2354501114,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_chest_plate_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_chest_plate_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_gloves_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2237,11 +2396,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schema
 
 	clientObjectCRC = 1437890513,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_gloves_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_gloves_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_helmet_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2292,11 +2455,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schema
 
 	clientObjectCRC = 1165056533,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_helmet_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_helmet_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_jetpack_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2347,11 +2514,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schem
 
 	clientObjectCRC = 571889949,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_jetpack_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_jetpack_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_leggings_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2402,11 +2573,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_sche
 
 	clientObjectCRC = 3555247298,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_mandalorian_leggings_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_mandalorian_leggings_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_pistol_de10_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2457,11 +2632,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic = S
 
 	clientObjectCRC = 44057344,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_pistol_de10_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_pistol_de10_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_death_watch_razor_knuckler_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2512,11 +2691,15 @@ object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic 
 
 	clientObjectCRC = 56986758,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_death_watch_razor_knuckler_schematic, "object/tangible/loot/loot_schematic/shared_death_watch_razor_knuckler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_diagnostic_screen_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2567,11 +2750,15 @@ object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic = SharedT
 
 	clientObjectCRC = 74183997,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_diagnostic_screen_schematic, "object/tangible/loot/loot_schematic/shared_diagnostic_screen_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_droid_body_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_droid_body_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2622,11 +2809,15 @@ object_tangible_loot_loot_schematic_shared_droid_body_schematic = SharedTangible
 
 	clientObjectCRC = 3014709176,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_droid_body_schematic, "object/tangible/loot/loot_schematic/shared_droid_body_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_droid_head_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_droid_head_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2677,11 +2868,15 @@ object_tangible_loot_loot_schematic_shared_droid_head_schematic = SharedTangible
 
 	clientObjectCRC = 443254179,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_droid_head_schematic, "object/tangible/loot/loot_schematic/shared_droid_head_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_elegant_cabinet_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2732,11 +2927,15 @@ object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic = SharedTan
 
 	clientObjectCRC = 1275187305,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_elegant_cabinet_schematic, "object/tangible/loot/loot_schematic/shared_elegant_cabinet_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_flora_recycler_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_flora_recycler_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2787,11 +2986,15 @@ object_tangible_loot_loot_schematic_shared_flora_recycler_schematic = SharedTang
 
 	clientObjectCRC = 1892700204,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_flora_recycler_schematic, "object/tangible/loot/loot_schematic/shared_flora_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_foodcart_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_foodcart_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2842,11 +3045,15 @@ object_tangible_loot_loot_schematic_shared_foodcart_schematic = SharedTangibleOb
 
 	clientObjectCRC = 4233888471,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_foodcart_schematic, "object/tangible/loot/loot_schematic/shared_foodcart_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_gambling_table_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_gambling_table_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2897,11 +3104,15 @@ object_tangible_loot_loot_schematic_shared_gambling_table_schematic = SharedTang
 
 	clientObjectCRC = 131416383,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_gambling_table_schematic, "object/tangible/loot/loot_schematic/shared_gambling_table_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_geonosian_acklay_bone_armor_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2952,11 +3163,15 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic
 
 	clientObjectCRC = 3869697913,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_bone_armor_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_acklay_bone_armor_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_geonosian_acklay_muscle_armor_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3007,11 +3222,15 @@ object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schemat
 
 	clientObjectCRC = 1435106538,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_acklay_muscle_armor_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_acklay_muscle_armor_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_geonosian_reinforcement_core_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3062,11 +3281,15 @@ object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schemati
 
 	clientObjectCRC = 2842219763,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_reinforcement_core_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_reinforcement_core_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_geonosian_sonic_blaster_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3117,11 +3340,15 @@ object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic = S
 
 	clientObjectCRC = 3191519467,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sonic_blaster_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_sonic_blaster_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_geonosian_sword_core_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3172,11 +3399,15 @@ object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic = Shar
 
 	clientObjectCRC = 2133560437,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_sword_core_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_sword_core_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_geonosian_tenloss_dxr6_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3227,11 +3458,15 @@ object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic = Sh
 
 	clientObjectCRC = 910955791,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_geonosian_tenloss_dxr6_schematic, "object/tangible/loot/loot_schematic/shared_geonosian_tenloss_dxr6_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_hanging_planter_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_hanging_planter_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3282,11 +3517,15 @@ object_tangible_loot_loot_schematic_shared_hanging_planter_schematic = SharedTan
 
 	clientObjectCRC = 1451271511,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_hanging_planter_schematic, "object/tangible/loot/loot_schematic/shared_hanging_planter_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_metal_recycler_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_metal_recycler_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3337,11 +3576,15 @@ object_tangible_loot_loot_schematic_shared_metal_recycler_schematic = SharedTang
 
 	clientObjectCRC = 138305507,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_metal_recycler_schematic, "object/tangible/loot/loot_schematic/shared_metal_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_microphone_s01_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_microphone_s01_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3392,11 +3635,15 @@ object_tangible_loot_loot_schematic_shared_microphone_s01_schematic = SharedTang
 
 	clientObjectCRC = 620571036,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_microphone_s01_schematic, "object/tangible/loot/loot_schematic/shared_microphone_s01_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_microphone_s02_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_microphone_s02_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3447,11 +3694,15 @@ object_tangible_loot_loot_schematic_shared_microphone_s02_schematic = SharedTang
 
 	clientObjectCRC = 1194071997,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_microphone_s02_schematic, "object/tangible/loot/loot_schematic/shared_microphone_s02_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_ore_recycler_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_ore_recycler_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3502,11 +3753,15 @@ object_tangible_loot_loot_schematic_shared_ore_recycler_schematic = SharedTangib
 
 	clientObjectCRC = 2736953476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_ore_recycler_schematic, "object/tangible/loot/loot_schematic/shared_ore_recycler_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_park_bench_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_park_bench_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3557,11 +3812,15 @@ object_tangible_loot_loot_schematic_shared_park_bench_schematic = SharedTangible
 
 	clientObjectCRC = 385386900,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_park_bench_schematic, "object/tangible/loot/loot_schematic/shared_park_bench_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_pitcher_full_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_pitcher_full_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3612,11 +3871,15 @@ object_tangible_loot_loot_schematic_shared_pitcher_full_schematic = SharedTangib
 
 	clientObjectCRC = 4049237306,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_pitcher_full_schematic, "object/tangible/loot/loot_schematic/shared_pitcher_full_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_professors_desk_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_professors_desk_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3667,11 +3930,15 @@ object_tangible_loot_loot_schematic_shared_professors_desk_schematic = SharedTan
 
 	clientObjectCRC = 2780825325,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_professors_desk_schematic, "object/tangible/loot/loot_schematic/shared_professors_desk_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_radar_screen_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_radar_screen_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3722,11 +3989,15 @@ object_tangible_loot_loot_schematic_shared_radar_screen_schematic = SharedTangib
 
 	clientObjectCRC = 1601376740,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_radar_screen_schematic, "object/tangible/loot/loot_schematic/shared_radar_screen_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_radio_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_radio_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3777,11 +4048,15 @@ object_tangible_loot_loot_schematic_shared_radio_schematic = SharedTangibleObjec
 
 	clientObjectCRC = 4283977315,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_radio_schematic, "object/tangible/loot/loot_schematic/shared_radio_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_shisa_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_shisa_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3832,11 +4107,15 @@ object_tangible_loot_loot_schematic_shared_shisa_schematic = SharedTangibleObjec
 
 	clientObjectCRC = 2074723143,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_shisa_schematic, "object/tangible/loot/loot_schematic/shared_shisa_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_slave_brazier_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_slave_brazier_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3887,11 +4166,15 @@ object_tangible_loot_loot_schematic_shared_slave_brazier_schematic = SharedTangi
 
 	clientObjectCRC = 4016619674,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_slave_brazier_schematic, "object/tangible/loot/loot_schematic/shared_slave_brazier_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_spear_rack_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_spear_rack_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3942,11 +4225,15 @@ object_tangible_loot_loot_schematic_shared_spear_rack_schematic = SharedTangible
 
 	clientObjectCRC = 2882303083,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_spear_rack_schematic, "object/tangible/loot/loot_schematic/shared_spear_rack_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_stove_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_stove_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3997,11 +4284,15 @@ object_tangible_loot_loot_schematic_shared_stove_schematic = SharedTangibleObjec
 
 	clientObjectCRC = 3338971500,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_stove_schematic, "object/tangible/loot/loot_schematic/shared_stove_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_streetlamp_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_streetlamp_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4052,11 +4343,15 @@ object_tangible_loot_loot_schematic_shared_streetlamp_schematic = SharedTangible
 
 	clientObjectCRC = 2023724464,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_streetlamp_schematic, "object/tangible/loot/loot_schematic/shared_streetlamp_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_stuffed_fish_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4107,11 +4402,15 @@ object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic = SharedTangib
 
 	clientObjectCRC = 46984344,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_stuffed_fish_schematic, "object/tangible/loot/loot_schematic/shared_stuffed_fish_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_table_coffee_modern_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4162,11 +4461,15 @@ object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic = Share
 
 	clientObjectCRC = 1657163664,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_table_coffee_modern_schematic, "object/tangible/loot/loot_schematic/shared_table_coffee_modern_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_tanning_hide_s01_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4217,11 +4520,15 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic = SharedTa
 
 	clientObjectCRC = 189791805,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic, "object/tangible/loot/loot_schematic/shared_tanning_hide_s01_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_tanning_hide_s02_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4272,11 +4579,15 @@ object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic = SharedTa
 
 	clientObjectCRC = 1755234332,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tanning_hide_s02_schematic, "object/tangible/loot/loot_schematic/shared_tanning_hide_s02_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_tatooine_tapestry_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4327,11 +4638,15 @@ object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic = SharedT
 
 	clientObjectCRC = 1445555733,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tatooine_tapestry_schematic, "object/tangible/loot/loot_schematic/shared_tatooine_tapestry_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_technical_console_s01_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4382,11 +4697,15 @@ object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic = Sha
 
 	clientObjectCRC = 911123298,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s01_schematic, "object/tangible/loot/loot_schematic/shared_technical_console_s01_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_technical_console_s02_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4437,11 +4756,15 @@ object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic = Sha
 
 	clientObjectCRC = 1436523843,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic, "object/tangible/loot/loot_schematic/shared_technical_console_s02_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_throwpillow_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_throwpillow_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4492,11 +4815,15 @@ object_tangible_loot_loot_schematic_shared_throwpillow_schematic = SharedTangibl
 
 	clientObjectCRC = 3095520200,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_throwpillow_schematic, "object/tangible/loot/loot_schematic/shared_throwpillow_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_tumble_blender_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_tumble_blender_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4547,11 +4874,15 @@ object_tangible_loot_loot_schematic_shared_tumble_blender_schematic = SharedTang
 
 	clientObjectCRC = 2145052130,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_tumble_blender_schematic, "object/tangible/loot/loot_schematic/shared_tumble_blender_schematic.iff")
 
 object_tangible_loot_loot_schematic_shared_utensils_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/loot_schematic/shared_utensils_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4602,6 +4933,7 @@ object_tangible_loot_loot_schematic_shared_utensils_schematic = SharedTangibleOb
 
 	clientObjectCRC = 2313370154,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_loot_schematic_shared_utensils_schematic, "object/tangible/loot/loot_schematic/shared_utensils_schematic.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_narglatch_shared_lair_narglatch = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/narglatch/shared_lair_narglatch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_narglatch_shared_lair_narglatch = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1786171158,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_narglatch_shared_lair_narglatch, "object/tangible/lair/narglatch/shared_lair_narglatch.iff")
 
 object_tangible_lair_narglatch_shared_lair_narglatch_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/narglatch/shared_lair_narglatch_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_narglatch_shared_lair_narglatch_swamp = SharedTangibleObjec
 
 	clientObjectCRC = 1005548587,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_narglatch_shared_lair_narglatch_swamp, "object/tangible/lair/narglatch/shared_lair_narglatch_swamp.iff")

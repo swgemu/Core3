@@ -42,6 +42,9 @@
 
 
 object_tangible_food_shared_bread_loaf_full_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/shared_bread_loaf_full_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_bread_loaf_full_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_food_shared_bread_loaf_full_s1 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 636907490,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_shared_bread_loaf_full_s1, "object/tangible/food/shared_bread_loaf_full_s1.iff")
 
 object_tangible_food_shared_fruit_melon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/shared_fruit_melon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_fruit_melon.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_food_shared_fruit_melon = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1805453686,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_shared_fruit_melon, "object/tangible/food/shared_fruit_melon.iff")
 
 object_tangible_food_shared_meat_kabob = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/shared_meat_kabob.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_kabob.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_food_shared_meat_kabob = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1607939967,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_shared_meat_kabob, "object/tangible/food/shared_meat_kabob.iff")
 
 object_tangible_food_shared_meat_object = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/shared_meat_object.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_all_meat_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_food_shared_meat_object = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1002178660,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_shared_meat_object, "object/tangible/food/shared_meat_object.iff")
 
 object_tangible_food_shared_nectar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/shared_nectar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tankard_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_food_shared_nectar = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2221635461,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_crafted_food.iff", "object/tangible/food/base/shared_drink_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_shared_nectar, "object/tangible/food/shared_nectar.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_shipcontrol_shared_pilot_chair = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/shipcontrol/shared_pilot_chair.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_chair_metal_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_shipcontrol_shared_pilot_chair = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3541722217,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_pilot_chair, "object/tangible/shipcontrol/shared_pilot_chair.iff")
 
 object_tangible_shipcontrol_shared_shipcontrol_corvette = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/shipcontrol/shared_shipcontrol_corvette.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_shipcontrol_shared_shipcontrol_corvette = SharedTangibleObjectTe
 
 	clientObjectCRC = 543526931,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipcontrol_corvette, "object/tangible/shipcontrol/shared_shipcontrol_corvette.iff")
 
 object_tangible_shipcontrol_shared_shipcontrol_falcon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/shipcontrol/shared_shipcontrol_falcon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_shipcontrol_shared_shipcontrol_falcon = SharedTangibleObjectTemp
 
 	clientObjectCRC = 362033500,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipcontrol_falcon, "object/tangible/shipcontrol/shared_shipcontrol_falcon.iff")
 
 object_tangible_shipcontrol_shared_shipoperations_falcon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/shipcontrol/shared_shipoperations_falcon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_spc_chair_pilot_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_shipcontrol_shared_shipoperations_falcon = SharedTangibleObjectT
 
 	clientObjectCRC = 752872042,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_shipoperations_falcon, "object/tangible/shipcontrol/shared_shipoperations_falcon.iff")
 
 object_tangible_shipcontrol_shared_turretcontrol_falcon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/shipcontrol/shared_turretcontrol_falcon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/yt1300_ladder.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_shipcontrol_shared_turretcontrol_falcon = SharedTangibleObjectTe
 
 	clientObjectCRC = 3238239508,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_turretcontrol_falcon, "object/tangible/shipcontrol/shared_turretcontrol_falcon.iff")
 
 object_tangible_shipcontrol_shared_turretcontrol_vt49 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/shipcontrol/shared_turretcontrol_vt49.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/vt49_ladder.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,6 +390,7 @@ object_tangible_shipcontrol_shared_turretcontrol_vt49 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 315011154,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_shipcontrol_shared_turretcontrol_vt49, "object/tangible/shipcontrol/shared_turretcontrol_vt49.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_spawning_shared_fs_village_npc_spawner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/spawning/shared_fs_village_npc_spawner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_spawning_shared_fs_village_npc_spawner = SharedTangibleObjectTem
 
 	clientObjectCRC = 2009793095,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_spawning_shared_fs_village_npc_spawner, "object/tangible/spawning/shared_fs_village_npc_spawner.iff")
 
 object_tangible_spawning_shared_quest_spawner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/spawning/shared_quest_spawner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_spawning_shared_quest_spawner = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 3065118291,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_spawning_shared_quest_spawner, "object/tangible/spawning/shared_quest_spawner.iff")
 
 object_tangible_spawning_shared_remote_theater_spawner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/spawning/shared_remote_theater_spawner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_spawning_shared_remote_theater_spawner = SharedTangibleObjectTem
 
 	clientObjectCRC = 1732078563,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_spawning_shared_remote_theater_spawner, "object/tangible/spawning/shared_remote_theater_spawner.iff")
 
 object_tangible_spawning_shared_spawn_egg = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/spawning/shared_spawn_egg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_spawning_shared_spawn_egg = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 85728691,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_spawning_shared_spawn_egg, "object/tangible/spawning/shared_spawn_egg.iff")

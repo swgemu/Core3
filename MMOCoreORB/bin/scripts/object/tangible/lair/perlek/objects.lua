@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_perlek_shared_lair_perlek = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/perlek/shared_lair_perlek.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_perlek_shared_lair_perlek = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 804817169,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_perlek_shared_lair_perlek, "object/tangible/lair/perlek/shared_lair_perlek.iff")
 
 object_tangible_lair_perlek_shared_lair_perlek_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/perlek/shared_lair_perlek_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_perlek_shared_lair_perlek_grassland = SharedTangibleObjectT
 
 	clientObjectCRC = 4089303997,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_perlek_shared_lair_perlek_grassland, "object/tangible/lair/perlek/shared_lair_perlek_grassland.iff")
 
 object_tangible_lair_perlek_shared_lair_perlek_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/perlek/shared_lair_perlek_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_perlek_shared_lair_perlek_jungle = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3319913083,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_perlek_shared_lair_perlek_jungle, "object/tangible/lair/perlek/shared_lair_perlek_jungle.iff")

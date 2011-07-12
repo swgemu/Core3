@@ -42,6 +42,9 @@
 
 
 object_weapon_melee_baton_shared_baton_gaderiffi = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/baton/shared_baton_gaderiffi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_baton_gaderiffi.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_melee_baton_shared_baton_gaderiffi = SharedWeaponObjectTemplate:ne
 
 	clientObjectCRC = 1521219232,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_baton_gaderiffi, "object/weapon/melee/baton/shared_baton_gaderiffi.iff")
 
 object_weapon_melee_baton_shared_baton_stun = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/baton/shared_baton_stun.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_baton_stun.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -155,11 +162,15 @@ object_weapon_melee_baton_shared_baton_stun = SharedWeaponObjectTemplate:new {
 
 	clientObjectCRC = 2740869510,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_baton_stun, "object/weapon/melee/baton/shared_baton_stun.iff")
 
 object_weapon_melee_baton_shared_victor_baton_gaderiffi = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/baton/shared_victor_baton_gaderiffi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_baton_gaderiffi.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -214,6 +225,7 @@ object_weapon_melee_baton_shared_victor_baton_gaderiffi = SharedWeaponObjectTemp
 
 	clientObjectCRC = 926540761,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_baton_shared_victor_baton_gaderiffi, "object/weapon/melee/baton/shared_victor_baton_gaderiffi.iff")

@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_space_armor_shared_adv_durasteel_plating = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_adv_durasteel_plating.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_space_armor_shared_adv_durasteel_plating = SharedDraftSch
 
 	clientObjectCRC = 2102420108,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_adv_durasteel_plating, "object/draft_schematic/space/armor/shared_adv_durasteel_plating.iff")
 
 object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_armor_reinforcement_panel_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk1 = Shared
 
 	clientObjectCRC = 2806408794,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk1, "object/draft_schematic/space/armor/shared_armor_reinforcement_panel_mk1.iff")
 
 object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_armor_reinforcement_panel_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk2 = Shared
 
 	clientObjectCRC = 2085736141,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk2, "object/draft_schematic/space/armor/shared_armor_reinforcement_panel_mk2.iff")
 
 object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_armor_reinforcement_panel_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk3 = Shared
 
 	clientObjectCRC = 895265088,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk3, "object/draft_schematic/space/armor/shared_armor_reinforcement_panel_mk3.iff")
 
 object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_armor_reinforcement_panel_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk4 = Shared
 
 	clientObjectCRC = 3468657236,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk4, "object/draft_schematic/space/armor/shared_armor_reinforcement_panel_mk4.iff")
 
 object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_armor_reinforcement_panel_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk5 = Shared
 
 	clientObjectCRC = 2276648409,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_armor_reinforcement_panel_mk5, "object/draft_schematic/space/armor/shared_armor_reinforcement_panel_mk5.iff")
 
 object_draft_schematic_space_armor_shared_durasteel_plating = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_durasteel_plating.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_space_armor_shared_durasteel_plating = SharedDraftSchemat
 
 	clientObjectCRC = 4047177961,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_durasteel_plating, "object/draft_schematic/space/armor/shared_durasteel_plating.iff")
 
 object_draft_schematic_space_armor_shared_exp_durasteel_plating = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_exp_durasteel_plating.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_space_armor_shared_exp_durasteel_plating = SharedDraftSch
 
 	clientObjectCRC = 3426217899,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_exp_durasteel_plating, "object/draft_schematic/space/armor/shared_exp_durasteel_plating.iff")
 
 object_draft_schematic_space_armor_shared_heavy_durasteel_plating = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_heavy_durasteel_plating.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_space_armor_shared_heavy_durasteel_plating = SharedDraftS
 
 	clientObjectCRC = 2174167663,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_heavy_durasteel_plating, "object/draft_schematic/space/armor/shared_heavy_durasteel_plating.iff")
 
 object_draft_schematic_space_armor_shared_light_durasteel_plating = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_light_durasteel_plating.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_space_armor_shared_light_durasteel_plating = SharedDraftS
 
 	clientObjectCRC = 4236143256,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_light_durasteel_plating, "object/draft_schematic/space/armor/shared_light_durasteel_plating.iff")
 
 object_draft_schematic_space_armor_shared_mass_reduction_kit_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_mass_reduction_kit_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk1 = SharedDraftSc
 
 	clientObjectCRC = 67761570,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_mass_reduction_kit_mk1, "object/draft_schematic/space/armor/shared_mass_reduction_kit_mk1.iff")
 
 object_draft_schematic_space_armor_shared_mass_reduction_kit_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_mass_reduction_kit_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk2 = SharedDraftSc
 
 	clientObjectCRC = 3743309109,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_mass_reduction_kit_mk2, "object/draft_schematic/space/armor/shared_mass_reduction_kit_mk2.iff")
 
 object_draft_schematic_space_armor_shared_mass_reduction_kit_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_mass_reduction_kit_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,11 +673,15 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk3 = SharedDraftSc
 
 	clientObjectCRC = 2517842616,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_mass_reduction_kit_mk3, "object/draft_schematic/space/armor/shared_mass_reduction_kit_mk3.iff")
 
 object_draft_schematic_space_armor_shared_mass_reduction_kit_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_mass_reduction_kit_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -667,11 +722,15 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk4 = SharedDraftSc
 
 	clientObjectCRC = 1844449708,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_mass_reduction_kit_mk4, "object/draft_schematic/space/armor/shared_mass_reduction_kit_mk4.iff")
 
 object_draft_schematic_space_armor_shared_mass_reduction_kit_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/armor/shared_mass_reduction_kit_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -712,6 +771,7 @@ object_draft_schematic_space_armor_shared_mass_reduction_kit_mk5 = SharedDraftSc
 
 	clientObjectCRC = 620590625,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_armor_shared_mass_reduction_kit_mk5, "object/draft_schematic/space/armor/shared_mass_reduction_kit_mk5.iff")

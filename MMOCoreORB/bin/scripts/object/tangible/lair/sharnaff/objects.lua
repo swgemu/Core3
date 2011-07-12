@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_sharnaff_shared_lair_sharnaff = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/sharnaff/shared_lair_sharnaff.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 196553824,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff, "object/tangible/lair/sharnaff/shared_lair_sharnaff.iff")
 
 object_tangible_lair_sharnaff_shared_lair_sharnaff_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/sharnaff/shared_lair_sharnaff_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_forest = SharedTangibleObject
 
 	clientObjectCRC = 150207939,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_forest, "object/tangible/lair/sharnaff/shared_lair_sharnaff_forest.iff")
 
 object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/sharnaff/shared_lair_sharnaff_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland = SharedTangibleObj
 
 	clientObjectCRC = 2092015518,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_sharnaff_shared_lair_sharnaff_grassland, "object/tangible/lair/sharnaff/shared_lair_sharnaff_grassland.iff")

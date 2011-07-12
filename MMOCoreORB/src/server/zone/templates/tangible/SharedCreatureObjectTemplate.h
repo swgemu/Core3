@@ -9,37 +9,38 @@
 #define SHAREDCREATUREOBJECTTEMPLATE_H_
 
 #include "../SharedTangibleObjectTemplate.h"
+#include "../params/VectorParam.h"
 
 class SharedCreatureObjectTemplate: public SharedTangibleObjectTemplate {
 protected:
-	int gender;
-	int niche;
-	int species;
-	int race;
+	IntegerParam gender;
+	IntegerParam niche;
+	IntegerParam species;
+	IntegerParam race;
 
-	Vector<float> acceleration;
-	Vector<float> speed;
-	Vector<float> turnRate;
+	VectorParam<FloatParam> acceleration;
+	VectorParam<FloatParam> speed;
+	VectorParam<FloatParam> turnRate;
 
-	String animationMapFilename;
+	StringParam animationMapFilename;
 
-	float slopeModAngle;
-	float slopeModPercent;
-	float waterModPercent;
-	float stepHeight;
-	float collisionHeight;
-	float collisionRadius;
+	FloatParam slopeModAngle;
+	FloatParam slopeModPercent;
+	FloatParam waterModPercent;
+	FloatParam stepHeight;
+	FloatParam collisionHeight;
+	FloatParam collisionRadius;
 
-	String movementDatatable;
+	StringParam movementDatatable;
 
-	Vector<bool> postureAlignToTerrain;
+	VectorParam<BoolParam> postureAlignToTerrain;
 
-	float swimHeight;
-	float warpTolerance;
-	float collisionOffsetX;
-	float collisionOffsetZ;
-	float collisionLength;
-	float cameraHeight;
+	FloatParam swimHeight;
+	FloatParam warpTolerance;
+	FloatParam collisionOffsetX;
+	FloatParam collisionOffsetZ;
+	FloatParam collisionLength;
+	FloatParam cameraHeight;
 
 	Vector<int> baseHAM;
 	Vector<uint32> lootGroup;
@@ -54,9 +55,15 @@ public:
 	}
 
 	void readObject(LuaObject* templateData);
+	void readObject(IffStream* iffStream);
 
-	inline Vector<float> getAcceleration() const {
-		return acceleration;
+	void parseVariableData(const String& varName, LuaObject* templateData);
+
+	void parseVariableData(const String& varName, Chunk* data);
+	void parseFileData(IffStream* iffStream);
+
+	inline Vector<FloatParam> getAcceleration() const {
+		return acceleration.get();
 	}
 
 	inline String getAnimationMapFilename() const {
@@ -107,8 +114,8 @@ public:
 		return niche;
 	}
 
-	inline Vector<bool> getPostureAlignToTerrain() const {
-		return postureAlignToTerrain;
+	inline Vector<BoolParam> getPostureAlignToTerrain() const {
+		return postureAlignToTerrain.get();
 	}
 
 	inline int getRace() const {
@@ -127,8 +134,8 @@ public:
 		return species;
 	}
 
-	inline Vector<float> getSpeed() const {
-		return speed;
+	inline Vector<FloatParam> getSpeed() const {
+		return speed.get();
 	}
 
 	inline float getStepHeight() const {
@@ -139,8 +146,8 @@ public:
 		return swimHeight;
 	}
 
-	inline Vector<float> getTurnRate() const {
-		return turnRate;
+	inline Vector<FloatParam> getTurnRate() const {
+		return turnRate.get();
 	}
 
 	inline float getWarpTolerance() const {
@@ -151,9 +158,9 @@ public:
 		return waterModPercent;
 	}
 
-	void setAcceleration(Vector<float> acceleration) {
+	/*void setAcceleration(Vector<float> acceleration) {
 		this->acceleration = acceleration;
-	}
+	}*/
 
 	void setAnimationMapFilename(String animationMapFilename) {
 		this->animationMapFilename = animationMapFilename;
@@ -203,9 +210,9 @@ public:
 		this->niche = niche;
 	}
 
-	void setPostureAlignToTerrain(Vector<bool> postureAlignToTerrain) {
+	/*void setPostureAlignToTerrain(Vector<bool> postureAlignToTerrain) {
 		this->postureAlignToTerrain = postureAlignToTerrain;
-	}
+	}*/
 
 	void setRace(int race) {
 		this->race = race;
@@ -223,9 +230,9 @@ public:
 		this->species = species;
 	}
 
-	void setSpeed(Vector<float> speed) {
+	/*void setSpeed(Vector<float> speed) {
 		this->speed = speed;
-	}
+	}*/
 
 	void setStepHeight(float stepHeight) {
 		this->stepHeight = stepHeight;
@@ -235,9 +242,9 @@ public:
 		this->swimHeight = swimHeight;
 	}
 
-	void setTurnRate(Vector<float> turnRate) {
+	/*void setTurnRate(Vector<float> turnRate) {
 		this->turnRate = turnRate;
-	}
+	}*/
 
 	void setWarpTolerance(float warpTolerance) {
 		this->warpTolerance = warpTolerance;

@@ -42,6 +42,9 @@
 
 
 object_tangible_poi_object_shared_droid_body = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/poi/object/shared_droid_body.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_protocol_droid_body.sat",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_poi_object_shared_droid_body = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2911833522,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_poi_object_shared_droid_body, "object/tangible/poi/object/shared_droid_body.iff")
 
 object_tangible_poi_object_shared_droid_head = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/poi/object/shared_droid_head.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_protocol_droid_head.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_poi_object_shared_droid_head = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 4288485184,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_poi_object_shared_droid_head, "object/tangible/poi/object/shared_droid_head.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_firework_base_shared_firework_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/base/shared_firework_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_firework_base_shared_firework_base = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1696219911,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_base_shared_firework_base, "object/tangible/firework/base/shared_firework_base.iff")

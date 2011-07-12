@@ -42,6 +42,9 @@
 
 
 object_tangible_space_mission_objects_shared_palace_access_doc = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/mission_objects/shared_palace_access_doc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_space_mission_objects_shared_palace_access_doc = SharedTangibleO
 
 	clientObjectCRC = 1578605257,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_mission_objects_shared_palace_access_doc, "object/tangible/space/mission_objects/shared_palace_access_doc.iff")
 
 object_tangible_space_mission_objects_shared_transfer_auth = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/mission_objects/shared_transfer_auth.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_droid_program_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_space_mission_objects_shared_transfer_auth = SharedTangibleObjec
 
 	clientObjectCRC = 1004695364,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_mission_objects_shared_transfer_auth, "object/tangible/space/mission_objects/shared_transfer_auth.iff")

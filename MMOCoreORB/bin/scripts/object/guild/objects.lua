@@ -42,6 +42,9 @@
 
 
 object_guild_shared_guild_object = SharedGuildObjectTemplate:new {
+	clientTemplateFileName = "object/guild/shared_guild_object.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_guild_shared_guild_object = SharedGuildObjectTemplate:new {
 
 	clientObjectCRC = 2101404390,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/universe/base/shared_base_universe.iff", "object/guild/base/shared_base_guild.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_guild_shared_guild_object, "object/guild/shared_guild_object.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_survey_tool_base_shared_survey_tool_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/survey_tool/base/shared_survey_tool_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_survey_tool_base_shared_survey_tool_base = SharedTangibleObjectT
 
 	clientObjectCRC = 2568376858,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_base_shared_survey_tool_base, "object/tangible/survey_tool/base/shared_survey_tool_base.iff")

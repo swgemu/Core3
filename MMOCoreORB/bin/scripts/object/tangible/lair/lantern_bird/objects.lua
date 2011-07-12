@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_lantern_bird_shared_lair_lantern_bird = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/lantern_bird/shared_lair_lantern_bird.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_lantern_bird_shared_lair_lantern_bird = SharedTangibleObjec
 
 	clientObjectCRC = 3672751802,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_lantern_bird_shared_lair_lantern_bird, "object/tangible/lair/lantern_bird/shared_lair_lantern_bird.iff")
 
 object_tangible_lair_lantern_bird_shared_lair_lantern_bird_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/lantern_bird/shared_lair_lantern_bird_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_lantern_bird_shared_lair_lantern_bird_forest = SharedTangib
 
 	clientObjectCRC = 615980885,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_lantern_bird_shared_lair_lantern_bird_forest, "object/tangible/lair/lantern_bird/shared_lair_lantern_bird_forest.iff")

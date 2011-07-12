@@ -42,6 +42,9 @@
 
 
 object_tangible_recycler_shared_chemical_recycler = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/recycler/shared_chemical_recycler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_recycler_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_recycler_shared_chemical_recycler = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1627417847,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_chemical_recycler, "object/tangible/recycler/shared_chemical_recycler.iff")
 
 object_tangible_recycler_shared_creature_recycler = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/recycler/shared_creature_recycler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_recycler_meat.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_recycler_shared_creature_recycler = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2601090218,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_creature_recycler, "object/tangible/recycler/shared_creature_recycler.iff")
 
 object_tangible_recycler_shared_flora_recycler = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/recycler/shared_flora_recycler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_recycler_plant.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_recycler_shared_flora_recycler = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 372626307,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_flora_recycler, "object/tangible/recycler/shared_flora_recycler.iff")
 
 object_tangible_recycler_shared_metal_recycler = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/recycler/shared_metal_recycler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_recycler_metal.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_recycler_shared_metal_recycler = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 860237131,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_metal_recycler, "object/tangible/recycler/shared_metal_recycler.iff")
 
 object_tangible_recycler_shared_ore_recycler = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/recycler/shared_ore_recycler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_recycler_ore.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_recycler_shared_ore_recycler = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 4105541227,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_recycler_shared_ore_recycler, "object/tangible/recycler/shared_ore_recycler.iff")

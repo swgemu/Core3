@@ -42,6 +42,9 @@
 
 
 object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_advanced_capacitor_battery.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery = Share
 
 	clientObjectCRC = 3843288645,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_capacitor_battery, "object/tangible/ship/crafted/capacitor/shared_advanced_capacitor_battery.iff")
 
 object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_advanced_recharge_module.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module = SharedT
 
 	clientObjectCRC = 4282694391,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_advanced_recharge_module, "object/tangible/ship/crafted/capacitor/shared_advanced_recharge_module.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_base_capacitor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_red_ball_jet_organ.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor = SharedTangibleObj
 
 	clientObjectCRC = 3064505654,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor, "object/tangible/ship/crafted/capacitor/shared_base_capacitor.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent = Shar
 
 	clientObjectCRC = 4258529862,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1 = 
 
 	clientObjectCRC = 1484781854,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk1, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2 = 
 
 	clientObjectCRC = 2204651913,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk2, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3 = 
 
 	clientObjectCRC = 3395630596,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk3, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4 = 
 
 	clientObjectCRC = 830872848,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk4, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5 = 
 
 	clientObjectCRC = 2022406813,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_base_capacitor_subcomponent_mk5, "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_basic_capacitor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_basic_capacitor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_ship_crafted_capacitor_shared_basic_capacitor = SharedTangibleOb
 
 	clientObjectCRC = 1364868080,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_basic_capacitor, "object/tangible/ship/crafted/capacitor/shared_basic_capacitor.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_capacitor_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk1 = SharedTangibleObje
 
 	clientObjectCRC = 277361603,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk1, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_capacitor_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk2 = SharedTangibleObje
 
 	clientObjectCRC = 3416234836,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk2, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_capacitor_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk3 = SharedTangibleObje
 
 	clientObjectCRC = 2190671065,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk3, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_capacitor_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk4 = SharedTangibleObje
 
 	clientObjectCRC = 2037503949,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk4, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_capacitor_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_capacitor_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_ship_crafted_capacitor_shared_capacitor_mk5 = SharedTangibleObje
 
 	clientObjectCRC = 813477952,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_capacitor_mk5, "object/tangible/ship/crafted/capacitor/shared_capacitor_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1 = SharedT
 
 	clientObjectCRC = 598079079,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2 = SharedT
 
 	clientObjectCRC = 4172439280,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3 = SharedT
 
 	clientObjectCRC = 2982099325,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4 = SharedT
 
 	clientObjectCRC = 1247548009,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5 = SharedT
 
 	clientObjectCRC = 55670244,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_energy_saver_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_energy_saver_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1 = Shared
 
 	clientObjectCRC = 1281522685,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2 = Shared
 
 	clientObjectCRC = 2541081450,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3 = Shared
 
 	clientObjectCRC = 3732452583,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4 = Shared
 
 	clientObjectCRC = 630956019,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5 = Shared
 
 	clientObjectCRC = 1821833342,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_extended_life_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_extended_life_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1 = SharedTangible
 
 	clientObjectCRC = 1987626722,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2 = SharedTangible
 
 	clientObjectCRC = 2909761141,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3 = SharedTangible
 
 	clientObjectCRC = 3831630328,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4 = SharedTangible
 
 	clientObjectCRC = 528556780,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5 = SharedTangible
 
 	clientObjectCRC = 1452033377,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_heavy_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_heavy_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1 = Share
 
 	clientObjectCRC = 1831490574,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk1.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk1, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk1.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2 = Share
 
 	clientObjectCRC = 3057515673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk2, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk2.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3 = Share
 
 	clientObjectCRC = 4281375508,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk3, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk3.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4 = Share
 
 	clientObjectCRC = 80982016,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk4, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk4.iff")
 
 object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5 = Share
 
 	clientObjectCRC = 1306449805,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent.iff", "object/tangible/ship/crafted/capacitor/shared_base_capacitor_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_quick_recharge_battery_mk5, "object/tangible/ship/crafted/capacitor/shared_quick_recharge_battery_mk5.iff")
 
 object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_standard_capacitor_battery.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery = Share
 
 	clientObjectCRC = 3218110775,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_standard_capacitor_battery, "object/tangible/ship/crafted/capacitor/shared_standard_capacitor_battery.iff")
 
 object_tangible_ship_crafted_capacitor_shared_standard_recharge_module = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/capacitor/shared_standard_recharge_module.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_capacitor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,6 +2219,7 @@ object_tangible_ship_crafted_capacitor_shared_standard_recharge_module = SharedT
 
 	clientObjectCRC = 4261874664,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_capacitor_shared_standard_recharge_module, "object/tangible/ship/crafted/capacitor/shared_standard_recharge_module.iff")

@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_space_repair_shared_armor_repair_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/repair/shared_armor_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_space_repair_shared_armor_repair_kit = SharedDraftSchemat
 
 	clientObjectCRC = 159626494,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_armor_repair_kit, "object/draft_schematic/space/repair/shared_armor_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_booster_repair_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/repair/shared_booster_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_space_repair_shared_booster_repair_kit = SharedDraftSchem
 
 	clientObjectCRC = 2182505796,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_booster_repair_kit, "object/draft_schematic/space/repair/shared_booster_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_capacitor_repair_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/repair/shared_capacitor_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_space_repair_shared_capacitor_repair_kit = SharedDraftSch
 
 	clientObjectCRC = 3561061070,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_capacitor_repair_kit, "object/draft_schematic/space/repair/shared_capacitor_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_chassis_repair_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/repair/shared_chassis_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_space_repair_shared_chassis_repair_kit = SharedDraftSchem
 
 	clientObjectCRC = 2046246395,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_chassis_repair_kit, "object/draft_schematic/space/repair/shared_chassis_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_droid_interface_repair_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/repair/shared_droid_interface_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_space_repair_shared_droid_interface_repair_kit = SharedDr
 
 	clientObjectCRC = 1979319803,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_droid_interface_repair_kit, "object/draft_schematic/space/repair/shared_droid_interface_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_engine_repair_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/repair/shared_engine_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_space_repair_shared_engine_repair_kit = SharedDraftSchema
 
 	clientObjectCRC = 2834161708,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_engine_repair_kit, "object/draft_schematic/space/repair/shared_engine_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_generic_repair_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/repair/shared_generic_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_space_repair_shared_generic_repair_kit = SharedDraftSchem
 
 	clientObjectCRC = 2504809285,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_generic_repair_kit, "object/draft_schematic/space/repair/shared_generic_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_plasma_conduit_repair_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/repair/shared_plasma_conduit_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_space_repair_shared_plasma_conduit_repair_kit = SharedDra
 
 	clientObjectCRC = 4277810100,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_plasma_conduit_repair_kit, "object/draft_schematic/space/repair/shared_plasma_conduit_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_reactor_repair_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/repair/shared_reactor_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_space_repair_shared_reactor_repair_kit = SharedDraftSchem
 
 	clientObjectCRC = 383068437,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_reactor_repair_kit, "object/draft_schematic/space/repair/shared_reactor_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_shield_repair_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/repair/shared_shield_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_space_repair_shared_shield_repair_kit = SharedDraftSchema
 
 	clientObjectCRC = 2463568618,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_shield_repair_kit, "object/draft_schematic/space/repair/shared_shield_repair_kit.iff")
 
 object_draft_schematic_space_repair_shared_weapon_repair_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/repair/shared_weapon_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,6 +575,7 @@ object_draft_schematic_space_repair_shared_weapon_repair_kit = SharedDraftSchema
 
 	clientObjectCRC = 974874513,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_repair_shared_weapon_repair_kit, "object/draft_schematic/space/repair/shared_weapon_repair_kit.iff")

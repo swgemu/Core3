@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_underwear_shared_underwear_bottom = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/underwear/shared_underwear_bottom.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/underwear_bottom_f.sat",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_underwear_shared_underwear_bottom = SharedTangibleObje
 
 	clientObjectCRC = 3623370478,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_underwear_shared_underwear_bottom, "object/tangible/wearables/underwear/shared_underwear_bottom.iff")
 
 object_tangible_wearables_underwear_shared_underwear_top = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/underwear/shared_underwear_top.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/underwear_top_f.sat",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_wearables_underwear_shared_underwear_top = SharedTangibleObjectT
 
 	clientObjectCRC = 467062673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_underwear_shared_underwear_top, "object/tangible/wearables/underwear/shared_underwear_top.iff")

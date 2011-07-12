@@ -42,6 +42,9 @@
 
 
 object_tangible_ship_components_weapon_shared_weapon_incom_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_weapon_incom_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_weapon_neg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_ship_components_weapon_shared_weapon_incom_disruptor = SharedTan
 
 	clientObjectCRC = 1416211325,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_weapon_incom_disruptor, "object/tangible/ship/components/weapon/shared_weapon_incom_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_weapon_slayn_ioncannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_weapon_slayn_ioncannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_weapon_neg_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_ship_components_weapon_shared_weapon_slayn_ioncannon = SharedTan
 
 	clientObjectCRC = 3090870041,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_weapon_slayn_ioncannon, "object/tangible/ship/components/weapon/shared_weapon_slayn_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_weapon_subpro_tripleblaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_weapon_subpro_tripleblaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_weapon1_neg_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_ship_components_weapon_shared_weapon_subpro_tripleblaster = Shar
 
 	clientObjectCRC = 1718453703,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_weapon_subpro_tripleblaster, "object/tangible/ship/components/weapon/shared_weapon_subpro_tripleblaster.iff")
 
 object_tangible_ship_components_weapon_shared_weapon_test = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_weapon_test.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cmp_xwing_gun_neg_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_ship_components_weapon_shared_weapon_test = SharedTangibleObject
 
 	clientObjectCRC = 583355334,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_weapon_test, "object/tangible/ship/components/weapon/shared_weapon_test.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_armek_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_ship_components_weapon_shared_wpn_armek_advanced = SharedTangibl
 
 	clientObjectCRC = 3432873939,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_advanced, "object/tangible/ship/components/weapon/shared_wpn_armek_advanced.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_armek_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_ship_components_weapon_shared_wpn_armek_elite = SharedTangibleOb
 
 	clientObjectCRC = 2927442761,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_elite, "object/tangible/ship/components/weapon/shared_wpn_armek_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_sw4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_armek_sw4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw4 = SharedTangibleObje
 
 	clientObjectCRC = 3078564587,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw4, "object/tangible/ship/components/weapon/shared_wpn_armek_sw4.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_sw6 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_armek_sw6.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw6 = SharedTangibleObje
 
 	clientObjectCRC = 627434993,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw6, "object/tangible/ship/components/weapon/shared_wpn_armek_sw6.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_sw7 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_armek_sw7.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw7 = SharedTangibleObje
 
 	clientObjectCRC = 1818788476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw7, "object/tangible/ship/components/weapon/shared_wpn_armek_sw7.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_armek_sw8 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_armek_sw8.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_ship_components_weapon_shared_wpn_armek_sw8 = SharedTangibleObje
 
 	clientObjectCRC = 3596791406,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_armek_sw8, "object/tangible/ship/components/weapon/shared_wpn_armek_sw8.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_awing_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_awing_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_ship_components_weapon_shared_wpn_awing_blaster = SharedTangible
 
 	clientObjectCRC = 1392493131,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_awing_blaster, "object/tangible/ship/components/weapon/shared_wpn_awing_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_borstel_rg9 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_borstel_rg9.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_ship_components_weapon_shared_wpn_borstel_rg9 = SharedTangibleOb
 
 	clientObjectCRC = 1971958873,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_borstel_rg9, "object/tangible/ship/components/weapon/shared_wpn_borstel_rg9.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_bwing_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_bwing_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_ship_components_weapon_shared_wpn_bwing_blaster = SharedTangible
 
 	clientObjectCRC = 1787466156,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_bwing_blaster, "object/tangible/ship/components/weapon/shared_wpn_bwing_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_capitalship_turret_test = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_capitalship_turret_test.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_ship_components_weapon_shared_wpn_capitalship_turret_test = Shar
 
 	clientObjectCRC = 3311096308,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_capitalship_turret_test, "object/tangible/ship/components/weapon/shared_wpn_capitalship_turret_test.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_corellian_1d = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_corellian_1d.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_1d = SharedTangibleO
 
 	clientObjectCRC = 2087182522,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_1d, "object/tangible/ship/components/weapon/shared_wpn_corellian_1d.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_corellian_ag1g_laser = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_corellian_ag1g_laser.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_ag1g_laser = SharedT
 
 	clientObjectCRC = 3460040348,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_ag1g_laser, "object/tangible/ship/components/weapon/shared_wpn_corellian_ag1g_laser.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_corellian_ag2g_quad_laser = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_corellian_ag2g_quad_laser.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_ag2g_quad_laser = Sh
 
 	clientObjectCRC = 2989343947,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_ag2g_quad_laser, "object/tangible/ship/components/weapon/shared_wpn_corellian_ag2g_quad_laser.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_corellian_cruiser_grade_blaster_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_corellian_cruiser_grade_blaster_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_ship_components_weapon_shared_wpn_corellian_cruiser_grade_blaste
 
 	clientObjectCRC = 2213766317,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_corellian_cruiser_grade_blaster_mk1, "object/tangible/ship/components/weapon/shared_wpn_corellian_cruiser_grade_blaster_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_corvette_turret_sm_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_corvette_turret_sm_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_ship_components_weapon_shared_wpn_corvette_turret_sm_s01 = Share
 
 	clientObjectCRC = 1361242261,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_corvette_turret_sm_s01, "object/tangible/ship/components/weapon/shared_wpn_corvette_turret_sm_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_cygnus_destroyer_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk1 = SharedT
 
 	clientObjectCRC = 4229372390,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk1, "object/tangible/ship/components/weapon/shared_wpn_cygnus_destroyer_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_cygnus_destroyer_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk2 = SharedT
 
 	clientObjectCRC = 654356849,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_destroyer_mk2, "object/tangible/ship/components/weapon/shared_wpn_cygnus_destroyer_mk2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_cygnus_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_cygnus_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_elite = SharedTangibleO
 
 	clientObjectCRC = 3038804521,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_elite, "object/tangible/ship/components/weapon/shared_wpn_cygnus_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_cygnus_eradicator_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_cygnus_eradicator_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_ship_components_weapon_shared_wpn_cygnus_eradicator_1 = SharedTa
 
 	clientObjectCRC = 526650114,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_cygnus_eradicator_1, "object/tangible/ship/components/weapon/shared_wpn_cygnus_eradicator_1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_freitek_cannoneer_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_freitek_cannoneer_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_ship_components_weapon_shared_wpn_freitek_cannoneer_mk1 = Shared
 
 	clientObjectCRC = 373679875,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_freitek_cannoneer_mk1, "object/tangible/ship/components/weapon/shared_wpn_freitek_cannoneer_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_generic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_generic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_ship_components_weapon_shared_wpn_generic = SharedTangibleObject
 
 	clientObjectCRC = 1333192542,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_generic, "object/tangible/ship/components/weapon/shared_wpn_generic.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_gyrhil_auto_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_gyrhil_auto_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_ship_components_weapon_shared_wpn_gyrhil_auto_blaster = SharedTa
 
 	clientObjectCRC = 90081547,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_gyrhil_auto_blaster, "object/tangible/ship/components/weapon/shared_wpn_gyrhil_auto_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_gyrhil_r9x = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_gyrhil_r9x.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_ship_components_weapon_shared_wpn_gyrhil_r9x = SharedTangibleObj
 
 	clientObjectCRC = 1218898024,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_gyrhil_r9x, "object/tangible/ship/components/weapon/shared_wpn_gyrhil_r9x.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_haor_chall_speedblaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_haor_chall_speedblaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_ship_components_weapon_shared_wpn_haor_chall_speedblaster = Shar
 
 	clientObjectCRC = 762044667,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_haor_chall_speedblaster, "object/tangible/ship/components/weapon/shared_wpn_haor_chall_speedblaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_modified_scorcher_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_hk_modified_scorcher_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_ship_components_weapon_shared_wpn_hk_modified_scorcher_elite = S
 
 	clientObjectCRC = 2957562610,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_modified_scorcher_elite, "object/tangible/ship/components/weapon/shared_wpn_hk_modified_scorcher_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher = SharedTangibleOb
 
 	clientObjectCRC = 1555262455,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_2 = SharedTangible
 
 	clientObjectCRC = 2715164541,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_2, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_3 = SharedTangible
 
 	clientObjectCRC = 3906697456,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_3, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_3.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_advanced = SharedT
 
 	clientObjectCRC = 3110719195,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_advanced, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_advanced.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_elite = SharedTang
 
 	clientObjectCRC = 146304976,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_elite, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_heavy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_heavy = SharedTang
 
 	clientObjectCRC = 2570101673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_hk_scorcher_heavy, "object/tangible/ship/components/weapon/shared_wpn_hk_scorcher_heavy.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_advanced_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_advanced_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_advanced_blaster = Share
 
 	clientObjectCRC = 939423053,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_advanced_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_advanced_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_blaster = SharedTangible
 
 	clientObjectCRC = 3446201616,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_disruptor = SharedTangib
 
 	clientObjectCRC = 3407371780,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_disruptor, "object/tangible/ship/components/weapon/shared_wpn_incom_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_elite_quad_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_elite_quad_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,11 +2337,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_elite_quad_blaster = Sha
 
 	clientObjectCRC = 655771385,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_elite_quad_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_elite_quad_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_heavy_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_heavy_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2237,11 +2396,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_heavy_blaster = SharedTa
 
 	clientObjectCRC = 2709580640,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_heavy_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_heavy_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_heavy_quad_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_heavy_quad_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2292,11 +2455,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_heavy_quad_blaster = Sha
 
 	clientObjectCRC = 4090385282,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_heavy_quad_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_heavy_quad_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_light_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_light_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2347,11 +2514,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_light_blaster = SharedTa
 
 	clientObjectCRC = 745205415,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_light_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_light_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_proton_missile_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_proton_missile_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2402,11 +2573,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_proton_missile_s01 = Sha
 
 	clientObjectCRC = 2585546139,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_proton_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_incom_proton_missile_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_quad_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_quad_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2457,11 +2632,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_quad_blaster = SharedTan
 
 	clientObjectCRC = 2691880126,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_quad_blaster, "object/tangible/ship/components/weapon/shared_wpn_incom_quad_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_seismic_missile_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_seismic_missile_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2512,11 +2691,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_seismic_missile_s01 = Sh
 
 	clientObjectCRC = 134787828,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_seismic_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_incom_seismic_missile_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_shredder = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_shredder.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2567,11 +2750,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_shredder = SharedTangibl
 
 	clientObjectCRC = 819793875,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_shredder, "object/tangible/ship/components/weapon/shared_wpn_incom_shredder.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_tt13 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_tt13.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2622,11 +2809,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_tt13 = SharedTangibleObj
 
 	clientObjectCRC = 3885305221,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_tt13, "object/tangible/ship/components/weapon/shared_wpn_incom_tt13.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_incom_tt8 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_incom_tt8.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2677,11 +2868,15 @@ object_tangible_ship_components_weapon_shared_wpn_incom_tt8 = SharedTangibleObje
 
 	clientObjectCRC = 4021441179,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_incom_tt8, "object/tangible/ship/components/weapon/shared_wpn_incom_tt8.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kdy_pounder_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_kdy_pounder_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2732,11 +2927,15 @@ object_tangible_ship_components_weapon_shared_wpn_kdy_pounder_mk1 = SharedTangib
 
 	clientObjectCRC = 667601641,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kdy_pounder_mk1, "object/tangible/ship/components/weapon/shared_wpn_kdy_pounder_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_rendili_prototype_x = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_rendili_prototype_x.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2787,11 +2986,15 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_rendili_protot
 
 	clientObjectCRC = 1429969329,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_rendili_prototype_x, "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_rendili_prototype_x.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sds_experimental_secret_ops = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_sds_experimental_secret_ops.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2842,11 +3045,15 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sds_experiment
 
 	clientObjectCRC = 3083127705,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sds_experimental_secret_ops, "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_sds_experimental_secret_ops.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sfs_elite_ops = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_sfs_elite_ops.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2897,11 +3104,15 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sfs_elite_ops 
 
 	clientObjectCRC = 4028755301,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_imperial_sfs_elite_ops, "object/tangible/ship/components/weapon/shared_wpn_kessel_imperial_sfs_elite_ops.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_incom_dualcore_flashcannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_incom_dualcore_flashcannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2952,11 +3163,15 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_incom_dualcore_fl
 
 	clientObjectCRC = 2645130727,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_incom_dualcore_flashcannon, "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_incom_dualcore_flashcannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_riiz_combine_slammer_cannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_riiz_combine_slammer_cannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3007,11 +3222,15 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_riiz_combine_slam
 
 	clientObjectCRC = 89824351,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_riiz_combine_slammer_cannon, "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_riiz_combine_slammer_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_unknown_rayslinger = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_unknown_rayslinger.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3062,11 +3281,15 @@ object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_unknown_rayslinge
 
 	clientObjectCRC = 953073966,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kessel_rebel_unknown_rayslinger, "object/tangible/ship/components/weapon/shared_wpn_kessel_rebel_unknown_rayslinger.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_deluxe_ion_accelerator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_koensayr_deluxe_ion_accelerator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3117,11 +3340,15 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_deluxe_ion_accelerato
 
 	clientObjectCRC = 3911315270,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_deluxe_ion_accelerator, "object/tangible/ship/components/weapon/shared_wpn_koensayr_deluxe_ion_accelerator.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3172,11 +3399,15 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator = Sha
 
 	clientObjectCRC = 2517260475,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3227,11 +3458,15 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_2 = S
 
 	clientObjectCRC = 3827108741,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_2, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3282,11 +3517,15 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_3 = S
 
 	clientObjectCRC = 2903534600,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_3, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_3.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3337,11 +3576,15 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_advan
 
 	clientObjectCRC = 3935855718,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_ion_accelerator_advanced, "object/tangible/ship/components/weapon/shared_wpn_koensayr_ion_accelerator_advanced.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_light_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_koensayr_light_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3392,11 +3635,15 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_light_disruptor = Sha
 
 	clientObjectCRC = 2964865390,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_light_disruptor, "object/tangible/ship/components/weapon/shared_wpn_koensayr_light_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_koensayr_tuned_light_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_koensayr_tuned_light_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3447,11 +3694,15 @@ object_tangible_ship_components_weapon_shared_wpn_koensayr_tuned_light_disruptor
 
 	clientObjectCRC = 2324723441,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_koensayr_tuned_light_disruptor, "object/tangible/ship/components/weapon/shared_wpn_koensayr_tuned_light_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kse_double_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_kse_double_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3502,11 +3753,15 @@ object_tangible_ship_components_weapon_shared_wpn_kse_double_blaster = SharedTan
 
 	clientObjectCRC = 1309584223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kse_double_blaster, "object/tangible/ship/components/weapon/shared_wpn_kse_double_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_kse_light_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_kse_light_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3557,11 +3812,15 @@ object_tangible_ship_components_weapon_shared_wpn_kse_light_disruptor = SharedTa
 
 	clientObjectCRC = 1496618540,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_kse_light_disruptor, "object/tangible/ship/components/weapon/shared_wpn_kse_light_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_advanced_annihilator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mandal_advanced_annihilator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3612,11 +3871,15 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_advanced_annihilator = 
 
 	clientObjectCRC = 1864468167,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_advanced_annihilator, "object/tangible/ship/components/weapon/shared_wpn_mandal_advanced_annihilator.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_annihilator_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mandal_annihilator_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3667,11 +3930,15 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_annihilator_mk2 = Share
 
 	clientObjectCRC = 2171243660,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_annihilator_mk2, "object/tangible/ship/components/weapon/shared_wpn_mandal_annihilator_mk2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_annilhator_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mandal_annilhator_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3722,11 +3989,15 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_annilhator_mk1 = Shared
 
 	clientObjectCRC = 3043215801,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_annilhator_mk1, "object/tangible/ship/components/weapon/shared_wpn_mandal_annilhator_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_elite_annihilator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mandal_elite_annihilator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3777,11 +4048,15 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_elite_annihilator = Sha
 
 	clientObjectCRC = 1203586695,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_elite_annihilator, "object/tangible/ship/components/weapon/shared_wpn_mandal_elite_annihilator.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_enhanced_mangler_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mandal_enhanced_mangler_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3832,11 +4107,15 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_enhanced_mangler_mk1 = 
 
 	clientObjectCRC = 945058875,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_enhanced_mangler_mk1, "object/tangible/ship/components/weapon/shared_wpn_mandal_enhanced_mangler_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_heavy_annihilator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mandal_heavy_annihilator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3887,11 +4166,15 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_heavy_annihilator = Sha
 
 	clientObjectCRC = 4039829327,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_heavy_annihilator, "object/tangible/ship/components/weapon/shared_wpn_mandal_heavy_annihilator.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_mangler_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mandal_mangler_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3942,11 +4225,15 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_mangler_mk1 = SharedTan
 
 	clientObjectCRC = 3229356354,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_mangler_mk1, "object/tangible/ship/components/weapon/shared_wpn_mandal_mangler_mk1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_qv3_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mandal_qv3_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3997,11 +4284,15 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_qv3_disruptor = SharedT
 
 	clientObjectCRC = 2181339101,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_qv3_disruptor, "object/tangible/ship/components/weapon/shared_wpn_mandal_qv3_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_qv5_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mandal_qv5_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4052,11 +4343,15 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_qv5_disruptor = SharedT
 
 	clientObjectCRC = 1168567199,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_qv5_disruptor, "object/tangible/ship/components/weapon/shared_wpn_mandal_qv5_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mandal_super_mangler = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mandal_super_mangler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4107,11 +4402,15 @@ object_tangible_ship_components_weapon_shared_wpn_mandal_super_mangler = SharedT
 
 	clientObjectCRC = 1966553634,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mandal_super_mangler, "object/tangible/ship/components/weapon/shared_wpn_mandal_super_mangler.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_cygnus_starblaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mission_reward_imperial_cygnus_starblaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4162,11 +4461,15 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_cygnus
 
 	clientObjectCRC = 2216406766,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_cygnus_starblaster, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_imperial_cygnus_starblaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_sds_boltdriver = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mission_reward_imperial_sds_boltdriver.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4217,11 +4520,15 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_sds_bo
 
 	clientObjectCRC = 1584266196,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_imperial_sds_boltdriver, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_imperial_sds_boltdriver.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_borstel_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_borstel_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4272,11 +4579,15 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_borstel
 
 	clientObjectCRC = 1515757719,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_borstel_disruptor, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_borstel_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_hk_military_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_hk_military_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4327,11 +4638,15 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_hk_mili
 
 	clientObjectCRC = 2865416858,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_hk_military_blaster, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_hk_military_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_mandal_light_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_mandal_light_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4382,11 +4697,15 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_mandal_
 
 	clientObjectCRC = 4071002762,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_neutral_mandal_light_blaster, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_neutral_mandal_light_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_incom_tricannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mission_reward_rebel_incom_tricannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4437,11 +4756,15 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_incom_tri
 
 	clientObjectCRC = 3498715160,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_incom_tricannon, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_rebel_incom_tricannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_taim_ion_driver = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_mission_reward_rebel_taim_ion_driver.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4492,11 +4815,15 @@ object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_taim_ion_
 
 	clientObjectCRC = 219326346,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_mission_reward_rebel_taim_ion_driver, "object/tangible/ship/components/weapon/shared_wpn_mission_reward_rebel_taim_ion_driver.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_moncal_light_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_moncal_light_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4547,11 +4874,15 @@ object_tangible_ship_components_weapon_shared_wpn_moncal_light_blaster = SharedT
 
 	clientObjectCRC = 3697933765,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_moncal_light_blaster, "object/tangible/ship/components/weapon/shared_wpn_moncal_light_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_prototype_weapon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_prototype_weapon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4602,11 +4933,15 @@ object_tangible_ship_components_weapon_shared_wpn_prototype_weapon = SharedTangi
 
 	clientObjectCRC = 1904433726,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_prototype_weapon, "object/tangible/ship/components/weapon/shared_wpn_prototype_weapon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_prototype_weapon_tie = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_prototype_weapon_tie.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4657,11 +4992,15 @@ object_tangible_ship_components_weapon_shared_wpn_prototype_weapon_tie = SharedT
 
 	clientObjectCRC = 1097828961,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_prototype_weapon_tie, "object/tangible/ship/components/weapon/shared_wpn_prototype_weapon_tie.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rendili_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_rendili_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4712,11 +5051,15 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_advanced = SharedTangi
 
 	clientObjectCRC = 1966255607,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_advanced, "object/tangible/ship/components/weapon/shared_wpn_rendili_advanced.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rendili_fr13_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_rendili_fr13_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4767,11 +5110,15 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_fr13_disruptor = Share
 
 	clientObjectCRC = 459008853,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_fr13_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_fr13_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rendili_fr9_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_rendili_fr9_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4822,11 +5169,15 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_fr9_disruptor = Shared
 
 	clientObjectCRC = 100362336,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_fr9_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_fr9_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rendili_sc3_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_rendili_sc3_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4877,11 +5228,15 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_sc3_disruptor = Shared
 
 	clientObjectCRC = 2784983723,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_sc3_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_sc3_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rendili_sc8_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_rendili_sc8_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4932,11 +5287,15 @@ object_tangible_ship_components_weapon_shared_wpn_rendili_sc8_disruptor = Shared
 
 	clientObjectCRC = 886506152,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rendili_sc8_disruptor, "object/tangible/ship/components/weapon/shared_wpn_rendili_sc8_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_reward_incom_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_reward_incom_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4987,11 +5346,15 @@ object_tangible_ship_components_weapon_shared_wpn_reward_incom_elite = SharedTan
 
 	clientObjectCRC = 983721375,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_incom_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_incom_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_reward_seinar_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_reward_seinar_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5042,11 +5405,15 @@ object_tangible_ship_components_weapon_shared_wpn_reward_seinar_elite = SharedTa
 
 	clientObjectCRC = 3491884496,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_seinar_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_seinar_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_reward_slayn_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_reward_slayn_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5097,11 +5464,15 @@ object_tangible_ship_components_weapon_shared_wpn_reward_slayn_elite = SharedTan
 
 	clientObjectCRC = 2898046675,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_slayn_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_slayn_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_reward_subpro_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_reward_subpro_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5152,11 +5523,15 @@ object_tangible_ship_components_weapon_shared_wpn_reward_subpro_elite = SharedTa
 
 	clientObjectCRC = 1280281292,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_subpro_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_subpro_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_reward_taim_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_reward_taim_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5207,11 +5582,15 @@ object_tangible_ship_components_weapon_shared_wpn_reward_taim_elite = SharedTang
 
 	clientObjectCRC = 2885961571,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_reward_taim_elite, "object/tangible/ship/components/weapon/shared_wpn_reward_taim_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_rss_imperial_cannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_rss_imperial_cannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5262,11 +5641,15 @@ object_tangible_ship_components_weapon_shared_wpn_rss_imperial_cannon = SharedTa
 
 	clientObjectCRC = 3583705980,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_rss_imperial_cannon, "object/tangible/ship/components/weapon/shared_wpn_rss_imperial_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sds_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5317,11 +5700,15 @@ object_tangible_ship_components_weapon_shared_wpn_sds_elite = SharedTangibleObje
 
 	clientObjectCRC = 3939485307,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_elite, "object/tangible/ship/components/weapon/shared_wpn_sds_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_heavy_imperial_spc_forces_cannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sds_heavy_imperial_spc_forces_cannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5372,11 +5759,15 @@ object_tangible_ship_components_weapon_shared_wpn_sds_heavy_imperial_spc_forces_
 
 	clientObjectCRC = 1624083757,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_heavy_imperial_spc_forces_cannon, "object/tangible/ship/components/weapon/shared_wpn_sds_heavy_imperial_spc_forces_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_blaster_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5427,11 +5818,15 @@ object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_1 = Share
 
 	clientObjectCRC = 3660124331,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_1, "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_blaster_1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_blaster_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5482,11 +5877,15 @@ object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_2 = Share
 
 	clientObjectCRC = 20887612,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_imperial_blaster_2, "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_blaster_2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_imperial_special_forces_cannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_special_forces_cannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5537,11 +5936,15 @@ object_tangible_ship_components_weapon_shared_wpn_sds_imperial_special_forces_ca
 
 	clientObjectCRC = 326500083,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_imperial_special_forces_cannon, "object/tangible/ship/components/weapon/shared_wpn_sds_imperial_special_forces_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sds_modified_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sds_modified_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5592,11 +5995,15 @@ object_tangible_ship_components_weapon_shared_wpn_sds_modified_elite = SharedTan
 
 	clientObjectCRC = 3416463612,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sds_modified_elite, "object/tangible/ship/components/weapon/shared_wpn_sds_modified_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_concussion_missile_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_seinar_concussion_missile_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5647,11 +6054,15 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_concussion_missile_s01 
 
 	clientObjectCRC = 1499653630,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_concussion_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_seinar_concussion_missile_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_disruptor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_seinar_disruptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5702,11 +6113,15 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_disruptor = SharedTangi
 
 	clientObjectCRC = 3046767372,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_disruptor, "object/tangible/ship/components/weapon/shared_wpn_seinar_disruptor.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_heatseeker_missile_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_seinar_heatseeker_missile_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5757,11 +6172,15 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_heatseeker_missile_s01 
 
 	clientObjectCRC = 1500305519,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_heatseeker_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_seinar_heatseeker_missile_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_ion_cannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_seinar_ion_cannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5812,11 +6231,15 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_ion_cannon = SharedTang
 
 	clientObjectCRC = 1847953292,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_ion_cannon, "object/tangible/ship/components/weapon/shared_wpn_seinar_ion_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_linked_cannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_seinar_linked_cannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5867,11 +6290,15 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_linked_cannon = SharedT
 
 	clientObjectCRC = 3708108391,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_linked_cannon, "object/tangible/ship/components/weapon/shared_wpn_seinar_linked_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_ls1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_seinar_ls1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5922,11 +6349,15 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_ls1 = SharedTangibleObj
 
 	clientObjectCRC = 2396153703,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_ls1, "object/tangible/ship/components/weapon/shared_wpn_seinar_ls1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_seinar_ls72 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_seinar_ls72.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5977,11 +6408,15 @@ object_tangible_ship_components_weapon_shared_wpn_seinar_ls72 = SharedTangibleOb
 
 	clientObjectCRC = 4266722432,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_seinar_ls72, "object/tangible/ship/components/weapon/shared_wpn_seinar_ls72.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sfs_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6032,11 +6467,15 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_elite = SharedTangibleObje
 
 	clientObjectCRC = 3844210807,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_elite, "object/tangible/ship/components/weapon/shared_wpn_sfs_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6087,11 +6526,15 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_1 = Share
 
 	clientObjectCRC = 1173398646,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_1, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_1.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6142,11 +6585,15 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_2 = Share
 
 	clientObjectCRC = 2665942241,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_2, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6197,11 +6644,15 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_3 = Share
 
 	clientObjectCRC = 3622464364,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_3, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_3.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6252,11 +6703,15 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_4 = Share
 
 	clientObjectCRC = 738803832,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_blaster_4, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_blaster_4.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_special_forces_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_special_forces_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6307,11 +6762,15 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_special_forces_bl
 
 	clientObjectCRC = 994450521,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_imperial_special_forces_blaster, "object/tangible/ship/components/weapon/shared_wpn_sfs_imperial_special_forces_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_sfs_improved_imperial_blaster_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_sfs_improved_imperial_blaster_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6362,11 +6821,15 @@ object_tangible_ship_components_weapon_shared_wpn_sfs_improved_imperial_blaster_
 
 	clientObjectCRC = 3810806571,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_sfs_improved_imperial_blaster_2, "object/tangible/ship/components/weapon/shared_wpn_sfs_improved_imperial_blaster_2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_slayn_deluxe_light_ioncannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_slayn_deluxe_light_ioncannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6417,11 +6880,15 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_deluxe_light_ioncannon =
 
 	clientObjectCRC = 674088640,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_deluxe_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_slayn_deluxe_light_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_slayn_imagerec_missile_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_slayn_imagerec_missile_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/missile_proton_torpedo_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6472,11 +6939,15 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_imagerec_missile_s01 = S
 
 	clientObjectCRC = 3037690567,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_imagerec_missile_s01, "object/tangible/ship/components/weapon/shared_wpn_slayn_imagerec_missile_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_slayn_ioncannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_slayn_ioncannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6527,11 +6998,15 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_ioncannon = SharedTangib
 
 	clientObjectCRC = 659233376,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_slayn_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_slayn_light_ioncannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_slayn_light_ioncannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6582,11 +7057,15 @@ object_tangible_ship_components_weapon_shared_wpn_slayn_light_ioncannon = Shared
 
 	clientObjectCRC = 1606284757,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_slayn_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_slayn_light_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_spacestation_rebel_turret_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6637,11 +7116,15 @@ object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s01 
 
 	clientObjectCRC = 2455152329,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s01, "object/tangible/ship/components/weapon/shared_wpn_spacestation_rebel_turret_s01.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_spacestation_rebel_turret_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6692,11 +7175,15 @@ object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s02 
 
 	clientObjectCRC = 1229000286,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_spacestation_rebel_turret_s02, "object/tangible/ship/components/weapon/shared_wpn_spacestation_rebel_turret_s02.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_dome = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_dome.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6747,11 +7234,15 @@ object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_dome = S
 
 	clientObjectCRC = 3564769891,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_dome, "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_dome.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_med = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6802,11 +7293,15 @@ object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_med = Sh
 
 	clientObjectCRC = 52712658,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_med, "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_med.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_square = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_square.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6857,11 +7352,15 @@ object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_square =
 
 	clientObjectCRC = 1162390806,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_star_destroyer_turret_square, "object/tangible/ship/components/weapon/shared_wpn_star_destroyer_turret_square.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_std_countermeasure = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_std_countermeasure.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6912,11 +7411,15 @@ object_tangible_ship_components_weapon_shared_wpn_std_countermeasure = SharedTan
 
 	clientObjectCRC = 1265550250,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_std_countermeasure, "object/tangible/ship/components/weapon/shared_wpn_std_countermeasure.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_advanced_cannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_subpro_advanced_cannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6967,11 +7470,15 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_advanced_cannon = Share
 
 	clientObjectCRC = 4160278616,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_advanced_cannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_advanced_cannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_improved_light_ioncannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_subpro_improved_light_ioncannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7022,11 +7529,15 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_improved_light_ioncanno
 
 	clientObjectCRC = 2401708828,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_improved_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_improved_light_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_light_ioncannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_subpro_light_ioncannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7077,11 +7588,15 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_light_ioncannon = Share
 
 	clientObjectCRC = 3317340182,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_light_ioncannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_light_ioncannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_modified_tricannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_subpro_modified_tricannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7132,11 +7647,15 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_modified_tricannon = Sh
 
 	clientObjectCRC = 1471920679,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_modified_tricannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_modified_tricannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_tricannon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_subpro_tricannon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7187,11 +7706,15 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tricannon = SharedTangi
 
 	clientObjectCRC = 1320399548,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tricannon, "object/tangible/ship/components/weapon/shared_wpn_subpro_tricannon.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7242,11 +7765,15 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster = SharedT
 
 	clientObjectCRC = 3508512617,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster, "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster_mark2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7297,11 +7824,15 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark2 = S
 
 	clientObjectCRC = 449709518,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark2, "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster_mark2.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster_mark3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7352,11 +7883,15 @@ object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark3 = S
 
 	clientObjectCRC = 1405313603,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_subpro_tripleblaster_mark3, "object/tangible/ship/components/weapon/shared_wpn_subpro_tripleblaster_mark3.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_taim_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7407,11 +7942,15 @@ object_tangible_ship_components_weapon_shared_wpn_taim_elite = SharedTangibleObj
 
 	clientObjectCRC = 3622160774,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_elite, "object/tangible/ship/components/weapon/shared_wpn_taim_elite.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_heavy_laser = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_taim_heavy_laser.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7462,11 +8001,15 @@ object_tangible_ship_components_weapon_shared_wpn_taim_heavy_laser = SharedTangi
 
 	clientObjectCRC = 1640800907,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_heavy_laser, "object/tangible/ship/components/weapon/shared_wpn_taim_heavy_laser.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_ix4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_taim_ix4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7517,11 +8060,15 @@ object_tangible_ship_components_weapon_shared_wpn_taim_ix4 = SharedTangibleObjec
 
 	clientObjectCRC = 2408591552,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_ix4, "object/tangible/ship/components/weapon/shared_wpn_taim_ix4.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_ix5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_taim_ix5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7572,11 +8119,15 @@ object_tangible_ship_components_weapon_shared_wpn_taim_ix5 = SharedTangibleObjec
 
 	clientObjectCRC = 3332200269,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_ix5, "object/tangible/ship/components/weapon/shared_wpn_taim_ix5.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_kx5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_taim_kx5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7627,11 +8178,15 @@ object_tangible_ship_components_weapon_shared_wpn_taim_kx5 = SharedTangibleObjec
 
 	clientObjectCRC = 1479772015,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_kx5, "object/tangible/ship/components/weapon/shared_wpn_taim_kx5.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_kx8 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_taim_kx8.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7682,11 +8237,15 @@ object_tangible_ship_components_weapon_shared_wpn_taim_kx8 = SharedTangibleObjec
 
 	clientObjectCRC = 1881367655,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_kx8, "object/tangible/ship/components/weapon/shared_wpn_taim_kx8.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_taim_kx9 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_taim_kx9.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7737,11 +8296,15 @@ object_tangible_ship_components_weapon_shared_wpn_taim_kx9 = SharedTangibleObjec
 
 	clientObjectCRC = 959316970,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_taim_kx9, "object/tangible/ship/components/weapon/shared_wpn_taim_kx9.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_tieadvanced_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_tieadvanced_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7792,11 +8355,15 @@ object_tangible_ship_components_weapon_shared_wpn_tieadvanced_blaster = SharedTa
 
 	clientObjectCRC = 6623562,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_tieadvanced_blaster, "object/tangible/ship/components/weapon/shared_wpn_tieadvanced_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_tiefighter_basic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_tiefighter_basic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7847,11 +8414,15 @@ object_tangible_ship_components_weapon_shared_wpn_tiefighter_basic = SharedTangi
 
 	clientObjectCRC = 1543754587,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_tiefighter_basic, "object/tangible/ship/components/weapon/shared_wpn_tiefighter_basic.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_z95_basic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_z95_basic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7902,11 +8473,15 @@ object_tangible_ship_components_weapon_shared_wpn_z95_basic = SharedTangibleObje
 
 	clientObjectCRC = 4095704307,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_z95_basic, "object/tangible/ship/components/weapon/shared_wpn_z95_basic.iff")
 
 object_tangible_ship_components_weapon_shared_wpn_z95_blaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_wpn_z95_blaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_weapon_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7957,11 +8532,15 @@ object_tangible_ship_components_weapon_shared_wpn_z95_blaster = SharedTangibleOb
 
 	clientObjectCRC = 3374006977,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_wpn_z95_blaster, "object/tangible/ship/components/weapon/shared_wpn_z95_blaster.iff")
 
 object_tangible_ship_components_weapon_shared_xwing_weapon_s01_test = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_xwing_weapon_s01_test.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_weapon_neg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8012,11 +8591,15 @@ object_tangible_ship_components_weapon_shared_xwing_weapon_s01_test = SharedTang
 
 	clientObjectCRC = 4194726205,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_xwing_weapon_s01_test, "object/tangible/ship/components/weapon/shared_xwing_weapon_s01_test.iff")
 
 object_tangible_ship_components_weapon_shared_xwing_weapon_s02_test = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/weapon/shared_xwing_weapon_s02_test.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_weapon_neg_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -8067,6 +8650,7 @@ object_tangible_ship_components_weapon_shared_xwing_weapon_s02_test = SharedTang
 
 	clientObjectCRC = 2138475555,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_weapon_shared_xwing_weapon_s02_test, "object/tangible/ship/components/weapon/shared_xwing_weapon_s02_test.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_vynock_shared_lair_vynock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vynock/shared_lair_vynock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_vynock_shared_lair_vynock = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3826434758,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock, "object/tangible/lair/vynock/shared_lair_vynock.iff")
 
 object_tangible_lair_vynock_shared_lair_vynock_dune = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vynock/shared_lair_vynock_dune.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_vynock_shared_lair_vynock_dune = SharedTangibleObjectTempla
 
 	clientObjectCRC = 453779300,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock_dune, "object/tangible/lair/vynock/shared_lair_vynock_dune.iff")
 
 object_tangible_lair_vynock_shared_lair_vynock_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vynock/shared_lair_vynock_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_vynock_shared_lair_vynock_mountain = SharedTangibleObjectTe
 
 	clientObjectCRC = 2882460738,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock_mountain, "object/tangible/lair/vynock/shared_lair_vynock_mountain.iff")
 
 object_tangible_lair_vynock_shared_lair_vynock_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vynock/shared_lair_vynock_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_vynock_shared_lair_vynock_wasteland = SharedTangibleObjectT
 
 	clientObjectCRC = 1253121111,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vynock_shared_lair_vynock_wasteland, "object/tangible/lair/vynock/shared_lair_vynock_wasteland.iff")

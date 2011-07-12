@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_purbole_shared_lair_purbole = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/purbole/shared_lair_purbole.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_purbole_shared_lair_purbole = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1874608603,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_purbole_shared_lair_purbole, "object/tangible/lair/purbole/shared_lair_purbole.iff")
 
 object_tangible_lair_purbole_shared_lair_purbole_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/purbole/shared_lair_purbole_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_purbole_shared_lair_purbole_forest = SharedTangibleObjectTe
 
 	clientObjectCRC = 2529340012,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_purbole_shared_lair_purbole_forest, "object/tangible/lair/purbole/shared_lair_purbole_forest.iff")

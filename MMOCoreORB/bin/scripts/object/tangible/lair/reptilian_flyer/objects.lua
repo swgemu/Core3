@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer = SharedTangibl
 
 	clientObjectCRC = 1767218829,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer.iff")
 
 object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest = Shared
 
 	clientObjectCRC = 989527915,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_forest, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_forest.iff")
 
 object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain = Shar
 
 	clientObjectCRC = 4098043121,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_reptilian_flyer_shared_lair_reptilian_flyer_mountain, "object/tangible/lair/reptilian_flyer/shared_lair_reptilian_flyer_mountain.iff")

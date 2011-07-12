@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_kimogila_shared_lair_kimogila = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kimogila/shared_lair_kimogila.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_kimogila_shared_lair_kimogila = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1897213420,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kimogila_shared_lair_kimogila, "object/tangible/lair/kimogila/shared_lair_kimogila.iff")
 
 object_tangible_lair_kimogila_shared_lair_kimogila_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kimogila/shared_lair_kimogila_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_kimogila_shared_lair_kimogila_grassland = SharedTangibleObj
 
 	clientObjectCRC = 2372563176,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kimogila_shared_lair_kimogila_grassland, "object/tangible/lair/kimogila/shared_lair_kimogila_grassland.iff")
 
 object_tangible_lair_kimogila_shared_lair_kimogila_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kimogila/shared_lair_kimogila_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_kimogila_shared_lair_kimogila_mountain = SharedTangibleObje
 
 	clientObjectCRC = 2905887997,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kimogila_shared_lair_kimogila_mountain, "object/tangible/lair/kimogila/shared_lair_kimogila_mountain.iff")

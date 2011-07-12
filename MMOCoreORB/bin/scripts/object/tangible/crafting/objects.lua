@@ -42,6 +42,9 @@
 
 
 object_tangible_crafting_shared_crafting_components_container = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/shared_crafting_components_container.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_crafting_components.iff",
 
@@ -92,11 +95,15 @@ object_tangible_crafting_shared_crafting_components_container = SharedTangibleOb
 
 	clientObjectCRC = 4203992702,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_shared_crafting_components_container, "object/tangible/crafting/shared_crafting_components_container.iff")
 
 object_tangible_crafting_shared_default_draft_not_found = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/shared_default_draft_not_found.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cef_cryoban_grenade.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_crafting_shared_default_draft_not_found = SharedTangibleObjectTe
 
 	clientObjectCRC = 13064699,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_shared_default_draft_not_found, "object/tangible/crafting/shared_default_draft_not_found.iff")
 
 object_tangible_crafting_shared_missing_schematic_substitute = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/shared_missing_schematic_substitute.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_crafting_shared_missing_schematic_substitute = SharedTangibleObj
 
 	clientObjectCRC = 1186484366,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_shared_missing_schematic_substitute, "object/tangible/crafting/shared_missing_schematic_substitute.iff")

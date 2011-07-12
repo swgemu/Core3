@@ -42,6 +42,9 @@
 
 
 object_tangible_event_perk_shared_banner_generic_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_banner_generic_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_banner_generic_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_event_perk_shared_banner_generic_s01 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3101933618,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_banner_generic_s01, "object/tangible/event_perk/shared_banner_generic_s01.iff")
 
 object_tangible_event_perk_shared_banner_generic_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_banner_generic_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_banner_generic_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_event_perk_shared_banner_generic_s02 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1676961957,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_banner_generic_s02, "object/tangible/event_perk/shared_banner_generic_s02.iff")
 
 object_tangible_event_perk_shared_banner_imperial_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_banner_imperial_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_event_perk_shared_banner_imperial_style_01 = SharedTangibleObjec
 
 	clientObjectCRC = 1929704726,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_banner_imperial_style_01, "object/tangible/event_perk/shared_banner_imperial_style_01.iff")
 
 object_tangible_event_perk_shared_banner_rebel_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_banner_rebel_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_event_perk_shared_banner_rebel_style_01 = SharedTangibleObjectTe
 
 	clientObjectCRC = 2930743031,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_banner_rebel_style_01, "object/tangible/event_perk/shared_banner_rebel_style_01.iff")
 
 object_tangible_event_perk_shared_banner_tatooine_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_banner_tatooine_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_tato_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_event_perk_shared_banner_tatooine_style_01 = SharedTangibleObjec
 
 	clientObjectCRC = 2687460548,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_banner_tatooine_style_01, "object/tangible/event_perk/shared_banner_tatooine_style_01.iff")
 
 object_tangible_event_perk_shared_camp_pavilion_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_camp_pavilion_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_camping_pavilion_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_event_perk_shared_camp_pavilion_s1 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1187933000,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_camp_pavilion_s1, "object/tangible/event_perk/shared_camp_pavilion_s1.iff")
 
 object_tangible_event_perk_shared_camp_pavilion_s2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_camp_pavilion_s2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_camping_pavilion_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_event_perk_shared_camp_pavilion_s2 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2648294367,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_camp_pavilion_s2, "object/tangible/event_perk/shared_camp_pavilion_s2.iff")
 
 object_tangible_event_perk_shared_corl_banner_govt_tall_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_corl_banner_govt_tall_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_corl_banner_govt_tall.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_event_perk_shared_corl_banner_govt_tall_s01 = SharedTangibleObje
 
 	clientObjectCRC = 1869770240,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_corl_banner_govt_tall_s01, "object/tangible/event_perk/shared_corl_banner_govt_tall_s01.iff")
 
 object_tangible_event_perk_shared_corl_imprv_flagpole_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_corl_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_event_perk_shared_corl_imprv_flagpole_s01 = SharedTangibleObject
 
 	clientObjectCRC = 2962342728,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_corl_imprv_flagpole_s01, "object/tangible/event_perk/shared_corl_imprv_flagpole_s01.iff")
 
 object_tangible_event_perk_shared_dant_imprv_flagpole_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_dant_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_event_perk_shared_dant_imprv_flagpole_s01 = SharedTangibleObject
 
 	clientObjectCRC = 2911399256,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_dant_imprv_flagpole_s01, "object/tangible/event_perk/shared_dant_imprv_flagpole_s01.iff")
 
 object_tangible_event_perk_shared_dath_imprv_flagpole_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_dath_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_event_perk_shared_dath_imprv_flagpole_s01 = SharedTangibleObject
 
 	clientObjectCRC = 918678625,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_dath_imprv_flagpole_s01, "object/tangible/event_perk/shared_dath_imprv_flagpole_s01.iff")
 
 object_tangible_event_perk_shared_endr_imprv_flagpole_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_endr_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_event_perk_shared_endr_imprv_flagpole_s01 = SharedTangibleObject
 
 	clientObjectCRC = 3602715696,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_endr_imprv_flagpole_s01, "object/tangible/event_perk/shared_endr_imprv_flagpole_s01.iff")
 
 object_tangible_event_perk_shared_filler_building_naboo_theed_style_9 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_filler_building_naboo_theed_style_9.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_thed_imprv_building_s09.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_event_perk_shared_filler_building_naboo_theed_style_9 = SharedTa
 
 	clientObjectCRC = 1351153142,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_filler_building_naboo_theed_style_9, "object/tangible/event_perk/shared_filler_building_naboo_theed_style_9.iff")
 
 object_tangible_event_perk_shared_garden_gazebo_lg_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_garden_gazebo_lg_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_imprv_garden_gazebo_lg_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_event_perk_shared_garden_gazebo_lg_s01 = SharedTangibleObjectTem
 
 	clientObjectCRC = 3435405037,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_garden_gazebo_lg_s01, "object/tangible/event_perk/shared_garden_gazebo_lg_s01.iff")
 
 object_tangible_event_perk_shared_guild_banner_free_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_guild_banner_free_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_guild_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_event_perk_shared_guild_banner_free_style_01 = SharedTangibleObj
 
 	clientObjectCRC = 3768938649,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_guild_banner_free_style_01, "object/tangible/event_perk/shared_guild_banner_free_style_01.iff")
 
 object_tangible_event_perk_shared_lambda_shuttle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_lambda_shuttle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/lambda_shuttle_static_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_event_perk_shared_lambda_shuttle = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 3953966640,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_lambda_shuttle, "object/tangible/event_perk/shared_lambda_shuttle.iff")
 
 object_tangible_event_perk_shared_lok_imprv_flagpole_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_lok_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_event_perk_shared_lok_imprv_flagpole_s01 = SharedTangibleObjectT
 
 	clientObjectCRC = 206018055,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_lok_imprv_flagpole_s01, "object/tangible/event_perk/shared_lok_imprv_flagpole_s01.iff")
 
 object_tangible_event_perk_shared_military_outpost_guard_tower_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_military_outpost_guard_tower_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_military_base_lookout_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_event_perk_shared_military_outpost_guard_tower_1 = SharedTangibl
 
 	clientObjectCRC = 1695234160,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_military_outpost_guard_tower_1, "object/tangible/event_perk/shared_military_outpost_guard_tower_1.iff")
 
 object_tangible_event_perk_shared_nboo_imprv_flagpole_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_nboo_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_event_perk_shared_nboo_imprv_flagpole_s01 = SharedTangibleObject
 
 	clientObjectCRC = 2093214424,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_nboo_imprv_flagpole_s01, "object/tangible/event_perk/shared_nboo_imprv_flagpole_s01.iff")
 
 object_tangible_event_perk_shared_player_shuttle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_player_shuttle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/shuttle.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_event_perk_shared_player_shuttle = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1112601995,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_player_shuttle, "object/tangible/event_perk/shared_player_shuttle.iff")
 
 object_tangible_event_perk_shared_rori_imprv_flagpole_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_rori_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_event_perk_shared_rori_imprv_flagpole_s01 = SharedTangibleObject
 
 	clientObjectCRC = 1059068095,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_rori_imprv_flagpole_s01, "object/tangible/event_perk/shared_rori_imprv_flagpole_s01.iff")
 
 object_tangible_event_perk_shared_sandcrawler = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_sandcrawler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sandcrawler.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_event_perk_shared_sandcrawler = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 1746956428,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_sandcrawler, "object/tangible/event_perk/shared_sandcrawler.iff")
 
 object_tangible_event_perk_shared_talus_imprv_flagpole_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_talus_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_event_perk_shared_talus_imprv_flagpole_s01 = SharedTangibleObjec
 
 	clientObjectCRC = 662043179,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_talus_imprv_flagpole_s01, "object/tangible/event_perk/shared_talus_imprv_flagpole_s01.iff")
 
 object_tangible_event_perk_shared_tato_imprv_flagpole_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_tato_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_event_perk_shared_tato_imprv_flagpole_s01 = SharedTangibleObject
 
 	clientObjectCRC = 3257229451,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_tato_imprv_flagpole_s01, "object/tangible/event_perk/shared_tato_imprv_flagpole_s01.iff")
 
 object_tangible_event_perk_shared_tie_bomber = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_tie_bomber.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_bomber.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_event_perk_shared_tie_bomber = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 776171698,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_tie_bomber, "object/tangible/event_perk/shared_tie_bomber.iff")
 
 object_tangible_event_perk_shared_web_tree = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_web_tree.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_lair_web_base.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_event_perk_shared_web_tree = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3088064120,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_web_tree, "object/tangible/event_perk/shared_web_tree.iff")
 
 object_tangible_event_perk_shared_xwing = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_xwing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_xwing.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_event_perk_shared_xwing = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2918492733,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_xwing, "object/tangible/event_perk/shared_xwing.iff")
 
 object_tangible_event_perk_shared_yavn_imprv_flagpole_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/event_perk/shared_yavn_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,6 +1688,7 @@ object_tangible_event_perk_shared_yavn_imprv_flagpole_s01 = SharedTangibleObject
 
 	clientObjectCRC = 585538778,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_event_perk_shared_yavn_imprv_flagpole_s01, "object/tangible/event_perk/shared_yavn_imprv_flagpole_s01.iff")

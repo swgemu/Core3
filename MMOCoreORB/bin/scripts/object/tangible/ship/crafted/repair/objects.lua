@@ -42,6 +42,9 @@
 
 
 object_tangible_ship_crafted_repair_shared_repair_kit_armor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_armor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_armor = SharedTangibleObje
 
 	clientObjectCRC = 4170937873,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_armor, "object/tangible/ship/crafted/repair/shared_repair_kit_armor.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_lightsaber_crafting_kit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_base = SharedTangibleObjec
 
 	clientObjectCRC = 1229310280,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_base, "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_booster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_booster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_booster = SharedTangibleOb
 
 	clientObjectCRC = 1003395918,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_booster, "object/tangible/ship/crafted/repair/shared_repair_kit_booster.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_chassis = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_chassis.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_chassis = SharedTangibleOb
 
 	clientObjectCRC = 4086932014,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_chassis, "object/tangible/ship/crafted/repair/shared_repair_kit_chassis.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_droid_interface.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface = SharedTa
 
 	clientObjectCRC = 3855703758,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_droid_interface, "object/tangible/ship/crafted/repair/shared_repair_kit_droid_interface.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_engine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_engine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_engine = SharedTangibleObj
 
 	clientObjectCRC = 4137917364,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_engine, "object/tangible/ship/crafted/repair/shared_repair_kit_engine.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_hull = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_hull.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_hull = SharedTangibleObjec
 
 	clientObjectCRC = 3545826505,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_hull, "object/tangible/ship/crafted/repair/shared_repair_kit_hull.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_plasma_conduit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit = SharedTan
 
 	clientObjectCRC = 3287770531,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_plasma_conduit, "object/tangible/ship/crafted/repair/shared_repair_kit_plasma_conduit.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_reactor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_reactor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_reactor = SharedTangibleOb
 
 	clientObjectCRC = 1646486394,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_reactor, "object/tangible/ship/crafted/repair/shared_repair_kit_reactor.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_shield_generator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator = SharedT
 
 	clientObjectCRC = 2366222507,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_shield_generator, "object/tangible/ship/crafted/repair/shared_repair_kit_shield_generator.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_ship = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_ship.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_ship = SharedTangibleObjec
 
 	clientObjectCRC = 807989435,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_ship, "object/tangible/ship/crafted/repair/shared_repair_kit_ship.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_weapon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_weapon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon = SharedTangibleObj
 
 	clientObjectCRC = 3322698996,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon, "object/tangible/ship/crafted/repair/shared_repair_kit_weapon.iff")
 
 object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/repair/shared_repair_kit_weapon_capacitor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_buildings.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,6 +803,7 @@ object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor = SharedT
 
 	clientObjectCRC = 3536823939,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/crafted/repair/shared_repair_kit_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_repair_shared_repair_kit_weapon_capacitor, "object/tangible/ship/crafted/repair/shared_repair_kit_weapon_capacitor.iff")

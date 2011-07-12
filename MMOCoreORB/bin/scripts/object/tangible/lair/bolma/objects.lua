@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_bolma_shared_lair_bolma = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/bolma/shared_lair_bolma.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_bolma_shared_lair_bolma = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 3974943996,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bolma_shared_lair_bolma, "object/tangible/lair/bolma/shared_lair_bolma.iff")
 
 object_tangible_lair_bolma_shared_lair_bolma_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/bolma/shared_lair_bolma_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_bolma_shared_lair_bolma_desert = SharedTangibleObjectTempla
 
 	clientObjectCRC = 907065118,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bolma_shared_lair_bolma_desert, "object/tangible/lair/bolma/shared_lair_bolma_desert.iff")
 
 object_tangible_lair_bolma_shared_lair_bolma_dune = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/bolma/shared_lair_bolma_dune.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_bolma_shared_lair_bolma_dune = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 184119716,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bolma_shared_lair_bolma_dune, "object/tangible/lair/bolma/shared_lair_bolma_dune.iff")
 
 object_tangible_lair_bolma_shared_lair_bolma_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/bolma/shared_lair_bolma_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_bolma_shared_lair_bolma_mountain = SharedTangibleObjectTemp
 
 	clientObjectCRC = 1763604762,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bolma_shared_lair_bolma_mountain, "object/tangible/lair/bolma/shared_lair_bolma_mountain.iff")

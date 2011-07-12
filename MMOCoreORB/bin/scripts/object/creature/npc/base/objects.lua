@@ -42,6 +42,9 @@
 
 
 object_creature_npc_base_shared_aqualish_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_aqualish_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/aqualish_f_01.sat",
@@ -116,11 +119,15 @@ object_creature_npc_base_shared_aqualish_base_female = SharedCreatureObjectTempl
 
 	clientObjectCRC = 2762844902,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_base_female, "object/creature/npc/base/shared_aqualish_base_female.iff")
 
 object_creature_npc_base_shared_aqualish_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_aqualish_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/aqualish_m_01.sat",
@@ -195,11 +202,15 @@ object_creature_npc_base_shared_aqualish_base_male = SharedCreatureObjectTemplat
 
 	clientObjectCRC = 643792170,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_base_male, "object/creature/npc/base/shared_aqualish_base_male.iff")
 
 object_creature_npc_base_shared_aqualish_s02_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_aqualish_s02_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/aqualish_f_02.sat",
@@ -274,11 +285,15 @@ object_creature_npc_base_shared_aqualish_s02_base_female = SharedCreatureObjectT
 
 	clientObjectCRC = 1130200645,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s02_base_female, "object/creature/npc/base/shared_aqualish_s02_base_female.iff")
 
 object_creature_npc_base_shared_aqualish_s02_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_aqualish_s02_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/aqualish_m_02.sat",
@@ -353,11 +368,15 @@ object_creature_npc_base_shared_aqualish_s02_base_male = SharedCreatureObjectTem
 
 	clientObjectCRC = 1420546336,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s02_base_male, "object/creature/npc/base/shared_aqualish_s02_base_male.iff")
 
 object_creature_npc_base_shared_aqualish_s03_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_aqualish_s03_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/aqualish_f_03.sat",
@@ -432,11 +451,15 @@ object_creature_npc_base_shared_aqualish_s03_base_female = SharedCreatureObjectT
 
 	clientObjectCRC = 1418612504,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s03_base_female, "object/creature/npc/base/shared_aqualish_s03_base_female.iff")
 
 object_creature_npc_base_shared_aqualish_s03_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_aqualish_s03_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/aqualish_m_03.sat",
@@ -511,11 +534,15 @@ object_creature_npc_base_shared_aqualish_s03_base_male = SharedCreatureObjectTem
 
 	clientObjectCRC = 2309238866,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_aqualish_s03_base_male, "object/creature/npc/base/shared_aqualish_s03_base_male.iff")
 
 object_creature_npc_base_shared_base_droid = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_base_droid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {4,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "",
@@ -590,11 +617,15 @@ object_creature_npc_base_shared_base_droid = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 3496555527,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_base_droid, "object/creature/npc/base/shared_base_droid.iff")
 
 object_creature_npc_base_shared_base_npc = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_base_npc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "",
@@ -669,11 +700,15 @@ object_creature_npc_base_shared_base_npc = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 636692298,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_base_npc, "object/creature/npc/base/shared_base_npc.iff")
 
 object_creature_npc_base_shared_base_npc_theme_park = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_base_npc_theme_park.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "",
@@ -748,11 +783,15 @@ object_creature_npc_base_shared_base_npc_theme_park = SharedCreatureObjectTempla
 
 	clientObjectCRC = 654644587,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_base_npc_theme_park, "object/creature/npc/base/shared_base_npc_theme_park.iff")
 
 object_creature_npc_base_shared_bith_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_bith_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bith_f.sat",
@@ -827,11 +866,15 @@ object_creature_npc_base_shared_bith_base_female = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 2412520178,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bith_base_female, "object/creature/npc/base/shared_bith_base_female.iff")
 
 object_creature_npc_base_shared_bith_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_bith_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bith_m.sat",
@@ -906,11 +949,15 @@ object_creature_npc_base_shared_bith_base_male = SharedCreatureObjectTemplate:ne
 
 	clientObjectCRC = 1042888288,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bith_base_male, "object/creature/npc/base/shared_bith_base_male.iff")
 
 object_creature_npc_base_shared_bothan_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_bothan_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bth_f.sat",
@@ -985,11 +1032,15 @@ object_creature_npc_base_shared_bothan_base_female = SharedCreatureObjectTemplat
 
 	clientObjectCRC = 3759013611,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bothan_base_female, "object/creature/npc/base/shared_bothan_base_female.iff")
 
 object_creature_npc_base_shared_bothan_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_bothan_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bth_m.sat",
@@ -1064,11 +1115,15 @@ object_creature_npc_base_shared_bothan_base_male = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 1590149475,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_bothan_base_male, "object/creature/npc/base/shared_bothan_base_male.iff")
 
 object_creature_npc_base_shared_chadra_fan_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_chadra_fan_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/chadra_fan_f.sat",
@@ -1143,11 +1198,15 @@ object_creature_npc_base_shared_chadra_fan_base_female = SharedCreatureObjectTem
 
 	clientObjectCRC = 896393245,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_chadra_fan_base_female, "object/creature/npc/base/shared_chadra_fan_base_female.iff")
 
 object_creature_npc_base_shared_chadra_fan_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_chadra_fan_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/chadra_fan_m.sat",
@@ -1222,11 +1281,15 @@ object_creature_npc_base_shared_chadra_fan_base_male = SharedCreatureObjectTempl
 
 	clientObjectCRC = 313334022,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_chadra_fan_base_male, "object/creature/npc/base/shared_chadra_fan_base_male.iff")
 
 object_creature_npc_base_shared_dantari_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_dantari_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/dantari_fm.sat",
@@ -1301,11 +1364,15 @@ object_creature_npc_base_shared_dantari_base_male = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 3185808736,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_dantari_base_male, "object/creature/npc/base/shared_dantari_base_male.iff")
 
 object_creature_npc_base_shared_devaronian_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_devaronian_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/devaronian_m.sat",
@@ -1380,11 +1447,15 @@ object_creature_npc_base_shared_devaronian_base_male = SharedCreatureObjectTempl
 
 	clientObjectCRC = 4086632991,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_devaronian_base_male, "object/creature/npc/base/shared_devaronian_base_male.iff")
 
 object_creature_npc_base_shared_drall_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_drall_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/drall_f.sat",
@@ -1459,11 +1530,15 @@ object_creature_npc_base_shared_drall_base_female = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 1636192846,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_drall_base_female, "object/creature/npc/base/shared_drall_base_female.iff")
 
 object_creature_npc_base_shared_drall_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_drall_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/drall_m.sat",
@@ -1538,11 +1613,15 @@ object_creature_npc_base_shared_drall_base_male = SharedCreatureObjectTemplate:n
 
 	clientObjectCRC = 999880424,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_drall_base_male, "object/creature/npc/base/shared_drall_base_male.iff")
 
 object_creature_npc_base_shared_dulok_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_dulok_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/dulok_f.sat",
@@ -1617,11 +1696,15 @@ object_creature_npc_base_shared_dulok_base_female = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 2138236706,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_dulok_base_female, "object/creature/npc/base/shared_dulok_base_female.iff")
 
 object_creature_npc_base_shared_dulok_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_dulok_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/dulok_m.sat",
@@ -1696,11 +1779,15 @@ object_creature_npc_base_shared_dulok_base_male = SharedCreatureObjectTemplate:n
 
 	clientObjectCRC = 748671429,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_dulok_base_male, "object/creature/npc/base/shared_dulok_base_male.iff")
 
 object_creature_npc_base_shared_ewok_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_ewok_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "ewok.map",
 	appearanceFilename = "appearance/ewok_f.sat",
@@ -1775,11 +1862,15 @@ object_creature_npc_base_shared_ewok_base_female = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 1504641037,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ewok_base_female, "object/creature/npc/base/shared_ewok_base_female.iff")
 
 object_creature_npc_base_shared_ewok_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_ewok_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "ewok.map",
 	appearanceFilename = "appearance/ewok_m.sat",
@@ -1854,11 +1945,15 @@ object_creature_npc_base_shared_ewok_base_male = SharedCreatureObjectTemplate:ne
 
 	clientObjectCRC = 2588984693,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ewok_base_male, "object/creature/npc/base/shared_ewok_base_male.iff")
 
 object_creature_npc_base_shared_gamorrean_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_gamorrean_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/gamorrean_m.sat",
@@ -1933,11 +2028,15 @@ object_creature_npc_base_shared_gamorrean_base_male = SharedCreatureObjectTempla
 
 	clientObjectCRC = 3906894721,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gamorrean_base_male, "object/creature/npc/base/shared_gamorrean_base_male.iff")
 
 object_creature_npc_base_shared_geonosian_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_geonosian_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/geonosian_m.sat",
@@ -2012,11 +2111,15 @@ object_creature_npc_base_shared_geonosian_base_male = SharedCreatureObjectTempla
 
 	clientObjectCRC = 595885541,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_geonosian_base_male, "object/creature/npc/base/shared_geonosian_base_male.iff")
 
 object_creature_npc_base_shared_gorax_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_gorax_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/gorax_m.sat",
@@ -2091,11 +2194,15 @@ object_creature_npc_base_shared_gorax_base_male = SharedCreatureObjectTemplate:n
 
 	clientObjectCRC = 2975619975,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gorax_base_male, "object/creature/npc/base/shared_gorax_base_male.iff")
 
 object_creature_npc_base_shared_gran_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_gran_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/gran_m.sat",
@@ -2170,11 +2277,15 @@ object_creature_npc_base_shared_gran_base_male = SharedCreatureObjectTemplate:ne
 
 	clientObjectCRC = 3900679321,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gran_base_male, "object/creature/npc/base/shared_gran_base_male.iff")
 
 object_creature_npc_base_shared_gungan_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_gungan_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/gungan_m.sat",
@@ -2249,11 +2360,15 @@ object_creature_npc_base_shared_gungan_base_male = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 2826781885,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_gungan_base_male, "object/creature/npc/base/shared_gungan_base_male.iff")
 
 object_creature_npc_base_shared_human_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_human_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
@@ -2328,11 +2443,15 @@ object_creature_npc_base_shared_human_base_female = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 53721594,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_human_base_female, "object/creature/npc/base/shared_human_base_female.iff")
 
 object_creature_npc_base_shared_human_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_human_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -2407,11 +2526,15 @@ object_creature_npc_base_shared_human_base_male = SharedCreatureObjectTemplate:n
 
 	clientObjectCRC = 2134943660,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_human_base_male, "object/creature/npc/base/shared_human_base_male.iff")
 
 object_creature_npc_base_shared_hutt_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_hutt_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hutt_f.sat",
@@ -2486,11 +2609,15 @@ object_creature_npc_base_shared_hutt_base_female = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 36831134,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_hutt_base_female, "object/creature/npc/base/shared_hutt_base_female.iff")
 
 object_creature_npc_base_shared_hutt_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_hutt_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hutt_m.sat",
@@ -2565,11 +2692,15 @@ object_creature_npc_base_shared_hutt_base_male = SharedCreatureObjectTemplate:ne
 
 	clientObjectCRC = 3532419442,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_hutt_base_male, "object/creature/npc/base/shared_hutt_base_male.iff")
 
 object_creature_npc_base_shared_ishi_tib_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_ishi_tib_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ishi_tib_m.sat",
@@ -2644,11 +2775,15 @@ object_creature_npc_base_shared_ishi_tib_base_male = SharedCreatureObjectTemplat
 
 	clientObjectCRC = 3055229554,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ishi_tib_base_male, "object/creature/npc/base/shared_ishi_tib_base_male.iff")
 
 object_creature_npc_base_shared_ithorian_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_ithorian_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ithorian_m.sat",
@@ -2723,11 +2858,15 @@ object_creature_npc_base_shared_ithorian_base_male = SharedCreatureObjectTemplat
 
 	clientObjectCRC = 1397449143,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_ithorian_base_male, "object/creature/npc/base/shared_ithorian_base_male.iff")
 
 object_creature_npc_base_shared_jawa_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_jawa_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/jawa_m.sat",
@@ -2802,11 +2941,15 @@ object_creature_npc_base_shared_jawa_base_male = SharedCreatureObjectTemplate:ne
 
 	clientObjectCRC = 3349422050,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_jawa_base_male, "object/creature/npc/base/shared_jawa_base_male.iff")
 
 object_creature_npc_base_shared_jinda_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_jinda_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/jinda_f.sat",
@@ -2881,11 +3024,15 @@ object_creature_npc_base_shared_jinda_base_female = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 4291004780,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_jinda_base_female, "object/creature/npc/base/shared_jinda_base_female.iff")
 
 object_creature_npc_base_shared_jinda_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_jinda_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/jinda_m.sat",
@@ -2960,11 +3107,15 @@ object_creature_npc_base_shared_jinda_base_male = SharedCreatureObjectTemplate:n
 
 	clientObjectCRC = 242045215,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_jinda_base_male, "object/creature/npc/base/shared_jinda_base_male.iff")
 
 object_creature_npc_base_shared_klatooinian_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_klatooinian_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/klatoonian_m.sat",
@@ -3039,11 +3190,15 @@ object_creature_npc_base_shared_klatooinian_base_male = SharedCreatureObjectTemp
 
 	clientObjectCRC = 3370318767,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_klatooinian_base_male, "object/creature/npc/base/shared_klatooinian_base_male.iff")
 
 object_creature_npc_base_shared_marauder_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_marauder_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/marauder_f.sat",
@@ -3118,11 +3273,15 @@ object_creature_npc_base_shared_marauder_base_female = SharedCreatureObjectTempl
 
 	clientObjectCRC = 2355090288,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_marauder_base_female, "object/creature/npc/base/shared_marauder_base_female.iff")
 
 object_creature_npc_base_shared_marauder_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_marauder_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/marauder_m.sat",
@@ -3197,11 +3356,15 @@ object_creature_npc_base_shared_marauder_base_male = SharedCreatureObjectTemplat
 
 	clientObjectCRC = 1688940240,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_marauder_base_male, "object/creature/npc/base/shared_marauder_base_male.iff")
 
 object_creature_npc_base_shared_moncal_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_moncal_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/mon_f.sat",
@@ -3276,11 +3439,15 @@ object_creature_npc_base_shared_moncal_base_female = SharedCreatureObjectTemplat
 
 	clientObjectCRC = 1371353669,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_moncal_base_female, "object/creature/npc/base/shared_moncal_base_female.iff")
 
 object_creature_npc_base_shared_moncal_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_moncal_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/mon_m.sat",
@@ -3355,11 +3522,15 @@ object_creature_npc_base_shared_moncal_base_male = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 1617753563,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_moncal_base_male, "object/creature/npc/base/shared_moncal_base_male.iff")
 
 object_creature_npc_base_shared_nikto_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_nikto_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/nikto_m.sat",
@@ -3434,11 +3605,15 @@ object_creature_npc_base_shared_nikto_base_male = SharedCreatureObjectTemplate:n
 
 	clientObjectCRC = 2839443196,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_nikto_base_male, "object/creature/npc/base/shared_nikto_base_male.iff")
 
 object_creature_npc_base_shared_quarren_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_quarren_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/quarren_m.sat",
@@ -3513,11 +3688,15 @@ object_creature_npc_base_shared_quarren_base_male = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 2606234616,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_quarren_base_male, "object/creature/npc/base/shared_quarren_base_male.iff")
 
 object_creature_npc_base_shared_rodian_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_rodian_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/rod_f.sat",
@@ -3592,11 +3771,15 @@ object_creature_npc_base_shared_rodian_base_female = SharedCreatureObjectTemplat
 
 	clientObjectCRC = 2803462038,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_rodian_base_female, "object/creature/npc/base/shared_rodian_base_female.iff")
 
 object_creature_npc_base_shared_rodian_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_rodian_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/rod_m.sat",
@@ -3671,11 +3854,15 @@ object_creature_npc_base_shared_rodian_base_male = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 873111919,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_rodian_base_male, "object/creature/npc/base/shared_rodian_base_male.iff")
 
 object_creature_npc_base_shared_selonian_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_selonian_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/selonian_f.sat",
@@ -3750,11 +3937,15 @@ object_creature_npc_base_shared_selonian_base_female = SharedCreatureObjectTempl
 
 	clientObjectCRC = 4114788784,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_selonian_base_female, "object/creature/npc/base/shared_selonian_base_female.iff")
 
 object_creature_npc_base_shared_selonian_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_selonian_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/selonian_m.sat",
@@ -3829,11 +4020,15 @@ object_creature_npc_base_shared_selonian_base_male = SharedCreatureObjectTemplat
 
 	clientObjectCRC = 1841868410,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_selonian_base_male, "object/creature/npc/base/shared_selonian_base_male.iff")
 
 object_creature_npc_base_shared_sullustan_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_sullustan_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/sullustan_m.sat",
@@ -3908,11 +4103,15 @@ object_creature_npc_base_shared_sullustan_base_male = SharedCreatureObjectTempla
 
 	clientObjectCRC = 381383099,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_sullustan_base_male, "object/creature/npc/base/shared_sullustan_base_male.iff")
 
 object_creature_npc_base_shared_trandoshan_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_trandoshan_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/trn_f.sat",
@@ -3987,11 +4186,15 @@ object_creature_npc_base_shared_trandoshan_base_female = SharedCreatureObjectTem
 
 	clientObjectCRC = 2585187332,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_trandoshan_base_female, "object/creature/npc/base/shared_trandoshan_base_female.iff")
 
 object_creature_npc_base_shared_trandoshan_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_trandoshan_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/trn_m.sat",
@@ -4066,11 +4269,15 @@ object_creature_npc_base_shared_trandoshan_base_male = SharedCreatureObjectTempl
 
 	clientObjectCRC = 193024850,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_trandoshan_base_male, "object/creature/npc/base/shared_trandoshan_base_male.iff")
 
 object_creature_npc_base_shared_tusken_raider_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_tusken_raider_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/tusken_raider_m.sat",
@@ -4145,11 +4352,15 @@ object_creature_npc_base_shared_tusken_raider_base_male = SharedCreatureObjectTe
 
 	clientObjectCRC = 344809642,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_tusken_raider_base_male, "object/creature/npc/base/shared_tusken_raider_base_male.iff")
 
 object_creature_npc_base_shared_twilek_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_twilek_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/twk_f.sat",
@@ -4224,11 +4435,15 @@ object_creature_npc_base_shared_twilek_base_female = SharedCreatureObjectTemplat
 
 	clientObjectCRC = 4167458949,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_twilek_base_female, "object/creature/npc/base/shared_twilek_base_female.iff")
 
 object_creature_npc_base_shared_twilek_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_twilek_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/twk_m.sat",
@@ -4303,11 +4518,15 @@ object_creature_npc_base_shared_twilek_base_male = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 3121839578,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_twilek_base_male, "object/creature/npc/base/shared_twilek_base_male.iff")
 
 object_creature_npc_base_shared_weequay_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_weequay_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/weequay_m.sat",
@@ -4382,11 +4601,15 @@ object_creature_npc_base_shared_weequay_base_male = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 3478426739,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_weequay_base_male, "object/creature/npc/base/shared_weequay_base_male.iff")
 
 object_creature_npc_base_shared_whiphid_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_whiphid_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/whiphid_f.sat",
@@ -4461,11 +4684,15 @@ object_creature_npc_base_shared_whiphid_base_female = SharedCreatureObjectTempla
 
 	clientObjectCRC = 858760919,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_whiphid_base_female, "object/creature/npc/base/shared_whiphid_base_female.iff")
 
 object_creature_npc_base_shared_whiphid_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_whiphid_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/whiphid_m.sat",
@@ -4540,11 +4767,15 @@ object_creature_npc_base_shared_whiphid_base_male = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 929953104,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_whiphid_base_male, "object/creature/npc/base/shared_whiphid_base_male.iff")
 
 object_creature_npc_base_shared_wookiee_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_wookiee_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/wke_f.sat",
@@ -4619,11 +4850,15 @@ object_creature_npc_base_shared_wookiee_base_female = SharedCreatureObjectTempla
 
 	clientObjectCRC = 3361749167,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_wookiee_base_female, "object/creature/npc/base/shared_wookiee_base_female.iff")
 
 object_creature_npc_base_shared_wookiee_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_wookiee_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/wke_m.sat",
@@ -4698,11 +4933,15 @@ object_creature_npc_base_shared_wookiee_base_male = SharedCreatureObjectTemplate
 
 	clientObjectCRC = 627149744,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_wookiee_base_male, "object/creature/npc/base/shared_wookiee_base_male.iff")
 
 object_creature_npc_base_shared_zabrak_base_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_zabrak_base_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/zab_f.sat",
@@ -4777,11 +5016,15 @@ object_creature_npc_base_shared_zabrak_base_female = SharedCreatureObjectTemplat
 
 	clientObjectCRC = 2580396153,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_zabrak_base_female, "object/creature/npc/base/shared_zabrak_base_female.iff")
 
 object_creature_npc_base_shared_zabrak_base_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/base/shared_zabrak_base_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/zab_m.sat",
@@ -4856,6 +5099,7 @@ object_creature_npc_base_shared_zabrak_base_male = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 2904879514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_base_shared_zabrak_base_male, "object/creature/npc/base/shared_zabrak_base_male.iff")

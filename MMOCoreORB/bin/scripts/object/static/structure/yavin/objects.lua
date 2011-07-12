@@ -42,6 +42,9 @@
 
 
 object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/yavin/shared_yavn_imprv_bannerpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -81,11 +84,15 @@ object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01 = SharedStaticObj
 
 	clientObjectCRC = 2504717915,
 	derivedFromTemplates = {}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_yavin_shared_yavn_imprv_bannerpole_s01, "object/static/structure/yavin/shared_yavn_imprv_bannerpole_s01.iff")
 
 object_static_structure_yavin_shared_yavn_imprv_flagpole_s01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/yavin/shared_yavn_imprv_flagpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_flagpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -125,6 +132,7 @@ object_static_structure_yavin_shared_yavn_imprv_flagpole_s01 = SharedStaticObjec
 
 	clientObjectCRC = 1455376607,
 	derivedFromTemplates = {}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_yavin_shared_yavn_imprv_flagpole_s01, "object/static/structure/yavin/shared_yavn_imprv_flagpole_s01.iff")

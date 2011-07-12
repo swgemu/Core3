@@ -42,6 +42,9 @@
 
 
 object_resource_container_base_shared_base_resource_container = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/base/shared_base_resource_container.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_resource_container_base_shared_base_resource_container = SharedResourceCo
 
 	clientObjectCRC = 1272540468,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_base_shared_base_resource_container, "object/resource_container/base/shared_base_resource_container.iff")
 
 object_resource_container_base_shared_resource_container_default = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/base/shared_resource_container_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_resource_container_base_shared_resource_container_default = SharedResourc
 
 	clientObjectCRC = 741847407,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_base_shared_resource_container_default, "object/resource_container/base/shared_resource_container_default.iff")

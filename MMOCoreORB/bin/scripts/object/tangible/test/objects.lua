@@ -42,6 +42,9 @@
 
 
 object_tangible_test_shared_inventory_filler = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/test/shared_inventory_filler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_test_shared_inventory_filler = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2308658089,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_inventory_filler, "object/tangible/test/shared_inventory_filler.iff")
 
 object_tangible_test_shared_test_barrel_a = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/test/shared_test_barrel_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/test_barrel_a.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_test_shared_test_barrel_a = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3742060699,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_barrel_a, "object/tangible/test/shared_test_barrel_a.iff")
 
 object_tangible_test_shared_test_barrel_b = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/test/shared_test_barrel_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/test_barrel_b.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_test_shared_test_barrel_b = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 69007372,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_barrel_b, "object/tangible/test/shared_test_barrel_b.iff")
 
 object_tangible_test_shared_test_jwatson = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/test/shared_test_jwatson.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s20_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -257,11 +272,15 @@ object_tangible_test_shared_test_jwatson = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 4013228996,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_jwatson, "object/tangible/test/shared_test_jwatson.iff")
 
 object_tangible_test_shared_test_pastry_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/test/shared_test_pastry_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_test_shared_test_pastry_01 = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1611558615,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_pastry_01, "object/tangible/test/shared_test_pastry_01.iff")
 
 object_tangible_test_shared_test_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/test/shared_test_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_mission.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,6 +390,7 @@ object_tangible_test_shared_test_terminal = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1340334223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_test_shared_test_terminal, "object/tangible/test/shared_test_terminal.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_veteran_reward_shared_antidecay = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_antidecay.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_veteran_reward_shared_antidecay = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 3168887145,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_antidecay, "object/tangible/veteran_reward/shared_antidecay.iff")
 
 object_tangible_veteran_reward_shared_data_terminal_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_data_terminal_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_veteran_reward_shared_data_terminal_s1 = SharedTangibleObjectTem
 
 	clientObjectCRC = 4198944772,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_data_terminal_s1, "object/tangible/veteran_reward/shared_data_terminal_s1.iff")
 
 object_tangible_veteran_reward_shared_data_terminal_s2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_data_terminal_s2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_veteran_reward_shared_data_terminal_s2 = SharedTangibleObjectTem
 
 	clientObjectCRC = 558987411,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_data_terminal_s2, "object/tangible/veteran_reward/shared_data_terminal_s2.iff")
 
 object_tangible_veteran_reward_shared_data_terminal_s3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_data_terminal_s3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_veteran_reward_shared_data_terminal_s3 = SharedTangibleObjectTem
 
 	clientObjectCRC = 1750867742,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_data_terminal_s3, "object/tangible/veteran_reward/shared_data_terminal_s3.iff")
 
 object_tangible_veteran_reward_shared_data_terminal_s4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_data_terminal_s4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_veteran_reward_shared_data_terminal_s4 = SharedTangibleObjectTem
 
 	clientObjectCRC = 2478781450,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_data_terminal_s4, "object/tangible/veteran_reward/shared_data_terminal_s4.iff")
 
 object_tangible_veteran_reward_shared_emote_group_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_emote_group_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_veteran_reward_shared_emote_group_1 = SharedTangibleObjectTempla
 
 	clientObjectCRC = 3623049861,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_emote_group_1, "object/tangible/veteran_reward/shared_emote_group_1.iff")
 
 object_tangible_veteran_reward_shared_frn_couch_falcon_corner_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_couch_falcon_corner_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_spc_couch_section_corner.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_veteran_reward_shared_frn_couch_falcon_corner_s01 = SharedTangib
 
 	clientObjectCRC = 3759715763,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_couch_falcon_corner_s01, "object/tangible/veteran_reward/shared_frn_couch_falcon_corner_s01.iff")
 
 object_tangible_veteran_reward_shared_frn_couch_falcon_section_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_couch_falcon_section_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_spc_couch_section.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_veteran_reward_shared_frn_couch_falcon_section_s01 = SharedTangi
 
 	clientObjectCRC = 2195321088,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_couch_falcon_section_s01, "object/tangible/veteran_reward/shared_frn_couch_falcon_section_s01.iff")
 
 object_tangible_veteran_reward_shared_frn_tech_console_sectional_a = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_tech_console_sectional_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tech_console_sectional_a.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_a = SharedTangi
 
 	clientObjectCRC = 1297213500,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_a, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_a.iff")
 
 object_tangible_veteran_reward_shared_frn_tech_console_sectional_b = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_tech_console_sectional_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tech_console_sectional_b.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_b = SharedTangi
 
 	clientObjectCRC = 2521186475,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_b, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_b.iff")
 
 object_tangible_veteran_reward_shared_frn_tech_console_sectional_c = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_tech_console_sectional_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tech_console_sectional_c.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_c = SharedTangi
 
 	clientObjectCRC = 3746244390,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_c, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_c.iff")
 
 object_tangible_veteran_reward_shared_frn_tech_console_sectional_d = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_tech_console_sectional_d.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tech_console_sectional_d.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_veteran_reward_shared_frn_tech_console_sectional_d = SharedTangi
 
 	clientObjectCRC = 614992946,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_tech_console_sectional_d, "object/tangible/veteran_reward/shared_frn_tech_console_sectional_d.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_darth_vader_toy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_vet_darth_vader_toy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_darth_vader_toy.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_veteran_reward_shared_frn_vet_darth_vader_toy = SharedTangibleOb
 
 	clientObjectCRC = 3960625723,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_darth_vader_toy, "object/tangible/veteran_reward/shared_frn_vet_darth_vader_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_jabba_toy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_vet_jabba_toy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_jabba_toy.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_veteran_reward_shared_frn_vet_jabba_toy = SharedTangibleObjectTe
 
 	clientObjectCRC = 3416831363,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_jabba_toy, "object/tangible/veteran_reward/shared_frn_vet_jabba_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_protocol_droid_toy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_vet_protocol_droid_toy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_protocol_droid_toy.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_veteran_reward_shared_frn_vet_protocol_droid_toy = SharedTangibl
 
 	clientObjectCRC = 2349778145,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_protocol_droid_toy, "object/tangible/veteran_reward/shared_frn_vet_protocol_droid_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_r2_toy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_vet_r2_toy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_r2_toy.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_veteran_reward_shared_frn_vet_r2_toy = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2578350384,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_r2_toy, "object/tangible/veteran_reward/shared_frn_vet_r2_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_stormtrooper_toy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_vet_stormtrooper_toy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_stormtrooper_toy.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_veteran_reward_shared_frn_vet_stormtrooper_toy = SharedTangibleO
 
 	clientObjectCRC = 1449977976,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_stormtrooper_toy, "object/tangible/veteran_reward/shared_frn_vet_stormtrooper_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_tie_fighter_toy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_vet_tie_fighter_toy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_tie_fighter_toy.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_veteran_reward_shared_frn_vet_tie_fighter_toy = SharedTangibleOb
 
 	clientObjectCRC = 1917299992,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_tie_fighter_toy, "object/tangible/veteran_reward/shared_frn_vet_tie_fighter_toy.iff")
 
 object_tangible_veteran_reward_shared_frn_vet_x_wing_toy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_frn_vet_x_wing_toy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_vet_x_wing_toy.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_veteran_reward_shared_frn_vet_x_wing_toy = SharedTangibleObjectT
 
 	clientObjectCRC = 918916770,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_frn_vet_x_wing_toy, "object/tangible/veteran_reward/shared_frn_vet_x_wing_toy.iff")
 
 object_tangible_veteran_reward_shared_harvester = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_harvester.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_veteran_reward_shared_harvester = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 4154009202,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_harvester, "object/tangible/veteran_reward/shared_harvester.iff")
 
 object_tangible_veteran_reward_shared_resource = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/veteran_reward/shared_resource.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,6 +1275,7 @@ object_tangible_veteran_reward_shared_resource = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2099830307,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_veteran_reward_shared_resource, "object/tangible/veteran_reward/shared_resource.iff")

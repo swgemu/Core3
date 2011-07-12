@@ -42,6 +42,9 @@
 
 
 object_tangible_furniture_technical_shared_armoire_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/technical/shared_armoire_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_armoire_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_furniture_technical_shared_armoire_s01 = SharedTangibleObjectTem
 
 	clientObjectCRC = 2668054876,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_armoire_s01, "object/tangible/furniture/technical/shared_armoire_s01.iff")
 
 object_tangible_furniture_technical_shared_bookcase_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/technical/shared_bookcase_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_bookcase_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_furniture_technical_shared_bookcase_s01 = SharedTangibleObjectTe
 
 	clientObjectCRC = 1097959135,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_bookcase_s01, "object/tangible/furniture/technical/shared_bookcase_s01.iff")
 
 object_tangible_furniture_technical_shared_cabinet_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/technical/shared_cabinet_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_cabinet_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_furniture_technical_shared_cabinet_s01 = SharedTangibleObjectTem
 
 	clientObjectCRC = 4062698935,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_cabinet_s01, "object/tangible/furniture/technical/shared_cabinet_s01.iff")
 
 object_tangible_furniture_technical_shared_chair_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/technical/shared_chair_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_chair_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_furniture_technical_shared_chair_s01 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 563858030,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_chair_s01, "object/tangible/furniture/technical/shared_chair_s01.iff")
 
 object_tangible_furniture_technical_shared_chest_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/technical/shared_chest_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_chest_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_furniture_technical_shared_chest_s01 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3532191328,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_chest_s01, "object/tangible/furniture/technical/shared_chest_s01.iff")
 
 object_tangible_furniture_technical_shared_coffee_table_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/technical/shared_coffee_table_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_coffee_table_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_furniture_technical_shared_coffee_table_s01 = SharedTangibleObje
 
 	clientObjectCRC = 2031353243,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_coffee_table_s01, "object/tangible/furniture/technical/shared_coffee_table_s01.iff")
 
 object_tangible_furniture_technical_shared_couch_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/technical/shared_couch_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_couch_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_furniture_technical_shared_couch_s01 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 462151758,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_couch_s01, "object/tangible/furniture/technical/shared_couch_s01.iff")
 
 object_tangible_furniture_technical_shared_end_table_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/technical/shared_end_table_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_end_table_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,6 +508,7 @@ object_tangible_furniture_technical_shared_end_table_s01 = SharedTangibleObjectT
 
 	clientObjectCRC = 3724791162,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_technical_shared_end_table_s01, "object/tangible/furniture/technical/shared_end_table_s01.iff")

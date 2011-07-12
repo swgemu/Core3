@@ -42,6 +42,9 @@
 
 
 object_tangible_furniture_base_shared_furniture_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/base/shared_furniture_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_furniture_base_shared_furniture_base = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3515230028,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_base_shared_furniture_base, "object/tangible/furniture/base/shared_furniture_base.iff")

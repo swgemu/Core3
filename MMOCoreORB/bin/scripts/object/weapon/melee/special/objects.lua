@@ -42,6 +42,9 @@
 
 
 object_weapon_melee_special_shared_blacksun_razor = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/special/shared_blacksun_razor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_sp_blacksun_knuckler.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_melee_special_shared_blacksun_razor = SharedWeaponObjectTemplate:n
 
 	clientObjectCRC = 3357199743,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_special_shared_blacksun_razor, "object/weapon/melee/special/shared_blacksun_razor.iff")
 
 object_weapon_melee_special_shared_vibroknuckler = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/special/shared_vibroknuckler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_sp_vibroknuckler.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -155,6 +162,7 @@ object_weapon_melee_special_shared_vibroknuckler = SharedWeaponObjectTemplate:ne
 
 	clientObjectCRC = 1697024206,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_special_shared_vibroknuckler, "object/weapon/melee/special/shared_vibroknuckler.iff")

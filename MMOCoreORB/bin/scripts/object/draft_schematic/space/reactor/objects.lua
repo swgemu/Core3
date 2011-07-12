@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_space_reactor_shared_basic_reactor = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_basic_reactor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_space_reactor_shared_basic_reactor = SharedDraftSchematic
 
 	clientObjectCRC = 366234772,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_basic_reactor, "object/draft_schematic/space/reactor/shared_basic_reactor.iff")
 
 object_draft_schematic_space_reactor_shared_fusion_reactor_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_fusion_reactor_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk1 = SharedDraftSche
 
 	clientObjectCRC = 3664496596,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk1, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk1.iff")
 
 object_draft_schematic_space_reactor_shared_fusion_reactor_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_fusion_reactor_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk2 = SharedDraftSche
 
 	clientObjectCRC = 24932163,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk2, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk2.iff")
 
 object_draft_schematic_space_reactor_shared_fusion_reactor_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_fusion_reactor_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk3 = SharedDraftSche
 
 	clientObjectCRC = 1215367374,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk3, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk3.iff")
 
 object_draft_schematic_space_reactor_shared_fusion_reactor_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_fusion_reactor_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk4 = SharedDraftSche
 
 	clientObjectCRC = 3012699098,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk4, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk4.iff")
 
 object_draft_schematic_space_reactor_shared_fusion_reactor_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_fusion_reactor_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_space_reactor_shared_fusion_reactor_mk5 = SharedDraftSche
 
 	clientObjectCRC = 4204741719,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_fusion_reactor_mk5, "object/draft_schematic/space/reactor/shared_fusion_reactor_mk5.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_limiter_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_reactor_limiter_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk1 = SharedDraftSch
 
 	clientObjectCRC = 3282952808,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk1, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk1.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_limiter_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_reactor_limiter_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk2 = SharedDraftSch
 
 	clientObjectCRC = 414862079,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk2, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk2.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_limiter_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_reactor_limiter_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk3 = SharedDraftSch
 
 	clientObjectCRC = 1370959218,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk3, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk3.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_limiter_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_reactor_limiter_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk4 = SharedDraftSch
 
 	clientObjectCRC = 2857633382,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk4, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk4.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_limiter_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_reactor_limiter_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_space_reactor_shared_reactor_limiter_mk5 = SharedDraftSch
 
 	clientObjectCRC = 3814285803,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_limiter_mk5, "object/draft_schematic/space/reactor/shared_reactor_limiter_mk5.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_overcharger_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk1 = SharedDraf
 
 	clientObjectCRC = 287048772,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk1, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk1.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,11 +673,15 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2 = SharedDraf
 
 	clientObjectCRC = 3389762771,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk2, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk2.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_overcharger_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -667,11 +722,15 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk3 = SharedDraf
 
 	clientObjectCRC = 2198260574,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk3, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk3.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_overcharger_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -712,11 +771,15 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk4 = SharedDraf
 
 	clientObjectCRC = 2028331082,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk4, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk4.iff")
 
 object_draft_schematic_space_reactor_shared_reactor_overcharger_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -757,6 +820,7 @@ object_draft_schematic_space_reactor_shared_reactor_overcharger_mk5 = SharedDraf
 
 	clientObjectCRC = 837322695,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_reactor_shared_reactor_overcharger_mk5, "object/draft_schematic/space/reactor/shared_reactor_overcharger_mk5.iff")

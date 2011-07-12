@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_spined_puc_shared_lair_spined_puc = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/spined_puc/shared_lair_spined_puc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_spined_puc_shared_lair_spined_puc = SharedTangibleObjectTem
 
 	clientObjectCRC = 3786767749,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc, "object/tangible/lair/spined_puc/shared_lair_spined_puc.iff")
 
 object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/spined_puc/shared_lair_spined_puc_underwater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater = SharedTangib
 
 	clientObjectCRC = 2429481167,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_spined_puc_shared_lair_spined_puc_underwater, "object/tangible/lair/spined_puc/shared_lair_spined_puc_underwater.iff")

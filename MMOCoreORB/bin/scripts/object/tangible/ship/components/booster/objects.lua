@@ -42,6 +42,9 @@
 
 
 object_tangible_ship_components_booster_shared_booster_test = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_booster_test.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_nemoidian_bird_cage.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_ship_components_booster_shared_booster_test = SharedTangibleObje
 
 	clientObjectCRC = 1784141535,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_booster_test, "object/tangible/ship/components/booster/shared_booster_test.iff")
 
 object_tangible_ship_components_booster_shared_bst_corellian_advanced_thrust_enhancer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_corellian_advanced_thrust_enhancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_ship_components_booster_shared_bst_corellian_advanced_thrust_enh
 
 	clientObjectCRC = 95367825,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_advanced_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_advanced_thrust_enhancer.iff")
 
 object_tangible_ship_components_booster_shared_bst_corellian_elite_thrust_enhancer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_corellian_elite_thrust_enhancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_ship_components_booster_shared_bst_corellian_elite_thrust_enhanc
 
 	clientObjectCRC = 4019311987,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_elite_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_elite_thrust_enhancer.iff")
 
 object_tangible_ship_components_booster_shared_bst_corellian_experimental_tjh3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_corellian_experimental_tjh3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_ship_components_booster_shared_bst_corellian_experimental_tjh3 =
 
 	clientObjectCRC = 788395141,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_experimental_tjh3, "object/tangible/ship/components/booster/shared_bst_corellian_experimental_tjh3.iff")
 
 object_tangible_ship_components_booster_shared_bst_corellian_heavy_thrust_enhancer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_corellian_heavy_thrust_enhancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_ship_components_booster_shared_bst_corellian_heavy_thrust_enhanc
 
 	clientObjectCRC = 369299921,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_heavy_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_heavy_thrust_enhancer.iff")
 
 object_tangible_ship_components_booster_shared_bst_corellian_highly_modified_elite_thrust_enhancer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_corellian_highly_modified_elite_thrust_enhancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_ship_components_booster_shared_bst_corellian_highly_modified_eli
 
 	clientObjectCRC = 307950030,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_highly_modified_elite_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_highly_modified_elite_thrust_enhancer.iff")
 
 object_tangible_ship_components_booster_shared_bst_corellian_performance_advanced_thrust_enhancer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_corellian_performance_advanced_thrust_enhancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_ship_components_booster_shared_bst_corellian_performance_advance
 
 	clientObjectCRC = 2687766710,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_performance_advanced_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_performance_advanced_thrust_enhancer.iff")
 
 object_tangible_ship_components_booster_shared_bst_corellian_promotional_standard_thrust_enhancer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_corellian_promotional_standard_thrust_enhancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_ship_components_booster_shared_bst_corellian_promotional_standar
 
 	clientObjectCRC = 679723055,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_promotional_standard_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_promotional_standard_thrust_enhancer.iff")
 
 object_tangible_ship_components_booster_shared_bst_corellian_standard_thrust_enhancer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_corellian_standard_thrust_enhancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_ship_components_booster_shared_bst_corellian_standard_thrust_enh
 
 	clientObjectCRC = 82609038,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_standard_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_standard_thrust_enhancer.iff")
 
 object_tangible_ship_components_booster_shared_bst_corellian_tjh3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_corellian_tjh3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_ship_components_booster_shared_bst_corellian_tjh3 = SharedTangib
 
 	clientObjectCRC = 3342663764,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_tjh3, "object/tangible/ship/components/booster/shared_bst_corellian_tjh3.iff")
 
 object_tangible_ship_components_booster_shared_bst_corellian_tuned_heavy_thrust_enhancer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_corellian_tuned_heavy_thrust_enhancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_ship_components_booster_shared_bst_corellian_tuned_heavy_thrust_
 
 	clientObjectCRC = 3003301835,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_corellian_tuned_heavy_thrust_enhancer, "object/tangible/ship/components/booster/shared_bst_corellian_tuned_heavy_thrust_enhancer.iff")
 
 object_tangible_ship_components_booster_shared_bst_cygnus_flashboost3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_cygnus_flashboost3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_ship_components_booster_shared_bst_cygnus_flashboost3 = SharedTa
 
 	clientObjectCRC = 2062222960,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_cygnus_flashboost3, "object/tangible/ship/components/booster/shared_bst_cygnus_flashboost3.iff")
 
 object_tangible_ship_components_booster_shared_bst_cygnus_flashboost4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_cygnus_flashboost4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_ship_components_booster_shared_bst_cygnus_flashboost4 = SharedTa
 
 	clientObjectCRC = 2164796772,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_cygnus_flashboost4, "object/tangible/ship/components/booster/shared_bst_cygnus_flashboost4.iff")
 
 object_tangible_ship_components_booster_shared_bst_freitek_outrunner_x1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_freitek_outrunner_x1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_ship_components_booster_shared_bst_freitek_outrunner_x1 = Shared
 
 	clientObjectCRC = 367538652,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_freitek_outrunner_x1, "object/tangible/ship/components/booster/shared_bst_freitek_outrunner_x1.iff")
 
 object_tangible_ship_components_booster_shared_bst_gallofree_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_gallofree_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_ship_components_booster_shared_bst_gallofree_light = SharedTangi
 
 	clientObjectCRC = 2309515131,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_gallofree_light, "object/tangible/ship/components/booster/shared_bst_gallofree_light.iff")
 
 object_tangible_ship_components_booster_shared_bst_generic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_generic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_ship_components_booster_shared_bst_generic = SharedTangibleObjec
 
 	clientObjectCRC = 3848915623,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_generic, "object/tangible/ship/components/booster/shared_bst_generic.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_deluxe_fynock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_deluxe_fynock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_ship_components_booster_shared_bst_incom_deluxe_fynock = SharedT
 
 	clientObjectCRC = 1705883702,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_deluxe_fynock, "object/tangible/ship/components/booster/shared_bst_incom_deluxe_fynock.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_elite_sls_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_elite_sls_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_ship_components_booster_shared_bst_incom_elite_sls_1 = SharedTan
 
 	clientObjectCRC = 3900405472,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_elite_sls_1, "object/tangible/ship/components/booster/shared_bst_incom_elite_sls_1.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_enhanced_mynock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_enhanced_mynock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_ship_components_booster_shared_bst_incom_enhanced_mynock = Share
 
 	clientObjectCRC = 3742318303,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_enhanced_mynock, "object/tangible/ship/components/booster/shared_bst_incom_enhanced_mynock.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_fynock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_fynock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_ship_components_booster_shared_bst_incom_fynock = SharedTangible
 
 	clientObjectCRC = 1410368784,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_fynock, "object/tangible/ship/components/booster/shared_bst_incom_fynock.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk1 = Share
 
 	clientObjectCRC = 3520766481,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk1, "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk2 = Share
 
 	clientObjectCRC = 181209734,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk2, "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk2.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk3 = Share
 
 	clientObjectCRC = 1136684299,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk3, "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk3.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk4 = Share
 
 	clientObjectCRC = 3089319455,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_intimidator_mk4, "object/tangible/ship/components/booster/shared_bst_incom_intimidator_mk4.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_mynock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_mynock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_ship_components_booster_shared_bst_incom_mynock = SharedTangible
 
 	clientObjectCRC = 3336637930,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_mynock, "object/tangible/ship/components/booster/shared_bst_incom_mynock.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_nkj31 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_nkj31.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_ship_components_booster_shared_bst_incom_nkj31 = SharedTangibleO
 
 	clientObjectCRC = 1721827885,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_nkj31, "object/tangible/ship/components/booster/shared_bst_incom_nkj31.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_performance_nkj31 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_performance_nkj31.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_ship_components_booster_shared_bst_incom_performance_nkj31 = Sha
 
 	clientObjectCRC = 47183178,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_performance_nkj31, "object/tangible/ship/components/booster/shared_bst_incom_performance_nkj31.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_sls_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_sls_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_ship_components_booster_shared_bst_incom_sls_1 = SharedTangibleO
 
 	clientObjectCRC = 2524451923,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_sls_1, "object/tangible/ship/components/booster/shared_bst_incom_sls_1.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_supercharged_vynock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_supercharged_vynock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_ship_components_booster_shared_bst_incom_supercharged_vynock = S
 
 	clientObjectCRC = 4118504437,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_supercharged_vynock, "object/tangible/ship/components/booster/shared_bst_incom_supercharged_vynock.iff")
 
 object_tangible_ship_components_booster_shared_bst_incom_vynock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_incom_vynock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_ship_components_booster_shared_bst_incom_vynock = SharedTangible
 
 	clientObjectCRC = 2064805592,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_incom_vynock, "object/tangible/ship/components/booster/shared_bst_incom_vynock.iff")
 
 object_tangible_ship_components_booster_shared_bst_kde_br12 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kde_br12.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_ship_components_booster_shared_bst_kde_br12 = SharedTangibleObje
 
 	clientObjectCRC = 744508372,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kde_br12, "object/tangible/ship/components/booster/shared_bst_kde_br12.iff")
 
 object_tangible_ship_components_booster_shared_bst_kessel_imperial_cygnus_hyperthrust = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kessel_imperial_cygnus_hyperthrust.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_ship_components_booster_shared_bst_kessel_imperial_cygnus_hypert
 
 	clientObjectCRC = 793081046,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_imperial_cygnus_hyperthrust, "object/tangible/ship/components/booster/shared_bst_kessel_imperial_cygnus_hyperthrust.iff")
 
 object_tangible_ship_components_booster_shared_bst_kessel_imperial_sds_experimental_b7 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kessel_imperial_sds_experimental_b7.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_ship_components_booster_shared_bst_kessel_imperial_sds_experimen
 
 	clientObjectCRC = 1606808856,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_imperial_sds_experimental_b7, "object/tangible/ship/components/booster/shared_bst_kessel_imperial_sds_experimental_b7.iff")
 
 object_tangible_ship_components_booster_shared_bst_kessel_imperial_sfs_ultra_thrust = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kessel_imperial_sfs_ultra_thrust.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_ship_components_booster_shared_bst_kessel_imperial_sfs_ultra_thr
 
 	clientObjectCRC = 53752884,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_imperial_sfs_ultra_thrust, "object/tangible/ship/components/booster/shared_bst_kessel_imperial_sfs_ultra_thrust.iff")
 
 object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_quicksilver = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kessel_rebel_incom_quicksilver.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_quicksilve
 
 	clientObjectCRC = 419026085,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_quicksilver, "object/tangible/ship/components/booster/shared_bst_kessel_rebel_incom_quicksilver.iff")
 
 object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_windrunner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kessel_rebel_incom_windrunner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_windrunner
 
 	clientObjectCRC = 3378973624,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_rebel_incom_windrunner, "object/tangible/ship/components/booster/shared_bst_kessel_rebel_incom_windrunner.iff")
 
 object_tangible_ship_components_booster_shared_bst_kessel_rebel_mandal_lightning_m1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kessel_rebel_mandal_lightning_m1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_tangible_ship_components_booster_shared_bst_kessel_rebel_mandal_lightning
 
 	clientObjectCRC = 3998248231,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kessel_rebel_mandal_lightning_m1, "object/tangible/ship/components/booster/shared_bst_kessel_rebel_mandal_lightning_m1.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_advanced = SharedTan
 
 	clientObjectCRC = 4027189608,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_advanced, "object/tangible/ship/components/booster/shared_bst_koensayr_advanced.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_charged_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_charged_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,11 +2337,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_charged_advanced = S
 
 	clientObjectCRC = 2298767702,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_charged_advanced, "object/tangible/ship/components/booster/shared_bst_koensayr_charged_advanced.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_deluxe_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_deluxe_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2237,11 +2396,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_deluxe_elite = Share
 
 	clientObjectCRC = 511836444,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_deluxe_elite, "object/tangible/ship/components/booster/shared_bst_koensayr_deluxe_elite.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2292,11 +2455,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_elite = SharedTangib
 
 	clientObjectCRC = 528263488,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_elite, "object/tangible/ship/components/booster/shared_bst_koensayr_elite.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_evh12 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_evh12.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2347,11 +2514,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_evh12 = SharedTangib
 
 	clientObjectCRC = 1204424540,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_evh12, "object/tangible/ship/components/booster/shared_bst_koensayr_evh12.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_heavy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2402,11 +2573,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_heavy = SharedTangib
 
 	clientObjectCRC = 2398381369,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_heavy, "object/tangible/ship/components/booster/shared_bst_koensayr_heavy.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_improved_standard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_improved_standard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2457,11 +2632,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_improved_standard = 
 
 	clientObjectCRC = 894005127,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_improved_standard, "object/tangible/ship/components/booster/shared_bst_koensayr_improved_standard.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_modified_heavy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_modified_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2512,11 +2691,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_modified_heavy = Sha
 
 	clientObjectCRC = 1813570456,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_modified_heavy, "object/tangible/ship/components/booster/shared_bst_koensayr_modified_heavy.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2567,11 +2750,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk1 = SharedTa
 
 	clientObjectCRC = 2813746586,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk1, "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2622,11 +2809,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk2 = SharedTa
 
 	clientObjectCRC = 2090988813,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk2, "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk2.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2677,11 +2868,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk3 = SharedTa
 
 	clientObjectCRC = 900502144,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk3, "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk3.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2732,11 +2927,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk4 = SharedTa
 
 	clientObjectCRC = 3461331348,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_racer_mk4, "object/tangible/ship/components/booster/shared_bst_koensayr_racer_mk4.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_special_evh12 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_special_evh12.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2787,11 +2986,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_special_evh12 = Shar
 
 	clientObjectCRC = 2437955271,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_special_evh12, "object/tangible/ship/components/booster/shared_bst_koensayr_special_evh12.iff")
 
 object_tangible_ship_components_booster_shared_bst_koensayr_standard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_koensayr_standard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2842,11 +3045,15 @@ object_tangible_ship_components_booster_shared_bst_koensayr_standard = SharedTan
 
 	clientObjectCRC = 3498550211,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_koensayr_standard, "object/tangible/ship/components/booster/shared_bst_koensayr_standard.iff")
 
 object_tangible_ship_components_booster_shared_bst_kse_als_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kse_als_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2897,11 +3104,15 @@ object_tangible_ship_components_booster_shared_bst_kse_als_1 = SharedTangibleObj
 
 	clientObjectCRC = 4146162190,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_als_1, "object/tangible/ship/components/booster/shared_bst_kse_als_1.iff")
 
 object_tangible_ship_components_booster_shared_bst_kse_bti1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kse_bti1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2952,11 +3163,15 @@ object_tangible_ship_components_booster_shared_bst_kse_bti1 = SharedTangibleObje
 
 	clientObjectCRC = 2827178862,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_bti1, "object/tangible/ship/components/booster/shared_bst_kse_bti1.iff")
 
 object_tangible_ship_components_booster_shared_bst_kse_bti2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kse_bti2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3007,11 +3222,15 @@ object_tangible_ship_components_booster_shared_bst_kse_bti2 = SharedTangibleObje
 
 	clientObjectCRC = 1939143673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_bti2, "object/tangible/ship/components/booster/shared_bst_kse_bti2.iff")
 
 object_tangible_ship_components_booster_shared_bst_kse_bti3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kse_bti3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3062,11 +3281,15 @@ object_tangible_ship_components_booster_shared_bst_kse_bti3 = SharedTangibleObje
 
 	clientObjectCRC = 983145588,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_bti3, "object/tangible/ship/components/booster/shared_bst_kse_bti3.iff")
 
 object_tangible_ship_components_booster_shared_bst_kse_cb6 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kse_cb6.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3117,11 +3340,15 @@ object_tangible_ship_components_booster_shared_bst_kse_cb6 = SharedTangibleObjec
 
 	clientObjectCRC = 1082190673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_cb6, "object/tangible/ship/components/booster/shared_bst_kse_cb6.iff")
 
 object_tangible_ship_components_booster_shared_bst_kse_deluxe_bti3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kse_deluxe_bti3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3172,11 +3399,15 @@ object_tangible_ship_components_booster_shared_bst_kse_deluxe_bti3 = SharedTangi
 
 	clientObjectCRC = 1877470958,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_deluxe_bti3, "object/tangible/ship/components/booster/shared_bst_kse_deluxe_bti3.iff")
 
 object_tangible_ship_components_booster_shared_bst_kse_elite_als_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kse_elite_als_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3227,11 +3458,15 @@ object_tangible_ship_components_booster_shared_bst_kse_elite_als_1 = SharedTangi
 
 	clientObjectCRC = 4147447022,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_elite_als_1, "object/tangible/ship/components/booster/shared_bst_kse_elite_als_1.iff")
 
 object_tangible_ship_components_booster_shared_bst_kse_enhanced_bti2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kse_enhanced_bti2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3282,11 +3517,15 @@ object_tangible_ship_components_booster_shared_bst_kse_enhanced_bti2 = SharedTan
 
 	clientObjectCRC = 1680098180,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_enhanced_bti2, "object/tangible/ship/components/booster/shared_bst_kse_enhanced_bti2.iff")
 
 object_tangible_ship_components_booster_shared_bst_kse_performance_bti1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kse_performance_bti1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3337,11 +3576,15 @@ object_tangible_ship_components_booster_shared_bst_kse_performance_bti1 = Shared
 
 	clientObjectCRC = 1644149004,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_performance_bti1, "object/tangible/ship/components/booster/shared_bst_kse_performance_bti1.iff")
 
 object_tangible_ship_components_booster_shared_bst_kse_performance_cb6 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kse_performance_cb6.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3392,11 +3635,15 @@ object_tangible_ship_components_booster_shared_bst_kse_performance_cb6 = SharedT
 
 	clientObjectCRC = 3050826285,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kse_performance_cb6, "object/tangible/ship/components/booster/shared_bst_kse_performance_cb6.iff")
 
 object_tangible_ship_components_booster_shared_bst_kuat_military_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kuat_military_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3447,11 +3694,15 @@ object_tangible_ship_components_booster_shared_bst_kuat_military_mk1 = SharedTan
 
 	clientObjectCRC = 3536291891,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kuat_military_mk1, "object/tangible/ship/components/booster/shared_bst_kuat_military_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_kuat_military_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kuat_military_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3502,11 +3753,15 @@ object_tangible_ship_components_booster_shared_bst_kuat_military_mk2 = SharedTan
 
 	clientObjectCRC = 164634788,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kuat_military_mk2, "object/tangible/ship/components/booster/shared_bst_kuat_military_mk2.iff")
 
 object_tangible_ship_components_booster_shared_bst_kuat_military_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kuat_military_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3557,11 +3812,15 @@ object_tangible_ship_components_booster_shared_bst_kuat_military_mk3 = SharedTan
 
 	clientObjectCRC = 1088243497,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kuat_military_mk3, "object/tangible/ship/components/booster/shared_bst_kuat_military_mk3.iff")
 
 object_tangible_ship_components_booster_shared_bst_kuat_military_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_kuat_military_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3612,11 +3871,15 @@ object_tangible_ship_components_booster_shared_bst_kuat_military_mk4 = SharedTan
 
 	clientObjectCRC = 3141430333,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_kuat_military_mk4, "object/tangible/ship/components/booster/shared_bst_kuat_military_mk4.iff")
 
 object_tangible_ship_components_booster_shared_bst_mandal_deluxe_jbj_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mandal_deluxe_jbj_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3667,11 +3930,15 @@ object_tangible_ship_components_booster_shared_bst_mandal_deluxe_jbj_mk4 = Share
 
 	clientObjectCRC = 2694479901,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_deluxe_jbj_mk4, "object/tangible/ship/components/booster/shared_bst_mandal_deluxe_jbj_mk4.iff")
 
 object_tangible_ship_components_booster_shared_bst_mandal_enhanced_jbj_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mandal_enhanced_jbj_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3722,11 +3989,15 @@ object_tangible_ship_components_booster_shared_bst_mandal_enhanced_jbj_mk1 = Sha
 
 	clientObjectCRC = 1206714092,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_enhanced_jbj_mk1, "object/tangible/ship/components/booster/shared_bst_mandal_enhanced_jbj_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_mandal_improved_jbj_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mandal_improved_jbj_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3777,11 +4048,15 @@ object_tangible_ship_components_booster_shared_bst_mandal_improved_jbj_mk3 = Sha
 
 	clientObjectCRC = 3157954036,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_improved_jbj_mk3, "object/tangible/ship/components/booster/shared_bst_mandal_improved_jbj_mk3.iff")
 
 object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3832,11 +4107,15 @@ object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk1 = SharedTangib
 
 	clientObjectCRC = 3869490887,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk1, "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3887,11 +4166,15 @@ object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk2 = SharedTangib
 
 	clientObjectCRC = 1035212368,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk2, "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk2.iff")
 
 object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3942,11 +4225,15 @@ object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk3 = SharedTangib
 
 	clientObjectCRC = 1958310365,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk3, "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk3.iff")
 
 object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3997,11 +4284,15 @@ object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk4 = SharedTangib
 
 	clientObjectCRC = 2405063369,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk4, "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk4.iff")
 
 object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4052,11 +4343,15 @@ object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk5 = SharedTangib
 
 	clientObjectCRC = 3327606084,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_jbj_mk5, "object/tangible/ship/components/booster/shared_bst_mandal_jbj_mk5.iff")
 
 object_tangible_ship_components_booster_shared_bst_mandal_limited_jbj_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mandal_limited_jbj_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4107,11 +4402,15 @@ object_tangible_ship_components_booster_shared_bst_mandal_limited_jbj_mk5 = Shar
 
 	clientObjectCRC = 3105704550,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_limited_jbj_mk5, "object/tangible/ship/components/booster/shared_bst_mandal_limited_jbj_mk5.iff")
 
 object_tangible_ship_components_booster_shared_bst_mandal_modified_jbj_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mandal_modified_jbj_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4162,11 +4461,15 @@ object_tangible_ship_components_booster_shared_bst_mandal_modified_jbj_mk2 = Sha
 
 	clientObjectCRC = 2916150549,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mandal_modified_jbj_mk2, "object/tangible/ship/components/booster/shared_bst_mandal_modified_jbj_mk2.iff")
 
 object_tangible_ship_components_booster_shared_bst_mission_reward_imperial_rss_ion_booster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mission_reward_imperial_rss_ion_booster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4217,11 +4520,15 @@ object_tangible_ship_components_booster_shared_bst_mission_reward_imperial_rss_i
 
 	clientObjectCRC = 2616547998,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mission_reward_imperial_rss_ion_booster, "object/tangible/ship/components/booster/shared_bst_mission_reward_imperial_rss_ion_booster.iff")
 
 object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal_m_series = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mission_reward_neutral_mandal_m_series.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4272,11 +4579,15 @@ object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal
 
 	clientObjectCRC = 2251024280,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal_m_series, "object/tangible/ship/components/booster/shared_bst_mission_reward_neutral_mandal_m_series.iff")
 
 object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal_q_series = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mission_reward_neutral_mandal_q_series.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4327,11 +4638,15 @@ object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal
 
 	clientObjectCRC = 3643360208,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mission_reward_neutral_mandal_q_series, "object/tangible/ship/components/booster/shared_bst_mission_reward_neutral_mandal_q_series.iff")
 
 object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_novaldex_hypernova = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mission_reward_rebel_novaldex_hypernova.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4382,11 +4697,15 @@ object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_novaldex
 
 	clientObjectCRC = 1314651324,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_novaldex_hypernova, "object/tangible/ship/components/booster/shared_bst_mission_reward_rebel_novaldex_hypernova.iff")
 
 object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_qualdex_halcyon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_mission_reward_rebel_qualdex_halcyon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4437,11 +4756,15 @@ object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_qualdex_
 
 	clientObjectCRC = 2730673872,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_mission_reward_rebel_qualdex_halcyon, "object/tangible/ship/components/booster/shared_bst_mission_reward_rebel_qualdex_halcyon.iff")
 
 object_tangible_ship_components_booster_shared_bst_moncal_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_moncal_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4492,11 +4815,15 @@ object_tangible_ship_components_booster_shared_bst_moncal_advanced = SharedTangi
 
 	clientObjectCRC = 3124355866,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_advanced, "object/tangible/ship/components/booster/shared_bst_moncal_advanced.iff")
 
 object_tangible_ship_components_booster_shared_bst_moncal_charged_heavy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_moncal_charged_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4547,11 +4874,15 @@ object_tangible_ship_components_booster_shared_bst_moncal_charged_heavy = Shared
 
 	clientObjectCRC = 3234187742,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_charged_heavy, "object/tangible/ship/components/booster/shared_bst_moncal_charged_heavy.iff")
 
 object_tangible_ship_components_booster_shared_bst_moncal_deluxe_standard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_moncal_deluxe_standard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4602,11 +4933,15 @@ object_tangible_ship_components_booster_shared_bst_moncal_deluxe_standard = Shar
 
 	clientObjectCRC = 3884337187,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_deluxe_standard, "object/tangible/ship/components/booster/shared_bst_moncal_deluxe_standard.iff")
 
 object_tangible_ship_components_booster_shared_bst_moncal_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_moncal_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4657,11 +4992,15 @@ object_tangible_ship_components_booster_shared_bst_moncal_elite = SharedTangible
 
 	clientObjectCRC = 3306025844,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_elite, "object/tangible/ship/components/booster/shared_bst_moncal_elite.iff")
 
 object_tangible_ship_components_booster_shared_bst_moncal_enhanced_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_moncal_enhanced_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4712,11 +5051,15 @@ object_tangible_ship_components_booster_shared_bst_moncal_enhanced_elite = Share
 
 	clientObjectCRC = 2418943761,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_enhanced_elite, "object/tangible/ship/components/booster/shared_bst_moncal_enhanced_elite.iff")
 
 object_tangible_ship_components_booster_shared_bst_moncal_heavy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_moncal_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4767,11 +5110,15 @@ object_tangible_ship_components_booster_shared_bst_moncal_heavy = SharedTangible
 
 	clientObjectCRC = 1418018573,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_heavy, "object/tangible/ship/components/booster/shared_bst_moncal_heavy.iff")
 
 object_tangible_ship_components_booster_shared_bst_moncal_jlc37 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_moncal_jlc37.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4822,11 +5169,15 @@ object_tangible_ship_components_booster_shared_bst_moncal_jlc37 = SharedTangible
 
 	clientObjectCRC = 4144415819,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_jlc37, "object/tangible/ship/components/booster/shared_bst_moncal_jlc37.iff")
 
 object_tangible_ship_components_booster_shared_bst_moncal_limited_jlc37 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_moncal_limited_jlc37.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4877,11 +5228,15 @@ object_tangible_ship_components_booster_shared_bst_moncal_limited_jlc37 = Shared
 
 	clientObjectCRC = 124704737,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_limited_jlc37, "object/tangible/ship/components/booster/shared_bst_moncal_limited_jlc37.iff")
 
 object_tangible_ship_components_booster_shared_bst_moncal_rare_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_moncal_rare_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4932,11 +5287,15 @@ object_tangible_ship_components_booster_shared_bst_moncal_rare_advanced = Shared
 
 	clientObjectCRC = 2113743234,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_rare_advanced, "object/tangible/ship/components/booster/shared_bst_moncal_rare_advanced.iff")
 
 object_tangible_ship_components_booster_shared_bst_moncal_standard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_moncal_standard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4987,11 +5346,15 @@ object_tangible_ship_components_booster_shared_bst_moncal_standard = SharedTangi
 
 	clientObjectCRC = 2595506609,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_moncal_standard, "object/tangible/ship/components/booster/shared_bst_moncal_standard.iff")
 
 object_tangible_ship_components_booster_shared_bst_novaldex_pulsar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_novaldex_pulsar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5042,11 +5405,15 @@ object_tangible_ship_components_booster_shared_bst_novaldex_pulsar = SharedTangi
 
 	clientObjectCRC = 2871976232,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_novaldex_pulsar, "object/tangible/ship/components/booster/shared_bst_novaldex_pulsar.iff")
 
 object_tangible_ship_components_booster_shared_bst_novaldex_pulsar_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_novaldex_pulsar_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5097,11 +5464,15 @@ object_tangible_ship_components_booster_shared_bst_novaldex_pulsar_advanced = Sh
 
 	clientObjectCRC = 1333284272,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_novaldex_pulsar_advanced, "object/tangible/ship/components/booster/shared_bst_novaldex_pulsar_advanced.iff")
 
 object_tangible_ship_components_booster_shared_bst_novaldex_quasar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_novaldex_quasar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5152,11 +5523,15 @@ object_tangible_ship_components_booster_shared_bst_novaldex_quasar = SharedTangi
 
 	clientObjectCRC = 3470077476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_novaldex_quasar, "object/tangible/ship/components/booster/shared_bst_novaldex_quasar.iff")
 
 object_tangible_ship_components_booster_shared_bst_novaldex_quasar_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_novaldex_quasar_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5207,11 +5582,15 @@ object_tangible_ship_components_booster_shared_bst_novaldex_quasar_advanced = Sh
 
 	clientObjectCRC = 3009788712,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_novaldex_quasar_advanced, "object/tangible/ship/components/booster/shared_bst_novaldex_quasar_advanced.iff")
 
 object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5262,11 +5641,15 @@ object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk1 = SharedTa
 
 	clientObjectCRC = 554255149,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk1, "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5317,11 +5700,15 @@ object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk2 = SharedTa
 
 	clientObjectCRC = 4196330426,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk2, "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk2.iff")
 
 object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5372,11 +5759,15 @@ object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk3 = SharedTa
 
 	clientObjectCRC = 3004402743,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk3, "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk3.iff")
 
 object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5427,11 +5818,15 @@ object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk4 = SharedTa
 
 	clientObjectCRC = 1223730979,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_qualdex_xboost_mk4, "object/tangible/ship/components/booster/shared_bst_qualdex_xboost_mk4.iff")
 
 object_tangible_ship_components_booster_shared_bst_reward_incom_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_reward_incom_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5482,11 +5877,15 @@ object_tangible_ship_components_booster_shared_bst_reward_incom_elite = SharedTa
 
 	clientObjectCRC = 3656597256,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_reward_incom_elite, "object/tangible/ship/components/booster/shared_bst_reward_incom_elite.iff")
 
 object_tangible_ship_components_booster_shared_bst_reward_koensayr_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_reward_koensayr_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5537,11 +5936,15 @@ object_tangible_ship_components_booster_shared_bst_reward_koensayr_elite = Share
 
 	clientObjectCRC = 2006126864,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_reward_koensayr_elite, "object/tangible/ship/components/booster/shared_bst_reward_koensayr_elite.iff")
 
 object_tangible_ship_components_booster_shared_bst_reward_kuat_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_reward_kuat_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5592,11 +5995,15 @@ object_tangible_ship_components_booster_shared_bst_reward_kuat_elite = SharedTan
 
 	clientObjectCRC = 3954154692,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_reward_kuat_elite, "object/tangible/ship/components/booster/shared_bst_reward_kuat_elite.iff")
 
 object_tangible_ship_components_booster_shared_bst_reward_novaldex_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_reward_novaldex_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5647,11 +6054,15 @@ object_tangible_ship_components_booster_shared_bst_reward_novaldex_elite = Share
 
 	clientObjectCRC = 621880457,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_reward_novaldex_elite, "object/tangible/ship/components/booster/shared_bst_reward_novaldex_elite.iff")
 
 object_tangible_ship_components_booster_shared_bst_reward_qualdex_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_reward_qualdex_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5702,11 +6113,15 @@ object_tangible_ship_components_booster_shared_bst_reward_qualdex_elite = Shared
 
 	clientObjectCRC = 2436545673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_reward_qualdex_elite, "object/tangible/ship/components/booster/shared_bst_reward_qualdex_elite.iff")
 
 object_tangible_ship_components_booster_shared_bst_rss_special = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_rss_special.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5757,11 +6172,15 @@ object_tangible_ship_components_booster_shared_bst_rss_special = SharedTangibleO
 
 	clientObjectCRC = 3925642831,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_rss_special, "object/tangible/ship/components/booster/shared_bst_rss_special.iff")
 
 object_tangible_ship_components_booster_shared_bst_sap_imperial_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sap_imperial_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5812,11 +6231,15 @@ object_tangible_ship_components_booster_shared_bst_sap_imperial_1 = SharedTangib
 
 	clientObjectCRC = 498383661,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sap_imperial_1, "object/tangible/ship/components/booster/shared_bst_sap_imperial_1.iff")
 
 object_tangible_ship_components_booster_shared_bst_sap_imperial_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sap_imperial_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5867,11 +6290,15 @@ object_tangible_ship_components_booster_shared_bst_sap_imperial_2 = SharedTangib
 
 	clientObjectCRC = 3332576186,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sap_imperial_2, "object/tangible/ship/components/booster/shared_bst_sap_imperial_2.iff")
 
 object_tangible_ship_components_booster_shared_bst_sds_enhanced_imperial_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sds_enhanced_imperial_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5922,11 +6349,15 @@ object_tangible_ship_components_booster_shared_bst_sds_enhanced_imperial_2 = Sha
 
 	clientObjectCRC = 2637703678,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sds_enhanced_imperial_2, "object/tangible/ship/components/booster/shared_bst_sds_enhanced_imperial_2.iff")
 
 object_tangible_ship_components_booster_shared_bst_sfs_imperial_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sfs_imperial_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5977,11 +6408,15 @@ object_tangible_ship_components_booster_shared_bst_sfs_imperial_1 = SharedTangib
 
 	clientObjectCRC = 173403376,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sfs_imperial_1, "object/tangible/ship/components/booster/shared_bst_sfs_imperial_1.iff")
 
 object_tangible_ship_components_booster_shared_bst_sfs_imperial_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sfs_imperial_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6032,11 +6467,15 @@ object_tangible_ship_components_booster_shared_bst_sfs_imperial_2 = SharedTangib
 
 	clientObjectCRC = 3510781031,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sfs_imperial_2, "object/tangible/ship/components/booster/shared_bst_sfs_imperial_2.iff")
 
 object_tangible_ship_components_booster_shared_bst_slayn_ion_booster_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_slayn_ion_booster_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6087,11 +6526,15 @@ object_tangible_ship_components_booster_shared_bst_slayn_ion_booster_mk1 = Share
 
 	clientObjectCRC = 4258532580,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_slayn_ion_booster_mk1, "object/tangible/ship/components/booster/shared_bst_slayn_ion_booster_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_sorosuub_enhanced_liberator_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sorosuub_enhanced_liberator_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6142,11 +6585,15 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_enhanced_liberator_m
 
 	clientObjectCRC = 1866927528,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_enhanced_liberator_mk4, "object/tangible/ship/components/booster/shared_bst_sorosuub_enhanced_liberator_mk4.iff")
 
 object_tangible_ship_components_booster_shared_bst_sorosuub_improved_liberator_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sorosuub_improved_liberator_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6197,11 +6644,15 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_improved_liberator_m
 
 	clientObjectCRC = 4042319819,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_improved_liberator_mk2, "object/tangible/ship/components/booster/shared_bst_sorosuub_improved_liberator_mk2.iff")
 
 object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6252,11 +6703,15 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk1 = Shar
 
 	clientObjectCRC = 2904503853,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk1, "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6307,11 +6762,15 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk2 = Shar
 
 	clientObjectCRC = 1980276410,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk2, "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk2.iff")
 
 object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6362,11 +6821,15 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk3 = Shar
 
 	clientObjectCRC = 1057356087,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk3, "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk3.iff")
 
 object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6417,11 +6880,15 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk4 = Shar
 
 	clientObjectCRC = 3303461411,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk4, "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk4.iff")
 
 object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6472,11 +6939,15 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk5 = Shar
 
 	clientObjectCRC = 2381034926,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_liberator_mk5, "object/tangible/ship/components/booster/shared_bst_sorosuub_liberator_mk5.iff")
 
 object_tangible_ship_components_booster_shared_bst_sorosuub_prized_liberator_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sorosuub_prized_liberator_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6527,11 +6998,15 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_prized_liberator_mk1
 
 	clientObjectCRC = 2805387949,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_prized_liberator_mk1, "object/tangible/ship/components/booster/shared_bst_sorosuub_prized_liberator_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_sorosuub_supercharged_liberator_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sorosuub_supercharged_liberator_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6582,11 +7057,15 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_supercharged_liberat
 
 	clientObjectCRC = 1684575263,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_supercharged_liberator_mk3, "object/tangible/ship/components/booster/shared_bst_sorosuub_supercharged_liberator_mk3.iff")
 
 object_tangible_ship_components_booster_shared_bst_sorosuub_well_tuned_liberator_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_sorosuub_well_tuned_liberator_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6637,11 +7116,15 @@ object_tangible_ship_components_booster_shared_bst_sorosuub_well_tuned_liberator
 
 	clientObjectCRC = 3378470899,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_sorosuub_well_tuned_liberator_mk5, "object/tangible/ship/components/booster/shared_bst_sorosuub_well_tuned_liberator_mk5.iff")
 
 object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6692,11 +7175,15 @@ object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk1 = Share
 
 	clientObjectCRC = 3614410827,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk1, "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6747,11 +7234,15 @@ object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk2 = Share
 
 	clientObjectCRC = 209199324,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk2, "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk2.iff")
 
 object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6802,11 +7293,15 @@ object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk3 = Share
 
 	clientObjectCRC = 1165313873,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk3, "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk3.iff")
 
 object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6857,11 +7352,15 @@ object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk4 = Share
 
 	clientObjectCRC = 3197529157,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk4, "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk4.iff")
 
 object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6912,11 +7411,15 @@ object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk5 = Share
 
 	clientObjectCRC = 4154133448,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_accelatron_mk5, "object/tangible/ship/components/booster/shared_bst_subpro_accelatron_mk5.iff")
 
 object_tangible_ship_components_booster_shared_bst_subpro_deluxe_accelatron_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_subpro_deluxe_accelatron_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6967,11 +7470,15 @@ object_tangible_ship_components_booster_shared_bst_subpro_deluxe_accelatron_mk3 
 
 	clientObjectCRC = 2441728107,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_deluxe_accelatron_mk3, "object/tangible/ship/components/booster/shared_bst_subpro_deluxe_accelatron_mk3.iff")
 
 object_tangible_ship_components_booster_shared_bst_subpro_elite_accelatron_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_subpro_elite_accelatron_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7022,11 +7529,15 @@ object_tangible_ship_components_booster_shared_bst_subpro_elite_accelatron_mk5 =
 
 	clientObjectCRC = 2539684267,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_elite_accelatron_mk5, "object/tangible/ship/components/booster/shared_bst_subpro_elite_accelatron_mk5.iff")
 
 object_tangible_ship_components_booster_shared_bst_subpro_enhanced_accelatron_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_subpro_enhanced_accelatron_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7077,11 +7588,15 @@ object_tangible_ship_components_booster_shared_bst_subpro_enhanced_accelatron_mk
 
 	clientObjectCRC = 3219799574,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_enhanced_accelatron_mk2, "object/tangible/ship/components/booster/shared_bst_subpro_enhanced_accelatron_mk2.iff")
 
 object_tangible_ship_components_booster_shared_bst_subpro_modified_accelatron_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_subpro_modified_accelatron_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7132,11 +7647,15 @@ object_tangible_ship_components_booster_shared_bst_subpro_modified_accelatron_mk
 
 	clientObjectCRC = 3848103440,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_modified_accelatron_mk4, "object/tangible/ship/components/booster/shared_bst_subpro_modified_accelatron_mk4.iff")
 
 object_tangible_ship_components_booster_shared_bst_subpro_tuned_accelatron_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_subpro_tuned_accelatron_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7187,11 +7706,15 @@ object_tangible_ship_components_booster_shared_bst_subpro_tuned_accelatron_mk1 =
 
 	clientObjectCRC = 2160911375,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_subpro_tuned_accelatron_mk1, "object/tangible/ship/components/booster/shared_bst_subpro_tuned_accelatron_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_surronian_accelerator_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_surronian_accelerator_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7242,11 +7765,15 @@ object_tangible_ship_components_booster_shared_bst_surronian_accelerator_mk1 = S
 
 	clientObjectCRC = 3438333204,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_surronian_accelerator_mk1, "object/tangible/ship/components/booster/shared_bst_surronian_accelerator_mk1.iff")
 
 object_tangible_ship_components_booster_shared_bst_surronian_accelerator_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_surronian_accelerator_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7297,11 +7824,15 @@ object_tangible_ship_components_booster_shared_bst_surronian_accelerator_mk2 = S
 
 	clientObjectCRC = 401040771,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_surronian_accelerator_mk2, "object/tangible/ship/components/booster/shared_bst_surronian_accelerator_mk2.iff")
 
 object_tangible_ship_components_booster_shared_bst_surronian_nomad_x4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_surronian_nomad_x4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7352,11 +7883,15 @@ object_tangible_ship_components_booster_shared_bst_surronian_nomad_x4 = SharedTa
 
 	clientObjectCRC = 1695261878,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_surronian_nomad_x4, "object/tangible/ship/components/booster/shared_bst_surronian_nomad_x4.iff")
 
 object_tangible_ship_components_booster_shared_bst_surronian_nomad_x8 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_surronian_nomad_x8.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_booster_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7407,11 +7942,15 @@ object_tangible_ship_components_booster_shared_bst_surronian_nomad_x8 = SharedTa
 
 	clientObjectCRC = 68558899,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_surronian_nomad_x8, "object/tangible/ship/components/booster/shared_bst_surronian_nomad_x8.iff")
 
 object_tangible_ship_components_booster_shared_bst_tiefighter_basic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_tiefighter_basic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7462,11 +8001,15 @@ object_tangible_ship_components_booster_shared_bst_tiefighter_basic = SharedTang
 
 	clientObjectCRC = 2602586479,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_tiefighter_basic, "object/tangible/ship/components/booster/shared_bst_tiefighter_basic.iff")
 
 object_tangible_ship_components_booster_shared_bst_z95_basic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_bst_z95_basic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7517,11 +8060,15 @@ object_tangible_ship_components_booster_shared_bst_z95_basic = SharedTangibleObj
 
 	clientObjectCRC = 623716829,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_bst_z95_basic, "object/tangible/ship/components/booster/shared_bst_z95_basic.iff")
 
 object_tangible_ship_components_booster_shared_xwing_booster_test = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/booster/shared_xwing_booster_test.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_booster_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -7572,6 +8119,7 @@ object_tangible_ship_components_booster_shared_xwing_booster_test = SharedTangib
 
 	clientObjectCRC = 1998070919,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_booster_shared_xwing_booster_test, "object/tangible/ship/components/booster/shared_xwing_booster_test.iff")

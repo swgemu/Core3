@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_vir_vir_shared_lair_vir_vir = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vir_vir/shared_lair_vir_vir.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_vir_vir_shared_lair_vir_vir = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1439526693,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vir_vir_shared_lair_vir_vir, "object/tangible/lair/vir_vir/shared_lair_vir_vir.iff")
 
 object_tangible_lair_vir_vir_shared_lair_vir_vir_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vir_vir/shared_lair_vir_vir_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_vir_vir_shared_lair_vir_vir_grassland = SharedTangibleObjec
 
 	clientObjectCRC = 1627499859,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vir_vir_shared_lair_vir_vir_grassland, "object/tangible/lair/vir_vir/shared_lair_vir_vir_grassland.iff")

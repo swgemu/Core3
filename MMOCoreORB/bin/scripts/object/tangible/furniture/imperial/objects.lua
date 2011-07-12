@@ -42,6 +42,9 @@
 
 
 object_tangible_furniture_imperial_shared_bunker_table_giant_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_bunker_table_giant_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_impl_table_giant_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_furniture_imperial_shared_bunker_table_giant_style_01 = SharedTa
 
 	clientObjectCRC = 396719577,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_bunker_table_giant_style_01, "object/tangible/furniture/imperial/shared_bunker_table_giant_style_01.iff")
 
 object_tangible_furniture_imperial_shared_data_terminal_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_data_terminal_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_furniture_imperial_shared_data_terminal_s1 = SharedTangibleObjec
 
 	clientObjectCRC = 2690468155,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s1, "object/tangible/furniture/imperial/shared_data_terminal_s1.iff")
 
 object_tangible_furniture_imperial_shared_data_terminal_s2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_data_terminal_s2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_furniture_imperial_shared_data_terminal_s2 = SharedTangibleObjec
 
 	clientObjectCRC = 2068505004,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s2, "object/tangible/furniture/imperial/shared_data_terminal_s2.iff")
 
 object_tangible_furniture_imperial_shared_data_terminal_s3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_data_terminal_s3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_furniture_imperial_shared_data_terminal_s3 = SharedTangibleObjec
 
 	clientObjectCRC = 843548193,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s3, "object/tangible/furniture/imperial/shared_data_terminal_s3.iff")
 
 object_tangible_furniture_imperial_shared_data_terminal_s4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_data_terminal_s4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_furniture_imperial_shared_data_terminal_s4 = SharedTangibleObjec
 
 	clientObjectCRC = 3383012661,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_data_terminal_s4, "object/tangible/furniture/imperial/shared_data_terminal_s4.iff")
 
 object_tangible_furniture_imperial_shared_table_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_table_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_tbl_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_furniture_imperial_shared_table_s1 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1484080816,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_table_s1, "object/tangible/furniture/imperial/shared_table_s1.iff")
 
 object_tangible_furniture_imperial_shared_warren_computer_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_warren_computer_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_furniture_imperial_shared_warren_computer_terminal = SharedTangi
 
 	clientObjectCRC = 3872577518,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_computer_terminal, "object/tangible/furniture/imperial/shared_warren_computer_terminal.iff")
 
 object_tangible_furniture_imperial_shared_warren_evidence_terminal_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s01 = SharedT
 
 	clientObjectCRC = 2156516600,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s01, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s01.iff")
 
 object_tangible_furniture_imperial_shared_warren_evidence_terminal_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s02 = SharedT
 
 	clientObjectCRC = 1537113199,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s02, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s02.iff")
 
 object_tangible_furniture_imperial_shared_warren_evidence_terminal_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s03 = SharedT
 
 	clientObjectCRC = 311630818,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s03, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s03.iff")
 
 object_tangible_furniture_imperial_shared_warren_evidence_terminal_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_furniture_imperial_shared_warren_evidence_terminal_s04 = SharedT
 
 	clientObjectCRC = 3916443894,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_evidence_terminal_s04, "object/tangible/furniture/imperial/shared_warren_evidence_terminal_s04.iff")
 
 object_tangible_furniture_imperial_shared_warren_experiment_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_warren_experiment_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_furniture_imperial_shared_warren_experiment_terminal = SharedTan
 
 	clientObjectCRC = 1918381408,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_experiment_terminal, "object/tangible/furniture/imperial/shared_warren_experiment_terminal.iff")
 
 object_tangible_furniture_imperial_shared_warren_warning_sign = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/imperial/shared_warren_warning_sign.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_all_sign_shop_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,6 +803,7 @@ object_tangible_furniture_imperial_shared_warren_warning_sign = SharedTangibleOb
 
 	clientObjectCRC = 811537804,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_imperial_shared_warren_warning_sign, "object/tangible/furniture/imperial/shared_warren_warning_sign.iff")

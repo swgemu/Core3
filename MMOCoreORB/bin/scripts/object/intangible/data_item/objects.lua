@@ -42,6 +42,9 @@
 
 
 object_intangible_data_item_shared_data_geiger_counter = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/data_item/shared_data_geiger_counter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_camera.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_intangible_data_item_shared_data_geiger_counter = SharedIntangibleObjectT
 
 	clientObjectCRC = 1638993826,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/data_item/shared_data_item.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_geiger_counter, "object/intangible/data_item/shared_data_geiger_counter.iff")
 
 object_intangible_data_item_shared_data_imperial = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/data_item/shared_data_imperial.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_intangible_data_item_shared_data_imperial = SharedIntangibleObjectTemplat
 
 	clientObjectCRC = 228023073,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/data_item/shared_data_item.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_imperial, "object/intangible/data_item/shared_data_imperial.iff")
 
 object_intangible_data_item_shared_data_item = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/data_item/shared_data_item.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_intangible_data_item_shared_data_item = SharedIntangibleObjectTemplate:ne
 
 	clientObjectCRC = 4189484016,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_item, "object/intangible/data_item/shared_data_item.iff")
 
 object_intangible_data_item_shared_data_rebel = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/data_item/shared_data_rebel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_intangible_data_item_shared_data_rebel = SharedIntangibleObjectTemplate:n
 
 	clientObjectCRC = 197286219,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/data_item/shared_data_item.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_data_rebel, "object/intangible/data_item/shared_data_rebel.iff")
 
 object_intangible_data_item_shared_droid_command = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/data_item/shared_droid_command.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_intangible_data_item_shared_droid_command = SharedIntangibleObjectTemplat
 
 	clientObjectCRC = 1128492217,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_droid_command, "object/intangible/data_item/shared_droid_command.iff")
 
 object_intangible_data_item_shared_warren_encryption_key = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/data_item/shared_warren_encryption_key.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -307,11 +330,15 @@ object_intangible_data_item_shared_warren_encryption_key = SharedIntangibleObjec
 
 	clientObjectCRC = 994574621,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_encryption_key, "object/intangible/data_item/shared_warren_encryption_key.iff")
 
 object_intangible_data_item_shared_warren_evidence_01 = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/data_item/shared_warren_evidence_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -352,11 +379,15 @@ object_intangible_data_item_shared_warren_evidence_01 = SharedIntangibleObjectTe
 
 	clientObjectCRC = 3760892474,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_01, "object/intangible/data_item/shared_warren_evidence_01.iff")
 
 object_intangible_data_item_shared_warren_evidence_02 = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/data_item/shared_warren_evidence_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -397,11 +428,15 @@ object_intangible_data_item_shared_warren_evidence_02 = SharedIntangibleObjectTe
 
 	clientObjectCRC = 993854125,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_02, "object/intangible/data_item/shared_warren_evidence_02.iff")
 
 object_intangible_data_item_shared_warren_evidence_03 = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/data_item/shared_warren_evidence_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -442,11 +477,15 @@ object_intangible_data_item_shared_warren_evidence_03 = SharedIntangibleObjectTe
 
 	clientObjectCRC = 1915774240,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_03, "object/intangible/data_item/shared_warren_evidence_03.iff")
 
 object_intangible_data_item_shared_warren_evidence_04 = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/data_item/shared_warren_evidence_04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -487,6 +526,7 @@ object_intangible_data_item_shared_warren_evidence_04 = SharedIntangibleObjectTe
 
 	clientObjectCRC = 2312326708,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_data_item_shared_warren_evidence_04, "object/intangible/data_item/shared_warren_evidence_04.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_medicine_base_shared_base_medicine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/base/shared_base_medicine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_medicine_base_shared_base_medicine = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 832067310,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_base_shared_base_medicine, "object/tangible/medicine/base/shared_base_medicine.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_faction_perk_turret_base_shared_faction_turret_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/faction_perk/turret/base/shared_faction_turret_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_deed_faction_perk_turret_base_shared_faction_turret_deed = Share
 
 	clientObjectCRC = 1819939378,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_faction_perk_turret_base_shared_faction_turret_deed, "object/tangible/deed/faction_perk/turret/base/shared_faction_turret_deed.iff")

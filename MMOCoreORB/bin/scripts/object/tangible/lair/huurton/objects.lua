@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_huurton_shared_lair_huurton = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/huurton/shared_lair_huurton.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_huurton_shared_lair_huurton = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1349396449,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_huurton_shared_lair_huurton, "object/tangible/lair/huurton/shared_lair_huurton.iff")
 
 object_tangible_lair_huurton_shared_lair_huurton_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/huurton/shared_lair_huurton_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_huurton_shared_lair_huurton_grassland = SharedTangibleObjec
 
 	clientObjectCRC = 3768282762,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_huurton_shared_lair_huurton_grassland, "object/tangible/lair/huurton/shared_lair_huurton_grassland.iff")

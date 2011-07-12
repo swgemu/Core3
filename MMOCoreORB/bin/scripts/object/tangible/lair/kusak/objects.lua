@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_kusak_shared_lair_kusak = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kusak/shared_lair_kusak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_kusak_shared_lair_kusak = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 4037110317,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kusak_shared_lair_kusak, "object/tangible/lair/kusak/shared_lair_kusak.iff")
 
 object_tangible_lair_kusak_shared_lair_kusak_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kusak/shared_lair_kusak_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_kusak_shared_lair_kusak_wasteland = SharedTangibleObjectTem
 
 	clientObjectCRC = 3071582373,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kusak_shared_lair_kusak_wasteland, "object/tangible/lair/kusak/shared_lair_kusak_wasteland.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_space_spacestations_shared_spacestation_imperial_01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/spacestations/shared_spacestation_imperial_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spacestation_rebel.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -92,11 +95,15 @@ object_tangible_space_spacestations_shared_spacestation_imperial_01 = SharedShip
 
 	clientObjectCRC = 3055118687,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_station_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_01, "object/tangible/space/spacestations/shared_spacestation_imperial_01.iff")
 
 object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_control = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_control.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spacestation_neutral.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -147,11 +154,15 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_con
 
 	clientObjectCRC = 2372198483,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_control, "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_control.iff")
 
 object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_entry = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_entry.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spacestation_neutral.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -202,11 +213,15 @@ object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_ent
 
 	clientObjectCRC = 3537441951,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_imperial_battlefield_entry, "object/tangible/space/spacestations/shared_spacestation_imperial_battlefield_entry.iff")
 
 object_tangible_space_spacestations_shared_spacestation_neutral_01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/spacestations/shared_spacestation_neutral_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spacestation_neutral.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -257,11 +272,15 @@ object_tangible_space_spacestations_shared_spacestation_neutral_01 = SharedShipO
 
 	clientObjectCRC = 2417244262,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_station_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_neutral_01, "object/tangible/space/spacestations/shared_spacestation_neutral_01.iff")
 
 object_tangible_space_spacestations_shared_spacestation_rebel_01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/spacestations/shared_spacestation_rebel_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spacestation_rebel.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -312,11 +331,15 @@ object_tangible_space_spacestations_shared_spacestation_rebel_01 = SharedShipObj
 
 	clientObjectCRC = 2407802973,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_station_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_01, "object/tangible/space/spacestations/shared_spacestation_rebel_01.iff")
 
 object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_control = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_control.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spacestation_rebel.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -367,11 +390,15 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_contro
 
 	clientObjectCRC = 3861915556,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_control, "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_control.iff")
 
 object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_entry.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spacestation_rebel.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -422,6 +449,7 @@ object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry 
 
 	clientObjectCRC = 2272557315,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_spacestations_shared_spacestation_rebel_battlefield_entry, "object/tangible/space/spacestations/shared_spacestation_rebel_battlefield_entry.iff")

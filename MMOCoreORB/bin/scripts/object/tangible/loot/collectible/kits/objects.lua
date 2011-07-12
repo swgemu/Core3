@@ -42,6 +42,9 @@
 
 
 object_tangible_loot_collectible_kits_shared_blue_rug_kit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/kits/shared_blue_rug_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_ranged_weapons_other.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_loot_collectible_kits_shared_blue_rug_kit = SharedTangibleObject
 
 	clientObjectCRC = 1365765159,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_kits_shared_blue_rug_kit, "object/tangible/loot/collectible/kits/shared_blue_rug_kit.iff")
 
 object_tangible_loot_collectible_kits_shared_fs_tracking_device_kit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/kits/shared_fs_tracking_device_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_shields.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_loot_collectible_kits_shared_fs_tracking_device_kit = SharedTang
 
 	clientObjectCRC = 3179120955,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_kits_shared_fs_tracking_device_kit, "object/tangible/loot/collectible/kits/shared_fs_tracking_device_kit.iff")
 
 object_tangible_loot_collectible_kits_shared_gong_kit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/kits/shared_gong_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_installations.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_loot_collectible_kits_shared_gong_kit = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3922864269,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_kits_shared_gong_kit, "object/tangible/loot/collectible/kits/shared_gong_kit.iff")
 
 object_tangible_loot_collectible_kits_shared_light_table_kit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/kits/shared_light_table_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_furniture.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_loot_collectible_kits_shared_light_table_kit = SharedTangibleObj
 
 	clientObjectCRC = 3392193780,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_kits_shared_light_table_kit, "object/tangible/loot/collectible/kits/shared_light_table_kit.iff")
 
 object_tangible_loot_collectible_kits_shared_orange_rug_kit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/kits/shared_orange_rug_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_ranged_weapons_other.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_loot_collectible_kits_shared_orange_rug_kit = SharedTangibleObje
 
 	clientObjectCRC = 2076973768,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_kits_shared_orange_rug_kit, "object/tangible/loot/collectible/kits/shared_orange_rug_kit.iff")
 
 object_tangible_loot_collectible_kits_shared_sculpture_kit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/collectible/kits/shared_sculpture_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_survey_pad_advanced_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,6 +390,7 @@ object_tangible_loot_collectible_kits_shared_sculpture_kit = SharedTangibleObjec
 
 	clientObjectCRC = 1751538268,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_collectible_kits_shared_sculpture_kit, "object/tangible/loot/collectible/kits/shared_sculpture_kit.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_encoded_disk_shared_dead_eye_decoder = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/encoded_disk/shared_dead_eye_decoder.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_instrument_calibrator.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_encoded_disk_shared_dead_eye_decoder = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2852692407,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_dead_eye_decoder, "object/tangible/encoded_disk/shared_dead_eye_decoder.iff")
 
 object_tangible_encoded_disk_shared_encoded_disk_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/encoded_disk/shared_encoded_disk_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_encoded_disk_shared_encoded_disk_base = SharedTangibleObjectTemp
 
 	clientObjectCRC = 1811104039,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_encoded_disk_base, "object/tangible/encoded_disk/shared_encoded_disk_base.iff")
 
 object_tangible_encoded_disk_shared_message_assembled_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/encoded_disk/shared_message_assembled_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_encoded_disk_shared_message_assembled_base = SharedTangibleObjec
 
 	clientObjectCRC = 3642693212,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_message_assembled_base, "object/tangible/encoded_disk/shared_message_assembled_base.iff")
 
 object_tangible_encoded_disk_shared_message_fragment_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/encoded_disk/shared_message_fragment_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_encoded_disk_shared_message_fragment_base = SharedTangibleObject
 
 	clientObjectCRC = 378623221,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_encoded_disk_shared_message_fragment_base, "object/tangible/encoded_disk/shared_message_fragment_base.iff")

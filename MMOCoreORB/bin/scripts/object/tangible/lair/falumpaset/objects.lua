@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_falumpaset_shared_lair_falumpaset = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/falumpaset/shared_lair_falumpaset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset = SharedTangibleObjectTem
 
 	clientObjectCRC = 4013916432,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset, "object/tangible/lair/falumpaset/shared_lair_falumpaset.iff")
 
 object_tangible_lair_falumpaset_shared_lair_falumpaset_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/falumpaset/shared_lair_falumpaset_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_forest = SharedTangibleOb
 
 	clientObjectCRC = 3600280476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_forest, "object/tangible/lair/falumpaset/shared_lair_falumpaset_forest.iff")
 
 object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/falumpaset/shared_lair_falumpaset_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland = SharedTangibl
 
 	clientObjectCRC = 3691403141,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_grassland, "object/tangible/lair/falumpaset/shared_lair_falumpaset_grassland.iff")
 
 object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/falumpaset/shared_lair_falumpaset_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp = SharedTangibleObj
 
 	clientObjectCRC = 189239844,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_falumpaset_shared_lair_falumpaset_swamp, "object/tangible/lair/falumpaset/shared_lair_falumpaset_swamp.iff")

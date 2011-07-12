@@ -42,6 +42,9 @@
 
 
 object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/dathomir/shared_mtn_clan_stronghold.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -95,11 +98,15 @@ object_building_dathomir_shared_mtn_clan_stronghold = SharedBuildingObjectTempla
 
 	clientObjectCRC = 3733495054,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_dathomir_shared_mtn_clan_stronghold, "object/building/dathomir/shared_mtn_clan_stronghold.iff")
 
 object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/dathomir/shared_night_sister_stronghold.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -153,6 +160,7 @@ object_building_dathomir_shared_night_sister_stronghold = SharedBuildingObjectTe
 
 	clientObjectCRC = 1104863563,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_filler_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_dathomir_shared_night_sister_stronghold, "object/building/dathomir/shared_night_sister_stronghold.iff")

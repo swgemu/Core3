@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_scurrier_shared_lair_scurrier = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/scurrier/shared_lair_scurrier.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_scurrier_shared_lair_scurrier = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3654226862,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier, "object/tangible/lair/scurrier/shared_lair_scurrier.iff")
 
 object_tangible_lair_scurrier_shared_lair_scurrier_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/scurrier/shared_lair_scurrier_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_scurrier_shared_lair_scurrier_desert = SharedTangibleObject
 
 	clientObjectCRC = 1092043415,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_desert, "object/tangible/lair/scurrier/shared_lair_scurrier_desert.iff")
 
 object_tangible_lair_scurrier_shared_lair_scurrier_dune = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/scurrier/shared_lair_scurrier_dune.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_scurrier_shared_lair_scurrier_dune = SharedTangibleObjectTe
 
 	clientObjectCRC = 129638931,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_dune, "object/tangible/lair/scurrier/shared_lair_scurrier_dune.iff")
 
 object_tangible_lair_scurrier_shared_lair_scurrier_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/scurrier/shared_lair_scurrier_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_lair_scurrier_shared_lair_scurrier_mountain = SharedTangibleObje
 
 	clientObjectCRC = 3299579420,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_mountain, "object/tangible/lair/scurrier/shared_lair_scurrier_mountain.iff")
 
 object_tangible_lair_scurrier_shared_lair_scurrier_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/scurrier/shared_lair_scurrier_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_lair_scurrier_shared_lair_scurrier_wasteland = SharedTangibleObj
 
 	clientObjectCRC = 3138468221,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_scurrier_shared_lair_scurrier_wasteland, "object/tangible/lair/scurrier/shared_lair_scurrier_wasteland.iff")

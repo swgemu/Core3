@@ -42,6 +42,9 @@
 
 
 object_tangible_container_corpse_shared_player_corpse = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/corpse/shared_player_corpse.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/skeleton_human_corpse.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_container_corpse_shared_player_corpse = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3090831505,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_corpse_shared_player_corpse, "object/tangible/container/corpse/shared_player_corpse.iff")

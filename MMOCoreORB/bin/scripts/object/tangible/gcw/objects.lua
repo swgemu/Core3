@@ -42,6 +42,9 @@
 
 
 object_tangible_gcw_shared_flip_banner_imperial = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gcw/shared_flip_banner_imperial.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tapestry_impl.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_gcw_shared_flip_banner_imperial = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 310211091,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_imperial, "object/tangible/gcw/shared_flip_banner_imperial.iff")
 
 object_tangible_gcw_shared_flip_banner_onpole_imperial = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gcw/shared_flip_banner_onpole_imperial.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_gcw_shared_flip_banner_onpole_imperial = SharedTangibleObjectTem
 
 	clientObjectCRC = 1127107666,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_onpole_imperial, "object/tangible/gcw/shared_flip_banner_onpole_imperial.iff")
 
 object_tangible_gcw_shared_flip_banner_onpole_rebel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gcw/shared_flip_banner_onpole_rebel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_rebl_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_gcw_shared_flip_banner_onpole_rebel = SharedTangibleObjectTempla
 
 	clientObjectCRC = 2107736696,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_onpole_rebel, "object/tangible/gcw/shared_flip_banner_onpole_rebel.iff")
 
 object_tangible_gcw_shared_flip_banner_onpole_spawner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gcw/shared_flip_banner_onpole_spawner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_impl_banner_freestand_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_gcw_shared_flip_banner_onpole_spawner = SharedTangibleObjectTemp
 
 	clientObjectCRC = 60973770,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/poi/base/shared_poi_base.iff", "object/tangible/poi/base/shared_poi_base_nosnap.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_onpole_spawner, "object/tangible/gcw/shared_flip_banner_onpole_spawner.iff")
 
 object_tangible_gcw_shared_flip_banner_rebel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gcw/shared_flip_banner_rebel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tapestry_rebl.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_gcw_shared_flip_banner_rebel = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 1184876615,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_rebel, "object/tangible/gcw/shared_flip_banner_rebel.iff")
 
 object_tangible_gcw_shared_flip_banner_spawner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gcw/shared_flip_banner_spawner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tapestry_impl.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_gcw_shared_flip_banner_spawner = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1768955620,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/poi/base/shared_poi_base.iff", "object/tangible/poi/base/shared_poi_base_nosnap.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_flip_banner_spawner, "object/tangible/gcw/shared_flip_banner_spawner.iff")
 
 object_tangible_gcw_shared_gcw_city_spawner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gcw/shared_gcw_city_spawner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,6 +449,7 @@ object_tangible_gcw_shared_gcw_city_spawner = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 757466723,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/poi/base/shared_poi_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gcw_shared_gcw_city_spawner, "object/tangible/gcw/shared_gcw_city_spawner.iff")

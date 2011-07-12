@@ -42,6 +42,9 @@
 
 
 object_tangible_loot_dungeon_corellian_corvette_shared_bootdisk = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_bootdisk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_bootdisk = SharedTangible
 
 	clientObjectCRC = 1943652029,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_bootdisk, "object/tangible/loot/dungeon/corellian_corvette/shared_bootdisk.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_filler01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler0
 
 	clientObjectCRC = 2778523039,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_filler02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler0
 
 	clientObjectCRC = 2123058440,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_intel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel =
 
 	clientObjectCRC = 1409729686,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_assassin_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_filler01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01
 
 	clientObjectCRC = 2615503998,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_filler02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02
 
 	clientObjectCRC = 1089651945,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_intel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel = 
 
 	clientObjectCRC = 3271133983,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_destroy_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_filler01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01 
 
 	clientObjectCRC = 1429810306,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_filler02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02 
 
 	clientObjectCRC = 2385413141,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_intel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel = S
 
 	clientObjectCRC = 1800721654,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_imperial_rescue_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_imperial_rescue_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_filler01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01
 
 	clientObjectCRC = 1226514463,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_filler02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02
 
 	clientObjectCRC = 2450294920,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_intel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel = 
 
 	clientObjectCRC = 2214959298,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_assassin_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_assassin_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_filler01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01 
 
 	clientObjectCRC = 426337632,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_filler02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02 
 
 	clientObjectCRC = 3263090167,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_intel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel = S
 
 	clientObjectCRC = 486562997,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_destroy_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_destroy_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_filler01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01 =
 
 	clientObjectCRC = 1207841643,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_filler02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02 =
 
 	clientObjectCRC = 2632555516,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_intel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel = Sh
 
 	clientObjectCRC = 2256488833,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_neutral_rescue_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_filler01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01 =
 
 	clientObjectCRC = 3223256133,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_filler02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02 =
 
 	clientObjectCRC = 453596370,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_intel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel = Sh
 
 	clientObjectCRC = 1608051965,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_assassin_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_assassin_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_filler01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01 = 
 
 	clientObjectCRC = 1714985756,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_filler02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02 = 
 
 	clientObjectCRC = 3173987211,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_intel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel = Sha
 
 	clientObjectCRC = 3353710684,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_destroy_intel.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_filler01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01 = S
 
 	clientObjectCRC = 2690288867,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler01, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_filler01.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_filler02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02 = S
 
 	clientObjectCRC = 2068653172,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_filler02, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_filler02.iff")
 
 object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_intel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,6 +1688,7 @@ object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel = Shar
 
 	clientObjectCRC = 1454651142,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_corellian_corvette_shared_rebel_rescue_intel, "object/tangible/loot/dungeon/corellian_corvette/shared_rebel_rescue_intel.iff")

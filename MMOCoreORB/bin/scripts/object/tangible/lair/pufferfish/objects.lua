@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_pufferfish_shared_lair_pufferfish = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/pufferfish/shared_lair_pufferfish.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_pufferfish_shared_lair_pufferfish = SharedTangibleObjectTem
 
 	clientObjectCRC = 2069689133,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish, "object/tangible/lair/pufferfish/shared_lair_pufferfish.iff")
 
 object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/pufferfish/shared_lair_pufferfish_underwater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater = SharedTangib
 
 	clientObjectCRC = 2279018496,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_pufferfish_shared_lair_pufferfish_underwater, "object/tangible/lair/pufferfish/shared_lair_pufferfish_underwater.iff")

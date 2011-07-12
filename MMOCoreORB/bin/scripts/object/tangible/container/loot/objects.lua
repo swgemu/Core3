@@ -42,6 +42,9 @@
 
 
 object_tangible_container_loot_shared_astromech_container = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_astromech_container.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_r4_powerdown.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_container_loot_shared_astromech_container = SharedTangibleObject
 
 	clientObjectCRC = 84456311,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_astromech_container, "object/tangible/container/loot/shared_astromech_container.iff")
 
 object_tangible_container_loot_shared_computer_container = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_computer_container.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tech_console_sectional_b.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_container_loot_shared_computer_container = SharedTangibleObjectT
 
 	clientObjectCRC = 2996080617,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_computer_container, "object/tangible/container/loot/shared_computer_container.iff")
 
 object_tangible_container_loot_shared_gas_filter_container = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_gas_filter_container.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_gas_med.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_container_loot_shared_gas_filter_container = SharedTangibleObjec
 
 	clientObjectCRC = 349560727,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_gas_filter_container, "object/tangible/container/loot/shared_gas_filter_container.iff")
 
 object_tangible_container_loot_shared_loot_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_loot_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_container_loot_shared_loot_crate = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1268006083,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_loot_crate, "object/tangible/container/loot/shared_loot_crate.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_placable_loot_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_crate_spice.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_container_loot_shared_placable_loot_crate = SharedTangibleObject
 
 	clientObjectCRC = 2362384973,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate, "object/tangible/container/loot/shared_placable_loot_crate.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_placable_loot_crate_skeleton_bith.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_bith_headandbody.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith = Shared
 
 	clientObjectCRC = 2636682415,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_bith, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_bith.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_human = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_placable_loot_crate_skeleton_human.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_human = Share
 
 	clientObjectCRC = 2665565001,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_human, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_human.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_placable_loot_crate_skeleton_ithorian.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_ithorian_headandbody.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian = Sh
 
 	clientObjectCRC = 2780389059,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian, "object/tangible/container/loot/shared_placable_loot_crate_skeleton_ithorian.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_tech_armoire = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_placable_loot_crate_tech_armoire.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_armoire_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_armoire = SharedT
 
 	clientObjectCRC = 2410892657,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_armoire, "object/tangible/container/loot/shared_placable_loot_crate_tech_armoire.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_tech_chest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_placable_loot_crate_tech_chest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_tech_chest_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_container_loot_shared_placable_loot_crate_tech_chest = SharedTan
 
 	clientObjectCRC = 4025920030,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_tech_chest, "object/tangible/container/loot/shared_placable_loot_crate_tech_chest.iff")
 
 object_tangible_container_loot_shared_placable_loot_crate_trashpile = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_placable_loot_crate_trashpile.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_imprv_trash_pile_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_container_loot_shared_placable_loot_crate_trashpile = SharedTang
 
 	clientObjectCRC = 2638627675,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_placable_loot_crate_trashpile, "object/tangible/container/loot/shared_placable_loot_crate_trashpile.iff")
 
 object_tangible_container_loot_shared_player_loot_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/loot/shared_player_loot_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,6 +744,7 @@ object_tangible_container_loot_shared_player_loot_crate = SharedTangibleObjectTe
 
 	clientObjectCRC = 3460646661,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_loot_shared_player_loot_crate, "object/tangible/container/loot/shared_player_loot_crate.iff")

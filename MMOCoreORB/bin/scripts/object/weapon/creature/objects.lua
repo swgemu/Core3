@@ -42,6 +42,9 @@
 
 
 object_weapon_creature_shared_creature_default_weapon = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/creature/shared_creature_default_weapon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_default_weapon.iff",
 	attackType = 1,
@@ -96,6 +99,7 @@ object_weapon_creature_shared_creature_default_weapon = SharedWeaponObjectTempla
 
 	clientObjectCRC = 2110842690,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_creature_shared_creature_default_weapon, "object/weapon/creature/shared_creature_default_weapon.iff")

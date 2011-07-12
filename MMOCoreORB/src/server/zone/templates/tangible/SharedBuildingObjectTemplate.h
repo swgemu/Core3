@@ -11,8 +11,8 @@
 #include "SharedStructureObjectTemplate.h"
 
 class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
-	String terrainModificationFileName;
-	String interiorLayoutFileName;
+	StringParam terrainModificationFileName;
+	StringParam interiorLayoutFileName;
 
 	ChildObject sign;
 
@@ -29,6 +29,12 @@ public:
 	}
 
 	void readObject(LuaObject* templateData);
+	void readObject(IffStream* iffStream);
+
+	void parseVariableData(const String& varName, LuaObject* templateData);
+
+	void parseVariableData(const String& varName, Chunk* data);
+	void parseFileData(IffStream* iffStream);
 
 	virtual bool isSharedBuildingObjectTemplate() {
 		return true;

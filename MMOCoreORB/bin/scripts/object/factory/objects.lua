@@ -42,6 +42,9 @@
 
 
 object_factory_shared_factory_crate_armor = SharedFactoryObjectTemplate:new {
+	clientTemplateFileName = "object/factory/shared_factory_crate_armor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_armor_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_factory_shared_factory_crate_armor = SharedFactoryObjectTemplate:new {
 
 	clientObjectCRC = 1598099833,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_armor, "object/factory/shared_factory_crate_armor.iff")
 
 object_factory_shared_factory_crate_chemicals = SharedFactoryObjectTemplate:new {
+	clientTemplateFileName = "object/factory/shared_factory_crate_chemicals.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_chemicals_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_factory_shared_factory_crate_chemicals = SharedFactoryObjectTemplate:new 
 
 	clientObjectCRC = 3401438151,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_chemicals, "object/factory/shared_factory_crate_chemicals.iff")
 
 object_factory_shared_factory_crate_clothing = SharedFactoryObjectTemplate:new {
+	clientTemplateFileName = "object/factory/shared_factory_crate_clothing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_clothing_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_factory_shared_factory_crate_clothing = SharedFactoryObjectTemplate:new {
 
 	clientObjectCRC = 2342101395,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_clothing, "object/factory/shared_factory_crate_clothing.iff")
 
 object_factory_shared_factory_crate_electronics = SharedFactoryObjectTemplate:new {
+	clientTemplateFileName = "object/factory/shared_factory_crate_electronics.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_electronics_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_factory_shared_factory_crate_electronics = SharedFactoryObjectTemplate:ne
 
 	clientObjectCRC = 1584679689,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_electronics, "object/factory/shared_factory_crate_electronics.iff")
 
 object_factory_shared_factory_crate_food = SharedFactoryObjectTemplate:new {
+	clientTemplateFileName = "object/factory/shared_factory_crate_food.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_food_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_factory_shared_factory_crate_food = SharedFactoryObjectTemplate:new {
 
 	clientObjectCRC = 1184983851,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_food, "object/factory/shared_factory_crate_food.iff")
 
 object_factory_shared_factory_crate_furniture = SharedFactoryObjectTemplate:new {
+	clientTemplateFileName = "object/factory/shared_factory_crate_furniture.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_furniture_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_factory_shared_factory_crate_furniture = SharedFactoryObjectTemplate:new 
 
 	clientObjectCRC = 3880912033,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_furniture, "object/factory/shared_factory_crate_furniture.iff")
 
 object_factory_shared_factory_crate_generic_items = SharedFactoryObjectTemplate:new {
+	clientTemplateFileName = "object/factory/shared_factory_crate_generic_items.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_items_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_factory_shared_factory_crate_generic_items = SharedFactoryObjectTemplate:
 
 	clientObjectCRC = 685226208,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_generic_items, "object/factory/shared_factory_crate_generic_items.iff")
 
 object_factory_shared_factory_crate_installation = SharedFactoryObjectTemplate:new {
+	clientTemplateFileName = "object/factory/shared_factory_crate_installation.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_installation_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_factory_shared_factory_crate_installation = SharedFactoryObjectTemplate:n
 
 	clientObjectCRC = 577406456,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_installation, "object/factory/shared_factory_crate_installation.iff")
 
 object_factory_shared_factory_crate_weapon = SharedFactoryObjectTemplate:new {
+	clientTemplateFileName = "object/factory/shared_factory_crate_weapon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_weapons_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,6 +567,7 @@ object_factory_shared_factory_crate_weapon = SharedFactoryObjectTemplate:new {
 
 	clientObjectCRC = 4077073151,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/factory/base/shared_base_factory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_factory_shared_factory_crate_weapon, "object/factory/shared_factory_crate_weapon.iff")

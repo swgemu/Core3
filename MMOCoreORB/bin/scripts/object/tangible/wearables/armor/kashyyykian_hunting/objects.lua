@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_bracer_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/kashyyykian_hunting/shared_armor_kashyyykian_hunting_bracer_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_kashyyykian_hunting_bracer_l_wke_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_l.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 
 	clientObjectCRC = 2126287876,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_bracer_l, "object/tangible/wearables/armor/kashyyykian_hunting/shared_armor_kashyyykian_hunting_bracer_l.iff")
 
 object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_bracer_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/kashyyykian_hunting/shared_armor_kashyyykian_hunting_bracer_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_kashyyykian_hunting_bracer_r_wke_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_r.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 
 	clientObjectCRC = 241815959,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_bracer_r, "object/tangible/wearables/armor/kashyyykian_hunting/shared_armor_kashyyykian_hunting_bracer_r.iff")
 
 object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_chest_plate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/kashyyykian_hunting/shared_armor_kashyyykian_hunting_chest_plate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_kashyyykian_hunting_chest_plate_wke_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/cowl_long_closed_mouth.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 
 	clientObjectCRC = 3776759545,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_chest_plate, "object/tangible/wearables/armor/kashyyykian_hunting/shared_armor_kashyyykian_hunting_chest_plate.iff")
 
 object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_leggings = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/kashyyykian_hunting/shared_armor_kashyyykian_hunting_leggings.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_kashyyykian_hunting_leggings_wke_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pant_leggings.iff",
 
@@ -257,6 +272,7 @@ object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hun
 
 	clientObjectCRC = 4053289243,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_kashyyykian_hunting_shared_armor_kashyyykian_hunting_leggings, "object/tangible/wearables/armor/kashyyykian_hunting/shared_armor_kashyyykian_hunting_leggings.iff")

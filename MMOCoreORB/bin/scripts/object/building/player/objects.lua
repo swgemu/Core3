@@ -42,6 +42,9 @@
 
 
 object_building_player_shared_construction_structure = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_construction_structure.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_imprv_street_sign_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_building_player_shared_construction_structure = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4003827328,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_construction_structure, "object/building/player/shared_construction_structure.iff")
 
 object_building_player_shared_player_garage_corellia_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_garage_corellia_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_corl_garage_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_building_player_shared_player_garage_corellia_style_01 = SharedInstallati
 
 	clientObjectCRC = 3533693421,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_corellia_style_01, "object/building/player/shared_player_garage_corellia_style_01.iff")
 
 object_building_player_shared_player_garage_naboo_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_garage_naboo_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_nboo_garage_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_building_player_shared_player_garage_naboo_style_01 = SharedInstallationO
 
 	clientObjectCRC = 2162635930,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_naboo_style_01, "object/building/player/shared_player_garage_naboo_style_01.iff")
 
 object_building_player_shared_player_garage_tatooine_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_garage_tatooine_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_tato_garage_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_building_player_shared_player_garage_tatooine_style_01 = SharedInstallati
 
 	clientObjectCRC = 2075679353,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_garage_tatooine_style_01, "object/building/player/shared_player_garage_tatooine_style_01.iff")
 
 object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_guildhall_corellia_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -315,11 +334,15 @@ object_building_player_shared_player_guildhall_corellia_style_01 = SharedBuildin
 
 	clientObjectCRC = 1038468412,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_corellia_style_01, "object/building/player/shared_player_guildhall_corellia_style_01.iff")
 
 object_building_player_shared_player_guildhall_generic_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_guildhall_generic_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -373,11 +396,15 @@ object_building_player_shared_player_guildhall_generic_style_01 = SharedBuilding
 
 	clientObjectCRC = 1861851362,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_generic_style_01, "object/building/player/shared_player_guildhall_generic_style_01.iff")
 
 object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_guildhall_naboo_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -431,11 +458,15 @@ object_building_player_shared_player_guildhall_naboo_style_01 = SharedBuildingOb
 
 	clientObjectCRC = 3197026082,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_naboo_style_01, "object/building/player/shared_player_guildhall_naboo_style_01.iff")
 
 object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_guildhall_tatooine_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -489,11 +520,15 @@ object_building_player_shared_player_guildhall_tatooine_style_01 = SharedBuildin
 
 	clientObjectCRC = 2495774376,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_tatooine_style_01, "object/building/player/shared_player_guildhall_tatooine_style_01.iff")
 
 object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_guildhall_tatooine_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -547,11 +582,15 @@ object_building_player_shared_player_guildhall_tatooine_style_02 = SharedBuildin
 
 	clientObjectCRC = 1339414079,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_guildhall_tatooine_style_02, "object/building/player/shared_player_guildhall_tatooine_style_02.iff")
 
 object_building_player_shared_player_house_corellia_large_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_corellia_large_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -605,11 +644,15 @@ object_building_player_shared_player_house_corellia_large_style_01 = SharedBuild
 
 	clientObjectCRC = 2427663942,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_large_style_01, "object/building/player/shared_player_house_corellia_large_style_01.iff")
 
 object_building_player_shared_player_house_corellia_large_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_corellia_large_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -663,11 +706,15 @@ object_building_player_shared_player_house_corellia_large_style_02 = SharedBuild
 
 	clientObjectCRC = 1269079761,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_large_style_02, "object/building/player/shared_player_house_corellia_large_style_02.iff")
 
 object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_corellia_medium_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -721,11 +768,15 @@ object_building_player_shared_player_house_corellia_medium_style_01 = SharedBuil
 
 	clientObjectCRC = 4245590836,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_medium_style_01, "object/building/player/shared_player_house_corellia_medium_style_01.iff")
 
 object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_corellia_medium_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -779,11 +830,15 @@ object_building_player_shared_player_house_corellia_medium_style_02 = SharedBuil
 
 	clientObjectCRC = 639187875,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_medium_style_02, "object/building/player/shared_player_house_corellia_medium_style_02.iff")
 
 object_building_player_shared_player_house_corellia_small_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_corellia_small_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -837,11 +892,15 @@ object_building_player_shared_player_house_corellia_small_style_01 = SharedBuild
 
 	clientObjectCRC = 2963259888,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_01, "object/building/player/shared_player_house_corellia_small_style_01.iff")
 
 object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_corellia_small_style_01_floorplan_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -895,11 +954,15 @@ object_building_player_shared_player_house_corellia_small_style_01_floorplan_02 
 
 	clientObjectCRC = 4102677864,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_01_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_01_floorplan_02.iff")
 
 object_building_player_shared_player_house_corellia_small_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_corellia_small_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -953,11 +1016,15 @@ object_building_player_shared_player_house_corellia_small_style_02 = SharedBuild
 
 	clientObjectCRC = 1804101991,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_02, "object/building/player/shared_player_house_corellia_small_style_02.iff")
 
 object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_corellia_small_style_02_floorplan_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1011,11 +1078,15 @@ object_building_player_shared_player_house_corellia_small_style_02_floorplan_02 
 
 	clientObjectCRC = 1944093248,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_corellia_small_style_02_floorplan_02, "object/building/player/shared_player_house_corellia_small_style_02_floorplan_02.iff")
 
 object_building_player_shared_player_house_generic_large_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_generic_large_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1069,11 +1140,15 @@ object_building_player_shared_player_house_generic_large_style_01 = SharedBuildi
 
 	clientObjectCRC = 2966981875,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_large_style_01, "object/building/player/shared_player_house_generic_large_style_01.iff")
 
 object_building_player_shared_player_house_generic_large_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_generic_large_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1127,11 +1202,15 @@ object_building_player_shared_player_house_generic_large_style_02 = SharedBuildi
 
 	clientObjectCRC = 1808737380,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_large_style_02, "object/building/player/shared_player_house_generic_large_style_02.iff")
 
 object_building_player_shared_player_house_generic_medium_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_generic_medium_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1185,11 +1264,15 @@ object_building_player_shared_player_house_generic_medium_style_01 = SharedBuild
 
 	clientObjectCRC = 244814036,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_medium_style_01, "object/building/player/shared_player_house_generic_medium_style_01.iff")
 
 object_building_player_shared_player_house_generic_medium_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_generic_medium_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1243,11 +1326,15 @@ object_building_player_shared_player_house_generic_medium_style_02 = SharedBuild
 
 	clientObjectCRC = 3581950019,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_medium_style_02, "object/building/player/shared_player_house_generic_medium_style_02.iff")
 
 object_building_player_shared_player_house_generic_small_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_generic_small_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1301,11 +1388,15 @@ object_building_player_shared_player_house_generic_small_style_01 = SharedBuildi
 
 	clientObjectCRC = 2431941445,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_01, "object/building/player/shared_player_house_generic_small_style_01.iff")
 
 object_building_player_shared_player_house_generic_small_style_01_floorplan_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_generic_small_style_01_floorplan_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1359,11 +1450,15 @@ object_building_player_shared_player_house_generic_small_style_01_floorplan_02 =
 
 	clientObjectCRC = 4015966289,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_01_floorplan_02, "object/building/player/shared_player_house_generic_small_style_01_floorplan_02.iff")
 
 object_building_player_shared_player_house_generic_small_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_generic_small_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1417,11 +1512,15 @@ object_building_player_shared_player_house_generic_small_style_02 = SharedBuildi
 
 	clientObjectCRC = 1273222098,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_02, "object/building/player/shared_player_house_generic_small_style_02.iff")
 
 object_building_player_shared_player_house_generic_small_style_02_floorplan_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_generic_small_style_02_floorplan_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1475,11 +1574,15 @@ object_building_player_shared_player_house_generic_small_style_02_floorplan_02 =
 
 	clientObjectCRC = 1748479865,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_generic_small_style_02_floorplan_02, "object/building/player/shared_player_house_generic_small_style_02_floorplan_02.iff")
 
 object_building_player_shared_player_house_naboo_large_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_naboo_large_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1533,11 +1636,15 @@ object_building_player_shared_player_house_naboo_large_style_01 = SharedBuilding
 
 	clientObjectCRC = 1926074883,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_large_style_01, "object/building/player/shared_player_house_naboo_large_style_01.iff")
 
 object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_naboo_medium_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1591,11 +1698,15 @@ object_building_player_shared_player_house_naboo_medium_style_01 = SharedBuildin
 
 	clientObjectCRC = 1333906211,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_medium_style_01, "object/building/player/shared_player_house_naboo_medium_style_01.iff")
 
 object_building_player_shared_player_house_naboo_small_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_naboo_small_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1649,11 +1760,15 @@ object_building_player_shared_player_house_naboo_small_style_01 = SharedBuilding
 
 	clientObjectCRC = 1390503349,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_small_style_01, "object/building/player/shared_player_house_naboo_small_style_01.iff")
 
 object_building_player_shared_player_house_naboo_small_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_naboo_small_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1707,11 +1822,15 @@ object_building_player_shared_player_house_naboo_small_style_02 = SharedBuilding
 
 	clientObjectCRC = 2314652962,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_naboo_small_style_02, "object/building/player/shared_player_house_naboo_small_style_02.iff")
 
 object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_tatooine_large_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1765,11 +1884,15 @@ object_building_player_shared_player_house_tatooine_large_style_01 = SharedBuild
 
 	clientObjectCRC = 3018624136,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_large_style_01, "object/building/player/shared_player_house_tatooine_large_style_01.iff")
 
 object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_tatooine_medium_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1823,11 +1946,15 @@ object_building_player_shared_player_house_tatooine_medium_style_01 = SharedBuil
 
 	clientObjectCRC = 936693005,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_medium_style_01, "object/building/player/shared_player_house_tatooine_medium_style_01.iff")
 
 object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_tatooine_small_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1881,11 +2008,15 @@ object_building_player_shared_player_house_tatooine_small_style_01 = SharedBuild
 
 	clientObjectCRC = 2478865214,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_small_style_01, "object/building/player/shared_player_house_tatooine_small_style_01.iff")
 
 object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_house_tatooine_small_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1939,11 +2070,15 @@ object_building_player_shared_player_house_tatooine_small_style_02 = SharedBuild
 
 	clientObjectCRC = 1222103977,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_house_tatooine_small_style_02, "object/building/player/shared_player_house_tatooine_small_style_02.iff")
 
 object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_merchant_tent_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -1997,11 +2132,15 @@ object_building_player_shared_player_merchant_tent_style_01 = SharedBuildingObje
 
 	clientObjectCRC = 2671747310,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_01, "object/building/player/shared_player_merchant_tent_style_01.iff")
 
 object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_merchant_tent_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2055,11 +2194,15 @@ object_building_player_shared_player_merchant_tent_style_02 = SharedBuildingObje
 
 	clientObjectCRC = 1143474297,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_02, "object/building/player/shared_player_merchant_tent_style_02.iff")
 
 object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/shared_player_merchant_tent_style_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -2113,6 +2256,7 @@ object_building_player_shared_player_merchant_tent_style_03 = SharedBuildingObje
 
 	clientObjectCRC = 220557300,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/base/shared_base_player_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_shared_player_merchant_tent_style_03, "object/building/player/shared_player_merchant_tent_style_03.iff")

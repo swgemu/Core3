@@ -42,6 +42,9 @@
 
 
 object_tangible_item_shared_con_drinking_glass_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/shared_con_drinking_glass_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_glass_s1_full.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_l.iff",
 
@@ -92,11 +95,15 @@ object_tangible_item_shared_con_drinking_glass_01 = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2860245091,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_shared_con_drinking_glass_01, "object/tangible/item/shared_con_drinking_glass_01.iff")
 
 object_tangible_item_shared_droid_customization = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/shared_droid_customization.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_droid_toolkit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_item_shared_droid_customization = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 3401469915,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_shared_droid_customization, "object/tangible/item/shared_droid_customization.iff")
 
 object_tangible_item_shared_loot_credit_chip = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/shared_loot_credit_chip.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_item_shared_loot_credit_chip = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 4287269962,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_shared_loot_credit_chip, "object/tangible/item/shared_loot_credit_chip.iff")
 
 object_tangible_item_shared_lytus_family_artefact = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/shared_lytus_family_artefact.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_glow_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_item_shared_lytus_family_artefact = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 3055843193,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_shared_lytus_family_artefact, "object/tangible/item/shared_lytus_family_artefact.iff")
 
 object_tangible_item_shared_vehicle_customization = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/shared_vehicle_customization.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_droid_toolkit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_item_shared_vehicle_customization = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 3528062501,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_shared_vehicle_customization, "object/tangible/item/shared_vehicle_customization.iff")

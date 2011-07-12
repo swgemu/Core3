@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_carrion_spat_shared_lair_carrion_spat = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/carrion_spat/shared_lair_carrion_spat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat = SharedTangibleObjec
 
 	clientObjectCRC = 2989290041,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat.iff")
 
 object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/carrion_spat/shared_lair_carrion_spat_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland = SharedTan
 
 	clientObjectCRC = 2377863666,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_carrion_spat_shared_lair_carrion_spat_grassland, "object/tangible/lair/carrion_spat/shared_lair_carrion_spat_grassland.iff")

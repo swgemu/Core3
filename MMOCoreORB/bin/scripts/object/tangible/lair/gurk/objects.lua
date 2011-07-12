@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_gurk_shared_lair_gurk = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gurk/shared_lair_gurk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_gurk_shared_lair_gurk = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2774815419,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gurk_shared_lair_gurk, "object/tangible/lair/gurk/shared_lair_gurk.iff")
 
 object_tangible_lair_gurk_shared_lair_gurk_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gurk/shared_lair_gurk_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_gurk_shared_lair_gurk_mountain = SharedTangibleObjectTempla
 
 	clientObjectCRC = 3262874974,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gurk_shared_lair_gurk_mountain, "object/tangible/lair/gurk/shared_lair_gurk_mountain.iff")
 
 object_tangible_lair_gurk_shared_lair_gurk_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gurk/shared_lair_gurk_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_gurk_shared_lair_gurk_wasteland = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1904490191,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gurk_shared_lair_gurk_wasteland, "object/tangible/lair/gurk/shared_lair_gurk_wasteland.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly = Share
 
 	clientObjectCRC = 3008925530,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly.iff")
 
 object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest 
 
 	clientObjectCRC = 1882452150,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_forest, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_forest.iff")
 
 object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountai
 
 	clientObjectCRC = 4011982198,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_butterfly_shared_lair_corellian_butterfly_mountain, "object/tangible/lair/corellian_butterfly/shared_lair_corellian_butterfly_mountain.iff")

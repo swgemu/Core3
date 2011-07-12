@@ -42,6 +42,9 @@
 
 
 object_tangible_instrument_base_shared_instrument_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/instrument/base/shared_instrument_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_instrument_base_shared_instrument_base = SharedTangibleObjectTem
 
 	clientObjectCRC = 2963077221,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_instrument_base_shared_instrument_base, "object/tangible/instrument/base/shared_instrument_base.iff")

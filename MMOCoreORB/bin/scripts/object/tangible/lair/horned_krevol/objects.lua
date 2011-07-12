@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/horned_krevol/shared_lair_horned_krevol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol = SharedTangibleObj
 
 	clientObjectCRC = 3995926996,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert = SharedTang
 
 	clientObjectCRC = 883847742,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_desert, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_desert.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest = SharedTang
 
 	clientObjectCRC = 524661947,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_forest, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_forest.iff")
 
 object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain = SharedTa
 
 	clientObjectCRC = 2373765729,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_horned_krevol_shared_lair_horned_krevol_mountain, "object/tangible/lair/horned_krevol/shared_lair_horned_krevol_mountain.iff")

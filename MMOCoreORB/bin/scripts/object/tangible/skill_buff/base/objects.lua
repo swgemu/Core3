@@ -42,6 +42,9 @@
 
 
 object_tangible_skill_buff_base_shared_skill_buff_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/base/shared_skill_buff_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_hormone_enhancements.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_skill_buff_base_shared_skill_buff_base = SharedTangibleObjectTem
 
 	clientObjectCRC = 150738371,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_base_shared_skill_buff_base, "object/tangible/skill_buff/base/shared_skill_buff_base.iff")

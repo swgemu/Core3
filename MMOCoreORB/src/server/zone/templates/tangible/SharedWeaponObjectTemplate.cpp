@@ -7,12 +7,125 @@
 
 #include "SharedWeaponObjectTemplate.h"
 
+void SharedWeaponObjectTemplate::parseVariableData(const String& varName, LuaObject* templateData) {
+	lua_State* state = templateData->getLuaState();
+
+	if (varName == "weaponEffect") {
+		weaponEffect = Lua::getStringParameter(state);
+	} else if (varName == "weaponEffectIndex") {
+		weaponEffectIndex = Lua::getIntParameter(state);
+	} else if (varName == "attackType") {
+		attackType = Lua::getIntParameter(state);
+	} else
+		templateData->pop();
+}
+
+void SharedWeaponObjectTemplate::parseVariableData(const String& varName, Chunk* data) {
+	if (varName == "weaponEffect") {
+		weaponEffect.parse(data);
+	} else if (varName == "weaponEffectIndex") {
+		weaponEffectIndex.parse(data);
+	} else if (varName == "attackType") {
+		attackType.parse(data);
+	}
+}
+
+void SharedWeaponObjectTemplate::parseFileData(IffStream* iffStream) {
+	iffStream->openChunk('PCNT');
+
+	int variableCount = iffStream->getInt();
+
+	iffStream->closeChunk('PCNT');
+
+	for (int i = 0; i < variableCount; ++i) {
+	//while (iffStream->getRemainingSubChunksNumber() > 0) {
+		Chunk* chunk = iffStream->openChunk('XXXX');
+
+		if (chunk == NULL)
+			continue;
+
+		String varName;
+		iffStream->getString(varName);
+
+		//std::cout << "parsing wtf shit:[" << varName.toStdString() << "]\n";
+		parseVariableData(varName, chunk);
+
+		iffStream->closeChunk();
+	}
+}
+
+void SharedWeaponObjectTemplate::readObject(IffStream* iffStream) {
+	uint32 nextType = iffStream->getNextFormType();
+
+	if (nextType != 'SWOT') {
+		//Logger::console.error("expecting SHOT got " + String::hexvalueOf((int)nextType));
+
+		SharedTangibleObjectTemplate::readObject(iffStream);
+
+		return;
+	}
+
+	iffStream->openForm('SWOT');
+
+	uint32 derv = iffStream->getNextFormType();
+
+	if (derv == 'DERV') {
+		loadDerv(iffStream);
+
+		derv = iffStream->getNextFormType();
+	}
+
+	iffStream->openForm(derv);
+
+	try {
+		parseFileData(iffStream);
+	} catch (Exception& e) {
+		String msg;
+		msg += "exception caught parsing file data ->";
+		msg += e.getMessage();
+
+		Logger::console.error(msg);
+	}
+
+	iffStream->closeForm(derv);
+
+	if (iffStream->getRemainingSubChunksNumber() > 0) {
+		readObject(iffStream);
+	}
+
+	iffStream->closeForm('SWOT');
+}
+
 void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 	SharedTangibleObjectTemplate::readObject(templateData);
 
-	weaponEffect = templateData->getStringField("weaponEffect");
-	weaponEffectIndex = templateData->getIntField("weaponEffectIndex");
-	attackType = templateData->getIntField("attackType");
+	lua_State* L = templateData->getLuaState();
+
+	if (!templateData->isValidTable())
+		return;
+
+	int i = 0;
+
+	lua_pushnil(L);  
+	while (lua_next(L, -2) != 0) {
+		// 'key' is at index -2 and 'value' at index -1 
+		//printf("%s - %s\n",
+		//		lua_tostring(L, -2), lua_typename(L, lua_type(L, -1)));
+
+		int type = lua_type(L, -2);
+
+		if (type == LUA_TSTRING) {
+			size_t len = 0;
+			const char* varName = lua_tolstring(L, -2, &len);
+
+			parseVariableData(varName, templateData);
+		} else
+			lua_pop(L, 1);
+		
+		++i;
+	}
+
+	//here goes server data only
 
 	xpType = templateData->getStringField("xpType");
 

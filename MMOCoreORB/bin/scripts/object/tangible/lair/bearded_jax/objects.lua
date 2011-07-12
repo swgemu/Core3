@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_bearded_jax_shared_lair_bearded_jax = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/bearded_jax/shared_lair_bearded_jax.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_bearded_jax_shared_lair_bearded_jax = SharedTangibleObjectT
 
 	clientObjectCRC = 2902384723,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax, "object/tangible/lair/bearded_jax/shared_lair_bearded_jax.iff")
 
 object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/bearded_jax/shared_lair_bearded_jax_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland = SharedTangi
 
 	clientObjectCRC = 1258386738,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bearded_jax_shared_lair_bearded_jax_grassland, "object/tangible/lair/bearded_jax/shared_lair_bearded_jax_grassland.iff")

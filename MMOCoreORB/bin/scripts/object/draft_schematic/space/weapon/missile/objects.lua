@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_space_weapon_missile_shared_basic_chaff_launcher = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_basic_chaff_launcher.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_space_weapon_missile_shared_basic_chaff_launcher = Shared
 
 	clientObjectCRC = 3598298958,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_basic_chaff_launcher, "object/draft_schematic/space/weapon/missile/shared_basic_chaff_launcher.iff")
 
 object_draft_schematic_space_weapon_missile_shared_basic_chaff_pack = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_basic_chaff_pack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_space_weapon_missile_shared_basic_chaff_pack = SharedDraf
 
 	clientObjectCRC = 2098216050,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_basic_chaff_pack, "object/draft_schematic/space/weapon/missile/shared_basic_chaff_pack.iff")
 
 object_draft_schematic_space_weapon_missile_shared_basic_launcher = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_basic_launcher.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_space_weapon_missile_shared_basic_launcher = SharedDraftS
 
 	clientObjectCRC = 1802841048,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_basic_launcher, "object/draft_schematic/space/weapon/missile/shared_basic_launcher.iff")
 
 object_draft_schematic_space_weapon_missile_shared_basic_missile_pack = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_basic_missile_pack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_space_weapon_missile_shared_basic_missile_pack = SharedDr
 
 	clientObjectCRC = 126586241,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_basic_missile_pack, "object/draft_schematic/space/weapon/missile/shared_basic_missile_pack.iff")
 
 object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_launcher = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_countermeasure_chaff_launcher.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_launcher
 
 	clientObjectCRC = 1669199220,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_launcher, "object/draft_schematic/space/weapon/missile/shared_countermeasure_chaff_launcher.iff")
 
 object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_pack = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_countermeasure_chaff_pack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_pack = S
 
 	clientObjectCRC = 967427990,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_chaff_pack, "object/draft_schematic/space/weapon/missile/shared_countermeasure_chaff_pack.iff")
 
 object_draft_schematic_space_weapon_missile_shared_countermeasure_confuser_launcher = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_countermeasure_confuser_launcher.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_confuser_launc
 
 	clientObjectCRC = 1010014254,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_confuser_launcher, "object/draft_schematic/space/weapon/missile/shared_countermeasure_confuser_launcher.iff")
 
 object_draft_schematic_space_weapon_missile_shared_countermeasure_confuser_pack = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_countermeasure_confuser_pack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_confuser_pack 
 
 	clientObjectCRC = 1096963488,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_confuser_pack, "object/draft_schematic/space/weapon/missile/shared_countermeasure_confuser_pack.iff")
 
 object_draft_schematic_space_weapon_missile_shared_countermeasure_decoy_launcher = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_countermeasure_decoy_launcher.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_decoy_launcher
 
 	clientObjectCRC = 3889493337,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_decoy_launcher, "object/draft_schematic/space/weapon/missile/shared_countermeasure_decoy_launcher.iff")
 
 object_draft_schematic_space_weapon_missile_shared_countermeasure_decoy_pack = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_countermeasure_decoy_pack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_decoy_pack = S
 
 	clientObjectCRC = 1710067156,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_decoy_pack, "object/draft_schematic/space/weapon/missile/shared_countermeasure_decoy_pack.iff")
 
 object_draft_schematic_space_weapon_missile_shared_countermeasure_em_launcher = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_countermeasure_em_launcher.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_em_launcher = 
 
 	clientObjectCRC = 2736033559,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_em_launcher, "object/draft_schematic/space/weapon/missile/shared_countermeasure_em_launcher.iff")
 
 object_draft_schematic_space_weapon_missile_shared_countermeasure_em_pack = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_countermeasure_em_pack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_em_pack = Shar
 
 	clientObjectCRC = 3044761439,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_em_pack, "object/draft_schematic/space/weapon/missile/shared_countermeasure_em_pack.iff")
 
 object_draft_schematic_space_weapon_missile_shared_countermeasure_microchaff_launcher = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_countermeasure_microchaff_launcher.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,11 +673,15 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_microchaff_lau
 
 	clientObjectCRC = 1406628129,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_microchaff_launcher, "object/draft_schematic/space/weapon/missile/shared_countermeasure_microchaff_launcher.iff")
 
 object_draft_schematic_space_weapon_missile_shared_countermeasure_microchaff_pack = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_countermeasure_microchaff_pack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -667,11 +722,15 @@ object_draft_schematic_space_weapon_missile_shared_countermeasure_microchaff_pac
 
 	clientObjectCRC = 3491272814,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_countermeasure_microchaff_pack, "object/draft_schematic/space/weapon/missile/shared_countermeasure_microchaff_pack.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_concussion_missile_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -712,11 +771,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk1 = 
 
 	clientObjectCRC = 4275827372,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk1, "object/draft_schematic/space/weapon/missile/shared_wpn_concussion_missile_mk1.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_concussion_missile_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -757,11 +820,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk2 = 
 
 	clientObjectCRC = 634149435,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk2, "object/draft_schematic/space/weapon/missile/shared_wpn_concussion_missile_mk2.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_concussion_missile_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -802,11 +869,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk3 = 
 
 	clientObjectCRC = 1824603574,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_concussion_missile_mk3, "object/draft_schematic/space/weapon/missile/shared_wpn_concussion_missile_mk3.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_imagerec_missile_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_imagerec_missile_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -847,11 +918,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_imagerec_missile_mk1 = Sh
 
 	clientObjectCRC = 2093977497,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_imagerec_missile_mk1, "object/draft_schematic/space/weapon/missile/shared_wpn_imagerec_missile_mk1.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_imagerec_missile_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_imagerec_missile_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -892,11 +967,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_imagerec_missile_mk2 = Sh
 
 	clientObjectCRC = 2815960846,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_imagerec_missile_mk2, "object/draft_schematic/space/weapon/missile/shared_wpn_imagerec_missile_mk2.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_concussion_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -937,11 +1016,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk1 =
 
 	clientObjectCRC = 1043274696,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk1, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_concussion_mk1.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_concussion_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -982,11 +1065,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk2 =
 
 	clientObjectCRC = 3845698399,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk2, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_concussion_mk2.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_concussion_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1027,11 +1114,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk3 =
 
 	clientObjectCRC = 2889209042,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_concussion_mk3, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_concussion_mk3.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_imagerec_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_imagerec_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1072,11 +1163,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_imagerec_mk1 = S
 
 	clientObjectCRC = 650835732,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_imagerec_mk1, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_imagerec_mk1.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_imagerec_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_imagerec_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1117,11 +1212,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_imagerec_mk2 = S
 
 	clientObjectCRC = 4259143555,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_imagerec_mk2, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_imagerec_mk2.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_proton_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1162,11 +1261,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk1 = Sha
 
 	clientObjectCRC = 3316343727,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk1, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_proton_mk1.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_proton_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1207,11 +1310,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk2 = Sha
 
 	clientObjectCRC = 515689272,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk2, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_proton_mk2.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_proton_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1252,11 +1359,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk3 = Sha
 
 	clientObjectCRC = 1471261877,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk3, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_proton_mk3.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_proton_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1297,11 +1408,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk4 = Sha
 
 	clientObjectCRC = 2891089825,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_proton_mk4, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_proton_mk4.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_seismic_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1342,11 +1457,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk1 = Sh
 
 	clientObjectCRC = 3651288032,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk1, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_seismic_mk1.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_seismic_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1387,11 +1506,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk2 = Sh
 
 	clientObjectCRC = 45454199,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk2, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_seismic_mk2.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_seismic_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1432,11 +1555,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk3 = Sh
 
 	clientObjectCRC = 1270412538,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_seismic_mk3, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_seismic_mk3.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_spacebomb_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1477,11 +1604,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk1 = 
 
 	clientObjectCRC = 3784031794,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk1, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_spacebomb_mk1.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_spacebomb_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1522,11 +1653,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk2 = 
 
 	clientObjectCRC = 983307941,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_launcher_spacebomb_mk2, "object/draft_schematic/space/weapon/missile/shared_wpn_launcher_spacebomb_mk2.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_proton_missile_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1567,11 +1702,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk1 = Shar
 
 	clientObjectCRC = 681902817,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk1, "object/draft_schematic/space/weapon/missile/shared_wpn_proton_missile_mk1.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_proton_missile_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1612,11 +1751,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk2 = Shar
 
 	clientObjectCRC = 4088572534,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk2, "object/draft_schematic/space/weapon/missile/shared_wpn_proton_missile_mk2.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_proton_missile_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1657,11 +1800,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk3 = Shar
 
 	clientObjectCRC = 3133132283,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk3, "object/draft_schematic/space/weapon/missile/shared_wpn_proton_missile_mk3.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_proton_missile_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1702,11 +1849,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk4 = Shar
 
 	clientObjectCRC = 1096607471,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_proton_missile_mk4, "object/draft_schematic/space/weapon/missile/shared_wpn_proton_missile_mk4.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_seismic_missile_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1747,11 +1898,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk1 = Sha
 
 	clientObjectCRC = 3507837660,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk1, "object/draft_schematic/space/weapon/missile/shared_wpn_seismic_missile_mk1.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_seismic_missile_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1792,11 +1947,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk2 = Sha
 
 	clientObjectCRC = 167965259,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk2, "object/draft_schematic/space/weapon/missile/shared_wpn_seismic_missile_mk2.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_seismic_missile_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1837,11 +1996,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk3 = Sha
 
 	clientObjectCRC = 1125094854,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_seismic_missile_mk3, "object/draft_schematic/space/weapon/missile/shared_wpn_seismic_missile_mk3.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_spacebomb_missile_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_spacebomb_missile_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1882,11 +2045,15 @@ object_draft_schematic_space_weapon_missile_shared_wpn_spacebomb_missile_mk1 = S
 
 	clientObjectCRC = 2352553481,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_spacebomb_missile_mk1, "object/draft_schematic/space/weapon/missile/shared_wpn_spacebomb_missile_mk1.iff")
 
 object_draft_schematic_space_weapon_missile_shared_wpn_spacebomb_missile_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/weapon/missile/shared_wpn_spacebomb_missile_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1927,6 +2094,7 @@ object_draft_schematic_space_weapon_missile_shared_wpn_spacebomb_missile_mk2 = S
 
 	clientObjectCRC = 1462679198,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_weapon_missile_shared_wpn_spacebomb_missile_mk2, "object/draft_schematic/space/weapon/missile/shared_wpn_spacebomb_missile_mk2.iff")

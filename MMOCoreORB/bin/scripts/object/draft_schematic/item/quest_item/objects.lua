@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_item_quest_item_shared_attunement_grid = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/quest_item/shared_attunement_grid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_item_quest_item_shared_attunement_grid = SharedDraftSchem
 
 	clientObjectCRC = 4038906353,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_attunement_grid, "object/draft_schematic/item/quest_item/shared_attunement_grid.iff")
 
 object_draft_schematic_item_quest_item_shared_current_alternator = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/quest_item/shared_current_alternator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_item_quest_item_shared_current_alternator = SharedDraftSc
 
 	clientObjectCRC = 4250243198,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_current_alternator, "object/draft_schematic/item/quest_item/shared_current_alternator.iff")
 
 object_draft_schematic_item_quest_item_shared_feedback_controller = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/quest_item/shared_feedback_controller.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_item_quest_item_shared_feedback_controller = SharedDraftS
 
 	clientObjectCRC = 3237757933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_feedback_controller, "object/draft_schematic/item/quest_item/shared_feedback_controller.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_config_processor = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_config_processor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_config_processor =
 
 	clientObjectCRC = 4025902927,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_config_processor, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_config_processor.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_decryption_chip.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip = 
 
 	clientObjectCRC = 1486639811,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_decryption_chip, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_decryption_chip.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_gyro_receiver = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_gyro_receiver.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_gyro_receiver = Sh
 
 	clientObjectCRC = 1039066742,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_gyro_receiver, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_gyro_receiver.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_signal_amp = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_signal_amp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_signal_amp = Share
 
 	clientObjectCRC = 2171554059,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_signal_amp, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_signal_amp.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_solid_state_array = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_solid_state_array.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_solid_state_array 
 
 	clientObjectCRC = 4028815217,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_craft_puzzle_solid_state_array, "object/draft_schematic/item/quest_item/shared_fs_craft_puzzle_solid_state_array.iff")
 
 object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/quest_item/shared_fs_medic_puzzle_heal_pack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack = Shared
 
 	clientObjectCRC = 1522512719,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_fs_medic_puzzle_heal_pack, "object/draft_schematic/item/quest_item/shared_fs_medic_puzzle_heal_pack.iff")
 
 object_draft_schematic_item_quest_item_shared_output_governor = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/quest_item/shared_output_governor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_item_quest_item_shared_output_governor = SharedDraftSchem
 
 	clientObjectCRC = 863982881,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_output_governor, "object/draft_schematic/item/quest_item/shared_output_governor.iff")
 
 object_draft_schematic_item_quest_item_shared_power_regulator = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/quest_item/shared_power_regulator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,6 +575,7 @@ object_draft_schematic_item_quest_item_shared_power_regulator = SharedDraftSchem
 
 	clientObjectCRC = 2816707854,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_quest_item_shared_power_regulator, "object/draft_schematic/item/quest_item/shared_power_regulator.iff")

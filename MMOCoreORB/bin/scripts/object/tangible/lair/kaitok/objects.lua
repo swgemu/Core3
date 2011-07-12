@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_kaitok_shared_lair_kaitok = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kaitok/shared_lair_kaitok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_kaitok_shared_lair_kaitok = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2306923855,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok, "object/tangible/lair/kaitok/shared_lair_kaitok.iff")
 
 object_tangible_lair_kaitok_shared_lair_kaitok_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kaitok/shared_lair_kaitok_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_kaitok_shared_lair_kaitok_mountain = SharedTangibleObjectTe
 
 	clientObjectCRC = 977615987,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_mountain, "object/tangible/lair/kaitok/shared_lair_kaitok_mountain.iff")
 
 object_tangible_lair_kaitok_shared_lair_kaitok_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kaitok/shared_lair_kaitok_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_kaitok_shared_lair_kaitok_wasteland = SharedTangibleObjectT
 
 	clientObjectCRC = 3767339902,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kaitok_shared_lair_kaitok_wasteland, "object/tangible/lair/kaitok/shared_lair_kaitok_wasteland.iff")

@@ -42,6 +42,9 @@
 
 
 object_installation_battlefield_destructible_base_shared_base_destructible_building = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_factory_organic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_installation_battlefield_destructible_base_shared_base_destructible_build
 
 	clientObjectCRC = 3062251189,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_base_shared_base_destructible_building, "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff")
 
 object_installation_battlefield_destructible_base_shared_construction_base_destructible_building = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/battlefield/destructible/base/shared_construction_base_destructible_building.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_installation_battlefield_destructible_base_shared_construction_base_destr
 
 	clientObjectCRC = 2258056519,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_battlefield_destructible_base_shared_construction_base_destructible_building, "object/installation/battlefield/destructible/base/shared_construction_base_destructible_building.iff")

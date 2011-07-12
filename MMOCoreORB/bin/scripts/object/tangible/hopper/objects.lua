@@ -42,6 +42,9 @@
 
 
 object_tangible_hopper_shared_crafting_station_ingredient_hopper_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hopper/shared_crafting_station_ingredient_hopper_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
@@ -92,11 +95,15 @@ object_tangible_hopper_shared_crafting_station_ingredient_hopper_1 = SharedTangi
 
 	clientObjectCRC = 2116612555,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_shared_crafting_station_ingredient_hopper_1, "object/tangible/hopper/shared_crafting_station_ingredient_hopper_1.iff")
 
 object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hopper/shared_manufacture_installation_ingredient_hopper_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ingredient_hopper.iff",
 
@@ -147,11 +154,15 @@ object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1 = Sha
 
 	clientObjectCRC = 4266502475,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_shared_manufacture_installation_ingredient_hopper_1, "object/tangible/hopper/shared_manufacture_installation_ingredient_hopper_1.iff")
 
 object_tangible_hopper_shared_manufacture_installation_output_hopper_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hopper/shared_manufacture_installation_output_hopper_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_output_hopper.iff",
 
@@ -202,6 +213,7 @@ object_tangible_hopper_shared_manufacture_installation_output_hopper_1 = SharedT
 
 	clientObjectCRC = 3765113149,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hopper_shared_manufacture_installation_output_hopper_1, "object/tangible/hopper/shared_manufacture_installation_output_hopper_1.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_sign_player_banner_shared_banner_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/banner/shared_banner_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_painting_player_house.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_sign_player_banner_shared_banner_base = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2165019612,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_banner_shared_banner_base, "object/tangible/sign/player/banner/shared_banner_base.iff")
 
 object_tangible_sign_player_banner_shared_pa_hall = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/player/banner/shared_pa_hall.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_painting_player_house.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_sign_player_banner_shared_pa_hall = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1294986677,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/player/base/shared_player_sign_base.iff", "object/tangible/sign/player/banner/shared_banner_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_player_banner_shared_pa_hall, "object/tangible/sign/player/banner/shared_pa_hall.iff")

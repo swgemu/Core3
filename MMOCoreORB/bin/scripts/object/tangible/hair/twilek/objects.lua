@@ -42,6 +42,9 @@
 
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_female_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_f_hair_s01.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -92,11 +95,15 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s01 = SharedTangibleObject
 
 	clientObjectCRC = 3634839517,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s01, "object/tangible/hair/twilek/shared_hair_twilek_female_s01.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_female_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_f_hair_s02.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -147,11 +154,15 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s02 = SharedTangibleObject
 
 	clientObjectCRC = 61904714,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s02, "object/tangible/hair/twilek/shared_hair_twilek_female_s02.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_female_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_f_hair_s03.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -202,11 +213,15 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s03 = SharedTangibleObject
 
 	clientObjectCRC = 1253961927,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s03, "object/tangible/hair/twilek/shared_hair_twilek_female_s03.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_female_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_f_hair_s04.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -257,11 +272,15 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s04 = SharedTangibleObject
 
 	clientObjectCRC = 2975783891,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s04, "object/tangible/hair/twilek/shared_hair_twilek_female_s04.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_female_s05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_f_hair_s05.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -312,11 +331,15 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s05 = SharedTangibleObject
 
 	clientObjectCRC = 4166237278,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s05, "object/tangible/hair/twilek/shared_hair_twilek_female_s05.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s06 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_female_s06.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_f_hair_s06.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -367,11 +390,15 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s06 = SharedTangibleObject
 
 	clientObjectCRC = 591664329,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s06, "object/tangible/hair/twilek/shared_hair_twilek_female_s06.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s07 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_female_s07.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_f_hair_s07.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -422,11 +449,15 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s07 = SharedTangibleObject
 
 	clientObjectCRC = 1783198532,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s07, "object/tangible/hair/twilek/shared_hair_twilek_female_s07.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_female_s08 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_female_s08.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_f_hair_s08.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -477,11 +508,15 @@ object_tangible_hair_twilek_shared_hair_twilek_female_s08 = SharedTangibleObject
 
 	clientObjectCRC = 3494076246,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_female_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_female_s08, "object/tangible/hair/twilek/shared_hair_twilek_female_s08.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_male_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_m_hair_s01.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -532,11 +567,15 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s01 = SharedTangibleObjectTe
 
 	clientObjectCRC = 2466956712,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s01, "object/tangible/hair/twilek/shared_hair_twilek_male_s01.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_male_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_m_hair_s02.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -587,11 +626,15 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s02 = SharedTangibleObjectTe
 
 	clientObjectCRC = 1209888063,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s02, "object/tangible/hair/twilek/shared_hair_twilek_male_s02.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_male_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_m_hair_s03.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -642,11 +685,15 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s03 = SharedTangibleObjectTe
 
 	clientObjectCRC = 17828530,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s03, "object/tangible/hair/twilek/shared_hair_twilek_male_s03.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_male_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_m_hair_s04.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -697,11 +744,15 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s04 = SharedTangibleObjectTe
 
 	clientObjectCRC = 4210237862,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s04, "object/tangible/hair/twilek/shared_hair_twilek_male_s04.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_male_s05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_m_hair_s05.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -752,11 +803,15 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s05 = SharedTangibleObjectTe
 
 	clientObjectCRC = 3019785771,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s05, "object/tangible/hair/twilek/shared_hair_twilek_male_s05.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s06 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_male_s06.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_m_hair_s06.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -807,11 +862,15 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s06 = SharedTangibleObjectTe
 
 	clientObjectCRC = 1760161468,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s06, "object/tangible/hair/twilek/shared_hair_twilek_male_s06.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s07 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_male_s07.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_m_hair_s07.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -862,11 +921,15 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s07 = SharedTangibleObjectTe
 
 	clientObjectCRC = 568625457,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s07, "object/tangible/hair/twilek/shared_hair_twilek_male_s07.iff")
 
 object_tangible_hair_twilek_shared_hair_twilek_male_s08 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/twilek/shared_hair_twilek_male_s08.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/twk_m_hair_s08.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -917,6 +980,7 @@ object_tangible_hair_twilek_shared_hair_twilek_male_s08 = SharedTangibleObjectTe
 
 	clientObjectCRC = 2616108323,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hair/base/shared_hair_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_base.iff", "object/tangible/hair/twilek/base/shared_hair_twilek_male_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_twilek_shared_hair_twilek_male_s08, "object/tangible/hair/twilek/shared_hair_twilek_male_s08.iff")

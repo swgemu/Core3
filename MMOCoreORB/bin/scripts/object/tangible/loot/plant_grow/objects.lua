@@ -42,6 +42,9 @@
 
 
 object_tangible_loot_plant_grow_shared_plant_stage_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/plant_grow/shared_plant_stage_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_fs_plant_1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_loot_plant_grow_shared_plant_stage_1 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3550223157,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_plant_grow_shared_plant_stage_1, "object/tangible/loot/plant_grow/shared_plant_stage_1.iff")
 
 object_tangible_loot_plant_grow_shared_plant_stage_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/plant_grow/shared_plant_stage_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_fs_plant_2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_loot_plant_grow_shared_plant_stage_2 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 143373218,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_plant_grow_shared_plant_stage_2, "object/tangible/loot/plant_grow/shared_plant_stage_2.iff")
 
 object_tangible_loot_plant_grow_shared_plant_stage_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/plant_grow/shared_plant_stage_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_fs_plant_3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_loot_plant_grow_shared_plant_stage_3 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1099355183,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_plant_grow_shared_plant_stage_3, "object/tangible/loot/plant_grow/shared_plant_stage_3.iff")
 
 object_tangible_loot_plant_grow_shared_plant_stage_dead = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/plant_grow/shared_plant_stage_dead.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_fs_plant_dead.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_loot_plant_grow_shared_plant_stage_dead = SharedTangibleObjectTe
 
 	clientObjectCRC = 3320437812,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_plant_grow_shared_plant_stage_dead, "object/tangible/loot/plant_grow/shared_plant_stage_dead.iff")

@@ -42,6 +42,9 @@
 
 
 object_soundobject_base_shared_soundobject_base = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/soundobject/base/shared_soundobject_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_sound_location.prt",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_soundobject_base_shared_soundobject_base = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 1100063237,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_soundobject_base_shared_soundobject_base, "object/soundobject/base/shared_soundobject_base.iff")

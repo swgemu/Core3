@@ -42,6 +42,9 @@
 
 
 object_mobile_vendor_shared_aqualish_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_aqualish_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/aqualish_f_01.sat",
@@ -116,11 +119,15 @@ object_mobile_vendor_shared_aqualish_female = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 3405269957,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff", "object/mobile/shared_aqualish_male.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_aqualish_female, "object/mobile/vendor/shared_aqualish_female.iff")
 
 object_mobile_vendor_shared_aqualish_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_aqualish_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/aqualish_m_01.sat",
@@ -195,11 +202,15 @@ object_mobile_vendor_shared_aqualish_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 3560977643,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_aqualish_male, "object/mobile/vendor/shared_aqualish_male.iff")
 
 object_mobile_vendor_shared_bith_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_bith_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bith_f.sat",
@@ -274,11 +285,15 @@ object_mobile_vendor_shared_bith_female = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 2071723635,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff", "object/mobile/shared_bith_male.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_bith_female, "object/mobile/vendor/shared_bith_female.iff")
 
 object_mobile_vendor_shared_bith_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_bith_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bith_m.sat",
@@ -353,11 +368,15 @@ object_mobile_vendor_shared_bith_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 1947827481,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_bith_male, "object/mobile/vendor/shared_bith_male.iff")
 
 object_mobile_vendor_shared_bothan_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_bothan_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bth_f.sat",
@@ -432,11 +451,15 @@ object_mobile_vendor_shared_bothan_female = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 132576068,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_bothan_female, "object/mobile/vendor/shared_bothan_female.iff")
 
 object_mobile_vendor_shared_bothan_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_bothan_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/bth_m.sat",
@@ -511,11 +534,15 @@ object_mobile_vendor_shared_bothan_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 2454014624,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_bothan_male, "object/mobile/vendor/shared_bothan_male.iff")
 
 object_mobile_vendor_shared_devaronian_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_devaronian_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/devaronian_m.sat",
@@ -590,11 +617,15 @@ object_mobile_vendor_shared_devaronian_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 2095623604,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_devaronian_male, "object/mobile/vendor/shared_devaronian_male.iff")
 
 object_mobile_vendor_shared_gran_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_gran_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/gran_m.sat",
@@ -669,11 +700,15 @@ object_mobile_vendor_shared_gran_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 3310863058,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_gran_male, "object/mobile/vendor/shared_gran_male.iff")
 
 object_mobile_vendor_shared_human_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_human_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_f.sat",
@@ -748,11 +783,15 @@ object_mobile_vendor_shared_human_female = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 847857791,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_human_female, "object/mobile/vendor/shared_human_female.iff")
 
 object_mobile_vendor_shared_human_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_human_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -827,11 +866,15 @@ object_mobile_vendor_shared_human_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 1639282596,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_human_male, "object/mobile/vendor/shared_human_male.iff")
 
 object_mobile_vendor_shared_ishi_tib_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_ishi_tib_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ishi_tib_m.sat",
@@ -906,11 +949,15 @@ object_mobile_vendor_shared_ishi_tib_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 2586473426,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_ishi_tib_male, "object/mobile/vendor/shared_ishi_tib_male.iff")
 
 object_mobile_vendor_shared_ithorian_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_ithorian_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ith_f.sat",
@@ -985,11 +1032,15 @@ object_mobile_vendor_shared_ithorian_female = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 2809871871,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_ithorian_female, "object/mobile/vendor/shared_ithorian_female.iff")
 
 object_mobile_vendor_shared_ithorian_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_ithorian_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/ith_m.sat",
@@ -1064,11 +1115,15 @@ object_mobile_vendor_shared_ithorian_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 571361166,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_ithorian_male, "object/mobile/vendor/shared_ithorian_male.iff")
 
 object_mobile_vendor_shared_moncal_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_moncal_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/mon_f.sat",
@@ -1143,11 +1198,15 @@ object_mobile_vendor_shared_moncal_female = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 2191212436,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_moncal_female, "object/mobile/vendor/shared_moncal_female.iff")
 
 object_mobile_vendor_shared_moncal_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_moncal_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/mon_m.sat",
@@ -1222,11 +1281,15 @@ object_mobile_vendor_shared_moncal_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 1887068219,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_moncal_male, "object/mobile/vendor/shared_moncal_male.iff")
 
 object_mobile_vendor_shared_nikto_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_nikto_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/nikto_m.sat",
@@ -1301,11 +1364,15 @@ object_mobile_vendor_shared_nikto_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 2537817486,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_nikto_male, "object/mobile/vendor/shared_nikto_male.iff")
 
 object_mobile_vendor_shared_quarren_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_quarren_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/quarren_m.sat",
@@ -1380,11 +1447,15 @@ object_mobile_vendor_shared_quarren_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 4181918992,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_quarren_male, "object/mobile/vendor/shared_quarren_male.iff")
 
 object_mobile_vendor_shared_rodian_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_rodian_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/rod_f.sat",
@@ -1459,11 +1530,15 @@ object_mobile_vendor_shared_rodian_female = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 3637552145,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_rodian_female, "object/mobile/vendor/shared_rodian_female.iff")
 
 object_mobile_vendor_shared_rodian_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_rodian_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/rod_m.sat",
@@ -1538,11 +1613,15 @@ object_mobile_vendor_shared_rodian_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 3259758607,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_rodian_male, "object/mobile/vendor/shared_rodian_male.iff")
 
 object_mobile_vendor_shared_sullustan_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_sullustan_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/sul_f.sat",
@@ -1617,11 +1696,15 @@ object_mobile_vendor_shared_sullustan_female = SharedCreatureObjectTemplate:new 
 
 	clientObjectCRC = 3520820662,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_sullustan_female, "object/mobile/vendor/shared_sullustan_female.iff")
 
 object_mobile_vendor_shared_sullustan_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_sullustan_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/sul_m.sat",
@@ -1696,11 +1779,15 @@ object_mobile_vendor_shared_sullustan_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 3699957250,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_sullustan_male, "object/mobile/vendor/shared_sullustan_male.iff")
 
 object_mobile_vendor_shared_trandoshan_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_trandoshan_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/trn_f.sat",
@@ -1775,11 +1862,15 @@ object_mobile_vendor_shared_trandoshan_female = SharedCreatureObjectTemplate:new
 
 	clientObjectCRC = 4277366403,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_trandoshan_female, "object/mobile/vendor/shared_trandoshan_female.iff")
 
 object_mobile_vendor_shared_trandoshan_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_trandoshan_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/trn_m.sat",
@@ -1854,11 +1945,15 @@ object_mobile_vendor_shared_trandoshan_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 1147135587,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_trandoshan_male, "object/mobile/vendor/shared_trandoshan_male.iff")
 
 object_mobile_vendor_shared_twilek_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_twilek_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/twk_f.sat",
@@ -1933,11 +2028,15 @@ object_mobile_vendor_shared_twilek_female = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 2653147798,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_twilek_female, "object/mobile/vendor/shared_twilek_female.iff")
 
 object_mobile_vendor_shared_twilek_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_twilek_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/twk_m.sat",
@@ -2012,11 +2111,15 @@ object_mobile_vendor_shared_twilek_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 993187816,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_twilek_male, "object/mobile/vendor/shared_twilek_male.iff")
 
 object_mobile_vendor_shared_weequay_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_weequay_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/weequay_m.sat",
@@ -2091,11 +2194,15 @@ object_mobile_vendor_shared_weequay_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 2188503843,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_weequay_male, "object/mobile/vendor/shared_weequay_male.iff")
 
 object_mobile_vendor_shared_wookiee_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_wookiee_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/wke_f.sat",
@@ -2170,11 +2277,15 @@ object_mobile_vendor_shared_wookiee_female = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 3668976196,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_wookiee_female, "object/mobile/vendor/shared_wookiee_female.iff")
 
 object_mobile_vendor_shared_wookiee_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_wookiee_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/wke_m.sat",
@@ -2249,11 +2360,15 @@ object_mobile_vendor_shared_wookiee_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 3356658315,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_wookiee_male, "object/mobile/vendor/shared_wookiee_male.iff")
 
 object_mobile_vendor_shared_zabrak_female = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_zabrak_female.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/zab_f.sat",
@@ -2328,11 +2443,15 @@ object_mobile_vendor_shared_zabrak_female = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 3008880567,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_zabrak_female, "object/mobile/vendor/shared_zabrak_female.iff")
 
 object_mobile_vendor_shared_zabrak_male = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/mobile/vendor/shared_zabrak_male.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/zab_m.sat",
@@ -2407,6 +2526,7 @@ object_mobile_vendor_shared_zabrak_male = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 733384901,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/mobile/shared_mobile.iff", "object/mobile/skeleton/shared_humanoid.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_mobile_vendor_shared_zabrak_male, "object/mobile/vendor/shared_zabrak_male.iff")

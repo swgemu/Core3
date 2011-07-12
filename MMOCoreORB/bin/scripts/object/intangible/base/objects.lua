@@ -42,6 +42,9 @@
 
 
 object_intangible_base_shared_base_intangible = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/base/shared_base_intangible.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_intangible_base_shared_base_intangible = SharedIntangibleObjectTemplate:n
 
 	clientObjectCRC = 3949582877,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_base_shared_base_intangible, "object/intangible/base/shared_base_intangible.iff")
 
 object_intangible_base_shared_intangible_default = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/base/shared_intangible_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -127,6 +134,7 @@ object_intangible_base_shared_intangible_default = SharedIntangibleObjectTemplat
 
 	clientObjectCRC = 1331018210,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_base_shared_intangible_default, "object/intangible/base/shared_intangible_default.iff")

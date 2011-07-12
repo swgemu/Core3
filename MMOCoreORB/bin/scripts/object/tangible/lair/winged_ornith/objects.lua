@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_winged_ornith_shared_lair_winged_ornith = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/winged_ornith/shared_lair_winged_ornith.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith = SharedTangibleObj
 
 	clientObjectCRC = 2324552203,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith.iff")
 
 object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland = SharedT
 
 	clientObjectCRC = 3499819428,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_grassland, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_grassland.iff")
 
 object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle = SharedTang
 
 	clientObjectCRC = 3275441058,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_winged_ornith_shared_lair_winged_ornith_jungle, "object/tangible/lair/winged_ornith/shared_lair_winged_ornith_jungle.iff")

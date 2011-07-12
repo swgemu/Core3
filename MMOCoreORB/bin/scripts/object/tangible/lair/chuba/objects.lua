@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_chuba_shared_lair_chuba = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/chuba/shared_lair_chuba.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_chuba_shared_lair_chuba = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 3941503205,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_chuba_shared_lair_chuba, "object/tangible/lair/chuba/shared_lair_chuba.iff")
 
 object_tangible_lair_chuba_shared_lair_chuba_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/chuba/shared_lair_chuba_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_chuba_shared_lair_chuba_forest = SharedTangibleObjectTempla
 
 	clientObjectCRC = 2016717177,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_chuba_shared_lair_chuba_forest, "object/tangible/lair/chuba/shared_lair_chuba_forest.iff")
 
 object_tangible_lair_chuba_shared_lair_chuba_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/chuba/shared_lair_chuba_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_chuba_shared_lair_chuba_swamp = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 745493888,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_chuba_shared_lair_chuba_swamp, "object/tangible/lair/chuba/shared_lair_chuba_swamp.iff")

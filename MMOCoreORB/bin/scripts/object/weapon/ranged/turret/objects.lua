@@ -42,6 +42,9 @@
 
 
 object_weapon_ranged_turret_shared_turret_block_large = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/turret/shared_turret_block_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_rifle_dlt20.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -96,6 +99,7 @@ object_weapon_ranged_turret_shared_turret_block_large = SharedWeaponObjectTempla
 
 	clientObjectCRC = 4214506567,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/turret/base/shared_turret_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_turret_shared_turret_block_large, "object/weapon/ranged/turret/shared_turret_block_large.iff")

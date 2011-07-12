@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/slicing/shared_slicing_armor_upgrade_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit = SharedDraftSch
 
 	clientObjectCRC = 1225468655,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_armor_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_armor_upgrade_kit.iff")
 
 object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/slicing/shared_slicing_flow_analyzer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_slicing_shared_slicing_flow_analyzer = SharedDraftSchemat
 
 	clientObjectCRC = 425747428,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_flow_analyzer, "object/draft_schematic/slicing/shared_slicing_flow_analyzer.iff")
 
 object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/slicing/shared_slicing_laser_knife.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_slicing_shared_slicing_laser_knife = SharedDraftSchematic
 
 	clientObjectCRC = 1575116633,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_laser_knife, "object/draft_schematic/slicing/shared_slicing_laser_knife.iff")
 
 object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/slicing/shared_slicing_molecular_clamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_slicing_shared_slicing_molecular_clamp = SharedDraftSchem
 
 	clientObjectCRC = 2888384407,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_molecular_clamp, "object/draft_schematic/slicing/shared_slicing_molecular_clamp.iff")
 
 object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/slicing/shared_slicing_weapon_upgrade_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,6 +281,7 @@ object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit = SharedDraftSc
 
 	clientObjectCRC = 2390191987,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_slicing_shared_slicing_weapon_upgrade_kit, "object/draft_schematic/slicing/shared_slicing_weapon_upgrade_kit.iff")

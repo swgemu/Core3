@@ -42,6 +42,9 @@
 
 
 object_installation_faction_perk_covert_detector_shared_detector_base = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/faction_perk/covert_detector/shared_detector_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_sensor_beacon.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_installation_faction_perk_covert_detector_shared_detector_base = SharedIn
 
 	clientObjectCRC = 2218940295,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_faction_perk_covert_detector_shared_detector_base, "object/installation/faction_perk/covert_detector/shared_detector_base.iff")

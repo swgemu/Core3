@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_sarlacc_shared_lair_sarlacc = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/sarlacc/shared_lair_sarlacc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_sarlacc_shared_lair_sarlacc = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 939893081,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_sarlacc_shared_lair_sarlacc, "object/tangible/lair/sarlacc/shared_lair_sarlacc.iff")
 
 object_tangible_lair_sarlacc_shared_lair_sarlacc_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/sarlacc/shared_lair_sarlacc_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_sarlacc_shared_lair_sarlacc_desert = SharedTangibleObjectTe
 
 	clientObjectCRC = 2362534144,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_sarlacc_shared_lair_sarlacc_desert, "object/tangible/lair/sarlacc/shared_lair_sarlacc_desert.iff")

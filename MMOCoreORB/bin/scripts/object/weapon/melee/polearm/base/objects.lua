@@ -42,6 +42,9 @@
 
 
 object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/polearm/base/shared_crafted_lance_lightsaber_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base = SharedWe
 
 	clientObjectCRC = 4081145715,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_base_shared_crafted_lance_lightsaber_base, "object/weapon/melee/polearm/base/shared_crafted_lance_lightsaber_base.iff")
 
 object_weapon_melee_polearm_base_shared_lance_lightsaber_base = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/polearm/base/shared_lance_lightsaber_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -155,11 +162,15 @@ object_weapon_melee_polearm_base_shared_lance_lightsaber_base = SharedWeaponObje
 
 	clientObjectCRC = 1355297704,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_base_shared_lance_lightsaber_base, "object/weapon/melee/polearm/base/shared_lance_lightsaber_base.iff")
 
 object_weapon_melee_polearm_base_shared_polearm_base = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/polearm/base/shared_polearm_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_both.iff",
 	attackType = 1,
@@ -214,6 +225,7 @@ object_weapon_melee_polearm_base_shared_polearm_base = SharedWeaponObjectTemplat
 
 	clientObjectCRC = 4212036933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_polearm_base_shared_polearm_base, "object/weapon/melee/polearm/base/shared_polearm_base.iff")

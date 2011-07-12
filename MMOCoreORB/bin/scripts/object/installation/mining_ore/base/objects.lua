@@ -42,6 +42,9 @@
 
 
 object_installation_mining_ore_base_shared_mining_ore_base = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/mining_ore/base/shared_mining_ore_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_installation_mining_ore_base_shared_mining_ore_base = SharedInstallationO
 
 	clientObjectCRC = 1937734566,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_ore_base_shared_mining_ore_base, "object/installation/mining_ore/base/shared_mining_ore_base.iff")

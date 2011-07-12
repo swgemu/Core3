@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_bio_engineer_creature_shared_creature_angler = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_angler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_angler = SharedDraf
 
 	clientObjectCRC = 2194731916,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_angler, "object/draft_schematic/bio_engineer/creature/shared_creature_angler.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bageraset = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_bageraset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bageraset = SharedD
 
 	clientObjectCRC = 4215503445,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bageraset, "object/draft_schematic/bio_engineer/creature/shared_creature_bageraset.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bantha = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_bantha.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bantha = SharedDraf
 
 	clientObjectCRC = 2986875366,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bantha, "object/draft_schematic/bio_engineer/creature/shared_creature_bantha.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bearded_jax = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_bearded_jax.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bearded_jax = Share
 
 	clientObjectCRC = 4105804770,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bearded_jax, "object/draft_schematic/bio_engineer/creature/shared_creature_bearded_jax.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_blurrg = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_blurrg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_blurrg = SharedDraf
 
 	clientObjectCRC = 3526408720,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_blurrg, "object/draft_schematic/bio_engineer/creature/shared_creature_blurrg.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_boar_wolf = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_boar_wolf.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_boar_wolf = SharedD
 
 	clientObjectCRC = 4013578304,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_boar_wolf, "object/draft_schematic/bio_engineer/creature/shared_creature_boar_wolf.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bocatt = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_bocatt.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bocatt = SharedDraf
 
 	clientObjectCRC = 2241064889,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bocatt, "object/draft_schematic/bio_engineer/creature/shared_creature_bocatt.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bol = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_bol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bol = SharedDraftSc
 
 	clientObjectCRC = 194404346,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bol, "object/draft_schematic/bio_engineer/creature/shared_creature_bol.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bolle_bol = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_bolle_bol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bolle_bol = SharedD
 
 	clientObjectCRC = 774858939,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bolle_bol, "object/draft_schematic/bio_engineer/creature/shared_creature_bolle_bol.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bolma = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_bolma.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bolma = SharedDraft
 
 	clientObjectCRC = 3401168648,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bolma, "object/draft_schematic/bio_engineer/creature/shared_creature_bolma.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_bordok = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_bordok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_bordok = SharedDraf
 
 	clientObjectCRC = 2122372411,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_bordok, "object/draft_schematic/bio_engineer/creature/shared_creature_bordok.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_brackaset = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_brackaset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_brackaset = SharedD
 
 	clientObjectCRC = 4202172720,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_brackaset, "object/draft_schematic/bio_engineer/creature/shared_creature_brackaset.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_carrion_spat = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_carrion_spat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,11 +673,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_carrion_spat = Shar
 
 	clientObjectCRC = 2824161282,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_carrion_spat, "object/draft_schematic/bio_engineer/creature/shared_creature_carrion_spat.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_choku = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_choku.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -667,11 +722,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_choku = SharedDraft
 
 	clientObjectCRC = 2519862275,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_choku, "object/draft_schematic/bio_engineer/creature/shared_creature_choku.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_cu_pa = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_cu_pa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -712,11 +771,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_cu_pa = SharedDraft
 
 	clientObjectCRC = 294189744,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_cu_pa, "object/draft_schematic/bio_engineer/creature/shared_creature_cu_pa.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_dalyrake = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_dalyrake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -757,11 +820,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dalyrake = SharedDr
 
 	clientObjectCRC = 1742701874,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dalyrake, "object/draft_schematic/bio_engineer/creature/shared_creature_dalyrake.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_dewback = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_dewback.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -802,11 +869,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dewback = SharedDra
 
 	clientObjectCRC = 458255116,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dewback, "object/draft_schematic/bio_engineer/creature/shared_creature_dewback.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_dune_lizard = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_dune_lizard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -847,11 +918,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_dune_lizard = Share
 
 	clientObjectCRC = 1538963680,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_dune_lizard, "object/draft_schematic/bio_engineer/creature/shared_creature_dune_lizard.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_durni = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_durni.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -892,11 +967,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_durni = SharedDraft
 
 	clientObjectCRC = 2143765286,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_durni, "object/draft_schematic/bio_engineer/creature/shared_creature_durni.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_eopie = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_eopie.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -937,11 +1016,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_eopie = SharedDraft
 
 	clientObjectCRC = 4256914670,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_eopie, "object/draft_schematic/bio_engineer/creature/shared_creature_eopie.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_falumpaset = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_falumpaset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -982,11 +1065,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_falumpaset = Shared
 
 	clientObjectCRC = 1377358713,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_falumpaset, "object/draft_schematic/bio_engineer/creature/shared_creature_falumpaset.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_fambaa = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_fambaa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1027,11 +1114,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_fambaa = SharedDraf
 
 	clientObjectCRC = 3590470383,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_fambaa, "object/draft_schematic/bio_engineer/creature/shared_creature_fambaa.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gnort = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_gnort.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1072,11 +1163,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gnort = SharedDraft
 
 	clientObjectCRC = 3008536395,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gnort, "object/draft_schematic/bio_engineer/creature/shared_creature_gnort.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_graul = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_graul.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1117,11 +1212,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_graul = SharedDraft
 
 	clientObjectCRC = 4155029108,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_graul, "object/draft_schematic/bio_engineer/creature/shared_creature_graul.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gronda = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_gronda.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1162,11 +1261,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gronda = SharedDraf
 
 	clientObjectCRC = 3598263633,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gronda, "object/draft_schematic/bio_engineer/creature/shared_creature_gronda.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gualama = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_gualama.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1207,11 +1310,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gualama = SharedDra
 
 	clientObjectCRC = 1583894111,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gualama, "object/draft_schematic/bio_engineer/creature/shared_creature_gualama.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_guf_drolg = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_guf_drolg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1252,11 +1359,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_guf_drolg = SharedD
 
 	clientObjectCRC = 214864710,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_guf_drolg, "object/draft_schematic/bio_engineer/creature/shared_creature_guf_drolg.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gurnaset = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_gurnaset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1297,11 +1408,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurnaset = SharedDr
 
 	clientObjectCRC = 2942082056,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurnaset, "object/draft_schematic/bio_engineer/creature/shared_creature_gurnaset.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gurrcat = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_gurrcat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1342,11 +1457,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurrcat = SharedDra
 
 	clientObjectCRC = 836337505,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurrcat, "object/draft_schematic/bio_engineer/creature/shared_creature_gurrcat.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_gurreck = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_gurreck.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1387,11 +1506,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_gurreck = SharedDra
 
 	clientObjectCRC = 2573412958,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_gurreck, "object/draft_schematic/bio_engineer/creature/shared_creature_gurreck.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_hermit_spider = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_hermit_spider.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1432,11 +1555,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_hermit_spider = Sha
 
 	clientObjectCRC = 3982863564,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_hermit_spider, "object/draft_schematic/bio_engineer/creature/shared_creature_hermit_spider.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_huf_dun = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_huf_dun.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1477,11 +1604,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_huf_dun = SharedDra
 
 	clientObjectCRC = 42281249,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_huf_dun, "object/draft_schematic/bio_engineer/creature/shared_creature_huf_dun.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_huurton = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_huurton.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1522,11 +1653,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_huurton = SharedDra
 
 	clientObjectCRC = 221814880,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_huurton, "object/draft_schematic/bio_engineer/creature/shared_creature_huurton.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_ikopi = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_ikopi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1567,11 +1702,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_ikopi = SharedDraft
 
 	clientObjectCRC = 3034849253,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_ikopi, "object/draft_schematic/bio_engineer/creature/shared_creature_ikopi.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kaadu = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_kaadu.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1612,11 +1751,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kaadu = SharedDraft
 
 	clientObjectCRC = 3687731549,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kaadu, "object/draft_schematic/bio_engineer/creature/shared_creature_kaadu.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kahmurra = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_kahmurra.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1657,11 +1800,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kahmurra = SharedDr
 
 	clientObjectCRC = 2090758476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kahmurra, "object/draft_schematic/bio_engineer/creature/shared_creature_kahmurra.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kima = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_kima.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1702,11 +1849,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kima = SharedDraftS
 
 	clientObjectCRC = 4083743117,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kima, "object/draft_schematic/bio_engineer/creature/shared_creature_kima.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kimogila = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_kimogila.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1747,11 +1898,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kimogila = SharedDr
 
 	clientObjectCRC = 2952128886,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kimogila, "object/draft_schematic/bio_engineer/creature/shared_creature_kimogila.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kliknik = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_kliknik.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1792,11 +1947,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kliknik = SharedDra
 
 	clientObjectCRC = 4064324910,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kliknik, "object/draft_schematic/bio_engineer/creature/shared_creature_kliknik.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_krahbu = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_krahbu.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1837,11 +1996,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_krahbu = SharedDraf
 
 	clientObjectCRC = 2639605564,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_krahbu, "object/draft_schematic/bio_engineer/creature/shared_creature_krahbu.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kusak = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_kusak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1882,11 +2045,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kusak = SharedDraft
 
 	clientObjectCRC = 1674691308,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kusak, "object/draft_schematic/bio_engineer/creature/shared_creature_kusak.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_kwi = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_kwi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1927,11 +2094,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_kwi = SharedDraftSc
 
 	clientObjectCRC = 822086132,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_kwi, "object/draft_schematic/bio_engineer/creature/shared_creature_kwi.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_langlatch = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_langlatch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1972,11 +2143,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_langlatch = SharedD
 
 	clientObjectCRC = 382639713,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_langlatch, "object/draft_schematic/bio_engineer/creature/shared_creature_langlatch.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_malkloc = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_malkloc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2017,11 +2192,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_malkloc = SharedDra
 
 	clientObjectCRC = 3222156358,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_malkloc, "object/draft_schematic/bio_engineer/creature/shared_creature_malkloc.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_mawgax = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_mawgax.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2062,11 +2241,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_mawgax = SharedDraf
 
 	clientObjectCRC = 1998178833,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_mawgax, "object/draft_schematic/bio_engineer/creature/shared_creature_mawgax.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_merek = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_merek.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2107,11 +2290,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_merek = SharedDraft
 
 	clientObjectCRC = 3363831532,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_merek, "object/draft_schematic/bio_engineer/creature/shared_creature_merek.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_mott = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_mott.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2152,11 +2339,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_mott = SharedDraftS
 
 	clientObjectCRC = 391972314,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_mott, "object/draft_schematic/bio_engineer/creature/shared_creature_mott.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_narglatch = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_narglatch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2197,11 +2388,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_narglatch = SharedD
 
 	clientObjectCRC = 1494399637,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_narglatch, "object/draft_schematic/bio_engineer/creature/shared_creature_narglatch.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_piket = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_piket.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2242,11 +2437,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_piket = SharedDraft
 
 	clientObjectCRC = 876066471,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_piket, "object/draft_schematic/bio_engineer/creature/shared_creature_piket.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_pugoriss = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_pugoriss.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2287,11 +2486,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_pugoriss = SharedDr
 
 	clientObjectCRC = 3425505007,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_pugoriss, "object/draft_schematic/bio_engineer/creature/shared_creature_pugoriss.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_rancor = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_rancor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2332,11 +2535,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_rancor = SharedDraf
 
 	clientObjectCRC = 2315289809,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_rancor, "object/draft_schematic/bio_engineer/creature/shared_creature_rancor.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_roba = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_roba.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2377,11 +2584,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_roba = SharedDraftS
 
 	clientObjectCRC = 3996613579,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_roba, "object/draft_schematic/bio_engineer/creature/shared_creature_roba.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_ronto = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_ronto.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2422,11 +2633,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_ronto = SharedDraft
 
 	clientObjectCRC = 3413941223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_ronto, "object/draft_schematic/bio_engineer/creature/shared_creature_ronto.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_sand_panther = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_sand_panther.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2467,11 +2682,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_sand_panther = Shar
 
 	clientObjectCRC = 1557933596,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_sand_panther, "object/draft_schematic/bio_engineer/creature/shared_creature_sand_panther.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_sharnaff = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_sharnaff.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2512,11 +2731,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_sharnaff = SharedDr
 
 	clientObjectCRC = 1130402855,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_sharnaff, "object/draft_schematic/bio_engineer/creature/shared_creature_sharnaff.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_shear_mite = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_shear_mite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2557,11 +2780,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_shear_mite = Shared
 
 	clientObjectCRC = 2912736913,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_shear_mite, "object/draft_schematic/bio_engineer/creature/shared_creature_shear_mite.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_slice_hound = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_slice_hound.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2602,11 +2829,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_slice_hound = Share
 
 	clientObjectCRC = 3198942193,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_slice_hound, "object/draft_schematic/bio_engineer/creature/shared_creature_slice_hound.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_snorbal = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_snorbal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2647,11 +2878,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_snorbal = SharedDra
 
 	clientObjectCRC = 3916872379,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_snorbal, "object/draft_schematic/bio_engineer/creature/shared_creature_snorbal.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_squall = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_squall.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2692,11 +2927,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_squall = SharedDraf
 
 	clientObjectCRC = 1147183865,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_squall, "object/draft_schematic/bio_engineer/creature/shared_creature_squall.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_swirl_prong = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_swirl_prong.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2737,11 +2976,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_swirl_prong = Share
 
 	clientObjectCRC = 1889951794,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_swirl_prong, "object/draft_schematic/bio_engineer/creature/shared_creature_swirl_prong.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_thune = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_thune.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2782,11 +3025,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_thune = SharedDraft
 
 	clientObjectCRC = 2789806366,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_thune, "object/draft_schematic/bio_engineer/creature/shared_creature_thune.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_torton = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_torton.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2827,11 +3074,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_torton = SharedDraf
 
 	clientObjectCRC = 3492399802,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_torton, "object/draft_schematic/bio_engineer/creature/shared_creature_torton.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_tybis = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_tybis.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2872,11 +3123,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_tybis = SharedDraft
 
 	clientObjectCRC = 784595182,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_tybis, "object/draft_schematic/bio_engineer/creature/shared_creature_tybis.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_veermok = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_veermok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2917,11 +3172,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_veermok = SharedDra
 
 	clientObjectCRC = 3830962018,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_veermok, "object/draft_schematic/bio_engineer/creature/shared_creature_veermok.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_verne = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_verne.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2962,11 +3221,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_verne = SharedDraft
 
 	clientObjectCRC = 1267151566,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_verne, "object/draft_schematic/bio_engineer/creature/shared_creature_verne.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_vesp = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_vesp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3007,11 +3270,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_vesp = SharedDraftS
 
 	clientObjectCRC = 240128094,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_vesp, "object/draft_schematic/bio_engineer/creature/shared_creature_vesp.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_vir_vur.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3052,11 +3319,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur = SharedDra
 
 	clientObjectCRC = 454865702,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur, "object/draft_schematic/bio_engineer/creature/shared_creature_vir_vur.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_woolamander = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_woolamander.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3097,11 +3368,15 @@ object_draft_schematic_bio_engineer_creature_shared_creature_woolamander = Share
 
 	clientObjectCRC = 2302146856,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_woolamander, "object/draft_schematic/bio_engineer/creature/shared_creature_woolamander.iff")
 
 object_draft_schematic_bio_engineer_creature_shared_creature_zucca_boar = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/creature/shared_creature_zucca_boar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3142,6 +3417,7 @@ object_draft_schematic_bio_engineer_creature_shared_creature_zucca_boar = Shared
 
 	clientObjectCRC = 2008121273,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_creature_shared_creature_zucca_boar, "object/draft_schematic/bio_engineer/creature/shared_creature_zucca_boar.iff")

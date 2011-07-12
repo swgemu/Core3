@@ -42,6 +42,9 @@
 
 
 object_creature_npc_general_shared_skill_trainer = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/npc/general/shared_skill_trainer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/hum_m.sat",
@@ -116,6 +119,7 @@ object_creature_npc_general_shared_skill_trainer = SharedCreatureObjectTemplate:
 
 	clientObjectCRC = 2389040637,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_npc_general_shared_skill_trainer, "object/creature/npc/general/shared_skill_trainer.iff")

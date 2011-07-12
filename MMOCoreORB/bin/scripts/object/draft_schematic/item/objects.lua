@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_item_shared_craftable_bug_habitat = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_craftable_bug_habitat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_item_shared_craftable_bug_habitat = SharedDraftSchematicO
 
 	clientObjectCRC = 3662038442,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_craftable_bug_habitat, "object/draft_schematic/item/shared_craftable_bug_habitat.iff")
 
 object_draft_schematic_item_shared_item_agitator_motor = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_agitator_motor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_item_shared_item_agitator_motor = SharedDraftSchematicObj
 
 	clientObjectCRC = 3332388159,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_agitator_motor, "object/draft_schematic/item/shared_item_agitator_motor.iff")
 
 object_draft_schematic_item_shared_item_ballot_box_terminal = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_ballot_box_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_item_shared_item_ballot_box_terminal = SharedDraftSchemat
 
 	clientObjectCRC = 2213189419,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_ballot_box_terminal, "object/draft_schematic/item/shared_item_ballot_box_terminal.iff")
 
 object_draft_schematic_item_shared_item_base_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_base_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_item_shared_item_base_tool = SharedDraftSchematicObjectTe
 
 	clientObjectCRC = 3261161372,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_base_tool, "object/draft_schematic/item/shared_item_base_tool.iff")
 
 object_draft_schematic_item_shared_item_battery_droid = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_battery_droid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_item_shared_item_battery_droid = SharedDraftSchematicObje
 
 	clientObjectCRC = 3508567807,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/item/shared_item_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_battery_droid, "object/draft_schematic/item/shared_item_battery_droid.iff")
 
 object_draft_schematic_item_shared_item_chance_cube = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_chance_cube.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_item_shared_item_chance_cube = SharedDraftSchematicObject
 
 	clientObjectCRC = 3203266155,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_chance_cube, "object/draft_schematic/item/shared_item_chance_cube.iff")
 
 object_draft_schematic_item_shared_item_clothing_station = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_clothing_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_item_shared_item_clothing_station = SharedDraftSchematicO
 
 	clientObjectCRC = 1775090103,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_clothing_station, "object/draft_schematic/item/shared_item_clothing_station.iff")
 
 object_draft_schematic_item_shared_item_clothing_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_clothing_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_item_shared_item_clothing_tool = SharedDraftSchematicObje
 
 	clientObjectCRC = 1505349903,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_clothing_tool, "object/draft_schematic/item/shared_item_clothing_tool.iff")
 
 object_draft_schematic_item_shared_item_configurable_sided_dice = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_configurable_sided_dice.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_item_shared_item_configurable_sided_dice = SharedDraftSch
 
 	clientObjectCRC = 1370957893,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_configurable_sided_dice, "object/draft_schematic/item/shared_item_configurable_sided_dice.iff")
 
 object_draft_schematic_item_shared_item_firework_eighteen = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_firework_eighteen.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_item_shared_item_firework_eighteen = SharedDraftSchematic
 
 	clientObjectCRC = 3660502688,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_firework_eighteen, "object/draft_schematic/item/shared_item_firework_eighteen.iff")
 
 object_draft_schematic_item_shared_item_firework_eleven = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_firework_eleven.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_item_shared_item_firework_eleven = SharedDraftSchematicOb
 
 	clientObjectCRC = 2713986341,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_firework_eleven, "object/draft_schematic/item/shared_item_firework_eleven.iff")
 
 object_draft_schematic_item_shared_item_firework_five = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_firework_five.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_item_shared_item_firework_five = SharedDraftSchematicObje
 
 	clientObjectCRC = 879669640,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_firework_five, "object/draft_schematic/item/shared_item_firework_five.iff")
 
 object_draft_schematic_item_shared_item_firework_four = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_firework_four.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,11 +673,15 @@ object_draft_schematic_item_shared_item_firework_four = SharedDraftSchematicObje
 
 	clientObjectCRC = 3323326153,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_firework_four, "object/draft_schematic/item/shared_item_firework_four.iff")
 
 object_draft_schematic_item_shared_item_firework_one = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_firework_one.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -667,11 +722,15 @@ object_draft_schematic_item_shared_item_firework_one = SharedDraftSchematicObjec
 
 	clientObjectCRC = 2052759177,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_firework_one, "object/draft_schematic/item/shared_item_firework_one.iff")
 
 object_draft_schematic_item_shared_item_firework_show = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_firework_show.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -712,11 +771,15 @@ object_draft_schematic_item_shared_item_firework_show = SharedDraftSchematicObje
 
 	clientObjectCRC = 2196218270,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_firework_show, "object/draft_schematic/item/shared_item_firework_show.iff")
 
 object_draft_schematic_item_shared_item_firework_ten = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_firework_ten.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -757,11 +820,15 @@ object_draft_schematic_item_shared_item_firework_ten = SharedDraftSchematicObjec
 
 	clientObjectCRC = 1345222985,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_firework_ten, "object/draft_schematic/item/shared_item_firework_ten.iff")
 
 object_draft_schematic_item_shared_item_firework_three = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_firework_three.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -802,11 +869,15 @@ object_draft_schematic_item_shared_item_firework_three = SharedDraftSchematicObj
 
 	clientObjectCRC = 1853917921,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_firework_three, "object/draft_schematic/item/shared_item_firework_three.iff")
 
 object_draft_schematic_item_shared_item_firework_two = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_firework_two.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -847,11 +918,15 @@ object_draft_schematic_item_shared_item_firework_two = SharedDraftSchematicObjec
 
 	clientObjectCRC = 2570243587,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_firework_two, "object/draft_schematic/item/shared_item_firework_two.iff")
 
 object_draft_schematic_item_shared_item_fishing_pole = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_fishing_pole.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -892,11 +967,15 @@ object_draft_schematic_item_shared_item_fishing_pole = SharedDraftSchematicObjec
 
 	clientObjectCRC = 4197036370,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_fishing_pole, "object/draft_schematic/item/shared_item_fishing_pole.iff")
 
 object_draft_schematic_item_shared_item_food_station = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_food_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -937,11 +1016,15 @@ object_draft_schematic_item_shared_item_food_station = SharedDraftSchematicObjec
 
 	clientObjectCRC = 697822739,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_food_station, "object/draft_schematic/item/shared_item_food_station.iff")
 
 object_draft_schematic_item_shared_item_food_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_food_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -982,11 +1065,15 @@ object_draft_schematic_item_shared_item_food_tool = SharedDraftSchematicObjectTe
 
 	clientObjectCRC = 1492600411,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_food_tool, "object/draft_schematic/item/shared_item_food_tool.iff")
 
 object_draft_schematic_item_shared_item_generic_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_generic_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1027,11 +1114,15 @@ object_draft_schematic_item_shared_item_generic_tool = SharedDraftSchematicObjec
 
 	clientObjectCRC = 2914524854,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_generic_tool, "object/draft_schematic/item/shared_item_generic_tool.iff")
 
 object_draft_schematic_item_shared_item_hundred_sided_dice = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_hundred_sided_dice.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1072,11 +1163,15 @@ object_draft_schematic_item_shared_item_hundred_sided_dice = SharedDraftSchemati
 
 	clientObjectCRC = 292809069,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_hundred_sided_dice, "object/draft_schematic/item/shared_item_hundred_sided_dice.iff")
 
 object_draft_schematic_item_shared_item_jedi_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_jedi_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1117,11 +1212,15 @@ object_draft_schematic_item_shared_item_jedi_tool = SharedDraftSchematicObjectTe
 
 	clientObjectCRC = 3722220294,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_jedi_tool, "object/draft_schematic/item/shared_item_jedi_tool.iff")
 
 object_draft_schematic_item_shared_item_parrot_cage = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_parrot_cage.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1162,11 +1261,15 @@ object_draft_schematic_item_shared_item_parrot_cage = SharedDraftSchematicObject
 
 	clientObjectCRC = 2785425064,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_parrot_cage, "object/draft_schematic/item/shared_item_parrot_cage.iff")
 
 object_draft_schematic_item_shared_item_powerup_weapon_melee_generic = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_powerup_weapon_melee_generic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1207,11 +1310,15 @@ object_draft_schematic_item_shared_item_powerup_weapon_melee_generic = SharedDra
 
 	clientObjectCRC = 247131041,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_powerup_weapon_melee_generic, "object/draft_schematic/item/shared_item_powerup_weapon_melee_generic.iff")
 
 object_draft_schematic_item_shared_item_powerup_weapon_melee_lightsaber = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_powerup_weapon_melee_lightsaber.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1252,11 +1359,15 @@ object_draft_schematic_item_shared_item_powerup_weapon_melee_lightsaber = Shared
 
 	clientObjectCRC = 964828866,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_powerup_weapon_melee_lightsaber, "object/draft_schematic/item/shared_item_powerup_weapon_melee_lightsaber.iff")
 
 object_draft_schematic_item_shared_item_powerup_weapon_mine_explosive = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_powerup_weapon_mine_explosive.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1297,11 +1408,15 @@ object_draft_schematic_item_shared_item_powerup_weapon_mine_explosive = SharedDr
 
 	clientObjectCRC = 797092971,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_powerup_weapon_mine_explosive, "object/draft_schematic/item/shared_item_powerup_weapon_mine_explosive.iff")
 
 object_draft_schematic_item_shared_item_powerup_weapon_ranged_five = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_powerup_weapon_ranged_five.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1342,11 +1457,15 @@ object_draft_schematic_item_shared_item_powerup_weapon_ranged_five = SharedDraft
 
 	clientObjectCRC = 1412684588,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_powerup_weapon_ranged_five, "object/draft_schematic/item/shared_item_powerup_weapon_ranged_five.iff")
 
 object_draft_schematic_item_shared_item_powerup_weapon_ranged_four = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_powerup_weapon_ranged_four.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1387,11 +1506,15 @@ object_draft_schematic_item_shared_item_powerup_weapon_ranged_four = SharedDraft
 
 	clientObjectCRC = 2789770349,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_powerup_weapon_ranged_four, "object/draft_schematic/item/shared_item_powerup_weapon_ranged_four.iff")
 
 object_draft_schematic_item_shared_item_powerup_weapon_ranged_one = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_powerup_weapon_ranged_one.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1432,11 +1555,15 @@ object_draft_schematic_item_shared_item_powerup_weapon_ranged_one = SharedDraftS
 
 	clientObjectCRC = 926910485,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_powerup_weapon_ranged_one, "object/draft_schematic/item/shared_item_powerup_weapon_ranged_one.iff")
 
 object_draft_schematic_item_shared_item_powerup_weapon_ranged_six = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_powerup_weapon_ranged_six.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1477,11 +1604,15 @@ object_draft_schematic_item_shared_item_powerup_weapon_ranged_six = SharedDraftS
 
 	clientObjectCRC = 1911715488,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_powerup_weapon_ranged_six, "object/draft_schematic/item/shared_item_powerup_weapon_ranged_six.iff")
 
 object_draft_schematic_item_shared_item_powerup_weapon_ranged_three = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_powerup_weapon_ranged_three.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1522,11 +1653,15 @@ object_draft_schematic_item_shared_item_powerup_weapon_ranged_three = SharedDraf
 
 	clientObjectCRC = 2672814198,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_powerup_weapon_ranged_three, "object/draft_schematic/item/shared_item_powerup_weapon_ranged_three.iff")
 
 object_draft_schematic_item_shared_item_powerup_weapon_ranged_two = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_powerup_weapon_ranged_two.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1567,11 +1702,15 @@ object_draft_schematic_item_shared_item_powerup_weapon_ranged_two = SharedDraftS
 
 	clientObjectCRC = 3562526879,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_powerup_weapon_ranged_two, "object/draft_schematic/item/shared_item_powerup_weapon_ranged_two.iff")
 
 object_draft_schematic_item_shared_item_powerup_weapon_thrown_explosive = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_powerup_weapon_thrown_explosive.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1612,11 +1751,15 @@ object_draft_schematic_item_shared_item_powerup_weapon_thrown_explosive = Shared
 
 	clientObjectCRC = 3975490857,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_powerup_weapon_thrown_explosive, "object/draft_schematic/item/shared_item_powerup_weapon_thrown_explosive.iff")
 
 object_draft_schematic_item_shared_item_powerup_weapon_thrown_wiring = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_powerup_weapon_thrown_wiring.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1657,11 +1800,15 @@ object_draft_schematic_item_shared_item_powerup_weapon_thrown_wiring = SharedDra
 
 	clientObjectCRC = 2101449408,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_powerup_weapon_thrown_wiring, "object/draft_schematic/item/shared_item_powerup_weapon_thrown_wiring.iff")
 
 object_draft_schematic_item_shared_item_public_clothing_station = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_public_clothing_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1702,11 +1849,15 @@ object_draft_schematic_item_shared_item_public_clothing_station = SharedDraftSch
 
 	clientObjectCRC = 860687270,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_public_clothing_station, "object/draft_schematic/item/shared_item_public_clothing_station.iff")
 
 object_draft_schematic_item_shared_item_public_food_station = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_public_food_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1747,11 +1898,15 @@ object_draft_schematic_item_shared_item_public_food_station = SharedDraftSchemat
 
 	clientObjectCRC = 925875807,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_public_food_station, "object/draft_schematic/item/shared_item_public_food_station.iff")
 
 object_draft_schematic_item_shared_item_public_structure_station = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_public_structure_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1792,11 +1947,15 @@ object_draft_schematic_item_shared_item_public_structure_station = SharedDraftSc
 
 	clientObjectCRC = 1326594481,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_public_structure_station, "object/draft_schematic/item/shared_item_public_structure_station.iff")
 
 object_draft_schematic_item_shared_item_public_weapon_station = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_public_weapon_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1837,11 +1996,15 @@ object_draft_schematic_item_shared_item_public_weapon_station = SharedDraftSchem
 
 	clientObjectCRC = 2519720442,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_public_weapon_station, "object/draft_schematic/item/shared_item_public_weapon_station.iff")
 
 object_draft_schematic_item_shared_item_recycler_chemical = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_recycler_chemical.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1882,11 +2045,15 @@ object_draft_schematic_item_shared_item_recycler_chemical = SharedDraftSchematic
 
 	clientObjectCRC = 780076423,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_recycler_chemical, "object/draft_schematic/item/shared_item_recycler_chemical.iff")
 
 object_draft_schematic_item_shared_item_recycler_creature = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_recycler_creature.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1927,11 +2094,15 @@ object_draft_schematic_item_shared_item_recycler_creature = SharedDraftSchematic
 
 	clientObjectCRC = 2037307449,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_recycler_creature, "object/draft_schematic/item/shared_item_recycler_creature.iff")
 
 object_draft_schematic_item_shared_item_recycler_flora = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_recycler_flora.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1972,11 +2143,15 @@ object_draft_schematic_item_shared_item_recycler_flora = SharedDraftSchematicObj
 
 	clientObjectCRC = 134662469,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_recycler_flora, "object/draft_schematic/item/shared_item_recycler_flora.iff")
 
 object_draft_schematic_item_shared_item_recycler_metal = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_recycler_metal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2017,11 +2192,15 @@ object_draft_schematic_item_shared_item_recycler_metal = SharedDraftSchematicObj
 
 	clientObjectCRC = 3962708535,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_recycler_metal, "object/draft_schematic/item/shared_item_recycler_metal.iff")
 
 object_draft_schematic_item_shared_item_recycler_ore = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_recycler_ore.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2062,11 +2241,15 @@ object_draft_schematic_item_shared_item_recycler_ore = SharedDraftSchematicObjec
 
 	clientObjectCRC = 2090788459,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_recycler_ore, "object/draft_schematic/item/shared_item_recycler_ore.iff")
 
 object_draft_schematic_item_shared_item_repairkit_armor = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_repairkit_armor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2107,11 +2290,15 @@ object_draft_schematic_item_shared_item_repairkit_armor = SharedDraftSchematicOb
 
 	clientObjectCRC = 1371712760,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/item/shared_item_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_repairkit_armor, "object/draft_schematic/item/shared_item_repairkit_armor.iff")
 
 object_draft_schematic_item_shared_item_repairkit_clothing = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_repairkit_clothing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2152,11 +2339,15 @@ object_draft_schematic_item_shared_item_repairkit_clothing = SharedDraftSchemati
 
 	clientObjectCRC = 2082185823,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/item/shared_item_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_repairkit_clothing, "object/draft_schematic/item/shared_item_repairkit_clothing.iff")
 
 object_draft_schematic_item_shared_item_repairkit_droid = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_repairkit_droid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2197,11 +2388,15 @@ object_draft_schematic_item_shared_item_repairkit_droid = SharedDraftSchematicOb
 
 	clientObjectCRC = 2481009784,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/item/shared_item_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_repairkit_droid, "object/draft_schematic/item/shared_item_repairkit_droid.iff")
 
 object_draft_schematic_item_shared_item_repairkit_structure = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_repairkit_structure.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2242,11 +2437,15 @@ object_draft_schematic_item_shared_item_repairkit_structure = SharedDraftSchemat
 
 	clientObjectCRC = 3616819013,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/item/shared_item_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_repairkit_structure, "object/draft_schematic/item/shared_item_repairkit_structure.iff")
 
 object_draft_schematic_item_shared_item_repairkit_weapon = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_repairkit_weapon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2287,11 +2486,15 @@ object_draft_schematic_item_shared_item_repairkit_weapon = SharedDraftSchematicO
 
 	clientObjectCRC = 1278219253,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/item/shared_item_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_repairkit_weapon, "object/draft_schematic/item/shared_item_repairkit_weapon.iff")
 
 object_draft_schematic_item_shared_item_shellfish_harvester = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_shellfish_harvester.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2332,11 +2535,15 @@ object_draft_schematic_item_shared_item_shellfish_harvester = SharedDraftSchemat
 
 	clientObjectCRC = 1302103457,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_shellfish_harvester, "object/draft_schematic/item/shared_item_shellfish_harvester.iff")
 
 object_draft_schematic_item_shared_item_six_sided_dice = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_six_sided_dice.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2377,11 +2584,15 @@ object_draft_schematic_item_shared_item_six_sided_dice = SharedDraftSchematicObj
 
 	clientObjectCRC = 2953774166,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_six_sided_dice, "object/draft_schematic/item/shared_item_six_sided_dice.iff")
 
 object_draft_schematic_item_shared_item_space_station = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_space_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2422,11 +2633,15 @@ object_draft_schematic_item_shared_item_space_station = SharedDraftSchematicObje
 
 	clientObjectCRC = 1829585398,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_space_station, "object/draft_schematic/item/shared_item_space_station.iff")
 
 object_draft_schematic_item_shared_item_space_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_space_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2467,11 +2682,15 @@ object_draft_schematic_item_shared_item_space_tool = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 245803278,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_space_tool, "object/draft_schematic/item/shared_item_space_tool.iff")
 
 object_draft_schematic_item_shared_item_structure_station = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_structure_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2512,11 +2731,15 @@ object_draft_schematic_item_shared_item_structure_station = SharedDraftSchematic
 
 	clientObjectCRC = 2562544992,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_structure_station, "object/draft_schematic/item/shared_item_structure_station.iff")
 
 object_draft_schematic_item_shared_item_structure_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_structure_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2557,11 +2780,15 @@ object_draft_schematic_item_shared_item_structure_tool = SharedDraftSchematicObj
 
 	clientObjectCRC = 1567438265,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_structure_tool, "object/draft_schematic/item/shared_item_structure_tool.iff")
 
 object_draft_schematic_item_shared_item_survey_tool_flora = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_survey_tool_flora.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2602,11 +2829,15 @@ object_draft_schematic_item_shared_item_survey_tool_flora = SharedDraftSchematic
 
 	clientObjectCRC = 1375088999,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_survey_tool_flora, "object/draft_schematic/item/shared_item_survey_tool_flora.iff")
 
 object_draft_schematic_item_shared_item_survey_tool_gas = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_survey_tool_gas.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2647,11 +2878,15 @@ object_draft_schematic_item_shared_item_survey_tool_gas = SharedDraftSchematicOb
 
 	clientObjectCRC = 256520291,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_survey_tool_gas, "object/draft_schematic/item/shared_item_survey_tool_gas.iff")
 
 object_draft_schematic_item_shared_item_survey_tool_liquid = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_survey_tool_liquid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2692,11 +2927,15 @@ object_draft_schematic_item_shared_item_survey_tool_liquid = SharedDraftSchemati
 
 	clientObjectCRC = 780227147,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_survey_tool_liquid, "object/draft_schematic/item/shared_item_survey_tool_liquid.iff")
 
 object_draft_schematic_item_shared_item_survey_tool_mineral = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_survey_tool_mineral.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2737,11 +2976,15 @@ object_draft_schematic_item_shared_item_survey_tool_mineral = SharedDraftSchemat
 
 	clientObjectCRC = 1449938755,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_survey_tool_mineral, "object/draft_schematic/item/shared_item_survey_tool_mineral.iff")
 
 object_draft_schematic_item_shared_item_survey_tool_moisture = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_survey_tool_moisture.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2782,11 +3025,15 @@ object_draft_schematic_item_shared_item_survey_tool_moisture = SharedDraftSchema
 
 	clientObjectCRC = 3420859733,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_survey_tool_moisture, "object/draft_schematic/item/shared_item_survey_tool_moisture.iff")
 
 object_draft_schematic_item_shared_item_survey_tool_solar = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_survey_tool_solar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2827,11 +3074,15 @@ object_draft_schematic_item_shared_item_survey_tool_solar = SharedDraftSchematic
 
 	clientObjectCRC = 2148903380,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_survey_tool_solar, "object/draft_schematic/item/shared_item_survey_tool_solar.iff")
 
 object_draft_schematic_item_shared_item_survey_tool_wind = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_survey_tool_wind.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2872,11 +3123,15 @@ object_draft_schematic_item_shared_item_survey_tool_wind = SharedDraftSchematicO
 
 	clientObjectCRC = 2695222848,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_survey_tool_wind, "object/draft_schematic/item/shared_item_survey_tool_wind.iff")
 
 object_draft_schematic_item_shared_item_ten_sided_dice = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_ten_sided_dice.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2917,11 +3172,15 @@ object_draft_schematic_item_shared_item_ten_sided_dice = SharedDraftSchematicObj
 
 	clientObjectCRC = 3387294730,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_ten_sided_dice, "object/draft_schematic/item/shared_item_ten_sided_dice.iff")
 
 object_draft_schematic_item_shared_item_tumble_blender = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_tumble_blender.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -2962,11 +3221,15 @@ object_draft_schematic_item_shared_item_tumble_blender = SharedDraftSchematicObj
 
 	clientObjectCRC = 2328709231,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_tumble_blender, "object/draft_schematic/item/shared_item_tumble_blender.iff")
 
 object_draft_schematic_item_shared_item_twelve_sided_dice = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_twelve_sided_dice.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3007,11 +3270,15 @@ object_draft_schematic_item_shared_item_twelve_sided_dice = SharedDraftSchematic
 
 	clientObjectCRC = 1478333642,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_twelve_sided_dice, "object/draft_schematic/item/shared_item_twelve_sided_dice.iff")
 
 object_draft_schematic_item_shared_item_twenty_sided_dice = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_twenty_sided_dice.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3052,11 +3319,15 @@ object_draft_schematic_item_shared_item_twenty_sided_dice = SharedDraftSchematic
 
 	clientObjectCRC = 1156487020,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_twenty_sided_dice, "object/draft_schematic/item/shared_item_twenty_sided_dice.iff")
 
 object_draft_schematic_item_shared_item_weapon_station = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_weapon_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3097,11 +3368,15 @@ object_draft_schematic_item_shared_item_weapon_station = SharedDraftSchematicObj
 
 	clientObjectCRC = 580576987,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_weapon_station, "object/draft_schematic/item/shared_item_weapon_station.iff")
 
 object_draft_schematic_item_shared_item_weapon_tool = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/shared_item_weapon_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -3142,6 +3417,7 @@ object_draft_schematic_item_shared_item_weapon_tool = SharedDraftSchematicObject
 
 	clientObjectCRC = 806231782,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_shared_item_weapon_tool, "object/draft_schematic/item/shared_item_weapon_tool.iff")

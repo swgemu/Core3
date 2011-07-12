@@ -42,6 +42,9 @@
 
 
 object_tangible_region_shared_battlefield_marker = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/region/shared_battlefield_marker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_gravestone_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_region_shared_battlefield_marker = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 3641759801,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_battlefield_marker, "object/tangible/region/shared_battlefield_marker.iff")
 
 object_tangible_region_shared_deliver_region_10 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/region/shared_deliver_region_10.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_cylinder_10m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_region_shared_deliver_region_10 = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 2066164498,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_10, "object/tangible/region/shared_deliver_region_10.iff")
 
 object_tangible_region_shared_deliver_region_15 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/region/shared_deliver_region_15.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_cylinder_15m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_region_shared_deliver_region_15 = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 316591900,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_15, "object/tangible/region/shared_deliver_region_15.iff")
 
 object_tangible_region_shared_deliver_region_20 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/region/shared_deliver_region_20.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_cylinder_20m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_region_shared_deliver_region_20 = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1449082010,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_20, "object/tangible/region/shared_deliver_region_20.iff")
 
 object_tangible_region_shared_deliver_region_25 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/region/shared_deliver_region_25.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_cylinder_25m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_region_shared_deliver_region_25 = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1067899028,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_25, "object/tangible/region/shared_deliver_region_25.iff")
 
 object_tangible_region_shared_deliver_region_30 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/region/shared_deliver_region_30.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_cylinder_30m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_region_shared_deliver_region_30 = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1299657186,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_30, "object/tangible/region/shared_deliver_region_30.iff")
 
 object_tangible_region_shared_deliver_region_5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/region/shared_deliver_region_5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_cylinder_05m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,6 +449,7 @@ object_tangible_region_shared_deliver_region_5 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3353678877,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_region_shared_deliver_region_5, "object/tangible/region/shared_deliver_region_5.iff")

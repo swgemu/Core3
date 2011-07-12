@@ -42,6 +42,9 @@
 
 
 object_installation_mining_organic_shared_mining_organic_creature_farm = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/mining_organic/shared_mining_organic_creature_farm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_creature_farm_s01_u0.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_installation_mining_organic_shared_mining_organic_creature_farm = SharedI
 
 	clientObjectCRC = 3544083954,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_organic/base/shared_mining_organic_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_organic_shared_mining_organic_creature_farm, "object/installation/mining_organic/shared_mining_organic_creature_farm.iff")
 
 object_installation_mining_organic_shared_mining_organic_flora_farm = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/mining_organic/shared_mining_organic_flora_farm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_flora_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_installation_mining_organic_shared_mining_organic_flora_farm = SharedInst
 
 	clientObjectCRC = 3438944708,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_organic/base/shared_mining_organic_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm, "object/installation/mining_organic/shared_mining_organic_flora_farm.iff")
 
 object_installation_mining_organic_shared_mining_organic_flora_farm_heavy = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/mining_organic/shared_mining_organic_flora_farm_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_photo_bio_u0.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_installation_mining_organic_shared_mining_organic_flora_farm_heavy = Shar
 
 	clientObjectCRC = 880917767,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_organic/base/shared_mining_organic_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_heavy, "object/installation/mining_organic/shared_mining_organic_flora_farm_heavy.iff")
 
 object_installation_mining_organic_shared_mining_organic_flora_farm_medium = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/mining_organic/shared_mining_organic_flora_farm_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_flora_farm_base_s01_u0.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_installation_mining_organic_shared_mining_organic_flora_farm_medium = Sha
 
 	clientObjectCRC = 681856626,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_organic/base/shared_mining_organic_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_organic_shared_mining_organic_flora_farm_medium, "object/installation/mining_organic/shared_mining_organic_flora_farm_medium.iff")

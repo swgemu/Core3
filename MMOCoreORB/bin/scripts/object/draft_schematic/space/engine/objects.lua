@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_space_engine_shared_basic_engine = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_basic_engine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_space_engine_shared_basic_engine = SharedDraftSchematicOb
 
 	clientObjectCRC = 541354942,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_basic_engine, "object/draft_schematic/space/engine/shared_basic_engine.iff")
 
 object_draft_schematic_space_engine_shared_eng_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_eng_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_space_engine_shared_eng_mk1 = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 1997394294,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_eng_mk1, "object/draft_schematic/space/engine/shared_eng_mk1.iff")
 
 object_draft_schematic_space_engine_shared_eng_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_eng_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_space_engine_shared_eng_mk2 = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 2887416289,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_eng_mk2, "object/draft_schematic/space/engine/shared_eng_mk2.iff")
 
 object_draft_schematic_space_engine_shared_eng_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_eng_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_space_engine_shared_eng_mk3 = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 3843497580,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_eng_mk3, "object/draft_schematic/space/engine/shared_eng_mk3.iff")
 
 object_draft_schematic_space_engine_shared_eng_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_eng_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_space_engine_shared_eng_mk4 = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 519320952,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_eng_mk4, "object/draft_schematic/space/engine/shared_eng_mk4.iff")
 
 object_draft_schematic_space_engine_shared_eng_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_eng_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_space_engine_shared_eng_mk5 = SharedDraftSchematicObjectT
 
 	clientObjectCRC = 1475957493,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_eng_mk5, "object/draft_schematic/space/engine/shared_eng_mk5.iff")
 
 object_draft_schematic_space_engine_shared_engine_limiter_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_engine_limiter_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk1 = SharedDraftSchem
 
 	clientObjectCRC = 3601967388,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk1, "object/draft_schematic/space/engine/shared_engine_limiter_mk1.iff")
 
 object_draft_schematic_space_engine_shared_engine_limiter_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_engine_limiter_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk2 = SharedDraftSchem
 
 	clientObjectCRC = 228983179,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk2, "object/draft_schematic/space/engine/shared_engine_limiter_mk2.iff")
 
 object_draft_schematic_space_engine_shared_engine_limiter_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_engine_limiter_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk3 = SharedDraftSchem
 
 	clientObjectCRC = 1152083462,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk3, "object/draft_schematic/space/engine/shared_engine_limiter_mk3.iff")
 
 object_draft_schematic_space_engine_shared_engine_limiter_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_engine_limiter_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk4 = SharedDraftSchem
 
 	clientObjectCRC = 3209186578,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk4, "object/draft_schematic/space/engine/shared_engine_limiter_mk4.iff")
 
 object_draft_schematic_space_engine_shared_engine_limiter_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_engine_limiter_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_space_engine_shared_engine_limiter_mk5 = SharedDraftSchem
 
 	clientObjectCRC = 4131728031,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_limiter_mk5, "object/draft_schematic/space/engine/shared_engine_limiter_mk5.iff")
 
 object_draft_schematic_space_engine_shared_engine_overdriver_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_engine_overdriver_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk1 = SharedDraftSc
 
 	clientObjectCRC = 4012002136,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk1, "object/draft_schematic/space/engine/shared_engine_overdriver_mk1.iff")
 
 object_draft_schematic_space_engine_shared_engine_overdriver_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_engine_overdriver_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,11 +673,15 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk2 = SharedDraftSc
 
 	clientObjectCRC = 875946959,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk2, "object/draft_schematic/space/engine/shared_engine_overdriver_mk2.iff")
 
 object_draft_schematic_space_engine_shared_engine_overdriver_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_engine_overdriver_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -667,11 +722,15 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk3 = SharedDraftSc
 
 	clientObjectCRC = 2100855874,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk3, "object/draft_schematic/space/engine/shared_engine_overdriver_mk3.iff")
 
 object_draft_schematic_space_engine_shared_engine_overdriver_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_engine_overdriver_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -712,11 +771,15 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk4 = SharedDraftSc
 
 	clientObjectCRC = 2262544214,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk4, "object/draft_schematic/space/engine/shared_engine_overdriver_mk4.iff")
 
 object_draft_schematic_space_engine_shared_engine_overdriver_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/engine/shared_engine_overdriver_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -757,6 +820,7 @@ object_draft_schematic_space_engine_shared_engine_overdriver_mk5 = SharedDraftSc
 
 	clientObjectCRC = 3486959835,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_engine_shared_engine_overdriver_mk5, "object/draft_schematic/space/engine/shared_engine_overdriver_mk5.iff")

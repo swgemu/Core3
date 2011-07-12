@@ -42,6 +42,9 @@
 
 
 object_tangible_powerup_base_shared_armor_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/powerup/base/shared_armor_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_armor_layer.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_powerup_base_shared_armor_base = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2900653287,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/powerup/base/shared_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_armor_base, "object/tangible/powerup/base/shared_armor_base.iff")
 
 object_tangible_powerup_base_shared_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/powerup/base/shared_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_scope_sm_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_powerup_base_shared_base = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 486380582,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_base, "object/tangible/powerup/base/shared_base.iff")
 
 object_tangible_powerup_base_shared_weapon_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/powerup/base/shared_weapon_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_scope_sm_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_powerup_base_shared_weapon_base = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1015299597,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/powerup/base/shared_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_powerup_base_shared_weapon_base, "object/tangible/powerup/base/shared_weapon_base.iff")

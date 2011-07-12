@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_vehicle_military_shared_military_a = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/vehicle/military/shared_military_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_vehicle_military_shared_military_a = SharedDraftSchematic
 
 	clientObjectCRC = 2402380717,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_military_a, "object/draft_schematic/vehicle/military/shared_military_a.iff")
 
 object_draft_schematic_vehicle_military_shared_military_b = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/vehicle/military/shared_military_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_vehicle_military_shared_military_b = SharedDraftSchematic
 
 	clientObjectCRC = 1411826490,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_military_b, "object/draft_schematic/vehicle/military/shared_military_b.iff")
 
 object_draft_schematic_vehicle_military_shared_military_c = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/vehicle/military/shared_military_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_vehicle_military_shared_military_c = SharedDraftSchematic
 
 	clientObjectCRC = 489399479,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_military_c, "object/draft_schematic/vehicle/military/shared_military_c.iff")
 
 object_draft_schematic_vehicle_military_shared_military_d = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/vehicle/military/shared_military_d.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_vehicle_military_shared_military_d = SharedDraftSchematic
 
 	clientObjectCRC = 3871903651,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_military_d, "object/draft_schematic/vehicle/military/shared_military_d.iff")
 
 object_draft_schematic_vehicle_military_shared_military_e = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/vehicle/military/shared_military_e.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_vehicle_military_shared_military_e = SharedDraftSchematic
 
 	clientObjectCRC = 2948982830,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_military_e, "object/draft_schematic/vehicle/military/shared_military_e.iff")
 
 object_draft_schematic_vehicle_military_shared_starship_impl_tie_a = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/vehicle/military/shared_starship_impl_tie_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_vehicle_military_shared_starship_impl_tie_a = SharedDraft
 
 	clientObjectCRC = 4100515758,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_starship_impl_tie_a, "object/draft_schematic/vehicle/military/shared_starship_impl_tie_a.iff")
 
 object_draft_schematic_vehicle_military_shared_starship_impl_tie_b = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/vehicle/military/shared_starship_impl_tie_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_vehicle_military_shared_starship_impl_tie_b = SharedDraft
 
 	clientObjectCRC = 796872505,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_starship_impl_tie_b, "object/draft_schematic/vehicle/military/shared_starship_impl_tie_b.iff")
 
 object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_a = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/vehicle/military/shared_starship_rebel_xwing_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_a = SharedDr
 
 	clientObjectCRC = 1330578969,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_a, "object/draft_schematic/vehicle/military/shared_starship_rebel_xwing_a.iff")
 
 object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_b = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/vehicle/military/shared_starship_rebel_xwing_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,6 +477,7 @@ object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_b = SharedDr
 
 	clientObjectCRC = 2488839822,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_military_shared_starship_rebel_xwing_b, "object/draft_schematic/vehicle/military/shared_starship_rebel_xwing_b.iff")

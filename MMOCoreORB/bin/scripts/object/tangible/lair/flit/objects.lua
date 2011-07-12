@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_flit_shared_lair_flit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/flit/shared_lair_flit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_flit_shared_lair_flit = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 148367825,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_flit_shared_lair_flit, "object/tangible/lair/flit/shared_lair_flit.iff")
 
 object_tangible_lair_flit_shared_lair_flit_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/flit/shared_lair_flit_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_flit_shared_lair_flit_forest = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1679618703,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_flit_shared_lair_flit_forest, "object/tangible/lair/flit/shared_lair_flit_forest.iff")
 
 object_tangible_lair_flit_shared_lair_flit_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/flit/shared_lair_flit_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_flit_shared_lair_flit_mountain = SharedTangibleObjectTempla
 
 	clientObjectCRC = 402738321,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_flit_shared_lair_flit_mountain, "object/tangible/lair/flit/shared_lair_flit_mountain.iff")

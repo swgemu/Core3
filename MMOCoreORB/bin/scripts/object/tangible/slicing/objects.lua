@@ -42,6 +42,9 @@
 
 
 object_tangible_slicing_shared_slicing_armor_upgrade_kit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/slicing/shared_slicing_armor_upgrade_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_slicing_shared_slicing_armor_upgrade_kit = SharedTangibleObjectT
 
 	clientObjectCRC = 2423629000,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_armor_upgrade_kit, "object/tangible/slicing/shared_slicing_armor_upgrade_kit.iff")
 
 object_tangible_slicing_shared_slicing_flow_analyzer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/slicing/shared_slicing_flow_analyzer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_slicing_shared_slicing_flow_analyzer = SharedTangibleObjectTempl
 
 	clientObjectCRC = 352400896,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_flow_analyzer, "object/tangible/slicing/shared_slicing_flow_analyzer.iff")
 
 object_tangible_slicing_shared_slicing_laser_knife = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/slicing/shared_slicing_laser_knife.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_blaster_rifle_barrel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_slicing_shared_slicing_laser_knife = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3905355100,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_laser_knife, "object/tangible/slicing/shared_slicing_laser_knife.iff")
 
 object_tangible_slicing_shared_slicing_molecular_clamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/slicing/shared_slicing_molecular_clamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_meds_extraction_device.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_slicing_shared_slicing_molecular_clamp = SharedTangibleObjectTem
 
 	clientObjectCRC = 2663745100,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_molecular_clamp, "object/tangible/slicing/shared_slicing_molecular_clamp.iff")
 
 object_tangible_slicing_shared_slicing_weapon_upgrade_kit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/slicing/shared_slicing_weapon_upgrade_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_slicing_shared_slicing_weapon_upgrade_kit = SharedTangibleObject
 
 	clientObjectCRC = 3282826133,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_slicing_shared_slicing_weapon_upgrade_kit, "object/tangible/slicing/shared_slicing_weapon_upgrade_kit.iff")

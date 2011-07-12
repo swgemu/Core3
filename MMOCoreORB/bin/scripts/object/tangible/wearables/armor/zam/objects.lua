@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_belt.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_zam_wesell_belt_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt = SharedTangibl
 
 	clientObjectCRC = 1255925428,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_belt, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_belt.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_boots.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_zam_wesell_boots_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots = SharedTangib
 
 	clientObjectCRC = 509585055,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_boots, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_boots.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_zam_wesell_chest_plate_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate = Shared
 
 	clientObjectCRC = 3303691594,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_zam_wesell_chest_plate_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest = 
 
 	clientObjectCRC = 2543046725,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff", "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_chest_plate_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate_quest.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_gloves.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_zam_wesell_gloves_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets_long.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves = SharedTangi
 
 	clientObjectCRC = 2822062160,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gauntlets_long.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_gloves, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_gloves.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_zam_wesell_helmet_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet = SharedTangi
 
 	clientObjectCRC = 519414104,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_zam_wesell_helmet_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest = Share
 
 	clientObjectCRC = 2324855644,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff", "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_helmet_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_helmet_quest.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_zam_wesell_pants_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants = SharedTangib
 
 	clientObjectCRC = 2684655133,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants.iff")
 
 object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_zam_wesell_pants_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
@@ -532,6 +567,7 @@ object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest = Shared
 
 	clientObjectCRC = 3252715807,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff", "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_zam_shared_armor_zam_wesell_pants_quest, "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants_quest.iff")

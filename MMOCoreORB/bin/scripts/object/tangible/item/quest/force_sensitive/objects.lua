@@ -42,6 +42,9 @@
 
 
 object_tangible_item_quest_force_sensitive_shared_bacta_tank = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_bacta_tank.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_bacta_tank_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_item_quest_force_sensitive_shared_bacta_tank = SharedTangibleObj
 
 	clientObjectCRC = 910140533,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_bacta_tank, "object/tangible/item/quest/force_sensitive/shared_bacta_tank.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_buff_item = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_buff_item.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/atf_sith_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_buff_item = SharedTangibleO
 
 	clientObjectCRC = 940923132,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_buff_item, "object/tangible/item/quest/force_sensitive/shared_fs_buff_item.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_analyzer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_demagnetizer.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer = Sha
 
 	clientObjectCRC = 486918968,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_analyzer, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_analyzer.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_calibrator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_instrument_calibrator.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator = S
 
 	clientObjectCRC = 1614838947,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_calibrator, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_calibrator.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_config_processor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_config_processor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_sensor_package_unit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_config_process
 
 	clientObjectCRC = 1790922527,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_config_processor, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_config_processor.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_decryption_chip = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_decryption_chip.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_droid_module_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_decryption_chi
 
 	clientObjectCRC = 704474859,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_decryption_chip, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_decryption_chip.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_gyro_receiver = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_gyro_receiver.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_shields.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_gyro_receiver 
 
 	clientObjectCRC = 2604518454,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_gyro_receiver, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_gyro_receiver.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_signal_amp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_signal_amp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_meson_taloscope.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_signal_amp = S
 
 	clientObjectCRC = 2081471563,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_signal_amp, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_signal_amp.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_solid_state_array = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_solid_state_array.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_deflector_shield.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_solid_state_ar
 
 	clientObjectCRC = 3351448820,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_solid_state_array, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_solid_state_array.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal = Sha
 
 	clientObjectCRC = 2439008129,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_craft_puzzle_terminal, "object/tangible/item/quest/force_sensitive/shared_fs_craft_puzzle_terminal.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_crafting4_computer_core = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_crafting4_computer_core.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_deflector_shield.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_crafting4_computer_core = S
 
 	clientObjectCRC = 821838739,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_crafting4_computer_core, "object/tangible/item/quest/force_sensitive/shared_fs_crafting4_computer_core.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_crafting4_downed_satellite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_crafting4_downed_satellite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_app_organichem_stores.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_crafting4_downed_satellite 
 
 	clientObjectCRC = 997112719,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_crafting4_downed_satellite, "object/tangible/item/quest/force_sensitive/shared_fs_crafting4_downed_satellite.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_medic_puzzle_heal_pack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack = Sh
 
 	clientObjectCRC = 2568094988,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_medic_puzzle_heal_pack, "object/tangible/item/quest/force_sensitive/shared_fs_medic_puzzle_heal_pack.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_mellichae_cyborg_arm = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_mellichae_cyborg_arm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hum_cyborg_s01_arm_r_m.sat",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_mellichae_cyborg_arm = Shar
 
 	clientObjectCRC = 2794758303,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_mellichae_cyborg_arm, "object/tangible/item/quest/force_sensitive/shared_fs_mellichae_cyborg_arm.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_reflex_supply_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_reflex_supply_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_inorganic_minerals.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_reflex_supply_crate = Share
 
 	clientObjectCRC = 622337164,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_reflex_supply_crate, "object/tangible/item/quest/force_sensitive/shared_fs_reflex_supply_crate.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_sculpture_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_fs_sculpture_1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_1 = SharedTangibl
 
 	clientObjectCRC = 2534792856,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_1, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_1.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_sculpture_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_fs_sculpture_2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_2 = SharedTangibl
 
 	clientObjectCRC = 1275229711,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_2, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_2.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_sculpture_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_fs_sculpture_3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_3 = SharedTangibl
 
 	clientObjectCRC = 84873602,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_3, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_3.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_sculpture_4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_quest_fs_sculpture_4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_item_quest_force_sensitive_shared_fs_sculpture_4 = SharedTangibl
 
 	clientObjectCRC = 4276894358,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_sculpture_4, "object/tangible/item/quest/force_sensitive/shared_fs_sculpture_4.iff")
 
 object_tangible_item_quest_force_sensitive_shared_fs_village_bannerpole_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/force_sensitive/shared_fs_village_bannerpole_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/mun_corl_imprv_bannerpole_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,6 +1216,7 @@ object_tangible_item_quest_force_sensitive_shared_fs_village_bannerpole_s01 = Sh
 
 	clientObjectCRC = 392556278,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_force_sensitive_shared_fs_village_bannerpole_s01, "object/tangible/item/quest/force_sensitive/shared_fs_village_bannerpole_s01.iff")

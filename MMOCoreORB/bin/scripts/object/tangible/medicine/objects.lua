@@ -42,6 +42,9 @@
 
 
 object_tangible_medicine_shared_antidote_sm_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_antidote_sm_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_medicine_shared_antidote_sm_s1 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1440189415,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_antidote_sm_s1, "object/tangible/medicine/shared_antidote_sm_s1.iff")
 
 object_tangible_medicine_shared_grenade_area_disease = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_grenade_area_disease.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_medicine_shared_grenade_area_disease = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4251613254,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_grenade_area_disease, "object/tangible/medicine/shared_grenade_area_disease.iff")
 
 object_tangible_medicine_shared_grenade_area_poison = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_grenade_area_poison.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_medicine_shared_grenade_area_poison = SharedTangibleObjectTempla
 
 	clientObjectCRC = 407306967,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_grenade_area_poison, "object/tangible/medicine/shared_grenade_area_poison.iff")
 
 object_tangible_medicine_shared_grenade_disease = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_grenade_disease.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_medicine_shared_grenade_disease = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1464815996,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_grenade_disease, "object/tangible/medicine/shared_grenade_disease.iff")
 
 object_tangible_medicine_shared_grenade_poison = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_grenade_poison.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_medicine_shared_grenade_poison = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3318575411,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_grenade_poison, "object/tangible/medicine/shared_grenade_poison.iff")
 
 object_tangible_medicine_shared_healing_grenade = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_healing_grenade.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_healing_grenade.prt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_medicine_shared_healing_grenade = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1436861013,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_healing_grenade, "object/tangible/medicine/shared_healing_grenade.iff")
 
 object_tangible_medicine_shared_healing_grenade_longrange = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_healing_grenade_longrange.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_medic_healing_energy_area.prt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_medicine_shared_healing_grenade_longrange = SharedTangibleObject
 
 	clientObjectCRC = 517120211,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_healing_grenade_longrange, "object/tangible/medicine/shared_healing_grenade_longrange.iff")
 
 object_tangible_medicine_shared_medic_damage = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medic_damage.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_medicine_shared_medic_damage = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 354709332,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medic_damage, "object/tangible/medicine/shared_medic_damage.iff")
 
 object_tangible_medicine_shared_medikit_tool_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medikit_tool_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medical_console.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_medicine_shared_medikit_tool_advanced = SharedTangibleObjectTemp
 
 	clientObjectCRC = 1604165582,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medikit_tool_advanced, "object/tangible/medicine/shared_medikit_tool_advanced.iff")
 
 object_tangible_medicine_shared_medikit_tool_basic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medikit_tool_basic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medical_console.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_medicine_shared_medikit_tool_basic = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2114140377,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medikit_tool_basic, "object/tangible/medicine/shared_medikit_tool_basic.iff")
 
 object_tangible_medicine_shared_medpack_blinded = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_blinded.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_medicine_shared_medpack_blinded = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 765314717,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_blinded, "object/tangible/medicine/shared_medpack_blinded.iff")
 
 object_tangible_medicine_shared_medpack_cure_disease = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_cure_disease.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_medicine_shared_medpack_cure_disease = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3567534855,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_cure_disease, "object/tangible/medicine/shared_medpack_cure_disease.iff")
 
 object_tangible_medicine_shared_medpack_cure_poison = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_cure_poison.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_medicine_shared_medpack_cure_poison = SharedTangibleObjectTempla
 
 	clientObjectCRC = 1928193020,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_cure_poison, "object/tangible/medicine/shared_medpack_cure_poison.iff")
 
 object_tangible_medicine_shared_medpack_damage = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_damage.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_medicine_shared_medpack_damage = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1572232451,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_damage, "object/tangible/medicine/shared_medpack_damage.iff")
 
 object_tangible_medicine_shared_medpack_disease_health = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_disease_health.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_medicine_shared_medpack_disease_health = SharedTangibleObjectTem
 
 	clientObjectCRC = 832861899,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_disease_health, "object/tangible/medicine/shared_medpack_disease_health.iff")
 
 object_tangible_medicine_shared_medpack_dizzy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_dizzy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_medicine_shared_medpack_dizzy = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 2465786722,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_dizzy, "object/tangible/medicine/shared_medpack_dizzy.iff")
 
 object_tangible_medicine_shared_medpack_enhance_action = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_enhance_action.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_medicine_shared_medpack_enhance_action = SharedTangibleObjectTem
 
 	clientObjectCRC = 2933500212,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_enhance_action, "object/tangible/medicine/shared_medpack_enhance_action.iff")
 
 object_tangible_medicine_shared_medpack_enhance_constitution = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_enhance_constitution.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_medicine_shared_medpack_enhance_constitution = SharedTangibleObj
 
 	clientObjectCRC = 4043375021,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_enhance_constitution, "object/tangible/medicine/shared_medpack_enhance_constitution.iff")
 
 object_tangible_medicine_shared_medpack_enhance_health = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_enhance_health.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_medicine_shared_medpack_enhance_health = SharedTangibleObjectTem
 
 	clientObjectCRC = 103448599,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_enhance_health, "object/tangible/medicine/shared_medpack_enhance_health.iff")
 
 object_tangible_medicine_shared_medpack_enhance_quickness = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_enhance_quickness.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_medicine_shared_medpack_enhance_quickness = SharedTangibleObject
 
 	clientObjectCRC = 1230024376,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_enhance_quickness, "object/tangible/medicine/shared_medpack_enhance_quickness.iff")
 
 object_tangible_medicine_shared_medpack_enhance_stamina = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_enhance_stamina.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_medicine_shared_medpack_enhance_stamina = SharedTangibleObjectTe
 
 	clientObjectCRC = 2141072147,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_enhance_stamina, "object/tangible/medicine/shared_medpack_enhance_stamina.iff")
 
 object_tangible_medicine_shared_medpack_enhance_strength = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_enhance_strength.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_medicine_shared_medpack_enhance_strength = SharedTangibleObjectT
 
 	clientObjectCRC = 1816954138,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_enhance_strength, "object/tangible/medicine/shared_medpack_enhance_strength.iff")
 
 object_tangible_medicine_shared_medpack_grenade_area = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_grenade_area.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_medicine_shared_medpack_grenade_area = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4052941806,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_grenade_area, "object/tangible/medicine/shared_medpack_grenade_area.iff")
 
 object_tangible_medicine_shared_medpack_grenade_damage = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_grenade_damage.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_medicine_shared_medpack_grenade_damage = SharedTangibleObjectTem
 
 	clientObjectCRC = 1050069168,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_grenade_damage, "object/tangible/medicine/shared_medpack_grenade_damage.iff")
 
 object_tangible_medicine_shared_medpack_intimidated = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_intimidated.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_medicine_shared_medpack_intimidated = SharedTangibleObjectTempla
 
 	clientObjectCRC = 3337310390,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_intimidated, "object/tangible/medicine/shared_medpack_intimidated.iff")
 
 object_tangible_medicine_shared_medpack_poison_health = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_poison_health.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_medicine_shared_medpack_poison_health = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3017797623,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_poison_health, "object/tangible/medicine/shared_medpack_poison_health.iff")
 
 object_tangible_medicine_shared_medpack_revive = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_revive.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_medicine_shared_medpack_revive = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 4063460611,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_revive, "object/tangible/medicine/shared_medpack_revive.iff")
 
 object_tangible_medicine_shared_medpack_sm_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_sm_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_medicine_shared_medpack_sm_s1 = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 215922513,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_sm_s1, "object/tangible/medicine/shared_medpack_sm_s1.iff")
 
 object_tangible_medicine_shared_medpack_stunned = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_stunned.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_medicine_shared_medpack_stunned = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 4041482351,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_stunned, "object/tangible/medicine/shared_medpack_stunned.iff")
 
 object_tangible_medicine_shared_medpack_wound = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_wound.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_medicine_shared_medpack_wound = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 2936514652,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_wound, "object/tangible/medicine/shared_medpack_wound.iff")
 
 object_tangible_medicine_shared_medpack_wound_action = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_wound_action.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_medicine_shared_medpack_wound_action = SharedTangibleObjectTempl
 
 	clientObjectCRC = 457349028,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_wound_action, "object/tangible/medicine/shared_medpack_wound_action.iff")
 
 object_tangible_medicine_shared_medpack_wound_constitution = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_wound_constitution.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medpack_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_medicine_shared_medpack_wound_constitution = SharedTangibleObjec
 
 	clientObjectCRC = 1021180765,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_wound_constitution, "object/tangible/medicine/shared_medpack_wound_constitution.iff")
 
 object_tangible_medicine_shared_medpack_wound_health = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_wound_health.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_medicine_shared_medpack_wound_health = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3014770311,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_wound_health, "object/tangible/medicine/shared_medpack_wound_health.iff")
 
 object_tangible_medicine_shared_medpack_wound_quickness = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_wound_quickness.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_medicine_shared_medpack_wound_quickness = SharedTangibleObjectTe
 
 	clientObjectCRC = 2548119971,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_wound_quickness, "object/tangible/medicine/shared_medpack_wound_quickness.iff")
 
 object_tangible_medicine_shared_medpack_wound_stamina = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_wound_stamina.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medbag_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_medicine_shared_medpack_wound_stamina = SharedTangibleObjectTemp
 
 	clientObjectCRC = 1314610438,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_wound_stamina, "object/tangible/medicine/shared_medpack_wound_stamina.iff")
 
 object_tangible_medicine_shared_medpack_wound_strength = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_medpack_wound_strength.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_medpack_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_medicine_shared_medpack_wound_strength = SharedTangibleObjectTem
 
 	clientObjectCRC = 2043273277,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_medpack_wound_strength, "object/tangible/medicine/shared_medpack_wound_strength.iff")
 
 object_tangible_medicine_shared_newbie_heal_mission_medicine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_newbie_heal_mission_medicine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_tangible_medicine_shared_newbie_heal_mission_medicine = SharedTangibleObj
 
 	clientObjectCRC = 2246906578,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_newbie_heal_mission_medicine, "object/tangible/medicine/shared_newbie_heal_mission_medicine.iff")
 
 object_tangible_medicine_shared_stimpack_sm_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_stimpack_sm_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_tangible_medicine_shared_stimpack_sm_s1 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 424530466,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_stimpack_sm_s1, "object/tangible/medicine/shared_stimpack_sm_s1.iff")
 
 object_tangible_medicine_shared_test_fire_blanket = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/shared_test_fire_blanket.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_synthetic_cloth.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,6 +2337,7 @@ object_tangible_medicine_shared_test_fire_blanket = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 120135169,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_shared_test_fire_blanket, "object/tangible/medicine/shared_test_fire_blanket.iff")

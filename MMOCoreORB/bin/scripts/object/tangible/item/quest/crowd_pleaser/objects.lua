@@ -42,6 +42,9 @@
 
 
 object_tangible_item_quest_crowd_pleaser_shared_dance_reward = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/crowd_pleaser/shared_dance_reward.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_item_quest_crowd_pleaser_shared_dance_reward = SharedTangibleObj
 
 	clientObjectCRC = 972371039,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_crowd_pleaser_shared_dance_reward, "object/tangible/item/quest/crowd_pleaser/shared_dance_reward.iff")
 
 object_tangible_item_quest_crowd_pleaser_shared_music_reward = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/quest/crowd_pleaser/shared_music_reward.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_item_quest_crowd_pleaser_shared_music_reward = SharedTangibleObj
 
 	clientObjectCRC = 1862695356,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_quest_crowd_pleaser_shared_music_reward, "object/tangible/item/quest/crowd_pleaser/shared_music_reward.iff")

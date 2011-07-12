@@ -42,6 +42,9 @@
 
 
 object_static_space_beacon_shared_hyperspace_generator_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/beacon/shared_hyperspace_generator_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spc_beacon_hyperspace_generator.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_space_beacon_shared_hyperspace_generator_01 = SharedStaticObjectTe
 
 	clientObjectCRC = 2175205203,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_beacon_shared_hyperspace_generator_01, "object/static/space/beacon/shared_hyperspace_generator_01.iff")
 
 object_static_space_beacon_shared_hyperspace_route_beacon_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/beacon/shared_hyperspace_route_beacon_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spc_beacon_transport_route.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,6 +134,7 @@ object_static_space_beacon_shared_hyperspace_route_beacon_01 = SharedStaticObjec
 
 	clientObjectCRC = 2042724339,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_beacon_shared_hyperspace_route_beacon_01, "object/static/space/beacon/shared_hyperspace_route_beacon_01.iff")

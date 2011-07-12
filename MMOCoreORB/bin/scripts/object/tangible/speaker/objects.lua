@@ -42,6 +42,9 @@
 
 
 object_tangible_speaker_shared_speaker = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/speaker/shared_speaker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_speaker.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_speaker_shared_speaker = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1991875875,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_speaker_shared_speaker, "object/tangible/speaker/shared_speaker.iff")

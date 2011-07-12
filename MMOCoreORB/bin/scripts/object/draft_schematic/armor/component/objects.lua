@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_armor_component_shared_armor_layer_acid = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_armor_layer_acid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_armor_component_shared_armor_layer_acid = SharedDraftSche
 
 	clientObjectCRC = 1792719503,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_acid, "object/draft_schematic/armor/component/shared_armor_layer_acid.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_blast = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_armor_layer_blast.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_armor_component_shared_armor_layer_blast = SharedDraftSch
 
 	clientObjectCRC = 180189865,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_blast, "object/draft_schematic/armor/component/shared_armor_layer_blast.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_cold = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_armor_layer_cold.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_armor_component_shared_armor_layer_cold = SharedDraftSche
 
 	clientObjectCRC = 3769957782,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_cold, "object/draft_schematic/armor/component/shared_armor_layer_cold.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_electrical = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_armor_layer_electrical.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_armor_component_shared_armor_layer_electrical = SharedDra
 
 	clientObjectCRC = 2193465881,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_electrical, "object/draft_schematic/armor/component/shared_armor_layer_electrical.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_energy = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_armor_layer_energy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_armor_component_shared_armor_layer_energy = SharedDraftSc
 
 	clientObjectCRC = 4258794187,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_energy, "object/draft_schematic/armor/component/shared_armor_layer_energy.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_environmental = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_armor_layer_environmental.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_armor_component_shared_armor_layer_environmental = Shared
 
 	clientObjectCRC = 3965303725,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_environmental, "object/draft_schematic/armor/component/shared_armor_layer_environmental.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_heat = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_armor_layer_heat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_armor_component_shared_armor_layer_heat = SharedDraftSche
 
 	clientObjectCRC = 408400742,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_heat, "object/draft_schematic/armor/component/shared_armor_layer_heat.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_kinetic = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_armor_layer_kinetic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_armor_component_shared_armor_layer_kinetic = SharedDraftS
 
 	clientObjectCRC = 4175436808,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_kinetic, "object/draft_schematic/armor/component/shared_armor_layer_kinetic.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_restraint = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_armor_layer_restraint.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_armor_component_shared_armor_layer_restraint = SharedDraf
 
 	clientObjectCRC = 3228456823,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_restraint, "object/draft_schematic/armor/component/shared_armor_layer_restraint.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_ris = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_armor_layer_ris.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_armor_component_shared_armor_layer_ris = SharedDraftSchem
 
 	clientObjectCRC = 1540900933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_ris, "object/draft_schematic/armor/component/shared_armor_layer_ris.iff")
 
 object_draft_schematic_armor_component_shared_armor_layer_stun = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_armor_layer_stun.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_armor_component_shared_armor_layer_stun = SharedDraftSche
 
 	clientObjectCRC = 2919500503,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_armor_layer_stun, "object/draft_schematic/armor/component/shared_armor_layer_stun.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_deflector_shield_emitter_assembly.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly 
 
 	clientObjectCRC = 3177230385,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_emitter_assembly, "object/draft_schematic/armor/component/shared_deflector_shield_emitter_assembly.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_ray = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_deflector_shield_generator_energy_ray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,11 +673,15 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_
 
 	clientObjectCRC = 3571137786,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_energy_ray, "object/draft_schematic/armor/component/shared_deflector_shield_generator_energy_ray.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_generator_particle = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_deflector_shield_generator_particle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -667,11 +722,15 @@ object_draft_schematic_armor_component_shared_deflector_shield_generator_particl
 
 	clientObjectCRC = 3523195897,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_generator_particle, "object/draft_schematic/armor/component/shared_deflector_shield_generator_particle.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_deflector_shield_ion_feed_unit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -712,11 +771,15 @@ object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit = S
 
 	clientObjectCRC = 1075484439,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_ion_feed_unit, "object/draft_schematic/armor/component/shared_deflector_shield_ion_feed_unit.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_overload_discharge_unit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_deflector_shield_overload_discharge_unit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -757,11 +820,15 @@ object_draft_schematic_armor_component_shared_deflector_shield_overload_discharg
 
 	clientObjectCRC = 831687516,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_overload_discharge_unit, "object/draft_schematic/armor/component/shared_deflector_shield_overload_discharge_unit.iff")
 
 object_draft_schematic_armor_component_shared_deflector_shield_projector_plate = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_deflector_shield_projector_plate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -802,11 +869,15 @@ object_draft_schematic_armor_component_shared_deflector_shield_projector_plate =
 
 	clientObjectCRC = 951632989,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_deflector_shield_projector_plate, "object/draft_schematic/armor/component/shared_deflector_shield_projector_plate.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_acid = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_heavy_armor_layer_acid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -847,11 +918,15 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_acid = SharedDra
 
 	clientObjectCRC = 1874931611,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_acid, "object/draft_schematic/armor/component/shared_heavy_armor_layer_acid.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_blast = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_heavy_armor_layer_blast.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -892,11 +967,15 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_blast = SharedDr
 
 	clientObjectCRC = 116196802,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_blast, "object/draft_schematic/armor/component/shared_heavy_armor_layer_blast.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_cold = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_heavy_armor_layer_cold.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -937,11 +1016,15 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_cold = SharedDra
 
 	clientObjectCRC = 3853478018,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_cold, "object/draft_schematic/armor/component/shared_heavy_armor_layer_cold.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_heavy_armor_layer_electrical.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -982,11 +1065,15 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical = Sha
 
 	clientObjectCRC = 127633276,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_electrical, "object/draft_schematic/armor/component/shared_heavy_armor_layer_electrical.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_energy = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_heavy_armor_layer_energy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1027,11 +1114,15 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_energy = SharedD
 
 	clientObjectCRC = 2561407663,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_energy, "object/draft_schematic/armor/component/shared_heavy_armor_layer_energy.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_heavy_armor_layer_environmental.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1072,11 +1163,15 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental = 
 
 	clientObjectCRC = 690401981,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_environmental, "object/draft_schematic/armor/component/shared_heavy_armor_layer_environmental.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_heat = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_heavy_armor_layer_heat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1117,11 +1212,15 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_heat = SharedDra
 
 	clientObjectCRC = 491529842,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_heat, "object/draft_schematic/armor/component/shared_heavy_armor_layer_heat.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_heavy_armor_layer_kinetic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1162,11 +1261,15 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic = Shared
 
 	clientObjectCRC = 812701172,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_kinetic, "object/draft_schematic/armor/component/shared_heavy_armor_layer_kinetic.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_heavy_armor_layer_restraint.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1207,11 +1310,15 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint = Shar
 
 	clientObjectCRC = 1695390575,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_restraint, "object/draft_schematic/armor/component/shared_heavy_armor_layer_restraint.iff")
 
 object_draft_schematic_armor_component_shared_heavy_armor_layer_stun = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/armor/component/shared_heavy_armor_layer_stun.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1252,6 +1359,7 @@ object_draft_schematic_armor_component_shared_heavy_armor_layer_stun = SharedDra
 
 	clientObjectCRC = 2870976451,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_armor_component_shared_heavy_armor_layer_stun, "object/draft_schematic/armor/component/shared_heavy_armor_layer_stun.iff")

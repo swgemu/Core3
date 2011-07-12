@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/fanned_rawl/shared_lair_fanned_rawl.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl = SharedTangibleObjectT
 
 	clientObjectCRC = 3965462331,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl, "object/tangible/lair/fanned_rawl/shared_lair_fanned_rawl.iff")
 
 object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/fanned_rawl/shared_lair_fanned_rawl_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp = SharedTangibleO
 
 	clientObjectCRC = 1138635179,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_fanned_rawl_shared_lair_fanned_rawl_swamp, "object/tangible/lair/fanned_rawl/shared_lair_fanned_rawl_swamp.iff")

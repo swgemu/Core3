@@ -42,6 +42,9 @@
 
 
 object_tangible_component_munition_shared_acklay_venom = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_acklay_venom.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_nutrient_supplements_liquid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_munition_shared_acklay_venom = SharedTangibleObjectTem
 
 	clientObjectCRC = 3684259216,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff", "object/tangible/component/munition/shared_enhanced_charge_composition.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_acklay_venom, "object/tangible/component/munition/shared_acklay_venom.iff")
 
 object_tangible_component_munition_shared_ammo_projectile = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_ammo_projectile.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_ammo_projectile.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_munition_shared_ammo_projectile = SharedTangibleObject
 
 	clientObjectCRC = 4029895422,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_ammo_projectile, "object/tangible/component/munition/shared_ammo_projectile.iff")
 
 object_tangible_component_munition_shared_ammo_projectile_entanglement = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_ammo_projectile_entanglement.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_ammo_projectile_entanglement.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_component_munition_shared_ammo_projectile_entanglement = SharedT
 
 	clientObjectCRC = 1717162905,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_ammo_projectile_entanglement, "object/tangible/component/munition/shared_ammo_projectile_entanglement.iff")
 
 object_tangible_component_munition_shared_base_munition_enhancer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_base_munition_enhancer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_component_munition_shared_base_munition_enhancer = SharedTangibl
 
 	clientObjectCRC = 1098837027,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_base_munition_enhancer, "object/tangible/component/munition/shared_base_munition_enhancer.iff")
 
 object_tangible_component_munition_shared_enhanced_charge_composition = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_enhanced_charge_composition.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_component_munition_shared_enhanced_charge_composition = SharedTa
 
 	clientObjectCRC = 1739187546,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_charge_composition, "object/tangible/component/munition/shared_enhanced_charge_composition.iff")
 
 object_tangible_component_munition_shared_enhanced_charge_shaping = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_enhanced_charge_shaping.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_component_munition_shared_enhanced_charge_shaping = SharedTangib
 
 	clientObjectCRC = 411019932,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_charge_shaping, "object/tangible/component/munition/shared_enhanced_charge_shaping.iff")
 
 object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_enhanced_destructive_pulse_channeling.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling 
 
 	clientObjectCRC = 3545355156,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_destructive_pulse_channeling, "object/tangible/component/munition/shared_enhanced_destructive_pulse_channeling.iff")
 
 object_tangible_component_munition_shared_enhanced_fragmentation_sleeve = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_enhanced_fragmentation_sleeve.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_component_munition_shared_enhanced_fragmentation_sleeve = Shared
 
 	clientObjectCRC = 628465189,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_enhanced_fragmentation_sleeve, "object/tangible/component/munition/shared_enhanced_fragmentation_sleeve.iff")
 
 object_tangible_component_munition_shared_kliknick_gland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_kliknick_gland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_component_munition_shared_kliknick_gland = SharedTangibleObjectT
 
 	clientObjectCRC = 3311758812,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/munition/shared_base_munition_enhancer.iff", "object/tangible/component/munition/shared_enhanced_charge_composition.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_kliknick_gland, "object/tangible/component/munition/shared_kliknick_gland.iff")
 
 object_tangible_component_munition_shared_warhead_chemical = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_warhead_chemical.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_warhead_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_component_munition_shared_warhead_chemical = SharedTangibleObjec
 
 	clientObjectCRC = 3966888720,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_chemical, "object/tangible/component/munition/shared_warhead_chemical.iff")
 
 object_tangible_component_munition_shared_warhead_fusing_mechanism = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_component_munition_shared_warhead_fusing_mechanism = SharedTangi
 
 	clientObjectCRC = 896289962,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_fusing_mechanism, "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff")
 
 object_tangible_component_munition_shared_warhead_heavy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_warhead_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_warhead_heavy.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_component_munition_shared_warhead_heavy = SharedTangibleObjectTe
 
 	clientObjectCRC = 2416425450,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_heavy, "object/tangible/component/munition/shared_warhead_heavy.iff")
 
 object_tangible_component_munition_shared_warhead_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_warhead_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_warhead_electronic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_component_munition_shared_warhead_light = SharedTangibleObjectTe
 
 	clientObjectCRC = 1365214516,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_light, "object/tangible/component/munition/shared_warhead_light.iff")
 
 object_tangible_component_munition_shared_warhead_medium = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_warhead_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_warhead_medium.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_component_munition_shared_warhead_medium = SharedTangibleObjectT
 
 	clientObjectCRC = 1284211616,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_medium, "object/tangible/component/munition/shared_warhead_medium.iff")
 
 object_tangible_component_munition_shared_warhead_stabilizer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/munition/shared_warhead_stabilizer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,6 +921,7 @@ object_tangible_component_munition_shared_warhead_stabilizer = SharedTangibleObj
 
 	clientObjectCRC = 1000887058,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_munition_shared_warhead_stabilizer, "object/tangible/component/munition/shared_warhead_stabilizer.iff")

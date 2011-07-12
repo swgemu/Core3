@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_bustier_shared_bustier_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bustier/shared_bustier_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bustier_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_bustier_shared_bustier_s01 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2813298237,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bustier_shared_bustier_s01, "object/tangible/wearables/bustier/shared_bustier_s01.iff")
 
 object_tangible_wearables_bustier_shared_bustier_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bustier/shared_bustier_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bustier_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_bustier_shared_bustier_s02 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2092445354,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bustier_shared_bustier_s02, "object/tangible/wearables/bustier/shared_bustier_s02.iff")
 
 object_tangible_wearables_bustier_shared_bustier_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bustier/shared_bustier_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bustier_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -202,6 +213,7 @@ object_tangible_wearables_bustier_shared_bustier_s03 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 901073191,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bustier_shared_bustier_s03, "object/tangible/wearables/bustier/shared_bustier_s03.iff")

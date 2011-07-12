@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer = SharedTangibl
 
 	clientObjectCRC = 486155425,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer, "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer.iff")
 
 object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer_underwater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater = Sh
 
 	clientObjectCRC = 662717072,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_opee_sea_killer_shared_lair_opee_sea_killer_underwater, "object/tangible/lair/opee_sea_killer/shared_lair_opee_sea_killer_underwater.iff")

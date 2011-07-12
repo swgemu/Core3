@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_jellyfish_shared_lair_jellyfish = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/jellyfish/shared_lair_jellyfish.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1244300952,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish, "object/tangible/lair/jellyfish/shared_lair_jellyfish.iff")
 
 object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/jellyfish/shared_lair_jellyfish_underwater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater = SharedTangible
 
 	clientObjectCRC = 2597048309,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_jellyfish_shared_lair_jellyfish_underwater, "object/tangible/lair/jellyfish/shared_lair_jellyfish_underwater.iff")

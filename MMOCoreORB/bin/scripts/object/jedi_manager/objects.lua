@@ -42,6 +42,9 @@
 
 
 object_jedi_manager_shared_jedi_manager = SharedJediManagerTemplate:new {
+	clientTemplateFileName = "object/jedi_manager/shared_jedi_manager.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_jedi_manager_shared_jedi_manager = SharedJediManagerTemplate:new {
 
 	clientObjectCRC = 4042830301,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/universe/base/shared_base_universe.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_jedi_manager_shared_jedi_manager, "object/jedi_manager/shared_jedi_manager.iff")

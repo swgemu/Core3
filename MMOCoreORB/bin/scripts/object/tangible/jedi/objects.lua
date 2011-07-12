@@ -42,6 +42,9 @@
 
 
 object_tangible_jedi_shared_force_shrine_stone = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/jedi/shared_force_shrine_stone.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_jedi_shared_force_shrine_stone = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3757784174,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_force_shrine_stone, "object/tangible/jedi/shared_force_shrine_stone.iff")
 
 object_tangible_jedi_shared_jedi_holocron_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/jedi/shared_jedi_holocron_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_jedi_sith_holocron_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_jedi_shared_jedi_holocron_dark = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2292501440,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_jedi_holocron_dark, "object/tangible/jedi/shared_jedi_holocron_dark.iff")
 
 object_tangible_jedi_shared_jedi_holocron_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/jedi/shared_jedi_holocron_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_jedi_holocron_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_jedi_shared_jedi_holocron_light = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 2610980168,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_jedi_holocron_light, "object/tangible/jedi/shared_jedi_holocron_light.iff")
 
 object_tangible_jedi_shared_no_drop_jedi_holocron_dark = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/jedi/shared_no_drop_jedi_holocron_dark.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_jedi_sith_holocron_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_dark = SharedTangibleObjectTem
 
 	clientObjectCRC = 2325658238,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_dark, "object/tangible/jedi/shared_no_drop_jedi_holocron_dark.iff")
 
 object_tangible_jedi_shared_no_drop_jedi_holocron_light = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/jedi/shared_no_drop_jedi_holocron_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_jedi_holocron_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_jedi_shared_no_drop_jedi_holocron_light = SharedTangibleObjectTe
 
 	clientObjectCRC = 2824069158,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_no_drop_jedi_holocron_light, "object/tangible/jedi/shared_no_drop_jedi_holocron_light.iff")
 
 object_tangible_jedi_shared_padawan_trials_skeleton = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/jedi/shared_padawan_trials_skeleton.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_jedi_shared_padawan_trials_skeleton = SharedTangibleObjectTempla
 
 	clientObjectCRC = 3447451409,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_padawan_trials_skeleton, "object/tangible/jedi/shared_padawan_trials_skeleton.iff")
 
 object_tangible_jedi_shared_power_shrine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/jedi/shared_power_shrine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_jedi_shared_power_shrine = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2994720477,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_power_shrine, "object/tangible/jedi/shared_power_shrine.iff")
 
 object_tangible_jedi_shared_power_shrine_red = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/jedi/shared_power_shrine_red.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_dant_jedi_temple_pillar_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,6 +508,7 @@ object_tangible_jedi_shared_power_shrine_red = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2808368973,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_jedi_shared_power_shrine_red, "object/tangible/jedi/shared_power_shrine_red.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_bordok_shared_lair_bordok = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/bordok/shared_lair_bordok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_bordok_shared_lair_bordok = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2816531423,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bordok_shared_lair_bordok, "object/tangible/lair/bordok/shared_lair_bordok.iff")
 
 object_tangible_lair_bordok_shared_lair_bordok_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/bordok/shared_lair_bordok_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_bordok_shared_lair_bordok_mountain = SharedTangibleObjectTe
 
 	clientObjectCRC = 4096042384,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bordok_shared_lair_bordok_mountain, "object/tangible/lair/bordok/shared_lair_bordok_mountain.iff")

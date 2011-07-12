@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 2925842,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma_2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 3961130234,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_charisma_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_charisma_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 768952240,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer_2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 2552206589,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_entertainer_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_entertainer_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 1589090972,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic_2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 3813406638,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_medic_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_medic_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 1620152707,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming_2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 899505469,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_taming_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_taming_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 2024699150,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training_2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 2809419089,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_casual_training_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_casual_training_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 2665358309,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor_2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 395605474,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_armor_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_armor_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,11 +673,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 1070501512,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding_2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -667,11 +722,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 2262729200,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_bleeding_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_bleeding_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -712,11 +771,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 3361810650,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo_2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -757,11 +820,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 756747736,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_camo_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_camo_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -802,11 +869,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 2635065111,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover_2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -847,11 +918,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 3034020975,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_cover_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_cover_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -892,11 +967,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 1421353901,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense_2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -937,11 +1016,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 1217369934,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_defense_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_defense_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -982,11 +1065,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 1549050933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate_2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1027,11 +1114,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_
 
 	clientObjectCRC = 3053086977,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_clothing_field_intimidate_2, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_clothing_field_intimidate_2.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_filling = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_filling.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1072,11 +1163,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	clientObjectCRC = 295650264,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_filling.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_flavor = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_flavor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1117,11 +1212,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	clientObjectCRC = 4077000315,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_flavor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_nutrition = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_nutrition.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1162,11 +1261,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	clientObjectCRC = 463434519,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_nutrition.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_quantity = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_quantity.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1207,11 +1310,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heav
 
 	clientObjectCRC = 3722871954,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_heavy_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_heavy_quantity.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_filling = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_filling.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1252,11 +1359,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	clientObjectCRC = 2624931359,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_filling.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_flavor = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_flavor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1297,11 +1408,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	clientObjectCRC = 3804703928,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_flavor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_nutrition = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_nutrition.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1342,11 +1457,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	clientObjectCRC = 1803745287,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_nutrition.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_quantity = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_quantity.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1387,11 +1506,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_ligh
 
 	clientObjectCRC = 1864508847,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_light_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_light_quantity.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_filling = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_filling.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1432,11 +1555,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	clientObjectCRC = 903570077,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_filling, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_filling.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_flavor = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_flavor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1477,11 +1604,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	clientObjectCRC = 929619132,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_flavor, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_flavor.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_nutrition = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_nutrition.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1522,11 +1653,15 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	clientObjectCRC = 2027905587,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_nutrition, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_nutrition.iff")
 
 object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_quantity = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_quantity.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1567,6 +1702,7 @@ object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medi
 
 	clientObjectCRC = 316670382,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_bio_engineer_bio_component_shared_bio_component_food_medium_quantity, "object/draft_schematic/bio_engineer/bio_component/shared_bio_component_food_medium_quantity.iff")

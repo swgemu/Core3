@@ -42,6 +42,9 @@
 
 
 object_tangible_container_jar_shared_jar_berries_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/jar/shared_jar_berries_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_berries_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_container_jar_shared_jar_berries_s01 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4139801999,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/jar/base/shared_jar_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_berries_s01, "object/tangible/container/jar/shared_jar_berries_s01.iff")
 
 object_tangible_container_jar_shared_jar_bugs_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/jar/shared_jar_bugs_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_container_jar_shared_jar_bugs_s01 = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 835828013,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/jar/base/shared_jar_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_bugs_s01, "object/tangible/container/jar/shared_jar_bugs_s01.iff")
 
 object_tangible_container_jar_shared_jar_empty_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/jar/shared_jar_empty_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_empty_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_container_jar_shared_jar_empty_s01 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1210399766,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/jar/base/shared_jar_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_empty_s01, "object/tangible/container/jar/shared_jar_empty_s01.iff")
 
 object_tangible_container_jar_shared_jar_funk_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/jar/shared_jar_funk_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_container_jar_shared_jar_funk_s01 = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 790427742,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/jar/base/shared_jar_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_funk_s01, "object/tangible/container/jar/shared_jar_funk_s01.iff")
 
 object_tangible_container_jar_shared_jar_guts_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/jar/shared_jar_guts_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_container_jar_shared_jar_guts_s01 = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2207170789,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/jar/base/shared_jar_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_guts_s01, "object/tangible/container/jar/shared_jar_guts_s01.iff")
 
 object_tangible_container_jar_shared_jar_spice_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/jar/shared_jar_spice_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_container_jar_shared_jar_spice_s01 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2797429817,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/jar/base/shared_jar_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_spice_s01, "object/tangible/container/jar/shared_jar_spice_s01.iff")
 
 object_tangible_container_jar_shared_jar_spice_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/jar/shared_jar_spice_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_container_jar_shared_jar_spice_s02 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2108345518,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/jar/base/shared_jar_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_spice_s02, "object/tangible/container/jar/shared_jar_spice_s02.iff")
 
 object_tangible_container_jar_shared_jar_spice_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/jar/shared_jar_spice_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,6 +508,7 @@ object_tangible_container_jar_shared_jar_spice_s03 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 883403555,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/jar/base/shared_jar_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_jar_shared_jar_spice_s03, "object/tangible/container/jar/shared_jar_spice_s03.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_ship_components_reactor_rct_tiefighter_basic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/rct_tiefighter_basic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_ship_components_reactor_rct_tiefighter_basic = SharedTangibleObj
 
 	clientObjectCRC = 1363026125,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_rct_tiefighter_basic, "object/tangible/ship/components/reactor/rct_tiefighter_basic.iff")
 
 object_tangible_ship_components_reactor_rct_z95_basic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/rct_z95_basic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_ship_components_reactor_rct_z95_basic = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3484082121,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_rct_z95_basic, "object/tangible/ship/components/reactor/rct_z95_basic.iff")
 
 object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_armek_phase_grinder.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder = SharedT
 
 	clientObjectCRC = 1838799948,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_armek_phase_grinder, "object/tangible/ship/components/reactor/shared_rct_armek_phase_grinder.iff")
 
 object_tangible_ship_components_reactor_shared_rct_armek_super_collider = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_armek_super_collider.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_ship_components_reactor_shared_rct_armek_super_collider = Shared
 
 	clientObjectCRC = 655443437,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_armek_super_collider, "object/tangible/ship/components/reactor/shared_rct_armek_super_collider.iff")
 
 object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_armek_ultra_collider.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider = Shared
 
 	clientObjectCRC = 479861884,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_armek_ultra_collider, "object/tangible/ship/components/reactor/shared_rct_armek_ultra_collider.iff")
 
 object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_corellian_modified_bt3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3 = Shar
 
 	clientObjectCRC = 2144194829,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt3, "object/tangible/ship/components/reactor/shared_rct_corellian_modified_bt3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_corellian_modified_bt5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5 = Shar
 
 	clientObjectCRC = 3441663380,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_corellian_modified_bt5, "object/tangible/ship/components/reactor/shared_rct_corellian_modified_bt5.iff")
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_cygnus_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_advanced = SharedTangi
 
 	clientObjectCRC = 4106488287,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_advanced, "object/tangible/ship/components/reactor/shared_rct_cygnus_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_cygnus_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_mk1 = SharedTangibleOb
 
 	clientObjectCRC = 2061868907,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_mk1, "object/tangible/ship/components/reactor/shared_rct_cygnus_mk1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_cygnus_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_mk2 = SharedTangibleOb
 
 	clientObjectCRC = 2717005820,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_mk2, "object/tangible/ship/components/reactor/shared_rct_cygnus_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_cygnus_supercharged_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2 = Sha
 
 	clientObjectCRC = 2482451537,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_supercharged_mk2, "object/tangible/ship/components/reactor/shared_rct_cygnus_supercharged_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_cygnus_tuned_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1 = SharedTang
 
 	clientObjectCRC = 2632377171,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_cygnus_tuned_mk1, "object/tangible/ship/components/reactor/shared_rct_cygnus_tuned_mk1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_freitek_improved_powerhouse_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_m
 
 	clientObjectCRC = 274444164,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_improved_powerhouse_mk1, "object/tangible/ship/components/reactor/shared_rct_freitek_improved_powerhouse_mk1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_level1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_freitek_level1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_ship_components_reactor_shared_rct_freitek_level1 = SharedTangib
 
 	clientObjectCRC = 2089644371,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_level1, "object/tangible/ship/components/reactor/shared_rct_freitek_level1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_freitek_performance_level1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1 = 
 
 	clientObjectCRC = 3762511133,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_performance_level1, "object/tangible/ship/components/reactor/shared_rct_freitek_performance_level1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1 = Shar
 
 	clientObjectCRC = 1756278622,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk1, "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2 = Shar
 
 	clientObjectCRC = 3015247817,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk2, "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3 = Shar
 
 	clientObjectCRC = 4206125124,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_freitek_powerhouse_mk3, "object/tangible/ship/components/reactor/shared_rct_freitek_powerhouse_mk3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_generic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_generic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_ship_components_reactor_shared_rct_generic = SharedTangibleObjec
 
 	clientObjectCRC = 393073933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_generic, "object/tangible/ship/components/reactor/shared_rct_generic.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_incom_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_ship_components_reactor_shared_rct_incom_advanced = SharedTangib
 
 	clientObjectCRC = 469546362,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_advanced, "object/tangible/ship/components/reactor/shared_rct_incom_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_incom_custom_mark2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2 = SharedTa
 
 	clientObjectCRC = 273987032,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_custom_mark2, "object/tangible/ship/components/reactor/shared_rct_incom_custom_mark2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_incom_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_ship_components_reactor_shared_rct_incom_elite = SharedTangibleO
 
 	clientObjectCRC = 1003263168,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_elite, "object/tangible/ship/components/reactor/shared_rct_incom_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_incom_improved_mark1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1 = Shared
 
 	clientObjectCRC = 3090093197,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_improved_mark1, "object/tangible/ship/components/reactor/shared_rct_incom_improved_mark1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_incom_mark1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark1 = SharedTangibleO
 
 	clientObjectCRC = 2674049481,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark1, "object/tangible/ship/components/reactor/shared_rct_incom_mark1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_incom_mark2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark2 = SharedTangibleO
 
 	clientObjectCRC = 1148545374,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark2, "object/tangible/ship/components/reactor/shared_rct_incom_mark2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_incom_mark3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark3 = SharedTangibleO
 
 	clientObjectCRC = 225971923,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark3, "object/tangible/ship/components/reactor/shared_rct_incom_mark3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_incom_mark4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark4 = SharedTangibleO
 
 	clientObjectCRC = 4137362887,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark4, "object/tangible/ship/components/reactor/shared_rct_incom_mark4.iff")
 
 object_tangible_ship_components_reactor_shared_rct_incom_mark5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_incom_mark5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_ship_components_reactor_shared_rct_incom_mark5 = SharedTangibleO
 
 	clientObjectCRC = 3214295626,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_incom_mark5, "object/tangible/ship/components/reactor/shared_rct_incom_mark5.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermaster = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_kdy_powermaster.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermast
 
 	clientObjectCRC = 3711183726,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_kdy_powermaster, "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_kdy_powermaster.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_ops = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_sds_secret_ops.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_op
 
 	clientObjectCRC = 3454365984,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sds_secret_ops, "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_sds_secret_ops.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_forces = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_sfs_special_forces.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_f
 
 	clientObjectCRC = 159411222,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_imperial_sfs_special_forces, "object/tangible/ship/components/reactor/shared_rct_kessel_imperial_sfs_special_forces.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_incom_overdriven_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven
 
 	clientObjectCRC = 3518404345,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_incom_overdriven_elite, "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_incom_overdriven_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_gorax = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_mandal_modified_gorax.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_
 
 	clientObjectCRC = 110330195,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_mandal_modified_gorax, "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_mandal_modified_gorax.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_output_experimental = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_slayn_high_output_experimental.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_outpu
 
 	clientObjectCRC = 1643853797,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kessel_rebel_slayn_high_output_experimental, "object/tangible/ship/components/reactor/shared_rct_kessel_rebel_slayn_high_output_experimental.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_koensayr_charged_supernova.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova = 
 
 	clientObjectCRC = 1619443827,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_charged_supernova, "object/tangible/ship/components/reactor/shared_rct_koensayr_charged_supernova.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_koensayr_enhanced_supernova_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_m
 
 	clientObjectCRC = 4212259517,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_enhanced_supernova_mk2, "object/tangible/ship/components/reactor/shared_rct_koensayr_enhanced_supernova_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova = SharedTa
 
 	clientObjectCRC = 2993433692,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced =
 
 	clientObjectCRC = 4233117404,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_advanced, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,11 +2337,15 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2 = Shar
 
 	clientObjectCRC = 1605967841,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk2, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2237,11 +2396,15 @@ object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3 = Shar
 
 	clientObjectCRC = 380926060,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_koensayr_supernova_mk3, "object/tangible/ship/components/reactor/shared_rct_koensayr_supernova_mk3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kse_custom_lx11.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2292,11 +2455,15 @@ object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11 = SharedTangi
 
 	clientObjectCRC = 396907608,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_custom_lx11, "object/tangible/ship/components/reactor/shared_rct_kse_custom_lx11.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_lx11 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kse_lx11.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2347,11 +2514,15 @@ object_tangible_ship_components_reactor_shared_rct_kse_lx11 = SharedTangibleObje
 
 	clientObjectCRC = 3490595180,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_lx11, "object/tangible/ship/components/reactor/shared_rct_kse_lx11.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_lx21 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kse_lx21.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2402,11 +2573,15 @@ object_tangible_ship_components_reactor_shared_rct_kse_lx21 = SharedTangibleObje
 
 	clientObjectCRC = 4252391140,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_lx21, "object/tangible/ship/components/reactor/shared_rct_kse_lx21.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_rct_x = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kse_rct_x.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2457,11 +2632,15 @@ object_tangible_ship_components_reactor_shared_rct_kse_rct_x = SharedTangibleObj
 
 	clientObjectCRC = 379835158,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_rct_x, "object/tangible/ship/components/reactor/shared_rct_kse_rct_x.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_rct_z = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kse_rct_z.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2512,11 +2691,15 @@ object_tangible_ship_components_reactor_shared_rct_kse_rct_z = SharedTangibleObj
 
 	clientObjectCRC = 2226723852,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_rct_z, "object/tangible/ship/components/reactor/shared_rct_kse_rct_z.iff")
 
 object_tangible_ship_components_reactor_shared_rct_kse_supreme = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_kse_supreme.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2567,11 +2750,15 @@ object_tangible_ship_components_reactor_shared_rct_kse_supreme = SharedTangibleO
 
 	clientObjectCRC = 3961940522,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_kse_supreme, "object/tangible/ship/components/reactor/shared_rct_kse_supreme.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mandal_dx_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2622,11 +2809,15 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced = SharedTa
 
 	clientObjectCRC = 3433957122,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dx_advanced, "object/tangible/ship/components/reactor/shared_rct_mandal_dx_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mandal_dxr.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2677,11 +2868,15 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr = SharedTangibleOb
 
 	clientObjectCRC = 917671788,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mandal_dxr2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2732,11 +2927,15 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr2 = SharedTangibleO
 
 	clientObjectCRC = 1602175062,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr2, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mandal_dxr3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2787,11 +2986,15 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr3 = SharedTangibleO
 
 	clientObjectCRC = 376580059,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr3, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mandal_dxr4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2842,11 +3045,15 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr4 = SharedTangibleO
 
 	clientObjectCRC = 3985706191,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr4, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr4.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mandal_dxr5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2897,11 +3104,15 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr5 = SharedTangibleO
 
 	clientObjectCRC = 2761714498,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr5, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr5.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandal_dxr6 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mandal_dxr6.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2952,11 +3163,15 @@ object_tangible_ship_components_reactor_shared_rct_mandal_dxr6 = SharedTangibleO
 
 	clientObjectCRC = 2139866069,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandal_dxr6, "object/tangible/ship/components/reactor/shared_rct_mandal_dxr6.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandalor_gorax = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mandalor_gorax.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3007,11 +3222,15 @@ object_tangible_ship_components_reactor_shared_rct_mandalor_gorax = SharedTangib
 
 	clientObjectCRC = 2046773021,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandalor_gorax, "object/tangible/ship/components/reactor/shared_rct_mandalor_gorax.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mandalor_gorax_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3062,11 +3281,15 @@ object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite = Shared
 
 	clientObjectCRC = 3008300066,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mandalor_gorax_elite, "object/tangible/ship/components/reactor/shared_rct_mandalor_gorax_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_advanced_military = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mission_reward_imperial_rss_advanced_military.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3117,11 +3340,15 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_a
 
 	clientObjectCRC = 2253318306,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_rss_advanced_military, "object/tangible/ship/components/reactor/shared_rct_mission_reward_imperial_rss_advanced_military.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_high_output = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mission_reward_imperial_sds_high_output.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3172,11 +3399,15 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_h
 
 	clientObjectCRC = 1448525431,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_imperial_sds_high_output, "object/tangible/ship/components/reactor/shared_rct_mission_reward_imperial_sds_high_output.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro_military = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mission_reward_neutral_subpro_military.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3227,11 +3458,15 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro
 
 	clientObjectCRC = 2954387594,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_neutral_subpro_military, "object/tangible/ship/components/reactor/shared_rct_mission_reward_neutral_subpro_military.iff")
 
 object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hypervortex = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_mission_reward_rebel_slayn_hypervortex.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3282,11 +3517,15 @@ object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hy
 
 	clientObjectCRC = 2609742784,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_mission_reward_rebel_slayn_hypervortex, "object/tangible/ship/components/reactor/shared_rct_mission_reward_rebel_slayn_hypervortex.iff")
 
 object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_moncal_overdriver_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3337,11 +3576,15 @@ object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1 = Shared
 
 	clientObjectCRC = 4111600702,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s1, "object/tangible/ship/components/reactor/shared_rct_moncal_overdriver_s1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_moncal_overdriver_s2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3392,11 +3635,15 @@ object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2 = Shared
 
 	clientObjectCRC = 772121769,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_moncal_overdriver_s2, "object/tangible/ship/components/reactor/shared_rct_moncal_overdriver_s2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_prototype_reactor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_prototype_reactor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3447,11 +3694,15 @@ object_tangible_ship_components_reactor_shared_rct_prototype_reactor = SharedTan
 
 	clientObjectCRC = 2835039376,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_prototype_reactor, "object/tangible/ship/components/reactor/shared_rct_prototype_reactor.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rendili_type5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_rendili_type5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3502,11 +3753,15 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type5 = SharedTangibl
 
 	clientObjectCRC = 2057207911,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type5, "object/tangible/ship/components/reactor/shared_rct_rendili_type5.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rendili_type7 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_rendili_type7.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3557,11 +3812,15 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type7 = SharedTangibl
 
 	clientObjectCRC = 3900985213,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type7, "object/tangible/ship/components/reactor/shared_rct_rendili_type7.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_rendili_type_x_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3612,11 +3871,15 @@ object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite = Shared
 
 	clientObjectCRC = 1521298929,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rendili_type_x_elite, "object/tangible/ship/components/reactor/shared_rct_rendili_type_x_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_reward_armek_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_reward_armek_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3667,11 +3930,15 @@ object_tangible_ship_components_reactor_shared_rct_reward_armek_elite = SharedTa
 
 	clientObjectCRC = 4229165572,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_reward_armek_elite, "object/tangible/ship/components/reactor/shared_rct_reward_armek_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_reward_incom_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_reward_incom_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3722,11 +3989,15 @@ object_tangible_ship_components_reactor_shared_rct_reward_incom_elite = SharedTa
 
 	clientObjectCRC = 1119723348,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_reward_incom_elite, "object/tangible/ship/components/reactor/shared_rct_reward_incom_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_reward_slayn_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3777,11 +4048,15 @@ object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite = SharedTa
 
 	clientObjectCRC = 3567473688,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_reward_slayn_elite, "object/tangible/ship/components/reactor/shared_rct_reward_slayn_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_reward_subpro_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3832,11 +4107,15 @@ object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite = SharedT
 
 	clientObjectCRC = 2500440467,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_reward_subpro_elite, "object/tangible/ship/components/reactor/shared_rct_reward_subpro_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_reward_taim_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_reward_taim_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3887,11 +4166,15 @@ object_tangible_ship_components_reactor_shared_rct_reward_taim_elite = SharedTan
 
 	clientObjectCRC = 1252227058,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_reward_taim_elite, "object/tangible/ship/components/reactor/shared_rct_reward_taim_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rss_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_rss_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3942,11 +4225,15 @@ object_tangible_ship_components_reactor_shared_rct_rss_advanced = SharedTangible
 
 	clientObjectCRC = 1571711759,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rss_advanced, "object/tangible/ship/components/reactor/shared_rct_rss_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rss_x12 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_rss_x12.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3997,11 +4284,15 @@ object_tangible_ship_components_reactor_shared_rct_rss_x12 = SharedTangibleObjec
 
 	clientObjectCRC = 682785613,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rss_x12, "object/tangible/ship/components/reactor/shared_rct_rss_x12.iff")
 
 object_tangible_ship_components_reactor_shared_rct_rss_x8 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_rss_x8.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4052,11 +4343,15 @@ object_tangible_ship_components_reactor_shared_rct_rss_x8 = SharedTangibleObject
 
 	clientObjectCRC = 729478764,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_rss_x8, "object/tangible/ship/components/reactor/shared_rct_rss_x8.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sds_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sds_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4107,11 +4402,15 @@ object_tangible_ship_components_reactor_shared_rct_sds_elite = SharedTangibleObj
 
 	clientObjectCRC = 1687773799,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sds_elite, "object/tangible/ship/components/reactor/shared_rct_sds_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sds_imperial_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sds_imperial_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4162,11 +4461,15 @@ object_tangible_ship_components_reactor_shared_rct_sds_imperial_1 = SharedTangib
 
 	clientObjectCRC = 1892978886,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sds_imperial_1, "object/tangible/ship/components/reactor/shared_rct_sds_imperial_1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sds_special_forces_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4217,11 +4520,15 @@ object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1 = Shared
 
 	clientObjectCRC = 3970052034,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sds_special_forces_1, "object/tangible/ship/components/reactor/shared_rct_sds_special_forces_1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_seinar_enhanced_level1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4272,11 +4579,15 @@ object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1 = Shar
 
 	clientObjectCRC = 293975026,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_enhanced_level1, "object/tangible/ship/components/reactor/shared_rct_seinar_enhanced_level1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_seinar_level1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4327,11 +4638,15 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level1 = SharedTangibl
 
 	clientObjectCRC = 78015690,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level1, "object/tangible/ship/components/reactor/shared_rct_seinar_level1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_seinar_level2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4382,11 +4697,15 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level2 = SharedTangibl
 
 	clientObjectCRC = 3752969309,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level2, "object/tangible/ship/components/reactor/shared_rct_seinar_level2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_seinar_level3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4437,11 +4756,15 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level3 = SharedTangibl
 
 	clientObjectCRC = 2528945104,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level3, "object/tangible/ship/components/reactor/shared_rct_seinar_level3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_seinar_level4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_seinar_level4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4492,11 +4815,15 @@ object_tangible_ship_components_reactor_shared_rct_seinar_level4 = SharedTangibl
 
 	clientObjectCRC = 1834977476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_seinar_level4, "object/tangible/ship/components/reactor/shared_rct_seinar_level4.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sfs_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4547,11 +4874,15 @@ object_tangible_ship_components_reactor_shared_rct_sfs_advanced = SharedTangible
 
 	clientObjectCRC = 928581541,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_advanced, "object/tangible/ship/components/reactor/shared_rct_sfs_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sfs_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4602,11 +4933,15 @@ object_tangible_ship_components_reactor_shared_rct_sfs_elite = SharedTangibleObj
 
 	clientObjectCRC = 1802806379,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_elite, "object/tangible/ship/components/reactor/shared_rct_sfs_elite.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4657,11 +4992,15 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1 = SharedTangib
 
 	clientObjectCRC = 1601368700,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_1, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4712,11 +5051,15 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2 = SharedTangib
 
 	clientObjectCRC = 2221234923,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_2, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4767,11 +5110,15 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3 = SharedTangib
 
 	clientObjectCRC = 3446160742,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_3, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4822,11 +5169,15 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4 = SharedTangib
 
 	clientObjectCRC = 915084914,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_4, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_4.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4877,11 +5228,15 @@ object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5 = SharedTangib
 
 	clientObjectCRC = 2139517439,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sfs_imperial_5, "object/tangible/ship/components/reactor/shared_rct_sfs_imperial_5.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_slayn_hypertron_2k.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4932,11 +5287,15 @@ object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k = SharedTa
 
 	clientObjectCRC = 3699990858,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_2k, "object/tangible/ship/components/reactor/shared_rct_slayn_hypertron_2k.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_slayn_hypertron_4k.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4987,11 +5346,15 @@ object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k = SharedTa
 
 	clientObjectCRC = 2256096858,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_hypertron_4k, "object/tangible/ship/components/reactor/shared_rct_slayn_hypertron_4k.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5042,11 +5405,15 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1 = SharedTang
 
 	clientObjectCRC = 1273339609,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk1, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5097,11 +5464,15 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2 = SharedTang
 
 	clientObjectCRC = 2431792718,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk2, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5152,11 +5523,15 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3 = SharedTang
 
 	clientObjectCRC = 3657388483,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk3, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5207,11 +5582,15 @@ object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4 = SharedTang
 
 	clientObjectCRC = 572291799,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_slayn_vortex_mk4, "object/tangible/ship/components/reactor/shared_rct_slayn_vortex_mk4.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5262,11 +5641,15 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1 = S
 
 	clientObjectCRC = 3916801975,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_1, "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5317,11 +5700,15 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2 = S
 
 	clientObjectCRC = 845287200,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_2, "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5372,11 +5759,15 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3 = S
 
 	clientObjectCRC = 2070898861,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_fusion_reactor_3, "object/tangible/ship/components/reactor/shared_rct_sorosuub_fusion_reactor_3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sorosuub_turbine_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5427,11 +5818,15 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3 = SharedTa
 
 	clientObjectCRC = 3299280915,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_3, "object/tangible/ship/components/reactor/shared_rct_sorosuub_turbine_3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_sorosuub_turbine_advanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5482,11 +5877,15 @@ object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced = S
 
 	clientObjectCRC = 4221084087,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_sorosuub_turbine_advanced, "object/tangible/ship/components/reactor/shared_rct_sorosuub_turbine_advanced.iff")
 
 object_tangible_ship_components_reactor_shared_rct_subpro_aurora = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_subpro_aurora.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5537,11 +5936,15 @@ object_tangible_ship_components_reactor_shared_rct_subpro_aurora = SharedTangibl
 
 	clientObjectCRC = 3380404850,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_aurora, "object/tangible/ship/components/reactor/shared_rct_subpro_aurora.iff")
 
 object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_subpro_aurora_max.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5592,11 +5995,15 @@ object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max = SharedTan
 
 	clientObjectCRC = 630252106,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_aurora_max, "object/tangible/ship/components/reactor/shared_rct_subpro_aurora_max.iff")
 
 object_tangible_ship_components_reactor_shared_rct_subpro_dyna1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_subpro_dyna1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5647,11 +6054,15 @@ object_tangible_ship_components_reactor_shared_rct_subpro_dyna1 = SharedTangible
 
 	clientObjectCRC = 3288337981,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_dyna1, "object/tangible/ship/components/reactor/shared_rct_subpro_dyna1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_subpro_dyna2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_subpro_dyna2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5702,11 +6113,15 @@ object_tangible_ship_components_reactor_shared_rct_subpro_dyna2 = SharedTangible
 
 	clientObjectCRC = 521643690,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_dyna2, "object/tangible/ship/components/reactor/shared_rct_subpro_dyna2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_subpro_special_dyna2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5757,11 +6172,15 @@ object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2 = Shared
 
 	clientObjectCRC = 3847523590,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_subpro_special_dyna2, "object/tangible/ship/components/reactor/shared_rct_subpro_special_dyna2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5812,11 +6231,15 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1 = Shared
 
 	clientObjectCRC = 1580359384,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s1, "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s1.iff")
 
 object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5867,11 +6290,15 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2 = Shared
 
 	clientObjectCRC = 2233857615,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s2, "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5922,11 +6349,15 @@ object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3 = Shared
 
 	clientObjectCRC = 3425210818,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_taim_experimental_s3, "object/tangible/ship/components/reactor/shared_rct_taim_experimental_s3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_tiefighter_basic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_tiefighter_basic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -5977,11 +6408,15 @@ object_tangible_ship_components_reactor_shared_rct_tiefighter_basic = SharedTang
 
 	clientObjectCRC = 3319963808,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_tiefighter_basic, "object/tangible/ship/components/reactor/shared_rct_tiefighter_basic.iff")
 
 object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_unknown_distressed_aluminum.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6032,11 +6467,15 @@ object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum =
 
 	clientObjectCRC = 951546180,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_distressed_aluminum, "object/tangible/ship/components/reactor/shared_rct_unknown_distressed_aluminum.iff")
 
 object_tangible_ship_components_reactor_shared_rct_unknown_multicore = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_unknown_multicore.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6087,11 +6526,15 @@ object_tangible_ship_components_reactor_shared_rct_unknown_multicore = SharedTan
 
 	clientObjectCRC = 33823730,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_multicore, "object/tangible/ship/components/reactor/shared_rct_unknown_multicore.iff")
 
 object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_unknown_proton_chamber.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6142,11 +6585,15 @@ object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber = Shar
 
 	clientObjectCRC = 2573145892,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_unknown_proton_chamber, "object/tangible/ship/components/reactor/shared_rct_unknown_proton_chamber.iff")
 
 object_tangible_ship_components_reactor_shared_rct_watto_sunray_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_watto_sunray_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6197,11 +6644,15 @@ object_tangible_ship_components_reactor_shared_rct_watto_sunray_2 = SharedTangib
 
 	clientObjectCRC = 1703778737,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_watto_sunray_2, "object/tangible/ship/components/reactor/shared_rct_watto_sunray_2.iff")
 
 object_tangible_ship_components_reactor_shared_rct_watto_sunray_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_watto_sunray_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6252,11 +6703,15 @@ object_tangible_ship_components_reactor_shared_rct_watto_sunray_3 = SharedTangib
 
 	clientObjectCRC = 746651196,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_watto_sunray_3, "object/tangible/ship/components/reactor/shared_rct_watto_sunray_3.iff")
 
 object_tangible_ship_components_reactor_shared_rct_z95_basic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_rct_z95_basic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_reactor_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6307,11 +6762,15 @@ object_tangible_ship_components_reactor_shared_rct_z95_basic = SharedTangibleObj
 
 	clientObjectCRC = 2051660015,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_rct_z95_basic, "object/tangible/ship/components/reactor/shared_rct_z95_basic.iff")
 
 object_tangible_ship_components_reactor_shared_reactor_test = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/components/reactor/shared_reactor_test.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cmp_xwing_cowl_neg_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -6362,6 +6821,7 @@ object_tangible_ship_components_reactor_shared_reactor_test = SharedTangibleObje
 
 	clientObjectCRC = 1943796009,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff", "object/tangible/ship/components/base/shared_ship_component_loot_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_components_reactor_shared_reactor_test, "object/tangible/ship/components/reactor/shared_reactor_test.iff")

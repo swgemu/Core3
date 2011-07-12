@@ -8,7 +8,7 @@
 #ifndef BASICRANGEDINTCUSTOMIZATIONVARIABLE_H_
 #define BASICRANGEDINTCUSTOMIZATIONVARIABLE_H_
 
-#include "RangedIntCustomizationVariable.h"
+#include "../params/RangedIntCustomizationVariable.h"
 
 class BasicRangedIntCustomizationVariable : public RangedIntCustomizationVariable {
 	int minValueInclusive;

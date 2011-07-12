@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_turret_deed_shared_turret_block_large_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/turret_deed/shared_turret_block_large_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_deed_turret_deed_shared_turret_block_large_deed = SharedTangible
 
 	clientObjectCRC = 662025863,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_turret_deed_shared_turret_block_large_deed, "object/tangible/deed/turret_deed/shared_turret_block_large_deed.iff")
 
 object_tangible_deed_turret_deed_shared_turret_block_medium_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/turret_deed/shared_turret_block_medium_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_deed_turret_deed_shared_turret_block_medium_deed = SharedTangibl
 
 	clientObjectCRC = 3770943764,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_turret_deed_shared_turret_block_medium_deed, "object/tangible/deed/turret_deed/shared_turret_block_medium_deed.iff")
 
 object_tangible_deed_turret_deed_shared_turret_block_small_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/turret_deed/shared_turret_block_small_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_deed_turret_deed_shared_turret_block_small_deed = SharedTangible
 
 	clientObjectCRC = 1744023588,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff", "object/tangible/deed/base/shared_deed_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_turret_deed_shared_turret_block_small_deed, "object/tangible/deed/turret_deed/shared_turret_block_small_deed.iff")

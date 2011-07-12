@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_faa_shared_lair_faa = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/faa/shared_lair_faa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_faa_shared_lair_faa = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3919679912,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_faa_shared_lair_faa, "object/tangible/lair/faa/shared_lair_faa.iff")
 
 object_tangible_lair_faa_shared_lair_faa_underwater = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/faa/shared_lair_faa_underwater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_faa_shared_lair_faa_underwater = SharedTangibleObjectTempla
 
 	clientObjectCRC = 92404120,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_faa_shared_lair_faa_underwater, "object/tangible/lair/faa/shared_lair_faa_underwater.iff")

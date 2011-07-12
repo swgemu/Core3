@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_item_theme_park_alderaan_act3_shared_dead_eye_prototype = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/item/theme_park/alderaan/act3/shared_dead_eye_prototype.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,6 +85,7 @@ object_draft_schematic_item_theme_park_alderaan_act3_shared_dead_eye_prototype =
 
 	clientObjectCRC = 3578248809,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_item_theme_park_alderaan_act3_shared_dead_eye_prototype, "object/draft_schematic/item/theme_park/alderaan/act3/shared_dead_eye_prototype.iff")

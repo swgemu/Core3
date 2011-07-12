@@ -42,6 +42,9 @@
 
 
 object_tangible_gem_shared_armor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gem/shared_armor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_armor_segment.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_gem_shared_armor = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3742650204,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gem_shared_armor, "object/tangible/gem/shared_armor.iff")
 
 object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gem/shared_clothing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_trim.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_gem_shared_clothing = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3237805620,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gem_shared_clothing, "object/tangible/gem/shared_clothing.iff")
 
 object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gem/shared_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/force_amplification_crystal.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_gem_shared_default = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 330070250,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/gem/base/shared_gem_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gem_shared_default, "object/tangible/gem/shared_default.iff")

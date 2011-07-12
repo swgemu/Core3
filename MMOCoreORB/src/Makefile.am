@@ -51,14 +51,15 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I/usr/include/db5.0
 			
 LIBS =	$(SYSTEM_LIBS)  \
+	$(USER_LD_FLAGS) \
 	-L../../../build/unix/src/client \
-	-L/usr/local/BerkeleyDB.5.0/lib \
 	-L/usr/local/BerkeleyDB.5.0/lib \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
 	-L/usr/local/lib \
 	-lmysqlclient -lz -lengine3 -llua -ldb-5.0
 	
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
+#AM_LDFLAGS = --enable-stdcall-fixup
 
 bin_PROGRAMS = core3
 
@@ -523,6 +524,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/appearance/PathGraph.cpp \
 		server/zone/templates/intangible/DraftSchematicObjectTemplate.cpp \
 		server/zone/templates/SharedObjectTemplate.cpp \
+		server/zone/templates/params/PaletteColorCustomizationVariables.cpp \
+		server/zone/templates/params/RangedIntCustomizationVariables.cpp \
 		server/zone/templates/tangible/SharedBuildingObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedStructureObjectTemplate.cpp \
 		server/zone/templates/tangible/SharedCreatureObjectTemplate.cpp \

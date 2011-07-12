@@ -42,6 +42,9 @@
 
 
 object_static_firework_base_shared_firework_fx_base = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/firework/base/shared_firework_fx_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_fireworks_02.prt",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_static_firework_base_shared_firework_fx_base = SharedStaticObjectTemplate
 
 	clientObjectCRC = 2524579942,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_firework_base_shared_firework_fx_base, "object/static/firework/base/shared_firework_fx_base.iff")

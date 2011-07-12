@@ -42,6 +42,9 @@
 
 
 object_tangible_bank_shared_character_bank = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/bank/shared_character_bank.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_items_sm.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_bank.iff",
 
@@ -92,6 +95,7 @@ object_tangible_bank_shared_character_bank = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1895633812,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bank_shared_character_bank, "object/tangible/bank/shared_character_bank.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_beta_shared_beta_terminal_food = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/beta/shared_beta_terminal_food.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_beta_shared_beta_terminal_food = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3480787913,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_food, "object/tangible/beta/shared_beta_terminal_food.iff")
 
 object_tangible_beta_shared_beta_terminal_medicine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/beta/shared_beta_terminal_medicine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_travel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_beta_shared_beta_terminal_medicine = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 600604858,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_medicine, "object/tangible/beta/shared_beta_terminal_medicine.iff")
 
 object_tangible_beta_shared_beta_terminal_money = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/beta/shared_beta_terminal_money.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_travel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_beta_shared_beta_terminal_money = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1792262622,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_money, "object/tangible/beta/shared_beta_terminal_money.iff")
 
 object_tangible_beta_shared_beta_terminal_resource = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/beta/shared_beta_terminal_resource.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_beta_shared_beta_terminal_resource = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1782676583,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_resource, "object/tangible/beta/shared_beta_terminal_resource.iff")
 
 object_tangible_beta_shared_beta_terminal_warp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/beta/shared_beta_terminal_warp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_beta_shared_beta_terminal_warp = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1453711903,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_warp, "object/tangible/beta/shared_beta_terminal_warp.iff")
 
 object_tangible_beta_shared_beta_terminal_wound = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/beta/shared_beta_terminal_wound.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_travel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_beta_shared_beta_terminal_wound = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 123483416,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_wound, "object/tangible/beta/shared_beta_terminal_wound.iff")
 
 object_tangible_beta_shared_beta_terminal_xp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/beta/shared_beta_terminal_xp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_beta_shared_beta_terminal_xp = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 3440875324,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_beta_terminal_xp, "object/tangible/beta/shared_beta_terminal_xp.iff")
 
 object_tangible_beta_shared_donham_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/beta/shared_donham_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,6 +508,7 @@ object_tangible_beta_shared_donham_terminal = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3977978094,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_beta_shared_donham_terminal, "object/tangible/beta/shared_donham_terminal.iff")

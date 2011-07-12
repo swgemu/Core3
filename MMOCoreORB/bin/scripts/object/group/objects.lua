@@ -42,6 +42,9 @@
 
 
 object_group_shared_group_object = SharedGroupObjectTemplate:new {
+	clientTemplateFileName = "object/group/shared_group_object.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_group_shared_group_object = SharedGroupObjectTemplate:new {
 
 	clientObjectCRC = 2022504856,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/universe/base/shared_base_universe.iff", "object/group/base/shared_base_group.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_group_shared_group_object, "object/group/shared_group_object.iff")

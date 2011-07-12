@@ -42,6 +42,9 @@
 
 
 object_tangible_crafting_station_shared_armor_repair = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_armor_repair.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_armor.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_crafting_station_shared_armor_repair = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3769226262,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_repair.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_armor_repair, "object/tangible/crafting/station/shared_armor_repair.iff")
 
 object_tangible_crafting_station_shared_clothing_repair = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_clothing_repair.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_clothing_plain.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_crafting_station_shared_clothing_repair = SharedTangibleObjectTe
 
 	clientObjectCRC = 4032677980,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_repair.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothing_repair, "object/tangible/crafting/station/shared_clothing_repair.iff")
 
 object_tangible_crafting_station_shared_clothing_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_clothing_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_clothing_mfg_station_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_crafting_station_shared_clothing_station = SharedTangibleObjectT
 
 	clientObjectCRC = 737990049,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothing_station, "object/tangible/crafting/station/shared_clothing_station.iff")
 
 object_tangible_crafting_station_shared_clothing_tool = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_clothing_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_hairdressing_hair_dye_kit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_crafting_station_shared_clothing_tool = SharedTangibleObjectTemp
 
 	clientObjectCRC = 753735496,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_clothing_tool, "object/tangible/crafting/station/shared_clothing_tool.iff")
 
 object_tangible_crafting_station_shared_droid_repair = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_droid_repair.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_crafting_station_shared_droid_repair = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3945578306,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_repair.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_droid_repair, "object/tangible/crafting/station/shared_droid_repair.iff")
 
 object_tangible_crafting_station_shared_food_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_food_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_food_mfg_station_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_crafting_station_shared_food_station = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3133859016,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_food_station, "object/tangible/crafting/station/shared_food_station.iff")
 
 object_tangible_crafting_station_shared_food_tool = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_food_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_cook_portable_stove_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_crafting_station_shared_food_tool = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2849609519,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_food_tool, "object/tangible/crafting/station/shared_food_tool.iff")
 
 object_tangible_crafting_station_shared_generic_tool = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_generic_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_computer_toolkit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_crafting_station_shared_generic_tool = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1055200365,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_generic_tool, "object/tangible/crafting/station/shared_generic_tool.iff")
 
 object_tangible_crafting_station_shared_jedi_tool = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_jedi_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_lightsaber_crafting_kit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_crafting_station_shared_jedi_tool = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 754074226,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_jedi_tool, "object/tangible/crafting/station/shared_jedi_tool.iff")
 
 object_tangible_crafting_station_shared_public_clothing_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_public_clothing_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_clothing_mfg_station_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_crafting_station_shared_public_clothing_station = SharedTangible
 
 	clientObjectCRC = 2936644592,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_public_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_clothing_station, "object/tangible/crafting/station/shared_public_clothing_station.iff")
 
 object_tangible_crafting_station_shared_public_food_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_public_food_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_food_mfg_station_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_crafting_station_shared_public_food_station = SharedTangibleObje
 
 	clientObjectCRC = 804779915,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_public_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_food_station, "object/tangible/crafting/station/shared_public_food_station.iff")
 
 object_tangible_crafting_station_shared_public_space_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_public_space_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_starship_mfg_station_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_crafting_station_shared_public_space_station = SharedTangibleObj
 
 	clientObjectCRC = 395482180,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_public_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_space_station, "object/tangible/crafting/station/shared_public_space_station.iff")
 
 object_tangible_crafting_station_shared_public_structure_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_public_structure_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_structure_mfg_station_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_crafting_station_shared_public_structure_station = SharedTangibl
 
 	clientObjectCRC = 464244555,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_public_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_structure_station, "object/tangible/crafting/station/shared_public_structure_station.iff")
 
 object_tangible_crafting_station_shared_public_weapon_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_public_weapon_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_weapon_weapon_mfg_station_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_crafting_station_shared_public_weapon_station = SharedTangibleOb
 
 	clientObjectCRC = 1920049130,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_public_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_public_weapon_station, "object/tangible/crafting/station/shared_public_weapon_station.iff")
 
 object_tangible_crafting_station_shared_space_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_space_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_starship_mfg_station_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_crafting_station_shared_space_station = SharedTangibleObjectTemp
 
 	clientObjectCRC = 408520625,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_space_station, "object/tangible/crafting/station/shared_space_station.iff")
 
 object_tangible_crafting_station_shared_space_tool = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_space_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_starship_toolkit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_crafting_station_shared_space_tool = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2903391664,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_space_tool, "object/tangible/crafting/station/shared_space_tool.iff")
 
 object_tangible_crafting_station_shared_structure_repair = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_structure_repair.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_installations.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_crafting_station_shared_structure_repair = SharedTangibleObjectT
 
 	clientObjectCRC = 1513899009,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_repair.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_structure_repair, "object/tangible/crafting/station/shared_structure_repair.iff")
 
 object_tangible_crafting_station_shared_structure_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_structure_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_structure_mfg_station_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_crafting_station_shared_structure_station = SharedTangibleObject
 
 	clientObjectCRC = 2496989305,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_structure_station, "object/tangible/crafting/station/shared_structure_station.iff")
 
 object_tangible_crafting_station_shared_structure_tool = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_structure_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_instrument_calibrator.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_crafting_station_shared_structure_tool = SharedTangibleObjectTem
 
 	clientObjectCRC = 4275700789,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_structure_tool, "object/tangible/crafting/station/shared_structure_tool.iff")
 
 object_tangible_crafting_station_shared_weapon_repair = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_weapon_repair.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_ranged_weapons_other.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_crafting_station_shared_weapon_repair = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2607871827,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_repair.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_weapon_repair, "object/tangible/crafting/station/shared_weapon_repair.iff")
 
 object_tangible_crafting_station_shared_weapon_station = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_weapon_station.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_weapon_weapon_mfg_station_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_crafting_station_shared_weapon_station = SharedTangibleObjectTem
 
 	clientObjectCRC = 2167265111,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_weapon_station, "object/tangible/crafting/station/shared_weapon_station.iff")
 
 object_tangible_crafting_station_shared_weapon_tool = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/crafting/station/shared_weapon_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_weapon_repair_kit_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,6 +1334,7 @@ object_tangible_crafting_station_shared_weapon_tool = SharedTangibleObjectTempla
 
 	clientObjectCRC = 1693896753,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/crafting/base/shared_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_crafting_station_shared_weapon_tool, "object/tangible/crafting/station/shared_weapon_tool.iff")

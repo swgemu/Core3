@@ -42,6 +42,9 @@
 
 
 object_tangible_bug_jar_shared_craftable_bug_habitat = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/bug_jar/shared_craftable_bug_habitat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_bug_jar_shared_craftable_bug_habitat = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3865262015,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_craftable_bug_habitat, "object/tangible/bug_jar/shared_craftable_bug_habitat.iff")
 
 object_tangible_bug_jar_shared_sample_bats = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/bug_jar/shared_sample_bats.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_bug_jar_shared_sample_bats = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 649283460,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_bats, "object/tangible/bug_jar/shared_sample_bats.iff")
 
 object_tangible_bug_jar_shared_sample_bees = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/bug_jar/shared_sample_bees.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_berries_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_bug_jar_shared_sample_bees = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2990947640,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_bees, "object/tangible/bug_jar/shared_sample_bees.iff")
 
 object_tangible_bug_jar_shared_sample_bugs = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/bug_jar/shared_sample_bugs.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_bug_jar_shared_sample_bugs = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1650774020,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_bugs, "object/tangible/bug_jar/shared_sample_bugs.iff")
 
 object_tangible_bug_jar_shared_sample_butterflies = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/bug_jar/shared_sample_butterflies.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_bug_jar_shared_sample_butterflies = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 3511677766,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_butterflies, "object/tangible/bug_jar/shared_sample_butterflies.iff")
 
 object_tangible_bug_jar_shared_sample_flies = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/bug_jar/shared_sample_flies.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_funk_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_bug_jar_shared_sample_flies = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1920617264,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_flies, "object/tangible/bug_jar/shared_sample_flies.iff")
 
 object_tangible_bug_jar_shared_sample_glowzees = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/bug_jar/shared_sample_glowzees.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_guts_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_bug_jar_shared_sample_glowzees = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 543867771,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_glowzees, "object/tangible/bug_jar/shared_sample_glowzees.iff")
 
 object_tangible_bug_jar_shared_sample_moths = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/bug_jar/shared_sample_moths.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,6 +508,7 @@ object_tangible_bug_jar_shared_sample_moths = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1330824406,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/bug_jar/shared_sample_bugs.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_bug_jar_shared_sample_moths, "object/tangible/bug_jar/shared_sample_moths.iff")

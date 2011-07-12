@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_mynock_shared_lair_mynock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/mynock/shared_lair_mynock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_lair_mynock_shared_lair_mynock = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 573653561,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_mynock_shared_lair_mynock, "object/tangible/lair/mynock/shared_lair_mynock.iff")

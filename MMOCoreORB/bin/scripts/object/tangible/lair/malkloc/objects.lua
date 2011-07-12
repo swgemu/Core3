@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_malkloc_shared_lair_malkloc = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/malkloc/shared_lair_malkloc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_malkloc_shared_lair_malkloc = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1819099855,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc, "object/tangible/lair/malkloc/shared_lair_malkloc.iff")
 
 object_tangible_lair_malkloc_shared_lair_malkloc_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/malkloc/shared_lair_malkloc_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_malkloc_shared_lair_malkloc_desert = SharedTangibleObjectTe
 
 	clientObjectCRC = 3825333189,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_desert, "object/tangible/lair/malkloc/shared_lair_malkloc_desert.iff")
 
 object_tangible_lair_malkloc_shared_lair_malkloc_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/malkloc/shared_lair_malkloc_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_malkloc_shared_lair_malkloc_forest = SharedTangibleObjectTe
 
 	clientObjectCRC = 3488232768,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_forest, "object/tangible/lair/malkloc/shared_lair_malkloc_forest.iff")
 
 object_tangible_lair_malkloc_shared_lair_malkloc_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/malkloc/shared_lair_malkloc_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_malkloc_shared_lair_malkloc_mountain = SharedTangibleObject
 
 	clientObjectCRC = 377228821,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_malkloc_shared_lair_malkloc_mountain, "object/tangible/lair/malkloc/shared_lair_malkloc_mountain.iff")

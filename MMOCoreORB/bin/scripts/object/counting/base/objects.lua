@@ -42,6 +42,9 @@
 
 
 object_counting_base_shared_base_counting = SharedCountingObjectTemplate:new {
+	clientTemplateFileName = "object/counting/base/shared_base_counting.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_counting_base_shared_base_counting = SharedCountingObjectTemplate:new {
 
 	clientObjectCRC = 2904726131,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_counting_base_shared_base_counting, "object/counting/base/shared_base_counting.iff")
 
 object_counting_base_shared_counting_default = SharedCountingObjectTemplate:new {
+	clientTemplateFileName = "object/counting/base/shared_counting_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_counting_base_shared_counting_default = SharedCountingObjectTemplate:new 
 
 	clientObjectCRC = 3211286444,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/counting/base/shared_base_counting.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_counting_base_shared_counting_default, "object/counting/base/shared_counting_default.iff")

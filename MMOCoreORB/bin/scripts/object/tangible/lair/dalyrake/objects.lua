@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_dalyrake_shared_lair_dalyrake = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/dalyrake/shared_lair_dalyrake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1654178930,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake, "object/tangible/lair/dalyrake/shared_lair_dalyrake.iff")
 
 object_tangible_lair_dalyrake_shared_lair_dalyrake_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/dalyrake/shared_lair_dalyrake_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_dalyrake_shared_lair_dalyrake_forest = SharedTangibleObject
 
 	clientObjectCRC = 2587304882,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_dalyrake_shared_lair_dalyrake_forest, "object/tangible/lair/dalyrake/shared_lair_dalyrake_forest.iff")

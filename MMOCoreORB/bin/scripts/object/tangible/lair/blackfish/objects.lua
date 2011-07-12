@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_blackfish_shared_lair_blackfish = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/blackfish/shared_lair_blackfish.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_blackfish_shared_lair_blackfish = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4281161854,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_blackfish_shared_lair_blackfish, "object/tangible/lair/blackfish/shared_lair_blackfish.iff")
 
 object_tangible_lair_blackfish_shared_lair_blackfish_underwater = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/blackfish/shared_lair_blackfish_underwater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_blackfish_shared_lair_blackfish_underwater = SharedTangible
 
 	clientObjectCRC = 3015378000,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_blackfish_shared_lair_blackfish_underwater, "object/tangible/lair/blackfish/shared_lair_blackfish_underwater.iff")

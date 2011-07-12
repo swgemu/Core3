@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_goggles_shared_goggles_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_goggles_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/goggles_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_goggles_shared_goggles_s01 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 970341305,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s01, "object/tangible/wearables/goggles/shared_goggles_s01.iff")
 
 object_tangible_wearables_goggles_shared_goggles_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_goggles_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/goggles_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_goggles_shared_goggles_s02 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3804336942,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s02, "object/tangible/wearables/goggles/shared_goggles_s02.iff")
 
 object_tangible_wearables_goggles_shared_goggles_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_goggles_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/goggles_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_goggles_shared_goggles_s03 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2882335907,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s03, "object/tangible/wearables/goggles/shared_goggles_s03.iff")
 
 object_tangible_wearables_goggles_shared_goggles_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_goggles_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/goggles_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_goggles_shared_goggles_s04 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1345314743,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s04, "object/tangible/wearables/goggles/shared_goggles_s04.iff")
 
 object_tangible_wearables_goggles_shared_goggles_s05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_goggles_s05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/goggles_s05_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_goggles_shared_goggles_s05 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 421705786,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s05, "object/tangible/wearables/goggles/shared_goggles_s05.iff")
 
 object_tangible_wearables_goggles_shared_goggles_s06 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_goggles_s06.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/goggles_s06_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_goggles_shared_goggles_s06 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3258257581,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_goggles_s06, "object/tangible/wearables/goggles/shared_goggles_s06.iff")
 
 object_tangible_wearables_goggles_shared_rebreather = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/goggles/shared_rebreather.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_acc_a99_aquata_breather.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/eyes.iff",
 
@@ -422,6 +449,7 @@ object_tangible_wearables_goggles_shared_rebreather = SharedTangibleObjectTempla
 
 	clientObjectCRC = 53819294,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_eyes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_goggles_shared_rebreather, "object/tangible/wearables/goggles/shared_rebreather.iff")

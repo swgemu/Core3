@@ -42,6 +42,9 @@
 
 
 object_tangible_gambling_slot_shared_standard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gambling/slot/shared_standard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_gambling_slot_shared_standard = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 1978853321,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff", "object/tangible/gambling/base/shared_gambling_station.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gambling_slot_shared_standard, "object/tangible/gambling/slot/shared_standard.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_vog_eel_shared_lair_vog_eel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vog_eel/shared_lair_vog_eel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 1441198347,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel, "object/tangible/lair/vog_eel/shared_lair_vog_eel.iff")
 
 object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vog_eel/shared_lair_vog_eel_underwater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater = SharedTangibleObje
 
 	clientObjectCRC = 1951814673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vog_eel_shared_lair_vog_eel_underwater, "object/tangible/lair/vog_eel/shared_lair_vog_eel_underwater.iff")

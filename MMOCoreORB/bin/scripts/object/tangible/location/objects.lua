@@ -42,6 +42,9 @@
 
 
 object_tangible_location_shared_location_32 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/location/shared_location_32.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_location_shared_location_32 = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 742219640,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/location/base/shared_location_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_location_shared_location_32, "object/tangible/location/shared_location_32.iff")
 
 object_tangible_location_shared_location_48 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/location/shared_location_48.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_location_shared_location_48 = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3189159180,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/location/base/shared_location_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_location_shared_location_48, "object/tangible/location/shared_location_48.iff")
 
 object_tangible_location_shared_location_64 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/location/shared_location_64.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_location_shared_location_64 = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3915066233,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/location/base/shared_location_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_location_shared_location_64, "object/tangible/location/shared_location_64.iff")
 
 object_tangible_location_shared_location_80 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/location/shared_location_80.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_location_shared_location_80 = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1243606058,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/location/base/shared_location_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_location_shared_location_80, "object/tangible/location/shared_location_80.iff")
 
 object_tangible_location_shared_location_96 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/location/shared_location_96.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_location_shared_location_96 = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3822693835,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/location/base/shared_location_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_location_shared_location_96, "object/tangible/location/shared_location_96.iff")

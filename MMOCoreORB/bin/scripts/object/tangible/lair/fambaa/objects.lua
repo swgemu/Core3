@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_fambaa_shared_lair_fambaa = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/fambaa/shared_lair_fambaa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_fambaa_shared_lair_fambaa = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2348330712,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_fambaa_shared_lair_fambaa, "object/tangible/lair/fambaa/shared_lair_fambaa.iff")
 
 object_tangible_lair_fambaa_shared_lair_fambaa_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/fambaa/shared_lair_fambaa_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_fambaa_shared_lair_fambaa_swamp = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3030660529,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_fambaa_shared_lair_fambaa_swamp, "object/tangible/lair/fambaa/shared_lair_fambaa_swamp.iff")

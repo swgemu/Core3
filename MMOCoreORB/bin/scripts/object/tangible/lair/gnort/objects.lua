@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_gnort_shared_lair_gnort = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gnort/shared_lair_gnort.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_gnort_shared_lair_gnort = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 3151166549,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gnort_shared_lair_gnort, "object/tangible/lair/gnort/shared_lair_gnort.iff")
 
 object_tangible_lair_gnort_shared_lair_gnort_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gnort/shared_lair_gnort_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_gnort_shared_lair_gnort_grassland = SharedTangibleObjectTem
 
 	clientObjectCRC = 622467939,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gnort_shared_lair_gnort_grassland, "object/tangible/lair/gnort/shared_lair_gnort_grassland.iff")
 
 object_tangible_lair_gnort_shared_lair_gnort_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gnort/shared_lair_gnort_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_gnort_shared_lair_gnort_mountain = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2282996299,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gnort_shared_lair_gnort_mountain, "object/tangible/lair/gnort/shared_lair_gnort_mountain.iff")

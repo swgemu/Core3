@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_gackle_bat_shared_lair_gackle_bat = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gackle_bat/shared_lair_gackle_bat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat = SharedTangibleObjectTem
 
 	clientObjectCRC = 3668255923,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat.iff")
 
 object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle = SharedTangibleOb
 
 	clientObjectCRC = 987504645,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_jungle, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_jungle.iff")
 
 object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp = SharedTangibleObj
 
 	clientObjectCRC = 3334775369,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gackle_bat_shared_lair_gackle_bat_swamp, "object/tangible/lair/gackle_bat/shared_lair_gackle_bat_swamp.iff")

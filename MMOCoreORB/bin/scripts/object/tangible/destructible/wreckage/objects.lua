@@ -42,6 +42,9 @@
 
 
 object_tangible_destructible_wreckage_shared_wreck_starship_small_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/destructible/wreckage/shared_wreck_starship_small_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/dsdebris_conduit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_destructible_wreckage_shared_wreck_starship_small_01 = SharedTan
 
 	clientObjectCRC = 551874414,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_destructible_wreckage_shared_wreck_starship_small_01, "object/tangible/destructible/wreckage/shared_wreck_starship_small_01.iff")

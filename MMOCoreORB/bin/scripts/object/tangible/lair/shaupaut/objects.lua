@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_shaupaut_shared_lair_shaupaut = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/shaupaut/shared_lair_shaupaut.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 56634783,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut, "object/tangible/lair/shaupaut/shared_lair_shaupaut.iff")
 
 object_tangible_lair_shaupaut_shared_lair_shaupaut_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/shaupaut/shared_lair_shaupaut_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_forest = SharedTangibleObject
 
 	clientObjectCRC = 1064337645,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_forest, "object/tangible/lair/shaupaut/shared_lair_shaupaut_forest.iff")
 
 object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/shaupaut/shared_lair_shaupaut_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp = SharedTangibleObjectT
 
 	clientObjectCRC = 2989589042,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_shaupaut_shared_lair_shaupaut_swamp, "object/tangible/lair/shaupaut/shared_lair_shaupaut_swamp.iff")

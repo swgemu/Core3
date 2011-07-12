@@ -42,6 +42,9 @@
 
 
 object_intangible_ship_shared_awing_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_awing_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/awing_body.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_intangible_ship_shared_awing_pcd = SharedIntangibleObjectTemplate:new {
 
 	clientObjectCRC = 3231609067,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_awing_pcd, "object/intangible/ship/shared_awing_pcd.iff")
 
 object_intangible_ship_shared_basic_hutt_light_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_basic_hutt_light_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_intangible_ship_shared_basic_hutt_light_pcd = SharedIntangibleObjectTempl
 
 	clientObjectCRC = 3117731697,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_basic_hutt_light_pcd, "object/intangible/ship/shared_basic_hutt_light_pcd.iff")
 
 object_intangible_ship_shared_basic_tiefighter_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_basic_tiefighter_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_intangible_ship_shared_basic_tiefighter_pcd = SharedIntangibleObjectTempl
 
 	clientObjectCRC = 3542586269,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_basic_tiefighter_pcd, "object/intangible/ship/shared_basic_tiefighter_pcd.iff")
 
 object_intangible_ship_shared_basic_z95_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_basic_z95_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_intangible_ship_shared_basic_z95_pcd = SharedIntangibleObjectTemplate:new
 
 	clientObjectCRC = 1951744339,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_basic_z95_pcd, "object/intangible/ship/shared_basic_z95_pcd.iff")
 
 object_intangible_ship_shared_blacksun_heavy_s01_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_heavy_s01_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_intangible_ship_shared_blacksun_heavy_s01_pcd = SharedIntangibleObjectTem
 
 	clientObjectCRC = 1920551856,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s01_pcd, "object/intangible/ship/shared_blacksun_heavy_s01_pcd.iff")
 
 object_intangible_ship_shared_blacksun_heavy_s02_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_heavy_s02_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -307,11 +330,15 @@ object_intangible_ship_shared_blacksun_heavy_s02_pcd = SharedIntangibleObjectTem
 
 	clientObjectCRC = 1622780077,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s02_pcd, "object/intangible/ship/shared_blacksun_heavy_s02_pcd.iff")
 
 object_intangible_ship_shared_blacksun_heavy_s03_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_heavy_s03_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -352,11 +379,15 @@ object_intangible_ship_shared_blacksun_heavy_s03_pcd = SharedIntangibleObjectTem
 
 	clientObjectCRC = 2461598411,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s03_pcd, "object/intangible/ship/shared_blacksun_heavy_s03_pcd.iff")
 
 object_intangible_ship_shared_blacksun_heavy_s04_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_heavy_s04_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -397,11 +428,15 @@ object_intangible_ship_shared_blacksun_heavy_s04_pcd = SharedIntangibleObjectTem
 
 	clientObjectCRC = 1161326231,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_heavy_s04_pcd, "object/intangible/ship/shared_blacksun_heavy_s04_pcd.iff")
 
 object_intangible_ship_shared_blacksun_light_s01_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_light_s01_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -442,11 +477,15 @@ object_intangible_ship_shared_blacksun_light_s01_pcd = SharedIntangibleObjectTem
 
 	clientObjectCRC = 4287843959,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s01_pcd, "object/intangible/ship/shared_blacksun_light_s01_pcd.iff")
 
 object_intangible_ship_shared_blacksun_light_s02_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_light_s02_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -487,11 +526,15 @@ object_intangible_ship_shared_blacksun_light_s02_pcd = SharedIntangibleObjectTem
 
 	clientObjectCRC = 3981684074,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s02_pcd, "object/intangible/ship/shared_blacksun_light_s02_pcd.iff")
 
 object_intangible_ship_shared_blacksun_light_s03_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_light_s03_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +575,15 @@ object_intangible_ship_shared_blacksun_light_s03_pcd = SharedIntangibleObjectTem
 
 	clientObjectCRC = 525534988,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s03_pcd, "object/intangible/ship/shared_blacksun_light_s03_pcd.iff")
 
 object_intangible_ship_shared_blacksun_light_s04_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_light_s04_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -577,11 +624,15 @@ object_intangible_ship_shared_blacksun_light_s04_pcd = SharedIntangibleObjectTem
 
 	clientObjectCRC = 3369233232,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_light_s04_pcd, "object/intangible/ship/shared_blacksun_light_s04_pcd.iff")
 
 object_intangible_ship_shared_blacksun_medium_s01_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_medium_s01_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -622,11 +673,15 @@ object_intangible_ship_shared_blacksun_medium_s01_pcd = SharedIntangibleObjectTe
 
 	clientObjectCRC = 3830604387,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_s01_pcd, "object/intangible/ship/shared_blacksun_medium_s01_pcd.iff")
 
 object_intangible_ship_shared_blacksun_medium_s02_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_medium_s02_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -667,11 +722,15 @@ object_intangible_ship_shared_blacksun_medium_s02_pcd = SharedIntangibleObjectTe
 
 	clientObjectCRC = 4136796542,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_s02_pcd, "object/intangible/ship/shared_blacksun_medium_s02_pcd.iff")
 
 object_intangible_ship_shared_blacksun_medium_s03_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_medium_s03_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -712,11 +771,15 @@ object_intangible_ship_shared_blacksun_medium_s03_pcd = SharedIntangibleObjectTe
 
 	clientObjectCRC = 76688152,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_s03_pcd, "object/intangible/ship/shared_blacksun_medium_s03_pcd.iff")
 
 object_intangible_ship_shared_blacksun_medium_s04_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_blacksun_medium_s04_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -757,11 +820,15 @@ object_intangible_ship_shared_blacksun_medium_s04_pcd = SharedIntangibleObjectTe
 
 	clientObjectCRC = 3541256004,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_blacksun_medium_s04_pcd, "object/intangible/ship/shared_blacksun_medium_s04_pcd.iff")
 
 object_intangible_ship_shared_bwing_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_bwing_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
 	arrangementDescriptorFilename = "",
 
@@ -802,11 +869,15 @@ object_intangible_ship_shared_bwing_pcd = SharedIntangibleObjectTemplate:new {
 
 	clientObjectCRC = 4256405331,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_bwing_pcd, "object/intangible/ship/shared_bwing_pcd.iff")
 
 object_intangible_ship_shared_decimator_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_decimator_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/vt49_npc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -847,11 +918,15 @@ object_intangible_ship_shared_decimator_pcd = SharedIntangibleObjectTemplate:new
 
 	clientObjectCRC = 816398955,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_decimator_pcd, "object/intangible/ship/shared_decimator_pcd.iff")
 
 object_intangible_ship_shared_firespray_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_firespray_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kse_firespray_body.apt",
 	arrangementDescriptorFilename = "",
 
@@ -892,11 +967,15 @@ object_intangible_ship_shared_firespray_pcd = SharedIntangibleObjectTemplate:new
 
 	clientObjectCRC = 3214165542,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_firespray_pcd, "object/intangible/ship/shared_firespray_pcd.iff")
 
 object_intangible_ship_shared_hutt_heavy_s01_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_hutt_heavy_s01_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -937,11 +1016,15 @@ object_intangible_ship_shared_hutt_heavy_s01_pcd = SharedIntangibleObjectTemplat
 
 	clientObjectCRC = 2913916856,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_heavy_s01_pcd, "object/intangible/ship/shared_hutt_heavy_s01_pcd.iff")
 
 object_intangible_ship_shared_hutt_heavy_s02_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_hutt_heavy_s02_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -982,11 +1065,15 @@ object_intangible_ship_shared_hutt_heavy_s02_pcd = SharedIntangibleObjectTemplat
 
 	clientObjectCRC = 3211670693,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_heavy_s02_pcd, "object/intangible/ship/shared_hutt_heavy_s02_pcd.iff")
 
 object_intangible_ship_shared_hutt_light_s01_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_hutt_light_s01_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1114,15 @@ object_intangible_ship_shared_hutt_light_s01_pcd = SharedIntangibleObjectTemplat
 
 	clientObjectCRC = 541381247,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_light_s01_pcd, "object/intangible/ship/shared_hutt_light_s01_pcd.iff")
 
 object_intangible_ship_shared_hutt_light_s02_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_hutt_light_s02_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1072,11 +1163,15 @@ object_intangible_ship_shared_hutt_light_s02_pcd = SharedIntangibleObjectTemplat
 
 	clientObjectCRC = 847524194,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_light_s02_pcd, "object/intangible/ship/shared_hutt_light_s02_pcd.iff")
 
 object_intangible_ship_shared_hutt_medium_s01_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_hutt_medium_s01_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1117,11 +1212,15 @@ object_intangible_ship_shared_hutt_medium_s01_pcd = SharedIntangibleObjectTempla
 
 	clientObjectCRC = 437951543,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_medium_s01_pcd, "object/intangible/ship/shared_hutt_medium_s01_pcd.iff")
 
 object_intangible_ship_shared_hutt_medium_s02_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_hutt_medium_s02_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1162,11 +1261,15 @@ object_intangible_ship_shared_hutt_medium_s02_pcd = SharedIntangibleObjectTempla
 
 	clientObjectCRC = 148537130,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_medium_s02_pcd, "object/intangible/ship/shared_hutt_medium_s02_pcd.iff")
 
 object_intangible_ship_shared_hutt_turret_ship_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_hutt_turret_ship_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1207,11 +1310,15 @@ object_intangible_ship_shared_hutt_turret_ship_pcd = SharedIntangibleObjectTempl
 
 	clientObjectCRC = 3431555714,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_hutt_turret_ship_pcd, "object/intangible/ship/shared_hutt_turret_ship_pcd.iff")
 
 object_intangible_ship_shared_navicomputer_1 = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_navicomputer_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1252,11 +1359,15 @@ object_intangible_ship_shared_navicomputer_1 = SharedIntangibleObjectTemplate:ne
 
 	clientObjectCRC = 3404705593,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_1, "object/intangible/ship/shared_navicomputer_1.iff")
 
 object_intangible_ship_shared_navicomputer_2 = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_navicomputer_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1297,11 +1408,15 @@ object_intangible_ship_shared_navicomputer_2 = SharedIntangibleObjectTemplate:ne
 
 	clientObjectCRC = 301467566,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_2, "object/intangible/ship/shared_navicomputer_2.iff")
 
 object_intangible_ship_shared_navicomputer_3 = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_navicomputer_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1342,11 +1457,15 @@ object_intangible_ship_shared_navicomputer_3 = SharedIntangibleObjectTemplate:ne
 
 	clientObjectCRC = 1492475939,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_3, "object/intangible/ship/shared_navicomputer_3.iff")
 
 object_intangible_ship_shared_navicomputer_4 = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_navicomputer_4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1387,11 +1506,15 @@ object_intangible_ship_shared_navicomputer_4 = SharedIntangibleObjectTemplate:ne
 
 	clientObjectCRC = 2736147255,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_4, "object/intangible/ship/shared_navicomputer_4.iff")
 
 object_intangible_ship_shared_navicomputer_5 = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_navicomputer_5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1432,11 +1555,15 @@ object_intangible_ship_shared_navicomputer_5 = SharedIntangibleObjectTemplate:ne
 
 	clientObjectCRC = 3927649466,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_5, "object/intangible/ship/shared_navicomputer_5.iff")
 
 object_intangible_ship_shared_navicomputer_6 = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_navicomputer_6.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1477,11 +1604,15 @@ object_intangible_ship_shared_navicomputer_6 = SharedIntangibleObjectTemplate:ne
 
 	clientObjectCRC = 822903853,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/shared_navicomputer_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_6, "object/intangible/ship/shared_navicomputer_6.iff")
 
 object_intangible_ship_shared_navicomputer_base = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_navicomputer_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_droidinterface_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1653,15 @@ object_intangible_ship_shared_navicomputer_base = SharedIntangibleObjectTemplate
 
 	clientObjectCRC = 1537107009,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_navicomputer_base, "object/intangible/ship/shared_navicomputer_base.iff")
 
 object_intangible_ship_shared_prototype_hutt_light_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_prototype_hutt_light_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1567,11 +1702,15 @@ object_intangible_ship_shared_prototype_hutt_light_pcd = SharedIntangibleObjectT
 
 	clientObjectCRC = 3320786901,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_prototype_hutt_light_pcd, "object/intangible/ship/shared_prototype_hutt_light_pcd.iff")
 
 object_intangible_ship_shared_prototype_tiefighter_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_prototype_tiefighter_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1612,11 +1751,15 @@ object_intangible_ship_shared_prototype_tiefighter_pcd = SharedIntangibleObjectT
 
 	clientObjectCRC = 2937877305,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_prototype_tiefighter_pcd, "object/intangible/ship/shared_prototype_tiefighter_pcd.iff")
 
 object_intangible_ship_shared_prototype_z95_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_prototype_z95_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1657,11 +1800,15 @@ object_intangible_ship_shared_prototype_z95_pcd = SharedIntangibleObjectTemplate
 
 	clientObjectCRC = 3760715561,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_prototype_z95_pcd, "object/intangible/ship/shared_prototype_z95_pcd.iff")
 
 object_intangible_ship_shared_sorosuub_space_yacht_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_sorosuub_space_yacht_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sorosuub_space_yacht_npc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1702,11 +1849,15 @@ object_intangible_ship_shared_sorosuub_space_yacht_pcd = SharedIntangibleObjectT
 
 	clientObjectCRC = 264594860,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_sorosuub_space_yacht_pcd, "object/intangible/ship/shared_sorosuub_space_yacht_pcd.iff")
 
 object_intangible_ship_shared_tie_in_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_tie_in_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1747,11 +1898,15 @@ object_intangible_ship_shared_tie_in_pcd = SharedIntangibleObjectTemplate:new {
 
 	clientObjectCRC = 4072676654,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tie_in_pcd, "object/intangible/ship/shared_tie_in_pcd.iff")
 
 object_intangible_ship_shared_tie_light_duty_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_tie_light_duty_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1792,11 +1947,15 @@ object_intangible_ship_shared_tie_light_duty_pcd = SharedIntangibleObjectTemplat
 
 	clientObjectCRC = 3211390,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tie_light_duty_pcd, "object/intangible/ship/shared_tie_light_duty_pcd.iff")
 
 object_intangible_ship_shared_tieadvanced_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_tieadvanced_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_advanced.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1837,11 +1996,15 @@ object_intangible_ship_shared_tieadvanced_pcd = SharedIntangibleObjectTemplate:n
 
 	clientObjectCRC = 3041041630,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieadvanced_pcd, "object/intangible/ship/shared_tieadvanced_pcd.iff")
 
 object_intangible_ship_shared_tieaggressor_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_tieaggressor_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_aggressor.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1882,11 +2045,15 @@ object_intangible_ship_shared_tieaggressor_pcd = SharedIntangibleObjectTemplate:
 
 	clientObjectCRC = 3555369555,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieaggressor_pcd, "object/intangible/ship/shared_tieaggressor_pcd.iff")
 
 object_intangible_ship_shared_tiebomber_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_tiebomber_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_bomber_b.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1927,11 +2094,15 @@ object_intangible_ship_shared_tiebomber_pcd = SharedIntangibleObjectTemplate:new
 
 	clientObjectCRC = 3994408379,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tiebomber_pcd, "object/intangible/ship/shared_tiebomber_pcd.iff")
 
 object_intangible_ship_shared_tiefighter_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_tiefighter_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1972,11 +2143,15 @@ object_intangible_ship_shared_tiefighter_pcd = SharedIntangibleObjectTemplate:ne
 
 	clientObjectCRC = 2741040950,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tiefighter_pcd, "object/intangible/ship/shared_tiefighter_pcd.iff")
 
 object_intangible_ship_shared_tieinterceptor_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_tieinterceptor_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_interceptor.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2192,15 @@ object_intangible_ship_shared_tieinterceptor_pcd = SharedIntangibleObjectTemplat
 
 	clientObjectCRC = 4152772827,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieinterceptor_pcd, "object/intangible/ship/shared_tieinterceptor_pcd.iff")
 
 object_intangible_ship_shared_tieoppressor_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_tieoppressor_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_oppressor.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2062,11 +2241,15 @@ object_intangible_ship_shared_tieoppressor_pcd = SharedIntangibleObjectTemplate:
 
 	clientObjectCRC = 3673716446,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_tieoppressor_pcd, "object/intangible/ship/shared_tieoppressor_pcd.iff")
 
 object_intangible_ship_shared_xwing_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_xwing_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_body.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2107,11 +2290,15 @@ object_intangible_ship_shared_xwing_pcd = SharedIntangibleObjectTemplate:new {
 
 	clientObjectCRC = 3314812569,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_xwing_pcd, "object/intangible/ship/shared_xwing_pcd.iff")
 
 object_intangible_ship_shared_ykl37r_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_ykl37r_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ykl37r_npc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2152,11 +2339,15 @@ object_intangible_ship_shared_ykl37r_pcd = SharedIntangibleObjectTemplate:new {
 
 	clientObjectCRC = 1454524572,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_ykl37r_pcd, "object/intangible/ship/shared_ykl37r_pcd.iff")
 
 object_intangible_ship_shared_yt1300_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_yt1300_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/yt1300_r0.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2197,11 +2388,15 @@ object_intangible_ship_shared_yt1300_pcd = SharedIntangibleObjectTemplate:new {
 
 	clientObjectCRC = 2265582340,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_yt1300_pcd, "object/intangible/ship/shared_yt1300_pcd.iff")
 
 object_intangible_ship_shared_ywing_longprobe_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_ywing_longprobe_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ywing_body.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2242,11 +2437,15 @@ object_intangible_ship_shared_ywing_longprobe_pcd = SharedIntangibleObjectTempla
 
 	clientObjectCRC = 3884767324,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_ywing_longprobe_pcd, "object/intangible/ship/shared_ywing_longprobe_pcd.iff")
 
 object_intangible_ship_shared_ywing_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_ywing_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ywing_body.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2287,11 +2486,15 @@ object_intangible_ship_shared_ywing_pcd = SharedIntangibleObjectTemplate:new {
 
 	clientObjectCRC = 758141084,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_ywing_pcd, "object/intangible/ship/shared_ywing_pcd.iff")
 
 object_intangible_ship_shared_z95_pcd = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/ship/shared_z95_pcd.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2332,6 +2535,7 @@ object_intangible_ship_shared_z95_pcd = SharedIntangibleObjectTemplate:new {
 
 	clientObjectCRC = 628864673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/intangible/ship/base/shared_ship_control_device_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_ship_shared_z95_pcd, "object/intangible/ship/shared_z95_pcd.iff")

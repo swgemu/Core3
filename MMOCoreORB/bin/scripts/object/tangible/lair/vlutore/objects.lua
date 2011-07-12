@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_vlutore_shared_lair_vlutore = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vlutore/shared_lair_vlutore.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_vlutore_shared_lair_vlutore = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 594764698,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vlutore_shared_lair_vlutore, "object/tangible/lair/vlutore/shared_lair_vlutore.iff")
 
 object_tangible_lair_vlutore_shared_lair_vlutore_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vlutore/shared_lair_vlutore_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_vlutore_shared_lair_vlutore_grassland = SharedTangibleObjec
 
 	clientObjectCRC = 3306801185,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_grassland, "object/tangible/lair/vlutore/shared_lair_vlutore_grassland.iff")
 
 object_tangible_lair_vlutore_shared_lair_vlutore_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/vlutore/shared_lair_vlutore_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_vlutore_shared_lair_vlutore_mountain = SharedTangibleObject
 
 	clientObjectCRC = 482728149,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_vlutore_shared_lair_vlutore_mountain, "object/tangible/lair/vlutore/shared_lair_vlutore_mountain.iff")

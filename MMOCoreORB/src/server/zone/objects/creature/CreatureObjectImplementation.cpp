@@ -201,7 +201,7 @@ void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	frozen = 0;
 
-	Vector<float> accel = creoData->getAcceleration();
+	Vector<FloatParam> accel = creoData->getAcceleration();
 
 	if (accel.size() > 0) {
 		runAcceleration = accel.get(0);
@@ -211,7 +211,7 @@ void CreatureObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 		walkAcceleration = 0;
 	}
 
-	Vector<float> speedTempl = creoData->getSpeed();
+	Vector<FloatParam> speedTempl = creoData->getSpeed();
 
 	if (speedTempl.size() > 0) {
 		runSpeed = speedTempl.get(0);

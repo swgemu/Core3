@@ -42,6 +42,9 @@
 
 
 object_tangible_fishing_shared_fishing_pole = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/shared_fishing_pole.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_fishing_pole.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 
@@ -92,11 +95,15 @@ object_tangible_fishing_shared_fishing_pole = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1813029717,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_fishing_pole, "object/tangible/fishing/shared_fishing_pole.iff")
 
 object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/shared_marker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_fishing_float.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -147,11 +154,15 @@ object_tangible_fishing_shared_marker = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1763394438,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_marker, "object/tangible/fishing/shared_marker.iff")
 
 object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/shared_splash.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_splash.prt",
 	arrangementDescriptorFilename = "",
 
@@ -192,6 +203,7 @@ object_tangible_fishing_shared_splash = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1084993175,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/particle/base/shared_static_particle_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_shared_splash, "object/tangible/fishing/shared_splash.iff")

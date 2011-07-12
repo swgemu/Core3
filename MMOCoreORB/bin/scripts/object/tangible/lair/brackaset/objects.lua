@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_brackaset_shared_lair_brackaset = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/brackaset/shared_lair_brackaset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_brackaset_shared_lair_brackaset = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2129819322,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_brackaset_shared_lair_brackaset, "object/tangible/lair/brackaset/shared_lair_brackaset.iff")
 
 object_tangible_lair_brackaset_shared_lair_brackaset_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/brackaset/shared_lair_brackaset_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_brackaset_shared_lair_brackaset_desert = SharedTangibleObje
 
 	clientObjectCRC = 3690646770,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_brackaset_shared_lair_brackaset_desert, "object/tangible/lair/brackaset/shared_lair_brackaset_desert.iff")

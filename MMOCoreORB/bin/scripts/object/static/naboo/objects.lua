@@ -42,6 +42,9 @@
 
 
 object_static_naboo_shared_waterfall_200m = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_waterfall_200m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eft_whitewater_6m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_naboo_shared_waterfall_200m = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2421347186,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_200m, "object/static/naboo/shared_waterfall_200m.iff")
 
 object_static_naboo_shared_waterfall_all_thin_forked = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_waterfall_all_thin_forked.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eft_all_waterfall_thin_forked.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_naboo_shared_waterfall_all_thin_forked = SharedStaticObjectTemplat
 
 	clientObjectCRC = 2586864352,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_all_thin_forked, "object/static/naboo/shared_waterfall_all_thin_forked.iff")
 
 object_static_naboo_shared_waterfall_all_wide_short = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_waterfall_all_wide_short.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eft_all_waterfall_wide_short.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_static_naboo_shared_waterfall_all_wide_short = SharedStaticObjectTemplate
 
 	clientObjectCRC = 1454317490,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_all_wide_short, "object/static/naboo/shared_waterfall_all_wide_short.iff")
 
 object_static_naboo_shared_waterfall_mist_lg = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_waterfall_mist_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_static_naboo_shared_waterfall_mist_lg = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 4151923875,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_mist_lg, "object/static/naboo/shared_waterfall_mist_lg.iff")
 
 object_static_naboo_shared_waterfall_mist_small = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_waterfall_mist_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_static_naboo_shared_waterfall_mist_small = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 3240630762,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_mist_small, "object/static/naboo/shared_waterfall_mist_small.iff")
 
 object_static_naboo_shared_waterfall_naboo_crest_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_waterfall_naboo_crest_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l0.prt",
 	arrangementDescriptorFilename = "",
 
@@ -307,11 +330,15 @@ object_static_naboo_shared_waterfall_naboo_crest_01 = SharedStaticObjectTemplate
 
 	clientObjectCRC = 4101701818,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_crest_01, "object/static/naboo/shared_waterfall_naboo_crest_01.iff")
 
 object_static_naboo_shared_waterfall_naboo_falls_01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_waterfall_naboo_falls_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_waterfall_whitewater_s02_l1.prt",
 	arrangementDescriptorFilename = "",
 
@@ -352,11 +379,15 @@ object_static_naboo_shared_waterfall_naboo_falls_01 = SharedStaticObjectTemplate
 
 	clientObjectCRC = 282497930,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_falls_01, "object/static/naboo/shared_waterfall_naboo_falls_01.iff")
 
 object_static_naboo_shared_waterfall_naboo_hangar = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_waterfall_naboo_hangar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eft_nboo_thed_waterfall_hangar.apt",
 	arrangementDescriptorFilename = "",
 
@@ -397,11 +428,15 @@ object_static_naboo_shared_waterfall_naboo_hangar = SharedStaticObjectTemplate:n
 
 	clientObjectCRC = 370991757,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_hangar, "object/static/naboo/shared_waterfall_naboo_hangar.iff")
 
 object_static_naboo_shared_waterfall_naboo_keren = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_waterfall_naboo_keren.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eft_nboo_waterfall_moenia.apt",
 	arrangementDescriptorFilename = "",
 
@@ -442,11 +477,15 @@ object_static_naboo_shared_waterfall_naboo_keren = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 3951584767,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_keren, "object/static/naboo/shared_waterfall_naboo_keren.iff")
 
 object_static_naboo_shared_waterfall_naboo_theed_base = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_waterfall_naboo_theed_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thed_wter_falls_anim1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -487,11 +526,15 @@ object_static_naboo_shared_waterfall_naboo_theed_base = SharedStaticObjectTempla
 
 	clientObjectCRC = 4195612510,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_theed_base, "object/static/naboo/shared_waterfall_naboo_theed_base.iff")
 
 object_static_naboo_shared_waterfall_naboo_theed_style_1 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_waterfall_naboo_theed_style_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pt_invisible_particle.prt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +575,15 @@ object_static_naboo_shared_waterfall_naboo_theed_style_1 = SharedStaticObjectTem
 
 	clientObjectCRC = 3625221420,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_waterfall_naboo_theed_style_1, "object/static/naboo/shared_waterfall_naboo_theed_style_1.iff")
 
 object_static_naboo_shared_whitewater_6meter = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/naboo/shared_whitewater_6meter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eft_whitewater_6m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -577,6 +624,7 @@ object_static_naboo_shared_whitewater_6meter = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 4015665582,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/terrain/base/shared_static_terrain_base.iff", "object/static/naboo/shared_waterfall_naboo_theed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_naboo_shared_whitewater_6meter, "object/static/naboo/shared_whitewater_6meter.iff")

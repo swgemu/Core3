@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_salt_mynock_shared_lair_salt_mynock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/salt_mynock/shared_lair_salt_mynock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock = SharedTangibleObjectT
 
 	clientObjectCRC = 2598164093,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock.iff")
 
 object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain = SharedTangib
 
 	clientObjectCRC = 3617713744,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_mountain, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_mountain.iff")
 
 object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland = SharedTangi
 
 	clientObjectCRC = 4030433492,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_salt_mynock_shared_lair_salt_mynock_wasteland, "object/tangible/lair/salt_mynock/shared_lair_salt_mynock_wasteland.iff")

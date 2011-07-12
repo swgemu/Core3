@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_rock_mite_shared_lair_rock_mite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/rock_mite/shared_lair_rock_mite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3536993046,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite, "object/tangible/lair/rock_mite/shared_lair_rock_mite.iff")
 
 object_tangible_lair_rock_mite_shared_lair_rock_mite_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/rock_mite/shared_lair_rock_mite_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_desert = SharedTangibleObje
 
 	clientObjectCRC = 4213428417,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_desert, "object/tangible/lair/rock_mite/shared_lair_rock_mite_desert.iff")
 
 object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/rock_mite/shared_lair_rock_mite_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain = SharedTangibleOb
 
 	clientObjectCRC = 151987616,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_dark.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_mountain, "object/tangible/lair/rock_mite/shared_lair_rock_mite_mountain.iff")
 
 object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/rock_mite/shared_lair_rock_mite_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland = SharedTangibleO
 
 	clientObjectCRC = 1944425271,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_rock_mite_shared_lair_rock_mite_wasteland, "object/tangible/lair/rock_mite/shared_lair_rock_mite_wasteland.iff")

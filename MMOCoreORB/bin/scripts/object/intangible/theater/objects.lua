@@ -42,6 +42,9 @@
 
 
 object_intangible_theater_shared_base_theater = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/theater/shared_base_theater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_intangible_theater_shared_base_theater = SharedIntangibleObjectTemplate:n
 
 	clientObjectCRC = 2322781790,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_theater_shared_base_theater, "object/intangible/theater/shared_base_theater.iff")

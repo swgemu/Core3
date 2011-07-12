@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bicep_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_bicep_l_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l =
 
 	clientObjectCRC = 1002440220,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_l, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bicep_l.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bicep_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_bicep_r_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r =
 
 	clientObjectCRC = 1259684751,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bicep_r, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bicep_r.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_boots.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_boots_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots = S
 
 	clientObjectCRC = 2016668118,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_boots, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_boots.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bracer_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_bracer_l_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_l.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l 
 
 	clientObjectCRC = 2538033013,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_l, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bracer_l.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bracer_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_bracer_r_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_r.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r 
 
 	clientObjectCRC = 3885107942,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_bracer_r, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_bracer_r.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_chest_plate_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 
 	clientObjectCRC = 253917454,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_chest_plate_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_pla
 
 	clientObjectCRC = 1122862762,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff", "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_chest_plate_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_chest_plate_quest.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_gloves.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_gloves_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves = 
 
 	clientObjectCRC = 1918468725,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_gauntlets.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_gloves, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_gloves.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_helmet_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -532,11 +567,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet = 
 
 	clientObjectCRC = 3298386813,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_helmet_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -587,11 +626,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_qu
 
 	clientObjectCRC = 880764068,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff", "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_helmet_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_helmet_quest.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_leggings_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
@@ -642,11 +685,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings 
 
 	clientObjectCRC = 409178730,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_leggings_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
@@ -697,11 +744,15 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_
 
 	clientObjectCRC = 3027159239,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff", "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_leggings_quest, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_leggings_quest.iff")
 
 object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_belt = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_utility_belt.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_stormtrooper_utility_belt_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -752,6 +803,7 @@ object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_b
 
 	clientObjectCRC = 1212660794,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_stormtrooper_shared_armor_stormtrooper_utility_belt, "object/tangible/wearables/armor/stormtrooper/shared_armor_stormtrooper_utility_belt.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_shear_mite_shared_lair_shear_mite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/shear_mite/shared_lair_shear_mite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite = SharedTangibleObjectTem
 
 	clientObjectCRC = 1395090938,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite, "object/tangible/lair/shear_mite/shared_lair_shear_mite.iff")
 
 object_tangible_lair_shear_mite_shared_lair_shear_mite_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/shear_mite/shared_lair_shear_mite_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite_forest = SharedTangibleOb
 
 	clientObjectCRC = 9878364,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_forest, "object/tangible/lair/shear_mite/shared_lair_shear_mite_forest.iff")
 
 object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/shear_mite/shared_lair_shear_mite_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain = SharedTangible
 
 	clientObjectCRC = 865403242,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_shear_mite_shared_lair_shear_mite_mountain, "object/tangible/lair/shear_mite/shared_lair_shear_mite_mountain.iff")

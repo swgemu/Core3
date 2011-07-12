@@ -42,6 +42,9 @@
 
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_art_crate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_crate_basic_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate = SharedTangibl
 
 	clientObjectCRC = 3487250459,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_art_crate, "object/tangible/loot/dungeon/death_watch_bunker/shared_art_crate.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_binary_liquid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_winebottle_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid = SharedTan
 
 	clientObjectCRC = 4135561605,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_binary_liquid, "object/tangible/loot/dungeon/death_watch_bunker/shared_binary_liquid.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_blood_vial.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial = SharedTangib
 
 	clientObjectCRC = 3164930997,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_blood_vial, "object/tangible/loot/dungeon/death_watch_bunker/shared_blood_vial.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_ducted_fan.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_generator_turbine.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan = SharedTangib
 
 	clientObjectCRC = 2674191794,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_ducted_fan, "object/tangible/loot/dungeon/death_watch_bunker/shared_ducted_fan.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_emulsion_protection.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_winebottle_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection = Sha
 
 	clientObjectCRC = 3565585514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_emulsion_protection, "object/tangible/loot/dungeon/death_watch_bunker/shared_emulsion_protection.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_fuel_dispersion_unit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_chemical_dispersion.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit = Sh
 
 	clientObjectCRC = 2809463476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_dispersion_unit, "object/tangible/loot/dungeon/death_watch_bunker/shared_fuel_dispersion_unit.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_fuel_injector_tank.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank = Shar
 
 	clientObjectCRC = 2471910625,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_fuel_injector_tank, "object/tangible/loot/dungeon/death_watch_bunker/shared_fuel_injector_tank.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_jetpack_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_clothing_formal.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base = SharedTang
 
 	clientObjectCRC = 4035920074,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_base, "object/tangible/loot/dungeon/death_watch_bunker/shared_jetpack_base.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_jetpack_stabilizer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_ammo_rocket.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer = Shar
 
 	clientObjectCRC = 1405799440,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_jetpack_stabilizer, "object/tangible/loot/dungeon/death_watch_bunker/shared_jetpack_stabilizer.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_mining_drill_reward.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_crate_basic_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward = Sha
 
 	clientObjectCRC = 3782407794,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_mining_drill_reward, "object/tangible/loot/dungeon/death_watch_bunker/shared_mining_drill_reward.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_pistol_de10_barrel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_muzzle_m_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel = Shar
 
 	clientObjectCRC = 431650444,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_pistol_de10_barrel, "object/tangible/loot/dungeon/death_watch_bunker/shared_pistol_de10_barrel.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_viewscreen_s1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1 = SharedTan
 
 	clientObjectCRC = 765586613,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s1, "object/tangible/loot/dungeon/death_watch_bunker/shared_viewscreen_s1.iff")
 
 object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/death_watch_bunker/shared_viewscreen_s2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_handheld_viewscreen_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,6 +803,7 @@ object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2 = SharedTan
 
 	clientObjectCRC = 4139140130,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_death_watch_bunker_shared_viewscreen_s2, "object/tangible/loot/dungeon/death_watch_bunker/shared_viewscreen_s2.iff")

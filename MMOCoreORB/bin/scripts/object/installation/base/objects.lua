@@ -42,6 +42,9 @@
 
 
 object_installation_base_shared_construction_installation_base = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/base/shared_construction_installation_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_installation_base_shared_construction_installation_base = SharedInstallat
 
 	clientObjectCRC = 544424204,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_base_shared_construction_installation_base, "object/installation/base/shared_construction_installation_base.iff")
 
 object_installation_base_shared_installation_base = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/base/shared_installation_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_installation_base_shared_installation_base = SharedInstallationObjectTemp
 
 	clientObjectCRC = 1610526259,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_base_shared_installation_base, "object/installation/base/shared_installation_base.iff")
 
 object_installation_base_shared_installation_default = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/base/shared_installation_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_installation_base_shared_installation_default = SharedInstallationObjectT
 
 	clientObjectCRC = 4138250553,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_base_shared_installation_default, "object/installation/base/shared_installation_default.iff")

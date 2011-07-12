@@ -42,6 +42,9 @@
 
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_datapad = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_engineering_datapad.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_datapad_s2_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_datapad = S
 
 	clientObjectCRC = 1212603957,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_datapad, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_engineering_datapad.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_key = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_engineering_key.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_key = Share
 
 	clientObjectCRC = 3779706256,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_engineering_key, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_engineering_key.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_passkey = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_passkey.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_ticket_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_passkey = SharedTangibl
 
 	clientObjectCRC = 4110674252,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_passkey, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_passkey.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_chemical_tab = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_chemical_tab.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_bacta_ampules.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_chemical_tab 
 
 	clientObjectCRC = 1953839447,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_chemical_tab, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_chemical_tab.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_data_tab = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_data_tab.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_ledger.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_data_tab = Sh
 
 	clientObjectCRC = 2836503277,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_data_tab, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_data_tab.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_honey_carafe = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_honey_carafe.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tankard_full.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_honey_carafe 
 
 	clientObjectCRC = 1253190673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_honey_carafe, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_honey_carafe.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_ration_kit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_ration_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_ration_kit_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_ration_kit = 
 
 	clientObjectCRC = 395732955,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_ration_kit, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_ration_kit.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_small_ball = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_small_ball.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/msc_toy_ball_m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_small_ball = 
 
 	clientObjectCRC = 3247484355,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_small_ball, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_small_ball.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_spice_container = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_spice_container.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_spice_container.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_spice_contain
 
 	clientObjectCRC = 2674127359,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_spice_container, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_spice_container.iff")
 
 object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_tech_kit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_tech_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_ration_kit_m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,6 +626,7 @@ object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_tech_kit = Sh
 
 	clientObjectCRC = 1965831716,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_dungeon_geonosian_mad_bunker_shared_relic_gbb_tech_kit, "object/tangible/loot/dungeon/geonosian_mad_bunker/shared_relic_gbb_tech_kit.iff")

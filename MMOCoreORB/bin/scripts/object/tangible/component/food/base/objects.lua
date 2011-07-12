@@ -42,6 +42,9 @@
 
 
 object_tangible_component_food_base_shared_drink_container_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/food/base/shared_drink_container_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_component_food_base_shared_drink_container_base = SharedTangible
 
 	clientObjectCRC = 1975147691,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_food_base_shared_drink_container_base, "object/tangible/component/food/base/shared_drink_container_base.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound = S
 
 	clientObjectCRC = 866782264,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound.iff")
 
 object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_for
 
 	clientObjectCRC = 2443001594,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_forest, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_forest.iff")
 
 object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_gra
 
 	clientObjectCRC = 3854748687,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_slice_hound_shared_lair_corellian_slice_hound_grassland, "object/tangible/lair/corellian_slice_hound/shared_lair_corellian_slice_hound_grassland.iff")

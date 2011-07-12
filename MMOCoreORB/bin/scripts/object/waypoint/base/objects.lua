@@ -42,6 +42,9 @@
 
 
 object_waypoint_base_shared_base_waypoint = SharedWaypointObjectTemplate:new {
+	clientTemplateFileName = "object/waypoint/base/shared_base_waypoint.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_waypoint_base_shared_base_waypoint = SharedWaypointObjectTemplate:new {
 
 	clientObjectCRC = 80681620,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_base_shared_base_waypoint, "object/waypoint/base/shared_base_waypoint.iff")
 
 object_waypoint_base_shared_waypoint_default = SharedWaypointObjectTemplate:new {
+	clientTemplateFileName = "object/waypoint/base/shared_waypoint_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -127,6 +134,7 @@ object_waypoint_base_shared_waypoint_default = SharedWaypointObjectTemplate:new 
 
 	clientObjectCRC = 2511311124,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/waypoint/base/shared_base_waypoint.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_waypoint_base_shared_waypoint_default, "object/waypoint/base/shared_waypoint_default.iff")

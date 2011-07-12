@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_cyborg_shared_arm_l_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/cyborg/shared_arm_l_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hum_cyborg_s01_arm_l_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_cyborg_shared_arm_l_s01 = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 3312405691,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_arm_l_s01, "object/tangible/wearables/cyborg/shared_arm_l_s01.iff")
 
 object_tangible_wearables_cyborg_shared_arm_r_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/cyborg/shared_arm_r_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hum_cyborg_s01_arm_r_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_cyborg_shared_arm_r_s01 = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1995018857,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_arm_r_s01, "object/tangible/wearables/cyborg/shared_arm_r_s01.iff")
 
 object_tangible_wearables_cyborg_shared_forearm_l_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/cyborg/shared_forearm_l_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hum_cyborg_s01_forearm_l_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_l.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_cyborg_shared_forearm_l_s01 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 641245984,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_forearm_l_s01, "object/tangible/wearables/cyborg/shared_forearm_l_s01.iff")
 
 object_tangible_wearables_cyborg_shared_forearm_r_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/cyborg/shared_forearm_r_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hum_cyborg_s01_forearm_r_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_r.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_cyborg_shared_forearm_r_s01 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2512289266,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_forearm_r_s01, "object/tangible/wearables/cyborg/shared_forearm_r_s01.iff")
 
 object_tangible_wearables_cyborg_shared_hand_l_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/cyborg/shared_hand_l_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hum_cyborg_s01_hand_l_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_cyborg_shared_hand_l_s01 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1621320928,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_gauntlets.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_hand_l_s01, "object/tangible/wearables/cyborg/shared_hand_l_s01.iff")
 
 object_tangible_wearables_cyborg_shared_hand_r_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/cyborg/shared_hand_r_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hum_cyborg_s01_hand_r_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets.iff",
 
@@ -367,6 +390,7 @@ object_tangible_wearables_cyborg_shared_hand_r_s01 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3542465074,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_gauntlets.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_cyborg_shared_hand_r_s01, "object/tangible/wearables/cyborg/shared_hand_r_s01.iff")

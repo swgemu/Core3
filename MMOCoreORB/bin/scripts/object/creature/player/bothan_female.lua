@@ -51,3 +51,5 @@ object_creature_player_bothan_female = object_creature_player_shared_bothan_fema
 }
 
 ObjectTemplates:addTemplate(object_creature_player_bothan_female, "object/creature/player/bothan_female.iff")
+
+--for k,v in pairs(object_creature_player_bothan_female) do print(k, v) end

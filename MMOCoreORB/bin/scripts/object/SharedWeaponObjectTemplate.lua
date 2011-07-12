@@ -42,9 +42,11 @@
 
 SharedWeaponObjectTemplate = SharedTangibleObjectTemplate:new {
 	templateType = SWOT,
+--[[
 	weaponEffect = "",
 	weaponEffectIndex = 0,
 	attackType = 0,
+]]
 	
 	damageType = KINETIC,
 	

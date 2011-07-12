@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/plumed_rasp/shared_lair_plumed_rasp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp = SharedTangibleObjectT
 
 	clientObjectCRC = 3571980970,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp, "object/tangible/lair/plumed_rasp/shared_lair_plumed_rasp.iff")
 
 object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/plumed_rasp/shared_lair_plumed_rasp_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_forest = SharedTangible
 
 	clientObjectCRC = 847621417,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_forest, "object/tangible/lair/plumed_rasp/shared_lair_plumed_rasp_forest.iff")
 
 object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/plumed_rasp/shared_lair_plumed_rasp_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_mountain = SharedTangib
 
 	clientObjectCRC = 4105359353,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_plumed_rasp_shared_lair_plumed_rasp_mountain, "object/tangible/lair/plumed_rasp/shared_lair_plumed_rasp_mountain.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_spined_snake_shared_lair_spined_snake = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/spined_snake/shared_lair_spined_snake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake = SharedTangibleObjec
 
 	clientObjectCRC = 2281325742,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake, "object/tangible/lair/spined_snake/shared_lair_spined_snake.iff")
 
 object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/spined_snake/shared_lair_spined_snake_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain = SharedTang
 
 	clientObjectCRC = 1340697568,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_mountain, "object/tangible/lair/spined_snake/shared_lair_spined_snake_mountain.iff")
 
 object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/spined_snake/shared_lair_spined_snake_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland = SharedTan
 
 	clientObjectCRC = 3148607218,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_spined_snake_shared_lair_spined_snake_wasteland, "object/tangible/lair/spined_snake/shared_lair_spined_snake_wasteland.iff")

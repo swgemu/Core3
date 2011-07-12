@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther =
 
 	clientObjectCRC = 1294781391,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther, "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther.iff")
 
 object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_g
 
 	clientObjectCRC = 3907598549,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_corellian_sand_panther_shared_lair_corellian_sand_panther_grassland, "object/tangible/lair/corellian_sand_panther/shared_lair_corellian_sand_panther_grassland.iff")

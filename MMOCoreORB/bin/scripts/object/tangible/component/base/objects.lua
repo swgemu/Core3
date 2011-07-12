@@ -42,6 +42,9 @@
 
 
 object_tangible_component_base_shared_base_barrel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/base/shared_base_barrel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/test_muzzle.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_base_shared_base_barrel = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2531878022,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_barrel, "object/tangible/component/base/shared_base_barrel.iff")
 
 object_tangible_component_base_shared_base_component = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/base/shared_base_component.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_base_shared_base_component = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2398764559,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_component, "object/tangible/component/base/shared_base_component.iff")
 
 object_tangible_component_base_shared_base_dna_sample = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/base/shared_base_dna_sample.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_component_base_shared_base_dna_sample = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2106678290,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_dna_sample, "object/tangible/component/base/shared_base_dna_sample.iff")
 
 object_tangible_component_base_shared_base_electronic_component = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/base/shared_base_electronic_component.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_component_base_shared_base_electronic_component = SharedTangible
 
 	clientObjectCRC = 77505063,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_electronic_component, "object/tangible/component/base/shared_base_electronic_component.iff")
 
 object_tangible_component_base_shared_base_food = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/base/shared_base_food.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_component_base_shared_base_food = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 3167521190,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_base_shared_base_food, "object/tangible/component/base/shared_base_food.iff")

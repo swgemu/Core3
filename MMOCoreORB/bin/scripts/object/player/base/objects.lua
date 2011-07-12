@@ -42,6 +42,9 @@
 
 
 object_player_base_shared_base_player = SharedPlayerObjectTemplate:new {
+	clientTemplateFileName = "object/player/base/shared_base_player.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_player_object.iff",
 
@@ -82,11 +85,15 @@ object_player_base_shared_base_player = SharedPlayerObjectTemplate:new {
 
 	clientObjectCRC = 1894914263,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_player_base_shared_base_player, "object/player/base/shared_base_player.iff")
 
 object_player_base_shared_player_default = SharedPlayerObjectTemplate:new {
+	clientTemplateFileName = "object/player/base/shared_player_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_player_object.iff",
 
@@ -127,6 +134,7 @@ object_player_base_shared_player_default = SharedPlayerObjectTemplate:new {
 
 	clientObjectCRC = 1016063662,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/player/base/shared_base_player.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_player_base_shared_player_default, "object/player/base/shared_player_default.iff")

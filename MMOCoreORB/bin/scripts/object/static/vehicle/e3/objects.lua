@@ -42,6 +42,9 @@
 
 
 object_static_vehicle_e3_shared_landspeeder = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/vehicle/e3/shared_landspeeder.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/landspeeder_xp34_convertible.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_static_vehicle_e3_shared_landspeeder = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2401779536,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_e3_shared_landspeeder, "object/static/vehicle/e3/shared_landspeeder.iff")

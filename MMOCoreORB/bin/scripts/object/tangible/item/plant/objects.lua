@@ -42,6 +42,9 @@
 
 
 object_tangible_item_plant_shared_force_melon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/plant/shared_force_melon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_fruit_melon.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_item_plant_shared_force_melon = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 3800711792,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/base/shared_base_food.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_plant_shared_force_melon, "object/tangible/item/plant/shared_force_melon.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_firework_shared_default = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_firework_shared_default = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 4158245667,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_default, "object/tangible/firework/shared_default.iff")
 
 object_tangible_firework_shared_firework_five = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_five.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_firework_shared_firework_five = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 3899934399,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_five, "object/tangible/firework/shared_firework_five.iff")
 
 object_tangible_firework_shared_firework_four = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_four.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_firework_shared_firework_four = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 437197310,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_four, "object/tangible/firework/shared_firework_four.iff")
 
 object_tangible_firework_shared_firework_one = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_one.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_firework_shared_firework_one = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 4192390072,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_one, "object/tangible/firework/shared_firework_one.iff")
 
 object_tangible_firework_shared_firework_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_firework_shared_firework_s01 = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 363719141,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_s01, "object/tangible/firework/shared_firework_s01.iff")
 
 object_tangible_firework_shared_firework_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_firework_shared_firework_s02 = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 3468312946,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_s02, "object/tangible/firework/shared_firework_s02.iff")
 
 object_tangible_firework_shared_firework_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_firework_shared_firework_s03 = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2276927231,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_s03, "object/tangible/firework/shared_firework_s03.iff")
 
 object_tangible_firework_shared_firework_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_firework_shared_firework_s04 = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2085883371,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_s04, "object/tangible/firework/shared_firework_s04.iff")
 
 object_tangible_firework_shared_firework_s05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_s05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_firework_shared_firework_s05 = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 895052390,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_s05, "object/tangible/firework/shared_firework_s05.iff")
 
 object_tangible_firework_shared_firework_s10 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_s10.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_firework_shared_firework_s10 = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 1200128784,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_s10, "object/tangible/firework/shared_firework_s10.iff")
 
 object_tangible_firework_shared_firework_s11 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_s11.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_firework_shared_firework_s11 = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 243655837,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_s11, "object/tangible/firework/shared_firework_s11.iff")
 
 object_tangible_firework_shared_firework_s18 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_s18.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_firework_shared_firework_s18 = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 107054102,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_s18, "object/tangible/firework/shared_firework_s18.iff")
 
 object_tangible_firework_shared_firework_three = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_three.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_firework_shared_firework_three = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1356885356,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_three, "object/tangible/firework/shared_firework_three.iff")
 
 object_tangible_firework_shared_firework_two = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_firework_two.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_firework_shared_firework_two = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 445291314,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_firework_two, "object/tangible/firework/shared_firework_two.iff")
 
 object_tangible_firework_shared_show = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_show.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_firework_shared_show = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 4211144857,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_show, "object/tangible/firework/shared_show.iff")
 
 object_tangible_firework_shared_test = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/firework/shared_test.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_firework_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,6 +980,7 @@ object_tangible_firework_shared_test = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2699059676,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/firework/base/shared_firework_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_firework_shared_test, "object/tangible/firework/shared_test.iff")

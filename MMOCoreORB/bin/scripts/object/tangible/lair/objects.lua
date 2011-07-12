@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_shared_npc_lair = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/shared_npc_lair.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_lair_shared_npc_lair = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1938568983,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_shared_npc_lair, "object/tangible/lair/shared_npc_lair.iff")

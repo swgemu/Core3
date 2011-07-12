@@ -42,6 +42,9 @@
 
 
 object_installation_manufacture_shared_clothing_factory = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/manufacture/shared_clothing_factory.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_factory_clothing.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_installation_manufacture_shared_clothing_factory = SharedInstallationObje
 
 	clientObjectCRC = 2037216595,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/manufacture/base/shared_manufacture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_clothing_factory, "object/installation/manufacture/shared_clothing_factory.iff")
 
 object_installation_manufacture_shared_food_factory = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/manufacture/shared_food_factory.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_factory_organic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_installation_manufacture_shared_food_factory = SharedInstallationObjectTe
 
 	clientObjectCRC = 2484565682,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/manufacture/base/shared_manufacture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_food_factory, "object/installation/manufacture/shared_food_factory.iff")
 
 object_installation_manufacture_shared_structure_factory = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/manufacture/shared_structure_factory.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_factory_machine.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_installation_manufacture_shared_structure_factory = SharedInstallationObj
 
 	clientObjectCRC = 1556571915,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/manufacture/base/shared_manufacture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_structure_factory, "object/installation/manufacture/shared_structure_factory.iff")
 
 object_installation_manufacture_shared_weapon_factory = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/manufacture/shared_weapon_factory.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_factory_item.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_installation_manufacture_shared_weapon_factory = SharedInstallationObject
 
 	clientObjectCRC = 1304272380,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/manufacture/base/shared_manufacture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_weapon_factory, "object/installation/manufacture/shared_weapon_factory.iff")
 
 object_installation_manufacture_shared_weapon_installation = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/manufacture/shared_weapon_installation.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_installation_manufacture_shared_weapon_installation = SharedInstallationO
 
 	clientObjectCRC = 415547091,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/manufacture/base/shared_manufacture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_manufacture_shared_weapon_installation, "object/installation/manufacture/shared_weapon_installation.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_terminal_shared_terminal_ballot_box = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_ballot_box.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_mun_ballot_box.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_terminal_shared_terminal_ballot_box = SharedTangibleObjectTempla
 
 	clientObjectCRC = 909741262,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_ballot_box, "object/tangible/terminal/shared_terminal_ballot_box.iff")
 
 object_tangible_terminal_shared_terminal_bank = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_bank.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_bank.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_terminal_shared_terminal_bank = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 1989986645,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bank, "object/tangible/terminal/shared_terminal_bank.iff")
 
 object_tangible_terminal_shared_terminal_bazaar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_bazaar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_bazaar.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_terminal_shared_terminal_bazaar = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 3631323563,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bazaar, "object/tangible/terminal/shared_terminal_bazaar.iff")
 
 object_tangible_terminal_shared_terminal_bestine_quests_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_bestine_quests_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_terminal_shared_terminal_bestine_quests_01 = SharedTangibleObjec
 
 	clientObjectCRC = 234637781,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_01, "object/tangible/terminal/shared_terminal_bestine_quests_01.iff")
 
 object_tangible_terminal_shared_terminal_bestine_quests_02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_bestine_quests_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_terminal_shared_terminal_bestine_quests_02 = SharedTangibleObjec
 
 	clientObjectCRC = 3605782850,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_02, "object/tangible/terminal/shared_terminal_bestine_quests_02.iff")
 
 object_tangible_terminal_shared_terminal_bestine_quests_03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_bestine_quests_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_terminal_shared_terminal_bestine_quests_03 = SharedTangibleObjec
 
 	clientObjectCRC = 2682685135,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bestine_quests_03, "object/tangible/terminal/shared_terminal_bestine_quests_03.iff")
 
 object_tangible_terminal_shared_terminal_bounty_droid = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_bounty_droid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_terminal_shared_terminal_bounty_droid = SharedTangibleObjectTemp
 
 	clientObjectCRC = 4023071175,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_bounty_droid, "object/tangible/terminal/shared_terminal_bounty_droid.iff")
 
 object_tangible_terminal_shared_terminal_character_builder = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_character_builder.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_kiosk_statue.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_terminal_shared_terminal_character_builder = SharedTangibleObjec
 
 	clientObjectCRC = 1444012427,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_character_builder, "object/tangible/terminal/shared_terminal_character_builder.iff")
 
 object_tangible_terminal_shared_terminal_city = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_city.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_terminal_shared_terminal_city = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 379393128,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_city, "object/tangible/terminal/shared_terminal_city.iff")
 
 object_tangible_terminal_shared_terminal_city_vote = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_city_vote.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_mun_ballot_box.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_terminal_shared_terminal_city_vote = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1204497275,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_city_vote, "object/tangible/terminal/shared_terminal_city_vote.iff")
 
 object_tangible_terminal_shared_terminal_cloning = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_cloning.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_cloning.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_terminal_shared_terminal_cloning = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 3781560082,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_cloning, "object/tangible/terminal/shared_terminal_cloning.iff")
 
 object_tangible_terminal_shared_terminal_command_console = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_command_console.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tech_command_console_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_terminal_shared_terminal_command_console = SharedTangibleObjectT
 
 	clientObjectCRC = 245813721,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_command_console, "object/tangible/terminal/shared_terminal_command_console.iff")
 
 object_tangible_terminal_shared_terminal_dark_enclave_challenge = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_dark_enclave_challenge.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_djt_voting.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_terminal_shared_terminal_dark_enclave_challenge = SharedTangible
 
 	clientObjectCRC = 1992103782,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_dark_enclave_challenge, "object/tangible/terminal/shared_terminal_dark_enclave_challenge.iff")
 
 object_tangible_terminal_shared_terminal_dark_enclave_voting = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_dark_enclave_voting.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_terminal_shared_terminal_dark_enclave_voting = SharedTangibleObj
 
 	clientObjectCRC = 2329382269,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_dark_enclave_voting, "object/tangible/terminal/shared_terminal_dark_enclave_voting.iff")
 
 object_tangible_terminal_shared_terminal_elevator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_elevator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_elevator_panel_updown_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_terminal_shared_terminal_elevator = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 278443635,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator, "object/tangible/terminal/shared_terminal_elevator.iff")
 
 object_tangible_terminal_shared_terminal_elevator_down = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_elevator_down.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_elevator_panel_down_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_terminal_shared_terminal_elevator_down = SharedTangibleObjectTem
 
 	clientObjectCRC = 3298826986,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator_down, "object/tangible/terminal/shared_terminal_elevator_down.iff")
 
 object_tangible_terminal_shared_terminal_elevator_up = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_elevator_up.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_elevator_panel_up_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_terminal_shared_terminal_elevator_up = SharedTangibleObjectTempl
 
 	clientObjectCRC = 115529514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_elevator_up, "object/tangible/terminal/shared_terminal_elevator_up.iff")
 
 object_tangible_terminal_shared_terminal_geo_bunker = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_geo_bunker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_terminal_shared_terminal_geo_bunker = SharedTangibleObjectTempla
 
 	clientObjectCRC = 3878794306,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_geo_bunker, "object/tangible/terminal/shared_terminal_geo_bunker.iff")
 
 object_tangible_terminal_shared_terminal_guild = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_guild.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_terminal_shared_terminal_guild = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 724271921,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_guild, "object/tangible/terminal/shared_terminal_guild.iff")
 
 object_tangible_terminal_shared_terminal_hq = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_hq.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_terminal_shared_terminal_hq = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 489350492,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq, "object/tangible/terminal/shared_terminal_hq.iff")
 
 object_tangible_terminal_shared_terminal_hq_imperial = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_hq_imperial.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_terminal_shared_terminal_hq_imperial = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3161971452,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_hq.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_imperial, "object/tangible/terminal/shared_terminal_hq_imperial.iff")
 
 object_tangible_terminal_shared_terminal_hq_rebel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_hq_rebel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_terminal_shared_terminal_hq_rebel = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1176471647,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_hq.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_rebel, "object/tangible/terminal/shared_terminal_hq_rebel.iff")
 
 object_tangible_terminal_shared_terminal_hq_turret_control = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_hq_turret_control.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_terminal_shared_terminal_hq_turret_control = SharedTangibleObjec
 
 	clientObjectCRC = 2229698005,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_hq_turret_control, "object/tangible/terminal/shared_terminal_hq_turret_control.iff")
 
 object_tangible_terminal_shared_terminal_imagedesign = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_imagedesign.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_image_design.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_terminal_shared_terminal_imagedesign = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2511005752,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_imagedesign, "object/tangible/terminal/shared_terminal_imagedesign.iff")
 
 object_tangible_terminal_shared_terminal_insurance = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_insurance.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_terminal_shared_terminal_insurance = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1029213671,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_insurance, "object/tangible/terminal/shared_terminal_insurance.iff")
 
 object_tangible_terminal_shared_terminal_jukebox = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_jukebox.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_terminal_shared_terminal_jukebox = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 249891408,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_jukebox, "object/tangible/terminal/shared_terminal_jukebox.iff")
 
 object_tangible_terminal_shared_terminal_light_enclave_challenge = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_light_enclave_challenge.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_terminal_shared_terminal_light_enclave_challenge = SharedTangibl
 
 	clientObjectCRC = 2945424908,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_light_enclave_challenge, "object/tangible/terminal/shared_terminal_light_enclave_challenge.iff")
 
 object_tangible_terminal_shared_terminal_light_enclave_voting = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_light_enclave_voting.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_ljt_voting.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_terminal_shared_terminal_light_enclave_voting = SharedTangibleOb
 
 	clientObjectCRC = 1384984494,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_light_enclave_voting, "object/tangible/terminal/shared_terminal_light_enclave_voting.iff")
 
 object_tangible_terminal_shared_terminal_mission = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_mission.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_mission.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_terminal_shared_terminal_mission = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2907007746,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission, "object/tangible/terminal/shared_terminal_mission.iff")
 
 object_tangible_terminal_shared_terminal_mission_artisan = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_mission_artisan.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_terminal_shared_terminal_mission_artisan = SharedTangibleObjectT
 
 	clientObjectCRC = 3927829015,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_artisan, "object/tangible/terminal/shared_terminal_mission_artisan.iff")
 
 object_tangible_terminal_shared_terminal_mission_bounty = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_mission_bounty.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_terminal_shared_terminal_mission_bounty = SharedTangibleObjectTe
 
 	clientObjectCRC = 3951925654,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_mission.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_bounty, "object/tangible/terminal/shared_terminal_mission_bounty.iff")
 
 object_tangible_terminal_shared_terminal_mission_entertainer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_mission_entertainer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_terminal_shared_terminal_mission_entertainer = SharedTangibleObj
 
 	clientObjectCRC = 2410700040,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_entertainer, "object/tangible/terminal/shared_terminal_mission_entertainer.iff")
 
 object_tangible_terminal_shared_terminal_mission_imperial = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_mission_imperial.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_terminal_shared_terminal_mission_imperial = SharedTangibleObject
 
 	clientObjectCRC = 4186402280,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_mission.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_imperial, "object/tangible/terminal/shared_terminal_mission_imperial.iff")
 
 object_tangible_terminal_shared_terminal_mission_newbie = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_mission_newbie.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_mission.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_terminal_shared_terminal_mission_newbie = SharedTangibleObjectTe
 
 	clientObjectCRC = 2666426537,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_newbie, "object/tangible/terminal/shared_terminal_mission_newbie.iff")
 
 object_tangible_terminal_shared_terminal_mission_rebel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_mission_rebel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_terminal_shared_terminal_mission_rebel = SharedTangibleObjectTem
 
 	clientObjectCRC = 2082896080,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_mission.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_rebel, "object/tangible/terminal/shared_terminal_mission_rebel.iff")
 
 object_tangible_terminal_shared_terminal_mission_scout = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_mission_scout.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_imp_data_terminal_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_terminal_shared_terminal_mission_scout = SharedTangibleObjectTem
 
 	clientObjectCRC = 581658756,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_scout, "object/tangible/terminal/shared_terminal_mission_scout.iff")
 
 object_tangible_terminal_shared_terminal_mission_statue = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_mission_statue.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_kiosk_statue.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_tangible_terminal_shared_terminal_mission_statue = SharedTangibleObjectTe
 
 	clientObjectCRC = 4114889569,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff", "object/tangible/terminal/shared_terminal_mission.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_mission_statue, "object/tangible/terminal/shared_terminal_mission_statue.iff")
 
 object_tangible_terminal_shared_terminal_newbie_clothing = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_newbie_clothing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_travel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_tangible_terminal_shared_terminal_newbie_clothing = SharedTangibleObjectT
 
 	clientObjectCRC = 4290085920,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_clothing, "object/tangible/terminal/shared_terminal_newbie_clothing.iff")
 
 object_tangible_terminal_shared_terminal_newbie_food = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_newbie_food.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_travel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,11 +2337,15 @@ object_tangible_terminal_shared_terminal_newbie_food = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2721518483,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_food, "object/tangible/terminal/shared_terminal_newbie_food.iff")
 
 object_tangible_terminal_shared_terminal_newbie_instrument = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_newbie_instrument.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_travel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2237,11 +2396,15 @@ object_tangible_terminal_shared_terminal_newbie_instrument = SharedTangibleObjec
 
 	clientObjectCRC = 3665675874,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_instrument, "object/tangible/terminal/shared_terminal_newbie_instrument.iff")
 
 object_tangible_terminal_shared_terminal_newbie_medicine = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_newbie_medicine.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_travel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2292,11 +2455,15 @@ object_tangible_terminal_shared_terminal_newbie_medicine = SharedTangibleObjectT
 
 	clientObjectCRC = 1668873424,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_medicine, "object/tangible/terminal/shared_terminal_newbie_medicine.iff")
 
 object_tangible_terminal_shared_terminal_newbie_tool = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_newbie_tool.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_travel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2347,11 +2514,15 @@ object_tangible_terminal_shared_terminal_newbie_tool = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4182051530,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newbie_tool, "object/tangible/terminal/shared_terminal_newbie_tool.iff")
 
 object_tangible_terminal_shared_terminal_newsnet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_newsnet.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2402,11 +2573,15 @@ object_tangible_terminal_shared_terminal_newsnet = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 757402672,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_newsnet, "object/tangible/terminal/shared_terminal_newsnet.iff")
 
 object_tangible_terminal_shared_terminal_nym_cave = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_nym_cave.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_travel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2457,11 +2632,15 @@ object_tangible_terminal_shared_terminal_nym_cave = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 3880062907,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_nym_cave, "object/tangible/terminal/shared_terminal_nym_cave.iff")
 
 object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_player_structure.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2512,11 +2691,15 @@ object_tangible_terminal_shared_terminal_player_structure = SharedTangibleObject
 
 	clientObjectCRC = 4023332994,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure, "object/tangible/terminal/shared_terminal_player_structure.iff")
 
 object_tangible_terminal_shared_terminal_player_structure_nosnap = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_player_structure_nosnap.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2567,11 +2750,15 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap = SharedTangibl
 
 	clientObjectCRC = 437907033,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap, "object/tangible/terminal/shared_terminal_player_structure_nosnap.iff")
 
 object_tangible_terminal_shared_terminal_player_structure_nosnap_mini = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_player_structure_nosnap_mini.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_diagnostic_screen.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2622,11 +2809,15 @@ object_tangible_terminal_shared_terminal_player_structure_nosnap_mini = SharedTa
 
 	clientObjectCRC = 2775644177,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_player_structure_nosnap_mini, "object/tangible/terminal/shared_terminal_player_structure_nosnap_mini.iff")
 
 object_tangible_terminal_shared_terminal_pm_register = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_pm_register.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_free_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2677,11 +2868,15 @@ object_tangible_terminal_shared_terminal_pm_register = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1004751674,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_pm_register, "object/tangible/terminal/shared_terminal_pm_register.iff")
 
 object_tangible_terminal_shared_terminal_pob_ship = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_pob_ship.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2732,11 +2927,15 @@ object_tangible_terminal_shared_terminal_pob_ship = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 3308349953,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_pob_ship, "object/tangible/terminal/shared_terminal_pob_ship.iff")
 
 object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_ship_interior_security_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2787,11 +2986,15 @@ object_tangible_terminal_shared_terminal_ship_interior_security_1 = SharedTangib
 
 	clientObjectCRC = 965433242,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_ship_interior_security_1, "object/tangible/terminal/shared_terminal_ship_interior_security_1.iff")
 
 object_tangible_terminal_shared_terminal_shipping = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_shipping.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_shipping.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2842,11 +3045,15 @@ object_tangible_terminal_shared_terminal_shipping = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1225472505,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_shipping, "object/tangible/terminal/shared_terminal_shipping.iff")
 
 object_tangible_terminal_shared_terminal_skill = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_skill.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2897,11 +3104,15 @@ object_tangible_terminal_shared_terminal_skill = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 328711509,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_skill, "object/tangible/terminal/shared_terminal_skill.iff")
 
 object_tangible_terminal_shared_terminal_space = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_space.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_spaceterminal.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2952,11 +3163,15 @@ object_tangible_terminal_shared_terminal_space = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1701113915,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_space, "object/tangible/terminal/shared_terminal_space.iff")
 
 object_tangible_terminal_shared_terminal_travel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_travel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ksk_all_travel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3007,11 +3222,15 @@ object_tangible_terminal_shared_terminal_travel = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1946349820,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_travel, "object/tangible/terminal/shared_terminal_travel.iff")
 
 object_tangible_terminal_shared_terminal_water_pressure = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_terminal_water_pressure.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3062,11 +3281,15 @@ object_tangible_terminal_shared_terminal_water_pressure = SharedTangibleObjectTe
 
 	clientObjectCRC = 4062337637,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_terminal_water_pressure, "object/tangible/terminal/shared_terminal_water_pressure.iff")
 
 object_tangible_terminal_shared_test = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/terminal/shared_test.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_elevator_panel_updown_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3117,6 +3340,7 @@ object_tangible_terminal_shared_test = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3876933537,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/terminal/base/shared_base_terminal.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_terminal_shared_test, "object/tangible/terminal/shared_test.iff")

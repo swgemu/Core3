@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_bandolier_shared_bandolier_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_chewbacca.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_bandolier_shared_bandolier_s01 = SharedTangibleObjectT
 
 	clientObjectCRC = 2100666153,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s01, "object/tangible/wearables/bandolier/shared_bandolier_s01.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_bandolier_shared_bandolier_s02 = SharedTangibleObjectT
 
 	clientObjectCRC = 2787260350,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s02, "object/tangible/wearables/bandolier/shared_bandolier_s02.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s02_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_s02_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_bandolier_shared_bandolier_s02_quest = SharedTangibleO
 
 	clientObjectCRC = 1876108427,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff", "object/tangible/wearables/bandolier/shared_bandolier_s02.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s02_quest, "object/tangible/wearables/bandolier/shared_bandolier_s02_quest.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_bandolier_shared_bandolier_s03 = SharedTangibleObjectT
 
 	clientObjectCRC = 4012855347,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s03, "object/tangible/wearables/bandolier/shared_bandolier_s03.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_bandolier_shared_bandolier_s04 = SharedTangibleObjectT
 
 	clientObjectCRC = 348945191,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s04, "object/tangible/wearables/bandolier/shared_bandolier_s04.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s04_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_s04_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_bandolier_shared_bandolier_s04_quest = SharedTangibleO
 
 	clientObjectCRC = 1941573505,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff", "object/tangible/wearables/bandolier/shared_bandolier_s04.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s04_quest, "object/tangible/wearables/bandolier/shared_bandolier_s04_quest.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_s05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s05_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_bandolier_shared_bandolier_s05 = SharedTangibleObjectT
 
 	clientObjectCRC = 1572936874,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s05, "object/tangible/wearables/bandolier/shared_bandolier_s05.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s06 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_s06.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s06_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_bandolier_shared_bandolier_s06 = SharedTangibleObjectT
 
 	clientObjectCRC = 2262217789,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s06, "object/tangible/wearables/bandolier/shared_bandolier_s06.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s07 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_s07.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -532,11 +567,15 @@ object_tangible_wearables_bandolier_shared_bandolier_s07 = SharedTangibleObjectT
 
 	clientObjectCRC = 3487290288,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s07, "object/tangible/wearables/bandolier/shared_bandolier_s07.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s08 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_s08.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s08_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -587,11 +626,15 @@ object_tangible_wearables_bandolier_shared_bandolier_s08 = SharedTangibleObjectT
 
 	clientObjectCRC = 1976696738,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s08, "object/tangible/wearables/bandolier/shared_bandolier_s08.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_s09 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_s09.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s09_wke_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -642,11 +685,15 @@ object_tangible_wearables_bandolier_shared_bandolier_s09 = SharedTangibleObjectT
 
 	clientObjectCRC = 1021089839,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_s09, "object/tangible/wearables/bandolier/shared_bandolier_s09.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_tusken_raider_s01_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -697,11 +744,15 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01 = SharedT
 
 	clientObjectCRC = 2362441992,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s01, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s01.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_tusken_raider_s02_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -752,11 +803,15 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02 = SharedT
 
 	clientObjectCRC = 1472702879,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s02, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s02.iff")
 
 object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_tusken_raider_s03_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bandolier.iff",
 
@@ -807,11 +862,15 @@ object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03 = SharedT
 
 	clientObjectCRC = 516607506,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_bandolier.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_bandolier_tusken_raider_s03, "object/tangible/wearables/bandolier/shared_bandolier_tusken_raider_s03.iff")
 
 object_tangible_wearables_bandolier_shared_double_bandolier = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_double_bandolier.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -862,11 +921,15 @@ object_tangible_wearables_bandolier_shared_double_bandolier = SharedTangibleObje
 
 	clientObjectCRC = 1293966476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_double_bandolier, "object/tangible/wearables/bandolier/shared_double_bandolier.iff")
 
 object_tangible_wearables_bandolier_shared_ith_double_bandolier = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_ith_double_bandolier.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_bandolier_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -917,11 +980,15 @@ object_tangible_wearables_bandolier_shared_ith_double_bandolier = SharedTangible
 
 	clientObjectCRC = 1065147216,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith_double_bandolier, "object/tangible/wearables/bandolier/shared_ith_double_bandolier.iff")
 
 object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_ith_mercenary_bandolier.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_bandolier_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -972,11 +1039,15 @@ object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier = SharedTangi
 
 	clientObjectCRC = 3570000539,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith_mercenary_bandolier, "object/tangible/wearables/bandolier/shared_ith_mercenary_bandolier.iff")
 
 object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_ith_multipocket_bandolier.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ith_bandolier_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -1027,11 +1098,15 @@ object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier = SharedTan
 
 	clientObjectCRC = 721380424,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_ith_multipocket_bandolier, "object/tangible/wearables/bandolier/shared_ith_multipocket_bandolier.iff")
 
 object_tangible_wearables_bandolier_shared_mercenary_bandolier = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_mercenary_bandolier.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -1082,11 +1157,15 @@ object_tangible_wearables_bandolier_shared_mercenary_bandolier = SharedTangibleO
 
 	clientObjectCRC = 3002918794,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_mercenary_bandolier, "object/tangible/wearables/bandolier/shared_mercenary_bandolier.iff")
 
 object_tangible_wearables_bandolier_shared_multipocket_bandolier = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bandolier/shared_multipocket_bandolier.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bandolier_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/back.iff",
 
@@ -1137,6 +1216,7 @@ object_tangible_wearables_bandolier_shared_multipocket_bandolier = SharedTangibl
 
 	clientObjectCRC = 1747617663,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff", "object/tangible/wearables/base/shared_base_backpack.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bandolier_shared_multipocket_bandolier, "object/tangible/wearables/bandolier/shared_multipocket_bandolier.iff")

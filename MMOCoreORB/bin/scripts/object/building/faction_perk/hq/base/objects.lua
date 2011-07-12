@@ -42,6 +42,9 @@
 
 
 object_building_faction_perk_hq_base_shared_factional_hq_base = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/faction_perk/hq/base/shared_factional_hq_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -95,11 +98,15 @@ object_building_faction_perk_hq_base_shared_factional_hq_base = SharedBuildingOb
 
 	clientObjectCRC = 2342412562,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_base_shared_factional_hq_base, "object/building/faction_perk/hq/base/shared_factional_hq_base.iff")
 
 object_building_faction_perk_hq_base_shared_factional_hq_fp = SharedBuildingObjectTemplate:new {
+	clientTemplateFileName = "object/building/faction_perk/hq/base/shared_factional_hq_fp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -153,6 +160,7 @@ object_building_faction_perk_hq_base_shared_factional_hq_fp = SharedBuildingObje
 
 	clientObjectCRC = 622259850,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/building/base/shared_base_building.iff", "object/building/faction_perk/base/shared_factional_building_base.iff", "object/building/faction_perk/hq/base/shared_factional_hq_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_faction_perk_hq_base_shared_factional_hq_fp, "object/building/faction_perk/hq/base/shared_factional_hq_fp.iff")

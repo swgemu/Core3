@@ -42,6 +42,9 @@
 
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_bank = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_bank.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_bank = SharedTangib
 
 	clientObjectCRC = 3236011689,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_bank, "object/tangible/sign/municipal/shared_municipal_sign_hanging_bank.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_cantina.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina = SharedTan
 
 	clientObjectCRC = 3410306211,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cantina, "object/tangible/sign/municipal/shared_municipal_sign_hanging_cantina.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_capitol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol = SharedTan
 
 	clientObjectCRC = 3771237737,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_capitol, "object/tangible/sign/municipal/shared_municipal_sign_hanging_capitol.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_cloning.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning = SharedTan
 
 	clientObjectCRC = 3647827532,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_cloning, "object/tangible/sign/municipal/shared_municipal_sign_hanging_cloning.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_combat = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_combat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_combat = SharedTang
 
 	clientObjectCRC = 1785001308,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_combat, "object/tangible/sign/municipal/shared_municipal_sign_hanging_combat.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_commerce.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce = SharedTa
 
 	clientObjectCRC = 1680490925,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_commerce, "object/tangible/sign/municipal/shared_municipal_sign_hanging_commerce.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_hospital.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital = SharedTa
 
 	clientObjectCRC = 3811548404,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hospital, "object/tangible/sign/municipal/shared_municipal_sign_hanging_hospital.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_hotel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel = SharedTangi
 
 	clientObjectCRC = 101788547,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_hotel, "object/tangible/sign/municipal/shared_municipal_sign_hanging_hotel.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_parking = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_parking.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_parking = SharedTan
 
 	clientObjectCRC = 2041501823,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_parking, "object/tangible/sign/municipal/shared_municipal_sign_hanging_parking.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_shuttle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle = SharedTan
 
 	clientObjectCRC = 2402289971,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_shuttle, "object/tangible/sign/municipal/shared_municipal_sign_hanging_shuttle.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_starport = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_starport.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_starport = SharedTa
 
 	clientObjectCRC = 555356506,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_starport, "object/tangible/sign/municipal/shared_municipal_sign_hanging_starport.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_theater = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_theater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_theater = SharedTan
 
 	clientObjectCRC = 1423370292,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_theater, "object/tangible/sign/municipal/shared_municipal_sign_hanging_theater.iff")
 
 object_tangible_sign_municipal_shared_municipal_sign_hanging_university = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/sign/municipal/shared_municipal_sign_hanging_university.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_sign_all_hanging.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,6 +803,7 @@ object_tangible_sign_municipal_shared_municipal_sign_hanging_university = Shared
 
 	clientObjectCRC = 2713174086,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/sign/base/shared_base_sign.iff", "object/tangible/sign/municipal/base/shared_municipal_sign_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_sign_municipal_shared_municipal_sign_hanging_university, "object/tangible/sign/municipal/shared_municipal_sign_hanging_university.iff")

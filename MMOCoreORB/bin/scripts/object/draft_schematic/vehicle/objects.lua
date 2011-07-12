@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_vehicle_shared_vehicle_customization_kit = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/vehicle/shared_vehicle_customization_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,6 +85,7 @@ object_draft_schematic_vehicle_shared_vehicle_customization_kit = SharedDraftSch
 
 	clientObjectCRC = 4170918716,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/item/shared_item_base_tool.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_vehicle_shared_vehicle_customization_kit, "object/draft_schematic/vehicle/shared_vehicle_customization_kit.iff")

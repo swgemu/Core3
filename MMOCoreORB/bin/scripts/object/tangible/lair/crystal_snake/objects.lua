@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_crystal_snake_shared_lair_crystal_snake = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/crystal_snake/shared_lair_crystal_snake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake = SharedTangibleObj
 
 	clientObjectCRC = 890345407,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake.iff")
 
 object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle = SharedTang
 
 	clientObjectCRC = 348095194,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_jungle, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_jungle.iff")
 
 object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp = SharedTangi
 
 	clientObjectCRC = 1011676096,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_swamp.iff")
 
 object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_underwater.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater = Shared
 
 	clientObjectCRC = 480132823,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_crystal_snake_shared_lair_crystal_snake_underwater, "object/tangible/lair/crystal_snake/shared_lair_crystal_snake_underwater.iff")

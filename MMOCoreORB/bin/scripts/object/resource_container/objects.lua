@@ -42,6 +42,9 @@
 
 
 object_resource_container_shared_resource_container_energy_gas = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_energy_gas.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_energy_gas_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_resource_container_shared_resource_container_energy_gas = SharedResourceC
 
 	clientObjectCRC = 2640304325,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_gas, "object/resource_container/shared_resource_container_energy_gas.iff")
 
 object_resource_container_shared_resource_container_energy_gas_lg = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_energy_gas_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_energy_gas_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_resource_container_shared_resource_container_energy_gas_lg = SharedResour
 
 	clientObjectCRC = 1023265709,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_gas_lg, "object/resource_container/shared_resource_container_energy_gas_lg.iff")
 
 object_resource_container_shared_resource_container_energy_liquid = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_energy_liquid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_energy_liquid_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_resource_container_shared_resource_container_energy_liquid = SharedResour
 
 	clientObjectCRC = 505491474,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_liquid, "object/resource_container/shared_resource_container_energy_liquid.iff")
 
 object_resource_container_shared_resource_container_energy_liquid_lg = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_energy_liquid_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_energy_liquid_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_resource_container_shared_resource_container_energy_liquid_lg = SharedRes
 
 	clientObjectCRC = 4165569512,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_liquid_lg, "object/resource_container/shared_resource_container_energy_liquid_lg.iff")
 
 object_resource_container_shared_resource_container_energy_radioactive = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_energy_radioactive.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_energy_radioactive_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_resource_container_shared_resource_container_energy_radioactive = SharedR
 
 	clientObjectCRC = 3244320243,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_radioactive, "object/resource_container/shared_resource_container_energy_radioactive.iff")
 
 object_resource_container_shared_resource_container_energy_radioactive_lg = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_energy_radioactive_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_energy_radioactive_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_resource_container_shared_resource_container_energy_radioactive_lg = Shar
 
 	clientObjectCRC = 1769828233,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_radioactive_lg, "object/resource_container/shared_resource_container_energy_radioactive_lg.iff")
 
 object_resource_container_shared_resource_container_energy_solid = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_energy_solid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_energy_solid_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_resource_container_shared_resource_container_energy_solid = SharedResourc
 
 	clientObjectCRC = 3912559902,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_solid, "object/resource_container/shared_resource_container_energy_solid.iff")
 
 object_resource_container_shared_resource_container_energy_solid_lg = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_energy_solid_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_energy_solid_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_resource_container_shared_resource_container_energy_solid_lg = SharedReso
 
 	clientObjectCRC = 3935977713,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_energy_solid_lg, "object/resource_container/shared_resource_container_energy_solid_lg.iff")
 
 object_resource_container_shared_resource_container_inorganic_bottle_water = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_inorganic_bottle_water.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_bottle_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_resource_container_shared_resource_container_inorganic_bottle_water = Sha
 
 	clientObjectCRC = 125850083,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_bottle_water, "object/resource_container/shared_resource_container_inorganic_bottle_water.iff")
 
 object_resource_container_shared_resource_container_inorganic_chemicals = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_inorganic_chemicals.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_inorganic_chemicals_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_resource_container_shared_resource_container_inorganic_chemicals = Shared
 
 	clientObjectCRC = 422061124,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_chemicals, "object/resource_container/shared_resource_container_inorganic_chemicals.iff")
 
 object_resource_container_shared_resource_container_inorganic_chemicals_lg = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_inorganic_chemicals_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_inorganic_chemicals_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_resource_container_shared_resource_container_inorganic_chemicals_lg = Sha
 
 	clientObjectCRC = 2886132575,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_chemicals_lg, "object/resource_container/shared_resource_container_inorganic_chemicals_lg.iff")
 
 object_resource_container_shared_resource_container_inorganic_gas = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_inorganic_gas.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_inorganic_gas_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_resource_container_shared_resource_container_inorganic_gas = SharedResour
 
 	clientObjectCRC = 2204725480,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_gas, "object/resource_container/shared_resource_container_inorganic_gas.iff")
 
 object_resource_container_shared_resource_container_inorganic_gas_lg = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_inorganic_gas_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_inorganic_gas_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_resource_container_shared_resource_container_inorganic_gas_lg = SharedRes
 
 	clientObjectCRC = 73541074,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_gas_lg, "object/resource_container/shared_resource_container_inorganic_gas_lg.iff")
 
 object_resource_container_shared_resource_container_inorganic_minerals = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_inorganic_minerals.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_inorganic_minerals_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_resource_container_shared_resource_container_inorganic_minerals = SharedR
 
 	clientObjectCRC = 2295225965,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_minerals, "object/resource_container/shared_resource_container_inorganic_minerals.iff")
 
 object_resource_container_shared_resource_container_inorganic_minerals_lg = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_inorganic_minerals_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_inorganic_minerals_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_resource_container_shared_resource_container_inorganic_minerals_lg = Shar
 
 	clientObjectCRC = 3162714701,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_minerals_lg, "object/resource_container/shared_resource_container_inorganic_minerals_lg.iff")
 
 object_resource_container_shared_resource_container_inorganic_petrochem_liquid = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_inorganic_petrochem_liquid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_bottle_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_resource_container_shared_resource_container_inorganic_petrochem_liquid =
 
 	clientObjectCRC = 3404372557,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_petrochem_liquid, "object/resource_container/shared_resource_container_inorganic_petrochem_liquid.iff")
 
 object_resource_container_shared_resource_container_inorganic_water = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_inorganic_water.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_inorganic_water_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_resource_container_shared_resource_container_inorganic_water = SharedReso
 
 	clientObjectCRC = 759021360,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_water, "object/resource_container/shared_resource_container_inorganic_water.iff")
 
 object_resource_container_shared_resource_container_inorganic_water_lg = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_inorganic_water_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_inorganic_water_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_resource_container_shared_resource_container_inorganic_water_lg = SharedR
 
 	clientObjectCRC = 1891729994,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_inorganic_water_lg, "object/resource_container/shared_resource_container_inorganic_water_lg.iff")
 
 object_resource_container_shared_resource_container_organic_bean = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_bean.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_resource_container_shared_resource_container_organic_bean = SharedResourc
 
 	clientObjectCRC = 4263974406,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_bean, "object/resource_container/shared_resource_container_organic_bean.iff")
 
 object_resource_container_shared_resource_container_organic_bottle_milk = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_bottle_milk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_bottle_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_resource_container_shared_resource_container_organic_bottle_milk = Shared
 
 	clientObjectCRC = 3072418635,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_bottle_milk, "object/resource_container/shared_resource_container_organic_bottle_milk.iff")
 
 object_resource_container_shared_resource_container_organic_bristley_hide = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_bristley_hide.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_organic_hide_bristly.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_resource_container_shared_resource_container_organic_bristley_hide = Shar
 
 	clientObjectCRC = 2077617394,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_bristley_hide, "object/resource_container/shared_resource_container_organic_bristley_hide.iff")
 
 object_resource_container_shared_resource_container_organic_corn = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_corn.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_resource_container_shared_resource_container_organic_corn = SharedResourc
 
 	clientObjectCRC = 3542662327,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_corn, "object/resource_container/shared_resource_container_organic_corn.iff")
 
 object_resource_container_shared_resource_container_organic_food = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_food.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_organic_food_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_resource_container_shared_resource_container_organic_food = SharedResourc
 
 	clientObjectCRC = 699752337,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_food, "object/resource_container/shared_resource_container_organic_food.iff")
 
 object_resource_container_shared_resource_container_organic_food_lg = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_food_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_organic_food_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_resource_container_shared_resource_container_organic_food_lg = SharedReso
 
 	clientObjectCRC = 466521573,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_food_lg, "object/resource_container/shared_resource_container_organic_food_lg.iff")
 
 object_resource_container_shared_resource_container_organic_fruit = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_fruit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_resource_container_shared_resource_container_organic_fruit = SharedResour
 
 	clientObjectCRC = 1967870892,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_fruit, "object/resource_container/shared_resource_container_organic_fruit.iff")
 
 object_resource_container_shared_resource_container_organic_fungi = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_fungi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_resource_container_shared_resource_container_organic_fungi = SharedResour
 
 	clientObjectCRC = 2670708128,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_fungi, "object/resource_container/shared_resource_container_organic_fungi.iff")
 
 object_resource_container_shared_resource_container_organic_green_vegetables = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_green_vegetables.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_resource_container_shared_resource_container_organic_green_vegetables = S
 
 	clientObjectCRC = 2909750726,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_green_vegetables, "object/resource_container/shared_resource_container_organic_green_vegetables.iff")
 
 object_resource_container_shared_resource_container_organic_hide = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_hide.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_organic_hide_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_resource_container_shared_resource_container_organic_hide = SharedResourc
 
 	clientObjectCRC = 976954288,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_hide, "object/resource_container/shared_resource_container_organic_hide.iff")
 
 object_resource_container_shared_resource_container_organic_hide_lg = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_hide_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_organic_hide_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_resource_container_shared_resource_container_organic_hide_lg = SharedReso
 
 	clientObjectCRC = 495391475,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_hide_lg, "object/resource_container/shared_resource_container_organic_hide_lg.iff")
 
 object_resource_container_shared_resource_container_organic_leathery_hide = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_leathery_hide.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_organic_hide_leather.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_resource_container_shared_resource_container_organic_leathery_hide = Shar
 
 	clientObjectCRC = 2514079067,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_leathery_hide, "object/resource_container/shared_resource_container_organic_leathery_hide.iff")
 
 object_resource_container_shared_resource_container_organic_oats = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_oats.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_resource_container_shared_resource_container_organic_oats = SharedResourc
 
 	clientObjectCRC = 1222368053,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_oats, "object/resource_container/shared_resource_container_organic_oats.iff")
 
 object_resource_container_shared_resource_container_organic_rice = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_rice.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_resource_container_shared_resource_container_organic_rice = SharedResourc
 
 	clientObjectCRC = 3052716729,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_rice, "object/resource_container/shared_resource_container_organic_rice.iff")
 
 object_resource_container_shared_resource_container_organic_scaley_hide = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_scaley_hide.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_organic_hide_scaly.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_resource_container_shared_resource_container_organic_scaley_hide = Shared
 
 	clientObjectCRC = 355985042,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_scaley_hide, "object/resource_container/shared_resource_container_organic_scaley_hide.iff")
 
 object_resource_container_shared_resource_container_organic_structure = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_structure.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_organic_structure_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_resource_container_shared_resource_container_organic_structure = SharedRe
 
 	clientObjectCRC = 1326787440,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_structure, "object/resource_container/shared_resource_container_organic_structure.iff")
 
 object_resource_container_shared_resource_container_organic_structure_lg = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_structure_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_organic_structure_lg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_resource_container_shared_resource_container_organic_structure_lg = Share
 
 	clientObjectCRC = 3803992658,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_structure_lg, "object/resource_container/shared_resource_container_organic_structure_lg.iff")
 
 object_resource_container_shared_resource_container_organic_tuber = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_tuber.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_resource_container_shared_resource_container_organic_tuber = SharedResour
 
 	clientObjectCRC = 41151102,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_tuber, "object/resource_container/shared_resource_container_organic_tuber.iff")
 
 object_resource_container_shared_resource_container_organic_wheat = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_wheat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_powder_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_resource_container_shared_resource_container_organic_wheat = SharedResour
 
 	clientObjectCRC = 1848360314,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_wheat, "object/resource_container/shared_resource_container_organic_wheat.iff")
 
 object_resource_container_shared_resource_container_organic_wooly_hide = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_resource_container_organic_wooly_hide.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_organic_hide_wooly.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_resource_container_shared_resource_container_organic_wooly_hide = SharedR
 
 	clientObjectCRC = 3648978698,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_resource_container_organic_wooly_hide, "object/resource_container/shared_resource_container_organic_wooly_hide.iff")
 
 object_resource_container_shared_simple = SharedResourceContainerObjectTemplate:new {
+	clientTemplateFileName = "object/resource_container/shared_simple.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_gen_organic_food_sml.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,6 +2337,7 @@ object_resource_container_shared_simple = SharedResourceContainerObjectTemplate:
 
 	clientObjectCRC = 4049825392,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/resource_container/base/shared_base_resource_container.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_resource_container_shared_simple, "object/resource_container/shared_simple.iff")

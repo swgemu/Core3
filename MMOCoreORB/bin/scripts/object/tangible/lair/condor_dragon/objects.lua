@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_condor_dragon_shared_lair_condor_dragon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/condor_dragon/shared_lair_condor_dragon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon = SharedTangibleObj
 
 	clientObjectCRC = 1027555264,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon.iff")
 
 object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest = SharedTang
 
 	clientObjectCRC = 3923122581,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_forest, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_forest.iff")
 
 object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain = SharedTa
 
 	clientObjectCRC = 518156641,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_condor_dragon_shared_lair_condor_dragon_mountain, "object/tangible/lair/condor_dragon/shared_lair_condor_dragon_mountain.iff")

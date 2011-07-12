@@ -42,6 +42,9 @@
 
 
 object_tangible_scout_trap_shared_trap_drowsy_dart = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_drowsy_dart.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_tranquilizing_dart.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_scout_trap_shared_trap_drowsy_dart = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 705221769,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_drowsy_dart, "object/tangible/scout/trap/shared_trap_drowsy_dart.iff")
 
 object_tangible_scout_trap_shared_trap_enraging_spur = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_enraging_spur.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_enraging_spur.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_scout_trap_shared_trap_enraging_spur = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3897339231,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_enraging_spur, "object/tangible/scout/trap/shared_trap_enraging_spur.iff")
 
 object_tangible_scout_trap_shared_trap_flash_bomb = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_flash_bomb.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_flash_bomb.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_scout_trap_shared_trap_flash_bomb = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 708754512,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_flash_bomb, "object/tangible/scout/trap/shared_trap_flash_bomb.iff")
 
 object_tangible_scout_trap_shared_trap_melee_def_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_melee_def_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_scout_trap_shared_trap_melee_def_1 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3084221929,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_melee_def_1, "object/tangible/scout/trap/shared_trap_melee_def_1.iff")
 
 object_tangible_scout_trap_shared_trap_melee_ranged_def_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_melee_ranged_def_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_ww41.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_scout_trap_shared_trap_melee_ranged_def_1 = SharedTangibleObject
 
 	clientObjectCRC = 3453088617,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_melee_ranged_def_1, "object/tangible/scout/trap/shared_trap_melee_ranged_def_1.iff")
 
 object_tangible_scout_trap_shared_trap_noise_maker = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_noise_maker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_noise_maker.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_scout_trap_shared_trap_noise_maker = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3133223247,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_noise_maker, "object/tangible/scout/trap/shared_trap_noise_maker.iff")
 
 object_tangible_scout_trap_shared_trap_ranged_def_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_ranged_def_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_scout_trap_shared_trap_ranged_def_1 = SharedTangibleObjectTempla
 
 	clientObjectCRC = 46866220,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_ranged_def_1, "object/tangible/scout/trap/shared_trap_ranged_def_1.iff")
 
 object_tangible_scout_trap_shared_trap_ranged_speed_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_ranged_speed_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_tranquilizing_dart.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_scout_trap_shared_trap_ranged_speed_1 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2460580704,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_ranged_speed_1, "object/tangible/scout/trap/shared_trap_ranged_speed_1.iff")
 
 object_tangible_scout_trap_shared_trap_sonic_pulse = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_sonic_pulse.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_sonic_pulse.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_scout_trap_shared_trap_sonic_pulse = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3605514682,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_sonic_pulse, "object/tangible/scout/trap/shared_trap_sonic_pulse.iff")
 
 object_tangible_scout_trap_shared_trap_state_def_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_state_def_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_tranquilizing_dart.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_scout_trap_shared_trap_state_def_1 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 750361076,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_state_def_1, "object/tangible/scout/trap/shared_trap_state_def_1.iff")
 
 object_tangible_scout_trap_shared_trap_tranq_dart = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_tranq_dart.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_tranquilizing_dart.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_scout_trap_shared_trap_tranq_dart = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2472376515,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_tranq_dart, "object/tangible/scout/trap/shared_trap_tranq_dart.iff")
 
 object_tangible_scout_trap_shared_trap_webber = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/trap/shared_trap_webber.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_webber.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,6 +744,7 @@ object_tangible_scout_trap_shared_trap_webber = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 3441092972,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_trap_shared_trap_webber, "object/tangible/scout/trap/shared_trap_webber.iff")

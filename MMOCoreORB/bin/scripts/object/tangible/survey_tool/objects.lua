@@ -42,6 +42,9 @@
 
 
 object_tangible_survey_tool_shared_survey_tool_all = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/survey_tool/shared_survey_tool_all.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_survey_pad_advanced_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_survey_tool_shared_survey_tool_all = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 255686868,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_all, "object/tangible/survey_tool/shared_survey_tool_all.iff")
 
 object_tangible_survey_tool_shared_survey_tool_gas = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/survey_tool/shared_survey_tool_gas.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_gas.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_survey_tool_shared_survey_tool_gas = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1059021891,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_gas, "object/tangible/survey_tool/shared_survey_tool_gas.iff")
 
 object_tangible_survey_tool_shared_survey_tool_inorganic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/survey_tool/shared_survey_tool_inorganic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_fusion.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_survey_tool_shared_survey_tool_inorganic = SharedTangibleObjectT
 
 	clientObjectCRC = 3427396409,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_inorganic, "object/tangible/survey_tool/shared_survey_tool_inorganic.iff")
 
 object_tangible_survey_tool_shared_survey_tool_liquid = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/survey_tool/shared_survey_tool_liquid.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_liquid.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_survey_tool_shared_survey_tool_liquid = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2242363434,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_liquid, "object/tangible/survey_tool/shared_survey_tool_liquid.iff")
 
 object_tangible_survey_tool_shared_survey_tool_lumber = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/survey_tool/shared_survey_tool_lumber.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_organic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_survey_tool_shared_survey_tool_lumber = SharedTangibleObjectTemp
 
 	clientObjectCRC = 1329114448,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_lumber, "object/tangible/survey_tool/shared_survey_tool_lumber.iff")
 
 object_tangible_survey_tool_shared_survey_tool_mineral = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/survey_tool/shared_survey_tool_mineral.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_ore.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_survey_tool_shared_survey_tool_mineral = SharedTangibleObjectTem
 
 	clientObjectCRC = 2862265132,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_mineral, "object/tangible/survey_tool/shared_survey_tool_mineral.iff")
 
 object_tangible_survey_tool_shared_survey_tool_moisture = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/survey_tool/shared_survey_tool_moisture.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_moisture.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_survey_tool_shared_survey_tool_moisture = SharedTangibleObjectTe
 
 	clientObjectCRC = 2175673400,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_moisture, "object/tangible/survey_tool/shared_survey_tool_moisture.iff")
 
 object_tangible_survey_tool_shared_survey_tool_organic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/survey_tool/shared_survey_tool_organic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_impulse_detector_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_survey_tool_shared_survey_tool_organic = SharedTangibleObjectTem
 
 	clientObjectCRC = 963146674,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_organic, "object/tangible/survey_tool/shared_survey_tool_organic.iff")
 
 object_tangible_survey_tool_shared_survey_tool_solar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/survey_tool/shared_survey_tool_solar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_solar.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_survey_tool_shared_survey_tool_solar = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2341848205,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_solar, "object/tangible/survey_tool/shared_survey_tool_solar.iff")
 
 object_tangible_survey_tool_shared_survey_tool_wind = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/survey_tool/shared_survey_tool_wind.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_wind.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,6 +626,7 @@ object_tangible_survey_tool_shared_survey_tool_wind = SharedTangibleObjectTempla
 
 	clientObjectCRC = 566467536,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/survey_tool/base/shared_survey_tool_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_survey_tool_shared_survey_tool_wind, "object/tangible/survey_tool/shared_survey_tool_wind.iff")

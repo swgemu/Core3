@@ -42,6 +42,9 @@
 
 
 object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_blacksun_heavy_wing_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_struct_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s01 = SharedTang
 
 	clientObjectCRC = 4014332398,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s01, "object/tangible/ship/attachment/wing/shared_blacksun_heavy_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_blacksun_heavy_wing_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_struct_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s02 = SharedTang
 
 	clientObjectCRC = 877818233,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_heavy_wing_s02, "object/tangible/ship/attachment/wing/shared_blacksun_heavy_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_blacksun_light_wing_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_struct_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s01 = SharedTang
 
 	clientObjectCRC = 1568766163,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s01, "object/tangible/ship/attachment/wing/shared_blacksun_light_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_blacksun_light_wing_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_struct_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s02 = SharedTang
 
 	clientObjectCRC = 2258030660,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_light_wing_s02, "object/tangible/ship/attachment/wing/shared_blacksun_light_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_blacksun_medium_wing_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_struct_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s01 = SharedTan
 
 	clientObjectCRC = 3598757540,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s01, "object/tangible/ship/attachment/wing/shared_blacksun_medium_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_blacksun_medium_wing_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_struct_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s02 = SharedTan
 
 	clientObjectCRC = 228001331,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_blacksun_medium_wing_s02, "object/tangible/ship/attachment/wing/shared_blacksun_medium_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_bwing_body = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_bwing_body.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bwing_body.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_ship_attachment_wing_shared_bwing_body = SharedTangibleObjectTem
 
 	clientObjectCRC = 1161389128,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_bwing_body, "object/tangible/ship/attachment/wing/shared_bwing_body.iff")
 
 object_tangible_ship_attachment_wing_shared_bwing_wing_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_bwing_wing_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bwing_wing_l.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_ship_attachment_wing_shared_bwing_wing_l = SharedTangibleObjectT
 
 	clientObjectCRC = 110478371,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_bwing_wing_l, "object/tangible/ship/attachment/wing/shared_bwing_wing_l.iff")
 
 object_tangible_ship_attachment_wing_shared_bwing_wing_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_bwing_wing_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bwing_wing_r.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_ship_attachment_wing_shared_bwing_wing_r = SharedTangibleObjectT
 
 	clientObjectCRC = 1983938992,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_bwing_wing_r, "object/tangible/ship/attachment/wing/shared_bwing_wing_r.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_hutt_heavy_wing_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_struct_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s01 = SharedTangible
 
 	clientObjectCRC = 2822483285,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s01, "object/tangible/ship/attachment/wing/shared_hutt_heavy_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_hutt_heavy_wing_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_struct_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s02 = SharedTangible
 
 	clientObjectCRC = 1932264898,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_heavy_wing_s02, "object/tangible/ship/attachment/wing/shared_hutt_heavy_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_light_wing_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_hutt_light_wing_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_struct_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_ship_attachment_wing_shared_hutt_light_wing_s01 = SharedTangible
 
 	clientObjectCRC = 452922472,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_light_wing_s01, "object/tangible/ship/attachment/wing/shared_hutt_light_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_light_wing_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_hutt_light_wing_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_struct_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_ship_attachment_wing_shared_hutt_light_wing_s02 = SharedTangible
 
 	clientObjectCRC = 3253249279,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_light_wing_s02, "object/tangible/ship/attachment/wing/shared_hutt_light_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_hutt_medium_wing_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_struct_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s01 = SharedTangibl
 
 	clientObjectCRC = 2184525270,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s01, "object/tangible/ship/attachment/wing/shared_hutt_medium_wing_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_hutt_medium_wing_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_struct_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s02 = SharedTangibl
 
 	clientObjectCRC = 1495440705,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_hutt_medium_wing_s02, "object/tangible/ship/attachment/wing/shared_hutt_medium_wing_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_kse_firespray_struct_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kse_firespray_struct_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s01 = SharedTan
 
 	clientObjectCRC = 3713063710,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s01, "object/tangible/ship/attachment/wing/shared_kse_firespray_struct_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_kse_firespray_struct_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kse_firespray_struct_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s02 = SharedTan
 
 	clientObjectCRC = 105345929,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_kse_firespray_struct_s02, "object/tangible/ship/attachment/wing/shared_kse_firespray_struct_s02.iff")
 
 object_tangible_ship_attachment_wing_shared_lambda_wing_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_lambda_wing_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/lambda_wing_left.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_ship_attachment_wing_shared_lambda_wing_l = SharedTangibleObject
 
 	clientObjectCRC = 2459214995,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_lambda_wing_l, "object/tangible/ship/attachment/wing/shared_lambda_wing_l.iff")
 
 object_tangible_ship_attachment_wing_shared_lambda_wing_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_lambda_wing_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/lambda_wing_right.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_ship_attachment_wing_shared_lambda_wing_r = SharedTangibleObject
 
 	clientObjectCRC = 3795968256,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_lambda_wing_r, "object/tangible/ship/attachment/wing/shared_lambda_wing_r.iff")
 
 object_tangible_ship_attachment_wing_shared_xwing_wing_neg_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_xwing_wing_neg_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_wing_neg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_ship_attachment_wing_shared_xwing_wing_neg_s01 = SharedTangibleO
 
 	clientObjectCRC = 12581699,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_xwing_wing_neg_s01, "object/tangible/ship/attachment/wing/shared_xwing_wing_neg_s01.iff")
 
 object_tangible_ship_attachment_wing_shared_xwing_wing_pos_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/wing/shared_xwing_wing_pos_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_wing_pos.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,6 +1275,7 @@ object_tangible_ship_attachment_wing_shared_xwing_wing_pos_s01 = SharedTangibleO
 
 	clientObjectCRC = 2719465568,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_wing_shared_xwing_wing_pos_s01, "object/tangible/ship/attachment/wing/shared_xwing_wing_pos_s01.iff")

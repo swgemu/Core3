@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_snorbal_shared_lair_snorbal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/snorbal/shared_lair_snorbal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_snorbal_shared_lair_snorbal = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 3190753462,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_shared_lair_snorbal, "object/tangible/lair/snorbal/shared_lair_snorbal.iff")
 
 object_tangible_lair_snorbal_shared_lair_snorbal_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/snorbal/shared_lair_snorbal_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_snorbal_shared_lair_snorbal_grassland = SharedTangibleObjec
 
 	clientObjectCRC = 1664191883,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_snorbal_shared_lair_snorbal_grassland, "object/tangible/lair/snorbal/shared_lair_snorbal_grassland.iff")

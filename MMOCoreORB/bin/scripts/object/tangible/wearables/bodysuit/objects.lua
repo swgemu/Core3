@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_bodysuit_shared_bodysuit_atat = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_atat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_atat_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat = SharedTangibleObjectTe
 
 	clientObjectCRC = 2562125101,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat, "object/tangible/wearables/bodysuit/shared_bodysuit_atat.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_atat_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_atat_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest = SharedTangibleOb
 
 	clientObjectCRC = 2859919047,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff", "object/tangible/wearables/bodysuit/shared_bodysuit_atat.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_atat_quest.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_bwing = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_bwing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_bwing_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing = SharedTangibleObjectT
 
 	clientObjectCRC = 2920765612,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing, "object/tangible/wearables/bodysuit/shared_bodysuit_bwing.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_bwing_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_bwing_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest = SharedTangibleO
 
 	clientObjectCRC = 2675213661,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff", "object/tangible/wearables/bodysuit/shared_bodysuit_bwing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_bwing_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_bwing_quest.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s01 = SharedTangibleObjectTem
 
 	clientObjectCRC = 3519793019,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s01, "object/tangible/wearables/bodysuit/shared_bodysuit_s01.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s06 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_s06.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_s06_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s06 = SharedTangibleObjectTem
 
 	clientObjectCRC = 707325039,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s06, "object/tangible/wearables/bodysuit/shared_bodysuit_s06.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s07 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_s07.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s07 = SharedTangibleObjectTem
 
 	clientObjectCRC = 1663405026,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s07, "object/tangible/wearables/bodysuit/shared_bodysuit_s07.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s08 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_s08.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_s08_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s08 = SharedTangibleObjectTem
 
 	clientObjectCRC = 3643779056,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s08, "object/tangible/wearables/bodysuit/shared_bodysuit_s08.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s12 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_s12.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_s12_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -532,11 +567,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s12 = SharedTangibleObjectTem
 
 	clientObjectCRC = 301228692,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s12, "object/tangible/wearables/bodysuit/shared_bodysuit_s12.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s13 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_s13.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_s13_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -587,11 +626,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s13 = SharedTangibleObjectTem
 
 	clientObjectCRC = 1492714777,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s13, "object/tangible/wearables/bodysuit/shared_bodysuit_s13.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s14 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_s14.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_s14_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -642,11 +685,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s14 = SharedTangibleObjectTem
 
 	clientObjectCRC = 2736401933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s14, "object/tangible/wearables/bodysuit/shared_bodysuit_s14.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s15 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_s15.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_s15_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -697,11 +744,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s15 = SharedTangibleObjectTem
 
 	clientObjectCRC = 3927394688,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s15, "object/tangible/wearables/bodysuit/shared_bodysuit_s15.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_s16 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_s16.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_s16_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -752,11 +803,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_s16 = SharedTangibleObjectTem
 
 	clientObjectCRC = 822141207,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_s16, "object/tangible/wearables/bodysuit/shared_bodysuit_s16.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_sarlacc_coverall.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_s13_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -807,11 +862,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall = SharedTang
 
 	clientObjectCRC = 2416523857,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_sarlacc_coverall, "object/tangible/wearables/bodysuit/shared_bodysuit_sarlacc_coverall.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_tie_fighter_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -862,11 +921,15 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter = SharedTangibleO
 
 	clientObjectCRC = 19224104,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter, "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter.iff")
 
 object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bodysuit_tie_fighter_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/jumpsuit_longsleeve.iff",
 
@@ -917,6 +980,7 @@ object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest = SharedTan
 
 	clientObjectCRC = 184136204,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_jumpsuit_longsleeve.iff", "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bodysuit_shared_bodysuit_tie_fighter_quest, "object/tangible/wearables/bodysuit/shared_bodysuit_tie_fighter_quest.iff")

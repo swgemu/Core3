@@ -42,6 +42,9 @@
 
 
 object_weapon_ranged_heavy_shared_heavy_acid_beam = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/heavy/shared_heavy_acid_beam.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_hvy_acid_launcher.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/empty.iff",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_ranged_heavy_shared_heavy_acid_beam = SharedWeaponObjectTemplate:n
 
 	clientObjectCRC = 337224478,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_shared_heavy_acid_beam, "object/weapon/ranged/heavy/shared_heavy_acid_beam.iff")
 
 object_weapon_ranged_heavy_shared_heavy_lightning_beam = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/heavy/shared_heavy_lightning_beam.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_hvy_acid_launcher.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/empty.iff",
 	attackType = 1,
@@ -155,11 +162,15 @@ object_weapon_ranged_heavy_shared_heavy_lightning_beam = SharedWeaponObjectTempl
 
 	clientObjectCRC = 1073082434,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_shared_heavy_lightning_beam, "object/weapon/ranged/heavy/shared_heavy_lightning_beam.iff")
 
 object_weapon_ranged_heavy_shared_heavy_particle_beam = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/heavy/shared_heavy_particle_beam.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_hvy_acid_launcher.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/empty.iff",
 	attackType = 1,
@@ -214,11 +225,15 @@ object_weapon_ranged_heavy_shared_heavy_particle_beam = SharedWeaponObjectTempla
 
 	clientObjectCRC = 1442646668,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_shared_heavy_particle_beam, "object/weapon/ranged/heavy/shared_heavy_particle_beam.iff")
 
 object_weapon_ranged_heavy_shared_heavy_rocket_launcher = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/heavy/shared_heavy_rocket_launcher.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_hvy_launcher.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/empty.iff",
 	attackType = 1,
@@ -273,11 +288,15 @@ object_weapon_ranged_heavy_shared_heavy_rocket_launcher = SharedWeaponObjectTemp
 
 	clientObjectCRC = 3022005655,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_shared_heavy_rocket_launcher, "object/weapon/ranged/heavy/shared_heavy_rocket_launcher.iff")
 
 object_weapon_ranged_heavy_shared_launcher = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/heavy/shared_launcher.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_hvy_launcher.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/empty.iff",
 	attackType = 1,
@@ -332,6 +351,7 @@ object_weapon_ranged_heavy_shared_launcher = SharedWeaponObjectTemplate:new {
 
 	clientObjectCRC = 2595978283,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/heavy/base/shared_heavy_weapon_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_heavy_shared_launcher, "object/weapon/ranged/heavy/shared_launcher.iff")

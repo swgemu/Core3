@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_belt_shared_aakuan_belt = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_aakuan_belt.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s05_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_belt_shared_aakuan_belt = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1699237411,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_aakuan_belt, "object/tangible/wearables/belt/shared_aakuan_belt.iff")
 
 object_tangible_wearables_belt_shared_belt_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_belt_shared_belt_s01 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2489884324,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s01, "object/tangible/wearables/belt/shared_belt_s01.iff")
 
 object_tangible_wearables_belt_shared_belt_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_belt_shared_belt_s02 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1333737011,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s02, "object/tangible/wearables/belt/shared_belt_s02.iff")
 
 object_tangible_wearables_belt_shared_belt_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_belt_shared_belt_s03 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 108155326,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s03, "object/tangible/wearables/belt/shared_belt_s03.iff")
 
 object_tangible_wearables_belt_shared_belt_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_belt_shared_belt_s04 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 4254169770,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s04, "object/tangible/wearables/belt/shared_belt_s04.iff")
 
 object_tangible_wearables_belt_shared_belt_s05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s05_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_belt_shared_belt_s05 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3030129959,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s05, "object/tangible/wearables/belt/shared_belt_s05.iff")
 
 object_tangible_wearables_belt_shared_belt_s05_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s05_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s05_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_belt_shared_belt_s05_quest = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3225289633,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff", "object/tangible/wearables/belt/shared_belt_s05.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s05_quest, "object/tangible/wearables/belt/shared_belt_s05_quest.iff")
 
 object_tangible_wearables_belt_shared_belt_s07 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s07.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_belt_shared_belt_s07 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 646369853,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s07, "object/tangible/wearables/belt/shared_belt_s07.iff")
 
 object_tangible_wearables_belt_shared_belt_s09 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s09.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s09_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -532,11 +567,15 @@ object_tangible_wearables_belt_shared_belt_s09 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3582040482,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s09, "object/tangible/wearables/belt/shared_belt_s09.iff")
 
 object_tangible_wearables_belt_shared_belt_s11 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s11.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s11_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -587,11 +626,15 @@ object_tangible_wearables_belt_shared_belt_s11 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2403374044,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s11, "object/tangible/wearables/belt/shared_belt_s11.iff")
 
 object_tangible_wearables_belt_shared_belt_s12 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s12.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s12_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -642,11 +685,15 @@ object_tangible_wearables_belt_shared_belt_s12 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1415002955,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s12, "object/tangible/wearables/belt/shared_belt_s12.iff")
 
 object_tangible_wearables_belt_shared_belt_s13 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s13.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s13_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -697,11 +744,15 @@ object_tangible_wearables_belt_shared_belt_s13 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 492461254,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s13, "object/tangible/wearables/belt/shared_belt_s13.iff")
 
 object_tangible_wearables_belt_shared_belt_s14 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s14.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s14_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -752,11 +803,15 @@ object_tangible_wearables_belt_shared_belt_s14 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3870914514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s14, "object/tangible/wearables/belt/shared_belt_s14.iff")
 
 object_tangible_wearables_belt_shared_belt_s15 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s15.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s15_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -807,11 +862,15 @@ object_tangible_wearables_belt_shared_belt_s15 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2947813471,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s15, "object/tangible/wearables/belt/shared_belt_s15.iff")
 
 object_tangible_wearables_belt_shared_belt_s16 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s16.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s16_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -862,11 +921,15 @@ object_tangible_wearables_belt_shared_belt_s16 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1956886728,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s16, "object/tangible/wearables/belt/shared_belt_s16.iff")
 
 object_tangible_wearables_belt_shared_belt_s17 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s17.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s17_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -917,11 +980,15 @@ object_tangible_wearables_belt_shared_belt_s17 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1034870597,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s17, "object/tangible/wearables/belt/shared_belt_s17.iff")
 
 object_tangible_wearables_belt_shared_belt_s18 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s18.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s18_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -972,11 +1039,15 @@ object_tangible_wearables_belt_shared_belt_s18 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2275734359,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s18, "object/tangible/wearables/belt/shared_belt_s18.iff")
 
 object_tangible_wearables_belt_shared_belt_s19 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s19.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s19_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -1027,11 +1098,15 @@ object_tangible_wearables_belt_shared_belt_s19 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3467220186,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s19, "object/tangible/wearables/belt/shared_belt_s19.iff")
 
 object_tangible_wearables_belt_shared_belt_s20 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/belt/shared_belt_s20.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/belt_s20_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -1082,6 +1157,7 @@ object_tangible_wearables_belt_shared_belt_s20 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3946177497,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_belt_shared_belt_s20, "object/tangible/wearables/belt/shared_belt_s20.iff")

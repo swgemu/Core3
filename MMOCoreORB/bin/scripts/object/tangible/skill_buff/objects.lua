@@ -42,6 +42,9 @@
 
 
 object_tangible_skill_buff_shared_skill_buff_carbine_accuracy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_carbine_accuracy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_skill_buff_shared_skill_buff_carbine_accuracy = SharedTangibleOb
 
 	clientObjectCRC = 3070103050,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_accuracy, "object/tangible/skill_buff/shared_skill_buff_carbine_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_carbine_speed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_carbine_speed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_skill_buff_shared_skill_buff_carbine_speed = SharedTangibleObjec
 
 	clientObjectCRC = 2417642005,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_carbine_speed, "object/tangible/skill_buff/shared_skill_buff_carbine_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_accuracy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy = SharedTangi
 
 	clientObjectCRC = 1148030361,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_accuracy, "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_speed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed = SharedTangible
 
 	clientObjectCRC = 2003739536,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed, "object/tangible/skill_buff/shared_skill_buff_heavy_weapon_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_mask_scent = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_mask_scent.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_skill_buff_shared_skill_buff_mask_scent = SharedTangibleObjectTe
 
 	clientObjectCRC = 2803312333,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_mask_scent, "object/tangible/skill_buff/shared_skill_buff_mask_scent.iff")
 
 object_tangible_skill_buff_shared_skill_buff_melee_accuracy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_melee_accuracy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_skill_buff_shared_skill_buff_melee_accuracy = SharedTangibleObje
 
 	clientObjectCRC = 687567212,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_melee_accuracy, "object/tangible/skill_buff/shared_skill_buff_melee_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_melee_defense = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_melee_defense.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_skill_buff_shared_skill_buff_melee_defense = SharedTangibleObjec
 
 	clientObjectCRC = 3148321230,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_melee_defense, "object/tangible/skill_buff/shared_skill_buff_melee_defense.iff")
 
 object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_onehandmelee_accuracy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy = SharedTangi
 
 	clientObjectCRC = 336832987,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_accuracy, "object/tangible/skill_buff/shared_skill_buff_onehandmelee_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_onehandmelee_speed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed = SharedTangible
 
 	clientObjectCRC = 3043511880,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_onehandmelee_speed, "object/tangible/skill_buff/shared_skill_buff_onehandmelee_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_pistol_accuracy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_pistol_accuracy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_skill_buff_shared_skill_buff_pistol_accuracy = SharedTangibleObj
 
 	clientObjectCRC = 4053673313,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_accuracy, "object/tangible/skill_buff/shared_skill_buff_pistol_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_pistol_speed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_pistol_speed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_skill_buff_shared_skill_buff_pistol_speed = SharedTangibleObject
 
 	clientObjectCRC = 3705181543,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_pistol_speed, "object/tangible/skill_buff/shared_skill_buff_pistol_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_polearm_accuracy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_polearm_accuracy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_skill_buff_shared_skill_buff_polearm_accuracy = SharedTangibleOb
 
 	clientObjectCRC = 2877612542,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_accuracy, "object/tangible/skill_buff/shared_skill_buff_polearm_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_polearm_speed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_polearm_speed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_skill_buff_shared_skill_buff_polearm_speed = SharedTangibleObjec
 
 	clientObjectCRC = 2574942749,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_polearm_speed, "object/tangible/skill_buff/shared_skill_buff_polearm_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_ranged_accuracy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_ranged_accuracy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_skill_buff_shared_skill_buff_ranged_accuracy = SharedTangibleObj
 
 	clientObjectCRC = 2321374102,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_accuracy, "object/tangible/skill_buff/shared_skill_buff_ranged_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_ranged_defense = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_ranged_defense.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_skill_buff_shared_skill_buff_ranged_defense = SharedTangibleObje
 
 	clientObjectCRC = 655697476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_ranged_defense, "object/tangible/skill_buff/shared_skill_buff_ranged_defense.iff")
 
 object_tangible_skill_buff_shared_skill_buff_rifle_accuracy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_rifle_accuracy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_skill_buff_shared_skill_buff_rifle_accuracy = SharedTangibleObje
 
 	clientObjectCRC = 1676691901,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_accuracy, "object/tangible/skill_buff/shared_skill_buff_rifle_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_rifle_speed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_rifle_speed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_skill_buff_shared_skill_buff_rifle_speed = SharedTangibleObjectT
 
 	clientObjectCRC = 1002436514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_rifle_speed, "object/tangible/skill_buff/shared_skill_buff_rifle_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_thrown_accuracy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_thrown_accuracy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_skill_buff_shared_skill_buff_thrown_accuracy = SharedTangibleObj
 
 	clientObjectCRC = 675038361,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_accuracy, "object/tangible/skill_buff/shared_skill_buff_thrown_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_thrown_speed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_thrown_speed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_skill_buff_shared_skill_buff_thrown_speed = SharedTangibleObject
 
 	clientObjectCRC = 2671557576,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_thrown_speed, "object/tangible/skill_buff/shared_skill_buff_thrown_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_twohandmelee_accuracy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy = SharedTangi
 
 	clientObjectCRC = 1962907578,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy, "object/tangible/skill_buff/shared_skill_buff_twohandmelee_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_twohandmelee_speed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed = SharedTangible
 
 	clientObjectCRC = 2007596912,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_twohandmelee_speed, "object/tangible/skill_buff/shared_skill_buff_twohandmelee_speed.iff")
 
 object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_unarmed_accuracy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy = SharedTangibleOb
 
 	clientObjectCRC = 2213257613,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_accuracy, "object/tangible/skill_buff/shared_skill_buff_unarmed_accuracy.iff")
 
 object_tangible_skill_buff_shared_skill_buff_unarmed_speed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/skill_buff/shared_skill_buff_unarmed_speed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,6 +1393,7 @@ object_tangible_skill_buff_shared_skill_buff_unarmed_speed = SharedTangibleObjec
 
 	clientObjectCRC = 2704330106,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/skill_buff/base/shared_skill_buff_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_skill_buff_shared_skill_buff_unarmed_speed, "object/tangible/skill_buff/shared_skill_buff_unarmed_speed.iff")

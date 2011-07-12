@@ -42,6 +42,9 @@
 
 
 object_construction_contract_shared_construction_contract = SharedConstructionContractObjectTemplate:new {
+	clientTemplateFileName = "object/construction_contract/shared_construction_contract.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_construction_contract_shared_construction_contract = SharedConstructionCo
 
 	clientObjectCRC = 3027882478,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/construction_contract/base/shared_base_construction_contract.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_construction_contract_shared_construction_contract, "object/construction_contract/shared_construction_contract.iff")

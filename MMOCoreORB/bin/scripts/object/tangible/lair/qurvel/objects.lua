@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_qurvel_shared_lair_qurvel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/qurvel/shared_lair_qurvel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_qurvel_shared_lair_qurvel = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1736818373,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_qurvel_shared_lair_qurvel, "object/tangible/lair/qurvel/shared_lair_qurvel.iff")
 
 object_tangible_lair_qurvel_shared_lair_qurvel_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/qurvel/shared_lair_qurvel_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_qurvel_shared_lair_qurvel_forest = SharedTangibleObjectTemp
 
 	clientObjectCRC = 107086842,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_qurvel_shared_lair_qurvel_forest, "object/tangible/lair/qurvel/shared_lair_qurvel_forest.iff")
 
 object_tangible_lair_qurvel_shared_lair_qurvel_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/qurvel/shared_lair_qurvel_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_qurvel_shared_lair_qurvel_mountain = SharedTangibleObjectTe
 
 	clientObjectCRC = 4099487001,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_qurvel_shared_lair_qurvel_mountain, "object/tangible/lair/qurvel/shared_lair_qurvel_mountain.iff")

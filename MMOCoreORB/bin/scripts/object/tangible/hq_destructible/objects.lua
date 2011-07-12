@@ -42,6 +42,9 @@
 
 
 object_tangible_hq_destructible_shared_base_destructible = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hq_destructible/shared_base_destructible.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_hq_destructible_shared_base_destructible = SharedTangibleObjectT
 
 	clientObjectCRC = 730285201,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_base_destructible, "object/tangible/hq_destructible/shared_base_destructible.iff")
 
 object_tangible_hq_destructible_shared_override_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hq_destructible/shared_override_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_hq_destructible_shared_override_terminal = SharedTangibleObjectT
 
 	clientObjectCRC = 2006377548,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hq_destructible/shared_base_destructible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_override_terminal, "object/tangible/hq_destructible/shared_override_terminal.iff")
 
 object_tangible_hq_destructible_shared_power_regulator = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hq_destructible/shared_power_regulator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_hq_destructible_shared_power_regulator = SharedTangibleObjectTem
 
 	clientObjectCRC = 3447096600,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hq_destructible/shared_base_destructible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_power_regulator, "object/tangible/hq_destructible/shared_power_regulator.iff")
 
 object_tangible_hq_destructible_shared_security_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hq_destructible/shared_security_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_hq_destructible_shared_security_terminal = SharedTangibleObjectT
 
 	clientObjectCRC = 868384958,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hq_destructible/shared_base_destructible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_security_terminal, "object/tangible/hq_destructible/shared_security_terminal.iff")
 
 object_tangible_hq_destructible_shared_uplink_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hq_destructible/shared_uplink_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_data_terminal_wall_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_hq_destructible_shared_uplink_terminal = SharedTangibleObjectTem
 
 	clientObjectCRC = 459058175,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/hq_destructible/shared_base_destructible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hq_destructible_shared_uplink_terminal, "object/tangible/hq_destructible/shared_uplink_terminal.iff")

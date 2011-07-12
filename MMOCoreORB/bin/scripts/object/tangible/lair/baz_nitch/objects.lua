@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_baz_nitch_shared_lair_baz_nitch = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/baz_nitch/shared_lair_baz_nitch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch = SharedTangibleObjectTempl
 
 	clientObjectCRC = 66686181,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch.iff")
 
 object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest = SharedTangibleObje
 
 	clientObjectCRC = 544226811,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_forest, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_forest.iff")
 
 object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain = SharedTangibleOb
 
 	clientObjectCRC = 1253989511,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_baz_nitch_shared_lair_baz_nitch_mountain, "object/tangible/lair/baz_nitch/shared_lair_baz_nitch_mountain.iff")

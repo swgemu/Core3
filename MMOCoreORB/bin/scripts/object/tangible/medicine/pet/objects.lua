@@ -42,6 +42,9 @@
 
 
 object_tangible_medicine_pet_shared_droid_damage_kit_a = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_damage_kit_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_fusion.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_medicine_pet_shared_droid_damage_kit_a = SharedTangibleObjectTem
 
 	clientObjectCRC = 2350997777,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_a, "object/tangible/medicine/pet/shared_droid_damage_kit_a.iff")
 
 object_tangible_medicine_pet_shared_droid_damage_kit_b = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_damage_kit_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_fusion.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_medicine_pet_shared_droid_damage_kit_b = SharedTangibleObjectTem
 
 	clientObjectCRC = 1463208326,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_b, "object/tangible/medicine/pet/shared_droid_damage_kit_b.iff")
 
 object_tangible_medicine_pet_shared_droid_damage_kit_c = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_damage_kit_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_survey_pad_advanced_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_medicine_pet_shared_droid_damage_kit_c = SharedTangibleObjectTem
 
 	clientObjectCRC = 507227659,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_c, "object/tangible/medicine/pet/shared_droid_damage_kit_c.iff")
 
 object_tangible_medicine_pet_shared_droid_damage_kit_d = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_damage_kit_d.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_survey_survey_pad_advanced_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_medicine_pet_shared_droid_damage_kit_d = SharedTangibleObjectTem
 
 	clientObjectCRC = 3856172319,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_damage_kit_d, "object/tangible/medicine/pet/shared_droid_damage_kit_d.iff")
 
 object_tangible_medicine_pet_shared_droid_stimpack_a = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_stimpack_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_medicine_pet_shared_droid_stimpack_a = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3944772347,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_stimpack_a, "object/tangible/medicine/pet/shared_droid_stimpack_a.iff")
 
 object_tangible_medicine_pet_shared_droid_stimpack_b = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_stimpack_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_medicine_pet_shared_droid_stimpack_b = SharedTangibleObjectTempl
 
 	clientObjectCRC = 808966764,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_stimpack_b, "object/tangible/medicine/pet/shared_droid_stimpack_b.iff")
 
 object_tangible_medicine_pet_shared_droid_stimpack_c = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_stimpack_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_medicine_pet_shared_droid_stimpack_c = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2033892833,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_stimpack_c, "object/tangible/medicine/pet/shared_droid_stimpack_c.iff")
 
 object_tangible_medicine_pet_shared_droid_stimpack_d = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_stimpack_d.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_medicine_pet_shared_droid_stimpack_d = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2195298037,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_stimpack_d, "object/tangible/medicine/pet/shared_droid_stimpack_d.iff")
 
 object_tangible_medicine_pet_shared_droid_vitapack_a = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_vitapack_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_equipment.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_medicine_pet_shared_droid_vitapack_a = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2100790124,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_vitapack_a, "object/tangible/medicine/pet/shared_droid_vitapack_a.iff")
 
 object_tangible_medicine_pet_shared_droid_vitapack_b = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_vitapack_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_equipment.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_medicine_pet_shared_droid_vitapack_b = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2787126267,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_vitapack_b, "object/tangible/medicine/pet/shared_droid_vitapack_b.iff")
 
 object_tangible_medicine_pet_shared_droid_vitapack_c = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_vitapack_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_equipment.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_medicine_pet_shared_droid_vitapack_c = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4012723318,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_vitapack_c, "object/tangible/medicine/pet/shared_droid_vitapack_c.iff")
 
 object_tangible_medicine_pet_shared_droid_wound_kit_a = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_wound_kit_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_medicine_pet_shared_droid_wound_kit_a = SharedTangibleObjectTemp
 
 	clientObjectCRC = 1025129359,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_a, "object/tangible/medicine/pet/shared_droid_wound_kit_a.iff")
 
 object_tangible_medicine_pet_shared_droid_wound_kit_b = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_wound_kit_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_medicine_pet_shared_droid_wound_kit_b = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3859649304,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff", "object/tangible/medicine/pet/shared_droid_wound_kit_a.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_b, "object/tangible/medicine/pet/shared_droid_wound_kit_b.iff")
 
 object_tangible_medicine_pet_shared_droid_wound_kit_c = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_wound_kit_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_security_scanner.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_medicine_pet_shared_droid_wound_kit_c = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2936075413,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff", "object/tangible/medicine/pet/shared_droid_wound_kit_a.iff", "object/tangible/medicine/pet/shared_droid_wound_kit_b.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_c, "object/tangible/medicine/pet/shared_droid_wound_kit_c.iff")
 
 object_tangible_medicine_pet_shared_droid_wound_kit_d = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_droid_wound_kit_d.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_security_scanner.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_medicine_pet_shared_droid_wound_kit_d = SharedTangibleObjectTemp
 
 	clientObjectCRC = 1424220033,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff", "object/tangible/medicine/pet/shared_droid_wound_kit_a.iff", "object/tangible/medicine/pet/shared_droid_wound_kit_b.iff", "object/tangible/medicine/pet/shared_droid_wound_kit_c.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_droid_wound_kit_d, "object/tangible/medicine/pet/shared_droid_wound_kit_d.iff")
 
 object_tangible_medicine_pet_shared_pet_stimpack_a = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_pet_stimpack_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_medicine_pet_shared_pet_stimpack_a = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1789607514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_stimpack_a, "object/tangible/medicine/pet/shared_pet_stimpack_a.iff")
 
 object_tangible_medicine_pet_shared_pet_stimpack_b = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_pet_stimpack_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_m_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_medicine_pet_shared_pet_stimpack_b = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2981926605,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_stimpack_b, "object/tangible/medicine/pet/shared_pet_stimpack_b.iff")
 
 object_tangible_medicine_pet_shared_pet_stimpack_c = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_pet_stimpack_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_medicine_pet_shared_pet_stimpack_c = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 4172411200,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_stimpack_c, "object/tangible/medicine/pet/shared_pet_stimpack_c.iff")
 
 object_tangible_medicine_pet_shared_pet_stimpack_d = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_pet_stimpack_d.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_medicine_pet_shared_pet_stimpack_d = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 55761492,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_stimpack_d, "object/tangible/medicine/pet/shared_pet_stimpack_d.iff")
 
 object_tangible_medicine_pet_shared_pet_vitapack_a = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_pet_vitapack_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_radical_enhancements.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_medicine_pet_shared_pet_vitapack_a = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 4240232397,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_vitapack_a, "object/tangible/medicine/pet/shared_pet_vitapack_a.iff")
 
 object_tangible_medicine_pet_shared_pet_vitapack_b = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_pet_vitapack_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_radical_enhancements.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_medicine_pet_shared_pet_vitapack_b = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 665544538,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_vitapack_b, "object/tangible/medicine/pet/shared_pet_vitapack_b.iff")
 
 object_tangible_medicine_pet_shared_pet_vitapack_c = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/medicine/pet/shared_pet_vitapack_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_radical_enhancements.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,6 +1334,7 @@ object_tangible_medicine_pet_shared_pet_vitapack_c = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1856372951,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/medicine/base/shared_base_medicine.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_medicine_pet_shared_pet_vitapack_c, "object/tangible/medicine/pet/shared_pet_vitapack_c.iff")

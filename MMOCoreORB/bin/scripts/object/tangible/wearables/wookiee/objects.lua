@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_gloves_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_gloves_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s01 = SharedTangibleObjectTe
 
 	clientObjectCRC = 982220507,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves_long.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s01, "object/tangible/wearables/wookiee/shared_wke_gloves_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_gloves_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_gloves_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s02 = SharedTangibleObjectTe
 
 	clientObjectCRC = 3785152076,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves_long.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s02, "object/tangible/wearables/wookiee/shared_wke_gloves_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_gloves_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_gloves_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s03 = SharedTangibleObjectTe
 
 	clientObjectCRC = 2828120513,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves_long.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s03, "object/tangible/wearables/wookiee/shared_wke_gloves_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_gloves_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_gloves_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_gloves_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gloves_long.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_wookiee_shared_wke_gloves_s04 = SharedTangibleObjectTe
 
 	clientObjectCRC = 1400019669,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gloves_long.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_gloves_s04, "object/tangible/wearables/wookiee/shared_wke_gloves_s04.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hat_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_hat_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_hat_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_wookiee_shared_wke_hat_s01 = SharedTangibleObjectTempl
 
 	clientObjectCRC = 143220595,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_hat.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hat_s01, "object/tangible/wearables/wookiee/shared_wke_hat_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hood_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_hood_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_hood_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_wookiee_shared_wke_hood_s01 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 773028987,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_hat.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s01, "object/tangible/wearables/wookiee/shared_wke_hood_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hood_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_hood_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_hood_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_wookiee_shared_wke_hood_s02 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 4110734572,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_hat.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s02, "object/tangible/wearables/wookiee/shared_wke_hood_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_hood_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_hood_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_hood_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hat.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_wookiee_shared_wke_hood_s03 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3154752353,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_hat.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_hood_s03, "object/tangible/wearables/wookiee/shared_wke_hood_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_lifeday_robe.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_lifeday_robe_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
@@ -532,11 +567,15 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe = SharedTangibleObject
 
 	clientObjectCRC = 1294873415,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_robe_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe.iff")
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_lifeday_robe_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
@@ -587,11 +626,15 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f = SharedTangibleObje
 
 	clientObjectCRC = 2316465710,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_robe_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_f, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_f.iff")
 
 object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_m.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_lifeday_robe_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/robe_longsleeve.iff",
 
@@ -642,11 +685,15 @@ object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m = SharedTangibleObje
 
 	clientObjectCRC = 283957695,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_robe_longsleeve.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_lifeday_robe_m, "object/tangible/wearables/wookiee/shared_wke_lifeday_robe_m.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_shirt_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_shirt_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -697,11 +744,15 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s01 = SharedTangibleObjectTem
 
 	clientObjectCRC = 2791438893,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s01, "object/tangible/wearables/wookiee/shared_wke_shirt_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_shirt_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_shirt_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -752,11 +803,15 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s02 = SharedTangibleObjectTem
 
 	clientObjectCRC = 2104906426,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s02, "object/tangible/wearables/wookiee/shared_wke_shirt_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_shirt_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_shirt_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -807,11 +862,15 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s03 = SharedTangibleObjectTem
 
 	clientObjectCRC = 880489783,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s03, "object/tangible/wearables/wookiee/shared_wke_shirt_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shirt_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_shirt_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_shirt_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -862,11 +921,15 @@ object_tangible_wearables_wookiee_shared_wke_shirt_s04 = SharedTangibleObjectTem
 
 	clientObjectCRC = 3482852899,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shirt_s04, "object/tangible/wearables/wookiee/shared_wke_shirt_s04.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_shoulder_pad_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -917,11 +980,15 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01 = SharedTangibleOb
 
 	clientObjectCRC = 1209883613,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s01, "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_shoulder_pad_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -972,11 +1039,15 @@ object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02 = SharedTangibleOb
 
 	clientObjectCRC = 2466968394,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_shoulder_pad_s02, "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_skirt_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_skirt_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
@@ -1027,11 +1098,15 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s01 = SharedTangibleObjectTem
 
 	clientObjectCRC = 2927288103,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s01, "object/tangible/wearables/wookiee/shared_wke_skirt_s01.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_skirt_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_skirt_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
@@ -1082,11 +1157,15 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s02 = SharedTangibleObjectTem
 
 	clientObjectCRC = 1970108336,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s02, "object/tangible/wearables/wookiee/shared_wke_skirt_s02.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_skirt_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_skirt_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
@@ -1137,11 +1216,15 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s03 = SharedTangibleObjectTem
 
 	clientObjectCRC = 1012928573,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s03, "object/tangible/wearables/wookiee/shared_wke_skirt_s03.iff")
 
 object_tangible_wearables_wookiee_shared_wke_skirt_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/wookiee/shared_wke_skirt_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wke_skirt_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
@@ -1192,6 +1275,7 @@ object_tangible_wearables_wookiee_shared_wke_skirt_s04 = SharedTangibleObjectTem
 
 	clientObjectCRC = 3347266345,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_wookiee_shared_wke_skirt_s04, "object/tangible/wearables/wookiee/shared_wke_skirt_s04.iff")

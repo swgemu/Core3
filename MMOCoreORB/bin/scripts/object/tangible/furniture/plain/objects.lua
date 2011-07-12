@@ -42,6 +42,9 @@
 
 
 object_tangible_furniture_plain_shared_plain_armoire_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/plain/shared_plain_armoire_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_plan_armoire_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_furniture_plain_shared_plain_armoire_s01 = SharedTangibleObjectT
 
 	clientObjectCRC = 3086235549,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_armoire_s01, "object/tangible/furniture/plain/shared_plain_armoire_s01.iff")
 
 object_tangible_furniture_plain_shared_plain_bookcase_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/plain/shared_plain_bookcase_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_plan_bookcase_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_furniture_plain_shared_plain_bookcase_s01 = SharedTangibleObject
 
 	clientObjectCRC = 203693191,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_bookcase_s01, "object/tangible/furniture/plain/shared_plain_bookcase_s01.iff")
 
 object_tangible_furniture_plain_shared_plain_cabinet_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/plain/shared_plain_cabinet_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_plan_cabinet_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_furniture_plain_shared_plain_cabinet_s01 = SharedTangibleObjectT
 
 	clientObjectCRC = 3671368566,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_cabinet_s01, "object/tangible/furniture/plain/shared_plain_cabinet_s01.iff")
 
 object_tangible_furniture_plain_shared_plain_chair_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/plain/shared_plain_chair_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_plan_chair_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_furniture_plain_shared_plain_chair_s01 = SharedTangibleObjectTem
 
 	clientObjectCRC = 1997607130,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_chair_s01, "object/tangible/furniture/plain/shared_plain_chair_s01.iff")
 
 object_tangible_furniture_plain_shared_plain_chest_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/plain/shared_plain_chest_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_plan_chest_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_furniture_plain_shared_plain_chest_s01 = SharedTangibleObjectTem
 
 	clientObjectCRC = 2214735060,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_chest_s01, "object/tangible/furniture/plain/shared_plain_chest_s01.iff")
 
 object_tangible_furniture_plain_shared_plain_coffee_table_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/plain/shared_plain_coffee_table_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_plan_coffee_table_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_furniture_plain_shared_plain_coffee_table_s01 = SharedTangibleOb
 
 	clientObjectCRC = 2056326196,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_coffee_table_s01, "object/tangible/furniture/plain/shared_plain_coffee_table_s01.iff")
 
 object_tangible_furniture_plain_shared_plain_couch_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/plain/shared_plain_couch_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_plan_couch_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_furniture_plain_shared_plain_couch_s01 = SharedTangibleObjectTem
 
 	clientObjectCRC = 1291926266,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_couch_s01, "object/tangible/furniture/plain/shared_plain_couch_s01.iff")
 
 object_tangible_furniture_plain_shared_plain_end_table_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/plain/shared_plain_end_table_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_plan_end_table_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_furniture_plain_shared_plain_end_table_s01 = SharedTangibleObjec
 
 	clientObjectCRC = 2396152798,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_end_table_s01, "object/tangible/furniture/plain/shared_plain_end_table_s01.iff")
 
 object_tangible_furniture_plain_shared_plain_love_seat_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/plain/shared_plain_love_seat_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_plan_love_seat_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,6 +567,7 @@ object_tangible_furniture_plain_shared_plain_love_seat_s01 = SharedTangibleObjec
 
 	clientObjectCRC = 3058976917,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_plain_shared_plain_love_seat_s01, "object/tangible/furniture/plain/shared_plain_love_seat_s01.iff")

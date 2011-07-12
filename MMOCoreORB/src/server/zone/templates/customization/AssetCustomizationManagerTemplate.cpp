@@ -6,7 +6,7 @@
  */
 
 #include "AssetCustomizationManagerTemplate.h"
-#include "PaletteColorCustomizationVariable.h"
+#include "../params/PaletteColorCustomizationVariable.h"
 #include "BasicRangedIntCustomizationVariable.h"
 
 AssetCustomizationManagerTemplate::AssetCustomizationManagerTemplate() {

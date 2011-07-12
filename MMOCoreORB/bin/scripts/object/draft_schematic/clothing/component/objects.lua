@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_clothing_component_shared_clothing_cargo_pocket = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/clothing/component/shared_clothing_cargo_pocket.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_clothing_component_shared_clothing_cargo_pocket = SharedD
 
 	clientObjectCRC = 217803170,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_cargo_pocket, "object/draft_schematic/clothing/component/shared_clothing_cargo_pocket.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_component = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/clothing/component/shared_clothing_component.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_clothing_component_shared_clothing_component = SharedDraf
 
 	clientObjectCRC = 2902252643,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_component, "object/draft_schematic/clothing/component/shared_clothing_component.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_component_base = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/clothing/component/shared_clothing_component_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_clothing_component_shared_clothing_component_base = Share
 
 	clientObjectCRC = 3235529113,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_component_base, "object/draft_schematic/clothing/component/shared_clothing_component_base.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/clothing/component/shared_clothing_fiberplast_panel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel = Sha
 
 	clientObjectCRC = 656345238,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_fiberplast_panel, "object/draft_schematic/clothing/component/shared_clothing_fiberplast_panel.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_jewelry_setting = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/clothing/component/shared_clothing_jewelry_setting.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_clothing_component_shared_clothing_jewelry_setting = Shar
 
 	clientObjectCRC = 3119926044,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_jewelry_setting, "object/draft_schematic/clothing/component/shared_clothing_jewelry_setting.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_metal_fasteners = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/clothing/component/shared_clothing_metal_fasteners.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_clothing_component_shared_clothing_metal_fasteners = Shar
 
 	clientObjectCRC = 196841582,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_metal_fasteners, "object/draft_schematic/clothing/component/shared_clothing_metal_fasteners.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_padding_segment = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/clothing/component/shared_clothing_padding_segment.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_clothing_component_shared_clothing_padding_segment = Shar
 
 	clientObjectCRC = 1984198906,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_padding_segment, "object/draft_schematic/clothing/component/shared_clothing_padding_segment.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panels = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/clothing/component/shared_clothing_reinforced_fiber_panels.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panel
 
 	clientObjectCRC = 394655839,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_reinforced_fiber_panels, "object/draft_schematic/clothing/component/shared_clothing_reinforced_fiber_panels.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_shoe_sole = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/clothing/component/shared_clothing_shoe_sole.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_clothing_component_shared_clothing_shoe_sole = SharedDraf
 
 	clientObjectCRC = 794389103,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_shoe_sole, "object/draft_schematic/clothing/component/shared_clothing_shoe_sole.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/clothing/component/shared_clothing_synthetic_cloth.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth = Shar
 
 	clientObjectCRC = 329274185,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_synthetic_cloth, "object/draft_schematic/clothing/component/shared_clothing_synthetic_cloth.iff")
 
 object_draft_schematic_clothing_component_shared_clothing_trim = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/clothing/component/shared_clothing_trim.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,6 +575,7 @@ object_draft_schematic_clothing_component_shared_clothing_trim = SharedDraftSche
 
 	clientObjectCRC = 3996452682,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_clothing_component_shared_clothing_trim, "object/draft_schematic/clothing/component/shared_clothing_trim.iff")

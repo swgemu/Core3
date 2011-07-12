@@ -42,6 +42,9 @@
 
 
 object_universe_base_shared_base_universe = SharedUniverseObjectTemplate:new {
+	clientTemplateFileName = "object/universe/base/shared_base_universe.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_universe_base_shared_base_universe = SharedUniverseObjectTemplate:new {
 
 	clientObjectCRC = 2428076790,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_universe_base_shared_base_universe, "object/universe/base/shared_base_universe.iff")
 
 object_universe_base_shared_universe_default = SharedUniverseObjectTemplate:new {
+	clientTemplateFileName = "object/universe/base/shared_universe_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -127,6 +134,7 @@ object_universe_base_shared_universe_default = SharedUniverseObjectTemplate:new 
 
 	clientObjectCRC = 3854968513,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/universe/base/shared_base_universe.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_universe_base_shared_universe_default, "object/universe/base/shared_universe_default.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_poi_base_shared_poi_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/poi/base/shared_poi_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_poi_base_shared_poi_base = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2572869140,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_poi_base_shared_poi_base, "object/tangible/poi/base/shared_poi_base.iff")
 
 object_tangible_poi_base_shared_poi_base_nosnap = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/poi/base/shared_poi_base_nosnap.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_mission_spawn_03m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_poi_base_shared_poi_base_nosnap = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 165055566,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/poi/base/shared_poi_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_poi_base_shared_poi_base_nosnap, "object/tangible/poi/base/shared_poi_base_nosnap.iff")

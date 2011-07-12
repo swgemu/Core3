@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_space_booster_shared_advanced_fuel_ignition = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_advanced_fuel_ignition.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_space_booster_shared_advanced_fuel_ignition = SharedDraft
 
 	clientObjectCRC = 216548376,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_advanced_fuel_ignition, "object/draft_schematic/space/booster/shared_advanced_fuel_ignition.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_booster_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_space_booster_shared_booster_mk1 = SharedDraftSchematicOb
 
 	clientObjectCRC = 1157928076,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_mk1, "object/draft_schematic/space/booster/shared_booster_mk1.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_booster_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,11 +183,15 @@ object_draft_schematic_space_booster_shared_booster_mk2 = SharedDraftSchematicOb
 
 	clientObjectCRC = 2652060699,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_mk2, "object/draft_schematic/space/booster/shared_booster_mk2.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_booster_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -217,11 +232,15 @@ object_draft_schematic_space_booster_shared_booster_mk3 = SharedDraftSchematicOb
 
 	clientObjectCRC = 3609090966,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_mk3, "object/draft_schematic/space/booster/shared_booster_mk3.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_booster_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -262,11 +281,15 @@ object_draft_schematic_space_booster_shared_booster_mk4 = SharedDraftSchematicOb
 
 	clientObjectCRC = 754806914,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_mk4, "object/draft_schematic/space/booster/shared_booster_mk4.iff")
 
 object_draft_schematic_space_booster_shared_booster_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_booster_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -307,11 +330,15 @@ object_draft_schematic_space_booster_shared_booster_mk5 = SharedDraftSchematicOb
 
 	clientObjectCRC = 1710233359,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_mk5, "object/draft_schematic/space/booster/shared_booster_mk5.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_booster_overdriver_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -352,11 +379,15 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk1 = SharedDraft
 
 	clientObjectCRC = 1287538938,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk1, "object/draft_schematic/space/booster/shared_booster_overdriver_mk1.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_booster_overdriver_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -397,11 +428,15 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk2 = SharedDraft
 
 	clientObjectCRC = 2544492653,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk2, "object/draft_schematic/space/booster/shared_booster_overdriver_mk2.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_booster_overdriver_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -442,11 +477,15 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk3 = SharedDraft
 
 	clientObjectCRC = 3735324640,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk3, "object/draft_schematic/space/booster/shared_booster_overdriver_mk3.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_booster_overdriver_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -487,11 +526,15 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk4 = SharedDraft
 
 	clientObjectCRC = 625454324,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk4, "object/draft_schematic/space/booster/shared_booster_overdriver_mk4.iff")
 
 object_draft_schematic_space_booster_shared_booster_overdriver_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_booster_overdriver_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -532,11 +575,15 @@ object_draft_schematic_space_booster_shared_booster_overdriver_mk5 = SharedDraft
 
 	clientObjectCRC = 1816841081,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_booster_overdriver_mk5, "object/draft_schematic/space/booster/shared_booster_overdriver_mk5.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -577,11 +624,15 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1 = Shared
 
 	clientObjectCRC = 1033968628,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk1.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -622,11 +673,15 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2 = Shared
 
 	clientObjectCRC = 3870733155,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk2.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -667,11 +722,15 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3 = Shared
 
 	clientObjectCRC = 2948322542,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk3.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -712,11 +771,15 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4 = Shared
 
 	clientObjectCRC = 1415118842,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk4.iff")
 
 object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -757,11 +820,15 @@ object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5 = Shared
 
 	clientObjectCRC = 492148855,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_extended_life_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_extended_life_fuel_cell_mk5.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -802,11 +869,15 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1 = SharedDr
 
 	clientObjectCRC = 2613161095,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk1.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -847,11 +918,15 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2 = SharedDr
 
 	clientObjectCRC = 1087767568,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk2.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -892,11 +967,15 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3 = SharedDr
 
 	clientObjectCRC = 165372829,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk3.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -937,11 +1016,15 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4 = SharedDr
 
 	clientObjectCRC = 4063774857,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk4.iff")
 
 object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -982,11 +1065,15 @@ object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5 = SharedDr
 
 	clientObjectCRC = 3140824836,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_fast_charge_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_fast_charge_fuel_cell_mk5.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1027,11 +1114,15 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1 = SharedDraftSch
 
 	clientObjectCRC = 3915024240,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk1, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk1.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1072,11 +1163,15 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2 = SharedDraftSch
 
 	clientObjectCRC = 843919335,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk2, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk2.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1117,11 +1212,15 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3 = SharedDraftSch
 
 	clientObjectCRC = 2067810410,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk3, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk3.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1162,11 +1261,15 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4 = SharedDraftSch
 
 	clientObjectCRC = 2158191486,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk4, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk4.iff")
 
 object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1207,11 +1310,15 @@ object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5 = SharedDraftSch
 
 	clientObjectCRC = 3383624947,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_heavy_fuel_cell_mk5, "object/draft_schematic/space/booster/shared_heavy_fuel_cell_mk5.iff")
 
 object_draft_schematic_space_booster_shared_xwing_booster_mk1 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_xwing_booster_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1252,11 +1359,15 @@ object_draft_schematic_space_booster_shared_xwing_booster_mk1 = SharedDraftSchem
 
 	clientObjectCRC = 1520819528,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk1, "object/draft_schematic/space/booster/shared_xwing_booster_mk1.iff")
 
 object_draft_schematic_space_booster_shared_xwing_booster_mk2 = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/space/booster/shared_xwing_booster_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -1297,6 +1408,7 @@ object_draft_schematic_space_booster_shared_xwing_booster_mk2 = SharedDraftSchem
 
 	clientObjectCRC = 2175956447,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_space_booster_shared_xwing_booster_mk2, "object/draft_schematic/space/booster/shared_xwing_booster_mk2.iff")

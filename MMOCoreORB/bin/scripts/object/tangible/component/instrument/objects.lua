@@ -42,6 +42,9 @@
 
 
 object_tangible_component_instrument_shared_dual_wave_synthesizer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/instrument/shared_dual_wave_synthesizer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_component_instrument_shared_dual_wave_synthesizer = SharedTangib
 
 	clientObjectCRC = 264284589,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_instrument_shared_dual_wave_synthesizer, "object/tangible/component/instrument/shared_dual_wave_synthesizer.iff")

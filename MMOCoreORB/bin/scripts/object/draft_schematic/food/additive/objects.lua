@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_food_additive_shared_additive_heavy = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/additive/shared_additive_heavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,11 +85,15 @@ object_draft_schematic_food_additive_shared_additive_heavy = SharedDraftSchemati
 
 	clientObjectCRC = 3572109934,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_additive_shared_additive_heavy, "object/draft_schematic/food/additive/shared_additive_heavy.iff")
 
 object_draft_schematic_food_additive_shared_additive_light = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/additive/shared_additive_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -127,11 +134,15 @@ object_draft_schematic_food_additive_shared_additive_light = SharedDraftSchemati
 
 	clientObjectCRC = 363998896,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_additive_shared_additive_light, "object/draft_schematic/food/additive/shared_additive_light.iff")
 
 object_draft_schematic_food_additive_shared_additive_medium = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/food/additive/shared_additive_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -172,6 +183,7 @@ object_draft_schematic_food_additive_shared_additive_medium = SharedDraftSchemat
 
 	clientObjectCRC = 2258764043,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/food/shared_base_food_schematic.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_food_additive_shared_additive_medium, "object/draft_schematic/food/additive/shared_additive_medium.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_eopie_shared_lair_eopie = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/eopie/shared_lair_eopie.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_eopie_shared_lair_eopie = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 390824199,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie, "object/tangible/lair/eopie/shared_lair_eopie.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/eopie/shared_lair_eopie_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_eopie_shared_lair_eopie_desert = SharedTangibleObjectTempla
 
 	clientObjectCRC = 2432430820,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_desert, "object/tangible/lair/eopie/shared_lair_eopie_desert.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_dune = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/eopie/shared_lair_eopie_dune.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_eopie_shared_lair_eopie_dune = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 769893304,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_dune, "object/tangible/lair/eopie/shared_lair_eopie_dune.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/eopie/shared_lair_eopie_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_lair_eopie_shared_lair_eopie_mountain = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2248131866,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_mountain, "object/tangible/lair/eopie/shared_lair_eopie_mountain.iff")
 
 object_tangible_lair_eopie_shared_lair_eopie_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/eopie/shared_lair_eopie_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_lair_eopie_shared_lair_eopie_wasteland = SharedTangibleObjectTem
 
 	clientObjectCRC = 3741668029,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_insect_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_eopie_shared_lair_eopie_wasteland, "object/tangible/lair/eopie/shared_lair_eopie_wasteland.iff")

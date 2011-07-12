@@ -42,6 +42,9 @@
 
 
 object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/attachment/hangar/shared_star_destroyer_hangar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/star_destroyer_hangar.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar = SharedTang
 
 	clientObjectCRC = 1810673938,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/attachment/base/shared_base_ship_attachment.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_attachment_hangar_shared_star_destroyer_hangar, "object/tangible/ship/attachment/hangar/shared_star_destroyer_hangar.iff")

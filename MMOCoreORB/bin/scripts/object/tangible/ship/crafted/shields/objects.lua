@@ -42,6 +42,9 @@
 
 
 object_tangible_ship_crafted_shields_shared_adv_deflector_shields = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_adv_deflector_shields.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_ship_crafted_shields_shared_adv_deflector_shields = SharedTangib
 
 	clientObjectCRC = 512254018,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_adv_deflector_shields, "object/tangible/ship/crafted/shields/shared_adv_deflector_shields.iff")
 
 object_tangible_ship_crafted_shields_shared_advanced_projector_unit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_advanced_projector_unit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_ship_crafted_shields_shared_advanced_projector_unit = SharedTang
 
 	clientObjectCRC = 3156847701,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_advanced_projector_unit, "object/tangible/ship/crafted/shields/shared_advanced_projector_unit.iff")
 
 object_tangible_ship_crafted_shields_shared_base_shields = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_base_shields.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_pow_fusion_ion_u0.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_ship_crafted_shields_shared_base_shields = SharedTangibleObjectT
 
 	clientObjectCRC = 1334075435,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields, "object/tangible/ship/crafted/shields/shared_base_shields.iff")
 
 object_tangible_ship_crafted_shields_shared_base_shields_subcomponent = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent = SharedTa
 
 	clientObjectCRC = 501625805,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff")
 
 object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk1 = Shar
 
 	clientObjectCRC = 1088509023,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk1, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk1.iff")
 
 object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk2 = Shar
 
 	clientObjectCRC = 2616655048,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk2, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff")
 
 object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk3 = Shar
 
 	clientObjectCRC = 3539704645,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk3, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff")
 
 object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk4 = Shar
 
 	clientObjectCRC = 689483857,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk4, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff")
 
 object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk5 = Shar
 
 	clientObjectCRC = 1612044252,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_base_shields_subcomponent_mk5, "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff")
 
 object_tangible_ship_crafted_shields_shared_basic_shields = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_basic_shields.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_pow_fusion_ion_u0.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_ship_crafted_shields_shared_basic_shields = SharedTangibleObject
 
 	clientObjectCRC = 2199672090,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_basic_shields, "object/tangible/ship/crafted/shields/shared_basic_shields.iff")
 
 object_tangible_ship_crafted_shields_shared_deflector_shields = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_deflector_shields.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_ship_crafted_shields_shared_deflector_shields = SharedTangibleOb
 
 	clientObjectCRC = 2014890702,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_deflector_shields, "object/tangible/ship/crafted/shields/shared_deflector_shields.iff")
 
 object_tangible_ship_crafted_shields_shared_exp_deflector_shields = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_exp_deflector_shields.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_ship_crafted_shields_shared_exp_deflector_shields = SharedTangib
 
 	clientObjectCRC = 2951736677,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_exp_deflector_shields, "object/tangible/ship/crafted/shields/shared_exp_deflector_shields.iff")
 
 object_tangible_ship_crafted_shields_shared_heavy_deflector_shields = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_heavy_deflector_shields.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_ship_crafted_shields_shared_heavy_deflector_shields = SharedTang
 
 	clientObjectCRC = 3437680347,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_heavy_deflector_shields, "object/tangible/ship/crafted/shields/shared_heavy_deflector_shields.iff")
 
 object_tangible_ship_crafted_shields_shared_light_deflector_shields = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_light_deflector_shields.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_ship_crafted_shields_shared_light_deflector_shields = SharedTang
 
 	clientObjectCRC = 2970588716,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_light_deflector_shields, "object/tangible/ship/crafted/shields/shared_light_deflector_shields.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk1 = Shared
 
 	clientObjectCRC = 1931620288,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk1.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk1, "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk1.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk2 = Shared
 
 	clientObjectCRC = 2822080343,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk2, "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk2.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk3 = Shared
 
 	clientObjectCRC = 3778601178,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk3, "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk3.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk4 = Shared
 
 	clientObjectCRC = 450612174,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk4, "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk4.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk5 = Shared
 
 	clientObjectCRC = 1406577731,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_energy_saver_kit_mk5, "object/tangible/ship/crafted/shields/shared_shield_energy_saver_kit_mk5.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_intensifier_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_ship_crafted_shields_shared_shield_intensifier_mk1 = SharedTangi
 
 	clientObjectCRC = 46751920,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk1.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_intensifier_mk1, "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk1.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_intensifier_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_ship_crafted_shields_shared_shield_intensifier_mk2 = SharedTangi
 
 	clientObjectCRC = 3655256103,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_intensifier_mk2, "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk2.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_intensifier_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_ship_crafted_shields_shared_shield_intensifier_mk3 = SharedTangi
 
 	clientObjectCRC = 2429792170,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_intensifier_mk3, "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk3.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_intensifier_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_ship_crafted_shields_shared_shield_intensifier_mk4 = SharedTangi
 
 	clientObjectCRC = 1798341822,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_intensifier_mk4, "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk4.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_intensifier_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_ship_crafted_shields_shared_shield_intensifier_mk5 = SharedTangi
 
 	clientObjectCRC = 574481203,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_intensifier_mk5, "object/tangible/ship/crafted/shields/shared_shield_intensifier_mk5.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_limiter_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_limiter_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_ship_crafted_shields_shared_shield_limiter_mk1 = SharedTangibleO
 
 	clientObjectCRC = 3366846680,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk1.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_limiter_mk1, "object/tangible/ship/crafted/shields/shared_shield_limiter_mk1.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_limiter_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_limiter_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_ship_crafted_shields_shared_shield_limiter_mk2 = SharedTangibleO
 
 	clientObjectCRC = 330934351,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_limiter_mk2, "object/tangible/ship/crafted/shields/shared_shield_limiter_mk2.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_limiter_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_limiter_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_ship_crafted_shields_shared_shield_limiter_mk3 = SharedTangibleO
 
 	clientObjectCRC = 1521799106,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_limiter_mk3, "object/tangible/ship/crafted/shields/shared_shield_limiter_mk3.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_limiter_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_limiter_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_ship_crafted_shields_shared_shield_limiter_mk4 = SharedTangibleO
 
 	clientObjectCRC = 2706891990,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_limiter_mk4, "object/tangible/ship/crafted/shields/shared_shield_limiter_mk4.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_limiter_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_limiter_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_ship_crafted_shields_shared_shield_limiter_mk5 = SharedTangibleO
 
 	clientObjectCRC = 3898245979,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_limiter_mk5, "object/tangible/ship/crafted/shields/shared_shield_limiter_mk5.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_overcharger_mk1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_ship_crafted_shields_shared_shield_overcharger_mk1 = SharedTangi
 
 	clientObjectCRC = 1951222314,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk1.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_overcharger_mk1, "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk1.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_overcharger_mk2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_ship_crafted_shields_shared_shield_overcharger_mk2 = SharedTangi
 
 	clientObjectCRC = 2941969085,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk2.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_overcharger_mk2, "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk2.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_overcharger_mk3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_ship_crafted_shields_shared_shield_overcharger_mk3 = SharedTangi
 
 	clientObjectCRC = 3864495408,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk3.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_overcharger_mk3, "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk3.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_overcharger_mk4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_ship_crafted_shields_shared_shield_overcharger_mk4 = SharedTangi
 
 	clientObjectCRC = 498380324,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk4.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_overcharger_mk4, "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk4.iff")
 
 object_tangible_ship_crafted_shields_shared_shield_overcharger_mk5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_ship_crafted_shields_shared_shield_overcharger_mk5 = SharedTangi
 
 	clientObjectCRC = 1421461929,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent.iff", "object/tangible/ship/crafted/shields/shared_base_shields_subcomponent_mk5.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_shield_overcharger_mk5, "object/tangible/ship/crafted/shields/shared_shield_overcharger_mk5.iff")
 
 object_tangible_ship_crafted_shields_shared_standard_projector_unit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/crafted/shields/shared_standard_projector_unit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ship_component_shield_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,6 +2101,7 @@ object_tangible_ship_crafted_shields_shared_standard_projector_unit = SharedTang
 
 	clientObjectCRC = 129931938,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/components/base/shared_ship_subcomponent_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_crafted_shields_shared_standard_projector_unit, "object/tangible/ship/crafted/shields/shared_standard_projector_unit.iff")

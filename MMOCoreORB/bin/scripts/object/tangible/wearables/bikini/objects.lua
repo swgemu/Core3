@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_bikini_shared_bikini_leggings_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bikini/shared_bikini_leggings_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bikini_s01_leggings_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pants.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_bikini_shared_bikini_leggings_s01 = SharedTangibleObje
 
 	clientObjectCRC = 389872487,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_pants.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_leggings_s01, "object/tangible/wearables/bikini/shared_bikini_leggings_s01.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bikini/shared_bikini_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bikini_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_bikini_shared_bikini_s01 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 798815144,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s01, "object/tangible/wearables/bikini/shared_bikini_s01.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bikini/shared_bikini_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bikini_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_bikini_shared_bikini_s02 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 4102773567,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s02, "object/tangible/wearables/bikini/shared_bikini_s02.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bikini/shared_bikini_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bikini_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_bikini_shared_bikini_s03 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3179691186,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s03, "object/tangible/wearables/bikini/shared_bikini_s03.iff")
 
 object_tangible_wearables_bikini_shared_bikini_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/bikini/shared_bikini_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bikini_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shirt.iff",
 
@@ -312,6 +331,7 @@ object_tangible_wearables_bikini_shared_bikini_s04 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1181030310,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_bikini_shared_bikini_s04, "object/tangible/wearables/bikini/shared_bikini_s04.iff")

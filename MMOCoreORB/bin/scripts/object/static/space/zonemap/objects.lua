@@ -42,6 +42,9 @@
 
 
 object_static_space_zonemap_shared_ui_hyperspace = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/zonemap/shared_ui_hyperspace.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_hyperspace.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_space_zonemap_shared_ui_hyperspace = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 1636783685,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_hyperspace, "object/static/space/zonemap/shared_ui_hyperspace.iff")
 
 object_static_space_zonemap_shared_ui_mission_critical = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/zonemap/shared_ui_mission_critical.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_mission_critical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_space_zonemap_shared_ui_mission_critical = SharedStaticObjectTempl
 
 	clientObjectCRC = 3111086071,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_mission_critical, "object/static/space/zonemap/shared_ui_mission_critical.iff")
 
 object_static_space_zonemap_shared_ui_poi_waypoint = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/zonemap/shared_ui_poi_waypoint.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_poi_waypoint.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_static_space_zonemap_shared_ui_poi_waypoint = SharedStaticObjectTemplate:
 
 	clientObjectCRC = 68001236,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_poi_waypoint, "object/static/space/zonemap/shared_ui_poi_waypoint.iff")
 
 object_static_space_zonemap_shared_ui_spacestation = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/zonemap/shared_ui_spacestation.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_spacestation.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_static_space_zonemap_shared_ui_spacestation = SharedStaticObjectTemplate:
 
 	clientObjectCRC = 3977491959,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_spacestation, "object/static/space/zonemap/shared_ui_spacestation.iff")
 
 object_static_space_zonemap_shared_ui_waypoint = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/zonemap/shared_ui_waypoint.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_waypoint.apt",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_static_space_zonemap_shared_ui_waypoint = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 2973438501,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_waypoint, "object/static/space/zonemap/shared_ui_waypoint.iff")
 
 object_static_space_zonemap_shared_ui_waypoint_active = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/zonemap/shared_ui_waypoint_active.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_waypoint_active.apt",
 	arrangementDescriptorFilename = "",
 
@@ -307,6 +330,7 @@ object_static_space_zonemap_shared_ui_waypoint_active = SharedStaticObjectTempla
 
 	clientObjectCRC = 464932918,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/space/base/shared_static_space_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_zonemap_shared_ui_waypoint_active, "object/static/space/zonemap/shared_ui_waypoint_active.iff")

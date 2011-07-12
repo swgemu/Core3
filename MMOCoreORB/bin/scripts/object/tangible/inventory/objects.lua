@@ -42,6 +42,9 @@
 
 
 object_tangible_inventory_shared_character_inventory = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_character_inventory.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/inventory_arrangement.iff",
 
@@ -92,11 +95,15 @@ object_tangible_inventory_shared_character_inventory = SharedTangibleObjectTempl
 
 	clientObjectCRC = 963242043,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_character_inventory, "object/tangible/inventory/shared_character_inventory.iff")
 
 object_tangible_inventory_shared_creature_inventory = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_creature_inventory.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/inventory_arrangement.iff",
 
@@ -147,11 +154,15 @@ object_tangible_inventory_shared_creature_inventory = SharedTangibleObjectTempla
 
 	clientObjectCRC = 554727708,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory, "object/tangible/inventory/shared_creature_inventory.iff")
 
 object_tangible_inventory_shared_creature_inventory_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_creature_inventory_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/inventory_arrangement.iff",
 
@@ -202,11 +213,15 @@ object_tangible_inventory_shared_creature_inventory_1 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 4169639267,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_1, "object/tangible/inventory/shared_creature_inventory_1.iff")
 
 object_tangible_inventory_shared_creature_inventory_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_creature_inventory_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/inventory_arrangement.iff",
 
@@ -257,11 +272,15 @@ object_tangible_inventory_shared_creature_inventory_2 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 596643316,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_2, "object/tangible/inventory/shared_creature_inventory_2.iff")
 
 object_tangible_inventory_shared_creature_inventory_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_creature_inventory_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/inventory_arrangement.iff",
 
@@ -312,11 +331,15 @@ object_tangible_inventory_shared_creature_inventory_3 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 1788701305,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_3, "object/tangible/inventory/shared_creature_inventory_3.iff")
 
 object_tangible_inventory_shared_creature_inventory_4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_creature_inventory_4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/inventory_arrangement.iff",
 
@@ -367,11 +390,15 @@ object_tangible_inventory_shared_creature_inventory_4 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2440970605,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_4, "object/tangible/inventory/shared_creature_inventory_4.iff")
 
 object_tangible_inventory_shared_creature_inventory_5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_creature_inventory_5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/inventory_arrangement.iff",
 
@@ -422,11 +449,15 @@ object_tangible_inventory_shared_creature_inventory_5 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3631425248,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_5, "object/tangible/inventory/shared_creature_inventory_5.iff")
 
 object_tangible_inventory_shared_creature_inventory_6 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_creature_inventory_6.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/inventory_arrangement.iff",
 
@@ -477,11 +508,15 @@ object_tangible_inventory_shared_creature_inventory_6 = SharedTangibleObjectTemp
 
 	clientObjectCRC = 56921719,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_creature_inventory.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_creature_inventory_6, "object/tangible/inventory/shared_creature_inventory_6.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_lightsaber_inventory_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/saber_inv_arrangement.iff",
 
@@ -532,11 +567,15 @@ object_tangible_inventory_shared_lightsaber_inventory_1 = SharedTangibleObjectTe
 
 	clientObjectCRC = 3089628208,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_lightsaber_inventory_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_1, "object/tangible/inventory/shared_lightsaber_inventory_1.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_lightsaber_inventory_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/saber_inv_arrangement.iff",
 
@@ -587,11 +626,15 @@ object_tangible_inventory_shared_lightsaber_inventory_2 = SharedTangibleObjectTe
 
 	clientObjectCRC = 1664111783,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_lightsaber_inventory_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_2, "object/tangible/inventory/shared_lightsaber_inventory_2.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_lightsaber_inventory_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/saber_inv_arrangement.iff",
 
@@ -642,11 +685,15 @@ object_tangible_inventory_shared_lightsaber_inventory_3 = SharedTangibleObjectTe
 
 	clientObjectCRC = 708653866,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_lightsaber_inventory_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_3, "object/tangible/inventory/shared_lightsaber_inventory_3.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_lightsaber_inventory_4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/saber_inv_arrangement.iff",
 
@@ -697,11 +744,15 @@ object_tangible_inventory_shared_lightsaber_inventory_4 = SharedTangibleObjectTe
 
 	clientObjectCRC = 3520993342,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_lightsaber_inventory_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_4, "object/tangible/inventory/shared_lightsaber_inventory_4.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_lightsaber_inventory_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/saber_inv_arrangement.iff",
 
@@ -752,11 +803,15 @@ object_tangible_inventory_shared_lightsaber_inventory_base = SharedTangibleObjec
 
 	clientObjectCRC = 1036860999,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_base, "object/tangible/inventory/shared_lightsaber_inventory_base.iff")
 
 object_tangible_inventory_shared_lightsaber_inventory_training = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_lightsaber_inventory_training.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/saber_inv_arrangement.iff",
 
@@ -807,11 +862,15 @@ object_tangible_inventory_shared_lightsaber_inventory_training = SharedTangibleO
 
 	clientObjectCRC = 3030613257,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/inventory/shared_lightsaber_inventory_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_lightsaber_inventory_training, "object/tangible/inventory/shared_lightsaber_inventory_training.iff")
 
 object_tangible_inventory_shared_vendor_inventory = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/inventory/shared_vendor_inventory.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/inventory_arrangement.iff",
 
@@ -862,6 +921,7 @@ object_tangible_inventory_shared_vendor_inventory = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2721032514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_inventory_shared_vendor_inventory, "object/tangible/inventory/shared_vendor_inventory.iff")

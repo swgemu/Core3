@@ -42,6 +42,9 @@
 
 
 object_tangible_dice_shared_eqp_chance_cube = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dice/shared_eqp_chance_cube.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_chance_dice.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_dice_shared_eqp_chance_cube = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 572459271,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_chance_cube, "object/tangible/dice/shared_eqp_chance_cube.iff")
 
 object_tangible_dice_shared_eqp_configurable_group_dice = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dice/shared_eqp_configurable_group_dice.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_chance_dice_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_dice_shared_eqp_configurable_group_dice = SharedTangibleObjectTe
 
 	clientObjectCRC = 1212860070,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_configurable_group_dice, "object/tangible/dice/shared_eqp_configurable_group_dice.iff")
 
 object_tangible_dice_shared_eqp_one_hundred_sided_dice_set = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dice/shared_eqp_one_hundred_sided_dice_set.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_chance_dice_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_dice_shared_eqp_one_hundred_sided_dice_set = SharedTangibleObjec
 
 	clientObjectCRC = 2182985448,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_one_hundred_sided_dice_set, "object/tangible/dice/shared_eqp_one_hundred_sided_dice_set.iff")
 
 object_tangible_dice_shared_eqp_six_sided_dice_set = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dice/shared_eqp_six_sided_dice_set.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_chance_dice_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_dice_shared_eqp_six_sided_dice_set = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3211047396,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_six_sided_dice_set, "object/tangible/dice/shared_eqp_six_sided_dice_set.iff")
 
 object_tangible_dice_shared_eqp_ten_sided_dice_set = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dice/shared_eqp_ten_sided_dice_set.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_chance_dice_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_dice_shared_eqp_ten_sided_dice_set = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3051569698,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_ten_sided_dice_set, "object/tangible/dice/shared_eqp_ten_sided_dice_set.iff")
 
 object_tangible_dice_shared_eqp_twelve_sided_dice_set = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dice/shared_eqp_twelve_sided_dice_set.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_chance_dice_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_dice_shared_eqp_twelve_sided_dice_set = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2176227197,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_twelve_sided_dice_set, "object/tangible/dice/shared_eqp_twelve_sided_dice_set.iff")
 
 object_tangible_dice_shared_eqp_twenty_sided_dice_set = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/dice/shared_eqp_twenty_sided_dice_set.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_chance_dice_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,6 +449,7 @@ object_tangible_dice_shared_eqp_twenty_sided_dice_set = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3564430823,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_dice_shared_eqp_twenty_sided_dice_set, "object/tangible/dice/shared_eqp_twenty_sided_dice_set.iff")

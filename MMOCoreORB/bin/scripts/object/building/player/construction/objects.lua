@@ -42,6 +42,9 @@
 
 
 object_building_player_construction_shared_construction_player_guildhall_corellia_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_guildhall_corellia_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_building_player_construction_shared_construction_player_guildhall_corelli
 
 	clientObjectCRC = 366457799,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_guildhall_corellia_style_01, "object/building/player/construction/shared_construction_player_guildhall_corellia_style_01.iff")
 
 object_building_player_construction_shared_construction_player_guildhall_naboo_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_guildhall_naboo_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_building_player_construction_shared_construction_player_guildhall_naboo_s
 
 	clientObjectCRC = 2900055352,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_guildhall_naboo_style_01, "object/building/player/construction/shared_construction_player_guildhall_naboo_style_01.iff")
 
 object_building_player_construction_shared_construction_player_guildhall_tatooine_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_guildhall_tatooine_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_building_player_construction_shared_construction_player_guildhall_tatooin
 
 	clientObjectCRC = 3169847379,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_guildhall_tatooine_style_01, "object/building/player/construction/shared_construction_player_guildhall_tatooine_style_01.iff")
 
 object_building_player_construction_shared_construction_player_guildhall_tatooine_style_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_guildhall_tatooine_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_building_player_construction_shared_construction_player_guildhall_tatooin
 
 	clientObjectCRC = 1743233220,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_guildhall_tatooine_style_02, "object/building/player/construction/shared_construction_player_guildhall_tatooine_style_02.iff")
 
 object_building_player_construction_shared_construction_player_house_corellia_large_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_corellia_large_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_building_player_construction_shared_construction_player_house_corellia_la
 
 	clientObjectCRC = 2433947084,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_corellia_large_style_01, "object/building/player/construction/shared_construction_player_house_corellia_large_style_01.iff")
 
 object_building_player_construction_shared_construction_player_house_corellia_large_style_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_corellia_large_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_building_player_construction_shared_construction_player_house_corellia_la
 
 	clientObjectCRC = 1241824603,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_corellia_large_style_02, "object/building/player/construction/shared_construction_player_house_corellia_large_style_02.iff")
 
 object_building_player_construction_shared_construction_player_house_corellia_medium_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_corellia_medium_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_building_player_construction_shared_construction_player_house_corellia_me
 
 	clientObjectCRC = 1508639875,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_corellia_medium_style_01, "object/building/player/construction/shared_construction_player_house_corellia_medium_style_01.iff")
 
 object_building_player_construction_shared_construction_player_house_corellia_medium_style_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_corellia_medium_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_building_player_construction_shared_construction_player_house_corellia_me
 
 	clientObjectCRC = 2197531668,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_corellia_medium_style_02, "object/building/player/construction/shared_construction_player_house_corellia_medium_style_02.iff")
 
 object_building_player_construction_shared_construction_player_house_corellia_small_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_corellia_small_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_building_player_construction_shared_construction_player_house_corellia_sm
 
 	clientObjectCRC = 2973753978,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_corellia_small_style_01, "object/building/player/construction/shared_construction_player_house_corellia_small_style_01.iff")
 
 object_building_player_construction_shared_construction_player_house_corellia_small_style_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_corellia_small_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_building_player_construction_shared_construction_player_house_corellia_sm
 
 	clientObjectCRC = 1781025517,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_corellia_small_style_02, "object/building/player/construction/shared_construction_player_house_corellia_small_style_02.iff")
 
 object_building_player_construction_shared_construction_player_house_generic_large_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_generic_large_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_building_player_construction_shared_construction_player_house_generic_lar
 
 	clientObjectCRC = 1015360683,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_generic_large_style_01, "object/building/player/construction/shared_construction_player_house_generic_large_style_01.iff")
 
 object_building_player_construction_shared_construction_player_house_generic_large_style_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_generic_large_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_building_player_construction_shared_construction_player_house_generic_lar
 
 	clientObjectCRC = 3885139004,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_generic_large_style_02, "object/building/player/construction/shared_construction_player_house_generic_large_style_02.iff")
 
 object_building_player_construction_shared_construction_player_house_generic_medium_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_generic_medium_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_building_player_construction_shared_construction_player_house_generic_med
 
 	clientObjectCRC = 255308638,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_generic_medium_style_01, "object/building/player/construction/shared_construction_player_house_generic_medium_style_01.iff")
 
 object_building_player_construction_shared_construction_player_house_generic_medium_style_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_generic_medium_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_building_player_construction_shared_construction_player_house_generic_med
 
 	clientObjectCRC = 3558874057,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_generic_medium_style_02, "object/building/player/construction/shared_construction_player_house_generic_medium_style_02.iff")
 
 object_building_player_construction_shared_construction_player_house_generic_small_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_generic_small_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_building_player_construction_shared_construction_player_house_generic_sma
 
 	clientObjectCRC = 480893725,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_generic_small_style_01, "object/building/player/construction/shared_construction_player_house_generic_small_style_01.iff")
 
 object_building_player_construction_shared_construction_player_house_generic_small_style_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_generic_small_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_building_player_construction_shared_construction_player_house_generic_sma
 
 	clientObjectCRC = 3351147402,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_generic_small_style_02, "object/building/player/construction/shared_construction_player_house_generic_small_style_02.iff")
 
 object_building_player_construction_shared_construction_player_house_naboo_large_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_naboo_large_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_building_player_construction_shared_construction_player_house_naboo_large
 
 	clientObjectCRC = 1193695091,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_naboo_large_style_01, "object/building/player/construction/shared_construction_player_house_naboo_large_style_01.iff")
 
 object_building_player_construction_shared_construction_player_house_naboo_medium_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_naboo_medium_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_building_player_construction_shared_construction_player_house_naboo_mediu
 
 	clientObjectCRC = 1739832792,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_naboo_medium_style_01, "object/building/player/construction/shared_construction_player_house_naboo_medium_style_01.iff")
 
 object_building_player_construction_shared_construction_player_house_naboo_small_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_naboo_small_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_building_player_construction_shared_construction_player_house_naboo_small
 
 	clientObjectCRC = 1728749765,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_naboo_small_style_01, "object/building/player/construction/shared_construction_player_house_naboo_small_style_01.iff")
 
 object_building_player_construction_shared_construction_player_house_naboo_small_style_02 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_naboo_small_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_building_player_construction_shared_construction_player_house_naboo_small
 
 	clientObjectCRC = 3156019282,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_naboo_small_style_02, "object/building/player/construction/shared_construction_player_house_naboo_small_style_02.iff")
 
 object_building_player_construction_shared_construction_player_house_tatooine_large_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_tatooine_large_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_building_player_construction_shared_construction_player_house_tatooine_la
 
 	clientObjectCRC = 2991369986,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_tatooine_large_style_01, "object/building/player/construction/shared_construction_player_house_tatooine_large_style_01.iff")
 
 object_building_player_construction_shared_construction_player_house_tatooine_medium_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_tatooine_medium_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_building_player_construction_shared_construction_player_house_tatooine_me
 
 	clientObjectCRC = 2469812922,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_tatooine_medium_style_01, "object/building/player/construction/shared_construction_player_house_tatooine_medium_style_01.iff")
 
 object_building_player_construction_shared_construction_player_house_tatooine_small_style_01 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/building/player/construction/shared_construction_player_house_tatooine_small_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ply_all_construction_sign.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,6 +1393,7 @@ object_building_player_construction_shared_construction_player_house_tatooine_sm
 
 	clientObjectCRC = 2455787700,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_building_player_construction_shared_construction_player_house_tatooine_small_style_01, "object/building/player/construction/shared_construction_player_house_tatooine_small_style_01.iff")

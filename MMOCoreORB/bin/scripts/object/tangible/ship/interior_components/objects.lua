@@ -42,6 +42,9 @@
 
 
 object_tangible_ship_interior_components_shared_alarm_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_alarm_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_warning_lighthousing.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_ship_interior_components_shared_alarm_interior = SharedTangibleO
 
 	clientObjectCRC = 3974262189,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_alarm_interior, "object/tangible/ship/interior_components/shared_alarm_interior.iff")
 
 object_tangible_ship_interior_components_shared_booster_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_booster_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_ship_interior_components_shared_booster_interior = SharedTangibl
 
 	clientObjectCRC = 1352184706,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_booster_interior, "object/tangible/ship/interior_components/shared_booster_interior.iff")
 
 object_tangible_ship_interior_components_shared_capacitor_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_capacitor_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_ship_interior_components_shared_capacitor_interior = SharedTangi
 
 	clientObjectCRC = 2832895610,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_capacitor_interior, "object/tangible/ship/interior_components/shared_capacitor_interior.iff")
 
 object_tangible_ship_interior_components_shared_droid_interface_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_droid_interface_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_ship_interior_components_shared_droid_interface_interior = Share
 
 	clientObjectCRC = 3377520816,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_droid_interface_interior, "object/tangible/ship/interior_components/shared_droid_interface_interior.iff")
 
 object_tangible_ship_interior_components_shared_engine_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_engine_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_ship_interior_components_shared_engine_interior = SharedTangible
 
 	clientObjectCRC = 2189154037,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_engine_interior, "object/tangible/ship/interior_components/shared_engine_interior.iff")
 
 object_tangible_ship_interior_components_shared_escape_pod_hatch = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_escape_pod_hatch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_escape_hatch.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_ship_interior_components_shared_escape_pod_hatch = SharedTangibl
 
 	clientObjectCRC = 3990614703,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_escape_pod_hatch, "object/tangible/ship/interior_components/shared_escape_pod_hatch.iff")
 
 object_tangible_ship_interior_components_shared_hull_access_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_hull_access_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_ship_interior_components_shared_hull_access_interior = SharedTan
 
 	clientObjectCRC = 3234906407,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_hull_access_interior, "object/tangible/ship/interior_components/shared_hull_access_interior.iff")
 
 object_tangible_ship_interior_components_shared_hyperdrive_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_hyperdrive_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_ship_interior_components_shared_hyperdrive_interior = SharedTang
 
 	clientObjectCRC = 3880861694,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_hyperdrive_interior, "object/tangible/ship/interior_components/shared_hyperdrive_interior.iff")
 
 object_tangible_ship_interior_components_shared_interior_component_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_interior_component_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_ship_interior_components_shared_interior_component_base = Shared
 
 	clientObjectCRC = 1650278519,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_interior_component_base, "object/tangible/ship/interior_components/shared_interior_component_base.iff")
 
 object_tangible_ship_interior_components_shared_life_support_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_life_support_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_ship_interior_components_shared_life_support_interior = SharedTa
 
 	clientObjectCRC = 3443371299,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_life_support_interior, "object/tangible/ship/interior_components/shared_life_support_interior.iff")
 
 object_tangible_ship_interior_components_shared_missile_launcher_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_missile_launcher_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_ship_interior_components_shared_missile_launcher_interior = Shar
 
 	clientObjectCRC = 3763171458,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_missile_launcher_interior, "object/tangible/ship/interior_components/shared_missile_launcher_interior.iff")
 
 object_tangible_ship_interior_components_shared_plasma_conduit_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_plasma_conduit_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_conduit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_ship_interior_components_shared_plasma_conduit_interior = Shared
 
 	clientObjectCRC = 3308870721,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_plasma_conduit_interior, "object/tangible/ship/interior_components/shared_plasma_conduit_interior.iff")
 
 object_tangible_ship_interior_components_shared_reactor_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_reactor_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_ship_interior_components_shared_reactor_interior = SharedTangibl
 
 	clientObjectCRC = 2128920004,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_reactor_interior, "object/tangible/ship/interior_components/shared_reactor_interior.iff")
 
 object_tangible_ship_interior_components_shared_shield_generator_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_shield_generator_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_ship_interior_components_shared_shield_generator_interior = Shar
 
 	clientObjectCRC = 1208361503,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_shield_generator_interior, "object/tangible/ship/interior_components/shared_shield_generator_interior.iff")
 
 object_tangible_ship_interior_components_shared_targeting_station_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_targeting_station_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_ship_interior_components_shared_targeting_station_interior = Sha
 
 	clientObjectCRC = 2082379213,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_targeting_station_interior, "object/tangible/ship/interior_components/shared_targeting_station_interior.iff")
 
 object_tangible_ship_interior_components_shared_weapon_interior = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/ship/interior_components/shared_weapon_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/pob_station_tech_panel.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,6 +980,7 @@ object_tangible_ship_interior_components_shared_weapon_interior = SharedTangible
 
 	clientObjectCRC = 1599351425,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/ship/interior_components/shared_interior_component_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_ship_interior_components_shared_weapon_interior, "object/tangible/ship/interior_components/shared_weapon_interior.iff")

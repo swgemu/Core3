@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_langlatch_shared_lair_langlatch = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/langlatch/shared_lair_langlatch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_langlatch_shared_lair_langlatch = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3783483774,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch, "object/tangible/lair/langlatch/shared_lair_langlatch.iff")
 
 object_tangible_lair_langlatch_shared_lair_langlatch_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/langlatch/shared_lair_langlatch_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_langlatch_shared_lair_langlatch_forest = SharedTangibleObje
 
 	clientObjectCRC = 3329291401,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_forest, "object/tangible/lair/langlatch/shared_lair_langlatch_forest.iff")
 
 object_tangible_lair_langlatch_shared_lair_langlatch_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/langlatch/shared_lair_langlatch_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_langlatch_shared_lair_langlatch_mountain = SharedTangibleOb
 
 	clientObjectCRC = 2238931411,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_mountain, "object/tangible/lair/langlatch/shared_lair_langlatch_mountain.iff")
 
 object_tangible_lair_langlatch_shared_lair_langlatch_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/langlatch/shared_lair_langlatch_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_langlatch_shared_lair_langlatch_wasteland = SharedTangibleO
 
 	clientObjectCRC = 1403100093,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_langlatch_shared_lair_langlatch_wasteland, "object/tangible/lair/langlatch/shared_lair_langlatch_wasteland.iff")

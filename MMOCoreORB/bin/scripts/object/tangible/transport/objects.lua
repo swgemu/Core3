@@ -42,6 +42,9 @@
 
 
 object_tangible_transport_shared_door = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/transport/shared_door.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/door.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_door.iff",
 
@@ -92,11 +95,15 @@ object_tangible_transport_shared_door = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 2330152069,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/transport/base/shared_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_transport_shared_door, "object/tangible/transport/shared_door.iff")
 
 object_tangible_transport_shared_strut_a = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/transport/shared_strut_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/strut_a.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_strut_a.iff",
 
@@ -147,11 +154,15 @@ object_tangible_transport_shared_strut_a = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3646229980,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/transport/base/shared_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_transport_shared_strut_a, "object/tangible/transport/shared_strut_a.iff")
 
 object_tangible_transport_shared_strut_b = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/transport/shared_strut_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/strut_b.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_strut_b.iff",
 
@@ -202,11 +213,15 @@ object_tangible_transport_shared_strut_b = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 37922123,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/transport/base/shared_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_transport_shared_strut_b, "object/tangible/transport/shared_strut_b.iff")
 
 object_tangible_transport_shared_strut_c = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/transport/shared_strut_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/strut_c.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_strut_c.iff",
 
@@ -257,11 +272,15 @@ object_tangible_transport_shared_strut_c = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1263518406,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/transport/base/shared_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_transport_shared_strut_c, "object/tangible/transport/shared_strut_c.iff")
 
 object_tangible_transport_shared_transport = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/transport/shared_transport.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_transport.iff",
 
@@ -312,6 +331,7 @@ object_tangible_transport_shared_transport = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3801530659,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/transport/base/shared_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_transport_shared_transport, "object/tangible/transport/shared_transport.iff")

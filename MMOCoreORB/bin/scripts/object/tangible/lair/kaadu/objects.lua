@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_kaadu_shared_lair_kaadu = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kaadu/shared_lair_kaadu.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_kaadu_shared_lair_kaadu = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 3251401603,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kaadu_shared_lair_kaadu, "object/tangible/lair/kaadu/shared_lair_kaadu.iff")
 
 object_tangible_lair_kaadu_shared_lair_kaadu_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kaadu/shared_lair_kaadu_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_kaadu_shared_lair_kaadu_forest = SharedTangibleObjectTempla
 
 	clientObjectCRC = 1694176520,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_forest, "object/tangible/lair/kaadu/shared_lair_kaadu_forest.iff")
 
 object_tangible_lair_kaadu_shared_lair_kaadu_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kaadu/shared_lair_kaadu_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_lair_kaadu_shared_lair_kaadu_grassland = SharedTangibleObjectTem
 
 	clientObjectCRC = 2596368393,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_grassland, "object/tangible/lair/kaadu/shared_lair_kaadu_grassland.iff")
 
 object_tangible_lair_kaadu_shared_lair_kaadu_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kaadu/shared_lair_kaadu_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,6 +272,7 @@ object_tangible_lair_kaadu_shared_lair_kaadu_swamp = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2515299649,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kaadu_shared_lair_kaadu_swamp, "object/tangible/lair/kaadu/shared_lair_kaadu_swamp.iff")

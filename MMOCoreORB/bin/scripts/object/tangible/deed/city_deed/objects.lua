@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_city_deed_shared_bank_corellia_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_bank_corellia_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_deed_city_deed_shared_bank_corellia_deed = SharedTangibleObjectT
 
 	clientObjectCRC = 401261440,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_bank_corellia_deed, "object/tangible/deed/city_deed/shared_bank_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_bank_naboo_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_bank_naboo_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_deed_city_deed_shared_bank_naboo_deed = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3557805385,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_bank_naboo_deed, "object/tangible/deed/city_deed/shared_bank_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_bank_tatooine_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_bank_tatooine_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_deed_city_deed_shared_bank_tatooine_deed = SharedTangibleObjectT
 
 	clientObjectCRC = 613943705,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_bank_tatooine_deed, "object/tangible/deed/city_deed/shared_bank_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_cantina_corellia_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_cantina_corellia_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_deed_city_deed_shared_cantina_corellia_deed = SharedTangibleObje
 
 	clientObjectCRC = 2192147369,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cantina_corellia_deed, "object/tangible/deed/city_deed/shared_cantina_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_cantina_naboo_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_cantina_naboo_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_deed_city_deed_shared_cantina_naboo_deed = SharedTangibleObjectT
 
 	clientObjectCRC = 1331321297,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cantina_naboo_deed, "object/tangible/deed/city_deed/shared_cantina_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_cantina_tatooine_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_cantina_tatooine_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_deed_city_deed_shared_cantina_tatooine_deed = SharedTangibleObje
 
 	clientObjectCRC = 2983938480,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cantina_tatooine_deed, "object/tangible/deed/city_deed/shared_cantina_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_cityhall_corellia_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_cityhall_corellia_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_deed_city_deed_shared_cityhall_corellia_deed = SharedTangibleObj
 
 	clientObjectCRC = 2784919551,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cityhall_corellia_deed, "object/tangible/deed/city_deed/shared_cityhall_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_cityhall_naboo_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_cityhall_naboo_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_deed_city_deed_shared_cityhall_naboo_deed = SharedTangibleObject
 
 	clientObjectCRC = 3662935696,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cityhall_naboo_deed, "object/tangible/deed/city_deed/shared_cityhall_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_cityhall_tatooine_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_cityhall_tatooine_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_deed_city_deed_shared_cityhall_tatooine_deed = SharedTangibleObj
 
 	clientObjectCRC = 2525804006,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cityhall_tatooine_deed, "object/tangible/deed/city_deed/shared_cityhall_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_cloning_corellia_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_cloning_corellia_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_deed_city_deed_shared_cloning_corellia_deed = SharedTangibleObje
 
 	clientObjectCRC = 1835066567,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cloning_corellia_deed, "object/tangible/deed/city_deed/shared_cloning_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_cloning_naboo_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_cloning_naboo_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_deed_city_deed_shared_cloning_naboo_deed = SharedTangibleObjectT
 
 	clientObjectCRC = 2532276742,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cloning_naboo_deed, "object/tangible/deed/city_deed/shared_cloning_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_cloning_tatooine_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_cloning_tatooine_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_deed_city_deed_shared_cloning_tatooine_deed = SharedTangibleObje
 
 	clientObjectCRC = 1578249950,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_cloning_tatooine_deed, "object/tangible/deed/city_deed/shared_cloning_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_garage_corellia_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garage_corellia_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_deed_city_deed_shared_garage_corellia_deed = SharedTangibleObjec
 
 	clientObjectCRC = 2847017824,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garage_corellia_deed, "object/tangible/deed/city_deed/shared_garage_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_garage_naboo_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garage_naboo_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_deed_city_deed_shared_garage_naboo_deed = SharedTangibleObjectTe
 
 	clientObjectCRC = 3208167004,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garage_naboo_deed, "object/tangible/deed/city_deed/shared_garage_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_garage_tatooine_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garage_tatooine_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_deed_city_deed_shared_garage_tatooine_deed = SharedTangibleObjec
 
 	clientObjectCRC = 2596323705,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garage_tatooine_deed, "object/tangible/deed/city_deed/shared_garage_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_lrg_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_lrg_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_01_deed = SharedTangib
 
 	clientObjectCRC = 2592373233,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_lrg_02_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_lrg_02_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_02_deed = SharedTangib
 
 	clientObjectCRC = 536118511,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_02_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_lrg_03_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_lrg_03_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_03_deed = SharedTangib
 
 	clientObjectCRC = 2674140296,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_03_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_lrg_04_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_lrg_04_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_04_deed = SharedTangib
 
 	clientObjectCRC = 299131748,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_04_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_lrg_05_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_lrg_05_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_lrg_05_deed = SharedTangib
 
 	clientObjectCRC = 2437202691,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_lrg_05_deed, "object/tangible/deed/city_deed/shared_garden_corellia_lrg_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_med_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_med_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_01_deed = SharedTangib
 
 	clientObjectCRC = 3319304199,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_01_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_med_02_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_med_02_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_02_deed = SharedTangib
 
 	clientObjectCRC = 1084779801,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_02_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_med_03_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_med_03_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_03_deed = SharedTangib
 
 	clientObjectCRC = 3224948094,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_03_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_med_04_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_med_04_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_04_deed = SharedTangib
 
 	clientObjectCRC = 1317571218,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_04_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_med_05_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_med_05_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_med_05_deed = SharedTangib
 
 	clientObjectCRC = 3457690357,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_med_05_deed, "object/tangible/deed/city_deed/shared_garden_corellia_med_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_sml_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_sml_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_01_deed = SharedTangib
 
 	clientObjectCRC = 2095683295,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_sml_02_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_sml_02_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_02_deed = SharedTangib
 
 	clientObjectCRC = 4187581377,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_02_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_sml_03_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_sml_03_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_03_deed = SharedTangib
 
 	clientObjectCRC = 2030685094,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_03_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_sml_04_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_sml_04_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_04_deed = SharedTangib
 
 	clientObjectCRC = 4156132426,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_04_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_corellia_sml_05_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_corellia_sml_05_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_deed_city_deed_shared_garden_corellia_sml_05_deed = SharedTangib
 
 	clientObjectCRC = 1999186989,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_corellia_sml_05_deed, "object/tangible/deed/city_deed/shared_garden_corellia_sml_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dantooine_lrg_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_dantooine_lrg_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_deed_city_deed_shared_garden_dantooine_lrg_01_deed = SharedTangi
 
 	clientObjectCRC = 1153184823,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_dantooine_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dantooine_med_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_dantooine_med_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_deed_city_deed_shared_garden_dantooine_med_01_deed = SharedTangi
 
 	clientObjectCRC = 467721665,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_med_01_deed, "object/tangible/deed/city_deed/shared_garden_dantooine_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dantooine_sml_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_dantooine_sml_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_deed_city_deed_shared_garden_dantooine_sml_01_deed = SharedTangi
 
 	clientObjectCRC = 2731662105,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dantooine_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_dantooine_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dathomir_lrg_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_dathomir_lrg_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_deed_city_deed_shared_garden_dathomir_lrg_01_deed = SharedTangib
 
 	clientObjectCRC = 3330359214,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_dathomir_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dathomir_med_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_dathomir_med_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_deed_city_deed_shared_garden_dathomir_med_01_deed = SharedTangib
 
 	clientObjectCRC = 2581452376,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_med_01_deed, "object/tangible/deed/city_deed/shared_garden_dathomir_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_dathomir_sml_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_dathomir_sml_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_deed_city_deed_shared_garden_dathomir_sml_01_deed = SharedTangib
 
 	clientObjectCRC = 552390784,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_dathomir_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_dathomir_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_endor_lrg_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_endor_lrg_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_tangible_deed_city_deed_shared_garden_endor_lrg_01_deed = SharedTangibleO
 
 	clientObjectCRC = 4266378949,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_endor_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_endor_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_endor_med_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_endor_med_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_tangible_deed_city_deed_shared_garden_endor_med_01_deed = SharedTangibleO
 
 	clientObjectCRC = 2702651187,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_endor_med_01_deed, "object/tangible/deed/city_deed/shared_garden_endor_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_endor_sml_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_endor_sml_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,11 +2337,15 @@ object_tangible_deed_city_deed_shared_garden_endor_sml_01_deed = SharedTangibleO
 
 	clientObjectCRC = 405154283,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_endor_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_endor_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_lrg_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_lrg_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2237,11 +2396,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_01_deed = SharedTangibleO
 
 	clientObjectCRC = 410853409,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_lrg_02_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_lrg_02_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2292,11 +2455,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_02_deed = SharedTangibleO
 
 	clientObjectCRC = 2634931519,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_02_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_lrg_03_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_lrg_03_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2347,11 +2514,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_03_deed = SharedTangibleO
 
 	clientObjectCRC = 496860504,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_03_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_lrg_04_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_lrg_04_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2402,11 +2573,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_04_deed = SharedTangibleO
 
 	clientObjectCRC = 2469214900,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_04_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_lrg_05_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_lrg_05_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2457,11 +2632,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_lrg_05_deed = SharedTangibleO
 
 	clientObjectCRC = 331193043,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_lrg_05_deed, "object/tangible/deed/city_deed/shared_garden_naboo_lrg_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_med_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_med_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2512,11 +2691,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_01_deed = SharedTangibleO
 
 	clientObjectCRC = 1193396695,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_01_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_med_02_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_med_02_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2567,11 +2750,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_02_deed = SharedTangibleO
 
 	clientObjectCRC = 3260101833,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_02_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_med_03_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_med_03_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2622,11 +2809,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_03_deed = SharedTangibleO
 
 	clientObjectCRC = 1119982766,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_03_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_med_04_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_med_04_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2677,11 +2868,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_04_deed = SharedTangibleO
 
 	clientObjectCRC = 3430011714,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_04_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_med_05_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_med_05_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2732,11 +2927,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_med_05_deed = SharedTangibleO
 
 	clientObjectCRC = 1289843493,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_med_05_deed, "object/tangible/deed/city_deed/shared_garden_naboo_med_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_sml_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_sml_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2787,11 +2986,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_01_deed = SharedTangibleO
 
 	clientObjectCRC = 4262514447,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_sml_02_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_sml_02_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2842,11 +3045,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_02_deed = SharedTangibleO
 
 	clientObjectCRC = 2069901841,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_02_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_sml_03_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_sml_03_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2897,11 +3104,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_03_deed = SharedTangibleO
 
 	clientObjectCRC = 4226847350,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_03_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_sml_04_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_sml_04_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2952,11 +3163,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_04_deed = SharedTangibleO
 
 	clientObjectCRC = 1967183258,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_04_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_naboo_sml_05_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_naboo_sml_05_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3007,11 +3222,15 @@ object_tangible_deed_city_deed_shared_garden_naboo_sml_05_deed = SharedTangibleO
 
 	clientObjectCRC = 4124079613,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_naboo_sml_05_deed, "object/tangible/deed/city_deed/shared_garden_naboo_sml_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_lrg_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3062,11 +3281,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_01_deed = SharedTangib
 
 	clientObjectCRC = 1472425069,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_01_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_lrg_02_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_02_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3117,11 +3340,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_02_deed = SharedTangib
 
 	clientObjectCRC = 3534983539,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_02_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_lrg_03_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_03_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3172,11 +3399,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_03_deed = SharedTangib
 
 	clientObjectCRC = 1378038036,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_03_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_lrg_04_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_04_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3227,11 +3458,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_04_deed = SharedTangib
 
 	clientObjectCRC = 3700651768,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_04_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_lrg_05_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_05_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3282,11 +3517,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_lrg_05_deed = SharedTangib
 
 	clientObjectCRC = 1543755423,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_lrg_05_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_lrg_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_med_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_med_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3337,11 +3576,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_01_deed = SharedTangib
 
 	clientObjectCRC = 144672155,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_01_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_med_02_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_med_02_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3392,11 +3635,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_02_deed = SharedTangib
 
 	clientObjectCRC = 2381281413,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_02_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_med_03_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_med_03_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3447,11 +3694,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_03_deed = SharedTangib
 
 	clientObjectCRC = 226482402,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_03_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_med_04_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_med_04_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3502,11 +3753,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_04_deed = SharedTangib
 
 	clientObjectCRC = 2211421966,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_04_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_med_05_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_med_05_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3557,11 +3812,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_med_05_deed = SharedTangib
 
 	clientObjectCRC = 56573801,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_med_05_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_med_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_sml_01_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_sml_01_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3612,11 +3871,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_01_deed = SharedTangib
 
 	clientObjectCRC = 2981004099,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_01_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_01_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_sml_02_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_sml_02_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3667,11 +3930,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_02_deed = SharedTangib
 
 	clientObjectCRC = 886996573,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_02_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_02_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_sml_03_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_sml_03_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3722,11 +3989,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_03_deed = SharedTangib
 
 	clientObjectCRC = 3025067578,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_03_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_03_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_sml_04_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_sml_04_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3777,11 +4048,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_04_deed = SharedTangib
 
 	clientObjectCRC = 989764054,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_04_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_04_deed.iff")
 
 object_tangible_deed_city_deed_shared_garden_tatooine_sml_05_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_garden_tatooine_sml_05_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3832,11 +4107,15 @@ object_tangible_deed_city_deed_shared_garden_tatooine_sml_05_deed = SharedTangib
 
 	clientObjectCRC = 3127785905,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_garden_tatooine_sml_05_deed, "object/tangible/deed/city_deed/shared_garden_tatooine_sml_05_deed.iff")
 
 object_tangible_deed_city_deed_shared_hospital_corellia_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_hospital_corellia_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3887,11 +4166,15 @@ object_tangible_deed_city_deed_shared_hospital_corellia_deed = SharedTangibleObj
 
 	clientObjectCRC = 2836026000,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_hospital_corellia_deed, "object/tangible/deed/city_deed/shared_hospital_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_hospital_naboo_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_hospital_naboo_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3942,11 +4225,15 @@ object_tangible_deed_city_deed_shared_hospital_naboo_deed = SharedTangibleObject
 
 	clientObjectCRC = 1107375302,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_hospital_naboo_deed, "object/tangible/deed/city_deed/shared_hospital_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_hospital_tatooine_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_hospital_tatooine_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -3997,11 +4284,15 @@ object_tangible_deed_city_deed_shared_hospital_tatooine_deed = SharedTangibleObj
 
 	clientObjectCRC = 2591594633,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_hospital_tatooine_deed, "object/tangible/deed/city_deed/shared_hospital_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_shuttleport_corellia_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_shuttleport_corellia_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4052,11 +4343,15 @@ object_tangible_deed_city_deed_shared_shuttleport_corellia_deed = SharedTangible
 
 	clientObjectCRC = 3681788535,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_shuttleport_corellia_deed, "object/tangible/deed/city_deed/shared_shuttleport_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_shuttleport_naboo_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_shuttleport_naboo_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4107,11 +4402,15 @@ object_tangible_deed_city_deed_shared_shuttleport_naboo_deed = SharedTangibleObj
 
 	clientObjectCRC = 1379109301,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_shuttleport_naboo_deed, "object/tangible/deed/city_deed/shared_shuttleport_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_shuttleport_tatooine_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_shuttleport_tatooine_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4162,11 +4461,15 @@ object_tangible_deed_city_deed_shared_shuttleport_tatooine_deed = SharedTangible
 
 	clientObjectCRC = 3892406382,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_shuttleport_tatooine_deed, "object/tangible/deed/city_deed/shared_shuttleport_tatooine_deed.iff")
 
 object_tangible_deed_city_deed_shared_theater_corellia_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_theater_corellia_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4217,11 +4520,15 @@ object_tangible_deed_city_deed_shared_theater_corellia_deed = SharedTangibleObje
 
 	clientObjectCRC = 613379311,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_theater_corellia_deed, "object/tangible/deed/city_deed/shared_theater_corellia_deed.iff")
 
 object_tangible_deed_city_deed_shared_theater_naboo_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_theater_naboo_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4272,11 +4579,15 @@ object_tangible_deed_city_deed_shared_theater_naboo_deed = SharedTangibleObjectT
 
 	clientObjectCRC = 3022502254,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_theater_naboo_deed, "object/tangible/deed/city_deed/shared_theater_naboo_deed.iff")
 
 object_tangible_deed_city_deed_shared_theater_tatooine_deed = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/city_deed/shared_theater_tatooine_deed.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -4327,6 +4638,7 @@ object_tangible_deed_city_deed_shared_theater_tatooine_deed = SharedTangibleObje
 
 	clientObjectCRC = 402499318,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_city_deed_shared_theater_tatooine_deed, "object/tangible/deed/city_deed/shared_theater_tatooine_deed.iff")

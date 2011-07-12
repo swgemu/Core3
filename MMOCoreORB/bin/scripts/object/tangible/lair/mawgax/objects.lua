@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_mawgax_shared_lair_mawgax = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/mawgax/shared_lair_mawgax.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_mawgax_shared_lair_mawgax = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3179863902,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_mawgax_shared_lair_mawgax, "object/tangible/lair/mawgax/shared_lair_mawgax.iff")
 
 object_tangible_lair_mawgax_shared_lair_mawgax_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/mawgax/shared_lair_mawgax_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_mawgax_shared_lair_mawgax_grassland = SharedTangibleObjectT
 
 	clientObjectCRC = 767243941,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_grassland, "object/tangible/lair/mawgax/shared_lair_mawgax_grassland.iff")
 
 object_tangible_lair_mawgax_shared_lair_mawgax_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/mawgax/shared_lair_mawgax_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_mawgax_shared_lair_mawgax_mountain = SharedTangibleObjectTe
 
 	clientObjectCRC = 813716742,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_mawgax_shared_lair_mawgax_mountain, "object/tangible/lair/mawgax/shared_lair_mawgax_mountain.iff")

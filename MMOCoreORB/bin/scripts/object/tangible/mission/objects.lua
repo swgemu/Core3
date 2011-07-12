@@ -42,6 +42,9 @@
 
 
 object_tangible_mission_shared_assassin_missions_device = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/mission/shared_assassin_missions_device.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_recording_rod.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_mission_shared_assassin_missions_device = SharedTangibleObjectTe
 
 	clientObjectCRC = 2808148877,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_assassin_missions_device, "object/tangible/mission/shared_assassin_missions_device.iff")
 
 object_tangible_mission_shared_mission_bounty_droid_probot = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/mission/shared_mission_bounty_droid_probot.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_homing_beacon.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_mission_shared_mission_bounty_droid_probot = SharedTangibleObjec
 
 	clientObjectCRC = 492694456,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_bounty_droid_probot, "object/tangible/mission/shared_mission_bounty_droid_probot.iff")
 
 object_tangible_mission_shared_mission_bounty_droid_seeker = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/mission/shared_mission_bounty_droid_seeker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/maul_probe_droid.sat",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_mission_shared_mission_bounty_droid_seeker = SharedTangibleObjec
 
 	clientObjectCRC = 1438002131,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_bounty_droid_seeker, "object/tangible/mission/shared_mission_bounty_droid_seeker.iff")
 
 object_tangible_mission_shared_mission_bounty_target = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/mission/shared_mission_bounty_target.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_mission_bounty_target.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_mission_shared_mission_bounty_target = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3104954918,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_bounty_target, "object/tangible/mission/shared_mission_bounty_target.iff")
 
 object_tangible_mission_shared_mission_datadisk = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/mission/shared_mission_datadisk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_mission_shared_mission_datadisk = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 3784432555,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_datadisk, "object/tangible/mission/shared_mission_datadisk.iff")
 
 object_tangible_mission_shared_mission_informant_spawner_easy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/mission/shared_mission_informant_spawner_easy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_mission_spawn_01m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_mission_shared_mission_informant_spawner_easy = SharedTangibleOb
 
 	clientObjectCRC = 528020933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_informant_spawner_easy, "object/tangible/mission/shared_mission_informant_spawner_easy.iff")
 
 object_tangible_mission_shared_mission_informant_spawner_hard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/mission/shared_mission_informant_spawner_hard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_mission_spawn_01m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_mission_shared_mission_informant_spawner_hard = SharedTangibleOb
 
 	clientObjectCRC = 1257863890,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_informant_spawner_hard, "object/tangible/mission/shared_mission_informant_spawner_hard.iff")
 
 object_tangible_mission_shared_mission_informant_spawner_medium = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/mission/shared_mission_informant_spawner_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_mission_spawn_01m.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_mission_shared_mission_informant_spawner_medium = SharedTangible
 
 	clientObjectCRC = 3708162000,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_informant_spawner_medium, "object/tangible/mission/shared_mission_informant_spawner_medium.iff")
 
 object_tangible_mission_shared_mission_recon_target = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/mission/shared_mission_recon_target.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_mission_recon_target.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_mission_shared_mission_recon_target = SharedTangibleObjectTempla
 
 	clientObjectCRC = 1165528802,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_recon_target, "object/tangible/mission/shared_mission_recon_target.iff")
 
 object_tangible_mission_shared_mission_terminal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/mission/shared_mission_terminal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/test_mission_terminal.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,6 +626,7 @@ object_tangible_mission_shared_mission_terminal = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 1188112429,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_mission_shared_mission_terminal, "object/tangible/mission/shared_mission_terminal.iff")

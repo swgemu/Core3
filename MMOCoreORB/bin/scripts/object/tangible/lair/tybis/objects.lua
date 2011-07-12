@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_tybis_shared_lair_tybis = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/tybis/shared_lair_tybis.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_tybis_shared_lair_tybis = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 880238924,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_tybis_shared_lair_tybis, "object/tangible/lair/tybis/shared_lair_tybis.iff")
 
 object_tangible_lair_tybis_shared_lair_tybis_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/tybis/shared_lair_tybis_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_tybis_shared_lair_tybis_grassland = SharedTangibleObjectTem
 
 	clientObjectCRC = 4004634433,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_tybis_shared_lair_tybis_grassland, "object/tangible/lair/tybis/shared_lair_tybis_grassland.iff")

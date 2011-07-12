@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_gronda_shared_lair_gronda = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gronda/shared_lair_gronda.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_gronda_shared_lair_gronda = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 658868181,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gronda_shared_lair_gronda, "object/tangible/lair/gronda/shared_lair_gronda.iff")
 
 object_tangible_lair_gronda_shared_lair_gronda_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gronda/shared_lair_gronda_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_gronda_shared_lair_gronda_grassland = SharedTangibleObjectT
 
 	clientObjectCRC = 1050006158,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gronda_shared_lair_gronda_grassland, "object/tangible/lair/gronda/shared_lair_gronda_grassland.iff")

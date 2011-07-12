@@ -42,6 +42,9 @@
 
 
 object_weapon_melee_axe_shared_axe_heavy_duty = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/axe/shared_axe_heavy_duty.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_axe_heavy_duty.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_melee_axe_shared_axe_heavy_duty = SharedWeaponObjectTemplate:new {
 
 	clientObjectCRC = 3808952162,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/axe/base/shared_axe_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_axe_shared_axe_heavy_duty, "object/weapon/melee/axe/shared_axe_heavy_duty.iff")
 
 object_weapon_melee_axe_shared_axe_vibroaxe = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/axe/shared_axe_vibroaxe.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_axe_vibroax.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -155,6 +162,7 @@ object_weapon_melee_axe_shared_axe_vibroaxe = SharedWeaponObjectTemplate:new {
 
 	clientObjectCRC = 1835485114,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/axe/base/shared_axe_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_axe_shared_axe_vibroaxe, "object/weapon/melee/axe/shared_axe_vibroaxe.iff")

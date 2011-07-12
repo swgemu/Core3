@@ -42,6 +42,9 @@
 
 
 object_tangible_component_dna_shared_dna_sample_above_average = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_sample_above_average.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_dna_shared_dna_sample_above_average = SharedTangibleOb
 
 	clientObjectCRC = 3272908463,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_above_average, "object/tangible/component/dna/shared_dna_sample_above_average.iff")
 
 object_tangible_component_dna_shared_dna_sample_average = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_sample_average.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_dna_shared_dna_sample_average = SharedTangibleObjectTe
 
 	clientObjectCRC = 2524715920,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_average, "object/tangible/component/dna/shared_dna_sample_average.iff")
 
 object_tangible_component_dna_shared_dna_sample_below_average = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_sample_below_average.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_component_dna_shared_dna_sample_below_average = SharedTangibleOb
 
 	clientObjectCRC = 675784259,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_below_average, "object/tangible/component/dna/shared_dna_sample_below_average.iff")
 
 object_tangible_component_dna_shared_dna_sample_high = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_sample_high.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_component_dna_shared_dna_sample_high = SharedTangibleObjectTempl
 
 	clientObjectCRC = 3034626514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_high, "object/tangible/component/dna/shared_dna_sample_high.iff")
 
 object_tangible_component_dna_shared_dna_sample_low = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_sample_low.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_component_dna_shared_dna_sample_low = SharedTangibleObjectTempla
 
 	clientObjectCRC = 2579345010,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_low, "object/tangible/component/dna/shared_dna_sample_low.iff")
 
 object_tangible_component_dna_shared_dna_sample_very_high = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_sample_very_high.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_component_dna_shared_dna_sample_very_high = SharedTangibleObject
 
 	clientObjectCRC = 299885620,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_very_high, "object/tangible/component/dna/shared_dna_sample_very_high.iff")
 
 object_tangible_component_dna_shared_dna_sample_very_low = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_sample_very_low.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_sample.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_component_dna_shared_dna_sample_very_low = SharedTangibleObjectT
 
 	clientObjectCRC = 1076609940,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_dna_sample.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_sample_very_low, "object/tangible/component/dna/shared_dna_sample_very_low.iff")
 
 object_tangible_component_dna_shared_dna_template_angler = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_angler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_component_dna_shared_dna_template_angler = SharedTangibleObjectT
 
 	clientObjectCRC = 461916189,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_angler, "object/tangible/component/dna/shared_dna_template_angler.iff")
 
 object_tangible_component_dna_shared_dna_template_bantha = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_bantha.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_component_dna_shared_dna_template_bantha = SharedTangibleObjectT
 
 	clientObjectCRC = 726704759,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bantha, "object/tangible/component/dna/shared_dna_template_bantha.iff")
 
 object_tangible_component_dna_shared_dna_template_bearded_jax = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_bearded_jax.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_component_dna_shared_dna_template_bearded_jax = SharedTangibleOb
 
 	clientObjectCRC = 727178963,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bearded_jax, "object/tangible/component/dna/shared_dna_template_bearded_jax.iff")
 
 object_tangible_component_dna_shared_dna_template_blurrg = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_blurrg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_component_dna_shared_dna_template_blurrg = SharedTangibleObjectT
 
 	clientObjectCRC = 1265107329,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_blurrg, "object/tangible/component/dna/shared_dna_template_blurrg.iff")
 
 object_tangible_component_dna_shared_dna_template_bol = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_bol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_component_dna_shared_dna_template_bol = SharedTangibleObjectTemp
 
 	clientObjectCRC = 706373854,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bol, "object/tangible/component/dna/shared_dna_template_bol.iff")
 
 object_tangible_component_dna_shared_dna_template_bolle_bol = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_bolle_bol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_component_dna_shared_dna_template_bolle_bol = SharedTangibleObje
 
 	clientObjectCRC = 214227430,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bolle_bol, "object/tangible/component/dna/shared_dna_template_bolle_bol.iff")
 
 object_tangible_component_dna_shared_dna_template_bolma = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_bolma.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_component_dna_shared_dna_template_bolma = SharedTangibleObjectTe
 
 	clientObjectCRC = 1395080056,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_bolma, "object/tangible/component/dna/shared_dna_template_bolma.iff")
 
 object_tangible_component_dna_shared_dna_template_brackaset = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_brackaset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_component_dna_shared_dna_template_brackaset = SharedTangibleObje
 
 	clientObjectCRC = 3633553517,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_brackaset, "object/tangible/component/dna/shared_dna_template_brackaset.iff")
 
 object_tangible_component_dna_shared_dna_template_carrion_spat = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_carrion_spat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_component_dna_shared_dna_template_carrion_spat = SharedTangibleO
 
 	clientObjectCRC = 1875152726,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_carrion_spat, "object/tangible/component/dna/shared_dna_template_carrion_spat.iff")
 
 object_tangible_component_dna_shared_dna_template_choku = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_choku.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_component_dna_shared_dna_template_choku = SharedTangibleObjectTe
 
 	clientObjectCRC = 262963315,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_choku, "object/tangible/component/dna/shared_dna_template_choku.iff")
 
 object_tangible_component_dna_shared_dna_template_dalyrake = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_dalyrake.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_component_dna_shared_dna_template_dalyrake = SharedTangibleObjec
 
 	clientObjectCRC = 1214055048,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_dalyrake, "object/tangible/component/dna/shared_dna_template_dalyrake.iff")
 
 object_tangible_component_dna_shared_dna_template_dewback = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_dewback.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,11 +1157,15 @@ object_tangible_component_dna_shared_dna_template_dewback = SharedTangibleObject
 
 	clientObjectCRC = 1144992157,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_dewback, "object/tangible/component/dna/shared_dna_template_dewback.iff")
 
 object_tangible_component_dna_shared_dna_template_eopie = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_eopie.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1137,11 +1216,15 @@ object_tangible_component_dna_shared_dna_template_eopie = SharedTangibleObjectTe
 
 	clientObjectCRC = 1680199838,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_eopie, "object/tangible/component/dna/shared_dna_template_eopie.iff")
 
 object_tangible_component_dna_shared_dna_template_falumpaset = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_falumpaset.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1192,11 +1275,15 @@ object_tangible_component_dna_shared_dna_template_falumpaset = SharedTangibleObj
 
 	clientObjectCRC = 671613943,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_falumpaset, "object/tangible/component/dna/shared_dna_template_falumpaset.iff")
 
 object_tangible_component_dna_shared_dna_template_fambaa = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_fambaa.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1247,11 +1334,15 @@ object_tangible_component_dna_shared_dna_template_fambaa = SharedTangibleObjectT
 
 	clientObjectCRC = 1331331454,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_fambaa, "object/tangible/component/dna/shared_dna_template_fambaa.iff")
 
 object_tangible_component_dna_shared_dna_template_generic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_generic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1302,11 +1393,15 @@ object_tangible_component_dna_shared_dna_template_generic = SharedTangibleObject
 
 	clientObjectCRC = 836379806,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_generic, "object/tangible/component/dna/shared_dna_template_generic.iff")
 
 object_tangible_component_dna_shared_dna_template_gualama = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_gualama.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1357,11 +1452,15 @@ object_tangible_component_dna_shared_dna_template_gualama = SharedTangibleObject
 
 	clientObjectCRC = 17241294,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_gualama, "object/tangible/component/dna/shared_dna_template_gualama.iff")
 
 object_tangible_component_dna_shared_dna_template_guf_drolg = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_guf_drolg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1412,11 +1511,15 @@ object_tangible_component_dna_shared_dna_template_guf_drolg = SharedTangibleObje
 
 	clientObjectCRC = 774185499,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_guf_drolg, "object/tangible/component/dna/shared_dna_template_guf_drolg.iff")
 
 object_tangible_component_dna_shared_dna_template_gurrcat = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_gurrcat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1467,11 +1570,15 @@ object_tangible_component_dna_shared_dna_template_gurrcat = SharedTangibleObject
 
 	clientObjectCRC = 1857431024,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_gurrcat, "object/tangible/component/dna/shared_dna_template_gurrcat.iff")
 
 object_tangible_component_dna_shared_dna_template_gurreck = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_gurreck.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1629,15 @@ object_tangible_component_dna_shared_dna_template_gurreck = SharedTangibleObject
 
 	clientObjectCRC = 3322704079,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_gurreck, "object/tangible/component/dna/shared_dna_template_gurreck.iff")
 
 object_tangible_component_dna_shared_dna_template_kaadu = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_kaadu.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1577,11 +1688,15 @@ object_tangible_component_dna_shared_dna_template_kaadu = SharedTangibleObjectTe
 
 	clientObjectCRC = 1112595757,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kaadu, "object/tangible/component/dna/shared_dna_template_kaadu.iff")
 
 object_tangible_component_dna_shared_dna_template_kahmurra = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_kahmurra.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1632,11 +1747,15 @@ object_tangible_component_dna_shared_dna_template_kahmurra = SharedTangibleObjec
 
 	clientObjectCRC = 1394407158,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kahmurra, "object/tangible/component/dna/shared_dna_template_kahmurra.iff")
 
 object_tangible_component_dna_shared_dna_template_kimogila = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_kimogila.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1687,11 +1806,15 @@ object_tangible_component_dna_shared_dna_template_kimogila = SharedTangibleObjec
 
 	clientObjectCRC = 2155310796,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kimogila, "object/tangible/component/dna/shared_dna_template_kimogila.iff")
 
 object_tangible_component_dna_shared_dna_template_krahbu = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_krahbu.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1742,11 +1865,15 @@ object_tangible_component_dna_shared_dna_template_krahbu = SharedTangibleObjectT
 
 	clientObjectCRC = 67998893,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_krahbu, "object/tangible/component/dna/shared_dna_template_krahbu.iff")
 
 object_tangible_component_dna_shared_dna_template_kusak = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_kusak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1797,11 +1924,15 @@ object_tangible_component_dna_shared_dna_template_kusak = SharedTangibleObjectTe
 
 	clientObjectCRC = 4199501468,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_kusak, "object/tangible/component/dna/shared_dna_template_kusak.iff")
 
 object_tangible_component_dna_shared_dna_template_narglatch = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_narglatch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1852,11 +1983,15 @@ object_tangible_component_dna_shared_dna_template_narglatch = SharedTangibleObje
 
 	clientObjectCRC = 2079919048,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_narglatch, "object/tangible/component/dna/shared_dna_template_narglatch.iff")
 
 object_tangible_component_dna_shared_dna_template_pugoriss = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_pugoriss.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1907,11 +2042,15 @@ object_tangible_component_dna_shared_dna_template_pugoriss = SharedTangibleObjec
 
 	clientObjectCRC = 3819931989,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_pugoriss, "object/tangible/component/dna/shared_dna_template_pugoriss.iff")
 
 object_tangible_component_dna_shared_dna_template_rancor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_rancor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1962,11 +2101,15 @@ object_tangible_component_dna_shared_dna_template_rancor = SharedTangibleObjectT
 
 	clientObjectCRC = 324550464,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_rancor, "object/tangible/component/dna/shared_dna_template_rancor.iff")
 
 object_tangible_component_dna_shared_dna_template_ronto = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_ronto.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2017,11 +2160,15 @@ object_tangible_component_dna_shared_dna_template_ronto = SharedTangibleObjectTe
 
 	clientObjectCRC = 1390548887,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_ronto, "object/tangible/component/dna/shared_dna_template_ronto.iff")
 
 object_tangible_component_dna_shared_dna_template_sand_panther = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_sand_panther.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2072,11 +2219,15 @@ object_tangible_component_dna_shared_dna_template_sand_panther = SharedTangibleO
 
 	clientObjectCRC = 2605574472,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_sand_panther, "object/tangible/component/dna/shared_dna_template_sand_panther.iff")
 
 object_tangible_component_dna_shared_dna_template_snorbal = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_snorbal.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2127,11 +2278,15 @@ object_tangible_component_dna_shared_dna_template_snorbal = SharedTangibleObject
 
 	clientObjectCRC = 3055149098,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_snorbal, "object/tangible/component/dna/shared_dna_template_snorbal.iff")
 
 object_tangible_component_dna_shared_dna_template_torton = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_torton.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2182,11 +2337,15 @@ object_tangible_component_dna_shared_dna_template_torton = SharedTangibleObjectT
 
 	clientObjectCRC = 1232171307,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_torton, "object/tangible/component/dna/shared_dna_template_torton.iff")
 
 object_tangible_component_dna_shared_dna_template_tybis = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_tybis.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2237,11 +2396,15 @@ object_tangible_component_dna_shared_dna_template_tybis = SharedTangibleObjectTe
 
 	clientObjectCRC = 3076355230,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_tybis, "object/tangible/component/dna/shared_dna_template_tybis.iff")
 
 object_tangible_component_dna_shared_dna_template_veermok = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_veermok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2292,11 +2455,15 @@ object_tangible_component_dna_shared_dna_template_veermok = SharedTangibleObject
 
 	clientObjectCRC = 3141045747,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_veermok, "object/tangible/component/dna/shared_dna_template_veermok.iff")
 
 object_tangible_component_dna_shared_dna_template_zucca_boar = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/dna/shared_dna_template_zucca_boar.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_dna_data_disc.apt",
 	arrangementDescriptorFilename = "",
 
@@ -2347,6 +2514,7 @@ object_tangible_component_dna_shared_dna_template_zucca_boar = SharedTangibleObj
 
 	clientObjectCRC = 228699959,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_dna_shared_dna_template_zucca_boar, "object/tangible/component/dna/shared_dna_template_zucca_boar.iff")

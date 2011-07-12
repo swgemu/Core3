@@ -42,6 +42,9 @@
 
 
 object_tangible_npc_tatooine_special_shared_sarlacc = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/npc/tatooine_special/shared_sarlacc.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sarlacc.sat",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_npc_tatooine_special_shared_sarlacc = SharedTangibleObjectTempla
 
 	clientObjectCRC = 2943030476,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_npc_tatooine_special_shared_sarlacc, "object/tangible/npc/tatooine_special/shared_sarlacc.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_fishing_bait_base_shared_bait_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/fishing/bait/base/shared_bait_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_bugs_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_fishing_bait_base_shared_bait_base = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 3482306960,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_fishing_bait_base_shared_bait_base, "object/tangible/fishing/bait/base/shared_bait_base.iff")

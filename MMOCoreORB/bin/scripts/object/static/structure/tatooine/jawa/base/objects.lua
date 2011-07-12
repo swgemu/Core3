@@ -42,6 +42,9 @@
 
 
 object_static_structure_tatooine_jawa_base_shared_tent_jawa_base = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tatt_jawa_tent_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_static_structure_tatooine_jawa_base_shared_tent_jawa_base = SharedStaticO
 
 	clientObjectCRC = 3069872384,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_jawa_base_shared_tent_jawa_base, "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff")

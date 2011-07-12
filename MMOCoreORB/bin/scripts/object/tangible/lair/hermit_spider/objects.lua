@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_hermit_spider_shared_lair_hermit_spider = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/hermit_spider/shared_lair_hermit_spider.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider = SharedTangibleObj
 
 	clientObjectCRC = 3720772749,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider.iff")
 
 object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain = SharedTa
 
 	clientObjectCRC = 202240792,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_mountain, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_mountain.iff")
 
 object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland = SharedT
 
 	clientObjectCRC = 1727414364,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_hermit_spider_shared_lair_hermit_spider_wasteland, "object/tangible/lair/hermit_spider/shared_lair_hermit_spider_wasteland.iff")

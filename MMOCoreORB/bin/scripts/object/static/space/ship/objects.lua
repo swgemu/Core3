@@ -42,6 +42,9 @@
 
 
 object_static_space_ship_shared_cargo_freighter = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/ship/shared_cargo_freighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_space_ship_shared_cargo_freighter = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 141305204,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_ship_shared_cargo_freighter, "object/static/space/ship/shared_cargo_freighter.iff")
 
 object_static_space_ship_shared_corellian_corvette = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/ship/shared_corellian_corvette.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/corellian_corvette.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_space_ship_shared_corellian_corvette = SharedStaticObjectTemplate:
 
 	clientObjectCRC = 785804943,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_ship_shared_corellian_corvette, "object/static/space/ship/shared_corellian_corvette.iff")
 
 object_static_space_ship_shared_nebulon_frigate = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/ship/shared_nebulon_frigate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/nebulon_frigate.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,6 +183,7 @@ object_static_space_ship_shared_nebulon_frigate = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 4161425774,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_ship_shared_nebulon_frigate, "object/static/space/ship/shared_nebulon_frigate.iff")

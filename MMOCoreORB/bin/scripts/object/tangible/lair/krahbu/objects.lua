@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_krahbu_shared_lair_krahbu = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/krahbu/shared_lair_krahbu.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_krahbu_shared_lair_krahbu = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2273906310,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_krahbu_shared_lair_krahbu, "object/tangible/lair/krahbu/shared_lair_krahbu.iff")
 
 object_tangible_lair_krahbu_shared_lair_krahbu_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/krahbu/shared_lair_krahbu_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_krahbu_shared_lair_krahbu_grassland = SharedTangibleObjectT
 
 	clientObjectCRC = 2706872784,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_krahbu_shared_lair_krahbu_grassland, "object/tangible/lair/krahbu/shared_lair_krahbu_grassland.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_kima_shared_lair_kima = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kima/shared_lair_kima.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_kima_shared_lair_kima = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3165231595,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kima_shared_lair_kima, "object/tangible/lair/kima/shared_lair_kima.iff")
 
 object_tangible_lair_kima_shared_lair_kima_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kima/shared_lair_kima_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_kima_shared_lair_kima_grassland = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2030650931,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kima_shared_lair_kima_grassland, "object/tangible/lair/kima/shared_lair_kima_grassland.iff")
 
 object_tangible_lair_kima_shared_lair_kima_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kima/shared_lair_kima_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_trash_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_kima_shared_lair_kima_mountain = SharedTangibleObjectTempla
 
 	clientObjectCRC = 4188775446,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kima_shared_lair_kima_mountain, "object/tangible/lair/kima/shared_lair_kima_mountain.iff")

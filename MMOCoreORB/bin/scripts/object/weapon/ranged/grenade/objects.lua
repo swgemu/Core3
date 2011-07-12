@@ -42,6 +42,9 @@
 
 
 object_weapon_ranged_grenade_shared_grenade_bug_bomb = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/grenade/shared_grenade_bug_bomb.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_ranged_grenade_shared_grenade_bug_bomb = SharedWeaponObjectTemplat
 
 	clientObjectCRC = 4031568609,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/grenade/base/shared_grenade_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_bug_bomb, "object/weapon/ranged/grenade/shared_grenade_bug_bomb.iff")
 
 object_weapon_ranged_grenade_shared_grenade_cryoban = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/grenade/shared_grenade_cryoban.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_ww41.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -155,11 +162,15 @@ object_weapon_ranged_grenade_shared_grenade_cryoban = SharedWeaponObjectTemplate
 
 	clientObjectCRC = 2139866976,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/grenade/base/shared_grenade_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_cryoban, "object/weapon/ranged/grenade/shared_grenade_cryoban.iff")
 
 object_weapon_ranged_grenade_shared_grenade_fallback = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/grenade/shared_grenade_fallback.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -214,11 +225,15 @@ object_weapon_ranged_grenade_shared_grenade_fallback = SharedWeaponObjectTemplat
 
 	clientObjectCRC = 1363204393,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/grenade/base/shared_grenade_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_fallback, "object/weapon/ranged/grenade/shared_grenade_fallback.iff")
 
 object_weapon_ranged_grenade_shared_grenade_fragmentation = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/grenade/shared_grenade_fragmentation.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -273,11 +288,15 @@ object_weapon_ranged_grenade_shared_grenade_fragmentation = SharedWeaponObjectTe
 
 	clientObjectCRC = 2723525196,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/grenade/base/shared_grenade_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_fragmentation, "object/weapon/ranged/grenade/shared_grenade_fragmentation.iff")
 
 object_weapon_ranged_grenade_shared_grenade_fragmentation_light = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/grenade/shared_grenade_fragmentation_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_c22.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -332,11 +351,15 @@ object_weapon_ranged_grenade_shared_grenade_fragmentation_light = SharedWeaponOb
 
 	clientObjectCRC = 2839802123,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/grenade/base/shared_grenade_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_fragmentation_light, "object/weapon/ranged/grenade/shared_grenade_fragmentation_light.iff")
 
 object_weapon_ranged_grenade_shared_grenade_glop = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/grenade/shared_grenade_glop.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_glop.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -391,11 +414,15 @@ object_weapon_ranged_grenade_shared_grenade_glop = SharedWeaponObjectTemplate:ne
 
 	clientObjectCRC = 595784365,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/grenade/base/shared_grenade_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_glop, "object/weapon/ranged/grenade/shared_grenade_glop.iff")
 
 object_weapon_ranged_grenade_shared_grenade_imperial_detonator = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/grenade/shared_grenade_imperial_detonator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_imp_detonator.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -450,11 +477,15 @@ object_weapon_ranged_grenade_shared_grenade_imperial_detonator = SharedWeaponObj
 
 	clientObjectCRC = 4036235024,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/grenade/base/shared_grenade_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_imperial_detonator, "object/weapon/ranged/grenade/shared_grenade_imperial_detonator.iff")
 
 object_weapon_ranged_grenade_shared_grenade_poison = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/grenade/shared_grenade_poison.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -509,11 +540,15 @@ object_weapon_ranged_grenade_shared_grenade_poison = SharedWeaponObjectTemplate:
 
 	clientObjectCRC = 2714007859,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/grenade/base/shared_grenade_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_poison, "object/weapon/ranged/grenade/shared_grenade_poison.iff")
 
 object_weapon_ranged_grenade_shared_grenade_proton = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/grenade/shared_grenade_proton.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_7prg.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -568,11 +603,15 @@ object_weapon_ranged_grenade_shared_grenade_proton = SharedWeaponObjectTemplate:
 
 	clientObjectCRC = 904042039,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/grenade/base/shared_grenade_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_proton, "object/weapon/ranged/grenade/shared_grenade_proton.iff")
 
 object_weapon_ranged_grenade_shared_grenade_thermal_detonator = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/grenade/shared_grenade_thermal_detonator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_grenade_class_a.apt",
 	arrangementDescriptorFilename = "",
 	attackType = 1,
@@ -627,6 +666,7 @@ object_weapon_ranged_grenade_shared_grenade_thermal_detonator = SharedWeaponObje
 
 	clientObjectCRC = 4094720749,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/grenade/base/shared_grenade_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_grenade_shared_grenade_thermal_detonator, "object/weapon/ranged/grenade/shared_grenade_thermal_detonator.iff")

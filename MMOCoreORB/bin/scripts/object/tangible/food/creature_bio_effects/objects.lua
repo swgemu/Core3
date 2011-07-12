@@ -42,6 +42,9 @@
 
 
 object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/creature_bio_effects/shared_bio_kliknik_fortitude_boost.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost = S
 
 	clientObjectCRC = 2415963091,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost, "object/tangible/food/creature_bio_effects/shared_bio_kliknik_fortitude_boost.iff")
 
 object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/creature_bio_effects/shared_bio_kwi_adrenal_boost.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost = SharedT
 
 	clientObjectCRC = 1615742669,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost, "object/tangible/food/creature_bio_effects/shared_bio_kwi_adrenal_boost.iff")

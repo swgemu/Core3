@@ -42,6 +42,9 @@
 
 
 object_weapon_ranged_droid_shared_droid_astromech_ranged = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/droid/shared_droid_astromech_ranged.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_default_weapon.iff",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_ranged_droid_shared_droid_astromech_ranged = SharedWeaponObjectTem
 
 	clientObjectCRC = 1112246409,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_droid_shared_droid_astromech_ranged, "object/weapon/ranged/droid/shared_droid_astromech_ranged.iff")
 
 object_weapon_ranged_droid_shared_droid_droideka_ranged = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_default_weapon.iff",
 	attackType = 1,
@@ -155,11 +162,15 @@ object_weapon_ranged_droid_shared_droid_droideka_ranged = SharedWeaponObjectTemp
 
 	clientObjectCRC = 3685860278,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_droid_shared_droid_droideka_ranged, "object/weapon/ranged/droid/shared_droid_droideka_ranged.iff")
 
 object_weapon_ranged_droid_shared_droid_probot_ranged = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/ranged/droid/shared_droid_probot_ranged.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_pistol_cdef.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -214,6 +225,7 @@ object_weapon_ranged_droid_shared_droid_probot_ranged = SharedWeaponObjectTempla
 
 	clientObjectCRC = 380494511,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/ranged/base/shared_base_ranged_weapon.iff", "object/weapon/ranged/creature/base/shared_creature_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_ranged_droid_shared_droid_probot_ranged, "object/weapon/ranged/droid/shared_droid_probot_ranged.iff")

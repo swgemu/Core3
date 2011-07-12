@@ -42,6 +42,9 @@
 
 
 object_tangible_microphone_shared_microphone = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/microphone/shared_microphone.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_music_microphone_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_microphone_shared_microphone = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 1744278717,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_microphone_shared_microphone, "object/tangible/microphone/shared_microphone.iff")

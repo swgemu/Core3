@@ -42,6 +42,9 @@
 
 
 object_tangible_parrot_cage_shared_parrot_cage = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/parrot_cage/shared_parrot_cage.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_nemoidian_bird_cage.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_parrot_cage_shared_parrot_cage = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1639031767,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_parrot_cage_shared_parrot_cage, "object/tangible/parrot_cage/shared_parrot_cage.iff")

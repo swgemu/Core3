@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_choku_shared_lair_choku = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/choku/shared_lair_choku.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_choku_shared_lair_choku = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 320002597,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_choku_shared_lair_choku, "object/tangible/lair/choku/shared_lair_choku.iff")
 
 object_tangible_lair_choku_shared_lair_choku_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/choku/shared_lair_choku_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_choku_shared_lair_choku_jungle = SharedTangibleObjectTempla
 
 	clientObjectCRC = 1812548247,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_choku_shared_lair_choku_jungle, "object/tangible/lair/choku/shared_lair_choku_jungle.iff")

@@ -42,6 +42,9 @@
 
 
 object_ship_shared_assaultship = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_assaultship.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/distant_assaultship.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -92,11 +95,15 @@ object_ship_shared_assaultship = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3844148531,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_assaultship, "object/ship/shared_assaultship.iff")
 
 object_ship_shared_awing = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_awing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/awing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -147,11 +154,15 @@ object_ship_shared_awing = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1006768204,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_awing, "object/ship/shared_awing.iff")
 
 object_ship_shared_awing_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_awing_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/awing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -202,11 +213,15 @@ object_ship_shared_awing_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2304550097,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_awing_tier1, "object/ship/shared_awing_tier1.iff")
 
 object_ship_shared_awing_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_awing_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/awing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -257,11 +272,15 @@ object_ship_shared_awing_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1380650054,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_awing_tier2, "object/ship/shared_awing_tier2.iff")
 
 object_ship_shared_awing_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_awing_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/awing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -312,11 +331,15 @@ object_ship_shared_awing_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 457599947,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_awing_tier3, "object/ship/shared_awing_tier3.iff")
 
 object_ship_shared_awing_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_awing_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/awing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -367,11 +390,15 @@ object_ship_shared_awing_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3768926431,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_awing_tier4, "object/ship/shared_awing_tier4.iff")
 
 object_ship_shared_awing_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_awing_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/awing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -422,11 +449,15 @@ object_ship_shared_awing_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2846369618,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_awing_tier5, "object/ship/shared_awing_tier5.iff")
 
 object_ship_shared_basic_hutt_light = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_basic_hutt_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -477,11 +508,15 @@ object_ship_shared_basic_hutt_light = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 762962365,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_basic_hutt_light, "object/ship/shared_basic_hutt_light.iff")
 
 object_ship_shared_basic_tiefighter = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_basic_tiefighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -532,11 +567,15 @@ object_ship_shared_basic_tiefighter = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2423388993,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_basic_tiefighter, "object/ship/shared_basic_tiefighter.iff")
 
 object_ship_shared_basic_z95 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_basic_z95.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -587,11 +626,15 @@ object_ship_shared_basic_z95 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 237307345,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_basic_z95, "object/ship/shared_basic_z95.iff")
 
 object_ship_shared_blacksun_heavy_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -642,11 +685,15 @@ object_ship_shared_blacksun_heavy_s01 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1689683950,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01, "object/ship/shared_blacksun_heavy_s01.iff")
 
 object_ship_shared_blacksun_heavy_s01_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s01_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -697,11 +744,15 @@ object_ship_shared_blacksun_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 42858675,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01_tier1, "object/ship/shared_blacksun_heavy_s01_tier1.iff")
 
 object_ship_shared_blacksun_heavy_s01_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s01_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -752,11 +803,15 @@ object_ship_shared_blacksun_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3650768932,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01_tier2, "object/ship/shared_blacksun_heavy_s01_tier2.iff")
 
 object_ship_shared_blacksun_heavy_s01_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s01_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -807,11 +862,15 @@ object_ship_shared_blacksun_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2425829289,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01_tier3, "object/ship/shared_blacksun_heavy_s01_tier3.iff")
 
 object_ship_shared_blacksun_heavy_s01_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s01_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -862,11 +921,15 @@ object_ship_shared_blacksun_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1802771645,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01_tier4, "object/ship/shared_blacksun_heavy_s01_tier4.iff")
 
 object_ship_shared_blacksun_heavy_s01_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s01_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -917,11 +980,15 @@ object_ship_shared_blacksun_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 578386736,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s01_tier5, "object/ship/shared_blacksun_heavy_s01_tier5.iff")
 
 object_ship_shared_blacksun_heavy_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -972,11 +1039,15 @@ object_ship_shared_blacksun_heavy_s02 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3215011705,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02, "object/ship/shared_blacksun_heavy_s02.iff")
 
 object_ship_shared_blacksun_heavy_s02_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s02_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1027,11 +1098,15 @@ object_ship_shared_blacksun_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 213478710,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02_tier1, "object/ship/shared_blacksun_heavy_s02_tier1.iff")
 
 object_ship_shared_blacksun_heavy_s02_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s02_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1082,11 +1157,15 @@ object_ship_shared_blacksun_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3618555297,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02_tier2, "object/ship/shared_blacksun_heavy_s02_tier2.iff")
 
 object_ship_shared_blacksun_heavy_s02_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s02_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1137,11 +1216,15 @@ object_ship_shared_blacksun_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2661524012,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02_tier3, "object/ship/shared_blacksun_heavy_s02_tier3.iff")
 
 object_ship_shared_blacksun_heavy_s02_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s02_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1192,11 +1275,15 @@ object_ship_shared_blacksun_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1698728248,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02_tier4, "object/ship/shared_blacksun_heavy_s02_tier4.iff")
 
 object_ship_shared_blacksun_heavy_s02_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s02_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1247,11 +1334,15 @@ object_ship_shared_blacksun_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 743304885,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s02_tier5, "object/ship/shared_blacksun_heavy_s02_tier5.iff")
 
 object_ship_shared_blacksun_heavy_s03 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1302,11 +1393,15 @@ object_ship_shared_blacksun_heavy_s03 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4138486004,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03, "object/ship/shared_blacksun_heavy_s03.iff")
 
 object_ship_shared_blacksun_heavy_s03_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s03_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1357,11 +1452,15 @@ object_ship_shared_blacksun_heavy_s03_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4111854296,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03_tier1, "object/ship/shared_blacksun_heavy_s03_tier1.iff")
 
 object_ship_shared_blacksun_heavy_s03_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s03_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1412,11 +1511,15 @@ object_ship_shared_blacksun_heavy_s03_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 771899983,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03_tier2, "object/ship/shared_blacksun_heavy_s03_tier2.iff")
 
 object_ship_shared_blacksun_heavy_s03_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s03_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1467,11 +1570,15 @@ object_ship_shared_blacksun_heavy_s03_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1729045954,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03_tier3, "object/ship/shared_blacksun_heavy_s03_tier3.iff")
 
 object_ship_shared_blacksun_heavy_s03_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s03_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1522,11 +1629,15 @@ object_ship_shared_blacksun_heavy_s03_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2632715990,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03_tier4, "object/ship/shared_blacksun_heavy_s03_tier4.iff")
 
 object_ship_shared_blacksun_heavy_s03_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s03_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1577,11 +1688,15 @@ object_ship_shared_blacksun_heavy_s03_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3588319579,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s03_tier5, "object/ship/shared_blacksun_heavy_s03_tier5.iff")
 
 object_ship_shared_blacksun_heavy_s04 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1632,11 +1747,15 @@ object_ship_shared_blacksun_heavy_s04 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 223306720,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04, "object/ship/shared_blacksun_heavy_s04.iff")
 
 object_ship_shared_blacksun_heavy_s04_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s04_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1687,11 +1806,15 @@ object_ship_shared_blacksun_heavy_s04_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 282084924,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04_tier1, "object/ship/shared_blacksun_heavy_s04_tier1.iff")
 
 object_ship_shared_blacksun_heavy_s04_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s04_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1742,11 +1865,15 @@ object_ship_shared_blacksun_heavy_s04_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3418877611,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04_tier2, "object/ship/shared_blacksun_heavy_s04_tier2.iff")
 
 object_ship_shared_blacksun_heavy_s04_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s04_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1797,11 +1924,15 @@ object_ship_shared_blacksun_heavy_s04_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2194311462,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04_tier3, "object/ship/shared_blacksun_heavy_s04_tier3.iff")
 
 object_ship_shared_blacksun_heavy_s04_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s04_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1852,11 +1983,15 @@ object_ship_shared_blacksun_heavy_s04_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2032771634,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04_tier4, "object/ship/shared_blacksun_heavy_s04_tier4.iff")
 
 object_ship_shared_blacksun_heavy_s04_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_heavy_s04_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1907,11 +2042,15 @@ object_ship_shared_blacksun_heavy_s04_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 807716287,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_heavy_s04_tier5, "object/ship/shared_blacksun_heavy_s04_tier5.iff")
 
 object_ship_shared_blacksun_light_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -1962,11 +2101,15 @@ object_ship_shared_blacksun_light_s01 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2025920948,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01, "object/ship/shared_blacksun_light_s01.iff")
 
 object_ship_shared_blacksun_light_s01_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s01_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2017,11 +2160,15 @@ object_ship_shared_blacksun_light_s01_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1922069411,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01_tier1, "object/ship/shared_blacksun_light_s01_tier1.iff")
 
 object_ship_shared_blacksun_light_s01_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s01_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2072,11 +2219,15 @@ object_ship_shared_blacksun_light_s01_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2844252980,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01_tier2, "object/ship/shared_blacksun_light_s01_tier2.iff")
 
 object_ship_shared_blacksun_light_s01_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s01_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2127,11 +2278,15 @@ object_ship_shared_blacksun_light_s01_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3767188665,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01_tier3, "object/ship/shared_blacksun_light_s01_tier3.iff")
 
 object_ship_shared_blacksun_light_s01_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s01_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2182,11 +2337,15 @@ object_ship_shared_blacksun_light_s01_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 459904941,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01_tier4, "object/ship/shared_blacksun_light_s01_tier4.iff")
 
 object_ship_shared_blacksun_light_s01_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s01_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2237,11 +2396,15 @@ object_ship_shared_blacksun_light_s01_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1382346784,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s01_tier5, "object/ship/shared_blacksun_light_s01_tier5.iff")
 
 object_ship_shared_blacksun_light_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2292,11 +2455,15 @@ object_ship_shared_blacksun_light_s02 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2748756259,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02, "object/ship/shared_blacksun_light_s02.iff")
 
 object_ship_shared_blacksun_light_s02_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s02_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2347,11 +2514,15 @@ object_ship_shared_blacksun_light_s02_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2091181606,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02_tier1, "object/ship/shared_blacksun_light_s02_tier1.iff")
 
 object_ship_shared_blacksun_light_s02_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s02_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2402,11 +2573,15 @@ object_ship_shared_blacksun_light_s02_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2813546161,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02_tier2, "object/ship/shared_blacksun_light_s02_tier2.iff")
 
 object_ship_shared_blacksun_light_s02_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s02_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2457,11 +2632,15 @@ object_ship_shared_blacksun_light_s02_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4005439804,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02_tier3, "object/ship/shared_blacksun_light_s02_tier3.iff")
 
 object_ship_shared_blacksun_light_s02_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s02_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2512,11 +2691,15 @@ object_ship_shared_blacksun_light_s02_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 358416936,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02_tier4, "object/ship/shared_blacksun_light_s02_tier4.iff")
 
 object_ship_shared_blacksun_light_s02_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s02_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2567,11 +2750,15 @@ object_ship_shared_blacksun_light_s02_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1548772773,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s02_tier5, "object/ship/shared_blacksun_light_s02_tier5.iff")
 
 object_ship_shared_blacksun_light_s03 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2622,11 +2809,15 @@ object_ship_shared_blacksun_light_s03 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3940275886,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03, "object/ship/shared_blacksun_light_s03.iff")
 
 object_ship_shared_blacksun_light_s03_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s03_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2677,11 +2868,15 @@ object_ship_shared_blacksun_light_s03_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2231919048,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03_tier1, "object/ship/shared_blacksun_light_s03_tier1.iff")
 
 object_ship_shared_blacksun_light_s03_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s03_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2732,11 +2927,15 @@ object_ship_shared_blacksun_light_s03_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1579141471,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03_tier2, "object/ship/shared_blacksun_light_s03_tier2.iff")
 
 object_ship_shared_blacksun_light_s03_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s03_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2787,11 +2986,15 @@ object_ship_shared_blacksun_light_s03_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 387100370,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03_tier3, "object/ship/shared_blacksun_light_s03_tier3.iff")
 
 object_ship_shared_blacksun_light_s03_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s03_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2842,11 +3045,15 @@ object_ship_shared_blacksun_light_s03_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3975251398,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03_tier4, "object/ship/shared_blacksun_light_s03_tier4.iff")
 
 object_ship_shared_blacksun_light_s03_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s03_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2897,11 +3104,15 @@ object_ship_shared_blacksun_light_s03_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2784813643,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s03_tier5, "object/ship/shared_blacksun_light_s03_tier5.iff")
 
 object_ship_shared_blacksun_light_s04 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -2952,11 +3163,15 @@ object_ship_shared_blacksun_light_s04 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 288947642,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04, "object/ship/shared_blacksun_light_s04.iff")
 
 object_ship_shared_blacksun_light_s04_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s04_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3007,11 +3222,15 @@ object_ship_shared_blacksun_light_s04_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1624100140,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04_tier1, "object/ship/shared_blacksun_light_s04_tier1.iff")
 
 object_ship_shared_blacksun_light_s04_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s04_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3062,11 +3281,15 @@ object_ship_shared_blacksun_light_s04_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3151652283,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04_tier2, "object/ship/shared_blacksun_light_s04_tier2.iff")
 
 object_ship_shared_blacksun_light_s04_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s04_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3117,11 +3340,15 @@ object_ship_shared_blacksun_light_s04_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4074177078,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04_tier3, "object/ship/shared_blacksun_light_s04_tier3.iff")
 
 object_ship_shared_blacksun_light_s04_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s04_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3172,11 +3399,15 @@ object_ship_shared_blacksun_light_s04_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 154413346,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04_tier4, "object/ship/shared_blacksun_light_s04_tier4.iff")
 
 object_ship_shared_blacksun_light_s04_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_light_s04_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3227,11 +3458,15 @@ object_ship_shared_blacksun_light_s04_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1077497519,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_light_s04_tier5, "object/ship/shared_blacksun_light_s04_tier5.iff")
 
 object_ship_shared_blacksun_medium_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3282,11 +3517,15 @@ object_ship_shared_blacksun_medium_s01 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1249737248,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01, "object/ship/shared_blacksun_medium_s01.iff")
 
 object_ship_shared_blacksun_medium_s01_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s01_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3337,11 +3576,15 @@ object_ship_shared_blacksun_medium_s01_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3687774721,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01_tier1, "object/ship/shared_blacksun_medium_s01_tier1.iff")
 
 object_ship_shared_blacksun_medium_s01_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s01_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3392,11 +3635,15 @@ object_ship_shared_blacksun_medium_s01_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 14242454,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01_tier2, "object/ship/shared_blacksun_medium_s01_tier2.iff")
 
 object_ship_shared_blacksun_medium_s01_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s01_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3447,11 +3694,15 @@ object_ship_shared_blacksun_medium_s01_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1238643995,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01_tier3, "object/ship/shared_blacksun_medium_s01_tier3.iff")
 
 object_ship_shared_blacksun_medium_s01_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s01_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3502,11 +3753,15 @@ object_ship_shared_blacksun_medium_s01_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2989956623,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01_tier4, "object/ship/shared_blacksun_medium_s01_tier4.iff")
 
 object_ship_shared_blacksun_medium_s01_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s01_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3557,11 +3812,15 @@ object_ship_shared_blacksun_medium_s01_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4214913410,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s01_tier5, "object/ship/shared_blacksun_medium_s01_tier5.iff")
 
 object_ship_shared_blacksun_medium_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3612,11 +3871,15 @@ object_ship_shared_blacksun_medium_s02 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2439697079,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02, "object/ship/shared_blacksun_medium_s02.iff")
 
 object_ship_shared_blacksun_medium_s02_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s02_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3667,11 +3930,15 @@ object_ship_shared_blacksun_medium_s02_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3589959556,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02_tier1, "object/ship/shared_blacksun_medium_s02_tier1.iff")
 
 object_ship_shared_blacksun_medium_s02_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s02_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3722,11 +3989,15 @@ object_ship_shared_blacksun_medium_s02_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 250464019,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02_tier2, "object/ship/shared_blacksun_medium_s02_tier2.iff")
 
 object_ship_shared_blacksun_medium_s02_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s02_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3777,11 +4048,15 @@ object_ship_shared_blacksun_medium_s02_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1205903518,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02_tier3, "object/ship/shared_blacksun_medium_s02_tier3.iff")
 
 object_ship_shared_blacksun_medium_s02_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s02_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3832,11 +4107,15 @@ object_ship_shared_blacksun_medium_s02_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3154348938,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02_tier4, "object/ship/shared_blacksun_medium_s02_tier4.iff")
 
 object_ship_shared_blacksun_medium_s02_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s02_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3887,11 +4166,15 @@ object_ship_shared_blacksun_medium_s02_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4111395847,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s02_tier5, "object/ship/shared_blacksun_medium_s02_tier5.iff")
 
 object_ship_shared_blacksun_medium_s03 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3942,11 +4225,15 @@ object_ship_shared_blacksun_medium_s03 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3630675258,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03, "object/ship/shared_blacksun_medium_s03.iff")
 
 object_ship_shared_blacksun_medium_s03_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s03_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -3997,11 +4284,15 @@ object_ship_shared_blacksun_medium_s03_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 743893098,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03_tier1, "object/ship/shared_blacksun_medium_s03_tier1.iff")
 
 object_ship_shared_blacksun_medium_s03_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s03_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4052,11 +4343,15 @@ object_ship_shared_blacksun_medium_s03_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4148248829,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03_tier2, "object/ship/shared_blacksun_medium_s03_tier2.iff")
 
 object_ship_shared_blacksun_medium_s03_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s03_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4107,11 +4402,15 @@ object_ship_shared_blacksun_medium_s03_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3192661872,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03_tier3, "object/ship/shared_blacksun_medium_s03_tier3.iff")
 
 object_ship_shared_blacksun_medium_s03_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s03_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4162,11 +4461,15 @@ object_ship_shared_blacksun_medium_s03_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1169099876,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03_tier4, "object/ship/shared_blacksun_medium_s03_tier4.iff")
 
 object_ship_shared_blacksun_medium_s03_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s03_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4217,11 +4520,15 @@ object_ship_shared_blacksun_medium_s03_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 211971049,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s03_tier5, "object/ship/shared_blacksun_medium_s03_tier5.iff")
 
 object_ship_shared_blacksun_medium_s04 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4272,11 +4579,15 @@ object_ship_shared_blacksun_medium_s04 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 595893806,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04, "object/ship/shared_blacksun_medium_s04.iff")
 
 object_ship_shared_blacksun_medium_s04_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s04_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4327,11 +4638,15 @@ object_ship_shared_blacksun_medium_s04_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3381871758,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04_tier1, "object/ship/shared_blacksun_medium_s04_tier1.iff")
 
 object_ship_shared_blacksun_medium_s04_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s04_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4382,11 +4697,15 @@ object_ship_shared_blacksun_medium_s04_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 310701081,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04_tier2, "object/ship/shared_blacksun_medium_s04_tier2.iff")
 
 object_ship_shared_blacksun_medium_s04_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s04_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4437,11 +4756,15 @@ object_ship_shared_blacksun_medium_s04_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1535740820,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04_tier3, "object/ship/shared_blacksun_medium_s04_tier3.iff")
 
 object_ship_shared_blacksun_medium_s04_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s04_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4492,11 +4815,15 @@ object_ship_shared_blacksun_medium_s04_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2691342464,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04_tier4, "object/ship/shared_blacksun_medium_s04_tier4.iff")
 
 object_ship_shared_blacksun_medium_s04_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_medium_s04_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/black_sun_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4547,11 +4874,15 @@ object_ship_shared_blacksun_medium_s04_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3915892493,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_medium_s04_tier5, "object/ship/shared_blacksun_medium_s04_tier5.iff")
 
 object_ship_shared_blacksun_transport = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_transport.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/blacksun_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4602,11 +4933,15 @@ object_ship_shared_blacksun_transport = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 806145873,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport, "object/ship/shared_blacksun_transport.iff")
 
 object_ship_shared_blacksun_transport_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_transport_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/blacksun_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4657,11 +4992,15 @@ object_ship_shared_blacksun_transport_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3217548599,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport_tier1, "object/ship/shared_blacksun_transport_tier1.iff")
 
 object_ship_shared_blacksun_transport_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_transport_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/blacksun_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4712,11 +5051,15 @@ object_ship_shared_blacksun_transport_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1691372960,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport_tier2, "object/ship/shared_blacksun_transport_tier2.iff")
 
 object_ship_shared_blacksun_transport_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_transport_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/blacksun_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4767,11 +5110,15 @@ object_ship_shared_blacksun_transport_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 769468973,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport_tier3, "object/ship/shared_blacksun_transport_tier3.iff")
 
 object_ship_shared_blacksun_transport_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_transport_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/blacksun_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4822,11 +5169,15 @@ object_ship_shared_blacksun_transport_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3594387769,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport_tier4, "object/ship/shared_blacksun_transport_tier4.iff")
 
 object_ship_shared_blacksun_transport_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_blacksun_transport_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/blacksun_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4877,11 +5228,15 @@ object_ship_shared_blacksun_transport_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2670945972,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_blacksun_transport_tier5, "object/ship/shared_blacksun_transport_tier5.iff")
 
 object_ship_shared_bwing = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_bwing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4932,11 +5287,15 @@ object_ship_shared_bwing = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 784528209,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_bwing, "object/ship/shared_bwing.iff")
 
 object_ship_shared_bwing_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_bwing_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -4987,11 +5346,15 @@ object_ship_shared_bwing_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3935148784,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_bwing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_bwing_tier1, "object/ship/shared_bwing_tier1.iff")
 
 object_ship_shared_bwing_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_bwing_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5042,11 +5405,15 @@ object_ship_shared_bwing_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 832189031,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_bwing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_bwing_tier2, "object/ship/shared_bwing_tier2.iff")
 
 object_ship_shared_bwing_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_bwing_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5097,11 +5464,15 @@ object_ship_shared_bwing_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2023183850,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_bwing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_bwing_tier3, "object/ship/shared_bwing_tier3.iff")
 
 object_ship_shared_bwing_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_bwing_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5152,11 +5523,15 @@ object_ship_shared_bwing_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2205449982,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_bwing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_bwing_tier4, "object/ship/shared_bwing_tier4.iff")
 
 object_ship_shared_bwing_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_bwing_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/bwing_cockpit_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5207,11 +5582,15 @@ object_ship_shared_bwing_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3396934003,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_bwing.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_bwing_tier5, "object/ship/shared_bwing_tier5.iff")
 
 object_ship_shared_civshuttle = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_civshuttle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/shuttle.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5262,11 +5641,15 @@ object_ship_shared_civshuttle = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 907129698,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_civshuttle, "object/ship/shared_civshuttle.iff")
 
 object_ship_shared_civspeeder1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_civspeeder1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/distant_air_speeder_1.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5317,11 +5700,15 @@ object_ship_shared_civspeeder1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4120399097,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_civspeeder1, "object/ship/shared_civspeeder1.iff")
 
 object_ship_shared_civspeeder2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_civspeeder2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/distant_air_speeder_2.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5372,11 +5759,15 @@ object_ship_shared_civspeeder2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 781182062,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_civspeeder2, "object/ship/shared_civspeeder2.iff")
 
 object_ship_shared_civtaxi = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_civtaxi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/distant_air_taxi.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5427,11 +5818,15 @@ object_ship_shared_civtaxi = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3717426532,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_civtaxi, "object/ship/shared_civtaxi.iff")
 
 object_ship_shared_civtransport = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_civtransport.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5482,11 +5877,15 @@ object_ship_shared_civtransport = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 952499678,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_civtransport, "object/ship/shared_civtransport.iff")
 
 object_ship_shared_corvette = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_corvette.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/corellian_corvette.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5537,11 +5936,15 @@ object_ship_shared_corvette = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 562522734,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_capital_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_corvette, "object/ship/shared_corvette.iff")
 
 object_ship_shared_corvette_interior = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_corvette_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/corellian_corvette.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5592,11 +5995,15 @@ object_ship_shared_corvette_interior = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3035559423,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_capital_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_corvette_interior, "object/ship/shared_corvette_interior.iff")
 
 object_ship_shared_decimator = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_decimator.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/vt49_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5647,11 +6054,15 @@ object_ship_shared_decimator = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2362865628,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_decimator, "object/ship/shared_decimator.iff")
 
 object_ship_shared_decimator_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_decimator_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/vt49_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5702,11 +6113,15 @@ object_ship_shared_decimator_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2353591998,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_decimator.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_decimator_tier1, "object/ship/shared_decimator_tier1.iff")
 
 object_ship_shared_decimator_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_decimator_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/vt49_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5757,11 +6172,15 @@ object_ship_shared_decimator_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1465867817,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_decimator.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_decimator_tier2, "object/ship/shared_decimator_tier2.iff")
 
 object_ship_shared_decimator_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_decimator_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/vt49_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5812,11 +6231,15 @@ object_ship_shared_decimator_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 508705188,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_decimator.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_decimator_tier3, "object/ship/shared_decimator_tier3.iff")
 
 object_ship_shared_decimator_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_decimator_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/vt49_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5867,11 +6290,15 @@ object_ship_shared_decimator_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3853587120,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_decimator.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_decimator_tier4, "object/ship/shared_decimator_tier4.iff")
 
 object_ship_shared_decimator_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_decimator_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/vt49_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5922,11 +6349,15 @@ object_ship_shared_decimator_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2898031933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_decimator.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_decimator_tier5, "object/ship/shared_decimator_tier5.iff")
 
 object_ship_shared_droid_fighter = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_droid_fighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/droid_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -5977,11 +6408,15 @@ object_ship_shared_droid_fighter = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2308789341,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter, "object/ship/shared_droid_fighter.iff")
 
 object_ship_shared_droid_fighter_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_droid_fighter_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/droid_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6032,11 +6467,15 @@ object_ship_shared_droid_fighter_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 14973297,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter_tier1, "object/ship/shared_droid_fighter_tier1.iff")
 
 object_ship_shared_droid_fighter_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_droid_fighter_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/droid_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6087,11 +6526,15 @@ object_ship_shared_droid_fighter_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3690189286,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter_tier2, "object/ship/shared_droid_fighter_tier2.iff")
 
 object_ship_shared_droid_fighter_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_droid_fighter_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/droid_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6142,11 +6585,15 @@ object_ship_shared_droid_fighter_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2466166379,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter_tier3, "object/ship/shared_droid_fighter_tier3.iff")
 
 object_ship_shared_droid_fighter_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_droid_fighter_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/droid_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6197,11 +6644,15 @@ object_ship_shared_droid_fighter_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1763548543,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter_tier4, "object/ship/shared_droid_fighter_tier4.iff")
 
 object_ship_shared_droid_fighter_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_droid_fighter_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/droid_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6252,11 +6703,15 @@ object_ship_shared_droid_fighter_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 537983730,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_droid_fighter_tier5, "object/ship/shared_droid_fighter_tier5.iff")
 
 object_ship_shared_escape_pod = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_escape_pod.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/escape_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6307,11 +6762,15 @@ object_ship_shared_escape_pod = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2997532055,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod, "object/ship/shared_escape_pod.iff")
 
 object_ship_shared_escape_pod_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_escape_pod_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/escape_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6362,11 +6821,15 @@ object_ship_shared_escape_pod_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2280868888,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod_tier1, "object/ship/shared_escape_pod_tier1.iff")
 
 object_ship_shared_escape_pod_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_escape_pod_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/escape_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6417,11 +6880,15 @@ object_ship_shared_escape_pod_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1558504591,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod_tier2, "object/ship/shared_escape_pod_tier2.iff")
 
 object_ship_shared_escape_pod_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_escape_pod_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/escape_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6472,11 +6939,15 @@ object_ship_shared_escape_pod_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 367624962,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod_tier3, "object/ship/shared_escape_pod_tier3.iff")
 
 object_ship_shared_escape_pod_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_escape_pod_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/escape_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6527,11 +6998,15 @@ object_ship_shared_escape_pod_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3993675798,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod_tier4, "object/ship/shared_escape_pod_tier4.iff")
 
 object_ship_shared_escape_pod_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_escape_pod_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/escape_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6582,11 +7057,15 @@ object_ship_shared_escape_pod_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2802306971,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_escape_pod_tier5, "object/ship/shared_escape_pod_tier5.iff")
 
 object_ship_shared_firespray = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_firespray.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kse_firespray_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6637,11 +7116,15 @@ object_ship_shared_firespray = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3319462575,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_firespray, "object/ship/shared_firespray.iff")
 
 object_ship_shared_firespray_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_firespray_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kse_firespray_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6692,11 +7175,15 @@ object_ship_shared_firespray_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1391589453,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_firespray_tier1, "object/ship/shared_firespray_tier1.iff")
 
 object_ship_shared_firespray_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_firespray_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kse_firespray_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6747,11 +7234,15 @@ object_ship_shared_firespray_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2313572570,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_firespray_tier2, "object/ship/shared_firespray_tier2.iff")
 
 object_ship_shared_firespray_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_firespray_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kse_firespray_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6802,11 +7293,15 @@ object_ship_shared_firespray_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3236640599,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_firespray_tier3, "object/ship/shared_firespray_tier3.iff")
 
 object_ship_shared_firespray_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_firespray_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kse_firespray_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6857,11 +7352,15 @@ object_ship_shared_firespray_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 990387267,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_firespray_tier4, "object/ship/shared_firespray_tier4.iff")
 
 object_ship_shared_firespray_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_firespray_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/kse_firespray_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6912,11 +7411,15 @@ object_ship_shared_firespray_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1912961998,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_firespray_tier5, "object/ship/shared_firespray_tier5.iff")
 
 object_ship_shared_freighterheavy = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterheavy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -6967,11 +7470,15 @@ object_ship_shared_freighterheavy = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2210460492,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy, "object/ship/shared_freighterheavy.iff")
 
 object_ship_shared_freighterheavy_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterheavy_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7022,11 +7529,15 @@ object_ship_shared_freighterheavy_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 237176683,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy_tier1, "object/ship/shared_freighterheavy_tier1.iff")
 
 object_ship_shared_freighterheavy_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterheavy_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7077,11 +7588,15 @@ object_ship_shared_freighterheavy_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3576999932,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy_tier2, "object/ship/shared_freighterheavy_tier2.iff")
 
 object_ship_shared_freighterheavy_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterheavy_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7132,11 +7647,15 @@ object_ship_shared_freighterheavy_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2621032561,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy_tier3, "object/ship/shared_freighterheavy_tier3.iff")
 
 object_ship_shared_freighterheavy_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterheavy_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7187,11 +7706,15 @@ object_ship_shared_freighterheavy_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1742398309,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy_tier4, "object/ship/shared_freighterheavy_tier4.iff")
 
 object_ship_shared_freighterheavy_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterheavy_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7242,11 +7765,15 @@ object_ship_shared_freighterheavy_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 785876200,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterheavy_tier5, "object/ship/shared_freighterheavy_tier5.iff")
 
 object_ship_shared_freighterlight = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterlight.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7297,11 +7824,15 @@ object_ship_shared_freighterlight = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1117310866,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight, "object/ship/shared_freighterlight.iff")
 
 object_ship_shared_freighterlight_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterlight_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7352,11 +7883,15 @@ object_ship_shared_freighterlight_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2981606241,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight_tier1, "object/ship/shared_freighterlight_tier1.iff")
 
 object_ship_shared_freighterlight_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterlight_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7407,11 +7942,15 @@ object_ship_shared_freighterlight_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1788877814,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight_tier2, "object/ship/shared_freighterlight_tier2.iff")
 
 object_ship_shared_freighterlight_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterlight_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7462,11 +8001,15 @@ object_ship_shared_freighterlight_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 598572155,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight_tier3, "object/ship/shared_freighterlight_tier3.iff")
 
 object_ship_shared_freighterlight_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterlight_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7517,11 +8060,15 @@ object_ship_shared_freighterlight_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3629012847,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight_tier4, "object/ship/shared_freighterlight_tier4.iff")
 
 object_ship_shared_freighterlight_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freighterlight_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7572,11 +8119,15 @@ object_ship_shared_freighterlight_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2437099746,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freighterlight_tier5, "object/ship/shared_freighterlight_tier5.iff")
 
 object_ship_shared_freightermedium = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freightermedium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7627,11 +8178,15 @@ object_ship_shared_freightermedium = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3398686729,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium, "object/ship/shared_freightermedium.iff")
 
 object_ship_shared_freightermedium_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freightermedium_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7682,11 +8237,15 @@ object_ship_shared_freightermedium_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1092912234,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium_tier1, "object/ship/shared_freightermedium_tier1.iff")
 
 object_ship_shared_freightermedium_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freightermedium_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7737,11 +8296,15 @@ object_ship_shared_freightermedium_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2587045117,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium_tier2, "object/ship/shared_freightermedium_tier2.iff")
 
 object_ship_shared_freightermedium_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freightermedium_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7792,11 +8355,15 @@ object_ship_shared_freightermedium_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3544075120,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium_tier3, "object/ship/shared_freightermedium_tier3.iff")
 
 object_ship_shared_freightermedium_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freightermedium_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7847,11 +8414,15 @@ object_ship_shared_freightermedium_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 685596772,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium_tier4, "object/ship/shared_freightermedium_tier4.iff")
 
 object_ship_shared_freightermedium_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_freightermedium_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_freighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7902,11 +8473,15 @@ object_ship_shared_freightermedium_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1641023465,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_freightermedium_tier5, "object/ship/shared_freightermedium_tier5.iff")
 
 object_ship_shared_hutt_heavy_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -7957,11 +8532,15 @@ object_ship_shared_hutt_heavy_s01 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1217600546,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01, "object/ship/shared_hutt_heavy_s01.iff")
 
 object_ship_shared_hutt_heavy_s01_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s01_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8012,11 +8591,15 @@ object_ship_shared_hutt_heavy_s01_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3993388117,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01_tier1, "object/ship/shared_hutt_heavy_s01_tier1.iff")
 
 object_ship_shared_hutt_heavy_s01_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s01_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8067,11 +8650,15 @@ object_ship_shared_hutt_heavy_s01_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 890367170,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01_tier2, "object/ship/shared_hutt_heavy_s01_tier2.iff")
 
 object_ship_shared_hutt_heavy_s01_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s01_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8122,11 +8709,15 @@ object_ship_shared_hutt_heavy_s01_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2082245455,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01_tier3, "object/ship/shared_hutt_heavy_s01_tier3.iff")
 
 object_ship_shared_hutt_heavy_s01_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s01_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8177,11 +8768,15 @@ object_ship_shared_hutt_heavy_s01_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2281676891,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01_tier4, "object/ship/shared_hutt_heavy_s01_tier4.iff")
 
 object_ship_shared_hutt_heavy_s01_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s01_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8232,11 +8827,15 @@ object_ship_shared_hutt_heavy_s01_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3472017366,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s01_tier5, "object/ship/shared_hutt_heavy_s01_tier5.iff")
 
 object_ship_shared_hutt_heavy_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8287,11 +8886,15 @@ object_ship_shared_hutt_heavy_s02 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2474947765,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02, "object/ship/shared_hutt_heavy_s02.iff")
 
 object_ship_shared_hutt_heavy_s02_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s02_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8342,11 +8945,15 @@ object_ship_shared_hutt_heavy_s02_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3761426896,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02_tier1, "object/ship/shared_hutt_heavy_s02_tier1.iff")
 
 object_ship_shared_hutt_heavy_s02_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s02_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8397,11 +9004,15 @@ object_ship_shared_hutt_heavy_s02_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 992311623,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02_tier2, "object/ship/shared_hutt_heavy_s02_tier2.iff")
 
 object_ship_shared_hutt_heavy_s02_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s02_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8452,11 +9063,15 @@ object_ship_shared_hutt_heavy_s02_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1915231946,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02_tier3, "object/ship/shared_hutt_heavy_s02_tier3.iff")
 
 object_ship_shared_hutt_heavy_s02_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s02_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8507,11 +9122,15 @@ object_ship_shared_hutt_heavy_s02_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2311796190,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02_tier4, "object/ship/shared_hutt_heavy_s02_tier4.iff")
 
 object_ship_shared_hutt_heavy_s02_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_heavy_s02_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8562,11 +9181,15 @@ object_ship_shared_hutt_heavy_s02_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3234222675,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_heavy_s02_tier5, "object/ship/shared_hutt_heavy_s02_tier5.iff")
 
 object_ship_shared_hutt_light_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8617,11 +9240,15 @@ object_ship_shared_hutt_light_s01 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1424261752,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01, "object/ship/shared_hutt_light_s01.iff")
 
 object_ship_shared_hutt_light_s01_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s01_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8672,11 +9299,15 @@ object_ship_shared_hutt_light_s01_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2652622661,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01_tier1, "object/ship/shared_hutt_light_s01_tier1.iff")
 
 object_ship_shared_hutt_light_s01_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s01_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8727,11 +9358,15 @@ object_ship_shared_hutt_light_s01_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1158440914,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01_tier2, "object/ship/shared_hutt_light_s01_tier2.iff")
 
 object_ship_shared_hutt_light_s01_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s01_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8782,11 +9417,15 @@ object_ship_shared_hutt_light_s01_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 201392223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01_tier3, "object/ship/shared_hutt_light_s01_tier3.iff")
 
 object_ship_shared_hutt_light_s01_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s01_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8837,11 +9476,15 @@ object_ship_shared_hutt_light_s01_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4158794571,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01_tier4, "object/ship/shared_hutt_light_s01_tier4.iff")
 
 object_ship_shared_hutt_light_s01_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s01_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8892,11 +9535,15 @@ object_ship_shared_hutt_light_s01_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3203353798,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s01_tier5, "object/ship/shared_hutt_light_s01_tier5.iff")
 
 object_ship_shared_hutt_light_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -8947,11 +9594,15 @@ object_ship_shared_hutt_light_s02 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2415078127,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02, "object/ship/shared_hutt_light_s02.iff")
 
 object_ship_shared_hutt_light_s02_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s02_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9002,11 +9653,15 @@ object_ship_shared_hutt_light_s02_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2419022528,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02_tier1, "object/ship/shared_hutt_light_s02_tier1.iff")
 
 object_ship_shared_hutt_light_s02_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s02_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9057,11 +9712,15 @@ object_ship_shared_hutt_light_s02_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1262023255,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02_tier2, "object/ship/shared_hutt_light_s02_tier2.iff")
 
 object_ship_shared_hutt_light_s02_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s02_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9112,11 +9771,15 @@ object_ship_shared_hutt_light_s02_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 37066202,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02_tier3, "object/ship/shared_hutt_light_s02_tier3.iff")
 
 object_ship_shared_hutt_light_s02_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s02_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9167,11 +9830,15 @@ object_ship_shared_hutt_light_s02_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4191600334,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02_tier4, "object/ship/shared_hutt_light_s02_tier4.iff")
 
 object_ship_shared_hutt_light_s02_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_light_s02_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9222,11 +9889,15 @@ object_ship_shared_hutt_light_s02_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2967198019,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_light_s02_tier5, "object/ship/shared_hutt_light_s02_tier5.iff")
 
 object_ship_shared_hutt_medium_s01 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9277,11 +9948,15 @@ object_ship_shared_hutt_medium_s01 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3267992484,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01, "object/ship/shared_hutt_medium_s01.iff")
 
 object_ship_shared_hutt_medium_s01_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s01_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9332,11 +10007,15 @@ object_ship_shared_hutt_medium_s01_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2698486044,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01_tier1, "object/ship/shared_hutt_medium_s01_tier1.iff")
 
 object_ship_shared_hutt_medium_s01_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s01_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9387,11 +10066,15 @@ object_ship_shared_hutt_medium_s01_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2076182923,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01_tier2, "object/ship/shared_hutt_medium_s01_tier2.iff")
 
 object_ship_shared_hutt_medium_s01_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s01_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9442,11 +10125,15 @@ object_ship_shared_hutt_medium_s01_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 852323846,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01_tier3, "object/ship/shared_hutt_medium_s01_tier3.iff")
 
 object_ship_shared_hutt_medium_s01_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s01_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9497,11 +10184,15 @@ object_ship_shared_hutt_medium_s01_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3375252754,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01_tier4, "object/ship/shared_hutt_medium_s01_tier4.iff")
 
 object_ship_shared_hutt_medium_s01_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s01_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9552,11 +10243,15 @@ object_ship_shared_hutt_medium_s01_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2149786271,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s01_tier5, "object/ship/shared_hutt_medium_s01_tier5.iff")
 
 object_ship_shared_hutt_medium_s02 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9607,11 +10302,15 @@ object_ship_shared_hutt_medium_s02 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 433992499,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02, "object/ship/shared_hutt_medium_s02.iff")
 
 object_ship_shared_hutt_medium_s02_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s02_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9662,11 +10361,15 @@ object_ship_shared_hutt_medium_s02_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2934125721,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02_tier1, "object/ship/shared_hutt_medium_s02_tier1.iff")
 
 object_ship_shared_hutt_medium_s02_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s02_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9717,11 +10420,15 @@ object_ship_shared_hutt_medium_s02_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1978965006,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02_tier2, "object/ship/shared_hutt_medium_s02_tier2.iff")
 
 object_ship_shared_hutt_medium_s02_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s02_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9772,11 +10479,15 @@ object_ship_shared_hutt_medium_s02_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1023015811,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02_tier3, "object/ship/shared_hutt_medium_s02_tier3.iff")
 
 object_ship_shared_hutt_medium_s02_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s02_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9827,11 +10538,15 @@ object_ship_shared_hutt_medium_s02_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3340423319,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02_tier4, "object/ship/shared_hutt_medium_s02_tier4.iff")
 
 object_ship_shared_hutt_medium_s02_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_medium_s02_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_medium_body_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9882,11 +10597,15 @@ object_ship_shared_hutt_medium_s02_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2383918874,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_medium_s02_tier5, "object/ship/shared_hutt_medium_s02_tier5.iff")
 
 object_ship_shared_hutt_transport = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_transport.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9937,11 +10656,15 @@ object_ship_shared_hutt_transport = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 472470685,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport, "object/ship/shared_hutt_transport.iff")
 
 object_ship_shared_hutt_transport_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_transport_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -9992,11 +10715,15 @@ object_ship_shared_hutt_transport_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1397512657,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport_tier1, "object/ship/shared_hutt_transport_tier1.iff")
 
 object_ship_shared_hutt_transport_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_transport_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10047,11 +10774,15 @@ object_ship_shared_hutt_transport_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2287726918,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport_tier2, "object/ship/shared_hutt_transport_tier2.iff")
 
 object_ship_shared_hutt_transport_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_transport_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10102,11 +10833,15 @@ object_ship_shared_hutt_transport_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3243677387,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport_tier3, "object/ship/shared_hutt_transport_tier3.iff")
 
 object_ship_shared_hutt_transport_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_transport_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10157,11 +10892,15 @@ object_ship_shared_hutt_transport_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 984989151,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport_tier4, "object/ship/shared_hutt_transport_tier4.iff")
 
 object_ship_shared_hutt_transport_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_transport_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_transport.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10212,11 +10951,15 @@ object_ship_shared_hutt_transport_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1941494354,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_transport_tier5, "object/ship/shared_hutt_transport_tier5.iff")
 
 object_ship_shared_hutt_turret_ship = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_hutt_turret_ship.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_heavy_body_s03.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10267,11 +11010,15 @@ object_ship_shared_hutt_turret_ship = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2822462280,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_hutt_turret_ship, "object/ship/shared_hutt_turret_ship.iff")
 
 object_ship_shared_imperial_gunboat = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_imperial_gunboat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/imperial_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10322,11 +11069,15 @@ object_ship_shared_imperial_gunboat = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3259306099,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_capital_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat, "object/ship/shared_imperial_gunboat.iff")
 
 object_ship_shared_imperial_gunboat_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_imperial_gunboat_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/imperial_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10377,11 +11128,15 @@ object_ship_shared_imperial_gunboat_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1910102521,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat_tier1, "object/ship/shared_imperial_gunboat_tier1.iff")
 
 object_ship_shared_imperial_gunboat_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_imperial_gunboat_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/imperial_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10432,11 +11187,15 @@ object_ship_shared_imperial_gunboat_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2865656174,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat_tier2, "object/ship/shared_imperial_gunboat_tier2.iff")
 
 object_ship_shared_imperial_gunboat_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_imperial_gunboat_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/imperial_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10487,11 +11246,15 @@ object_ship_shared_imperial_gunboat_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3821213411,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat_tier3, "object/ship/shared_imperial_gunboat_tier3.iff")
 
 object_ship_shared_imperial_gunboat_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_imperial_gunboat_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/imperial_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10542,11 +11305,15 @@ object_ship_shared_imperial_gunboat_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 404766199,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat_tier4, "object/ship/shared_imperial_gunboat_tier4.iff")
 
 object_ship_shared_imperial_gunboat_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_imperial_gunboat_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/imperial_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10597,11 +11364,15 @@ object_ship_shared_imperial_gunboat_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1361926778,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_imperial_gunboat_tier5, "object/ship/shared_imperial_gunboat_tier5.iff")
 
 object_ship_shared_lambdashuttle = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_lambdashuttle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10652,11 +11423,15 @@ object_ship_shared_lambdashuttle = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 979946526,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle, "object/ship/shared_lambdashuttle.iff")
 
 object_ship_shared_lambdashuttle_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_lambdashuttle_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10707,11 +11482,15 @@ object_ship_shared_lambdashuttle_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1746838902,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle_tier1, "object/ship/shared_lambdashuttle_tier1.iff")
 
 object_ship_shared_lambdashuttle_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_lambdashuttle_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10762,11 +11541,15 @@ object_ship_shared_lambdashuttle_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3003715041,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle_tier2, "object/ship/shared_lambdashuttle_tier2.iff")
 
 object_ship_shared_lambdashuttle_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_lambdashuttle_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10817,11 +11600,15 @@ object_ship_shared_lambdashuttle_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4194593388,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle_tier3, "object/ship/shared_lambdashuttle_tier3.iff")
 
 object_ship_shared_lambdashuttle_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_lambdashuttle_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10872,11 +11659,15 @@ object_ship_shared_lambdashuttle_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 31932792,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle_tier4, "object/ship/shared_lambdashuttle_tier4.iff")
 
 object_ship_shared_lambdashuttle_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_lambdashuttle_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/lambda_shuttle_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10927,11 +11718,15 @@ object_ship_shared_lambdashuttle_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1223304949,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_lambdashuttle_tier5, "object/ship/shared_lambdashuttle_tier5.iff")
 
 object_ship_shared_merchant_cruiser_light_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_merchant_cruiser_light_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -10982,11 +11777,15 @@ object_ship_shared_merchant_cruiser_light_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2543011646,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_light_tier1, "object/ship/shared_merchant_cruiser_light_tier1.iff")
 
 object_ship_shared_merchant_cruiser_light_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_merchant_cruiser_light_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11037,11 +11836,15 @@ object_ship_shared_merchant_cruiser_light_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1283780521,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_light_tier2, "object/ship/shared_merchant_cruiser_light_tier2.iff")
 
 object_ship_shared_merchant_cruiser_light_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_merchant_cruiser_light_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11092,11 +11895,15 @@ object_ship_shared_merchant_cruiser_light_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 92899364,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_light_tier3, "object/ship/shared_merchant_cruiser_light_tier3.iff")
 
 object_ship_shared_merchant_cruiser_light_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_merchant_cruiser_light_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11147,11 +11954,15 @@ object_ship_shared_merchant_cruiser_light_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4268401456,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_light_tier4, "object/ship/shared_merchant_cruiser_light_tier4.iff")
 
 object_ship_shared_merchant_cruiser_light_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_merchant_cruiser_light_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/merchant_cruiser_light.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11202,11 +12013,15 @@ object_ship_shared_merchant_cruiser_light_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3077031101,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_light_tier5, "object/ship/shared_merchant_cruiser_light_tier5.iff")
 
 object_ship_shared_merchant_cruiser_medium = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_merchant_cruiser_medium.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11257,11 +12072,15 @@ object_ship_shared_merchant_cruiser_medium = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4266302506,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium, "object/ship/shared_merchant_cruiser_medium.iff")
 
 object_ship_shared_merchant_cruiser_medium_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_merchant_cruiser_medium_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11312,11 +12131,15 @@ object_ship_shared_merchant_cruiser_medium_tier1 = SharedShipObjectTemplate:new 
 
 	clientObjectCRC = 3883212856,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium_tier1, "object/ship/shared_merchant_cruiser_medium_tier1.iff")
 
 object_ship_shared_merchant_cruiser_medium_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_merchant_cruiser_medium_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11367,11 +12190,15 @@ object_ship_shared_merchant_cruiser_medium_tier2 = SharedShipObjectTemplate:new 
 
 	clientObjectCRC = 1013090479,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium_tier2, "object/ship/shared_merchant_cruiser_medium_tier2.iff")
 
 object_ship_shared_merchant_cruiser_medium_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_merchant_cruiser_medium_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11422,11 +12249,15 @@ object_ship_shared_merchant_cruiser_medium_tier3 = SharedShipObjectTemplate:new 
 
 	clientObjectCRC = 1970269986,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium_tier3, "object/ship/shared_merchant_cruiser_medium_tier3.iff")
 
 object_ship_shared_merchant_cruiser_medium_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_merchant_cruiser_medium_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11477,11 +12308,15 @@ object_ship_shared_merchant_cruiser_medium_tier4 = SharedShipObjectTemplate:new 
 
 	clientObjectCRC = 2391589942,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium_tier4, "object/ship/shared_merchant_cruiser_medium_tier4.iff")
 
 object_ship_shared_merchant_cruiser_medium_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_merchant_cruiser_medium_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/merchant_cruiser_medium.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11532,11 +12367,15 @@ object_ship_shared_merchant_cruiser_medium_tier5 = SharedShipObjectTemplate:new 
 
 	clientObjectCRC = 3347162043,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_merchant_cruiser_medium_tier5, "object/ship/shared_merchant_cruiser_medium_tier5.iff")
 
 object_ship_shared_nebulon = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_nebulon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/nebulon_frigate.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11587,11 +12426,15 @@ object_ship_shared_nebulon = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2407618193,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_capital_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_nebulon, "object/ship/shared_nebulon.iff")
 
 object_ship_shared_probe_droid_pod = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_probe_droid_pod.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/probe_droid_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11642,11 +12485,15 @@ object_ship_shared_probe_droid_pod = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 327912933,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod, "object/ship/shared_probe_droid_pod.iff")
 
 object_ship_shared_probe_droid_pod_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_probe_droid_pod_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/probe_droid_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11697,11 +12544,15 @@ object_ship_shared_probe_droid_pod_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2888320846,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod_tier1, "object/ship/shared_probe_droid_pod_tier1.iff")
 
 object_ship_shared_probe_droid_pod_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_probe_droid_pod_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/probe_droid_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11752,11 +12603,15 @@ object_ship_shared_probe_droid_pod_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2000678873,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod_tier2, "object/ship/shared_probe_droid_pod_tier2.iff")
 
 object_ship_shared_probe_droid_pod_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_probe_droid_pod_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/probe_droid_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11807,11 +12662,15 @@ object_ship_shared_probe_droid_pod_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1043499092,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod_tier3, "object/ship/shared_probe_droid_pod_tier3.iff")
 
 object_ship_shared_probe_droid_pod_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_probe_droid_pod_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/probe_droid_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11862,11 +12721,15 @@ object_ship_shared_probe_droid_pod_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3318850368,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod_tier4, "object/ship/shared_probe_droid_pod_tier4.iff")
 
 object_ship_shared_probe_droid_pod_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_probe_droid_pod_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/probe_droid_pod.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11917,11 +12780,15 @@ object_ship_shared_probe_droid_pod_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2363278541,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_probe_droid_pod_tier5, "object/ship/shared_probe_droid_pod_tier5.iff")
 
 object_ship_shared_prototype_hutt_light = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_prototype_hutt_light.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/hutt_fighter_light_body_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -11972,11 +12839,15 @@ object_ship_shared_prototype_hutt_light = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1036884978,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_prototype_hutt_light, "object/ship/shared_prototype_hutt_light.iff")
 
 object_ship_shared_prototype_tiefighter = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_prototype_tiefighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12027,11 +12898,15 @@ object_ship_shared_prototype_tiefighter = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2160427278,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_prototype_tiefighter, "object/ship/shared_prototype_tiefighter.iff")
 
 object_ship_shared_prototype_z95 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_prototype_z95.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12082,11 +12957,15 @@ object_ship_shared_prototype_z95 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1141820662,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_prototype_z95, "object/ship/shared_prototype_z95.iff")
 
 object_ship_shared_rebel_gunboat = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_rebel_gunboat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rebel_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12137,11 +13016,15 @@ object_ship_shared_rebel_gunboat = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3542721164,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat, "object/ship/shared_rebel_gunboat.iff")
 
 object_ship_shared_rebel_gunboat_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_rebel_gunboat_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rebel_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12192,11 +13075,15 @@ object_ship_shared_rebel_gunboat_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 137363241,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat_tier1, "object/ship/shared_rebel_gunboat_tier1.iff")
 
 object_ship_shared_rebel_gunboat_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_rebel_gunboat_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rebel_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12247,11 +13134,15 @@ object_ship_shared_rebel_gunboat_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3543685054,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat_tier2, "object/ship/shared_rebel_gunboat_tier2.iff")
 
 object_ship_shared_rebel_gunboat_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_rebel_gunboat_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rebel_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12302,11 +13193,15 @@ object_ship_shared_rebel_gunboat_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2587177011,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat_tier3, "object/ship/shared_rebel_gunboat_tier3.iff")
 
 object_ship_shared_rebel_gunboat_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_rebel_gunboat_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rebel_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12357,11 +13252,15 @@ object_ship_shared_rebel_gunboat_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1641421607,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat_tier4, "object/ship/shared_rebel_gunboat_tier4.iff")
 
 object_ship_shared_rebel_gunboat_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_rebel_gunboat_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/rebel_gunboat.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12412,11 +13311,15 @@ object_ship_shared_rebel_gunboat_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 685472938,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_rebel_gunboat_tier5, "object/ship/shared_rebel_gunboat_tier5.iff")
 
 object_ship_shared_rebel_shuttle_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_rebel_shuttle_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/shuttle_rebel.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12467,11 +13370,15 @@ object_ship_shared_rebel_shuttle_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 282943774,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_rebel_shuttle_tier1, "object/ship/shared_rebel_shuttle_tier1.iff")
 
 object_ship_shared_rebel_shuttle_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_rebel_shuttle_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/shuttle_rebel.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12522,11 +13429,15 @@ object_ship_shared_rebel_shuttle_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3419064713,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_rebel_shuttle_tier2, "object/ship/shared_rebel_shuttle_tier2.iff")
 
 object_ship_shared_rebel_shuttle_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_rebel_shuttle_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/shuttle_rebel.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12577,11 +13488,15 @@ object_ship_shared_rebel_shuttle_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2194124292,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_rebel_shuttle_tier3, "object/ship/shared_rebel_shuttle_tier3.iff")
 
 object_ship_shared_rebel_shuttle_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_rebel_shuttle_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/shuttle_rebel.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12632,11 +13547,15 @@ object_ship_shared_rebel_shuttle_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2032436496,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_rebel_shuttle_tier4, "object/ship/shared_rebel_shuttle_tier4.iff")
 
 object_ship_shared_rebel_shuttle_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_rebel_shuttle_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/shuttle_rebel.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12687,11 +13606,15 @@ object_ship_shared_rebel_shuttle_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 808051357,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_rebel_shuttle_tier5, "object/ship/shared_rebel_shuttle_tier5.iff")
 
 object_ship_shared_smuggler_warlord_ship_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_smuggler_warlord_ship_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12742,11 +13665,15 @@ object_ship_shared_smuggler_warlord_ship_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1243384778,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_smuggler_warlord_ship_tier1, "object/ship/shared_smuggler_warlord_ship_tier1.iff")
 
 object_ship_shared_smuggler_warlord_ship_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_smuggler_warlord_ship_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12797,11 +13724,15 @@ object_ship_shared_smuggler_warlord_ship_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2433426269,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_smuggler_warlord_ship_tier2, "object/ship/shared_smuggler_warlord_ship_tier2.iff")
 
 object_ship_shared_smuggler_warlord_ship_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_smuggler_warlord_ship_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12852,11 +13783,15 @@ object_ship_shared_smuggler_warlord_ship_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3624289488,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_smuggler_warlord_ship_tier3, "object/ship/shared_smuggler_warlord_ship_tier3.iff")
 
 object_ship_shared_smuggler_warlord_ship_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_smuggler_warlord_ship_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12907,11 +13842,15 @@ object_ship_shared_smuggler_warlord_ship_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 602238916,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_smuggler_warlord_ship_tier4, "object/ship/shared_smuggler_warlord_ship_tier4.iff")
 
 object_ship_shared_smuggler_warlord_ship_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_smuggler_warlord_ship_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/smuggler_warlord_ship.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -12962,11 +13901,15 @@ object_ship_shared_smuggler_warlord_ship_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1793591369,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_smuggler_warlord_ship_tier5, "object/ship/shared_smuggler_warlord_ship_tier5.iff")
 
 object_ship_shared_sorosuub_space_yacht = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_sorosuub_space_yacht.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sorosuub_space_yacht_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13017,11 +13960,15 @@ object_ship_shared_sorosuub_space_yacht = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2502364217,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_sorosuub_space_yacht, "object/ship/shared_sorosuub_space_yacht.iff")
 
 object_ship_shared_spacestation_imperial = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_spacestation_imperial.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spacestation_outpost_imperial_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13072,11 +14019,15 @@ object_ship_shared_spacestation_imperial = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3165332223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_station_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_spacestation_imperial, "object/ship/shared_spacestation_imperial.iff")
 
 object_ship_shared_spacestation_neutral = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_spacestation_neutral.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spacestation_neutral.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13127,11 +14078,15 @@ object_ship_shared_spacestation_neutral = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4164831037,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_station_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_spacestation_neutral, "object/ship/shared_spacestation_neutral.iff")
 
 object_ship_shared_spacestation_rebel = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_spacestation_rebel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/spacestation_rebel.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13182,11 +14137,15 @@ object_ship_shared_spacestation_rebel = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 431716433,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_station_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_spacestation_rebel, "object/ship/shared_spacestation_rebel.iff")
 
 object_ship_shared_star_destroyer = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_star_destroyer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/star_destroyer_space.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13237,11 +14196,15 @@ object_ship_shared_star_destroyer = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3207599336,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_capital_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_star_destroyer, "object/ship/shared_star_destroyer.iff")
 
 object_ship_shared_supplyship = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_supplyship.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/distant_supplyship.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13292,11 +14255,15 @@ object_ship_shared_supplyship = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4043601537,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_supplyship, "object/ship/shared_supplyship.iff")
 
 object_ship_shared_tie_in = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tie_in.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter_in.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13347,11 +14314,15 @@ object_ship_shared_tie_in = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1874889307,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tie_in, "object/ship/shared_tie_in.iff")
 
 object_ship_shared_tie_light_duty = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tie_light_duty.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13402,11 +14373,15 @@ object_ship_shared_tie_light_duty = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1231580532,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tie_light_duty, "object/ship/shared_tie_light_duty.iff")
 
 object_ship_shared_tieadvanced = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieadvanced.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_advanced.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13457,11 +14432,15 @@ object_ship_shared_tieadvanced = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 212073063,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced, "object/ship/shared_tieadvanced.iff")
 
 object_ship_shared_tieadvanced_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieadvanced_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_advanced.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13512,11 +14491,15 @@ object_ship_shared_tieadvanced_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4294368666,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced_tier1, "object/ship/shared_tieadvanced_tier1.iff")
 
 object_ship_shared_tieadvanced_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieadvanced_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_advanced.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13567,11 +14550,15 @@ object_ship_shared_tieadvanced_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 618755341,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced_tier2, "object/ship/shared_tieadvanced_tier2.iff")
 
 object_ship_shared_tieadvanced_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieadvanced_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_advanced.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13622,11 +14609,15 @@ object_ship_shared_tieadvanced_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1844187776,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced_tier3, "object/ship/shared_tieadvanced_tier3.iff")
 
 object_ship_shared_tieadvanced_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieadvanced_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_advanced.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13677,11 +14668,15 @@ object_ship_shared_tieadvanced_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2517580180,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced_tier4, "object/ship/shared_tieadvanced_tier4.iff")
 
 object_ship_shared_tieadvanced_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieadvanced_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_advanced.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13732,11 +14727,15 @@ object_ship_shared_tieadvanced_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3741474329,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieadvanced_tier5, "object/ship/shared_tieadvanced_tier5.iff")
 
 object_ship_shared_tieaggressor = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieaggressor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_aggressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13787,11 +14786,15 @@ object_ship_shared_tieaggressor = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3457688983,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor, "object/ship/shared_tieaggressor.iff")
 
 object_ship_shared_tieaggressor_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieaggressor_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_aggressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13842,11 +14845,15 @@ object_ship_shared_tieaggressor_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1918801119,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor_tier1, "object/ship/shared_tieaggressor_tier1.iff")
 
 object_ship_shared_tieaggressor_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieaggressor_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_aggressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13897,11 +14904,15 @@ object_ship_shared_tieaggressor_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2840149064,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor_tier2, "object/ship/shared_tieaggressor_tier2.iff")
 
 object_ship_shared_tieaggressor_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieaggressor_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_aggressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -13952,11 +14963,15 @@ object_ship_shared_tieaggressor_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3762576325,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor_tier3, "object/ship/shared_tieaggressor_tier3.iff")
 
 object_ship_shared_tieaggressor_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieaggressor_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_aggressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14007,11 +15022,15 @@ object_ship_shared_tieaggressor_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 463958225,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor_tier4, "object/ship/shared_tieaggressor_tier4.iff")
 
 object_ship_shared_tieaggressor_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieaggressor_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_aggressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14062,11 +15081,15 @@ object_ship_shared_tieaggressor_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1386878812,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieaggressor_tier5, "object/ship/shared_tieaggressor_tier5.iff")
 
 object_ship_shared_tiebomber = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiebomber.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_bomber_b.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14117,11 +15140,15 @@ object_ship_shared_tiebomber = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1689489833,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber, "object/ship/shared_tiebomber.iff")
 
 object_ship_shared_tiebomber_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiebomber_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_bomber_b.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14172,11 +15199,15 @@ object_ship_shared_tiebomber_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 800011159,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber_tier1, "object/ship/shared_tiebomber_tier1.iff")
 
 object_ship_shared_tiebomber_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiebomber_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_bomber_b.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14227,11 +15258,15 @@ object_ship_shared_tiebomber_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4105739008,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber_tier2, "object/ship/shared_tiebomber_tier2.iff")
 
 object_ship_shared_tiebomber_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiebomber_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_bomber_b.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14282,11 +15317,15 @@ object_ship_shared_tiebomber_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3182820493,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber_tier3, "object/ship/shared_tiebomber_tier3.iff")
 
 object_ship_shared_tiebomber_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiebomber_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_bomber_b.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14337,11 +15376,15 @@ object_ship_shared_tiebomber_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1180096409,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber_tier4, "object/ship/shared_tiebomber_tier4.iff")
 
 object_ship_shared_tiebomber_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiebomber_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_bomber_b.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14392,11 +15435,15 @@ object_ship_shared_tiebomber_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 257667092,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiebomber_tier5, "object/ship/shared_tiebomber_tier5.iff")
 
 object_ship_shared_tiefighter = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiefighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14447,11 +15494,15 @@ object_ship_shared_tiefighter = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2677969389,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter, "object/ship/shared_tiefighter.iff")
 
 object_ship_shared_tiefighter_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiefighter_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14502,11 +15553,15 @@ object_ship_shared_tiefighter_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 719737899,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter_tier1, "object/ship/shared_tiefighter_tier1.iff")
 
 object_ship_shared_tiefighter_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiefighter_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14557,11 +15612,15 @@ object_ship_shared_tiefighter_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4059167932,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter_tier2, "object/ship/shared_tiefighter_tier2.iff")
 
 object_ship_shared_tiefighter_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiefighter_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14612,11 +15671,15 @@ object_ship_shared_tiefighter_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3103562545,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter_tier3, "object/ship/shared_tiefighter_tier3.iff")
 
 object_ship_shared_tiefighter_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiefighter_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14667,11 +15730,15 @@ object_ship_shared_tiefighter_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1126150181,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter_tier4, "object/ship/shared_tiefighter_tier4.iff")
 
 object_ship_shared_tiefighter_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tiefighter_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14722,11 +15789,15 @@ object_ship_shared_tiefighter_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 169007016,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tiefighter_tier5, "object/ship/shared_tiefighter_tier5.iff")
 
 object_ship_shared_tieinterceptor = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieinterceptor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_interceptor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14777,11 +15848,15 @@ object_ship_shared_tieinterceptor = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2986877248,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor, "object/ship/shared_tieinterceptor.iff")
 
 object_ship_shared_tieinterceptor_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieinterceptor_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_interceptor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14832,11 +15907,15 @@ object_ship_shared_tieinterceptor_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3034789135,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor_tier1, "object/ship/shared_tieinterceptor_tier1.iff")
 
 object_ship_shared_tieinterceptor_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieinterceptor_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_interceptor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14887,11 +15966,15 @@ object_ship_shared_tieinterceptor_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1878302104,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor_tier2, "object/ship/shared_tieinterceptor_tier2.iff")
 
 object_ship_shared_tieinterceptor_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieinterceptor_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_interceptor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14942,11 +16025,15 @@ object_ship_shared_tieinterceptor_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 653916693,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor_tier3, "object/ship/shared_tieinterceptor_tier3.iff")
 
 object_ship_shared_tieinterceptor_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieinterceptor_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_interceptor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -14997,11 +16084,15 @@ object_ship_shared_tieinterceptor_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3709522177,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor_tier4, "object/ship/shared_tieinterceptor_tier4.iff")
 
 object_ship_shared_tieinterceptor_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieinterceptor_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_interceptor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15052,11 +16143,15 @@ object_ship_shared_tieinterceptor_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2484582028,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieinterceptor_tier5, "object/ship/shared_tieinterceptor_tier5.iff")
 
 object_ship_shared_tieoppressor = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieoppressor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_oppressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15107,11 +16202,15 @@ object_ship_shared_tieoppressor = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3234528257,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor, "object/ship/shared_tieoppressor.iff")
 
 object_ship_shared_tieoppressor_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieoppressor_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_oppressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15162,11 +16261,15 @@ object_ship_shared_tieoppressor_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3138516559,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor_tier1, "object/ship/shared_tieoppressor_tier1.iff")
 
 object_ship_shared_tieoppressor_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieoppressor_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_oppressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15217,11 +16320,15 @@ object_ship_shared_tieoppressor_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1611030232,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor_tier2, "object/ship/shared_tieoppressor_tier2.iff")
 
 object_ship_shared_tieoppressor_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieoppressor_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_oppressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15272,11 +16379,15 @@ object_ship_shared_tieoppressor_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 688601429,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor_tier3, "object/ship/shared_tieoppressor_tier3.iff")
 
 object_ship_shared_tieoppressor_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieoppressor_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_oppressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15327,11 +16438,15 @@ object_ship_shared_tieoppressor_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3538424385,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor_tier4, "object/ship/shared_tieoppressor_tier4.iff")
 
 object_ship_shared_tieoppressor_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_tieoppressor_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_oppressor.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15382,11 +16497,15 @@ object_ship_shared_tieoppressor_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2615506380,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_tieoppressor_tier5, "object/ship/shared_tieoppressor_tier5.iff")
 
 object_ship_shared_transport_science = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_transport_science.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/transport_science.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15437,11 +16556,15 @@ object_ship_shared_transport_science = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1879411884,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_transport_science, "object/ship/shared_transport_science.iff")
 
 object_ship_shared_transport_science_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_transport_science_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/transport_science.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15492,11 +16615,15 @@ object_ship_shared_transport_science_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1650455622,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_transport_science_tier1, "object/ship/shared_transport_science_tier1.iff")
 
 object_ship_shared_transport_science_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_transport_science_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/transport_science.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15547,11 +16674,15 @@ object_ship_shared_transport_science_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3108527313,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_transport_science_tier2, "object/ship/shared_transport_science_tier2.iff")
 
 object_ship_shared_transport_science_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_transport_science_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/transport_science.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15602,11 +16733,15 @@ object_ship_shared_transport_science_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4031069020,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_transport_science_tier3, "object/ship/shared_transport_science_tier3.iff")
 
 object_ship_shared_transport_science_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_transport_science_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/transport_science.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15657,11 +16792,15 @@ object_ship_shared_transport_science_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 195432520,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_transport_science_tier4, "object/ship/shared_transport_science_tier4.iff")
 
 object_ship_shared_transport_science_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_transport_science_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/transport_science.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15712,11 +16851,15 @@ object_ship_shared_transport_science_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1118533573,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_transport_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_transport_science_tier5, "object/ship/shared_transport_science_tier5.iff")
 
 object_ship_shared_xwing = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_xwing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15767,11 +16910,15 @@ object_ship_shared_xwing = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1476764354,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_xwing, "object/ship/shared_xwing.iff")
 
 object_ship_shared_xwing_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_xwing_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15822,11 +16969,15 @@ object_ship_shared_xwing_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1201246834,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_xwing_tier1, "object/ship/shared_xwing_tier1.iff")
 
 object_ship_shared_xwing_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_xwing_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15877,11 +17028,15 @@ object_ship_shared_xwing_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2626566885,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_xwing_tier2, "object/ship/shared_xwing_tier2.iff")
 
 object_ship_shared_xwing_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_xwing_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15932,11 +17087,15 @@ object_ship_shared_xwing_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3582156136,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_xwing_tier3, "object/ship/shared_xwing_tier3.iff")
 
 object_ship_shared_xwing_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_xwing_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -15987,11 +17146,15 @@ object_ship_shared_xwing_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 778073724,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_xwing_tier4, "object/ship/shared_xwing_tier4.iff")
 
 object_ship_shared_xwing_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_xwing_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16042,11 +17205,15 @@ object_ship_shared_xwing_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1735201265,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_xwing_tier5, "object/ship/shared_xwing_tier5.iff")
 
 object_ship_shared_ykl37r = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ykl37r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ykl37r_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16097,11 +17264,15 @@ object_ship_shared_ykl37r = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2370729898,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r, "object/ship/shared_ykl37r.iff")
 
 object_ship_shared_ykl37r_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ykl37r_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ykl37r_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16152,11 +17323,15 @@ object_ship_shared_ykl37r_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 212362802,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_ykl37r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r_tier1, "object/ship/shared_ykl37r_tier1.iff")
 
 object_ship_shared_ykl37r_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ykl37r_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ykl37r_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16207,11 +17382,15 @@ object_ship_shared_ykl37r_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3619671717,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_ykl37r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r_tier2, "object/ship/shared_ykl37r_tier2.iff")
 
 object_ship_shared_ykl37r_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ykl37r_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ykl37r_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16262,11 +17441,15 @@ object_ship_shared_ykl37r_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2662508840,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_ykl37r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r_tier3, "object/ship/shared_ykl37r_tier3.iff")
 
 object_ship_shared_ykl37r_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ykl37r_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ykl37r_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16317,11 +17500,15 @@ object_ship_shared_ykl37r_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1699840572,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_ykl37r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r_tier4, "object/ship/shared_ykl37r_tier4.iff")
 
 object_ship_shared_ykl37r_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ykl37r_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ykl37r_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16372,11 +17559,15 @@ object_ship_shared_ykl37r_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 744285617,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff", "object/ship/shared_ykl37r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ykl37r_tier5, "object/ship/shared_ykl37r_tier5.iff")
 
 object_ship_shared_yt1300 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_yt1300.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/yt1300_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16427,11 +17618,15 @@ object_ship_shared_yt1300 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4019421648,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_yt1300, "object/ship/shared_yt1300.iff")
 
 object_ship_shared_yt1300_interior = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_yt1300_interior.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/yt1300_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16482,11 +17677,15 @@ object_ship_shared_yt1300_interior = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1347113891,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_interior, "object/ship/shared_yt1300_interior.iff")
 
 object_ship_shared_yt1300_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_yt1300_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/yt1300_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16537,11 +17736,15 @@ object_ship_shared_yt1300_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3582257391,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_tier1, "object/ship/shared_yt1300_tier1.iff")
 
 object_ship_shared_yt1300_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_yt1300_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/yt1300_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16592,11 +17795,15 @@ object_ship_shared_yt1300_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 244531320,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_tier2, "object/ship/shared_yt1300_tier2.iff")
 
 object_ship_shared_yt1300_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_yt1300_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/yt1300_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16647,11 +17854,15 @@ object_ship_shared_yt1300_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1201547253,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_tier3, "object/ship/shared_yt1300_tier3.iff")
 
 object_ship_shared_yt1300_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_yt1300_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/yt1300_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16702,11 +17913,15 @@ object_ship_shared_yt1300_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3162311905,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_tier4, "object/ship/shared_yt1300_tier4.iff")
 
 object_ship_shared_yt1300_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_yt1300_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/yt1300_npc.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16757,11 +17972,15 @@ object_ship_shared_yt1300_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4117785452,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_yt1300_tier5, "object/ship/shared_yt1300_tier5.iff")
 
 object_ship_shared_ywing = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ywing.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ywing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16812,11 +18031,15 @@ object_ship_shared_ywing = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2852456612,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ywing, "object/ship/shared_ywing.iff")
 
 object_ship_shared_ywing_longprobe = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ywing_longprobe.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ywing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16867,11 +18090,15 @@ object_ship_shared_ywing_longprobe = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3553113506,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ywing_longprobe, "object/ship/shared_ywing_longprobe.iff")
 
 object_ship_shared_ywing_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ywing_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ywing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16922,11 +18149,15 @@ object_ship_shared_ywing_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2593551104,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ywing_tier1, "object/ship/shared_ywing_tier1.iff")
 
 object_ship_shared_ywing_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ywing_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ywing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -16977,11 +18208,15 @@ object_ship_shared_ywing_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1099029399,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ywing_tier2, "object/ship/shared_ywing_tier2.iff")
 
 object_ship_shared_ywing_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ywing_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ywing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -17032,11 +18267,15 @@ object_ship_shared_ywing_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 143440922,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ywing_tier3, "object/ship/shared_ywing_tier3.iff")
 
 object_ship_shared_ywing_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ywing_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ywing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -17087,11 +18326,15 @@ object_ship_shared_ywing_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4084176654,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ywing_tier4, "object/ship/shared_ywing_tier4.iff")
 
 object_ship_shared_ywing_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_ywing_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ywing_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -17142,11 +18385,15 @@ object_ship_shared_ywing_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3127046275,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_ywing_tier5, "object/ship/shared_ywing_tier5.iff")
 
 object_ship_shared_z95 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_z95.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -17197,11 +18444,15 @@ object_ship_shared_z95 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 3963433956,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_z95, "object/ship/shared_z95.iff")
 
 object_ship_shared_z95_tier1 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_z95_tier1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -17252,11 +18503,15 @@ object_ship_shared_z95_tier1 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 603334641,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_z95_tier1, "object/ship/shared_z95_tier1.iff")
 
 object_ship_shared_z95_tier2 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_z95_tier2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -17307,11 +18562,15 @@ object_ship_shared_z95_tier2 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 4175531878,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_z95_tier2, "object/ship/shared_z95_tier2.iff")
 
 object_ship_shared_z95_tier3 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_z95_tier3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -17362,11 +18621,15 @@ object_ship_shared_z95_tier3 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 2985093355,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_z95_tier3, "object/ship/shared_z95_tier3.iff")
 
 object_ship_shared_z95_tier4 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_z95_tier4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -17417,11 +18680,15 @@ object_ship_shared_z95_tier4 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 1242547199,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_z95_tier4, "object/ship/shared_z95_tier4.iff")
 
 object_ship_shared_z95_tier5 = SharedShipObjectTemplate:new {
+	clientTemplateFileName = "object/ship/shared_z95_tier5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/z95_body.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_ship.iff",
 
@@ -17472,6 +18739,7 @@ object_ship_shared_z95_tier5 = SharedShipObjectTemplate:new {
 
 	clientObjectCRC = 50504818,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/ship/base/shared_ship_base.iff", "object/ship/base/shared_ship_fighter_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_ship_shared_z95_tier5, "object/ship/shared_z95_tier5.iff")

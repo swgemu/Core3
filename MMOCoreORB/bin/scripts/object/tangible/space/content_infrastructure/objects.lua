@@ -42,6 +42,9 @@
 
 
 object_tangible_space_content_infrastructure_shared_basic_corridor_point = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_basic_corridor_point.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_space_waypoint_corridor.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_space_content_infrastructure_shared_basic_corridor_point = Share
 
 	clientObjectCRC = 1336476935,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_corridor_point, "object/tangible/space/content_infrastructure/shared_basic_corridor_point.iff")
 
 object_tangible_space_content_infrastructure_shared_basic_generic_point = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_basic_generic_point.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_space_waypoint_generic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_space_content_infrastructure_shared_basic_generic_point = Shared
 
 	clientObjectCRC = 2123564231,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_generic_point, "object/tangible/space/content_infrastructure/shared_basic_generic_point.iff")
 
 object_tangible_space_content_infrastructure_shared_basic_patrol_point = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_basic_patrol_point.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_space_waypoint_patrol.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_space_content_infrastructure_shared_basic_patrol_point = SharedT
 
 	clientObjectCRC = 233417941,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_patrol_point, "object/tangible/space/content_infrastructure/shared_basic_patrol_point.iff")
 
 object_tangible_space_content_infrastructure_shared_basic_spawner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_basic_spawner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_space_spawn_generic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_space_content_infrastructure_shared_basic_spawner = SharedTangib
 
 	clientObjectCRC = 283550594,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_basic_spawner, "object/tangible/space/content_infrastructure/shared_basic_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_content_manager = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_content_manager.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_space_waypoint_corridor.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_space_content_infrastructure_shared_content_manager = SharedTang
 
 	clientObjectCRC = 2712609943,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_content_manager, "object/tangible/space/content_infrastructure/shared_content_manager.iff")
 
 object_tangible_space_content_infrastructure_shared_corridor_end_spawner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_corridor_end_spawner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_space_spawn_corridor_end.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_space_content_infrastructure_shared_corridor_end_spawner = Share
 
 	clientObjectCRC = 2186464753,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_corridor_end_spawner, "object/tangible/space/content_infrastructure/shared_corridor_end_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_corridor_start_spawner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_corridor_start_spawner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_space_spawn_corridor_start.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_space_content_infrastructure_shared_corridor_start_spawner = Sha
 
 	clientObjectCRC = 4139087673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_corridor_start_spawner, "object/tangible/space/content_infrastructure/shared_corridor_start_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_generic_egg_small = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_generic_egg_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_space_content_infrastructure_shared_generic_egg_small = SharedTa
 
 	clientObjectCRC = 2261680514,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_generic_egg_small, "object/tangible/space/content_infrastructure/shared_generic_egg_small.iff")
 
 object_tangible_space_content_infrastructure_shared_patrol_spawner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_patrol_spawner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_space_spawn_patrol.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_space_content_infrastructure_shared_patrol_spawner = SharedTangi
 
 	clientObjectCRC = 4256567837,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_patrol_spawner, "object/tangible/space/content_infrastructure/shared_patrol_spawner.iff")
 
 object_tangible_space_content_infrastructure_shared_quest_manager = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_quest_manager.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_space_waypoint_generic.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_space_content_infrastructure_shared_quest_manager = SharedTangib
 
 	clientObjectCRC = 493351489,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_quest_manager, "object/tangible/space/content_infrastructure/shared_quest_manager.iff")
 
 object_tangible_space_content_infrastructure_shared_quest_nav_point = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_quest_nav_point.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_space_waypoint_corridor.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_space_content_infrastructure_shared_quest_nav_point = SharedTang
 
 	clientObjectCRC = 339299356,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_quest_nav_point, "object/tangible/space/content_infrastructure/shared_quest_nav_point.iff")
 
 object_tangible_space_content_infrastructure_shared_wave_spawner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/content_infrastructure/shared_wave_spawner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/godclient_space_spawn_wave.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,6 +744,7 @@ object_tangible_space_content_infrastructure_shared_wave_spawner = SharedTangibl
 
 	clientObjectCRC = 3763775974,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_content_infrastructure_shared_wave_spawner, "object/tangible/space/content_infrastructure/shared_wave_spawner.iff")

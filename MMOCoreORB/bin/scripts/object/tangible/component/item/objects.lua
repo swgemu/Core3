@@ -42,6 +42,9 @@
 
 
 object_tangible_component_item_shared_electronic_control_unit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/shared_electronic_control_unit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_item_shared_electronic_control_unit = SharedTangibleOb
 
 	clientObjectCRC = 814846904,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronic_control_unit, "object/tangible/component/item/shared_electronic_control_unit.iff")
 
 object_tangible_component_item_shared_electronic_energy_distributor = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/shared_electronic_energy_distributor.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_item_shared_electronic_energy_distributor = SharedTang
 
 	clientObjectCRC = 3328520335,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronic_energy_distributor, "object/tangible/component/item/shared_electronic_energy_distributor.iff")
 
 object_tangible_component_item_shared_electronic_power_conditioner = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/shared_electronic_power_conditioner.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_component_item_shared_electronic_power_conditioner = SharedTangi
 
 	clientObjectCRC = 1024745663,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronic_power_conditioner, "object/tangible/component/item/shared_electronic_power_conditioner.iff")
 
 object_tangible_component_item_shared_electronics_gp_module = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/shared_electronics_gp_module.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_component_item_shared_electronics_gp_module = SharedTangibleObje
 
 	clientObjectCRC = 3786408832,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronics_gp_module, "object/tangible/component/item/shared_electronics_gp_module.iff")
 
 object_tangible_component_item_shared_electronics_memory_module = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/shared_electronics_memory_module.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_simple.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_component_item_shared_electronics_memory_module = SharedTangible
 
 	clientObjectCRC = 3552886678,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_electronics_memory_module, "object/tangible/component/item/shared_electronics_memory_module.iff")
 
 object_tangible_component_item_shared_large_sensor_package = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/shared_large_sensor_package.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_component_item_shared_large_sensor_package = SharedTangibleObjec
 
 	clientObjectCRC = 366580459,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_large_sensor_package, "object/tangible/component/item/shared_large_sensor_package.iff")
 
 object_tangible_component_item_shared_micro_sensor_suite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/item/shared_micro_sensor_suite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_module_complex.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,6 +449,7 @@ object_tangible_component_item_shared_micro_sensor_suite = SharedTangibleObjectT
 
 	clientObjectCRC = 3198540321,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/component/base/shared_base_component.iff", "object/tangible/component/base/shared_base_electronic_component.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_item_shared_micro_sensor_suite, "object/tangible/component/item/shared_micro_sensor_suite.iff")

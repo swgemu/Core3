@@ -42,6 +42,9 @@
 
 
 object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/camera/shared_intro_camera.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/intro_camera.sat",
@@ -116,11 +119,15 @@ object_creature_camera_shared_intro_camera = SharedCreatureObjectTemplate:new {
 
 	clientObjectCRC = 2217042692,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_camera_shared_intro_camera, "object/creature/camera/shared_intro_camera.iff")
 
 object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:new {
+	clientTemplateFileName = "object/creature/camera/shared_intro_controller.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	acceleration = {6,2},
 	animationMapFilename = "all_male.map",
 	appearanceFilename = "appearance/intro_controller.sat",
@@ -195,6 +202,7 @@ object_creature_camera_shared_intro_controller = SharedCreatureObjectTemplate:ne
 
 	clientObjectCRC = 1416223243,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/creature/base/shared_base_creature.iff", "object/creature/npc/base/shared_base_npc.iff", "object/creature/npc/base/shared_base_npc_theme_park.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_creature_camera_shared_intro_controller, "object/creature/camera/shared_intro_controller.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_bol_shared_lair_bol = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/bol/shared_lair_bol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_bol_shared_lair_bol = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 690467171,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bol_shared_lair_bol, "object/tangible/lair/bol/shared_lair_bol.iff")
 
 object_tangible_lair_bol_shared_lair_bol_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/bol/shared_lair_bol_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_bol_shared_lair_bol_grassland = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 494138850,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_bol_shared_lair_bol_grassland, "object/tangible/lair/bol/shared_lair_bol_grassland.iff")

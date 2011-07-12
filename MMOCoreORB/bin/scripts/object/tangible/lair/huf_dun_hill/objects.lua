@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/huf_dun_hill/shared_lair_huf_dun_hill.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill = SharedTangibleObjec
 
 	clientObjectCRC = 1260954181,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_huf_dun_hill_shared_lair_huf_dun_hill, "object/tangible/lair/huf_dun_hill/shared_lair_huf_dun_hill.iff")

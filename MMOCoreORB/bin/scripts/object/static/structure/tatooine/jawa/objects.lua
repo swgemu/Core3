@@ -42,6 +42,9 @@
 
 
 object_static_structure_tatooine_jawa_shared_tent_jawa_01_large = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/tatooine/jawa/shared_tent_jawa_01_large.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_jawa_tent_large.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_large = SharedStaticOb
 
 	clientObjectCRC = 1450417289,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_large, "object/static/structure/tatooine/jawa/shared_tent_jawa_01_large.iff")
 
 object_static_structure_tatooine_jawa_shared_tent_jawa_01_med = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/tatooine/jawa/shared_tent_jawa_01_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_jawa_tent_med.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_med = SharedStaticObje
 
 	clientObjectCRC = 3551226366,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_med, "object/static/structure/tatooine/jawa/shared_tent_jawa_01_med.iff")
 
 object_static_structure_tatooine_jawa_shared_tent_jawa_01_small = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/structure/tatooine/jawa/shared_tent_jawa_01_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_jawa_tent_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,6 +183,7 @@ object_static_structure_tatooine_jawa_shared_tent_jawa_01_small = SharedStaticOb
 
 	clientObjectCRC = 1650985120,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff", "object/static/structure/tatooine/jawa/base/shared_tent_jawa_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_structure_tatooine_jawa_shared_tent_jawa_01_small, "object/static/structure/tatooine/jawa/shared_tent_jawa_01_small.iff")

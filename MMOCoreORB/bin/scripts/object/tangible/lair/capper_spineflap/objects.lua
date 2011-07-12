@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/capper_spineflap/shared_lair_capper_spineflap.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap = SharedTangi
 
 	clientObjectCRC = 772926850,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap, "object/tangible/lair/capper_spineflap/shared_lair_capper_spineflap.iff")
 
 object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/capper_spineflap/shared_lair_capper_spineflap_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_antpile_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest = Shar
 
 	clientObjectCRC = 1110501147,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_capper_spineflap_shared_lair_capper_spineflap_forest, "object/tangible/lair/capper_spineflap/shared_lair_capper_spineflap_forest.iff")

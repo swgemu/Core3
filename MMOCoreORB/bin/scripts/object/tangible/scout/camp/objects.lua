@@ -42,6 +42,9 @@
 
 
 object_tangible_scout_camp_shared_camp_basic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camp/shared_camp_basic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_camping_tent_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_scout_camp_shared_camp_basic = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 1292354861,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_basic, "object/tangible/scout/camp/shared_camp_basic.iff")
 
 object_tangible_scout_camp_shared_camp_elite = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camp/shared_camp_elite.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_camping_tent_s4.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_scout_camp_shared_camp_elite = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 3731836900,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_elite, "object/tangible/scout/camp/shared_camp_elite.iff")
 
 object_tangible_scout_camp_shared_camp_improved = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camp/shared_camp_improved.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_camping_tent_s2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_scout_camp_shared_camp_improved = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 2831120800,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_improved, "object/tangible/scout/camp/shared_camp_improved.iff")
 
 object_tangible_scout_camp_shared_camp_luxury = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camp/shared_camp_luxury.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_camping_tent_s5.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_scout_camp_shared_camp_luxury = SharedTangibleObjectTemplate:new
 
 	clientObjectCRC = 1082864410,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_luxury, "object/tangible/scout/camp/shared_camp_luxury.iff")
 
 object_tangible_scout_camp_shared_camp_multi = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camp/shared_camp_multi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_camping_tent_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_scout_camp_shared_camp_multi = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 1695464329,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_multi, "object/tangible/scout/camp/shared_camp_multi.iff")
 
 object_tangible_scout_camp_shared_camp_quality = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/scout/camp/shared_camp_quality.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_camping_tent_s3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,6 +390,7 @@ object_tangible_scout_camp_shared_camp_quality = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3484724123,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_scout_camp_shared_camp_quality, "object/tangible/scout/camp/shared_camp_quality.iff")

@@ -42,6 +42,9 @@
 
 
 object_installation_mining_gas_shared_mining_gas_harvester_style_1 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/mining_gas/shared_mining_gas_harvester_style_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_mobile_gas_refinery.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_1 = SharedInsta
 
 	clientObjectCRC = 3446200775,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_gas/base/shared_mining_gas_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_1, "object/installation/mining_gas/shared_mining_gas_harvester_style_1.iff")
 
 object_installation_mining_gas_shared_mining_gas_harvester_style_2 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/mining_gas/shared_mining_gas_harvester_style_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_gas_med.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_2 = SharedInsta
 
 	clientObjectCRC = 377450832,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_gas/base/shared_mining_gas_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_2, "object/installation/mining_gas/shared_mining_gas_harvester_style_2.iff")
 
 object_installation_mining_gas_shared_mining_gas_harvester_style_3 = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/installation/mining_gas/shared_mining_gas_harvester_style_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_min_gas_s01_u0.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_installation_mining_gas_shared_mining_gas_harvester_style_3 = SharedInsta
 
 	clientObjectCRC = 1601312477,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/mining_gas/base/shared_mining_gas_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_installation_mining_gas_shared_mining_gas_harvester_style_3, "object/installation/mining_gas/shared_mining_gas_harvester_style_3.iff")

@@ -271,9 +271,8 @@ void ImageDesignManager::loadCustomizationData() {
 		CustomizationData customizationData;
 		customizationData.parseRow(dataRow);
 
-		Vector<float>* scale = tmpl->getScale();
-		customizationData.setMinScale(scale->get(0));
-		customizationData.setMaxScale(scale->get(1));
+		customizationData.setMinScale(tmpl->getMinScale());
+		customizationData.setMaxScale(tmpl->getMaxScale());
 
 		dataMap->put(customizationData.getCustomizationName(), customizationData);
 

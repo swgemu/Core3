@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bicep_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_chitin_s01_bicep_l_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l = SharedT
 
 	clientObjectCRC = 1049353985,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_l, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bicep_l.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bicep_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_chitin_s01_bicep_r_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r = SharedT
 
 	clientObjectCRC = 1314822802,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bicep_r, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bicep_r.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_boots.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_chitin_s01_boots_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots = SharedTan
 
 	clientObjectCRC = 1961496739,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_boots, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_boots.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bracer_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_chitin_s01_bracer_l_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_upper_l.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l = Shared
 
 	clientObjectCRC = 3411753246,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_upper_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_l, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bracer_l.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bracer_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_chitin_s01_bracer_r_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_upper_r.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r = Shared
 
 	clientObjectCRC = 3146677389,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_upper_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_bracer_r, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bracer_r.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_chest_plate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_chitin_s01_chest_plate_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate = Sha
 
 	clientObjectCRC = 590081831,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_chest_plate, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_chest_plate.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_gloves.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_chitin_s01_gloves_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets_long.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves = SharedTa
 
 	clientObjectCRC = 2662099985,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_gauntlets_long.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_gloves, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_gloves.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_helmet.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_chitin_s01_helmet_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet = SharedTa
 
 	clientObjectCRC = 678202649,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_helmet, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_helmet.iff")
 
 object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_leggings.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_chitin_s01_leggings_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/skirt.iff",
 
@@ -532,6 +567,7 @@ object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings = Shared
 
 	clientObjectCRC = 1149232129,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_chitin_shared_armor_chitin_s01_leggings, "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_leggings.iff")

@@ -42,6 +42,9 @@
 
 
 object_static_flora_shared_flora_base = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_glass_s1_empty.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_flora_shared_flora_base = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3282656608,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_base, "object/static/flora/shared_flora_base.iff")
 
 object_static_flora_shared_flora_bush_dathomir_hwotha = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_bush_dathomir_hwotha.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/leaf_dath_hwotha.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_flora_shared_flora_bush_dathomir_hwotha = SharedStaticObjectTempla
 
 	clientObjectCRC = 3380635776,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_bush_dathomir_hwotha, "object/static/flora/shared_flora_bush_dathomir_hwotha.iff")
 
 object_static_flora_shared_flora_bush_endor_rainbowbush = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_bush_endor_rainbowbush.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/leaf_endr_rainbowbush.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_static_flora_shared_flora_bush_endor_rainbowbush = SharedStaticObjectTemp
 
 	clientObjectCRC = 2385797177,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_bush_endor_rainbowbush, "object/static/flora/shared_flora_bush_endor_rainbowbush.iff")
 
 object_static_flora_shared_flora_bush_talus_razorcoil = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_bush_talus_razorcoil.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/leaf_tals_razorcoil.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_static_flora_shared_flora_bush_talus_razorcoil = SharedStaticObjectTempla
 
 	clientObjectCRC = 1622915798,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_bush_talus_razorcoil, "object/static/flora/shared_flora_bush_talus_razorcoil.iff")
 
 object_static_flora_shared_flora_bush_yavin_blueleaf = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_bush_yavin_blueleaf.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/shrb_blueleaf.apt",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_static_flora_shared_flora_bush_yavin_blueleaf = SharedStaticObjectTemplat
 
 	clientObjectCRC = 4112833826,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_bush_yavin_blueleaf, "object/static/flora/shared_flora_bush_yavin_blueleaf.iff")
 
 object_static_flora_shared_flora_decd_dath_azerontree = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_decd_dath_azerontree.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_dath_azerontree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -307,11 +330,15 @@ object_static_flora_shared_flora_decd_dath_azerontree = SharedStaticObjectTempla
 
 	clientObjectCRC = 1303000302,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_dath_azerontree, "object/static/flora/shared_flora_decd_dath_azerontree.iff")
 
 object_static_flora_shared_flora_decd_dath_blacktree = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_decd_dath_blacktree.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_dath_blacktree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -352,11 +379,15 @@ object_static_flora_shared_flora_decd_dath_blacktree = SharedStaticObjectTemplat
 
 	clientObjectCRC = 1239955396,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_dath_blacktree, "object/static/flora/shared_flora_decd_dath_blacktree.iff")
 
 object_static_flora_shared_flora_decd_endr_destree_dead = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_decd_endr_destree_dead.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_endr_destree_dead.apt",
 	arrangementDescriptorFilename = "",
 
@@ -397,11 +428,15 @@ object_static_flora_shared_flora_decd_endr_destree_dead = SharedStaticObjectTemp
 
 	clientObjectCRC = 3087503053,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_endr_destree_dead, "object/static/flora/shared_flora_decd_endr_destree_dead.iff")
 
 object_static_flora_shared_flora_decd_scorched_massassi = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_decd_scorched_massassi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_scorched_massassi.apt",
 	arrangementDescriptorFilename = "",
 
@@ -442,11 +477,15 @@ object_static_flora_shared_flora_decd_scorched_massassi = SharedStaticObjectTemp
 
 	clientObjectCRC = 1850241596,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_scorched_massassi, "object/static/flora/shared_flora_decd_scorched_massassi.iff")
 
 object_static_flora_shared_flora_decd_scorched_massassi_broke = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_decd_scorched_massassi_broke.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_scorched_massassi_broke.apt",
 	arrangementDescriptorFilename = "",
 
@@ -487,11 +526,15 @@ object_static_flora_shared_flora_decd_scorched_massassi_broke = SharedStaticObje
 
 	clientObjectCRC = 1334140957,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_scorched_massassi_broke, "object/static/flora/shared_flora_decd_scorched_massassi_broke.iff")
 
 object_static_flora_shared_flora_decd_scorched_tallbirch = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_decd_scorched_tallbirch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_scorched_tallbirch.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +575,15 @@ object_static_flora_shared_flora_decd_scorched_tallbirch = SharedStaticObjectTem
 
 	clientObjectCRC = 4131259780,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_scorched_tallbirch, "object/static/flora/shared_flora_decd_scorched_tallbirch.iff")
 
 object_static_flora_shared_flora_decd_scorched_tallbirch_broke = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_decd_scorched_tallbirch_broke.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_scorched_tallbirch_broke.apt",
 	arrangementDescriptorFilename = "",
 
@@ -577,11 +624,15 @@ object_static_flora_shared_flora_decd_scorched_tallbirch_broke = SharedStaticObj
 
 	clientObjectCRC = 2780610841,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_decd_scorched_tallbirch_broke, "object/static/flora/shared_flora_decd_scorched_tallbirch_broke.iff")
 
 object_static_flora_shared_flora_flower_all_bauhin = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_flower_all_bauhin.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/flow_bauhin.apt",
 	arrangementDescriptorFilename = "",
 
@@ -622,11 +673,15 @@ object_static_flora_shared_flora_flower_all_bauhin = SharedStaticObjectTemplate:
 
 	clientObjectCRC = 2323835715,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_flower_all_bauhin, "object/static/flora/shared_flora_flower_all_bauhin.iff")
 
 object_static_flora_shared_flora_flower_endor_scrubwort = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_flower_endor_scrubwort.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/flow_endr_scrubwort.apt",
 	arrangementDescriptorFilename = "",
 
@@ -667,11 +722,15 @@ object_static_flora_shared_flora_flower_endor_scrubwort = SharedStaticObjectTemp
 
 	clientObjectCRC = 1951625577,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_flower_endor_scrubwort, "object/static/flora/shared_flora_flower_endor_scrubwort.iff")
 
 object_static_flora_shared_flora_flower_tato_funnel = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_flower_tato_funnel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/flow_tatt_funnel_lrg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -712,11 +771,15 @@ object_static_flora_shared_flora_flower_tato_funnel = SharedStaticObjectTemplate
 
 	clientObjectCRC = 3210762519,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_flower_tato_funnel, "object/static/flora/shared_flora_flower_tato_funnel.iff")
 
 object_static_flora_shared_flora_flower_tato_funnel_med = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_flower_tato_funnel_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/flow_tatt_funnel_med.apt",
 	arrangementDescriptorFilename = "",
 
@@ -757,11 +820,15 @@ object_static_flora_shared_flora_flower_tato_funnel_med = SharedStaticObjectTemp
 
 	clientObjectCRC = 1114511484,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_flower_tato_funnel_med, "object/static/flora/shared_flora_flower_tato_funnel_med.iff")
 
 object_static_flora_shared_flora_flower_tato_funnel_sm = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_flower_tato_funnel_sm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/flow_tatt_funnel_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -802,11 +869,15 @@ object_static_flora_shared_flora_flower_tato_funnel_sm = SharedStaticObjectTempl
 
 	clientObjectCRC = 3419088004,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_flower_tato_funnel_sm, "object/static/flora/shared_flora_flower_tato_funnel_sm.iff")
 
 object_static_flora_shared_flora_plant_tato_falotil = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_plant_tato_falotil.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/succ_tatt_falotil_nuts.apt",
 	arrangementDescriptorFilename = "",
 
@@ -847,11 +918,15 @@ object_static_flora_shared_flora_plant_tato_falotil = SharedStaticObjectTemplate
 
 	clientObjectCRC = 3330222752,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_plant_tato_falotil, "object/static/flora/shared_flora_plant_tato_falotil.iff")
 
 object_static_flora_shared_flora_plant_tato_falotil_bare = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_plant_tato_falotil_bare.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/succ_tatt_falotil_bare.apt",
 	arrangementDescriptorFilename = "",
 
@@ -892,11 +967,15 @@ object_static_flora_shared_flora_plant_tato_falotil_bare = SharedStaticObjectTem
 
 	clientObjectCRC = 3257873338,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_plant_tato_falotil_bare, "object/static/flora/shared_flora_plant_tato_falotil_bare.iff")
 
 object_static_flora_shared_flora_plant_tato_hubba = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_plant_tato_hubba.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/succ_tatt_hubba_lrg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -937,11 +1016,15 @@ object_static_flora_shared_flora_plant_tato_hubba = SharedStaticObjectTemplate:n
 
 	clientObjectCRC = 998793848,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_plant_tato_hubba, "object/static/flora/shared_flora_plant_tato_hubba.iff")
 
 object_static_flora_shared_flora_plant_tato_pika = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_plant_tato_pika.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/succ_tatt_pika_solo.apt",
 	arrangementDescriptorFilename = "",
 
@@ -982,11 +1065,15 @@ object_static_flora_shared_flora_plant_tato_pika = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 2097396056,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_plant_tato_pika, "object/static/flora/shared_flora_plant_tato_pika.iff")
 
 object_static_flora_shared_flora_plant_tato_pika_tri = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_plant_tato_pika_tri.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/succ_tatt_pika_tri.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1114,15 @@ object_static_flora_shared_flora_plant_tato_pika_tri = SharedStaticObjectTemplat
 
 	clientObjectCRC = 753105168,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_plant_tato_pika_tri, "object/static/flora/shared_flora_plant_tato_pika_tri.iff")
 
 object_static_flora_shared_flora_shrb_dath_glingi = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_shrb_dath_glingi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/shrb_dath_glingi.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1072,11 +1163,15 @@ object_static_flora_shared_flora_shrb_dath_glingi = SharedStaticObjectTemplate:n
 
 	clientObjectCRC = 4134879921,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_shrb_dath_glingi, "object/static/flora/shared_flora_shrb_dath_glingi.iff")
 
 object_static_flora_shared_flora_tree_lok_mkpud = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_tree_lok_mkpud.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_lok_mkpud.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1117,11 +1212,15 @@ object_static_flora_shared_flora_tree_lok_mkpud = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 3776365618,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_lok_mkpud, "object/static/flora/shared_flora_tree_lok_mkpud.iff")
 
 object_static_flora_shared_flora_tree_palm_fngi = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_tree_palm_fngi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ever_palmtree_fngi.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1162,11 +1261,15 @@ object_static_flora_shared_flora_tree_palm_fngi = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 2866142506,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_palm_fngi, "object/static/flora/shared_flora_tree_palm_fngi.iff")
 
 object_static_flora_shared_flora_tree_palm_sm = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_tree_palm_sm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ever_palmtree_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1207,11 +1310,15 @@ object_static_flora_shared_flora_tree_palm_sm = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 2535930087,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_palm_sm, "object/static/flora/shared_flora_tree_palm_sm.iff")
 
 object_static_flora_shared_flora_tree_palm_thk = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_tree_palm_thk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ever_palmtree_thk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1252,11 +1359,15 @@ object_static_flora_shared_flora_tree_palm_thk = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 758632558,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_palm_thk, "object/static/flora/shared_flora_tree_palm_thk.iff")
 
 object_static_flora_shared_flora_tree_rori_mkpodtree = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_tree_rori_mkpodtree.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_mkpodtree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1297,11 +1408,15 @@ object_static_flora_shared_flora_tree_rori_mkpodtree = SharedStaticObjectTemplat
 
 	clientObjectCRC = 1443720376,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_rori_mkpodtree, "object/static/flora/shared_flora_tree_rori_mkpodtree.iff")
 
 object_static_flora_shared_flora_tree_rori_windswept_s00 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_tree_rori_windswept_s00.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_windswept.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1342,11 +1457,15 @@ object_static_flora_shared_flora_tree_rori_windswept_s00 = SharedStaticObjectTem
 
 	clientObjectCRC = 4015418034,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_rori_windswept_s00, "object/static/flora/shared_flora_tree_rori_windswept_s00.iff")
 
 object_static_flora_shared_flora_tree_rori_windswept_s01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_tree_rori_windswept_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_windswept_a1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1387,11 +1506,15 @@ object_static_flora_shared_flora_tree_rori_windswept_s01 = SharedStaticObjectTem
 
 	clientObjectCRC = 2790985023,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_rori_windswept_s01, "object/static/flora/shared_flora_tree_rori_windswept_s01.iff")
 
 object_static_flora_shared_flora_tree_rori_windswept_s02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_tree_rori_windswept_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_windswept_a2.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1432,11 +1555,15 @@ object_static_flora_shared_flora_tree_rori_windswept_s02 = SharedStaticObjectTem
 
 	clientObjectCRC = 2102175144,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_rori_windswept_s02, "object/static/flora/shared_flora_tree_rori_windswept_s02.iff")
 
 object_static_flora_shared_flora_tree_rori_windswept_s03 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_tree_rori_windswept_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_windswept_a3.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1477,11 +1604,15 @@ object_static_flora_shared_flora_tree_rori_windswept_s03 = SharedStaticObjectTem
 
 	clientObjectCRC = 876724773,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_rori_windswept_s03, "object/static/flora/shared_flora_tree_rori_windswept_s03.iff")
 
 object_static_flora_shared_flora_tree_tato_touchnot = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_flora_tree_tato_touchnot.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/decd_touchnot1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1653,15 @@ object_static_flora_shared_flora_tree_tato_touchnot = SharedStaticObjectTemplate
 
 	clientObjectCRC = 1020776426,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_flora_tree_tato_touchnot, "object/static/flora/shared_flora_tree_tato_touchnot.iff")
 
 object_static_flora_shared_potted_plant_flowers_orange = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_potted_plant_flowers_orange.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1567,11 +1702,15 @@ object_static_flora_shared_potted_plant_flowers_orange = SharedStaticObjectTempl
 
 	clientObjectCRC = 248082179,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_potted_plant_flowers_orange, "object/static/flora/shared_potted_plant_flowers_orange.iff")
 
 object_static_flora_shared_potted_plant_flowers_purple = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_potted_plant_flowers_purple.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1612,11 +1751,15 @@ object_static_flora_shared_potted_plant_flowers_purple = SharedStaticObjectTempl
 
 	clientObjectCRC = 3892348345,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_potted_plant_flowers_purple, "object/static/flora/shared_potted_plant_flowers_purple.iff")
 
 object_static_flora_shared_potted_plant_leaves_fern = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_potted_plant_leaves_fern.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1657,11 +1800,15 @@ object_static_flora_shared_potted_plant_leaves_fern = SharedStaticObjectTemplate
 
 	clientObjectCRC = 877469590,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_potted_plant_leaves_fern, "object/static/flora/shared_potted_plant_leaves_fern.iff")
 
 object_static_flora_shared_potted_plant_leaves_ivy = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_potted_plant_leaves_ivy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1702,11 +1849,15 @@ object_static_flora_shared_potted_plant_leaves_ivy = SharedStaticObjectTemplate:
 
 	clientObjectCRC = 1315610543,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_potted_plant_leaves_ivy, "object/static/flora/shared_potted_plant_leaves_ivy.iff")
 
 object_static_flora_shared_potted_plant_leaves_small = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/flora/shared_potted_plant_leaves_small.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_all_potted_plants_sml_s05.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1747,6 +1898,7 @@ object_static_flora_shared_potted_plant_leaves_small = SharedStaticObjectTemplat
 
 	clientObjectCRC = 622948670,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/flora/shared_flora_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_flora_shared_potted_plant_leaves_small, "object/static/flora/shared_potted_plant_leaves_small.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_component_vehicle_base_shared_base_armor_panel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/vehicle/base/shared_base_armor_panel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_component_vehicle_base_shared_base_armor_panel = SharedTangibleO
 
 	clientObjectCRC = 3466579247,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_armor_panel, "object/tangible/component/vehicle/base/shared_base_armor_panel.iff")
 
 object_tangible_component_vehicle_base_shared_base_veh_hull = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/vehicle/base/shared_base_veh_hull.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_component_vehicle_base_shared_base_veh_hull = SharedTangibleObje
 
 	clientObjectCRC = 3375082309,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_hull, "object/tangible/component/vehicle/base/shared_base_veh_hull.iff")
 
 object_tangible_component_vehicle_base_shared_base_veh_hull_hvy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/vehicle/base/shared_base_veh_hull_hvy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_component_vehicle_base_shared_base_veh_hull_hvy = SharedTangible
 
 	clientObjectCRC = 1342686472,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_hull_hvy, "object/tangible/component/vehicle/base/shared_base_veh_hull_hvy.iff")
 
 object_tangible_component_vehicle_base_shared_base_veh_weapon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/vehicle/base/shared_base_veh_weapon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon = SharedTangibleOb
 
 	clientObjectCRC = 3126672435,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_weapon, "object/tangible/component/vehicle/base/shared_base_veh_weapon.iff")
 
 object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy = SharedTangib
 
 	clientObjectCRC = 4158223239,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_component_vehicle_base_shared_base_veh_weapon_hvy, "object/tangible/component/vehicle/base/shared_base_veh_weapon_hvy.iff")

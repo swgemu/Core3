@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_hanadak_shared_lair_hanadak = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/hanadak/shared_lair_hanadak.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_hanadak_shared_lair_hanadak = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2197561822,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_hanadak_shared_lair_hanadak, "object/tangible/lair/hanadak/shared_lair_hanadak.iff")
 
 object_tangible_lair_hanadak_shared_lair_hanadak_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/hanadak/shared_lair_hanadak_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_hanadak_shared_lair_hanadak_mountain = SharedTangibleObject
 
 	clientObjectCRC = 2169247668,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_hanadak_shared_lair_hanadak_mountain, "object/tangible/lair/hanadak/shared_lair_hanadak_mountain.iff")

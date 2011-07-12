@@ -42,6 +42,9 @@
 
 
 object_tangible_food_spice_shared_spice_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_bowl_full_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_food_spice_shared_spice_base = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 2073269551,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_base, "object/tangible/food/spice/shared_spice_base.iff")
 
 object_tangible_food_spice_shared_spice_booster_blue = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_booster_blue.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_poison_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_food_spice_shared_spice_booster_blue = SharedTangibleObjectTempl
 
 	clientObjectCRC = 2516008025,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_booster_blue, "object/tangible/food/spice/shared_spice_booster_blue.iff")
 
 object_tangible_food_spice_shared_spice_crash_n_burn = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_crash_n_burn.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_antidote_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_food_spice_shared_spice_crash_n_burn = SharedTangibleObjectTempl
 
 	clientObjectCRC = 96283804,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_crash_n_burn, "object/tangible/food/spice/shared_spice_crash_n_burn.iff")
 
 object_tangible_food_spice_shared_spice_droid_lube = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_droid_lube.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_food_spice_shared_spice_droid_lube = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1700944368,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_droid_lube, "object/tangible/food/spice/shared_spice_droid_lube.iff")
 
 object_tangible_food_spice_shared_spice_giggledust = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_giggledust.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_food_spice_shared_spice_giggledust = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1878192398,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_giggledust, "object/tangible/food/spice/shared_spice_giggledust.iff")
 
 object_tangible_food_spice_shared_spice_grey_gabaki = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_grey_gabaki.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_spice_container.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_food_spice_shared_spice_grey_gabaki = SharedTangibleObjectTempla
 
 	clientObjectCRC = 4012257661,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_grey_gabaki, "object/tangible/food/spice/shared_spice_grey_gabaki.iff")
 
 object_tangible_food_spice_shared_spice_gunjack = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_gunjack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_antidote_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_food_spice_shared_spice_gunjack = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 3162646760,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_gunjack, "object/tangible/food/spice/shared_spice_gunjack.iff")
 
 object_tangible_food_spice_shared_spice_kliknik_boost = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_kliknik_boost.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_food_spice_shared_spice_kliknik_boost = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2365942016,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_kliknik_boost, "object/tangible/food/spice/shared_spice_kliknik_boost.iff")
 
 object_tangible_food_spice_shared_spice_kwi_boost = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_kwi_boost.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_meat_loaf_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_food_spice_shared_spice_kwi_boost = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 3381348892,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_kwi_boost, "object/tangible/food/spice/shared_spice_kwi_boost.iff")
 
 object_tangible_food_spice_shared_spice_muon_gold = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_muon_gold.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_medpak_broad_spectrum.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_food_spice_shared_spice_muon_gold = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 3112742541,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_muon_gold, "object/tangible/food/spice/shared_spice_muon_gold.iff")
 
 object_tangible_food_spice_shared_spice_neutron_pixey = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_neutron_pixey.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_medic_stimpack_sm_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_food_spice_shared_spice_neutron_pixey = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3750021953,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_neutron_pixey, "object/tangible/food/spice/shared_spice_neutron_pixey.iff")
 
 object_tangible_food_spice_shared_spice_pyrepenol = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_pyrepenol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_sp_ppack_bomb.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_food_spice_shared_spice_pyrepenol = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 1073230239,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_pyrepenol, "object/tangible/food/spice/shared_spice_pyrepenol.iff")
 
 object_tangible_food_spice_shared_spice_scramjet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_scramjet.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/con_man_chemicals_sm.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_food_spice_shared_spice_scramjet = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 3992242678,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_scramjet, "object/tangible/food/spice/shared_spice_scramjet.iff")
 
 object_tangible_food_spice_shared_spice_sedative_h4b = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_sedative_h4b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_chemical_dispersion.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_food_spice_shared_spice_sedative_h4b = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4072023421,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_sedative_h4b, "object/tangible/food/spice/shared_spice_sedative_h4b.iff")
 
 object_tangible_food_spice_shared_spice_shadowpaw = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_shadowpaw.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_food_spice_shared_spice_shadowpaw = SharedTangibleObjectTemplate
 
 	clientObjectCRC = 2778111395,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_shadowpaw, "object/tangible/food/spice/shared_spice_shadowpaw.iff")
 
 object_tangible_food_spice_shared_spice_sweetblossom = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_sweetblossom.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_tato_jar_spice_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_food_spice_shared_spice_sweetblossom = SharedTangibleObjectTempl
 
 	clientObjectCRC = 1182200956,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_sweetblossom, "object/tangible/food/spice/shared_spice_sweetblossom.iff")
 
 object_tangible_food_spice_shared_spice_thruster_head = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_thruster_head.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_warhead_chemical.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_food_spice_shared_spice_thruster_head = SharedTangibleObjectTemp
 
 	clientObjectCRC = 732545867,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_thruster_head, "object/tangible/food/spice/shared_spice_thruster_head.iff")
 
 object_tangible_food_spice_shared_spice_yarrock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/food/spice/shared_spice_yarrock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_food_vegetable_s5.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,6 +1098,7 @@ object_tangible_food_spice_shared_spice_yarrock = SharedTangibleObjectTemplate:n
 
 	clientObjectCRC = 194250139,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/food/spice/shared_spice_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_food_spice_shared_spice_yarrock, "object/tangible/food/spice/shared_spice_yarrock.iff")

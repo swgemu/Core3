@@ -42,6 +42,9 @@
 
 
 object_tangible_furniture_tatooine_shared_frn_tato_cafe_parasol = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_cafe_parasol.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_cafe_parasol_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_cafe_parasol = SharedTangible
 
 	clientObjectCRC = 1908855481,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_cafe_parasol, "object/tangible/furniture/tatooine/shared_frn_tato_cafe_parasol.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_chair_cafe_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_chair_cafe_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01 = SharedT
 
 	clientObjectCRC = 2164191436,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_chair_cafe_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_chair_cafe_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_chair_cafe_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02 = SharedT
 
 	clientObjectCRC = 1542019163,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_chair_cafe_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_chair_cafe_style_02.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_fruit_stand_large_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_fruit_stand_large_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01 = 
 
 	clientObjectCRC = 3245057821,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_large_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_fruit_stand_large_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_fruit_stand_small_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_fruit_stand_sml_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01 = 
 
 	clientObjectCRC = 3779547307,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_fruit_stand_small_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_fruit_stand_small_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_meat_rack = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_meat_rack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_meat_rack.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_meat_rack = SharedTangibleObj
 
 	clientObjectCRC = 3789730782,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_meat_rack, "object/tangible/furniture/tatooine/shared_frn_tato_meat_rack.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_table_small_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01 = Shared
 
 	clientObjectCRC = 507352168,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_table_small_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02 = Shared
 
 	clientObjectCRC = 3307879679,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_02.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_table_small_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03 = Shared
 
 	clientObjectCRC = 2351389554,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_table_small_style_03, "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_03.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_tbl_cafe_table_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_tbl_cafe_table_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,11 +626,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01 = Sha
 
 	clientObjectCRC = 4223928616,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_tbl_cafe_table_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_tbl_cafe_table_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_vase_style_01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_vase_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -642,11 +685,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01 = SharedTangibl
 
 	clientObjectCRC = 2957326043,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_vase_style_01, "object/tangible/furniture/tatooine/shared_frn_tato_vase_style_01.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tato_vase_style_02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/frn_tato_vase_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -697,11 +744,15 @@ object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02 = SharedTangibl
 
 	clientObjectCRC = 1800576588,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tato_vase_style_02, "object/tangible/furniture/tatooine/shared_frn_tato_vase_style_02.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tatt_cantina_droid_detector.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_droid_detector.apt",
 	arrangementDescriptorFilename = "",
 
@@ -752,11 +803,15 @@ object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector = Shar
 
 	clientObjectCRC = 1910356061,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_cantina_droid_detector, "object/tangible/furniture/tatooine/shared_frn_tatt_cantina_droid_detector.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_frn_chair_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -807,11 +862,15 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat = SharedTa
 
 	clientObjectCRC = 4257932604,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_frn_chair_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -862,11 +921,15 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2 = Shared
 
 	clientObjectCRC = 2639715831,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_2, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat_2.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_frn_chair_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -917,11 +980,15 @@ object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3 = Shared
 
 	clientObjectCRC = 3562781306,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_chair_cantina_seat_3, "object/tangible/furniture/tatooine/shared_frn_tatt_chair_cantina_seat_3.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_frn_table_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -972,11 +1039,15 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1 = Share
 
 	clientObjectCRC = 2174626788,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_1, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_1.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_frn_table_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1098,15 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2 = Share
 
 	clientObjectCRC = 1518961523,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_2, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_2.iff")
 
 object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_frn_table_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1082,6 +1157,7 @@ object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3 = Share
 
 	clientObjectCRC = 327476478,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/furniture/base/shared_furniture_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_furniture_tatooine_shared_frn_tatt_table_cantina_table_3, "object/tangible/furniture/tatooine/shared_frn_tatt_table_cantina_table_3.iff")

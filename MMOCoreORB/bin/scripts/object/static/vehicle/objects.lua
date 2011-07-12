@@ -42,6 +42,9 @@
 
 
 object_static_vehicle_shared_player_shuttle = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/vehicle/shared_player_shuttle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/shuttle.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_vehicle_shared_player_shuttle = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 3753376188,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_player_shuttle, "object/static/vehicle/shared_player_shuttle.iff")
 
 object_static_vehicle_shared_static_lambda_shuttle = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/vehicle/shared_static_lambda_shuttle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/lambda_shuttle_static_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_vehicle_shared_static_lambda_shuttle = SharedStaticObjectTemplate:
 
 	clientObjectCRC = 520035504,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_lambda_shuttle, "object/static/vehicle/shared_static_lambda_shuttle.iff")
 
 object_static_vehicle_shared_static_sandcrawler = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/vehicle/shared_static_sandcrawler.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/sandcrawler.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_static_vehicle_shared_static_sandcrawler = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 1560527030,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_sandcrawler, "object/static/vehicle/shared_static_sandcrawler.iff")
 
 object_static_vehicle_shared_static_speeder_bike = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/vehicle/shared_static_speeder_bike.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/speeder_bike.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_static_vehicle_shared_static_speeder_bike = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 1319374106,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_speeder_bike, "object/static/vehicle/shared_static_speeder_bike.iff")
 
 object_static_vehicle_shared_static_swoop_bike = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/vehicle/shared_static_swoop_bike.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/swoop_bike.apt",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_static_vehicle_shared_static_swoop_bike = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 1844639584,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_swoop_bike, "object/static/vehicle/shared_static_swoop_bike.iff")
 
 object_static_vehicle_shared_static_tie_bomber = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/vehicle/shared_static_tie_bomber.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_bomber.apt",
 	arrangementDescriptorFilename = "",
 
@@ -307,11 +330,15 @@ object_static_vehicle_shared_static_tie_bomber = SharedStaticObjectTemplate:new 
 
 	clientObjectCRC = 4082501071,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_tie_bomber, "object/static/vehicle/shared_static_tie_bomber.iff")
 
 object_static_vehicle_shared_static_tie_fighter = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/vehicle/shared_static_tie_fighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter_static.apt",
 	arrangementDescriptorFilename = "",
 
@@ -352,6 +379,7 @@ object_static_vehicle_shared_static_tie_fighter = SharedStaticObjectTemplate:new
 
 	clientObjectCRC = 1095801974,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_vehicle_shared_static_tie_fighter, "object/static/vehicle/shared_static_tie_fighter.iff")

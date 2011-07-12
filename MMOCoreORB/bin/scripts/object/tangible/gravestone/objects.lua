@@ -42,6 +42,9 @@
 
 
 object_tangible_gravestone_shared_gravestone01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gravestone/shared_gravestone01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_gravestone_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_gravestone_shared_gravestone01 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 479064205,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone01, "object/tangible/gravestone/shared_gravestone01.iff")
 
 object_tangible_gravestone_shared_gravestone02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gravestone/shared_gravestone02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_gravestone_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_gravestone_shared_gravestone02 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3348781082,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone02, "object/tangible/gravestone/shared_gravestone02.iff")
 
 object_tangible_gravestone_shared_gravestone03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gravestone/shared_gravestone03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_gravestone_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_gravestone_shared_gravestone03 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2392276887,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone03, "object/tangible/gravestone/shared_gravestone03.iff")
 
 object_tangible_gravestone_shared_gravestone04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gravestone/shared_gravestone04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_gravestone_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_gravestone_shared_gravestone04 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1970541699,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone04, "object/tangible/gravestone/shared_gravestone04.iff")
 
 object_tangible_gravestone_shared_gravestone05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/gravestone/shared_gravestone05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_gravestone_s05.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_gravestone_shared_gravestone05 = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1014592270,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_gravestone_shared_gravestone05, "object/tangible/gravestone/shared_gravestone05.iff")

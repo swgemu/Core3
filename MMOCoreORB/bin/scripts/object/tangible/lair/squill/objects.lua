@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_squill_shared_lair_squill = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/squill/shared_lair_squill.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_squill_shared_lair_squill = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1781856165,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_bramble_dark.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_squill_shared_lair_squill, "object/tangible/lair/squill/shared_lair_squill.iff")
 
 object_tangible_lair_squill_shared_lair_squill_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/squill/shared_lair_squill_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_bramble.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_squill_shared_lair_squill_desert = SharedTangibleObjectTemp
 
 	clientObjectCRC = 2102372943,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_mound_bramble_dark.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_squill_shared_lair_squill_desert, "object/tangible/lair/squill/shared_lair_squill_desert.iff")

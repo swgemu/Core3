@@ -42,6 +42,9 @@
 
 
 object_tangible_hair_base_shared_hair_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/hair/base/shared_hair_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hair.iff",
 
@@ -92,6 +95,7 @@ object_tangible_hair_base_shared_hair_base = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 1570783223,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_hair_base_shared_hair_base, "object/tangible/hair/base/shared_hair_base.iff")

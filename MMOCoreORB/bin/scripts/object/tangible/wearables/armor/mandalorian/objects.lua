@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_belt.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_mandalorian_belt_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/belt.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt = Shar
 
 	clientObjectCRC = 1505873604,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_belt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_belt, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_belt.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_mandalorian_bicep_l_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_l.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l = S
 
 	clientObjectCRC = 2184224460,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_l, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_l.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_mandalorian_bicep_r_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bicep_r.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r = S
 
 	clientObjectCRC = 4075150175,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bicep_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bicep_r, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bicep_r.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_l.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_mandalorian_bracer_l_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_l.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l = 
 
 	clientObjectCRC = 4163428868,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_l.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_l, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_l.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_r.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_mandalorian_bracer_r_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/bracer_r.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r = 
 
 	clientObjectCRC = 2298324887,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_bracer_r.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_bracer_r, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_bracer_r.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_chest_plate.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_mandalorian_chest_plate_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/vest.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate
 
 	clientObjectCRC = 609377308,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_vest.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_chest_plate, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_chest_plate.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_gloves.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_mandalorian_gloves_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/gauntlets.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves = Sh
 
 	clientObjectCRC = 2170849590,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_gauntlets.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_gloves, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_gloves.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_helmet.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_mandalorian_helmet_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet = Sh
 
 	clientObjectCRC = 933521470,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_helmet, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_helmet.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_leggings.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_mandalorian_leggings_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/pant_leggings.iff",
 
@@ -532,11 +567,15 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings = 
 
 	clientObjectCRC = 1997291291,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_skirt.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_leggings, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_leggings.iff")
 
 object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_shoes.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/armor_mandalorian_shoes_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/shoe.iff",
 
@@ -587,6 +626,7 @@ object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes = Sha
 
 	clientObjectCRC = 2225952259,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_shoes.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_armor_mandalorian_shared_armor_mandalorian_shoes, "object/tangible/wearables/armor/mandalorian/shared_armor_mandalorian_shoes.iff")

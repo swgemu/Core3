@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_ikopi_shared_lair_ikopi = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/ikopi/shared_lair_ikopi.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_ikopi_shared_lair_ikopi = SharedTangibleObjectTemplate:new 
 
 	clientObjectCRC = 1653632566,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_ikopi_shared_lair_ikopi, "object/tangible/lair/ikopi/shared_lair_ikopi.iff")
 
 object_tangible_lair_ikopi_shared_lair_ikopi_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/ikopi/shared_lair_ikopi_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_earthmound_dark.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_ikopi_shared_lair_ikopi_grassland = SharedTangibleObjectTem
 
 	clientObjectCRC = 852367209,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_ikopi_shared_lair_ikopi_grassland, "object/tangible/lair/ikopi/shared_lair_ikopi_grassland.iff")

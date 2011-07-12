@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_base_shared_deed_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/base/shared_deed_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_deed_base_shared_deed_base = SharedTangibleObjectTemplate:new {
 
 	clientObjectCRC = 3216787509,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_deed_base, "object/tangible/deed/base/shared_deed_base.iff")
 
 object_tangible_deed_base_shared_deed_building_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/base/shared_deed_building_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_deed_base_shared_deed_building_base = SharedTangibleObjectTempla
 
 	clientObjectCRC = 2878588829,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_deed_building_base, "object/tangible/deed/base/shared_deed_building_base.iff")
 
 object_tangible_deed_base_shared_deed_installation_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/base/shared_deed_installation_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_deed_base_shared_deed_installation_base = SharedTangibleObjectTe
 
 	clientObjectCRC = 3225611811,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_deed_installation_base, "object/tangible/deed/base/shared_deed_installation_base.iff")
 
 object_tangible_deed_base_shared_pet_deed_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/base/shared_pet_deed_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_deed_base_shared_pet_deed_base = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 2503565638,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_pet_deed_base, "object/tangible/deed/base/shared_pet_deed_base.iff")
 
 object_tangible_deed_base_shared_pet_droid_deed_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/deed/base/shared_pet_droid_deed_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_datapad.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,6 +331,7 @@ object_tangible_deed_base_shared_pet_droid_deed_base = SharedTangibleObjectTempl
 
 	clientObjectCRC = 4079953693,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/deed/base/shared_pet_deed_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_deed_base_shared_pet_droid_deed_base, "object/tangible/deed/base/shared_pet_droid_deed_base.iff")

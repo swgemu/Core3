@@ -42,6 +42,9 @@
 
 
 object_weapon_melee_2h_sword_shared_2h_sword_battleaxe = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_2h_sword_axe_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_melee_2h_sword_shared_2h_sword_battleaxe = SharedWeaponObjectTempl
 
 	clientObjectCRC = 3488117788,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_battleaxe, "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_2h_sword_axe_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -155,11 +162,15 @@ object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest = SharedWeaponObjec
 
 	clientObjectCRC = 2823273971,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff", "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_battleaxe_quest, "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe_quest.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/2h_sword/shared_2h_sword_blacksun_hack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_2h_sword_blacksun_hack.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -214,11 +225,15 @@ object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack = SharedWeaponObjectT
 
 	clientObjectCRC = 1699236305,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_blacksun_hack, "object/weapon/melee/2h_sword/shared_2h_sword_blacksun_hack.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_cleaver = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/2h_sword/shared_2h_sword_cleaver.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_2h_sword_s02.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -273,11 +288,15 @@ object_weapon_melee_2h_sword_shared_2h_sword_cleaver = SharedWeaponObjectTemplat
 
 	clientObjectCRC = 1737909268,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_cleaver, "object/weapon/melee/2h_sword/shared_2h_sword_cleaver.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_katana = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/2h_sword/shared_2h_sword_katana.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_2h_sword_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -332,11 +351,15 @@ object_weapon_melee_2h_sword_shared_2h_sword_katana = SharedWeaponObjectTemplate
 
 	clientObjectCRC = 1688331731,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_katana, "object/weapon/melee/2h_sword/shared_2h_sword_katana.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_katana_quest = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/2h_sword/shared_2h_sword_katana_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_2h_sword_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -391,11 +414,15 @@ object_weapon_melee_2h_sword_shared_2h_sword_katana_quest = SharedWeaponObjectTe
 
 	clientObjectCRC = 2213862016,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff", "object/weapon/melee/2h_sword/shared_2h_sword_katana.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_katana_quest, "object/weapon/melee/2h_sword/shared_2h_sword_katana_quest.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_maul = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_2h_sword_maul_s01.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -450,11 +477,15 @@ object_weapon_melee_2h_sword_shared_2h_sword_maul = SharedWeaponObjectTemplate:n
 
 	clientObjectCRC = 248141391,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_maul, "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff")
 
 object_weapon_melee_2h_sword_shared_2h_sword_scythe = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/wp_mle_2h_sword_s03.apt",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -509,6 +540,7 @@ object_weapon_melee_2h_sword_shared_2h_sword_scythe = SharedWeaponObjectTemplate
 
 	clientObjectCRC = 3006583634,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff", "object/weapon/melee/base/shared_base_melee.iff", "object/weapon/melee/2h_sword/base/shared_2h_sword_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_melee_2h_sword_shared_2h_sword_scythe, "object/weapon/melee/2h_sword/shared_2h_sword_scythe.iff")

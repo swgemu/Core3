@@ -98,6 +98,10 @@ public:
 		return treeDirectory->getDirectory(path);
 	}
 
+	inline bool containsTemplateType(uint32 type) {
+		return templateFactory.containsObject(type);
+	}
+
 	FloorMesh* getFloorMesh(const String& fileName);
 	PortalLayout* getPortalLayout(const String& fileName);
 	AppearanceTemplate* getAppearanceTemplate(const String& fileName);

@@ -42,6 +42,9 @@
 
 
 object_static_terrain_base_shared_static_terrain_base = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/terrain/base/shared_static_terrain_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_static_terrain_base_shared_static_terrain_base = SharedStaticObjectTempla
 
 	clientObjectCRC = 2890795531,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_terrain_base_shared_static_terrain_base, "object/static/terrain/base/shared_static_terrain_base.iff")

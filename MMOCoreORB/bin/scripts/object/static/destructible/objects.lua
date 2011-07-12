@@ -42,6 +42,9 @@
 
 
 object_static_destructible_shared_destructible_cave_wall_damprock = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/static/destructible/shared_destructible_cave_wall_damprock.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_all_cavewall_damprock_a1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_static_destructible_shared_destructible_cave_wall_damprock = SharedTangib
 
 	clientObjectCRC = 918998876,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_cave_wall_damprock, "object/static/destructible/shared_destructible_cave_wall_damprock.iff")
 
 object_static_destructible_shared_destructible_item_barrel = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/static/destructible/shared_destructible_item_barrel.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_barrel_lg_s1.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_static_destructible_shared_destructible_item_barrel = SharedTangibleObjec
 
 	clientObjectCRC = 4179770460,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_item_barrel, "object/static/destructible/shared_destructible_item_barrel.iff")
 
 object_static_destructible_shared_destructible_tato_cave_rock_lg = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/static/destructible/shared_destructible_tato_cave_rock_lg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_cave_rock_lrg.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_static_destructible_shared_destructible_tato_cave_rock_lg = SharedTangibl
 
 	clientObjectCRC = 2104939815,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_cave_rock_lg, "object/static/destructible/shared_destructible_tato_cave_rock_lg.iff")
 
 object_static_destructible_shared_destructible_tato_cave_rock_med = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/static/destructible/shared_destructible_tato_cave_rock_med.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_cave_rock_med.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_static_destructible_shared_destructible_tato_cave_rock_med = SharedTangib
 
 	clientObjectCRC = 3390669674,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_cave_rock_med, "object/static/destructible/shared_destructible_tato_cave_rock_med.iff")
 
 object_static_destructible_shared_destructible_tato_crate1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/static/destructible/shared_destructible_tato_crate1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_debris_s07.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_static_destructible_shared_destructible_tato_crate1 = SharedTangibleObjec
 
 	clientObjectCRC = 4003304122,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_crate1, "object/static/destructible/shared_destructible_tato_crate1.iff")
 
 object_static_destructible_shared_destructible_tato_drum_dented = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/static/destructible/shared_destructible_tato_drum_dented.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_debris_s09.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_static_destructible_shared_destructible_tato_drum_dented = SharedTangible
 
 	clientObjectCRC = 316155043,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_drum_dented, "object/static/destructible/shared_destructible_tato_drum_dented.iff")
 
 object_static_destructible_shared_destructible_tato_drum_storage1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/static/destructible/shared_destructible_tato_drum_storage1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_tato_debris_s05.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_static_destructible_shared_destructible_tato_drum_storage1 = SharedTangib
 
 	clientObjectCRC = 2157671754,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_destructible_tato_drum_storage1, "object/static/destructible/shared_destructible_tato_drum_storage1.iff")
 
 object_static_destructible_shared_gungan_sacred_head = SharedInstallationObjectTemplate:new {
+	clientTemplateFileName = "object/static/destructible/shared_gungan_sacred_head.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_nboo_gungan_sacred_head_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,6 +508,7 @@ object_static_destructible_shared_gungan_sacred_head = SharedInstallationObjectT
 
 	clientObjectCRC = 196750544,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/installation/base/shared_installation_base.iff", "object/installation/battlefield/destructible/base/shared_base_destructible_building.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_destructible_shared_gungan_sacred_head, "object/static/destructible/shared_gungan_sacred_head.iff")

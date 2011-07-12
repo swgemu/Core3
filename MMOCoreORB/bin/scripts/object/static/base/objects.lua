@@ -42,6 +42,9 @@
 
 
 object_static_base_shared_static_base = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/base/shared_static_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_base_shared_static_base = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 1732101595,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_base_shared_static_base, "object/static/base/shared_static_base.iff")
 
 object_static_base_shared_static_default = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/base/shared_static_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "",
 
@@ -127,6 +134,7 @@ object_static_base_shared_static_default = SharedStaticObjectTemplate:new {
 
 	clientObjectCRC = 4025184,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_base_shared_static_default, "object/static/base/shared_static_default.iff")

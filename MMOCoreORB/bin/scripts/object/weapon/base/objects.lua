@@ -42,6 +42,9 @@
 
 
 object_weapon_base_shared_base_weapon = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/base/shared_base_weapon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -96,11 +99,15 @@ object_weapon_base_shared_base_weapon = SharedWeaponObjectTemplate:new {
 
 	clientObjectCRC = 1343110417,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_base_shared_base_weapon, "object/weapon/base/shared_base_weapon.iff")
 
 object_weapon_base_shared_weapon_default = SharedWeaponObjectTemplate:new {
+	clientTemplateFileName = "object/weapon/base/shared_weapon_default.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/hold_r.iff",
 	attackType = 1,
@@ -155,6 +162,7 @@ object_weapon_base_shared_weapon_default = SharedWeaponObjectTemplate:new {
 
 	clientObjectCRC = 3295718930,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/weapon/base/shared_base_weapon.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_weapon_base_shared_weapon_default, "object/weapon/base/shared_weapon_default.iff")

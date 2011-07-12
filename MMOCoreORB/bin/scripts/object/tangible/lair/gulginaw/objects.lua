@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_gulginaw_shared_lair_gulginaw = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gulginaw/shared_lair_gulginaw.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 129775004,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw, "object/tangible/lair/gulginaw/shared_lair_gulginaw.iff")
 
 object_tangible_lair_gulginaw_shared_lair_gulginaw_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/gulginaw/shared_lair_gulginaw_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_gulginaw_shared_lair_gulginaw_forest = SharedTangibleObject
 
 	clientObjectCRC = 3528407820,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_gulginaw_shared_lair_gulginaw_forest, "object/tangible/lair/gulginaw/shared_lair_gulginaw_forest.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard = SharedTangibleO
 
 	clientObjectCRC = 908714854,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard.iff")
 
 object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland = Share
 
 	clientObjectCRC = 3526592210,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_grassland, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_grassland.iff")
 
 object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain = Shared
 
 	clientObjectCRC = 1883986886,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_voritor_lizard_shared_lair_voritor_lizard_mountain, "object/tangible/lair/voritor_lizard/shared_lair_voritor_lizard_mountain.iff")

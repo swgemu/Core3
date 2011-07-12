@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_helmet_shared_helmet_atat = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/helmet/shared_helmet_atat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/helmet_atat_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_helmet_shared_helmet_atat = SharedTangibleObjectTempla
 
 	clientObjectCRC = 4140396271,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_atat, "object/tangible/wearables/helmet/shared_helmet_atat.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/helmet/shared_helmet_fighter_blacksun_ace.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/helmet_fighter_blacksun_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace = SharedTang
 
 	clientObjectCRC = 430117123,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_blacksun_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_blacksun_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/helmet/shared_helmet_fighter_imperial_ace.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/helmet_fighter_imperial_ace_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace = SharedTang
 
 	clientObjectCRC = 2580358001,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_imperial_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_imperial_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/helmet/shared_helmet_fighter_privateer_ace.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/helmet_fighter_hutt_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace = SharedTan
 
 	clientObjectCRC = 1909608537,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_privateer_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_privateer_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/helmet/shared_helmet_fighter_rebel_ace.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/helmet_fighter_rebel_ace_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace = SharedTangibl
 
 	clientObjectCRC = 4143277653,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_fighter_rebel_ace, "object/tangible/wearables/helmet/shared_helmet_fighter_rebel_ace.iff")
 
 object_tangible_wearables_helmet_shared_helmet_s06 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/helmet/shared_helmet_s06.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/helmet_s06_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_helmet_shared_helmet_s06 = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 1007682682,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_s06, "object/tangible/wearables/helmet/shared_helmet_s06.iff")
 
 object_tangible_wearables_helmet_shared_helmet_tie_fighter = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/helmet/shared_helmet_tie_fighter.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/helmet_tie_fighter_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_helmet_shared_helmet_tie_fighter = SharedTangibleObjec
 
 	clientObjectCRC = 49314199,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_tie_fighter, "object/tangible/wearables/helmet/shared_helmet_tie_fighter.iff")
 
 object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/helmet_tusken_raider_s01_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01 = SharedTangibl
 
 	clientObjectCRC = 4156063051,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s01, "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s01.iff")
 
 object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/helmet_tusken_raider_s02_m.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/helmet_closed_full.iff",
 
@@ -532,6 +567,7 @@ object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02 = SharedTangibl
 
 	clientObjectCRC = 749721052,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_armor_base.iff", "object/tangible/wearables/base/shared_base_helmet_closed_full.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_helmet_shared_helmet_tusken_raider_s02, "object/tangible/wearables/helmet/shared_helmet_tusken_raider_s02.iff")

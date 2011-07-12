@@ -42,6 +42,9 @@
 
 
 object_tangible_container_food_shared_lunchbox_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/container/food/shared_lunchbox_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/edb_con_basket.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,6 +95,7 @@ object_tangible_container_food_shared_lunchbox_base = SharedTangibleObjectTempla
 
 	clientObjectCRC = 1773382797,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/container/base/shared_base_container.iff", "object/tangible/container/base/shared_base_container_volume.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_container_food_shared_lunchbox_base, "object/tangible/container/food/shared_lunchbox_base.iff")

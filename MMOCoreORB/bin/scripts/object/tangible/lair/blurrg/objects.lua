@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_blurrg_shared_lair_blurrg = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/blurrg/shared_lair_blurrg.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_blurrg_shared_lair_blurrg = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 3631991415,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_blurrg_shared_lair_blurrg, "object/tangible/lair/blurrg/shared_lair_blurrg.iff")
 
 object_tangible_lair_blurrg_shared_lair_blurrg_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/blurrg/shared_lair_blurrg_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_blurrg_shared_lair_blurrg_forest = SharedTangibleObjectTemp
 
 	clientObjectCRC = 399329773,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_blurrg_shared_lair_blurrg_forest, "object/tangible/lair/blurrg/shared_lair_blurrg_forest.iff")
 
 object_tangible_lair_blurrg_shared_lair_blurrg_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/blurrg/shared_lair_blurrg_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_blurrg_shared_lair_blurrg_mountain = SharedTangibleObjectTe
 
 	clientObjectCRC = 3043394661,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_blurrg_shared_lair_blurrg_mountain, "object/tangible/lair/blurrg/shared_lair_blurrg_mountain.iff")

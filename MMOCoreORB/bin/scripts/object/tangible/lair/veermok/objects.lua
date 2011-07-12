@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_veermok_shared_lair_veermok = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/veermok/shared_lair_veermok.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_veermok_shared_lair_veermok = SharedTangibleObjectTemplate:
 
 	clientObjectCRC = 2070384123,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok, "object/tangible/lair/veermok/shared_lair_veermok.iff")
 
 object_tangible_lair_veermok_shared_lair_veermok_forest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/veermok/shared_lair_veermok_forest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_veermok_shared_lair_veermok_forest = SharedTangibleObjectTe
 
 	clientObjectCRC = 4273060059,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok_forest, "object/tangible/lair/veermok/shared_lair_veermok_forest.iff")
 
 object_tangible_lair_veermok_shared_lair_veermok_swamp = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/veermok/shared_lair_veermok_swamp.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_veermok_shared_lair_veermok_swamp = SharedTangibleObjectTem
 
 	clientObjectCRC = 2554849898,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_veermok_shared_lair_veermok_swamp, "object/tangible/lair/veermok/shared_lair_veermok_swamp.iff")

@@ -42,6 +42,9 @@
 
 
 object_draft_schematic_instrument_component_shared_dual_wave_synthesizer = SharedDraftSchematicObjectTemplate:new {
+	clientTemplateFileName = "object/draft_schematic/instrument/component/shared_dual_wave_synthesizer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_datapad.iff",
 
@@ -82,6 +85,7 @@ object_draft_schematic_instrument_component_shared_dual_wave_synthesizer = Share
 
 	clientObjectCRC = 658217892,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff", "object/draft_schematic/base/shared_base_draft_schematic.iff", "object/draft_schematic/instrument/shared_instrument_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_draft_schematic_instrument_component_shared_dual_wave_synthesizer, "object/draft_schematic/instrument/component/shared_dual_wave_synthesizer.iff")

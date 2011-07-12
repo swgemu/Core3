@@ -42,6 +42,9 @@
 
 
 object_tangible_wearables_necklace_shared_bestine_quest_badge = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_bestine_quest_badge.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s08_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -92,11 +95,15 @@ object_tangible_wearables_necklace_shared_bestine_quest_badge = SharedTangibleOb
 
 	clientObjectCRC = 3954123718,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_bestine_quest_badge, "object/tangible/wearables/necklace/shared_bestine_quest_badge.iff")
 
 object_tangible_wearables_necklace_shared_necklace_adorned_beads = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_adorned_beads.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s08_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -147,11 +154,15 @@ object_tangible_wearables_necklace_shared_necklace_adorned_beads = SharedTangibl
 
 	clientObjectCRC = 1050230351,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_adorned_beads, "object/tangible/wearables/necklace/shared_necklace_adorned_beads.iff")
 
 object_tangible_wearables_necklace_shared_necklace_base = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_base.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -202,11 +213,15 @@ object_tangible_wearables_necklace_shared_necklace_base = SharedTangibleObjectTe
 
 	clientObjectCRC = 3453591411,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_base, "object/tangible/wearables/necklace/shared_necklace_base.iff")
 
 object_tangible_wearables_necklace_shared_necklace_blue_gadget = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_blue_gadget.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -257,11 +272,15 @@ object_tangible_wearables_necklace_shared_necklace_blue_gadget = SharedTangibleO
 
 	clientObjectCRC = 3584437673,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_blue_gadget, "object/tangible/wearables/necklace/shared_necklace_blue_gadget.iff")
 
 object_tangible_wearables_necklace_shared_necklace_brass_charm = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_brass_charm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s08_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -312,11 +331,15 @@ object_tangible_wearables_necklace_shared_necklace_brass_charm = SharedTangibleO
 
 	clientObjectCRC = 4150202535,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_brass_charm, "object/tangible/wearables/necklace/shared_necklace_brass_charm.iff")
 
 object_tangible_wearables_necklace_shared_necklace_bright_bauble = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_bright_bauble.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s08_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -367,11 +390,15 @@ object_tangible_wearables_necklace_shared_necklace_bright_bauble = SharedTangibl
 
 	clientObjectCRC = 3040940329,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_bright_bauble, "object/tangible/wearables/necklace/shared_necklace_bright_bauble.iff")
 
 object_tangible_wearables_necklace_shared_necklace_complex_pattern = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_complex_pattern.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -422,11 +449,15 @@ object_tangible_wearables_necklace_shared_necklace_complex_pattern = SharedTangi
 
 	clientObjectCRC = 974368601,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_complex_pattern, "object/tangible/wearables/necklace/shared_necklace_complex_pattern.iff")
 
 object_tangible_wearables_necklace_shared_necklace_convoluted_adornment = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_convoluted_adornment.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -477,11 +508,15 @@ object_tangible_wearables_necklace_shared_necklace_convoluted_adornment = Shared
 
 	clientObjectCRC = 2325808611,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_convoluted_adornment, "object/tangible/wearables/necklace/shared_necklace_convoluted_adornment.iff")
 
 object_tangible_wearables_necklace_shared_necklace_crushed_brooch = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_crushed_brooch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -532,11 +567,15 @@ object_tangible_wearables_necklace_shared_necklace_crushed_brooch = SharedTangib
 
 	clientObjectCRC = 1155738012,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_crushed_brooch, "object/tangible/wearables/necklace/shared_necklace_crushed_brooch.iff")
 
 object_tangible_wearables_necklace_shared_necklace_elaborate_necklet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_elaborate_necklet.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -587,11 +626,15 @@ object_tangible_wearables_necklace_shared_necklace_elaborate_necklet = SharedTan
 
 	clientObjectCRC = 283875663,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_elaborate_necklet, "object/tangible/wearables/necklace/shared_necklace_elaborate_necklet.iff")
 
 object_tangible_wearables_necklace_shared_necklace_flashy_choker = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_flashy_choker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -642,11 +685,15 @@ object_tangible_wearables_necklace_shared_necklace_flashy_choker = SharedTangibl
 
 	clientObjectCRC = 2530110745,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_flashy_choker, "object/tangible/wearables/necklace/shared_necklace_flashy_choker.iff")
 
 object_tangible_wearables_necklace_shared_necklace_hologram_locket = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_hologram_locket.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -697,11 +744,15 @@ object_tangible_wearables_necklace_shared_necklace_hologram_locket = SharedTangi
 
 	clientObjectCRC = 3024190115,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_hologram_locket, "object/tangible/wearables/necklace/shared_necklace_hologram_locket.iff")
 
 object_tangible_wearables_necklace_shared_necklace_ice_pendant = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_ice_pendant.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s08_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -752,11 +803,15 @@ object_tangible_wearables_necklace_shared_necklace_ice_pendant = SharedTangibleO
 
 	clientObjectCRC = 3734395119,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_ice_pendant, "object/tangible/wearables/necklace/shared_necklace_ice_pendant.iff")
 
 object_tangible_wearables_necklace_shared_necklace_iron_brooch = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_iron_brooch.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -807,11 +862,15 @@ object_tangible_wearables_necklace_shared_necklace_iron_brooch = SharedTangibleO
 
 	clientObjectCRC = 4144828811,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_iron_brooch, "object/tangible/wearables/necklace/shared_necklace_iron_brooch.iff")
 
 object_tangible_wearables_necklace_shared_necklace_iron_choker = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_iron_choker.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -862,11 +921,15 @@ object_tangible_wearables_necklace_shared_necklace_iron_choker = SharedTangibleO
 
 	clientObjectCRC = 840414348,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_iron_choker, "object/tangible/wearables/necklace/shared_necklace_iron_choker.iff")
 
 object_tangible_wearables_necklace_shared_necklace_jeweled_pendant = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_jeweled_pendant.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s08_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -917,11 +980,15 @@ object_tangible_wearables_necklace_shared_necklace_jeweled_pendant = SharedTangi
 
 	clientObjectCRC = 218269484,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_jeweled_pendant, "object/tangible/wearables/necklace/shared_necklace_jeweled_pendant.iff")
 
 object_tangible_wearables_necklace_shared_necklace_knickknack = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_knickknack.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -972,11 +1039,15 @@ object_tangible_wearables_necklace_shared_necklace_knickknack = SharedTangibleOb
 
 	clientObjectCRC = 3512942236,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_knickknack, "object/tangible/wearables/necklace/shared_necklace_knickknack.iff")
 
 object_tangible_wearables_necklace_shared_necklace_living_chains = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_living_chains.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1027,11 +1098,15 @@ object_tangible_wearables_necklace_shared_necklace_living_chains = SharedTangibl
 
 	clientObjectCRC = 3087789204,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_living_chains, "object/tangible/wearables/necklace/shared_necklace_living_chains.iff")
 
 object_tangible_wearables_necklace_shared_necklace_magnificent_lavaliere = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_magnificent_lavaliere.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1082,11 +1157,15 @@ object_tangible_wearables_necklace_shared_necklace_magnificent_lavaliere = Share
 
 	clientObjectCRC = 2122077046,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_magnificent_lavaliere, "object/tangible/wearables/necklace/shared_necklace_magnificent_lavaliere.iff")
 
 object_tangible_wearables_necklace_shared_necklace_nyax = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_nyax.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1137,11 +1216,15 @@ object_tangible_wearables_necklace_shared_necklace_nyax = SharedTangibleObjectTe
 
 	clientObjectCRC = 3448479035,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_nyax, "object/tangible/wearables/necklace/shared_necklace_nyax.iff")
 
 object_tangible_wearables_necklace_shared_necklace_opulent_cameo = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_opulent_cameo.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1192,11 +1275,15 @@ object_tangible_wearables_necklace_shared_necklace_opulent_cameo = SharedTangibl
 
 	clientObjectCRC = 118177721,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_opulent_cameo, "object/tangible/wearables/necklace/shared_necklace_opulent_cameo.iff")
 
 object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_ornamental_ratchet.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1247,11 +1334,15 @@ object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet = SharedTa
 
 	clientObjectCRC = 2206646823,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_ornamental_ratchet, "object/tangible/wearables/necklace/shared_necklace_ornamental_ratchet.iff")
 
 object_tangible_wearables_necklace_shared_necklace_pawl_chain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_pawl_chain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1302,11 +1393,15 @@ object_tangible_wearables_necklace_shared_necklace_pawl_chain = SharedTangibleOb
 
 	clientObjectCRC = 1137026386,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_pawl_chain, "object/tangible/wearables/necklace/shared_necklace_pawl_chain.iff")
 
 object_tangible_wearables_necklace_shared_necklace_platinum_pin = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_platinum_pin.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1357,11 +1452,15 @@ object_tangible_wearables_necklace_shared_necklace_platinum_pin = SharedTangible
 
 	clientObjectCRC = 2922514792,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_platinum_pin, "object/tangible/wearables/necklace/shared_necklace_platinum_pin.iff")
 
 object_tangible_wearables_necklace_shared_necklace_reebo_charm = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_reebo_charm.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1412,11 +1511,15 @@ object_tangible_wearables_necklace_shared_necklace_reebo_charm = SharedTangibleO
 
 	clientObjectCRC = 3826079370,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_reebo_charm, "object/tangible/wearables/necklace/shared_necklace_reebo_charm.iff")
 
 object_tangible_wearables_necklace_shared_necklace_rosy_pearl = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_rosy_pearl.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1467,11 +1570,15 @@ object_tangible_wearables_necklace_shared_necklace_rosy_pearl = SharedTangibleOb
 
 	clientObjectCRC = 2107115657,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_rosy_pearl, "object/tangible/wearables/necklace/shared_necklace_rosy_pearl.iff")
 
 object_tangible_wearables_necklace_shared_necklace_rusty_beads = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_rusty_beads.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s08_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1522,11 +1629,15 @@ object_tangible_wearables_necklace_shared_necklace_rusty_beads = SharedTangibleO
 
 	clientObjectCRC = 509359350,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_rusty_beads, "object/tangible/wearables/necklace/shared_necklace_rusty_beads.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s01 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s01_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1577,11 +1688,15 @@ object_tangible_wearables_necklace_shared_necklace_s01 = SharedTangibleObjectTem
 
 	clientObjectCRC = 705351361,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s01, "object/tangible/wearables/necklace/shared_necklace_s01.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s02_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1632,11 +1747,15 @@ object_tangible_wearables_necklace_shared_necklace_s02 = SharedTangibleObjectTem
 
 	clientObjectCRC = 4045235798,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s02, "object/tangible/wearables/necklace/shared_necklace_s02.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1687,11 +1806,15 @@ object_tangible_wearables_necklace_shared_necklace_s03 = SharedTangibleObjectTem
 
 	clientObjectCRC = 3088056795,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s03, "object/tangible/wearables/necklace/shared_necklace_s03.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s04_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1742,11 +1865,15 @@ object_tangible_wearables_necklace_shared_necklace_s04 = SharedTangibleObjectTem
 
 	clientObjectCRC = 1140009679,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s04, "object/tangible/wearables/necklace/shared_necklace_s04.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s05 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s05.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s05_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1797,11 +1924,15 @@ object_tangible_wearables_necklace_shared_necklace_s05 = SharedTangibleObjectTem
 
 	clientObjectCRC = 184438082,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s05, "object/tangible/wearables/necklace/shared_necklace_s05.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s06 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s06.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s06_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1852,11 +1983,15 @@ object_tangible_wearables_necklace_shared_necklace_s06 = SharedTangibleObjectTem
 
 	clientObjectCRC = 3521766869,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s06, "object/tangible/wearables/necklace/shared_necklace_s06.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s07 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s07.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1907,11 +2042,15 @@ object_tangible_wearables_necklace_shared_necklace_s07 = SharedTangibleObjectTem
 
 	clientObjectCRC = 2565112408,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s07, "object/tangible/wearables/necklace/shared_necklace_s07.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s08 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s08.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s08_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -1962,11 +2101,15 @@ object_tangible_wearables_necklace_shared_necklace_s08 = SharedTangibleObjectTem
 
 	clientObjectCRC = 586067530,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s08, "object/tangible/wearables/necklace/shared_necklace_s08.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s09 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s09.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s09_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -2017,11 +2160,15 @@ object_tangible_wearables_necklace_shared_necklace_s09 = SharedTangibleObjectTem
 
 	clientObjectCRC = 1810090439,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s09, "object/tangible/wearables/necklace/shared_necklace_s09.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s09_quest = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s09_quest.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s09_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -2072,11 +2219,15 @@ object_tangible_wearables_necklace_shared_necklace_s09_quest = SharedTangibleObj
 
 	clientObjectCRC = 4204967934,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s09_quest, "object/tangible/wearables/necklace/shared_necklace_s09_quest.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s10 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s10.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s10_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -2127,11 +2278,15 @@ object_tangible_wearables_necklace_shared_necklace_s10 = SharedTangibleObjectTem
 
 	clientObjectCRC = 2016388148,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s10, "object/tangible/wearables/necklace/shared_necklace_s10.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s11 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s11.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s11_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -2182,11 +2337,15 @@ object_tangible_wearables_necklace_shared_necklace_s11 = SharedTangibleObjectTem
 
 	clientObjectCRC = 824361913,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s11, "object/tangible/wearables/necklace/shared_necklace_s11.iff")
 
 object_tangible_wearables_necklace_shared_necklace_s12 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_s12.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s12_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -2237,11 +2396,15 @@ object_tangible_wearables_necklace_shared_necklace_s12 = SharedTangibleObjectTem
 
 	clientObjectCRC = 3929369390,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_s12, "object/tangible/wearables/necklace/shared_necklace_s12.iff")
 
 object_tangible_wearables_necklace_shared_necklace_sparkling_bijou = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_sparkling_bijou.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s07_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -2292,11 +2455,15 @@ object_tangible_wearables_necklace_shared_necklace_sparkling_bijou = SharedTangi
 
 	clientObjectCRC = 4111333468,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_sparkling_bijou, "object/tangible/wearables/necklace/shared_necklace_sparkling_bijou.iff")
 
 object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/wearables/necklace/shared_necklace_wampum.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/necklace_s03_f.sat",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/wearables/neck.iff",
 
@@ -2347,6 +2514,7 @@ object_tangible_wearables_necklace_shared_necklace_wampum = SharedTangibleObject
 
 	clientObjectCRC = 3192072783,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/base/shared_tangible_craftable.iff", "object/tangible/wearables/base/shared_wearables_base.iff", "object/tangible/wearables/base/shared_base_neck.iff", "object/tangible/wearables/necklace/shared_necklace_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_wearables_necklace_shared_necklace_wampum, "object/tangible/wearables/necklace/shared_necklace_wampum.iff")

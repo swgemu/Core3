@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_kupernug_shared_lair_kupernug = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kupernug/shared_lair_kupernug.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_kupernug_shared_lair_kupernug = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2658633620,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kupernug_shared_lair_kupernug, "object/tangible/lair/kupernug/shared_lair_kupernug.iff")
 
 object_tangible_lair_kupernug_shared_lair_kupernug_mountain = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kupernug/shared_lair_kupernug_mountain.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_kupernug_shared_lair_kupernug_mountain = SharedTangibleObje
 
 	clientObjectCRC = 3996614231,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_mountain, "object/tangible/lair/kupernug/shared_lair_kupernug_mountain.iff")
 
 object_tangible_lair_kupernug_shared_lair_kupernug_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/kupernug/shared_lair_kupernug_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_nest_tree.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_kupernug_shared_lair_kupernug_wasteland = SharedTangibleObj
 
 	clientObjectCRC = 2421166667,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_kupernug_shared_lair_kupernug_wasteland, "object/tangible/lair/kupernug/shared_lair_kupernug_wasteland.iff")

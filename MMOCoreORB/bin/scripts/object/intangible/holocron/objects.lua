@@ -42,6 +42,9 @@
 
 
 object_intangible_holocron_shared_newbie_mission = SharedIntangibleObjectTemplate:new {
+	clientTemplateFileName = "object/intangible/holocron/shared_newbie_mission.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ui_planet_sel_default.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,6 +85,7 @@ object_intangible_holocron_shared_newbie_mission = SharedIntangibleObjectTemplat
 
 	clientObjectCRC = 1789110379,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/intangible/base/shared_base_intangible.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_intangible_holocron_shared_newbie_mission, "object/intangible/holocron/shared_newbie_mission.iff")

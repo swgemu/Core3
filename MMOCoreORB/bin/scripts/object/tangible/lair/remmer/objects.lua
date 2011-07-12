@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_remmer_shared_lair_remmer = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/remmer/shared_lair_remmer.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_remmer_shared_lair_remmer = SharedTangibleObjectTemplate:ne
 
 	clientObjectCRC = 1568679889,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer, "object/tangible/lair/remmer/shared_lair_remmer.iff")
 
 object_tangible_lair_remmer_shared_lair_remmer_grassland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/remmer/shared_lair_remmer_grassland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_remmer_shared_lair_remmer_grassland = SharedTangibleObjectT
 
 	clientObjectCRC = 1785284401,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer_grassland, "object/tangible/lair/remmer/shared_lair_remmer_grassland.iff")
 
 object_tangible_lair_remmer_shared_lair_remmer_jungle = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/remmer/shared_lair_remmer_jungle.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/defaultappearance.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_remmer_shared_lair_remmer_jungle = SharedTangibleObjectTemp
 
 	clientObjectCRC = 3159632907,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_remmer_shared_lair_remmer_jungle, "object/tangible/lair/remmer/shared_lair_remmer_jungle.iff")

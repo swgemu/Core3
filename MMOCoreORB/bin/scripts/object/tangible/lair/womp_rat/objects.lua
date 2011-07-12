@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_womp_rat_shared_lair_womp_rat = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/womp_rat/shared_lair_womp_rat.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_womp_rat_shared_lair_womp_rat = SharedTangibleObjectTemplat
 
 	clientObjectCRC = 2053935761,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_trash_dark.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat, "object/tangible/lair/womp_rat/shared_lair_womp_rat.iff")
 
 object_tangible_lair_womp_rat_shared_lair_womp_rat_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/womp_rat/shared_lair_womp_rat_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_skeleton_human_headandbody.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,6 +154,7 @@ object_tangible_lair_womp_rat_shared_lair_womp_rat_desert = SharedTangibleObject
 
 	clientObjectCRC = 703016558,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_trash_dark.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_womp_rat_shared_lair_womp_rat_desert, "object/tangible/lair/womp_rat/shared_lair_womp_rat_desert.iff")

@@ -42,6 +42,9 @@
 
 
 object_tangible_item_new_player_shared_new_player_cloning_coupon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/new_player/shared_new_player_cloning_coupon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_item_new_player_shared_new_player_cloning_coupon = SharedTangibl
 
 	clientObjectCRC = 2459202861,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_new_player_shared_new_player_cloning_coupon, "object/tangible/item/new_player/shared_new_player_cloning_coupon.iff")
 
 object_tangible_item_new_player_shared_new_player_travel_coupon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/new_player/shared_new_player_travel_coupon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_document_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_item_new_player_shared_new_player_travel_coupon = SharedTangible
 
 	clientObjectCRC = 190401300,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_new_player_shared_new_player_travel_coupon, "object/tangible/item/new_player/shared_new_player_travel_coupon.iff")
 
 object_tangible_item_new_player_shared_new_player_vehicle_coupon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/item/new_player/shared_new_player_vehicle_coupon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_droids.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_item_new_player_shared_new_player_vehicle_coupon = SharedTangibl
 
 	clientObjectCRC = 835581820,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_item_new_player_shared_new_player_vehicle_coupon, "object/tangible/item/new_player/shared_new_player_vehicle_coupon.iff")

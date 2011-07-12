@@ -42,6 +42,9 @@
 
 
 object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_cave_small.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon = SharedTangibleObjec
 
 	clientObjectCRC = 131974925,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon.iff")
 
 object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon_desert.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert = SharedTangib
 
 	clientObjectCRC = 3458672072,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_desert, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon_desert.iff")
 
 object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_wasteland = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon_wasteland.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_lair_rancor_light.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,6 +213,7 @@ object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_wasteland = SharedTan
 
 	clientObjectCRC = 2174313207,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/tangible/lair/base/shared_lair_base.iff", "object/tangible/lair/base/shared_lair_base_rancor_light.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_lair_krayt_dragon_shared_lair_krayt_dragon_wasteland, "object/tangible/lair/krayt_dragon/shared_lair_krayt_dragon_wasteland.iff")

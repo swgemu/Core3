@@ -42,6 +42,9 @@
 
 
 object_counting_shared_default_battery = SharedCountingObjectTemplate:new {
+	clientTemplateFileName = "object/counting/shared_default_battery.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "",
 	arrangementDescriptorFilename = "abstract/slot/arrangement/arrangement_default_weapon_am.iff",
 
@@ -92,6 +95,7 @@ object_counting_shared_default_battery = SharedCountingObjectTemplate:new {
 
 	clientObjectCRC = 3842659589,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff", "object/counting/base/shared_base_counting.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_counting_shared_default_battery, "object/counting/shared_default_battery.iff")

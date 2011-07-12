@@ -42,6 +42,9 @@
 
 
 object_tangible_space_special_loot_shared_encoded_document = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/special_loot/shared_encoded_document.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_space_special_loot_shared_encoded_document = SharedTangibleObjec
 
 	clientObjectCRC = 1384769825,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_encoded_document, "object/tangible/space/special_loot/shared_encoded_document.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/special_loot/shared_firespray_schematic.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_tool_engineering_analysis_board.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_space_special_loot_shared_firespray_schematic = SharedTangibleOb
 
 	clientObjectCRC = 3265273647,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic, "object/tangible/space/special_loot/shared_firespray_schematic.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part1 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/special_loot/shared_firespray_schematic_part1.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_space_special_loot_shared_firespray_schematic_part1 = SharedTang
 
 	clientObjectCRC = 3529502508,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part1, "object/tangible/space/special_loot/shared_firespray_schematic_part1.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part2 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/special_loot/shared_firespray_schematic_part2.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_space_special_loot_shared_firespray_schematic_part2 = SharedTang
 
 	clientObjectCRC = 155731899,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part2, "object/tangible/space/special_loot/shared_firespray_schematic_part2.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part3 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/special_loot/shared_firespray_schematic_part3.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_space_special_loot_shared_firespray_schematic_part3 = SharedTang
 
 	clientObjectCRC = 1078272054,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part3, "object/tangible/space/special_loot/shared_firespray_schematic_part3.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part4 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/special_loot/shared_firespray_schematic_part4.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_space_special_loot_shared_firespray_schematic_part4 = SharedTang
 
 	clientObjectCRC = 3148221218,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part4, "object/tangible/space/special_loot/shared_firespray_schematic_part4.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part5 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/special_loot/shared_firespray_schematic_part5.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -422,11 +449,15 @@ object_tangible_space_special_loot_shared_firespray_schematic_part5 = SharedTang
 
 	clientObjectCRC = 4071320751,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part5, "object/tangible/space/special_loot/shared_firespray_schematic_part5.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part6 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/special_loot/shared_firespray_schematic_part6.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -477,11 +508,15 @@ object_tangible_space_special_loot_shared_firespray_schematic_part6 = SharedTang
 
 	clientObjectCRC = 700236856,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part6, "object/tangible/space/special_loot/shared_firespray_schematic_part6.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part7 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/special_loot/shared_firespray_schematic_part7.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +567,15 @@ object_tangible_space_special_loot_shared_firespray_schematic_part7 = SharedTang
 
 	clientObjectCRC = 1622254517,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part7, "object/tangible/space/special_loot/shared_firespray_schematic_part7.iff")
 
 object_tangible_space_special_loot_shared_firespray_schematic_part8 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/space/special_loot/shared_firespray_schematic_part8.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk.apt",
 	arrangementDescriptorFilename = "",
 
@@ -587,6 +626,7 @@ object_tangible_space_special_loot_shared_firespray_schematic_part8 = SharedTang
 
 	clientObjectCRC = 3669725095,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_space_special_loot_shared_firespray_schematic_part8, "object/tangible/space/special_loot/shared_firespray_schematic_part8.iff")

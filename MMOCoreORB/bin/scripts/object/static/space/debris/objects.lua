@@ -42,6 +42,9 @@
 
 
 object_static_space_debris_shared_cargo_destroyed_large_a = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_cargo_destroyed_large_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_debris_crate_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -82,11 +85,15 @@ object_static_space_debris_shared_cargo_destroyed_large_a = SharedStaticObjectTe
 
 	clientObjectCRC = 2590979892,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_cargo_destroyed_large_a, "object/static/space/debris/shared_cargo_destroyed_large_a.iff")
 
 object_static_space_debris_shared_cargo_destroyed_small_a = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_cargo_destroyed_small_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_debris_chunk_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -127,11 +134,15 @@ object_static_space_debris_shared_cargo_destroyed_small_a = SharedStaticObjectTe
 
 	clientObjectCRC = 483044281,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_cargo_destroyed_small_a, "object/static/space/debris/shared_cargo_destroyed_small_a.iff")
 
 object_static_space_debris_shared_cargo_pristine_large_a = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_cargo_pristine_large_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/cargo_debris_crate_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -172,11 +183,15 @@ object_static_space_debris_shared_cargo_pristine_large_a = SharedStaticObjectTem
 
 	clientObjectCRC = 3524446459,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_cargo_pristine_large_a, "object/static/space/debris/shared_cargo_pristine_large_a.iff")
 
 object_static_space_debris_shared_death_star_debris_a = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_death_star_debris_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/dsdebris_chunksmalla.apt",
 	arrangementDescriptorFilename = "",
 
@@ -217,11 +232,15 @@ object_static_space_debris_shared_death_star_debris_a = SharedStaticObjectTempla
 
 	clientObjectCRC = 2077093717,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_a, "object/static/space/debris/shared_death_star_debris_a.iff")
 
 object_static_space_debris_shared_death_star_debris_b = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_death_star_debris_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -262,11 +281,15 @@ object_static_space_debris_shared_death_star_debris_b = SharedStaticObjectTempla
 
 	clientObjectCRC = 2698659778,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_b, "object/static/space/debris/shared_death_star_debris_b.iff")
 
 object_static_space_debris_shared_death_star_debris_c = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_death_star_debris_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -307,11 +330,15 @@ object_static_space_debris_shared_death_star_debris_c = SharedStaticObjectTempla
 
 	clientObjectCRC = 3923189839,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_c, "object/static/space/debris/shared_death_star_debris_c.iff")
 
 object_static_space_debris_shared_death_star_debris_d = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_death_star_debris_d.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_yavn_death_star_wreckage_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -352,11 +379,15 @@ object_static_space_debris_shared_death_star_debris_d = SharedStaticObjectTempla
 
 	clientObjectCRC = 305400667,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_d, "object/static/space/debris/shared_death_star_debris_d.iff")
 
 object_static_space_debris_shared_death_star_debris_e = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_death_star_debris_e.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/dsdebris_tubesmall.apt",
 	arrangementDescriptorFilename = "",
 
@@ -397,11 +428,15 @@ object_static_space_debris_shared_death_star_debris_e = SharedStaticObjectTempla
 
 	clientObjectCRC = 1530490070,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_e, "object/static/space/debris/shared_death_star_debris_e.iff")
 
 object_static_space_debris_shared_death_star_debris_f = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_death_star_debris_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/dsdebris_tube.apt",
 	arrangementDescriptorFilename = "",
 
@@ -442,11 +477,15 @@ object_static_space_debris_shared_death_star_debris_f = SharedStaticObjectTempla
 
 	clientObjectCRC = 2150548545,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_f, "object/static/space/debris/shared_death_star_debris_f.iff")
 
 object_static_space_debris_shared_death_star_debris_g = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_death_star_debris_g.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/dsdebris_conduit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -487,11 +526,15 @@ object_static_space_debris_shared_death_star_debris_g = SharedStaticObjectTempla
 
 	clientObjectCRC = 3374556108,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_g, "object/static/space/debris/shared_death_star_debris_g.iff")
 
 object_static_space_debris_shared_death_star_debris_h = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_death_star_debris_h.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_junk_s5.apt",
 	arrangementDescriptorFilename = "",
 
@@ -532,11 +575,15 @@ object_static_space_debris_shared_death_star_debris_h = SharedStaticObjectTempla
 
 	clientObjectCRC = 1932103646,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_h, "object/static/space/debris/shared_death_star_debris_h.iff")
 
 object_static_space_debris_shared_death_star_debris_i = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_death_star_debris_i.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/thm_prp_junk_s6.apt",
 	arrangementDescriptorFilename = "",
 
@@ -577,11 +624,15 @@ object_static_space_debris_shared_death_star_debris_i = SharedStaticObjectTempla
 
 	clientObjectCRC = 975497299,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_death_star_debris_i, "object/static/space/debris/shared_death_star_debris_i.iff")
 
 object_static_space_debris_shared_droid_fighter_debris_s01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_droid_fighter_debris_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/droid_fighter_debris_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -622,11 +673,15 @@ object_static_space_debris_shared_droid_fighter_debris_s01 = SharedStaticObjectT
 
 	clientObjectCRC = 3253175573,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s01, "object/static/space/debris/shared_droid_fighter_debris_s01.iff")
 
 object_static_space_debris_shared_droid_fighter_debris_s02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_droid_fighter_debris_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/droid_fighter_debris_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -667,11 +722,15 @@ object_static_space_debris_shared_droid_fighter_debris_s02 = SharedStaticObjectT
 
 	clientObjectCRC = 451947906,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s02, "object/static/space/debris/shared_droid_fighter_debris_s02.iff")
 
 object_static_space_debris_shared_droid_fighter_debris_s03 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_droid_fighter_debris_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/droid_fighter_debris_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -712,11 +771,15 @@ object_static_space_debris_shared_droid_fighter_debris_s03 = SharedStaticObjectT
 
 	clientObjectCRC = 1409108495,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s03, "object/static/space/debris/shared_droid_fighter_debris_s03.iff")
 
 object_static_space_debris_shared_droid_fighter_debris_s04 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_droid_fighter_debris_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/droid_fighter_debris_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -757,11 +820,15 @@ object_static_space_debris_shared_droid_fighter_debris_s04 = SharedStaticObjectT
 
 	clientObjectCRC = 2820563227,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_droid_fighter_debris_s04, "object/static/space/debris/shared_droid_fighter_debris_s04.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_a = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_tie_fighter_debris_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter_debris_a.apt",
 	arrangementDescriptorFilename = "",
 
@@ -802,11 +869,15 @@ object_static_space_debris_shared_tie_fighter_debris_a = SharedStaticObjectTempl
 
 	clientObjectCRC = 3891582202,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_a, "object/static/space/debris/shared_tie_fighter_debris_a.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_b = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_tie_fighter_debris_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter_debris_b.apt",
 	arrangementDescriptorFilename = "",
 
@@ -847,11 +918,15 @@ object_static_space_debris_shared_tie_fighter_debris_b = SharedStaticObjectTempl
 
 	clientObjectCRC = 1021541485,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_b, "object/static/space/debris/shared_tie_fighter_debris_b.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_c = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_tie_fighter_debris_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter_debris_c.apt",
 	arrangementDescriptorFilename = "",
 
@@ -892,11 +967,15 @@ object_static_space_debris_shared_tie_fighter_debris_c = SharedStaticObjectTempl
 
 	clientObjectCRC = 1978538976,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_c, "object/static/space/debris/shared_tie_fighter_debris_c.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_d = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_tie_fighter_debris_d.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter_debris_d.apt",
 	arrangementDescriptorFilename = "",
 
@@ -937,11 +1016,15 @@ object_static_space_debris_shared_tie_fighter_debris_d = SharedStaticObjectTempl
 
 	clientObjectCRC = 2383229172,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_d, "object/static/space/debris/shared_tie_fighter_debris_d.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_e = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_tie_fighter_debris_e.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter_debris_e.apt",
 	arrangementDescriptorFilename = "",
 
@@ -982,11 +1065,15 @@ object_static_space_debris_shared_tie_fighter_debris_e = SharedStaticObjectTempl
 
 	clientObjectCRC = 3338688377,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_e, "object/static/space/debris/shared_tie_fighter_debris_e.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_f = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_tie_fighter_debris_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/tie_fighter_debris_f.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1027,11 +1114,15 @@ object_static_space_debris_shared_tie_fighter_debris_f = SharedStaticObjectTempl
 
 	clientObjectCRC = 471334894,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_f, "object/static/space/debris/shared_tie_fighter_debris_f.iff")
 
 object_static_space_debris_shared_tie_fighter_debris_g = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_tie_fighter_debris_g.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/poi_all_tie_bomber_debris_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1072,11 +1163,15 @@ object_static_space_debris_shared_tie_fighter_debris_g = SharedStaticObjectTempl
 
 	clientObjectCRC = 1427806307,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tie_fighter_debris_g, "object/static/space/debris/shared_tie_fighter_debris_g.iff")
 
 object_static_space_debris_shared_tradefed_hulk_debris_s01 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_tradefed_hulk_debris_s01.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s01.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1117,11 +1212,15 @@ object_static_space_debris_shared_tradefed_hulk_debris_s01 = SharedStaticObjectT
 
 	clientObjectCRC = 3363541547,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s01, "object/static/space/debris/shared_tradefed_hulk_debris_s01.iff")
 
 object_static_space_debris_shared_tradefed_hulk_debris_s02 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_tradefed_hulk_debris_s02.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s02.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1162,11 +1261,15 @@ object_static_space_debris_shared_tradefed_hulk_debris_s02 = SharedStaticObjectT
 
 	clientObjectCRC = 325860028,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s02, "object/static/space/debris/shared_tradefed_hulk_debris_s02.iff")
 
 object_static_space_debris_shared_tradefed_hulk_debris_s03 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_tradefed_hulk_debris_s03.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s03.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1207,11 +1310,15 @@ object_static_space_debris_shared_tradefed_hulk_debris_s03 = SharedStaticObjectT
 
 	clientObjectCRC = 1516330289,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s03, "object/static/space/debris/shared_tradefed_hulk_debris_s03.iff")
 
 object_static_space_debris_shared_tradefed_hulk_debris_s04 = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_tradefed_hulk_debris_s04.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/debris_tradefed_hulk_radial_s04.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1252,11 +1359,15 @@ object_static_space_debris_shared_tradefed_hulk_debris_s04 = SharedStaticObjectT
 
 	clientObjectCRC = 2709681701,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_tradefed_hulk_debris_s04, "object/static/space/debris/shared_tradefed_hulk_debris_s04.iff")
 
 object_static_space_debris_shared_xwing_debris_a = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_xwing_debris_a.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_debris_a.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1297,11 +1408,15 @@ object_static_space_debris_shared_xwing_debris_a = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 3548707546,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_a, "object/static/space/debris/shared_xwing_debris_a.iff")
 
 object_static_space_debris_shared_xwing_debris_b = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_xwing_debris_b.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_debris_b.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1342,11 +1457,15 @@ object_static_space_debris_shared_xwing_debris_b = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 143872589,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_b, "object/static/space/debris/shared_xwing_debris_b.iff")
 
 object_static_space_debris_shared_xwing_debris_c = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_xwing_debris_c.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_debris_c.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1387,11 +1506,15 @@ object_static_space_debris_shared_xwing_debris_c = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 1100887488,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_c, "object/static/space/debris/shared_xwing_debris_c.iff")
 
 object_static_space_debris_shared_xwing_debris_d = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_xwing_debris_d.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_debris_d.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1432,11 +1555,15 @@ object_static_space_debris_shared_xwing_debris_d = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 3128762068,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_d, "object/static/space/debris/shared_xwing_debris_d.iff")
 
 object_static_space_debris_shared_xwing_debris_e = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_xwing_debris_e.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_debris_e.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1477,11 +1604,15 @@ object_static_space_debris_shared_xwing_debris_e = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 4084234585,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_e, "object/static/space/debris/shared_xwing_debris_e.iff")
 
 object_static_space_debris_shared_xwing_debris_f = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_xwing_debris_f.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_debris_f.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1522,11 +1653,15 @@ object_static_space_debris_shared_xwing_debris_f = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 677892558,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_f, "object/static/space/debris/shared_xwing_debris_f.iff")
 
 object_static_space_debris_shared_xwing_debris_g = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/static/space/debris/shared_xwing_debris_g.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/xwing_debris_g.apt",
 	arrangementDescriptorFilename = "",
 
@@ -1567,6 +1702,7 @@ object_static_space_debris_shared_xwing_debris_g = SharedStaticObjectTemplate:ne
 
 	clientObjectCRC = 1634383427,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff", "object/static/structure/base/shared_static_structure_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_static_space_debris_shared_xwing_debris_g, "object/static/space/debris/shared_xwing_debris_g.iff")

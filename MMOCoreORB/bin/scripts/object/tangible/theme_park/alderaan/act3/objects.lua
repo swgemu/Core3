@@ -42,6 +42,9 @@
 
 
 object_tangible_theme_park_alderaan_act3_shared_alderaan_flora = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act3/shared_alderaan_flora.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/flow_nebulaorchid_a.apt",
 	arrangementDescriptorFilename = "",
 
@@ -92,11 +95,15 @@ object_tangible_theme_park_alderaan_act3_shared_alderaan_flora = SharedTangibleO
 
 	clientObjectCRC = 4208054945,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_alderaan_flora, "object/tangible/theme_park/alderaan/act3/shared_alderaan_flora.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_broken_grav_unit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act3/shared_broken_grav_unit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -147,11 +154,15 @@ object_tangible_theme_park_alderaan_act3_shared_broken_grav_unit = SharedTangibl
 
 	clientObjectCRC = 1332386213,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_broken_grav_unit, "object/tangible/theme_park/alderaan/act3/shared_broken_grav_unit.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_dead_eye_prototype = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act3/shared_dead_eye_prototype.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_hormone_enhancements.apt",
 	arrangementDescriptorFilename = "",
 
@@ -202,11 +213,15 @@ object_tangible_theme_park_alderaan_act3_shared_dead_eye_prototype = SharedTangi
 
 	clientObjectCRC = 2963865200,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_dead_eye_prototype, "object/tangible/theme_park/alderaan/act3/shared_dead_eye_prototype.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_encoded_data_disk = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act3/shared_encoded_data_disk.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_data_disk_inventory.apt",
 	arrangementDescriptorFilename = "",
 
@@ -257,11 +272,15 @@ object_tangible_theme_park_alderaan_act3_shared_encoded_data_disk = SharedTangib
 
 	clientObjectCRC = 3516039098,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_encoded_data_disk, "object/tangible/theme_park/alderaan/act3/shared_encoded_data_disk.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act3/shared_grav_unit_repair_kit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_repair_installations.apt",
 	arrangementDescriptorFilename = "",
 
@@ -312,11 +331,15 @@ object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit = SharedTan
 
 	clientObjectCRC = 3076162697,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_grav_unit_repair_kit, "object/tangible/theme_park/alderaan/act3/shared_grav_unit_repair_kit.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_repaired_grav_unit = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act3/shared_repaired_grav_unit.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/eqp_comp_electronic_power_unit.apt",
 	arrangementDescriptorFilename = "",
 
@@ -367,11 +390,15 @@ object_tangible_theme_park_alderaan_act3_shared_repaired_grav_unit = SharedTangi
 
 	clientObjectCRC = 1247686243,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/tangible/base/shared_tangible_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_repaired_grav_unit, "object/tangible/theme_park/alderaan/act3/shared_repaired_grav_unit.iff")
 
 object_tangible_theme_park_alderaan_act3_shared_research_facility = SharedStaticObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/theme_park/alderaan/act3/shared_research_facility.iff"
+	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
+--[[
 	appearanceFilename = "appearance/ins_all_factory_machine.apt",
 	arrangementDescriptorFilename = "",
 
@@ -412,6 +439,7 @@ object_tangible_theme_park_alderaan_act3_shared_research_facility = SharedStatic
 
 	clientObjectCRC = 843852525,
 	derivedFromTemplates = {"object/object/base/shared_base_object.iff", "object/static/base/shared_static_base.iff"}
+]]
 }
 
 ObjectTemplates:addClientTemplate(object_tangible_theme_park_alderaan_act3_shared_research_facility, "object/tangible/theme_park/alderaan/act3/shared_research_facility.iff")
