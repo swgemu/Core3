@@ -109,6 +109,12 @@ public:
 
 	bool add(PlayerCreature* player, TangibleObject* incomingTano) {
 
+		/// Check if incoming object derived from the template specified in
+		/// the schematic data
+		SharedObjectTemplate* baseTemplate = incomingTano->getObjectTemplate();
+		if(!baseTemplate->isDerivedFrom(type))
+			return false;
+
 		int itemsInSlot = getQuantity();
 
 		if(requiresIdentical && serial != "" && itemsInSlot > 0) {

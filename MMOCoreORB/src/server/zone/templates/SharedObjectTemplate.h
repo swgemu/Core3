@@ -165,6 +165,8 @@ public:
 	void loadDerv(IffStream* iffStream);
 	void parseFileData(IffStream* iffStream);
 
+	bool isDerivedFrom(String iffPath, bool includeSelf = true);
+
     inline String getAppearanceFilename() const {
 		return appearanceFilename;
 	}

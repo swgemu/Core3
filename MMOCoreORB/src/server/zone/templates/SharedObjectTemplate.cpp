@@ -514,3 +514,19 @@ AppearanceTemplate* SharedObjectTemplate::getAppearanceTemplate() {
 
 	return appearanceTemplate;
 }
+
+bool SharedObjectTemplate::isDerivedFrom(String iffPath, bool includeSelf) {
+
+	if(includeSelf && iffPath == fullTemplateString) {
+		return true;
+	}
+
+	for(int i = 0; i < loadedDerivedFiles.size(); ++i) {
+		String possibleParent = loadedDerivedFiles.get(i);
+
+		if(possibleParent == iffPath) {
+			return true;
+		}
+	}
+	return false;
+}
