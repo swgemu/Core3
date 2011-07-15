@@ -111,7 +111,7 @@ public:
 
 		/// Check if incoming object derived from the template specified in
 		/// the schematic data
-		SharedObjectTemplate* baseTemplate = incomingTano->getObjectTemplate();
+		Reference<SharedObjectTemplate*> baseTemplate = incomingTano->getObjectTemplate();
 		if(!baseTemplate->isDerivedFrom(type))
 			return false;
 

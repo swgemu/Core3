@@ -515,7 +515,7 @@ AppearanceTemplate* SharedObjectTemplate::getAppearanceTemplate() {
 	return appearanceTemplate;
 }
 
-bool SharedObjectTemplate::isDerivedFrom(String iffPath, bool includeSelf) {
+bool SharedObjectTemplate::isDerivedFrom(String& iffPath, bool includeSelf) {
 
 	if(includeSelf && iffPath == fullTemplateString) {
 		return true;
