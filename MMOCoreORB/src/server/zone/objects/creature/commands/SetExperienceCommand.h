@@ -46,7 +46,7 @@ which carries forward this exception.
 #define SETEXPERIENCECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../player/PlayerCreature.h"
+#include "../../creature/CreatureObject.h"
 #include "../../player/PlayerObject.h"
 #include "../../../managers/player/PlayerManager.h"
 
@@ -71,7 +71,7 @@ public:
 			ManagedReference<SceneObject* > object =
 					server->getZoneServer()->getObject(target);
 
-			ManagedReference<PlayerCreature*> player = NULL;
+			ManagedReference<CreatureObject*> player = NULL;
 
 			StringTokenizer args(arguments.toString());
 
@@ -86,7 +86,7 @@ public:
 				}
 
 			} else {
-				player = (PlayerCreature*) object.get();
+				player = (CreatureObject*) object.get();
 			}
 
 			if (player == NULL) {

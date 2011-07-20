@@ -6,7 +6,7 @@
 
 #include "server/zone/ZoneServer.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -16,7 +16,7 @@
  *	RadialManagerStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_LONG_ = 6,RPC_HANDLEOBJECTMENUREQUEST__PLAYERCREATURE_OBJECTMENURESPONSE_LONG_};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_LONG_ = 6,RPC_HANDLEOBJECTMENUREQUEST__CREATUREOBJECT_OBJECTMENURESPONSE_LONG_};
 
 RadialManager::RadialManager(ZoneServer* server) : ManagedObject(DummyConstructorParameter::instance()) {
 	RadialManagerImplementation* _implementation = new RadialManagerImplementation(server);
@@ -31,13 +31,13 @@ RadialManager::~RadialManager() {
 }
 
 
-void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID) {
+void RadialManager::handleObjectMenuSelect(CreatureObject* player, byte selectID, unsigned long long objectID) {
 	RadialManagerImplementation* _implementation = (RadialManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_LONG_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_LONG_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectID);
 		method.addUnsignedLongParameter(objectID);
@@ -47,13 +47,13 @@ void RadialManager::handleObjectMenuSelect(PlayerCreature* player, byte selectID
 		_implementation->handleObjectMenuSelect(player, selectID, objectID);
 }
 
-void RadialManager::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
+void RadialManager::handleObjectMenuRequest(CreatureObject* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
 	RadialManagerImplementation* _implementation = (RadialManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUREQUEST__PLAYERCREATURE_OBJECTMENURESPONSE_LONG_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUREQUEST__CREATUREOBJECT_OBJECTMENURESPONSE_LONG_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(defaultMenuResponse);
 		method.addUnsignedLongParameter(objectID);
@@ -211,11 +211,11 @@ Packet* RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_LONG_:
-		handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter(), inv->getUnsignedLongParameter());
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_LONG_:
+		handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter(), inv->getUnsignedLongParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUREQUEST__PLAYERCREATURE_OBJECTMENURESPONSE_LONG_:
-		handleObjectMenuRequest((PlayerCreature*) inv->getObjectParameter(), (ObjectMenuResponse*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+	case RPC_HANDLEOBJECTMENUREQUEST__CREATUREOBJECT_OBJECTMENURESPONSE_LONG_:
+		handleObjectMenuRequest((CreatureObject*) inv->getObjectParameter(), (ObjectMenuResponse*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	default:
 		return NULL;
@@ -224,11 +224,11 @@ Packet* RadialManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	return resp;
 }
 
-void RadialManagerAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID) {
+void RadialManagerAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectID, unsigned long long objectID) {
 	((RadialManagerImplementation*) impl)->handleObjectMenuSelect(player, selectID, objectID);
 }
 
-void RadialManagerAdapter::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
+void RadialManagerAdapter::handleObjectMenuRequest(CreatureObject* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID) {
 	((RadialManagerImplementation*) impl)->handleObjectMenuRequest(player, defaultMenuResponse, objectID);
 }
 

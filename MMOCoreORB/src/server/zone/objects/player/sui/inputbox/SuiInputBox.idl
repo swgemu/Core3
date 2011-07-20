@@ -46,10 +46,11 @@ package server.zone.objects.player.sui.messagebox;
 
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import engine.service.proto.BaseMessage;
 import server.zone.objects.player.sui.SuiBox;
 include server.zone.packets.ui.SuiCreatePageMessage;
+import server.zone.objects.creature.CreatureObject;
 
 class SuiInputBox extends SuiBox {
 	protected int maxInputSize;
@@ -60,7 +61,7 @@ class SuiInputBox extends SuiBox {
 	public final static int DEFAULT = 0;
 	public final static int FILTER = 1;
 
-	public SuiInputBox(PlayerCreature player, unsigned int windowType = 0, int inputtype = 0) {
+	public SuiInputBox(CreatureObject player, unsigned int windowType = 0, int inputtype = 0) {
 		super(player, windowType, SuiBox.INPUTBOX);
 		
 		maxInputSize = 25;

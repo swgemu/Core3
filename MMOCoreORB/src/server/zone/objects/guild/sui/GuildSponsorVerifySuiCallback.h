@@ -18,7 +18,7 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
 		if (!suiBox->isMessageBox())
 			return;
 
@@ -32,7 +32,7 @@ public:
 		if (obj == NULL || !obj->isPlayerCreature())
 			return;
 
-		PlayerCreature* sponsor = (PlayerCreature*) obj.get();
+		CreatureObject* sponsor = (CreatureObject*) obj.get();
 
 		ManagedReference<GuildObject*> guild = sponsor->getGuildObject();
 

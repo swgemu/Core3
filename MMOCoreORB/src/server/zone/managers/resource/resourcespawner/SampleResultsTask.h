@@ -60,13 +60,13 @@ class ResourceSpawner;
 class SampleResultsTask : public Task {
 
 protected:
-	ManagedReference<PlayerCreature*> playerCreature;
+	ManagedReference<CreatureObject*> playerCreature;
 	ResourceSpawner* resourceSpawner;
 	float density;
 	String resname;
 
 public:
-	SampleResultsTask(ManagedReference<PlayerCreature*> play, ResourceSpawner* spawner, float d, String rname) {
+	SampleResultsTask(ManagedReference<CreatureObject*> play, ResourceSpawner* spawner, float d, String rname) {
 		playerCreature = play;
 		resourceSpawner = spawner;
 		density = d;

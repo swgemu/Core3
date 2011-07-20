@@ -78,7 +78,7 @@ which carries forward this exception.
 #include "events/ObjectUpdateToDatabaseTask.h"
 
 #include "server/zone/objects/cell/CellObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/templates/ChildObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
@@ -550,7 +550,7 @@ void SceneObjectImplementation::sendDestroyTo(SceneObject* player) {
 	destroy(player->getClient());
 }
 
-void SceneObjectImplementation::sendAttributeListTo(PlayerCreature* object) {
+void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 	info("sending attribute list");
 
 	AttributeListMessage* alm = new AttributeListMessage(_this);
@@ -775,7 +775,7 @@ void SceneObjectImplementation::notifySelfPositionUpdate() {
 	notifyObservers(ObserverEventType::POSITIONCHANGED);
 }
 
-void SceneObjectImplementation::notifyCloseContainer(PlayerCreature* player) {
+void SceneObjectImplementation::notifyCloseContainer(CreatureObject* player) {
 	notifyObservers(ObserverEventType::CLOSECONTAINER, player);
 }
 
@@ -848,14 +848,14 @@ bool SceneObjectImplementation::removeObject(SceneObject* object, bool notifyCli
 	return containerComponent->removeObject(_this, object, notifyClient);
 }
 
-void SceneObjectImplementation::openContainerTo(PlayerCreature* player) {
+void SceneObjectImplementation::openContainerTo(CreatureObject* player) {
 	ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this);
 	player->sendMessage(cont);
 
 	sendContainerObjectsTo(player);
 }
 
-void SceneObjectImplementation::closeContainerTo(PlayerCreature* player, bool notify) {
+void SceneObjectImplementation::closeContainerTo(CreatureObject* player, bool notify) {
 
 	if(notify) {
 		ClientOpenContainerMessage* cont = new ClientOpenContainerMessage(_this, true);
@@ -960,11 +960,11 @@ void SceneObjectImplementation::rotate(int degrees) {
 	direction.rotate(unity, degrees);
 }
 
-void SceneObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void SceneObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	return objectMenuComponent->fillObjectMenuResponse(_this, menuResponse, player);
 }
 
-int SceneObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SceneObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return objectMenuComponent->handleObjectMenuSelect(_this, player, selectedID);
 }
 

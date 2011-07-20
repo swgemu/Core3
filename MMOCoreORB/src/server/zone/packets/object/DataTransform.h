@@ -47,7 +47,8 @@ which carries forward this exception.
 
 #include "ObjectControllerMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
@@ -107,10 +108,12 @@ public:
 	}
 
 	void run() {
-		ManagedReference<PlayerCreature*> object = (PlayerCreature*) client->getPlayer();
-
+		ManagedReference<CreatureObject*> object = (CreatureObject*) client->getPlayer();
+		
 		if (object == NULL)
 			return;
+
+		PlayerObject* ghost = object->getPlayerObject();
 
 		if (isnan(positionX) || isnan(positionY) || isnan(positionZ))
 			return;
@@ -118,7 +121,7 @@ public:
 		if (isinf(positionX) || isinf(positionY) || isinf(positionZ))
 			return;
 
-		if (object->isTeleporting())
+		if (ghost->isTeleporting())
 			return;
 
 		if (positionX > 7680.0f || positionX < -7680.0f || positionY > 7680.0f || positionY < -7680.0f) {
@@ -195,7 +198,7 @@ public:
 		object->info(degrees.toString(), true);*/
 
 		object->setPosition(positionX, positionZ, positionY);
-		object->setClientLastMovementStamp(movementStamp);
+		ghost->setClientLastMovementStamp(movementStamp);
 		//object->updateServerLastMovementStamp();
 
 		/*Vector<Reference<MessageCallback*> >* updates = object->getLastMovementUpdates();

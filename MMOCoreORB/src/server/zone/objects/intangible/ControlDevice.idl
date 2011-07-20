@@ -47,11 +47,12 @@ package server.zone.objects.intangible;
 import engine.lua.LuaObject;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.creature.VehicleObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 include server.zone.managers.radial.RadialOptions;
+import server.zone.objects.creature.CreatureObject;
 
 
 class ControlDevice extends IntangibleObject {
@@ -81,11 +82,11 @@ class ControlDevice extends IntangibleObject {
 		}
 	}
 	
-	public abstract void storeObject(PlayerCreature player) {
+	public abstract void storeObject(CreatureObject player) {
 		Logger.error("called storeObject on an abstract method");
 	}
 	
-	public abstract void generateObject(PlayerCreature player) {
+	public abstract void generateObject(CreatureObject player) {
 		Logger.error("called generateObject on an abstract method");
 	}
 	

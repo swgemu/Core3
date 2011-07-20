@@ -53,7 +53,8 @@ include server.zone.managers.guild.GuildList;
 include server.zone.packets.guild.GuildObjectDeltaMessage3;
 import server.zone.objects.guild.GuildObject;
 import server.zone.objects.tangible.terminal.guild.GuildTerminal;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.DeltaSet;
 include server.chat.StringIdChatParameter;
 
@@ -100,7 +101,7 @@ class GuildManager extends ManagedService implements Logger {
 		chatManager = chatmanager;
 	}
 	
-	public native void sendGuildListTo(PlayerCreature player, final string guildFilter);
+	public native void sendGuildListTo(CreatureObject player, final string guildFilter);
 	
 	public synchronized void addPendingGuild(unsigned long playerID, final string guildName) {
 		pendingGuilds.put(playerID, guildName);
@@ -134,63 +135,63 @@ class GuildManager extends ManagedService implements Logger {
 		return sponsoredPlayers.get(playerID);
 	}
 	
-	public native void sendBaselinesTo(PlayerCreature player);
+	public native void sendBaselinesTo(CreatureObject player);
 	
 	public native void loadGuilds();
 	
-	public native void sendGuildCreateNameTo(PlayerCreature player, GuildTerminal guildTerminal);
+	public native void sendGuildCreateNameTo(CreatureObject player, GuildTerminal guildTerminal);
 	
-	public native void sendGuildCreateAbbrevTo(PlayerCreature player, GuildTerminal guildTerminal);
+	public native void sendGuildCreateAbbrevTo(CreatureObject player, GuildTerminal guildTerminal);
 	
-	public native void sendGuildInformationTo(PlayerCreature player, GuildObject guild, GuildTerminal guildTerminal);
+	public native void sendGuildInformationTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
 	
-	public native void sendGuildMemberListTo(PlayerCreature player, GuildObject guild, GuildTerminal guildTerminal);
+	public native void sendGuildMemberListTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
 	
-	public native void sendGuildMemberOptionsTo(PlayerCreature player, GuildObject guild, unsigned long memberID, GuildTerminal guildTerminal);
+	public native void sendGuildMemberOptionsTo(CreatureObject player, GuildObject guild, unsigned long memberID, GuildTerminal guildTerminal);
 	
-	public native void sendGuildDisbandConfirmTo(PlayerCreature player, GuildObject guild, GuildTerminal guildTerminal);
+	public native void sendGuildDisbandConfirmTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
 	
-	public native void sendGuildSponsoredListTo(PlayerCreature player, GuildObject guild, GuildTerminal guildTerminal);
+	public native void sendGuildSponsoredListTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
 	
-	public native void sendGuildSponsoredOptionsTo(PlayerCreature player, GuildObject guild, unsigned long playerID, GuildTerminal guildTerminal);
+	public native void sendGuildSponsoredOptionsTo(CreatureObject player, GuildObject guild, unsigned long playerID, GuildTerminal guildTerminal);
 	
-	public native void sendGuildSponsorTo(PlayerCreature player, GuildObject guild, GuildTerminal guildTerminal);
+	public native void sendGuildSponsorTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
 	
-	public native void sendGuildSponsorVerifyTo(PlayerCreature player, PlayerCreature target);
+	public native void sendGuildSponsorVerifyTo(CreatureObject player, CreatureObject target);
 	
-	public native void sendGuildKickPromptTo(PlayerCreature player, PlayerCreature target);
+	public native void sendGuildKickPromptTo(CreatureObject player, CreatureObject target);
 	
-	public native void sendGuildSetTitleTo(PlayerCreature player, PlayerCreature target);
+	public native void sendGuildSetTitleTo(CreatureObject player, CreatureObject target);
 	
-	public native void sendMemberPermissionsTo(PlayerCreature player, unsigned long targetID, GuildTerminal guildTerminal);
+	public native void sendMemberPermissionsTo(CreatureObject player, unsigned long targetID, GuildTerminal guildTerminal);
 	
-	public native boolean validateGuildName(PlayerCreature player, final string guildName);
+	public native boolean validateGuildName(CreatureObject player, final string guildName);
 	
-	public native boolean validateGuildAbbrev(PlayerCreature player, final string guildAbbrev);
+	public native boolean validateGuildAbbrev(CreatureObject player, final string guildAbbrev);
 	
 	public native boolean guildNameExists(final string guildName);
 	
 	public native boolean guildAbbrevExists(final string guildAbbrev);
 	
-	public native GuildObject createGuild(PlayerCreature player, GuildTerminal guildTerminal, final string guildName, final string guildAbbrev);
+	public native GuildObject createGuild(CreatureObject player, GuildTerminal guildTerminal, final string guildName, final string guildAbbrev);
 	
-	public native boolean disbandGuild(PlayerCreature player, GuildObject guild);
+	public native boolean disbandGuild(CreatureObject player, GuildObject guild);
 	
-	public native void sponsorPlayer(PlayerCreature player, GuildTerminal guildTerminal, final string playerName);
+	public native void sponsorPlayer(CreatureObject player, GuildTerminal guildTerminal, final string playerName);
 	
-	public native void acceptSponsorshipRequest(PlayerCreature player, PlayerCreature target);
+	public native void acceptSponsorshipRequest(CreatureObject player, CreatureObject target);
 	
-	public native void acceptSponsoredPlayer(PlayerCreature player, unsigned long targetID);
+	public native void acceptSponsoredPlayer(CreatureObject player, unsigned long targetID);
 	
-	public native void kickMember(PlayerCreature player, PlayerCreature target);
+	public native void kickMember(CreatureObject player, CreatureObject target);
 	
-	public native void leaveGuild(PlayerCreature player, GuildObject guild);
+	public native void leaveGuild(CreatureObject player, GuildObject guild);
 	
-	public native void setMemberTitle(PlayerCreature player, PlayerCreature target, final string title);
+	public native void setMemberTitle(CreatureObject player, CreatureObject target, final string title);
 	
-	public native void setAllegianceTo(PlayerCreature player, unsigned long targetID, GuildTerminal guildTerminal);
+	public native void setAllegianceTo(CreatureObject player, unsigned long targetID, GuildTerminal guildTerminal);
 	
-	public native void toggleGuildPermission(PlayerCreature player, unsigned long targetID, int permissionIndex, GuildTerminal guildTerminal);
+	public native void toggleGuildPermission(CreatureObject player, unsigned long targetID, int permissionIndex, GuildTerminal guildTerminal);
 	
 	public native ChatRoom createGuildChannels(GuildObject guild);
 	

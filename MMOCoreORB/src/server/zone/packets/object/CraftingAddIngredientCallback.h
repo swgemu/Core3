@@ -10,7 +10,7 @@
 
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 
@@ -42,9 +42,11 @@ public:
 	}
 
 	void run() {
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
 
-		ManagedReference<CraftingTool* > craftingTool = player->getLastCraftingToolUsed();
+		PlayerObject* ghost = player->getPlayerObject();
+
+		ManagedReference<CraftingTool* > craftingTool = ghost->getLastCraftingToolUsed();
 
 		if(craftingTool == NULL) {
 			player->sendSystemMessage("ui_craft", "err_no_crafting_tool");

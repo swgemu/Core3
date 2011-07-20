@@ -14,16 +14,16 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -142,21 +142,21 @@ public:
 
 	bool isRed(int value);
 
-	void handleSlot(PlayerCreature* player, bool cancel, bool other);
+	void handleSlot(CreatureObject* player, bool cancel, bool other);
 
-	void bet(PlayerCreature* player, int amount, int target, int machineType);
+	void bet(CreatureObject* player, int amount, int target, int machineType);
 
-	void bet(GamblingTerminal* terminal, PlayerCreature* player, int amount, int target);
+	void bet(GamblingTerminal* terminal, CreatureObject* player, int amount, int target);
 
-	void startGame(PlayerCreature* player, int machineType);
+	void startGame(CreatureObject* player, int machineType);
 
 	void startGame(GamblingTerminal* terminal);
 
-	void leaveTerminal(PlayerCreature* player, int machineType);
+	void leaveTerminal(CreatureObject* player, int machineType);
 
-	void registerPlayer(GamblingTerminal* terminal, PlayerCreature* player);
+	void registerPlayer(GamblingTerminal* terminal, CreatureObject* player);
 
-	void refreshRouletteMenu(PlayerCreature* player);
+	void refreshRouletteMenu(CreatureObject* player);
 
 	void continueGame(GamblingTerminal* terminal);
 
@@ -164,17 +164,17 @@ public:
 
 	void calculateOutcome(GamblingTerminal* terminal);
 
-	unsigned int createWindow(GamblingTerminal* terminal, PlayerCreature* player);
+	unsigned int createWindow(GamblingTerminal* terminal, CreatureObject* player);
 
-	unsigned int createPayoutWindow(PlayerCreature* player);
+	unsigned int createPayoutWindow(CreatureObject* player);
 
-	unsigned int createSlotWindow(PlayerCreature* player, unsigned int payoutBoxID);
+	unsigned int createSlotWindow(CreatureObject* player, unsigned int payoutBoxID);
 
-	unsigned int createRouletteWindow(PlayerCreature* player);
+	unsigned int createRouletteWindow(CreatureObject* player);
 
 	void createEvent(GamblingTerminal* terminal, int time);
 
-	bool isPlaying(PlayerCreature* player);
+	bool isPlaying(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -204,9 +204,9 @@ class GamblingManagerImplementation : public ObserverImplementation, public Logg
 protected:
 	ManagedReference<ZoneServer* > zoneServer;
 
-	VectorMap<ManagedReference<PlayerCreature* >, ManagedReference<GamblingTerminal* > > slotGames;
+	VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > slotGames;
 
-	VectorMap<ManagedReference<PlayerCreature* >, ManagedReference<GamblingTerminal* > > rouletteGames;
+	VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > rouletteGames;
 
 	Vector<String> roulette;
 
@@ -249,25 +249,25 @@ public:
 
 	bool isRed(int value);
 
-	void handleSlot(PlayerCreature* player, bool cancel, bool other);
+	void handleSlot(CreatureObject* player, bool cancel, bool other);
 
 protected:
-	void refreshSlotMenu(PlayerCreature* player, GamblingTerminal* terminal);
+	void refreshSlotMenu(CreatureObject* player, GamblingTerminal* terminal);
 
 public:
-	void bet(PlayerCreature* player, int amount, int target, int machineType);
+	void bet(CreatureObject* player, int amount, int target, int machineType);
 
-	void bet(GamblingTerminal* terminal, PlayerCreature* player, int amount, int target);
+	void bet(GamblingTerminal* terminal, CreatureObject* player, int amount, int target);
 
-	void startGame(PlayerCreature* player, int machineType);
+	void startGame(CreatureObject* player, int machineType);
 
 	void startGame(GamblingTerminal* terminal);
 
-	void leaveTerminal(PlayerCreature* player, int machineType);
+	void leaveTerminal(CreatureObject* player, int machineType);
 
-	void registerPlayer(GamblingTerminal* terminal, PlayerCreature* player);
+	void registerPlayer(GamblingTerminal* terminal, CreatureObject* player);
 
-	void refreshRouletteMenu(PlayerCreature* player);
+	void refreshRouletteMenu(CreatureObject* player);
 
 	void continueGame(GamblingTerminal* terminal);
 
@@ -275,17 +275,17 @@ public:
 
 	void calculateOutcome(GamblingTerminal* terminal);
 
-	unsigned int createWindow(GamblingTerminal* terminal, PlayerCreature* player);
+	unsigned int createWindow(GamblingTerminal* terminal, CreatureObject* player);
 
-	unsigned int createPayoutWindow(PlayerCreature* player);
+	unsigned int createPayoutWindow(CreatureObject* player);
 
-	unsigned int createSlotWindow(PlayerCreature* player, unsigned int payoutBoxID);
+	unsigned int createSlotWindow(CreatureObject* player, unsigned int payoutBoxID);
 
-	unsigned int createRouletteWindow(PlayerCreature* player);
+	unsigned int createRouletteWindow(CreatureObject* player);
 
 	void createEvent(GamblingTerminal* terminal, int time);
 
-	bool isPlaying(PlayerCreature* player);
+	bool isPlaying(CreatureObject* player);
 
 	WeakReference<GamblingManager*> _this;
 
@@ -354,21 +354,21 @@ public:
 
 	bool isRed(int value);
 
-	void handleSlot(PlayerCreature* player, bool cancel, bool other);
+	void handleSlot(CreatureObject* player, bool cancel, bool other);
 
-	void bet(PlayerCreature* player, int amount, int target, int machineType);
+	void bet(CreatureObject* player, int amount, int target, int machineType);
 
-	void bet(GamblingTerminal* terminal, PlayerCreature* player, int amount, int target);
+	void bet(GamblingTerminal* terminal, CreatureObject* player, int amount, int target);
 
-	void startGame(PlayerCreature* player, int machineType);
+	void startGame(CreatureObject* player, int machineType);
 
 	void startGame(GamblingTerminal* terminal);
 
-	void leaveTerminal(PlayerCreature* player, int machineType);
+	void leaveTerminal(CreatureObject* player, int machineType);
 
-	void registerPlayer(GamblingTerminal* terminal, PlayerCreature* player);
+	void registerPlayer(GamblingTerminal* terminal, CreatureObject* player);
 
-	void refreshRouletteMenu(PlayerCreature* player);
+	void refreshRouletteMenu(CreatureObject* player);
 
 	void continueGame(GamblingTerminal* terminal);
 
@@ -376,17 +376,17 @@ public:
 
 	void calculateOutcome(GamblingTerminal* terminal);
 
-	unsigned int createWindow(GamblingTerminal* terminal, PlayerCreature* player);
+	unsigned int createWindow(GamblingTerminal* terminal, CreatureObject* player);
 
-	unsigned int createPayoutWindow(PlayerCreature* player);
+	unsigned int createPayoutWindow(CreatureObject* player);
 
-	unsigned int createSlotWindow(PlayerCreature* player, unsigned int payoutBoxID);
+	unsigned int createSlotWindow(CreatureObject* player, unsigned int payoutBoxID);
 
-	unsigned int createRouletteWindow(PlayerCreature* player);
+	unsigned int createRouletteWindow(CreatureObject* player);
 
 	void createEvent(GamblingTerminal* terminal, int time);
 
-	bool isPlaying(PlayerCreature* player);
+	bool isPlaying(CreatureObject* player);
 
 };
 

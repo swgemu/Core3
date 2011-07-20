@@ -66,7 +66,8 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
+		PlayerObject* ghost = player->getPlayerObject();
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
@@ -77,7 +78,7 @@ public:
 				Locker clocker(creatureObject, creature);
 
 				if (creature->isInRange(object, 5)) {
-					player->setConversatingCreature(creatureObject);
+					ghost->setConversatingCreature(creatureObject);
 					creatureObject->sendConversationStartTo(creature);
 
 					creatureObject->notifyObservers(ObserverEventType::STARTCONVERSATION, player);

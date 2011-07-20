@@ -11,7 +11,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 
 void InstallationDeedImplementation::initializeTransientMembers() {
@@ -20,7 +20,7 @@ void InstallationDeedImplementation::initializeTransientMembers() {
 	setLoggingName("BuildingDeed");
 }
 
-int InstallationDeedImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int InstallationDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID != 20) // not use object
 		return 1;
 
@@ -30,7 +30,7 @@ int InstallationDeedImplementation::handleObjectMenuSelect(PlayerCreature* playe
 	return 0;
 }
 
-void InstallationDeedImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void InstallationDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	DeedImplementation::fillAttributeList(alm, object);
 
 	TemplateManager* templateManager = TemplateManager::instance();

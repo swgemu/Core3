@@ -14,16 +14,30 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "engine/core/ManagedObject.h"
 
@@ -38,9 +52,9 @@ class ShipControlDevice : public ControlDevice {
 public:
 	ShipControlDevice();
 
-	void storeObject(PlayerCreature* player);
+	void storeObject(CreatureObject* player);
 
-	void generateObject(PlayerCreature* player);
+	void generateObject(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -73,9 +87,9 @@ public:
 
 	ShipControlDeviceImplementation(DummyConstructorParameter* param);
 
-	void storeObject(PlayerCreature* player);
+	void storeObject(CreatureObject* player);
 
-	void generateObject(PlayerCreature* player);
+	void generateObject(CreatureObject* player);
 
 	WeakReference<ShipControlDevice*> _this;
 
@@ -120,9 +134,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void storeObject(PlayerCreature* player);
+	void storeObject(CreatureObject* player);
 
-	void generateObject(PlayerCreature* player);
+	void generateObject(CreatureObject* player);
 
 };
 

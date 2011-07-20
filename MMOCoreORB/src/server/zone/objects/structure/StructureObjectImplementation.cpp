@@ -71,7 +71,7 @@ AABBTree* StructureObjectImplementation::getAABBTree() {
 	return app->getAABBTree();
 }
 
-bool StructureObjectImplementation::addPermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName) {
+bool StructureObjectImplementation::addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName) {
 	if (player == NULL || targetPlayer == NULL)
 		return false;
 
@@ -107,13 +107,13 @@ bool StructureObjectImplementation::addPermission(PlayerCreature* player, Player
 	return ret;
 }
 
-bool StructureObjectImplementation::addPermission(PlayerCreature* player, const String& targetPlayerName, const String& listName) {
+bool StructureObjectImplementation::addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName) {
 	PlayerManager* playerManager = server->getPlayerManager();
 
 	if (playerManager == NULL)
 		return false;
 
-	ManagedReference<PlayerCreature*> targetPlayer = playerManager->getPlayer(targetPlayerName);
+	ManagedReference<CreatureObject*> targetPlayer = playerManager->getPlayer(targetPlayerName);
 
 	if (player == NULL || targetPlayer == NULL)
 		return false;
@@ -150,7 +150,7 @@ bool StructureObjectImplementation::addPermission(PlayerCreature* player, const 
 	return ret;
 }
 
-bool StructureObjectImplementation::removePermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName) {
+bool StructureObjectImplementation::removePermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName) {
 	if (player == NULL || targetPlayer == NULL)
 		return false;
 
@@ -176,13 +176,13 @@ bool StructureObjectImplementation::removePermission(PlayerCreature* player, Pla
 	return ret;
 }
 
-bool StructureObjectImplementation::removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName) {
+bool StructureObjectImplementation::removePermission(CreatureObject* player, const String& targetPlayerName, const String& listName) {
 	PlayerManager* playerManager = server->getPlayerManager();
 
 	if (playerManager == NULL)
 		return false;
 
-	ManagedReference<PlayerCreature*> targetPlayer = playerManager->getPlayer(targetPlayerName);
+	ManagedReference<CreatureObject*> targetPlayer = playerManager->getPlayer(targetPlayerName);
 
 	if (player == NULL || targetPlayer == NULL)
 		return false;
@@ -248,12 +248,13 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 		structureMaintenanceTask->schedule(timeRemaining);
 }
 
-void StructureObjectImplementation::sendStatusTo(PlayerCreature* player) {
+void StructureObjectImplementation::sendStatusTo(CreatureObject* player) {
 	//TODO: Add in extra status information for administrators.
 	//TODO: This needs some refactoring/cleanup
 	ManagedReference<SuiListBox*> statusBox = new SuiListBox(player, SuiWindowType::STRUCTURE_STATUS);
 	statusBox->setPromptTitle("@player_structure:structure_status_t"); //Structure Status
 	statusBox->setUsingObject(_this);
+	PlayerObject* ghost = player->getPlayerObject();
 
 	if (isInstallationObject())
 		((InstallationObjectImplementation*) this)->updateInstallationWork();
@@ -265,14 +266,14 @@ void StructureObjectImplementation::sendStatusTo(PlayerCreature* player) {
 
 	statusBox->setPromptText("@player_structure:structure_name_prompt " + full); //Structure Name:
 
-	ManagedReference<PlayerCreature*> playerCreature = dynamic_cast<PlayerCreature*>(getZoneServer()->getObject(getOwnerObjectID()));
+	ManagedReference<CreatureObject*> playerCreature = dynamic_cast<CreatureObject*>(getZoneServer()->getObject(getOwnerObjectID()));
 
 	if (playerCreature == NULL)
 		return;
 
 	statusBox->addMenuItem("@player_structure:owner_prompt  " + playerCreature->getFirstName());
 
-	if (isBuildingObject() && _this == player->getDeclaredResidence())
+	if (isBuildingObject() && _this == ghost->getDeclaredResidence())
 			statusBox->addMenuItem("@player_structure:declared_residency"); //You have declared your residency here.
 
 	if (isPublicStructure())
@@ -315,11 +316,11 @@ void StructureObjectImplementation::sendStatusTo(PlayerCreature* player) {
 		statusBox->addMenuItem(ssnitems.toString());
 	}
 
-	player->addSuiBox(statusBox);
+	player->getPlayerObject()->addSuiBox(statusBox);
 	player->sendMessage(statusBox->generateMessage());
 }
 
-void StructureObjectImplementation::sendManageMaintenanceTo(PlayerCreature* player) {
+void StructureObjectImplementation::sendManageMaintenanceTo(CreatureObject* player) {
 	int availableCredits = player->getCashCredits();
 
 	if (availableCredits <= 0) {
@@ -341,14 +342,14 @@ void StructureObjectImplementation::sendManageMaintenanceTo(PlayerCreature* play
 	maintenanceBox->addFrom("@player_structure:total_funds", String::valueOf(availableCredits), String::valueOf(availableCredits), "1");
 	maintenanceBox->addTo("@player_structure:to_pay", "0", "0", "1");
 
-	player->addSuiBox(maintenanceBox);
+	player->getPlayerObject()->addSuiBox(maintenanceBox);
 	player->sendMessage(maintenanceBox->generateMessage());
 
 	//Calculate how much time until the maintenance will expire.
 	//structureObject->scheduleMaintenanceExpirationEvent();
 }
 
-void StructureObjectImplementation::sendChangeNamePromptTo(PlayerCreature* player) {
+void StructureObjectImplementation::sendChangeNamePromptTo(CreatureObject* player) {
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
 
 	inputBox->setPromptTitle("@sui:set_name_title");
@@ -357,12 +358,12 @@ void StructureObjectImplementation::sendChangeNamePromptTo(PlayerCreature* playe
 	inputBox->setMaxInputSize(255);
 	inputBox->setDefaultInput(objectName.getCustomString().toString());
 
-	player->addSuiBox(inputBox);
+	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
 }
 
 bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) {
-	if (obj->isPlayerCreature() && ((PlayerCreature*) obj)->getPlayerObject()->isPrivileged())
+	if (obj->isPlayerCreature() && ((CreatureObject*) obj)->getPlayerObject()->isPrivileged())
 		return true;
 
 	return obj->getObjectID() == ownerObjectID;
@@ -373,7 +374,7 @@ bool StructureObjectImplementation::isOwnerOf(uint64 objid) {
 
 	//We have to check if the id belongs to an admin...perhaps we should have a list on playermanager of admin objectids...
 	if (obj != NULL && obj->isPlayerCreature()) {
-		PlayerCreature* player = (PlayerCreature*) obj.get();
+		CreatureObject* player = (CreatureObject*) obj.get();
 
 		if (player->getPlayerObject()->isPrivileged())
 			return true;
@@ -382,7 +383,7 @@ bool StructureObjectImplementation::isOwnerOf(uint64 objid) {
 	return objid == ownerObjectID;
 }
 
-void StructureObjectImplementation::createVendor(PlayerCreature* player) {
+void StructureObjectImplementation::createVendor(CreatureObject* player) {
 	if (!isPublicStructure()) {
 		player->sendSystemMessage("@player_structure:vendor_public_only");
 		return;

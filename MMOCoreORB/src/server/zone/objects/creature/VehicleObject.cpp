@@ -6,8 +6,6 @@
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
-
 #include "server/zone/objects/scene/SceneObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
@@ -22,7 +20,7 @@
  *	VehicleObjectStub
  */
 
-enum {RPC_CHECKINRANGEGARAGE__,RPC_INSERTTOZONE__ZONE_,RPC_SETPOSTURE__INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_REPAIRVEHICLE__PLAYERCREATURE_,RPC_CALCULATEREPAIRCOST__PLAYERCREATURE_,RPC_SENDREPAIRCONFIRMTO__PLAYERCREATURE_,RPC_ISVEHICLEOBJECT__};
+enum {RPC_CHECKINRANGEGARAGE__,RPC_INSERTTOZONE__ZONE_,RPC_SETPOSTURE__INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_REPAIRVEHICLE__CREATUREOBJECT_,RPC_CALCULATEREPAIRCOST__CREATUREOBJECT_,RPC_SENDREPAIRCONFIRMTO__CREATUREOBJECT_,RPC_ISVEHICLEOBJECT__};
 
 VehicleObject::VehicleObject() : CreatureObject(DummyConstructorParameter::instance()) {
 	VehicleObjectImplementation* _implementation = new VehicleObjectImplementation();
@@ -46,7 +44,7 @@ void VehicleObject::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void VehicleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void VehicleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -203,13 +201,13 @@ int VehicleObject::notifyObjectDestructionObservers(TangibleObject* attacker, in
 		return _implementation->notifyObjectDestructionObservers(attacker, condition);
 }
 
-int VehicleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VehicleObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -218,13 +216,13 @@ int VehicleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedI
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void VehicleObject::repairVehicle(PlayerCreature* player) {
+void VehicleObject::repairVehicle(CreatureObject* player) {
 	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REPAIRVEHICLE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_REPAIRVEHICLE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -232,13 +230,13 @@ void VehicleObject::repairVehicle(PlayerCreature* player) {
 		_implementation->repairVehicle(player);
 }
 
-int VehicleObject::calculateRepairCost(PlayerCreature* player) {
+int VehicleObject::calculateRepairCost(CreatureObject* player) {
 	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CALCULATEREPAIRCOST__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CALCULATEREPAIRCOST__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -246,13 +244,13 @@ int VehicleObject::calculateRepairCost(PlayerCreature* player) {
 		return _implementation->calculateRepairCost(player);
 }
 
-void VehicleObject::sendRepairConfirmTo(PlayerCreature* player) {
+void VehicleObject::sendRepairConfirmTo(CreatureObject* player) {
 	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDREPAIRCONFIRMTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDREPAIRCONFIRMTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -499,17 +497,17 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_:
 		resp->insertSignedInt(notifyObjectDestructionObservers((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_REPAIRVEHICLE__PLAYERCREATURE_:
-		repairVehicle((PlayerCreature*) inv->getObjectParameter());
+	case RPC_REPAIRVEHICLE__CREATUREOBJECT_:
+		repairVehicle((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_CALCULATEREPAIRCOST__PLAYERCREATURE_:
-		resp->insertSignedInt(calculateRepairCost((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CALCULATEREPAIRCOST__CREATUREOBJECT_:
+		resp->insertSignedInt(calculateRepairCost((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_SENDREPAIRCONFIRMTO__PLAYERCREATURE_:
-		sendRepairConfirmTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDREPAIRCONFIRMTO__CREATUREOBJECT_:
+		sendRepairConfirmTo((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_ISVEHICLEOBJECT__:
 		resp->insertBoolean(isVehicleObject());
@@ -561,19 +559,19 @@ int VehicleObjectAdapter::notifyObjectDestructionObservers(TangibleObject* attac
 	return ((VehicleObjectImplementation*) impl)->notifyObjectDestructionObservers(attacker, condition);
 }
 
-int VehicleObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VehicleObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((VehicleObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void VehicleObjectAdapter::repairVehicle(PlayerCreature* player) {
+void VehicleObjectAdapter::repairVehicle(CreatureObject* player) {
 	((VehicleObjectImplementation*) impl)->repairVehicle(player);
 }
 
-int VehicleObjectAdapter::calculateRepairCost(PlayerCreature* player) {
+int VehicleObjectAdapter::calculateRepairCost(CreatureObject* player) {
 	return ((VehicleObjectImplementation*) impl)->calculateRepairCost(player);
 }
 
-void VehicleObjectAdapter::sendRepairConfirmTo(PlayerCreature* player) {
+void VehicleObjectAdapter::sendRepairConfirmTo(CreatureObject* player) {
 	((VehicleObjectImplementation*) impl)->sendRepairConfirmTo(player);
 }
 

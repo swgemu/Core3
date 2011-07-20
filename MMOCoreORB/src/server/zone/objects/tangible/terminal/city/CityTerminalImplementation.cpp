@@ -7,12 +7,12 @@
 
 #include "CityTerminal.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
 #include "server/zone/managers/city/CityManager.h"
 
-void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (controlledObject == NULL || !controlledObject->isBuildingObject())
 		return;
 
@@ -58,7 +58,7 @@ void CityTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menu
 	menuResponse->addRadialMenuItemToRadialID(216, 225, 3, "@city/city:city_specializations"); //City Specialization
 }
 
-int CityTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CityTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (getZone() == NULL)
 		return 0;
 

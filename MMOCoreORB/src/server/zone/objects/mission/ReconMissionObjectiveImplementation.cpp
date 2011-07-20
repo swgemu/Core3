@@ -62,7 +62,7 @@ void ReconMissionObjectiveImplementation::abort() {
 }
 
 void ReconMissionObjectiveImplementation::complete() {
-	PlayerCreature* player = (PlayerCreature*) getPlayerOwner();
+	CreatureObject* player = (CreatureObject*) getPlayerOwner();
 
 	if (player == NULL)
 		return;

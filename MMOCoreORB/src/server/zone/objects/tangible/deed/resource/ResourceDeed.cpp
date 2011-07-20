@@ -8,7 +8,7 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
@@ -18,7 +18,7 @@
  *	ResourceDeedStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_USEOBJECT__PLAYERCREATURE_,RPC_DESTROYDEED__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_USEOBJECT__CREATUREOBJECT_,RPC_DESTROYDEED__};
 
 ResourceDeed::ResourceDeed() : Deed(DummyConstructorParameter::instance()) {
 	ResourceDeedImplementation* _implementation = new ResourceDeedImplementation();
@@ -46,7 +46,7 @@ void ResourceDeed::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void ResourceDeed::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void ResourceDeed::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	ResourceDeedImplementation* _implementation = (ResourceDeedImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -55,13 +55,13 @@ void ResourceDeed::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Play
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int ResourceDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int ResourceDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	ResourceDeedImplementation* _implementation = (ResourceDeedImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -70,13 +70,13 @@ int ResourceDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-int ResourceDeed::useObject(PlayerCreature* player) {
+int ResourceDeed::useObject(CreatureObject* player) {
 	ResourceDeedImplementation* _implementation = (ResourceDeedImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_USEOBJECT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_USEOBJECT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -241,11 +241,11 @@ Packet* ResourceDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_USEOBJECT__PLAYERCREATURE_:
-		resp->insertSignedInt(useObject((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_USEOBJECT__CREATUREOBJECT_:
+		resp->insertSignedInt(useObject((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_DESTROYDEED__:
 		destroyDeed();
@@ -261,11 +261,11 @@ void ResourceDeedAdapter::initializeTransientMembers() {
 	((ResourceDeedImplementation*) impl)->initializeTransientMembers();
 }
 
-int ResourceDeedAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int ResourceDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((ResourceDeedImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-int ResourceDeedAdapter::useObject(PlayerCreature* player) {
+int ResourceDeedAdapter::useObject(CreatureObject* player) {
 	return ((ResourceDeedImplementation*) impl)->useObject(player);
 }
 

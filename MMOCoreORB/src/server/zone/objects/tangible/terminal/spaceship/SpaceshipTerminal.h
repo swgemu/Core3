@@ -14,16 +14,16 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 #include "engine/core/ManagedObject.h"
 
@@ -40,7 +40,7 @@ class SpaceshipTerminal : public Terminal {
 public:
 	SpaceshipTerminal();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -77,7 +77,7 @@ public:
 
 	SpaceshipTerminalImplementation(DummyConstructorParameter* param);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	WeakReference<SpaceshipTerminal*> _this;
 
@@ -122,7 +122,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 };
 

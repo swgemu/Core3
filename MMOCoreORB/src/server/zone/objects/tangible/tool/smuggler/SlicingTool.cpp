@@ -12,7 +12,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -22,7 +22,7 @@
  *	SlicingToolStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_CALCULATESUCCESSRATE__,RPC_GETEFFECTIVENESS__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_CALCULATESUCCESSRATE__,RPC_GETEFFECTIVENESS__};
 
 SlicingTool::SlicingTool() : TangibleObject(DummyConstructorParameter::instance()) {
 	SlicingToolImplementation* _implementation = new SlicingToolImplementation();
@@ -37,13 +37,13 @@ SlicingTool::~SlicingTool() {
 }
 
 
-int SlicingTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SlicingTool::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	SlicingToolImplementation* _implementation = (SlicingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -61,7 +61,7 @@ void SlicingTool::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void SlicingTool::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void SlicingTool::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	SlicingToolImplementation* _implementation = (SlicingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -271,8 +271,8 @@ Packet* SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
@@ -290,7 +290,7 @@ Packet* SlicingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	return resp;
 }
 
-int SlicingToolAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SlicingToolAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((SlicingToolImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

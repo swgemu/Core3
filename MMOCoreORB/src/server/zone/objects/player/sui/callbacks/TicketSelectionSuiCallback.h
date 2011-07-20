@@ -16,7 +16,7 @@ public:
 	TicketSelectionSuiCallback(ZoneServer* serv) : SuiCallback(serv) {
 	}
 
-	void run(PlayerCreature* player, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
 		//@travel:boarding_ticket_selecting You must select a ticket to use before boarding.
 		//@travel:wrong_shuttle This ticket is not valid for the given shuttle.
 		if (!sui->isListBox() || cancelPressed)

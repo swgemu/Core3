@@ -68,7 +68,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 

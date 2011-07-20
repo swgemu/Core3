@@ -12,7 +12,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -20,7 +20,7 @@
  *	FireworkObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_LAUNCH__PLAYERCREATURE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_LAUNCH__CREATUREOBJECT_};
 
 FireworkObject::FireworkObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FireworkObjectImplementation* _implementation = new FireworkObjectImplementation();
@@ -48,13 +48,13 @@ void FireworkObject::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-int FireworkObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FireworkObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	FireworkObjectImplementation* _implementation = (FireworkObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -72,13 +72,13 @@ void FireworkObject::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void FireworkObject::launch(PlayerCreature* player) {
+void FireworkObject::launch(CreatureObject* player) {
 	FireworkObjectImplementation* _implementation = (FireworkObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_LAUNCH__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_LAUNCH__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -271,11 +271,11 @@ Packet* FireworkObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_LAUNCH__PLAYERCREATURE_:
-		launch((PlayerCreature*) inv->getObjectParameter());
+	case RPC_LAUNCH__CREATUREOBJECT_:
+		launch((CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -288,11 +288,11 @@ void FireworkObjectAdapter::initializeTransientMembers() {
 	((FireworkObjectImplementation*) impl)->initializeTransientMembers();
 }
 
-int FireworkObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FireworkObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((FireworkObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void FireworkObjectAdapter::launch(PlayerCreature* player) {
+void FireworkObjectAdapter::launch(CreatureObject* player) {
 	((FireworkObjectImplementation*) impl)->launch(player);
 }
 

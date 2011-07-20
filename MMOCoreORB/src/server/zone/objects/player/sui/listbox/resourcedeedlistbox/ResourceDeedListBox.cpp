@@ -6,7 +6,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	ResourceDeedListBoxStub
@@ -14,7 +16,7 @@
 
 enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ADDBOX__STRING_,RPC_GETBOXCOUNT__,RPC_GETBOX__INT_,RPC_REMOVEBOX__,RPC_GETCURRENTBOX__,RPC_GETPREVIOUSBOX__};
 
-ResourceDeedListBox::ResourceDeedListBox(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiListBox(DummyConstructorParameter::instance()) {
+ResourceDeedListBox::ResourceDeedListBox(CreatureObject* player, unsigned int windowType, unsigned int listBoxType) : SuiListBox(DummyConstructorParameter::instance()) {
 	ResourceDeedListBoxImplementation* _implementation = new ResourceDeedListBoxImplementation(player, windowType, listBoxType);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -245,7 +247,7 @@ int ResourceDeedListBoxImplementation::writeObjectMembers(ObjectOutputStream* st
 	return 0 + SuiListBoxImplementation::writeObjectMembers(stream);
 }
 
-ResourceDeedListBoxImplementation::ResourceDeedListBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiListBoxImplementation(player, windowType, SuiBox::LISTBOX) {
+ResourceDeedListBoxImplementation::ResourceDeedListBoxImplementation(CreatureObject* player, unsigned int windowType, unsigned int listBoxType) : SuiListBoxImplementation(player, windowType, SuiBox::LISTBOX) {
 	_initializeImplementation();
 }
 

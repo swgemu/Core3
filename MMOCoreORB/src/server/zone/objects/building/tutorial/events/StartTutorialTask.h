@@ -17,10 +17,10 @@ namespace tutorial {
 namespace events {
 
 class StartTutorialTask : public Task {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 
 public:
-	StartTutorialTask(PlayerCreature* play) :
+	StartTutorialTask(CreatureObject* play) :
 		Task() {
 
 		player = play;

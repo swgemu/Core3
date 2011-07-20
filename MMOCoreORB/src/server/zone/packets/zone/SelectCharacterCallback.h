@@ -14,7 +14,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/chat/ChatManager.h"
@@ -38,7 +38,8 @@ public:
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(characterID, true);
 
 		if (obj != NULL && obj->isPlayerCreature()) {
-			PlayerCreature* player = (PlayerCreature*) obj.get();
+			CreatureObject* player = (CreatureObject*) obj.get();
+			PlayerObject* ghost = player->getPlayerObject();
 
 			Locker _locker(player);
 
@@ -68,12 +69,12 @@ public:
 			if (zone != NULL && player->isInQuadTree()) {
 				//reload
 
-				player->reload(client);
+				ghost->reload(client);
 				player->info("reloading");
 
 			} else {
-				String zoneName = player->getSavedTerrainName();
-				uint64 savedParentID = player->getSavedParentID();
+				String zoneName = ghost->getSavedTerrainName();
+				uint64 savedParentID = ghost->getSavedParentID();
 
 				ManagedReference<SceneObject*> parent = zoneServer->getObject(savedParentID, true);
 				ManagedReference<SceneObject*> currentParent = player->getParent();
@@ -122,16 +123,12 @@ public:
 				player->insertToZone(zone);
 			}
 
-			player->setSavedParentID(0);
-			player->setOnline();
+			ghost->setSavedParentID(0);
+			ghost->setOnline();
 
 			ChatManager* chatManager = zoneServer->getChatManager();
 			chatManager->addPlayer(player);
 			chatManager->loadMail(player);
-
-			PlayerObject* ghost = player->getPlayerObject();
-			if (ghost == NULL)
-				return;
 
 			ghost->notifyOnline();
 

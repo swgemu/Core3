@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.objects.area;
 
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 include server.zone.objects.area.CampVisitorList;
 import server.zone.objects.area.events.CampDespawnEvent;
@@ -76,7 +76,7 @@ class CampSiteActiveArea extends ActiveArea {
 	protected byte campModifier;
 	protected int duration;
 	
-	PlayerCreature campOwner;
+	CreatureObject campOwner;
 
 	@dereferenced
 	protected Time placementTime;

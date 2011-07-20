@@ -68,21 +68,21 @@ public:
 
 		if (!weapon->isMeleeWeapon() && !weapon->isUnarmedWeapon()) {
 			if (creature->isPlayerCreature())
-				((PlayerCreature*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
+				((CreatureObject*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
 
 			return INVALIDWEAPON;
 		}
 
 		if (!creature->isInCombat()) {
 			if (creature->isPlayerCreature())
-				((PlayerCreature*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
+				((CreatureObject*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
 
 			return GENERALERROR;
 		}
 
 		if (creature->getHAM(CreatureAttribute::ACTION) <= 50) {
 			if (creature->isPlayerCreature())
-				((PlayerCreature*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
+				((CreatureObject*)creature)->sendSystemMessage("cbt_spam", "berserk_fail_single");
 
 			return GENERALERROR;
 		}
@@ -93,7 +93,7 @@ public:
 		//creature->setBerserkDamage(25);
 
 		if (creature->isPlayerCreature())
-			((PlayerCreature*)creature)->sendSystemMessage("cbt_spam", "berserk_success_single");
+			((CreatureObject*)creature)->sendSystemMessage("cbt_spam", "berserk_success_single");
 
 		return SUCCESS;
 	}

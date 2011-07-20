@@ -53,7 +53,7 @@ void VendorCreatureImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 }
 
-void VendorCreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void VendorCreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 if (!vendor.isInitialized())
 	CreatureObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
@@ -94,7 +94,7 @@ if (!vendor.isInitialized())
 
 }
 
-int VendorCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VendorCreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	switch (selectedID) {
 	case 241: {
 		VendorManager::instance()->handleDisplayStatus(player, &vendor);
@@ -154,12 +154,12 @@ int VendorCreatureImplementation::handleObjectMenuSelect(PlayerCreature* player,
 
 }
 
-void VendorCreatureImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void VendorCreatureImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	SceneObjectImplementation::fillAttributeList(alm, object);
 
 }
 
-void VendorCreatureImplementation::addClothingItem(PlayerCreature* player, TangibleObject* clothing) {
+void VendorCreatureImplementation::addClothingItem(CreatureObject* player, TangibleObject* clothing) {
 	if (!clothing->isWearableObject() && !clothing->isWeaponObject())
 		return;
 

@@ -72,7 +72,7 @@ public:
 			return GENERALERROR;
 
 		if (creature->isPlayerCreature()) {
-			PlayerCreature* player = (PlayerCreature*) creature;
+			CreatureObject* player = (CreatureObject*) creature;
 			ForageManager* forageManager = player->getZoneServer()->getForageManager();
 			forageManager->startForaging(player, scoutForage);
 		}

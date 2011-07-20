@@ -14,16 +14,16 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -232,87 +232,87 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void checkFishingOnPositionUpdate(PlayerCreature* player);
+	void checkFishingOnPositionUpdate(CreatureObject* player);
 
-	int notifyCloseContainer(PlayerCreature* player, SceneObject* container);
+	int notifyCloseContainer(CreatureObject* player, SceneObject* container);
 
-	int checkLocation(PlayerCreature* player, int quality, float& x, float& y, float& z);
+	int checkLocation(CreatureObject* player, int quality, float& x, float& y, float& z);
 
-	int startFishing(PlayerCreature* player);
+	int startFishing(CreatureObject* player);
 
-	void stopFishing(PlayerCreature* player, unsigned int boxID, bool rem);
+	void stopFishing(CreatureObject* player, unsigned int boxID, bool rem);
 
-	void fishingStep(PlayerCreature* player);
+	void fishingStep(CreatureObject* player);
 
-	void success(PlayerCreature* player, int fish, SceneObject* marker, unsigned int boxID);
+	void success(CreatureObject* player, int fish, SceneObject* marker, unsigned int boxID);
 
 	String getTime();
 
-	void sendReward(PlayerCreature* player, SceneObject* marker, SceneObject* loot);
+	void sendReward(CreatureObject* player, SceneObject* marker, SceneObject* loot);
 
-	unsigned int createWindow(PlayerCreature* player, unsigned int boxID);
+	unsigned int createWindow(CreatureObject* player, unsigned int boxID);
 
-	void closeMenu(PlayerCreature* player, unsigned int boxID);
+	void closeMenu(CreatureObject* player, unsigned int boxID);
 
 	int vegetation(SceneObject* marker);
 
 	int density(SceneObject* marker);
 
-	int getFish(PlayerCreature* player);
+	int getFish(CreatureObject* player);
 
-	int getNextAction(PlayerCreature* player);
+	int getNextAction(CreatureObject* player);
 
-	void setNextAction(PlayerCreature* player, int next);
+	void setNextAction(CreatureObject* player, int next);
 
-	FishingPoleObject* getPole(PlayerCreature* player);
+	FishingPoleObject* getPole(CreatureObject* player);
 
-	FishingBaitObject* getBait(PlayerCreature* player);
+	FishingBaitObject* getBait(CreatureObject* player);
 
-	unsigned int getFishBoxID(PlayerCreature* player);
+	unsigned int getFishBoxID(CreatureObject* player);
 
-	void setFishBoxID(PlayerCreature* player, unsigned int boxID);
+	void setFishBoxID(CreatureObject* player, unsigned int boxID);
 
-	int getFishingState(PlayerCreature* player);
+	int getFishingState(CreatureObject* player);
 
-	void setFishingState(PlayerCreature* player, int state);
+	void setFishingState(CreatureObject* player, int state);
 
-	SceneObject* getFishMarker(PlayerCreature* player);
+	SceneObject* getFishMarker(CreatureObject* player);
 
-	void setFishMarker(PlayerCreature* player, SceneObject* marker);
+	void setFishMarker(CreatureObject* player, SceneObject* marker);
 
-	void freeBait(PlayerCreature* player);
+	void freeBait(CreatureObject* player);
 
-	void fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
+	void fishingProceed(CreatureObject* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
 
-	void mishapEvent(const String& text, PlayerCreature* player, unsigned int boxID, bool losebait, String& moodString);
+	void mishapEvent(const String& text, CreatureObject* player, unsigned int boxID, bool losebait, String& moodString);
 
-	bool loseBait(PlayerCreature* player);
+	bool loseBait(CreatureObject* player);
 
-	void animate(PlayerCreature* player, int nextAction);
+	void animate(CreatureObject* player, int nextAction);
 
 	SceneObject* createMarker(float x, float y, float z, Zone* zone);
 
-	void createSplash(float x, float y, float z, Zone* zone, PlayerCreature* player);
+	void createSplash(float x, float y, float z, Zone* zone, CreatureObject* player);
 
-	bool checkUpdateMarker(PlayerCreature* player, float& x, float& y, float& z);
+	bool checkUpdateMarker(CreatureObject* player, float& x, float& y, float& z);
 
-	bool isPlaying(PlayerCreature* player);
+	bool isPlaying(CreatureObject* player);
 
-	SceneObject* updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer);
+	SceneObject* updateMarker(CreatureObject* player, SceneObject* marker, bool notifyPlayer);
 
-	void removeMarker(PlayerCreature* player, SceneObject* container);
+	void removeMarker(CreatureObject* player, SceneObject* container);
 
 	void removeSplash(SceneObject* splash);
 
-	void createFishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash);
+	void createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash);
 
-	void createFishingSession(PlayerCreature* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood);
+	void createFishingSession(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood);
 
-	FishingEvent* createFishingEvent(PlayerCreature* player, ZoneServer* zoneServer, int state);
+	FishingEvent* createFishingEvent(CreatureObject* player, ZoneServer* zoneServer, int state);
 
-	void stopFishingEvent(PlayerCreature* player);
+	void stopFishingEvent(CreatureObject* player);
 
-	FishingEvent* getFishingEvent(PlayerCreature* player);
+	FishingEvent* getFishingEvent(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -362,7 +362,7 @@ protected:
 
 	Vector<String> baitStatus;
 
-	VectorMap<ManagedReference<PlayerCreature* >, FishingSession*> sessions;
+	VectorMap<ManagedReference<CreatureObject* >, FishingSession*> sessions;
 
 public:
 	static const int NOTFISHING = 0;
@@ -441,87 +441,87 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void checkFishingOnPositionUpdate(PlayerCreature* player);
+	void checkFishingOnPositionUpdate(CreatureObject* player);
 
-	int notifyCloseContainer(PlayerCreature* player, SceneObject* container);
+	int notifyCloseContainer(CreatureObject* player, SceneObject* container);
 
-	int checkLocation(PlayerCreature* player, int quality, float& x, float& y, float& z);
+	int checkLocation(CreatureObject* player, int quality, float& x, float& y, float& z);
 
-	int startFishing(PlayerCreature* player);
+	int startFishing(CreatureObject* player);
 
-	void stopFishing(PlayerCreature* player, unsigned int boxID, bool rem);
+	void stopFishing(CreatureObject* player, unsigned int boxID, bool rem);
 
-	void fishingStep(PlayerCreature* player);
+	void fishingStep(CreatureObject* player);
 
-	void success(PlayerCreature* player, int fish, SceneObject* marker, unsigned int boxID);
+	void success(CreatureObject* player, int fish, SceneObject* marker, unsigned int boxID);
 
 	String getTime();
 
-	void sendReward(PlayerCreature* player, SceneObject* marker, SceneObject* loot);
+	void sendReward(CreatureObject* player, SceneObject* marker, SceneObject* loot);
 
-	unsigned int createWindow(PlayerCreature* player, unsigned int boxID);
+	unsigned int createWindow(CreatureObject* player, unsigned int boxID);
 
-	void closeMenu(PlayerCreature* player, unsigned int boxID);
+	void closeMenu(CreatureObject* player, unsigned int boxID);
 
 	int vegetation(SceneObject* marker);
 
 	int density(SceneObject* marker);
 
-	int getFish(PlayerCreature* player);
+	int getFish(CreatureObject* player);
 
-	int getNextAction(PlayerCreature* player);
+	int getNextAction(CreatureObject* player);
 
-	void setNextAction(PlayerCreature* player, int next);
+	void setNextAction(CreatureObject* player, int next);
 
-	FishingPoleObject* getPole(PlayerCreature* player);
+	FishingPoleObject* getPole(CreatureObject* player);
 
-	FishingBaitObject* getBait(PlayerCreature* player);
+	FishingBaitObject* getBait(CreatureObject* player);
 
-	unsigned int getFishBoxID(PlayerCreature* player);
+	unsigned int getFishBoxID(CreatureObject* player);
 
-	void setFishBoxID(PlayerCreature* player, unsigned int boxID);
+	void setFishBoxID(CreatureObject* player, unsigned int boxID);
 
-	int getFishingState(PlayerCreature* player);
+	int getFishingState(CreatureObject* player);
 
-	void setFishingState(PlayerCreature* player, int state);
+	void setFishingState(CreatureObject* player, int state);
 
-	SceneObject* getFishMarker(PlayerCreature* player);
+	SceneObject* getFishMarker(CreatureObject* player);
 
-	void setFishMarker(PlayerCreature* player, SceneObject* marker);
+	void setFishMarker(CreatureObject* player, SceneObject* marker);
 
-	void freeBait(PlayerCreature* player);
+	void freeBait(CreatureObject* player);
 
-	void fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
+	void fishingProceed(CreatureObject* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
 
-	void mishapEvent(const String& text, PlayerCreature* player, unsigned int boxID, bool losebait, String& moodString);
+	void mishapEvent(const String& text, CreatureObject* player, unsigned int boxID, bool losebait, String& moodString);
 
-	bool loseBait(PlayerCreature* player);
+	bool loseBait(CreatureObject* player);
 
-	void animate(PlayerCreature* player, int nextAction);
+	void animate(CreatureObject* player, int nextAction);
 
 	SceneObject* createMarker(float x, float y, float z, Zone* zone);
 
-	void createSplash(float x, float y, float z, Zone* zone, PlayerCreature* player);
+	void createSplash(float x, float y, float z, Zone* zone, CreatureObject* player);
 
-	bool checkUpdateMarker(PlayerCreature* player, float& x, float& y, float& z);
+	bool checkUpdateMarker(CreatureObject* player, float& x, float& y, float& z);
 
-	bool isPlaying(PlayerCreature* player);
+	bool isPlaying(CreatureObject* player);
 
-	SceneObject* updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer);
+	SceneObject* updateMarker(CreatureObject* player, SceneObject* marker, bool notifyPlayer);
 
-	void removeMarker(PlayerCreature* player, SceneObject* container);
+	void removeMarker(CreatureObject* player, SceneObject* container);
 
 	void removeSplash(SceneObject* splash);
 
-	void createFishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash);
+	void createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash);
 
-	void createFishingSession(PlayerCreature* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood);
+	void createFishingSession(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood);
 
-	FishingEvent* createFishingEvent(PlayerCreature* player, ZoneServer* zoneServer, int state);
+	FishingEvent* createFishingEvent(CreatureObject* player, ZoneServer* zoneServer, int state);
 
-	void stopFishingEvent(PlayerCreature* player);
+	void stopFishingEvent(CreatureObject* player);
 
-	FishingEvent* getFishingEvent(PlayerCreature* player);
+	FishingEvent* getFishingEvent(CreatureObject* player);
 
 	WeakReference<FishingManager*> _this;
 
@@ -584,82 +584,82 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void checkFishingOnPositionUpdate(PlayerCreature* player);
+	void checkFishingOnPositionUpdate(CreatureObject* player);
 
-	int notifyCloseContainer(PlayerCreature* player, SceneObject* container);
+	int notifyCloseContainer(CreatureObject* player, SceneObject* container);
 
-	int startFishing(PlayerCreature* player);
+	int startFishing(CreatureObject* player);
 
-	void stopFishing(PlayerCreature* player, unsigned int boxID, bool rem);
+	void stopFishing(CreatureObject* player, unsigned int boxID, bool rem);
 
-	void fishingStep(PlayerCreature* player);
+	void fishingStep(CreatureObject* player);
 
-	void success(PlayerCreature* player, int fish, SceneObject* marker, unsigned int boxID);
+	void success(CreatureObject* player, int fish, SceneObject* marker, unsigned int boxID);
 
 	String getTime();
 
-	void sendReward(PlayerCreature* player, SceneObject* marker, SceneObject* loot);
+	void sendReward(CreatureObject* player, SceneObject* marker, SceneObject* loot);
 
-	unsigned int createWindow(PlayerCreature* player, unsigned int boxID);
+	unsigned int createWindow(CreatureObject* player, unsigned int boxID);
 
-	void closeMenu(PlayerCreature* player, unsigned int boxID);
+	void closeMenu(CreatureObject* player, unsigned int boxID);
 
 	int vegetation(SceneObject* marker);
 
 	int density(SceneObject* marker);
 
-	int getFish(PlayerCreature* player);
+	int getFish(CreatureObject* player);
 
-	int getNextAction(PlayerCreature* player);
+	int getNextAction(CreatureObject* player);
 
-	void setNextAction(PlayerCreature* player, int next);
+	void setNextAction(CreatureObject* player, int next);
 
-	FishingPoleObject* getPole(PlayerCreature* player);
+	FishingPoleObject* getPole(CreatureObject* player);
 
-	FishingBaitObject* getBait(PlayerCreature* player);
+	FishingBaitObject* getBait(CreatureObject* player);
 
-	unsigned int getFishBoxID(PlayerCreature* player);
+	unsigned int getFishBoxID(CreatureObject* player);
 
-	void setFishBoxID(PlayerCreature* player, unsigned int boxID);
+	void setFishBoxID(CreatureObject* player, unsigned int boxID);
 
-	int getFishingState(PlayerCreature* player);
+	int getFishingState(CreatureObject* player);
 
-	void setFishingState(PlayerCreature* player, int state);
+	void setFishingState(CreatureObject* player, int state);
 
-	SceneObject* getFishMarker(PlayerCreature* player);
+	SceneObject* getFishMarker(CreatureObject* player);
 
-	void setFishMarker(PlayerCreature* player, SceneObject* marker);
+	void setFishMarker(CreatureObject* player, SceneObject* marker);
 
-	void freeBait(PlayerCreature* player);
+	void freeBait(CreatureObject* player);
 
-	void fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
+	void fishingProceed(CreatureObject* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
 
-	void mishapEvent(const String& text, PlayerCreature* player, unsigned int boxID, bool losebait, String& moodString);
+	void mishapEvent(const String& text, CreatureObject* player, unsigned int boxID, bool losebait, String& moodString);
 
-	bool loseBait(PlayerCreature* player);
+	bool loseBait(CreatureObject* player);
 
-	void animate(PlayerCreature* player, int nextAction);
+	void animate(CreatureObject* player, int nextAction);
 
 	SceneObject* createMarker(float x, float y, float z, Zone* zone);
 
-	void createSplash(float x, float y, float z, Zone* zone, PlayerCreature* player);
+	void createSplash(float x, float y, float z, Zone* zone, CreatureObject* player);
 
-	bool isPlaying(PlayerCreature* player);
+	bool isPlaying(CreatureObject* player);
 
-	SceneObject* updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer);
+	SceneObject* updateMarker(CreatureObject* player, SceneObject* marker, bool notifyPlayer);
 
-	void removeMarker(PlayerCreature* player, SceneObject* container);
+	void removeMarker(CreatureObject* player, SceneObject* container);
 
 	void removeSplash(SceneObject* splash);
 
-	void createFishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash);
+	void createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash);
 
-	void stopFishingEvent(PlayerCreature* player);
+	void stopFishingEvent(CreatureObject* player);
 
 protected:
-	String _param7_fishingProceed__PlayerCreature_int_SceneObject_int_int_int_bool_String_;
-	String _param0_mishapEvent__String_PlayerCreature_int_bool_String_;
-	String _param4_mishapEvent__String_PlayerCreature_int_bool_String_;
+	String _param7_fishingProceed__CreatureObject_int_SceneObject_int_int_int_bool_String_;
+	String _param0_mishapEvent__String_CreatureObject_int_bool_String_;
+	String _param4_mishapEvent__String_CreatureObject_int_bool_String_;
 };
 
 class FishingManagerHelper : public DistributedObjectClassHelper, public Singleton<FishingManagerHelper> {

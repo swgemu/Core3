@@ -52,7 +52,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 
 class CraftingStation extends ToolTangibleObject {
 	
@@ -76,7 +76,7 @@ class CraftingStation extends ToolTangibleObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
 	 * Handles the radial selection sent by the client
@@ -84,7 +84,7 @@ class CraftingStation extends ToolTangibleObject {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -94,7 +94,7 @@ class CraftingStation extends ToolTangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public native void updateCraftingValues(ManufactureSchematic schematic);
 	
@@ -114,7 +114,7 @@ class CraftingStation extends ToolTangibleObject {
 		complexityLevel = level;
 	}
 	
-	public native SceneObject findCraftingTool(PlayerCreature player);
+	public native SceneObject findCraftingTool(CreatureObject player);
 	
 	public native void createChildObjects();
 }

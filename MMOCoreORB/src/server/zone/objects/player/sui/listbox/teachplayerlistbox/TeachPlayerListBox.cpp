@@ -6,15 +6,17 @@
 
 #include "server/zone/objects/creature/professions/SkillBox.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	TeachPlayerListBoxStub
  */
 
-enum {RPC_SETSTUDENT__PLAYERCREATURE_,RPC_GENERATESKILLLIST__PLAYERCREATURE_PLAYERCREATURE_};
+enum {RPC_SETSTUDENT__CREATUREOBJECT_,RPC_GENERATESKILLLIST__CREATUREOBJECT_CREATUREOBJECT_};
 
-TeachPlayerListBox::TeachPlayerListBox(PlayerCreature* player) : SuiListBox(DummyConstructorParameter::instance()) {
+TeachPlayerListBox::TeachPlayerListBox(CreatureObject* player) : SuiListBox(DummyConstructorParameter::instance()) {
 	TeachPlayerListBoxImplementation* _implementation = new TeachPlayerListBoxImplementation(player);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -27,13 +29,13 @@ TeachPlayerListBox::~TeachPlayerListBox() {
 }
 
 
-void TeachPlayerListBox::setStudent(PlayerCreature* student) {
+void TeachPlayerListBox::setStudent(CreatureObject* student) {
 	TeachPlayerListBoxImplementation* _implementation = (TeachPlayerListBoxImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETSTUDENT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SETSTUDENT__CREATUREOBJECT_);
 		method.addObjectParameter(student);
 
 		method.executeWithVoidReturn();
@@ -41,7 +43,7 @@ void TeachPlayerListBox::setStudent(PlayerCreature* student) {
 		_implementation->setStudent(student);
 }
 
-PlayerCreature* TeachPlayerListBox::getStudent() {
+CreatureObject* TeachPlayerListBox::getStudent() {
 	TeachPlayerListBoxImplementation* _implementation = (TeachPlayerListBoxImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -59,13 +61,13 @@ const String TeachPlayerListBox::getTeachingSkillOption(int index) {
 		return _implementation->getTeachingSkillOption(index);
 }
 
-bool TeachPlayerListBox::generateSkillList(PlayerCreature* teacher, PlayerCreature* student) {
+bool TeachPlayerListBox::generateSkillList(CreatureObject* teacher, CreatureObject* student) {
 	TeachPlayerListBoxImplementation* _implementation = (TeachPlayerListBoxImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GENERATESKILLLIST__PLAYERCREATURE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GENERATESKILLLIST__CREATUREOBJECT_CREATUREOBJECT_);
 		method.addObjectParameter(teacher);
 		method.addObjectParameter(student);
 
@@ -180,7 +182,7 @@ bool TeachPlayerListBoxImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 
 	if (_name == "studentPlayer") {
-		TypeInfo<ManagedReference<PlayerCreature* > >::parseFromBinaryStream(&studentPlayer, stream);
+		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&studentPlayer, stream);
 		return true;
 	}
 
@@ -208,7 +210,7 @@ int TeachPlayerListBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<PlayerCreature* > >::toBinaryStream(&studentPlayer, stream);
+	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&studentPlayer, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -224,16 +226,16 @@ int TeachPlayerListBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	return 2 + SuiListBoxImplementation::writeObjectMembers(stream);
 }
 
-TeachPlayerListBoxImplementation::TeachPlayerListBoxImplementation(PlayerCreature* player) : SuiListBoxImplementation(player, 36, 0) {
+TeachPlayerListBoxImplementation::TeachPlayerListBoxImplementation(CreatureObject* player) : SuiListBoxImplementation(player, 36, 0) {
 	_initializeImplementation();
 }
 
-void TeachPlayerListBoxImplementation::setStudent(PlayerCreature* student) {
+void TeachPlayerListBoxImplementation::setStudent(CreatureObject* student) {
 	// server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.idl():   studentPlayer = student;
 	studentPlayer = student;
 }
 
-PlayerCreature* TeachPlayerListBoxImplementation::getStudent() {
+CreatureObject* TeachPlayerListBoxImplementation::getStudent() {
 	// server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.idl():   return studentPlayer;
 	return studentPlayer;
 }
@@ -254,11 +256,11 @@ Packet* TeachPlayerListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_SETSTUDENT__PLAYERCREATURE_:
-		setStudent((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SETSTUDENT__CREATUREOBJECT_:
+		setStudent((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_GENERATESKILLLIST__PLAYERCREATURE_PLAYERCREATURE_:
-		resp->insertBoolean(generateSkillList((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter()));
+	case RPC_GENERATESKILLLIST__CREATUREOBJECT_CREATUREOBJECT_:
+		resp->insertBoolean(generateSkillList((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -267,11 +269,11 @@ Packet* TeachPlayerListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod
 	return resp;
 }
 
-void TeachPlayerListBoxAdapter::setStudent(PlayerCreature* student) {
+void TeachPlayerListBoxAdapter::setStudent(CreatureObject* student) {
 	((TeachPlayerListBoxImplementation*) impl)->setStudent(student);
 }
 
-bool TeachPlayerListBoxAdapter::generateSkillList(PlayerCreature* teacher, PlayerCreature* student) {
+bool TeachPlayerListBoxAdapter::generateSkillList(CreatureObject* teacher, CreatureObject* student) {
 	return ((TeachPlayerListBoxImplementation*) impl)->generateSkillList(teacher, student);
 }
 

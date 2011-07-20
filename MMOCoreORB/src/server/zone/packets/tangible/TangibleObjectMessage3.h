@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "../../objects/tangible/TangibleObject.h"
 #include "../../objects/scene/variables/StringId.h"
 #include "../../objects/player/PlayerObject.h"
-#include "../../objects/player/PlayerCreature.h"
+#include "../../objects/creature/CreatureObject.h"
 
 
 class TangibleObjectMessage3 : public BaseLineMessage {
@@ -65,7 +65,7 @@ public:
 		insertInt(0);
 		insertAscii(stringId->getStringID());
 
-		if (tano->isPlayerCreature() && ((PlayerCreature*)tano)->getPlayerObject() != NULL && ((PlayerCreature*)tano)->getPlayerObject()->isPrivileged()) {
+		if (tano->isPlayerCreature() && ((CreatureObject*)tano)->getPlayerObject() != NULL && ((CreatureObject*)tano)->getPlayerObject()->isPrivileged()) {
 			UnicodeString name = stringId->getCustomString();
 			insertUnicode(name + " \\#ffff00[SWGEmu-Staff]\\#.");
 		} else

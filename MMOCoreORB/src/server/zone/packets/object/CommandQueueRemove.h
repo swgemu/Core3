@@ -46,7 +46,7 @@ which carries forward this exception.
 #define COMMANDQUEUEREMOVE_H_
 
 #include "ObjectControllerMessage.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "ObjectControllerMessageCallback.h"
 
 class CommandQueueRemove : public ObjectControllerMessage {
@@ -84,7 +84,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
 
 		if (player == NULL)
 			return;

@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
@@ -60,9 +60,9 @@ uint32 DamageMap::getTotalDamage() {
 	return totalDamage;
 }
 
-PlayerCreature* DamageMap::getHighestDamagePlayer() {
+CreatureObject* DamageMap::getHighestDamagePlayer() {
 	uint32 maxDamage = 0;
-	PlayerCreature* player = NULL;
+	CreatureObject* player = NULL;
 
 	for (int i = 0; i < size(); ++i) {
 		DamageMapEntry* entry = &elementAt(i).getValue();
@@ -79,7 +79,7 @@ PlayerCreature* DamageMap::getHighestDamagePlayer() {
 
 		if (totalDamage > maxDamage && creature->isPlayerCreature()) {
 			maxDamage = totalDamage;
-			player = (PlayerCreature*)creature;
+			player = (CreatureObject*)creature;
 		}
 	}
 

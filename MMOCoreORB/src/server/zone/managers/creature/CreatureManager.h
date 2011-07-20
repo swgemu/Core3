@@ -106,16 +106,16 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -172,7 +172,7 @@ public:
 
 	void spawnRandomCreature(int number, float x, float z, float y, unsigned long long parentID = 0);
 
-	void harvest(Creature* creature, PlayerCreature* player, int selectedID);
+	void harvest(Creature* creature, CreatureObject* player, int selectedID);
 
 	void addToReservePool(AiAgent* agent);
 
@@ -253,7 +253,7 @@ private:
 	void setCreatureTemplateManager();
 
 public:
-	void harvest(Creature* creature, PlayerCreature* player, int selectedID);
+	void harvest(Creature* creature, CreatureObject* player, int selectedID);
 
 	void addToReservePool(AiAgent* agent);
 
@@ -326,7 +326,7 @@ public:
 
 	void spawnRandomCreature(int number, float x, float z, float y, unsigned long long parentID);
 
-	void harvest(Creature* creature, PlayerCreature* player, int selectedID);
+	void harvest(Creature* creature, CreatureObject* player, int selectedID);
 
 	void addToReservePool(AiAgent* agent);
 

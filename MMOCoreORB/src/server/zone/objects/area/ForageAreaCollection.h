@@ -58,7 +58,7 @@ protected:
 
 
 public:
-	ForageAreaCollection(PlayerCreature* player, short forageX, short forageY, const String& planet) {
+	ForageAreaCollection(CreatureObject* player, short forageX, short forageY, const String& planet) {
     	//Player is foraging for the first time, so make a new forage area.
 		Reference<ForageArea*> newArea = new ForageArea(forageX, forageY, planet);
     	forageAreas.add(newArea);

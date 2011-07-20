@@ -6,7 +6,7 @@
  */
 
 #include "RadialManager.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/ZoneServer.h"
 
@@ -19,7 +19,7 @@ RadialManagerImplementation::RadialManagerImplementation(ZoneServer* server) : M
 	zoneServer = server;
 }
 
-void RadialManagerImplementation::handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, uint64 objectID) {
+void RadialManagerImplementation::handleObjectMenuRequest(CreatureObject* player, ObjectMenuResponse* defaultMenuResponse, uint64 objectID) {
 	//Pre: Player is WLOCKED
 	//Post: Player is WLOCKED
 
@@ -37,7 +37,7 @@ void RadialManagerImplementation::handleObjectMenuRequest(PlayerCreature* player
 	player->sendMessage(defaultMenuResponse->clone());
 }
 
-void RadialManagerImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectID, uint64 objectID) {
+void RadialManagerImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectID, uint64 objectID) {
 	//Pre: player is NOT wlocked upon entry
 	//Post: nothing is WLOCKED
 

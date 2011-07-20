@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/mission/DestroyMissionObjective.h"
 
@@ -212,10 +212,10 @@ void MissionSpawnActiveAreaImplementation::notifyEnter(SceneObject* player) {
 	else {
 	// server/zone/objects/area/MissionSpawnActiveArea.idl():  			}
 	if (destroyMissionObjective != NULL){
-	// server/zone/objects/area/MissionSpawnActiveArea.idl():  				PlayerCreature missionOwner = destroyMissionObjective.getPlayerOwner();
-	PlayerCreature* missionOwner = destroyMissionObjective->getPlayerOwner();
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  				CreatureObject missionOwner = destroyMissionObjective.getPlayerOwner();
+	CreatureObject* missionOwner = destroyMissionObjective->getPlayerOwner();
 	// server/zone/objects/area/MissionSpawnActiveArea.idl():  			}
-	if ((PlayerCreature*) player == missionOwner){
+	if ((CreatureObject*) player == missionOwner){
 	// server/zone/objects/area/MissionSpawnActiveArea.idl():  					destroyMissionObjective.spawnLair();
 	destroyMissionObjective->spawnLair();
 }

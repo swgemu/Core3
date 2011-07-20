@@ -7,7 +7,7 @@
 
 #include "WeaponObject.h"
 #include "server/zone/packets/tangible/WeaponObjectMessage3.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
@@ -82,7 +82,7 @@ void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(weao3);
 }
 
-int WeaponObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int WeaponObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 69) {
 		if (isSliced()) {
 			player->sendSystemMessage("@slicing/slicing:already_sliced");
@@ -107,7 +107,7 @@ int WeaponObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, b
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
-void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	bool res = isCertifiedFor(object);
@@ -339,7 +339,7 @@ void WeaponObjectImplementation::updateCraftingValues(ManufactureSchematic* sche
 	setConditionDamage(0);
 }
 
-bool WeaponObjectImplementation::isCertifiedFor(PlayerCreature* object) {
+bool WeaponObjectImplementation::isCertifiedFor(CreatureObject* object) {
 	PlayerObject* ghost = object->getPlayerObject();
 
 	if (ghost == NULL)

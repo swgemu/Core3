@@ -47,6 +47,7 @@ object_creature_player_twilek_male = object_creature_player_shared_twilek_male:n
 	zoneComponent = "PlayerZoneComponent",
 	objectMenuComponent = "PlayerObjectMenuComponent",
 	containerComponent = "PlayerContainerComponent",
+	pvpStatusBitmask = PLAYER,
 	templateType = PLAYERCREATURE
 }
 

@@ -10,7 +10,7 @@
 #include "server/zone/managers/professions/Performance.h"
 #include "server/zone/managers/professions/PerformanceManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/player/events/EntertainingSessionTask.h"
 #include "server/zone/objects/player/EntertainingObserver.h"
@@ -202,7 +202,7 @@ void EntertainingSessionImplementation::activateAction() {
 
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
 
-	PlayerCreature* player = entertainer->isPlayerCreature() ? (PlayerCreature*)entertainer.get() : NULL;
+	CreatureObject* player = entertainer->isPlayerCreature() ? (CreatureObject*)entertainer.get() : NULL;
 
 	if (player != NULL) {
 		if (flourishXp > 0) {

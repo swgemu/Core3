@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/mission/ReconMissionObjective.h"
 
@@ -214,10 +214,10 @@ void MissionReconActiveAreaImplementation::notifyEnter(SceneObject* player) {
 	else {
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
 	if (missionObjective != NULL){
-	// server/zone/objects/area/MissionReconActiveArea.idl():  				PlayerCreature missionOwner = missionObjective.getPlayerOwner();
-	PlayerCreature* missionOwner = missionObjective->getPlayerOwner();
+	// server/zone/objects/area/MissionReconActiveArea.idl():  				CreatureObject missionOwner = missionObjective.getPlayerOwner();
+	CreatureObject* missionOwner = missionObjective->getPlayerOwner();
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
-	if ((PlayerCreature*) player == missionOwner){
+	if ((CreatureObject*) player == missionOwner){
 	// server/zone/objects/area/MissionReconActiveArea.idl():  					missionObjective.complete();
 	missionObjective->complete();
 }

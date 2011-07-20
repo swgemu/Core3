@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "../../../chat/room/ChatRoom.h"
 
 #include "../../objects/creature/CreatureObject.h"
-#include "../../objects/player/PlayerCreature.h"
+#include "../../objects/creature/CreatureObject.h"
 
 #include "../../objects/group/GroupObject.h"
 #include "server/chat/StringIdChatParameter.h"
@@ -158,8 +158,8 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
 
 	if (groupChannel != NULL && player->isPlayerCreature()) {
-		groupChannel->sendTo((PlayerCreature*) player);
-		groupChannel->addPlayer((PlayerCreature*) player, false);
+		groupChannel->sendTo((CreatureObject*) player);
+		groupChannel->addPlayer((CreatureObject*) player, false);
 	}
 
 	player->updateGroupInviterID(0);
@@ -202,7 +202,7 @@ void GroupManager::leaveGroup(ManagedReference<GroupObject*> group, CreatureObje
 
 		ChatRoom* groupChannel = group->getGroupChannel();
 		if (groupChannel != NULL && player->isPlayerCreature()) {
-			PlayerCreature* playerCreature = (PlayerCreature*) player;
+			CreatureObject* playerCreature = (CreatureObject*) player;
 			groupChannel->removePlayer(playerCreature, false);
 			groupChannel->sendDestroyTo(playerCreature);
 
@@ -337,7 +337,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 			playerToKick->wlock();
 
 			if (playerToKick->isPlayerCreature()) {
-				PlayerCreature* pl = (PlayerCreature*) playerToKick;
+				CreatureObject* pl = (CreatureObject*) playerToKick;
 				ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
 				groupChannel->removePlayer(pl, false);
 				groupChannel->sendDestroyTo(pl);
@@ -390,8 +390,9 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		firstNameLeader = "[Offline player]";
 
 		if (newLeader->isPlayerCreature()) {
-			PlayerCreature* playerLeader = (PlayerCreature*) newLeader;
-			if (playerLeader->isOnline() && !playerLeader->isLoggingOut())
+			CreatureObject* playerLeader = (CreatureObject*) newLeader;
+
+			if (playerLeader->isOnline())
 				firstNameLeader= playerLeader->getFirstName();
 		}
 

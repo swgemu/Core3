@@ -46,12 +46,12 @@ which carries forward this exception.
 #define CHARACTERSHEETRESPONSEMESSAGE_H_
 
 #include "engine/engine.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 
 class CharacterSheetResponseMessage : public BaseMessage {
 public:
-    CharacterSheetResponseMessage(PlayerCreature* player) : BaseMessage() {
+    CharacterSheetResponseMessage(CreatureObject* player) : BaseMessage() {
 		insertShort(0x0D);
 		insertInt(0x9B3A17C4); // CRC
 
@@ -71,7 +71,7 @@ public:
 		insertFloat(-2403.3); //Bank Location Y
 		insertAscii("dantooine"); //Bank Planet
 
-		ManagedReference<BuildingObject*> declaredResidence = player->getDeclaredResidence();
+		ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
 
 		if (declaredResidence != NULL && declaredResidence->getZone() != NULL) {
 			insertFloat(declaredResidence->getPositionX()); //Home Location X
@@ -90,7 +90,7 @@ public:
 		insertInt(ghost->getLotsRemaining()); //Lots Remaining
 
 		insertInt(player->getFaction()); //Faction CRC (or hashCode?)
-		insertInt(player->getFactionStatus()); //Faction Status
+		insertInt(ghost->getFactionStatus()); //Faction Status
 
 		setCompression(true);
 	}

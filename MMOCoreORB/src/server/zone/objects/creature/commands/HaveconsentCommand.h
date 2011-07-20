@@ -67,11 +67,13 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
-		player->closeSuiWindowType(SuiWindowType::CLONE_REQUEST);
+		PlayerObject* ghost = player->getPlayerObject();
 
-		if (player->getConsentListSize() <= 0) {
+		ghost->closeSuiWindowType(SuiWindowType::CLONE_REQUEST);
+
+		if (ghost->getConsentListSize() <= 0) {
 			player->sendSystemMessage("error_message", "consent_to_empty"); //You have not granted consent to anyone.
 			return GENERALERROR;
 		}
@@ -82,14 +84,14 @@ public:
 		consentBox->setPromptText("All players whom you have given your consent to are listed below.\n\nHighlight a player's name and click OK to revoke consent.");
 		consentBox->setCancelButton(true, "");
 
-		for (int i = 0; i < player->getConsentListSize(); ++i) {
-			String entryName = player->getConsentName(i);
+		for (int i = 0; i < ghost->getConsentListSize(); ++i) {
+			String entryName = ghost->getConsentName(i);
 
 			if (!entryName.isEmpty())
 				consentBox->addMenuItem(entryName);
 		}
 
-		player->addSuiBox(consentBox);
+		player->getPlayerObject()->addSuiBox(consentBox);
 		player->sendMessage(consentBox->generateMessage());
 
 		return SUCCESS;

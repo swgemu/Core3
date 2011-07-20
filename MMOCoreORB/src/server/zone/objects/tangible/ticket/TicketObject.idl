@@ -49,7 +49,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;
 
 
@@ -76,7 +76,7 @@ class TicketObject extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	/**
 	 * Handles the radial selection sent by the client
@@ -84,7 +84,7 @@ class TicketObject extends TangibleObject {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	public void setDeparturePlanet(final string departureplanet) {
 		departurePlanet = departureplanet;

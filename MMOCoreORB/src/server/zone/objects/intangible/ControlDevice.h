@@ -28,16 +28,16 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -77,6 +77,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
 #include "server/zone/managers/radial/RadialOptions.h"
 
 #include "engine/lua/LuaObject.h"
@@ -94,9 +108,9 @@ public:
 
 	void updateToDatabaseAllObjects(bool startTask);
 
-	void storeObject(PlayerCreature* player);
+	void storeObject(CreatureObject* player);
 
-	void generateObject(PlayerCreature* player);
+	void generateObject(CreatureObject* player);
 
 	void setControlledObject(TangibleObject* object);
 
@@ -139,9 +153,9 @@ public:
 
 	void updateToDatabaseAllObjects(bool startTask);
 
-	virtual void storeObject(PlayerCreature* player);
+	virtual void storeObject(CreatureObject* player);
 
-	virtual void generateObject(PlayerCreature* player);
+	virtual void generateObject(CreatureObject* player);
 
 	void setControlledObject(TangibleObject* object);
 
@@ -194,9 +208,9 @@ public:
 
 	void updateToDatabaseAllObjects(bool startTask);
 
-	void storeObject(PlayerCreature* player);
+	void storeObject(CreatureObject* player);
 
-	void generateObject(PlayerCreature* player);
+	void generateObject(CreatureObject* player);
 
 	void setControlledObject(TangibleObject* object);
 

@@ -9,11 +9,12 @@
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.h"
 
-void PlayerObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void PlayerObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!sceneObject->isCreatureObject())
 		return;
 
@@ -41,8 +42,9 @@ void PlayerObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 }
 
-int PlayerObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, PlayerCreature* player, byte selectedID) {
-	PlayerCreature* ownerPlayer = dynamic_cast<PlayerCreature*>(sceneObject);
+int PlayerObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+	CreatureObject* ownerPlayer = dynamic_cast<CreatureObject*>(sceneObject);
+	PlayerObject* ghost = ownerPlayer->getPlayerObject();
 
 	switch(selectedID) {
 	case 113:
@@ -62,12 +64,12 @@ int PlayerObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 	case 51:
 
-			if (ownerPlayer->isTeachingOrLearning() || player->isTeachingOrLearning()) {
+			if (ghost->isTeachingOrLearning() || ghost->isTeachingOrLearning()) {
 				player->sendSystemMessage("teaching", "teaching_failed");
 				return 1;
 			}
 
-			player->setTeachingOrLearning(true);
+			ghost->setTeachingOrLearning(true);
 
 			ManagedReference<TeachPlayerListBox*> teachPlayerListBox = new TeachPlayerListBox(player);
 			teachPlayerListBox->setCancelButton(true, "");
@@ -75,7 +77,7 @@ int PlayerObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 			bool completed = teachPlayerListBox->generateSkillList(player, ownerPlayer);
 
 			if(!completed)
-				player->setTeachingOrLearning(false);
+				ghost->setTeachingOrLearning(false);
 
 		break;
 	}

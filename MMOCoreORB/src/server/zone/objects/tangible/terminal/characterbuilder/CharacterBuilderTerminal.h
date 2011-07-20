@@ -28,16 +28,16 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -84,13 +84,13 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void sendInitialChoices(PlayerCreature* player);
+	void sendInitialChoices(CreatureObject* player);
 
-	void giveLanguages(PlayerCreature* player);
+	void giveLanguages(CreatureObject* player);
 
-	void enhanceCharacter(PlayerCreature* player);
+	void enhanceCharacter(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -140,16 +140,16 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void sendInitialChoices(PlayerCreature* player);
+	void sendInitialChoices(CreatureObject* player);
 
-	void giveLanguages(PlayerCreature* player);
+	void giveLanguages(CreatureObject* player);
 
-	void enhanceCharacter(PlayerCreature* player);
+	void enhanceCharacter(CreatureObject* player);
 
 private:
-	bool doEnhanceCharacter(unsigned int crc, PlayerCreature* player, int amount, int duration, int buffType, byte attribute);
+	bool doEnhanceCharacter(unsigned int crc, CreatureObject* player, int amount, int duration, int buffType, byte attribute);
 
 public:
 	WeakReference<CharacterBuilderTerminal*> _this;
@@ -197,13 +197,13 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void sendInitialChoices(PlayerCreature* player);
+	void sendInitialChoices(CreatureObject* player);
 
-	void giveLanguages(PlayerCreature* player);
+	void giveLanguages(CreatureObject* player);
 
-	void enhanceCharacter(PlayerCreature* player);
+	void enhanceCharacter(CreatureObject* player);
 
 };
 

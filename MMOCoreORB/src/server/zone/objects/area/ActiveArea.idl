@@ -48,7 +48,7 @@ include engine.util.u3d.QuadTreeEntry;
 
 import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 
 class ActiveArea extends SceneObject {
 	protected float radius;

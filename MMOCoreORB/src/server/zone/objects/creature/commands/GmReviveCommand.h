@@ -67,7 +67,7 @@ public:
 		try
 		{
 			StringTokenizer args(arguments.toString());
-			ManagedReference<PlayerCreature*> player = NULL;
+			ManagedReference<CreatureObject*> player = NULL;
 
 			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
@@ -91,7 +91,7 @@ public:
 
 			else
 			{
-				player = (PlayerCreature*) object.get();
+				player = (CreatureObject*) object.get();
 			}
 
 			if (player == NULL)

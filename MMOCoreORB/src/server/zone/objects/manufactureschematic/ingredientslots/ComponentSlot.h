@@ -107,7 +107,7 @@ public:
 		return count;
 	}
 
-	bool add(PlayerCreature* player, TangibleObject* incomingTano) {
+	bool add(CreatureObject* player, TangibleObject* incomingTano) {
 
 		/// Check if incoming object derived from the template specified in
 		/// the schematic data
@@ -213,7 +213,7 @@ public:
 		return false;
 	}
 
-	inline bool remove(PlayerCreature* player) {
+	inline bool remove(CreatureObject* player) {
 
 		return returnObjectToParent();
 	}

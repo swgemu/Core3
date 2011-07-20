@@ -42,7 +42,7 @@ void ImageDesignSession::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void ImageDesignSession::startImageDesign(PlayerCreature* designer, PlayerCreature* targetPlayer) {
+void ImageDesignSession::startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer) {
 	ImageDesignSessionImplementation* _implementation = (ImageDesignSessionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -271,12 +271,12 @@ bool ImageDesignSessionImplementation::readObjectMember(ObjectInputStream* strea
 	}
 
 	if (_name == "designerCreature") {
-		TypeInfo<ManagedWeakReference<PlayerCreature* > >::parseFromBinaryStream(&designerCreature, stream);
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&designerCreature, stream);
 		return true;
 	}
 
 	if (_name == "targetCreature") {
-		TypeInfo<ManagedWeakReference<PlayerCreature* > >::parseFromBinaryStream(&targetCreature, stream);
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&targetCreature, stream);
 		return true;
 	}
 
@@ -312,7 +312,7 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<PlayerCreature* > >::toBinaryStream(&designerCreature, stream);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&designerCreature, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -320,7 +320,7 @@ int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* str
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<PlayerCreature* > >::toBinaryStream(&targetCreature, stream);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&targetCreature, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 

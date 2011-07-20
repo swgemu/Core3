@@ -58,25 +58,27 @@
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 
 class InvisibleDelayEvent: public Task {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 
 public:
-	InvisibleDelayEvent(PlayerCreature* pl) {
+	InvisibleDelayEvent(CreatureObject* pl) {
 		player = pl;
 	}
 
 	void run() {
 		Locker playerLocker(player);
 
+		PlayerObject* targetGhost = player->getPlayerObject();
+
 		try {
-			if (player->isOnline() && !player->isLoggingOut()) {
+			if (player->isOnline() && !targetGhost->isLoggingOut()) {
 				player->removePendingTask("invisibledelayevent");
 
 				ManagedReference<Zone*> zone = player->getZone();
 
 				Locker zoneLocker(zone);
 
-				if (!player->isInvisible()) {
+				if (!targetGhost->isInvisible()) {
 
 					for (int i = 0; i < player->inRangeObjectCount(); ++i) {
 						SceneObject* scno = (SceneObject*) player->getInRangeObject(i);
@@ -86,14 +88,14 @@ public:
 
 					}
 
-					player->setInvisible(true);
+					targetGhost->setInvisible(true);
 					player->setPvpStatusBitmask(0);
 					player->sendSystemMessage("You are now invisible to other players.");
 					player->sendSystemMessage("You are invulnerable while under the affects of invisibility.");
 					player->sendSystemMessage("DO NOT CHANGE YOUR EQUIPPED ITEMS!");
 
 				} else {
-					player->setInvisible(false);
+					targetGhost->setInvisible(false);
 
 					for (int i = 0; i < player->inRangeObjectCount(); ++i) {
 						SceneObject* scno = (SceneObject*) player->getInRangeObject(i);

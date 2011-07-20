@@ -49,7 +49,7 @@ import engine.lua.Lua;
 import system.util.VectorMap;
 import server.zone.managers.objectcontroller.ObjectController;
 
-include server.zone.objects.player.PlayerCreature;
+include server.zone.objects.creature.CreatureObject;
 include server.zone.managers.player.PlayerMap;
 include server.zone.managers.player.CharacterNameMap;
 
@@ -108,7 +108,7 @@ class PlayerManager extends Observer implements Logger {
 	private transient StartingLocationList startingLocationList;
 	
 	@local
-	public native void sendStartingLocationsTo(PlayerCreature player);
+	public native void sendStartingLocationsTo(CreatureObject player);
 	
 	@local
 	public native StartingLocation getStartingLocation(final string city);
@@ -143,32 +143,32 @@ class PlayerManager extends Observer implements Logger {
 	 * @pre { attacker and player locked }
 	 * @post { attacker and player locked }
 	 */
-	public native void killPlayer(TangibleObject attacker, PlayerCreature player);
+	public native void killPlayer(TangibleObject attacker, CreatureObject player);
 	
 	/**
 	 * Calculates the length of time that incapacitation should last. Cannot exceed 1 minute.
 	 * \return Returns the number of seconds until the player should recover from incapacitation.
 	 */
-	public native byte calculateIncapacitationTimer(PlayerCreature player, int condition);
+	public native byte calculateIncapacitationTimer(CreatureObject player, int condition);
 	
 	/**
 	 * Check for enough encumbrances 
 	 */
-	public native boolean checkEncumbrancies(PlayerCreature player, ArmorObject armor);
-	public native void applyEncumbrancies(PlayerCreature player, ArmorObject armor);
-	public native void removeEncumbrancies(PlayerCreature player, ArmorObject armor);
-	public native void awardBadge(PlayerCreature player, unsigned int badge);
+	public native boolean checkEncumbrancies(CreatureObject player, ArmorObject armor);
+	public native void applyEncumbrancies(CreatureObject player, ArmorObject armor);
+	public native void removeEncumbrancies(CreatureObject player, ArmorObject armor);
+	public native void awardBadge(PlayerObject ghost, unsigned int badge);
 	
 	public native void setExperienceMultiplier(float globalMultiplier);
-	public native void awardExperience(PlayerCreature player, final string xpType, int amount, boolean sendSystemMessage = true, float localMultiplier = 1.0f);
+	public native void awardExperience(CreatureObject player, final string xpType, int amount, boolean sendSystemMessage = true, float localMultiplier = 1.0f);
 	
-	public native void handleAbortTradeMessage(PlayerCreature player, boolean doLock = true);
-	public native void handleAddItemToTradeWindow(PlayerCreature player, unsigned long itemID);
-	public native void handleGiveMoneyMessage(PlayerCreature player, unsigned int value);
-	public native void handleAcceptTransactionMessage(PlayerCreature player);
-	public native void handleUnAcceptTransactionMessage(PlayerCreature player);
-	public native void handleVerifyTradeMessage(PlayerCreature player);
-	public native boolean checkTradeItems(PlayerCreature player, PlayerCreature receiver);
+	public native void handleAbortTradeMessage(CreatureObject player, boolean doLock = true);
+	public native void handleAddItemToTradeWindow(CreatureObject player, unsigned long itemID);
+	public native void handleGiveMoneyMessage(CreatureObject player, unsigned int value);
+	public native void handleAcceptTransactionMessage(CreatureObject player);
+	public native void handleUnAcceptTransactionMessage(CreatureObject player);
+	public native void handleVerifyTradeMessage(CreatureObject player);
+	public native boolean checkTradeItems(CreatureObject player, CreatureObject receiver);
 	
 	/**
 	 * Finds the closest structure in range with Administration priveleges.
@@ -180,7 +180,7 @@ class PlayerManager extends Observer implements Logger {
 	 */
 	public native SceneObject getInRangeStructureWithAdminRights(CreatureObject creature, unsigned long targetID = 0);
 	
-	public native void sendBattleFatigueMessage(PlayerCreature player, PlayerCreature target);
+	public native void sendBattleFatigueMessage(CreatureObject player, CreatureObject target);
 	
 	public native int getMedicalFacilityRating(CreatureObject creature);
 	
@@ -202,37 +202,37 @@ class PlayerManager extends Observer implements Logger {
 	@local
 	public native void disseminateExperience(TangibleObject destructedObject, DamageMap damageMap);
 	
-	public native boolean squadLeaderCheck(PlayerCreature player, GroupObject group);
+	public native boolean squadLeaderCheck(CreatureObject player, GroupObject group);
 	
 	public native void awardSquadLeaderExperience(GroupObject group, int amount, TangibleObject source);
 	
-	public native void sendMessageOfTheDay(PlayerCreature player);
+	public native void sendMessageOfTheDay(CreatureObject player);
 	
-	public native void sendActivateCloneRequest(PlayerCreature player);
-	public native void sendPlayerToCloner(PlayerCreature player, unsigned long clonerID);
+	public native void sendActivateCloneRequest(CreatureObject player);
+	public native void sendPlayerToCloner(CreatureObject player, unsigned long clonerID);
 	
 	public native boolean checkExistentNameInDatabase(final string firstName);
 	
 	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);
-	public native boolean createAllPlayerObjects(PlayerCreature player);
-	public native void createDefaultPlayerItems(PlayerCreature player, final string profession, final string templateFile);
+	public native boolean createAllPlayerObjects(CreatureObject player);
+	public native void createDefaultPlayerItems(CreatureObject player, final string profession, final string templateFile);
 	
-	public native void createTutorialBuilding(PlayerCreature player);
-	public native void createSkippedTutorialBuilding(PlayerCreature player);
+	public native void createTutorialBuilding(CreatureObject player);
+	public native void createSkippedTutorialBuilding(CreatureObject player);
 	
 	@local
-	public native int checkSpeedHackFirstTest(PlayerCreature player, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, float errorMultiplier = 1);
-	public native int checkSpeedHackSecondTest(PlayerCreature player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject newParent = null);
+	public native int checkSpeedHackFirstTest(CreatureObject player, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, float errorMultiplier = 1);
+	public native int checkSpeedHackSecondTest(CreatureObject player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject newParent = null);
 	
 	public native boolean existsName(final string name);
 	public native unsigned long getObjectID(final string name);
-	public native PlayerCreature getPlayer(final string name);
+	public native CreatureObject getPlayer(final string name);
 	
-	public native void updateAdminLevel(PlayerCreature player, final string targetName, int adminLevel = 1);
+	public native void updateAdminLevel(CreatureObject player, final string targetName, int adminLevel = 1);
 	
 	/**
 	 * Generates 5 random hologrind professions for the player.
 	 * @param player The player whose hologrind professions should be set.
 	 */
-	public native void generateHologrindProfessions(PlayerCreature player);
+	public native void generateHologrindProfessions(CreatureObject player);
 }

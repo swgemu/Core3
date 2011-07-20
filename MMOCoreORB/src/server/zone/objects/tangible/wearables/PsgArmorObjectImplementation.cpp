@@ -6,7 +6,7 @@
  */
 
 #include "PsgArmorObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
@@ -17,7 +17,7 @@ void PsgArmorObjectImplementation::initializeTransientMembers() {
 	setLoggingName("PsgArmorObject");
 }
 
-void PsgArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void PsgArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
 }
 

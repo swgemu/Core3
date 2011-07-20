@@ -52,7 +52,7 @@ import system.util.SortedVector;
 import system.util.Vector;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.sign.SignObject;
 import server.zone.objects.tangible.terminal.structure.StructureTerminal;
 import server.zone.ZoneServer;
@@ -109,7 +109,7 @@ class BuildingObject extends StructureObject {
 	
 	public native void createContainerComponent();
 	
-	public native void sendChangeNamePromptTo(PlayerCreature player);
+	public native void sendChangeNamePromptTo(CreatureObject player);
 	
 	/**
 	 * Sends the contained non slotted objects to the specified player
@@ -128,7 +128,7 @@ class BuildingObject extends StructureObject {
 	/**
 	 * Gets called when the structure has been created;
 	 */
-	public abstract int notifyStructurePlaced(PlayerCreature player) {
+	public abstract int notifyStructurePlaced(CreatureObject player) {
 		return 0;
 	}
 	
@@ -189,23 +189,23 @@ class BuildingObject extends StructureObject {
 	
 	/**
 	 * Abstract function that is triggered when a player enters a building.
-	 * This function should only be called from PlayerCreature::insertToBuilding.
+	 * This function should only be called from CreatureObject::insertToBuilding.
 	 * Overloaded functions must meet the post conditions for this function.
 	 * @pre { player is locked, zone is locked }
 	 * @post { player is locked, zone is locked }
-	 * @param player PlayerCreature that entered the building
+	 * @param player CreatureObject that entered the building
 	 */
-	public native abstract void onEnter(PlayerCreature player);
+	public native abstract void onEnter(CreatureObject player);
 	
 	/**
 	 * Abstract function that is triggered when a player exits a building.
-	 * This function should only be called from PlayerCreature::removeFromBuilding.
+	 * This function should only be called from CreatureObject::removeFromBuilding.
 	 * Overloaded functions must meet the post conditions for this function.
 	 * @pre { player is locked, zone is locked }
 	 * @post { player is locked, zone is locked }
-	 * @param player PlayerCreature that exited the building
+	 * @param player CreatureObject that exited the building
 	 */
-	public abstract void onExit(PlayerCreature player) {
+	public abstract void onExit(CreatureObject player) {
 		
 	}
 	

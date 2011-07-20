@@ -70,7 +70,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*)creature;
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -90,7 +90,7 @@ public:
 			if (!member->isPlayerCreature())
 				continue;
 
-			ManagedReference<PlayerCreature*> memberPlayer = (PlayerCreature*) member.get();
+			ManagedReference<CreatureObject*> memberPlayer = (CreatureObject*) member.get();
 
 			Locker clocker(memberPlayer, player);
 
@@ -138,7 +138,7 @@ public:
 		return true;
 	}
 
-	void doRetreat(PlayerCreature* player) {
+	void doRetreat(CreatureObject* player) {
 		if (player == NULL)
 			return;
 

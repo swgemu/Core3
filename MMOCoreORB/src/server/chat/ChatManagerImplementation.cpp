@@ -214,7 +214,7 @@ void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatR
 	}
 }
 
-void ChatManagerImplementation::handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
+void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
 	/*if (sender->isChatMuted() && !sender->isPrivileged()) {
 		sender->sendSystemMessage("Your chat abilities are currently disabled by the server administrators.");
 		return;
@@ -243,7 +243,7 @@ void ChatManagerImplementation::handleChatRoomMessage(PlayerCreature* sender, co
 	channel->broadcastMessage(messages);*/
 }
 
-void ChatManagerImplementation::handleChatEnterRoomById(PlayerCreature* player, uint32 counter, uint32 roomID) {
+void ChatManagerImplementation::handleChatEnterRoomById(CreatureObject* player, uint32 counter, uint32 roomID) {
 	ManagedReference<ChatRoom*> room = getChatRoom(roomID);
 
 	if (room == NULL)
@@ -281,13 +281,13 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	String firstName;
 
 	if (sender->isPlayerCreature())
-		firstName = ((PlayerCreature*)sender)->getFirstName();
+		firstName = ((CreatureObject*)sender)->getFirstName();
 
 	for (int i = 0; i < sender->inRangeObjectCount(); ++i) {
 		SceneObject* object = (SceneObject*) sender->getInRangeObject(i);
 
 		if (object->isPlayerCreature()) {
-			PlayerCreature* creature = (PlayerCreature*) object;
+			CreatureObject* creature = (CreatureObject*) object;
 
 			PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
 
@@ -304,7 +304,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 
 }
 
-void ChatManagerImplementation::sendRoomList(PlayerCreature* player) {
+void ChatManagerImplementation::sendRoomList(CreatureObject* player) {
 	ChatRoomList* crl = new ChatRoomList();
 
 	String game = "SWG";
@@ -314,17 +314,17 @@ void ChatManagerImplementation::sendRoomList(PlayerCreature* player) {
  	player->sendMessage(crl);
 }
 
-void ChatManagerImplementation::addPlayer(PlayerCreature* player) {
+void ChatManagerImplementation::addPlayer(CreatureObject* player) {
 	Locker _locker(_this);
 
 	String name = player->getFirstName().toLowerCase();
 	playerMap->put(name, player, false);
 }
 
-PlayerCreature* ChatManagerImplementation::getPlayer(const String& name) {
+CreatureObject* ChatManagerImplementation::getPlayer(const String& name) {
 	Locker _locker(_this);
 
-	PlayerCreature* player = NULL;
+	CreatureObject* player = NULL;
 
 	try {
 		String lName = name.toLowerCase();
@@ -338,17 +338,17 @@ PlayerCreature* ChatManagerImplementation::getPlayer(const String& name) {
 	return player;
 }
 
-PlayerCreature* ChatManagerImplementation::removePlayer(const String& name) {
+CreatureObject* ChatManagerImplementation::removePlayer(const String& name) {
 	Locker _locker(_this);
 
 	String lName = name.toLowerCase();
 
-	PlayerCreature* player = playerMap->remove(lName, false);
+	CreatureObject* player = playerMap->remove(lName, false);
 
 	return player;
 }
 
-void ChatManagerImplementation::broadcastGalaxy(PlayerCreature* player, const String& message) {
+void ChatManagerImplementation::broadcastGalaxy(CreatureObject* player, const String& message) {
 	String firstName = "SKYNET";
 
 	if (player != NULL)
@@ -363,7 +363,7 @@ void ChatManagerImplementation::broadcastGalaxy(PlayerCreature* player, const St
 	playerMap->resetIterator(false);
 
 	while (playerMap->hasNext(false)) {
-		ManagedReference<PlayerCreature*> playerObject = playerMap->getNextValue(false);
+		ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
 
 		playerObject->sendSystemMessage(fullMessage.toString());
 	}
@@ -376,7 +376,7 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 	playerMap->resetIterator(false);
 
 	while (playerMap->hasNext(false)) {
-		ManagedReference<PlayerCreature*> player = playerMap->getNextValue(false);
+		ManagedReference<CreatureObject*> player = playerMap->getNextValue(false);
 
 		if (player == NULL || !player->isOnline())
 			continue;
@@ -399,7 +399,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	String firstName;
 
 	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
-		PlayerCreature* playerCreature = (PlayerCreature*) player;
+		CreatureObject* playerCreature = (CreatureObject*) player;
 
 		firstName = playerCreature->getFirstName().toLowerCase();
 		PlayerObject* myGhost = playerCreature->getPlayerObject();
@@ -425,7 +425,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 			SceneObject* object = (SceneObject*) player->getInRangeObject(i);
 
 			if (object->isPlayerCreature()) {
-				PlayerCreature* creature = (PlayerCreature*) object;
+				CreatureObject* creature = (CreatureObject*) object;
 
 				if (player->isInRange(creature, 128)) {
 
@@ -464,7 +464,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 }
 
-void ChatManagerImplementation::handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args) {
+void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject* player, const UnicodeString& args) {
 	try {
 		UnicodeTokenizer tokenizer(args);
 
@@ -505,14 +505,14 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(PlayerCreature*
 
 //TODO: Refactor into a sendInstantMessage() method that returns a returnCode.
 void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
-	ManagedReference<PlayerCreature*> sender = (PlayerCreature*) message->getClient()->getPlayer();
+	ManagedReference<CreatureObject*> sender = (CreatureObject*) message->getClient()->getPlayer();
 
 	if (sender == NULL)
 		return;
 
 	uint32 sequence = message->getSequence();
 
-	ManagedReference<PlayerCreature*> receiver = getPlayer(message->getName());
+	ManagedReference<CreatureObject*> receiver = getPlayer(message->getName());
 
 	if (receiver == NULL || !receiver->isOnline()) {
 		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_OFFLINE);
@@ -544,7 +544,7 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 	sender->sendMessage(amsg);
 }
 
-ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, PlayerCreature* creator) {
+ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, CreatureObject* creator) {
 	// Pre: creator locked;
 	// Post: creator locked.
 
@@ -586,7 +586,7 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 }
 
 
-void ChatManagerImplementation::handleGroupChat(PlayerCreature* sender, const UnicodeString& message) {
+void ChatManagerImplementation::handleGroupChat(CreatureObject* sender, const UnicodeString& message) {
 	/*if (sender->isChatMuted()) {
 		sender->sendSystemMessage("Your chat abilities are currently disabled by the server administrators.");
 		return;
@@ -645,7 +645,7 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 		return;
 	}
 
-	PlayerCreature* player = (PlayerCreature*) receiver.get();
+	CreatureObject* player = (CreatureObject*) receiver.get();
 
 	/*StringIdChatParameter test("base_player", "sale_fee");
 	test.setDI(100);
@@ -663,7 +663,9 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 
 	Locker _locker(player);
 
-	player->addPersistentMessage(mail->getObjectID());
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ghost->addPersistentMessage(mail->getObjectID());
 
 	if (player->isOnline())
 		mail->sendTo(player, false);
@@ -682,7 +684,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	if (body.length() > PM_MAXSIZE)
 		return IM_TOOLONG;
 
-	PlayerCreature* receiver = (PlayerCreature*) obj.get();
+	CreatureObject* receiver = (CreatureObject*) obj.get();
 
 	if (receiver->getPlayerObject()->isIgnoring(sendername))
 		return IM_IGNORED;
@@ -716,7 +718,9 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 	Locker _locker(receiver);
 
-	receiver->addPersistentMessage(mail->getObjectID());
+	PlayerObject* ghost = receiver->getPlayerObject();
+
+	ghost->addPersistentMessage(mail->getObjectID());
 
 	if (receiver->isOnline())
 		mail->sendTo(receiver, false);
@@ -737,7 +741,7 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	if (body.getCustomString().length() > PM_MAXSIZE)
 		return IM_TOOLONG;
 
-	PlayerCreature* receiver = (PlayerCreature*) obj.get();
+	CreatureObject* receiver = (CreatureObject*) obj.get();
 
 	if (receiver->getPlayerObject()->isIgnoring(sendername))
 		return IM_IGNORED;
@@ -757,7 +761,9 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 	Locker _locker(receiver);
 
-	receiver->addPersistentMessage(mail->getObjectID());
+	PlayerObject* ghost = receiver->getPlayerObject();
+
+	ghost->addPersistentMessage(mail->getObjectID());
 
 	if (receiver->isOnline())
 		mail->sendTo(receiver, false);
@@ -767,10 +773,12 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	return IM_SUCCESS;
 }
 
-void ChatManagerImplementation::loadMail(PlayerCreature* player) {
+void ChatManagerImplementation::loadMail(CreatureObject* player) {
 	Locker _locker(player);
 
-	SortedVector<uint64>* messages = player->getPersistentMessages();
+	PlayerObject* ghost = player->getPlayerObject();
+
+	SortedVector<uint64>* messages = ghost->getPersistentMessages();
 
 	for (int i = 0; i < messages->size(); ++i) {
 		uint64 messageObjectID = messages->get(i);
@@ -786,10 +794,12 @@ void ChatManagerImplementation::loadMail(PlayerCreature* player) {
 	}
 }
 
-void ChatManagerImplementation::handleRequestPersistentMsg(PlayerCreature* player, uint32 mailID) {
+void ChatManagerImplementation::handleRequestPersistentMsg(CreatureObject* player, uint32 mailID) {
 	Locker _locker(player);
 
-	SortedVector<uint64>* messages = player->getPersistentMessages();
+	PlayerObject* ghost = player->getPlayerObject();
+
+	SortedVector<uint64>* messages = ghost->getPersistentMessages();
 
 	uint64 messageObjectID = -1;
 
@@ -818,10 +828,12 @@ void ChatManagerImplementation::handleRequestPersistentMsg(PlayerCreature* playe
 	mail->sendTo(player, true);
 }
 
-void ChatManagerImplementation::deletePersistentMessage(PlayerCreature* player, uint32 mailID) {
+void ChatManagerImplementation::deletePersistentMessage(CreatureObject* player, uint32 mailID) {
 	Locker _locker(player);
 
-	SortedVector<uint64>* messages = player->getPersistentMessages();
+	PlayerObject* ghost = player->getPlayerObject();
+
+	SortedVector<uint64>* messages = ghost->getPersistentMessages();
 
 	uint64 messageObjectID = -1;
 

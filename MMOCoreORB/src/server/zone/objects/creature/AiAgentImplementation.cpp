@@ -16,7 +16,8 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
@@ -837,7 +838,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 	activateRecovery();
 
 	if (attacker->isPlayerCreature()) {
-		PlayerCreature* player = (PlayerCreature*) attacker;
+		CreatureObject* player = (CreatureObject*) attacker;
 
 		if (damage > 0) {
 			damageMap.addDamage(player, damage);
@@ -852,7 +853,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 }
 
 
-void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* player) {
+void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
 
 	if (isDead()) {
 		return;
@@ -999,7 +1000,8 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 
 	broadcastNextPositionUpdate(&current);
 
-	PlayerCreature* playerCreature = (PlayerCreature*) player;
+	CreatureObject* playerCreature = (CreatureObject*) player;
+	PlayerObject* ghost = playerCreature->getPlayerObject();
 
 	if (npcTemplate != NULL) {
 		uint32 convoTemplate = npcTemplate->getConversationTemplate();
@@ -1009,7 +1011,7 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 		if (convo != NULL) {
 			ConversationNode* root = convo->getRoot();
 
-			playerCreature->setLastNpcConvMessStr(root->getID());
+			ghost->setLastNpcConvMessStr(root->getID());
 
 			StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
 			player->sendMessage(conv);
@@ -1040,7 +1042,7 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 	}
 
 	//player->setLastNpcConvStr(("npc_" + getFu().toString()));
-	playerCreature->setLastNpcConvMessStr("0,init");
+	ghost->setLastNpcConvMessStr("0,init");
 
 	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
 	player->sendMessage(conv);
@@ -1096,10 +1098,11 @@ void AiAgentImplementation::selectConversationOption(int option, SceneObject* ob
 	if (!obj->isPlayerCreature())
 		return;
 
-	PlayerCreature* player = (PlayerCreature*) obj;
+	CreatureObject* player = (CreatureObject*) obj;
 
-	String chk = player->getLastNpcConvMessStr();
+	PlayerObject* ghost = player->getPlayerObject();
 
+	String chk = ghost->getLastNpcConvMessStr();
 
 	if (npcTemplate != NULL) {
 			uint32 convoTemplate = npcTemplate->getConversationTemplate();
@@ -1156,7 +1159,7 @@ void AiAgentImplementation::selectConversationOption(int option, SceneObject* ob
 
 				player->sendMessage(slist);
 
-				player->setLastNpcConvMessStr(nextNode->getID());
+				ghost->setLastNpcConvMessStr(nextNode->getID());
 
 				return;
 			}

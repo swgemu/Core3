@@ -139,7 +139,7 @@ bool ContainerComponent::addObject(SceneObject* sceneObject, SceneObject* object
 	if (notifyClient)
 		sceneObject->broadcastMessage(object->link(sceneObject->getObjectID(), containmentType), true);
 
-	sceneObject->notifyObjectInserted(object);
+	notifyObjectInserted(sceneObject, object);
 
 	if (update) {
 		sceneObject->updateToDatabase();
@@ -204,11 +204,27 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	if (notifyClient)
 		sceneObject->broadcastMessage(object->link((uint64) 0, 0xFFFFFFFF), true);
 
-	sceneObject->notifyObjectRemoved(object);
+	notifyObjectRemoved(sceneObject, object);
 
 	sceneObject->updateToDatabase();
 	object->updateToDatabase();
 
 	return true;
+}
+
+/**
+ * Is called when this object has been inserted with an object
+ * @param object object that has been inserted
+ */
+int ContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) {
+	return sceneObject->notifyObjectInserted(object);
+}
+
+/**
+ * Is called when an object was removed
+ * @param object object that has been inserted
+ */
+int ContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object) {
+	return sceneObject->notifyObjectRemoved(object);
 }
 

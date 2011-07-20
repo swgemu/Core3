@@ -47,16 +47,17 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/player/Races.h"
-#include "../../objects/player/PlayerCreature.h"
-#include "../../objects/terrain/Terrain.h"
+#include "server/zone/objects/player/Races.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/terrain/Terrain.h"
 
+#include "server/zone/Zone.h"
 
-#include "../../Zone.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
 class CmdStartScene : public BaseMessage {
 public:
-	CmdStartScene(PlayerCreature* creo) : BaseMessage(50) {
+	CmdStartScene(CreatureObject* creo) : BaseMessage(50) {
 		Zone* zone = creo->getZone();
 
 		insertShort(0x09);
@@ -69,7 +70,9 @@ public:
 	 	insertFloat(creo->getPositionY()); //Y
 	 	
 	 	//TODO: This should be deprecated when possible.
-	 	insertAscii(Races::getRace(creo->getRaceID()));
+		uint32 crc = creo->getClientObjectCRC();
+		String file = TemplateManager::instance()->getTemplateFile(crc);
+	 	insertAscii(file);
 	 	
 	 	insertLong(creo->getZone()->getGalacticTime()); //galactic time
 	}

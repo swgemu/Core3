@@ -4,7 +4,7 @@
 
 #include "SurveyTool.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -16,7 +16,7 @@
  *	SurveyToolStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETRANGE__INT_,RPC_GETRANGE__,RPC_GETPOINTS__,RPC_CANSAMPLERADIOACTIVE__,RPC_TRYGAMBLE__,RPC_CLEARGAMBLE__,RPC_CONSENTRADIOACTIVESAMPLE__PLAYERCREATURE_,RPC_SENDRADIOACTIVEWARNING__PLAYERCREATURE_,RPC_SENDRANGESUI__PLAYERCREATURE_,RPC_SURVEYCNODEMINIGAMESUI__PLAYERCREATURE_,RPC_SURVEYCNODEMINIGAME__PLAYERCREATURE_INT_,RPC_CLEARRICHSAMPLELOCATION__,RPC_SETINUSE__BOOL_,RPC_ISINUSE__,RPC_SURVEYGNODEMINIGAMESUI__PLAYERCREATURE_,RPC_SURVEYGNODEMINIGAME__PLAYERCREATURE_INT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SENDRESOURCELISTTO__PLAYERCREATURE_,RPC_SENDSURVEYTO__PLAYERCREATURE_STRING_,RPC_SENDSAMPLETO__PLAYERCREATURE_STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETRANGE__INT_,RPC_GETRANGE__,RPC_GETPOINTS__,RPC_CANSAMPLERADIOACTIVE__,RPC_TRYGAMBLE__,RPC_CLEARGAMBLE__,RPC_CONSENTRADIOACTIVESAMPLE__CREATUREOBJECT_,RPC_SENDRADIOACTIVEWARNING__CREATUREOBJECT_,RPC_SENDRANGESUI__CREATUREOBJECT_,RPC_SURVEYCNODEMINIGAMESUI__CREATUREOBJECT_,RPC_SURVEYCNODEMINIGAME__CREATUREOBJECT_INT_,RPC_CLEARRICHSAMPLELOCATION__,RPC_SETINUSE__BOOL_,RPC_ISINUSE__,RPC_SURVEYGNODEMINIGAMESUI__CREATUREOBJECT_,RPC_SURVEYGNODEMINIGAME__CREATUREOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SENDRESOURCELISTTO__CREATUREOBJECT_,RPC_SENDSURVEYTO__CREATUREOBJECT_STRING_,RPC_SENDSAMPLETO__CREATUREOBJECT_STRING_};
 
 SurveyTool::SurveyTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	SurveyToolImplementation* _implementation = new SurveyToolImplementation();
@@ -53,7 +53,7 @@ void SurveyTool::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void SurveyTool::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void SurveyTool::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -150,13 +150,13 @@ void SurveyTool::clearGamble() {
 		_implementation->clearGamble();
 }
 
-void SurveyTool::consentRadioactiveSample(PlayerCreature* player) {
+void SurveyTool::consentRadioactiveSample(CreatureObject* player) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CONSENTRADIOACTIVESAMPLE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CONSENTRADIOACTIVESAMPLE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -164,13 +164,13 @@ void SurveyTool::consentRadioactiveSample(PlayerCreature* player) {
 		_implementation->consentRadioactiveSample(player);
 }
 
-void SurveyTool::sendRadioactiveWarning(PlayerCreature* player) {
+void SurveyTool::sendRadioactiveWarning(CreatureObject* player) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDRADIOACTIVEWARNING__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDRADIOACTIVEWARNING__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -178,13 +178,13 @@ void SurveyTool::sendRadioactiveWarning(PlayerCreature* player) {
 		_implementation->sendRadioactiveWarning(player);
 }
 
-void SurveyTool::sendRangeSui(PlayerCreature* player) {
+void SurveyTool::sendRangeSui(CreatureObject* player) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDRANGESUI__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDRANGESUI__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -192,13 +192,13 @@ void SurveyTool::sendRangeSui(PlayerCreature* player) {
 		_implementation->sendRangeSui(player);
 }
 
-void SurveyTool::surveyCnodeMinigameSui(PlayerCreature* player) {
+void SurveyTool::surveyCnodeMinigameSui(CreatureObject* player) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SURVEYCNODEMINIGAMESUI__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SURVEYCNODEMINIGAMESUI__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -206,13 +206,13 @@ void SurveyTool::surveyCnodeMinigameSui(PlayerCreature* player) {
 		_implementation->surveyCnodeMinigameSui(player);
 }
 
-void SurveyTool::surveyCnodeMinigame(PlayerCreature* player, int value) {
+void SurveyTool::surveyCnodeMinigame(CreatureObject* player, int value) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SURVEYCNODEMINIGAME__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_SURVEYCNODEMINIGAME__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(value);
 
@@ -270,13 +270,13 @@ bool SurveyTool::isInUse() {
 		return _implementation->isInUse();
 }
 
-void SurveyTool::surveyGnodeMinigameSui(PlayerCreature* player) {
+void SurveyTool::surveyGnodeMinigameSui(CreatureObject* player) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SURVEYGNODEMINIGAMESUI__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SURVEYGNODEMINIGAMESUI__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -284,13 +284,13 @@ void SurveyTool::surveyGnodeMinigameSui(PlayerCreature* player) {
 		_implementation->surveyGnodeMinigameSui(player);
 }
 
-void SurveyTool::surveyGnodeMinigame(PlayerCreature* player, int value) {
+void SurveyTool::surveyGnodeMinigame(CreatureObject* player, int value) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SURVEYGNODEMINIGAME__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_SURVEYGNODEMINIGAME__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(value);
 
@@ -299,13 +299,13 @@ void SurveyTool::surveyGnodeMinigame(PlayerCreature* player, int value) {
 		_implementation->surveyGnodeMinigame(player, value);
 }
 
-int SurveyTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SurveyTool::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -314,13 +314,13 @@ int SurveyTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void SurveyTool::sendResourceListTo(PlayerCreature* player) {
+void SurveyTool::sendResourceListTo(CreatureObject* player) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDRESOURCELISTTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDRESOURCELISTTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -328,13 +328,13 @@ void SurveyTool::sendResourceListTo(PlayerCreature* player) {
 		_implementation->sendResourceListTo(player);
 }
 
-void SurveyTool::sendSurveyTo(PlayerCreature* player, const String& resname) {
+void SurveyTool::sendSurveyTo(CreatureObject* player, const String& resname) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDSURVEYTO__PLAYERCREATURE_STRING_);
+		DistributedMethod method(this, RPC_SENDSURVEYTO__CREATUREOBJECT_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(resname);
 
@@ -343,13 +343,13 @@ void SurveyTool::sendSurveyTo(PlayerCreature* player, const String& resname) {
 		_implementation->sendSurveyTo(player, resname);
 }
 
-void SurveyTool::sendSampleTo(PlayerCreature* player, const String& resname) {
+void SurveyTool::sendSampleTo(CreatureObject* player, const String& resname) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDSAMPLETO__PLAYERCREATURE_STRING_);
+		DistributedMethod method(this, RPC_SENDSAMPLETO__CREATUREOBJECT_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(resname);
 
@@ -736,20 +736,20 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_CLEARGAMBLE__:
 		clearGamble();
 		break;
-	case RPC_CONSENTRADIOACTIVESAMPLE__PLAYERCREATURE_:
-		consentRadioactiveSample((PlayerCreature*) inv->getObjectParameter());
+	case RPC_CONSENTRADIOACTIVESAMPLE__CREATUREOBJECT_:
+		consentRadioactiveSample((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDRADIOACTIVEWARNING__PLAYERCREATURE_:
-		sendRadioactiveWarning((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDRADIOACTIVEWARNING__CREATUREOBJECT_:
+		sendRadioactiveWarning((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDRANGESUI__PLAYERCREATURE_:
-		sendRangeSui((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDRANGESUI__CREATUREOBJECT_:
+		sendRangeSui((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SURVEYCNODEMINIGAMESUI__PLAYERCREATURE_:
-		surveyCnodeMinigameSui((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SURVEYCNODEMINIGAMESUI__CREATUREOBJECT_:
+		surveyCnodeMinigameSui((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SURVEYCNODEMINIGAME__PLAYERCREATURE_INT_:
-		surveyCnodeMinigame((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_SURVEYCNODEMINIGAME__CREATUREOBJECT_INT_:
+		surveyCnodeMinigame((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case RPC_CLEARRICHSAMPLELOCATION__:
 		clearRichSampleLocation();
@@ -760,23 +760,23 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISINUSE__:
 		resp->insertBoolean(isInUse());
 		break;
-	case RPC_SURVEYGNODEMINIGAMESUI__PLAYERCREATURE_:
-		surveyGnodeMinigameSui((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SURVEYGNODEMINIGAMESUI__CREATUREOBJECT_:
+		surveyGnodeMinigameSui((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SURVEYGNODEMINIGAME__PLAYERCREATURE_INT_:
-		surveyGnodeMinigame((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_SURVEYGNODEMINIGAME__CREATUREOBJECT_INT_:
+		surveyGnodeMinigame((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_SENDRESOURCELISTTO__PLAYERCREATURE_:
-		sendResourceListTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDRESOURCELISTTO__CREATUREOBJECT_:
+		sendResourceListTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDSURVEYTO__PLAYERCREATURE_STRING_:
-		sendSurveyTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyTo__PlayerCreature_String_));
+	case RPC_SENDSURVEYTO__CREATUREOBJECT_STRING_:
+		sendSurveyTo((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurveyTo__CreatureObject_String_));
 		break;
-	case RPC_SENDSAMPLETO__PLAYERCREATURE_STRING_:
-		sendSampleTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSampleTo__PlayerCreature_String_));
+	case RPC_SENDSAMPLETO__CREATUREOBJECT_STRING_:
+		sendSampleTo((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSampleTo__CreatureObject_String_));
 		break;
 	default:
 		return NULL;
@@ -813,23 +813,23 @@ void SurveyToolAdapter::clearGamble() {
 	((SurveyToolImplementation*) impl)->clearGamble();
 }
 
-void SurveyToolAdapter::consentRadioactiveSample(PlayerCreature* player) {
+void SurveyToolAdapter::consentRadioactiveSample(CreatureObject* player) {
 	((SurveyToolImplementation*) impl)->consentRadioactiveSample(player);
 }
 
-void SurveyToolAdapter::sendRadioactiveWarning(PlayerCreature* player) {
+void SurveyToolAdapter::sendRadioactiveWarning(CreatureObject* player) {
 	((SurveyToolImplementation*) impl)->sendRadioactiveWarning(player);
 }
 
-void SurveyToolAdapter::sendRangeSui(PlayerCreature* player) {
+void SurveyToolAdapter::sendRangeSui(CreatureObject* player) {
 	((SurveyToolImplementation*) impl)->sendRangeSui(player);
 }
 
-void SurveyToolAdapter::surveyCnodeMinigameSui(PlayerCreature* player) {
+void SurveyToolAdapter::surveyCnodeMinigameSui(CreatureObject* player) {
 	((SurveyToolImplementation*) impl)->surveyCnodeMinigameSui(player);
 }
 
-void SurveyToolAdapter::surveyCnodeMinigame(PlayerCreature* player, int value) {
+void SurveyToolAdapter::surveyCnodeMinigame(CreatureObject* player, int value) {
 	((SurveyToolImplementation*) impl)->surveyCnodeMinigame(player, value);
 }
 
@@ -845,27 +845,27 @@ bool SurveyToolAdapter::isInUse() {
 	return ((SurveyToolImplementation*) impl)->isInUse();
 }
 
-void SurveyToolAdapter::surveyGnodeMinigameSui(PlayerCreature* player) {
+void SurveyToolAdapter::surveyGnodeMinigameSui(CreatureObject* player) {
 	((SurveyToolImplementation*) impl)->surveyGnodeMinigameSui(player);
 }
 
-void SurveyToolAdapter::surveyGnodeMinigame(PlayerCreature* player, int value) {
+void SurveyToolAdapter::surveyGnodeMinigame(CreatureObject* player, int value) {
 	((SurveyToolImplementation*) impl)->surveyGnodeMinigame(player, value);
 }
 
-int SurveyToolAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SurveyToolAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((SurveyToolImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void SurveyToolAdapter::sendResourceListTo(PlayerCreature* player) {
+void SurveyToolAdapter::sendResourceListTo(CreatureObject* player) {
 	((SurveyToolImplementation*) impl)->sendResourceListTo(player);
 }
 
-void SurveyToolAdapter::sendSurveyTo(PlayerCreature* player, const String& resname) {
+void SurveyToolAdapter::sendSurveyTo(CreatureObject* player, const String& resname) {
 	((SurveyToolImplementation*) impl)->sendSurveyTo(player, resname);
 }
 
-void SurveyToolAdapter::sendSampleTo(PlayerCreature* player, const String& resname) {
+void SurveyToolAdapter::sendSampleTo(CreatureObject* player, const String& resname) {
 	((SurveyToolImplementation*) impl)->sendSampleTo(player, resname);
 }
 

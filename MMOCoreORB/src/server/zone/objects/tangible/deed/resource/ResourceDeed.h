@@ -38,16 +38,16 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -93,11 +93,11 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	int useObject(PlayerCreature* player);
+	int useObject(CreatureObject* player);
 
 	void destroyDeed();
 
@@ -136,11 +136,11 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	int useObject(PlayerCreature* player);
+	int useObject(CreatureObject* player);
 
 	void destroyDeed();
 
@@ -189,9 +189,9 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	int useObject(PlayerCreature* player);
+	int useObject(CreatureObject* player);
 
 	void destroyDeed();
 

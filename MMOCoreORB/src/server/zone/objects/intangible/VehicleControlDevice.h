@@ -42,16 +42,16 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -91,6 +91,20 @@ class Zone;
 
 using namespace server::zone;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
 #include "server/zone/managers/radial/RadialOptions.h"
 
 #include "engine/lua/LuaObject.h"
@@ -108,15 +122,15 @@ class VehicleControlDevice : public ControlDevice {
 public:
 	VehicleControlDevice();
 
-	void storeObject(PlayerCreature* player);
+	void storeObject(CreatureObject* player);
 
-	void generateObject(PlayerCreature* player);
+	void generateObject(CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
-	int canBeDestroyed(PlayerCreature* player);
+	int canBeDestroyed(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -149,15 +163,15 @@ public:
 
 	VehicleControlDeviceImplementation(DummyConstructorParameter* param);
 
-	void storeObject(PlayerCreature* player);
+	void storeObject(CreatureObject* player);
 
-	void generateObject(PlayerCreature* player);
+	void generateObject(CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
-	int canBeDestroyed(PlayerCreature* player);
+	int canBeDestroyed(CreatureObject* player);
 
 	WeakReference<VehicleControlDevice*> _this;
 
@@ -202,15 +216,15 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void storeObject(PlayerCreature* player);
+	void storeObject(CreatureObject* player);
 
-	void generateObject(PlayerCreature* player);
+	void generateObject(CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
-	int canBeDestroyed(PlayerCreature* player);
+	int canBeDestroyed(CreatureObject* player);
 
 };
 

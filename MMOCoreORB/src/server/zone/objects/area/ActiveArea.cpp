@@ -6,7 +6,7 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	ActiveAreaStub

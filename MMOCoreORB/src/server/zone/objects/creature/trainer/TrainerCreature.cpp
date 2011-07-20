@@ -6,15 +6,13 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
-
 #include "server/zone/objects/scene/SceneObject.h"
 
 /*
  *	TrainerCreatureStub
  */
 
-enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__PLAYERCREATURE_,RPC_SENDINITIALCHOICES__PLAYERCREATURE_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDSKILLBOXES__PLAYERCREATURE_BOOL_,RPC_SENDSKILLBOXLIST__PLAYERCREATURE_BOOL_,RPC_SENDCONFIRMATION__PLAYERCREATURE_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_SETTRAINERID__INT_,RPC_GETTRAINERID__,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISTRAINERCREATURE__,RPC_ISATTACKABLEBY__CREATUREOBJECT_};
+enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__CREATUREOBJECT_,RPC_SENDINITIALCHOICES__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDSKILLBOXES__CREATUREOBJECT_BOOL_,RPC_SENDSKILLBOXLIST__CREATUREOBJECT_BOOL_,RPC_SENDCONFIRMATION__CREATUREOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_SETTRAINERID__INT_,RPC_GETTRAINERID__,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISTRAINERCREATURE__,RPC_ISATTACKABLEBY__CREATUREOBJECT_};
 
 TrainerCreature::TrainerCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	TrainerCreatureImplementation* _implementation = new TrainerCreatureImplementation();
@@ -51,13 +49,13 @@ void TrainerCreature::activateRecovery() {
 		_implementation->activateRecovery();
 }
 
-void TrainerCreature::sendInitialMessage(PlayerCreature* player) {
+void TrainerCreature::sendInitialMessage(CreatureObject* player) {
 	TrainerCreatureImplementation* _implementation = (TrainerCreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDINITIALMESSAGE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDINITIALMESSAGE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -65,13 +63,13 @@ void TrainerCreature::sendInitialMessage(PlayerCreature* player) {
 		_implementation->sendInitialMessage(player);
 }
 
-void TrainerCreature::sendInitialChoices(PlayerCreature* player) {
+void TrainerCreature::sendInitialChoices(CreatureObject* player) {
 	TrainerCreatureImplementation* _implementation = (TrainerCreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDINITIALCHOICES__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDINITIALCHOICES__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -93,13 +91,13 @@ void TrainerCreature::sendConversationStartTo(SceneObject* obj) {
 		_implementation->sendConversationStartTo(obj);
 }
 
-void TrainerCreature::sendSkillBoxes(PlayerCreature* player, bool checkXp) {
+void TrainerCreature::sendSkillBoxes(CreatureObject* player, bool checkXp) {
 	TrainerCreatureImplementation* _implementation = (TrainerCreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDSKILLBOXES__PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_SENDSKILLBOXES__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(checkXp);
 
@@ -108,13 +106,13 @@ void TrainerCreature::sendSkillBoxes(PlayerCreature* player, bool checkXp) {
 		_implementation->sendSkillBoxes(player, checkXp);
 }
 
-void TrainerCreature::sendSkillBoxList(PlayerCreature* player, bool checkLearned) {
+void TrainerCreature::sendSkillBoxList(CreatureObject* player, bool checkLearned) {
 	TrainerCreatureImplementation* _implementation = (TrainerCreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDSKILLBOXLIST__PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_SENDSKILLBOXLIST__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(checkLearned);
 
@@ -123,13 +121,13 @@ void TrainerCreature::sendSkillBoxList(PlayerCreature* player, bool checkLearned
 		_implementation->sendSkillBoxList(player, checkLearned);
 }
 
-void TrainerCreature::sendConfirmation(PlayerCreature* player) {
+void TrainerCreature::sendConfirmation(CreatureObject* player) {
 	TrainerCreatureImplementation* _implementation = (TrainerCreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDCONFIRMATION__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDCONFIRMATION__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -477,23 +475,23 @@ Packet* TrainerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_ACTIVATERECOVERY__:
 		activateRecovery();
 		break;
-	case RPC_SENDINITIALMESSAGE__PLAYERCREATURE_:
-		sendInitialMessage((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDINITIALMESSAGE__CREATUREOBJECT_:
+		sendInitialMessage((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDINITIALCHOICES__PLAYERCREATURE_:
-		sendInitialChoices((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDINITIALCHOICES__CREATUREOBJECT_:
+		sendInitialChoices((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_:
 		sendConversationStartTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDSKILLBOXES__PLAYERCREATURE_BOOL_:
-		sendSkillBoxes((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_SENDSKILLBOXES__CREATUREOBJECT_BOOL_:
+		sendSkillBoxes((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_SENDSKILLBOXLIST__PLAYERCREATURE_BOOL_:
-		sendSkillBoxList((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_SENDSKILLBOXLIST__CREATUREOBJECT_BOOL_:
+		sendSkillBoxList((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_SENDCONFIRMATION__PLAYERCREATURE_:
-		sendConfirmation((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDCONFIRMATION__CREATUREOBJECT_:
+		sendConfirmation((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_:
 		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
@@ -527,11 +525,11 @@ void TrainerCreatureAdapter::activateRecovery() {
 	((TrainerCreatureImplementation*) impl)->activateRecovery();
 }
 
-void TrainerCreatureAdapter::sendInitialMessage(PlayerCreature* player) {
+void TrainerCreatureAdapter::sendInitialMessage(CreatureObject* player) {
 	((TrainerCreatureImplementation*) impl)->sendInitialMessage(player);
 }
 
-void TrainerCreatureAdapter::sendInitialChoices(PlayerCreature* player) {
+void TrainerCreatureAdapter::sendInitialChoices(CreatureObject* player) {
 	((TrainerCreatureImplementation*) impl)->sendInitialChoices(player);
 }
 
@@ -539,15 +537,15 @@ void TrainerCreatureAdapter::sendConversationStartTo(SceneObject* obj) {
 	((TrainerCreatureImplementation*) impl)->sendConversationStartTo(obj);
 }
 
-void TrainerCreatureAdapter::sendSkillBoxes(PlayerCreature* player, bool checkXp) {
+void TrainerCreatureAdapter::sendSkillBoxes(CreatureObject* player, bool checkXp) {
 	((TrainerCreatureImplementation*) impl)->sendSkillBoxes(player, checkXp);
 }
 
-void TrainerCreatureAdapter::sendSkillBoxList(PlayerCreature* player, bool checkLearned) {
+void TrainerCreatureAdapter::sendSkillBoxList(CreatureObject* player, bool checkLearned) {
 	((TrainerCreatureImplementation*) impl)->sendSkillBoxList(player, checkLearned);
 }
 
-void TrainerCreatureAdapter::sendConfirmation(PlayerCreature* player) {
+void TrainerCreatureAdapter::sendConfirmation(CreatureObject* player) {
 	((TrainerCreatureImplementation*) impl)->sendConfirmation(player);
 }
 

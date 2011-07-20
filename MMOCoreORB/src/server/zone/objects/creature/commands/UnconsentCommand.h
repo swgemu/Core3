@@ -47,8 +47,10 @@ which carries forward this exception.
 
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "QueueCommand.h"
+
 
 class UnconsentCommand : public QueueCommand {
 public:
@@ -58,8 +60,9 @@ public:
 
 	}
 
-	static void unconscent(PlayerCreature* player, const String& name) {
-		player->removeFromConsentList(name);
+	static void unconscent(CreatureObject* player, const String& name) {
+		PlayerObject* ghost = player->getPlayerObject();
+		ghost->removeFromConsentList(name);
 
 		StringIdChatParameter stringId("base_player", "prose_unconsent");
 		stringId.setTO(name);
@@ -77,7 +80,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		if (!arguments.isEmpty()) {
 			StringTokenizer tokenizer(arguments.toString());
@@ -97,7 +100,7 @@ public:
 			if (object == NULL || !object->isPlayerCreature() || object == creature)
 				return INVALIDTARGET;
 
-			PlayerCreature* playerTarget = (PlayerCreature*) object.get();
+			CreatureObject* playerTarget = (CreatureObject*) object.get();
 
 			unconscent(player, playerTarget->getFirstName().toLowerCase());
 

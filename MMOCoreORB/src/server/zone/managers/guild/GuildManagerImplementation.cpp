@@ -16,7 +16,7 @@
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/guild/GuildMemberList.h"
 #include "server/zone/objects/guild/GuildMemberInfo.h"
@@ -98,7 +98,7 @@ void GuildManagerImplementation::loadGuilds() {
 	info(String::valueOf(guildList.size()) + " guilds loaded.", true);
 }
 
-void GuildManagerImplementation::sendGuildCreateNameTo(PlayerCreature* player, GuildTerminal* terminal) {
+void GuildManagerImplementation::sendGuildCreateNameTo(CreatureObject* player, GuildTerminal* terminal) {
 	if (player->isInGuild()) {
 		player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
 		return;
@@ -111,11 +111,11 @@ void GuildManagerImplementation::sendGuildCreateNameTo(PlayerCreature* player, G
 	inputBox->setMaxInputSize(24);
 	inputBox->setUsingObject(terminal);
 
-	player->addSuiBox(inputBox);
+	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
 }
 
-bool GuildManagerImplementation::validateGuildName(PlayerCreature* player, const String& guildName) {
+bool GuildManagerImplementation::validateGuildName(CreatureObject* player, const String& guildName) {
 	if (guildName.length() < 1 || guildName.length() > 25) {
 		player->sendSystemMessage("@guild:create_fail_name_bad_length"); //Guild names must be 1-25 characters in length.
 		return false;
@@ -168,7 +168,7 @@ bool GuildManagerImplementation::guildAbbrevExists(const String& guildAbbrev) {
 	return false;
 }
 
-void GuildManagerImplementation::sendGuildCreateAbbrevTo(PlayerCreature* player, GuildTerminal* terminal) {
+void GuildManagerImplementation::sendGuildCreateAbbrevTo(CreatureObject* player, GuildTerminal* terminal) {
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CREATE_ABBREV);
 	inputBox->setCallback(new GuildCreateAbbrevResponseSuiCallback(server));
 	inputBox->setPromptTitle("@guild:create_abbrev_title"); //Guild Abbreviation
@@ -176,11 +176,11 @@ void GuildManagerImplementation::sendGuildCreateAbbrevTo(PlayerCreature* player,
 	inputBox->setMaxInputSize(4);
 	inputBox->setUsingObject(terminal);
 
-	player->addSuiBox(inputBox);
+	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
 }
 
-bool GuildManagerImplementation::validateGuildAbbrev(PlayerCreature* player, const String& guildAbbrev) {
+bool GuildManagerImplementation::validateGuildAbbrev(CreatureObject* player, const String& guildAbbrev) {
 	if (guildAbbrev.length() < 1 || guildAbbrev.length() > 5) {
 		player->sendSystemMessage("@guild:create_fail_abbrev_bad_length"); //Guild abbreviations must be 1-5 characters in length.
 		return false;
@@ -201,7 +201,7 @@ bool GuildManagerImplementation::validateGuildAbbrev(PlayerCreature* player, con
 	return true;
 }
 
-void GuildManagerImplementation::sendGuildInformationTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildInformationTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
 	if (guild == NULL)
 		return;
 
@@ -228,7 +228,7 @@ void GuildManagerImplementation::sendGuildInformationTo(PlayerCreature* player, 
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildDisbandConfirmTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildDisbandConfirmTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
 	if (guild == NULL)
 		return;
 
@@ -247,11 +247,11 @@ void GuildManagerImplementation::sendGuildDisbandConfirmTo(PlayerCreature* playe
 	suiBox->setCancelButton(true, "@no");
 	suiBox->setOkButton(true, "@yes");
 
-	player->addSuiBox(suiBox);
+	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildMemberOptionsTo(PlayerCreature* player, GuildObject* guild, uint64 memberID, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player, GuildObject* guild, uint64 memberID, GuildTerminal* guildTerminal) {
 	if (guild == NULL)
 		return;
 
@@ -285,11 +285,11 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(PlayerCreature* player
 	suiBox->addMenuItem("@guild:title", memberID); //Set Title
 	suiBox->addMenuItem("@guild:permissions", memberID); //Change Permissions
 
-	player->addSuiBox(suiBox);
+	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildMemberListTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
 	if (guild == NULL)
 		return;
 
@@ -315,16 +315,16 @@ void GuildManagerImplementation::sendGuildMemberListTo(PlayerCreature* player, G
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		PlayerCreature* member = (PlayerCreature*) obj.get();
+		CreatureObject* member = (CreatureObject*) obj.get();
 		suiBox->addMenuItem(member->getObjectName()->getDisplayedName(), playerID);
 	}
 
 	suiBox->setCancelButton(true, "@cancel");
-	player->addSuiBox(suiBox);
+	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildSponsoredOptionsTo(PlayerCreature* player, GuildObject* guild, uint64 playerID, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildSponsoredOptionsTo(CreatureObject* player, GuildObject* guild, uint64 playerID, GuildTerminal* guildTerminal) {
 	if (guild == NULL) {
 		return;
 	}
@@ -346,11 +346,11 @@ void GuildManagerImplementation::sendGuildSponsoredOptionsTo(PlayerCreature* pla
 	suiBox->addMenuItem("@guild:accept", playerID); //Accept
 	suiBox->addMenuItem("@guild:decline", 0); //Decline
 
-	player->addSuiBox(suiBox);
+	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildSponsoredListTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
 	if (guild == NULL)
 		return;
 
@@ -371,16 +371,16 @@ void GuildManagerImplementation::sendGuildSponsoredListTo(PlayerCreature* player
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		PlayerCreature* sponsoredPlayer = (PlayerCreature*) obj.get();
+		CreatureObject* sponsoredPlayer = (CreatureObject*) obj.get();
 
 		suiBox->addMenuItem(sponsoredPlayer->getObjectName()->getDisplayedName(), playerID);
 	}
 
-	player->addSuiBox(suiBox);
+	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildSponsorTo(PlayerCreature* player, GuildObject* guild, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
 	if (guild == NULL)
 		return;
 
@@ -398,11 +398,11 @@ void GuildManagerImplementation::sendGuildSponsorTo(PlayerCreature* player, Guil
 	suiBox->setUsingObject(guildTerminal);
 	suiBox->setCancelButton(true, "@cancel");
 
-	player->addSuiBox(suiBox);
+	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendBaselinesTo(PlayerCreature* player) {
+void GuildManagerImplementation::sendBaselinesTo(CreatureObject* player) {
 	SceneObjectCreateMessage* create = new SceneObjectCreateMessage(_this->_getObjectID(), 0x7D40E2E6);
 	player->sendMessage(create);
 
@@ -450,7 +450,7 @@ ChatRoom* GuildManagerImplementation::createGuildChannels(GuildObject* guild) {
 	return guildChat;
 }
 
-GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, GuildTerminal* terminal, const String& guildName, const String& guildAbbrev) {
+GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, GuildTerminal* terminal, const String& guildName, const String& guildAbbrev) {
 	if (player->isInGuild()) {
 		player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
 		return NULL;
@@ -501,7 +501,7 @@ GuildObject* GuildManagerImplementation::createGuild(PlayerCreature* player, Gui
 	return guild;
 }
 
-bool GuildManagerImplementation::disbandGuild(PlayerCreature* player, GuildObject* guild) {
+bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObject* guild) {
 	Locker _lock(_this);
 
 	if (guild == NULL)
@@ -547,7 +547,7 @@ bool GuildManagerImplementation::disbandGuild(PlayerCreature* player, GuildObjec
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		PlayerCreature* member = (PlayerCreature*) obj.get();
+		CreatureObject* member = (CreatureObject*) obj.get();
 
 		member->setGuildObject(NULL);
 
@@ -577,7 +577,7 @@ bool GuildManagerImplementation::disbandGuild(PlayerCreature* player, GuildObjec
 	return true;
 }
 
-void GuildManagerImplementation::sponsorPlayer(PlayerCreature* player, GuildTerminal* guildTerminal, const String& playerName) {
+void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, GuildTerminal* guildTerminal, const String& playerName) {
 	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
 	ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
@@ -590,7 +590,7 @@ void GuildManagerImplementation::sponsorPlayer(PlayerCreature* player, GuildTerm
 		return;
 	}
 
-	ManagedReference<PlayerCreature*> target = playerManager->getPlayer(playerName);
+	ManagedReference<CreatureObject*> target = playerManager->getPlayer(playerName);
 
 	if (target == NULL) {
 		player->sendSystemMessage("@guild:sponsor_not_found"); //The specified person to sponsor could not be found nearby.
@@ -623,7 +623,7 @@ void GuildManagerImplementation::sponsorPlayer(PlayerCreature* player, GuildTerm
 	sendGuildSponsorVerifyTo(player, target);
 }
 
-void GuildManagerImplementation::sendGuildSponsorVerifyTo(PlayerCreature* player, PlayerCreature* target) {
+void GuildManagerImplementation::sendGuildSponsorVerifyTo(CreatureObject* player, CreatureObject* target) {
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_SPONSOR_VERIFY);
 	suiBox->setCallback(new GuildSponsorVerifySuiCallback(server));
 	suiBox->setPromptTitle("@guild:sponsor_verify_title"); //Sponsored For Guild Membership
@@ -632,11 +632,11 @@ void GuildManagerImplementation::sendGuildSponsorVerifyTo(PlayerCreature* player
 	suiBox->setCancelButton(true, "@no");
 	suiBox->setOkButton(true, "@yes");
 
-	target->addSuiBox(suiBox);
+	target->getPlayerObject()->addSuiBox(suiBox);
 	target->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::acceptSponsorshipRequest(PlayerCreature* player, PlayerCreature* target) {
+void GuildManagerImplementation::acceptSponsorshipRequest(CreatureObject* player, CreatureObject* target) {
 	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 	if (guild == NULL)
@@ -668,7 +668,7 @@ void GuildManagerImplementation::acceptSponsorshipRequest(PlayerCreature* player
 	sendGuildMail("@guildmail:sponsor_subject", params, guild);
 }
 
-void GuildManagerImplementation::acceptSponsoredPlayer(PlayerCreature* player, uint64 targetID) {
+void GuildManagerImplementation::acceptSponsoredPlayer(CreatureObject* player, uint64 targetID) {
 	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 	if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
@@ -681,7 +681,7 @@ void GuildManagerImplementation::acceptSponsoredPlayer(PlayerCreature* player, u
 	if (obj == NULL || !obj->isPlayerCreature())
 		return;
 
-	PlayerCreature* target = (PlayerCreature*) obj.get();
+	CreatureObject* target = (CreatureObject*) obj.get();
 
 	Locker _lock(target, player);
 
@@ -727,7 +727,7 @@ void GuildManagerImplementation::acceptSponsoredPlayer(PlayerCreature* player, u
 	chatManager->sendMail(guild->getGuildName(), "@guildmail:accept_target_subject", params, target->getFirstName());
 }
 
-void GuildManagerImplementation::sendGuildKickPromptTo(PlayerCreature* player, PlayerCreature* target) {
+void GuildManagerImplementation::sendGuildKickPromptTo(CreatureObject* player, CreatureObject* target) {
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_MEMBER_REMOVE);
 	suiBox->setCallback(new GuildMemberRemoveSuiCallback(server));
 	suiBox->setPromptTitle("@guild:kick_title"); //Kick From Guild
@@ -737,11 +737,11 @@ void GuildManagerImplementation::sendGuildKickPromptTo(PlayerCreature* player, P
 	suiBox->setCancelButton(true, "@no");
 	suiBox->setOkButton(true, "@yes");
 
-	player->addSuiBox(suiBox);
+	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildSetTitleTo(PlayerCreature* player, PlayerCreature* target) {
+void GuildManagerImplementation::sendGuildSetTitleTo(CreatureObject* player, CreatureObject* target) {
 	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 	if (guild == NULL || !guild->hasTitlePermission(player->getObjectID())) {
@@ -757,11 +757,11 @@ void GuildManagerImplementation::sendGuildSetTitleTo(PlayerCreature* player, Pla
 	suiBox->setMaxInputSize(24);
 	suiBox->setCancelButton(true, "@cancel");
 
-	player->addSuiBox(suiBox);
+	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::kickMember(PlayerCreature* player, PlayerCreature* target) {
+void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObject* target) {
 	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 	if (guild == NULL || !guild->hasKickPermission(player->getObjectID())) {
@@ -812,7 +812,7 @@ void GuildManagerImplementation::kickMember(PlayerCreature* player, PlayerCreatu
 	sendGuildMail("@guildmail:kick_subject", params, guild);
 }
 
-void GuildManagerImplementation::setMemberTitle(PlayerCreature* player, PlayerCreature* target, const String& title) {
+void GuildManagerImplementation::setMemberTitle(CreatureObject* player, CreatureObject* target, const String& title) {
 	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 	if (guild == NULL || !guild->hasTitlePermission(player->getObjectID())) {
@@ -849,11 +849,11 @@ void GuildManagerImplementation::setMemberTitle(PlayerCreature* player, PlayerCr
 
 }
 
-void GuildManagerImplementation::setAllegianceTo(PlayerCreature* player, uint64 targetID, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::setAllegianceTo(CreatureObject* player, uint64 targetID, GuildTerminal* guildTerminal) {
 
 }
 
-void GuildManagerImplementation::sendMemberPermissionsTo(PlayerCreature* player, uint64 targetID, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player, uint64 targetID, GuildTerminal* guildTerminal) {
 	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 	if (guild == NULL || !guild->isGuildLeader(player)) {
@@ -885,11 +885,11 @@ void GuildManagerImplementation::sendMemberPermissionsTo(PlayerCreature* player,
 	listBox->addMenuItem(String("@guild:permission_namechange_") + (gmi->hasPermission(GuildObject::PERMISSION_NAME) ? "yes" : "no"), targetID);
 	listBox->addMenuItem(String("@guild:permission_disband_") + (gmi->hasPermission(GuildObject::PERMISSION_DISBAND) ? "yes" : "no"), targetID);
 
-	player->addSuiBox(listBox);
+	player->getPlayerObject()->addSuiBox(listBox);
 	player->sendMessage(listBox->generateMessage());
 }
 
-void GuildManagerImplementation::toggleGuildPermission(PlayerCreature* player, uint64 targetID, int permissionIndex, GuildTerminal* guildTerminal) {
+void GuildManagerImplementation::toggleGuildPermission(CreatureObject* player, uint64 targetID, int permissionIndex, GuildTerminal* guildTerminal) {
 	//TODO: Change to not require a guild terminal, it only needs passing to the sui list send to be set as using object...
 	if (guildTerminal == NULL)
 		return;
@@ -946,7 +946,7 @@ void GuildManagerImplementation::toggleGuildPermission(PlayerCreature* player, u
 	sendMemberPermissionsTo(player, targetID, guildTerminal);
 }
 
-void GuildManagerImplementation::sendGuildListTo(PlayerCreature* player, const String& guildFilter) {
+void GuildManagerImplementation::sendGuildListTo(CreatureObject* player, const String& guildFilter) {
 	if (guildFilter.isEmpty()) {
 		player->sendSystemMessage("Please provide a guild filter as an argument to minimize the search results.");
 		return;
@@ -993,11 +993,11 @@ void GuildManagerImplementation::sendGuildListTo(PlayerCreature* player, const S
 
 	listBox->setPromptText(text.toString());
 
-	player->addSuiBox(listBox);
+	player->getPlayerObject()->addSuiBox(listBox);
 	player->sendMessage(listBox->generateMessage());
 }
 
-void GuildManagerImplementation::leaveGuild(PlayerCreature* player, GuildObject* guild) {
+void GuildManagerImplementation::leaveGuild(CreatureObject* player, GuildObject* guild) {
 	if (guild == NULL)
 		return;
 
@@ -1047,7 +1047,7 @@ void GuildManagerImplementation::sendGuildMail(const String& subject, StringIdCh
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		PlayerCreature* recipient = (PlayerCreature*) obj.get();
+		CreatureObject* recipient = (CreatureObject*) obj.get();
 
 		chatManager->sendMail(guild->getGuildName(), subject, body, recipient->getFirstName());
 	}

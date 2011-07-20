@@ -18,7 +18,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
@@ -26,11 +26,13 @@
 
 #include "server/zone/objects/area/ActiveArea.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 /*
  *	SceneObjectStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECOMPONENTS__,RPC_CREATECONTAINERCOMPONENT__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__PLAYERCREATURE_,RPC_CREATE__ZONECLIENTSESSION_,RPC_DESTROY__ZONECLIENTSESSION_,RPC_CLOSE__ZONECLIENTSESSION_,RPC_LINK__ZONECLIENTSESSION_INT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__PLAYERCREATURE_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__PLAYERCREATURE_,RPC_CLOSECONTAINERTO__PLAYERCREATURE_BOOL_,RPC_INSERTTOZONE__ZONE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_UPDATEDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_REMOVEFROMZONE__,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_GETACTIVESESSIONSCOUNT__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_NOTIFYADDEDTOCLOSEOBJECTS__,RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_HASNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_ADDNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_REMOVENOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_GETACTIVEAREASSIZE__,RPC_GETACTIVEREGION__,RPC_GETCITYREGION__,RPC_SETCITYREGION__CITYREGION_,RPC_GETZONE__,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETSLOTTEDOBJECT__INT_,RPC_DROPSLOTTEDOBJECT__STRING_,RPC_REMOVESLOTTEDOBJECT__INT_,RPC_GETCONTAINEROBJECTSSIZE__,RPC_GETSLOTTEDOBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_REMOVEALLCONTAINEROBJECTS__,RPC_PUTINCONTAINER__SCENEOBJECT_LONG_,RPC_REMOVEFROMCONTAINEROBJECTS__INT_,RPC_SETCONTAINERVOLUMELIMIT__INT_,RPC_SETCONTAINERTYPE__INT_,RPC_GETCONTAINERTYPE__,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_FACEOBJECT__SCENEOBJECT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_ISCONTAINERFULL__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISINSTALLATIONOBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISATTACHMENT__,RPC_SETGAMEOBJECTTYPE__INT_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETPARENT__SCENEOBJECT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETPLANETMAPCATEGORYCRC__,RPC_GETPLANETMAPSUBCATEGORYCRC__,RPC_CREATECHILDOBJECTS__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECOMPONENTS__,RPC_CREATECONTAINERCOMPONENT__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_INFO__STRING_BOOL_,RPC_ERROR__STRING_,RPC_INRANGEOBJECTS__INT_FLOAT_,RPC_ISINRANGE__SCENEOBJECT_FLOAT_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASE__,RPC_UPDATETODATABASEWITHOUTCHILDREN__,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_,RPC_CREATE__ZONECLIENTSESSION_,RPC_DESTROY__ZONECLIENTSESSION_,RPC_CLOSE__ZONECLIENTSESSION_,RPC_LINK__ZONECLIENTSESSION_INT_,RPC_LINK__LONG_INT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDWITHOUTPARENTTO__SCENEOBJECT_,RPC_SENDWITHOUTCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDATTRIBUTELISTTO__CREATUREOBJECT_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_OPENCONTAINERTO__CREATUREOBJECT_,RPC_CLOSECONTAINERTO__CREATUREOBJECT_BOOL_,RPC_INSERTTOZONE__ZONE_,RPC_INSERTTOBUILDING__BUILDINGOBJECT_,RPC_SWITCHZONE__STRING_FLOAT_FLOAT_FLOAT_LONG_,RPC_TELEPORT__FLOAT_FLOAT_FLOAT_LONG_,RPC_UPDATEDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_REMOVEFROMZONE__,RPC_REMOVEFROMBUILDING__BUILDINGOBJECT_,RPC_UPDATEZONE__BOOL_BOOL_,RPC_UPDATEZONEWITHPARENT__SCENEOBJECT_BOOL_BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_BOOL_,RPC_BROADCASTOBJECT__SCENEOBJECT_BOOL_,RPC_BROADCASTDESTROY__SCENEOBJECT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_COMPARETO__SCENEOBJECT_,RPC_GETPARENTID__,RPC_SHOWFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_GETACTIVESESSION__INT_,RPC_ADDACTIVESESSION__INT_FACADE_,RPC_CONTAINSACTIVESESSION__INT_,RPC_DROPACTIVESESSION__INT_,RPC_GETACTIVESESSIONSCOUNT__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_NOTIFYADDEDTOCLOSEOBJECTS__,RPC_NOTIFYREMOVEDFROMCLOSEOBJECTS__,RPC_GETDISTANCETO__SCENEOBJECT_,RPC_UPDATEVEHICLEPOSITION__,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_HASNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_ADDNOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_REMOVENOTIFIEDSENTOBJECT__SCENEOBJECT_,RPC_ADDACTIVEAREA__ACTIVEAREA_,RPC_DROPACTIVEAREA__ACTIVEAREA_,RPC_HASACTIVEAREA__ACTIVEAREA_,RPC_GETACTIVEAREASSIZE__,RPC_GETACTIVEREGION__,RPC_GETCITYREGION__,RPC_SETCITYREGION__CITYREGION_,RPC_GETZONE__,RPC_GETOBJECTID__,RPC_GETWORLDPOSITIONX__,RPC_GETWORLDPOSITIONY__,RPC_GETWORLDPOSITIONZ__,RPC_GETDIRECTIONX__,RPC_GETDIRECTIONZ__,RPC_GETDIRECTIONY__,RPC_GETDIRECTIONW__,RPC_GETCLIENTOBJECTCRC__,RPC_GETSERVEROBJECTCRC__,RPC_ISWAYPOINTOBJECT__,RPC_GETOBJECTNAMESTRINGIDFILE__,RPC_GETOBJECTNAMESTRINGIDNAME__,RPC_GETARRANGEMENTDESCRIPTORSIZE__,RPC_GETARRANGEMENTDESCRIPTOR__INT_,RPC_GETSLOTDESCRIPTOR__INT_,RPC_HASSLOTDESCRIPTOR__STRING_,RPC_GETSLOTTEDOBJECT__STRING_,RPC_GETSLOTDESCRIPTORSIZE__,RPC_GETSLOTTEDOBJECT__INT_,RPC_DROPSLOTTEDOBJECT__STRING_,RPC_REMOVESLOTTEDOBJECT__INT_,RPC_GETCONTAINEROBJECTSSIZE__,RPC_GETSLOTTEDOBJECTSSIZE__,RPC_HASFULLCONTAINEROBJECTS__,RPC_GETCONTAINERVOLUMELIMIT__,RPC_GETCONTAINEROBJECT__INT_,RPC_HASOBJECTINCONTAINER__LONG_,RPC_HASOBJECTINSLOTTEDCONTAINER__SCENEOBJECT_,RPC_GETCONTAINEROBJECT__LONG_,RPC_REMOVEALLCONTAINEROBJECTS__,RPC_PUTINCONTAINER__SCENEOBJECT_LONG_,RPC_REMOVEFROMCONTAINEROBJECTS__INT_,RPC_SETCONTAINERVOLUMELIMIT__INT_,RPC_SETCONTAINERTYPE__INT_,RPC_GETCONTAINERTYPE__,RPC_GETCLIENT__,RPC_GETGAMEOBJECTTYPE__,RPC_GETCLIENTGAMEOBJECTTYPE__,RPC_GETCONTAINMENTTYPE__,RPC_GETDIRECTIONANGLE__,RPC_GETSPECIALDIRECTIONANGLE__,RPC_ROTATE__INT_,RPC_FACEOBJECT__SCENEOBJECT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_,RPC_GETMOVEMENTCOUNTER__,RPC_GETPARENT__,RPC_GETZONESERVER__,RPC_GETROOTPARENT__,RPC_GETPARENTRECURSIVELY__INT_,RPC_ISASUBCHILDOF__SCENEOBJECT_,RPC_GETCUSTOMOBJECTNAME__,RPC_GETLOGGINGNAME__,RPC_ISPLAYERCREATURE__,RPC_ISVENDOR__,RPC_ISCONTAINERFULL__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISPLAYEROBJECT__,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCREATUREOBJECT__,RPC_ISVEHICLEOBJECT__,RPC_ISBUILDINGOBJECT__,RPC_ISCLONINGBUILDINGOBJECT__,RPC_ISGARAGE__,RPC_ISWEAPONOBJECT__,RPC_ISWEARABLEOBJECT__,RPC_ISARMOROBJECT__,RPC_ISPSGARMOROBJECT__,RPC_ISCELLOBJECT__,RPC_ISTANGIBLEOBJECT__,RPC_ISRESOURCECONTAINER__,RPC_ISCOMPONENT__,RPC_ISINTANGIBLEOBJECT__,RPC_ISINSTRUMENT__,RPC_ISINSTALLATIONOBJECT__,RPC_ISCITYTERMINAL__,RPC_ISCITYVOTETERMINAL__,RPC_ISFACTORY__,RPC_ISFACTORYCRATE__,RPC_ISFISHINGPOLEOBJECT__,RPC_ISDEEDOBJECT__,RPC_ISVEHICLEDEEDOBJECT__,RPC_ISBUILDINGDEED__,RPC_ISSIGNOBJECT__,RPC_ISINSTALLATIONDEED__,RPC_ISCRAFTINGTOOL__,RPC_ISCRAFTINGSTATION__,RPC_ISMANUFACTURESCHEMATIC__,RPC_ISSTRUCTUREOBJECT__,RPC_ISFISHINGBAIT__,RPC_ISATTACHMENT__,RPC_SETGAMEOBJECTTYPE__INT_,RPC_SETCLIENTOBJECTCRC__INT_,RPC_SETSERVEROBJECTCRC__INT_,RPC_SETPARENT__SCENEOBJECT_,RPC_SETZONE__ZONE_,RPC_SETDIRECTION__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_SETDIRECTION__FLOAT_,RPC_SETMOVEMENTCOUNTER__INT_,RPC_INCREMENTMOVEMENTCOUNTER__,RPC_SETCONTAINMENTTYPE__INT_,RPC_SETLOGGINGNAME__STRING_,RPC_SETCLIENTOBJECT__BOOL_,RPC_GETPLANETCRC__,RPC_ISSTATICOBJECT__,RPC_ISCONTAINEROBJECT__,RPC_ISTERMINAL__,RPC_ISGROUPOBJECT__,RPC_ISGUILDOBJECT__,RPC_ISCONTROLDEVICE__,RPC_ISMISSIONTERMINAL__,RPC_ISMISSIONOBJECT__,RPC_GETPLANETMAPCATEGORYCRC__,RPC_GETPLANETMAPSUBCATEGORYCRC__,RPC_CREATECHILDOBJECTS__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_};
 
 SceneObject::SceneObject() : QuadTreeEntry(DummyConstructorParameter::instance()) {
 	SceneObjectImplementation* _implementation = new SceneObjectImplementation();
@@ -309,13 +311,13 @@ void SceneObject::destroyObjectFromDatabase(bool destroyContainedObjects) {
 		_implementation->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-int SceneObject::canBeDestroyed(PlayerCreature* player) {
+int SceneObject::canBeDestroyed(CreatureObject* player) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CANBEDESTROYED__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CANBEDESTROYED__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -508,13 +510,13 @@ void SceneObject::sendToOwner(bool doClose) {
 		_implementation->sendToOwner(doClose);
 }
 
-void SceneObject::sendAttributeListTo(PlayerCreature* object) {
+void SceneObject::sendAttributeListTo(CreatureObject* object) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDATTRIBUTELISTTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDATTRIBUTELISTTO__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
@@ -522,7 +524,7 @@ void SceneObject::sendAttributeListTo(PlayerCreature* object) {
 		_implementation->sendAttributeListTo(object);
 }
 
-void SceneObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void SceneObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -546,7 +548,7 @@ void SceneObject::setCustomObjectName(const UnicodeString& name, bool notifyClie
 		_implementation->setCustomObjectName(name, notifyClient);
 }
 
-void SceneObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void SceneObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -555,13 +557,13 @@ void SceneObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Playe
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-void SceneObject::openContainerTo(PlayerCreature* player) {
+void SceneObject::openContainerTo(CreatureObject* player) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_OPENCONTAINERTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_OPENCONTAINERTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -569,13 +571,13 @@ void SceneObject::openContainerTo(PlayerCreature* player) {
 		_implementation->openContainerTo(player);
 }
 
-void SceneObject::closeContainerTo(PlayerCreature* player, bool notify) {
+void SceneObject::closeContainerTo(CreatureObject* player, bool notify) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CLOSECONTAINERTO__PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_CLOSECONTAINERTO__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(notify);
 
@@ -969,13 +971,13 @@ VectorMap<unsigned int, ManagedReference<Facade* > >* SceneObject::getObjectActi
 		return _implementation->getObjectActiveSessions();
 }
 
-int SceneObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SceneObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -1917,13 +1919,13 @@ void SceneObject::notifyPositionUpdate(QuadTreeEntry* entry) {
 		_implementation->notifyPositionUpdate(entry);
 }
 
-void SceneObject::notifyCloseContainer(PlayerCreature* player) {
+void SceneObject::notifyCloseContainer(CreatureObject* player) {
 	SceneObjectImplementation* _implementation = (SceneObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -3405,7 +3407,7 @@ void SceneObjectImplementation::synchronizedUIStopListen(SceneObject* player, in
 	Logger::info("Unhandled synchronizedUIStopListen", true);
 }
 
-int SceneObjectImplementation::canBeDestroyed(PlayerCreature* player) {
+int SceneObjectImplementation::canBeDestroyed(CreatureObject* player) {
 	// server/zone/objects/scene/SceneObject.idl():  		return 0;
 	return 0;
 }
@@ -3416,7 +3418,7 @@ void SceneObjectImplementation::sendBaselinesTo(SceneObject* player) {
 void SceneObjectImplementation::sendToOwner(bool doClose) {
 }
 
-void SceneObjectImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void SceneObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 }
 
 void SceneObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
@@ -3858,8 +3860,8 @@ String SceneObjectImplementation::getLoggingName() {
 }
 
 bool SceneObjectImplementation::isPlayerCreature() {
-	// server/zone/objects/scene/SceneObject.idl():  		return gameObjectType == PLAYERCREATURE;
-	return gameObjectType == PLAYERCREATURE;
+	// server/zone/objects/scene/SceneObject.idl():  		return false;
+	return false;
 }
 
 bool SceneObjectImplementation::isVendor() {
@@ -4279,8 +4281,8 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
-	case RPC_CANBEDESTROYED__PLAYERCREATURE_:
-		resp->insertSignedInt(canBeDestroyed((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CANBEDESTROYED__CREATUREOBJECT_:
+		resp->insertSignedInt(canBeDestroyed((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_CREATE__ZONECLIENTSESSION_:
 		create((ZoneClientSession*) inv->getObjectParameter());
@@ -4321,17 +4323,17 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_SENDTOOWNER__BOOL_:
 		sendToOwner(inv->getBooleanParameter());
 		break;
-	case RPC_SENDATTRIBUTELISTTO__PLAYERCREATURE_:
-		sendAttributeListTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDATTRIBUTELISTTO__CREATUREOBJECT_:
+		sendAttributeListTo((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_:
 		setCustomObjectName(inv->getUnicodeParameter(_param0_setCustomObjectName__UnicodeString_bool_), inv->getBooleanParameter());
 		break;
-	case RPC_OPENCONTAINERTO__PLAYERCREATURE_:
-		openContainerTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_OPENCONTAINERTO__CREATUREOBJECT_:
+		openContainerTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_CLOSECONTAINERTO__PLAYERCREATURE_BOOL_:
-		closeContainerTo((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_CLOSECONTAINERTO__CREATUREOBJECT_BOOL_:
+		closeContainerTo((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_INSERTTOZONE__ZONE_:
 		insertToZone((Zone*) inv->getObjectParameter());
@@ -4396,8 +4398,8 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_GETACTIVESESSIONSCOUNT__:
 		resp->insertSignedInt(getActiveSessionsCount());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_NOTIFYADDEDTOCLOSEOBJECTS__:
 		notifyAddedToCloseObjects();
@@ -4588,8 +4590,8 @@ Packet* SceneObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_:
 		notifyPositionUpdate((QuadTreeEntry*) inv->getObjectParameter());
 		break;
-	case RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_:
-		notifyCloseContainer((PlayerCreature*) inv->getObjectParameter());
+	case RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_:
+		notifyCloseContainer((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_GETMOVEMENTCOUNTER__:
 		resp->insertInt(getMovementCounter());
@@ -4890,7 +4892,7 @@ void SceneObjectAdapter::destroyObjectFromDatabase(bool destroyContainedObjects)
 	((SceneObjectImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-int SceneObjectAdapter::canBeDestroyed(PlayerCreature* player) {
+int SceneObjectAdapter::canBeDestroyed(CreatureObject* player) {
 	return ((SceneObjectImplementation*) impl)->canBeDestroyed(player);
 }
 
@@ -4946,7 +4948,7 @@ void SceneObjectAdapter::sendToOwner(bool doClose) {
 	((SceneObjectImplementation*) impl)->sendToOwner(doClose);
 }
 
-void SceneObjectAdapter::sendAttributeListTo(PlayerCreature* object) {
+void SceneObjectAdapter::sendAttributeListTo(CreatureObject* object) {
 	((SceneObjectImplementation*) impl)->sendAttributeListTo(object);
 }
 
@@ -4954,11 +4956,11 @@ void SceneObjectAdapter::setCustomObjectName(const UnicodeString& name, bool not
 	((SceneObjectImplementation*) impl)->setCustomObjectName(name, notifyClient);
 }
 
-void SceneObjectAdapter::openContainerTo(PlayerCreature* player) {
+void SceneObjectAdapter::openContainerTo(CreatureObject* player) {
 	((SceneObjectImplementation*) impl)->openContainerTo(player);
 }
 
-void SceneObjectAdapter::closeContainerTo(PlayerCreature* player, bool notify) {
+void SceneObjectAdapter::closeContainerTo(CreatureObject* player, bool notify) {
 	((SceneObjectImplementation*) impl)->closeContainerTo(player, notify);
 }
 
@@ -5046,7 +5048,7 @@ int SceneObjectAdapter::getActiveSessionsCount() {
 	return ((SceneObjectImplementation*) impl)->getActiveSessionsCount();
 }
 
-int SceneObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SceneObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((SceneObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
@@ -5302,7 +5304,7 @@ void SceneObjectAdapter::notifyPositionUpdate(QuadTreeEntry* entry) {
 	((SceneObjectImplementation*) impl)->notifyPositionUpdate(entry);
 }
 
-void SceneObjectAdapter::notifyCloseContainer(PlayerCreature* player) {
+void SceneObjectAdapter::notifyCloseContainer(CreatureObject* player) {
 	((SceneObjectImplementation*) impl)->notifyCloseContainer(player);
 }
 

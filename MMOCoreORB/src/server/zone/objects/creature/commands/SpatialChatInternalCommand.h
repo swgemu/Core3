@@ -70,7 +70,7 @@ public:
 		if (chatManager == NULL)
 			return GENERALERROR;
 
-		chatManager->handleSpatialChatInternalMessage((PlayerCreature*)creature, arguments);
+		chatManager->handleSpatialChatInternalMessage((CreatureObject*)creature, arguments);
 
 		return SUCCESS;
 	}

@@ -73,7 +73,7 @@ public:
 		tokenizer.getStringToken(restype);
 
 		ManagedReference<ResourceManager* > resourceManager = server->getZoneServer()->getResourceManager();
-		resourceManager->createResourceSpawn((PlayerCreature*)creature, restype);
+		resourceManager->createResourceSpawn((CreatureObject*)creature, restype);
 
 		return SUCCESS;
 	}

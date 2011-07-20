@@ -47,7 +47,7 @@ public:
 	void getLimitedUseSchematicList(Vector<ManagedReference<DraftSchematic*> >& schematics);
 	void loadLimitedUseSchematics(Vector<ManagedReference<DraftSchematic*> >& schematics);
 
-	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(PlayerCreature* player, Vector<uint32>* enabledTabs, int complexityLevel);
+	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(CreatureObject* player, Vector<uint32>* enabledTabs, int complexityLevel);
 
 	void insertToMessage(BaseMessage* msg);
 };

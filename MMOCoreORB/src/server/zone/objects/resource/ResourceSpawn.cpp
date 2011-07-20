@@ -4,7 +4,7 @@
 
 #include "ResourceSpawn.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
@@ -44,7 +44,7 @@ void ResourceSpawn::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void ResourceSpawn::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void ResourceSpawn::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	ResourceSpawnImplementation* _implementation = (ResourceSpawnImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

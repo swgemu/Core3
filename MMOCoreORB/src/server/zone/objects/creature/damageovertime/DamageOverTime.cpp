@@ -47,7 +47,7 @@ which carries forward this exception.
 #include "../CreatureState.h"
 #include "../CreatureObject.h"
 #include "DamageOverTime.h"
-#include "../../player/PlayerCreature.h"
+#include "../../creature/CreatureObject.h"
 #include "../../../packets/object/CombatSpam.h"
 
 DamageOverTime::DamageOverTime() {

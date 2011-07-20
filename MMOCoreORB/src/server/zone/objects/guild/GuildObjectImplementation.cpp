@@ -6,7 +6,7 @@
  */
 
 #include "GuildObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/guild/GuildMemberInfo.h"
 
@@ -16,7 +16,7 @@ void GuildObjectImplementation::sendBaselinesTo(SceneObject* player) {
 void GuildObjectImplementation::broadcastMessage(BaseMessage* msg) {
 }
 
-void GuildObjectImplementation::broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf) {
+void GuildObjectImplementation::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
 }
 
 void GuildObjectImplementation::addMember(uint64 playerID) {

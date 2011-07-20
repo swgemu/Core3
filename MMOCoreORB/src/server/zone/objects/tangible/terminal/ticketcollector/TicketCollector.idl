@@ -47,7 +47,7 @@ package server.zone.objects.tangible.terminal.ticketcollector;
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 import server.zone.objects.tangible.ticket.TicketObject;
 
@@ -69,9 +69,9 @@ class TicketCollector extends Terminal {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
-	public native void useTicket(PlayerCreature player, TicketObject ticket);
+	public native void useTicket(CreatureObject player, TicketObject ticket);
 	
 	public boolean isTicketCollector() {
 		return true;

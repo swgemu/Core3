@@ -11,7 +11,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
 
-void FishingBaitObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void FishingBaitObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);
 	// BAIT STATUS ONLY VISIBLE IN FISHING MENU
 }

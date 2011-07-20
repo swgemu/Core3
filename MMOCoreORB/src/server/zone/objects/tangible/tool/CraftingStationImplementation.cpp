@@ -47,7 +47,7 @@ which carries forward this exception.
 #include "CraftingStation.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
@@ -65,11 +65,11 @@ void CraftingStationImplementation::loadTemplateData(SharedObjectTemplate* templ
 	complexityLevel = craftingStationData->getComplexityLevel();
 }
 
-void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void CraftingStationImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 }
 
-int CraftingStationImplementation::handleObjectMenuSelect(PlayerCreature* playerCreature, byte selectedID) {
+int CraftingStationImplementation::handleObjectMenuSelect(CreatureObject* playerCreature, byte selectedID) {
 	PlayerObject* playerObject = playerCreature->getPlayerObject();
 
 	if (selectedID == 20) { // use object
@@ -79,7 +79,7 @@ int CraftingStationImplementation::handleObjectMenuSelect(PlayerCreature* player
 	return 1;
 }
 
-void CraftingStationImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void CraftingStationImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	alm->insertAttribute("craft_tool_effectiveness", Math::getPrecision(effectiveness, 2));
@@ -95,7 +95,7 @@ void CraftingStationImplementation::fillAttributeList(AttributeListMessage* alm,
 	}
 }
 
-SceneObject* CraftingStationImplementation::findCraftingTool(PlayerCreature* player) {
+SceneObject* CraftingStationImplementation::findCraftingTool(CreatureObject* player) {
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject(
 			"inventory");

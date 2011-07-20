@@ -71,7 +71,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*)creature;
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -92,7 +92,7 @@ public:
 		return SUCCESS;
 	}
 
-	bool doFormUp(PlayerCreature* leader, GroupObject* group, int chance) {
+	bool doFormUp(CreatureObject* leader, GroupObject* group, int chance) {
 		if (leader == NULL || group == NULL || chance < 1 || chance > 99)
 			return false;
 
@@ -103,7 +103,7 @@ public:
 			if (member == NULL || !member->isPlayerCreature() || member->getZone() != leader->getZone())
 				continue;
 
-			PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+			CreatureObject* memberPlayer = (CreatureObject*) member.get();
 			Locker clocker(memberPlayer, leader);
 
 			sendCombatSpam(memberPlayer);

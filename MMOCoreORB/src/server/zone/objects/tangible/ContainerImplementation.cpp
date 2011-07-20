@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "Container.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
@@ -74,7 +74,7 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 		SceneObjectImplementation::sendContainerObjectsTo(player);
 }*/
 
-bool ContainerImplementation::checkPermission(PlayerCreature* player) {
+bool ContainerImplementation::checkPermission(CreatureObject* player) {
 	if (!isASubChildOf(player)) {
 		if (parent == NULL || !parent->isCellObject())
 			return false;
@@ -93,7 +93,7 @@ bool ContainerImplementation::checkPermission(PlayerCreature* player) {
 	return true;
 }
 
-void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	if (checkPermission(player))
@@ -103,7 +103,7 @@ void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRes
 		menuResponse->addRadialMenuItem(69, 3, "@slicing/slicing:slice"); // Slice
 }
 
-int ContainerImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 50 && checkPermission(player)) {
 		ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
 
@@ -114,7 +114,7 @@ int ContainerImplementation::handleObjectMenuSelect(PlayerCreature* player, byte
 
 		inputBox->setDefaultInput(objectName.getCustomString().toString());
 
-		player->addSuiBox(inputBox);
+		player->getPlayerObject()->addSuiBox(inputBox);
 		player->sendMessage(inputBox->generateMessage());
 
 		return 0;

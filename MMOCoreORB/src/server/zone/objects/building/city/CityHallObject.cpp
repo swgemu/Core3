@@ -14,13 +14,13 @@
 
 #include "server/zone/objects/tangible/terminal/city/CityVoteTerminal.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	CityHallObjectStub
  */
 
-enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_SPAWNCITYHALLOBJECTS__,RPC_DESPAWNCITYHALLOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SETCITYNAME__STRING_,RPC_GETCITYNAME__,RPC_GETCITYRANK__,RPC_SENDCITYNAMEPROMPTTO__PLAYERCREATURE_BOOL_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDCITIZENSHIPREPORTTO__PLAYERCREATURE_,RPC_SENDSTRUCTUREREPORTTO__PLAYERCREATURE_,RPC_SENDTREASURYREPORTTO__PLAYERCREATURE_,RPC_SENDCITYADVANCEMENTTO__PLAYERCREATURE_,RPC_SENDMAINTENANCEREPORTTO__PLAYERCREATURE_,RPC_SENDCHANGECITYNAMETO__PLAYERCREATURE_,RPC_SENDENABLEZONINGTO__PLAYERCREATURE_,RPC_SENDMANAGEMILITIATO__PLAYERCREATURE_,RPC_SENDADDMILITIAMEMBERTO__PLAYERCREATURE_,RPC_SENDADJUSTTAXESTO__PLAYERCREATURE_,RPC_SENDTREASURYDEPOSITTO__PLAYERCREATURE_,RPC_SENDTREASURYWITHDRAWALTO__PLAYERCREATURE_,RPC_SENDCITYSPECIALIZATIONSELECTIONTO__PLAYERCREATURE_,RPC_TOGGLECITYREGISTRATION__PLAYERCREATURE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_ISCITYHALLBUILDING__,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_GETMAYOROBJECTID__,RPC_SETMAYOROBJECTID__LONG_,RPC_ISMAYOR__LONG_,RPC_ISBANNED__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_GETCITYTERMINAL__,RPC_GETCITYVOTETERMINAL__,RPC_GETCITYREGION__,RPC_SETCITYREGION__REGION_,RPC_GETCIVICSTRUCTURECAP__,RPC_ISZONINGENABLED__,RPC_TOGGLEZONINGENABLED__PLAYERCREATURE_,RPC_SETZONINGENABLED__BOOL_,RPC_ISCITYUPDATEPAST__,RPC_RESCHEDULECITYUPDATE__INT_,RPC_GETCITIZENCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_GETCITIZENOBJECTID__INT_,RPC_SETCITYRANK__BYTE_};
+enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_SPAWNCITYHALLOBJECTS__,RPC_DESPAWNCITYHALLOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_SETCITYNAME__STRING_,RPC_GETCITYNAME__,RPC_GETCITYRANK__,RPC_SENDCITYNAMEPROMPTTO__CREATUREOBJECT_BOOL_,RPC_SENDSTATUSTO__CREATUREOBJECT_,RPC_SENDCITIZENSHIPREPORTTO__CREATUREOBJECT_,RPC_SENDSTRUCTUREREPORTTO__CREATUREOBJECT_,RPC_SENDTREASURYREPORTTO__CREATUREOBJECT_,RPC_SENDCITYADVANCEMENTTO__CREATUREOBJECT_,RPC_SENDMAINTENANCEREPORTTO__CREATUREOBJECT_,RPC_SENDCHANGECITYNAMETO__CREATUREOBJECT_,RPC_SENDENABLEZONINGTO__CREATUREOBJECT_,RPC_SENDMANAGEMILITIATO__CREATUREOBJECT_,RPC_SENDADDMILITIAMEMBERTO__CREATUREOBJECT_,RPC_SENDADJUSTTAXESTO__CREATUREOBJECT_,RPC_SENDTREASURYDEPOSITTO__CREATUREOBJECT_,RPC_SENDTREASURYWITHDRAWALTO__CREATUREOBJECT_,RPC_SENDCITYSPECIALIZATIONSELECTIONTO__CREATUREOBJECT_,RPC_TOGGLECITYREGISTRATION__CREATUREOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_ISCITYHALLBUILDING__,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_GETMAYOROBJECTID__,RPC_SETMAYOROBJECTID__LONG_,RPC_ISMAYOR__LONG_,RPC_ISBANNED__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_GETCITYTERMINAL__,RPC_GETCITYVOTETERMINAL__,RPC_GETCITYREGION__,RPC_SETCITYREGION__REGION_,RPC_GETCIVICSTRUCTURECAP__,RPC_ISZONINGENABLED__,RPC_TOGGLEZONINGENABLED__CREATUREOBJECT_,RPC_SETZONINGENABLED__BOOL_,RPC_ISCITYUPDATEPAST__,RPC_RESCHEDULECITYUPDATE__INT_,RPC_GETCITIZENCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_GETCITIZENOBJECTID__INT_,RPC_SETCITYRANK__BYTE_};
 
 CityHallObject::CityHallObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	CityHallObjectImplementation* _implementation = new CityHallObjectImplementation();
@@ -101,13 +101,13 @@ void CityHallObject::despawnCityHallObjects() {
 		_implementation->despawnCityHallObjects();
 }
 
-bool CityHallObject::checkRequisitesForPlacement(PlayerCreature* player) {
+bool CityHallObject::checkRequisitesForPlacement(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -156,13 +156,13 @@ byte CityHallObject::getCityRank() {
 		return _implementation->getCityRank();
 }
 
-void CityHallObject::sendCityNamePromptTo(PlayerCreature* player, bool newCity) {
+void CityHallObject::sendCityNamePromptTo(CreatureObject* player, bool newCity) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDCITYNAMEPROMPTTO__PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_SENDCITYNAMEPROMPTTO__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(newCity);
 
@@ -171,13 +171,13 @@ void CityHallObject::sendCityNamePromptTo(PlayerCreature* player, bool newCity) 
 		_implementation->sendCityNamePromptTo(player, newCity);
 }
 
-void CityHallObject::sendStatusTo(PlayerCreature* player) {
+void CityHallObject::sendStatusTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDSTATUSTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDSTATUSTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -185,13 +185,13 @@ void CityHallObject::sendStatusTo(PlayerCreature* player) {
 		_implementation->sendStatusTo(player);
 }
 
-void CityHallObject::sendCitizenshipReportTo(PlayerCreature* player) {
+void CityHallObject::sendCitizenshipReportTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDCITIZENSHIPREPORTTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDCITIZENSHIPREPORTTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -199,13 +199,13 @@ void CityHallObject::sendCitizenshipReportTo(PlayerCreature* player) {
 		_implementation->sendCitizenshipReportTo(player);
 }
 
-void CityHallObject::sendStructureReportTo(PlayerCreature* player) {
+void CityHallObject::sendStructureReportTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDSTRUCTUREREPORTTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDSTRUCTUREREPORTTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -213,13 +213,13 @@ void CityHallObject::sendStructureReportTo(PlayerCreature* player) {
 		_implementation->sendStructureReportTo(player);
 }
 
-void CityHallObject::sendTreasuryReportTo(PlayerCreature* player) {
+void CityHallObject::sendTreasuryReportTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDTREASURYREPORTTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDTREASURYREPORTTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -227,13 +227,13 @@ void CityHallObject::sendTreasuryReportTo(PlayerCreature* player) {
 		_implementation->sendTreasuryReportTo(player);
 }
 
-void CityHallObject::sendCityAdvancementTo(PlayerCreature* player) {
+void CityHallObject::sendCityAdvancementTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDCITYADVANCEMENTTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDCITYADVANCEMENTTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -241,13 +241,13 @@ void CityHallObject::sendCityAdvancementTo(PlayerCreature* player) {
 		_implementation->sendCityAdvancementTo(player);
 }
 
-void CityHallObject::sendMaintenanceReportTo(PlayerCreature* player) {
+void CityHallObject::sendMaintenanceReportTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDMAINTENANCEREPORTTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDMAINTENANCEREPORTTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -255,13 +255,13 @@ void CityHallObject::sendMaintenanceReportTo(PlayerCreature* player) {
 		_implementation->sendMaintenanceReportTo(player);
 }
 
-void CityHallObject::sendChangeCityNameTo(PlayerCreature* player) {
+void CityHallObject::sendChangeCityNameTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDCHANGECITYNAMETO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDCHANGECITYNAMETO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -269,13 +269,13 @@ void CityHallObject::sendChangeCityNameTo(PlayerCreature* player) {
 		_implementation->sendChangeCityNameTo(player);
 }
 
-void CityHallObject::sendEnableZoningTo(PlayerCreature* player) {
+void CityHallObject::sendEnableZoningTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDENABLEZONINGTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDENABLEZONINGTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -283,13 +283,13 @@ void CityHallObject::sendEnableZoningTo(PlayerCreature* player) {
 		_implementation->sendEnableZoningTo(player);
 }
 
-void CityHallObject::sendManageMilitiaTo(PlayerCreature* player) {
+void CityHallObject::sendManageMilitiaTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDMANAGEMILITIATO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDMANAGEMILITIATO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -297,13 +297,13 @@ void CityHallObject::sendManageMilitiaTo(PlayerCreature* player) {
 		_implementation->sendManageMilitiaTo(player);
 }
 
-void CityHallObject::sendAddMilitiaMemberTo(PlayerCreature* player) {
+void CityHallObject::sendAddMilitiaMemberTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDADDMILITIAMEMBERTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDADDMILITIAMEMBERTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -311,13 +311,13 @@ void CityHallObject::sendAddMilitiaMemberTo(PlayerCreature* player) {
 		_implementation->sendAddMilitiaMemberTo(player);
 }
 
-void CityHallObject::sendAdjustTaxesTo(PlayerCreature* player) {
+void CityHallObject::sendAdjustTaxesTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDADJUSTTAXESTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDADJUSTTAXESTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -325,13 +325,13 @@ void CityHallObject::sendAdjustTaxesTo(PlayerCreature* player) {
 		_implementation->sendAdjustTaxesTo(player);
 }
 
-void CityHallObject::sendTreasuryDepositTo(PlayerCreature* player) {
+void CityHallObject::sendTreasuryDepositTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDTREASURYDEPOSITTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDTREASURYDEPOSITTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -339,13 +339,13 @@ void CityHallObject::sendTreasuryDepositTo(PlayerCreature* player) {
 		_implementation->sendTreasuryDepositTo(player);
 }
 
-void CityHallObject::sendTreasuryWithdrawalTo(PlayerCreature* player) {
+void CityHallObject::sendTreasuryWithdrawalTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDTREASURYWITHDRAWALTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDTREASURYWITHDRAWALTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -353,13 +353,13 @@ void CityHallObject::sendTreasuryWithdrawalTo(PlayerCreature* player) {
 		_implementation->sendTreasuryWithdrawalTo(player);
 }
 
-void CityHallObject::sendCitySpecializationSelectionTo(PlayerCreature* player) {
+void CityHallObject::sendCitySpecializationSelectionTo(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDCITYSPECIALIZATIONSELECTIONTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDCITYSPECIALIZATIONSELECTIONTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -367,13 +367,13 @@ void CityHallObject::sendCitySpecializationSelectionTo(PlayerCreature* player) {
 		_implementation->sendCitySpecializationSelectionTo(player);
 }
 
-void CityHallObject::toggleCityRegistration(PlayerCreature* player) {
+void CityHallObject::toggleCityRegistration(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_TOGGLECITYREGISTRATION__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_TOGGLECITYREGISTRATION__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -627,13 +627,13 @@ bool CityHallObject::isZoningEnabled() {
 		return _implementation->isZoningEnabled();
 }
 
-void CityHallObject::toggleZoningEnabled(PlayerCreature* player) {
+void CityHallObject::toggleZoningEnabled(CreatureObject* player) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_TOGGLEZONINGENABLED__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_TOGGLEZONINGENABLED__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -1298,7 +1298,7 @@ bool CityHallObjectImplementation::isZoningEnabled() {
 	return zoningEnabled;
 }
 
-void CityHallObjectImplementation::toggleZoningEnabled(PlayerCreature* player) {
+void CityHallObjectImplementation::toggleZoningEnabled(CreatureObject* player) {
 	// server/zone/objects/building/city/CityHallObject.idl():  		zoningEnabled = !zoningEnabled;
 	zoningEnabled = !zoningEnabled;
 	// server/zone/objects/building/city/CityHallObject.idl():  			player.sendSystemMessage("@city/city:zoning_disabled");
@@ -1390,8 +1390,8 @@ Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_DESPAWNCITYHALLOBJECTS__:
 		despawnCityHallObjects();
 		break;
-	case RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_:
-		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_:
+		resp->insertBoolean(checkRequisitesForPlacement((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_SETCITYNAME__STRING_:
 		setCityName(inv->getAsciiParameter(_param0_setCityName__String_));
@@ -1402,53 +1402,53 @@ Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETCITYRANK__:
 		resp->insertByte(getCityRank());
 		break;
-	case RPC_SENDCITYNAMEPROMPTTO__PLAYERCREATURE_BOOL_:
-		sendCityNamePromptTo((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_SENDCITYNAMEPROMPTTO__CREATUREOBJECT_BOOL_:
+		sendCityNamePromptTo((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_SENDSTATUSTO__PLAYERCREATURE_:
-		sendStatusTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDSTATUSTO__CREATUREOBJECT_:
+		sendStatusTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDCITIZENSHIPREPORTTO__PLAYERCREATURE_:
-		sendCitizenshipReportTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDCITIZENSHIPREPORTTO__CREATUREOBJECT_:
+		sendCitizenshipReportTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDSTRUCTUREREPORTTO__PLAYERCREATURE_:
-		sendStructureReportTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDSTRUCTUREREPORTTO__CREATUREOBJECT_:
+		sendStructureReportTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDTREASURYREPORTTO__PLAYERCREATURE_:
-		sendTreasuryReportTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDTREASURYREPORTTO__CREATUREOBJECT_:
+		sendTreasuryReportTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDCITYADVANCEMENTTO__PLAYERCREATURE_:
-		sendCityAdvancementTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDCITYADVANCEMENTTO__CREATUREOBJECT_:
+		sendCityAdvancementTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDMAINTENANCEREPORTTO__PLAYERCREATURE_:
-		sendMaintenanceReportTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDMAINTENANCEREPORTTO__CREATUREOBJECT_:
+		sendMaintenanceReportTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDCHANGECITYNAMETO__PLAYERCREATURE_:
-		sendChangeCityNameTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDCHANGECITYNAMETO__CREATUREOBJECT_:
+		sendChangeCityNameTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDENABLEZONINGTO__PLAYERCREATURE_:
-		sendEnableZoningTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDENABLEZONINGTO__CREATUREOBJECT_:
+		sendEnableZoningTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDMANAGEMILITIATO__PLAYERCREATURE_:
-		sendManageMilitiaTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDMANAGEMILITIATO__CREATUREOBJECT_:
+		sendManageMilitiaTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDADDMILITIAMEMBERTO__PLAYERCREATURE_:
-		sendAddMilitiaMemberTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDADDMILITIAMEMBERTO__CREATUREOBJECT_:
+		sendAddMilitiaMemberTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDADJUSTTAXESTO__PLAYERCREATURE_:
-		sendAdjustTaxesTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDADJUSTTAXESTO__CREATUREOBJECT_:
+		sendAdjustTaxesTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDTREASURYDEPOSITTO__PLAYERCREATURE_:
-		sendTreasuryDepositTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDTREASURYDEPOSITTO__CREATUREOBJECT_:
+		sendTreasuryDepositTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDTREASURYWITHDRAWALTO__PLAYERCREATURE_:
-		sendTreasuryWithdrawalTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDTREASURYWITHDRAWALTO__CREATUREOBJECT_:
+		sendTreasuryWithdrawalTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDCITYSPECIALIZATIONSELECTIONTO__PLAYERCREATURE_:
-		sendCitySpecializationSelectionTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDCITYSPECIALIZATIONSELECTIONTO__CREATUREOBJECT_:
+		sendCitySpecializationSelectionTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_TOGGLECITYREGISTRATION__PLAYERCREATURE_:
-		toggleCityRegistration((PlayerCreature*) inv->getObjectParameter());
+	case RPC_TOGGLECITYREGISTRATION__CREATUREOBJECT_:
+		toggleCityRegistration((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
@@ -1504,8 +1504,8 @@ Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_ISZONINGENABLED__:
 		resp->insertBoolean(isZoningEnabled());
 		break;
-	case RPC_TOGGLEZONINGENABLED__PLAYERCREATURE_:
-		toggleZoningEnabled((PlayerCreature*) inv->getObjectParameter());
+	case RPC_TOGGLEZONINGENABLED__CREATUREOBJECT_:
+		toggleZoningEnabled((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SETZONINGENABLED__BOOL_:
 		setZoningEnabled(inv->getBooleanParameter());
@@ -1570,7 +1570,7 @@ void CityHallObjectAdapter::despawnCityHallObjects() {
 	((CityHallObjectImplementation*) impl)->despawnCityHallObjects();
 }
 
-bool CityHallObjectAdapter::checkRequisitesForPlacement(PlayerCreature* player) {
+bool CityHallObjectAdapter::checkRequisitesForPlacement(CreatureObject* player) {
 	return ((CityHallObjectImplementation*) impl)->checkRequisitesForPlacement(player);
 }
 
@@ -1586,67 +1586,67 @@ byte CityHallObjectAdapter::getCityRank() {
 	return ((CityHallObjectImplementation*) impl)->getCityRank();
 }
 
-void CityHallObjectAdapter::sendCityNamePromptTo(PlayerCreature* player, bool newCity) {
+void CityHallObjectAdapter::sendCityNamePromptTo(CreatureObject* player, bool newCity) {
 	((CityHallObjectImplementation*) impl)->sendCityNamePromptTo(player, newCity);
 }
 
-void CityHallObjectAdapter::sendStatusTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendStatusTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendStatusTo(player);
 }
 
-void CityHallObjectAdapter::sendCitizenshipReportTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendCitizenshipReportTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendCitizenshipReportTo(player);
 }
 
-void CityHallObjectAdapter::sendStructureReportTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendStructureReportTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendStructureReportTo(player);
 }
 
-void CityHallObjectAdapter::sendTreasuryReportTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendTreasuryReportTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendTreasuryReportTo(player);
 }
 
-void CityHallObjectAdapter::sendCityAdvancementTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendCityAdvancementTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendCityAdvancementTo(player);
 }
 
-void CityHallObjectAdapter::sendMaintenanceReportTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendMaintenanceReportTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendMaintenanceReportTo(player);
 }
 
-void CityHallObjectAdapter::sendChangeCityNameTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendChangeCityNameTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendChangeCityNameTo(player);
 }
 
-void CityHallObjectAdapter::sendEnableZoningTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendEnableZoningTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendEnableZoningTo(player);
 }
 
-void CityHallObjectAdapter::sendManageMilitiaTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendManageMilitiaTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendManageMilitiaTo(player);
 }
 
-void CityHallObjectAdapter::sendAddMilitiaMemberTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendAddMilitiaMemberTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendAddMilitiaMemberTo(player);
 }
 
-void CityHallObjectAdapter::sendAdjustTaxesTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendAdjustTaxesTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendAdjustTaxesTo(player);
 }
 
-void CityHallObjectAdapter::sendTreasuryDepositTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendTreasuryDepositTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendTreasuryDepositTo(player);
 }
 
-void CityHallObjectAdapter::sendTreasuryWithdrawalTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendTreasuryWithdrawalTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendTreasuryWithdrawalTo(player);
 }
 
-void CityHallObjectAdapter::sendCitySpecializationSelectionTo(PlayerCreature* player) {
+void CityHallObjectAdapter::sendCitySpecializationSelectionTo(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->sendCitySpecializationSelectionTo(player);
 }
 
-void CityHallObjectAdapter::toggleCityRegistration(PlayerCreature* player) {
+void CityHallObjectAdapter::toggleCityRegistration(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->toggleCityRegistration(player);
 }
 
@@ -1722,7 +1722,7 @@ bool CityHallObjectAdapter::isZoningEnabled() {
 	return ((CityHallObjectImplementation*) impl)->isZoningEnabled();
 }
 
-void CityHallObjectAdapter::toggleZoningEnabled(PlayerCreature* player) {
+void CityHallObjectAdapter::toggleZoningEnabled(CreatureObject* player) {
 	((CityHallObjectImplementation*) impl)->toggleZoningEnabled(player);
 }
 

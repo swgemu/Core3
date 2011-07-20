@@ -8,7 +8,7 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
@@ -55,7 +55,7 @@ void Deed::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void Deed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void Deed::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	DeedImplementation* _implementation = (DeedImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

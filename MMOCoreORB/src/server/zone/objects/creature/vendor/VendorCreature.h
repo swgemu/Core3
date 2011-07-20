@@ -23,20 +23,6 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace player {
-
-class PlayerCreature;
-
-} // namespace player
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::player;
-
-namespace server {
-namespace zone {
 namespace templates {
 
 class SharedObjectTemplate;
@@ -117,6 +103,8 @@ using namespace server::zone::objects::tangible::wearables;
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -131,13 +119,13 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void addClothingItem(PlayerCreature* player, TangibleObject* clothing);
+	void addClothingItem(CreatureObject* player, TangibleObject* clothing);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
@@ -194,13 +182,13 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void addClothingItem(PlayerCreature* player, TangibleObject* clothing);
+	void addClothingItem(CreatureObject* player, TangibleObject* clothing);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
@@ -261,9 +249,9 @@ public:
 
 	void finalize();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void addClothingItem(PlayerCreature* player, TangibleObject* clothing);
+	void addClothingItem(CreatureObject* player, TangibleObject* clothing);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 

@@ -46,7 +46,7 @@ package server.zone.managers.minigames;
 
 import engine.log.Logger;
 import engine.lua.Lua;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 import server.zone.ZoneServer;
 import system.util.VectorMap;
@@ -84,10 +84,10 @@ class ForageManager extends Observer implements Logger {
 	 * seconds and will activate finishForaging().
 	 * @pre { this object is not locked, player is locked }
 	 * @post { this object is not locked, player is not locked }
-	 * @param player PlayerCreature who is trying to forage.
+	 * @param player CreatureObject who is trying to forage.
 	 * @param scoutForage Determines if the player is using /forage or /medicalforage.
 	 */
-	public native void startForaging(PlayerCreature player, boolean scoutForage); 
+	public native void startForaging(CreatureObject player, boolean scoutForage); 
 
 
 	/**
@@ -99,13 +99,13 @@ class ForageManager extends Observer implements Logger {
 	 * If successful, activates forageGiveItems().
 	 * @pre { this object is locked, player is locked }
 	 * @post { this object is not locked, player is not locked }
-	 * @param player PlayerCreature who is foraging.
+	 * @param player CreatureObject who is foraging.
 	 * @param scoutForage Determines if the player is using /forage or /medicalforage.
 	 * @param forageX The x coordinate of the player's position when they first started foraging.
 	 * @param forageY The y coordinate of the player's position when they first started foraging.
 	 * @param planet The planet (zone ID) the player was on when they first started foraging.
 	 */
-	public native void finishForaging(PlayerCreature player, boolean scoutForage, float forageX, float forageY, final string planet);
+	public native void finishForaging(CreatureObject player, boolean scoutForage, float forageX, float forageY, final string planet);
 
 
 	/**
@@ -114,13 +114,13 @@ class ForageManager extends Observer implements Logger {
  	 * Determines which loot group they will get an item from. If resource, calls giveForageResource().
 	 * @pre { this object is not locked, player is locked }
 	 * @post { this object is not locked, player is not locked }
-	 * @param player PlayerCreature who is foraging.
+	 * @param player CreatureObject who is foraging.
 	 * @param scoutForage Determines if the player is using /forage or /medicalforage.
 	 * @param forageX The x coordinate of the player's position when they first started foraging.
 	 * @param forageY The y coordinate of the player's position when they first started foraging.
 	 * @param planet The planet (zone ID) the player was on when they first started foraging.
 	 */
-	public native void forageGiveItems(PlayerCreature player, boolean scoutForage, float forageX, float forageY, final string planet);
+	public native void forageGiveItems(CreatureObject player, boolean scoutForage, float forageX, float forageY, final string planet);
 
 
 
@@ -131,12 +131,12 @@ class ForageManager extends Observer implements Logger {
 	 * If the density of the flora is zero, it picks a different resource.
 	 * @pre { this object is not locked, player is locked }
 	 * @post { this object is not locked, player is not locked }
-	 * @param player PlayerCreature who is foraging.
+	 * @param player CreatureObject who is foraging.
 	 * @param forageX The x coordinate of the player's position when they first started foraging.
 	 * @param forageY The y coordinate of the player's position when they first started foraging.
 	 * @param planet The planet (zone ID) the player was on when they first started foraging.
 	 */
-	public native void forageGiveResource(PlayerCreature player, float forageX, float forageY, final string planet); 
+	public native void forageGiveResource(CreatureObject player, float forageX, float forageY, final string planet); 
 
 
 

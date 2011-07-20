@@ -1,10 +1,11 @@
 #include "CharacterBuilderTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
 #include "CharacterBuilderMenuNode.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 void CharacterBuilderTerminalImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -30,7 +31,7 @@ void CharacterBuilderTerminalImplementation::initializeTransientMembers() {
 	setLoggingName("CharacterBuilderTerminal");
 }
 
-int CharacterBuilderTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CharacterBuilderTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	//info("entering start terminal radial call", true);
 
 	if (selectedID != 20) // not use object
@@ -41,7 +42,7 @@ int CharacterBuilderTerminalImplementation::handleObjectMenuSelect(PlayerCreatur
 	return 0;
 }
 
-void CharacterBuilderTerminalImplementation::sendInitialChoices(PlayerCreature* player) {
+void CharacterBuilderTerminalImplementation::sendInitialChoices(CreatureObject* player) {
 	//info("entering sendInitialChoices", true);
 
 	if (rootNode == NULL) {
@@ -53,10 +54,10 @@ void CharacterBuilderTerminalImplementation::sendInitialChoices(PlayerCreature* 
 	sui->setUsingObject(_this);
 
 	player->sendMessage(sui->generateMessage());
-	player->addSuiBox(sui);
+	player->getPlayerObject()->addSuiBox(sui);
 }
 
-bool CharacterBuilderTerminalImplementation::doEnhanceCharacter(uint32 crc, PlayerCreature* player, int amount, int duration, int buffType, uint8 attribute) {
+bool CharacterBuilderTerminalImplementation::doEnhanceCharacter(uint32 crc, CreatureObject* player, int amount, int duration, int buffType, uint8 attribute) {
 	if (player == NULL)
 		return false;
 
@@ -70,7 +71,7 @@ bool CharacterBuilderTerminalImplementation::doEnhanceCharacter(uint32 crc, Play
 	return true;
 }
 
-void CharacterBuilderTerminalImplementation::enhanceCharacter(PlayerCreature* player) {
+void CharacterBuilderTerminalImplementation::enhanceCharacter(CreatureObject* player) {
 	if (player == NULL)
 		return;
 
@@ -91,7 +92,7 @@ void CharacterBuilderTerminalImplementation::enhanceCharacter(PlayerCreature* pl
 		player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
 }
 
-void CharacterBuilderTerminalImplementation::giveLanguages(PlayerCreature* player) {
+void CharacterBuilderTerminalImplementation::giveLanguages(CreatureObject* player) {
 	if (player == NULL)
 		return;
 

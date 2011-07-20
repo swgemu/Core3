@@ -28,16 +28,16 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -63,9 +63,9 @@ class SignObject : public TangibleObject {
 public:
 	SignObject();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void sendSignNameTo(PlayerCreature* player);
+	void sendSignNameTo(CreatureObject* player);
 
 	bool isSignObject();
 
@@ -105,9 +105,9 @@ public:
 
 	SignObjectImplementation(DummyConstructorParameter* param);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void sendSignNameTo(PlayerCreature* player);
+	void sendSignNameTo(CreatureObject* player);
 
 	bool isSignObject();
 
@@ -156,9 +156,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void sendSignNameTo(PlayerCreature* player);
+	void sendSignNameTo(CreatureObject* player);
 
 	bool isSignObject();
 

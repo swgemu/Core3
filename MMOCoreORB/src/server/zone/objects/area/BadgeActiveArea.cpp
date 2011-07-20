@@ -6,7 +6,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/PlayerObject.h"
 
 /*
  *	BadgeActiveAreaStub
@@ -214,15 +216,17 @@ BadgeActiveAreaImplementation::BadgeActiveAreaImplementation() {
 }
 
 void BadgeActiveAreaImplementation::notifyEnter(SceneObject* player) {
-	// server/zone/objects/area/BadgeActiveArea.idl():  		PlayerCreature 
+	// server/zone/objects/area/BadgeActiveArea.idl():  		CreatureObject 
 	if (!player->isPlayerCreature())	// server/zone/objects/area/BadgeActiveArea.idl():  			return;
 	return;
-	// server/zone/objects/area/BadgeActiveArea.idl():  		PlayerCreature playerCreature = (PlayerCreature) player;
-	PlayerCreature* playerCreature = (PlayerCreature*) player;
+	// server/zone/objects/area/BadgeActiveArea.idl():  		CreatureObject playerCreature = (CreatureObject) player;
+	CreatureObject* playerCreature = (CreatureObject*) player;
+	// server/zone/objects/area/BadgeActiveArea.idl():  		PlayerObject ghost = playerCreature.getPlayerObject();
+	PlayerObject* ghost = playerCreature->getPlayerObject();
 	// server/zone/objects/area/BadgeActiveArea.idl():  	}
-	if (!playerCreature->hasBadge(areaBadge)){
-	// server/zone/objects/area/BadgeActiveArea.idl():  			playerCreature.awardBadge(areaBadge);
-	playerCreature->awardBadge(areaBadge);
+	if (!ghost->hasBadge(areaBadge)){
+	// server/zone/objects/area/BadgeActiveArea.idl():  			ghost.awardBadge(areaBadge);
+	ghost->awardBadge(areaBadge);
 }
 }
 

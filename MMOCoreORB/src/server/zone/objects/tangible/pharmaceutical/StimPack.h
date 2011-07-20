@@ -80,16 +80,16 @@ using namespace server::zone::packets::object;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -143,9 +143,9 @@ public:
 
 	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	float getEffectiveness();
 
@@ -192,9 +192,9 @@ public:
 
 	virtual unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue = true);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	float getEffectiveness();
 
@@ -245,7 +245,7 @@ public:
 
 	unsigned int calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	float getEffectiveness();
 

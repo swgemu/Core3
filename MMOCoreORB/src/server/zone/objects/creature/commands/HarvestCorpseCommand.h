@@ -72,7 +72,7 @@ public:
 		ManagedReference<SceneObject* > object =
 				server->getZoneServer()->getObject(target);
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
 
 		StringTokenizer args(arguments.toString());
 

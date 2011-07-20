@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "../../group/GroupObject.h"
 #include "../../../managers/group/GroupManager.h"
-#include "../../player/PlayerCreature.h"
+#include "../../creature/CreatureObject.h"
 
 
 class MakeLeaderCommand : public QueueCommand {
@@ -74,7 +74,7 @@ public:
 		if (object == NULL || !object->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* targetObject = (PlayerCreature*) object.get();
+		CreatureObject* targetObject = (CreatureObject*) object.get();
 
 		GroupObject* group = creature->getGroup();
 

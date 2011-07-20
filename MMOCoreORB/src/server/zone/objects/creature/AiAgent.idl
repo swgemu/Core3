@@ -56,7 +56,7 @@ import server.zone.objects.creature.events.AiWaitEvent;
 import server.zone.objects.creature.events.AiAwarenessEvent;
 import system.lang.ref.Reference;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.weapon.WeaponObject;
 include server.zone.objects.creature.PatrolPointsVector;
 include server.zone.objects.creature.PatrolPoint;
@@ -187,7 +187,7 @@ class AiAgent extends CreatureObject {
 		
 	public native void checkNewAngle();
 	
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public native void setNextPosition(float x, float z, float y, SceneObject cell = null);
 	

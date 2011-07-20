@@ -28,16 +28,30 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 
@@ -56,7 +70,7 @@ namespace messagebox {
 
 class SuiMessageBox : public SuiBox {
 public:
-	SuiMessageBox(PlayerCreature* player, unsigned int windowType);
+	SuiMessageBox(CreatureObject* player, unsigned int windowType);
 
 	BaseMessage* generateMessage();
 
@@ -93,7 +107,7 @@ namespace messagebox {
 class SuiMessageBoxImplementation : public SuiBoxImplementation {
 
 public:
-	SuiMessageBoxImplementation(PlayerCreature* player, unsigned int windowType);
+	SuiMessageBoxImplementation(CreatureObject* player, unsigned int windowType);
 
 	SuiMessageBoxImplementation(DummyConstructorParameter* param);
 

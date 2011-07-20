@@ -45,9 +45,9 @@ which carries forward this exception.
 package server.zone.objects.area;
 
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
-
+import server.zone.objects.player.PlayerObject;
 
 class BadgeActiveArea extends ActiveArea {
 	public unsigned int areaBadge;
@@ -62,10 +62,11 @@ class BadgeActiveArea extends ActiveArea {
 		if (!player.isPlayerCreature())
 			return;
 		
-		PlayerCreature playerCreature = (PlayerCreature) player;
+		CreatureObject playerCreature = (CreatureObject) player;
+		PlayerObject ghost = playerCreature.getPlayerObject();
 		
-		if (!playerCreature.hasBadge(areaBadge)) {
-			playerCreature.awardBadge(areaBadge);
+		if (!ghost.hasBadge(areaBadge)) {
+			ghost.awardBadge(areaBadge);
 		}
 	}
 	

@@ -17,7 +17,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return 1;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
 		ManagedReference<WeatherManager*> weatherManager = player->getZone()->getPlanetManager()->getWeatherManager();
 
 		//Check for valid zone. Handle this in your manager.
@@ -69,7 +69,7 @@ public:
 
 	}
 
-	static void sendSyntax(PlayerCreature* player) {
+	static void sendSyntax(CreatureObject* player) {
 		if (player != NULL)
 			player->sendSystemMessage("Syntax: /server weather [enable/disable/info/change] [0-4]");
 	}

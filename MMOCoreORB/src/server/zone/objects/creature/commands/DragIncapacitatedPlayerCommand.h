@@ -86,7 +86,7 @@ public:
 		return newPosition;
 	}
 
-	void drag(PlayerCreature* player, PlayerCreature* targetPlayer, float maxRange, float maxMovement, bool needsConsent, bool canDragLiveTarget) {
+	void drag(CreatureObject* player, CreatureObject* targetPlayer, float maxRange, float maxMovement, bool needsConsent, bool canDragLiveTarget) {
 		if (targetPlayer == NULL) {
 			return;
 		}
@@ -117,9 +117,11 @@ public:
 			}
 		}
 
+		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
+
 		//Check for consent to drag.
 		if (needsConsent) {
-			bool hasConsentFrom = targetPlayer->hasInConsentList(player->getFirstName().toLowerCase());
+			bool hasConsentFrom = targetGhost->hasInConsentList(player->getFirstName().toLowerCase());
 			bool isGroupedWith = false;
 			ManagedReference<GroupObject*> group = player->getGroup();
 
@@ -197,8 +199,8 @@ public:
 			return GENERALERROR;
 		}
 
-		PlayerCreature* targetPlayer = (PlayerCreature*) object.get();
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* targetPlayer = (CreatureObject*) object.get();
+		CreatureObject* player = (CreatureObject*) creature;
 
 		Locker clocker(targetPlayer, creature);
 

@@ -4,7 +4,7 @@
 
 #include "ResourceContainer.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/area/ActiveArea.h"
 
@@ -14,7 +14,7 @@
  *	ResourceContainerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETQUANTITY__INT_BOOL_,RPC_ISRESOURCECONTAINER__,RPC_GETQUANTITY__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_BOOL_,RPC_SETSPAWNOBJECT__RESOURCESPAWN_,RPC_GETSPAWNNAME__,RPC_GETSPAWNTYPE__,RPC_GETSPAWNID__,RPC_GETSPAWNOBJECT__,RPC_SPLIT__INT_,RPC_SPLIT__INT_PLAYERCREATURE_,RPC_COMBINE__RESOURCECONTAINER_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETQUANTITY__INT_BOOL_,RPC_ISRESOURCECONTAINER__,RPC_GETQUANTITY__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_BOOL_,RPC_SETSPAWNOBJECT__RESOURCESPAWN_,RPC_GETSPAWNNAME__,RPC_GETSPAWNTYPE__,RPC_GETSPAWNID__,RPC_GETSPAWNOBJECT__,RPC_SPLIT__INT_,RPC_SPLIT__INT_CREATUREOBJECT_,RPC_COMBINE__RESOURCECONTAINER_};
 
 ResourceContainer::ResourceContainer() : TangibleObject(DummyConstructorParameter::instance()) {
 	ResourceContainerImplementation* _implementation = new ResourceContainerImplementation();
@@ -56,7 +56,7 @@ void ResourceContainer::destroyObjectFromDatabase(bool destroyContainedObjects) 
 		_implementation->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-void ResourceContainer::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void ResourceContainer::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -230,13 +230,13 @@ void ResourceContainer::split(int newStackSize) {
 		_implementation->split(newStackSize);
 }
 
-void ResourceContainer::split(int newStackSize, PlayerCreature* player) {
+void ResourceContainer::split(int newStackSize, CreatureObject* player) {
 	ResourceContainerImplementation* _implementation = (ResourceContainerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SPLIT__INT_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SPLIT__INT_CREATUREOBJECT_);
 		method.addSignedIntParameter(newStackSize);
 		method.addObjectParameter(player);
 
@@ -536,8 +536,8 @@ Packet* ResourceContainerAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case RPC_SPLIT__INT_:
 		split(inv->getSignedIntParameter());
 		break;
-	case RPC_SPLIT__INT_PLAYERCREATURE_:
-		split(inv->getSignedIntParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_SPLIT__INT_CREATUREOBJECT_:
+		split(inv->getSignedIntParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_COMBINE__RESOURCECONTAINER_:
 		combine((ResourceContainer*) inv->getObjectParameter());
@@ -605,7 +605,7 @@ void ResourceContainerAdapter::split(int newStackSize) {
 	((ResourceContainerImplementation*) impl)->split(newStackSize);
 }
 
-void ResourceContainerAdapter::split(int newStackSize, PlayerCreature* player) {
+void ResourceContainerAdapter::split(int newStackSize, CreatureObject* player) {
 	((ResourceContainerImplementation*) impl)->split(newStackSize, player);
 }
 

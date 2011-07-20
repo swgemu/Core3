@@ -47,7 +47,7 @@ package server.zone.objects.tangible.terminal.city;
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.Zone;
 import server.zone.objects.building.city.CityHallObject;
@@ -62,9 +62,9 @@ class CityVoteTerminal extends Terminal {
 		Logger.setLoggingName("CityVoteTerminal");
 	}
 	
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	public boolean isCityVoteTerminal() {
 		return true;

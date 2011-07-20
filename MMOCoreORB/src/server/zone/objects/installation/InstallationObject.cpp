@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -30,7 +30,7 @@
  *	InstallationObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__PLAYERCREATURE_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__PLAYERCREATURE_,RPC_REMOVEOPERATOR__PLAYERCREATURE_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__};
 
 InstallationObject::InstallationObject() : StructureObject(DummyConstructorParameter::instance()) {
 	InstallationObjectImplementation* _implementation = new InstallationObjectImplementation();
@@ -72,7 +72,7 @@ void InstallationObject::destroyObjectFromDatabase(bool destroyContainedObjects)
 		_implementation->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-void InstallationObject::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void InstallationObject::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -90,7 +90,7 @@ void InstallationObject::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void InstallationObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void InstallationObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -99,13 +99,13 @@ void InstallationObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int InstallationObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int InstallationObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -226,13 +226,13 @@ void InstallationObject::updateInstallationWork() {
 		_implementation->updateInstallationWork();
 }
 
-void InstallationObject::handleStructureAddEnergy(PlayerCreature* player) {
+void InstallationObject::handleStructureAddEnergy(CreatureObject* player) {
 	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLESTRUCTUREADDENERGY__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -408,13 +408,13 @@ void InstallationObject::broadcastToOperators(BasePacket* packet) {
 		_implementation->broadcastToOperators(packet);
 }
 
-void InstallationObject::addOperator(PlayerCreature* player) {
+void InstallationObject::addOperator(CreatureObject* player) {
 	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDOPERATOR__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ADDOPERATOR__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -422,13 +422,13 @@ void InstallationObject::addOperator(PlayerCreature* player) {
 		_implementation->addOperator(player);
 }
 
-void InstallationObject::removeOperator(PlayerCreature* player) {
+void InstallationObject::removeOperator(CreatureObject* player) {
 	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEOPERATOR__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_REMOVEOPERATOR__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -661,7 +661,7 @@ bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* strea
 	}
 
 	if (_name == "operatorList") {
-		TypeInfo<SortedVector<ManagedReference<PlayerCreature* > > >::parseFromBinaryStream(&operatorList, stream);
+		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&operatorList, stream);
 		return true;
 	}
 
@@ -722,7 +722,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<SortedVector<ManagedReference<PlayerCreature* > > >::toBinaryStream(&operatorList, stream);
+	TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::toBinaryStream(&operatorList, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -808,12 +808,12 @@ void InstallationObjectImplementation::initializeTransientMembers() {
 void InstallationObjectImplementation::updateOperators() {
 }
 
-void InstallationObjectImplementation::addOperator(PlayerCreature* player) {
+void InstallationObjectImplementation::addOperator(CreatureObject* player) {
 	// server/zone/objects/installation/InstallationObject.idl():  		operatorList.put(player);
 	(&operatorList)->put(player);
 }
 
-void InstallationObjectImplementation::removeOperator(PlayerCreature* player) {
+void InstallationObjectImplementation::removeOperator(CreatureObject* player) {
 	// server/zone/objects/installation/InstallationObject.idl():  		operatorList.drop(player);
 	(&operatorList)->drop(player);
 }
@@ -875,8 +875,8 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_:
 		broadcastMessage((BasePacket*) inv->getObjectParameter(), inv->getBooleanParameter());
@@ -902,8 +902,8 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	case RPC_UPDATEINSTALLATIONWORK__:
 		updateInstallationWork();
 		break;
-	case RPC_HANDLESTRUCTUREADDENERGY__PLAYERCREATURE_:
-		handleStructureAddEnergy((PlayerCreature*) inv->getObjectParameter());
+	case RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_:
+		handleStructureAddEnergy((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SETACTIVERESOURCE__RESOURCECONTAINER_:
 		setActiveResource((ResourceContainer*) inv->getObjectParameter());
@@ -938,11 +938,11 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	case RPC_BROADCASTTOOPERATORS__BASEPACKET_:
 		broadcastToOperators((BasePacket*) inv->getObjectParameter());
 		break;
-	case RPC_ADDOPERATOR__PLAYERCREATURE_:
-		addOperator((PlayerCreature*) inv->getObjectParameter());
+	case RPC_ADDOPERATOR__CREATUREOBJECT_:
+		addOperator((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_REMOVEOPERATOR__PLAYERCREATURE_:
-		removeOperator((PlayerCreature*) inv->getObjectParameter());
+	case RPC_REMOVEOPERATOR__CREATUREOBJECT_:
+		removeOperator((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
@@ -983,7 +983,7 @@ void InstallationObjectAdapter::destroyObjectFromDatabase(bool destroyContainedO
 	((InstallationObjectImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-int InstallationObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int InstallationObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((InstallationObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
@@ -1019,7 +1019,7 @@ void InstallationObjectAdapter::updateInstallationWork() {
 	((InstallationObjectImplementation*) impl)->updateInstallationWork();
 }
 
-void InstallationObjectAdapter::handleStructureAddEnergy(PlayerCreature* player) {
+void InstallationObjectAdapter::handleStructureAddEnergy(CreatureObject* player) {
 	((InstallationObjectImplementation*) impl)->handleStructureAddEnergy(player);
 }
 
@@ -1067,11 +1067,11 @@ void InstallationObjectAdapter::broadcastToOperators(BasePacket* packet) {
 	((InstallationObjectImplementation*) impl)->broadcastToOperators(packet);
 }
 
-void InstallationObjectAdapter::addOperator(PlayerCreature* player) {
+void InstallationObjectAdapter::addOperator(CreatureObject* player) {
 	((InstallationObjectImplementation*) impl)->addOperator(player);
 }
 
-void InstallationObjectAdapter::removeOperator(PlayerCreature* player) {
+void InstallationObjectAdapter::removeOperator(CreatureObject* player) {
 	((InstallationObjectImplementation*) impl)->removeOperator(player);
 }
 

@@ -48,16 +48,16 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -172,39 +172,39 @@ public:
 
 	void checkAuctions();
 
-	void addSaleItem(PlayerCreature* player, unsigned long long objectid, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
+	void addSaleItem(CreatureObject* player, unsigned long long objectid, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-	AuctionItem* createVendorItem(PlayerCreature* player, SceneObject* objectToSell, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
+	AuctionItem* createVendorItem(CreatureObject* player, SceneObject* objectToSell, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-	int checkSaleItem(PlayerCreature* player, SceneObject* object, Vendor* vendor, int price);
+	int checkSaleItem(CreatureObject* player, SceneObject* object, Vendor* vendor, int price);
 
-	void getItemAttributes(PlayerCreature* player, unsigned long long objectid);
+	void getItemAttributes(CreatureObject* player, unsigned long long objectid);
 
-	void getData(PlayerCreature* player, int extent, unsigned long long vendorObjectID, int screen, unsigned int category, int count, int offset);
+	void getData(CreatureObject* player, int extent, unsigned long long vendorObjectID, int screen, unsigned int category, int count, int offset);
 
-	void getLocalVendorData(PlayerCreature* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
+	void getLocalVendorData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
 
-	void getGalaxyData(PlayerCreature* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
+	void getGalaxyData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
 
-	void getPlanetData(PlayerCreature* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
+	void getPlanetData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
 
-	void getRegionData(PlayerCreature* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
+	void getRegionData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
 
-	int checkRetrieve(PlayerCreature* player, unsigned long long objectIdToRetrieve, Vendor* vendor);
+	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, Vendor* vendor);
 
-	void retrieveItem(PlayerCreature* player, unsigned long long objectid, unsigned long long vendorID);
+	void retrieveItem(CreatureObject* player, unsigned long long objectid, unsigned long long vendorID);
 
-	void buyItem(PlayerCreature* player, unsigned long long objectid, int price1, int price2);
+	void buyItem(CreatureObject* player, unsigned long long objectid, int price1, int price2);
 
-	void doAuctionBid(PlayerCreature* player, AuctionItem* item, int price1, int price2);
+	void doAuctionBid(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	void doInstantBuy(PlayerCreature* player, AuctionItem* item, int price1, int price2);
+	void doInstantBuy(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	int checkBidAuction(PlayerCreature* player, AuctionItem* item, int price1, int price2);
+	int checkBidAuction(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	void cancelItem(PlayerCreature* player, unsigned long long objectID);
+	void cancelItem(CreatureObject* player, unsigned long long objectID);
 
-	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, Vendor* vendor, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
+	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(CreatureObject* player, Vendor* vendor, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
 
 	AuctionsMap* getAuctionMap();
 
@@ -257,43 +257,43 @@ public:
 
 	void checkAuctions();
 
-	void addSaleItem(PlayerCreature* player, unsigned long long objectid, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
+	void addSaleItem(CreatureObject* player, unsigned long long objectid, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-	AuctionItem* createVendorItem(PlayerCreature* player, SceneObject* objectToSell, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
+	AuctionItem* createVendorItem(CreatureObject* player, SceneObject* objectToSell, Vendor* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-	int checkSaleItem(PlayerCreature* player, SceneObject* object, Vendor* vendor, int price);
+	int checkSaleItem(CreatureObject* player, SceneObject* object, Vendor* vendor, int price);
 
-	void getItemAttributes(PlayerCreature* player, unsigned long long objectid);
+	void getItemAttributes(CreatureObject* player, unsigned long long objectid);
 
-	void getData(PlayerCreature* player, int extent, unsigned long long vendorObjectID, int screen, unsigned int category, int count, int offset);
+	void getData(CreatureObject* player, int extent, unsigned long long vendorObjectID, int screen, unsigned int category, int count, int offset);
 
-	void getLocalVendorData(PlayerCreature* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
+	void getLocalVendorData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
 
-	void getGalaxyData(PlayerCreature* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
+	void getGalaxyData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
 
-	void getPlanetData(PlayerCreature* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
+	void getPlanetData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
 
-	void getRegionData(PlayerCreature* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
+	void getRegionData(CreatureObject* player, Vendor* vendor, int screen, unsigned int category, int count, int offset);
 
 private:
 	void refundAuction(AuctionItem* item);
 
 public:
-	int checkRetrieve(PlayerCreature* player, unsigned long long objectIdToRetrieve, Vendor* vendor);
+	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, Vendor* vendor);
 
-	void retrieveItem(PlayerCreature* player, unsigned long long objectid, unsigned long long vendorID);
+	void retrieveItem(CreatureObject* player, unsigned long long objectid, unsigned long long vendorID);
 
-	void buyItem(PlayerCreature* player, unsigned long long objectid, int price1, int price2);
+	void buyItem(CreatureObject* player, unsigned long long objectid, int price1, int price2);
 
-	void doAuctionBid(PlayerCreature* player, AuctionItem* item, int price1, int price2);
+	void doAuctionBid(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	void doInstantBuy(PlayerCreature* player, AuctionItem* item, int price1, int price2);
+	void doInstantBuy(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	int checkBidAuction(PlayerCreature* player, AuctionItem* item, int price1, int price2);
+	int checkBidAuction(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	void cancelItem(PlayerCreature* player, unsigned long long objectID);
+	void cancelItem(CreatureObject* player, unsigned long long objectID);
 
-	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(PlayerCreature* player, Vendor* vendor, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
+	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(CreatureObject* player, Vendor* vendor, VectorMap<unsigned long long, ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
 
 private:
 	Vendor* getVendorFromObject(SceneObject* obj);
@@ -350,21 +350,21 @@ public:
 
 	void checkAuctions();
 
-	void getItemAttributes(PlayerCreature* player, unsigned long long objectid);
+	void getItemAttributes(CreatureObject* player, unsigned long long objectid);
 
-	void getData(PlayerCreature* player, int extent, unsigned long long vendorObjectID, int screen, unsigned int category, int count, int offset);
+	void getData(CreatureObject* player, int extent, unsigned long long vendorObjectID, int screen, unsigned int category, int count, int offset);
 
-	void retrieveItem(PlayerCreature* player, unsigned long long objectid, unsigned long long vendorID);
+	void retrieveItem(CreatureObject* player, unsigned long long objectid, unsigned long long vendorID);
 
-	void buyItem(PlayerCreature* player, unsigned long long objectid, int price1, int price2);
+	void buyItem(CreatureObject* player, unsigned long long objectid, int price1, int price2);
 
-	void doAuctionBid(PlayerCreature* player, AuctionItem* item, int price1, int price2);
+	void doAuctionBid(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	void doInstantBuy(PlayerCreature* player, AuctionItem* item, int price1, int price2);
+	void doInstantBuy(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	int checkBidAuction(PlayerCreature* player, AuctionItem* item, int price1, int price2);
+	int checkBidAuction(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	void cancelItem(PlayerCreature* player, unsigned long long objectID);
+	void cancelItem(CreatureObject* player, unsigned long long objectID);
 
 	AuctionsMap* getAuctionMap();
 

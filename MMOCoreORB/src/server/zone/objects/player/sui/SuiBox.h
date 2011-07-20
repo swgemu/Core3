@@ -28,9 +28,23 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace player {
 
-class PlayerCreature;
+class PlayerObject;
 
 } // namespace player
 } // namespace objects
@@ -38,6 +52,20 @@ class PlayerCreature;
 } // namespace server
 
 using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 
@@ -75,7 +103,7 @@ public:
 
 	static const int SLICINGBOX = 20;
 
-	SuiBox(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype);
+	SuiBox(CreatureObject* play, unsigned int windowtype, unsigned int boxtype);
 
 	void initialize();
 
@@ -139,7 +167,7 @@ public:
 
 	void setForceCloseDisabled();
 
-	PlayerCreature* getPlayer();
+	CreatureObject* getPlayer();
 
 	unsigned int getBoxID();
 
@@ -183,7 +211,7 @@ namespace sui {
 
 class SuiBoxImplementation : public ManagedObjectImplementation, public Logger {
 protected:
-	ManagedWeakReference<PlayerCreature* > player;
+	ManagedWeakReference<CreatureObject* > player;
 
 	Reference<SuiCallback* > suiCallback;
 
@@ -240,7 +268,7 @@ public:
 
 	static const int SLICINGBOX = 20;
 
-	SuiBoxImplementation(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype);
+	SuiBoxImplementation(CreatureObject* play, unsigned int windowtype, unsigned int boxtype);
 
 	SuiBoxImplementation(DummyConstructorParameter* param);
 
@@ -308,7 +336,7 @@ public:
 
 	void setForceCloseDisabled();
 
-	PlayerCreature* getPlayer();
+	CreatureObject* getPlayer();
 
 	unsigned int getBoxID();
 
@@ -427,7 +455,7 @@ public:
 
 	void setForceCloseDisabled();
 
-	PlayerCreature* getPlayer();
+	CreatureObject* getPlayer();
 
 	unsigned int getBoxID();
 

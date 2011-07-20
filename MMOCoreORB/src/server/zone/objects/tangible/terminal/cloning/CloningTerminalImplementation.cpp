@@ -7,9 +7,9 @@
 
 #include "CloningTerminal.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
-int CloningTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CloningTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID != 20)
 		return 1;
 

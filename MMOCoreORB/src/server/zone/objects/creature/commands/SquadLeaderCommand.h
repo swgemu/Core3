@@ -38,7 +38,7 @@ public:
 		return SUCCESS;
 	}
 
-	bool checkGroupLeader(PlayerCreature* player, GroupObject* group) {
+	bool checkGroupLeader(CreatureObject* player, GroupObject* group) {
 		if (player == NULL)
 			return false;
 
@@ -60,7 +60,7 @@ public:
 		return true;
 	}
 
-	bool shoutCommand(PlayerCreature* player, GroupObject* group) {
+	bool shoutCommand(CreatureObject* player, GroupObject* group) {
 		if (player == NULL || group == NULL)
 			return false;
 
@@ -89,7 +89,7 @@ public:
 		return modifier;
 	}
 
-	bool inflictHAM(PlayerCreature* player, int health, int action, int mind) {
+	bool inflictHAM(CreatureObject* player, int health, int action, int mind) {
 		if (player == NULL)
 			return false;
 
@@ -113,7 +113,7 @@ public:
 		return true;
 	}
 
-	void sendCombatSpam(PlayerCreature* player) {
+	void sendCombatSpam(CreatureObject* player) {
 		if (player == NULL)
 			return;
 
@@ -127,7 +127,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return false;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
 		ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
 
 		if (message.isEmpty())

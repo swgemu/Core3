@@ -61,7 +61,7 @@ public:
 
 	}
 
-	static void doBandFlourish(PlayerCreature* leader, String& number, bool musicflourish, int instrumentType) {
+	static void doBandFlourish(CreatureObject* leader, String& number, bool musicflourish, int instrumentType) {
 		ManagedReference<GroupObject*> group = leader->getGroup();
 
 		ManagedReference<Facade*> facade = leader->getActiveSession(SessionFacadeType::ENTERTAINING);
@@ -118,7 +118,7 @@ public:
 				Locker clocker(groupMember, group);
 
 				if (groupMember != leader && groupMember->isPlayerCreature()) {
-					PlayerCreature* player = (PlayerCreature*)groupMember.get();
+					CreatureObject* player = (CreatureObject*)groupMember.get();
 
 					ManagedReference<Facade*> pfacade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
 
@@ -189,7 +189,7 @@ public:
 		}
 	}
 
-	static bool parseOptions(PlayerCreature* leader, const String& options, String& stringA, String& stringB) {
+	static bool parseOptions(CreatureObject* leader, const String& options, String& stringA, String& stringB) {
 		if (options.isEmpty()) {
 			leader->sendSystemMessage("performance", "band_flourish_format");
 			return false;
@@ -216,7 +216,7 @@ public:
 		return true;
 	}
 
-	static void changeStatus(PlayerCreature* leader, bool newstatus) {
+	static void changeStatus(CreatureObject* leader, bool newstatus) {
 		ManagedReference<Facade*> facade = leader->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
@@ -239,7 +239,7 @@ public:
 		return;
 	}
 
-	void printStatus(PlayerCreature* leader) {
+	void printStatus(CreatureObject* leader) {
 		ManagedReference<Facade*> facade = leader->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
@@ -265,7 +265,7 @@ public:
 
 		String stringA, stringB;
 
-		PlayerCreature* leader = (PlayerCreature*)creature;
+		CreatureObject* leader = (CreatureObject*)creature;
 
 		if (!creature->isEntertaining()) {
 			leader->sendSystemMessage("performance", "flourish_not_performing");

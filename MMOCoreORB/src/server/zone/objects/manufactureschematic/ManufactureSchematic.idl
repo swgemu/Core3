@@ -50,7 +50,7 @@ import system.util.Vector;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.draftschematic.DraftSchematic;
-include server.zone.objects.player.PlayerCreature;
+include server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.area.ActiveArea;
@@ -69,7 +69,7 @@ class ManufactureSchematic extends IntangibleObject {
 	protected int manufactureLimit;
 	protected float complexity;
 	protected unsigned int crcToSend; 
-	protected PlayerCreature crafter;
+	protected CreatureObject crafter;
 	protected boolean firstCraftingUpdate;
 	
 	@dereferenced
@@ -113,7 +113,7 @@ class ManufactureSchematic extends IntangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	/**
 	 * Sends the necessary messages to player in order to create this object
@@ -136,7 +136,7 @@ class ManufactureSchematic extends IntangibleObject {
 	 * Calls the appropriate UI Listener Function
 	 * @pre { this object is locked, object is locked }
 	 * @post {this object is locked, object is locked }
-	 * @param player PlayerCreature using the item
+	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
 	public native abstract void synchronizedUIListen(SceneObject player, int value);
@@ -145,7 +145,7 @@ class ManufactureSchematic extends IntangibleObject {
 	 * Calls the appropriate UI Stop Listener Function
 	 * @pre { this object is locked, object is locked }
 	 * @post {this object is locked, object is locked }
-	 * @param player PlayerCreature using the item
+	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
 	public native abstract void synchronizedUIStopListen(SceneObject player, int value);
@@ -210,11 +210,11 @@ class ManufactureSchematic extends IntangibleObject {
 		return completed;
 	}
 	
-	public void setCrafter(PlayerCreature player) {
+	public void setCrafter(CreatureObject player) {
 		crafter = player;
 	}
 	
-	public PlayerCreature getCrafter() {
+	public CreatureObject getCrafter() {
 		return crafter;
 	}
 	

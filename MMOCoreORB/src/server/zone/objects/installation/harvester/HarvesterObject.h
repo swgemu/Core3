@@ -39,9 +39,9 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void synchronizedUIListen(SceneObject* player, int value);
 
@@ -86,9 +86,9 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void synchronizedUIListen(SceneObject* player, int value);
 
@@ -141,7 +141,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void synchronizedUIListen(SceneObject* player, int value);
 

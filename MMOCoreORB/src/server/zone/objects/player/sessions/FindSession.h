@@ -27,7 +27,7 @@ using namespace server::zone::objects::creature;
 
 #include "engine/core/ManagedObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
@@ -48,7 +48,7 @@ namespace player {
 
 class FindSession : public Facade {
 public:
-	FindSession(PlayerCreature* pl);
+	FindSession(CreatureObject* pl);
 
 	int initializeSession();
 
@@ -90,12 +90,12 @@ namespace player {
 
 class FindSessionImplementation : public FacadeImplementation {
 protected:
-	ManagedWeakReference<PlayerCreature* > player;
+	ManagedWeakReference<CreatureObject* > player;
 
 	ManagedReference<SuiListBox* > findSuiBox;
 
 public:
-	FindSessionImplementation(PlayerCreature* pl);
+	FindSessionImplementation(CreatureObject* pl);
 
 	FindSessionImplementation(DummyConstructorParameter* param);
 

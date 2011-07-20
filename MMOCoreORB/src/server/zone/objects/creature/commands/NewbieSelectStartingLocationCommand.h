@@ -67,7 +67,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		Zone* zone = player->getZone();
 

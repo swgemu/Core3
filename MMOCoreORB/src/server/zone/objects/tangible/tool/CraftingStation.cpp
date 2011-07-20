@@ -16,13 +16,13 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	CraftingStationStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGSTATION__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETSTATIONTYPE__,RPC_SETCOMPLEXITYLEVEL__INT_,RPC_FINDCRAFTINGTOOL__PLAYERCREATURE_,RPC_CREATECHILDOBJECTS__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGSTATION__,RPC_GETCOMPLEXITYLEVEL__,RPC_GETSTATIONTYPE__,RPC_SETCOMPLEXITYLEVEL__INT_,RPC_FINDCRAFTINGTOOL__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__};
 
 CraftingStation::CraftingStation() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingStationImplementation* _implementation = new CraftingStationImplementation();
@@ -59,7 +59,7 @@ void CraftingStation::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void CraftingStation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void CraftingStation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -68,13 +68,13 @@ void CraftingStation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, P
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int CraftingStation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CraftingStation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -83,7 +83,7 @@ int CraftingStation::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void CraftingStation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void CraftingStation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -159,13 +159,13 @@ void CraftingStation::setComplexityLevel(int level) {
 		_implementation->setComplexityLevel(level);
 }
 
-SceneObject* CraftingStation::findCraftingTool(PlayerCreature* player) {
+SceneObject* CraftingStation::findCraftingTool(CreatureObject* player) {
 	CraftingStationImplementation* _implementation = (CraftingStationImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FINDCRAFTINGTOOL__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FINDCRAFTINGTOOL__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -400,8 +400,8 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
@@ -418,8 +418,8 @@ Packet* CraftingStationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_SETCOMPLEXITYLEVEL__INT_:
 		setComplexityLevel(inv->getSignedIntParameter());
 		break;
-	case RPC_FINDCRAFTINGTOOL__PLAYERCREATURE_:
-		resp->insertLong(findCraftingTool((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+	case RPC_FINDCRAFTINGTOOL__CREATUREOBJECT_:
+		resp->insertLong(findCraftingTool((CreatureObject*) inv->getObjectParameter())->_getObjectID());
 		break;
 	case RPC_CREATECHILDOBJECTS__:
 		createChildObjects();
@@ -435,7 +435,7 @@ void CraftingStationAdapter::initializeTransientMembers() {
 	((CraftingStationImplementation*) impl)->initializeTransientMembers();
 }
 
-int CraftingStationAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CraftingStationAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((CraftingStationImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
@@ -459,7 +459,7 @@ void CraftingStationAdapter::setComplexityLevel(int level) {
 	((CraftingStationImplementation*) impl)->setComplexityLevel(level);
 }
 
-SceneObject* CraftingStationAdapter::findCraftingTool(PlayerCreature* player) {
+SceneObject* CraftingStationAdapter::findCraftingTool(CreatureObject* player) {
 	return ((CraftingStationImplementation*) impl)->findCraftingTool(player);
 }
 

@@ -57,12 +57,12 @@ void ComponentImplementation::initializeTransientMembers() {
 	setOptionsBitmask(0x2100);
 }
 
-void ComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void ComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 }
 
 void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
-		PlayerCreature* object) {
+		CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	if (craftersName != "") {

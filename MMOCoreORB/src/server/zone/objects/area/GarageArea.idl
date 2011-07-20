@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.objects.area;
 
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 
 
@@ -56,7 +56,7 @@ class GarageArea extends ActiveArea {
 
 	public void notifyEnter(SceneObject player) {
 		if (player.isPlayerCreature()) {
-			PlayerCreature playerCreature = (PlayerCreature) player;
+			CreatureObject playerCreature = (CreatureObject) player;
 			playerCreature.sendSystemMessage("@pet/pet_menu:garage_proximity"); //You have entered into the proximity of a vehicle garage.
 		}
 	}

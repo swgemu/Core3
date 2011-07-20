@@ -50,7 +50,7 @@ import server.zone.Zone;
 import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
 include server.zone.objects.creature.CreatureState;
@@ -133,7 +133,7 @@ class DotPack extends PharmaceuticalObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public void fillAttributeList(AttributeListMessage msg, PlayerCreature object) {
+	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
 		
 		msg.insertAttribute("examine_dot_attribute", CreatureAttribute.getName(pool, true));
@@ -168,11 +168,11 @@ class DotPack extends PharmaceuticalObject {
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
 	 * @post { this object is locked, player is locked }
-	 * @param player PlayerCreature that selected the option
+	 * @param player CreatureObject that selected the option
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	public int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
+	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		if (selectedID != 20)
 			return 1;
 

@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
@@ -22,7 +22,7 @@
  *	WeaponObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCERTIFIEDFOR__PLAYERCREATURE_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__,RPC_GETIDEALRANGE__,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETHEALTHATTACKCOST__,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISWEAPONOBJECT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__,RPC_GETIDEALRANGE__,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETHEALTHATTACKCOST__,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISWEAPONOBJECT__};
 
 WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WeaponObjectImplementation* _implementation = new WeaponObjectImplementation();
@@ -73,7 +73,7 @@ void WeaponObject::sendBaselinesTo(SceneObject* player) {
 		_implementation->sendBaselinesTo(player);
 }
 
-void WeaponObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void WeaponObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -82,13 +82,13 @@ void WeaponObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* 
 		_implementation->fillAttributeList(msg, object);
 }
 
-int WeaponObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int WeaponObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -111,13 +111,13 @@ void WeaponObject::updateCraftingValues(ManufactureSchematic* schematic) {
 		_implementation->updateCraftingValues(schematic);
 }
 
-bool WeaponObject::isCertifiedFor(PlayerCreature* object) {
+bool WeaponObject::isCertifiedFor(CreatureObject* object) {
 	WeaponObjectImplementation* _implementation = (WeaponObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISCERTIFIEDFOR__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ISCERTIFIEDFOR__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -1495,14 +1495,14 @@ Packet* WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
-	case RPC_ISCERTIFIEDFOR__PLAYERCREATURE_:
-		resp->insertBoolean(isCertifiedFor((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_ISCERTIFIEDFOR__CREATUREOBJECT_:
+		resp->insertBoolean(isCertifiedFor((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_SETCERTIFIED__BOOL_:
 		setCertified(inv->getBooleanParameter());
@@ -1657,7 +1657,7 @@ void WeaponObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	((WeaponObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
-int WeaponObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int WeaponObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((WeaponObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
@@ -1665,7 +1665,7 @@ void WeaponObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic) 
 	((WeaponObjectImplementation*) impl)->updateCraftingValues(schematic);
 }
 
-bool WeaponObjectAdapter::isCertifiedFor(PlayerCreature* object) {
+bool WeaponObjectAdapter::isCertifiedFor(CreatureObject* object) {
 	return ((WeaponObjectImplementation*) impl)->isCertifiedFor(object);
 }
 

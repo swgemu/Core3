@@ -66,16 +66,16 @@ using namespace server::zone::packets::object;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -107,17 +107,17 @@ public:
 
 	void setQuality(int value);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void doFishing(PlayerCreature* player);
+	void doFishing(CreatureObject* player);
 
-	String getText(PlayerCreature* player);
+	String getText(CreatureObject* player);
 
 	bool removeObject(SceneObject* object, bool notifyClient = false);
 
@@ -164,17 +164,17 @@ public:
 
 	void setQuality(int value);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void doFishing(PlayerCreature* player);
+	void doFishing(CreatureObject* player);
 
-	String getText(PlayerCreature* player);
+	String getText(CreatureObject* player);
 
 	virtual bool removeObject(SceneObject* object, bool notifyClient = false);
 
@@ -227,17 +227,17 @@ public:
 
 	void setQuality(int value);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void doFishing(PlayerCreature* player);
+	void doFishing(CreatureObject* player);
 
-	String getText(PlayerCreature* player);
+	String getText(CreatureObject* player);
 
 	bool removeObject(SceneObject* object, bool notifyClient);
 

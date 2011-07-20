@@ -51,7 +51,7 @@ which carries forward this exception.
 #include "../radial/RadialManager.h"
 
 #include "server/zone/ZoneProcessServer.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
 #include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
@@ -121,18 +121,20 @@ SuiManager::SuiManager(ZoneProcessServer* serv) : Logger("SuiManager") {
 	setLogging(false);
 }
 
-void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player, uint32 cancel, Vector<UnicodeString>* args) {
 	uint16 windowType = (uint16) boxID;
 
 	Locker _lock(player);
 
-	ManagedReference<SuiBox*> suiBox = player->getSuiBox(boxID);
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ManagedReference<SuiBox*> suiBox = ghost->getSuiBox(boxID);
 
 	if (suiBox == NULL)
 		return;
 
 	//Remove the box from the player, callback can readd it to the player if needed.
-	player->removeSuiBox(boxID);
+	ghost->removeSuiBox(boxID);
 	suiBox->clearOptions(); //TODO: Eventually SuiBox needs to be cleaned up to not need this.
 
 	Reference<SuiCallback*> callback = suiBox->getCallback();
@@ -249,7 +251,7 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, PlayerCreature* player
 	}
 }
 
-void SuiManager::handleSetObjectName(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleSetObjectName(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isInputBox() || cancel != 0)
 		return;
 
@@ -273,7 +275,7 @@ void SuiManager::handleSetObjectName(PlayerCreature* player, SuiBox* suiBox, uin
 	}
 }
 
-void SuiManager::handleManageMaintenance(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleManageMaintenance(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isTransferBox() || cancel != 0)
 		return;
 
@@ -322,7 +324,7 @@ void SuiManager::handleManageMaintenance(PlayerCreature* player, SuiBox* suiBox,
 }
 
 
-void SuiManager::handleAddEnergy(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleAddEnergy(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isTransferBox() || cancel != 0)
 		return;
 
@@ -366,7 +368,7 @@ void SuiManager::handleAddEnergy(PlayerCreature* player, SuiBox* suiBox, uint32 
 	installation->updateToDatabase();
 }
 
-void SuiManager::handleStartDancing(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleStartDancing(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
@@ -390,7 +392,7 @@ void SuiManager::handleStartDancing(PlayerCreature* player, SuiBox* suiBox, uint
 		player->executeObjectControllerAction(String("changedance").hashCode(), 0, dance);
 }
 
-void SuiManager::handleStartMusic(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
@@ -413,11 +415,13 @@ void SuiManager::handleStartMusic(PlayerCreature* player, SuiBox* suiBox, uint32
 		player->executeObjectControllerAction(String("changemusic").hashCode(), player->getTargetID(), dance);
 }
 
-void SuiManager::handleSampleRadioactiveConfirm(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleSampleRadioactiveConfirm(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (cancel != 0)
 		return;
 
-	ManagedReference<SurveyTool*> surveyTool =  player->getSurveyTool();
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ManagedReference<SurveyTool*> surveyTool =  ghost->getSurveyTool();
 
 	if (surveyTool == NULL)
 		return;
@@ -426,7 +430,7 @@ void SuiManager::handleSampleRadioactiveConfirm(PlayerCreature* player, SuiBox* 
 	surveyTool->consentRadioactiveSample(player);
 }
 
-void SuiManager::handleSurveyConcentratedMinigame(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleSurveyConcentratedMinigame(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (cancel != 0)
 		return;
 
@@ -435,7 +439,9 @@ void SuiManager::handleSurveyConcentratedMinigame(PlayerCreature* player, SuiBox
 
 	int value = Integer::valueOf(args->get(0).toString());
 
-	ManagedReference<SurveyTool*> surveyTool =  player->getSurveyTool();
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ManagedReference<SurveyTool*> surveyTool =  ghost->getSurveyTool();
 
 	if (surveyTool == NULL)
 		return;
@@ -444,7 +450,7 @@ void SuiManager::handleSurveyConcentratedMinigame(PlayerCreature* player, SuiBox
 	surveyTool->surveyCnodeMinigame(player, value);
 }
 
-void SuiManager::handleSurveyConcentratedMinigame2(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleSurveyConcentratedMinigame2(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (cancel != 0)
 		return;
 
@@ -453,7 +459,9 @@ void SuiManager::handleSurveyConcentratedMinigame2(PlayerCreature* player, SuiBo
 
 	int value = Integer::valueOf(args->get(0).toString());
 
-	ManagedReference<SurveyTool*> surveyTool =  player->getSurveyTool();
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ManagedReference<SurveyTool*> surveyTool =  ghost->getSurveyTool();
 
 	if (surveyTool == NULL)
 		return;
@@ -464,7 +472,7 @@ void SuiManager::handleSurveyConcentratedMinigame2(PlayerCreature* player, SuiBo
 
 
 
-void SuiManager::handleTicketCollectorResponse(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleTicketCollectorResponse(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
@@ -499,7 +507,7 @@ void SuiManager::handleTicketCollectorResponse(PlayerCreature* player, SuiBox* s
 	ticket->handleObjectMenuSelect(player, 20);
 }
 
-void SuiManager::handleBankTransfer(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleBankTransfer(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isBankTransferBox() || cancel != 0)
 		return;
 
@@ -529,7 +537,7 @@ void SuiManager::handleBankTransfer(PlayerCreature* player, SuiBox* suiBox, uint
 
 }
 
-void SuiManager::handleGamblingRoulette(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleGamblingRoulette(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	GamblingManager* manager = player->getZone()->getZoneServer()->getGamblingManager();
 
 	if (cancel != 0)
@@ -539,7 +547,7 @@ void SuiManager::handleGamblingRoulette(PlayerCreature* player, SuiBox* suiBox, 
 
 	//TODO: This might resend suis.
 }
-void SuiManager::handleGamblingSlot(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleGamblingSlot(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (args->size() < 1)
 		return;
 
@@ -551,11 +559,11 @@ void SuiManager::handleGamblingSlot(PlayerCreature* player, SuiBox* suiBox, uint
 	//TODO: This might resend suis.
 }
 
-void SuiManager::handleGamblingSlotPayout(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleGamblingSlotPayout(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	player->sendMessage(suiBox->generateCloseMessage());
 }
 
-void SuiManager::handleFishingAction(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleFishingAction(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (cancel != 0)
 		return;
 
@@ -596,7 +604,7 @@ void SuiManager::handleFishingAction(PlayerCreature* player, SuiBox* suiBox, uin
 	manager->setFishBoxID(player, suiBox->getBoxID());
 }
 
-void SuiManager::handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	ZoneServer* zserv = player->getZoneServer();
 
 	if (args->size() < 1)
@@ -611,6 +619,8 @@ void SuiManager::handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox
 
 	CharacterBuilderMenuNode* currentNode = cbSui->getCurrentNode();
 
+	PlayerObject* ghost = player->getPlayerObject();
+
 	//If cancel was pressed and there is no parent node to backup too, then we kill the box/menu.
 	if (currentNode == NULL || (cancel != 0 && !currentNode->hasParentNode()))
 		return;
@@ -620,7 +630,7 @@ void SuiManager::handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox
 		CharacterBuilderMenuNode* parentNode = currentNode->getParentNode();
 		cbSui->setCurrentNode(parentNode);
 
-		player->addSuiBox(cbSui);
+		ghost->addSuiBox(cbSui);
 		player->sendMessage(cbSui->generateMessage());
 		return;
 	}
@@ -629,7 +639,7 @@ void SuiManager::handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox
 
 	//Node doesn't exist or the index was out of bounds. Should probably resend the menu here.
 	if (node == NULL) {
-		player->addSuiBox(cbSui);
+		ghost->addSuiBox(cbSui);
 		player->sendMessage(cbSui->generateMessage());
 		return;
 	}
@@ -637,7 +647,7 @@ void SuiManager::handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox
 	if (node->hasChildNodes()) {
 		//If it has child nodes, display them.
 		cbSui->setCurrentNode(node);
-		player->addSuiBox(cbSui);
+		ghost->addSuiBox(cbSui);
 		player->sendMessage(cbSui->generateMessage());
 	} else {
 
@@ -713,7 +723,7 @@ void SuiManager::handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox
 				}
 			}
 
-			player->addSuiBox(cbSui);
+			ghost->addSuiBox(cbSui);
 			player->sendMessage(cbSui->generateMessage());
 		} else { // Items
 
@@ -721,7 +731,7 @@ void SuiManager::handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox
 
 			if (item == NULL) {
 				player->sendSystemMessage("There was an error creating the requested item. Please contact customer support with this issue.");
-				player->addSuiBox(cbSui);
+				ghost->addSuiBox(cbSui);
 				player->sendMessage(cbSui->generateMessage());
 				return;
 			}
@@ -735,13 +745,13 @@ void SuiManager::handleCharacterBuilderSelectItem(PlayerCreature* player, SuiBox
 			stringId.setTO(item);
 			player->sendSystemMessage(stringId);
 
-			player->addSuiBox(cbSui);
+			ghost->addSuiBox(cbSui);
 			player->sendMessage(cbSui->generateMessage());
 		}
 	}
 }
 
-void SuiManager::handleCloneRequest(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleCloneRequest(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	info("activating sui cloner option");
 
 	if (!suiBox->isListBox() || cancel != 0)
@@ -768,10 +778,10 @@ void SuiManager::handleCloneRequest(PlayerCreature* player, SuiBox* suiBox, uint
 	}
 }
 
-void SuiManager::handleDiagnose(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleDiagnose(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 }
 
-void SuiManager::handleGiveFreeResource(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleGiveFreeResource(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (args->size() < 2)
 		return;
 
@@ -782,6 +792,8 @@ void SuiManager::handleGiveFreeResource(PlayerCreature* player, SuiBox* suiBox, 
 
 	if (suiListBox == NULL)
 		return;
+
+	PlayerObject* ghost = player->getPlayerObject();
 
 	ManagedReference<SceneObject*> deedObject = suiListBox->getUsingObject();
 
@@ -814,7 +826,7 @@ void SuiManager::handleGiveFreeResource(PlayerCreature* player, SuiBox* suiBox, 
 		}
 		/// If nothing was chosen
 		if (index < 0) {
-			player->addSuiBox(suiListBox);
+			ghost->addSuiBox(suiListBox);
 			player->sendMessage(suiListBox->generateMessage());
 			return;
 		}
@@ -853,11 +865,11 @@ void SuiManager::handleGiveFreeResource(PlayerCreature* player, SuiBox* suiBox, 
 
 	suiListBox->setUsingObject(deedObject);
 
-	player->addSuiBox(suiListBox);
+	ghost->addSuiBox(suiListBox);
 	player->sendMessage(suiListBox->generateMessage());
 }
 
-void SuiManager::handleConsentBox(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleConsentBox(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (suiBox->isListBox() || cancel != 0)
 		return;
 
@@ -875,8 +887,10 @@ void SuiManager::handleConsentBox(PlayerCreature* player, SuiBox* suiBox, uint32
 	UnconsentCommand::unconscent(player, name);
 }
 
-void SuiManager::handleTeachPlayer(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	player->setTeachingOrLearning(false);
+void SuiManager::handleTeachPlayer(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ghost->setTeachingOrLearning(false);
 
 	if (suiBox->isListBox() || cancel != 0)
 		return;
@@ -894,7 +908,7 @@ void SuiManager::handleTeachPlayer(PlayerCreature* player, SuiBox* suiBox, uint3
 	if (listBox == NULL)
 		return;
 
-	ManagedReference<PlayerCreature*> student = listBox->getStudent();
+	ManagedReference<CreatureObject*> student = listBox->getStudent();
 
 	if (student == NULL)
 		return;
@@ -917,8 +931,9 @@ void SuiManager::handleTeachPlayer(PlayerCreature* player, SuiBox* suiBox, uint3
 	player->sendSystemMessage(message);
 
 	ManagedReference<PlayerLearnListBox*> mbox = new PlayerLearnListBox(student);
+	PlayerObject* ghostStudent = student->getPlayerObject();
 
-	student->setTeachingOrLearning(true);
+	ghostStudent->setTeachingOrLearning(true);
 
 	// TODO: redo this after I find the proper String
 	StringBuffer prompt, skillname;
@@ -931,12 +946,13 @@ void SuiManager::handleTeachPlayer(PlayerCreature* player, SuiBox* suiBox, uint3
 	mbox->setTeacher(player);
 	mbox->setTeachingOffer(listBox->getTeachingSkillOption(value));
 
-	student->addSuiBox(mbox);
+	ghostStudent->addSuiBox(mbox);
 	student->sendMessage(mbox->generateMessage());
 }
 
-void SuiManager::handleTeachSkill(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	player->setTeachingOrLearning(false);
+void SuiManager::handleTeachSkill(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+	PlayerObject* ghost = player->getPlayerObject();
+	ghost->setTeachingOrLearning(false);
 
 	if (suiBox->isListBox())
 		return;
@@ -957,7 +973,7 @@ void SuiManager::handleTeachSkill(PlayerCreature* player, SuiBox* suiBox, uint32
 		return;
 	}
 
-	ManagedReference<PlayerCreature*> teacher = listBox->getTeacher();
+	ManagedReference<CreatureObject*> teacher = listBox->getTeacher();
 
 	if (teacher == NULL) {
 		player->sendSystemMessage("teaching","teacher_too_far");
@@ -990,7 +1006,7 @@ void SuiManager::handleTeachSkill(PlayerCreature* player, SuiBox* suiBox, uint32
 	server->getProfessionManager()->playerTeachSkill(teachingOffer, player, teacher);
 }
 
-void SuiManager::handleInsertFactorySchem2(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleInsertFactorySchem2(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
@@ -1014,7 +1030,7 @@ void SuiManager::handleInsertFactorySchem2(PlayerCreature* player, SuiBox* suiBo
 	factory->handleInsertFactorySchem(player, schematic);
 }
 
-void SuiManager::handleInsertFactorySchem3(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleInsertFactorySchem3(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
@@ -1044,11 +1060,11 @@ void SuiManager::handleInsertFactorySchem3(PlayerCreature* player, SuiBox* suiBo
 }
 
 
-void SuiManager::handleStructureStatus(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleStructureStatus(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 
 }
 
-void SuiManager::handleStructureDestroyConfirm(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleStructureDestroyConfirm(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
@@ -1063,7 +1079,7 @@ void SuiManager::handleStructureDestroyConfirm(PlayerCreature* player, SuiBox* s
 	//structureObject->sendDestroyCodeTo(player);
 }
 
-void SuiManager::handleStructureDestroyCode(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleStructureDestroyCode(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isInputBox() || cancel != 0)
 		return;
 
@@ -1101,7 +1117,7 @@ void SuiManager::handleStructureDestroyCode(PlayerCreature* player, SuiBox* suiB
 	*/
 }
 
-void SuiManager::handleCityEnableZoning(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleCityEnableZoning(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isMessageBox() || cancel != 0)
 		return;
 
@@ -1121,7 +1137,7 @@ void SuiManager::handleCityEnableZoning(PlayerCreature* player, SuiBox* suiBox, 
 	cityHall->toggleZoningEnabled(player);
 }
 
-void SuiManager::handleChangeCityName(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleChangeCityName(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isInputBox() || cancel != 0)
 		return;
 
@@ -1143,6 +1159,8 @@ void SuiManager::handleChangeCityName(PlayerCreature* player, SuiBox* suiBox, ui
 	CityHallObject* cityHall = (CityHallObject*) building;
 
 	Locker _lock(cityHall, player);
+
+	PlayerObject* ghost = player->getPlayerObject();
 
 	ManagedReference<CityManager*> cityManager = player->getZone()->getCityManager();
 
@@ -1150,12 +1168,12 @@ void SuiManager::handleChangeCityName(PlayerCreature* player, SuiBox* suiBox, ui
 		cityManager->changeCityName(cityHall, player, cityName);
 	} else {
 		player->sendSystemMessage("Invalid name specified for city.");
-		player->addSuiBox(suiBox);
+		ghost->addSuiBox(suiBox);
 		player->sendMessage(suiBox->generateMessage());
 	}
 }
 
-void SuiManager::handleCreateCity(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleCreateCity(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isInputBox() || cancel != 0)
 		return;
 
@@ -1180,16 +1198,18 @@ void SuiManager::handleCreateCity(PlayerCreature* player, SuiBox* suiBox, uint32
 
 	ManagedReference<CityManager*> cityManager = player->getZone()->getCityManager();
 
+	PlayerObject* ghost = player->getPlayerObject();
+
 	if (cityManager->validateCityName(cityName)) {
 		cityManager->createNewCity(cityHall, player, cityName);
 	} else {
 		player->sendSystemMessage("Invalid name specified for city.");
-		player->addSuiBox(suiBox);
+		ghost->addSuiBox(suiBox);
 		player->sendMessage(suiBox->generateMessage());
 	}
 }
 
-void SuiManager::handleManageMilitia(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleManageMilitia(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isListBox() || cancel != 0)
 		return;
 
@@ -1232,7 +1252,7 @@ void SuiManager::handleManageMilitia(PlayerCreature* player, SuiBox* suiBox, uin
 	}
 }
 
-void SuiManager::handleAddMilitia(PlayerCreature* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
+void SuiManager::handleAddMilitia(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isInputBox() || cancel != 0)
 		return;
 

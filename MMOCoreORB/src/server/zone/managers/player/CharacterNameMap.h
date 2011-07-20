@@ -9,7 +9,7 @@
 #define CHARACTERNAMEMAP_H_
 
 #include "engine/engine.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class CharacterNameMap : public Object {
 	HashTable<String, uint64> names;
@@ -18,7 +18,7 @@ public:
 	CharacterNameMap() : names(3000) {
 	}
 
-	void put(PlayerCreature* player) {
+	void put(CreatureObject* player) {
 		names.put(player->getFirstName().toLowerCase(), player->getObjectID());
 	}
 

@@ -28,16 +28,16 @@ using namespace server::zone::objects::player;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -138,19 +138,19 @@ public:
 
 	DraftSchematic* getSchematic(unsigned int schematicID);
 
-	void sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID);
+	void sendDraftSlotsTo(CreatureObject* player, unsigned int schematicID);
 
-	void sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID);
+	void sendResourceWeightsTo(CreatureObject* player, unsigned int schematicID);
 
-	int calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+	int calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
 	float calculateAssemblyValueModifier(int assemblyResult);
 
 	float getAssemblyPercentage(float value);
 
-	int calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
+	int calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
 
-	int calculateExperimentationSuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+	int calculateExperimentationSuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
 	float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
 
@@ -244,19 +244,19 @@ public:
 
 	DraftSchematic* getSchematic(unsigned int schematicID);
 
-	void sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID);
+	void sendDraftSlotsTo(CreatureObject* player, unsigned int schematicID);
 
-	void sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID);
+	void sendResourceWeightsTo(CreatureObject* player, unsigned int schematicID);
 
-	int calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+	int calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
 	float calculateAssemblyValueModifier(int assemblyResult);
 
 	float getAssemblyPercentage(float value);
 
-	int calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
+	int calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
 
-	int calculateExperimentationSuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+	int calculateExperimentationSuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
 	float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
 
@@ -309,19 +309,19 @@ public:
 
 	DraftSchematic* getSchematic(unsigned int schematicID);
 
-	void sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID);
+	void sendDraftSlotsTo(CreatureObject* player, unsigned int schematicID);
 
-	void sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID);
+	void sendResourceWeightsTo(CreatureObject* player, unsigned int schematicID);
 
-	int calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+	int calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
 	float calculateAssemblyValueModifier(int assemblyResult);
 
 	float getAssemblyPercentage(float value);
 
-	int calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
+	int calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
 
-	int calculateExperimentationSuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness);
+	int calculateExperimentationSuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
 	float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
 

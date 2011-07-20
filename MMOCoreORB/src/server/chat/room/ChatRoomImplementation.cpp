@@ -44,18 +44,17 @@ which carries forward this exception.
 
 #include "ChatRoom.h"
 
-#include "../../zone/objects/player/PlayerCreature.h"
-#include "../../zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/ZoneServer.h"
 
-#include "../../zone/ZoneServer.h"
-
-#include "../../zone/packets/chat/ChatRoomList.h"
-#include "../../zone/packets/chat/ChatOnDestroyRoom.h"
-#include "../../zone/packets/chat/ChatOnLeaveRoom.h"
-#include "../../zone/packets/chat/ChatOnEnteredRoom.h"
+#include "server/zone/packets/chat/ChatRoomList.h"
+#include "server/zone/packets/chat/ChatOnDestroyRoom.h"
+#include "server/zone/packets/chat/ChatOnLeaveRoom.h"
+#include "server/zone/packets/chat/ChatOnEnteredRoom.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-void ChatRoomImplementation::sendTo(PlayerCreature* player) {
+void ChatRoomImplementation::sendTo(CreatureObject* player) {
 	ChatRoomList* crl = new ChatRoomList();
 	crl->addChannel((ChatRoom*) _this);
 
@@ -63,12 +62,12 @@ void ChatRoomImplementation::sendTo(PlayerCreature* player) {
 	player->sendMessage(crl);
 }
 
-void ChatRoomImplementation::sendDestroyTo(PlayerCreature* player) {
+void ChatRoomImplementation::sendDestroyTo(CreatureObject* player) {
 	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getGalaxyName(), roomID);
 	player->sendMessage(msg);
 }
 
-void ChatRoomImplementation::addPlayer(PlayerCreature* player, bool doLock) {
+void ChatRoomImplementation::addPlayer(CreatureObject* player, bool doLock) {
 	Locker locker(_this);
 
 	if (playerList.put(player->getFirstName(), player) == -1) {
@@ -82,7 +81,9 @@ void ChatRoomImplementation::addPlayer(PlayerCreature* player, bool doLock) {
 
 	Locker locker2(player);
 
-	player->addChatRoom((ChatRoom*) _this);
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ghost->addChatRoom((ChatRoom*) _this);
 
 
 	/*ChatOnReceiveRoomInvitation* corri = new ChatOnReceiveRoomInvitation(name);
@@ -91,10 +92,12 @@ void ChatRoomImplementation::addPlayer(PlayerCreature* player, bool doLock) {
 
 }
 
-void ChatRoomImplementation::removePlayer(PlayerCreature* player, bool doLock) {
+void ChatRoomImplementation::removePlayer(CreatureObject* player, bool doLock) {
 	Locker locker(player);
 
-	player->removeChatRoom((ChatRoom*) _this);
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ghost->removeChatRoom((ChatRoom*) _this);
 
 	locker.release();
 
@@ -110,7 +113,7 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 	// Pre: player unlocked
 	Locker locker(_this);
 
-	PlayerCreature* play = playerList.get(player);
+	CreatureObject* play = playerList.get(player);
 	playerList.drop(player);
 
 	locker.release();
@@ -120,7 +123,9 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 
 	Locker locker2(play);
 
-	play->removeChatRoom((ChatRoom*) _this);
+	PlayerObject* ghost = play->getPlayerObject();
+
+	ghost->removeChatRoom((ChatRoom*) _this);
 
 	ChatOnLeaveRoom* msg = new ChatOnLeaveRoom((ChatRoom*) _this, play);
 	play->sendMessage(msg);
@@ -128,7 +133,7 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 
 void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 	for (int i = 0; i < playerList.size(); ++i) {
-		PlayerCreature* player = playerList.get(i);
+		CreatureObject* player = playerList.get(i);
 		player->sendMessage(msg->clone());
 	}
 
@@ -139,11 +144,13 @@ void ChatRoomImplementation::removeAllPlayers() {
 	Locker locker(_this);
 
 	for (int i = 0; i < playerList.size(); i++) {
-		PlayerCreature* player = playerList.get(i);
+		CreatureObject* player = playerList.get(i);
 
 		Locker clocker(player, _this);
 
-		player->removeChatRoom((ChatRoom*) _this);
+		PlayerObject* ghost = player->getPlayerObject();
+
+		ghost->removeChatRoom((ChatRoom*) _this);
 	}
 
 	playerList.removeAll();

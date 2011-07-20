@@ -28,16 +28,16 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -82,9 +82,9 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void useTicket(PlayerCreature* player, TicketObject* ticket);
+	void useTicket(CreatureObject* player, TicketObject* ticket);
 
 	bool isTicketCollector();
 
@@ -125,9 +125,9 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void useTicket(PlayerCreature* player, TicketObject* ticket);
+	void useTicket(CreatureObject* player, TicketObject* ticket);
 
 	bool isTicketCollector();
 
@@ -176,9 +176,9 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void useTicket(PlayerCreature* player, TicketObject* ticket);
+	void useTicket(CreatureObject* player, TicketObject* ticket);
 
 	bool isTicketCollector();
 

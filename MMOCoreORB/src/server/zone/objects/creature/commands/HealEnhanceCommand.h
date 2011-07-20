@@ -176,8 +176,8 @@ public:
 		}
 
 		/*if (patient->isPlayerCreature() && enhancer->isPlayerCreature()) {
-			PlayerCreature* pt = (PlayerCreature*) patient;
-			PlayerCreature* p = (PlayerCreature*) enhancer;
+			CreatureObject* pt = (CreatureObject*) patient;
+			CreatureObject* p = (CreatureObject*) enhancer;
 
 			if (pt->getFaction() != p->getFaction() && !pt->isOnLeave()) {
 				p->sendSystemMessage("healing_response", "unwise_to_help"); //It would be unwise to help such a patient.
@@ -228,8 +228,8 @@ public:
 		if (!target->isPlayerCreature())
 			return;
 
-		PlayerCreature* enhancer = (PlayerCreature*) creature;
-		PlayerCreature* patient = (PlayerCreature*) target;
+		CreatureObject* enhancer = (CreatureObject*) creature;
+		CreatureObject* patient = (CreatureObject*) target;
 
 		String enhancerName = enhancer->getFirstName();
 		String patientName = patient->getFirstName();
@@ -268,7 +268,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		int amount = (int)round((float)power * 0.5f);
 
@@ -310,7 +310,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		PlayerCreature* targetCreature = (PlayerCreature*) object.get();
+		CreatureObject* targetCreature = (CreatureObject*) object.get();
 
 		uint8 attribute = BuffAttribute::UNKNOWN;
 		uint64 objectId = 0;
@@ -374,7 +374,7 @@ public:
 		uint32 amountEnhanced = playerManager->healEnhance(enhancer, patient, attribute, buffPower, enhancePack->getDuration());
 
 		if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
-			playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)targetCreature);
+			playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)targetCreature);
 		}
 
 		sendEnhanceMessage(enhancer, patient, attribute, amountEnhanced);

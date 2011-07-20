@@ -34,7 +34,7 @@ void EntertainerMissionObjectiveImplementation::abort() {
 }
 
 void EntertainerMissionObjectiveImplementation::complete() {
-	PlayerCreature* player = (PlayerCreature*) getPlayerOwner();
+	CreatureObject* player = (CreatureObject*) getPlayerOwner();
 
 	if (player == NULL)
 		return;

@@ -8,7 +8,7 @@
 
 #include "server/zone/objects/building/city/CityHallObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/chat/StringIdChatParameter.h"
 
@@ -16,7 +16,7 @@
  *	CityManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_CREATENEWCITY__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_CHANGECITYNAME__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_VALIDATECITYNAME__STRING_,RPC_HANDLECITYADVANCEMENT__CITYHALLOBJECT_,RPC_EXPANDCITY__CITYHALLOBJECT_,RPC_CONTRACTCITY__CITYHALLOBJECT_,RPC_DESTROYCITY__CITYHALLOBJECT_,RPC_DECLARECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_,RPC_REVOKECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_,RPC_ADDMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_STRING_,RPC_REMOVEMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_LONG_,RPC_CHECKCITIESCAPPEDATRANK__BYTE_,RPC_GETCITIESALLOWED__BYTE_,RPC_ADDCITY__CITYHALLOBJECT_,RPC_GETTOTALCITIES__};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_CREATENEWCITY__CITYHALLOBJECT_CREATUREOBJECT_STRING_,RPC_CHANGECITYNAME__CITYHALLOBJECT_CREATUREOBJECT_STRING_,RPC_VALIDATECITYNAME__STRING_,RPC_HANDLECITYADVANCEMENT__CITYHALLOBJECT_,RPC_EXPANDCITY__CITYHALLOBJECT_,RPC_CONTRACTCITY__CITYHALLOBJECT_,RPC_DESTROYCITY__CITYHALLOBJECT_,RPC_DECLARECITIZENSHIP__CITYHALLOBJECT_CREATUREOBJECT_BOOL_,RPC_REVOKECITIZENSHIP__CITYHALLOBJECT_CREATUREOBJECT_BOOL_,RPC_ADDMILITIAMEMBER__CITYHALLOBJECT_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYHALLOBJECT_CREATUREOBJECT_LONG_,RPC_CHECKCITIESCAPPEDATRANK__BYTE_,RPC_GETCITIESALLOWED__BYTE_,RPC_ADDCITY__CITYHALLOBJECT_,RPC_GETTOTALCITIES__};
 
 CityManager::CityManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zne);
@@ -44,13 +44,13 @@ void CityManager::loadLuaConfig() {
 		_implementation->loadLuaConfig();
 }
 
-void CityManager::createNewCity(CityHallObject* city, PlayerCreature* player, const String& name) {
+void CityManager::createNewCity(CityHallObject* city, CreatureObject* player, const String& name) {
 	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATENEWCITY__CITYHALLOBJECT_PLAYERCREATURE_STRING_);
+		DistributedMethod method(this, RPC_CREATENEWCITY__CITYHALLOBJECT_CREATUREOBJECT_STRING_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
@@ -60,13 +60,13 @@ void CityManager::createNewCity(CityHallObject* city, PlayerCreature* player, co
 		_implementation->createNewCity(city, player, name);
 }
 
-void CityManager::changeCityName(CityHallObject* city, PlayerCreature* player, const String& name) {
+void CityManager::changeCityName(CityHallObject* city, CreatureObject* player, const String& name) {
 	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHANGECITYNAME__CITYHALLOBJECT_PLAYERCREATURE_STRING_);
+		DistributedMethod method(this, RPC_CHANGECITYNAME__CITYHALLOBJECT_CREATUREOBJECT_STRING_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
@@ -164,13 +164,13 @@ void CityManager::destroyCity(CityHallObject* city) {
 		_implementation->destroyCity(city);
 }
 
-void CityManager::declareCitizenship(CityHallObject* city, PlayerCreature* player, bool sendMail) {
+void CityManager::declareCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail) {
 	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_DECLARECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_DECLARECITIZENSHIP__CITYHALLOBJECT_CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(sendMail);
@@ -180,13 +180,13 @@ void CityManager::declareCitizenship(CityHallObject* city, PlayerCreature* playe
 		_implementation->declareCitizenship(city, player, sendMail);
 }
 
-void CityManager::revokeCitizenship(CityHallObject* city, PlayerCreature* player, bool sendMail) {
+void CityManager::revokeCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail) {
 	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REVOKECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_REVOKECITIZENSHIP__CITYHALLOBJECT_CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(sendMail);
@@ -196,13 +196,13 @@ void CityManager::revokeCitizenship(CityHallObject* city, PlayerCreature* player
 		_implementation->revokeCitizenship(city, player, sendMail);
 }
 
-void CityManager::addMilitiaMember(CityHallObject* city, PlayerCreature* player, const String& citizenName) {
+void CityManager::addMilitiaMember(CityHallObject* city, CreatureObject* player, const String& citizenName) {
 	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_STRING_);
+		DistributedMethod method(this, RPC_ADDMILITIAMEMBER__CITYHALLOBJECT_CREATUREOBJECT_STRING_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(citizenName);
@@ -212,13 +212,13 @@ void CityManager::addMilitiaMember(CityHallObject* city, PlayerCreature* player,
 		_implementation->addMilitiaMember(city, player, citizenName);
 }
 
-void CityManager::removeMilitiaMember(CityHallObject* city, PlayerCreature* player, unsigned long long playerID) {
+void CityManager::removeMilitiaMember(CityHallObject* city, CreatureObject* player, unsigned long long playerID) {
 	CityManagerImplementation* _implementation = (CityManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_LONG_);
+		DistributedMethod method(this, RPC_REMOVEMILITIAMEMBER__CITYHALLOBJECT_CREATUREOBJECT_LONG_);
 		method.addObjectParameter(city);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(playerID);
@@ -482,11 +482,11 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_LOADLUACONFIG__:
 		loadLuaConfig();
 		break;
-	case RPC_CREATENEWCITY__CITYHALLOBJECT_PLAYERCREATURE_STRING_:
-		createNewCity((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_createNewCity__CityHallObject_PlayerCreature_String_));
+	case RPC_CREATENEWCITY__CITYHALLOBJECT_CREATUREOBJECT_STRING_:
+		createNewCity((CityHallObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_createNewCity__CityHallObject_CreatureObject_String_));
 		break;
-	case RPC_CHANGECITYNAME__CITYHALLOBJECT_PLAYERCREATURE_STRING_:
-		changeCityName((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_changeCityName__CityHallObject_PlayerCreature_String_));
+	case RPC_CHANGECITYNAME__CITYHALLOBJECT_CREATUREOBJECT_STRING_:
+		changeCityName((CityHallObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_changeCityName__CityHallObject_CreatureObject_String_));
 		break;
 	case RPC_VALIDATECITYNAME__STRING_:
 		resp->insertBoolean(validateCityName(inv->getAsciiParameter(_param0_validateCityName__String_)));
@@ -503,17 +503,17 @@ Packet* CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_DESTROYCITY__CITYHALLOBJECT_:
 		destroyCity((CityHallObject*) inv->getObjectParameter());
 		break;
-	case RPC_DECLARECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_:
-		declareCitizenship((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_DECLARECITIZENSHIP__CITYHALLOBJECT_CREATUREOBJECT_BOOL_:
+		declareCitizenship((CityHallObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_REVOKECITIZENSHIP__CITYHALLOBJECT_PLAYERCREATURE_BOOL_:
-		revokeCitizenship((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_REVOKECITIZENSHIP__CITYHALLOBJECT_CREATUREOBJECT_BOOL_:
+		revokeCitizenship((CityHallObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_ADDMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_STRING_:
-		addMilitiaMember((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_addMilitiaMember__CityHallObject_PlayerCreature_String_));
+	case RPC_ADDMILITIAMEMBER__CITYHALLOBJECT_CREATUREOBJECT_STRING_:
+		addMilitiaMember((CityHallObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_addMilitiaMember__CityHallObject_CreatureObject_String_));
 		break;
-	case RPC_REMOVEMILITIAMEMBER__CITYHALLOBJECT_PLAYERCREATURE_LONG_:
-		removeMilitiaMember((CityHallObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+	case RPC_REMOVEMILITIAMEMBER__CITYHALLOBJECT_CREATUREOBJECT_LONG_:
+		removeMilitiaMember((CityHallObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case RPC_CHECKCITIESCAPPEDATRANK__BYTE_:
 		resp->insertBoolean(checkCitiesCappedAtRank(inv->getByteParameter()));
@@ -538,11 +538,11 @@ void CityManagerAdapter::loadLuaConfig() {
 	((CityManagerImplementation*) impl)->loadLuaConfig();
 }
 
-void CityManagerAdapter::createNewCity(CityHallObject* city, PlayerCreature* player, const String& name) {
+void CityManagerAdapter::createNewCity(CityHallObject* city, CreatureObject* player, const String& name) {
 	((CityManagerImplementation*) impl)->createNewCity(city, player, name);
 }
 
-void CityManagerAdapter::changeCityName(CityHallObject* city, PlayerCreature* player, const String& name) {
+void CityManagerAdapter::changeCityName(CityHallObject* city, CreatureObject* player, const String& name) {
 	((CityManagerImplementation*) impl)->changeCityName(city, player, name);
 }
 
@@ -566,19 +566,19 @@ void CityManagerAdapter::destroyCity(CityHallObject* city) {
 	((CityManagerImplementation*) impl)->destroyCity(city);
 }
 
-void CityManagerAdapter::declareCitizenship(CityHallObject* city, PlayerCreature* player, bool sendMail) {
+void CityManagerAdapter::declareCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail) {
 	((CityManagerImplementation*) impl)->declareCitizenship(city, player, sendMail);
 }
 
-void CityManagerAdapter::revokeCitizenship(CityHallObject* city, PlayerCreature* player, bool sendMail) {
+void CityManagerAdapter::revokeCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail) {
 	((CityManagerImplementation*) impl)->revokeCitizenship(city, player, sendMail);
 }
 
-void CityManagerAdapter::addMilitiaMember(CityHallObject* city, PlayerCreature* player, const String& citizenName) {
+void CityManagerAdapter::addMilitiaMember(CityHallObject* city, CreatureObject* player, const String& citizenName) {
 	((CityManagerImplementation*) impl)->addMilitiaMember(city, player, citizenName);
 }
 
-void CityManagerAdapter::removeMilitiaMember(CityHallObject* city, PlayerCreature* player, unsigned long long playerID) {
+void CityManagerAdapter::removeMilitiaMember(CityHallObject* city, CreatureObject* player, unsigned long long playerID) {
 	((CityManagerImplementation*) impl)->removeMilitiaMember(city, player, playerID);
 }
 

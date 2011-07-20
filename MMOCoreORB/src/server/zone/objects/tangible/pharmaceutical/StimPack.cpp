@@ -14,7 +14,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -24,7 +24,7 @@
  *	StimPackStub
  */
 
-enum {RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETEFFECTIVENESS__,RPC_ISSTIMPACK__};
+enum {RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_GETEFFECTIVENESS__,RPC_ISSTIMPACK__};
 
 StimPack::StimPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	StimPackImplementation* _implementation = new StimPackImplementation();
@@ -73,13 +73,13 @@ unsigned int StimPack::calculatePower(CreatureObject* healer, CreatureObject* pa
 		return _implementation->calculatePower(healer, patient, applyBattleFatigue);
 }
 
-int StimPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StimPack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	StimPackImplementation* _implementation = (StimPackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -88,7 +88,7 @@ int StimPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void StimPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void StimPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	StimPackImplementation* _implementation = (StimPackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -307,7 +307,7 @@ unsigned int StimPackImplementation::calculatePower(CreatureObject* healer, Crea
 	return (100 + modSkill) / 100 * power;
 }
 
-int StimPackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StimPackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			return 1;
 	return 1;
@@ -329,7 +329,7 @@ int StimPackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte 
 }
 }
 
-void StimPackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void StimPackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
@@ -364,8 +364,8 @@ Packet* StimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
 		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_GETEFFECTIVENESS__:
 		resp->insertFloat(getEffectiveness());
@@ -384,7 +384,7 @@ unsigned int StimPackAdapter::calculatePower(CreatureObject* healer, CreatureObj
 	return ((StimPackImplementation*) impl)->calculatePower(healer, patient, applyBattleFatigue);
 }
 
-int StimPackAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StimPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((StimPackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

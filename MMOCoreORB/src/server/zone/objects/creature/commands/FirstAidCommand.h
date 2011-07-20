@@ -139,7 +139,7 @@ public:
 			if (creatureTarget != creature) {
 				if (creatureTarget->isPlayerCreature()) {
 					StringBuffer message;
-					message << "You apply first aid to " << ((PlayerCreature*)creatureTarget)->getFirstName() << ".";
+					message << "You apply first aid to " << ((CreatureObject*)creatureTarget)->getFirstName() << ".";
 					creature->sendSystemMessage(message.toString());
 				}
 			} else {

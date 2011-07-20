@@ -6,7 +6,7 @@
  */
 
 #include "ActiveArea.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "events/ActiveAreaEvent.h"
 #include "server/zone/Zone.h"
 

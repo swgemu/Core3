@@ -67,7 +67,9 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
+
+		PlayerObject* ghost = player->getPlayerObject();
 
 		String targetName = arguments.toString();
 
@@ -78,7 +80,7 @@ public:
 			return GENERALERROR;
 		}
 
-		PlayerCreature* targetPlayer = (PlayerCreature*) obj.get();
+		CreatureObject* targetPlayer = (CreatureObject*) obj.get();
 
 		Locker _lock(targetPlayer, player);
 
@@ -146,8 +148,8 @@ public:
 		structureObject->setOwnerObjectID(targetPlayer->getObjectID());
 		//TODO: Do we need to manually update the permission lists too?
 
-		if (player->getDeclaredResidence() == structureObject)
-			player->setDeclaredResidence(NULL);
+		if (ghost->getDeclaredResidence() == structureObject)
+			ghost->setDeclaredResidence(NULL);
 
 		//Update the cell permissions if the structure is private and a building.
 		if (!structureObject->isPublicStructure() && structureObject->isBuildingObject()) {

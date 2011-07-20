@@ -14,16 +14,16 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -98,7 +98,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void decreaseContainerReferenceCount();
 
@@ -255,7 +255,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void decreaseContainerReferenceCount();
 

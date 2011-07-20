@@ -28,20 +28,6 @@ using namespace server::zone::objects::tangible;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
-
-class PlayerCreature;
-
-} // namespace player
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::player;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -105,6 +91,8 @@ using namespace server::zone::templates;
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -122,7 +110,7 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	bool checkInRangeGarage();
 
@@ -144,13 +132,13 @@ public:
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void repairVehicle(PlayerCreature* player);
+	void repairVehicle(CreatureObject* player);
 
-	int calculateRepairCost(PlayerCreature* player);
+	int calculateRepairCost(CreatureObject* player);
 
-	void sendRepairConfirmTo(PlayerCreature* player);
+	void sendRepairConfirmTo(CreatureObject* player);
 
 	bool isVehicleObject();
 
@@ -189,7 +177,7 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	bool checkInRangeGarage();
 
@@ -211,13 +199,13 @@ public:
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void repairVehicle(PlayerCreature* player);
+	void repairVehicle(CreatureObject* player);
 
-	int calculateRepairCost(PlayerCreature* player);
+	int calculateRepairCost(CreatureObject* player);
 
-	void sendRepairConfirmTo(PlayerCreature* player);
+	void sendRepairConfirmTo(CreatureObject* player);
 
 	bool isVehicleObject();
 
@@ -284,13 +272,13 @@ public:
 
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void repairVehicle(PlayerCreature* player);
+	void repairVehicle(CreatureObject* player);
 
-	int calculateRepairCost(PlayerCreature* player);
+	int calculateRepairCost(CreatureObject* player);
 
-	void sendRepairConfirmTo(PlayerCreature* player);
+	void sendRepairConfirmTo(CreatureObject* player);
 
 	bool isVehicleObject();
 

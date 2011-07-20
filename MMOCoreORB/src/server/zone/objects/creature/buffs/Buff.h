@@ -14,16 +14,16 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -85,9 +85,9 @@ public:
 
 	void init();
 
-	void sendTo(PlayerCreature* player);
+	void sendTo(CreatureObject* player);
 
-	void sendDestroyTo(PlayerCreature* player);
+	void sendDestroyTo(CreatureObject* player);
 
 	void activate(bool applyModifiers);
 
@@ -222,9 +222,9 @@ public:
 
 	void init();
 
-	virtual void sendTo(PlayerCreature* player);
+	virtual void sendTo(CreatureObject* player);
 
-	virtual void sendDestroyTo(PlayerCreature* player);
+	virtual void sendDestroyTo(CreatureObject* player);
 
 	virtual void activate(bool applyModifiers);
 
@@ -337,9 +337,9 @@ public:
 
 	void init();
 
-	void sendTo(PlayerCreature* player);
+	void sendTo(CreatureObject* player);
 
-	void sendDestroyTo(PlayerCreature* player);
+	void sendDestroyTo(CreatureObject* player);
 
 	void activate(bool applyModifiers);
 

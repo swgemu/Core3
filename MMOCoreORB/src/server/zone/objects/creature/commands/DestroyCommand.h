@@ -68,7 +68,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		if (player->getPlayerObject()->isPrivileged())
 			return INSUFFICIENTPERMISSION;
@@ -90,7 +90,7 @@ public:
 		confirmbox->setCancelButton(true, "@no");
 		confirmbox->setOkButton(true, "@yes");
 
-		player->addSuiBox(confirmbox);
+		player->getPlayerObject()->addSuiBox(confirmbox);
 		player->sendMessage(confirmbox->generateMessage());
 
 		return SUCCESS;

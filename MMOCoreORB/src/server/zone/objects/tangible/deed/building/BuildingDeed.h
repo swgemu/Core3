@@ -38,16 +38,16 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -77,11 +77,11 @@ class BuildingDeed : public Deed {
 public:
 	BuildingDeed();
 
-	void fillAttributeList(AttributeListMessage* alm, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void setSurplusMaintenance(unsigned int surplusMaint);
 
@@ -124,11 +124,11 @@ public:
 
 	BuildingDeedImplementation(DummyConstructorParameter* param);
 
-	void fillAttributeList(AttributeListMessage* alm, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void setSurplusMaintenance(unsigned int surplusMaint);
 
@@ -181,7 +181,7 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void setSurplusMaintenance(unsigned int surplusMaint);
 

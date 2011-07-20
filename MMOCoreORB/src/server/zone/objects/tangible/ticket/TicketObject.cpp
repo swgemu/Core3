@@ -10,7 +10,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
@@ -18,7 +18,7 @@
  *	TicketObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETDEPARTUREPLANET__STRING_,RPC_SETDEPARTUREPOINT__STRING_,RPC_SETARRIVALPLANET__STRING_,RPC_SETARRIVALPOINT__STRING_,RPC_GETDEPARTUREPLANET__,RPC_GETDEPARTUREPOINT__,RPC_GETARRIVALPLANET__,RPC_GETARRIVALPOINT__,RPC_ISTICKETOBJECT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SETDEPARTUREPLANET__STRING_,RPC_SETDEPARTUREPOINT__STRING_,RPC_SETARRIVALPLANET__STRING_,RPC_SETARRIVALPOINT__STRING_,RPC_GETDEPARTUREPLANET__,RPC_GETDEPARTUREPOINT__,RPC_GETARRIVALPLANET__,RPC_GETARRIVALPOINT__,RPC_ISTICKETOBJECT__};
 
 TicketObject::TicketObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	TicketObjectImplementation* _implementation = new TicketObjectImplementation();
@@ -46,7 +46,7 @@ void TicketObject::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void TicketObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void TicketObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -55,13 +55,13 @@ void TicketObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* 
 		_implementation->fillAttributeList(msg, object);
 }
 
-int TicketObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int TicketObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	TicketObjectImplementation* _implementation = (TicketObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -443,8 +443,8 @@ Packet* TicketObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_SETDEPARTUREPLANET__STRING_:
 		setDeparturePlanet(inv->getAsciiParameter(_param0_setDeparturePlanet__String_));
@@ -484,7 +484,7 @@ void TicketObjectAdapter::initializeTransientMembers() {
 	((TicketObjectImplementation*) impl)->initializeTransientMembers();
 }
 
-int TicketObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int TicketObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((TicketObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

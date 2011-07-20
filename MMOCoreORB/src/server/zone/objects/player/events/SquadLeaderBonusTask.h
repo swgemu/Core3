@@ -9,10 +9,10 @@
 #define SQUADLEADERBONUSTASK_H_
 
 class SquadLeaderBonusTask : public Task {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 
 public:
-	SquadLeaderBonusTask(PlayerCreature* player) {
+	SquadLeaderBonusTask(CreatureObject* player) {
 		this->player = player;
 	}
 

@@ -44,16 +44,16 @@ using namespace server::zone::objects::tangible::terminal::guild;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/guild/GuildMemberList.h"
 
@@ -100,7 +100,7 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
-	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf = false);
+	void broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf = false);
 
 	void addMember(unsigned long long playerID);
 
@@ -148,7 +148,7 @@ public:
 
 	bool isGuildObject();
 
-	bool isGuildLeader(PlayerCreature* player);
+	bool isGuildLeader(CreatureObject* player);
 
 	bool hasMailPermission(unsigned long long playerID);
 
@@ -237,7 +237,7 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
-	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf = false);
+	void broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf = false);
 
 	void addMember(unsigned long long playerID);
 
@@ -285,7 +285,7 @@ public:
 
 	bool isGuildObject();
 
-	bool isGuildLeader(PlayerCreature* player);
+	bool isGuildLeader(CreatureObject* player);
 
 	bool hasMailPermission(unsigned long long playerID);
 
@@ -348,7 +348,7 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
-	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf);
+	void broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf);
 
 	void addMember(unsigned long long playerID);
 
@@ -392,7 +392,7 @@ public:
 
 	bool isGuildObject();
 
-	bool isGuildLeader(PlayerCreature* player);
+	bool isGuildLeader(CreatureObject* player);
 
 	bool hasMailPermission(unsigned long long playerID);
 

@@ -51,7 +51,7 @@ import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.player.PlayerObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
@@ -70,11 +70,11 @@ class SlicingTool extends TangibleObject {
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
 	 * @post { this object is locked, player is locked }
-	 * @param player PlayerCreature that selected the option
+	 * @param player CreatureObject that selected the option
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
@@ -93,7 +93,7 @@ class SlicingTool extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public native void updateCraftingValues(ManufactureSchematic schematic);
 

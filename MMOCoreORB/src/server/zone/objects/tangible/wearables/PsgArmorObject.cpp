@@ -53,7 +53,7 @@ bool PsgArmorObject::isPsgArmorObject() {
 		return _implementation->isPsgArmorObject();
 }
 
-void PsgArmorObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void PsgArmorObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	PsgArmorObjectImplementation* _implementation = (PsgArmorObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

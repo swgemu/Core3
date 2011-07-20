@@ -43,7 +43,7 @@ which carries forward this exception.
 */
 
 #include "ManufactureSchematic.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
@@ -59,7 +59,7 @@ which carries forward this exception.
 #include "ingredientslots/ResourceSlot.h"
 #include "ingredientslots/ComponentSlot.h"
 
-void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
 	alm->insertAttribute("data_volume", dataSize);
 
@@ -125,7 +125,7 @@ void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 	if (!player->isPlayerCreature())
 		return;
 
-	PlayerCreature* playerCreature = (PlayerCreature*) player;
+	CreatureObject* playerCreature = (CreatureObject*) player;
 
 	ManufactureSchematicObjectMessage3* msco3;
 
@@ -178,7 +178,7 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 	if(!player->isPlayerCreature())
 		return;
 
-	ManagedReference<PlayerCreature* > playerCreature = (PlayerCreature*) player;
+	ManagedReference<CreatureObject* > playerCreature = (CreatureObject*) player;
 
 	if(parent != NULL && parent->isCraftingTool()) {
 

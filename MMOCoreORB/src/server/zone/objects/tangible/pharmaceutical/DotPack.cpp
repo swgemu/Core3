@@ -14,7 +14,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -24,7 +24,7 @@
  *	DotPackStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_,RPC_ISPOISONDELIVERYUNIT__,RPC_ISDISEASEDELIVERYUNIT__,RPC_GETEFFECTIVENESS__,RPC_GETRANGE__,RPC_GETAREA__,RPC_GETRANGEMOD__,RPC_GETPOTENCY__,RPC_GETDURATION__,RPC_ISAREA__,RPC_GETPOOL__,RPC_GETDOTTYPE__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_,RPC_ISPOISONDELIVERYUNIT__,RPC_ISDISEASEDELIVERYUNIT__,RPC_GETEFFECTIVENESS__,RPC_GETRANGE__,RPC_GETAREA__,RPC_GETRANGEMOD__,RPC_GETPOTENCY__,RPC_GETDURATION__,RPC_ISAREA__,RPC_GETPOOL__,RPC_GETDOTTYPE__};
 
 DotPack::DotPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	DotPackImplementation* _implementation = new DotPackImplementation();
@@ -57,7 +57,7 @@ void DotPack::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void DotPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void DotPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -66,13 +66,13 @@ void DotPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* objec
 		_implementation->fillAttributeList(msg, object);
 }
 
-int DotPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int DotPack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	DotPackImplementation* _implementation = (DotPackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -550,7 +550,7 @@ void DotPackImplementation::loadTemplateData(SharedObjectTemplate* templateData)
 	commandToExecute = stimPackTemplate->getCommandToExecute();
 }
 
-void DotPackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void DotPackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		msg.insertAttribute("examine_dot_attribute", CreatureAttribute.getName(pool, true));
@@ -589,7 +589,7 @@ void DotPackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerC
 }
 }
 
-int DotPackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int DotPackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			return 1;
 	return 1;
@@ -686,8 +686,8 @@ Packet* DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_:
 		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
@@ -732,7 +732,7 @@ Packet* DotPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-int DotPackAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int DotPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((DotPackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

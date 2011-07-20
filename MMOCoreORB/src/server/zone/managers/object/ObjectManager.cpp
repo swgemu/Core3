@@ -103,7 +103,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<InformantCreature>(SceneObject::INFORMANTCREATURE);
 	objectFactory.registerObject<VendorCreature>(SceneObject::VENDORCREATURE);
 
-	objectFactory.registerObject<PlayerCreature>(SceneObject::PLAYERCREATURE);
+	objectFactory.registerObject<CreatureObject>(SceneObject::PLAYERCREATURE);
 
 	objectFactory.registerObject<IntangibleObject>(SceneObject::INTANGIBLE);
 

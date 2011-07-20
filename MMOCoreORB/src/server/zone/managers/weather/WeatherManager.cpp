@@ -6,7 +6,9 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/managers/weather/events/WeatherChangeEvent.h"
 
@@ -16,7 +18,7 @@
  *	WeatherManagerStub
  */
 
-enum {RPC_INITIALIZE__,RPC_GENERATENEWWEATHER__,RPC_WEATHERTRANSITION__,RPC_SENDWEATHERPACKET__PLAYERCREATURE_,RPC_SANDSTORMTICK__,RPC_ENABLEWEATHER__PLAYERCREATURE_,RPC_DISABLEWEATHER__PLAYERCREATURE_,RPC_CHANGEWEATHER__PLAYERCREATURE_INT_,RPC_WEATHERINFO__PLAYERCREATURE_,RPC_SETWEATHERID__INT_,RPC_GETWEATHERID__,RPC_ISWEATHERENABLED__,RPC_SETWEATHERENABLED__BOOL_,RPC_SETWINDX__FLOAT_,RPC_SETWINDY__FLOAT_,RPC_GETWINDX__,RPC_GETWINDY__};
+enum {RPC_INITIALIZE__,RPC_GENERATENEWWEATHER__,RPC_WEATHERTRANSITION__,RPC_SENDWEATHERPACKET__CREATUREOBJECT_,RPC_SANDSTORMTICK__,RPC_ENABLEWEATHER__CREATUREOBJECT_,RPC_DISABLEWEATHER__CREATUREOBJECT_,RPC_CHANGEWEATHER__CREATUREOBJECT_INT_,RPC_WEATHERINFO__CREATUREOBJECT_,RPC_SETWEATHERID__INT_,RPC_GETWEATHERID__,RPC_ISWEATHERENABLED__,RPC_SETWEATHERENABLED__BOOL_,RPC_SETWINDX__FLOAT_,RPC_SETWINDY__FLOAT_,RPC_GETWINDX__,RPC_GETWINDY__};
 
 WeatherManager::WeatherManager(Zone* planet) : ManagedService(DummyConstructorParameter::instance()) {
 	WeatherManagerImplementation* _implementation = new WeatherManagerImplementation(planet);
@@ -70,13 +72,13 @@ void WeatherManager::weatherTransition() {
 		_implementation->weatherTransition();
 }
 
-void WeatherManager::sendWeatherPacket(PlayerCreature* player) {
+void WeatherManager::sendWeatherPacket(CreatureObject* player) {
 	WeatherManagerImplementation* _implementation = (WeatherManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDWEATHERPACKET__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDWEATHERPACKET__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -97,13 +99,13 @@ void WeatherManager::sandstormTick() {
 		_implementation->sandstormTick();
 }
 
-void WeatherManager::enableWeather(PlayerCreature* player) {
+void WeatherManager::enableWeather(CreatureObject* player) {
 	WeatherManagerImplementation* _implementation = (WeatherManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ENABLEWEATHER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ENABLEWEATHER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -111,13 +113,13 @@ void WeatherManager::enableWeather(PlayerCreature* player) {
 		_implementation->enableWeather(player);
 }
 
-void WeatherManager::disableWeather(PlayerCreature* player) {
+void WeatherManager::disableWeather(CreatureObject* player) {
 	WeatherManagerImplementation* _implementation = (WeatherManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_DISABLEWEATHER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_DISABLEWEATHER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -125,13 +127,13 @@ void WeatherManager::disableWeather(PlayerCreature* player) {
 		_implementation->disableWeather(player);
 }
 
-void WeatherManager::changeWeather(PlayerCreature* player, int newWeather) {
+void WeatherManager::changeWeather(CreatureObject* player, int newWeather) {
 	WeatherManagerImplementation* _implementation = (WeatherManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHANGEWEATHER__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_CHANGEWEATHER__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(newWeather);
 
@@ -140,13 +142,13 @@ void WeatherManager::changeWeather(PlayerCreature* player, int newWeather) {
 		_implementation->changeWeather(player, newWeather);
 }
 
-void WeatherManager::weatherInfo(PlayerCreature* player) {
+void WeatherManager::weatherInfo(CreatureObject* player) {
 	WeatherManagerImplementation* _implementation = (WeatherManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_WEATHERINFO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_WEATHERINFO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -738,23 +740,23 @@ Packet* WeatherManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_WEATHERTRANSITION__:
 		weatherTransition();
 		break;
-	case RPC_SENDWEATHERPACKET__PLAYERCREATURE_:
-		sendWeatherPacket((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDWEATHERPACKET__CREATUREOBJECT_:
+		sendWeatherPacket((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SANDSTORMTICK__:
 		sandstormTick();
 		break;
-	case RPC_ENABLEWEATHER__PLAYERCREATURE_:
-		enableWeather((PlayerCreature*) inv->getObjectParameter());
+	case RPC_ENABLEWEATHER__CREATUREOBJECT_:
+		enableWeather((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_DISABLEWEATHER__PLAYERCREATURE_:
-		disableWeather((PlayerCreature*) inv->getObjectParameter());
+	case RPC_DISABLEWEATHER__CREATUREOBJECT_:
+		disableWeather((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_CHANGEWEATHER__PLAYERCREATURE_INT_:
-		changeWeather((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_CHANGEWEATHER__CREATUREOBJECT_INT_:
+		changeWeather((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_WEATHERINFO__PLAYERCREATURE_:
-		weatherInfo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_WEATHERINFO__CREATUREOBJECT_:
+		weatherInfo((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SETWEATHERID__INT_:
 		setWeatherID(inv->getUnsignedIntParameter());
@@ -799,7 +801,7 @@ void WeatherManagerAdapter::weatherTransition() {
 	((WeatherManagerImplementation*) impl)->weatherTransition();
 }
 
-void WeatherManagerAdapter::sendWeatherPacket(PlayerCreature* player) {
+void WeatherManagerAdapter::sendWeatherPacket(CreatureObject* player) {
 	((WeatherManagerImplementation*) impl)->sendWeatherPacket(player);
 }
 
@@ -807,19 +809,19 @@ void WeatherManagerAdapter::sandstormTick() {
 	((WeatherManagerImplementation*) impl)->sandstormTick();
 }
 
-void WeatherManagerAdapter::enableWeather(PlayerCreature* player) {
+void WeatherManagerAdapter::enableWeather(CreatureObject* player) {
 	((WeatherManagerImplementation*) impl)->enableWeather(player);
 }
 
-void WeatherManagerAdapter::disableWeather(PlayerCreature* player) {
+void WeatherManagerAdapter::disableWeather(CreatureObject* player) {
 	((WeatherManagerImplementation*) impl)->disableWeather(player);
 }
 
-void WeatherManagerAdapter::changeWeather(PlayerCreature* player, int newWeather) {
+void WeatherManagerAdapter::changeWeather(CreatureObject* player, int newWeather) {
 	((WeatherManagerImplementation*) impl)->changeWeather(player, newWeather);
 }
 
-void WeatherManagerAdapter::weatherInfo(PlayerCreature* player) {
+void WeatherManagerAdapter::weatherInfo(CreatureObject* player) {
 	((WeatherManagerImplementation*) impl)->weatherInfo(player);
 }
 

@@ -18,7 +18,7 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
 		uint64 playerID = player->getObjectID();
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
@@ -70,7 +70,7 @@ public:
 		}
 
 		//Resend the create abbrev box.
-		player->addSuiBox(suiBox);
+		player->getPlayerObject()->addSuiBox(suiBox);
 		player->sendMessage(suiBox->generateMessage());
 	}
 };

@@ -65,10 +65,12 @@ public:
 
 		if (creature->isPlayerCreature()) {
 
-			ManagedReference<PlayerCreature*> playerCreature =
-					(PlayerCreature*) creature;
+			ManagedReference<CreatureObject*> playerCreature =
+					(CreatureObject*) creature;
 
-			ManagedReference<SurveyTool* > surveyTool = playerCreature->getSurveyTool();
+			PlayerObject* ghost = playerCreature->getPlayerObject();
+
+			ManagedReference<SurveyTool* > surveyTool = ghost->getSurveyTool();
 
 			if(surveyTool == NULL && playerCreature->getZone() != NULL)
 				//You must use a survey tool once from the Inventory before you can do this.

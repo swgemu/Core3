@@ -10,7 +10,7 @@
 #include "server/zone/packets/factory/FactoryCrateObjectMessage3.h"
 #include "server/zone/packets/factory/FactoryCrateObjectMessage6.h"
 #include "server/zone/packets/factory/FactoryCrateObjectDeltaMessage3.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
@@ -44,7 +44,7 @@ void FactoryCrateImplementation::sendBaselinesTo(SceneObject* player) {
 
 }
 
-void FactoryCrateImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void FactoryCrateImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
 	alm->insertAttribute("volume", volume);
 
@@ -78,11 +78,11 @@ void FactoryCrateImplementation::fillAttributeList(AttributeListMessage* alm, Pl
 		prototype->fillAttributeList(alm, object);
 }
 
-void FactoryCrateImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void FactoryCrateImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 }
 
-int FactoryCrateImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FactoryCrateImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 
 	switch (selectedID) {
 

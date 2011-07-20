@@ -50,7 +50,7 @@ import server.zone.Zone;
 import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 include server.zone.templates.tangible.FireworkObjectTemplate;
 include server.zone.templates.SharedObjectTemplate;
@@ -76,7 +76,7 @@ class FireworkObject extends TangibleObject {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 		
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
@@ -101,6 +101,6 @@ class FireworkObject extends TangibleObject {
 		fireworkObject = templ.getFireworkObject();
 	}
 	
-	public native void launch(PlayerCreature player);
+	public native void launch(CreatureObject player);
 	 
 }

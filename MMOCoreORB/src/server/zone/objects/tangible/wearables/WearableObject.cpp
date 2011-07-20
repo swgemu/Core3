@@ -10,13 +10,15 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	WearableObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_APPLYATTACHMENT__PLAYERCREATURE_ATTACHMENT_,RPC_SETATTACHMENTMODS__PLAYERCREATURE_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_SETMAXSOCKETS__INT_,};
 
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WearableObjectImplementation* _implementation = new WearableObjectImplementation();
@@ -44,7 +46,7 @@ void WearableObject::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void WearableObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void WearableObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -67,13 +69,13 @@ void WearableObject::updateCraftingValues(ManufactureSchematic* schematic) {
 		_implementation->updateCraftingValues(schematic);
 }
 
-void WearableObject::applyAttachment(PlayerCreature* player, Attachment* attachment) {
+void WearableObject::applyAttachment(CreatureObject* player, Attachment* attachment) {
 	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_APPLYATTACHMENT__PLAYERCREATURE_ATTACHMENT_);
+		DistributedMethod method(this, RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(attachment);
 
@@ -82,13 +84,13 @@ void WearableObject::applyAttachment(PlayerCreature* player, Attachment* attachm
 		_implementation->applyAttachment(player, attachment);
 }
 
-void WearableObject::setAttachmentMods(PlayerCreature* player, bool remove) {
+void WearableObject::setAttachmentMods(CreatureObject* player, bool remove) {
 	WearableObjectImplementation* _implementation = (WearableObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETATTACHMENTMODS__PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(remove);
 
@@ -391,11 +393,11 @@ Packet* WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
 		break;
-	case RPC_APPLYATTACHMENT__PLAYERCREATURE_ATTACHMENT_:
-		applyAttachment((PlayerCreature*) inv->getObjectParameter(), (Attachment*) inv->getObjectParameter());
+	case RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_:
+		applyAttachment((CreatureObject*) inv->getObjectParameter(), (Attachment*) inv->getObjectParameter());
 		break;
-	case RPC_SETATTACHMENTMODS__PLAYERCREATURE_BOOL_:
-		setAttachmentMods((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_:
+		setAttachmentMods((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_ISWEARABLEOBJECT__:
 		resp->insertBoolean(isWearableObject());
@@ -430,11 +432,11 @@ void WearableObjectAdapter::updateCraftingValues(ManufactureSchematic* schematic
 	((WearableObjectImplementation*) impl)->updateCraftingValues(schematic);
 }
 
-void WearableObjectAdapter::applyAttachment(PlayerCreature* player, Attachment* attachment) {
+void WearableObjectAdapter::applyAttachment(CreatureObject* player, Attachment* attachment) {
 	((WearableObjectImplementation*) impl)->applyAttachment(player, attachment);
 }
 
-void WearableObjectAdapter::setAttachmentMods(PlayerCreature* player, bool remove) {
+void WearableObjectAdapter::setAttachmentMods(CreatureObject* player, bool remove) {
 	((WearableObjectImplementation*) impl)->setAttachmentMods(player, remove);
 }
 

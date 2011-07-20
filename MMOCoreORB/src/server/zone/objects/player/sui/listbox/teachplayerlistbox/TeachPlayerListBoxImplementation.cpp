@@ -7,7 +7,7 @@
 
 #include "TeachPlayerListBox.h"
 #include "server/zone/objects/creature/professions/SkillBox.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/group/GroupObject.h"
@@ -20,7 +20,7 @@ void TeachPlayerListBoxImplementation::init() {
 }
 
 
-bool TeachPlayerListBoxImplementation::generateSkillList(PlayerCreature* teacher, PlayerCreature* student) {
+bool TeachPlayerListBoxImplementation::generateSkillList(CreatureObject* teacher, CreatureObject* student) {
 	//pre: both players are locked
 	//post: both players are locked
 
@@ -121,11 +121,13 @@ bool TeachPlayerListBoxImplementation::generateSkillList(PlayerCreature* teacher
 					String race;
 					bool correctRace = false;
 
+					PlayerObject* studentGhost = student->getPlayerObject();
+
 					for(int i = 0; i < sBox->getRequiredSpeciesSize(); i++) {
 
 						sBox->getRequiredSpecies(race, i);
 
-						if(race.compareTo(Races::getRace(student->getRaceID())) == 0) {
+						if(race.compareTo(Races::getRace(studentGhost->getRaceID())) == 0) {
 							correctRace = true;
 						}
 					}
@@ -162,7 +164,7 @@ bool TeachPlayerListBoxImplementation::generateSkillList(PlayerCreature* teacher
 			teachingSkillOptions.add(trainableBoxes.get(i));
 		}
 
-		teacher->addSuiBox(_this);
+		teacher->getPlayerObject()->addSuiBox(_this);
 		teacher->sendMessage(generateMessage());
 
 	} else {

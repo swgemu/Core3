@@ -65,17 +65,34 @@ include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
 include server.zone.objects.player.variables.FactionStandingList;
+include server.zone.objects.player.badges.Badges;
+include server.zone.objects.player.TradeContainer;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
 import system.util.Vector;
 import system.util.VectorMap;
 import engine.service.proto.BasePacket;
 import engine.service.proto.BaseMessage;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
+import server.chat.room.ChatRoom;
+import system.util.SortedVector;
+import server.zone.objects.building.BuildingObject;
+import server.zone.objects.tangible.tool.SurveyTool;
+import server.zone.objects.tangible.tool.CraftingTool;
+import server.zone.objects.player.events.PlayerDisconnectEvent;
+import server.zone.objects.player.events.PlayerRecoveryEvent;
+include server.zone.objects.player.ValidatedPosition;
+import server.zone.objects.player.sui.SuiBox;
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
 	protected string title;
+	
+	protected string savedTerrainName;
+	protected unsigned long savedParentID;
+	
+	@dereferenced
+	protected Badges badges;
 	
 	protected int forcePower;
 	protected int forcePowerMax;
@@ -85,6 +102,8 @@ class PlayerObject extends IntangibleObject {
 	
 	protected int drinkFilling;
 	protected int drinkFillingMax;
+	
+	protected boolean teleporting;
 	
 	@dereferenced
 	protected SortedVector<StructureObject> ownedStructures;
@@ -120,6 +139,91 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected SchematicList schematicList;
+	
+	protected byte incapacitationCounter;
+	
+	protected unsigned int suiBoxNextID;
+	
+	@dereferenced
+	protected VectorMap<unsigned int, SuiBox> suiBoxes;
+	
+	@dereferenced
+	protected SortedVector<ChatRoom> chatRooms;
+	
+	@dereferenced
+	protected TradeContainer tradeContainer;
+	
+	@dereferenced
+	protected SortedVector<CreatureObject> duelList;
+	
+	
+	@weakReference
+	protected BuildingObject declaredResidence;
+	
+	@weakReference
+	protected BuildingObject cloningFacility;
+	
+	/// Crafting and Surveying
+	/// Reference to last used Survey Tool
+	@weakReference
+	protected SurveyTool surveyTool;
+
+	protected transient CraftingTool lastCraftingToolUsed;
+	
+	@dereferenced
+	protected SortedVector<unsigned long> persistentMessages;
+	
+	protected unicode biography; //char biography
+	
+	@dereferenced
+	protected SortedVector<string> consentList;
+	
+	//npc conversation
+	protected string lastNpcConvoMessage;
+	protected string lastNpcConvo;
+	@dereferenced
+	protected Vector<string> lastNpcConvoOptions;
+	@weakReference
+	protected CreatureObject conversatingCreature;
+	
+	@dereferenced
+	protected transient Reference<PlayerDisconnectEvent> disconnectEvent;
+	
+	@dereferenced
+	protected transient Reference<PlayerRecoveryEvent> recoveryEvent;
+	
+	@dereferenced
+	protected Time logoutTimeStamp;
+	
+	protected int onlineStatus;
+	
+	protected int skillPoints;
+	
+	protected transient boolean teachingOrLearning;
+	
+	protected int pvpRating;
+
+	protected int factionStatus;
+	
+	protected transient boolean spawnedBlueFrog;
+	
+	protected int centeredBonus;
+	
+	protected boolean invisible;
+	
+	protected unsigned int holoMask;
+	
+	protected unsigned int clientLastMovementStamp;
+	
+	@dereferenced
+	protected Time serverLastMovementStamp;
+	
+	@dereferenced
+	protected ValidatedPosition lastValidatedPosition;
+	
+	protected unsigned int accountID;
+	
+	protected byte raceID;
 
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -133,11 +237,51 @@ class PlayerObject extends IntangibleObject {
 	public static final int CSR = 1;
 	public static final int DEV = 2;
 	
+	public static final int ONLINE = 1;
+	public static final int OFFLINE = 2;
+	public static final int LINKDEAD = 3;
+	public static final int LOGGINGIN = 4;
+	public static final int LOGGINGOUT = 5;
+	public static final int LOADING = 6;
+	
+	
 	//TODO: Make this configurable in player_manager.lua...
 	public static final int MAXLOTS = 10;
 	
 	public PlayerObject() {
 		commandMessageStrings.setNoDuplicateInsertPlan();
+		
+		teleporting = false;
+		
+		suiBoxNextID = 0;
+		
+		savedParentID = 0;
+		
+		skillPoints = 0;
+		
+		duelList.setNoDuplicateInsertPlan();
+		persistentMessages.setNoDuplicateInsertPlan();
+		consentList.setNoDuplicateInsertPlan();
+		
+		holoMask = 0;
+
+		accountID = 0;		
+		
+		teachingOrLearning = false;
+
+		invisible = false;
+		
+		factionStatus = 0;
+		
+		centeredBonus = 0;
+		
+		raceID = 0;
+		
+		clientLastMovementStamp = 0;
+		
+		spawnedBlueFrog = false;
+		
+		setOffline();
 		
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -145,6 +289,15 @@ class PlayerObject extends IntangibleObject {
 	public void finalize() {
 
 	}
+	
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+	
+	public native void unload();
 	
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
@@ -177,6 +330,8 @@ class PlayerObject extends IntangibleObject {
 		
 		return lotsRemaining;
 	}
+	
+	public native void notifySceneReady();
 	
 	 /**
 	 * Adds experience of a type to the player's experience pool.
@@ -343,11 +498,130 @@ class PlayerObject extends IntangibleObject {
 	public native float getFactionStanding(final string factionName);
 	
 	/**
+	 * Returns the active SurveyWaypoint
+	 */
+	public native WaypointObject getSurveyWaypoint();
+	
+	
+	public native void activateRecovery();
+	
+	public native void doRecovery();
+	
+	public native void disconnect(boolean closeClient, boolean doLock);
+	
+	public native void reload(ZoneClientSession client);
+	
+	public void setOffline() {
+		if (isLinkDead()) {
+			// clear LD flag
+		}
+		
+		onlineStatus = OFFLINE;
+	}
+	
+	public native void setLinkDead();
+	
+	public native void setOnline();
+	
+	public void setLoggingOut() {
+		onlineStatus = LOGGINGOUT;
+	}
+	
+	/**
+	 * Sends a badges response message
+	 * @pre { }
+	 * @post { }
+	 * @param player CreatureObject to receive badges response message
+	 */
+	public native void sendBadgesResponseTo(CreatureObject player);
+	
+	public native void logout(boolean doLock);
+	
+	/**
 	 * Gets the faction point list.
 	 */
 	@local
 	public FactionStandingList getFactionStandingList() {
 		return factionStandingList;
+	}
+	
+	//NPC Conversation Methods
+	public void setLastNpcConvStr(final string conv) {
+		lastNpcConvo = conv;
+	}
+
+	public void setLastNpcConvMessStr(final string mess) {
+		lastNpcConvoMessage = mess;
+	}
+
+	public string getLastNpcConvStr() {
+		return lastNpcConvo;
+	}
+
+	public string getLastNpcConvMessStr() {
+		return lastNpcConvoMessage;
+	}
+
+	public string getLastNpcConvOption(int idx) {
+		return lastNpcConvoOptions.get(idx);
+	}
+
+	public void addLastNpcConvOptions(final string option) {
+		lastNpcConvoOptions.add(option);
+	}
+
+	public int countLastNpcConvOptions() {
+		return lastNpcConvoOptions.size();
+	}
+
+	public void clearLastNpcConvOptions() {
+		lastNpcConvoOptions.removeAll();
+	}
+	
+	public void setConversatingCreature(CreatureObject creature) {
+		conversatingCreature = creature;
+	}
+	
+	public CreatureObject getConversatingCreature() {
+		return conversatingCreature;
+	}
+	
+	@local
+	public SortedVector<unsigned long> getPersistentMessages() {
+		return persistentMessages;
+	}
+	
+	public void addPersistentMessage(unsigned long id) {
+		persistentMessages.put(id);
+	}
+	
+	public void dropPersistentMessage(unsigned long id) {
+		persistentMessages.drop(id);
+	}
+	
+	/**
+	 * Unloads all the spawned creatures from the datapad control devices
+	 */
+	public native void unloadSpawnedChildren();
+	
+	public void addToConsentList(final string name) {
+		consentList.put(name);
+	}
+	
+	public boolean hasInConsentList(final string name) {
+		return consentList.contains(name);
+	}
+	
+	public void removeFromConsentList(final string name) {
+		consentList.drop(name);
+	}
+	
+	public string getConsentName(int i) {
+		return consentList.get(i);
+	}
+	
+	public int getConsentListSize() {
+		return consentList.size();
 	}
 	
 	@local
@@ -368,6 +642,22 @@ class PlayerObject extends IntangibleObject {
 		commandMessageStrings.drop(actionCRC);
 	}
 	
+	public BuildingObject getDeclaredResidence() {
+		return declaredResidence;
+	}
+	
+	public void setDeclaredResidence(BuildingObject residence) {
+		declaredResidence = residence;
+	}
+	
+	public void setCloningFacility(BuildingObject cloningfac) {
+		cloningFacility = cloningfac;
+	}
+	
+	public BuildingObject getCloningFacility() {
+		return cloningFacility;
+	}
+	
 	/**
 	 * Notifies all reverse friends online status
 	 * @pre { }
@@ -385,12 +675,182 @@ class PlayerObject extends IntangibleObject {
 		}
 	}
 	
+	public string getSavedTerrainName() {
+		return savedTerrainName;
+	}
+	
+	public void setSavedParentID(unsigned long id) {
+		savedParentID = id;
+	}
+	
+	public void setSavedTerrainName(final string name) {
+		savedTerrainName = name;
+	}
+	
+	public unsigned long getSavedParentID() {
+		return savedParentID;
+	}
+	
+	public native unsigned int getNewSuiBoxID(unsigned int type);
+	
+	public boolean hasSuiBox(unsigned int boxID) {
+		return suiBoxes.contains(boxID);
+	}
+	
+	public SuiBox getSuiBox(unsigned int boxID) {
+		return suiBoxes.get(boxID);
+	}
+	
+	/**
+	 * Removes the specified box id and optionally closes the client sui
+	 */
+	public native void removeSuiBox(unsigned int boxID, boolean closeWindowToClient = false);
+	
+	public native void removeSuiBoxType(unsigned int windowType);
+	
+	public boolean hasSuiBoxWindowType(unsigned int windowType) {
+		unsigned int type = 0;
+		
+		for (int i = 0; i < suiBoxes.size(); ++i) {
+			SuiBox sui = suiBoxes.get(i);
+			
+			type = sui.getWindowType();
+			
+			if (windowType == type)
+				return true;
+		}
+
+		return false;
+	}
+	
+	public void closeSuiWindowType(unsigned int windowType) {
+		if (hasSuiBoxWindowType(windowType)) {
+			SuiBox sui = getSuiBoxFromWindowType(windowType);
+			
+			if (sui != null) {
+				sendMessage(sui.generateCloseMessage());
+				removeSuiBox(sui.getBoxID());
+			}
+		}
+	}
+	
+	public unsigned SuiBox getSuiBoxFromWindowType(unsigned int windowType) {
+		unsigned int type = 0;
+		
+		for (int i = 0; i < suiBoxes.size(); ++i) {
+			SuiBox sui = suiBoxes.get(i);
+			
+			if (windowType == sui.getWindowType())
+				return sui;
+		}
+		
+		return null;
+	}
+	
+	public void addSuiBox(SuiBox sui) {
+		unsigned int key = sui.getBoxID();
+		suiBoxes.put(key, sui);
+	}
+	
+	public native boolean isFirstIncapacitationExpired();
+
+	public void resetIncapacitationCounter() {
+		incapacitationCounter = 0;
+	}
+
+	public native void resetFirstIncapacitationTime();
+
+	public void updateIncapacitationCounter() {
+		incapacitationCounter++;
+
+		if (isFirstIncapacitation() || isFirstIncapacitationExpired())
+			resetFirstIncapacitationTime();
+	}
+
+	public boolean isFirstIncapacitation() {
+		return incapacitationCounter == 1;
+	}
+
+	public byte getIncapacitationCounter() {
+		return incapacitationCounter;
+	}
+	
+	//Duel list manipulation methods
+	public void addToDuelList(CreatureObject targetPlayer) {
+		duelList.put(targetPlayer);
+	}
+
+	public void removeFromDuelList(CreatureObject targetPlayer) {
+		duelList.drop(targetPlayer);
+	}
+
+	public CreatureObject getDuelListObject(int index) {
+		return duelList.get(index);
+	}
+
+	public boolean requestedDuelTo(CreatureObject targetPlayer) {
+		return duelList.contains(targetPlayer);
+	}
+
+	public boolean isDuelListEmpty() {
+		return duelList.isEmpty();
+	}
+
+	public int getDuelListSize() {
+		return duelList.size();
+	}
+	
+	public unicode getBiography() {
+		return biography;
+	}
+	
 	/**
 	 * Notifies all reverse friends offline status
 	 * @pre { }
 	 * @post { }
 	 */
 	public native void notifyOffline();
+	
+	public void setBadge(unsigned int badge) {
+		badges.setBadge(badge);
+	}
+	
+	public native void awardBadge(unsigned int badge);
+	
+	/**
+	 * Set active survey tool, this is set whenever
+	 * a SurveyTool is used
+	 */
+	public void setSurveyTool(SurveyTool tool) {
+		surveyTool = tool;
+	}
+	
+	/**
+	 * Returns the active SurveyTool
+	 */
+	public SurveyTool getSurveyTool() {
+		return surveyTool;
+	}
+	
+	public CraftingTool getLastCraftingToolUsed() {
+		return lastCraftingToolUsed;
+	}
+	
+	public void setLastCraftingToolUsed(CraftingTool tool) {
+		lastCraftingToolUsed = tool;
+	}
+	
+	public void setTeleporting(boolean val) {
+		teleporting = val;
+	}
+	
+	public int getNumBadges() {
+		return badges.getNumBadges();
+	}
+	
+	public int getBadgeTypeCount(byte type) {
+		return badges.getTypeCount(type);
+	}
 	
 	public boolean hasFriend(final string name) {
 		return friendList.contains(name);
@@ -437,6 +897,10 @@ class PlayerObject extends IntangibleObject {
 	
 	public void setAdminLevel(unsigned int adminlvl) {
 		adminLevel = adminlvl;
+	}
+	
+	public void setBiography(final unicode bio) {
+		biography = bio;
 	}
 	
 	public boolean isDeveloper() {
@@ -498,7 +962,7 @@ class PlayerObject extends IntangibleObject {
 	
 	@local
 	@dereferenced
-	public native Vector<DraftSchematic> filterSchematicList(PlayerCreature player, Vector<unsigned int> enabledTabs, int complexityLevel);
+	public native Vector<DraftSchematic> filterSchematicList(CreatureObject player, Vector<unsigned int> enabledTabs, int complexityLevel);
 	
 	public int getFoodFilling() {
 		return foodFilling;
@@ -529,6 +993,28 @@ class PlayerObject extends IntangibleObject {
 		return friendList;
 	}
 	
+	public boolean isTeleporting() {
+		return teleporting;
+	}
+	
+	public void addChatRoom(ChatRoom room) {
+		chatRooms.put(room);
+	}
+
+	public void removeChatRoom(ChatRoom room) {
+		chatRooms.drop(room);
+	}
+	
+	@local
+	public void clearTradeContainer() {
+		tradeContainer.clear();
+	}
+	
+	@local
+	public TradeContainer getTradeContainer() {
+		return tradeContainer;
+	}
+	
 	@local
 	public DeltaVector<string> getIgnoreList() {
 		return ignoreList;
@@ -540,6 +1026,143 @@ class PlayerObject extends IntangibleObject {
 	
 	public string getCommandMessageString(unsigned int actionCRC) {
 		return commandMessageStrings.get(actionCRC);
+	}
+	
+	public boolean hasBadge(unsigned int badge) {
+		return badges.hasBadge(badge);
+	}
+	
+	public native void clearDisconnectEvent();
+	
+	public native void clearRecoveryEvent();
+	
+	public boolean isOnline() {
+		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
+	}
+	
+	public boolean isOffline() {
+		return onlineStatus == OFFLINE;
+	}
+	
+	public boolean isLoading() {
+		return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
+	}
+	
+	public boolean isLinkDead() {
+		return onlineStatus == LINKDEAD;
+	}
+	
+	public boolean isLoggingIn() {
+		return onlineStatus == LOGGINGIN;
+	}
+	
+	public boolean isLoggingOut() {
+		return onlineStatus == LOGGINGOUT;
+	}
+	
+	public void setSkillPoints(int points) {
+		skillPoints = points;
+	}	
+	
+	public void addSkillPoints(int points) {
+		skillPoints += points;
+	}
+	
+
+	public int getSkillPoints() {
+		return skillPoints;
+	}
+	
+	@local
+	public ValidatedPosition getLastValidatedPosition() {
+		return lastValidatedPosition;
+	}
+	
+	public void updateLastValidatedPosition() {
+		lastValidatedPosition.update(super.parent);
+		serverLastMovementStamp.updateToCurrentTime();
+	}
+
+	public void setSpawnedBlueFrog() {
+		spawnedBlueFrog = true;
+	}
+	
+	public boolean hasSpawnedBlueFrog() {
+		return spawnedBlueFrog;
+	}
+	
+	public unsigned int getAccountID() {
+		return accountID;
+	}
+
+	public unsigned long getServerMovementTimeDelta() {
+		return serverLastMovementStamp.miliDifference();
+	}
+	
+	@local
+	public Time getServerMovementTimeStamp() {
+		return serverLastMovementStamp;
+	}
+
+	public void setClientLastMovementStamp(unsigned int stamp) {
+		clientLastMovementStamp = stamp;
+	}
+	
+	public void updateServerLastMovementStamp() {
+		serverLastMovementStamp.updateToCurrentTime();
+	}
+	
+	public void setAccountID(unsigned int id) {
+		accountID = id;
+	}
+
+	public int getFactionStatus() {
+		return factionStatus;
+	}
+	
+	public unsigned int getClientLastMovementStamp() {
+		return clientLastMovementStamp;
+	}
+	
+	public void setTeachingOrLearning(boolean value) {
+	    teachingOrLearning = value;
+	}
+	
+	@local
+	public boolean isTeachingOrLearning() {
+	    return teachingOrLearning;
+	}
+	
+	public int getCenteredBonus() {
+		return centeredBonus;
+	}
+	
+	public void setCenteredBonus(int bonus) {
+		centeredBonus = bonus;
+	}
+
+	public boolean isInvisible() {
+		return invisible;
+	}
+	
+	public void setInvisible(boolean invis) {
+		invisible = invis;
+	}
+	
+	public void setHologrindMask(unsigned int mask) {
+		holoMask = mask;
+	}
+	
+	public unsigned int getHologrindMask() {
+		return holoMask;
+	}
+	
+	public byte getRaceID() {
+		return raceID;
+	}
+	
+	public void setRaceID(byte race) {
+		raceID = race;
 	}
 	
 }

@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -18,7 +18,7 @@
  *	BazaarTerminalStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISBAZAARTERMINAL__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISBAZAARTERMINAL__};
 
 BazaarTerminal::BazaarTerminal() : VendorTerminal(DummyConstructorParameter::instance()) {
 	BazaarTerminalImplementation* _implementation = new BazaarTerminalImplementation();
@@ -42,13 +42,13 @@ void BazaarTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-int BazaarTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int BazaarTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	BazaarTerminalImplementation* _implementation = (BazaarTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -200,7 +200,7 @@ BazaarTerminalImplementation::BazaarTerminalImplementation() {
 	Logger::setLoggingName("BazaarTerminal");
 }
 
-int BazaarTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int BazaarTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.idl():  		return 0;
 	return 0;
 }
@@ -221,8 +221,8 @@ Packet* BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_ISBAZAARTERMINAL__:
 		resp->insertBoolean(isBazaarTerminal());
@@ -234,7 +234,7 @@ Packet* BazaarTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
-int BazaarTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int BazaarTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((BazaarTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

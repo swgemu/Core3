@@ -12,7 +12,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -20,7 +20,7 @@
  *	FishingPoleObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETQUALITY__,RPC_SETQUALITY__INT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_DOFISHING__PLAYERCREATURE_,RPC_GETTEXT__PLAYERCREATURE_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETQUALITY__,RPC_SETQUALITY__INT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_DOFISHING__CREATUREOBJECT_,RPC_GETTEXT__CREATUREOBJECT_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_};
 
 FishingPoleObject::FishingPoleObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FishingPoleObjectImplementation* _implementation = new FishingPoleObjectImplementation();
@@ -75,13 +75,13 @@ void FishingPoleObject::setQuality(int value) {
 		_implementation->setQuality(value);
 }
 
-void FishingPoleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void FishingPoleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	FishingPoleObjectImplementation* _implementation = (FishingPoleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -90,13 +90,13 @@ void FishingPoleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse,
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int FishingPoleObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FishingPoleObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	FishingPoleObjectImplementation* _implementation = (FishingPoleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -121,13 +121,13 @@ int FishingPoleObject::canAddObject(SceneObject* object, int containmentType, St
 		return _implementation->canAddObject(object, containmentType, errorDescription);
 }
 
-void FishingPoleObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void FishingPoleObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	FishingPoleObjectImplementation* _implementation = (FishingPoleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -136,13 +136,13 @@ void FishingPoleObject::fillAttributeList(AttributeListMessage* msg, PlayerCreat
 		_implementation->fillAttributeList(msg, object);
 }
 
-void FishingPoleObject::doFishing(PlayerCreature* player) {
+void FishingPoleObject::doFishing(CreatureObject* player) {
 	FishingPoleObjectImplementation* _implementation = (FishingPoleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_DOFISHING__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_DOFISHING__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -150,13 +150,13 @@ void FishingPoleObject::doFishing(PlayerCreature* player) {
 		_implementation->doFishing(player);
 }
 
-String FishingPoleObject::getText(PlayerCreature* player) {
+String FishingPoleObject::getText(CreatureObject* player) {
 	FishingPoleObjectImplementation* _implementation = (FishingPoleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETTEXT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETTEXT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithAsciiReturn(_return_getText);
@@ -363,23 +363,23 @@ Packet* FishingPoleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case RPC_SETQUALITY__INT_:
 		setQuality(inv->getSignedIntParameter());
 		break;
-	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
+		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
 		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
 		break;
-	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_:
-		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
+		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_DOFISHING__PLAYERCREATURE_:
-		doFishing((PlayerCreature*) inv->getObjectParameter());
+	case RPC_DOFISHING__CREATUREOBJECT_:
+		doFishing((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_GETTEXT__PLAYERCREATURE_:
-		resp->insertAscii(getText((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_GETTEXT__CREATUREOBJECT_:
+		resp->insertAscii(getText((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_:
 		resp->insertBoolean(removeObject((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
@@ -403,11 +403,11 @@ void FishingPoleObjectAdapter::setQuality(int value) {
 	((FishingPoleObjectImplementation*) impl)->setQuality(value);
 }
 
-void FishingPoleObjectAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void FishingPoleObjectAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	((FishingPoleObjectImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
-int FishingPoleObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FishingPoleObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((FishingPoleObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
@@ -415,15 +415,15 @@ int FishingPoleObjectAdapter::canAddObject(SceneObject* object, int containmentT
 	return ((FishingPoleObjectImplementation*) impl)->canAddObject(object, containmentType, errorDescription);
 }
 
-void FishingPoleObjectAdapter::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void FishingPoleObjectAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	((FishingPoleObjectImplementation*) impl)->fillAttributeList(msg, object);
 }
 
-void FishingPoleObjectAdapter::doFishing(PlayerCreature* player) {
+void FishingPoleObjectAdapter::doFishing(CreatureObject* player) {
 	((FishingPoleObjectImplementation*) impl)->doFishing(player);
 }
 
-String FishingPoleObjectAdapter::getText(PlayerCreature* player) {
+String FishingPoleObjectAdapter::getText(CreatureObject* player) {
 	return ((FishingPoleObjectImplementation*) impl)->getText(player);
 }
 

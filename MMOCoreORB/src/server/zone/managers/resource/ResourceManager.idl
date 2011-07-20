@@ -50,7 +50,7 @@ import engine.log.Logger;
 import server.zone.ZoneServer;
 import server.zone.ZoneProcessServer;
 import server.zone.managers.object.ObjectManager;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.resource.ResourceContainer;
 import engine.service.proto.BaseMessage;
@@ -96,21 +96,21 @@ class ResourceManager extends Observer implements Logger {
 	
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 	
-	public native void sendResourceListForSurvey(PlayerCreature playerCreature, final int toolType, final string surveyType);
-	public native void sendSurvey(PlayerCreature playerCreature, final string resname);
-	public native void sendSample(PlayerCreature playerCreature, final string resname, final string sampleAnimation);
+	public native void sendResourceListForSurvey(CreatureObject playerCreature, final int toolType, final string surveyType);
+	public native void sendSurvey(CreatureObject playerCreature, final string resname);
+	public native void sendSample(CreatureObject playerCreature, final string resname, final string sampleAnimation);
 	
-	public native ResourceContainer harvestResource(PlayerCreature player, final string type, final int quantity);
-	public native void harvestResourceToPlayer(PlayerCreature player, ResourceSpawn resourceSpawn, final int quantity);
+	public native ResourceContainer harvestResource(CreatureObject player, final string type, final int quantity);
+	public native void harvestResourceToPlayer(CreatureObject player, ResourceSpawn resourceSpawn, final int quantity);
 	
-	public native unsigned int getAvailablePowerFromPlayer(PlayerCreature player);
-	public native void removePowerFromPlayer(PlayerCreature player, unsigned int power);
+	public native unsigned int getAvailablePowerFromPlayer(CreatureObject player);
+	public native void removePowerFromPlayer(CreatureObject player, unsigned int power);
 	
 	@local
 	public native void getResourceListByType(@dereferenced Vector<ResourceSpawn> list, int type, final string zoneName);
 	
-	public native void createResourceSpawn(PlayerCreature playerCreature, final string restype);
-	public native void givePlayerResource(PlayerCreature playerCreature, final string restype, final int quantity);
+	public native void createResourceSpawn(CreatureObject playerCreature, final string restype);
+	public native void givePlayerResource(CreatureObject playerCreature, final string restype, final int quantity);
 
 	public native ResourceSpawn getCurrentSpawn(final string restype, final string zoneName);
 	public native ResourceSpawn getResourceSpawn(final string spawnName);

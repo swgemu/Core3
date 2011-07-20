@@ -6,7 +6,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	SuiInputBoxStub
@@ -14,7 +16,7 @@
 
 enum {RPC_GENERATEMESSAGE__ = 6,RPC_SETMAXINPUTSIZE__INT_,RPC_SETDEFAULTINPUT__STRING_,RPC_ISFILTERBOX__,RPC_ISINPUTBOX__};
 
-SuiInputBox::SuiInputBox(PlayerCreature* player, unsigned int windowType, int inputtype) : SuiBox(DummyConstructorParameter::instance()) {
+SuiInputBox::SuiInputBox(CreatureObject* player, unsigned int windowType, int inputtype) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiInputBoxImplementation* _implementation = new SuiInputBoxImplementation(player, windowType, inputtype);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -257,7 +259,7 @@ int SuiInputBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	return 3 + SuiBoxImplementation::writeObjectMembers(stream);
 }
 
-SuiInputBoxImplementation::SuiInputBoxImplementation(PlayerCreature* player, unsigned int windowType, int inputtype) : SuiBoxImplementation(player, windowType, SuiBox::INPUTBOX) {
+SuiInputBoxImplementation::SuiInputBoxImplementation(CreatureObject* player, unsigned int windowType, int inputtype) : SuiBoxImplementation(player, windowType, SuiBox::INPUTBOX) {
 	_initializeImplementation();
 	// server/zone/objects/player/sui/inputbox/SuiInputBox.idl():  		maxInputSize = 25;
 	maxInputSize = 25;

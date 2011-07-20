@@ -23,7 +23,7 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
 		if (!suiBox->isListBox() || cancelPressed)
 			return;
 

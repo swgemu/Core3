@@ -125,15 +125,15 @@ public:
 
 	ResourceSpawn* manualCreateResourceSpawn(const String& type);
 
-	void sendResourceListForSurvey(PlayerCreature* player, const int toolType, const String& surveyType);
+	void sendResourceListForSurvey(CreatureObject* player, const int toolType, const String& surveyType);
 
-	void sendSurvey(PlayerCreature* player, const String& resname);
-	void sendSample(PlayerCreature* player, const String& resname, const String& sampleAnimation);
-	void sendSampleResults(PlayerCreature* player, const float density, const String& resname);
+	void sendSurvey(CreatureObject* player, const String& resname);
+	void sendSample(CreatureObject* player, const String& resname, const String& sampleAnimation);
+	void sendSampleResults(CreatureObject* player, const float density, const String& resname);
 
-	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
-	void harvestResource(PlayerCreature* player, ResourceSpawn* resourceSpawn, int quantity);
-	void addResourceToPlayerInventory(PlayerCreature* player, ResourceSpawn* resourceSpawn, int unitsExtracted);
+	ResourceContainer* harvestResource(CreatureObject* player, const String& type, const int quantity);
+	void harvestResource(CreatureObject* player, ResourceSpawn* resourceSpawn, int quantity);
+	void addResourceToPlayerInventory(CreatureObject* player, ResourceSpawn* resourceSpawn, int unitsExtracted);
 
 	ResourceSpawn* getCurrentSpawn(const String& restype, const String& zoneName);
 

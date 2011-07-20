@@ -53,7 +53,7 @@ include server.zone.templates.intangible.DraftSchematicObjectTemplate;
 include server.zone.objects.draftschematic.draftslot.DraftSlot;
 include server.zone.objects.draftschematic.resourceweight.ResourceWeight;
 import server.zone.templates.SharedObjectTemplate;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 import system.util.Vector;
 
@@ -93,7 +93,7 @@ class DraftSchematic extends IntangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	
 	/**
@@ -110,7 +110,7 @@ class DraftSchematic extends IntangibleObject {
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the ingredients 
 	 */
-	public native void sendDraftSlotsTo(PlayerCreature player);
+	public native void sendDraftSlotsTo(CreatureObject player);
 	
 	@local
 	private native void insertIngredients(ObjectControllerMessage msg);
@@ -121,7 +121,7 @@ class DraftSchematic extends IntangibleObject {
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the ingredients 
 	 */
-	public native void sendResourceWeightsTo(PlayerCreature player);
+	public native void sendResourceWeightsTo(CreatureObject player);
 
 	public native SceneObject createManufactureSchematic(SceneObject craftingTool = null);
 	

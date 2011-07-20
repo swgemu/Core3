@@ -9,7 +9,7 @@
 #define JTLSHIPLISTREQUESTCALLBACK_H_
 
 #include "ObjectControllerMessageCallback.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/JtlShipListResponse.h"
 
 class JtlShipListRequestCallback : public MessageCallback {
@@ -31,7 +31,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
 
 		if (player == NULL)
 			return;

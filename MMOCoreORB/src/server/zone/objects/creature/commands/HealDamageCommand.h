@@ -274,8 +274,8 @@ public:
 		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
-		PlayerCreature* playerTarget = (PlayerCreature*)  creatureTarget;
+		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* playerTarget = (CreatureObject*)  creatureTarget;
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
@@ -309,7 +309,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		int amount = (int)round((float)power * 0.25f);
 
@@ -334,7 +334,7 @@ public:
 
 			if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-				playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)targetCreature);
+				playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)targetCreature);
 			}
 
 			sendHealMessage(creature, targetCreature, healthHealed, actionHealed);
@@ -469,7 +469,7 @@ public:
 		uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower);
 
 		if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
-			playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)targetCreature);
+			playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)targetCreature);
 		}
 
 		sendHealMessage(creature, targetCreature, healthHealed, actionHealed);

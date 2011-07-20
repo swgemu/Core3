@@ -8,7 +8,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
@@ -20,7 +22,7 @@
  *	AttachmentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEMEMBERS__,RPC_SETSKILLMODCOUNT__INT_,RPC_GETSKILLMODCOUNT__,RPC_GETSKILLMODNAME__INT_,RPC_GETSKILLMODVALUE__INT_,RPC_GETSKILLMODVALUE__STRING_,RPC_PARSESKILLMODATTRIBUTESTRING__STRING_,RPC_ADDSKILLMOD__STRING_INT_,RPC_REMOVEATTACHMENT__PLAYERCREATURE_,RPC_GENERATESKILLMODS__,RPC_GETRANDOMMODVALUE__INT_INT_,RPC_ISATTACHMENT__,RPC_ISARMORATTACHMENT__,RPC_ISCLOTHINGATTACHMENT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZEMEMBERS__,RPC_SETSKILLMODCOUNT__INT_,RPC_GETSKILLMODCOUNT__,RPC_GETSKILLMODNAME__INT_,RPC_GETSKILLMODVALUE__INT_,RPC_GETSKILLMODVALUE__STRING_,RPC_PARSESKILLMODATTRIBUTESTRING__STRING_,RPC_ADDSKILLMOD__STRING_INT_,RPC_REMOVEATTACHMENT__CREATUREOBJECT_,RPC_GENERATESKILLMODS__,RPC_GETRANDOMMODVALUE__INT_INT_,RPC_ISATTACHMENT__,RPC_ISARMORATTACHMENT__,RPC_ISCLOTHINGATTACHMENT__};
 
 Attachment::Attachment() : TangibleObject(DummyConstructorParameter::instance()) {
 	AttachmentImplementation* _implementation = new AttachmentImplementation();
@@ -70,7 +72,7 @@ void Attachment::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void Attachment::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void Attachment::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -178,13 +180,13 @@ void Attachment::addSkillMod(const String& skillModType, int skillModValue) {
 		_implementation->addSkillMod(skillModType, skillModValue);
 }
 
-bool Attachment::removeAttachment(PlayerCreature* player) {
+bool Attachment::removeAttachment(CreatureObject* player) {
 	AttachmentImplementation* _implementation = (AttachmentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEATTACHMENT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_REMOVEATTACHMENT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -509,8 +511,8 @@ Packet* AttachmentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ADDSKILLMOD__STRING_INT_:
 		addSkillMod(inv->getAsciiParameter(_param0_addSkillMod__String_int_), inv->getSignedIntParameter());
 		break;
-	case RPC_REMOVEATTACHMENT__PLAYERCREATURE_:
-		resp->insertBoolean(removeAttachment((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_REMOVEATTACHMENT__CREATUREOBJECT_:
+		resp->insertBoolean(removeAttachment((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_GENERATESKILLMODS__:
 		generateSkillMods();
@@ -570,7 +572,7 @@ void AttachmentAdapter::addSkillMod(const String& skillModType, int skillModValu
 	((AttachmentImplementation*) impl)->addSkillMod(skillModType, skillModValue);
 }
 
-bool AttachmentAdapter::removeAttachment(PlayerCreature* player) {
+bool AttachmentAdapter::removeAttachment(CreatureObject* player) {
 	return ((AttachmentImplementation*) impl)->removeAttachment(player);
 }
 

@@ -46,28 +46,29 @@ package server.zone.objects.player.sui.listbox;
 
 import server.zone.objects.player.sui.listbox.SuiListBox;
 import server.zone.objects.creature.professions.SkillBox;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
 
 class TeachPlayerListBox extends SuiListBox {
 
-    private PlayerCreature studentPlayer;
+    private CreatureObject studentPlayer;
     
     @dereferenced
     private Vector<SkillBox> teachingSkillOptions;
     
-	public TeachPlayerListBox(PlayerCreature player) {
+	public TeachPlayerListBox(CreatureObject player) {
 		super(player, 36, 0);
 
 	}
 
     private native void init();	
     
-    public void setStudent(PlayerCreature student) {
+    public void setStudent(CreatureObject student) {
         studentPlayer = student;
     }
     
     @local
-    public PlayerCreature getStudent() {
+    public CreatureObject getStudent() {
         return studentPlayer;
     }
     
@@ -76,7 +77,7 @@ class TeachPlayerListBox extends SuiListBox {
         return teachingSkillOptions.get(index).getName();
     }
     
-	public native boolean generateSkillList(PlayerCreature teacher, PlayerCreature student);
+	public native boolean generateSkillList(CreatureObject teacher, CreatureObject student);
 
 
 

@@ -107,7 +107,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		int amount = (int)round((float)power * 0.5f);
 
@@ -122,8 +122,8 @@ public:
 		if (!object->isPlayerCreature() || !target->isPlayerCreature())
 			return;
 
-		PlayerCreature* creature = (PlayerCreature*) object;
-		PlayerCreature* creatureTarget = (PlayerCreature*)  target;
+		CreatureObject* creature = (CreatureObject*) object;
+		CreatureObject* creatureTarget = (CreatureObject*)  target;
 
 		String creatureName = creature->getFirstName();
 		String creatureTargetName = creatureTarget->getFirstName();
@@ -354,7 +354,7 @@ public:
 				//TODO: Patch the tre later to include a %NT.
 				if (creatureTarget->isPlayerCreature()) {
 				StringBuffer message;
-				message << ((PlayerCreature*)creatureTarget)->getFirstName() << " has no wounds of that type to heal.";
+				message << ((CreatureObject*)creatureTarget)->getFirstName() << " has no wounds of that type to heal.";
 				creature->sendSystemMessage(message.toString());
 				}
 			}
@@ -370,7 +370,7 @@ public:
 
 		if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-			playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)creatureTarget);
+			playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)creatureTarget);
 		}
 
 		sendWoundMessage(creature, creatureTarget, attribute, woundHealed);

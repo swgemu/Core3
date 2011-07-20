@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "ResourceAttribute.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "../ResourceSpawner.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 ResourceTree::ResourceTree(ResourceSpawner* spawn) : Logger() {
 

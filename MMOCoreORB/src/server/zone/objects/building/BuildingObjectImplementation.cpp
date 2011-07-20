@@ -9,7 +9,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/cell/CellObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
 
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
@@ -53,7 +53,7 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	publicStructure = buildingData->isPublicStructure();
 }
 
-void BuildingObjectImplementation::sendChangeNamePromptTo(PlayerCreature* player) {
+void BuildingObjectImplementation::sendChangeNamePromptTo(CreatureObject* player) {
 	if (signObject == NULL) {
 		StructureObjectImplementation::sendChangeNamePromptTo(player);
 		return;
@@ -66,7 +66,7 @@ void BuildingObjectImplementation::sendChangeNamePromptTo(PlayerCreature* player
 	inputBox->setMaxInputSize(255);
 	inputBox->setDefaultInput(signObject->getCustomObjectName().toString());
 
-	player->addSuiBox(inputBox);
+	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
 }
 
@@ -367,7 +367,7 @@ void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) 
 	}
 }
 
-void BuildingObjectImplementation::onEnter(PlayerCreature* player) {
+void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	if (getZone() == NULL)
 		return;
 

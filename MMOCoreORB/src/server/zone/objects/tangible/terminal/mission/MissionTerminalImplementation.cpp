@@ -6,14 +6,14 @@
  */
 
 #include "MissionTerminal.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
-int MissionTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 69) {
 
 		if (player->containsActiveSession(SessionFacadeType::SLICING)) {

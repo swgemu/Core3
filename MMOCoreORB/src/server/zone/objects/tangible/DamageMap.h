@@ -40,7 +40,7 @@ class WeaponObject;
 using namespace server::zone::objects::tangible::weapon;
 
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 class DamageMapEntry : public VectorMap<ManagedReference<WeaponObject*>, uint32> {
@@ -80,7 +80,7 @@ public:
 
 	void dropDamage(CreatureObject* creo);
 
-	PlayerCreature* getHighestDamagePlayer();
+	CreatureObject* getHighestDamagePlayer();
 
 	CreatureObject* getHighestThreatCreature();
 

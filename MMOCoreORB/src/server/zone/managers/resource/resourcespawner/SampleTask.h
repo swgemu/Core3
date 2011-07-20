@@ -63,12 +63,12 @@ class ResourceSpawner;
 class SampleTask : public Task {
 
 protected:
-	ManagedReference<PlayerCreature*> playerCreature;
+	ManagedReference<CreatureObject*> playerCreature;
 	ManagedReference<SurveyTool* > surveyTool;
 	bool cancelled;
 
 public:
-	SampleTask(ManagedReference<PlayerCreature*> play, ManagedReference<SurveyTool* > tool) {
+	SampleTask(ManagedReference<CreatureObject*> play, ManagedReference<SurveyTool* > tool) {
 		playerCreature = play;
 		surveyTool = tool;
 		cancelled = false;
@@ -80,7 +80,9 @@ public:
 		if (!cancelled && playerCreature->getPendingTask("sample") != NULL) {
 			playerCreature->removePendingTask("sample");
 
-			playerCreature->setSurveyTool(surveyTool);
+			PlayerObject* ghost = playerCreature->getPlayerObject();
+
+			ghost->setSurveyTool(surveyTool);
 
 			// Activate requestcoresample command
 			playerCreature->getZoneServer()->getObjectController()->activateCommand(playerCreature, 0x9223c634, 0, 0, "");

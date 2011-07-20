@@ -18,14 +18,16 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
 		if (cancelPressed)
 			return;
 
 		if (args->size() < 1)
 			return;
 
-		ManagedReference<SurveyTool*> surveyTool =  player->getSurveyTool();
+		PlayerObject* ghost = player->getPlayerObject();
+
+		ManagedReference<SurveyTool*> surveyTool = ghost->getSurveyTool();
 
 		if (surveyTool == NULL)
 			return;

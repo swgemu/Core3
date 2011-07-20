@@ -8,7 +8,7 @@
 
 #include "server/zone/objects/tangible/terminal/vendor/bazaar/BazaarTerminal.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/building/city/CityHallObject.h"
 
@@ -22,7 +22,7 @@
  *	RegionStub
  */
 
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SENDGREETINGMESSAGE__PLAYERCREATURE_,RPC_SENDDEPARTINGMESSAGE__PLAYERCREATURE_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_DESPAWNCITYOBJECTS__,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__,RPC_GETCITYHALL__,RPC_SETCITYHALL__CITYHALLOBJECT_};
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SENDGREETINGMESSAGE__CREATUREOBJECT_,RPC_SENDDEPARTINGMESSAGE__CREATUREOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_DESPAWNCITYOBJECTS__,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__,RPC_GETCITYHALL__,RPC_SETCITYHALL__CITYHALLOBJECT_};
 
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
 	RegionImplementation* _implementation = new RegionImplementation();
@@ -51,13 +51,13 @@ void Region::notifyEnter(SceneObject* object) {
 		_implementation->notifyEnter(object);
 }
 
-void Region::sendGreetingMessage(PlayerCreature* player) {
+void Region::sendGreetingMessage(CreatureObject* player) {
 	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDGREETINGMESSAGE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDGREETINGMESSAGE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -65,13 +65,13 @@ void Region::sendGreetingMessage(PlayerCreature* player) {
 		_implementation->sendGreetingMessage(player);
 }
 
-void Region::sendDepartingMessage(PlayerCreature* player) {
+void Region::sendDepartingMessage(CreatureObject* player) {
 	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDDEPARTINGMESSAGE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDDEPARTINGMESSAGE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -396,8 +396,8 @@ void RegionImplementation::notifyEnter(SceneObject* object) {
 }
 	// server/zone/objects/region/Region.idl():  	}
 	if (object->isPlayerCreature()){
-	// server/zone/objects/region/Region.idl():  			sendGreetingMessage((PlayerCreature) object);
-	sendGreetingMessage((PlayerCreature*) object);
+	// server/zone/objects/region/Region.idl():  			sendGreetingMessage((CreatureObject) object);
+	sendGreetingMessage((CreatureObject*) object);
 }
 }
 
@@ -412,8 +412,8 @@ void RegionImplementation::notifyExit(SceneObject* object) {
 }
 	// server/zone/objects/region/Region.idl():  	}
 	if (object->isPlayerCreature()){
-	// server/zone/objects/region/Region.idl():  			sendDepartingMessage((PlayerCreature) object);
-	sendDepartingMessage((PlayerCreature*) object);
+	// server/zone/objects/region/Region.idl():  			sendDepartingMessage((CreatureObject) object);
+	sendDepartingMessage((CreatureObject*) object);
 }
 }
 
@@ -470,11 +470,11 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
 		notifyEnter((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDGREETINGMESSAGE__PLAYERCREATURE_:
-		sendGreetingMessage((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDGREETINGMESSAGE__CREATUREOBJECT_:
+		sendGreetingMessage((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDDEPARTINGMESSAGE__PLAYERCREATURE_:
-		sendDepartingMessage((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDDEPARTINGMESSAGE__CREATUREOBJECT_:
+		sendDepartingMessage((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
 		notifyExit((SceneObject*) inv->getObjectParameter());
@@ -517,11 +517,11 @@ void RegionAdapter::notifyEnter(SceneObject* object) {
 	((RegionImplementation*) impl)->notifyEnter(object);
 }
 
-void RegionAdapter::sendGreetingMessage(PlayerCreature* player) {
+void RegionAdapter::sendGreetingMessage(CreatureObject* player) {
 	((RegionImplementation*) impl)->sendGreetingMessage(player);
 }
 
-void RegionAdapter::sendDepartingMessage(PlayerCreature* player) {
+void RegionAdapter::sendDepartingMessage(CreatureObject* player) {
 	((RegionImplementation*) impl)->sendDepartingMessage(player);
 }
 

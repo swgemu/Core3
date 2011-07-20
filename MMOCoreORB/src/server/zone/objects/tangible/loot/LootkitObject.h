@@ -62,16 +62,16 @@ using namespace server::zone::packets::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
@@ -101,11 +101,11 @@ public:
 
 	int notifyObjectInserted(SceneObject* object);
 
-	PlayerCreature* getPlayer();
+	CreatureObject* getPlayer();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -160,7 +160,7 @@ protected:
 	void createItem();
 
 public:
-	PlayerCreature* getPlayer();
+	CreatureObject* getPlayer();
 
 protected:
 	void addToKit(SceneObject* object);
@@ -168,7 +168,7 @@ protected:
 public:
 	virtual void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	WeakReference<LootkitObject*> _this;
 
@@ -219,9 +219,9 @@ public:
 
 	int notifyObjectInserted(SceneObject* object);
 
-	PlayerCreature* getPlayer();
+	CreatureObject* getPlayer();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 protected:
 	String _param2_canAddObject__SceneObject_int_String_;

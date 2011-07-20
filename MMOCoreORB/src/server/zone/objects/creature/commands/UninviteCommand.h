@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/chat/StringIdChatParameter.h"
-#include "../../player/PlayerCreature.h"
+#include "../../creature/CreatureObject.h"
 
 
 
@@ -72,7 +72,7 @@ public:
 		if (object == NULL || !object->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* play = (PlayerCreature*) object.get();
+		CreatureObject* play = (CreatureObject*) object.get();
 
 		try {
 			Locker clocker(play, creature);
@@ -91,7 +91,7 @@ public:
 			}
 
 		} catch (Exception& e) {
-			System::out << "Exception in parseGroupUninvite(PlayerCreature* player, Message* pack)\n";
+			System::out << "Exception in parseGroupUninvite(CreatureObject* player, Message* pack)\n";
 			return GENERALERROR;
 		}
 

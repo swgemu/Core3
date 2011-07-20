@@ -48,16 +48,16 @@ using namespace server::chat::room;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -206,21 +206,21 @@ public:
 
 	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
 
-	void sendRoomList(PlayerCreature* player);
+	void sendRoomList(CreatureObject* player);
 
-	void addPlayer(PlayerCreature* player);
+	void addPlayer(CreatureObject* player);
 
-	PlayerCreature* getPlayer(const String& name);
+	CreatureObject* getPlayer(const String& name);
 
-	PlayerCreature* removePlayer(const String& name);
+	CreatureObject* removePlayer(const String& name);
 
 	void broadcastMessage(BaseMessage* message);
 
 	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
-	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
+	void handleSpatialChatInternalMessage(CreatureObject* player, const UnicodeString& args);
 
-	void handleGroupChat(PlayerCreature* player, const UnicodeString& message);
+	void handleGroupChat(CreatureObject* player, const UnicodeString& message);
 
 	ChatRoom* createRoomByFullPath(const String& path);
 
@@ -228,9 +228,9 @@ public:
 
 	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
 
-	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
+	void handleChatRoomMessage(CreatureObject* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
 
-	void handleChatEnterRoomById(PlayerCreature* player, unsigned int counter, unsigned int roomID);
+	void handleChatEnterRoomById(CreatureObject* player, unsigned int counter, unsigned int roomID);
 
 	void handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments);
 
@@ -238,9 +238,9 @@ public:
 
 	void destroyRoom(ChatRoom* room);
 
-	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
+	ChatRoom* createGroupRoom(unsigned long long groupID, CreatureObject* creator);
 
-	void loadMail(PlayerCreature* player);
+	void loadMail(CreatureObject* player);
 
 	void sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name);
 
@@ -248,11 +248,11 @@ public:
 
 	int sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters);
 
-	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
+	void handleRequestPersistentMsg(CreatureObject* player, unsigned int mailID);
 
-	void deletePersistentMessage(PlayerCreature* player, unsigned int mailID);
+	void deletePersistentMessage(CreatureObject* player, unsigned int mailID);
 
-	void broadcastGalaxy(PlayerCreature* player, const String& message);
+	void broadcastGalaxy(CreatureObject* player, const String& message);
 
 	void setPlayerManager(PlayerManager* manager);
 
@@ -340,21 +340,21 @@ public:
 
 	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
 
-	void sendRoomList(PlayerCreature* player);
+	void sendRoomList(CreatureObject* player);
 
-	void addPlayer(PlayerCreature* player);
+	void addPlayer(CreatureObject* player);
 
-	PlayerCreature* getPlayer(const String& name);
+	CreatureObject* getPlayer(const String& name);
 
-	PlayerCreature* removePlayer(const String& name);
+	CreatureObject* removePlayer(const String& name);
 
 	void broadcastMessage(BaseMessage* message);
 
 	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target = 0, unsigned int moodid = 0, unsigned int mood2 = 0);
 
-	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
+	void handleSpatialChatInternalMessage(CreatureObject* player, const UnicodeString& args);
 
-	void handleGroupChat(PlayerCreature* player, const UnicodeString& message);
+	void handleGroupChat(CreatureObject* player, const UnicodeString& message);
 
 	ChatRoom* createRoomByFullPath(const String& path);
 
@@ -362,9 +362,9 @@ public:
 
 	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
 
-	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
+	void handleChatRoomMessage(CreatureObject* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
 
-	void handleChatEnterRoomById(PlayerCreature* player, unsigned int counter, unsigned int roomID);
+	void handleChatEnterRoomById(CreatureObject* player, unsigned int counter, unsigned int roomID);
 
 	void handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments);
 
@@ -372,9 +372,9 @@ public:
 
 	void destroyRoom(ChatRoom* room);
 
-	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
+	ChatRoom* createGroupRoom(unsigned long long groupID, CreatureObject* creator);
 
-	void loadMail(PlayerCreature* player);
+	void loadMail(CreatureObject* player);
 
 	void sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name);
 
@@ -382,11 +382,11 @@ public:
 
 	int sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters);
 
-	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
+	void handleRequestPersistentMsg(CreatureObject* player, unsigned int mailID);
 
-	void deletePersistentMessage(PlayerCreature* player, unsigned int mailID);
+	void deletePersistentMessage(CreatureObject* player, unsigned int mailID);
 
-	void broadcastGalaxy(PlayerCreature* player, const String& message);
+	void broadcastGalaxy(CreatureObject* player, const String& message);
 
 	void setPlayerManager(PlayerManager* manager);
 
@@ -459,21 +459,21 @@ public:
 
 	void populateRoomListMessage(ChatRoom* channel, ChatRoomList* msg);
 
-	void sendRoomList(PlayerCreature* player);
+	void sendRoomList(CreatureObject* player);
 
-	void addPlayer(PlayerCreature* player);
+	void addPlayer(CreatureObject* player);
 
-	PlayerCreature* getPlayer(const String& name);
+	CreatureObject* getPlayer(const String& name);
 
-	PlayerCreature* removePlayer(const String& name);
+	CreatureObject* removePlayer(const String& name);
 
 	void broadcastMessage(BaseMessage* message);
 
 	void broadcastMessage(CreatureObject* player, const UnicodeString& message, unsigned long long target, unsigned int moodid, unsigned int mood2);
 
-	void handleSpatialChatInternalMessage(PlayerCreature* player, const UnicodeString& args);
+	void handleSpatialChatInternalMessage(CreatureObject* player, const UnicodeString& args);
 
-	void handleGroupChat(PlayerCreature* player, const UnicodeString& message);
+	void handleGroupChat(CreatureObject* player, const UnicodeString& message);
 
 	ChatRoom* createRoomByFullPath(const String& path);
 
@@ -481,25 +481,25 @@ public:
 
 	ChatRoom* getChatRoomByGamePath(ChatRoom* game, const String& path);
 
-	void handleChatRoomMessage(PlayerCreature* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
+	void handleChatRoomMessage(CreatureObject* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter);
 
-	void handleChatEnterRoomById(PlayerCreature* player, unsigned int counter, unsigned int roomID);
+	void handleChatEnterRoomById(CreatureObject* player, unsigned int counter, unsigned int roomID);
 
 	void handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments);
 
 	void destroyRoom(ChatRoom* room);
 
-	ChatRoom* createGroupRoom(unsigned long long groupID, PlayerCreature* creator);
+	ChatRoom* createGroupRoom(unsigned long long groupID, CreatureObject* creator);
 
-	void loadMail(PlayerCreature* player);
+	void loadMail(CreatureObject* player);
 
 	void sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name);
 
-	void handleRequestPersistentMsg(PlayerCreature* player, unsigned int mailID);
+	void handleRequestPersistentMsg(CreatureObject* player, unsigned int mailID);
 
-	void deletePersistentMessage(PlayerCreature* player, unsigned int mailID);
+	void deletePersistentMessage(CreatureObject* player, unsigned int mailID);
 
-	void broadcastGalaxy(PlayerCreature* player, const String& message);
+	void broadcastGalaxy(CreatureObject* player, const String& message);
 
 	void setPlayerManager(PlayerManager* manager);
 
@@ -520,18 +520,18 @@ protected:
 	String _param0_getPlayer__String_;
 	String _param0_removePlayer__String_;
 	UnicodeString _param1_broadcastMessage__CreatureObject_UnicodeString_long_int_int_;
-	UnicodeString _param1_handleSpatialChatInternalMessage__PlayerCreature_UnicodeString_;
-	UnicodeString _param1_handleGroupChat__PlayerCreature_UnicodeString_;
+	UnicodeString _param1_handleSpatialChatInternalMessage__CreatureObject_UnicodeString_;
+	UnicodeString _param1_handleGroupChat__CreatureObject_UnicodeString_;
 	String _param0_createRoomByFullPath__String_;
 	String _param0_getChatRoomByFullPath__String_;
 	String _param1_getChatRoomByGamePath__ChatRoom_String_;
-	UnicodeString _param1_handleChatRoomMessage__PlayerCreature_UnicodeString_int_int_;
+	UnicodeString _param1_handleChatRoomMessage__CreatureObject_UnicodeString_int_int_;
 	UnicodeString _param1_handleSocialInternalMessage__CreatureObject_UnicodeString_;
 	String _param0_sendMail__String_UnicodeString_UnicodeString_String_;
 	UnicodeString _param1_sendMail__String_UnicodeString_UnicodeString_String_;
 	UnicodeString _param2_sendMail__String_UnicodeString_UnicodeString_String_;
 	String _param3_sendMail__String_UnicodeString_UnicodeString_String_;
-	String _param1_broadcastGalaxy__PlayerCreature_String_;
+	String _param1_broadcastGalaxy__CreatureObject_String_;
 	String _param0_getGameRoom__String_;
 };
 

@@ -75,7 +75,7 @@ which carries forward this exception.
 #include "managers/faction/FactionManager.h"
 
 #include "server/chat/ChatManager.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/professions/SkillBox.h"
 
 #include "tre3/TreeDirectory.h"

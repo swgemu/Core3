@@ -47,7 +47,8 @@ package server.zone.objects.tangible.terminal.bank;
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.player.sui.banktransferbox.SuiBankTransferBox;
 import server.zone.objects.player.sui.SuiBox;
@@ -75,7 +76,7 @@ class BankTerminal extends Terminal {
 	 * @post { this object is locked, menuResponse is complete}
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
-	public void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player) {
+	public void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player) {
 		menuResponse.addRadialMenuItem(245, 3, "@sui:bank_items"); //Safety Deposit
 	}
 	
@@ -85,17 +86,18 @@ class BankTerminal extends Terminal {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
+	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		if (selectedID == 245) {
 			SceneObject bank = player.getSlottedObject("bank");
 			bank.openContainerTo(player);
 		} else if (selectedID == 20) {
 			SuiBankTransferBox sui = new SuiBankTransferBox(this, player, SuiWindowType.BANK_TRANSFER);
+			PlayerObject ghost = player.getPlayerObject();
 
 			sui.addCash(player.getCashCredits());
 			sui.addBank(player.getBankCredits());
 			
-			player.addSuiBox(sui);
+			ghost.addSuiBox(sui);
 			player.sendMessage(sui.generateMessage());
 		} else
 			return 1;

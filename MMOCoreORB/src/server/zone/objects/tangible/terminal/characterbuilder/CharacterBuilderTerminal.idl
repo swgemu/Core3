@@ -48,7 +48,7 @@ import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import system.util.VectorMap;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
 include server.zone.objects.tangible.terminal.characterbuilder.CharacterBuilderMenuNode;
@@ -81,23 +81,23 @@ class CharacterBuilderTerminal extends Terminal {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
-	public native void sendInitialChoices(PlayerCreature player);
+	public native void sendInitialChoices(CreatureObject player);
 	
 	/**
 	 * Player gets all languages available
 	 * @pre { player is locked }
 	 * @post { player is locked }
 	 */
-	public native void giveLanguages(PlayerCreature player);
+	public native void giveLanguages(CreatureObject player);
 	
 	/**
 	 * Enhances the target character with doc/ent buffs
 	 * @pre { player is locked }
 	 * @post { player is locked }
 	 */
-	public native void enhanceCharacter(PlayerCreature player);
+	public native void enhanceCharacter(CreatureObject player);
 	
 	/**
 	 * Creates and adds buff to Player
@@ -106,5 +106,5 @@ class CharacterBuilderTerminal extends Terminal {
 	 * @returns true if it was added
 	 * @param crc CRC of the buff, player target of buff, amount is the attribute modifier for the buff, duration of the buff, buffType specifies whether medical or performance and attribute sets the creature attribute to modify
 	 */
-	private native boolean doEnhanceCharacter(unsigned int crc, PlayerCreature player, int amount, int duration, int buffType, byte attribute);
+	private native boolean doEnhanceCharacter(unsigned int crc, CreatureObject player, int amount, int duration, int buffType, byte attribute);
 }

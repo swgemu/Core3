@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	MissionObjectiveStub
@@ -127,7 +127,7 @@ unsigned int MissionObjective::getObjectiveType() {
 		return _implementation->getObjectiveType();
 }
 
-PlayerCreature* MissionObjective::getPlayerOwner() {
+CreatureObject* MissionObjective::getPlayerOwner() {
 	MissionObjectiveImplementation* _implementation = (MissionObjectiveImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -135,7 +135,7 @@ PlayerCreature* MissionObjective::getPlayerOwner() {
 
 		DistributedMethod method(this, RPC_GETPLAYEROWNER__);
 
-		return (PlayerCreature*) method.executeWithObjectReturn();
+		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getPlayerOwner();
 }
@@ -405,7 +405,7 @@ unsigned int MissionObjectiveAdapter::getObjectiveType() {
 	return ((MissionObjectiveImplementation*) impl)->getObjectiveType();
 }
 
-PlayerCreature* MissionObjectiveAdapter::getPlayerOwner() {
+CreatureObject* MissionObjectiveAdapter::getPlayerOwner() {
 	return ((MissionObjectiveImplementation*) impl)->getPlayerOwner();
 }
 

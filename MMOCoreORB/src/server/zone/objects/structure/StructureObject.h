@@ -58,16 +58,16 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -126,13 +126,13 @@ public:
 
 	int notifyStructurePlaced(CreatureObject* creature);
 
-	bool checkRequisitesForPlacement(PlayerCreature* player);
+	bool checkRequisitesForPlacement(CreatureObject* player);
 
-	void sendStatusTo(PlayerCreature* player);
+	void sendStatusTo(CreatureObject* player);
 
-	void sendManageMaintenanceTo(PlayerCreature* player);
+	void sendManageMaintenanceTo(CreatureObject* player);
 
-	void sendChangeNamePromptTo(PlayerCreature* player);
+	void sendChangeNamePromptTo(CreatureObject* player);
 
 	String getTimeString(unsigned int timestamp);
 
@@ -158,17 +158,17 @@ public:
 
 	bool isOnAccessList(unsigned long long oid);
 
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+	void sendPermissionListTo(CreatureObject* player, const String& listName);
 
-	bool addPermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
+	bool addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
 
-	bool addPermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
+	bool addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
 
-	bool removePermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
+	bool removePermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
 
-	bool removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
+	bool removePermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
 
-	void createVendor(PlayerCreature* player);
+	void createVendor(CreatureObject* player);
 
 	int getRedeedCost();
 
@@ -277,13 +277,13 @@ public:
 
 	virtual int notifyStructurePlaced(CreatureObject* creature);
 
-	virtual bool checkRequisitesForPlacement(PlayerCreature* player);
+	virtual bool checkRequisitesForPlacement(CreatureObject* player);
 
-	void sendStatusTo(PlayerCreature* player);
+	void sendStatusTo(CreatureObject* player);
 
-	void sendManageMaintenanceTo(PlayerCreature* player);
+	void sendManageMaintenanceTo(CreatureObject* player);
 
-	virtual void sendChangeNamePromptTo(PlayerCreature* player);
+	virtual void sendChangeNamePromptTo(CreatureObject* player);
 
 	String getTimeString(unsigned int timestamp);
 
@@ -309,17 +309,17 @@ public:
 
 	bool isOnAccessList(unsigned long long oid);
 
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+	void sendPermissionListTo(CreatureObject* player, const String& listName);
 
-	bool addPermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
+	bool addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
 
-	bool addPermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
+	bool addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
 
-	bool removePermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
+	bool removePermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
 
-	bool removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
+	bool removePermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
 
-	void createVendor(PlayerCreature* player);
+	void createVendor(CreatureObject* player);
 
 	int getRedeedCost();
 
@@ -412,13 +412,13 @@ public:
 
 	int notifyStructurePlaced(CreatureObject* creature);
 
-	bool checkRequisitesForPlacement(PlayerCreature* player);
+	bool checkRequisitesForPlacement(CreatureObject* player);
 
-	void sendStatusTo(PlayerCreature* player);
+	void sendStatusTo(CreatureObject* player);
 
-	void sendManageMaintenanceTo(PlayerCreature* player);
+	void sendManageMaintenanceTo(CreatureObject* player);
 
-	void sendChangeNamePromptTo(PlayerCreature* player);
+	void sendChangeNamePromptTo(CreatureObject* player);
 
 	String getTimeString(unsigned int timestamp);
 
@@ -444,17 +444,17 @@ public:
 
 	bool isOnAccessList(unsigned long long oid);
 
-	void sendPermissionListTo(PlayerCreature* player, const String& listName);
+	void sendPermissionListTo(CreatureObject* player, const String& listName);
 
-	bool addPermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
+	bool addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
 
-	bool addPermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
+	bool addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
 
-	bool removePermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName);
+	bool removePermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
 
-	bool removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName);
+	bool removePermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
 
-	void createVendor(PlayerCreature* player);
+	void createVendor(CreatureObject* player);
 
 	int getRedeedCost();
 
@@ -497,13 +497,13 @@ public:
 	bool isRedeedable();
 
 protected:
-	String _param1_sendPermissionListTo__PlayerCreature_String_;
-	String _param2_addPermission__PlayerCreature_PlayerCreature_String_;
-	String _param1_addPermission__PlayerCreature_String_String_;
-	String _param2_addPermission__PlayerCreature_String_String_;
-	String _param2_removePermission__PlayerCreature_PlayerCreature_String_;
-	String _param1_removePermission__PlayerCreature_String_String_;
-	String _param2_removePermission__PlayerCreature_String_String_;
+	String _param1_sendPermissionListTo__CreatureObject_String_;
+	String _param2_addPermission__CreatureObject_CreatureObject_String_;
+	String _param1_addPermission__CreatureObject_String_String_;
+	String _param2_addPermission__CreatureObject_String_String_;
+	String _param2_removePermission__CreatureObject_CreatureObject_String_;
+	String _param1_removePermission__CreatureObject_String_String_;
+	String _param2_removePermission__CreatureObject_String_String_;
 };
 
 class StructureObjectHelper : public DistributedObjectClassHelper, public Singleton<StructureObjectHelper> {

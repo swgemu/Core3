@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 		player->sendSystemMessage("@error_message:sys_eject_request"); //Processing eject request...
 
 

@@ -66,7 +66,7 @@ public:
 			return INVALIDPOSTURE;
 
 		ProfessionManager* prof = server->getZoneServer()->getProfessionManager();
-		prof->surrenderSkillBox(arguments.toString(), (PlayerCreature*)creature, false, true);
+		prof->surrenderSkillBox(arguments.toString(), (CreatureObject*)creature, false, true);
 
 		return SUCCESS;
 	}

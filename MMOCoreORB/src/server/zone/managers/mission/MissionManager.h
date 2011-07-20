@@ -66,16 +66,16 @@ using namespace server::zone::objects::tangible::terminal::mission;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -140,57 +140,57 @@ public:
 
 	void loadNpcObjectsToSpawn();
 
-	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
+	void handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
-	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
+	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, CreatureObject* player);
 
-	void handleMissionAbort(MissionObject* mission, PlayerCreature* player);
+	void handleMissionAbort(MissionObject* mission, CreatureObject* player);
 
-	void removeMission(MissionObject* mission, PlayerCreature* player);
+	void removeMission(MissionObject* mission, CreatureObject* player);
 
-	void populateMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
+	void populateMissionList(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
-	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeSurveyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeDestroyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeDestroyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeBountyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeBountyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeDeliverMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeCraftingMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeEntertainerMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeHuntingMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeReconMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeReconMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeImperialDestroyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeImperialDeliverMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeRebelDestroyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeRebelDeliverMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
+	bool hasSurveyMission(CreatureObject* player, const String& spawn);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -239,57 +239,57 @@ public:
 
 	void loadNpcObjectsToSpawn();
 
-	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
+	void handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
-	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
+	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, CreatureObject* player);
 
-	void handleMissionAbort(MissionObject* mission, PlayerCreature* player);
+	void handleMissionAbort(MissionObject* mission, CreatureObject* player);
 
-	void removeMission(MissionObject* mission, PlayerCreature* player);
+	void removeMission(MissionObject* mission, CreatureObject* player);
 
-	void populateMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
+	void populateMissionList(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
-	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeSurveyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeDestroyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeDestroyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeBountyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeBountyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeDeliverMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeCraftingMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeEntertainerMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeHuntingMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeReconMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeReconMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeImperialDestroyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeImperialDeliverMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeRebelDestroyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeRebelDeliverMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
+	bool hasSurveyMission(CreatureObject* player, const String& spawn);
 
 	WeakReference<MissionManager*> _this;
 
@@ -338,60 +338,60 @@ public:
 
 	void loadNpcObjectsToSpawn();
 
-	void handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
+	void handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
-	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player);
+	void handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, CreatureObject* player);
 
-	void handleMissionAbort(MissionObject* mission, PlayerCreature* player);
+	void handleMissionAbort(MissionObject* mission, CreatureObject* player);
 
-	void removeMission(MissionObject* mission, PlayerCreature* player);
+	void removeMission(MissionObject* mission, CreatureObject* player);
 
-	void populateMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter);
+	void populateMissionList(MissionTerminal* missionTerminal, CreatureObject* player, int counter);
 
-	void randomizeSurveyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeSurveyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeDestroyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeDestroyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeBountyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeBountyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeDeliverMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeCraftingMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeCraftingMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeEntertainerMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeEntertainerMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeHuntingMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeHuntingMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeReconMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeReconMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeImperialDestroyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeImperialDeliverMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeRebelDestroyMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission);
 
-	void randomizeRebelDeliverMission(PlayerCreature* player, MissionObject* mission);
+	void randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission);
 
-	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player);
+	void createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
-	bool hasSurveyMission(PlayerCreature* player, const String& spawn);
+	bool hasSurveyMission(CreatureObject* player, const String& spawn);
 
 protected:
-	String _param1_hasSurveyMission__PlayerCreature_String_;
+	String _param1_hasSurveyMission__CreatureObject_String_;
 };
 
 class MissionManagerHelper : public DistributedObjectClassHelper, public Singleton<MissionManagerHelper> {

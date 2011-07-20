@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		//Apparently this command doesn't actually pass the targetid, so that probably means that it only accepts a player name
 		//TODO: Reimplement this command as @getPlayerInfo

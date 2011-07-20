@@ -12,7 +12,7 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
@@ -20,7 +20,7 @@
  *	VehicleDeedStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISVEHICLEDEEDOBJECT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISVEHICLEDEEDOBJECT__};
 
 VehicleDeed::VehicleDeed() : Deed(DummyConstructorParameter::instance()) {
 	VehicleDeedImplementation* _implementation = new VehicleDeedImplementation();
@@ -57,7 +57,7 @@ void VehicleDeed::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void VehicleDeed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void VehicleDeed::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	VehicleDeedImplementation* _implementation = (VehicleDeedImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -66,7 +66,7 @@ void VehicleDeed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* o
 		_implementation->fillAttributeList(alm, object);
 }
 
-void VehicleDeed::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void VehicleDeed::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	VehicleDeedImplementation* _implementation = (VehicleDeedImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -75,13 +75,13 @@ void VehicleDeed::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Playe
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int VehicleDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VehicleDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	VehicleDeedImplementation* _implementation = (VehicleDeedImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -294,8 +294,8 @@ Packet* VehicleDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
@@ -314,7 +314,7 @@ void VehicleDeedAdapter::initializeTransientMembers() {
 	((VehicleDeedImplementation*) impl)->initializeTransientMembers();
 }
 
-int VehicleDeedAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VehicleDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((VehicleDeedImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

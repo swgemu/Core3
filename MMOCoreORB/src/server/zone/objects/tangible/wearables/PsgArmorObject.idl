@@ -68,7 +68,7 @@ class PsgArmorObject extends WearableObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	
 	public native void updateCraftingValues(ManufactureSchematic schematic);

@@ -23,7 +23,7 @@
 
 #include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
 #include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/player/PlanetTravelPointListResponse.h"
 #include "server/zone/objects/area/BadgeActiveArea.h"
@@ -283,7 +283,7 @@ bool PlanetManagerImplementation::isTravelToLocationPermitted(const String& depa
 	return true;
 }
 
-void PlanetManagerImplementation::sendPlanetTravelPointListResponse(PlayerCreature* player) {
+void PlanetManagerImplementation::sendPlanetTravelPointListResponse(CreatureObject* player) {
 	PlanetTravelPointListResponse* ptplr = new PlanetTravelPointListResponse(zone->getZoneName());
 	planetTravelPointList->insertToMessage(ptplr);
 

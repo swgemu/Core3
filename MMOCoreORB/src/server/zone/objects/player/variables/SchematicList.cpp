@@ -171,7 +171,7 @@ bool SchematicList::contains(Vector<ManagedReference<DraftSchematic* > > filtere
  */
 
 Vector<ManagedReference<DraftSchematic* > > SchematicList::filterSchematicList(
-		PlayerCreature* player, Vector<uint32>* enabledTabs, int complexityLevel) {
+		CreatureObject* player, Vector<uint32>* enabledTabs, int complexityLevel) {
 
 	Vector<ManagedReference<DraftSchematic* > > filteredschematics;
 

@@ -49,7 +49,7 @@ FactionMap* FactionManager::getFactionMap() {
 	return &factionMap;
 }
 
-void FactionManager::awardFactionStanding(PlayerCreature* player, const String& factionName) {
+void FactionManager::awardFactionStanding(CreatureObject* player, const String& factionName) {
 	if (player == NULL)
 		return;
 
@@ -84,14 +84,14 @@ void FactionManager::awardFactionPoints(TangibleObject* killer, TangibleObject* 
 	//Temporary for testing.
 
 	if (killer->isPlayerCreature()) {
-		PlayerCreature* playerKiller = (PlayerCreature*) killer;
+		CreatureObject* playerKiller = (CreatureObject*) killer;
 
 		ManagedReference<PlayerObject*> ghost = playerKiller->getPlayerObject();
 		ghost->getFactionStandingList()->increaseRebelPoints(45);
 	}
 
 	if (destructedObject->isPlayerCreature()) {
-		PlayerCreature* victim = (PlayerCreature*) destructedObject;
+		CreatureObject* victim = (CreatureObject*) destructedObject;
 
 		ManagedReference<PlayerObject*> ghost = victim->getPlayerObject();
 		ghost->getFactionStandingList()->decreaseImperialPoints(30);

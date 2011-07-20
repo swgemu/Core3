@@ -14,7 +14,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -30,7 +30,7 @@
  *	EnhancePackStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_GETEFFECTIVENESS__,RPC_GETATTRIBUTE__,RPC_GETDURATION__,RPC_ISENHANCEPACK__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_GETEFFECTIVENESS__,RPC_GETATTRIBUTE__,RPC_GETDURATION__,RPC_ISENHANCEPACK__};
 
 EnhancePack::EnhancePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	EnhancePackImplementation* _implementation = new EnhancePackImplementation();
@@ -54,7 +54,7 @@ void EnhancePack::updateCraftingValues(ManufactureSchematic* schematic) {
 		_implementation->updateCraftingValues(schematic);
 }
 
-void EnhancePack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void EnhancePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -72,13 +72,13 @@ void EnhancePack::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-int EnhancePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int EnhancePack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	EnhancePackImplementation* _implementation = (EnhancePackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -343,7 +343,7 @@ void EnhancePackImplementation::updateCraftingValues(ManufactureSchematic* schem
 	duration = craftingValues->getCurrentValue("duration");
 }
 
-void EnhancePackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void EnhancePackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		string attributeName = BuffAttribute.getName(attribute);
@@ -378,7 +378,7 @@ void EnhancePackImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	attribute = stimPackTemplate->getAttribute();
 }
 
-int EnhancePackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int EnhancePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			return 1;
 	return 1;
@@ -457,8 +457,8 @@ Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
 		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
@@ -482,7 +482,7 @@ Packet* EnhancePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	return resp;
 }
 
-int EnhancePackAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int EnhancePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((EnhancePackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

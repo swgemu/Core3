@@ -18,7 +18,7 @@
  *	ManufactureSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__PLAYERCREATURE_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__CREATUREOBJECT_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
 
 ManufactureSchematic::ManufactureSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ManufactureSchematicImplementation* _implementation = new ManufactureSchematicImplementation();
@@ -46,7 +46,7 @@ void ManufactureSchematic::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void ManufactureSchematic::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void ManufactureSchematic::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -349,13 +349,13 @@ bool ManufactureSchematic::isCompleted() {
 		return _implementation->isCompleted();
 }
 
-void ManufactureSchematic::setCrafter(PlayerCreature* player) {
+void ManufactureSchematic::setCrafter(CreatureObject* player) {
 	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETCRAFTER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SETCRAFTER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -363,7 +363,7 @@ void ManufactureSchematic::setCrafter(PlayerCreature* player) {
 		_implementation->setCrafter(player);
 }
 
-PlayerCreature* ManufactureSchematic::getCrafter() {
+CreatureObject* ManufactureSchematic::getCrafter() {
 	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -371,7 +371,7 @@ PlayerCreature* ManufactureSchematic::getCrafter() {
 
 		DistributedMethod method(this, RPC_GETCRAFTER__);
 
-		return (PlayerCreature*) method.executeWithObjectReturn();
+		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getCrafter();
 }
@@ -678,7 +678,7 @@ bool ManufactureSchematicImplementation::readObjectMember(ObjectInputStream* str
 	}
 
 	if (_name == "crafter") {
-		TypeInfo<ManagedReference<PlayerCreature* > >::parseFromBinaryStream(&crafter, stream);
+		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&crafter, stream);
 		return true;
 	}
 
@@ -794,7 +794,7 @@ int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* s
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<PlayerCreature* > >::toBinaryStream(&crafter, stream);
+	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&crafter, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -948,12 +948,12 @@ bool ManufactureSchematicImplementation::isCompleted() {
 	return completed;
 }
 
-void ManufactureSchematicImplementation::setCrafter(PlayerCreature* player) {
+void ManufactureSchematicImplementation::setCrafter(CreatureObject* player) {
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		crafter = player;
 	crafter = player;
 }
 
-PlayerCreature* ManufactureSchematicImplementation::getCrafter() {
+CreatureObject* ManufactureSchematicImplementation::getCrafter() {
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return crafter;
 	return crafter;
 }
@@ -1077,8 +1077,8 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 	case RPC_ISCOMPLETED__:
 		resp->insertBoolean(isCompleted());
 		break;
-	case RPC_SETCRAFTER__PLAYERCREATURE_:
-		setCrafter((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SETCRAFTER__CREATUREOBJECT_:
+		setCrafter((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_GETCRAFTER__:
 		resp->insertLong(getCrafter()->_getObjectID());
@@ -1211,11 +1211,11 @@ bool ManufactureSchematicAdapter::isCompleted() {
 	return ((ManufactureSchematicImplementation*) impl)->isCompleted();
 }
 
-void ManufactureSchematicAdapter::setCrafter(PlayerCreature* player) {
+void ManufactureSchematicAdapter::setCrafter(CreatureObject* player) {
 	((ManufactureSchematicImplementation*) impl)->setCrafter(player);
 }
 
-PlayerCreature* ManufactureSchematicAdapter::getCrafter() {
+CreatureObject* ManufactureSchematicAdapter::getCrafter() {
 	return ((ManufactureSchematicImplementation*) impl)->getCrafter();
 }
 

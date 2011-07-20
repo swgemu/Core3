@@ -6,7 +6,8 @@
  */
 
 #include "GamblingManager.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
@@ -22,7 +23,7 @@
 #include "engine/service/proto/BaseMessage.h"
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
 
-void GamblingManagerImplementation::registerPlayer(GamblingTerminal* terminal, PlayerCreature* player) {
+void GamblingManagerImplementation::registerPlayer(GamblingTerminal* terminal, CreatureObject* player) {
 	if (terminal == NULL || player == NULL)
 		return;
 
@@ -39,7 +40,7 @@ void GamblingManagerImplementation::registerPlayer(GamblingTerminal* terminal, P
 	}
 }
 
-uint32 GamblingManagerImplementation::createWindow(GamblingTerminal* terminal, PlayerCreature* player) {
+uint32 GamblingManagerImplementation::createWindow(GamblingTerminal* terminal, CreatureObject* player) {
 	if (terminal == NULL || player == NULL)
 		return 0;
 
@@ -64,7 +65,7 @@ uint32 GamblingManagerImplementation::createWindow(GamblingTerminal* terminal, P
 	return boxID;
 }
 
-uint32 GamblingManagerImplementation::createSlotWindow(PlayerCreature* player, uint32 payoutBoxID) {
+uint32 GamblingManagerImplementation::createSlotWindow(CreatureObject* player, uint32 payoutBoxID) {
 	if (player == NULL)
 		return 0;
 
@@ -102,7 +103,7 @@ uint32 GamblingManagerImplementation::createSlotWindow(PlayerCreature* player, u
 
 	box->setOtherButton(true,"@ui:bet_one");
 	box->setOkButton(true, "@ui:bet_max");
-	player->addSuiBox(box);
+	player->getPlayerObject()->addSuiBox(box);
 	BaseMessage* test = box->generateMessage();
 
 	player->sendMessage(test);
@@ -110,7 +111,7 @@ uint32 GamblingManagerImplementation::createSlotWindow(PlayerCreature* player, u
 	return box->getBoxID();
 }
 
-uint32 GamblingManagerImplementation::createRouletteWindow(PlayerCreature* player) {
+uint32 GamblingManagerImplementation::createRouletteWindow(CreatureObject* player) {
 	if (player == NULL)
 		return 0;
 
@@ -150,13 +151,13 @@ uint32 GamblingManagerImplementation::createRouletteWindow(PlayerCreature* playe
 	box->setCancelButton(true, "@ui:leave_game");
 	box->setOtherButton(false, "");
 	box->setOkButton(true, "@ui:refresh");
-	player->addSuiBox(box);
+	player->getPlayerObject()->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
 
 	return box->getBoxID();
 }
 
-uint32 GamblingManagerImplementation::createPayoutWindow(PlayerCreature* player) {
+uint32 GamblingManagerImplementation::createPayoutWindow(CreatureObject* player) {
 	if (player == NULL)
 		return 0;
 
@@ -178,13 +179,13 @@ uint32 GamblingManagerImplementation::createPayoutWindow(PlayerCreature* player)
 	box->setCancelButton(false, "");
 	box->setOtherButton(false, "");
 	box->setOkButton(true, "@ui:ok");
-	player->addSuiBox(box);
+	player->getPlayerObject()->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
 
 	return box->getBoxID();
 }
 
-void GamblingManagerImplementation::refreshRouletteMenu(PlayerCreature* player) {
+void GamblingManagerImplementation::refreshRouletteMenu(CreatureObject* player) {
 
 	if (player != NULL) {
 
@@ -196,7 +197,7 @@ void GamblingManagerImplementation::refreshRouletteMenu(PlayerCreature* player) 
 	}
 }
 
-void GamblingManagerImplementation::refreshSlotMenu(PlayerCreature* player, GamblingTerminal* terminal) {
+void GamblingManagerImplementation::refreshSlotMenu(CreatureObject* player, GamblingTerminal* terminal) {
 	if (player == NULL || terminal == NULL)
 		return;
 
@@ -206,7 +207,7 @@ void GamblingManagerImplementation::refreshSlotMenu(PlayerCreature* player, Gamb
 	terminal->getPlayersWindows()->put(player, createSlotWindow(player, 0));
 }
 
-void GamblingManagerImplementation::handleSlot(PlayerCreature* player, bool cancel, bool other) {
+void GamblingManagerImplementation::handleSlot(CreatureObject* player, bool cancel, bool other) {
 	if (player == NULL)
 		return;
 
@@ -233,7 +234,7 @@ void GamblingManagerImplementation::handleSlot(PlayerCreature* player, bool canc
 	}
 }
 
-void GamblingManagerImplementation::bet(PlayerCreature* player, int amount, int target, int machineType) {
+void GamblingManagerImplementation::bet(CreatureObject* player, int amount, int target, int machineType) {
 	if (player == NULL)
 		return;
 
@@ -244,7 +245,7 @@ void GamblingManagerImplementation::bet(PlayerCreature* player, int amount, int 
 	}
 }
 
-void GamblingManagerImplementation::bet(GamblingTerminal* terminal, PlayerCreature* player, int amount, int target) {
+void GamblingManagerImplementation::bet(GamblingTerminal* terminal, CreatureObject* player, int amount, int target) {
 	if (player == NULL || terminal == NULL)
 		return;
 
@@ -336,7 +337,7 @@ void GamblingManagerImplementation::bet(GamblingTerminal* terminal, PlayerCreatu
 	}
 }
 
-void GamblingManagerImplementation::startGame(PlayerCreature* player, int machineType) {
+void GamblingManagerImplementation::startGame(CreatureObject* player, int machineType) {
 
 	if (player != NULL) {
 		switch (machineType) {
@@ -515,7 +516,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 
 				GamblingBet* bet = terminal->getBets()->get(0);
 
-				ManagedReference<PlayerCreature*> player = terminal->getPlayersWindows()->elementAt(0).getKey();
+				ManagedReference<CreatureObject*> player = terminal->getPlayersWindows()->elementAt(0).getKey();
 
 
 				if ((bet != NULL) && (player != NULL)) {
@@ -556,7 +557,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 			}
 			case GamblingTerminal::ROULETTEMACHINE: {
 
-				VectorMap<ManagedReference<PlayerCreature*>, int>* winnings = terminal->getWinnings();
+				VectorMap<ManagedReference<CreatureObject*>, int>* winnings = terminal->getWinnings();
 
 				Vector<GamblingBet*>* bets = terminal->getBets();
 
@@ -686,7 +687,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 
 					} else {
 
-						PlayerCreature* player = winnings->elementAt(i).getKey();
+						CreatureObject* player = winnings->elementAt(i).getKey();
 
 						if (player != NULL) {
 
@@ -714,7 +715,7 @@ void GamblingManagerImplementation::calculateOutcome(GamblingTerminal* terminal)
 	}
 }
 
-void GamblingManagerImplementation::leaveTerminal(PlayerCreature* player, int machineType) {
+void GamblingManagerImplementation::leaveTerminal(CreatureObject* player, int machineType) {
 
 	if (player != NULL) {
 

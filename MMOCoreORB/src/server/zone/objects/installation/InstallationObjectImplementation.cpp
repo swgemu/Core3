@@ -51,7 +51,7 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(buio6);
 }
 
-void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	//TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	//Add the owner name to the examine window.
@@ -70,7 +70,7 @@ void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* a
 
 }
 
-void InstallationObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void InstallationObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!isOnAdminList(player))
 		return;
 
@@ -86,7 +86,7 @@ void InstallationObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse
 	menuResponse->addRadialMenuItemToRadialID(117, 123, 3, "@player_structure:permission_hopper"); //Hopper List
 }
 
-int InstallationObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int InstallationObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (!isOnAdminList(player))
 		return 1;
 
@@ -246,7 +246,7 @@ void InstallationObjectImplementation::setActiveResource(ResourceContainer* cont
 	updateToDatabase();
 }
 
-void InstallationObjectImplementation::handleStructureAddEnergy(PlayerCreature* player) {
+void InstallationObjectImplementation::handleStructureAddEnergy(CreatureObject* player) {
 	try {
 		StringBuffer sstext, ssTotalEnergy;
 
@@ -266,7 +266,7 @@ void InstallationObjectImplementation::handleStructureAddEnergy(PlayerCreature* 
 		energyBox->addFrom("@player_structure:total_energy", ssTotalEnergy.toString(), ssTotalEnergy.toString(), "1");
 		energyBox->addTo("@player_structure:to_deposit", "0", "0", "1");
 
-		player->addSuiBox(energyBox);
+		player->getPlayerObject()->addSuiBox(energyBox);
 		player->sendMessage(energyBox->generateMessage());
 
 	} catch (Exception& e) {
@@ -557,7 +557,7 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 
 void InstallationObjectImplementation::broadcastToOperators(BasePacket* packet) {
 	for (int i = 0; i < operatorList.size(); ++i) {
-		PlayerCreature* player = operatorList.get(i);
+		CreatureObject* player = operatorList.get(i);
 		player->sendMessage(packet->clone());
 	}
 
@@ -587,7 +587,7 @@ void InstallationObjectImplementation::verifyOperators() {
 
 	// won't fully clean up at once because indexes would change once you remove one - but should clean up
 	for (int i = 0; i < operatorList.size(); i++) {
-		ManagedReference<PlayerCreature*> obj = operatorList.get(i);
+		ManagedReference<CreatureObject*> obj = operatorList.get(i);
 
 		if (!obj->isOnline()) {
 			operatorList.remove(i);

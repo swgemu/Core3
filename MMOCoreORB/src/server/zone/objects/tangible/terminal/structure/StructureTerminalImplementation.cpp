@@ -9,7 +9,7 @@
 
 #include "StructureTerminal.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/structure/StructureObject.h"
@@ -18,7 +18,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 
-void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (controlledObject == NULL || !controlledObject->isStructureObject())
 		return;
 
@@ -58,7 +58,7 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 
 }
 
-int StructureTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (controlledObject == NULL || !controlledObject->isStructureObject())
 		return 1;
 

@@ -90,7 +90,7 @@ void DeliverMissionObjectiveImplementation::abort() {
 }
 
 void DeliverMissionObjectiveImplementation::complete() {
-	PlayerCreature* player = (PlayerCreature*) getPlayerOwner();
+	CreatureObject* player = (CreatureObject*) getPlayerOwner();
 
 	if (player == NULL)
 		return;
@@ -128,7 +128,7 @@ int DeliverMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* 
 		if (targetNpc != converser)
 			converser->sendDefaultConversationTo(player);
 		else {
-			PlayerCreature* playerCreature = (PlayerCreature*) player;
+			CreatureObject* playerCreature = (CreatureObject*) player;
 
 			player->sendMessage(new StartNpcConversation(playerCreature, converser->getObjectID(), ""));
 			StringBuffer response, itemEntry;

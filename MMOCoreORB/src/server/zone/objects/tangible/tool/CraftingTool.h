@@ -112,16 +112,16 @@ using namespace server::zone::packets::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -173,11 +173,11 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
@@ -193,39 +193,39 @@ public:
 
 	Vector<unsigned int>* getToolTabs();
 
-	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation = NULL);
+	void requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation = NULL);
 
-	void cancelCraftingSession(PlayerCreature* player);
+	void cancelCraftingSession(CreatureObject* player);
 
 	void clearCraftingSession();
 
-	void selectDraftSchematic(PlayerCreature* player, int index);
+	void selectDraftSchematic(CreatureObject* player, int index);
 
-	bool createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createSessionObjects(CreatureObject* player, DraftSchematic* draftschematic);
 
-	bool createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic);
 
-	bool createPrototype(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createPrototype(CreatureObject* player, DraftSchematic* draftschematic);
 
-	void synchronizedUIListenForSchematic(PlayerCreature* player);
+	void synchronizedUIListenForSchematic(CreatureObject* player);
 
-	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
+	void addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
 
-	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
+	void removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
 
-	void nextCraftingStage(PlayerCreature* player, int clientCounter);
+	void nextCraftingStage(CreatureObject* player, int clientCounter);
 
-	void experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter);
+	void experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter);
 
-	void customization(PlayerCreature* player, String& name, int schematicCount, String& customization);
+	void customization(CreatureObject* player, String& name, int schematicCount, String& customization);
 
-	void createPrototype(PlayerCreature* player, int clientCounter, int practice);
+	void createPrototype(CreatureObject* player, int clientCounter, int practice);
 
-	void createManfSchematic(PlayerCreature* player, int clientCounter);
+	void createManfSchematic(CreatureObject* player, int clientCounter);
 
-	void createObject(PlayerCreature* player, int timer, bool create);
+	void createObject(CreatureObject* player, int timer, bool create);
 
-	void depositObject(PlayerCreature* player, bool practice);
+	void depositObject(CreatureObject* player, bool practice);
 
 	unsigned long long getLastExperimentationTimestamp();
 
@@ -312,11 +312,11 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
@@ -332,77 +332,77 @@ public:
 
 	Vector<unsigned int>* getToolTabs();
 
-	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation = NULL);
+	void requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation = NULL);
 
 private:
-	void sendStart(PlayerCreature* player);
+	void sendStart(CreatureObject* player);
 
-	void sendToolStartFailure(PlayerCreature* player);
+	void sendToolStartFailure(CreatureObject* player);
 
 public:
-	void cancelCraftingSession(PlayerCreature* player);
+	void cancelCraftingSession(CreatureObject* player);
 
 	void clearCraftingSession();
 
 private:
-	void closeCraftingWindow(PlayerCreature* player, int clientCounter);
+	void closeCraftingWindow(CreatureObject* player, int clientCounter);
 
-	void locateCraftingStation(PlayerCreature* player, int toolType);
+	void locateCraftingStation(CreatureObject* player, int toolType);
 
 public:
-	void selectDraftSchematic(PlayerCreature* player, int index);
+	void selectDraftSchematic(CreatureObject* player, int index);
 
-	bool createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createSessionObjects(CreatureObject* player, DraftSchematic* draftschematic);
 
-	bool createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic);
 
-	bool createPrototype(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createPrototype(CreatureObject* player, DraftSchematic* draftschematic);
 
-	void synchronizedUIListenForSchematic(PlayerCreature* player);
+	void synchronizedUIListenForSchematic(CreatureObject* player);
 
-	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
+	void addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
 
 private:
-	void sendIngredientAddSuccess(PlayerCreature* player, int slot, int clientCounter);
+	void sendIngredientAddSuccess(CreatureObject* player, int slot, int clientCounter);
 
 public:
-	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
+	void removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
 
 private:
-	void sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int clientCounter);
+	void sendIngredientRemoveSuccess(CreatureObject* player, int slot, int clientCounter);
 
-	void sendSlotMessage(PlayerCreature* player, int clientCounter, int message);
+	void sendSlotMessage(CreatureObject* player, int clientCounter, int message);
 
 public:
-	void nextCraftingStage(PlayerCreature* player, int clientCounter);
+	void nextCraftingStage(CreatureObject* player, int clientCounter);
 
 private:
-	void initialAssembly(PlayerCreature* player, int counter);
+	void initialAssembly(CreatureObject* player, int counter);
 
-	void finishAssembly(PlayerCreature* player, int clientCounter);
+	void finishAssembly(CreatureObject* player, int clientCounter);
 
 public:
-	void experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter);
+	void experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter);
 
 private:
 	void experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure);
 
 public:
-	void customization(PlayerCreature* player, String& name, int schematicCount, String& customization);
+	void customization(CreatureObject* player, String& name, int schematicCount, String& customization);
 
 private:
-	void finishStage1(PlayerCreature* player, int clientCounter);
+	void finishStage1(CreatureObject* player, int clientCounter);
 
-	void finishStage2(PlayerCreature* player, int clientCounter);
+	void finishStage2(CreatureObject* player, int clientCounter);
 
 public:
-	void createPrototype(PlayerCreature* player, int clientCounter, int practice);
+	void createPrototype(CreatureObject* player, int clientCounter, int practice);
 
-	void createManfSchematic(PlayerCreature* player, int clientCounter);
+	void createManfSchematic(CreatureObject* player, int clientCounter);
 
-	void createObject(PlayerCreature* player, int timer, bool create);
+	void createObject(CreatureObject* player, int timer, bool create);
 
-	void depositObject(PlayerCreature* player, bool practice);
+	void depositObject(CreatureObject* player, bool practice);
 
 	unsigned long long getLastExperimentationTimestamp();
 
@@ -453,7 +453,7 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
@@ -467,48 +467,48 @@ public:
 
 	ManufactureSchematic* getManufactureSchematic();
 
-	void requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation);
+	void requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation);
 
-	void cancelCraftingSession(PlayerCreature* player);
+	void cancelCraftingSession(CreatureObject* player);
 
 	void clearCraftingSession();
 
-	void selectDraftSchematic(PlayerCreature* player, int index);
+	void selectDraftSchematic(CreatureObject* player, int index);
 
-	bool createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createSessionObjects(CreatureObject* player, DraftSchematic* draftschematic);
 
-	bool createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic);
 
-	bool createPrototype(PlayerCreature* player, DraftSchematic* draftschematic);
+	bool createPrototype(CreatureObject* player, DraftSchematic* draftschematic);
 
-	void synchronizedUIListenForSchematic(PlayerCreature* player);
+	void synchronizedUIListenForSchematic(CreatureObject* player);
 
-	void addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
+	void addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
 
-	void removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter);
+	void removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter);
 
-	void nextCraftingStage(PlayerCreature* player, int clientCounter);
+	void nextCraftingStage(CreatureObject* player, int clientCounter);
 
-	void experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter);
+	void experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter);
 
-	void customization(PlayerCreature* player, String& name, int schematicCount, String& customization);
+	void customization(CreatureObject* player, String& name, int schematicCount, String& customization);
 
-	void createPrototype(PlayerCreature* player, int clientCounter, int practice);
+	void createPrototype(CreatureObject* player, int clientCounter, int practice);
 
-	void createManfSchematic(PlayerCreature* player, int clientCounter);
+	void createManfSchematic(CreatureObject* player, int clientCounter);
 
-	void createObject(PlayerCreature* player, int timer, bool create);
+	void createObject(CreatureObject* player, int timer, bool create);
 
-	void depositObject(PlayerCreature* player, bool practice);
+	void depositObject(CreatureObject* player, bool practice);
 
 	unsigned long long getLastExperimentationTimestamp();
 
 	int getExperimentationResult();
 
 protected:
-	String _param2_experiment__PlayerCreature_int_String_int_;
-	String _param1_customization__PlayerCreature_String_int_String_;
-	String _param3_customization__PlayerCreature_String_int_String_;
+	String _param2_experiment__CreatureObject_int_String_int_;
+	String _param1_customization__CreatureObject_String_int_String_;
+	String _param3_customization__CreatureObject_String_int_String_;
 };
 
 class CraftingToolHelper : public DistributedObjectClassHelper, public Singleton<CraftingToolHelper> {

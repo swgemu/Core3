@@ -8,10 +8,10 @@
 #include "ObjectMenuComponent.h"
 
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	//All objects in a cell can be picked up, if the player is on the structures permission list.
 	//This opens the door to allow admins to be able to drop/pickup items in public structures
 	SceneObject* parent = sceneObject->getParent();
@@ -48,7 +48,7 @@ void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 }
 
 
-int ObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, PlayerCreature* player, byte selectedID) {
+int ObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
 	switch (selectedID) {
 	case 10: //Pick Up
 	{

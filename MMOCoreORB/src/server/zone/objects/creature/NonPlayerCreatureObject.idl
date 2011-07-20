@@ -58,7 +58,7 @@ class NonPlayerCreatureObject extends AiAgent {
 		Logger.setGlobalLogging(true);
 	}
 	
-	public boolean isNonPlayerCreature() {
+	public boolean isNonPlayerCreatureObject() {
 		return true;
 	}
 	

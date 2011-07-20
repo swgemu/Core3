@@ -24,16 +24,30 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -92,17 +106,17 @@ public:
 
 	void weatherTransition();
 
-	void sendWeatherPacket(PlayerCreature* player);
+	void sendWeatherPacket(CreatureObject* player);
 
 	void sandstormTick();
 
-	void enableWeather(PlayerCreature* player);
+	void enableWeather(CreatureObject* player);
 
-	void disableWeather(PlayerCreature* player);
+	void disableWeather(CreatureObject* player);
 
-	void changeWeather(PlayerCreature* player, int newWeather);
+	void changeWeather(CreatureObject* player, int newWeather);
 
-	void weatherInfo(PlayerCreature* player);
+	void weatherInfo(CreatureObject* player);
 
 	void setWeatherID(unsigned int value);
 
@@ -208,9 +222,9 @@ private:
 
 	void broadcastWeather(bool sendPacket, bool doSandstormDamage);
 
-	void applySandstormDamage(PlayerCreature* player);
+	void applySandstormDamage(CreatureObject* player);
 
-	void calculateSandstormProtection(PlayerCreature* player, Vector<int>& sandstormCoverings);
+	void calculateSandstormProtection(CreatureObject* player, Vector<int>& sandstormCoverings);
 
 public:
 	void initialize();
@@ -219,17 +233,17 @@ public:
 
 	void weatherTransition();
 
-	void sendWeatherPacket(PlayerCreature* player);
+	void sendWeatherPacket(CreatureObject* player);
 
 	void sandstormTick();
 
-	void enableWeather(PlayerCreature* player);
+	void enableWeather(CreatureObject* player);
 
-	void disableWeather(PlayerCreature* player);
+	void disableWeather(CreatureObject* player);
 
-	void changeWeather(PlayerCreature* player, int newWeather);
+	void changeWeather(CreatureObject* player, int newWeather);
 
-	void weatherInfo(PlayerCreature* player);
+	void weatherInfo(CreatureObject* player);
 
 	void setWeatherID(unsigned int value);
 
@@ -296,17 +310,17 @@ public:
 
 	void weatherTransition();
 
-	void sendWeatherPacket(PlayerCreature* player);
+	void sendWeatherPacket(CreatureObject* player);
 
 	void sandstormTick();
 
-	void enableWeather(PlayerCreature* player);
+	void enableWeather(CreatureObject* player);
 
-	void disableWeather(PlayerCreature* player);
+	void disableWeather(CreatureObject* player);
 
-	void changeWeather(PlayerCreature* player, int newWeather);
+	void changeWeather(CreatureObject* player, int newWeather);
 
-	void weatherInfo(PlayerCreature* player);
+	void weatherInfo(CreatureObject* player);
 
 	void setWeatherID(unsigned int value);
 

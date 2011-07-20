@@ -14,7 +14,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -26,7 +26,7 @@
  *	WoundPackStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_GETEFFECTIVENESS__,RPC_ISWOUNDPACK__,RPC_GETATTRIBUTE__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_GETEFFECTIVENESS__,RPC_ISWOUNDPACK__,RPC_GETATTRIBUTE__};
 
 WoundPack::WoundPack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	WoundPackImplementation* _implementation = new WoundPackImplementation();
@@ -59,7 +59,7 @@ void WoundPack::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void WoundPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void WoundPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -68,13 +68,13 @@ void WoundPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* obj
 		_implementation->fillAttributeList(msg, object);
 }
 
-int WoundPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int WoundPack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	WoundPackImplementation* _implementation = (WoundPackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -325,7 +325,7 @@ void WoundPackImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 	attribute = stimPackTemplate->getAttribute();
 }
 
-void WoundPackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void WoundPackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		msg.insertAttribute("examine_heal_wound_" + CreatureAttribute.getName(attribute), Math.getPrecision(effectiveness, 0));
@@ -334,7 +334,7 @@ void WoundPackImplementation::fillAttributeList(AttributeListMessage* msg, Playe
 	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::medicineUseRequired);
 }
 
-int WoundPackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int WoundPackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			return 1;
 	return 1;
@@ -410,8 +410,8 @@ Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
 		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
@@ -432,7 +432,7 @@ Packet* WoundPackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-int WoundPackAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int WoundPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((WoundPackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

@@ -46,7 +46,7 @@ which carries forward this exception.
 #define CLOSECONTAINERCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../player/PlayerCreature.h"
+#include "../../creature/CreatureObject.h"
 #include "../../../managers/minigames/FishingManager.h"
 
 class CloseContainerCommand : public QueueCommand {
@@ -79,8 +79,8 @@ public:
 
 		Locker clocker(container, creature);
 
-		container->closeContainerTo((PlayerCreature*)creature, false);
-		container->notifyCloseContainer((PlayerCreature*)creature);
+		container->closeContainerTo((CreatureObject*)creature, false);
+		container->notifyCloseContainer((CreatureObject*)creature);
 
 		return SUCCESS;
 	}

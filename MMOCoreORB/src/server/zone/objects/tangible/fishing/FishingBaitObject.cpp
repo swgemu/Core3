@@ -10,13 +10,13 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	FishingBaitObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETFRESHNESS__,RPC_SETFRESHNESS__INT_,RPC_LESSFRESH__,RPC_GETUSECOUNT__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_GETFRESHNESS__,RPC_SETFRESHNESS__INT_,RPC_LESSFRESH__,RPC_GETUSECOUNT__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_};
 
 FishingBaitObject::FishingBaitObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FishingBaitObjectImplementation* _implementation = new FishingBaitObjectImplementation();
@@ -97,13 +97,13 @@ int FishingBaitObject::getUseCount() {
 		return _implementation->getUseCount();
 }
 
-void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void FishingBaitObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	FishingBaitObjectImplementation* _implementation = (FishingBaitObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -306,8 +306,8 @@ Packet* FishingBaitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case RPC_GETUSECOUNT__:
 		resp->insertSignedInt(getUseCount());
 		break;
-	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_:
-		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
+		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -336,7 +336,7 @@ int FishingBaitObjectAdapter::getUseCount() {
 	return ((FishingBaitObjectImplementation*) impl)->getUseCount();
 }
 
-void FishingBaitObjectAdapter::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void FishingBaitObjectAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	((FishingBaitObjectImplementation*) impl)->fillAttributeList(msg, object);
 }
 

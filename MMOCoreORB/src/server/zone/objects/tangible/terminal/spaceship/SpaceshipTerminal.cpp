@@ -4,13 +4,13 @@
 
 #include "SpaceshipTerminal.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	SpaceshipTerminalStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_ = 6};
 
 SpaceshipTerminal::SpaceshipTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	SpaceshipTerminalImplementation* _implementation = new SpaceshipTerminalImplementation();
@@ -25,13 +25,13 @@ SpaceshipTerminal::~SpaceshipTerminal() {
 }
 
 
-int SpaceshipTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SpaceshipTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	SpaceshipTerminalImplementation* _implementation = (SpaceshipTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -181,8 +181,8 @@ Packet* SpaceshipTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -191,7 +191,7 @@ Packet* SpaceshipTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	return resp;
 }
 
-int SpaceshipTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SpaceshipTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((SpaceshipTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

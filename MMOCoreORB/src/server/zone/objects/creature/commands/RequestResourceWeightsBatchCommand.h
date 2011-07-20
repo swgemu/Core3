@@ -76,7 +76,7 @@ public:
 		if(craftingManager == NULL || !creature->isPlayerCreature())
 			return GENERALERROR;
 
-		craftingManager->sendResourceWeightsTo((PlayerCreature*)creature, schematicID);
+		craftingManager->sendResourceWeightsTo((CreatureObject*)creature, schematicID);
 
 		return SUCCESS;
 	}

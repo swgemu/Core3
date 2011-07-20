@@ -71,7 +71,7 @@ public:
 		args.getStringToken(name);
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-		ManagedReference<PlayerCreature*> player = playerManager->getPlayer(name);
+		ManagedReference<CreatureObject*> player = playerManager->getPlayer(name);
 
 		if (player == NULL)
 			return GENERALERROR;

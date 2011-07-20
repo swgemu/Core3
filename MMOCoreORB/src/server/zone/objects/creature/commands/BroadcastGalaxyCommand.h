@@ -69,7 +69,7 @@ public:
 			return GENERALERROR;
 
 		ChatManager* chatManager = server->getZoneServer()->getChatManager();
-		chatManager->broadcastGalaxy((PlayerCreature*)creature, arguments.toString());
+		chatManager->broadcastGalaxy((CreatureObject*)creature, arguments.toString());
 
 		return SUCCESS;
 	}

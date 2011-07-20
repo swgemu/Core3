@@ -25,14 +25,16 @@ public:
 	}
 
 	void run() {
-		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
+		CreatureObject* object = (CreatureObject*) client->getPlayer();
 
 		if (object == NULL)
 			return;
 
 		Locker _locker(object);
 
-		object->notifySceneReady();
+		PlayerObject* ghost = object->getPlayerObject();
+
+		ghost->notifySceneReady();
 	}
 };
 

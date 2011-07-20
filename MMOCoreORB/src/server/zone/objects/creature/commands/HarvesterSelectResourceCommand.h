@@ -69,7 +69,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 

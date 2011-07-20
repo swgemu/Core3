@@ -8,12 +8,12 @@
 #include "FishObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
 #include "system/util/VectorMap.h"
 
-int FishObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FishObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 245) {
 		if (getContainerObjectsSize() > 0) {
 			filet(player);
@@ -25,7 +25,7 @@ int FishObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 	return 0;
 }
 
-void FishObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void FishObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 	if (getContainerObjectsSize() > 0) {
 		String text = "@fishing:mnu_filet";
@@ -34,7 +34,7 @@ void FishObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRe
 	}
 }
 
-void FishObjectImplementation::filet(PlayerCreature* player) {
+void FishObjectImplementation::filet(CreatureObject* player) {
 	if (getContainerObjectsSize() > 0) {
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
@@ -59,7 +59,7 @@ void FishObjectImplementation::filet(PlayerCreature* player) {
 	}
 }
 
-void FishObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void FishObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);
 
 	String lengthText = String::valueOf(length) + "m";

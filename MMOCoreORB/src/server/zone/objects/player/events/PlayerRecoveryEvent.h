@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PLAYERRECOVERYEVENT_H_
 #define PLAYERRECOVERYEVENT_H_
 
-#include "../PlayerCreature.h"
+#include "../PlayerObject.h"
 
 namespace server {
 namespace zone {
@@ -54,10 +54,10 @@ namespace player {
 namespace events {
 
 class PlayerRecoveryEvent : public Task {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<PlayerObject*> player;
 
 public:
-	PlayerRecoveryEvent(PlayerCreature* pl) : Task(2000) {
+	PlayerRecoveryEvent(PlayerObject* pl) : Task(2000) {
 		player = pl;
 	}
 
@@ -69,7 +69,7 @@ public:
 	}
 
 	void run() {
-		Locker _locker(player);
+		Locker _locker(player->getParent());
 
 		player->clearRecoveryEvent();
 

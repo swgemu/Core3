@@ -14,6 +14,7 @@
 #include "server/zone/managers/vendor/VendorSelectionNode.h"
 #include "server/zone/objects/player/sessions/vendor/sui/CreateVendorSuiCallback.h"
 #include "server/zone/objects/player/sessions/vendor/sui/NameVendorSuiCallback.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/auction/AuctionsMap.h"
@@ -30,7 +31,7 @@ int CreateVendorSessionImplementation::initializeSession() {
 	return 0;
 }
 
-void CreateVendorSessionImplementation::initalizeWindow(PlayerCreature* pl) {
+void CreateVendorSessionImplementation::initalizeWindow(CreatureObject* pl) {
 	player = pl;
 
 	if (player == NULL)
@@ -72,7 +73,7 @@ void CreateVendorSessionImplementation::initalizeWindow(PlayerCreature* pl) {
 
 	currentNode->addChildrenToListBox(suiSelectVendor, hiringMod);
 
-	player->addSuiBox(suiSelectVendor);
+	player->getPlayerObject()->addSuiBox(suiSelectVendor);
 	player->sendMessage(suiSelectVendor->generateMessage());
 
 	player->addActiveSession(SessionFacadeType::CREATEVENDOR, _this);
@@ -94,7 +95,7 @@ void CreateVendorSessionImplementation::handleMenuSelect(byte menuID) {
 		currentNode = node;
 		node->addChildrenToListBox(suiSelectVendor, hiringMod);
 		player->sendMessage(suiSelectVendor->generateMessage());
-		player->addSuiBox(suiSelectVendor);
+		player->getPlayerObject()->addSuiBox(suiSelectVendor);
 
 	} else {
 		SuiInputBox* input = new SuiInputBox(player, SuiWindowType::STRUCTURE_NAME_VENDOR);
@@ -104,7 +105,7 @@ void CreateVendorSessionImplementation::handleMenuSelect(byte menuID) {
 		input->setPromptText("@player_structure:name_d");
 
 		player->sendMessage(input->generateMessage());
-		player->addSuiBox(input);
+		player->getPlayerObject()->addSuiBox(input);
 	}
 }
 
@@ -118,7 +119,7 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		input->setPromptText("@player_structure:name_d");
 
 		player->sendMessage(input->generateMessage());
-		player->addSuiBox(input);
+		player->getPlayerObject()->addSuiBox(input);
 		return;
 	}
 

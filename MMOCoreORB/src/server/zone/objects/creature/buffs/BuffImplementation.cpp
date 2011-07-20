@@ -50,7 +50,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/Buffs.h"
 
 void BuffImplementation::initializeTransientMembers() {
@@ -70,7 +70,7 @@ void BuffImplementation::initializeTransientMembers() {
 	}
 }
 
-void BuffImplementation::sendTo(PlayerCreature* player) {
+void BuffImplementation::sendTo(CreatureObject* player) {
 	if (buffCRC != 0) {
 		AddBuffMessage* abm = new AddBuffMessage(player, buffCRC, getTimeLeft());
 		player->sendMessage(abm);
@@ -81,7 +81,7 @@ void BuffImplementation::setBuffEventNull() {
 	buffEvent = NULL;
 }
 
-void BuffImplementation::sendDestroyTo(PlayerCreature* player) {
+void BuffImplementation::sendDestroyTo(CreatureObject* player) {
 	if (!player->hasBuff(buffCRC)) {
 		RemoveBuffMessage* rbm = new RemoveBuffMessage(player, buffCRC);
 		player->sendMessage(rbm);
@@ -102,7 +102,7 @@ void BuffImplementation::activate(bool applyModifiers) {
 		Core::getTaskManager()->getNextExecutionTime(buffEvent, nextExecutionTime);
 
 		if (creature->isPlayerCreature())
-			sendTo(((PlayerCreature*) creature.get()));
+			sendTo(((CreatureObject*) creature.get()));
 
 		if (!startMessage.isEmpty())
 			creature->sendSystemMessage(startMessage);
@@ -125,7 +125,7 @@ void BuffImplementation::deactivate(bool removeModifiers) {
 		}
 
 		if (creature->isPlayerCreature())
-			sendDestroyTo((PlayerCreature*) creature.get());
+			sendDestroyTo((CreatureObject*) creature.get());
 
 		if (!endMessage.isEmpty())
 			creature->sendSystemMessage(endMessage);

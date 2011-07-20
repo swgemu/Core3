@@ -78,7 +78,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*)creature;
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -98,7 +98,7 @@ public:
 		return SUCCESS;
 	}
 
-	bool attemptVolleyFire(PlayerCreature* player, uint64* target, int skillMod) {
+	bool attemptVolleyFire(CreatureObject* player, uint64* target, int skillMod) {
 		if (player == NULL)
 			return false;
 
@@ -122,7 +122,7 @@ public:
 		return ret == SUCCESS;
 	}
 
-	bool doVolleyFire(PlayerCreature* leader, GroupObject* group, uint64* target) {
+	bool doVolleyFire(CreatureObject* leader, GroupObject* group, uint64* target) {
 		if (leader == NULL || group == NULL)
 			return false;
 
@@ -132,7 +132,7 @@ public:
 			if (!member->isPlayerCreature() || !member->isInRange(leader, 128.0))
 				continue;
 
-			ManagedReference<PlayerCreature*> memberPlayer = (PlayerCreature*) member.get();
+			ManagedReference<CreatureObject*> memberPlayer = (CreatureObject*) member.get();
 
 			if (!memberPlayer->isInCombat())
 				continue;

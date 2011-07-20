@@ -10,7 +10,7 @@
  *	HarvesterObjectStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATEOPERATORS__,RPC_ISHARVESTEROBJECT__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATEOPERATORS__,RPC_ISHARVESTEROBJECT__};
 
 HarvesterObject::HarvesterObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	HarvesterObjectImplementation* _implementation = new HarvesterObjectImplementation();
@@ -34,7 +34,7 @@ void HarvesterObject::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void HarvesterObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void HarvesterObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -43,13 +43,13 @@ void HarvesterObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, P
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int HarvesterObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int HarvesterObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	HarvesterObjectImplementation* _implementation = (HarvesterObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -269,8 +269,8 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
 		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
@@ -291,7 +291,7 @@ Packet* HarvesterObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	return resp;
 }
 
-int HarvesterObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int HarvesterObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((HarvesterObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

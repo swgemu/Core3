@@ -51,7 +51,7 @@ which carries forward this exception.
 
 class ImageDesignStartMessage : public ObjectControllerMessage {
 public:
-	ImageDesignStartMessage(PlayerCreature* object, PlayerCreature* designer, PlayerCreature* targetPlayer, uint64 tentID, int type = 0)
+	ImageDesignStartMessage(CreatureObject* object, CreatureObject* designer, CreatureObject* targetPlayer, uint64 tentID, int type = 0)
 		: ObjectControllerMessage(object->getObjectID(), 0x0B, 0x023A) {
 
 		insertLong(designer->getObjectID()); // Image Designer

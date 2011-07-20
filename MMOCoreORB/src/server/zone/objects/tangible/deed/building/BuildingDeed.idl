@@ -47,7 +47,7 @@ package server.zone.objects.tangible.deed;
 import engine.lua.LuaObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.Zone;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.deed.Deed;
 import server.zone.packets.scene.AttributeListMessage;
 
@@ -61,7 +61,7 @@ class BuildingDeed extends Deed {
 	}
 	
 	@local
-	public native void fillAttributeList(AttributeListMessage alm, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
 	
 	public native void initializeTransientMembers();
 	
@@ -71,7 +71,7 @@ class BuildingDeed extends Deed {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	public void setSurplusMaintenance(unsigned int surplusMaint) {
 		surplusMaintenance = surplusMaint;

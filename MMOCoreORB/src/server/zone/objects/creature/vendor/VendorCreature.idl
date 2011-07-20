@@ -50,7 +50,7 @@ import system.util.Vector;
 import server.zone.Zone;
 import system.util.SortedVector;
 include server.zone.objects.auction.Vendor;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.scene.SceneObject;
@@ -88,7 +88,7 @@ class VendorCreature extends CreatureObject {
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	@local
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 
 	/**
 	 * Handles the radial selection sent by the client
@@ -96,7 +96,7 @@ class VendorCreature extends CreatureObject {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -106,9 +106,9 @@ class VendorCreature extends CreatureObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
-	public native void addClothingItem(PlayerCreature player, TangibleObject clothing);
+	public native void addClothingItem(CreatureObject player, TangibleObject clothing);
 
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 

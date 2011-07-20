@@ -46,7 +46,7 @@ which carries forward this exception.
 #define FISHINGEVENT_H_
 
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/ZoneServer.h"
 #include "../FishingManager.h"
 
@@ -57,12 +57,12 @@ namespace minigames {
 namespace events {
 
 class FishingEvent : public Task {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 	ManagedReference<ZoneServer*> zoneServer;
 	int fishingState;
 
 public:
-	FishingEvent(PlayerCreature* player, ZoneServer* zoneServer, int fishingState) : Task(7000) {
+	FishingEvent(CreatureObject* player, ZoneServer* zoneServer, int fishingState) : Task(7000) {
 		this->player = player;
 		this->zoneServer = zoneServer;
 		this->fishingState = fishingState;

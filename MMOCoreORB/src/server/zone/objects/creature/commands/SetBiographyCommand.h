@@ -66,9 +66,11 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
-		player->setBiography(arguments);
+		PlayerObject* ghost = player->getPlayerObject();
+
+		ghost->setBiography(arguments);
 
 		return SUCCESS;
 	}

@@ -50,7 +50,7 @@ import server.zone.Zone;
 import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 
 class FishObject extends TangibleObject {	
@@ -86,7 +86,7 @@ class FishObject extends TangibleObject {
 	 * @post { this object is locked, menuResponse is complete}
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player); 
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player); 
 	
 	/**
 	 * Handles the radial selection sent by the client
@@ -94,9 +94,9 @@ class FishObject extends TangibleObject {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 		
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	/**
 	 * Filet a fish
@@ -105,6 +105,6 @@ class FishObject extends TangibleObject {
 	 * @post { this object is locked, player is locked }
 	 * @param player The player to whom to send the items
 	 */
-	public native void filet(PlayerCreature player);
+	public native void filet(CreatureObject player);
 	 
 }

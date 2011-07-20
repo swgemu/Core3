@@ -4,7 +4,7 @@
 
 #include "SpiceDownerBuff.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 

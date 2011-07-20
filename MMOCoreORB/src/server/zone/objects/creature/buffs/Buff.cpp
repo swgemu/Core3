@@ -4,7 +4,7 @@
 
 #include "Buff.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -14,7 +14,7 @@
  *	BuffStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INIT__,RPC_SENDTO__PLAYERCREATURE_,RPC_SENDDESTROYTO__PLAYERCREATURE_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTIRBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INIT__,RPC_SENDTO__CREATUREOBJECT_,RPC_SENDDESTROYTO__CREATUREOBJECT_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTIRBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,};
 
 Buff::Buff(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) : ManagedObject(DummyConstructorParameter::instance()) {
 	BuffImplementation* _implementation = new BuffImplementation(creo, buffcrc, duration, bufftype);
@@ -55,13 +55,13 @@ void Buff::init() {
 		_implementation->init();
 }
 
-void Buff::sendTo(PlayerCreature* player) {
+void Buff::sendTo(CreatureObject* player) {
 	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -69,13 +69,13 @@ void Buff::sendTo(PlayerCreature* player) {
 		_implementation->sendTo(player);
 }
 
-void Buff::sendDestroyTo(PlayerCreature* player) {
+void Buff::sendDestroyTo(CreatureObject* player) {
 	BuffImplementation* _implementation = (BuffImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDDESTROYTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDDESTROYTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -939,11 +939,11 @@ Packet* BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_INIT__:
 		init();
 		break;
-	case RPC_SENDTO__PLAYERCREATURE_:
-		sendTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDTO__CREATUREOBJECT_:
+		sendTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDDESTROYTO__PLAYERCREATURE_:
-		sendDestroyTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDDESTROYTO__CREATUREOBJECT_:
+		sendDestroyTo((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_ACTIVATE__BOOL_:
 		activate(inv->getBooleanParameter());
@@ -1050,11 +1050,11 @@ void BuffAdapter::init() {
 	((BuffImplementation*) impl)->init();
 }
 
-void BuffAdapter::sendTo(PlayerCreature* player) {
+void BuffAdapter::sendTo(CreatureObject* player) {
 	((BuffImplementation*) impl)->sendTo(player);
 }
 
-void BuffAdapter::sendDestroyTo(PlayerCreature* player) {
+void BuffAdapter::sendDestroyTo(CreatureObject* player) {
 	((BuffImplementation*) impl)->sendDestroyTo(player);
 }
 

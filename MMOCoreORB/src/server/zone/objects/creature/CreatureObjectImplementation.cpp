@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/creature/CreatureObjectMessage1.h"
 #include "server/zone/packets/creature/CreatureObjectMessage3.h"
@@ -85,6 +86,7 @@ which carries forward this exception.
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "events/DizzyFallDownEvent.h"
+#include "server/zone/packets/ui/ExecuteConsoleCommand.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
@@ -95,6 +97,13 @@ which carries forward this exception.
 
 #include "professions/SkillBox.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
+
+#include "server/zone/packets/zone/unkByteFlag.h"
+#include "server/zone/packets/zone/CmdStartScene.h"
+#include "server/zone/packets/zone/CmdSceneReady.h"
+#include "server/zone/packets/zone/ParametersMessage.h"
+
+#include "server/zone/managers/guild/GuildManager.h"
 
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
 
@@ -228,6 +237,46 @@ void CreatureObjectImplementation::finalize() {
 
 }
 
+void CreatureObjectImplementation::sendToOwner(bool doClose) {
+	if (owner == NULL)
+		return;
+
+	owner->balancePacketCheckupTime();
+
+	BaseMessage* byteFlag = new unkByteFlag();
+	owner->sendMessage(byteFlag);
+
+	BaseMessage* startScene = new CmdStartScene(_this);
+	owner->sendMessage(startScene);
+
+	BaseMessage* parameters = new ParametersMessage();
+	owner->sendMessage(parameters);
+
+	if (parent != NULL) {
+		SceneObject* grandParent = getRootParent();
+
+		grandParent->sendTo(_this, true);
+
+		addNotifiedSentObject(grandParent);
+		//notifiedSentObjects.put(grandParent);
+
+		//info("parent not null", true);
+
+		/*if (grandParent->isBuildingObject())
+			((BuildingObject*)grandParent)->addNotifiedSentObject(_this);*/
+	}
+
+	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+	guildManager->sendBaselinesTo(_this);
+
+	sendTo(_this, doClose);
+
+	if (group != NULL)
+		group->sendTo(_this, true);
+
+	owner->resetPacketCheckupTime();
+}
+
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	if (player == _this) {
 		CreatureObjectMessage1* msg = new CreatureObjectMessage1(this);
@@ -248,7 +297,7 @@ void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	if (!player->isPlayerCreature())
 		return;
 
-	PlayerCreature* playerCreature = (PlayerCreature*) player;
+	CreatureObject* playerCreature = (CreatureObject*) player;
 
 	sendPvpStatusTo(playerCreature);
 }
@@ -1747,3 +1796,96 @@ void CreatureObjectImplementation::stopEntertaining() {
 
 	session->cancelSession();
 }
+
+void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
+	if (owner == NULL) {
+		delete msg;
+		return;
+	} else {
+		owner->sendMessage(msg);
+	}
+}
+
+String CreatureObjectImplementation::getFirstName() {
+	UnicodeString fullName = objectName.getCustomString();
+
+    int idx = fullName.indexOf(' ');
+
+    if (idx != -1) {
+    	return fullName.subString(0, idx).toString();
+    } else {
+    	return fullName.toString();
+    }
+}
+
+String CreatureObjectImplementation::getLastName() {
+	UnicodeString lastName;
+
+	UnicodeString fullName = objectName.getCustomString();
+	UnicodeTokenizer tokenizer(fullName);
+
+	if (tokenizer.hasMoreTokens())
+		tokenizer.shiftTokens(1);
+
+	if (tokenizer.hasMoreTokens())
+		tokenizer.getUnicodeToken(lastName);
+
+	return lastName.toString();
+}
+
+void CreatureObjectImplementation::sendExecuteConsoleCommand(const String& command) {
+	BaseMessage* msg = new ExecuteConsoleCommand(command);
+	sendMessage(msg);
+}
+
+PlayerObject* CreatureObjectImplementation::getPlayerObject() {
+	return dynamic_cast<PlayerObject*>(getSlottedObject("ghost"));
+}
+
+bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
+	/*if (duelList.contains(object) && object.requestedDuelTo(this))
+			return true;*/
+
+	PlayerObject* ghost = getPlayerObject();
+	PlayerObject* targetGhost = object->getPlayerObject();
+
+	if (ghost == NULL || targetGhost == NULL)
+		return false;
+
+	return (ghost->requestedDuelTo(object) && targetGhost->requestedDuelTo(_this));
+}
+
+bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
+	if (object == _this)
+		return false;
+
+	if (isDead())
+		return false;
+
+	if (object->isAiAgent())
+		return true;
+
+	PlayerObject* ghost = getPlayerObject();
+	PlayerObject* targetGhost = object->getPlayerObject();
+
+	if (ghost == NULL || targetGhost == NULL)
+		return false;
+
+	return (ghost->requestedDuelTo(object) && targetGhost->requestedDuelTo(_this));
+}
+
+int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+	PlayerObject* ghost = getPlayerObject();
+
+	if (ghost == NULL)
+		return 0;
+
+	PlayerManager* playerManager = getZoneServer()->getPlayerManager();
+
+	playerManager->notifyDestruction(attacker, _this, condition);
+
+	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
+}
+
+
+

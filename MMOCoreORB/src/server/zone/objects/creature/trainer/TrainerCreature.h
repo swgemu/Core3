@@ -24,20 +24,6 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
-
-class PlayerCreature;
-
-} // namespace player
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::player;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -65,6 +51,8 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -79,17 +67,17 @@ public:
 
 	void activateRecovery();
 
-	void sendInitialMessage(PlayerCreature* player);
+	void sendInitialMessage(CreatureObject* player);
 
-	void sendInitialChoices(PlayerCreature* player);
+	void sendInitialChoices(CreatureObject* player);
 
 	void sendConversationStartTo(SceneObject* obj);
 
-	void sendSkillBoxes(PlayerCreature* player, bool checkXp);
+	void sendSkillBoxes(CreatureObject* player, bool checkXp);
 
-	void sendSkillBoxList(PlayerCreature* player, bool checkLearned);
+	void sendSkillBoxList(CreatureObject* player, bool checkLearned);
 
-	void sendConfirmation(PlayerCreature* player);
+	void sendConfirmation(CreatureObject* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
 
@@ -152,17 +140,17 @@ public:
 
 	void activateRecovery();
 
-	void sendInitialMessage(PlayerCreature* player);
+	void sendInitialMessage(CreatureObject* player);
 
-	void sendInitialChoices(PlayerCreature* player);
+	void sendInitialChoices(CreatureObject* player);
 
 	void sendConversationStartTo(SceneObject* obj);
 
-	void sendSkillBoxes(PlayerCreature* player, bool checkXp);
+	void sendSkillBoxes(CreatureObject* player, bool checkXp);
 
-	void sendSkillBoxList(PlayerCreature* player, bool checkLearned);
+	void sendSkillBoxList(CreatureObject* player, bool checkLearned);
 
-	void sendConfirmation(PlayerCreature* player);
+	void sendConfirmation(CreatureObject* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
 
@@ -225,17 +213,17 @@ public:
 
 	void activateRecovery();
 
-	void sendInitialMessage(PlayerCreature* player);
+	void sendInitialMessage(CreatureObject* player);
 
-	void sendInitialChoices(PlayerCreature* player);
+	void sendInitialChoices(CreatureObject* player);
 
 	void sendConversationStartTo(SceneObject* obj);
 
-	void sendSkillBoxes(PlayerCreature* player, bool checkXp);
+	void sendSkillBoxes(CreatureObject* player, bool checkXp);
 
-	void sendSkillBoxList(PlayerCreature* player, bool checkLearned);
+	void sendSkillBoxList(CreatureObject* player, bool checkLearned);
 
-	void sendConfirmation(PlayerCreature* player);
+	void sendConfirmation(CreatureObject* player);
 
 	void selectConversationOption(int option, SceneObject* obj);
 

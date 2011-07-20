@@ -40,7 +40,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(harvesterId);
 

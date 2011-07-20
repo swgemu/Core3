@@ -10,7 +10,7 @@
 #include "server/zone/packets/cell/CellObjectMessage3.h"
 #include "server/zone/packets/cell/CellObjectMessage6.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/scene/components/ContainerComponent.h"

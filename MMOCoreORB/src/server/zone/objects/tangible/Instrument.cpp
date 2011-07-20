@@ -14,7 +14,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
 
@@ -24,7 +24,7 @@
  *	InstrumentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SPAWNINFOREIGNCELL__PLAYERCREATURE_,RPC_SPAWNINADMINCELL__PLAYERCREATURE_,RPC_SPAWNOUTSIDE__PLAYERCREATURE_,RPC_GETINSTRUMENTTYPE__,RPC_GETSPAWNERPLAYER__,RPC_SETSPAWNERPLAYER__PLAYERCREATURE_,RPC_ISBEINGUSED__,RPC_SETBEINGUSED__BOOL_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SPAWNINFOREIGNCELL__CREATUREOBJECT_,RPC_SPAWNINADMINCELL__CREATUREOBJECT_,RPC_SPAWNOUTSIDE__CREATUREOBJECT_,RPC_GETINSTRUMENTTYPE__,RPC_GETSPAWNERPLAYER__,RPC_SETSPAWNERPLAYER__CREATUREOBJECT_,RPC_ISBEINGUSED__,RPC_SETBEINGUSED__BOOL_};
 
 Instrument::Instrument() : TangibleObject(DummyConstructorParameter::instance()) {
 	InstrumentImplementation* _implementation = new InstrumentImplementation();
@@ -74,7 +74,7 @@ void Instrument::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void Instrument::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void Instrument::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -83,13 +83,13 @@ void Instrument::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Player
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int Instrument::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int Instrument::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -98,13 +98,13 @@ int Instrument::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void Instrument::spawnInForeignCell(PlayerCreature* spawner) {
+void Instrument::spawnInForeignCell(CreatureObject* spawner) {
 	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SPAWNINFOREIGNCELL__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SPAWNINFOREIGNCELL__CREATUREOBJECT_);
 		method.addObjectParameter(spawner);
 
 		method.executeWithVoidReturn();
@@ -112,13 +112,13 @@ void Instrument::spawnInForeignCell(PlayerCreature* spawner) {
 		_implementation->spawnInForeignCell(spawner);
 }
 
-void Instrument::spawnInAdminCell(PlayerCreature* spawner) {
+void Instrument::spawnInAdminCell(CreatureObject* spawner) {
 	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SPAWNINADMINCELL__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SPAWNINADMINCELL__CREATUREOBJECT_);
 		method.addObjectParameter(spawner);
 
 		method.executeWithVoidReturn();
@@ -126,13 +126,13 @@ void Instrument::spawnInAdminCell(PlayerCreature* spawner) {
 		_implementation->spawnInAdminCell(spawner);
 }
 
-void Instrument::spawnOutside(PlayerCreature* spawner) {
+void Instrument::spawnOutside(CreatureObject* spawner) {
 	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SPAWNOUTSIDE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SPAWNOUTSIDE__CREATUREOBJECT_);
 		method.addObjectParameter(spawner);
 
 		method.executeWithVoidReturn();
@@ -153,7 +153,7 @@ int Instrument::getInstrumentType() {
 		return _implementation->getInstrumentType();
 }
 
-PlayerCreature* Instrument::getSpawnerPlayer() {
+CreatureObject* Instrument::getSpawnerPlayer() {
 	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -161,18 +161,18 @@ PlayerCreature* Instrument::getSpawnerPlayer() {
 
 		DistributedMethod method(this, RPC_GETSPAWNERPLAYER__);
 
-		return (PlayerCreature*) method.executeWithObjectReturn();
+		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getSpawnerPlayer();
 }
 
-void Instrument::setSpawnerPlayer(PlayerCreature* pla) {
+void Instrument::setSpawnerPlayer(CreatureObject* pla) {
 	InstrumentImplementation* _implementation = (InstrumentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETSPAWNERPLAYER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SETSPAWNERPLAYER__CREATUREOBJECT_);
 		method.addObjectParameter(pla);
 
 		method.executeWithVoidReturn();
@@ -328,7 +328,7 @@ bool InstrumentImplementation::readObjectMember(ObjectInputStream* stream, const
 	}
 
 	if (_name == "spawnerPlayer") {
-		TypeInfo<ManagedWeakReference<PlayerCreature* > >::parseFromBinaryStream(&spawnerPlayer, stream);
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&spawnerPlayer, stream);
 		return true;
 	}
 
@@ -375,7 +375,7 @@ int InstrumentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<PlayerCreature* > >::toBinaryStream(&spawnerPlayer, stream);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&spawnerPlayer, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -422,7 +422,7 @@ void InstrumentImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	instrumentType = templ->getInstrumentType();
 }
 
-void InstrumentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void InstrumentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	// server/zone/objects/tangible/Instrument.idl():  		super.fillObjectMenuResponse(menuResponse, player);
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 	// server/zone/objects/tangible/Instrument.idl():  		if 
@@ -448,12 +448,12 @@ int InstrumentImplementation::getInstrumentType() {
 	return instrumentType;
 }
 
-PlayerCreature* InstrumentImplementation::getSpawnerPlayer() {
+CreatureObject* InstrumentImplementation::getSpawnerPlayer() {
 	// server/zone/objects/tangible/Instrument.idl():  		return spawnerPlayer;
 	return spawnerPlayer;
 }
 
-void InstrumentImplementation::setSpawnerPlayer(PlayerCreature* pla) {
+void InstrumentImplementation::setSpawnerPlayer(CreatureObject* pla) {
 	// server/zone/objects/tangible/Instrument.idl():  		spawnerPlayer = pla;
 	spawnerPlayer = pla;
 }
@@ -485,17 +485,17 @@ Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_SPAWNINFOREIGNCELL__PLAYERCREATURE_:
-		spawnInForeignCell((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SPAWNINFOREIGNCELL__CREATUREOBJECT_:
+		spawnInForeignCell((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SPAWNINADMINCELL__PLAYERCREATURE_:
-		spawnInAdminCell((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SPAWNINADMINCELL__CREATUREOBJECT_:
+		spawnInAdminCell((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SPAWNOUTSIDE__PLAYERCREATURE_:
-		spawnOutside((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SPAWNOUTSIDE__CREATUREOBJECT_:
+		spawnOutside((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_GETINSTRUMENTTYPE__:
 		resp->insertSignedInt(getInstrumentType());
@@ -503,8 +503,8 @@ Packet* InstrumentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETSPAWNERPLAYER__:
 		resp->insertLong(getSpawnerPlayer()->_getObjectID());
 		break;
-	case RPC_SETSPAWNERPLAYER__PLAYERCREATURE_:
-		setSpawnerPlayer((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SETSPAWNERPLAYER__CREATUREOBJECT_:
+		setSpawnerPlayer((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_ISBEINGUSED__:
 		resp->insertBoolean(isBeingUsed());
@@ -527,19 +527,19 @@ void InstrumentAdapter::notifyLoadFromDatabase() {
 	((InstrumentImplementation*) impl)->notifyLoadFromDatabase();
 }
 
-int InstrumentAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int InstrumentAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((InstrumentImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void InstrumentAdapter::spawnInForeignCell(PlayerCreature* spawner) {
+void InstrumentAdapter::spawnInForeignCell(CreatureObject* spawner) {
 	((InstrumentImplementation*) impl)->spawnInForeignCell(spawner);
 }
 
-void InstrumentAdapter::spawnInAdminCell(PlayerCreature* spawner) {
+void InstrumentAdapter::spawnInAdminCell(CreatureObject* spawner) {
 	((InstrumentImplementation*) impl)->spawnInAdminCell(spawner);
 }
 
-void InstrumentAdapter::spawnOutside(PlayerCreature* spawner) {
+void InstrumentAdapter::spawnOutside(CreatureObject* spawner) {
 	((InstrumentImplementation*) impl)->spawnOutside(spawner);
 }
 
@@ -547,11 +547,11 @@ int InstrumentAdapter::getInstrumentType() {
 	return ((InstrumentImplementation*) impl)->getInstrumentType();
 }
 
-PlayerCreature* InstrumentAdapter::getSpawnerPlayer() {
+CreatureObject* InstrumentAdapter::getSpawnerPlayer() {
 	return ((InstrumentImplementation*) impl)->getSpawnerPlayer();
 }
 
-void InstrumentAdapter::setSpawnerPlayer(PlayerCreature* pla) {
+void InstrumentAdapter::setSpawnerPlayer(CreatureObject* pla) {
 	((InstrumentImplementation*) impl)->setSpawnerPlayer(pla);
 }
 

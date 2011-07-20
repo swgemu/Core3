@@ -6,7 +6,7 @@
  */
 
 #include "TicketCollector.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
@@ -16,7 +16,7 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
 
-int TicketCollectorImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int TicketCollectorImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID != 20)
 		return 0;
 
@@ -25,7 +25,7 @@ int TicketCollectorImplementation::handleObjectMenuSelect(PlayerCreature* player
 	return 0;
 }
 
-void TicketCollectorImplementation::useTicket(PlayerCreature* player, TicketObject* ticket) {
+void TicketCollectorImplementation::useTicket(CreatureObject* player, TicketObject* ticket) {
 	return;
 }
 

@@ -13,9 +13,10 @@
 #include "events/WeatherChangeEvent.h"
 #include "events/SandstormTickEvent.h"
 #include "server/zone/managers/player/PlayerMap.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/packets/scene/ServerWeatherMessage.h"
 
@@ -285,7 +286,7 @@ void WeatherManagerImplementation::broadcastWeather(bool notifyPlayer, bool doSa
 
 	playerMap->resetIterator();
 
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 
 	while (playerMap->hasNext()) {
 		player = playerMap->next();
@@ -294,7 +295,9 @@ void WeatherManagerImplementation::broadcastWeather(bool notifyPlayer, bool doSa
 
 		Locker playerLocker(player);
 
-		if (player->isOnline() && !player->isTeleporting()) {
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (player->isOnline() && !ghost->isTeleporting()) {
 			//Check if player is on this planet.
 			if (player->getZone()->getZoneName() != zone->getZoneName())
 				continue;
@@ -318,7 +321,7 @@ void WeatherManagerImplementation::broadcastWeather(bool notifyPlayer, bool doSa
 }
 
 
-void WeatherManagerImplementation::sendWeatherPacket(PlayerCreature* player) {
+void WeatherManagerImplementation::sendWeatherPacket(CreatureObject* player) {
 	Locker weatherManagerLocker(_this);
 
 	if (player == NULL)
@@ -408,12 +411,14 @@ void WeatherManagerImplementation::sandstormTick() {
 }
 
 
-void WeatherManagerImplementation::applySandstormDamage(PlayerCreature* player) {
+void WeatherManagerImplementation::applySandstormDamage(CreatureObject* player) {
 	if (player == NULL)
 		return;
 
+	PlayerObject* ghost = player->getPlayerObject();
+
 	//Check player's online status.
-	if (player->isTeleporting() || !player->isOnline())
+	if (ghost->isTeleporting() || !player->isOnline())
 		return;
 
 	//Check if player is in a shelter.
@@ -452,7 +457,7 @@ void WeatherManagerImplementation::applySandstormDamage(PlayerCreature* player) 
 }
 
 
-void WeatherManagerImplementation::calculateSandstormProtection(PlayerCreature* player, Vector<int>& sandstormCoverings) {
+void WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* player, Vector<int>& sandstormCoverings) {
 	if (player == NULL)
 		return;
 
@@ -532,7 +537,7 @@ void WeatherManagerImplementation::calculateSandstormProtection(PlayerCreature* 
 }
 
 
-void WeatherManagerImplementation::enableWeather(PlayerCreature* player) {
+void WeatherManagerImplementation::enableWeather(CreatureObject* player) {
 	Locker weatherManagerLocker(_this);
 	if (player == NULL)
 		return;
@@ -556,7 +561,7 @@ void WeatherManagerImplementation::enableWeather(PlayerCreature* player) {
 }
 
 
-void WeatherManagerImplementation::disableWeather(PlayerCreature* player) {
+void WeatherManagerImplementation::disableWeather(CreatureObject* player) {
 	Locker weatherManagerLocker(_this);
 	if (player == NULL)
 		return;
@@ -574,7 +579,7 @@ void WeatherManagerImplementation::disableWeather(PlayerCreature* player) {
 }
 
 
-void WeatherManagerImplementation::changeWeather(PlayerCreature* player, int newWeather) {
+void WeatherManagerImplementation::changeWeather(CreatureObject* player, int newWeather) {
 	Locker weatherManagerLocker(_this);
 	if (player == NULL)
 		return;
@@ -592,7 +597,7 @@ void WeatherManagerImplementation::changeWeather(PlayerCreature* player, int new
 }
 
 
-void WeatherManagerImplementation::weatherInfo(PlayerCreature* player) {
+void WeatherManagerImplementation::weatherInfo(CreatureObject* player) {
 	Locker weatherManagerLocker(_this);
 	if (player == NULL)
 		return;

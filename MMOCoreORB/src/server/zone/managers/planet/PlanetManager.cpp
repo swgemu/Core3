@@ -18,7 +18,7 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
@@ -26,7 +26,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -190,13 +190,13 @@ int PlanetManager::getTravelFare(const String& destinationPlanet) {
 		return _implementation->getTravelFare(destinationPlanet);
 }
 
-void PlanetManager::sendPlanetTravelPointListResponse(PlayerCreature* player) {
+void PlanetManager::sendPlanetTravelPointListResponse(CreatureObject* player) {
 	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -949,8 +949,8 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_GETTRAVELFARE__STRING_:
 		resp->insertSignedInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_)));
 		break;
-	case RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__PLAYERCREATURE_:
-		sendPlanetTravelPointListResponse((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_:
+		sendPlanetTravelPointListResponse((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_GETWEATHERMANAGER__:
 		resp->insertLong(getWeatherManager()->_getObjectID());
@@ -1054,7 +1054,7 @@ int PlanetManagerAdapter::getTravelFare(const String& destinationPlanet) {
 	return ((PlanetManagerImplementation*) impl)->getTravelFare(destinationPlanet);
 }
 
-void PlanetManagerAdapter::sendPlanetTravelPointListResponse(PlayerCreature* player) {
+void PlanetManagerAdapter::sendPlanetTravelPointListResponse(CreatureObject* player) {
 	((PlanetManagerImplementation*) impl)->sendPlanetTravelPointListResponse(player);
 }
 

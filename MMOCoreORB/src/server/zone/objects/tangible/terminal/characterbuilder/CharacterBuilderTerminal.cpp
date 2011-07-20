@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/Zone.h"
 
@@ -16,7 +16,7 @@
  *	CharacterBuilderTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SENDINITIALCHOICES__PLAYERCREATURE_,RPC_GIVELANGUAGES__PLAYERCREATURE_,RPC_ENHANCECHARACTER__PLAYERCREATURE_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SENDINITIALCHOICES__CREATUREOBJECT_,RPC_GIVELANGUAGES__CREATUREOBJECT_,RPC_ENHANCECHARACTER__CREATUREOBJECT_,};
 
 CharacterBuilderTerminal::CharacterBuilderTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	CharacterBuilderTerminalImplementation* _implementation = new CharacterBuilderTerminalImplementation();
@@ -53,13 +53,13 @@ void CharacterBuilderTerminal::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-int CharacterBuilderTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CharacterBuilderTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	CharacterBuilderTerminalImplementation* _implementation = (CharacterBuilderTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -68,13 +68,13 @@ int CharacterBuilderTerminal::handleObjectMenuSelect(PlayerCreature* player, byt
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void CharacterBuilderTerminal::sendInitialChoices(PlayerCreature* player) {
+void CharacterBuilderTerminal::sendInitialChoices(CreatureObject* player) {
 	CharacterBuilderTerminalImplementation* _implementation = (CharacterBuilderTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDINITIALCHOICES__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDINITIALCHOICES__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -82,13 +82,13 @@ void CharacterBuilderTerminal::sendInitialChoices(PlayerCreature* player) {
 		_implementation->sendInitialChoices(player);
 }
 
-void CharacterBuilderTerminal::giveLanguages(PlayerCreature* player) {
+void CharacterBuilderTerminal::giveLanguages(CreatureObject* player) {
 	CharacterBuilderTerminalImplementation* _implementation = (CharacterBuilderTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GIVELANGUAGES__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GIVELANGUAGES__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -96,13 +96,13 @@ void CharacterBuilderTerminal::giveLanguages(PlayerCreature* player) {
 		_implementation->giveLanguages(player);
 }
 
-void CharacterBuilderTerminal::enhanceCharacter(PlayerCreature* player) {
+void CharacterBuilderTerminal::enhanceCharacter(CreatureObject* player) {
 	CharacterBuilderTerminalImplementation* _implementation = (CharacterBuilderTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ENHANCECHARACTER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ENHANCECHARACTER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -254,17 +254,17 @@ Packet* CharacterBuilderTerminalAdapter::invokeMethod(uint32 methid, Distributed
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_SENDINITIALCHOICES__PLAYERCREATURE_:
-		sendInitialChoices((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDINITIALCHOICES__CREATUREOBJECT_:
+		sendInitialChoices((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_GIVELANGUAGES__PLAYERCREATURE_:
-		giveLanguages((PlayerCreature*) inv->getObjectParameter());
+	case RPC_GIVELANGUAGES__CREATUREOBJECT_:
+		giveLanguages((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_ENHANCECHARACTER__PLAYERCREATURE_:
-		enhanceCharacter((PlayerCreature*) inv->getObjectParameter());
+	case RPC_ENHANCECHARACTER__CREATUREOBJECT_:
+		enhanceCharacter((CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -277,19 +277,19 @@ void CharacterBuilderTerminalAdapter::initializeTransientMembers() {
 	((CharacterBuilderTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
-int CharacterBuilderTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CharacterBuilderTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((CharacterBuilderTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void CharacterBuilderTerminalAdapter::sendInitialChoices(PlayerCreature* player) {
+void CharacterBuilderTerminalAdapter::sendInitialChoices(CreatureObject* player) {
 	((CharacterBuilderTerminalImplementation*) impl)->sendInitialChoices(player);
 }
 
-void CharacterBuilderTerminalAdapter::giveLanguages(PlayerCreature* player) {
+void CharacterBuilderTerminalAdapter::giveLanguages(CreatureObject* player) {
 	((CharacterBuilderTerminalImplementation*) impl)->giveLanguages(player);
 }
 
-void CharacterBuilderTerminalAdapter::enhanceCharacter(PlayerCreature* player) {
+void CharacterBuilderTerminalAdapter::enhanceCharacter(CreatureObject* player) {
 	((CharacterBuilderTerminalImplementation*) impl)->enhanceCharacter(player);
 }
 

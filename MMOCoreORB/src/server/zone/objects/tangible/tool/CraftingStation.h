@@ -92,16 +92,16 @@ using namespace server::zone::packets::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/tangible/tool/ToolTangibleObject.h"
 
@@ -121,11 +121,11 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
@@ -137,7 +137,7 @@ public:
 
 	void setComplexityLevel(int level);
 
-	SceneObject* findCraftingTool(PlayerCreature* player);
+	SceneObject* findCraftingTool(CreatureObject* player);
 
 	void createChildObjects();
 
@@ -183,11 +183,11 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
@@ -199,7 +199,7 @@ public:
 
 	void setComplexityLevel(int level);
 
-	SceneObject* findCraftingTool(PlayerCreature* player);
+	SceneObject* findCraftingTool(CreatureObject* player);
 
 	void createChildObjects();
 
@@ -248,7 +248,7 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
@@ -260,7 +260,7 @@ public:
 
 	void setComplexityLevel(int level);
 
-	SceneObject* findCraftingTool(PlayerCreature* player);
+	SceneObject* findCraftingTool(CreatureObject* player);
 
 	void createChildObjects();
 

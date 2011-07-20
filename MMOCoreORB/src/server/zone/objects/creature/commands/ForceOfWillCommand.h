@@ -53,7 +53,7 @@ which carries forward this exception.
 
 class ForceOfWillCommand : public QueueCommand {
 
-	void doDowner(PlayerCreature* player, int buffDownerValue, float duration) {
+	void doDowner(CreatureObject* player, int buffDownerValue, float duration) {
 			String buffname = "skill.buff.forceofwill";
 			uint32 buffcrc = buffname.hashCode();
 			//StringIdChatParameter startMsg;
@@ -87,7 +87,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		Reference<Task*> incapTask = player->getPendingTask("incapacitationRecovery");
 

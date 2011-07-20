@@ -24,7 +24,7 @@ void VehicleDeedImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	controlDeviceObjectTemplate = deedData->getControlDeviceObjectTemplate();
 }
 
-void VehicleDeedImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void VehicleDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	DeedImplementation::fillAttributeList(alm, object);
 
 	alm->insertAttribute("hit_points", hitPoints);
@@ -48,13 +48,13 @@ void VehicleDeedImplementation::updateCraftingValues(ManufactureSchematic* schem
 	hitPoints = (int)craftingValues->getCurrentValue("hit_points");
 }
 
-void VehicleDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void VehicleDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	DeedImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	menuResponse->addRadialMenuItem(20, 3, "@pet/pet_menu:menu_generate");
 }
 
-int VehicleDeedImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID != 20) // not use object
 		return 1;
 

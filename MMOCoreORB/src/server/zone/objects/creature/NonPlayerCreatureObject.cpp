@@ -12,7 +12,7 @@
  *	NonPlayerCreatureObjectStub
  */
 
-enum {RPC_ISNONPLAYERCREATURE__ = 6,};
+enum {RPC_ISNONPLAYERCREATUREOBJECT__ = 6,};
 
 NonPlayerCreatureObject::NonPlayerCreatureObject() : AiAgent(DummyConstructorParameter::instance()) {
 	NonPlayerCreatureObjectImplementation* _implementation = new NonPlayerCreatureObjectImplementation();
@@ -27,17 +27,17 @@ NonPlayerCreatureObject::~NonPlayerCreatureObject() {
 }
 
 
-bool NonPlayerCreatureObject::isNonPlayerCreature() {
+bool NonPlayerCreatureObject::isNonPlayerCreatureObject() {
 	NonPlayerCreatureObjectImplementation* _implementation = (NonPlayerCreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISNONPLAYERCREATURE__);
+		DistributedMethod method(this, RPC_ISNONPLAYERCREATUREOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isNonPlayerCreature();
+		return _implementation->isNonPlayerCreatureObject();
 }
 
 void NonPlayerCreatureObject::notifyPositionUpdate(QuadTreeEntry* entry) {
@@ -192,7 +192,7 @@ NonPlayerCreatureObjectImplementation::NonPlayerCreatureObjectImplementation() {
 	Logger::setGlobalLogging(true);
 }
 
-bool NonPlayerCreatureObjectImplementation::isNonPlayerCreature() {
+bool NonPlayerCreatureObjectImplementation::isNonPlayerCreatureObject() {
 	// server/zone/objects/creature/NonPlayerCreatureObject.idl():  		return true;
 	return true;
 }
@@ -208,8 +208,8 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_ISNONPLAYERCREATURE__:
-		resp->insertBoolean(isNonPlayerCreature());
+	case RPC_ISNONPLAYERCREATUREOBJECT__:
+		resp->insertBoolean(isNonPlayerCreatureObject());
 		break;
 	default:
 		return NULL;
@@ -218,8 +218,8 @@ Packet* NonPlayerCreatureObjectAdapter::invokeMethod(uint32 methid, DistributedM
 	return resp;
 }
 
-bool NonPlayerCreatureObjectAdapter::isNonPlayerCreature() {
-	return ((NonPlayerCreatureObjectImplementation*) impl)->isNonPlayerCreature();
+bool NonPlayerCreatureObjectAdapter::isNonPlayerCreatureObject() {
+	return ((NonPlayerCreatureObjectImplementation*) impl)->isNonPlayerCreatureObject();
 }
 
 /*

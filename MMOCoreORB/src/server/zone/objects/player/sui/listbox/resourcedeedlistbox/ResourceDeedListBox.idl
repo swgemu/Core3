@@ -46,16 +46,17 @@ package server.zone.objects.player.sui.listbox.resourcedeedlistbox;
 
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import engine.service.proto.BaseMessage;
 import server.zone.objects.player.sui.listbox.SuiListBox;
+import server.zone.objects.creature.CreatureObject;
 
 class ResourceDeedListBox extends SuiListBox {
 
 	@dereferenced
 	private transient Vector<string> boxes;
  
-	public ResourceDeedListBox(PlayerCreature player, unsigned int windowType, unsigned int listBoxType = 0) {
+	public ResourceDeedListBox(CreatureObject player, unsigned int windowType, unsigned int listBoxType = 0) {
 		super(player, windowType, SuiBox.LISTBOX);
 	}
 	

@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/Zone.h"
 
@@ -16,7 +16,7 @@
  *	TicketCollectorStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_USETICKET__PLAYERCREATURE_TICKETOBJECT_,RPC_ISTICKETCOLLECTOR__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_USETICKET__CREATUREOBJECT_TICKETOBJECT_,RPC_ISTICKETCOLLECTOR__};
 
 TicketCollector::TicketCollector() : Terminal(DummyConstructorParameter::instance()) {
 	TicketCollectorImplementation* _implementation = new TicketCollectorImplementation();
@@ -44,13 +44,13 @@ void TicketCollector::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-int TicketCollector::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int TicketCollector::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	TicketCollectorImplementation* _implementation = (TicketCollectorImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -59,13 +59,13 @@ int TicketCollector::handleObjectMenuSelect(PlayerCreature* player, byte selecte
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void TicketCollector::useTicket(PlayerCreature* player, TicketObject* ticket) {
+void TicketCollector::useTicket(CreatureObject* player, TicketObject* ticket) {
 	TicketCollectorImplementation* _implementation = (TicketCollectorImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_USETICKET__PLAYERCREATURE_TICKETOBJECT_);
+		DistributedMethod method(this, RPC_USETICKET__CREATUREOBJECT_TICKETOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(ticket);
 
@@ -243,11 +243,11 @@ Packet* TicketCollectorAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_USETICKET__PLAYERCREATURE_TICKETOBJECT_:
-		useTicket((PlayerCreature*) inv->getObjectParameter(), (TicketObject*) inv->getObjectParameter());
+	case RPC_USETICKET__CREATUREOBJECT_TICKETOBJECT_:
+		useTicket((CreatureObject*) inv->getObjectParameter(), (TicketObject*) inv->getObjectParameter());
 		break;
 	case RPC_ISTICKETCOLLECTOR__:
 		resp->insertBoolean(isTicketCollector());
@@ -263,11 +263,11 @@ void TicketCollectorAdapter::initializeTransientMembers() {
 	((TicketCollectorImplementation*) impl)->initializeTransientMembers();
 }
 
-int TicketCollectorAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int TicketCollectorAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((TicketCollectorImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void TicketCollectorAdapter::useTicket(PlayerCreature* player, TicketObject* ticket) {
+void TicketCollectorAdapter::useTicket(CreatureObject* player, TicketObject* ticket) {
 	((TicketCollectorImplementation*) impl)->useTicket(player, ticket);
 }
 

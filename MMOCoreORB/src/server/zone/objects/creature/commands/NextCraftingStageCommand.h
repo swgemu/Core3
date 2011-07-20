@@ -72,9 +72,11 @@ public:
 		if(!creature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		ManagedReference<PlayerCreature* > player = (PlayerCreature*) creature;
+		ManagedReference<CreatureObject* > player = (CreatureObject*) creature;
 
-		ManagedReference<CraftingTool* > craftingTool = player->getLastCraftingToolUsed();
+		PlayerObject* ghost = player->getPlayerObject();
+
+		ManagedReference<CraftingTool* > craftingTool = ghost->getLastCraftingToolUsed();
 
 		if(craftingTool == NULL) {
 			player->sendSystemMessage("ui_craft", "err_no_crafting_tool");

@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* playerCreature = (PlayerCreature*) creature;
+		CreatureObject* playerCreature = (CreatureObject*) creature;
 		PlayerObject* ghost = playerCreature->getPlayerObject();
 
 		if (ghost == NULL)

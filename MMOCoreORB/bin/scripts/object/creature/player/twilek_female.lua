@@ -47,6 +47,7 @@ object_creature_player_twilek_female = object_creature_player_shared_twilek_fema
 	zoneComponent = "PlayerZoneComponent",
 	objectMenuComponent = "PlayerObjectMenuComponent",
 	containerComponent = "PlayerContainerComponent",
+	pvpStatusBitmask = PLAYER,
 	templateType = PLAYERCREATURE
 }
 

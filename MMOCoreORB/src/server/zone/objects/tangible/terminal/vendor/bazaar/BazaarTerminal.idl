@@ -47,7 +47,7 @@ package server.zone.objects.tangible.terminal.vendor.bazaar;
 include server.zone.objects.auction.Vendor;
 import server.zone.objects.tangible.terminal.vendor.VendorTerminal;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import system.util.VectorMap;
 import server.zone.Zone;
@@ -75,7 +75,7 @@ class BazaarTerminal extends VendorTerminal {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
+	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		return 0;
 	}
 

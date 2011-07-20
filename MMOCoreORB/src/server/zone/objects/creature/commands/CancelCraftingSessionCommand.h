@@ -67,9 +67,11 @@ public:
 		if(creature == NULL || !creature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		ManagedReference<PlayerCreature* > player = ((PlayerCreature*)creature);
+		ManagedReference<CreatureObject* > player = ((CreatureObject*)creature);
 
-		ManagedReference<CraftingTool* > craftingTool = player->getLastCraftingToolUsed();
+		PlayerObject* ghost = player->getPlayerObject();
+
+		ManagedReference<CraftingTool* > craftingTool = ghost->getLastCraftingToolUsed();
 
 		if(craftingTool != NULL) {
 

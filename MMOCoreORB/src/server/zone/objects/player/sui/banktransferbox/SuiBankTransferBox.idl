@@ -47,13 +47,14 @@ package server.zone.objects.player.sui.banktransferbox;
 
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import system.io.StringTokenizer;
 import engine.service.proto.BaseMessage;
 import server.zone.objects.player.sui.SuiBox;
 import system.lang.String;
 
 include server.zone.packets.ui.SuiCreatePageMessage;
+import server.zone.objects.creature.CreatureObject;
 
 class SuiBankTransferBox extends SuiBox {
 	protected string lblFrom;
@@ -66,7 +67,7 @@ class SuiBankTransferBox extends SuiBox {
 	protected string convertRatioTo;
 	protected SceneObject bank;
 	
-	public SuiBankTransferBox(SceneObject bankObject, PlayerCreature player, unsigned int windowtype) {
+	public SuiBankTransferBox(SceneObject bankObject, CreatureObject player, unsigned int windowtype) {
 		super(player, windowtype, super.BANKTRANSFERBOX);
 		
 		bank = bankObject;

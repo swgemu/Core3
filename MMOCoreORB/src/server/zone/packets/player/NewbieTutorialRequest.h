@@ -11,7 +11,7 @@
 #include "../MessageCallback.h"
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 /* Valid action strings found:
  * openCharacterSheet
  * closeCharacterSheet
@@ -78,7 +78,7 @@ public:
 		if (sceneObject == NULL)
 			return;
 
-		PlayerCreature* player = dynamic_cast<PlayerCreature*>(sceneObject.get());
+		CreatureObject* player = dynamic_cast<CreatureObject*>(sceneObject.get());
 
 		if (player == NULL)
 			return;

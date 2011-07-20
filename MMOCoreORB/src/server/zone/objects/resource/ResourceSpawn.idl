@@ -49,7 +49,7 @@ import system.util.VectorMap;
 import system.util.Vector;
 
 import engine.core.ManagedObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.sui.listbox.SuiListBox;
 import server.zone.objects.area.ActiveArea;
 include server.zone.packets.scene.AttributeListMessage;
@@ -128,7 +128,7 @@ class ResourceSpawn extends SceneObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public native void decreaseContainerReferenceCount();
         

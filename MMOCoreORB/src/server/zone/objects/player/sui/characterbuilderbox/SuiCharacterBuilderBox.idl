@@ -44,16 +44,17 @@ which carries forward this exception.
 
 package server.zone.objects.player.sui.characterbuilderbox;
 
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.sui.listbox.SuiListBox;
 
 include server.zone.objects.tangible.terminal.characterbuilder.CharacterBuilderMenuNode;
+import server.zone.objects.creature.CreatureObject;
 
 class SuiCharacterBuilderBox extends SuiListBox {
 	protected transient CharacterBuilderMenuNode rootNode;
 	protected transient CharacterBuilderMenuNode currentNode;
 	
-	public SuiCharacterBuilderBox(PlayerCreature player, CharacterBuilderMenuNode root) {
+	public SuiCharacterBuilderBox(CreatureObject player, CharacterBuilderMenuNode root) {
 		super(player, SuiWindowType.CHARACTER_BUILDER_LIST, 0);
 		
 		Logger.setLoggingName("SuiCharacterBuilderBox");

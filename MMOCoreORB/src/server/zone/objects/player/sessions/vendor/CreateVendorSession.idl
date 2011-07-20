@@ -52,7 +52,7 @@ import engine.util.Facade;
 import system.lang.ref.Reference;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.player.PlayerCreature;
+include server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.player.sui.listbox.SuiListBox;
@@ -61,7 +61,7 @@ include server.zone.managers.vendor.VendorSelectionNode;
 
 class CreateVendorSession extends Facade {
 	@weakReference
-	protected PlayerCreature player;
+	protected CreatureObject player;
 
 	@weakReference
 	protected SceneObject vendor;
@@ -73,7 +73,7 @@ class CreateVendorSession extends Facade {
 
 	private string templatePath;
 		
-	public CreateVendorSession(PlayerCreature parent) {
+	public CreateVendorSession(CreatureObject parent) {
 		Logger.setLoggingName("CreateVendorSession");
 		Logger.setLogging(true);
 		
@@ -81,7 +81,7 @@ class CreateVendorSession extends Facade {
 
 	}
 
-	public native void initalizeWindow(PlayerCreature pl);
+	public native void initalizeWindow(CreatureObject pl);
 
 	public native void handleMenuSelect(byte menuID);
 

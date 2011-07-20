@@ -28,16 +28,30 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 
@@ -60,7 +74,7 @@ public:
 
 	static const int FILTER = 1;
 
-	SuiInputBox(PlayerCreature* player, unsigned int windowType = 0, int inputtype = 0);
+	SuiInputBox(CreatureObject* player, unsigned int windowType = 0, int inputtype = 0);
 
 	BaseMessage* generateMessage();
 
@@ -113,7 +127,7 @@ public:
 
 	static const int FILTER = 1;
 
-	SuiInputBoxImplementation(PlayerCreature* player, unsigned int windowType = 0, int inputtype = 0);
+	SuiInputBoxImplementation(CreatureObject* player, unsigned int windowType = 0, int inputtype = 0);
 
 	SuiInputBoxImplementation(DummyConstructorParameter* param);
 

@@ -85,7 +85,7 @@ public:
 	 * @pre { player != targetPlayer, player is locked }
 	 * @post { player is locked }
 	 */
-	void requestDuel(PlayerCreature* player, PlayerCreature* targetPlayer);
+	void requestDuel(CreatureObject* player, CreatureObject* targetPlayer);
 
 	/**
 	 * Requests end duel
@@ -94,7 +94,7 @@ public:
 	 * @pre { player != targetPlayer, player is locked }
 	 * @post { player is locked }
 	 */
-	void requestEndDuel(PlayerCreature* player, PlayerCreature* targetPlayer);
+	void requestEndDuel(CreatureObject* player, CreatureObject* targetPlayer);
 
 	/**
 	 * Clears duel list
@@ -102,7 +102,7 @@ public:
 	 * @pre { player is locked }
 	 * @post { player is locked }
 	 */
-	void freeDuelList(PlayerCreature* player, bool spam = false);
+	void freeDuelList(CreatureObject* player, bool spam = false);
 
 	/**
 	 * Declines duel
@@ -111,7 +111,7 @@ public:
 	 * @pre { player != targetPlayer, player is locked }
 	 * @post { player is locked }
 	 */
-	void declineDuel(PlayerCreature* player, PlayerCreature* targetPlayer);
+	void declineDuel(CreatureObject* player, CreatureObject* targetPlayer);
 
 	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
 

@@ -10,7 +10,7 @@
 
 #include "server/zone/managers/object/ObjectManager.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -22,7 +22,7 @@
  *	ResourceManagerStub
  */
 
-enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__PLAYERCREATURE_INT_STRING_,RPC_SENDSURVEY__PLAYERCREATURE_STRING_,RPC_SENDSAMPLE__PLAYERCREATURE_STRING_STRING_,RPC_HARVESTRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__PLAYERCREATURE_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__PLAYERCREATURE_,RPC_REMOVEPOWERFROMPLAYER__PLAYERCREATURE_INT_,RPC_CREATERESOURCESPAWN__PLAYERCREATURE_STRING_,RPC_GIVEPLAYERRESOURCE__PLAYERCREATURE_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_};
+enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_};
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
 	ResourceManagerImplementation* _implementation = new ResourceManagerImplementation(server, impl, objectMan);
@@ -93,13 +93,13 @@ int ResourceManager::notifyObserverEvent(unsigned int eventType, Observable* obs
 		return _implementation->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
-void ResourceManager::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
+void ResourceManager::sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDRESOURCELISTFORSURVEY__PLAYERCREATURE_INT_STRING_);
+		DistributedMethod method(this, RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_);
 		method.addObjectParameter(playerCreature);
 		method.addSignedIntParameter(toolType);
 		method.addAsciiParameter(surveyType);
@@ -109,13 +109,13 @@ void ResourceManager::sendResourceListForSurvey(PlayerCreature* playerCreature, 
 		_implementation->sendResourceListForSurvey(playerCreature, toolType, surveyType);
 }
 
-void ResourceManager::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
+void ResourceManager::sendSurvey(CreatureObject* playerCreature, const String& resname) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDSURVEY__PLAYERCREATURE_STRING_);
+		DistributedMethod method(this, RPC_SENDSURVEY__CREATUREOBJECT_STRING_);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(resname);
 
@@ -124,13 +124,13 @@ void ResourceManager::sendSurvey(PlayerCreature* playerCreature, const String& r
 		_implementation->sendSurvey(playerCreature, resname);
 }
 
-void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation) {
+void ResourceManager::sendSample(CreatureObject* playerCreature, const String& resname, const String& sampleAnimation) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDSAMPLE__PLAYERCREATURE_STRING_STRING_);
+		DistributedMethod method(this, RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(resname);
 		method.addAsciiParameter(sampleAnimation);
@@ -140,13 +140,13 @@ void ResourceManager::sendSample(PlayerCreature* playerCreature, const String& r
 		_implementation->sendSample(playerCreature, resname, sampleAnimation);
 }
 
-ResourceContainer* ResourceManager::harvestResource(PlayerCreature* player, const String& type, const int quantity) {
+ResourceContainer* ResourceManager::harvestResource(CreatureObject* player, const String& type, const int quantity) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HARVESTRESOURCE__PLAYERCREATURE_STRING_INT_);
+		DistributedMethod method(this, RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(type);
 		method.addSignedIntParameter(quantity);
@@ -156,13 +156,13 @@ ResourceContainer* ResourceManager::harvestResource(PlayerCreature* player, cons
 		return _implementation->harvestResource(player, type, quantity);
 }
 
-void ResourceManager::harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity) {
+void ResourceManager::harvestResourceToPlayer(CreatureObject* player, ResourceSpawn* resourceSpawn, const int quantity) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HARVESTRESOURCETOPLAYER__PLAYERCREATURE_RESOURCESPAWN_INT_);
+		DistributedMethod method(this, RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(resourceSpawn);
 		method.addSignedIntParameter(quantity);
@@ -172,13 +172,13 @@ void ResourceManager::harvestResourceToPlayer(PlayerCreature* player, ResourceSp
 		_implementation->harvestResourceToPlayer(player, resourceSpawn, quantity);
 }
 
-unsigned int ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* player) {
+unsigned int ResourceManager::getAvailablePowerFromPlayer(CreatureObject* player) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETAVAILABLEPOWERFROMPLAYER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithUnsignedIntReturn();
@@ -186,13 +186,13 @@ unsigned int ResourceManager::getAvailablePowerFromPlayer(PlayerCreature* player
 		return _implementation->getAvailablePowerFromPlayer(player);
 }
 
-void ResourceManager::removePowerFromPlayer(PlayerCreature* player, unsigned int power) {
+void ResourceManager::removePowerFromPlayer(CreatureObject* player, unsigned int power) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEPOWERFROMPLAYER__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(power);
 
@@ -210,13 +210,13 @@ void ResourceManager::getResourceListByType(Vector<ManagedReference<ResourceSpaw
 		_implementation->getResourceListByType(list, type, zoneName);
 }
 
-void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {
+void ResourceManager::createResourceSpawn(CreatureObject* playerCreature, const String& restype) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATERESOURCESPAWN__PLAYERCREATURE_STRING_);
+		DistributedMethod method(this, RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(restype);
 
@@ -225,13 +225,13 @@ void ResourceManager::createResourceSpawn(PlayerCreature* playerCreature, const 
 		_implementation->createResourceSpawn(playerCreature, restype);
 }
 
-void ResourceManager::givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity) {
+void ResourceManager::givePlayerResource(CreatureObject* playerCreature, const String& restype, const int quantity) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GIVEPLAYERRESOURCE__PLAYERCREATURE_STRING_INT_);
+		DistributedMethod method(this, RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_);
 		method.addObjectParameter(playerCreature);
 		method.addAsciiParameter(restype);
 		method.addSignedIntParameter(quantity);
@@ -462,32 +462,32 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case RPC_SENDRESOURCELISTFORSURVEY__PLAYERCREATURE_INT_STRING_:
-		sendResourceListForSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_sendResourceListForSurvey__PlayerCreature_int_String_));
+	case RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_:
+		sendResourceListForSurvey((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_sendResourceListForSurvey__CreatureObject_int_String_));
 		break;
-	case RPC_SENDSURVEY__PLAYERCREATURE_STRING_:
-		sendSurvey((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurvey__PlayerCreature_String_));
+	case RPC_SENDSURVEY__CREATUREOBJECT_STRING_:
+		sendSurvey((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSurvey__CreatureObject_String_));
 		break;
-	case RPC_SENDSAMPLE__PLAYERCREATURE_STRING_STRING_:
-		sendSample((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSample__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_sendSample__PlayerCreature_String_String_));
+	case RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_:
+		sendSample((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendSample__CreatureObject_String_String_), inv->getAsciiParameter(_param2_sendSample__CreatureObject_String_String_));
 		break;
-	case RPC_HARVESTRESOURCE__PLAYERCREATURE_STRING_INT_:
-		resp->insertLong(harvestResource((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_harvestResource__PlayerCreature_String_int_), inv->getSignedIntParameter())->_getObjectID());
+	case RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_:
+		resp->insertLong(harvestResource((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_harvestResource__CreatureObject_String_int_), inv->getSignedIntParameter())->_getObjectID());
 		break;
-	case RPC_HARVESTRESOURCETOPLAYER__PLAYERCREATURE_RESOURCESPAWN_INT_:
-		harvestResourceToPlayer((PlayerCreature*) inv->getObjectParameter(), (ResourceSpawn*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_:
+		harvestResourceToPlayer((CreatureObject*) inv->getObjectParameter(), (ResourceSpawn*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_GETAVAILABLEPOWERFROMPLAYER__PLAYERCREATURE_:
-		resp->insertInt(getAvailablePowerFromPlayer((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_:
+		resp->insertInt(getAvailablePowerFromPlayer((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_REMOVEPOWERFROMPLAYER__PLAYERCREATURE_INT_:
-		removePowerFromPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+	case RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_:
+		removePowerFromPlayer((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case RPC_CREATERESOURCESPAWN__PLAYERCREATURE_STRING_:
-		createResourceSpawn((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createResourceSpawn__PlayerCreature_String_));
+	case RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_:
+		createResourceSpawn((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createResourceSpawn__CreatureObject_String_));
 		break;
-	case RPC_GIVEPLAYERRESOURCE__PLAYERCREATURE_STRING_INT_:
-		givePlayerResource((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_givePlayerResource__PlayerCreature_String_int_), inv->getSignedIntParameter());
+	case RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_:
+		givePlayerResource((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_givePlayerResource__CreatureObject_String_int_), inv->getSignedIntParameter());
 		break;
 	case RPC_GETCURRENTSPAWN__STRING_STRING_:
 		resp->insertLong(getCurrentSpawn(inv->getAsciiParameter(_param0_getCurrentSpawn__String_String_), inv->getAsciiParameter(_param1_getCurrentSpawn__String_String_))->_getObjectID());
@@ -521,39 +521,39 @@ int ResourceManagerAdapter::notifyObserverEvent(unsigned int eventType, Observab
 	return ((ResourceManagerImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
-void ResourceManagerAdapter::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
+void ResourceManagerAdapter::sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType) {
 	((ResourceManagerImplementation*) impl)->sendResourceListForSurvey(playerCreature, toolType, surveyType);
 }
 
-void ResourceManagerAdapter::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
+void ResourceManagerAdapter::sendSurvey(CreatureObject* playerCreature, const String& resname) {
 	((ResourceManagerImplementation*) impl)->sendSurvey(playerCreature, resname);
 }
 
-void ResourceManagerAdapter::sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation) {
+void ResourceManagerAdapter::sendSample(CreatureObject* playerCreature, const String& resname, const String& sampleAnimation) {
 	((ResourceManagerImplementation*) impl)->sendSample(playerCreature, resname, sampleAnimation);
 }
 
-ResourceContainer* ResourceManagerAdapter::harvestResource(PlayerCreature* player, const String& type, const int quantity) {
+ResourceContainer* ResourceManagerAdapter::harvestResource(CreatureObject* player, const String& type, const int quantity) {
 	return ((ResourceManagerImplementation*) impl)->harvestResource(player, type, quantity);
 }
 
-void ResourceManagerAdapter::harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity) {
+void ResourceManagerAdapter::harvestResourceToPlayer(CreatureObject* player, ResourceSpawn* resourceSpawn, const int quantity) {
 	((ResourceManagerImplementation*) impl)->harvestResourceToPlayer(player, resourceSpawn, quantity);
 }
 
-unsigned int ResourceManagerAdapter::getAvailablePowerFromPlayer(PlayerCreature* player) {
+unsigned int ResourceManagerAdapter::getAvailablePowerFromPlayer(CreatureObject* player) {
 	return ((ResourceManagerImplementation*) impl)->getAvailablePowerFromPlayer(player);
 }
 
-void ResourceManagerAdapter::removePowerFromPlayer(PlayerCreature* player, unsigned int power) {
+void ResourceManagerAdapter::removePowerFromPlayer(CreatureObject* player, unsigned int power) {
 	((ResourceManagerImplementation*) impl)->removePowerFromPlayer(player, power);
 }
 
-void ResourceManagerAdapter::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {
+void ResourceManagerAdapter::createResourceSpawn(CreatureObject* playerCreature, const String& restype) {
 	((ResourceManagerImplementation*) impl)->createResourceSpawn(playerCreature, restype);
 }
 
-void ResourceManagerAdapter::givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity) {
+void ResourceManagerAdapter::givePlayerResource(CreatureObject* playerCreature, const String& restype, const int quantity) {
 	((ResourceManagerImplementation*) impl)->givePlayerResource(playerCreature, restype, quantity);
 }
 

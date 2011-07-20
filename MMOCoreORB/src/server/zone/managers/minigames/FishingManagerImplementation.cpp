@@ -6,7 +6,7 @@
  */
 
 #include "FishingManager.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -27,7 +27,7 @@
 #include "system/util/VectorMap.h"
 
 
-int FishingManagerImplementation::checkLocation(PlayerCreature* player, int quality, float& x, float& y, float& z) {
+int FishingManagerImplementation::checkLocation(CreatureObject* player, int quality, float& x, float& y, float& z) {
 	if (player == NULL)
 		return 1;
 
@@ -53,7 +53,7 @@ int FishingManagerImplementation::checkLocation(PlayerCreature* player, int qual
 }
 
 
-int FishingManagerImplementation::startFishing(PlayerCreature* player) {
+int FishingManagerImplementation::startFishing(CreatureObject* player) {
 	if (player == NULL)
 		return 6;
 
@@ -116,7 +116,7 @@ int FishingManagerImplementation::startFishing(PlayerCreature* player) {
 	return 0;
 }
 
-void FishingManagerImplementation::stopFishing(PlayerCreature* player, uint32 boxID, bool rem) {
+void FishingManagerImplementation::stopFishing(CreatureObject* player, uint32 boxID, bool rem) {
 	if (player == NULL) // should never occur
 		return;
 
@@ -159,7 +159,7 @@ void FishingManagerImplementation::stopFishing(PlayerCreature* player, uint32 bo
 }
 
 
-void FishingManagerImplementation::fishingStep(PlayerCreature* player) {
+void FishingManagerImplementation::fishingStep(CreatureObject* player) {
 	if (player == NULL)
 		return;
 
@@ -369,7 +369,7 @@ String FishingManagerImplementation::getTime() {
 	return result;
 }
 
-void FishingManagerImplementation::success(PlayerCreature* player, int fish, SceneObject* marker, uint32 boxID) {
+void FishingManagerImplementation::success(CreatureObject* player, int fish, SceneObject* marker, uint32 boxID) {
 	if (player == NULL)
 		return;
 
@@ -489,7 +489,7 @@ void FishingManagerImplementation::success(PlayerCreature* player, int fish, Sce
 }
 
 
-void FishingManagerImplementation::sendReward(PlayerCreature* player, SceneObject* marker, SceneObject* loot) {
+void FishingManagerImplementation::sendReward(CreatureObject* player, SceneObject* marker, SceneObject* loot) {
 	if ((player != NULL) && (marker != NULL) && (loot != NULL)) {
 		StringIdChatParameter body("fishing","prose_notify_catch");
 		String itemName;
@@ -508,7 +508,7 @@ void FishingManagerImplementation::sendReward(PlayerCreature* player, SceneObjec
 }
 
 
-uint32 FishingManagerImplementation::createWindow(PlayerCreature* player, uint32 boxID) {
+uint32 FishingManagerImplementation::createWindow(CreatureObject* player, uint32 boxID) {
 	if (player == NULL)
 		return -1;
 
@@ -558,18 +558,20 @@ uint32 FishingManagerImplementation::createWindow(PlayerCreature* player, uint32
 	box->addMenuItem("@fishing:fa_small_reel", 3);
 	box->addMenuItem("@fishing:fa_stop", 4);
 
-	player->addSuiBox(box);
+	player->getPlayerObject()->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
 
 	return box->getBoxID();
 }
 
 
-void FishingManagerImplementation::closeMenu(PlayerCreature* player, uint32 boxID) {
+void FishingManagerImplementation::closeMenu(CreatureObject* player, uint32 boxID) {
+	PlayerObject* ghost = player->getPlayerObject();
+
 	if ((player != NULL) && (boxID != -1)) {
-		if (player->hasSuiBox(boxID)) {
-			player->sendMessage(player->getSuiBox(boxID)->generateCloseMessage());
-			player->removeSuiBox(boxID);
+		if (ghost->hasSuiBox(boxID)) {
+			player->sendMessage(ghost->getSuiBox(boxID)->generateCloseMessage());
+			ghost->removeSuiBox(boxID);
 		}
 	}
 }
@@ -589,7 +591,7 @@ int FishingManagerImplementation::density(SceneObject* marker) {
 }
 
 
-int FishingManagerImplementation::getFish(PlayerCreature* player) {
+int FishingManagerImplementation::getFish(CreatureObject* player) {
 	int chance = System::random(99)/*+(luck/10)*/;
 
 	if (player == NULL)
@@ -617,7 +619,7 @@ int FishingManagerImplementation::getFish(PlayerCreature* player) {
 }
 
 
-int FishingManagerImplementation::getNextAction(PlayerCreature* player) {
+int FishingManagerImplementation::getNextAction(CreatureObject* player) {
 	if (player == NULL)
 		return DONOTHING;
 
@@ -627,7 +629,7 @@ int FishingManagerImplementation::getNextAction(PlayerCreature* player) {
 	return sessions.get(player)->getNextAction();
 }
 
-void FishingManagerImplementation::setNextAction(PlayerCreature* player, int next) {
+void FishingManagerImplementation::setNextAction(CreatureObject* player, int next) {
 	if (player == NULL)
 		return;
 
@@ -642,7 +644,7 @@ void FishingManagerImplementation::setNextAction(PlayerCreature* player, int nex
 }
 
 
-FishingPoleObject* FishingManagerImplementation::getPole(PlayerCreature* player) {
+FishingPoleObject* FishingManagerImplementation::getPole(CreatureObject* player) {
 	if (player == NULL)
 		return NULL;
 
@@ -660,7 +662,7 @@ FishingPoleObject* FishingManagerImplementation::getPole(PlayerCreature* player)
 }
 
 
-FishingBaitObject* FishingManagerImplementation::getBait(PlayerCreature* player) {
+FishingBaitObject* FishingManagerImplementation::getBait(CreatureObject* player) {
 	if (player == NULL)
 		return NULL;
 
@@ -684,7 +686,7 @@ FishingBaitObject* FishingManagerImplementation::getBait(PlayerCreature* player)
 }
 
 
-uint32 FishingManagerImplementation::getFishBoxID(PlayerCreature* player) {
+uint32 FishingManagerImplementation::getFishBoxID(CreatureObject* player) {
 	if (player == NULL)
 		return -1;
 
@@ -697,7 +699,7 @@ uint32 FishingManagerImplementation::getFishBoxID(PlayerCreature* player) {
 	return -1;
 }
 
-void FishingManagerImplementation::setFishBoxID(PlayerCreature* player, uint32 boxID) {
+void FishingManagerImplementation::setFishBoxID(CreatureObject* player, uint32 boxID) {
 	if (player == NULL)
 		return;
 
@@ -708,7 +710,7 @@ void FishingManagerImplementation::setFishBoxID(PlayerCreature* player, uint32 b
 	}
 }
 
-int FishingManagerImplementation::getFishingState(PlayerCreature* player) {
+int FishingManagerImplementation::getFishingState(CreatureObject* player) {
 	if (player == NULL)
 		return NOTFISHING;
 
@@ -725,7 +727,7 @@ int FishingManagerImplementation::getFishingState(PlayerCreature* player) {
 }
 
 
-void FishingManagerImplementation::setFishingState(PlayerCreature* player, int state) {
+void FishingManagerImplementation::setFishingState(CreatureObject* player, int state) {
 	if (player == NULL)
 		return;
 
@@ -739,7 +741,7 @@ void FishingManagerImplementation::setFishingState(PlayerCreature* player, int s
 	}
 }
 
-SceneObject* FishingManagerImplementation::getFishMarker(PlayerCreature* player) {
+SceneObject* FishingManagerImplementation::getFishMarker(CreatureObject* player) {
 	if (player == NULL)
 		return NULL;
 
@@ -750,7 +752,7 @@ SceneObject* FishingManagerImplementation::getFishMarker(PlayerCreature* player)
 }
 
 
-void FishingManagerImplementation::setFishMarker(PlayerCreature* player, SceneObject* marker) {
+void FishingManagerImplementation::setFishMarker(CreatureObject* player, SceneObject* marker) {
 	if (player != NULL) {
 		if (!sessions.contains(player))
 			return;
@@ -759,7 +761,7 @@ void FishingManagerImplementation::setFishMarker(PlayerCreature* player, SceneOb
 	}
 }
 
-void FishingManagerImplementation::freeBait(PlayerCreature* player) {
+void FishingManagerImplementation::freeBait(CreatureObject* player) {
 	if (player != NULL) {
 		String bait = "object/tangible/fishing/bait/bait_worm.iff";
 		ManagedReference<SceneObject*> baitObject = zoneServer->createObject(bait.hashCode(), 0);
@@ -773,7 +775,7 @@ void FishingManagerImplementation::freeBait(PlayerCreature* player) {
 	}
 }
 
-void FishingManagerImplementation::fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, uint32 boxID, int newstate, bool notifyClient, String& moodString) {
+void FishingManagerImplementation::fishingProceed(CreatureObject* player, int nextAction, SceneObject* marker, int fish, uint32 boxID, int newstate, bool notifyClient, String& moodString) {
 	if ((player == NULL) || (marker == NULL)) {
 		return;
 	}
@@ -879,7 +881,7 @@ void FishingManagerImplementation::fishingProceed(PlayerCreature* player, int ne
 
 }
 
-void FishingManagerImplementation::mishapEvent(const String& text, PlayerCreature* player, uint32 boxID, bool losebait, String& moodString) {
+void FishingManagerImplementation::mishapEvent(const String& text, CreatureObject* player, uint32 boxID, bool losebait, String& moodString) {
 	if ((player != NULL) && (!text.isEmpty())) {
 		player->sendSystemMessage(text);
 
@@ -902,7 +904,7 @@ void FishingManagerImplementation::mishapEvent(const String& text, PlayerCreatur
 	}
 }
 
-bool FishingManagerImplementation::loseBait(PlayerCreature* player) {
+bool FishingManagerImplementation::loseBait(CreatureObject* player) {
 	if (player == NULL)
 		return false;
 
@@ -937,7 +939,7 @@ bool FishingManagerImplementation::loseBait(PlayerCreature* player) {
 }
 
 
-void FishingManagerImplementation::animate(PlayerCreature* player, int nextAction) {
+void FishingManagerImplementation::animate(CreatureObject* player, int nextAction) {
 	if (player == NULL)
 		return;
 
@@ -979,7 +981,7 @@ SceneObject* FishingManagerImplementation::createMarker(float x, float y, float 
 }
 
 
-void FishingManagerImplementation::createSplash(float x, float y, float z, Zone* zone, PlayerCreature* player) {
+void FishingManagerImplementation::createSplash(float x, float y, float z, Zone* zone, CreatureObject* player) {
 	if ((player != NULL) && (zone != NULL)) {
 		String splash = "object/tangible/fishing/splash.iff";
 		ManagedReference<SceneObject*> splashObject = zoneServer->createObject(splash.hashCode(), 0);
@@ -993,7 +995,7 @@ void FishingManagerImplementation::createSplash(float x, float y, float z, Zone*
 	}
 }
 
-bool FishingManagerImplementation::checkUpdateMarker(PlayerCreature* player, float& x, float& y, float& z) {
+bool FishingManagerImplementation::checkUpdateMarker(CreatureObject* player, float& x, float& y, float& z) {
 	bool beached = false;
 
 	float newZ = z;
@@ -1011,7 +1013,7 @@ bool FishingManagerImplementation::checkUpdateMarker(PlayerCreature* player, flo
 	return beached;
 }
 
-SceneObject* FishingManagerImplementation::updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer) {
+SceneObject* FishingManagerImplementation::updateMarker(CreatureObject* player, SceneObject* marker, bool notifyPlayer) {
 	if ((player == NULL) || (marker == NULL))
 		return NULL;
 
@@ -1123,7 +1125,7 @@ SceneObject* FishingManagerImplementation::updateMarker(PlayerCreature* player, 
 	return NULL;
 }
 
-void FishingManagerImplementation::removeMarker(PlayerCreature* player, SceneObject* container) {
+void FishingManagerImplementation::removeMarker(CreatureObject* player, SceneObject* container) {
 	if (player != NULL) {
 		ManagedReference<SceneObject*> marker;
 
@@ -1172,7 +1174,7 @@ void FishingManagerImplementation::removeSplash(SceneObject* splash) {
 	}
 }
 
-void FishingManagerImplementation::createFishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash) {
+void FishingManagerImplementation::createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash) {
 	if ((player != NULL) && (zoneServer != NULL) && (splash != NULL)) {
 		Reference<FishingSplashEvent*> fishingSplashEvent = new FishingSplashEvent(player, zoneServer, splash);
 
@@ -1180,7 +1182,7 @@ void FishingManagerImplementation::createFishingSplashEvent(PlayerCreature* play
 	}
 }
 
-void FishingManagerImplementation::createFishingSession(PlayerCreature* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, uint32 boxID, int fishingState, String& mood) {
+void FishingManagerImplementation::createFishingSession(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, uint32 boxID, int fishingState, String& mood) {
 	if ((player != NULL) && (event != NULL) && (marker != NULL))	{
 
 		Locker locker(_this);
@@ -1188,7 +1190,7 @@ void FishingManagerImplementation::createFishingSession(PlayerCreature* player, 
 	}
 }
 
-FishingEvent* FishingManagerImplementation::createFishingEvent(PlayerCreature* player, ZoneServer* zoneServer, int state) {
+FishingEvent* FishingManagerImplementation::createFishingEvent(CreatureObject* player, ZoneServer* zoneServer, int state) {
 	if ((player == NULL) || (zoneServer == NULL))
 		return NULL;
 
@@ -1206,7 +1208,7 @@ FishingEvent* FishingManagerImplementation::createFishingEvent(PlayerCreature* p
 }
 
 
-void FishingManagerImplementation::stopFishingEvent(PlayerCreature* player) {
+void FishingManagerImplementation::stopFishingEvent(CreatureObject* player) {
 	if (player == NULL)
 		return;
 
@@ -1222,7 +1224,7 @@ void FishingManagerImplementation::stopFishingEvent(PlayerCreature* player) {
 }
 
 
-FishingEvent* FishingManagerImplementation::getFishingEvent(PlayerCreature* player) {
+FishingEvent* FishingManagerImplementation::getFishingEvent(CreatureObject* player) {
 	if (player == NULL)
 		return NULL;
 
@@ -1234,11 +1236,11 @@ FishingEvent* FishingManagerImplementation::getFishingEvent(PlayerCreature* play
 	return fishingEvent;
 }
 
-bool FishingManagerImplementation::isPlaying(PlayerCreature* player) {
+bool FishingManagerImplementation::isPlaying(CreatureObject* player) {
 	return (sessions.contains(player));
 }
 
-int FishingManagerImplementation::notifyCloseContainer(PlayerCreature* player, SceneObject* container) {
+int FishingManagerImplementation::notifyCloseContainer(CreatureObject* player, SceneObject* container) {
 	Locker locker(_this);
 
 	removeMarker(player, container);
@@ -1247,7 +1249,7 @@ int FishingManagerImplementation::notifyCloseContainer(PlayerCreature* player, S
 	return 1;
 }
 
-void FishingManagerImplementation::checkFishingOnPositionUpdate(PlayerCreature* player) {
+void FishingManagerImplementation::checkFishingOnPositionUpdate(CreatureObject* player) {
 	//Locker _locker(player); player is already locked
 
 	int fishingState = getFishingState(player);

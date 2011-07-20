@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "ObjectControllerMessage.h"
  
 #include "../../objects/player/PlayerObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "../../objects/player/Races.h"
  
@@ -61,7 +61,7 @@ public:
  		insertInt(0);
 	}
  
-	void addFoundPlayer(PlayerCreature* player) {
+	void addFoundPlayer(CreatureObject* player) {
 		insertInt(0); //List counter for something.
 		insertUnicode(player->getDisplayedName());
  

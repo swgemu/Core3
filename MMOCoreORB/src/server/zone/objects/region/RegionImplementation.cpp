@@ -6,13 +6,13 @@
  */
 
 #include "Region.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/installation/shuttle/ShuttleInstallation.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/building/city/CityHallObject.h"
 
-void RegionImplementation::sendGreetingMessage(PlayerCreature* player) {
+void RegionImplementation::sendGreetingMessage(CreatureObject* player) {
 	if (isStaticObject() || cityHall == NULL)
 		return;
 
@@ -41,7 +41,7 @@ void RegionImplementation::insertToZone(Zone* zone) {
 	//zone->getPlanetManager()->addRegion(_this);
 }
 
-void RegionImplementation::sendDepartingMessage(PlayerCreature* player) {
+void RegionImplementation::sendDepartingMessage(CreatureObject* player) {
 	if (isStaticObject())
 		return;
 

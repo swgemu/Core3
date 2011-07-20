@@ -22,13 +22,27 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/chat/room/ChatRoom.h"
+
+#include "server/zone/objects/building/BuildingObject.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
+
+#include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/player/sui/SuiBox.h"
 
 /*
  *	PlayerObjectStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETTOTALOWNEDSTRUCTURECOUNT__,RPC_GETLOTSREMAINING__,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_NOTIFYOFFLINE__,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_GETLANGUAGEID__,RPC_GETEXPERIENCE__STRING_,RPC_GETCOMMANDMESSAGESTRING__INT_};
+enum {RPC_FINALIZE__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_UNLOAD__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETTOTALOWNEDSTRUCTURECOUNT__,RPC_GETLOTSREMAINING__,RPC_NOTIFYSCENEREADY__,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_GETSURVEYWAYPOINT__,RPC_ACTIVATERECOVERY__,RPC_DORECOVERY__,RPC_DISCONNECT__BOOL_BOOL_,RPC_RELOAD__ZONECLIENTSESSION_,RPC_SETOFFLINE__,RPC_SETLINKDEAD__,RPC_SETONLINE__,RPC_SETLOGGINGOUT__,RPC_SENDBADGESRESPONSETO__CREATUREOBJECT_,RPC_LOGOUT__BOOL_,RPC_SETLASTNPCCONVSTR__STRING_,RPC_SETLASTNPCCONVMESSSTR__STRING_,RPC_GETLASTNPCCONVSTR__,RPC_GETLASTNPCCONVMESSSTR__,RPC_GETLASTNPCCONVOPTION__INT_,RPC_ADDLASTNPCCONVOPTIONS__STRING_,RPC_COUNTLASTNPCCONVOPTIONS__,RPC_CLEARLASTNPCCONVOPTIONS__,RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_,RPC_GETCONVERSATINGCREATURE__,RPC_ADDPERSISTENTMESSAGE__LONG_,RPC_DROPPERSISTENTMESSAGE__LONG_,RPC_UNLOADSPAWNEDCHILDREN__,RPC_ADDTOCONSENTLIST__STRING_,RPC_HASINCONSENTLIST__STRING_,RPC_REMOVEFROMCONSENTLIST__STRING_,RPC_GETCONSENTNAME__INT_,RPC_GETCONSENTLISTSIZE__,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_GETDECLAREDRESIDENCE__,RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_,RPC_SETCLONINGFACILITY__BUILDINGOBJECT_,RPC_GETCLONINGFACILITY__,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_GETSAVEDTERRAINNAME__,RPC_SETSAVEDPARENTID__LONG_,RPC_SETSAVEDTERRAINNAME__STRING_,RPC_GETSAVEDPARENTID__,RPC_GETNEWSUIBOXID__INT_,RPC_HASSUIBOX__INT_,RPC_GETSUIBOX__INT_,RPC_REMOVESUIBOX__INT_BOOL_,RPC_REMOVESUIBOXTYPE__INT_,RPC_HASSUIBOXWINDOWTYPE__INT_,RPC_CLOSESUIWINDOWTYPE__INT_,RPC_GETSUIBOXFROMWINDOWTYPE__INT_,RPC_ADDSUIBOX__SUIBOX_,RPC_ISFIRSTINCAPACITATIONEXPIRED__,RPC_RESETINCAPACITATIONCOUNTER__,RPC_RESETFIRSTINCAPACITATIONTIME__,RPC_UPDATEINCAPACITATIONCOUNTER__,RPC_ISFIRSTINCAPACITATION__,RPC_GETINCAPACITATIONCOUNTER__,RPC_ADDTODUELLIST__CREATUREOBJECT_,RPC_REMOVEFROMDUELLIST__CREATUREOBJECT_,RPC_GETDUELLISTOBJECT__INT_,RPC_REQUESTEDDUELTO__CREATUREOBJECT_,RPC_ISDUELLISTEMPTY__,RPC_GETDUELLISTSIZE__,RPC_GETBIOGRAPHY__,RPC_NOTIFYOFFLINE__,RPC_SETBADGE__INT_,RPC_AWARDBADGE__INT_,RPC_SETSURVEYTOOL__SURVEYTOOL_,RPC_GETSURVEYTOOL__,RPC_GETLASTCRAFTINGTOOLUSED__,RPC_SETLASTCRAFTINGTOOLUSED__CRAFTINGTOOL_,RPC_SETTELEPORTING__BOOL_,RPC_GETNUMBADGES__,RPC_GETBADGETYPECOUNT__BYTE_,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_SETBIOGRAPHY__UNICODESTRING_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_GETLANGUAGEID__,RPC_ISTELEPORTING__,RPC_ADDCHATROOM__CHATROOM_,RPC_REMOVECHATROOM__CHATROOM_,RPC_GETEXPERIENCE__STRING_,RPC_GETCOMMANDMESSAGESTRING__INT_,RPC_HASBADGE__INT_,RPC_CLEARDISCONNECTEVENT__,RPC_CLEARRECOVERYEVENT__,RPC_ISONLINE__,RPC_ISOFFLINE__,RPC_ISLOADING__,RPC_ISLINKDEAD__,RPC_ISLOGGINGIN__,RPC_ISLOGGINGOUT__,RPC_SETSKILLPOINTS__INT_,RPC_ADDSKILLPOINTS__INT_,RPC_GETSKILLPOINTS__,RPC_UPDATELASTVALIDATEDPOSITION__,RPC_SETSPAWNEDBLUEFROG__,RPC_HASSPAWNEDBLUEFROG__,RPC_GETACCOUNTID__,RPC_GETSERVERMOVEMENTTIMEDELTA__,RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_,RPC_UPDATESERVERLASTMOVEMENTSTAMP__,RPC_SETACCOUNTID__INT_,RPC_GETFACTIONSTATUS__,RPC_GETCLIENTLASTMOVEMENTSTAMP__,RPC_SETTEACHINGORLEARNING__BOOL_,RPC_GETCENTEREDBONUS__,RPC_SETCENTEREDBONUS__INT_,RPC_ISINVISIBLE__,RPC_SETINVISIBLE__BOOL_,RPC_SETHOLOGRINDMASK__INT_,RPC_GETHOLOGRINDMASK__,RPC_GETRACEID__,RPC_SETRACEID__BYTE_};
 
 PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	PlayerObjectImplementation* _implementation = new PlayerObjectImplementation();
@@ -42,6 +56,32 @@ PlayerObject::PlayerObject(DummyConstructorParameter* param) : IntangibleObject(
 PlayerObject::~PlayerObject() {
 }
 
+
+void PlayerObject::notifyLoadFromDatabase() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyLoadFromDatabase();
+}
+
+void PlayerObject::unload() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UNLOAD__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->unload();
+}
 
 void PlayerObject::loadTemplateData(SharedObjectTemplate* templateData) {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
@@ -145,6 +185,19 @@ int PlayerObject::getLotsRemaining() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getLotsRemaining();
+}
+
+void PlayerObject::notifySceneReady() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYSCENEREADY__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifySceneReady();
 }
 
 int PlayerObject::addExperience(const String& xpType, int xp, bool notifyClient) {
@@ -477,6 +530,154 @@ float PlayerObject::getFactionStanding(const String& factionName) {
 		return _implementation->getFactionStanding(factionName);
 }
 
+WaypointObject* PlayerObject::getSurveyWaypoint() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSURVEYWAYPOINT__);
+
+		return (WaypointObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getSurveyWaypoint();
+}
+
+void PlayerObject::activateRecovery() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ACTIVATERECOVERY__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->activateRecovery();
+}
+
+void PlayerObject::doRecovery() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DORECOVERY__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->doRecovery();
+}
+
+void PlayerObject::disconnect(bool closeClient, bool doLock) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DISCONNECT__BOOL_BOOL_);
+		method.addBooleanParameter(closeClient);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->disconnect(closeClient, doLock);
+}
+
+void PlayerObject::reload(ZoneClientSession* client) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_RELOAD__ZONECLIENTSESSION_);
+		method.addObjectParameter(client);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->reload(client);
+}
+
+void PlayerObject::setOffline() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETOFFLINE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setOffline();
+}
+
+void PlayerObject::setLinkDead() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETLINKDEAD__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setLinkDead();
+}
+
+void PlayerObject::setOnline() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETONLINE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setOnline();
+}
+
+void PlayerObject::setLoggingOut() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETLOGGINGOUT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setLoggingOut();
+}
+
+void PlayerObject::sendBadgesResponseTo(CreatureObject* player) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDBADGESRESPONSETO__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendBadgesResponseTo(player);
+}
+
+void PlayerObject::logout(bool doLock) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_LOGOUT__BOOL_);
+		method.addBooleanParameter(doLock);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->logout(doLock);
+}
+
 FactionStandingList* PlayerObject::getFactionStandingList() {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -484,6 +685,264 @@ FactionStandingList* PlayerObject::getFactionStandingList() {
 
 	} else
 		return _implementation->getFactionStandingList();
+}
+
+void PlayerObject::setLastNpcConvStr(const String& conv) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETLASTNPCCONVSTR__STRING_);
+		method.addAsciiParameter(conv);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setLastNpcConvStr(conv);
+}
+
+void PlayerObject::setLastNpcConvMessStr(const String& mess) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETLASTNPCCONVMESSSTR__STRING_);
+		method.addAsciiParameter(mess);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setLastNpcConvMessStr(mess);
+}
+
+String PlayerObject::getLastNpcConvStr() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETLASTNPCCONVSTR__);
+
+		method.executeWithAsciiReturn(_return_getLastNpcConvStr);
+		return _return_getLastNpcConvStr;
+	} else
+		return _implementation->getLastNpcConvStr();
+}
+
+String PlayerObject::getLastNpcConvMessStr() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETLASTNPCCONVMESSSTR__);
+
+		method.executeWithAsciiReturn(_return_getLastNpcConvMessStr);
+		return _return_getLastNpcConvMessStr;
+	} else
+		return _implementation->getLastNpcConvMessStr();
+}
+
+String PlayerObject::getLastNpcConvOption(int idx) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETLASTNPCCONVOPTION__INT_);
+		method.addSignedIntParameter(idx);
+
+		method.executeWithAsciiReturn(_return_getLastNpcConvOption);
+		return _return_getLastNpcConvOption;
+	} else
+		return _implementation->getLastNpcConvOption(idx);
+}
+
+void PlayerObject::addLastNpcConvOptions(const String& option) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDLASTNPCCONVOPTIONS__STRING_);
+		method.addAsciiParameter(option);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addLastNpcConvOptions(option);
+}
+
+int PlayerObject::countLastNpcConvOptions() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_COUNTLASTNPCCONVOPTIONS__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->countLastNpcConvOptions();
+}
+
+void PlayerObject::clearLastNpcConvOptions() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CLEARLASTNPCCONVOPTIONS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->clearLastNpcConvOptions();
+}
+
+void PlayerObject::setConversatingCreature(CreatureObject* creature) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setConversatingCreature(creature);
+}
+
+CreatureObject* PlayerObject::getConversatingCreature() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCONVERSATINGCREATURE__);
+
+		return (CreatureObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getConversatingCreature();
+}
+
+SortedVector<unsigned long long>* PlayerObject::getPersistentMessages() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getPersistentMessages();
+}
+
+void PlayerObject::addPersistentMessage(unsigned long long id) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDPERSISTENTMESSAGE__LONG_);
+		method.addUnsignedLongParameter(id);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addPersistentMessage(id);
+}
+
+void PlayerObject::dropPersistentMessage(unsigned long long id) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DROPPERSISTENTMESSAGE__LONG_);
+		method.addUnsignedLongParameter(id);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->dropPersistentMessage(id);
+}
+
+void PlayerObject::unloadSpawnedChildren() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UNLOADSPAWNEDCHILDREN__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->unloadSpawnedChildren();
+}
+
+void PlayerObject::addToConsentList(const String& name) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDTOCONSENTLIST__STRING_);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addToConsentList(name);
+}
+
+bool PlayerObject::hasInConsentList(const String& name) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASINCONSENTLIST__STRING_);
+		method.addAsciiParameter(name);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasInConsentList(name);
+}
+
+void PlayerObject::removeFromConsentList(const String& name) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEFROMCONSENTLIST__STRING_);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeFromConsentList(name);
+}
+
+String PlayerObject::getConsentName(int i) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCONSENTNAME__INT_);
+		method.addSignedIntParameter(i);
+
+		method.executeWithAsciiReturn(_return_getConsentName);
+		return _return_getConsentName;
+	} else
+		return _implementation->getConsentName(i);
+}
+
+int PlayerObject::getConsentListSize() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCONSENTLISTSIZE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getConsentListSize();
 }
 
 String PlayerObject::getFactionRank() {
@@ -533,6 +992,60 @@ void PlayerObject::removeCommandMessageString(unsigned int actionCRC) {
 		_implementation->removeCommandMessageString(actionCRC);
 }
 
+BuildingObject* PlayerObject::getDeclaredResidence() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDECLAREDRESIDENCE__);
+
+		return (BuildingObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getDeclaredResidence();
+}
+
+void PlayerObject::setDeclaredResidence(BuildingObject* residence) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_);
+		method.addObjectParameter(residence);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setDeclaredResidence(residence);
+}
+
+void PlayerObject::setCloningFacility(BuildingObject* cloningfac) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCLONINGFACILITY__BUILDINGOBJECT_);
+		method.addObjectParameter(cloningfac);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setCloningFacility(cloningfac);
+}
+
+BuildingObject* PlayerObject::getCloningFacility() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCLONINGFACILITY__);
+
+		return (BuildingObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getCloningFacility();
+}
+
 void PlayerObject::notifyOnline() {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -572,6 +1085,362 @@ bool PlayerObject::isDigesting() {
 		return _implementation->isDigesting();
 }
 
+String PlayerObject::getSavedTerrainName() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSAVEDTERRAINNAME__);
+
+		method.executeWithAsciiReturn(_return_getSavedTerrainName);
+		return _return_getSavedTerrainName;
+	} else
+		return _implementation->getSavedTerrainName();
+}
+
+void PlayerObject::setSavedParentID(unsigned long long id) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSAVEDPARENTID__LONG_);
+		method.addUnsignedLongParameter(id);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setSavedParentID(id);
+}
+
+void PlayerObject::setSavedTerrainName(const String& name) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSAVEDTERRAINNAME__STRING_);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setSavedTerrainName(name);
+}
+
+unsigned long long PlayerObject::getSavedParentID() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSAVEDPARENTID__);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return _implementation->getSavedParentID();
+}
+
+unsigned int PlayerObject::getNewSuiBoxID(unsigned int type) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETNEWSUIBOXID__INT_);
+		method.addUnsignedIntParameter(type);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getNewSuiBoxID(type);
+}
+
+bool PlayerObject::hasSuiBox(unsigned int boxID) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASSUIBOX__INT_);
+		method.addUnsignedIntParameter(boxID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasSuiBox(boxID);
+}
+
+SuiBox* PlayerObject::getSuiBox(unsigned int boxID) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSUIBOX__INT_);
+		method.addUnsignedIntParameter(boxID);
+
+		return (SuiBox*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getSuiBox(boxID);
+}
+
+void PlayerObject::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVESUIBOX__INT_BOOL_);
+		method.addUnsignedIntParameter(boxID);
+		method.addBooleanParameter(closeWindowToClient);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeSuiBox(boxID, closeWindowToClient);
+}
+
+void PlayerObject::removeSuiBoxType(unsigned int windowType) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVESUIBOXTYPE__INT_);
+		method.addUnsignedIntParameter(windowType);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeSuiBoxType(windowType);
+}
+
+bool PlayerObject::hasSuiBoxWindowType(unsigned int windowType) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASSUIBOXWINDOWTYPE__INT_);
+		method.addUnsignedIntParameter(windowType);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasSuiBoxWindowType(windowType);
+}
+
+void PlayerObject::closeSuiWindowType(unsigned int windowType) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CLOSESUIWINDOWTYPE__INT_);
+		method.addUnsignedIntParameter(windowType);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->closeSuiWindowType(windowType);
+}
+
+SuiBox* PlayerObject::getSuiBoxFromWindowType(unsigned int windowType) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSUIBOXFROMWINDOWTYPE__INT_);
+		method.addUnsignedIntParameter(windowType);
+
+		return (SuiBox*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getSuiBoxFromWindowType(windowType);
+}
+
+void PlayerObject::addSuiBox(SuiBox* sui) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDSUIBOX__SUIBOX_);
+		method.addObjectParameter(sui);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addSuiBox(sui);
+}
+
+bool PlayerObject::isFirstIncapacitationExpired() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISFIRSTINCAPACITATIONEXPIRED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isFirstIncapacitationExpired();
+}
+
+void PlayerObject::resetIncapacitationCounter() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_RESETINCAPACITATIONCOUNTER__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->resetIncapacitationCounter();
+}
+
+void PlayerObject::resetFirstIncapacitationTime() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_RESETFIRSTINCAPACITATIONTIME__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->resetFirstIncapacitationTime();
+}
+
+void PlayerObject::updateIncapacitationCounter() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEINCAPACITATIONCOUNTER__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateIncapacitationCounter();
+}
+
+bool PlayerObject::isFirstIncapacitation() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISFIRSTINCAPACITATION__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isFirstIncapacitation();
+}
+
+byte PlayerObject::getIncapacitationCounter() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETINCAPACITATIONCOUNTER__);
+
+		return method.executeWithByteReturn();
+	} else
+		return _implementation->getIncapacitationCounter();
+}
+
+void PlayerObject::addToDuelList(CreatureObject* targetPlayer) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDTODUELLIST__CREATUREOBJECT_);
+		method.addObjectParameter(targetPlayer);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addToDuelList(targetPlayer);
+}
+
+void PlayerObject::removeFromDuelList(CreatureObject* targetPlayer) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEFROMDUELLIST__CREATUREOBJECT_);
+		method.addObjectParameter(targetPlayer);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeFromDuelList(targetPlayer);
+}
+
+CreatureObject* PlayerObject::getDuelListObject(int index) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDUELLISTOBJECT__INT_);
+		method.addSignedIntParameter(index);
+
+		return (CreatureObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getDuelListObject(index);
+}
+
+bool PlayerObject::requestedDuelTo(CreatureObject* targetPlayer) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REQUESTEDDUELTO__CREATUREOBJECT_);
+		method.addObjectParameter(targetPlayer);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->requestedDuelTo(targetPlayer);
+}
+
+bool PlayerObject::isDuelListEmpty() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISDUELLISTEMPTY__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isDuelListEmpty();
+}
+
+int PlayerObject::getDuelListSize() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDUELLISTSIZE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getDuelListSize();
+}
+
+UnicodeString PlayerObject::getBiography() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBIOGRAPHY__);
+
+		method.executeWithUnicodeReturn(_return_getBiography);
+		return _return_getBiography;
+	} else
+		return _implementation->getBiography();
+}
+
 void PlayerObject::notifyOffline() {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -583,6 +1452,129 @@ void PlayerObject::notifyOffline() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->notifyOffline();
+}
+
+void PlayerObject::setBadge(unsigned int badge) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETBADGE__INT_);
+		method.addUnsignedIntParameter(badge);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setBadge(badge);
+}
+
+void PlayerObject::awardBadge(unsigned int badge) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_AWARDBADGE__INT_);
+		method.addUnsignedIntParameter(badge);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->awardBadge(badge);
+}
+
+void PlayerObject::setSurveyTool(SurveyTool* tool) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSURVEYTOOL__SURVEYTOOL_);
+		method.addObjectParameter(tool);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setSurveyTool(tool);
+}
+
+SurveyTool* PlayerObject::getSurveyTool() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSURVEYTOOL__);
+
+		return (SurveyTool*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getSurveyTool();
+}
+
+CraftingTool* PlayerObject::getLastCraftingToolUsed() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETLASTCRAFTINGTOOLUSED__);
+
+		return (CraftingTool*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getLastCraftingToolUsed();
+}
+
+void PlayerObject::setLastCraftingToolUsed(CraftingTool* tool) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETLASTCRAFTINGTOOLUSED__CRAFTINGTOOL_);
+		method.addObjectParameter(tool);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setLastCraftingToolUsed(tool);
+}
+
+void PlayerObject::setTeleporting(bool val) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETTELEPORTING__BOOL_);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setTeleporting(val);
+}
+
+int PlayerObject::getNumBadges() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETNUMBADGES__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getNumBadges();
+}
+
+int PlayerObject::getBadgeTypeCount(byte type) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBADGETYPECOUNT__BYTE_);
+		method.addByteParameter(type);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getBadgeTypeCount(type);
 }
 
 bool PlayerObject::hasFriend(const String& name) {
@@ -743,6 +1735,20 @@ void PlayerObject::setAdminLevel(unsigned int adminlvl) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setAdminLevel(adminlvl);
+}
+
+void PlayerObject::setBiography(const UnicodeString& bio) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETBIOGRAPHY__UNICODESTRING_);
+		method.addUnicodeParameter(bio);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setBiography(bio);
 }
 
 bool PlayerObject::isDeveloper() {
@@ -927,7 +1933,7 @@ DraftSchematic* PlayerObject::getSchematic(int i) {
 		return _implementation->getSchematic(i);
 }
 
-Vector<ManagedReference<DraftSchematic* > > PlayerObject::filterSchematicList(PlayerCreature* player, Vector<unsigned int>* enabledTabs, int complexityLevel) {
+Vector<ManagedReference<DraftSchematic* > > PlayerObject::filterSchematicList(CreatureObject* player, Vector<unsigned int>* enabledTabs, int complexityLevel) {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -1023,6 +2029,65 @@ DeltaVector<String>* PlayerObject::getFriendList() {
 		return _implementation->getFriendList();
 }
 
+bool PlayerObject::isTeleporting() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISTELEPORTING__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isTeleporting();
+}
+
+void PlayerObject::addChatRoom(ChatRoom* room) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDCHATROOM__CHATROOM_);
+		method.addObjectParameter(room);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addChatRoom(room);
+}
+
+void PlayerObject::removeChatRoom(ChatRoom* room) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVECHATROOM__CHATROOM_);
+		method.addObjectParameter(room);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeChatRoom(room);
+}
+
+void PlayerObject::clearTradeContainer() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->clearTradeContainer();
+}
+
+TradeContainer* PlayerObject::getTradeContainer() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getTradeContainer();
+}
+
 DeltaVector<String>* PlayerObject::getIgnoreList() {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -1059,6 +2124,446 @@ String PlayerObject::getCommandMessageString(unsigned int actionCRC) {
 		return _return_getCommandMessageString;
 	} else
 		return _implementation->getCommandMessageString(actionCRC);
+}
+
+bool PlayerObject::hasBadge(unsigned int badge) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASBADGE__INT_);
+		method.addUnsignedIntParameter(badge);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasBadge(badge);
+}
+
+void PlayerObject::clearDisconnectEvent() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CLEARDISCONNECTEVENT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->clearDisconnectEvent();
+}
+
+void PlayerObject::clearRecoveryEvent() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CLEARRECOVERYEVENT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->clearRecoveryEvent();
+}
+
+bool PlayerObject::isOnline() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISONLINE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isOnline();
+}
+
+bool PlayerObject::isOffline() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISOFFLINE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isOffline();
+}
+
+bool PlayerObject::isLoading() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISLOADING__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isLoading();
+}
+
+bool PlayerObject::isLinkDead() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISLINKDEAD__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isLinkDead();
+}
+
+bool PlayerObject::isLoggingIn() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISLOGGINGIN__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isLoggingIn();
+}
+
+bool PlayerObject::isLoggingOut() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISLOGGINGOUT__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isLoggingOut();
+}
+
+void PlayerObject::setSkillPoints(int points) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSKILLPOINTS__INT_);
+		method.addSignedIntParameter(points);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setSkillPoints(points);
+}
+
+void PlayerObject::addSkillPoints(int points) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDSKILLPOINTS__INT_);
+		method.addSignedIntParameter(points);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addSkillPoints(points);
+}
+
+int PlayerObject::getSkillPoints() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSKILLPOINTS__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getSkillPoints();
+}
+
+ValidatedPosition* PlayerObject::getLastValidatedPosition() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getLastValidatedPosition();
+}
+
+void PlayerObject::updateLastValidatedPosition() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATELASTVALIDATEDPOSITION__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateLastValidatedPosition();
+}
+
+void PlayerObject::setSpawnedBlueFrog() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETSPAWNEDBLUEFROG__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setSpawnedBlueFrog();
+}
+
+bool PlayerObject::hasSpawnedBlueFrog() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASSPAWNEDBLUEFROG__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasSpawnedBlueFrog();
+}
+
+unsigned int PlayerObject::getAccountID() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETACCOUNTID__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getAccountID();
+}
+
+unsigned long long PlayerObject::getServerMovementTimeDelta() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSERVERMOVEMENTTIMEDELTA__);
+
+		return method.executeWithUnsignedLongReturn();
+	} else
+		return _implementation->getServerMovementTimeDelta();
+}
+
+Time* PlayerObject::getServerMovementTimeStamp() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getServerMovementTimeStamp();
+}
+
+void PlayerObject::setClientLastMovementStamp(unsigned int stamp) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_);
+		method.addUnsignedIntParameter(stamp);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setClientLastMovementStamp(stamp);
+}
+
+void PlayerObject::updateServerLastMovementStamp() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATESERVERLASTMOVEMENTSTAMP__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateServerLastMovementStamp();
+}
+
+void PlayerObject::setAccountID(unsigned int id) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETACCOUNTID__INT_);
+		method.addUnsignedIntParameter(id);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAccountID(id);
+}
+
+int PlayerObject::getFactionStatus() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFACTIONSTATUS__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getFactionStatus();
+}
+
+unsigned int PlayerObject::getClientLastMovementStamp() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCLIENTLASTMOVEMENTSTAMP__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getClientLastMovementStamp();
+}
+
+void PlayerObject::setTeachingOrLearning(bool value) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETTEACHINGORLEARNING__BOOL_);
+		method.addBooleanParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setTeachingOrLearning(value);
+}
+
+bool PlayerObject::isTeachingOrLearning() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->isTeachingOrLearning();
+}
+
+int PlayerObject::getCenteredBonus() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCENTEREDBONUS__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getCenteredBonus();
+}
+
+void PlayerObject::setCenteredBonus(int bonus) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCENTEREDBONUS__INT_);
+		method.addSignedIntParameter(bonus);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setCenteredBonus(bonus);
+}
+
+bool PlayerObject::isInvisible() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISINVISIBLE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isInvisible();
+}
+
+void PlayerObject::setInvisible(bool invis) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETINVISIBLE__BOOL_);
+		method.addBooleanParameter(invis);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setInvisible(invis);
+}
+
+void PlayerObject::setHologrindMask(unsigned int mask) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETHOLOGRINDMASK__INT_);
+		method.addUnsignedIntParameter(mask);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setHologrindMask(mask);
+}
+
+unsigned int PlayerObject::getHologrindMask() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETHOLOGRINDMASK__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getHologrindMask();
+}
+
+byte PlayerObject::getRaceID() {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETRACEID__);
+
+		return method.executeWithByteReturn();
+	} else
+		return _implementation->getRaceID();
+}
+
+void PlayerObject::setRaceID(byte race) {
+	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETRACEID__BYTE_);
+		method.addByteParameter(race);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setRaceID(race);
 }
 
 DistributedObjectServant* PlayerObject::_getImplementation() {
@@ -1174,6 +2679,21 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
+	if (_name == "savedTerrainName") {
+		TypeInfo<String >::parseFromBinaryStream(&savedTerrainName, stream);
+		return true;
+	}
+
+	if (_name == "savedParentID") {
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&savedParentID, stream);
+		return true;
+	}
+
+	if (_name == "badges") {
+		TypeInfo<Badges >::parseFromBinaryStream(&badges, stream);
+		return true;
+	}
+
 	if (_name == "forcePower") {
 		TypeInfo<int >::parseFromBinaryStream(&forcePower, stream);
 		return true;
@@ -1201,6 +2721,11 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 
 	if (_name == "drinkFillingMax") {
 		TypeInfo<int >::parseFromBinaryStream(&drinkFillingMax, stream);
+		return true;
+	}
+
+	if (_name == "teleporting") {
+		TypeInfo<bool >::parseFromBinaryStream(&teleporting, stream);
 		return true;
 	}
 
@@ -1269,6 +2794,151 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
+	if (_name == "incapacitationCounter") {
+		TypeInfo<byte >::parseFromBinaryStream(&incapacitationCounter, stream);
+		return true;
+	}
+
+	if (_name == "suiBoxNextID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&suiBoxNextID, stream);
+		return true;
+	}
+
+	if (_name == "suiBoxes") {
+		TypeInfo<VectorMap<unsigned int, ManagedReference<SuiBox* > > >::parseFromBinaryStream(&suiBoxes, stream);
+		return true;
+	}
+
+	if (_name == "chatRooms") {
+		TypeInfo<SortedVector<ManagedReference<ChatRoom* > > >::parseFromBinaryStream(&chatRooms, stream);
+		return true;
+	}
+
+	if (_name == "tradeContainer") {
+		TypeInfo<TradeContainer >::parseFromBinaryStream(&tradeContainer, stream);
+		return true;
+	}
+
+	if (_name == "duelList") {
+		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&duelList, stream);
+		return true;
+	}
+
+	if (_name == "declaredResidence") {
+		TypeInfo<ManagedWeakReference<BuildingObject* > >::parseFromBinaryStream(&declaredResidence, stream);
+		return true;
+	}
+
+	if (_name == "cloningFacility") {
+		TypeInfo<ManagedWeakReference<BuildingObject* > >::parseFromBinaryStream(&cloningFacility, stream);
+		return true;
+	}
+
+	if (_name == "surveyTool") {
+		TypeInfo<ManagedWeakReference<SurveyTool* > >::parseFromBinaryStream(&surveyTool, stream);
+		return true;
+	}
+
+	if (_name == "persistentMessages") {
+		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&persistentMessages, stream);
+		return true;
+	}
+
+	if (_name == "biography") {
+		TypeInfo<UnicodeString >::parseFromBinaryStream(&biography, stream);
+		return true;
+	}
+
+	if (_name == "consentList") {
+		TypeInfo<SortedVector<String> >::parseFromBinaryStream(&consentList, stream);
+		return true;
+	}
+
+	if (_name == "lastNpcConvoMessage") {
+		TypeInfo<String >::parseFromBinaryStream(&lastNpcConvoMessage, stream);
+		return true;
+	}
+
+	if (_name == "lastNpcConvo") {
+		TypeInfo<String >::parseFromBinaryStream(&lastNpcConvo, stream);
+		return true;
+	}
+
+	if (_name == "lastNpcConvoOptions") {
+		TypeInfo<Vector<String> >::parseFromBinaryStream(&lastNpcConvoOptions, stream);
+		return true;
+	}
+
+	if (_name == "conversatingCreature") {
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&conversatingCreature, stream);
+		return true;
+	}
+
+	if (_name == "logoutTimeStamp") {
+		TypeInfo<Time >::parseFromBinaryStream(&logoutTimeStamp, stream);
+		return true;
+	}
+
+	if (_name == "onlineStatus") {
+		TypeInfo<int >::parseFromBinaryStream(&onlineStatus, stream);
+		return true;
+	}
+
+	if (_name == "skillPoints") {
+		TypeInfo<int >::parseFromBinaryStream(&skillPoints, stream);
+		return true;
+	}
+
+	if (_name == "pvpRating") {
+		TypeInfo<int >::parseFromBinaryStream(&pvpRating, stream);
+		return true;
+	}
+
+	if (_name == "factionStatus") {
+		TypeInfo<int >::parseFromBinaryStream(&factionStatus, stream);
+		return true;
+	}
+
+	if (_name == "centeredBonus") {
+		TypeInfo<int >::parseFromBinaryStream(&centeredBonus, stream);
+		return true;
+	}
+
+	if (_name == "invisible") {
+		TypeInfo<bool >::parseFromBinaryStream(&invisible, stream);
+		return true;
+	}
+
+	if (_name == "holoMask") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&holoMask, stream);
+		return true;
+	}
+
+	if (_name == "clientLastMovementStamp") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&clientLastMovementStamp, stream);
+		return true;
+	}
+
+	if (_name == "serverLastMovementStamp") {
+		TypeInfo<Time >::parseFromBinaryStream(&serverLastMovementStamp, stream);
+		return true;
+	}
+
+	if (_name == "lastValidatedPosition") {
+		TypeInfo<ValidatedPosition >::parseFromBinaryStream(&lastValidatedPosition, stream);
+		return true;
+	}
+
+	if (_name == "accountID") {
+		TypeInfo<unsigned int >::parseFromBinaryStream(&accountID, stream);
+		return true;
+	}
+
+	if (_name == "raceID") {
+		TypeInfo<byte >::parseFromBinaryStream(&raceID, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -1297,6 +2967,30 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_offset = stream->getOffset();
 	stream->writeShort(0);
 	TypeInfo<String >::toBinaryStream(&title, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "savedTerrainName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&savedTerrainName, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "savedParentID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned long long >::toBinaryStream(&savedParentID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "badges";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Badges >::toBinaryStream(&badges, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1345,6 +3039,14 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_offset = stream->getOffset();
 	stream->writeShort(0);
 	TypeInfo<int >::toBinaryStream(&drinkFillingMax, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "teleporting";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&teleporting, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1452,14 +3154,280 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "incapacitationCounter";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&incapacitationCounter, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
 
-	return 21 + IntangibleObjectImplementation::writeObjectMembers(stream);
+	_name = "suiBoxNextID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&suiBoxNextID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "suiBoxes";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<VectorMap<unsigned int, ManagedReference<SuiBox* > > >::toBinaryStream(&suiBoxes, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "chatRooms";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<ChatRoom* > > >::toBinaryStream(&chatRooms, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "tradeContainer";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<TradeContainer >::toBinaryStream(&tradeContainer, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "duelList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::toBinaryStream(&duelList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "declaredResidence";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<BuildingObject* > >::toBinaryStream(&declaredResidence, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "cloningFacility";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<BuildingObject* > >::toBinaryStream(&cloningFacility, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "surveyTool";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<SurveyTool* > >::toBinaryStream(&surveyTool, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "persistentMessages";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&persistentMessages, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "biography";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<UnicodeString >::toBinaryStream(&biography, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "consentList";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<SortedVector<String> >::toBinaryStream(&consentList, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastNpcConvoMessage";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lastNpcConvoMessage, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastNpcConvo";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<String >::toBinaryStream(&lastNpcConvo, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastNpcConvoOptions";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Vector<String> >::toBinaryStream(&lastNpcConvoOptions, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "conversatingCreature";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&conversatingCreature, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "logoutTimeStamp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&logoutTimeStamp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "onlineStatus";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&onlineStatus, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "skillPoints";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&skillPoints, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "pvpRating";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&pvpRating, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "factionStatus";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&factionStatus, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "centeredBonus";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<int >::toBinaryStream(&centeredBonus, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "invisible";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<bool >::toBinaryStream(&invisible, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "holoMask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&holoMask, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "clientLastMovementStamp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&clientLastMovementStamp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "serverLastMovementStamp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&serverLastMovementStamp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "lastValidatedPosition";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<ValidatedPosition >::toBinaryStream(&lastValidatedPosition, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "accountID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<unsigned int >::toBinaryStream(&accountID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+	_name = "raceID";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<byte >::toBinaryStream(&raceID, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
+
+	return 54 + IntangibleObjectImplementation::writeObjectMembers(stream);
 }
 
 PlayerObjectImplementation::PlayerObjectImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/player/PlayerObject.idl():  		commandMessageStrings.setNoDuplicateInsertPlan();
 	(&commandMessageStrings)->setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerObject.idl():  		teleporting = false;
+	teleporting = false;
+	// server/zone/objects/player/PlayerObject.idl():  		suiBoxNextID = 0;
+	suiBoxNextID = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		savedParentID = 0;
+	savedParentID = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		skillPoints = 0;
+	skillPoints = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		duelList.setNoDuplicateInsertPlan();
+	(&duelList)->setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerObject.idl():  		persistentMessages.setNoDuplicateInsertPlan();
+	(&persistentMessages)->setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerObject.idl():  		consentList.setNoDuplicateInsertPlan();
+	(&consentList)->setNoDuplicateInsertPlan();
+	// server/zone/objects/player/PlayerObject.idl():  		holoMask = 0;
+	holoMask = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		accountID = 0;
+	accountID = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		teachingOrLearning = false;
+	teachingOrLearning = false;
+	// server/zone/objects/player/PlayerObject.idl():  		invisible = false;
+	invisible = false;
+	// server/zone/objects/player/PlayerObject.idl():  		factionStatus = 0;
+	factionStatus = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		centeredBonus = 0;
+	centeredBonus = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		raceID = 0;
+	raceID = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		clientLastMovementStamp = 0;
+	clientLastMovementStamp = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		spawnedBlueFrog = false;
+	spawnedBlueFrog = false;
+	// server/zone/objects/player/PlayerObject.idl():  		setOffline();
+	setOffline();
 	// server/zone/objects/player/PlayerObject.idl():  		Logger.setLoggingName("PlayerObject");
 	Logger::setLoggingName("PlayerObject");
 }
@@ -1503,9 +3471,112 @@ int PlayerObjectImplementation::getLotsRemaining() {
 	return lotsRemaining;
 }
 
+void PlayerObjectImplementation::setOffline() {
+	// server/zone/objects/player/PlayerObject.idl():  		onlineStatus 
+	if (isLinkDead()){
+}
+	// server/zone/objects/player/PlayerObject.idl():  		onlineStatus = OFFLINE;
+	onlineStatus = OFFLINE;
+}
+
+void PlayerObjectImplementation::setLoggingOut() {
+	// server/zone/objects/player/PlayerObject.idl():  		onlineStatus = LOGGINGOUT;
+	onlineStatus = LOGGINGOUT;
+}
+
 FactionStandingList* PlayerObjectImplementation::getFactionStandingList() {
 	// server/zone/objects/player/PlayerObject.idl():  		return factionStandingList;
 	return (&factionStandingList);
+}
+
+void PlayerObjectImplementation::setLastNpcConvStr(const String& conv) {
+	// server/zone/objects/player/PlayerObject.idl():  		lastNpcConvo = conv;
+	lastNpcConvo = conv;
+}
+
+void PlayerObjectImplementation::setLastNpcConvMessStr(const String& mess) {
+	// server/zone/objects/player/PlayerObject.idl():  		lastNpcConvoMessage = mess;
+	lastNpcConvoMessage = mess;
+}
+
+String PlayerObjectImplementation::getLastNpcConvStr() {
+	// server/zone/objects/player/PlayerObject.idl():  		return lastNpcConvo;
+	return lastNpcConvo;
+}
+
+String PlayerObjectImplementation::getLastNpcConvMessStr() {
+	// server/zone/objects/player/PlayerObject.idl():  		return lastNpcConvoMessage;
+	return lastNpcConvoMessage;
+}
+
+String PlayerObjectImplementation::getLastNpcConvOption(int idx) {
+	// server/zone/objects/player/PlayerObject.idl():  		return lastNpcConvoOptions.get(idx);
+	return (&lastNpcConvoOptions)->get(idx);
+}
+
+void PlayerObjectImplementation::addLastNpcConvOptions(const String& option) {
+	// server/zone/objects/player/PlayerObject.idl():  		lastNpcConvoOptions.add(option);
+	(&lastNpcConvoOptions)->add(option);
+}
+
+int PlayerObjectImplementation::countLastNpcConvOptions() {
+	// server/zone/objects/player/PlayerObject.idl():  		return lastNpcConvoOptions.size();
+	return (&lastNpcConvoOptions)->size();
+}
+
+void PlayerObjectImplementation::clearLastNpcConvOptions() {
+	// server/zone/objects/player/PlayerObject.idl():  		lastNpcConvoOptions.removeAll();
+	(&lastNpcConvoOptions)->removeAll();
+}
+
+void PlayerObjectImplementation::setConversatingCreature(CreatureObject* creature) {
+	// server/zone/objects/player/PlayerObject.idl():  		conversatingCreature = creature;
+	conversatingCreature = creature;
+}
+
+CreatureObject* PlayerObjectImplementation::getConversatingCreature() {
+	// server/zone/objects/player/PlayerObject.idl():  		return conversatingCreature;
+	return conversatingCreature;
+}
+
+SortedVector<unsigned long long>* PlayerObjectImplementation::getPersistentMessages() {
+	// server/zone/objects/player/PlayerObject.idl():  		return persistentMessages;
+	return (&persistentMessages);
+}
+
+void PlayerObjectImplementation::addPersistentMessage(unsigned long long id) {
+	// server/zone/objects/player/PlayerObject.idl():  		persistentMessages.put(id);
+	(&persistentMessages)->put(id);
+}
+
+void PlayerObjectImplementation::dropPersistentMessage(unsigned long long id) {
+	// server/zone/objects/player/PlayerObject.idl():  		persistentMessages.drop(id);
+	(&persistentMessages)->drop(id);
+}
+
+void PlayerObjectImplementation::addToConsentList(const String& name) {
+	// server/zone/objects/player/PlayerObject.idl():  		consentList.put(name);
+	(&consentList)->put(name);
+}
+
+bool PlayerObjectImplementation::hasInConsentList(const String& name) {
+	// server/zone/objects/player/PlayerObject.idl():  		return consentList.contains(name);
+	return (&consentList)->contains(name);
+}
+
+void PlayerObjectImplementation::removeFromConsentList(const String& name) {
+	// server/zone/objects/player/PlayerObject.idl():  		consentList.drop(name);
+	(&consentList)->drop(name);
+}
+
+String PlayerObjectImplementation::getConsentName(int i) {
+	// server/zone/objects/player/PlayerObject.idl():  		return consentList.get(i);
+	return (&consentList)->get(i);
+}
+
+int PlayerObjectImplementation::getConsentListSize() {
+	// server/zone/objects/player/PlayerObject.idl():  		return consentList.size();
+	return (&consentList)->size();
 }
 
 String PlayerObjectImplementation::getFactionRank() {
@@ -1528,6 +3599,26 @@ void PlayerObjectImplementation::removeCommandMessageString(unsigned int actionC
 	(&commandMessageStrings)->drop(actionCRC);
 }
 
+BuildingObject* PlayerObjectImplementation::getDeclaredResidence() {
+	// server/zone/objects/player/PlayerObject.idl():  		return declaredResidence;
+	return declaredResidence;
+}
+
+void PlayerObjectImplementation::setDeclaredResidence(BuildingObject* residence) {
+	// server/zone/objects/player/PlayerObject.idl():  		declaredResidence = residence;
+	declaredResidence = residence;
+}
+
+void PlayerObjectImplementation::setCloningFacility(BuildingObject* cloningfac) {
+	// server/zone/objects/player/PlayerObject.idl():  		cloningFacility = cloningfac;
+	cloningFacility = cloningfac;
+}
+
+BuildingObject* PlayerObjectImplementation::getCloningFacility() {
+	// server/zone/objects/player/PlayerObject.idl():  		return cloningFacility;
+	return cloningFacility;
+}
+
 bool PlayerObjectImplementation::isDigesting() {
 	// server/zone/objects/player/PlayerObject.idl():  		}
 	if (getDrinkFilling() > 0 || getFoodFilling() > 0){
@@ -1539,6 +3630,194 @@ bool PlayerObjectImplementation::isDigesting() {
 	// server/zone/objects/player/PlayerObject.idl():  			return false;
 	return false;
 }
+}
+
+String PlayerObjectImplementation::getSavedTerrainName() {
+	// server/zone/objects/player/PlayerObject.idl():  		return savedTerrainName;
+	return savedTerrainName;
+}
+
+void PlayerObjectImplementation::setSavedParentID(unsigned long long id) {
+	// server/zone/objects/player/PlayerObject.idl():  		savedParentID = id;
+	savedParentID = id;
+}
+
+void PlayerObjectImplementation::setSavedTerrainName(const String& name) {
+	// server/zone/objects/player/PlayerObject.idl():  		savedTerrainName = name;
+	savedTerrainName = name;
+}
+
+unsigned long long PlayerObjectImplementation::getSavedParentID() {
+	// server/zone/objects/player/PlayerObject.idl():  		return savedParentID;
+	return savedParentID;
+}
+
+bool PlayerObjectImplementation::hasSuiBox(unsigned int boxID) {
+	// server/zone/objects/player/PlayerObject.idl():  		return suiBoxes.contains(boxID);
+	return (&suiBoxes)->contains(boxID);
+}
+
+SuiBox* PlayerObjectImplementation::getSuiBox(unsigned int boxID) {
+	// server/zone/objects/player/PlayerObject.idl():  		return suiBoxes.get(boxID);
+	return (&suiBoxes)->get(boxID);
+}
+
+bool PlayerObjectImplementation::hasSuiBoxWindowType(unsigned int windowType) {
+	// server/zone/objects/player/PlayerObject.idl():  		unsigned int type = 0;
+	unsigned int type = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		}
+	for (	// server/zone/objects/player/PlayerObject.idl():  		for (int i = 0;
+	int i = 0;
+	i < (&suiBoxes)->size();
+ ++i) {
+	// server/zone/objects/player/PlayerObject.idl():  			SuiBox sui = suiBoxes.get(i);
+	SuiBox* sui = (&suiBoxes)->get(i);
+	// server/zone/objects/player/PlayerObject.idl():  			type = sui.getWindowType();
+	type = sui->getWindowType();
+	// server/zone/objects/player/PlayerObject.idl():  		}
+	if (windowType == type)	// server/zone/objects/player/PlayerObject.idl():  				return true;
+	return true;
+}
+	// server/zone/objects/player/PlayerObject.idl():  		return false;
+	return false;
+}
+
+void PlayerObjectImplementation::closeSuiWindowType(unsigned int windowType) {
+	// server/zone/objects/player/PlayerObject.idl():  	}
+	if (hasSuiBoxWindowType(windowType)){
+	// server/zone/objects/player/PlayerObject.idl():  			SuiBox sui = getSuiBoxFromWindowType(windowType);
+	SuiBox* sui = getSuiBoxFromWindowType(windowType);
+	// server/zone/objects/player/PlayerObject.idl():  		}
+	if (sui != NULL){
+	// server/zone/objects/player/PlayerObject.idl():  				sendMessage(sui.generateCloseMessage());
+	sendMessage(sui->generateCloseMessage());
+	// server/zone/objects/player/PlayerObject.idl():  				removeSuiBox(sui.getBoxID());
+	removeSuiBox(sui->getBoxID());
+}
+}
+}
+
+SuiBox* PlayerObjectImplementation::getSuiBoxFromWindowType(unsigned int windowType) {
+	// server/zone/objects/player/PlayerObject.idl():  		unsigned int type = 0;
+	unsigned int type = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		}
+	for (	// server/zone/objects/player/PlayerObject.idl():  		for (int i = 0;
+	int i = 0;
+	i < (&suiBoxes)->size();
+ ++i) {
+	// server/zone/objects/player/PlayerObject.idl():  			SuiBox sui = suiBoxes.get(i);
+	SuiBox* sui = (&suiBoxes)->get(i);
+	// server/zone/objects/player/PlayerObject.idl():  		}
+	if (windowType == sui->getWindowType())	// server/zone/objects/player/PlayerObject.idl():  				return sui;
+	return sui;
+}
+	// server/zone/objects/player/PlayerObject.idl():  		return null;
+	return NULL;
+}
+
+void PlayerObjectImplementation::addSuiBox(SuiBox* sui) {
+	// server/zone/objects/player/PlayerObject.idl():  		unsigned int key = sui.getBoxID();
+	unsigned int key = sui->getBoxID();
+	// server/zone/objects/player/PlayerObject.idl():  		suiBoxes.put(key, sui);
+	(&suiBoxes)->put(key, sui);
+}
+
+void PlayerObjectImplementation::resetIncapacitationCounter() {
+	// server/zone/objects/player/PlayerObject.idl():  		incapacitationCounter = 0;
+	incapacitationCounter = 0;
+}
+
+void PlayerObjectImplementation::updateIncapacitationCounter() {
+	// server/zone/objects/player/PlayerObject.idl():  		incapacitationCounter++;
+	incapacitationCounter ++;
+	// server/zone/objects/player/PlayerObject.idl():  	}
+	if (isFirstIncapacitation() || isFirstIncapacitationExpired())	// server/zone/objects/player/PlayerObject.idl():  			resetFirstIncapacitationTime();
+	resetFirstIncapacitationTime();
+}
+
+bool PlayerObjectImplementation::isFirstIncapacitation() {
+	// server/zone/objects/player/PlayerObject.idl():  		return incapacitationCounter == 1;
+	return incapacitationCounter == 1;
+}
+
+byte PlayerObjectImplementation::getIncapacitationCounter() {
+	// server/zone/objects/player/PlayerObject.idl():  		return incapacitationCounter;
+	return incapacitationCounter;
+}
+
+void PlayerObjectImplementation::addToDuelList(CreatureObject* targetPlayer) {
+	// server/zone/objects/player/PlayerObject.idl():  		duelList.put(targetPlayer);
+	(&duelList)->put(targetPlayer);
+}
+
+void PlayerObjectImplementation::removeFromDuelList(CreatureObject* targetPlayer) {
+	// server/zone/objects/player/PlayerObject.idl():  		duelList.drop(targetPlayer);
+	(&duelList)->drop(targetPlayer);
+}
+
+CreatureObject* PlayerObjectImplementation::getDuelListObject(int index) {
+	// server/zone/objects/player/PlayerObject.idl():  		return duelList.get(index);
+	return (&duelList)->get(index);
+}
+
+bool PlayerObjectImplementation::requestedDuelTo(CreatureObject* targetPlayer) {
+	// server/zone/objects/player/PlayerObject.idl():  		return duelList.contains(targetPlayer);
+	return (&duelList)->contains(targetPlayer);
+}
+
+bool PlayerObjectImplementation::isDuelListEmpty() {
+	// server/zone/objects/player/PlayerObject.idl():  		return duelList.isEmpty();
+	return (&duelList)->isEmpty();
+}
+
+int PlayerObjectImplementation::getDuelListSize() {
+	// server/zone/objects/player/PlayerObject.idl():  		return duelList.size();
+	return (&duelList)->size();
+}
+
+UnicodeString PlayerObjectImplementation::getBiography() {
+	// server/zone/objects/player/PlayerObject.idl():  		return biography;
+	return biography;
+}
+
+void PlayerObjectImplementation::setBadge(unsigned int badge) {
+	// server/zone/objects/player/PlayerObject.idl():  		badges.setBadge(badge);
+	(&badges)->setBadge(badge);
+}
+
+void PlayerObjectImplementation::setSurveyTool(SurveyTool* tool) {
+	// server/zone/objects/player/PlayerObject.idl():  		surveyTool = tool;
+	surveyTool = tool;
+}
+
+SurveyTool* PlayerObjectImplementation::getSurveyTool() {
+	// server/zone/objects/player/PlayerObject.idl():  		return surveyTool;
+	return surveyTool;
+}
+
+CraftingTool* PlayerObjectImplementation::getLastCraftingToolUsed() {
+	// server/zone/objects/player/PlayerObject.idl():  		return lastCraftingToolUsed;
+	return lastCraftingToolUsed;
+}
+
+void PlayerObjectImplementation::setLastCraftingToolUsed(CraftingTool* tool) {
+	// server/zone/objects/player/PlayerObject.idl():  		lastCraftingToolUsed = tool;
+	lastCraftingToolUsed = tool;
+}
+
+void PlayerObjectImplementation::setTeleporting(bool val) {
+	// server/zone/objects/player/PlayerObject.idl():  		teleporting = val;
+	teleporting = val;
+}
+
+int PlayerObjectImplementation::getNumBadges() {
+	// server/zone/objects/player/PlayerObject.idl():  		return badges.getNumBadges();
+	return (&badges)->getNumBadges();
+}
+
+int PlayerObjectImplementation::getBadgeTypeCount(byte type) {
+	// server/zone/objects/player/PlayerObject.idl():  		return badges.getTypeCount(type);
+	return (&badges)->getTypeCount(type);
 }
 
 bool PlayerObjectImplementation::hasFriend(const String& name) {
@@ -1594,6 +3873,11 @@ unsigned int PlayerObjectImplementation::getAdminLevel() {
 void PlayerObjectImplementation::setAdminLevel(unsigned int adminlvl) {
 	// server/zone/objects/player/PlayerObject.idl():  		adminLevel = adminlvl;
 	adminLevel = adminlvl;
+}
+
+void PlayerObjectImplementation::setBiography(const UnicodeString& bio) {
+	// server/zone/objects/player/PlayerObject.idl():  		biography = bio;
+	biography = bio;
 }
 
 bool PlayerObjectImplementation::isDeveloper() {
@@ -1691,6 +3975,31 @@ DeltaVector<String>* PlayerObjectImplementation::getFriendList() {
 	return (&friendList);
 }
 
+bool PlayerObjectImplementation::isTeleporting() {
+	// server/zone/objects/player/PlayerObject.idl():  		return teleporting;
+	return teleporting;
+}
+
+void PlayerObjectImplementation::addChatRoom(ChatRoom* room) {
+	// server/zone/objects/player/PlayerObject.idl():  		chatRooms.put(room);
+	(&chatRooms)->put(room);
+}
+
+void PlayerObjectImplementation::removeChatRoom(ChatRoom* room) {
+	// server/zone/objects/player/PlayerObject.idl():  		chatRooms.drop(room);
+	(&chatRooms)->drop(room);
+}
+
+void PlayerObjectImplementation::clearTradeContainer() {
+	// server/zone/objects/player/PlayerObject.idl():  		tradeContainer.clear();
+	(&tradeContainer)->clear();
+}
+
+TradeContainer* PlayerObjectImplementation::getTradeContainer() {
+	// server/zone/objects/player/PlayerObject.idl():  		return tradeContainer;
+	return (&tradeContainer);
+}
+
 DeltaVector<String>* PlayerObjectImplementation::getIgnoreList() {
 	// server/zone/objects/player/PlayerObject.idl():  		return ignoreList;
 	return (&ignoreList);
@@ -1706,6 +4015,168 @@ String PlayerObjectImplementation::getCommandMessageString(unsigned int actionCR
 	return (&commandMessageStrings)->get(actionCRC);
 }
 
+bool PlayerObjectImplementation::hasBadge(unsigned int badge) {
+	// server/zone/objects/player/PlayerObject.idl():  		return badges.hasBadge(badge);
+	return (&badges)->hasBadge(badge);
+}
+
+bool PlayerObjectImplementation::isOnline() {
+	// server/zone/objects/player/PlayerObject.idl():  		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
+	return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;
+}
+
+bool PlayerObjectImplementation::isOffline() {
+	// server/zone/objects/player/PlayerObject.idl():  		return onlineStatus == OFFLINE;
+	return onlineStatus == OFFLINE;
+}
+
+bool PlayerObjectImplementation::isLoading() {
+	// server/zone/objects/player/PlayerObject.idl():  		return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
+	return onlineStatus == LOADING || onlineStatus == LOGGINGOUT;
+}
+
+bool PlayerObjectImplementation::isLinkDead() {
+	// server/zone/objects/player/PlayerObject.idl():  		return onlineStatus == LINKDEAD;
+	return onlineStatus == LINKDEAD;
+}
+
+bool PlayerObjectImplementation::isLoggingIn() {
+	// server/zone/objects/player/PlayerObject.idl():  		return onlineStatus == LOGGINGIN;
+	return onlineStatus == LOGGINGIN;
+}
+
+bool PlayerObjectImplementation::isLoggingOut() {
+	// server/zone/objects/player/PlayerObject.idl():  		return onlineStatus == LOGGINGOUT;
+	return onlineStatus == LOGGINGOUT;
+}
+
+void PlayerObjectImplementation::setSkillPoints(int points) {
+	// server/zone/objects/player/PlayerObject.idl():  		skillPoints = points;
+	skillPoints = points;
+}
+
+void PlayerObjectImplementation::addSkillPoints(int points) {
+	// server/zone/objects/player/PlayerObject.idl():  		skillPoints += points;
+	skillPoints += points;
+}
+
+int PlayerObjectImplementation::getSkillPoints() {
+	// server/zone/objects/player/PlayerObject.idl():  		return skillPoints;
+	return skillPoints;
+}
+
+ValidatedPosition* PlayerObjectImplementation::getLastValidatedPosition() {
+	// server/zone/objects/player/PlayerObject.idl():  		return lastValidatedPosition;
+	return (&lastValidatedPosition);
+}
+
+void PlayerObjectImplementation::updateLastValidatedPosition() {
+	// server/zone/objects/player/PlayerObject.idl():  		lastValidatedPosition.update(super.parent);
+	(&lastValidatedPosition)->update(IntangibleObjectImplementation::parent.getForUpdate());
+	// server/zone/objects/player/PlayerObject.idl():  		serverLastMovementStamp.updateToCurrentTime();
+	(&serverLastMovementStamp)->updateToCurrentTime();
+}
+
+void PlayerObjectImplementation::setSpawnedBlueFrog() {
+	// server/zone/objects/player/PlayerObject.idl():  		spawnedBlueFrog = true;
+	spawnedBlueFrog = true;
+}
+
+bool PlayerObjectImplementation::hasSpawnedBlueFrog() {
+	// server/zone/objects/player/PlayerObject.idl():  		return spawnedBlueFrog;
+	return spawnedBlueFrog;
+}
+
+unsigned int PlayerObjectImplementation::getAccountID() {
+	// server/zone/objects/player/PlayerObject.idl():  		return accountID;
+	return accountID;
+}
+
+unsigned long long PlayerObjectImplementation::getServerMovementTimeDelta() {
+	// server/zone/objects/player/PlayerObject.idl():  		return serverLastMovementStamp.miliDifference();
+	return (&serverLastMovementStamp)->miliDifference();
+}
+
+Time* PlayerObjectImplementation::getServerMovementTimeStamp() {
+	// server/zone/objects/player/PlayerObject.idl():  		return serverLastMovementStamp;
+	return (&serverLastMovementStamp);
+}
+
+void PlayerObjectImplementation::setClientLastMovementStamp(unsigned int stamp) {
+	// server/zone/objects/player/PlayerObject.idl():  		clientLastMovementStamp = stamp;
+	clientLastMovementStamp = stamp;
+}
+
+void PlayerObjectImplementation::updateServerLastMovementStamp() {
+	// server/zone/objects/player/PlayerObject.idl():  		serverLastMovementStamp.updateToCurrentTime();
+	(&serverLastMovementStamp)->updateToCurrentTime();
+}
+
+void PlayerObjectImplementation::setAccountID(unsigned int id) {
+	// server/zone/objects/player/PlayerObject.idl():  		accountID = id;
+	accountID = id;
+}
+
+int PlayerObjectImplementation::getFactionStatus() {
+	// server/zone/objects/player/PlayerObject.idl():  		return factionStatus;
+	return factionStatus;
+}
+
+unsigned int PlayerObjectImplementation::getClientLastMovementStamp() {
+	// server/zone/objects/player/PlayerObject.idl():  		return clientLastMovementStamp;
+	return clientLastMovementStamp;
+}
+
+void PlayerObjectImplementation::setTeachingOrLearning(bool value) {
+	// server/zone/objects/player/PlayerObject.idl():  	 teachingOrLearning = value;
+	teachingOrLearning = value;
+}
+
+bool PlayerObjectImplementation::isTeachingOrLearning() {
+	// server/zone/objects/player/PlayerObject.idl():  	 return teachingOrLearning;
+	return teachingOrLearning;
+}
+
+int PlayerObjectImplementation::getCenteredBonus() {
+	// server/zone/objects/player/PlayerObject.idl():  		return centeredBonus;
+	return centeredBonus;
+}
+
+void PlayerObjectImplementation::setCenteredBonus(int bonus) {
+	// server/zone/objects/player/PlayerObject.idl():  		centeredBonus = bonus;
+	centeredBonus = bonus;
+}
+
+bool PlayerObjectImplementation::isInvisible() {
+	// server/zone/objects/player/PlayerObject.idl():  		return invisible;
+	return invisible;
+}
+
+void PlayerObjectImplementation::setInvisible(bool invis) {
+	// server/zone/objects/player/PlayerObject.idl():  		invisible = invis;
+	invisible = invis;
+}
+
+void PlayerObjectImplementation::setHologrindMask(unsigned int mask) {
+	// server/zone/objects/player/PlayerObject.idl():  		holoMask = mask;
+	holoMask = mask;
+}
+
+unsigned int PlayerObjectImplementation::getHologrindMask() {
+	// server/zone/objects/player/PlayerObject.idl():  		return holoMask;
+	return holoMask;
+}
+
+byte PlayerObjectImplementation::getRaceID() {
+	// server/zone/objects/player/PlayerObject.idl():  		return raceID;
+	return raceID;
+}
+
+void PlayerObjectImplementation::setRaceID(byte race) {
+	// server/zone/objects/player/PlayerObject.idl():  		raceID = race;
+	raceID = race;
+}
+
 /*
  *	PlayerObjectAdapter
  */
@@ -1719,6 +4190,12 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	switch (methid) {
 	case RPC_FINALIZE__:
 		finalize();
+		break;
+	case RPC_NOTIFYLOADFROMDATABASE__:
+		notifyLoadFromDatabase();
+		break;
+	case RPC_UNLOAD__:
+		unload();
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
@@ -1740,6 +4217,9 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case RPC_GETLOTSREMAINING__:
 		resp->insertSignedInt(getLotsRemaining());
+		break;
+	case RPC_NOTIFYSCENEREADY__:
+		notifySceneReady();
 		break;
 	case RPC_ADDEXPERIENCE__STRING_INT_BOOL_:
 		resp->insertSignedInt(addExperience(inv->getAsciiParameter(_param0_addExperience__String_int_bool_), inv->getSignedIntParameter(), inv->getBooleanParameter()));
@@ -1792,11 +4272,110 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_GETFACTIONSTANDING__STRING_:
 		resp->insertFloat(getFactionStanding(inv->getAsciiParameter(_param0_getFactionStanding__String_)));
 		break;
+	case RPC_GETSURVEYWAYPOINT__:
+		resp->insertLong(getSurveyWaypoint()->_getObjectID());
+		break;
+	case RPC_ACTIVATERECOVERY__:
+		activateRecovery();
+		break;
+	case RPC_DORECOVERY__:
+		doRecovery();
+		break;
+	case RPC_DISCONNECT__BOOL_BOOL_:
+		disconnect(inv->getBooleanParameter(), inv->getBooleanParameter());
+		break;
+	case RPC_RELOAD__ZONECLIENTSESSION_:
+		reload((ZoneClientSession*) inv->getObjectParameter());
+		break;
+	case RPC_SETOFFLINE__:
+		setOffline();
+		break;
+	case RPC_SETLINKDEAD__:
+		setLinkDead();
+		break;
+	case RPC_SETONLINE__:
+		setOnline();
+		break;
+	case RPC_SETLOGGINGOUT__:
+		setLoggingOut();
+		break;
+	case RPC_SENDBADGESRESPONSETO__CREATUREOBJECT_:
+		sendBadgesResponseTo((CreatureObject*) inv->getObjectParameter());
+		break;
+	case RPC_LOGOUT__BOOL_:
+		logout(inv->getBooleanParameter());
+		break;
+	case RPC_SETLASTNPCCONVSTR__STRING_:
+		setLastNpcConvStr(inv->getAsciiParameter(_param0_setLastNpcConvStr__String_));
+		break;
+	case RPC_SETLASTNPCCONVMESSSTR__STRING_:
+		setLastNpcConvMessStr(inv->getAsciiParameter(_param0_setLastNpcConvMessStr__String_));
+		break;
+	case RPC_GETLASTNPCCONVSTR__:
+		resp->insertAscii(getLastNpcConvStr());
+		break;
+	case RPC_GETLASTNPCCONVMESSSTR__:
+		resp->insertAscii(getLastNpcConvMessStr());
+		break;
+	case RPC_GETLASTNPCCONVOPTION__INT_:
+		resp->insertAscii(getLastNpcConvOption(inv->getSignedIntParameter()));
+		break;
+	case RPC_ADDLASTNPCCONVOPTIONS__STRING_:
+		addLastNpcConvOptions(inv->getAsciiParameter(_param0_addLastNpcConvOptions__String_));
+		break;
+	case RPC_COUNTLASTNPCCONVOPTIONS__:
+		resp->insertSignedInt(countLastNpcConvOptions());
+		break;
+	case RPC_CLEARLASTNPCCONVOPTIONS__:
+		clearLastNpcConvOptions();
+		break;
+	case RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_:
+		setConversatingCreature((CreatureObject*) inv->getObjectParameter());
+		break;
+	case RPC_GETCONVERSATINGCREATURE__:
+		resp->insertLong(getConversatingCreature()->_getObjectID());
+		break;
+	case RPC_ADDPERSISTENTMESSAGE__LONG_:
+		addPersistentMessage(inv->getUnsignedLongParameter());
+		break;
+	case RPC_DROPPERSISTENTMESSAGE__LONG_:
+		dropPersistentMessage(inv->getUnsignedLongParameter());
+		break;
+	case RPC_UNLOADSPAWNEDCHILDREN__:
+		unloadSpawnedChildren();
+		break;
+	case RPC_ADDTOCONSENTLIST__STRING_:
+		addToConsentList(inv->getAsciiParameter(_param0_addToConsentList__String_));
+		break;
+	case RPC_HASINCONSENTLIST__STRING_:
+		resp->insertBoolean(hasInConsentList(inv->getAsciiParameter(_param0_hasInConsentList__String_)));
+		break;
+	case RPC_REMOVEFROMCONSENTLIST__STRING_:
+		removeFromConsentList(inv->getAsciiParameter(_param0_removeFromConsentList__String_));
+		break;
+	case RPC_GETCONSENTNAME__INT_:
+		resp->insertAscii(getConsentName(inv->getSignedIntParameter()));
+		break;
+	case RPC_GETCONSENTLISTSIZE__:
+		resp->insertSignedInt(getConsentListSize());
+		break;
 	case RPC_SETCOMMANDMESSAGESTRING__INT_STRING_:
 		setCommandMessageString(inv->getUnsignedIntParameter(), inv->getAsciiParameter(_param1_setCommandMessageString__int_String_));
 		break;
 	case RPC_REMOVECOMMANDMESSAGESTRING__INT_:
 		removeCommandMessageString(inv->getUnsignedIntParameter());
+		break;
+	case RPC_GETDECLAREDRESIDENCE__:
+		resp->insertLong(getDeclaredResidence()->_getObjectID());
+		break;
+	case RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_:
+		setDeclaredResidence((BuildingObject*) inv->getObjectParameter());
+		break;
+	case RPC_SETCLONINGFACILITY__BUILDINGOBJECT_:
+		setCloningFacility((BuildingObject*) inv->getObjectParameter());
+		break;
+	case RPC_GETCLONINGFACILITY__:
+		resp->insertLong(getCloningFacility()->_getObjectID());
 		break;
 	case RPC_NOTIFYONLINE__:
 		notifyOnline();
@@ -1807,8 +4386,113 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_ISDIGESTING__:
 		resp->insertBoolean(isDigesting());
 		break;
+	case RPC_GETSAVEDTERRAINNAME__:
+		resp->insertAscii(getSavedTerrainName());
+		break;
+	case RPC_SETSAVEDPARENTID__LONG_:
+		setSavedParentID(inv->getUnsignedLongParameter());
+		break;
+	case RPC_SETSAVEDTERRAINNAME__STRING_:
+		setSavedTerrainName(inv->getAsciiParameter(_param0_setSavedTerrainName__String_));
+		break;
+	case RPC_GETSAVEDPARENTID__:
+		resp->insertLong(getSavedParentID());
+		break;
+	case RPC_GETNEWSUIBOXID__INT_:
+		resp->insertInt(getNewSuiBoxID(inv->getUnsignedIntParameter()));
+		break;
+	case RPC_HASSUIBOX__INT_:
+		resp->insertBoolean(hasSuiBox(inv->getUnsignedIntParameter()));
+		break;
+	case RPC_GETSUIBOX__INT_:
+		resp->insertLong(getSuiBox(inv->getUnsignedIntParameter())->_getObjectID());
+		break;
+	case RPC_REMOVESUIBOX__INT_BOOL_:
+		removeSuiBox(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+		break;
+	case RPC_REMOVESUIBOXTYPE__INT_:
+		removeSuiBoxType(inv->getUnsignedIntParameter());
+		break;
+	case RPC_HASSUIBOXWINDOWTYPE__INT_:
+		resp->insertBoolean(hasSuiBoxWindowType(inv->getUnsignedIntParameter()));
+		break;
+	case RPC_CLOSESUIWINDOWTYPE__INT_:
+		closeSuiWindowType(inv->getUnsignedIntParameter());
+		break;
+	case RPC_GETSUIBOXFROMWINDOWTYPE__INT_:
+		resp->insertLong(getSuiBoxFromWindowType(inv->getUnsignedIntParameter())->_getObjectID());
+		break;
+	case RPC_ADDSUIBOX__SUIBOX_:
+		addSuiBox((SuiBox*) inv->getObjectParameter());
+		break;
+	case RPC_ISFIRSTINCAPACITATIONEXPIRED__:
+		resp->insertBoolean(isFirstIncapacitationExpired());
+		break;
+	case RPC_RESETINCAPACITATIONCOUNTER__:
+		resetIncapacitationCounter();
+		break;
+	case RPC_RESETFIRSTINCAPACITATIONTIME__:
+		resetFirstIncapacitationTime();
+		break;
+	case RPC_UPDATEINCAPACITATIONCOUNTER__:
+		updateIncapacitationCounter();
+		break;
+	case RPC_ISFIRSTINCAPACITATION__:
+		resp->insertBoolean(isFirstIncapacitation());
+		break;
+	case RPC_GETINCAPACITATIONCOUNTER__:
+		resp->insertByte(getIncapacitationCounter());
+		break;
+	case RPC_ADDTODUELLIST__CREATUREOBJECT_:
+		addToDuelList((CreatureObject*) inv->getObjectParameter());
+		break;
+	case RPC_REMOVEFROMDUELLIST__CREATUREOBJECT_:
+		removeFromDuelList((CreatureObject*) inv->getObjectParameter());
+		break;
+	case RPC_GETDUELLISTOBJECT__INT_:
+		resp->insertLong(getDuelListObject(inv->getSignedIntParameter())->_getObjectID());
+		break;
+	case RPC_REQUESTEDDUELTO__CREATUREOBJECT_:
+		resp->insertBoolean(requestedDuelTo((CreatureObject*) inv->getObjectParameter()));
+		break;
+	case RPC_ISDUELLISTEMPTY__:
+		resp->insertBoolean(isDuelListEmpty());
+		break;
+	case RPC_GETDUELLISTSIZE__:
+		resp->insertSignedInt(getDuelListSize());
+		break;
+	case RPC_GETBIOGRAPHY__:
+		resp->insertUnicode(getBiography());
+		break;
 	case RPC_NOTIFYOFFLINE__:
 		notifyOffline();
+		break;
+	case RPC_SETBADGE__INT_:
+		setBadge(inv->getUnsignedIntParameter());
+		break;
+	case RPC_AWARDBADGE__INT_:
+		awardBadge(inv->getUnsignedIntParameter());
+		break;
+	case RPC_SETSURVEYTOOL__SURVEYTOOL_:
+		setSurveyTool((SurveyTool*) inv->getObjectParameter());
+		break;
+	case RPC_GETSURVEYTOOL__:
+		resp->insertLong(getSurveyTool()->_getObjectID());
+		break;
+	case RPC_GETLASTCRAFTINGTOOLUSED__:
+		resp->insertLong(getLastCraftingToolUsed()->_getObjectID());
+		break;
+	case RPC_SETLASTCRAFTINGTOOLUSED__CRAFTINGTOOL_:
+		setLastCraftingToolUsed((CraftingTool*) inv->getObjectParameter());
+		break;
+	case RPC_SETTELEPORTING__BOOL_:
+		setTeleporting(inv->getBooleanParameter());
+		break;
+	case RPC_GETNUMBADGES__:
+		resp->insertSignedInt(getNumBadges());
+		break;
+	case RPC_GETBADGETYPECOUNT__BYTE_:
+		resp->insertSignedInt(getBadgeTypeCount(inv->getByteParameter()));
 		break;
 	case RPC_HASFRIEND__STRING_:
 		resp->insertBoolean(hasFriend(inv->getAsciiParameter(_param0_hasFriend__String_)));
@@ -1842,6 +4526,9 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case RPC_SETADMINLEVEL__INT_:
 		setAdminLevel(inv->getUnsignedIntParameter());
+		break;
+	case RPC_SETBIOGRAPHY__UNICODESTRING_:
+		setBiography(inv->getUnicodeParameter(_param0_setBiography__UnicodeString_));
 		break;
 	case RPC_ISDEVELOPER__:
 		resp->insertBoolean(isDeveloper());
@@ -1891,11 +4578,113 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_GETLANGUAGEID__:
 		resp->insertByte(getLanguageID());
 		break;
+	case RPC_ISTELEPORTING__:
+		resp->insertBoolean(isTeleporting());
+		break;
+	case RPC_ADDCHATROOM__CHATROOM_:
+		addChatRoom((ChatRoom*) inv->getObjectParameter());
+		break;
+	case RPC_REMOVECHATROOM__CHATROOM_:
+		removeChatRoom((ChatRoom*) inv->getObjectParameter());
+		break;
 	case RPC_GETEXPERIENCE__STRING_:
 		resp->insertSignedInt(getExperience(inv->getAsciiParameter(_param0_getExperience__String_)));
 		break;
 	case RPC_GETCOMMANDMESSAGESTRING__INT_:
 		resp->insertAscii(getCommandMessageString(inv->getUnsignedIntParameter()));
+		break;
+	case RPC_HASBADGE__INT_:
+		resp->insertBoolean(hasBadge(inv->getUnsignedIntParameter()));
+		break;
+	case RPC_CLEARDISCONNECTEVENT__:
+		clearDisconnectEvent();
+		break;
+	case RPC_CLEARRECOVERYEVENT__:
+		clearRecoveryEvent();
+		break;
+	case RPC_ISONLINE__:
+		resp->insertBoolean(isOnline());
+		break;
+	case RPC_ISOFFLINE__:
+		resp->insertBoolean(isOffline());
+		break;
+	case RPC_ISLOADING__:
+		resp->insertBoolean(isLoading());
+		break;
+	case RPC_ISLINKDEAD__:
+		resp->insertBoolean(isLinkDead());
+		break;
+	case RPC_ISLOGGINGIN__:
+		resp->insertBoolean(isLoggingIn());
+		break;
+	case RPC_ISLOGGINGOUT__:
+		resp->insertBoolean(isLoggingOut());
+		break;
+	case RPC_SETSKILLPOINTS__INT_:
+		setSkillPoints(inv->getSignedIntParameter());
+		break;
+	case RPC_ADDSKILLPOINTS__INT_:
+		addSkillPoints(inv->getSignedIntParameter());
+		break;
+	case RPC_GETSKILLPOINTS__:
+		resp->insertSignedInt(getSkillPoints());
+		break;
+	case RPC_UPDATELASTVALIDATEDPOSITION__:
+		updateLastValidatedPosition();
+		break;
+	case RPC_SETSPAWNEDBLUEFROG__:
+		setSpawnedBlueFrog();
+		break;
+	case RPC_HASSPAWNEDBLUEFROG__:
+		resp->insertBoolean(hasSpawnedBlueFrog());
+		break;
+	case RPC_GETACCOUNTID__:
+		resp->insertInt(getAccountID());
+		break;
+	case RPC_GETSERVERMOVEMENTTIMEDELTA__:
+		resp->insertLong(getServerMovementTimeDelta());
+		break;
+	case RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_:
+		setClientLastMovementStamp(inv->getUnsignedIntParameter());
+		break;
+	case RPC_UPDATESERVERLASTMOVEMENTSTAMP__:
+		updateServerLastMovementStamp();
+		break;
+	case RPC_SETACCOUNTID__INT_:
+		setAccountID(inv->getUnsignedIntParameter());
+		break;
+	case RPC_GETFACTIONSTATUS__:
+		resp->insertSignedInt(getFactionStatus());
+		break;
+	case RPC_GETCLIENTLASTMOVEMENTSTAMP__:
+		resp->insertInt(getClientLastMovementStamp());
+		break;
+	case RPC_SETTEACHINGORLEARNING__BOOL_:
+		setTeachingOrLearning(inv->getBooleanParameter());
+		break;
+	case RPC_GETCENTEREDBONUS__:
+		resp->insertSignedInt(getCenteredBonus());
+		break;
+	case RPC_SETCENTEREDBONUS__INT_:
+		setCenteredBonus(inv->getSignedIntParameter());
+		break;
+	case RPC_ISINVISIBLE__:
+		resp->insertBoolean(isInvisible());
+		break;
+	case RPC_SETINVISIBLE__BOOL_:
+		setInvisible(inv->getBooleanParameter());
+		break;
+	case RPC_SETHOLOGRINDMASK__INT_:
+		setHologrindMask(inv->getUnsignedIntParameter());
+		break;
+	case RPC_GETHOLOGRINDMASK__:
+		resp->insertInt(getHologrindMask());
+		break;
+	case RPC_GETRACEID__:
+		resp->insertByte(getRaceID());
+		break;
+	case RPC_SETRACEID__BYTE_:
+		setRaceID(inv->getByteParameter());
 		break;
 	default:
 		return NULL;
@@ -1906,6 +4695,14 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 
 void PlayerObjectAdapter::finalize() {
 	((PlayerObjectImplementation*) impl)->finalize();
+}
+
+void PlayerObjectAdapter::notifyLoadFromDatabase() {
+	((PlayerObjectImplementation*) impl)->notifyLoadFromDatabase();
+}
+
+void PlayerObjectAdapter::unload() {
+	((PlayerObjectImplementation*) impl)->unload();
 }
 
 void PlayerObjectAdapter::initializeTransientMembers() {
@@ -1934,6 +4731,10 @@ int PlayerObjectAdapter::getTotalOwnedStructureCount() {
 
 int PlayerObjectAdapter::getLotsRemaining() {
 	return ((PlayerObjectImplementation*) impl)->getLotsRemaining();
+}
+
+void PlayerObjectAdapter::notifySceneReady() {
+	((PlayerObjectImplementation*) impl)->notifySceneReady();
 }
 
 int PlayerObjectAdapter::addExperience(const String& xpType, int xp, bool notifyClient) {
@@ -2004,12 +4805,144 @@ float PlayerObjectAdapter::getFactionStanding(const String& factionName) {
 	return ((PlayerObjectImplementation*) impl)->getFactionStanding(factionName);
 }
 
+WaypointObject* PlayerObjectAdapter::getSurveyWaypoint() {
+	return ((PlayerObjectImplementation*) impl)->getSurveyWaypoint();
+}
+
+void PlayerObjectAdapter::activateRecovery() {
+	((PlayerObjectImplementation*) impl)->activateRecovery();
+}
+
+void PlayerObjectAdapter::doRecovery() {
+	((PlayerObjectImplementation*) impl)->doRecovery();
+}
+
+void PlayerObjectAdapter::disconnect(bool closeClient, bool doLock) {
+	((PlayerObjectImplementation*) impl)->disconnect(closeClient, doLock);
+}
+
+void PlayerObjectAdapter::reload(ZoneClientSession* client) {
+	((PlayerObjectImplementation*) impl)->reload(client);
+}
+
+void PlayerObjectAdapter::setOffline() {
+	((PlayerObjectImplementation*) impl)->setOffline();
+}
+
+void PlayerObjectAdapter::setLinkDead() {
+	((PlayerObjectImplementation*) impl)->setLinkDead();
+}
+
+void PlayerObjectAdapter::setOnline() {
+	((PlayerObjectImplementation*) impl)->setOnline();
+}
+
+void PlayerObjectAdapter::setLoggingOut() {
+	((PlayerObjectImplementation*) impl)->setLoggingOut();
+}
+
+void PlayerObjectAdapter::sendBadgesResponseTo(CreatureObject* player) {
+	((PlayerObjectImplementation*) impl)->sendBadgesResponseTo(player);
+}
+
+void PlayerObjectAdapter::logout(bool doLock) {
+	((PlayerObjectImplementation*) impl)->logout(doLock);
+}
+
+void PlayerObjectAdapter::setLastNpcConvStr(const String& conv) {
+	((PlayerObjectImplementation*) impl)->setLastNpcConvStr(conv);
+}
+
+void PlayerObjectAdapter::setLastNpcConvMessStr(const String& mess) {
+	((PlayerObjectImplementation*) impl)->setLastNpcConvMessStr(mess);
+}
+
+String PlayerObjectAdapter::getLastNpcConvStr() {
+	return ((PlayerObjectImplementation*) impl)->getLastNpcConvStr();
+}
+
+String PlayerObjectAdapter::getLastNpcConvMessStr() {
+	return ((PlayerObjectImplementation*) impl)->getLastNpcConvMessStr();
+}
+
+String PlayerObjectAdapter::getLastNpcConvOption(int idx) {
+	return ((PlayerObjectImplementation*) impl)->getLastNpcConvOption(idx);
+}
+
+void PlayerObjectAdapter::addLastNpcConvOptions(const String& option) {
+	((PlayerObjectImplementation*) impl)->addLastNpcConvOptions(option);
+}
+
+int PlayerObjectAdapter::countLastNpcConvOptions() {
+	return ((PlayerObjectImplementation*) impl)->countLastNpcConvOptions();
+}
+
+void PlayerObjectAdapter::clearLastNpcConvOptions() {
+	((PlayerObjectImplementation*) impl)->clearLastNpcConvOptions();
+}
+
+void PlayerObjectAdapter::setConversatingCreature(CreatureObject* creature) {
+	((PlayerObjectImplementation*) impl)->setConversatingCreature(creature);
+}
+
+CreatureObject* PlayerObjectAdapter::getConversatingCreature() {
+	return ((PlayerObjectImplementation*) impl)->getConversatingCreature();
+}
+
+void PlayerObjectAdapter::addPersistentMessage(unsigned long long id) {
+	((PlayerObjectImplementation*) impl)->addPersistentMessage(id);
+}
+
+void PlayerObjectAdapter::dropPersistentMessage(unsigned long long id) {
+	((PlayerObjectImplementation*) impl)->dropPersistentMessage(id);
+}
+
+void PlayerObjectAdapter::unloadSpawnedChildren() {
+	((PlayerObjectImplementation*) impl)->unloadSpawnedChildren();
+}
+
+void PlayerObjectAdapter::addToConsentList(const String& name) {
+	((PlayerObjectImplementation*) impl)->addToConsentList(name);
+}
+
+bool PlayerObjectAdapter::hasInConsentList(const String& name) {
+	return ((PlayerObjectImplementation*) impl)->hasInConsentList(name);
+}
+
+void PlayerObjectAdapter::removeFromConsentList(const String& name) {
+	((PlayerObjectImplementation*) impl)->removeFromConsentList(name);
+}
+
+String PlayerObjectAdapter::getConsentName(int i) {
+	return ((PlayerObjectImplementation*) impl)->getConsentName(i);
+}
+
+int PlayerObjectAdapter::getConsentListSize() {
+	return ((PlayerObjectImplementation*) impl)->getConsentListSize();
+}
+
 void PlayerObjectAdapter::setCommandMessageString(unsigned int actionCRC, String& message) {
 	((PlayerObjectImplementation*) impl)->setCommandMessageString(actionCRC, message);
 }
 
 void PlayerObjectAdapter::removeCommandMessageString(unsigned int actionCRC) {
 	((PlayerObjectImplementation*) impl)->removeCommandMessageString(actionCRC);
+}
+
+BuildingObject* PlayerObjectAdapter::getDeclaredResidence() {
+	return ((PlayerObjectImplementation*) impl)->getDeclaredResidence();
+}
+
+void PlayerObjectAdapter::setDeclaredResidence(BuildingObject* residence) {
+	((PlayerObjectImplementation*) impl)->setDeclaredResidence(residence);
+}
+
+void PlayerObjectAdapter::setCloningFacility(BuildingObject* cloningfac) {
+	((PlayerObjectImplementation*) impl)->setCloningFacility(cloningfac);
+}
+
+BuildingObject* PlayerObjectAdapter::getCloningFacility() {
+	return ((PlayerObjectImplementation*) impl)->getCloningFacility();
 }
 
 void PlayerObjectAdapter::notifyOnline() {
@@ -2024,8 +4957,148 @@ bool PlayerObjectAdapter::isDigesting() {
 	return ((PlayerObjectImplementation*) impl)->isDigesting();
 }
 
+String PlayerObjectAdapter::getSavedTerrainName() {
+	return ((PlayerObjectImplementation*) impl)->getSavedTerrainName();
+}
+
+void PlayerObjectAdapter::setSavedParentID(unsigned long long id) {
+	((PlayerObjectImplementation*) impl)->setSavedParentID(id);
+}
+
+void PlayerObjectAdapter::setSavedTerrainName(const String& name) {
+	((PlayerObjectImplementation*) impl)->setSavedTerrainName(name);
+}
+
+unsigned long long PlayerObjectAdapter::getSavedParentID() {
+	return ((PlayerObjectImplementation*) impl)->getSavedParentID();
+}
+
+unsigned int PlayerObjectAdapter::getNewSuiBoxID(unsigned int type) {
+	return ((PlayerObjectImplementation*) impl)->getNewSuiBoxID(type);
+}
+
+bool PlayerObjectAdapter::hasSuiBox(unsigned int boxID) {
+	return ((PlayerObjectImplementation*) impl)->hasSuiBox(boxID);
+}
+
+SuiBox* PlayerObjectAdapter::getSuiBox(unsigned int boxID) {
+	return ((PlayerObjectImplementation*) impl)->getSuiBox(boxID);
+}
+
+void PlayerObjectAdapter::removeSuiBox(unsigned int boxID, bool closeWindowToClient) {
+	((PlayerObjectImplementation*) impl)->removeSuiBox(boxID, closeWindowToClient);
+}
+
+void PlayerObjectAdapter::removeSuiBoxType(unsigned int windowType) {
+	((PlayerObjectImplementation*) impl)->removeSuiBoxType(windowType);
+}
+
+bool PlayerObjectAdapter::hasSuiBoxWindowType(unsigned int windowType) {
+	return ((PlayerObjectImplementation*) impl)->hasSuiBoxWindowType(windowType);
+}
+
+void PlayerObjectAdapter::closeSuiWindowType(unsigned int windowType) {
+	((PlayerObjectImplementation*) impl)->closeSuiWindowType(windowType);
+}
+
+SuiBox* PlayerObjectAdapter::getSuiBoxFromWindowType(unsigned int windowType) {
+	return ((PlayerObjectImplementation*) impl)->getSuiBoxFromWindowType(windowType);
+}
+
+void PlayerObjectAdapter::addSuiBox(SuiBox* sui) {
+	((PlayerObjectImplementation*) impl)->addSuiBox(sui);
+}
+
+bool PlayerObjectAdapter::isFirstIncapacitationExpired() {
+	return ((PlayerObjectImplementation*) impl)->isFirstIncapacitationExpired();
+}
+
+void PlayerObjectAdapter::resetIncapacitationCounter() {
+	((PlayerObjectImplementation*) impl)->resetIncapacitationCounter();
+}
+
+void PlayerObjectAdapter::resetFirstIncapacitationTime() {
+	((PlayerObjectImplementation*) impl)->resetFirstIncapacitationTime();
+}
+
+void PlayerObjectAdapter::updateIncapacitationCounter() {
+	((PlayerObjectImplementation*) impl)->updateIncapacitationCounter();
+}
+
+bool PlayerObjectAdapter::isFirstIncapacitation() {
+	return ((PlayerObjectImplementation*) impl)->isFirstIncapacitation();
+}
+
+byte PlayerObjectAdapter::getIncapacitationCounter() {
+	return ((PlayerObjectImplementation*) impl)->getIncapacitationCounter();
+}
+
+void PlayerObjectAdapter::addToDuelList(CreatureObject* targetPlayer) {
+	((PlayerObjectImplementation*) impl)->addToDuelList(targetPlayer);
+}
+
+void PlayerObjectAdapter::removeFromDuelList(CreatureObject* targetPlayer) {
+	((PlayerObjectImplementation*) impl)->removeFromDuelList(targetPlayer);
+}
+
+CreatureObject* PlayerObjectAdapter::getDuelListObject(int index) {
+	return ((PlayerObjectImplementation*) impl)->getDuelListObject(index);
+}
+
+bool PlayerObjectAdapter::requestedDuelTo(CreatureObject* targetPlayer) {
+	return ((PlayerObjectImplementation*) impl)->requestedDuelTo(targetPlayer);
+}
+
+bool PlayerObjectAdapter::isDuelListEmpty() {
+	return ((PlayerObjectImplementation*) impl)->isDuelListEmpty();
+}
+
+int PlayerObjectAdapter::getDuelListSize() {
+	return ((PlayerObjectImplementation*) impl)->getDuelListSize();
+}
+
+UnicodeString PlayerObjectAdapter::getBiography() {
+	return ((PlayerObjectImplementation*) impl)->getBiography();
+}
+
 void PlayerObjectAdapter::notifyOffline() {
 	((PlayerObjectImplementation*) impl)->notifyOffline();
+}
+
+void PlayerObjectAdapter::setBadge(unsigned int badge) {
+	((PlayerObjectImplementation*) impl)->setBadge(badge);
+}
+
+void PlayerObjectAdapter::awardBadge(unsigned int badge) {
+	((PlayerObjectImplementation*) impl)->awardBadge(badge);
+}
+
+void PlayerObjectAdapter::setSurveyTool(SurveyTool* tool) {
+	((PlayerObjectImplementation*) impl)->setSurveyTool(tool);
+}
+
+SurveyTool* PlayerObjectAdapter::getSurveyTool() {
+	return ((PlayerObjectImplementation*) impl)->getSurveyTool();
+}
+
+CraftingTool* PlayerObjectAdapter::getLastCraftingToolUsed() {
+	return ((PlayerObjectImplementation*) impl)->getLastCraftingToolUsed();
+}
+
+void PlayerObjectAdapter::setLastCraftingToolUsed(CraftingTool* tool) {
+	((PlayerObjectImplementation*) impl)->setLastCraftingToolUsed(tool);
+}
+
+void PlayerObjectAdapter::setTeleporting(bool val) {
+	((PlayerObjectImplementation*) impl)->setTeleporting(val);
+}
+
+int PlayerObjectAdapter::getNumBadges() {
+	return ((PlayerObjectImplementation*) impl)->getNumBadges();
+}
+
+int PlayerObjectAdapter::getBadgeTypeCount(byte type) {
+	return ((PlayerObjectImplementation*) impl)->getBadgeTypeCount(type);
 }
 
 bool PlayerObjectAdapter::hasFriend(const String& name) {
@@ -2070,6 +5143,10 @@ unsigned int PlayerObjectAdapter::getAdminLevel() {
 
 void PlayerObjectAdapter::setAdminLevel(unsigned int adminlvl) {
 	((PlayerObjectImplementation*) impl)->setAdminLevel(adminlvl);
+}
+
+void PlayerObjectAdapter::setBiography(const UnicodeString& bio) {
+	((PlayerObjectImplementation*) impl)->setBiography(bio);
 }
 
 bool PlayerObjectAdapter::isDeveloper() {
@@ -2136,12 +5213,148 @@ byte PlayerObjectAdapter::getLanguageID() {
 	return ((PlayerObjectImplementation*) impl)->getLanguageID();
 }
 
+bool PlayerObjectAdapter::isTeleporting() {
+	return ((PlayerObjectImplementation*) impl)->isTeleporting();
+}
+
+void PlayerObjectAdapter::addChatRoom(ChatRoom* room) {
+	((PlayerObjectImplementation*) impl)->addChatRoom(room);
+}
+
+void PlayerObjectAdapter::removeChatRoom(ChatRoom* room) {
+	((PlayerObjectImplementation*) impl)->removeChatRoom(room);
+}
+
 int PlayerObjectAdapter::getExperience(const String& xp) {
 	return ((PlayerObjectImplementation*) impl)->getExperience(xp);
 }
 
 String PlayerObjectAdapter::getCommandMessageString(unsigned int actionCRC) {
 	return ((PlayerObjectImplementation*) impl)->getCommandMessageString(actionCRC);
+}
+
+bool PlayerObjectAdapter::hasBadge(unsigned int badge) {
+	return ((PlayerObjectImplementation*) impl)->hasBadge(badge);
+}
+
+void PlayerObjectAdapter::clearDisconnectEvent() {
+	((PlayerObjectImplementation*) impl)->clearDisconnectEvent();
+}
+
+void PlayerObjectAdapter::clearRecoveryEvent() {
+	((PlayerObjectImplementation*) impl)->clearRecoveryEvent();
+}
+
+bool PlayerObjectAdapter::isOnline() {
+	return ((PlayerObjectImplementation*) impl)->isOnline();
+}
+
+bool PlayerObjectAdapter::isOffline() {
+	return ((PlayerObjectImplementation*) impl)->isOffline();
+}
+
+bool PlayerObjectAdapter::isLoading() {
+	return ((PlayerObjectImplementation*) impl)->isLoading();
+}
+
+bool PlayerObjectAdapter::isLinkDead() {
+	return ((PlayerObjectImplementation*) impl)->isLinkDead();
+}
+
+bool PlayerObjectAdapter::isLoggingIn() {
+	return ((PlayerObjectImplementation*) impl)->isLoggingIn();
+}
+
+bool PlayerObjectAdapter::isLoggingOut() {
+	return ((PlayerObjectImplementation*) impl)->isLoggingOut();
+}
+
+void PlayerObjectAdapter::setSkillPoints(int points) {
+	((PlayerObjectImplementation*) impl)->setSkillPoints(points);
+}
+
+void PlayerObjectAdapter::addSkillPoints(int points) {
+	((PlayerObjectImplementation*) impl)->addSkillPoints(points);
+}
+
+int PlayerObjectAdapter::getSkillPoints() {
+	return ((PlayerObjectImplementation*) impl)->getSkillPoints();
+}
+
+void PlayerObjectAdapter::updateLastValidatedPosition() {
+	((PlayerObjectImplementation*) impl)->updateLastValidatedPosition();
+}
+
+void PlayerObjectAdapter::setSpawnedBlueFrog() {
+	((PlayerObjectImplementation*) impl)->setSpawnedBlueFrog();
+}
+
+bool PlayerObjectAdapter::hasSpawnedBlueFrog() {
+	return ((PlayerObjectImplementation*) impl)->hasSpawnedBlueFrog();
+}
+
+unsigned int PlayerObjectAdapter::getAccountID() {
+	return ((PlayerObjectImplementation*) impl)->getAccountID();
+}
+
+unsigned long long PlayerObjectAdapter::getServerMovementTimeDelta() {
+	return ((PlayerObjectImplementation*) impl)->getServerMovementTimeDelta();
+}
+
+void PlayerObjectAdapter::setClientLastMovementStamp(unsigned int stamp) {
+	((PlayerObjectImplementation*) impl)->setClientLastMovementStamp(stamp);
+}
+
+void PlayerObjectAdapter::updateServerLastMovementStamp() {
+	((PlayerObjectImplementation*) impl)->updateServerLastMovementStamp();
+}
+
+void PlayerObjectAdapter::setAccountID(unsigned int id) {
+	((PlayerObjectImplementation*) impl)->setAccountID(id);
+}
+
+int PlayerObjectAdapter::getFactionStatus() {
+	return ((PlayerObjectImplementation*) impl)->getFactionStatus();
+}
+
+unsigned int PlayerObjectAdapter::getClientLastMovementStamp() {
+	return ((PlayerObjectImplementation*) impl)->getClientLastMovementStamp();
+}
+
+void PlayerObjectAdapter::setTeachingOrLearning(bool value) {
+	((PlayerObjectImplementation*) impl)->setTeachingOrLearning(value);
+}
+
+int PlayerObjectAdapter::getCenteredBonus() {
+	return ((PlayerObjectImplementation*) impl)->getCenteredBonus();
+}
+
+void PlayerObjectAdapter::setCenteredBonus(int bonus) {
+	((PlayerObjectImplementation*) impl)->setCenteredBonus(bonus);
+}
+
+bool PlayerObjectAdapter::isInvisible() {
+	return ((PlayerObjectImplementation*) impl)->isInvisible();
+}
+
+void PlayerObjectAdapter::setInvisible(bool invis) {
+	((PlayerObjectImplementation*) impl)->setInvisible(invis);
+}
+
+void PlayerObjectAdapter::setHologrindMask(unsigned int mask) {
+	((PlayerObjectImplementation*) impl)->setHologrindMask(mask);
+}
+
+unsigned int PlayerObjectAdapter::getHologrindMask() {
+	return ((PlayerObjectImplementation*) impl)->getHologrindMask();
+}
+
+byte PlayerObjectAdapter::getRaceID() {
+	return ((PlayerObjectImplementation*) impl)->getRaceID();
+}
+
+void PlayerObjectAdapter::setRaceID(byte race) {
+	((PlayerObjectImplementation*) impl)->setRaceID(race);
 }
 
 /*

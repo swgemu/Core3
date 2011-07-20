@@ -51,7 +51,7 @@ import server.zone.ZoneProcessServer;
 import server.zone.objects.mission.MissionObject;
 import engine.util.Observer;
 import server.zone.objects.tangible.terminal.mission.MissionTerminal;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
 import server.zone.managers.stringid.StringIdManager;
@@ -84,36 +84,36 @@ class MissionManager extends Observer implements Logger {
 	public native void loadLairObjectsToSpawn();
 	public native void loadNpcObjectsToSpawn();
 	
-	public native void handleMissionListRequest(MissionTerminal missionTerminal, PlayerCreature player, int counter);
-	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, PlayerCreature player);
-	public native void handleMissionAbort(MissionObject mission, PlayerCreature player);
+	public native void handleMissionListRequest(MissionTerminal missionTerminal, CreatureObject player, int counter);
+	public native void handleMissionAccept(MissionTerminal missionTerminal, MissionObject mission, CreatureObject player);
+	public native void handleMissionAbort(MissionObject mission, CreatureObject player);
 	
-	public native void removeMission(MissionObject mission, PlayerCreature player);
+	public native void removeMission(MissionObject mission, CreatureObject player);
 	
-	public native void populateMissionList(MissionTerminal missionTerminal, PlayerCreature player, int counter);
+	public native void populateMissionList(MissionTerminal missionTerminal, CreatureObject player, int counter);
 	
-	public native void randomizeSurveyMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeDestroyMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeBountyMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeDeliverMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeCraftingMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeEntertainerMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeHuntingMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeReconMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeImperialDestroyMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeImperialDeliverMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeRebelDestroyMission(PlayerCreature player, MissionObject mission);
-	public native void randomizeRebelDeliverMission(PlayerCreature player, MissionObject mission);
+	public native void randomizeSurveyMission(CreatureObject player, MissionObject mission);
+	public native void randomizeDestroyMission(CreatureObject player, MissionObject mission);
+	public native void randomizeBountyMission(CreatureObject player, MissionObject mission);
+	public native void randomizeDeliverMission(CreatureObject player, MissionObject mission);
+	public native void randomizeCraftingMission(CreatureObject player, MissionObject mission);
+	public native void randomizeEntertainerMission(CreatureObject player, MissionObject mission);
+	public native void randomizeHuntingMission(CreatureObject player, MissionObject mission);
+	public native void randomizeReconMission(CreatureObject player, MissionObject mission);
+	public native void randomizeImperialDestroyMission(CreatureObject player, MissionObject mission);
+	public native void randomizeImperialDeliverMission(CreatureObject player, MissionObject mission);
+	public native void randomizeRebelDestroyMission(CreatureObject player, MissionObject mission);
+	public native void randomizeRebelDeliverMission(CreatureObject player, MissionObject mission);
 
 	
-	public native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
-	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
-	public native void createDestroyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
-	public native void createDeliverMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
-	public native void createEntertainerMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
-	public native void createHuntingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
-	public native void createReconMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
-	public native void createBountyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, PlayerCreature player);
+	public native void createMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createSurveyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createDestroyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createDeliverMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createEntertainerMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createHuntingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createReconMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
+	public native void createBountyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 	
-	public native boolean hasSurveyMission(PlayerCreature player, final string spawn);
+	public native boolean hasSurveyMission(CreatureObject player, final string spawn);
 }

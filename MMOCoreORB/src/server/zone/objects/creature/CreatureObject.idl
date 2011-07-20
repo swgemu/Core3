@@ -52,8 +52,8 @@ import server.zone.objects.guild.GuildObject;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.managers.objectcontroller.ObjectController;
 //import server.zone.objects.player.professions.SkillBox;
-import server.zone.objects.player.PlayerCreature;
-
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.area.ActiveArea;
@@ -79,8 +79,11 @@ include server.zone.objects.creature.buffs.BuffList;
 include server.zone.objects.creature.damageovertime.DamageOverTimeList;
 import server.zone.objects.creature.buffs.Buff;
 import server.zone.objects.tangible.weapon.WeaponObject;
+import server.zone.ZoneClientSession;
 
 class CreatureObject extends TangibleObject {
+	protected transient ZoneClientSession owner;
+
 	protected int bankCredits;
 	protected int cashCredits;
 	
@@ -257,6 +260,14 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void sendBaselinesTo(SceneObject player);
 	
+	/**
+	 * Sends the necessary messages to owner client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, owner received its own scene object }
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
+	public native void sendToOwner(boolean doClose = true);
+
 	/**
 	 * Sends a system message to the client of this object
 	 * @pre {}
@@ -567,6 +578,10 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void clearBuffs(boolean updateclient);
 	
+	public void sendBuffsTo(CreatureObject creature) {
+		creatureBuffs.sendTo(creature);
+	}
+
 	public Buff getBuff(unsigned int buffcrc) {
 		if (creatureBuffs.hasBuff(buffcrc))
 			return creatureBuffs.getBuffByCRC(buffcrc);
@@ -584,6 +599,18 @@ class CreatureObject extends TangibleObject {
 	
 	public void clearDots() {
 		damageOverTimeList.clear(this);
+	}
+	
+	@local
+	public DamageOverTimeList getDamageOverTimeList() { 
+		return damageOverTimeList;
+	}
+	
+	/**
+	 * This does not clear the dots, use clearDots() instead
+	 */
+	public void removeDotsFromVector() {
+		damageOverTimeList.removeAll();
 	}
 	
 	public boolean hasBuff(unsigned int buffcrc) {
@@ -822,9 +849,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked }
 	 * @return returns true if the creature object can attack this 
 	 */
-	public boolean isAttackableBy(CreatureObject object) {
-		return false;
-	}
+	public native boolean isAttackableBy(CreatureObject object);
 	
 	/**
 	 * sends the conversation list 
@@ -844,6 +869,48 @@ class CreatureObject extends TangibleObject {
 		
 	}
 	
+	/**
+	 * Sends a message to client
+	 * @pre { }
+	 * @post { message is sent to client }
+	 * @param msg BasePacket to send
+	 */
+	public native void sendMessage(BasePacket msg);
+	
+	/**
+	 * Sends a ExecuteConsoleCommand to the client
+	 * @param command example "/attack"
+	 */
+	public native void sendExecuteConsoleCommand(final string command);
+	
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
+	public native boolean isAggressiveTo(CreatureObject object);
+	
+	/**
+	 * Is called when this object is destroyed
+	 * @pre { this, attacker locked }
+	 * @post { this, attacker locked }
+	 */
+	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
+	
+	
+	public native string getFirstName();
+	public native string getLastName();
+	
+	public boolean isOnline() {
+		PlayerObject ghost = getPlayerObject();
+		
+		if (ghost == null)
+			return false;
+		
+		return ghost.isOnline();
+	}
+
 	public boolean canTreatInjuries() {
 		return super.getPendingTask("injuryTreatment") == null;
 	}
@@ -860,6 +927,8 @@ class CreatureObject extends TangibleObject {
 		return super.getPendingTask("conditionTreatment") == null;
 	}
 	
+	public native PlayerObject getPlayerObject();
+	
 	public boolean isListening() {
 		return listenToID != 0;
 	}
@@ -868,6 +937,10 @@ class CreatureObject extends TangibleObject {
 		return watchToID != 0;
 	}
 	
+	public void setClient(ZoneClientSession cli) {
+		owner = cli;
+	}
+
 	public native void dismount();
 	public native float calculateBFRatio();
 
@@ -908,6 +981,11 @@ class CreatureObject extends TangibleObject {
 	
 	public void removeAttackDelay() {
 		cooldownTimerMap.updateToCurrentTime("nextAttackDelay");
+	}
+	
+	@local
+	public CooldownTimerMap getCooldownTimerMap() { 
+		return cooldownTimerMap;
 	}
 	
 	public boolean hasSpice() {
@@ -1113,6 +1191,11 @@ class CreatureObject extends TangibleObject {
 	public SpeedMultiplierModChanges getSpeedMultiplierModChanges() {
 		return speedMultiplierModChanges;
 	}
+	
+	@local
+	public CommandQueueActionVector getCommandQueue() {
+		return commandQueue;
+	}
 
 	public float getRunSpeed() {
 		return runSpeed;
@@ -1290,6 +1373,10 @@ class CreatureObject extends TangibleObject {
 		return true;
 	}
 	
+	public boolean isNextActionPast() {
+		return nextAction.isPast();
+	}
+	
 	public abstract boolean isTrainerCreature() {
 		return false;
 	}
@@ -1298,6 +1385,10 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask & CreatureState.SWIMMING;
 	}
 	
+	public ZoneClientSession getClient() {
+		return owner;
+	}
+
 	public boolean isRidingMount() {
 		return stateBitmask & CreatureState.RIDINGMOUNT;
 	}
@@ -1418,12 +1509,16 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask & CreatureState.COVER;
 	}
 	
-	public abstract boolean isNonPlayerCreature() {
+	public abstract boolean isNonPlayerCreatureObject() {
 		return false;
 	}
 	
 	public abstract boolean isCreature() {
 		return false;
+	}
+	
+	public boolean isPlayerCreature() {
+		return getPlayerObject() != null;
 	}
 	
 	public abstract boolean isAiAgent() {

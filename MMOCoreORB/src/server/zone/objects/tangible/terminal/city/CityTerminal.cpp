@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -18,7 +18,7 @@
  *	CityTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISCITYTERMINAL__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISCITYTERMINAL__};
 
 CityTerminal::CityTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	CityTerminalImplementation* _implementation = new CityTerminalImplementation();
@@ -46,13 +46,13 @@ void CityTerminal::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void CityTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void CityTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -61,13 +61,13 @@ void CityTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Play
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int CityTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CityTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	CityTerminalImplementation* _implementation = (CityTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -245,11 +245,11 @@ Packet* CityTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
+		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_ISCITYTERMINAL__:
 		resp->insertBoolean(isCityTerminal());
@@ -265,11 +265,11 @@ void CityTerminalAdapter::initializeTransientMembers() {
 	((CityTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
-void CityTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void CityTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	((CityTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
-int CityTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CityTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((CityTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

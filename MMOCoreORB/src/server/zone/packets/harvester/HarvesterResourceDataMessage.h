@@ -49,7 +49,7 @@ which carries forward this exception.
 
 class HarvesterResourceDataMessage : public ObjectControllerMessage {
 public:
-	HarvesterResourceDataMessage(PlayerCreature* player, InstallationObject* hino)
+	HarvesterResourceDataMessage(CreatureObject* player, InstallationObject* hino)
 		: ObjectControllerMessage(player->getObjectID(), 0x0B, 0xEA) {
 
 		insertLong(hino->getObjectID()); // Harvester Object

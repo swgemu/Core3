@@ -66,9 +66,10 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
+		PlayerObject* ghost = player->getPlayerObject();
 
-		ManagedReference<CreatureObject*> object = player->getConversatingCreature();
+		ManagedReference<CreatureObject*> object = ghost->getConversatingCreature();
 
 		if (object != NULL) {
 			if (!player->isInRange(object, 5))

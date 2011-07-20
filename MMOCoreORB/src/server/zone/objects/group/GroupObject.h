@@ -14,16 +14,16 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace chat {
@@ -70,7 +70,7 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
-	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf = false);
+	void broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf = false);
 
 	void addMember(SceneObject* player);
 
@@ -86,7 +86,7 @@ public:
 
 	void destroyChatRoom();
 
-	float getGroupHarvestModifier(PlayerCreature* player);
+	float getGroupHarvestModifier(CreatureObject* player);
 
 	int getGroupLevel();
 
@@ -110,9 +110,9 @@ public:
 
 	void removeGroupModifiers();
 
-	void addGroupModifiers(PlayerCreature* player);
+	void addGroupModifiers(CreatureObject* player);
 
-	void removeGroupModifiers(PlayerCreature* player);
+	void removeGroupModifiers(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -154,7 +154,7 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
-	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf = false);
+	void broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf = false);
 
 	void addMember(SceneObject* player);
 
@@ -170,7 +170,7 @@ public:
 
 	void destroyChatRoom();
 
-	float getGroupHarvestModifier(PlayerCreature* player);
+	float getGroupHarvestModifier(CreatureObject* player);
 
 	int getGroupLevel();
 
@@ -194,9 +194,9 @@ public:
 
 	void removeGroupModifiers();
 
-	void addGroupModifiers(PlayerCreature* player);
+	void addGroupModifiers(CreatureObject* player);
 
-	void removeGroupModifiers(PlayerCreature* player);
+	void removeGroupModifiers(CreatureObject* player);
 
 	WeakReference<GroupObject*> _this;
 
@@ -245,7 +245,7 @@ public:
 
 	void broadcastMessage(BaseMessage* msg);
 
-	void broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf);
+	void broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf);
 
 	void addMember(SceneObject* player);
 
@@ -261,7 +261,7 @@ public:
 
 	void destroyChatRoom();
 
-	float getGroupHarvestModifier(PlayerCreature* player);
+	float getGroupHarvestModifier(CreatureObject* player);
 
 	int getGroupLevel();
 
@@ -283,9 +283,9 @@ public:
 
 	void removeGroupModifiers();
 
-	void addGroupModifiers(PlayerCreature* player);
+	void addGroupModifiers(CreatureObject* player);
 
-	void removeGroupModifiers(PlayerCreature* player);
+	void removeGroupModifiers(CreatureObject* player);
 
 };
 

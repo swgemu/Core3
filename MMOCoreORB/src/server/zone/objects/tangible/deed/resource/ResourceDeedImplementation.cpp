@@ -7,7 +7,7 @@
 
 #include "ResourceDeed.h"
 #include "server/zone/managers/resource/ResourceManager.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
@@ -18,13 +18,13 @@ void ResourceDeedImplementation::initializeTransientMembers() {
 	setLoggingName("ResourceDeed");
 }
 
-void ResourceDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void ResourceDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	DeedImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	menuResponse->addRadialMenuItem(20, 3, "@ui_radial:item_use"); //use
 }
 
-int ResourceDeedImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int ResourceDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID != 20) // not use object
 		return 1;
 
@@ -34,7 +34,7 @@ int ResourceDeedImplementation::handleObjectMenuSelect(PlayerCreature* player, b
 	return 0;
 }
 
-int ResourceDeedImplementation::useObject(PlayerCreature* player) {
+int ResourceDeedImplementation::useObject(CreatureObject* player) {
 	if (player == NULL)
 		return 0;
 
@@ -50,7 +50,7 @@ int ResourceDeedImplementation::useObject(PlayerCreature* player) {
 	sui1->setCancelButton(true, "@cancel");
 	sui1->setOtherButton(true, "@back");
 
-	player->addSuiBox(sui1);
+	player->getPlayerObject()->addSuiBox(sui1);
 	String base = "resource";
 
 	sui1->addBox(base);

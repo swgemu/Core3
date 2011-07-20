@@ -10,7 +10,7 @@
  *	GeneratorObjectStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISGENERATOROBJECT__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISGENERATOROBJECT__};
 
 GeneratorObject::GeneratorObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	GeneratorObjectImplementation* _implementation = new GeneratorObjectImplementation();
@@ -25,7 +25,7 @@ GeneratorObject::~GeneratorObject() {
 }
 
 
-void GeneratorObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void GeneratorObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -34,13 +34,13 @@ void GeneratorObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, P
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int GeneratorObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int GeneratorObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	GeneratorObjectImplementation* _implementation = (GeneratorObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -238,8 +238,8 @@ Packet* GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_:
 		synchronizedUIListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
@@ -257,7 +257,7 @@ Packet* GeneratorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	return resp;
 }
 
-int GeneratorObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int GeneratorObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((GeneratorObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

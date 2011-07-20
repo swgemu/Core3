@@ -8,7 +8,8 @@
 #include "DestroyStructureSession.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/DestroyStructureRequestSuiCallback.h"
@@ -16,7 +17,7 @@
 #include "server/zone/objects/structure/StructureObject.h"
 
 int DestroyStructureSessionImplementation::initializeSession() {
-	//TODO: Temporary until PlayerCreature* dependency removed.
+	//TODO: Temporary until CreatureObject* dependency removed.
 	if (!creatureObject->isPlayerCreature())
 		return cancelSession();
 
@@ -24,7 +25,7 @@ int DestroyStructureSessionImplementation::initializeSession() {
 
 	Locker _lock(creatureObject, structureObject);
 
-	PlayerCreature* player = (PlayerCreature*) creatureObject.get();
+	CreatureObject* player = (CreatureObject*) creatureObject.get();
 
 	String no = "\\#FF6347 @player_structure:can_redeed_no_suffix \\#.";
 	String yes = "\\#32CD32 @player_structure:can_redeed_yes_suffix \\#.";
@@ -57,20 +58,20 @@ int DestroyStructureSessionImplementation::initializeSession() {
 	sui->addMenuItem(cond.toString());
 	sui->addMenuItem(maint.toString());
 
-	player->addSuiBox(sui);
+	player->getPlayerObject()->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
 
 	return 0;
 }
 
 int DestroyStructureSessionImplementation::sendDestroyCode() {
-	//TODO: Temporary until PlayerCreature* dependency removed.
+	//TODO: Temporary until CreatureObject* dependency removed.
 	if (!creatureObject->isPlayerCreature())
 		return cancelSession();
 
 	Locker _lock(creatureObject, structureObject);
 
-	PlayerCreature* player = (PlayerCreature*) creatureObject.get();
+	CreatureObject* player = (CreatureObject*) creatureObject.get();
 
 	destroyCode = System::random(899999) + 100000;
 
@@ -92,7 +93,7 @@ int DestroyStructureSessionImplementation::sendDestroyCode() {
 	sui->setCancelButton(true, "@cancel");
 	sui->setMaxInputSize(6);
 
-	player->addSuiBox(sui);
+	player->getPlayerObject()->addSuiBox(sui);
 	player->sendMessage(sui->generateMessage());
 
 	return 0;

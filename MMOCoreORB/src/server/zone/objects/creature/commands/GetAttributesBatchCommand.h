@@ -91,7 +91,7 @@ public:
 			ManagedReference<SceneObject*> object = zone->getZoneServer()->getObject(objid);
 
 			if (object != NULL) {
-				object->sendAttributeListTo((PlayerCreature*)creature);
+				object->sendAttributeListTo((CreatureObject*)creature);
 			} else {
 				AttributeListMessage* msg = new AttributeListMessage(objid);
 				creature->sendMessage(msg);

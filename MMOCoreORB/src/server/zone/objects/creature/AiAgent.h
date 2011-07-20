@@ -102,20 +102,6 @@ using namespace server::zone::packets::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
-
-class PlayerCreature;
-
-} // namespace player
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::player;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace tangible {
 namespace weapon {
 
@@ -253,6 +239,8 @@ using namespace server::zone::objects::creature;
 
 #include "system/lang/ref/Reference.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/util/u3d/Coordinate.h"
@@ -298,7 +286,7 @@ public:
 
 	void checkNewAngle();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void setNextPosition(float x, float z, float y, SceneObject* cell = NULL);
 
@@ -556,7 +544,7 @@ public:
 
 	void checkNewAngle();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void setNextPosition(float x, float z, float y, SceneObject* cell = NULL);
 
@@ -759,7 +747,7 @@ public:
 
 	void checkNewAngle();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void setNextPosition(float x, float z, float y, SceneObject* cell);
 

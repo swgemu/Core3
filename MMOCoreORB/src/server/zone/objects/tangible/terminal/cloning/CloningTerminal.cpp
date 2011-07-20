@@ -8,7 +8,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/Zone.h"
 
@@ -20,7 +20,7 @@
  *	CloningTerminalStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_ = 6};
 
 CloningTerminal::CloningTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	CloningTerminalImplementation* _implementation = new CloningTerminalImplementation();
@@ -35,13 +35,13 @@ CloningTerminal::~CloningTerminal() {
 }
 
 
-int CloningTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CloningTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	CloningTerminalImplementation* _implementation = (CloningTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -191,8 +191,8 @@ Packet* CloningTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -201,7 +201,7 @@ Packet* CloningTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	return resp;
 }
 
-int CloningTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CloningTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((CloningTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

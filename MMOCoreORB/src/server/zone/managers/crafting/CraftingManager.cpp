@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/player/PlayerObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
@@ -16,7 +16,7 @@
  *	CraftingManagerStub
  */
 
-enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_INT_,RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_INT_,RPC_CALCULATEASSEMBLYSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_,RPC_GETASSEMBLYPERCENTAGE__FLOAT_,RPC_CALCULATEEXPERIMENTATIONFAILURERATE__PLAYERCREATURE_MANUFACTURESCHEMATIC_INT_,RPC_CALCULATEEXPERIMENTATIONSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_,RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_,RPC_GENERATESERIAL__};
+enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_INT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_INT_,RPC_CALCULATEASSEMBLYSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_,RPC_GETASSEMBLYPERCENTAGE__FLOAT_,RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_,RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_,RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_,RPC_GENERATESERIAL__};
 
 CraftingManager::CraftingManager() : ZoneManager(DummyConstructorParameter::instance()) {
 	CraftingManagerImplementation* _implementation = new CraftingManagerImplementation();
@@ -72,13 +72,13 @@ DraftSchematic* CraftingManager::getSchematic(unsigned int schematicID) {
 		return _implementation->getSchematic(schematicID);
 }
 
-void CraftingManager::sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID) {
+void CraftingManager::sendDraftSlotsTo(CreatureObject* player, unsigned int schematicID) {
 	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(schematicID);
 
@@ -87,13 +87,13 @@ void CraftingManager::sendDraftSlotsTo(PlayerCreature* player, unsigned int sche
 		_implementation->sendDraftSlotsTo(player, schematicID);
 }
 
-void CraftingManager::sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID) {
+void CraftingManager::sendResourceWeightsTo(CreatureObject* player, unsigned int schematicID) {
 	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(schematicID);
 
@@ -102,13 +102,13 @@ void CraftingManager::sendResourceWeightsTo(PlayerCreature* player, unsigned int
 		_implementation->sendResourceWeightsTo(player, schematicID);
 }
 
-int CraftingManager::calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness) {
+int CraftingManager::calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness) {
 	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CALCULATEASSEMBLYSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_);
+		DistributedMethod method(this, RPC_CALCULATEASSEMBLYSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(draftSchematic);
 		method.addFloatParameter(effectiveness);
@@ -146,13 +146,13 @@ float CraftingManager::getAssemblyPercentage(float value) {
 		return _implementation->getAssemblyPercentage(value);
 }
 
-int CraftingManager::calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
+int CraftingManager::calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
 	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CALCULATEEXPERIMENTATIONFAILURERATE__PLAYERCREATURE_MANUFACTURESCHEMATIC_INT_);
+		DistributedMethod method(this, RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(manufactureSchematic);
 		method.addSignedIntParameter(pointsUsed);
@@ -162,13 +162,13 @@ int CraftingManager::calculateExperimentationFailureRate(PlayerCreature* player,
 		return _implementation->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
 }
 
-int CraftingManager::calculateExperimentationSuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness) {
+int CraftingManager::calculateExperimentationSuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness) {
 	CraftingManagerImplementation* _implementation = (CraftingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CALCULATEEXPERIMENTATIONSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_);
+		DistributedMethod method(this, RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(draftSchematic);
 		method.addFloatParameter(effectiveness);
@@ -369,14 +369,14 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_GETSCHEMATIC__INT_:
 		resp->insertLong(getSchematic(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
-	case RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_INT_:
-		sendDraftSlotsTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+	case RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_INT_:
+		sendDraftSlotsTo((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_INT_:
-		sendResourceWeightsTo((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+	case RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_INT_:
+		sendResourceWeightsTo((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case RPC_CALCULATEASSEMBLYSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_:
-		resp->insertSignedInt(calculateAssemblySuccess((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getFloatParameter()));
+	case RPC_CALCULATEASSEMBLYSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_:
+		resp->insertSignedInt(calculateAssemblySuccess((CreatureObject*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getFloatParameter()));
 		break;
 	case RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_:
 		resp->insertFloat(calculateAssemblyValueModifier(inv->getSignedIntParameter()));
@@ -384,11 +384,11 @@ Packet* CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_GETASSEMBLYPERCENTAGE__FLOAT_:
 		resp->insertFloat(getAssemblyPercentage(inv->getFloatParameter()));
 		break;
-	case RPC_CALCULATEEXPERIMENTATIONFAILURERATE__PLAYERCREATURE_MANUFACTURESCHEMATIC_INT_:
-		resp->insertSignedInt(calculateExperimentationFailureRate((PlayerCreature*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+	case RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_:
+		resp->insertSignedInt(calculateExperimentationFailureRate((CreatureObject*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case RPC_CALCULATEEXPERIMENTATIONSUCCESS__PLAYERCREATURE_DRAFTSCHEMATIC_FLOAT_:
-		resp->insertSignedInt(calculateExperimentationSuccess((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getFloatParameter()));
+	case RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_:
+		resp->insertSignedInt(calculateExperimentationSuccess((CreatureObject*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter(), inv->getFloatParameter()));
 		break;
 	case RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_:
 		resp->insertFloat(calculateExperimentationValueModifier(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
@@ -410,15 +410,15 @@ DraftSchematic* CraftingManagerAdapter::getSchematic(unsigned int schematicID) {
 	return ((CraftingManagerImplementation*) impl)->getSchematic(schematicID);
 }
 
-void CraftingManagerAdapter::sendDraftSlotsTo(PlayerCreature* player, unsigned int schematicID) {
+void CraftingManagerAdapter::sendDraftSlotsTo(CreatureObject* player, unsigned int schematicID) {
 	((CraftingManagerImplementation*) impl)->sendDraftSlotsTo(player, schematicID);
 }
 
-void CraftingManagerAdapter::sendResourceWeightsTo(PlayerCreature* player, unsigned int schematicID) {
+void CraftingManagerAdapter::sendResourceWeightsTo(CreatureObject* player, unsigned int schematicID) {
 	((CraftingManagerImplementation*) impl)->sendResourceWeightsTo(player, schematicID);
 }
 
-int CraftingManagerAdapter::calculateAssemblySuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness) {
+int CraftingManagerAdapter::calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness) {
 	return ((CraftingManagerImplementation*) impl)->calculateAssemblySuccess(player, draftSchematic, effectiveness);
 }
 
@@ -430,11 +430,11 @@ float CraftingManagerAdapter::getAssemblyPercentage(float value) {
 	return ((CraftingManagerImplementation*) impl)->getAssemblyPercentage(value);
 }
 
-int CraftingManagerAdapter::calculateExperimentationFailureRate(PlayerCreature* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
+int CraftingManagerAdapter::calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
 	return ((CraftingManagerImplementation*) impl)->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
 }
 
-int CraftingManagerAdapter::calculateExperimentationSuccess(PlayerCreature* player, DraftSchematic* draftSchematic, float effectiveness) {
+int CraftingManagerAdapter::calculateExperimentationSuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness) {
 	return ((CraftingManagerImplementation*) impl)->calculateExperimentationSuccess(player, draftSchematic, effectiveness);
 }
 

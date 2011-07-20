@@ -46,7 +46,7 @@ which carries forward this exception.
 
 #include "server/zone/ZoneServer.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
 #include "server/zone/packets/manufactureschematic/ManufactureSchematicObjectMessage3.h"
@@ -73,7 +73,7 @@ void DraftSchematicImplementation::loadTemplateData(SharedObjectTemplate* templa
 	schematicTemplate = dynamic_cast<DraftSchematicObjectTemplate*>(templateData);
 }
 
-void DraftSchematicImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void DraftSchematicImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
 
 }
@@ -85,9 +85,9 @@ void DraftSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 	error("Trying to send DraftSchematic baselines, should not be sending");
 }
 
-void DraftSchematicImplementation::sendDraftSlotsTo(PlayerCreature* player) {
+void DraftSchematicImplementation::sendDraftSlotsTo(CreatureObject* player) {
 
-	PlayerCreature* playerCreature = (PlayerCreature*) player;
+	CreatureObject* playerCreature = (CreatureObject*) player;
 
 	ObjectControllerMessage* msg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x01BF);
 
@@ -117,7 +117,7 @@ void DraftSchematicImplementation::insertIngredients(ObjectControllerMessage* ms
 	msg->insertShort(0);
 }
 
-void DraftSchematicImplementation::sendResourceWeightsTo(PlayerCreature* player) {
+void DraftSchematicImplementation::sendResourceWeightsTo(CreatureObject* player) {
 
 	Vector<Reference<ResourceWeight* > >* resourceWeights = schematicTemplate->getResourceWeights();
 

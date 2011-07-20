@@ -51,7 +51,7 @@ import engine.core.ManagedReference;
 import engine.util.Facade;
 import system.lang.ref.Reference;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.player.PlayerCreature;
+include server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.player.sui.listbox.SuiListBox;
@@ -60,7 +60,7 @@ include server.zone.objects.tangible.RelockLootContainerEvent;
 
 class SlicingSession extends Facade {
 	@weakReference
-	protected PlayerCreature player;
+	protected CreatureObject player;
 	
 	@weakReference
 	protected transient TangibleObject tangibleObject;
@@ -86,10 +86,10 @@ class SlicingSession extends Facade {
 	}
 
 	@local
-	public native void initalizeSlicingMenu(PlayerCreature pl, TangibleObject obj);
+	public native void initalizeSlicingMenu(CreatureObject pl, TangibleObject obj);
 	
 	@local
-	public native void handleMenuSelect(PlayerCreature pl, byte menuID, SuiListBox suiBox);
+	public native void handleMenuSelect(CreatureObject pl, byte menuID, SuiListBox suiBox);
 
 	public native int initializeSession();
 	
@@ -157,7 +157,7 @@ class SlicingSession extends Facade {
 		endSlicing();
 	}*/
 
-	public native int getSlicingSkill(PlayerCreature slicer);
+	public native int getSlicingSkill(CreatureObject slicer);
 
 	public native boolean hasPrecisionLaserKnife(boolean removeItem = true);
 

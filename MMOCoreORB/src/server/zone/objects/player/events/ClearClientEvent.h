@@ -8,14 +8,14 @@
 #ifndef CLEARCLIENTEVENT_H_
 #define CLEARCLIENTEVENT_H_
 
-#include "../PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class ClearClientEvent : public Task {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 	ManagedReference<ZoneClientSession*> client;
 
 public:
-	ClearClientEvent(PlayerCreature* pl, ZoneClientSession* cl) : Task() {
+	ClearClientEvent(CreatureObject* pl, ZoneClientSession* cl) : Task() {
 		player = pl;
 		client = cl;
 	}

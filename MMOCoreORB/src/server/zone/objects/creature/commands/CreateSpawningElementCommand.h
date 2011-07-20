@@ -77,7 +77,7 @@ public:
 
 		StringTokenizer args(arguments.toString());
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 
 		if (player == NULL) {

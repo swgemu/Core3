@@ -58,7 +58,7 @@ import server.zone.objects.region.CityRegion;
 import server.zone.objects.scene.variables.StringId;
 import server.zone.managers.weather.WeatherManager;
 import server.zone.managers.objectcontroller.ObjectController;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 include server.zone.objects.region.CityRegion;
 include server.zone.managers.planet.RegionMap;
@@ -179,7 +179,7 @@ class PlanetManager extends ManagedService implements Logger {
 		return travelFares.get(destinationPlanet);
 	}
 	
-	public native void sendPlanetTravelPointListResponse(PlayerCreature player);
+	public native void sendPlanetTravelPointListResponse(CreatureObject player);
 	
 	@local
 	@dereferenced

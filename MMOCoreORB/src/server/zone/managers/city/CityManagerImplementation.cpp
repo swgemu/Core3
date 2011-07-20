@@ -10,6 +10,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
@@ -74,12 +75,13 @@ void CityManagerImplementation::loadLuaConfig() {
 	lua = NULL;
 }
 
-void CityManagerImplementation::createNewCity(CityHallObject* city, PlayerCreature* player, const String& name) {
+void CityManagerImplementation::createNewCity(CityHallObject* city, CreatureObject* player, const String& name) {
 	city->setCityName(name);
 
 	city->setMayorObjectID(player->getObjectID());
+	PlayerObject* ghost = player->getPlayerObject();
 
-	player->setDeclaredResidence(city);
+	ghost->setDeclaredResidence(city);
 	declareCitizenship(city, player, false);
 
 	city->rescheduleCityUpdate(newCityGracePeriod);
@@ -117,7 +119,7 @@ void CityManagerImplementation::createNewCity(CityHallObject* city, PlayerCreatu
 	sendMailToMayor(city, "@city/city:new_city_from", subject, emailBody);
 }
 
-void CityManagerImplementation::changeCityName(CityHallObject* city, PlayerCreature* player, const String& name) {
+void CityManagerImplementation::changeCityName(CityHallObject* city, CreatureObject* player, const String& name) {
 	city->setCityName(name);
 
 	ManagedReference<Region*> cityRegion = city->getCityRegion();
@@ -167,7 +169,7 @@ void CityManagerImplementation::sendMailToMayor(CityHallObject* city, const Stri
 	if (obj == NULL || !obj->isPlayerCreature())
 		return;
 
-	PlayerCreature* mayor = (PlayerCreature*) obj.get();
+	CreatureObject* mayor = (CreatureObject*) obj.get();
 
 	chatManager->sendMail(sendername, subject, body, mayor->getFirstName());
 }
@@ -187,7 +189,7 @@ void CityManagerImplementation::sendMailToAllCitizens(CityHallObject* city, cons
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		PlayerCreature* player = (PlayerCreature*) obj.get();
+		CreatureObject* player = (CreatureObject*) obj.get();
 
 		Locker _lock(player);
 
@@ -323,7 +325,7 @@ void CityManagerImplementation::destroyCity(CityHallObject* city) {
 }
 
 
-void CityManagerImplementation::declareCitizenship(CityHallObject* city, PlayerCreature* player, bool sendMail) {
+void CityManagerImplementation::declareCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail) {
 	uint64 playerID = player->getObjectID();
 
 	if (city->isCitizen(playerID))
@@ -349,7 +351,7 @@ void CityManagerImplementation::declareCitizenship(CityHallObject* city, PlayerC
 	if (obj == NULL || !obj->isPlayerCreature())
 		return;
 
-	PlayerCreature* mayor = (PlayerCreature*) obj.get();
+	CreatureObject* mayor = (CreatureObject*) obj.get();
 
 	String mayorName = mayor->getObjectName()->getDisplayedName();
 
@@ -372,7 +374,7 @@ void CityManagerImplementation::declareCitizenship(CityHallObject* city, PlayerC
 	sendMailToMayor(city, "@city/city:new_city_from", subject, email);
 }
 
-void CityManagerImplementation::revokeCitizenship(CityHallObject* city, PlayerCreature* player, bool sendMail) {
+void CityManagerImplementation::revokeCitizenship(CityHallObject* city, CreatureObject* player, bool sendMail) {
 	uint64 playerID = player->getObjectID();
 
 	if (!city->isCitizen(playerID))
@@ -409,7 +411,7 @@ bool CityManagerImplementation::checkCitiesCappedAtRank(uint8 rank) {
 	return getCitiesAllowed(rank) <= totalCitiesAtRank;
 }
 
-void CityManagerImplementation::addMilitiaMember(CityHallObject* city, PlayerCreature* player, const String& citizenName) {
+void CityManagerImplementation::addMilitiaMember(CityHallObject* city, CreatureObject* player, const String& citizenName) {
 	if (!city->isMayor(player->getObjectID())) {
 		//Only the mayor can manage the militia.
 		return;
@@ -425,7 +427,7 @@ void CityManagerImplementation::addMilitiaMember(CityHallObject* city, PlayerCre
 	if (playerManager == NULL)
 		return;
 
-	ManagedReference<PlayerCreature*> citizen = playerManager->getPlayer(citizenName);
+	ManagedReference<CreatureObject*> citizen = playerManager->getPlayer(citizenName);
 
 	if (citizen == NULL)
 		return;
@@ -449,7 +451,7 @@ void CityManagerImplementation::addMilitiaMember(CityHallObject* city, PlayerCre
 	city->updateToDatabaseWithoutChildren();
 }
 
-void CityManagerImplementation::removeMilitiaMember(CityHallObject* city, PlayerCreature* player, uint64 playerID) {
+void CityManagerImplementation::removeMilitiaMember(CityHallObject* city, CreatureObject* player, uint64 playerID) {
 	if (!city->isMayor(player->getObjectID())) {
 		//Only the mayor can manage the militia.
 		return;
@@ -475,7 +477,7 @@ void CityManagerImplementation::removeMilitiaMember(CityHallObject* city, Player
 	if (obj == NULL || !obj->isPlayerCreature())
 		return;
 
-	PlayerCreature* citizen = (PlayerCreature*) obj.get();
+	CreatureObject* citizen = (CreatureObject*) obj.get();
 
 	if (citizen->isOnline())
 		citizen->sendSystemMessage("@city/city:removed_militia_target"); //You have been removed from the city militia.

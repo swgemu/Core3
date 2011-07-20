@@ -42,8 +42,8 @@ which carries forward this exception.
 */
 
 #include "SpaceshipTerminal.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
-int SpaceshipTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SpaceshipTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return 0;
 }

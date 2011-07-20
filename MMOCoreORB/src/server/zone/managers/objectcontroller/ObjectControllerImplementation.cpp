@@ -11,7 +11,7 @@
 #include "server/zone/managers/objectcontroller/command/CommandList.h"
 
 #include "server/zone/objects/creature/LuaCreatureObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/db/ServerDatabase.h"

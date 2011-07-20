@@ -48,7 +48,7 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	setSliceable(true);
 }
 
-void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	WearableObjectImplementation::fillAttributeList(alm, object);
 
 	//Armor Rating
@@ -233,7 +233,7 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Pla
 
 }
 
-int ArmorObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int ArmorObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 69) {
 		if (isSliced()) {
 			player->sendSystemMessage("@slicing/slicing:already_sliced");

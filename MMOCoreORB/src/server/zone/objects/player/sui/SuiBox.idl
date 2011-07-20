@@ -47,7 +47,9 @@ package server.zone.objects.player.sui;
 
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerObject;
+import server.zone.objects.creature.CreatureObject;
 import system.io.StringTokenizer;
 import engine.service.proto.BaseMessage;
 
@@ -57,7 +59,7 @@ include server.zone.objects.player.sui.SuiCallback;
 
 class SuiBox extends ManagedObject implements Logger {
 	@weakReference
-	protected PlayerCreature player;
+	protected CreatureObject player;
 	
 	@local
 	protected SuiCallback suiCallback;
@@ -107,7 +109,7 @@ class SuiBox extends ManagedObject implements Logger {
 
 	public static final int SLICINGBOX = 20;
 	
-	public SuiBox(PlayerCreature play, unsigned int windowtype, unsigned int boxtype) {
+	public SuiBox(CreatureObject play, unsigned int windowtype, unsigned int boxtype) {
 		player = play;
 		
 		forceCloseDistance = 32;
@@ -121,8 +123,10 @@ class SuiBox extends ManagedObject implements Logger {
 	
 	public void initialize() {
 		Logger.setLoggingName("SuiBox");
+		
+		PlayerObject ghost = player.getPlayerObject();
 
-		boxID = player.getNewSuiBoxID(windowType);
+		boxID = ghost.getNewSuiBoxID(windowType);
 
 		handlerStr = "msgSelected";
 		
@@ -297,7 +301,7 @@ class SuiBox extends ManagedObject implements Logger {
 
 	public native void setForceCloseDisabled();
 
-	public PlayerCreature getPlayer() {
+	public CreatureObject getPlayer() {
 		return player;
 	}
 

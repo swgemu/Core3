@@ -51,7 +51,7 @@ import engine.core.ManagedReference;
 import engine.util.Facade;
 import system.lang.ref.Reference;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.player.PlayerCreature;
+include server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.managers.professions.imagedesign.ImageDesignManager;
@@ -64,10 +64,10 @@ class ImageDesignSession extends Facade {
 	ImageDesignManager imageDesignManager;
 
 	@weakReference
-	protected PlayerCreature designerCreature;
+	protected CreatureObject designerCreature;
 
 	@weakReference
-	protected PlayerCreature targetCreature;
+	protected CreatureObject targetCreature;
 	
 	@dereferenced
 	protected ImageDesignData imageDesignData;
@@ -94,7 +94,7 @@ class ImageDesignSession extends Facade {
 	 * @post designer and targetPlayer are locked
 	 */
 	@local
-	public native void startImageDesign(PlayerCreature designer, PlayerCreature targetPlayer);
+	public native void startImageDesign(CreatureObject designer, CreatureObject targetPlayer);
 	
 	/**
 	 * When a change is made by the designer, the target's window needs to be notified, and vice versa.

@@ -57,8 +57,8 @@ public:
 	BuffList();
 	BuffList(const BuffList& bf);
 
-	void sendTo(PlayerCreature* player);
-	void sendDestroyTo(PlayerCreature* player);
+	void sendTo(CreatureObject* player);
+	void sendDestroyTo(CreatureObject* player);
 
 	void updateBuffsToDatabase();
 

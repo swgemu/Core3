@@ -71,7 +71,7 @@ public:
 		if (args.hasMoreTokens()) {
 
 			if (creature->isPlayerCreature()) {
-				PlayerCreature* player = (PlayerCreature*) creature;
+				CreatureObject* player = (CreatureObject*) creature;
 
 				PlayerObject* ghost = player->getPlayerObject();
 

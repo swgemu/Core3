@@ -53,7 +53,7 @@ import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.packets.scene.AttributeListMessage;
 import system.util.VectorMap;
 import system.util.Vector;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 
 class Component extends TangibleObject {
@@ -86,10 +86,10 @@ class Component extends TangibleObject {
 	public native void initializeTransientMembers();
 	
 	@local
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public boolean isComponent() {
 		return true; 

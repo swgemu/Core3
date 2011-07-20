@@ -28,16 +28,30 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
 
@@ -66,7 +80,7 @@ public:
 
 	static const int HANDLETHREEBUTTON = 3;
 
-	SuiListBox(PlayerCreature* player, unsigned int windowType = 0, unsigned int listBoxType = 0);
+	SuiListBox(CreatureObject* player, unsigned int windowType = 0, unsigned int listBoxType = 0);
 
 	void init();
 
@@ -142,7 +156,7 @@ public:
 
 	static const int HANDLETHREEBUTTON = 3;
 
-	SuiListBoxImplementation(PlayerCreature* player, unsigned int windowType = 0, unsigned int listBoxType = 0);
+	SuiListBoxImplementation(CreatureObject* player, unsigned int windowType = 0, unsigned int listBoxType = 0);
 
 	SuiListBoxImplementation(DummyConstructorParameter* param);
 

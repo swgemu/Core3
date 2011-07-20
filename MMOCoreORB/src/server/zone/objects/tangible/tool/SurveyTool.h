@@ -14,16 +14,16 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -103,7 +103,7 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
@@ -119,15 +119,15 @@ public:
 
 	void clearGamble();
 
-	void consentRadioactiveSample(PlayerCreature* player);
+	void consentRadioactiveSample(CreatureObject* player);
 
-	void sendRadioactiveWarning(PlayerCreature* player);
+	void sendRadioactiveWarning(CreatureObject* player);
 
-	void sendRangeSui(PlayerCreature* player);
+	void sendRangeSui(CreatureObject* player);
 
-	void surveyCnodeMinigameSui(PlayerCreature* player);
+	void surveyCnodeMinigameSui(CreatureObject* player);
 
-	void surveyCnodeMinigame(PlayerCreature* player, int value);
+	void surveyCnodeMinigame(CreatureObject* player, int value);
 
 	Coordinate* getRichSampleLocation();
 
@@ -137,17 +137,17 @@ public:
 
 	bool isInUse();
 
-	void surveyGnodeMinigameSui(PlayerCreature* player);
+	void surveyGnodeMinigameSui(CreatureObject* player);
 
-	void surveyGnodeMinigame(PlayerCreature* player, int value);
+	void surveyGnodeMinigame(CreatureObject* player, int value);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void sendResourceListTo(PlayerCreature* player);
+	void sendResourceListTo(CreatureObject* player);
 
-	void sendSurveyTo(PlayerCreature* player, const String& resname);
+	void sendSurveyTo(CreatureObject* player, const String& resname);
 
-	void sendSampleTo(PlayerCreature* player, const String& resname);
+	void sendSampleTo(CreatureObject* player, const String& resname);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -230,7 +230,7 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
@@ -246,15 +246,15 @@ public:
 
 	void clearGamble();
 
-	void consentRadioactiveSample(PlayerCreature* player);
+	void consentRadioactiveSample(CreatureObject* player);
 
-	void sendRadioactiveWarning(PlayerCreature* player);
+	void sendRadioactiveWarning(CreatureObject* player);
 
-	void sendRangeSui(PlayerCreature* player);
+	void sendRangeSui(CreatureObject* player);
 
-	void surveyCnodeMinigameSui(PlayerCreature* player);
+	void surveyCnodeMinigameSui(CreatureObject* player);
 
-	void surveyCnodeMinigame(PlayerCreature* player, int value);
+	void surveyCnodeMinigame(CreatureObject* player, int value);
 
 	Coordinate* getRichSampleLocation();
 
@@ -264,17 +264,17 @@ public:
 
 	bool isInUse();
 
-	void surveyGnodeMinigameSui(PlayerCreature* player);
+	void surveyGnodeMinigameSui(CreatureObject* player);
 
-	void surveyGnodeMinigame(PlayerCreature* player, int value);
+	void surveyGnodeMinigame(CreatureObject* player, int value);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void sendResourceListTo(PlayerCreature* player);
+	void sendResourceListTo(CreatureObject* player);
 
-	void sendSurveyTo(PlayerCreature* player, const String& resname);
+	void sendSurveyTo(CreatureObject* player, const String& resname);
 
-	void sendSampleTo(PlayerCreature* player, const String& resname);
+	void sendSampleTo(CreatureObject* player, const String& resname);
 
 	WeakReference<SurveyTool*> _this;
 
@@ -333,15 +333,15 @@ public:
 
 	void clearGamble();
 
-	void consentRadioactiveSample(PlayerCreature* player);
+	void consentRadioactiveSample(CreatureObject* player);
 
-	void sendRadioactiveWarning(PlayerCreature* player);
+	void sendRadioactiveWarning(CreatureObject* player);
 
-	void sendRangeSui(PlayerCreature* player);
+	void sendRangeSui(CreatureObject* player);
 
-	void surveyCnodeMinigameSui(PlayerCreature* player);
+	void surveyCnodeMinigameSui(CreatureObject* player);
 
-	void surveyCnodeMinigame(PlayerCreature* player, int value);
+	void surveyCnodeMinigame(CreatureObject* player, int value);
 
 	void clearRichSampleLocation();
 
@@ -349,21 +349,21 @@ public:
 
 	bool isInUse();
 
-	void surveyGnodeMinigameSui(PlayerCreature* player);
+	void surveyGnodeMinigameSui(CreatureObject* player);
 
-	void surveyGnodeMinigame(PlayerCreature* player, int value);
+	void surveyGnodeMinigame(CreatureObject* player, int value);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void sendResourceListTo(PlayerCreature* player);
+	void sendResourceListTo(CreatureObject* player);
 
-	void sendSurveyTo(PlayerCreature* player, const String& resname);
+	void sendSurveyTo(CreatureObject* player, const String& resname);
 
-	void sendSampleTo(PlayerCreature* player, const String& resname);
+	void sendSampleTo(CreatureObject* player, const String& resname);
 
 protected:
-	String _param1_sendSurveyTo__PlayerCreature_String_;
-	String _param1_sendSampleTo__PlayerCreature_String_;
+	String _param1_sendSurveyTo__CreatureObject_String_;
+	String _param1_sendSampleTo__CreatureObject_String_;
 };
 
 class SurveyToolHelper : public DistributedObjectClassHelper, public Singleton<SurveyToolHelper> {

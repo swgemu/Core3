@@ -18,7 +18,7 @@ public:
 	DestroyStructureCodeSuiCallback(ZoneServer* serv) : SuiCallback(serv) {
 	}
 
-	void run(PlayerCreature* player, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
 		ManagedReference<DestroyStructureSession*> session = dynamic_cast<DestroyStructureSession*>(player->getActiveSession(SessionFacadeType::DESTROYSTRUCTURE));
 
 		if (session == NULL)

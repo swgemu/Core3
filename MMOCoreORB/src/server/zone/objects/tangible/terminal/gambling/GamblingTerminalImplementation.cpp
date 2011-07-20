@@ -43,8 +43,8 @@ which carries forward this exception.
 */
 
 #include "GamblingTerminal.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/minigames/GamblingManager.h"
@@ -54,7 +54,7 @@ which carries forward this exception.
 //#include "server/zone/objects/player/sui/slotmachinebox/SuiSabaccStartBox.h"
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
 
-int GamblingTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int GamblingTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 245 || selectedID == 20) {
 		if (playersWindows.contains(player)) {
 			leaveTerminal(player);
@@ -70,7 +70,7 @@ void GamblingTerminalImplementation::setEvent(GamblingEvent* event) {
 	this->event = event;
 }
 
-bool GamblingTerminalImplementation::invalidPosture(PlayerCreature* player) {
+bool GamblingTerminalImplementation::invalidPosture(CreatureObject* player) {
 	if (player->isIncapacitated() || player->isInCombat() || player->isSwimming() || player->isMounted() || player->isDead() || player->isMeditating())
 		return true;
 	return false;
@@ -78,7 +78,7 @@ bool GamblingTerminalImplementation::invalidPosture(PlayerCreature* player) {
 
 
 
-bool GamblingTerminalImplementation::checkJoin(PlayerCreature* player) {
+bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 	bool returnValue = true;
 	switch (machineType) {
 		case SLOTMACHINE: {
@@ -156,7 +156,7 @@ bool GamblingTerminalImplementation::checkJoin(PlayerCreature* player) {
 	return returnValue;
 }
 
-void GamblingTerminalImplementation::joinTerminal(PlayerCreature* player) {
+void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 	ManagedReference<GamblingManager*> gamblingManager = server->getZoneServer()->getGamblingManager();
 
 	Locker _locker(_this);
@@ -232,28 +232,28 @@ void GamblingTerminalImplementation::joinTerminal(PlayerCreature* player) {
 	}
 }
 
-void GamblingTerminalImplementation::closeMenu(PlayerCreature* player, bool payout) {
-
+void GamblingTerminalImplementation::closeMenu(CreatureObject* player, bool payout) {
+	PlayerObject* ghost = player->getPlayerObject();
 	uint32 boxID = playersWindows.get(player);
 
-	if (player->hasSuiBox(boxID)) {
+	if (ghost->hasSuiBox(boxID)) {
 
-		ManagedReference<SuiSlotMachineBox*> box = dynamic_cast<SuiSlotMachineBox*>(player->getSuiBox(boxID));
+		ManagedReference<SuiSlotMachineBox*> box = dynamic_cast<SuiSlotMachineBox*>(ghost->getSuiBox(boxID));
 
 		if (payout) {
 			uint32 payoutBoxID = box->getPayoutBoxID();
 
-			ManagedReference<SuiBox*> sui = player->getSuiBox(payoutBoxID);
+			ManagedReference<SuiBox*> sui = ghost->getSuiBox(payoutBoxID);
 			if (sui != NULL) {
 				player->sendMessage(sui->generateCloseMessage());
-				player->removeSuiBox(payoutBoxID);
+				ghost->removeSuiBox(payoutBoxID);
 			}
 		}
 
 		if (box != NULL)
 			player->sendMessage(box->generateCloseMessage());
 
-		player->removeSuiBox(boxID);
+		ghost->removeSuiBox(boxID);
 	}
 }
 
@@ -278,7 +278,7 @@ void GamblingTerminalImplementation::closeAllMenus() {
 	}
 }
 
-void GamblingTerminalImplementation::leaveTerminal(PlayerCreature* player) {
+void GamblingTerminalImplementation::leaveTerminal(CreatureObject* player) {
 	ManagedReference<GamblingManager*> gamblingManager = server->getZoneServer()->getGamblingManager();
 
 	Locker _locker(_this);
@@ -332,7 +332,7 @@ void GamblingTerminalImplementation::statusUpdate(int event) {
 	}
 }
 
-void GamblingTerminalImplementation::statusUpdate(PlayerCreature* player, int event) {
+void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int event) {
 	switch (machineType) {
 		case SLOTMACHINE: {
 
@@ -595,7 +595,7 @@ void GamblingTerminalImplementation::notifyAll(StringIdChatParameter* text) {
 	}
 }
 
-void GamblingTerminalImplementation::notifyOthers(PlayerCreature* player, StringIdChatParameter* text) {
+void GamblingTerminalImplementation::notifyOthers(CreatureObject* player, StringIdChatParameter* text) {
 	if (player != NULL) {
 		for (int i = 0; i < playersWindows.size(); ++i) {
 			if (playersWindows.elementAt(i).getKey() != player) {

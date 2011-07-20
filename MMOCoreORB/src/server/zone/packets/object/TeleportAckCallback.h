@@ -27,9 +27,10 @@ public:
 	}
 
 	void run() {
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
+		PlayerObject* ghost = player->getPlayerObject();
 
-		player->setTeleporting(false);
+		ghost->setTeleporting(false);
 	}
 };
 

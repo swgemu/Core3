@@ -46,7 +46,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
 		ManagedReference<SceneObject*> sceno = server->getZoneServer()->getObject(vendorID);
 
 		if (player == NULL || sceno == NULL || !sceno->isVendor())

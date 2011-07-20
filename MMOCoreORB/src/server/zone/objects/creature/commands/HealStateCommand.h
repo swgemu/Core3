@@ -84,7 +84,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		int amount = (int)round((float)power * 1.f);
 
@@ -102,8 +102,8 @@ public:
 		if (!creatureTarget->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
-		PlayerCreature* playerTarget = (PlayerCreature*) creatureTarget;
+		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* playerTarget = (CreatureObject*) creatureTarget;
 		StringBuffer msgPlayer, msgTarget;
 
 		String stateName = CreatureState::getName(state, true);

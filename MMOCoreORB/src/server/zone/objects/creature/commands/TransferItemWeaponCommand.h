@@ -148,7 +148,7 @@ public:
 					creature->setWeapon(weaponObject, true);
 
 					if (creature->isPlayerCreature()) {
-						PlayerCreature* playerCreature = (PlayerCreature*) creature;
+						CreatureObject* playerCreature = (CreatureObject*) creature;
 
 						if (weaponObject->isCertifiedFor(playerCreature)) {
 							weaponObject->setCertified(true);
@@ -157,7 +157,9 @@ public:
 							weaponObject->setCertified(false);
 						}
 
-						if (playerCreature->getCenteredBonus() != 0) {
+						PlayerObject* ghost = playerCreature->getPlayerObject();
+
+						if (ghost->getCenteredBonus() != 0) {
 							Reference<Task*> task = playerCreature->getPendingTask("centerofbeing");
 							if (task != NULL) {
 								task->cancel();

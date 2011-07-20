@@ -58,15 +58,15 @@ void CraftingManagerImplementation::removeSchematicGroup(PlayerObject* playerObj
 	schematicMap->removeSchematics(playerObject, schematicgroups, updateClient);
 }
 
-void CraftingManagerImplementation::sendDraftSlotsTo(PlayerCreature* player, uint32 schematicID) {
+void CraftingManagerImplementation::sendDraftSlotsTo(CreatureObject* player, uint32 schematicID) {
 	schematicMap->sendDraftSlotsTo(player, schematicID);
 }
 
-void CraftingManagerImplementation::sendResourceWeightsTo(PlayerCreature* player, uint32 schematicID) {
+void CraftingManagerImplementation::sendResourceWeightsTo(CreatureObject* player, uint32 schematicID) {
 	schematicMap->sendResourceWeightsTo(player, schematicID);
 }
 
-int CraftingManagerImplementation::calculateAssemblySuccess(PlayerCreature* player,
+int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* player,
 		DraftSchematic* draftSchematic, float effectiveness) {
 
 	// assemblyPoints is 0-12
@@ -157,7 +157,7 @@ float CraftingManagerImplementation::getAssemblyPercentage(float value) {
 	return percentage;
 }
 
-int CraftingManagerImplementation::calculateExperimentationFailureRate(PlayerCreature* player,
+int CraftingManagerImplementation::calculateExperimentationFailureRate(CreatureObject* player,
 		ManufactureSchematic* manufactureSchematic, int pointsUsed) {
 
 	// Get the Weighted value of MA
@@ -172,7 +172,7 @@ int CraftingManagerImplementation::calculateExperimentationFailureRate(PlayerCre
 	return failure;
 }
 
-int CraftingManagerImplementation::calculateExperimentationSuccess(PlayerCreature* player,
+int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObject* player,
 		DraftSchematic* draftSchematic, float effectiveness) {
 
 	// assemblyPoints is 0-12

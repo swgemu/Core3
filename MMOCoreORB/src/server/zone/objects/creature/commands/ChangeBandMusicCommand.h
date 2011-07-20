@@ -73,7 +73,7 @@ public:
 			return GENERALERROR;
 		}
 
-		PlayerCreature* leader = (PlayerCreature*)creature;
+		CreatureObject* leader = (CreatureObject*)creature;
 
 		if (!creature->isEntertaining()) {
 			leader->sendSystemMessage("performance", "flourish_not_performing");

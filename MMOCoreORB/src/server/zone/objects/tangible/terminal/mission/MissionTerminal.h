@@ -28,16 +28,16 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -84,7 +84,7 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isMissionTerminal();
 
@@ -106,11 +106,11 @@ public:
 
 	bool isStatueTerminal();
 
-	bool isSlicer(PlayerCreature* slicer);
+	bool isSlicer(CreatureObject* slicer);
 
-	void addSlicer(PlayerCreature* slicer);
+	void addSlicer(CreatureObject* slicer);
 
-	void removeSlicer(PlayerCreature* slicer);
+	void removeSlicer(CreatureObject* slicer);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -144,7 +144,7 @@ class MissionTerminalImplementation : public TerminalImplementation {
 protected:
 	String terminalType;
 
-	Vector<ManagedReference<PlayerCreature* > > slicers;
+	Vector<ManagedReference<CreatureObject* > > slicers;
 
 public:
 	MissionTerminalImplementation();
@@ -155,7 +155,7 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isMissionTerminal();
 
@@ -177,11 +177,11 @@ public:
 
 	bool isStatueTerminal();
 
-	bool isSlicer(PlayerCreature* slicer);
+	bool isSlicer(CreatureObject* slicer);
 
-	void addSlicer(PlayerCreature* slicer);
+	void addSlicer(CreatureObject* slicer);
 
-	void removeSlicer(PlayerCreature* slicer);
+	void removeSlicer(CreatureObject* slicer);
 
 	WeakReference<MissionTerminal*> _this;
 
@@ -228,7 +228,7 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isMissionTerminal();
 
@@ -250,11 +250,11 @@ public:
 
 	bool isStatueTerminal();
 
-	bool isSlicer(PlayerCreature* slicer);
+	bool isSlicer(CreatureObject* slicer);
 
-	void addSlicer(PlayerCreature* slicer);
+	void addSlicer(CreatureObject* slicer);
 
-	void removeSlicer(PlayerCreature* slicer);
+	void removeSlicer(CreatureObject* slicer);
 
 };
 

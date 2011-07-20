@@ -49,7 +49,7 @@ import system.util.VectorMap;
 import system.util.Vector;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.resource.ResourceSpawn;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.scene.SceneObject;
@@ -89,7 +89,7 @@ class ResourceContainer extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	/**
 	 * Sends the baseline messages of this object to the specified player, needs to be overriden
@@ -154,7 +154,7 @@ class ResourceContainer extends TangibleObject {
 	}
 	
 	public native void split(int newStackSize);
-	public native void split(int newStackSize, PlayerCreature player);
+	public native void split(int newStackSize, CreatureObject player);
 
 	public native void combine(ResourceContainer fromContainer);
 }

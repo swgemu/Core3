@@ -47,6 +47,7 @@ object_creature_player_ithorian_female = object_creature_player_shared_ithorian_
 	zoneComponent = "PlayerZoneComponent",
 	objectMenuComponent = "PlayerObjectMenuComponent",
 	containerComponent = "PlayerContainerComponent",
+	pvpStatusBitmask = PLAYER,
 	templateType = PLAYERCREATURE
 }
 

@@ -16,7 +16,7 @@
  *	FactoryObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_UPDATEINSTALLATIONWORK__,RPC_SENDINSERTMANUSUI__PLAYERCREATURE_,RPC_SENDINGREDIENTSNEEDEDSUI__PLAYERCREATURE_,RPC_SENDINGREDIENTHOPPER__PLAYERCREATURE_,RPC_SENDOUTPUTHOPPER__PLAYERCREATURE_,RPC_HANDLEINSERTFACTORYSCHEM__PLAYERCREATURE_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__PLAYERCREATURE_,RPC_HANDLEOPERATETOGGLE__PLAYERCREATURE_,RPC_CREATENEWOBJECT__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISFACTORY__,RPC_CREATECHILDOBJECTS__,RPC_UPDATEINSTALLATIONWORK__,RPC_SENDINSERTMANUSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_,RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_,RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_,RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_,RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_,RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_,RPC_CREATENEWOBJECT__,};
 
 FactoryObject::FactoryObject() : InstallationObject(DummyConstructorParameter::instance()) {
 	FactoryObjectImplementation* _implementation = new FactoryObjectImplementation();
@@ -66,7 +66,7 @@ void FactoryObject::notifyLoadFromDatabase() {
 		_implementation->notifyLoadFromDatabase();
 }
 
-void FactoryObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void FactoryObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -75,7 +75,7 @@ void FactoryObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature*
 		_implementation->fillAttributeList(msg, object);
 }
 
-void FactoryObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void FactoryObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -84,13 +84,13 @@ void FactoryObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Pla
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int FactoryObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FactoryObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -138,13 +138,13 @@ void FactoryObject::updateInstallationWork() {
 		_implementation->updateInstallationWork();
 }
 
-void FactoryObject::sendInsertManuSui(PlayerCreature* player) {
+void FactoryObject::sendInsertManuSui(CreatureObject* player) {
 	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDINSERTMANUSUI__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDINSERTMANUSUI__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -152,13 +152,13 @@ void FactoryObject::sendInsertManuSui(PlayerCreature* player) {
 		_implementation->sendInsertManuSui(player);
 }
 
-void FactoryObject::sendIngredientsNeededSui(PlayerCreature* player) {
+void FactoryObject::sendIngredientsNeededSui(CreatureObject* player) {
 	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDINGREDIENTSNEEDEDSUI__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -166,13 +166,13 @@ void FactoryObject::sendIngredientsNeededSui(PlayerCreature* player) {
 		_implementation->sendIngredientsNeededSui(player);
 }
 
-void FactoryObject::sendIngredientHopper(PlayerCreature* player) {
+void FactoryObject::sendIngredientHopper(CreatureObject* player) {
 	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDINGREDIENTHOPPER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -180,13 +180,13 @@ void FactoryObject::sendIngredientHopper(PlayerCreature* player) {
 		_implementation->sendIngredientHopper(player);
 }
 
-void FactoryObject::sendOutputHopper(PlayerCreature* player) {
+void FactoryObject::sendOutputHopper(CreatureObject* player) {
 	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDOUTPUTHOPPER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -194,13 +194,13 @@ void FactoryObject::sendOutputHopper(PlayerCreature* player) {
 		_implementation->sendOutputHopper(player);
 }
 
-void FactoryObject::handleInsertFactorySchem(PlayerCreature* player, ManufactureSchematic* schematic) {
+void FactoryObject::handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic) {
 	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEINSERTFACTORYSCHEM__PLAYERCREATURE_MANUFACTURESCHEMATIC_);
+		DistributedMethod method(this, RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(schematic);
 
@@ -209,13 +209,13 @@ void FactoryObject::handleInsertFactorySchem(PlayerCreature* player, Manufacture
 		_implementation->handleInsertFactorySchem(player, schematic);
 }
 
-void FactoryObject::handleRemoveFactorySchem(PlayerCreature* player) {
+void FactoryObject::handleRemoveFactorySchem(CreatureObject* player) {
 	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEREMOVEFACTORYSCHEM__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -223,13 +223,13 @@ void FactoryObject::handleRemoveFactorySchem(PlayerCreature* player) {
 		_implementation->handleRemoveFactorySchem(player);
 }
 
-void FactoryObject::handleOperateToggle(PlayerCreature* player) {
+void FactoryObject::handleOperateToggle(CreatureObject* player) {
 	FactoryObjectImplementation* _implementation = (FactoryObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOPERATETOGGLE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -464,8 +464,8 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_ISFACTORY__:
 		resp->insertBoolean(isFactory());
@@ -476,26 +476,26 @@ Packet* FactoryObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_UPDATEINSTALLATIONWORK__:
 		updateInstallationWork();
 		break;
-	case RPC_SENDINSERTMANUSUI__PLAYERCREATURE_:
-		sendInsertManuSui((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDINSERTMANUSUI__CREATUREOBJECT_:
+		sendInsertManuSui((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDINGREDIENTSNEEDEDSUI__PLAYERCREATURE_:
-		sendIngredientsNeededSui((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDINGREDIENTSNEEDEDSUI__CREATUREOBJECT_:
+		sendIngredientsNeededSui((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDINGREDIENTHOPPER__PLAYERCREATURE_:
-		sendIngredientHopper((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDINGREDIENTHOPPER__CREATUREOBJECT_:
+		sendIngredientHopper((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDOUTPUTHOPPER__PLAYERCREATURE_:
-		sendOutputHopper((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDOUTPUTHOPPER__CREATUREOBJECT_:
+		sendOutputHopper((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEINSERTFACTORYSCHEM__PLAYERCREATURE_MANUFACTURESCHEMATIC_:
-		handleInsertFactorySchem((PlayerCreature*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter());
+	case RPC_HANDLEINSERTFACTORYSCHEM__CREATUREOBJECT_MANUFACTURESCHEMATIC_:
+		handleInsertFactorySchem((CreatureObject*) inv->getObjectParameter(), (ManufactureSchematic*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEREMOVEFACTORYSCHEM__PLAYERCREATURE_:
-		handleRemoveFactorySchem((PlayerCreature*) inv->getObjectParameter());
+	case RPC_HANDLEREMOVEFACTORYSCHEM__CREATUREOBJECT_:
+		handleRemoveFactorySchem((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOPERATETOGGLE__PLAYERCREATURE_:
-		handleOperateToggle((PlayerCreature*) inv->getObjectParameter());
+	case RPC_HANDLEOPERATETOGGLE__CREATUREOBJECT_:
+		handleOperateToggle((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_CREATENEWOBJECT__:
 		createNewObject();
@@ -515,7 +515,7 @@ void FactoryObjectAdapter::notifyLoadFromDatabase() {
 	((FactoryObjectImplementation*) impl)->notifyLoadFromDatabase();
 }
 
-int FactoryObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FactoryObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((FactoryObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
@@ -531,31 +531,31 @@ void FactoryObjectAdapter::updateInstallationWork() {
 	((FactoryObjectImplementation*) impl)->updateInstallationWork();
 }
 
-void FactoryObjectAdapter::sendInsertManuSui(PlayerCreature* player) {
+void FactoryObjectAdapter::sendInsertManuSui(CreatureObject* player) {
 	((FactoryObjectImplementation*) impl)->sendInsertManuSui(player);
 }
 
-void FactoryObjectAdapter::sendIngredientsNeededSui(PlayerCreature* player) {
+void FactoryObjectAdapter::sendIngredientsNeededSui(CreatureObject* player) {
 	((FactoryObjectImplementation*) impl)->sendIngredientsNeededSui(player);
 }
 
-void FactoryObjectAdapter::sendIngredientHopper(PlayerCreature* player) {
+void FactoryObjectAdapter::sendIngredientHopper(CreatureObject* player) {
 	((FactoryObjectImplementation*) impl)->sendIngredientHopper(player);
 }
 
-void FactoryObjectAdapter::sendOutputHopper(PlayerCreature* player) {
+void FactoryObjectAdapter::sendOutputHopper(CreatureObject* player) {
 	((FactoryObjectImplementation*) impl)->sendOutputHopper(player);
 }
 
-void FactoryObjectAdapter::handleInsertFactorySchem(PlayerCreature* player, ManufactureSchematic* schematic) {
+void FactoryObjectAdapter::handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic) {
 	((FactoryObjectImplementation*) impl)->handleInsertFactorySchem(player, schematic);
 }
 
-void FactoryObjectAdapter::handleRemoveFactorySchem(PlayerCreature* player) {
+void FactoryObjectAdapter::handleRemoveFactorySchem(CreatureObject* player) {
 	((FactoryObjectImplementation*) impl)->handleRemoveFactorySchem(player);
 }
 
-void FactoryObjectAdapter::handleOperateToggle(PlayerCreature* player) {
+void FactoryObjectAdapter::handleOperateToggle(CreatureObject* player) {
 	((FactoryObjectImplementation*) impl)->handleOperateToggle(player);
 }
 

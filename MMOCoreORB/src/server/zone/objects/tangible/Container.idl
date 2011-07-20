@@ -49,7 +49,7 @@ import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 
 class Container extends TangibleObject {
@@ -73,19 +73,19 @@ class Container extends TangibleObject {
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	@local
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
 	 * @post { this object is locked, player is locked }
-	 * @param player PlayerCreature that selected the option
+	 * @param player CreatureObject that selected the option
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
-	public native boolean checkPermission(PlayerCreature player);
+	public native boolean checkPermission(CreatureObject player);
 	
 	
 	/**

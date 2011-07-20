@@ -224,7 +224,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 	zone->unlock();
 
 	try {
-		sceneObject->notifySelfPositionUpdate();
+		notifySelfPositionUpdate(sceneObject);
 	} catch (Exception& e) {
 
 	}
@@ -321,7 +321,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 	zone->unlock();
 
 	try {
-		sceneObject->notifySelfPositionUpdate();
+		notifySelfPositionUpdate(sceneObject);
 	} catch (Exception& e) {
 
 	}
@@ -489,4 +489,8 @@ void ZoneComponent::removeFromBuilding(SceneObject* sceneObject, BuildingObject*
 
     	building->removeNotifiedSentObject(sceneObject);
     }
+}
+
+void ZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) {
+	sceneObject->notifySelfPositionUpdate();
 }

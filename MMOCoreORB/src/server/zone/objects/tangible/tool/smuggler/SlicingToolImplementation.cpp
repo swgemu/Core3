@@ -26,7 +26,7 @@ void SlicingToolImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 }
 
-int SlicingToolImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SlicingToolImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID != 20)
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 	/*
@@ -47,7 +47,7 @@ int SlicingToolImplementation::handleObjectMenuSelect(PlayerCreature* player, by
 	return 0;
 }
 
-void SlicingToolImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void SlicingToolImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(msg, object);
 
 	uint32 gameObjType = getGameObjectType();

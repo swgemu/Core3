@@ -7,11 +7,11 @@
 
 #include "VehicleControlDevice.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/ZoneServer.h"
 
-void VehicleControlDeviceImplementation::generateObject(PlayerCreature* player) {
+void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) {
 	if (player->getParent() != NULL)
 		return;
 
@@ -63,7 +63,7 @@ void VehicleControlDeviceImplementation::generateObject(PlayerCreature* player) 
 	updateStatus(1);
 }
 
-void VehicleControlDeviceImplementation::storeObject(PlayerCreature* player) {
+void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {
 	if (controlledObject == NULL)
 		return;
 
@@ -93,7 +93,7 @@ void VehicleControlDeviceImplementation::destroyObjectFromDatabase(bool destroyC
 	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-int VehicleControlDeviceImplementation::canBeDestroyed(PlayerCreature* player) {
+int VehicleControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 	if (controlledObject != NULL) {
 		if (controlledObject->isInQuadTree())
 			return 1;

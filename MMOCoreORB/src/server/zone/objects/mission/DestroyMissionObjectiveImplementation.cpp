@@ -88,7 +88,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	waypoint->setPosition(newX, 0, newY);
 	mission->updateMissionLocation();
 	//TODO: find correct string id
-	PlayerCreature* player = getPlayerOwner();
+	CreatureObject* player = getPlayerOwner();
 
 	player->sendSystemMessage("Transmission Received: Mission Target has been located.  Mission waypoint has been updated to exact location");
 
@@ -112,7 +112,7 @@ void DestroyMissionObjectiveImplementation::abort() {
 	if (observers.size() != 0) {
 		ManagedReference<MissionObserver*> observer = observers.get(0);
 
-		PlayerCreature* player = getPlayerOwner();
+		CreatureObject* player = getPlayerOwner();
 
 		if (lairObject != NULL) {
 			ManagedReference<SceneObject*> lairH = lairObject.get();
@@ -135,7 +135,7 @@ void DestroyMissionObjectiveImplementation::abort() {
 }
 
 void DestroyMissionObjectiveImplementation::complete() {
-	PlayerCreature* player = (PlayerCreature*) getPlayerOwner();
+	CreatureObject* player = (CreatureObject*) getPlayerOwner();
 
 	if (player == NULL)
 		return;

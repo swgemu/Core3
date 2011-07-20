@@ -6,7 +6,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/player/sui/SuiBox.h"
 
@@ -16,7 +18,7 @@
 
 enum {RPC_GETPAYOUTBOXID__ = 6};
 
-SuiSlotMachineBox::SuiSlotMachineBox(PlayerCreature* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType) : SuiListBox(DummyConstructorParameter::instance()) {
+SuiSlotMachineBox::SuiSlotMachineBox(CreatureObject* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType) : SuiListBox(DummyConstructorParameter::instance()) {
 	SuiSlotMachineBoxImplementation* _implementation = new SuiSlotMachineBoxImplementation(player, windowType, payoutBox, listBoxType);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -179,7 +181,7 @@ int SuiSlotMachineBoxImplementation::writeObjectMembers(ObjectOutputStream* stre
 	return 1 + SuiListBoxImplementation::writeObjectMembers(stream);
 }
 
-SuiSlotMachineBoxImplementation::SuiSlotMachineBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType) : SuiListBoxImplementation(player, windowType, listBoxType) {
+SuiSlotMachineBoxImplementation::SuiSlotMachineBoxImplementation(CreatureObject* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType) : SuiListBoxImplementation(player, windowType, listBoxType) {
 	_initializeImplementation();
 	// server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.idl():  		payoutBoxID = payoutBox;
 	payoutBoxID = payoutBox;

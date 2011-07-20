@@ -50,23 +50,23 @@ public:
 
 	bool isValidVendorName(const String& name);
 
-	void handleDisplayStatus(PlayerCreature* player, Vendor* vendor);
+	void handleDisplayStatus(CreatureObject* player, Vendor* vendor);
 
-	void sendDestoryTo(PlayerCreature* player, Vendor* vendor);
+	void sendDestoryTo(CreatureObject* player, Vendor* vendor);
 
-	void sendRenameVendorTo(PlayerCreature* player, TangibleObject* vendor);
+	void sendRenameVendorTo(CreatureObject* player, TangibleObject* vendor);
 
-	void handleDestoryCallback(PlayerCreature* player, Vendor* vendor);
+	void handleDestoryCallback(CreatureObject* player, Vendor* vendor);
 
-	void sendRegisterVendorTo(PlayerCreature* player, Vendor* vendor);
+	void sendRegisterVendorTo(CreatureObject* player, Vendor* vendor);
 
-	void handleRegisterVendorCallback(PlayerCreature* player, Vendor* vendor, const String& planetMapCategoryName);
+	void handleRegisterVendorCallback(CreatureObject* player, Vendor* vendor, const String& planetMapCategoryName);
 
-	void handleUnregisterVendor(PlayerCreature* player, Vendor* vendor);
+	void handleUnregisterVendor(CreatureObject* player, Vendor* vendor);
 
-	void handleRenameVendor(PlayerCreature* player, TangibleObject* vendor, String& name);
+	void handleRenameVendor(CreatureObject* player, TangibleObject* vendor, String& name);
 
-	void handleAwardVendorLookXP(PlayerCreature* player, Vendor* vendor);
+	void handleAwardVendorLookXP(CreatureObject* player, Vendor* vendor);
 
 	void randomizeCustomization(CreatureObject* vendor);
 

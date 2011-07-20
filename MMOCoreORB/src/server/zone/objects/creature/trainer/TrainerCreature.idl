@@ -50,7 +50,7 @@ import system.util.Vector;
 import system.lang.Time;
 import server.zone.Zone;
 import system.util.SortedVector;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 
@@ -87,12 +87,12 @@ class TrainerCreature extends CreatureObject {
 	 * Sends the initial trainer NPC blurb.
 	 * \param player The player to send the conversation to.
 	 */
-	public native void sendInitialMessage(PlayerCreature player);
+	public native void sendInitialMessage(CreatureObject player);
 	/**
 	 * Sends the initial trainer NPC options.
 	 * \param player The player to send the conversation to.
 	 */
-	public native void sendInitialChoices(PlayerCreature player);
+	public native void sendInitialChoices(CreatureObject player);
 	/**
 	 * Sends the intial message to start the
 	 * training conversation. Checks for
@@ -107,7 +107,7 @@ class TrainerCreature extends CreatureObject {
 	 * \param player The player to send the conversation to.
 	 * \param chackXp Whether or not to check experience to determine if each skillbox should be listed.
 	 */
-	public native void sendSkillBoxes(PlayerCreature player, boolean checkXp);
+	public native void sendSkillBoxes(CreatureObject player, boolean checkXp);
 	/**
 	 * Sends skill boxes that the particular trainer
 	 * can train, regardless of intentionor ability
@@ -115,13 +115,13 @@ class TrainerCreature extends CreatureObject {
 	 * \param player The player to send the conversation to.
 	 * \param checkLearned Whether or not you want to check if the box has been learned already.
 	 */
-	public native void sendSkillBoxList(PlayerCreature player, boolean checkLearned);
+	public native void sendSkillBoxList(CreatureObject player, boolean checkLearned);
 	/**
 	 * Sends the Yes/No options to the player to
 	 * confirm their choice in skill acquisition.
 	 * \param player The player to send the conversation to.
 	 */
-	public native void sendConfirmation(PlayerCreature player);
+	public native void sendConfirmation(CreatureObject player);
 
 	/**
 	 * Handles the options that the player has selected

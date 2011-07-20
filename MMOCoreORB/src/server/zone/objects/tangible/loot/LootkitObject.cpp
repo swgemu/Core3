@@ -12,13 +12,13 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	LootkitObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_GETPLAYER__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_GETPLAYER__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_};
 
 LootkitObject::LootkitObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	LootkitObjectImplementation* _implementation = new LootkitObjectImplementation();
@@ -76,7 +76,7 @@ int LootkitObject::notifyObjectInserted(SceneObject* object) {
 		return _implementation->notifyObjectInserted(object);
 }
 
-PlayerCreature* LootkitObject::getPlayer() {
+CreatureObject* LootkitObject::getPlayer() {
 	LootkitObjectImplementation* _implementation = (LootkitObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -84,7 +84,7 @@ PlayerCreature* LootkitObject::getPlayer() {
 
 		DistributedMethod method(this, RPC_GETPLAYER__);
 
-		return (PlayerCreature*) method.executeWithObjectReturn();
+		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getPlayer();
 }
@@ -98,13 +98,13 @@ void LootkitObject::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void LootkitObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void LootkitObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	LootkitObjectImplementation* _implementation = (LootkitObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -338,8 +338,8 @@ Packet* LootkitObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_GETPLAYER__:
 		resp->insertLong(getPlayer()->_getObjectID());
 		break;
-	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_:
-		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
+		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -360,11 +360,11 @@ int LootkitObjectAdapter::notifyObjectInserted(SceneObject* object) {
 	return ((LootkitObjectImplementation*) impl)->notifyObjectInserted(object);
 }
 
-PlayerCreature* LootkitObjectAdapter::getPlayer() {
+CreatureObject* LootkitObjectAdapter::getPlayer() {
 	return ((LootkitObjectImplementation*) impl)->getPlayer();
 }
 
-void LootkitObjectAdapter::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void LootkitObjectAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	((LootkitObjectImplementation*) impl)->fillAttributeList(msg, object);
 }
 

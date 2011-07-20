@@ -49,9 +49,9 @@ import system.util.VectorMap;
 import system.util.Vector;
 import engine.service.proto.BaseMessage;
 import server.zone.ZoneServer;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.objectcontroller.ObjectController;
-
 
 class ChatRoom extends ManagedObject {
 	protected ZoneServer server;
@@ -68,10 +68,10 @@ class ChatRoom extends ManagedObject {
 	protected ChatRoom parent;
 
 	@dereferenced 
-	protected VectorMap<string, PlayerCreature> playerList;
+	protected VectorMap<string, CreatureObject> playerList;
 	
 	@dereferenced
-	protected VectorMap<string, PlayerCreature> moderatorList;
+	protected VectorMap<string, CreatureObject> moderatorList;
 	
 	@dereferenced 
 	protected VectorMap<string, ChatRoom> subRooms;
@@ -135,8 +135,8 @@ class ChatRoom extends ManagedObject {
 		playerList.setNullValue(null);
 	}
 		
-	public native void sendTo(PlayerCreature player);
-	public native void sendDestroyTo(PlayerCreature player);
+	public native void sendTo(CreatureObject player);
+	public native void sendDestroyTo(CreatureObject player);
 
 	public synchronized void addSubRoom(ChatRoom channel) {
 		subRooms.put(channel.getName(), channel);
@@ -154,13 +154,13 @@ class ChatRoom extends ManagedObject {
 		return subRooms.get(name);
 	}
 
-	public native void addPlayer(PlayerCreature player, boolean doLock = true);
-	public native void removePlayer(PlayerCreature player, boolean doLock = true);
+	public native void addPlayer(CreatureObject player, boolean doLock = true);
+	public native void removePlayer(CreatureObject player, boolean doLock = true);
 	public native void removePlayer(final string player);
 
 	public native void broadcastMessage(BaseMessage msg); /* {
 		for (int i = 0; i < playerList.size(); ++i) {
-			PlayerCreature player = playerList.get(i);
+			CreatureObject player = playerList.get(i);
 			player.sendMessage(msg.clone());
 		}
 
@@ -170,7 +170,7 @@ class ChatRoom extends ManagedObject {
 	@local 
 	public synchronized void broadcastMessages(Vector<BaseMessage> messages) {
 		for (int i = 0; i < playerList.size(); ++i) {
-			PlayerCreature player = playerList.get(i);
+			CreatureObject player = playerList.get(i);
 
 			for (int j = 0; j < messages.size(); ++j) {
 				BaseMessage msg = messages.get(j);
@@ -186,7 +186,7 @@ class ChatRoom extends ManagedObject {
 		messages.removeAll();
 	}
 
-	public synchronized boolean hasPlayer(PlayerCreature player) {
+	public synchronized boolean hasPlayer(CreatureObject player) {
 		return playerList.contains(player.getFirstName());
 	}
 	
@@ -219,7 +219,7 @@ class ChatRoom extends ManagedObject {
 		moderated = moderate;
 	}
 
-	public PlayerCreature getPlayer(int idx) {
+	public CreatureObject getPlayer(int idx) {
 		return playerList.get(idx);
 	}
 

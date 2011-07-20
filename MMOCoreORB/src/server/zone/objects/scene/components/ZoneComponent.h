@@ -35,20 +35,8 @@ using namespace server::zone;
 #include "engine/util/u3d/QuadTreeEntry.h"
 
 class ZoneComponent : public SceneObjectComponent, public Logger {
-	//protected Zone zone;
 
 public:
-
-
-
-	virtual void notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) {
-
-	}
-
-	virtual void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) {
-
-	}
-
 	/**
 	 * Inserts this object into zone
 	 * @pre { this object is locked }
@@ -109,6 +97,14 @@ public:
 	 * @param lightUpdate if true a standalone message is sent to the in range objects
 	 */
 	virtual void updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
+
+	virtual void notifySelfPositionUpdate(SceneObject* sceneObject);
+
+	virtual void notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) {
+	}
+
+	virtual void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) {
+	}
 
 
 };

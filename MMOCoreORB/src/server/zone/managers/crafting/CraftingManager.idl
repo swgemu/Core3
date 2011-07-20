@@ -49,7 +49,7 @@ import system.util.VectorMap;
 import engine.lua.Lua;
 
 import server.zone.objects.player.PlayerObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.draftschematic.DraftSchematic;
 import system.util.Vector;
@@ -102,19 +102,19 @@ class CraftingManager extends ZoneManager {
 		return schematicMap.get(schematicID);
 	}
 	
-	public native void sendDraftSlotsTo(PlayerCreature player, unsigned int schematicID);
+	public native void sendDraftSlotsTo(CreatureObject player, unsigned int schematicID);
 	
-	public native void sendResourceWeightsTo(PlayerCreature player, unsigned int schematicID);
+	public native void sendResourceWeightsTo(CreatureObject player, unsigned int schematicID);
 	
-	public native int calculateAssemblySuccess(PlayerCreature player, DraftSchematic draftSchematic, float effectiveness);
+	public native int calculateAssemblySuccess(CreatureObject player, DraftSchematic draftSchematic, float effectiveness);
 	
 	public native float calculateAssemblyValueModifier(int assemblyResult);
 	
 	public native float getAssemblyPercentage(float value);
 	
-	public native int calculateExperimentationFailureRate(PlayerCreature player, ManufactureSchematic manufactureSchematic, int pointsUsed);
+	public native int calculateExperimentationFailureRate(CreatureObject player, ManufactureSchematic manufactureSchematic, int pointsUsed);
 	
-	public native int calculateExperimentationSuccess(PlayerCreature player, DraftSchematic draftSchematic, float effectiveness);
+	public native int calculateExperimentationSuccess(CreatureObject player, DraftSchematic draftSchematic, float effectiveness);
 	
 	public native float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
 	

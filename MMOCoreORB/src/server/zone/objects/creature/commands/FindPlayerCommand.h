@@ -46,7 +46,8 @@ which carries forward this exception.
 #define FINDPLAYERCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
 class FindPlayerCommand : public QueueCommand {
 public:
@@ -66,7 +67,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		//TODO: Research if this gets handled already by the absence of the 'admin' skill.
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
@@ -97,7 +98,8 @@ public:
 			return GENERALERROR;
 		}
 
-		PlayerCreature* targetObject = (PlayerCreature*) obj.get();
+		CreatureObject* targetObject = (CreatureObject*) obj.get();
+		PlayerObject* targetGhost = targetObject->getPlayerObject();
 
 		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, 0x00);
 		suiBox->setPromptTitle("Find Player Results");
@@ -105,7 +107,7 @@ public:
 		StringBuffer text;
 		text << "Player Name:\t  " << targetObject->getObjectName()->getDisplayedName() << "\n";
 
-		text << "Online Status:\t  " << (targetObject->isOffline() ? "\\#ff3300 Offline" : "\\#00ff33 Online") << "\\#.\n";
+		text << "Online Status:\t  " << (targetGhost->isOffline() ? "\\#ff3300 Offline" : "\\#00ff33 Online") << "\\#.\n";
 
 		Vector3 worldPosition = targetObject->getWorldPosition();
 		text << "World Position:\t  {x:" << worldPosition.getX() << ", z:" << worldPosition.getZ() << ", y:" << worldPosition.getY() << "} " << "\n";

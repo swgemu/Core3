@@ -33,7 +33,7 @@ void BountyMissionObjectiveImplementation::activate() {
 	ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
 	ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
 
-	PlayerCreature* player = getPlayerOwner();
+	CreatureObject* player = getPlayerOwner();
 	player->registerObserver(ObserverEventType::CONVERSE, observer);
 
 	observers.put(observer);
@@ -44,7 +44,7 @@ void BountyMissionObjectiveImplementation::abort() {
 	if (observers.size() != 0) {
 		ManagedReference<MissionObserver*> observer = observers.get(0);
 
-		PlayerCreature* player = getPlayerOwner();
+		CreatureObject* player = getPlayerOwner();
 
 		if (npcTarget != NULL) {
 			ManagedReference<SceneObject*> npcHolder = npcTarget.get();
@@ -72,7 +72,7 @@ void BountyMissionObjectiveImplementation::abort() {
 }
 
 void BountyMissionObjectiveImplementation::complete() {
-	PlayerCreature* player = (PlayerCreature*) getPlayerOwner();
+	CreatureObject* player = (CreatureObject*) getPlayerOwner();
 
 	if (player == NULL)
 		return;
@@ -127,7 +127,7 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 
 int BountyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::CONVERSE) {
-		PlayerCreature* player = (PlayerCreature*)observable;
+		CreatureObject* player = (CreatureObject*)observable;
 		InformantCreature* informant = (InformantCreature*)arg1;
 		int level = informant->getLevel();
 

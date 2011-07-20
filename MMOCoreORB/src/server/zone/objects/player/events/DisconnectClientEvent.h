@@ -8,8 +8,10 @@
 #ifndef DISCONNECTCLIENTEVENT_H_
 #define DISCONNECTCLIENTEVENT_H_
 
+#include "server/zone/objects/player/PlayerObject.h"
+
 class DisconnectClientEvent : public Task {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 	ManagedReference<ZoneClientSession*> client;
 	int eventType;
 
@@ -19,7 +21,7 @@ public:
 	const static int SETLINKDEAD = 3;
 
 public:
-	DisconnectClientEvent(PlayerCreature* pl, ZoneClientSession* cl, int type) : Task() {
+	DisconnectClientEvent(CreatureObject* pl, ZoneClientSession* cl, int type) : Task() {
 		player = pl;
 		client = cl;
 		eventType = type;
@@ -31,15 +33,17 @@ public:
 
 		Locker _locker(player);
 
+		PlayerObject* ghost = player->getPlayerObject();
+
 		switch (eventType) {
 		case DISCONNECT:
-			player->disconnect(false, true);
+			ghost->disconnect(false, true);
 			break;
 		case LOGOUT:
-			player->logout(true);
+			ghost->logout(true);
 			break;
 		case SETLINKDEAD:
-			player->setLinkDead();
+			ghost->setLinkDead();
 			break;
 		}
 	}

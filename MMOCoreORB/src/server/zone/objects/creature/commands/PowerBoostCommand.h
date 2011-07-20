@@ -72,7 +72,7 @@ public:
 			return GENERALERROR;
 		}
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		uint32 buffcrc = BuffCRC::SKILL_BUFF_POWERBOOST;
 

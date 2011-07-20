@@ -49,7 +49,7 @@ which carries forward this exception.
 
 //#include "PlayerMap.h"
 
-//#include "../../objects/player/PlayerCreature.h"
+//#include "../../objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {
@@ -57,15 +57,15 @@ namespace managers {
 namespace player {
 
 class PlayerMap : public Mutex, public Object {
-	HashTable<String, ManagedReference<PlayerCreature*> > players;
-	HashTableIterator<String, ManagedReference<PlayerCreature*> > iter;
+	HashTable<String, ManagedReference<CreatureObject*> > players;
+	HashTableIterator<String, ManagedReference<CreatureObject*> > iter;
 
 public:
 	PlayerMap(int initsize) : Mutex("PlayerMap"), players(initsize), iter(&players) {
 	}
 
-	PlayerCreature* put(const String& name, PlayerCreature* player, bool doLock = true) {
-		PlayerCreature* play = NULL;
+	CreatureObject* put(const String& name, CreatureObject* player, bool doLock = true) {
+		CreatureObject* play = NULL;
 
 		lock(doLock);
 
@@ -87,8 +87,8 @@ public:
 		return play;
 	}
 
-	PlayerCreature* get(const String& name, bool doLock = true) {
-		PlayerCreature* player = NULL;
+	CreatureObject* get(const String& name, bool doLock = true) {
+		CreatureObject* player = NULL;
 
 		lock(doLock);
 
@@ -110,8 +110,8 @@ public:
 		return player;
 	}
 
-	PlayerCreature* remove(const String& name, bool doLock = true) {
-		PlayerCreature* player = NULL;
+	CreatureObject* remove(const String& name, bool doLock = true) {
+		CreatureObject* player = NULL;
 
 		lock(doLock);
 
@@ -133,8 +133,8 @@ public:
 		return player;
 	}
 
-	PlayerCreature* getNextValue(bool doLock = true) {
-		PlayerCreature* player = NULL;
+	CreatureObject* getNextValue(bool doLock = true) {
+		CreatureObject* player = NULL;
 
 		lock(doLock);
 
@@ -145,7 +145,7 @@ public:
 		return player;
 	}
 
-	PlayerCreature* next(bool doLock = true) {
+	CreatureObject* next(bool doLock = true) {
 		return getNextValue(doLock);
 	}
 

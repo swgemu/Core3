@@ -6,7 +6,7 @@
  */
 
 #include "WearableObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 #include "server/zone/objects/tangible/attachment/Attachment.h"
@@ -18,7 +18,7 @@ void WearableObjectImplementation::initializeTransientMembers() {
 	setLoggingName("WearableObject");
 }
 
-void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	if (socketsLeft() > 0)
@@ -52,7 +52,7 @@ void WearableObjectImplementation::updateCraftingValues(ManufactureSchematic* sc
 void WearableObjectImplementation::generateSockets(ManufactureSchematic* schematic) {
 
 	ManagedReference<DraftSchematic* > draftSchematic = schematic->getDraftSchematic();
-	ManagedReference<PlayerCreature* > player = schematic->getCrafter();
+	ManagedReference<CreatureObject* > player = schematic->getCrafter();
 
 	String assemblySkill = draftSchematic->getAssemblySkill();
 	// Get assembly points from skill
@@ -82,7 +82,7 @@ void WearableObjectImplementation::generateSockets(ManufactureSchematic* schemat
 	socketsGenerated = true;
 }
 
-void WearableObjectImplementation::applyAttachment(PlayerCreature* player, Attachment* attachment) {
+void WearableObjectImplementation::applyAttachment(CreatureObject* player, Attachment* attachment) {
 	if (socketsLeft() > 0) {
 		AttachmentEntry entry;
 
@@ -107,7 +107,7 @@ void WearableObjectImplementation::applyAttachment(PlayerCreature* player, Attac
 
 }
 
-void WearableObjectImplementation::setAttachmentMods(PlayerCreature* player, bool remove) {
+void WearableObjectImplementation::setAttachmentMods(CreatureObject* player, bool remove) {
 	if (player == NULL)
 		return;
 

@@ -13,7 +13,7 @@
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/events/SquadLeaderBonusTask.h"
@@ -31,11 +31,11 @@ void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	client->sendMessage(grup6);
 
 	if (player->isPlayerCreature() && chatRoom != NULL)
-		chatRoom->sendTo((PlayerCreature*) player);
+		chatRoom->sendTo((CreatureObject*) player);
 }
 
 void GroupObjectImplementation::startChatRoom() {
-	PlayerCreature* leader = (PlayerCreature*) ((SceneObject*) groupMembers.get(0));
+	CreatureObject* leader = (CreatureObject*) ((SceneObject*) groupMembers.get(0));
 	ChatManager* chatManager = server->getZoneServer()->getChatManager();
 
 	chatRoom = chatManager->createGroupRoom(getObjectID(), leader);
@@ -66,7 +66,7 @@ void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 	delete msg;
 }
 
-void GroupObjectImplementation::broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf) {
+void GroupObjectImplementation::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
 	for (int i = 0; i < groupMembers.size(); i++) {
 		SceneObject* play = groupMembers.get(i);
 
@@ -90,7 +90,7 @@ void GroupObjectImplementation::addMember(SceneObject* player) {
 	sendTo(player, true);
 
 	if (hasSquadLeader() && player->isPlayerCreature()) {
-		ManagedReference<PlayerCreature*> playerCreature = (PlayerCreature*) player;
+		ManagedReference<CreatureObject*> playerCreature = (CreatureObject*) player;
 		addGroupModifiers(playerCreature);
 	}
 }
@@ -112,7 +112,7 @@ void GroupObjectImplementation::removeMember(SceneObject* player) {
 	}
 
 	if (hasSquadLeader() && player->isPlayerCreature()) {
-		ManagedReference<PlayerCreature*> playerCreature = (PlayerCreature*) player;
+		ManagedReference<CreatureObject*> playerCreature = (CreatureObject*) player;
 		removeGroupModifiers(playerCreature);
 	}
 }
@@ -170,13 +170,13 @@ void GroupObjectImplementation::disband() {
 
 			if (crea->isPlayerCreature()) {
 
-				PlayerCreature* play = (PlayerCreature*) crea;
+				CreatureObject* play = (CreatureObject*) crea;
 
-				chatRoom->removePlayer((PlayerCreature*) play, false);
-				chatRoom->sendDestroyTo((PlayerCreature*) play);
+				chatRoom->removePlayer((CreatureObject*) play, false);
+				chatRoom->sendDestroyTo((CreatureObject*) play);
 
 				ChatRoom* room = chatRoom->getParent();
-				room->sendDestroyTo((PlayerCreature*) play);
+				room->sendDestroyTo((CreatureObject*) play);
 
 				play->updateGroup(NULL);
 				//play->updateGroupId(0);
@@ -211,7 +211,7 @@ bool GroupObjectImplementation::hasSquadLeader() {
 
 	if (getLeader()->isPlayerCreature()) {
 
-		ManagedReference<PlayerCreature*> leader = (PlayerCreature*) getLeader();
+		ManagedReference<CreatureObject*> leader = (CreatureObject*) getLeader();
 
 		if (leader->hasSkillBox("outdoors_squadleader_novice"))
 			return true;
@@ -230,14 +230,14 @@ void GroupObjectImplementation::addGroupModifiers() {
 		if (!crea->isPlayerCreature())
 			continue;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) crea;
+		ManagedReference<CreatureObject*> player = (CreatureObject*) crea;
 		addGroupModifiers(player);
 	}
 
 	if (getLeader() != NULL) {
 		if (getLeader()->isPlayerCreature()) {
 
-			ManagedReference<PlayerCreature*> leader = (PlayerCreature*) getLeader();
+			ManagedReference<CreatureObject*> leader = (CreatureObject*) getLeader();
 
 			Reference<SquadLeaderBonusTask*> bonusTask = new SquadLeaderBonusTask(leader);
 
@@ -256,12 +256,12 @@ void GroupObjectImplementation::removeGroupModifiers() {
 		if (!crea->isPlayerCreature())
 			continue;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) crea;
+		ManagedReference<CreatureObject*> player = (CreatureObject*) crea;
 		removeGroupModifiers(player);
 	}
 }
 
-void GroupObjectImplementation::addGroupModifiers(PlayerCreature* player) {
+void GroupObjectImplementation::addGroupModifiers(CreatureObject* player) {
 	if (player == NULL)
 		return;
 
@@ -271,7 +271,7 @@ void GroupObjectImplementation::addGroupModifiers(PlayerCreature* player) {
 	if (!getLeader()->isPlayerCreature())
 		return;
 
-	ManagedReference<PlayerCreature*> leader = (PlayerCreature*) getLeader();
+	ManagedReference<CreatureObject*> leader = (CreatureObject*) getLeader();
 
 	if (leader == player)
 		return;
@@ -294,7 +294,7 @@ void GroupObjectImplementation::addGroupModifiers(PlayerCreature* player) {
 	player->addBuff(buff);
 }
 
-void GroupObjectImplementation::removeGroupModifiers(PlayerCreature* player) {
+void GroupObjectImplementation::removeGroupModifiers(CreatureObject* player) {
 	if (player == NULL)
 		return;
 
@@ -304,7 +304,7 @@ void GroupObjectImplementation::removeGroupModifiers(PlayerCreature* player) {
 	if (!getLeader()->isPlayerCreature())
 		return;
 
-	ManagedReference<PlayerCreature*> leader = (PlayerCreature*) getLeader();
+	ManagedReference<CreatureObject*> leader = (CreatureObject*) getLeader();
 
 	if (leader == player)
 		return;
@@ -316,7 +316,7 @@ void GroupObjectImplementation::removeGroupModifiers(PlayerCreature* player) {
 		player->removeBuff(action.hashCode());
 }
 
-float GroupObjectImplementation::getGroupHarvestModifier(PlayerCreature* player) {
+float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player) {
 
 	String skillNovice = "outdoors_ranger_novice";
 	String skillMaster = "outdoors_ranger_master";
@@ -327,7 +327,7 @@ float GroupObjectImplementation::getGroupHarvestModifier(PlayerCreature* player)
 		ManagedReference<SceneObject*> scno = (SceneObject*)groupMembers.get(i);
 
 		if(scno->isPlayerCreature()) {
-			PlayerCreature* groupMember = (PlayerCreature*) scno.get();
+			CreatureObject* groupMember = (CreatureObject*) scno.get();
 
 			if(groupMember == player)
 				continue;

@@ -10,7 +10,7 @@
 
 class GenericResponse : public ObjectControllerMessage {
 public:
-	GenericResponse(PlayerCreature* play, uint32 msg, uint8 byte1, uint8 byte2)
+	GenericResponse(CreatureObject* play, uint32 msg, uint8 byte1, uint8 byte2)
 			: ObjectControllerMessage(play->getObjectID(), 0x0B, 0xEE) {
 		insertInt(msg);
 		insertByte(byte1);

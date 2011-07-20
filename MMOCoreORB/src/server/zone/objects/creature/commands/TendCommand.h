@@ -73,8 +73,8 @@ public:
 		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
-		PlayerCreature* playerTarget = (PlayerCreature*) creatureTarget;
+		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* playerTarget = (CreatureObject*) creatureTarget;
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
@@ -106,8 +106,8 @@ public:
 		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
-		PlayerCreature* playerTarget = (PlayerCreature*) creatureTarget;
+		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* playerTarget = (CreatureObject*) creatureTarget;
 
 		String creatureName = player->getFirstName();
 		String creatureTargetName = playerTarget->getFirstName();
@@ -138,7 +138,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		int amount = (int) round((float) power * 1.0f);
 
@@ -259,7 +259,7 @@ public:
 
 			if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-				playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)creatureTarget);
+				playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)creatureTarget);
 			}
 
 			sendHealMessage(creature, creatureTarget, healedHealth, healedAction);
@@ -273,7 +273,7 @@ public:
 				if (creatureTarget == creature)
 					creature->sendSystemMessage("healing_response", "healing_response_67");
 				else if (creatureTarget->isPlayerCreature()){
-					creature->sendSystemMessage(((PlayerCreature*)creatureTarget)->getFirstName()
+					creature->sendSystemMessage(((CreatureObject*)creatureTarget)->getFirstName()
 							+ " has no wounds of that type to heal.");
 				}
 
@@ -300,7 +300,7 @@ public:
 
 			if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-				playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)creatureTarget);
+				playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)creatureTarget);
 			}
 
 			sendWoundMessage(creature, creatureTarget, attribute, -healedWounds);

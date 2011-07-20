@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.objects.group;
 
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import system.util.Vector;
 import server.chat.room.ChatRoom;
 //import server.zone.packets.object.StfParameter;
@@ -72,7 +72,7 @@ class GroupObject extends SceneObject {
 	
 	public native void sendBaselinesTo(SceneObject player);
 	public native void broadcastMessage(BaseMessage msg);
-	public native void broadcastMessage(PlayerCreature player, BaseMessage msg, boolean sendSelf = false);
+	public native void broadcastMessage(CreatureObject player, BaseMessage msg, boolean sendSelf = false);
 
 
 	/*public native void sendSystemMessage(SceneObject player, final string message, boolean sendToSelf = false);
@@ -90,7 +90,7 @@ class GroupObject extends SceneObject {
 	public native void startChatRoom();
 	public native void destroyChatRoom();
 
-	public native float getGroupHarvestModifier(PlayerCreature player);
+	public native float getGroupHarvestModifier(CreatureObject player);
 
 	/*public native void addSquadLeaderBonuses(CreatureObject groupMember);
 	public native void removeSquadLeaderBonuses(CreatureObject groupMember);
@@ -136,7 +136,7 @@ class GroupObject extends SceneObject {
 	
 	public native void removeGroupModifiers();
 	
-	public native void addGroupModifiers(PlayerCreature player);
+	public native void addGroupModifiers(CreatureObject player);
 	
-	public native void removeGroupModifiers(PlayerCreature player);
+	public native void removeGroupModifiers(CreatureObject player);
 }

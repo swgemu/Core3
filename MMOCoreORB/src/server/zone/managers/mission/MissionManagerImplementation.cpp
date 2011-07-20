@@ -7,7 +7,7 @@
 
 #include "MissionManager.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/SurveyMissionObjective.h"
 #include "server/zone/objects/mission/DestroyMissionObjective.h"
@@ -75,7 +75,7 @@ void MissionManagerImplementation::loadNpcObjectsToSpawn() {
 	}
 }
 
-void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
+void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter) {
 	// newbie and statue terminals don't exist, but their templates do
 	if (missionTerminal->isStatueTerminal() || missionTerminal->isNewbieTerminal()) {
 		player->sendSystemMessage("skill_teacher", "skill_terminal_disabled");
@@ -97,7 +97,7 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 	populateMissionList(missionTerminal, player, counter);
 }
 
-void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, PlayerCreature* player) {
+void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionTerminal, MissionObject* mission, CreatureObject* player) {
 	SceneObject* missionBag = mission->getParent();
 
 	if (missionBag == NULL)
@@ -149,7 +149,7 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 	player->updateToDatabaseAllObjects(false);
 }
 
-bool MissionManagerImplementation::hasSurveyMission(PlayerCreature* player, const String& spawn) {
+bool MissionManagerImplementation::hasSurveyMission(CreatureObject* player, const String& spawn) {
 	SceneObject* datapad = player->getSlottedObject("datapad");
 
 	int missionCount = 0;
@@ -168,7 +168,7 @@ bool MissionManagerImplementation::hasSurveyMission(PlayerCreature* player, cons
 	return false;
 }
 
-void MissionManagerImplementation::createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+void MissionManagerImplementation::createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<DestroyMissionObjective*> objective = new DestroyMissionObjective(mission);
 	objective->setLairTemplateToSpawn(mission->getTargetTemplate());
 
@@ -178,7 +178,7 @@ void MissionManagerImplementation::createDestroyMissionObjectives(MissionObject*
 	objective->activate();
 }
 
-void MissionManagerImplementation::createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+void MissionManagerImplementation::createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<DeliverMissionObjective*> objective = new DeliverMissionObjective(mission);
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
@@ -187,7 +187,7 @@ void MissionManagerImplementation::createDeliverMissionObjectives(MissionObject*
 	objective->activate();
 }
 
-void MissionManagerImplementation::createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+void MissionManagerImplementation::createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<SurveyMissionObjective*> objective = new SurveyMissionObjective(mission);
 	objective->setEfficiency(mission->getDifficultyLevel());
 
@@ -209,7 +209,7 @@ void MissionManagerImplementation::createSurveyMissionObjectives(MissionObject* 
 	objective->activate();
 }
 
-void MissionManagerImplementation::createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+void MissionManagerImplementation::createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<EntertainerMissionObjective*> objective = new EntertainerMissionObjective(mission);
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
@@ -218,7 +218,7 @@ void MissionManagerImplementation::createEntertainerMissionObjectives(MissionObj
 	objective->activate();
 }
 
-void MissionManagerImplementation::createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+void MissionManagerImplementation::createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<HuntingMissionObjective*> objective = new HuntingMissionObjective(mission);
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
@@ -227,7 +227,7 @@ void MissionManagerImplementation::createHuntingMissionObjectives(MissionObject*
 	objective->activate();
 }
 
-void MissionManagerImplementation::createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+void MissionManagerImplementation::createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<ReconMissionObjective*> objective = new ReconMissionObjective(mission);
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
@@ -236,7 +236,7 @@ void MissionManagerImplementation::createReconMissionObjectives(MissionObject* m
 	objective->activate();
 }
 
-void MissionManagerImplementation::createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+void MissionManagerImplementation::createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	uint32 templateCRC = npcObjectTemplatesToSpawn.get(System::random(npcObjectTemplatesToSpawn.size() - 1));
 	SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(templateCRC);
 
@@ -256,7 +256,7 @@ void MissionManagerImplementation::createBountyMissionObjectives(MissionObject* 
 	objective->activate();
 }
 
-void MissionManagerImplementation::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, PlayerCreature* player) {
+void MissionManagerImplementation::createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	uint32 missionType = mission->getTypeCRC();
 
 	switch (missionType) {
@@ -283,7 +283,7 @@ void MissionManagerImplementation::createMissionObjectives(MissionObject* missio
 	}
 }
 
-void MissionManagerImplementation::removeMission(MissionObject* mission, PlayerCreature* player) {
+void MissionManagerImplementation::removeMission(MissionObject* mission, CreatureObject* player) {
 	ManagedReference<MissionObject*> ref = mission;
 
 	SceneObject* missionParent = mission->getParent();
@@ -299,13 +299,13 @@ void MissionManagerImplementation::removeMission(MissionObject* mission, PlayerC
 	player->updateToDatabaseAllObjects(false);
 }
 
-void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, PlayerCreature* player) {
+void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, CreatureObject* player) {
 	mission->abort();
 
 	removeMission(mission, player);
 }
 
-void MissionManagerImplementation::populateMissionList(MissionTerminal* missionTerminal, PlayerCreature* player, int counter) {
+void MissionManagerImplementation::populateMissionList(MissionTerminal* missionTerminal, CreatureObject* player, int counter) {
 	SceneObject* missionBag = player->getSlottedObject("mission_bag");
 	int bagSize = missionBag->getContainerObjectsSize();
 
@@ -368,7 +368,7 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 
 }
 
-void MissionManagerImplementation::randomizeDestroyMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeDestroyMission(CreatureObject* player, MissionObject* mission) {
 	/* TODO: Redo this section to use zoneName
 	//String mission = "mission/mission_destroy_neutral_easy_creature_naboo";
 	int zoneID = player->getZone()->getZoneID();
@@ -415,7 +415,7 @@ void MissionManagerImplementation::randomizeDestroyMission(PlayerCreature* playe
 	*/
 }
 
-void MissionManagerImplementation::randomizeSurveyMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeSurveyMission(CreatureObject* player, MissionObject* mission) {
 	/*
 	int maxLevel = 50;
 	int minLevel = 10;
@@ -481,7 +481,7 @@ void MissionManagerImplementation::randomizeSurveyMission(PlayerCreature* player
 	*/
 }
 
-void MissionManagerImplementation::randomizeBountyMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeBountyMission(CreatureObject* player, MissionObject* mission) {
 	/*
 	int zoneID = player->getZone()->getZoneID();
 
@@ -522,7 +522,7 @@ void MissionManagerImplementation::randomizeBountyMission(PlayerCreature* player
 	*/
 }
 
-void MissionManagerImplementation::randomizeDeliverMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeDeliverMission(CreatureObject* player, MissionObject* mission) {
 	/*
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 	MissionTargetMap* missionNpcs = pmng->getMissionNpcs();
@@ -567,7 +567,7 @@ void MissionManagerImplementation::randomizeDeliverMission(PlayerCreature* playe
 	*/
 }
 
-void MissionManagerImplementation::randomizeCraftingMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeCraftingMission(CreatureObject* player, MissionObject* mission) {
 	// TODO: add crafting logic (don't just overload destroy)
 	/*
 	 * get random low level trash schematic
@@ -581,7 +581,7 @@ void MissionManagerImplementation::randomizeCraftingMission(PlayerCreature* play
 	mission->setTypeCRC(0);
 }
 
-void MissionManagerImplementation::randomizeEntertainerMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeEntertainerMission(CreatureObject* player, MissionObject* mission) {
 	/*
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 	MissionTargetMap* performanceLocations = pmng->getPerformanceLocations();
@@ -632,7 +632,7 @@ void MissionManagerImplementation::randomizeEntertainerMission(PlayerCreature* p
 	*/
 }
 
-void MissionManagerImplementation::randomizeHuntingMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeHuntingMission(CreatureObject* player, MissionObject* mission) {
 	/*
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 
@@ -670,7 +670,7 @@ void MissionManagerImplementation::randomizeHuntingMission(PlayerCreature* playe
 	*/
 }
 
-void MissionManagerImplementation::randomizeReconMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeReconMission(CreatureObject* player, MissionObject* mission) {
 	/*
 	PlanetManager* pmng = player->getZone()->getPlanetManager();
 
@@ -712,22 +712,22 @@ void MissionManagerImplementation::randomizeReconMission(PlayerCreature* player,
 	*/
 }
 
-void MissionManagerImplementation::randomizeImperialDestroyMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission) {
 	// TODO: add faction-specific targets
 	randomizeDestroyMission(player, mission);
 }
 
-void MissionManagerImplementation::randomizeImperialDeliverMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission) {
 	// TODO: add faction-specific targets
 	randomizeDeliverMission(player, mission);
 }
 
-void MissionManagerImplementation::randomizeRebelDestroyMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
 	// TODO: add faction-specific targets
 	randomizeDestroyMission(player, mission);
 }
 
-void MissionManagerImplementation::randomizeRebelDeliverMission(PlayerCreature* player, MissionObject* mission) {
+void MissionManagerImplementation::randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission) {
 	// TODO: add faction-specific targets
 	randomizeDeliverMission(player, mission);
 }

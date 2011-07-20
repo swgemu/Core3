@@ -28,16 +28,30 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 
@@ -60,7 +74,7 @@ namespace banktransferbox {
 
 class SuiBankTransferBox : public SuiBox {
 public:
-	SuiBankTransferBox(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype);
+	SuiBankTransferBox(SceneObject* bankObject, CreatureObject* player, unsigned int windowtype);
 
 	void addCash(int cash);
 
@@ -121,7 +135,7 @@ protected:
 	ManagedReference<SceneObject* > bank;
 
 public:
-	SuiBankTransferBoxImplementation(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype);
+	SuiBankTransferBoxImplementation(SceneObject* bankObject, CreatureObject* player, unsigned int windowtype);
 
 	SuiBankTransferBoxImplementation(DummyConstructorParameter* param);
 

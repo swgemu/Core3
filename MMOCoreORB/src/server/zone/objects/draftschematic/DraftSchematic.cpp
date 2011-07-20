@@ -10,7 +10,7 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/area/ActiveArea.h"
 
@@ -18,7 +18,7 @@
  *	DraftSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_,RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETSCHEMATICID__INT_,RPC_GETSCHEMATICID__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETGROUPNAME__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_,RPC_DECREASEUSECOUNT__INT_,RPC_INCREASEUSECOUNT__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETSCHEMATICID__INT_,RPC_GETSCHEMATICID__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETGROUPNAME__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_,RPC_DECREASEUSECOUNT__INT_,RPC_INCREASEUSECOUNT__INT_};
 
 DraftSchematic::DraftSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	DraftSchematicImplementation* _implementation = new DraftSchematicImplementation();
@@ -55,7 +55,7 @@ void DraftSchematic::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void DraftSchematic::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void DraftSchematic::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -78,13 +78,13 @@ void DraftSchematic::sendBaselinesTo(SceneObject* player) {
 		_implementation->sendBaselinesTo(player);
 }
 
-void DraftSchematic::sendDraftSlotsTo(PlayerCreature* player) {
+void DraftSchematic::sendDraftSlotsTo(CreatureObject* player) {
 	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -92,13 +92,13 @@ void DraftSchematic::sendDraftSlotsTo(PlayerCreature* player) {
 		_implementation->sendDraftSlotsTo(player);
 }
 
-void DraftSchematic::sendResourceWeightsTo(PlayerCreature* player) {
+void DraftSchematic::sendResourceWeightsTo(CreatureObject* player) {
 	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -649,11 +649,11 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDDRAFTSLOTSTO__PLAYERCREATURE_:
-		sendDraftSlotsTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_:
+		sendDraftSlotsTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDRESOURCEWEIGHTSTO__PLAYERCREATURE_:
-		sendResourceWeightsTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_:
+		sendResourceWeightsTo((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_:
 		resp->insertLong(createManufactureSchematic((SceneObject*) inv->getObjectParameter())->_getObjectID());
@@ -733,11 +733,11 @@ void DraftSchematicAdapter::sendBaselinesTo(SceneObject* player) {
 	((DraftSchematicImplementation*) impl)->sendBaselinesTo(player);
 }
 
-void DraftSchematicAdapter::sendDraftSlotsTo(PlayerCreature* player) {
+void DraftSchematicAdapter::sendDraftSlotsTo(CreatureObject* player) {
 	((DraftSchematicImplementation*) impl)->sendDraftSlotsTo(player);
 }
 
-void DraftSchematicAdapter::sendResourceWeightsTo(PlayerCreature* player) {
+void DraftSchematicAdapter::sendResourceWeightsTo(CreatureObject* player) {
 	((DraftSchematicImplementation*) impl)->sendResourceWeightsTo(player);
 }
 

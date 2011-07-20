@@ -42,16 +42,16 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -156,13 +156,13 @@ public:
 
 	void createContainerComponent();
 
-	void sendChangeNamePromptTo(PlayerCreature* player);
+	void sendChangeNamePromptTo(CreatureObject* player);
 
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(SceneObject* player);
 
-	int notifyStructurePlaced(PlayerCreature* player);
+	int notifyStructurePlaced(CreatureObject* player);
 
 	Vector3 getEjectionPoint();
 
@@ -200,9 +200,9 @@ public:
 
 	int getCurrentNumerOfPlayerItems();
 
-	void onEnter(PlayerCreature* player);
+	void onEnter(CreatureObject* player);
 
-	void onExit(PlayerCreature* player);
+	void onExit(CreatureObject* player);
 
 	bool isBuildingObject();
 
@@ -281,13 +281,13 @@ public:
 
 	void createContainerComponent();
 
-	void sendChangeNamePromptTo(PlayerCreature* player);
+	void sendChangeNamePromptTo(CreatureObject* player);
 
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(SceneObject* player);
 
-	virtual int notifyStructurePlaced(PlayerCreature* player);
+	virtual int notifyStructurePlaced(CreatureObject* player);
 
 	Vector3 getEjectionPoint();
 
@@ -329,9 +329,9 @@ public:
 
 	int getCurrentNumerOfPlayerItems();
 
-	virtual void onEnter(PlayerCreature* player);
+	virtual void onEnter(CreatureObject* player);
 
-	virtual void onExit(PlayerCreature* player);
+	virtual void onExit(CreatureObject* player);
 
 	bool isBuildingObject();
 
@@ -404,13 +404,13 @@ public:
 
 	void createContainerComponent();
 
-	void sendChangeNamePromptTo(PlayerCreature* player);
+	void sendChangeNamePromptTo(CreatureObject* player);
 
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(SceneObject* player);
 
-	int notifyStructurePlaced(PlayerCreature* player);
+	int notifyStructurePlaced(CreatureObject* player);
 
 	void removeFromZone();
 
@@ -434,9 +434,9 @@ public:
 
 	int getCurrentNumerOfPlayerItems();
 
-	void onEnter(PlayerCreature* player);
+	void onEnter(CreatureObject* player);
 
-	void onExit(PlayerCreature* player);
+	void onExit(CreatureObject* player);
 
 	bool isBuildingObject();
 

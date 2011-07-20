@@ -12,7 +12,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -20,7 +20,7 @@
  *	FishObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETATTRIBUTES__STRING_STRING_STRING_FLOAT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_FILET__PLAYERCREATURE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETATTRIBUTES__STRING_STRING_STRING_FLOAT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_FILET__CREATUREOBJECT_};
 
 FishObject::FishObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	FishObjectImplementation* _implementation = new FishObjectImplementation();
@@ -65,13 +65,13 @@ void FishObject::setAttributes(const String& playerName, const String& terrainN,
 		_implementation->setAttributes(playerName, terrainN, timestamp, fishLength);
 }
 
-void FishObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void FishObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	FishObjectImplementation* _implementation = (FishObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -80,13 +80,13 @@ void FishObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Player
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int FishObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FishObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	FishObjectImplementation* _implementation = (FishObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -95,13 +95,13 @@ int FishObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void FishObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void FishObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	FishObjectImplementation* _implementation = (FishObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -110,13 +110,13 @@ void FishObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* ob
 		_implementation->fillAttributeList(msg, object);
 }
 
-void FishObject::filet(PlayerCreature* player) {
+void FishObject::filet(CreatureObject* player) {
 	FishObjectImplementation* _implementation = (FishObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILET__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILET__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -343,17 +343,17 @@ Packet* FishObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETATTRIBUTES__STRING_STRING_STRING_FLOAT_:
 		setAttributes(inv->getAsciiParameter(_param0_setAttributes__String_String_String_float_), inv->getAsciiParameter(_param1_setAttributes__String_String_String_float_), inv->getAsciiParameter(_param2_setAttributes__String_String_String_float_), inv->getFloatParameter());
 		break;
-	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
+		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_:
-		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
+		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_FILET__PLAYERCREATURE_:
-		filet((PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILET__CREATUREOBJECT_:
+		filet((CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -370,19 +370,19 @@ void FishObjectAdapter::setAttributes(const String& playerName, const String& te
 	((FishObjectImplementation*) impl)->setAttributes(playerName, terrainN, timestamp, fishLength);
 }
 
-void FishObjectAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void FishObjectAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	((FishObjectImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
-int FishObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FishObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((FishObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void FishObjectAdapter::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void FishObjectAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	((FishObjectImplementation*) impl)->fillAttributeList(msg, object);
 }
 
-void FishObjectAdapter::filet(PlayerCreature* player) {
+void FishObjectAdapter::filet(CreatureObject* player) {
 	((FishObjectImplementation*) impl)->filet(player);
 }
 

@@ -55,7 +55,7 @@ import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.tangible.tool.ToolTangibleObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 import system.util.Vector;
 import server.zone.templates.SharedObjectTemplate;
@@ -112,7 +112,7 @@ class CraftingTool extends ToolTangibleObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
 	 * Handles the radial selection sent by the client
@@ -120,7 +120,7 @@ class CraftingTool extends ToolTangibleObject {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -130,7 +130,7 @@ class CraftingTool extends ToolTangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public native void updateCraftingValues(ManufactureSchematic schematic);
 	
@@ -155,65 +155,65 @@ class CraftingTool extends ToolTangibleObject {
 	@local
 	public native Vector<unsigned int> getToolTabs();
 	
-	public native void requestCraftingSession(PlayerCreature player, CraftingStation craftingStation = null);
+	public native void requestCraftingSession(CreatureObject player, CraftingStation craftingStation = null);
 	
-	private native void sendStart(PlayerCreature player);
+	private native void sendStart(CreatureObject player);
 	
-	private native void sendToolStartFailure(PlayerCreature player);
+	private native void sendToolStartFailure(CreatureObject player);
 	
-	public native void cancelCraftingSession(PlayerCreature player);
+	public native void cancelCraftingSession(CreatureObject player);
 	
 	public native void clearCraftingSession();
 	
-	private native void closeCraftingWindow(PlayerCreature player, int clientCounter);
+	private native void closeCraftingWindow(CreatureObject player, int clientCounter);
 	
-	private native void locateCraftingStation(PlayerCreature player, int toolType);
+	private native void locateCraftingStation(CreatureObject player, int toolType);
 
-	public native void selectDraftSchematic(PlayerCreature player, int index);
+	public native void selectDraftSchematic(CreatureObject player, int index);
 	
-	public native boolean createSessionObjects(PlayerCreature player, DraftSchematic draftschematic);
+	public native boolean createSessionObjects(CreatureObject player, DraftSchematic draftschematic);
 	
-	public native boolean createManufactureSchematic(PlayerCreature player, DraftSchematic draftschematic);
+	public native boolean createManufactureSchematic(CreatureObject player, DraftSchematic draftschematic);
 	
-	public native boolean createPrototype(PlayerCreature player, DraftSchematic draftschematic);
+	public native boolean createPrototype(CreatureObject player, DraftSchematic draftschematic);
 
-	public native void synchronizedUIListenForSchematic(PlayerCreature player);
+	public native void synchronizedUIListenForSchematic(CreatureObject player);
 	
-	public native void addIngredient(PlayerCreature player, TangibleObject tano, int slot, int clientCounter);
+	public native void addIngredient(CreatureObject player, TangibleObject tano, int slot, int clientCounter);
 	
-	private native void sendIngredientAddSuccess(PlayerCreature player, int slot, int clientCounter);
+	private native void sendIngredientAddSuccess(CreatureObject player, int slot, int clientCounter);
 	
-	public native void removeIngredient(PlayerCreature player, TangibleObject tano, int slot, int clientCounter);
+	public native void removeIngredient(CreatureObject player, TangibleObject tano, int slot, int clientCounter);
 	
-	private native void sendIngredientRemoveSuccess(PlayerCreature player, int slot, int clientCounter);
+	private native void sendIngredientRemoveSuccess(CreatureObject player, int slot, int clientCounter);
 	
-	private native void sendSlotMessage(PlayerCreature player, int clientCounter, int message);
+	private native void sendSlotMessage(CreatureObject player, int clientCounter, int message);
 	
-	public native void nextCraftingStage(PlayerCreature player, int clientCounter);
+	public native void nextCraftingStage(CreatureObject player, int clientCounter);
 
-	private native void initialAssembly(PlayerCreature player, int counter);
+	private native void initialAssembly(CreatureObject player, int counter);
 	
-	private native void finishAssembly(PlayerCreature player, int clientCounter);
+	private native void finishAssembly(CreatureObject player, int clientCounter);
 
-	public native void experiment(PlayerCreature player, int numRowsAttempted, string expString, int clientCounter);
+	public native void experiment(CreatureObject player, int numRowsAttempted, string expString, int clientCounter);
 
 	@local
 	private native void experimentRow(CraftingValues craftingValues, int rowEffected, int pointsAttempted, 
 			float failure);
 	
-	public native void customization(PlayerCreature player, string name, int schematicCount, string customization);
+	public native void customization(CreatureObject player, string name, int schematicCount, string customization);
 
-	private native void finishStage1(PlayerCreature player, int clientCounter);
+	private native void finishStage1(CreatureObject player, int clientCounter);
 	
-	private native void finishStage2(PlayerCreature player, int clientCounter);
+	private native void finishStage2(CreatureObject player, int clientCounter);
 
-	public native void createPrototype(PlayerCreature player, int clientCounter, int practice);
+	public native void createPrototype(CreatureObject player, int clientCounter, int practice);
 
-	public native void createManfSchematic(PlayerCreature player, int clientCounter);
+	public native void createManfSchematic(CreatureObject player, int clientCounter);
 	
-	public native void createObject(PlayerCreature player, int timer, boolean create);
+	public native void createObject(CreatureObject player, int timer, boolean create);
 	
-	public native void depositObject(PlayerCreature player, boolean practice);
+	public native void depositObject(CreatureObject player, boolean practice);
 
 	public unsigned long getLastExperimentationTimestamp() {
 		return lastExperimentationTimestamp;

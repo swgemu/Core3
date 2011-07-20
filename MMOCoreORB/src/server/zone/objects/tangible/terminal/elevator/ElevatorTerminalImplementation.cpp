@@ -7,12 +7,12 @@
 
 
 #include "ElevatorTerminal.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/templates/tangible/ElevatorTerminalTemplate.h"
 
-void ElevatorTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void ElevatorTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (player->getParent() != parent) //Must be in same cell to use
 		return;
 
@@ -28,7 +28,7 @@ void ElevatorTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* 
 		menuResponse->addRadialMenuItem(198, 3, "@elevator_text:up"); //UP
 }
 
-int ElevatorTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int ElevatorTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	ManagedReference<SceneObject*> parentObj = getParent();
 
 	//Ensure that the parent object is a cell

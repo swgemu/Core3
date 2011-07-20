@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/Zone.h"
 
@@ -14,7 +14,7 @@
  *	SignObjectStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_SENDSIGNNAMETO__PLAYERCREATURE_,RPC_ISSIGNOBJECT__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_ = 6,RPC_SENDSIGNNAMETO__CREATUREOBJECT_,RPC_ISSIGNOBJECT__,RPC_INITIALIZECHILDOBJECT__SCENEOBJECT_};
 
 SignObject::SignObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	SignObjectImplementation* _implementation = new SignObjectImplementation();
@@ -29,13 +29,13 @@ SignObject::~SignObject() {
 }
 
 
-int SignObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SignObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -44,13 +44,13 @@ int SignObject::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) 
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void SignObject::sendSignNameTo(PlayerCreature* player) {
+void SignObject::sendSignNameTo(CreatureObject* player) {
 	SignObjectImplementation* _implementation = (SignObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDSIGNNAMETO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDSIGNNAMETO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -244,11 +244,11 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_SENDSIGNNAMETO__PLAYERCREATURE_:
-		sendSignNameTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDSIGNNAMETO__CREATUREOBJECT_:
+		sendSignNameTo((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_ISSIGNOBJECT__:
 		resp->insertBoolean(isSignObject());
@@ -263,11 +263,11 @@ Packet* SignObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-int SignObjectAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SignObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((SignObjectImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void SignObjectAdapter::sendSignNameTo(PlayerCreature* player) {
+void SignObjectAdapter::sendSignNameTo(CreatureObject* player) {
 	((SignObjectImplementation*) impl)->sendSignNameTo(player);
 }
 

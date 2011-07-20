@@ -14,7 +14,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -24,7 +24,7 @@
  *	RevivePackStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETHEALTHWOUNDHEALED__,RPC_GETHEALTHHEALED__,RPC_GETACTIONWOUNDHEALED__,RPC_GETACTIONHEALED__,RPC_GETMINDWOUNDHEALED__,RPC_GETMINDHEALED__,RPC_ISREVIVEPACK__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_GETHEALTHWOUNDHEALED__,RPC_GETHEALTHHEALED__,RPC_GETACTIONWOUNDHEALED__,RPC_GETACTIONHEALED__,RPC_GETMINDWOUNDHEALED__,RPC_GETMINDHEALED__,RPC_ISREVIVEPACK__};
 
 RevivePack::RevivePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	RevivePackImplementation* _implementation = new RevivePackImplementation();
@@ -48,7 +48,7 @@ void RevivePack::updateCraftingValues(ManufactureSchematic* schematic) {
 		_implementation->updateCraftingValues(schematic);
 }
 
-void RevivePack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void RevivePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -57,13 +57,13 @@ void RevivePack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* ob
 		_implementation->fillAttributeList(msg, object);
 }
 
-int RevivePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int RevivePack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	RevivePackImplementation* _implementation = (RevivePackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -422,7 +422,7 @@ void RevivePackImplementation::updateCraftingValues(ManufactureSchematic* schema
 	mindHealed = 1.5 * effectiveness - mind;
 }
 
-void RevivePackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void RevivePackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		msg.insertAttribute("examine_heal_wound_health", Math.getPrecision(healthWoundHealed, 0));
@@ -441,7 +441,7 @@ void RevivePackImplementation::fillAttributeList(AttributeListMessage* msg, Play
 	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::medicineUseRequired);
 }
 
-int RevivePackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int RevivePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			return 1;
 	return 1;
@@ -511,8 +511,8 @@ Packet* RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_GETHEALTHWOUNDHEALED__:
 		resp->insertFloat(getHealthWoundHealed());
@@ -542,7 +542,7 @@ Packet* RevivePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-int RevivePackAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int RevivePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((RevivePackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

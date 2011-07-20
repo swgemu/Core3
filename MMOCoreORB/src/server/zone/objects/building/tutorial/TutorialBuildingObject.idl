@@ -46,7 +46,7 @@ package server.zone.objects.building.tutorial;
 
 import server.zone.objects.building.BuildingObject;
 import engine.lua.LuaObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.building.tutorial.events.UnloadBuildingTask;
 import server.zone.objects.building.tutorial.events.StartTutorialTask;
 import server.zone.Zone;
@@ -73,11 +73,11 @@ class TutorialBuildingObject extends BuildingObject {
 		Logger.setLoggingName("TutorialBuildingObject");
 	}
 	
-	public void onEnter(PlayerCreature player) {
+	public void onEnter(CreatureObject player) {
 		dequeueUnloadEvent();
 	}
 	
-	public void onExit(PlayerCreature player) {
+	public void onExit(CreatureObject player) {
 		enqueueUnloadEvent();
 	}
 	

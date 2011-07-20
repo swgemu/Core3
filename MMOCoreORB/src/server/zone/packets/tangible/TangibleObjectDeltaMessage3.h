@@ -70,7 +70,7 @@ public:
 
 	void updateName(const UnicodeString& name) {
 		if (tano->isPlayerCreature()) {
-			PlayerCreature* player = (PlayerCreature*) tano;
+			CreatureObject* player = (CreatureObject*) tano;
 
 			if (player->getPlayerObject()->isPrivileged()) {
 				String customName = name.toString() + " \\#ffff00[SWGEmu-Staff]\\#.";

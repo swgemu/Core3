@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "BuffList.h"
 #include "../CreatureObject.h"
-#include "../../player/PlayerCreature.h"
+#include "../../creature/CreatureObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
 BuffList::BuffList() {
@@ -76,7 +76,7 @@ void BuffList::updateBuffsToDatabase() {
 	}
 }
 
-void BuffList::sendTo(PlayerCreature* player) {
+void BuffList::sendTo(CreatureObject* player) {
 	for (int i = 0; i < buffList.size(); ++i) {
 		Buff* buff = buffList.get(i);
 
@@ -84,7 +84,7 @@ void BuffList::sendTo(PlayerCreature* player) {
 	}
 }
 
-void BuffList::sendDestroyTo(PlayerCreature* player) {
+void BuffList::sendDestroyTo(CreatureObject* player) {
 	for (int i = 0; i < buffList.size(); ++i) {
 		Buff* buff = buffList.get(i);
 

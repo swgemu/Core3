@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.objects.tangible.tool;
 
 import server.zone.objects.tangible.tool.ToolTangibleObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import engine.lua.LuaObject;
 import engine.util.u3d.Coordinate;
 import server.zone.packets.object.ObjectMenuResponse;
@@ -108,7 +108,7 @@ class SurveyTool extends ToolTangibleObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	@local
 	public void updateCraftingValues(ManufactureSchematic schematic) {
@@ -142,14 +142,14 @@ class SurveyTool extends ToolTangibleObject {
 		doGamble = false;
 	}
 	
-	public native void consentRadioactiveSample(PlayerCreature player);
+	public native void consentRadioactiveSample(CreatureObject player);
 	
-	public native void sendRadioactiveWarning(PlayerCreature player);
+	public native void sendRadioactiveWarning(CreatureObject player);
 	
-	public native void sendRangeSui(PlayerCreature player);
+	public native void sendRangeSui(CreatureObject player);
 	
-	public native void surveyCnodeMinigameSui(PlayerCreature player);
-	public native void surveyCnodeMinigame(PlayerCreature player, int value);
+	public native void surveyCnodeMinigameSui(CreatureObject player);
+	public native void surveyCnodeMinigame(CreatureObject player, int value);
 	
 	@local
 	public Coordinate getRichSampleLocation() {
@@ -168,8 +168,8 @@ class SurveyTool extends ToolTangibleObject {
 		return inUse;
 	}
 	
-	public native void surveyGnodeMinigameSui(PlayerCreature player);
-	public native void surveyGnodeMinigame(PlayerCreature player, int value);
+	public native void surveyGnodeMinigameSui(CreatureObject player);
+	public native void surveyGnodeMinigame(CreatureObject player, int value);
 	
 	/**
 	 * Handles the radial selection sent by the client
@@ -177,10 +177,10 @@ class SurveyTool extends ToolTangibleObject {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
-	public native void sendResourceListTo(PlayerCreature player);
-	public native void sendSurveyTo(PlayerCreature player, final string resname);
-	public native void sendSampleTo(PlayerCreature player, final string resname);
+	public native void sendResourceListTo(CreatureObject player);
+	public native void sendSurveyTo(CreatureObject player, final string resname);
+	public native void sendSampleTo(CreatureObject player, final string resname);
 	
 }

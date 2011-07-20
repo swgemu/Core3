@@ -6,8 +6,6 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
-
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -22,7 +20,7 @@
  *	VendorCreatureStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ADDCLOTHINGITEM__PLAYERCREATURE_TANGIBLEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CREATECHILDOBJECTS__,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ADDCLOTHINGITEM__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CREATECHILDOBJECTS__,RPC_ADDVENDORTOMAP__,RPC_SETOWNERID__LONG_,RPC_ISVENDOR__,RPC_ISVENDORCREATURE__};
 
 VendorCreature::VendorCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	VendorCreatureImplementation* _implementation = new VendorCreatureImplementation();
@@ -59,7 +57,7 @@ void VendorCreature::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void VendorCreature::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void VendorCreature::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -68,13 +66,13 @@ void VendorCreature::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Pl
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int VendorCreature::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VendorCreature::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -83,7 +81,7 @@ int VendorCreature::handleObjectMenuSelect(PlayerCreature* player, byte selected
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void VendorCreature::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void VendorCreature::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -92,13 +90,13 @@ void VendorCreature::fillAttributeList(AttributeListMessage* msg, PlayerCreature
 		_implementation->fillAttributeList(msg, object);
 }
 
-void VendorCreature::addClothingItem(PlayerCreature* player, TangibleObject* clothing) {
+void VendorCreature::addClothingItem(CreatureObject* player, TangibleObject* clothing) {
 	VendorCreatureImplementation* _implementation = (VendorCreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDCLOTHINGITEM__PLAYERCREATURE_TANGIBLEOBJECT_);
+		DistributedMethod method(this, RPC_ADDCLOTHINGITEM__CREATUREOBJECT_TANGIBLEOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(clothing);
 
@@ -374,11 +372,11 @@ Packet* VendorCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_FINALIZE__:
 		finalize();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_ADDCLOTHINGITEM__PLAYERCREATURE_TANGIBLEOBJECT_:
-		addClothingItem((PlayerCreature*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
+	case RPC_ADDCLOTHINGITEM__CREATUREOBJECT_TANGIBLEOBJECT_:
+		addClothingItem((CreatureObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
@@ -413,11 +411,11 @@ void VendorCreatureAdapter::finalize() {
 	((VendorCreatureImplementation*) impl)->finalize();
 }
 
-int VendorCreatureAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VendorCreatureAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((VendorCreatureImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void VendorCreatureAdapter::addClothingItem(PlayerCreature* player, TangibleObject* clothing) {
+void VendorCreatureAdapter::addClothingItem(CreatureObject* player, TangibleObject* clothing) {
 	((VendorCreatureImplementation*) impl)->addClothingItem(player, clothing);
 }
 

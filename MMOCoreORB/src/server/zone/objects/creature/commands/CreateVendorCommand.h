@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
 
 class CreateVendorCommand : public QueueCommand {
@@ -69,7 +69,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
 		SceneObject* parent = player->getRootParent();
 
 		if (parent == NULL || !parent->isBuildingObject()) {

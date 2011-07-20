@@ -14,9 +14,9 @@
  *	CreateVendorSessionStub
  */
 
-enum {RPC_INITALIZEWINDOW__PLAYERCREATURE_ = 6,RPC_HANDLEMENUSELECT__BYTE_,RPC_CREATEVENDOR__STRING_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
+enum {RPC_INITALIZEWINDOW__CREATUREOBJECT_ = 6,RPC_HANDLEMENUSELECT__BYTE_,RPC_CREATEVENDOR__STRING_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
 
-CreateVendorSession::CreateVendorSession(PlayerCreature* parent) : Facade(DummyConstructorParameter::instance()) {
+CreateVendorSession::CreateVendorSession(CreatureObject* parent) : Facade(DummyConstructorParameter::instance()) {
 	CreateVendorSessionImplementation* _implementation = new CreateVendorSessionImplementation(parent);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -29,13 +29,13 @@ CreateVendorSession::~CreateVendorSession() {
 }
 
 
-void CreateVendorSession::initalizeWindow(PlayerCreature* pl) {
+void CreateVendorSession::initalizeWindow(CreatureObject* pl) {
 	CreateVendorSessionImplementation* _implementation = (CreateVendorSessionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_INITALIZEWINDOW__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_INITALIZEWINDOW__CREATUREOBJECT_);
 		method.addObjectParameter(pl);
 
 		method.executeWithVoidReturn();
@@ -216,7 +216,7 @@ bool CreateVendorSessionImplementation::readObjectMember(ObjectInputStream* stre
 		return true;
 
 	if (_name == "player") {
-		TypeInfo<ManagedWeakReference<PlayerCreature* > >::parseFromBinaryStream(&player, stream);
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
 	}
 
@@ -264,7 +264,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<PlayerCreature* > >::toBinaryStream(&player, stream);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -312,7 +312,7 @@ int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* st
 	return 6 + FacadeImplementation::writeObjectMembers(stream);
 }
 
-CreateVendorSessionImplementation::CreateVendorSessionImplementation(PlayerCreature* parent) {
+CreateVendorSessionImplementation::CreateVendorSessionImplementation(CreatureObject* parent) {
 	_initializeImplementation();
 	// server/zone/objects/player/sessions/vendor/CreateVendorSession.idl():  		Logger.setLoggingName("CreateVendorSession");
 	Logger::setLoggingName("CreateVendorSession");
@@ -361,8 +361,8 @@ Packet* CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_INITALIZEWINDOW__PLAYERCREATURE_:
-		initalizeWindow((PlayerCreature*) inv->getObjectParameter());
+	case RPC_INITALIZEWINDOW__CREATUREOBJECT_:
+		initalizeWindow((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_HANDLEMENUSELECT__BYTE_:
 		handleMenuSelect(inv->getByteParameter());
@@ -386,7 +386,7 @@ Packet* CreateVendorSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 	return resp;
 }
 
-void CreateVendorSessionAdapter::initalizeWindow(PlayerCreature* pl) {
+void CreateVendorSessionAdapter::initalizeWindow(CreatureObject* pl) {
 	((CreateVendorSessionImplementation*) impl)->initalizeWindow(pl);
 }
 

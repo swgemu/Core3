@@ -52,7 +52,7 @@ include server.chat.StringIdChatParameterVector;
 include server.chat.WaypointChatParameter;
 include server.chat.WaypointChatParameterVector;
 include server.chat.StringIdChatParameter;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 
 class PersistentMessage extends ManagedObject {
 	protected string senderName;
@@ -80,7 +80,7 @@ class PersistentMessage extends ManagedObject {
 		receiverObjectID = 0;
 	}
 	
-	public abstract native void sendTo(PlayerCreature player, boolean sendBody = true);
+	public abstract native void sendTo(CreatureObject player, boolean sendBody = true);
 	
 	@local
 	public StringIdChatParameterVector getStringIdParameters() {

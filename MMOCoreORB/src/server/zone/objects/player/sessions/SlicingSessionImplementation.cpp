@@ -39,7 +39,7 @@ int SlicingSessionImplementation::initializeSession() {
 	return 0;
 }
 
-void SlicingSessionImplementation::initalizeSlicingMenu(PlayerCreature* pl, TangibleObject* obj) {
+void SlicingSessionImplementation::initalizeSlicingMenu(CreatureObject* pl, TangibleObject* obj) {
 	player = pl;
 	tangibleObject = obj;
 
@@ -90,7 +90,7 @@ void SlicingSessionImplementation::initalizeSlicingMenu(PlayerCreature* pl, Tang
 	slicingSuiBox->setCancelButton(true, "@cancel");
 	generateSliceMenu(slicingSuiBox);
 
-	player->addSuiBox(slicingSuiBox);
+	player->getPlayerObject()->addSuiBox(slicingSuiBox);
 
 	player->addActiveSession(SessionFacadeType::SLICING, _this);
 	tangibleObject->addActiveSession(SessionFacadeType::SLICING, _this);
@@ -132,12 +132,12 @@ void SlicingSessionImplementation::generateSliceMenu(SuiListBox* suiBox) {
 	}
 
 	suiBox->setPromptText(prompt.toString());
-	player->addSuiBox(suiBox);
+	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 
 }
 
-void SlicingSessionImplementation::handleMenuSelect(PlayerCreature* pl, byte menuID, SuiListBox* suiBox) {
+void SlicingSessionImplementation::handleMenuSelect(CreatureObject* pl, byte menuID, SuiListBox* suiBox) {
 	if (tangibleObject == NULL || player == NULL || player != pl)
 		return;
 
@@ -202,7 +202,7 @@ void SlicingSessionImplementation::endSlicing() {
 
 }
 
-int SlicingSessionImplementation::getSlicingSkill(PlayerCreature* slicer) {
+int SlicingSessionImplementation::getSlicingSkill(CreatureObject* slicer) {
 
 	String skill0 = "combat_smuggler_novice";
 	String skill1 = "combat_smuggler_slicing_01";
@@ -406,7 +406,7 @@ void SlicingSessionImplementation::handleSlice(SuiListBox* suiBox) {
 	prompt << getPrefix(tangibleObject) + "examine";
 	suiBox->setPromptText(prompt.toString());
 
-	player->addSuiBox(suiBox);
+	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 
 	if (tangibleObject->isContainerObject() || tangibleObject->getGameObjectType() == SceneObject::PLAYERLOOTCRATE) {

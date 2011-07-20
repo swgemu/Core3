@@ -16,7 +16,9 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
@@ -32,11 +34,13 @@
 
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
+#include "server/zone/ZoneClientSession.h"
+
 /*
  *	CreatureObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_FINALIZE__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CLEARQUEUEACTION__INT_FLOAT_INT_INT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_PLAYMUSICMESSAGE__STRING_,RPC_SENDNEWBIETUTORIALREQUEST__STRING_,RPC_SENDNEWBIETUTORIALENABLEHUDELEMENT__STRING_BOOL_,RPC_SENDOPENHOLOCRONTOPAGEMESSAGE__,RPC_SENDSYSTEMMESSAGE__UNICODESTRING_,RPC_SENDSYSTEMMESSAGE__STRING_STRING_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SETCOMBATSTATE__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETPOSTURE__INT_BOOL_,RPC_SETACCELERATIONMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETRUNSPEED__FLOAT_BOOL_,RPC_SETHAM__INT_INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HASDAMAGE__INT_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETBASEHAM__INT_INT_BOOL_,RPC_SETWOUNDS__INT_INT_BOOL_,RPC_ADDWOUNDS__INT_INT_BOOL_,RPC_SETMAXHAM__INT_INT_BOOL_,RPC_ADDMAXHAM__INT_INT_BOOL_,RPC_SETENCUMBRANCE__INT_INT_BOOL_,RPC_ADDENCUMBRANCE__INT_INT_BOOL_,RPC_SETWEAPON__WEAPONOBJECT_BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_SETINSTRUMENTID__INT_BOOL_,RPC_SETLISTENTOID__LONG_BOOL_,RPC_SETPERFORMANCECOUNTER__INT_BOOL_,RPC_SETPERFORMANCEANIMATION__STRING_BOOL_,RPC_SETSHOCKWOUNDS__INT_BOOL_,RPC_ADDSHOCKWOUNDS__INT_BOOL_,RPC_SETTARGETID__LONG_BOOL_,RPC_SETBANKCREDITS__INT_BOOL_,RPC_ADDBUFF__BUFF_,RPC_REMOVEBUFF__INT_,RPC_REMOVEBUFF__BUFF_,RPC_CLEARBUFFS__BOOL_,RPC_GETBUFF__INT_,RPC_ADDDOTSTATE__LONG_INT_BYTE_INT_FLOAT_INT_,RPC_HEALDOT__LONG_INT_,RPC_CLEARDOTS__,RPC_HASBUFF__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSTURECHANGE__INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISRESUSCITABLE__,RPC_ADDBANKCREDITS__INT_BOOL_,RPC_ADDCASHCREDITS__INT_BOOL_,RPC_SUBSTRACTBANKCREDITS__INT_,RPC_SUBSTRACTCASHCREDITS__INT_,RPC_VERIFYCASHCREDITS__INT_,RPC_VERIFYBANKCREDITS__INT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_STOPENTERTAINING__,RPC_ISENTERTAINING__,RPC_SETCASHCREDITS__INT_BOOL_,RPC_SETTERRAINNEGOTIATION__FLOAT_BOOL_,RPC_ADDSKILLBOX__STRING_BOOL_,RPC_REMOVESKILLBOX__STRING_BOOL_,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_REMOVESKILLMOD__STRING_BOOL_,RPC_UPDATEGROUPINVITERID__LONG_BOOL_,RPC_UPDATEGROUP__GROUPOBJECT_BOOL_,RPC_ENQUEUECOMMAND__INT_INT_LONG_UNICODESTRING_INT_,RPC_SETMOOD__BYTE_BOOL_,RPC_SETMOODSTRING__STRING_BOOL_,RPC_DELETEQUEUEACTION__INT_,RPC_SETSTATE__LONG_BOOL_,RPC_CLEARSTATE__LONG_BOOL_,RPC_SETCONTROLDEVICE__CONTROLDEVICE_,RPC_GETWEARABLEMASK__,RPC_SETCREATURELINK__CREATUREOBJECT_BOOL_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_LONG_UNICODESTRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_CANTREATINJURIES__,RPC_CANTREATSTATES__,RPC_CANTREATWOUNDS__,RPC_CANTREATCONDITIONS__,RPC_ISLISTENING__,RPC_ISWATCHING__,RPC_DISMOUNT__,RPC_CALCULATEBFRATIO__,RPC_SETDIZZIEDSTATE__INT_,RPC_SETRALLIEDSTATE__INT_,RPC_SETAIMINGSTATE__INT_,RPC_SETCOVERSTATE__INT_,RPC_SETBERSERKEDSTATE__INT_,RPC_SETSTUNNEDSTATE__INT_,RPC_SETBLINDEDSTATE__INT_,RPC_SETINTIMIDATEDSTATE__INT_,RPC_SETSNAREDSTATE__INT_,RPC_SETROOTEDSTATE__INT_,RPC_SETNEXTATTACKDELAY__INT_,RPC_SETMEDITATESTATE__,RPC_ACTIVATEHAMREGENERATION__,RPC_ACTIVATESTATERECOVERY__,RPC_UPDATETIMEOFDEATH__,RPC_HASATTACKDELAY__,RPC_REMOVEATTACKDELAY__,RPC_HASSPICE__,RPC_UPDATELASTSUCCESSFULCOMBATACTION__,RPC_UPDATEKNOCKDOWNRECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_UPDATELASTKNOCKDOWN__,RPC_CHECKKNOCKDOWNRECOVERY__,RPC_CHECKLASTKNOCKDOWN__,RPC_UPDATEPOSTUREDOWNRECOVERY__,RPC_UPDATEPOSTUREUPRECOVERY__,RPC_CHECKPOSTUREDOWNRECOVERY__,RPC_GETSCREENPLAYSTATE__STRING_,RPC_SETSCREENPLAYSTATE__STRING_LONG_,RPC_CHECKPOSTUREUPRECOVERY__,RPC_UPDATECOOLDOWNTIMER__STRING_INT_,RPC_CHECKCOOLDOWNRECOVERY__STRING_,RPC_ADDCOOLDOWN__STRING_INT_,RPC_DOANIMATION__STRING_,RPC_DOCOMBATANIMATION__CREATUREOBJECT_INT_BYTE_,RPC_PLAYEFFECT__STRING_STRING_,RPC_PLAYEFFECT__STRING_,RPC_ACTIVATEQUEUEACTION__,RPC_ACTIVATEIMMEDIATEACTION__,RPC_GETCREATURENAME__,RPC_ISGROUPED__,RPC_GETBANKCREDITS__,RPC_GETCASHCREDITS__,RPC_GETBASEHAM__INT_,RPC_GETWOUNDS__INT_,RPC_GETHAM__INT_,RPC_GETMAXHAM__INT_,RPC_GETENCUMBRANCE__INT_,RPC_GETPOSTURE__,RPC_GETFACTIONRANK__,RPC_GETLINKEDCREATURE__,RPC_GETCREATURELINKID__,RPC_GETSHOCKWOUNDS__,RPC_GETWATCHTOID__,RPC_GETSTATEBITMASK__,RPC_HASSTATE__LONG_,RPC_HASSTATES__,RPC_GETLISTENID__,RPC_GETACCELERATIONMULTIPLIERBASE__,RPC_GETACCELERATIONMULTIPLIERMOD__,RPC_GETSPEEDMULTIPLIERBASE__,RPC_GETSPEEDMULTIPLIERMOD__,RPC_GETRUNSPEED__,RPC_GETWALKSPEED__,RPC_GETTERRAINNEGOTIATION__,RPC_GETRUNACCELERATION__,RPC_GETWALKACCELERATION__,RPC_GETPERFORMANCEANIMATION__,RPC_GETMOODSTRING__,RPC_GETWEAPONID__,RPC_GETWEAPON__,RPC_GETGUILDOBJECT__,RPC_GETGUILDID__,RPC_ISINGUILD__,RPC_SETGUILDOBJECT__GUILDOBJECT_,RPC_GETGROUPID__,RPC_GETGROUPINVITERID__,RPC_GETGROUP__,RPC_GETGROUPINVITECOUNTER__,RPC_GETTARGETID__,RPC_GETMOODID__,RPC_GETSLOPEMODPERCENT__,RPC_GETPERFORMANCECOUNTER__,RPC_GETINSTRUMENTID__,RPC_GETFROZEN__,RPC_GETHEIGHT__,RPC_GETSPECIES__,RPC_GETSPECIESNAME__,RPC_GETGENDER__,RPC_GETSKILLMOD__STRING_,RPC_HASSKILLBOX__STRING_,RPC_SETHEIGHT__FLOAT_,RPC_SETWATCHTOID__LONG_,RPC_ISCREATUREOBJECT__,RPC_ISTRAINERCREATURE__,RPC_ISSWIMMING__,RPC_ISRIDINGMOUNT__,RPC_GETCONTROLDEVICE__,RPC_GETSWIMHEIGHT__,RPC_ISINCAPACITATED__,RPC_ISDEAD__,RPC_ISKNOCKEDDOWN__,RPC_ISKNEELING__,RPC_ISPRONE__,RPC_ISSTANDING__,RPC_ISSITTING__,RPC_ISSKILLANIMATING__,RPC_ISRALLIED__,RPC_ISINCOMBAT__,RPC_ISDIZZIED__,RPC_ISBERSERKED__,RPC_ISSTUNNED__,RPC_ISBLINDED__,RPC_ISINTIMIDATED__,RPC_ISSNARED__,RPC_ISROOTED__,RPC_ISDISEASED__,RPC_ISPOISONED__,RPC_ISBLEEDING__,RPC_ISONFIRE__,RPC_ISMOUNTED__,RPC_ISRIDINGCREATURE__,RPC_ISPEACED__,RPC_ISMEDITATING__,RPC_ISAIMING__,RPC_ISINCOVER__,RPC_ISNONPLAYERCREATURE__,RPC_ISCREATURE__,RPC_ISAIAGENT__,RPC_ISINFORMANTCREATURE__,RPC_ISVENDORCREATURE__};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_FINALIZE__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CLEARQUEUEACTION__INT_FLOAT_INT_INT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_PLAYMUSICMESSAGE__STRING_,RPC_SENDNEWBIETUTORIALREQUEST__STRING_,RPC_SENDNEWBIETUTORIALENABLEHUDELEMENT__STRING_BOOL_,RPC_SENDOPENHOLOCRONTOPAGEMESSAGE__,RPC_SENDSYSTEMMESSAGE__UNICODESTRING_,RPC_SENDSYSTEMMESSAGE__STRING_STRING_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SETCOMBATSTATE__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETPOSTURE__INT_BOOL_,RPC_SETACCELERATIONMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETRUNSPEED__FLOAT_BOOL_,RPC_SETHAM__INT_INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HASDAMAGE__INT_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETBASEHAM__INT_INT_BOOL_,RPC_SETWOUNDS__INT_INT_BOOL_,RPC_ADDWOUNDS__INT_INT_BOOL_,RPC_SETMAXHAM__INT_INT_BOOL_,RPC_ADDMAXHAM__INT_INT_BOOL_,RPC_SETENCUMBRANCE__INT_INT_BOOL_,RPC_ADDENCUMBRANCE__INT_INT_BOOL_,RPC_SETWEAPON__WEAPONOBJECT_BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_SETINSTRUMENTID__INT_BOOL_,RPC_SETLISTENTOID__LONG_BOOL_,RPC_SETPERFORMANCECOUNTER__INT_BOOL_,RPC_SETPERFORMANCEANIMATION__STRING_BOOL_,RPC_SETSHOCKWOUNDS__INT_BOOL_,RPC_ADDSHOCKWOUNDS__INT_BOOL_,RPC_SETTARGETID__LONG_BOOL_,RPC_SETBANKCREDITS__INT_BOOL_,RPC_ADDBUFF__BUFF_,RPC_REMOVEBUFF__INT_,RPC_REMOVEBUFF__BUFF_,RPC_CLEARBUFFS__BOOL_,RPC_SENDBUFFSTO__CREATUREOBJECT_,RPC_GETBUFF__INT_,RPC_ADDDOTSTATE__LONG_INT_BYTE_INT_FLOAT_INT_,RPC_HEALDOT__LONG_INT_,RPC_CLEARDOTS__,RPC_REMOVEDOTSFROMVECTOR__,RPC_HASBUFF__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSTURECHANGE__INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISRESUSCITABLE__,RPC_ADDBANKCREDITS__INT_BOOL_,RPC_ADDCASHCREDITS__INT_BOOL_,RPC_SUBSTRACTBANKCREDITS__INT_,RPC_SUBSTRACTCASHCREDITS__INT_,RPC_VERIFYCASHCREDITS__INT_,RPC_VERIFYBANKCREDITS__INT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_STOPENTERTAINING__,RPC_ISENTERTAINING__,RPC_SETCASHCREDITS__INT_BOOL_,RPC_SETTERRAINNEGOTIATION__FLOAT_BOOL_,RPC_ADDSKILLBOX__STRING_BOOL_,RPC_REMOVESKILLBOX__STRING_BOOL_,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_REMOVESKILLMOD__STRING_BOOL_,RPC_UPDATEGROUPINVITERID__LONG_BOOL_,RPC_UPDATEGROUP__GROUPOBJECT_BOOL_,RPC_ENQUEUECOMMAND__INT_INT_LONG_UNICODESTRING_INT_,RPC_SETMOOD__BYTE_BOOL_,RPC_SETMOODSTRING__STRING_BOOL_,RPC_DELETEQUEUEACTION__INT_,RPC_SETSTATE__LONG_BOOL_,RPC_CLEARSTATE__LONG_BOOL_,RPC_SETCONTROLDEVICE__CONTROLDEVICE_,RPC_GETWEARABLEMASK__,RPC_SETCREATURELINK__CREATUREOBJECT_BOOL_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_LONG_UNICODESTRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_SENDEXECUTECONSOLECOMMAND__STRING_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_GETFIRSTNAME__,RPC_GETLASTNAME__,RPC_ISONLINE__,RPC_CANTREATINJURIES__,RPC_CANTREATSTATES__,RPC_CANTREATWOUNDS__,RPC_CANTREATCONDITIONS__,RPC_GETPLAYEROBJECT__,RPC_ISLISTENING__,RPC_ISWATCHING__,RPC_SETCLIENT__ZONECLIENTSESSION_,RPC_DISMOUNT__,RPC_CALCULATEBFRATIO__,RPC_SETDIZZIEDSTATE__INT_,RPC_SETRALLIEDSTATE__INT_,RPC_SETAIMINGSTATE__INT_,RPC_SETCOVERSTATE__INT_,RPC_SETBERSERKEDSTATE__INT_,RPC_SETSTUNNEDSTATE__INT_,RPC_SETBLINDEDSTATE__INT_,RPC_SETINTIMIDATEDSTATE__INT_,RPC_SETSNAREDSTATE__INT_,RPC_SETROOTEDSTATE__INT_,RPC_SETNEXTATTACKDELAY__INT_,RPC_SETMEDITATESTATE__,RPC_ACTIVATEHAMREGENERATION__,RPC_ACTIVATESTATERECOVERY__,RPC_UPDATETIMEOFDEATH__,RPC_HASATTACKDELAY__,RPC_REMOVEATTACKDELAY__,RPC_HASSPICE__,RPC_UPDATELASTSUCCESSFULCOMBATACTION__,RPC_UPDATEKNOCKDOWNRECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_UPDATELASTKNOCKDOWN__,RPC_CHECKKNOCKDOWNRECOVERY__,RPC_CHECKLASTKNOCKDOWN__,RPC_UPDATEPOSTUREDOWNRECOVERY__,RPC_UPDATEPOSTUREUPRECOVERY__,RPC_CHECKPOSTUREDOWNRECOVERY__,RPC_GETSCREENPLAYSTATE__STRING_,RPC_SETSCREENPLAYSTATE__STRING_LONG_,RPC_CHECKPOSTUREUPRECOVERY__,RPC_UPDATECOOLDOWNTIMER__STRING_INT_,RPC_CHECKCOOLDOWNRECOVERY__STRING_,RPC_ADDCOOLDOWN__STRING_INT_,RPC_DOANIMATION__STRING_,RPC_DOCOMBATANIMATION__CREATUREOBJECT_INT_BYTE_,RPC_PLAYEFFECT__STRING_STRING_,RPC_PLAYEFFECT__STRING_,RPC_ACTIVATEQUEUEACTION__,RPC_ACTIVATEIMMEDIATEACTION__,RPC_GETCREATURENAME__,RPC_ISGROUPED__,RPC_GETBANKCREDITS__,RPC_GETCASHCREDITS__,RPC_GETBASEHAM__INT_,RPC_GETWOUNDS__INT_,RPC_GETHAM__INT_,RPC_GETMAXHAM__INT_,RPC_GETENCUMBRANCE__INT_,RPC_GETPOSTURE__,RPC_GETFACTIONRANK__,RPC_GETLINKEDCREATURE__,RPC_GETCREATURELINKID__,RPC_GETSHOCKWOUNDS__,RPC_GETWATCHTOID__,RPC_GETSTATEBITMASK__,RPC_HASSTATE__LONG_,RPC_HASSTATES__,RPC_GETLISTENID__,RPC_GETACCELERATIONMULTIPLIERBASE__,RPC_GETACCELERATIONMULTIPLIERMOD__,RPC_GETSPEEDMULTIPLIERBASE__,RPC_GETSPEEDMULTIPLIERMOD__,RPC_GETRUNSPEED__,RPC_GETWALKSPEED__,RPC_GETTERRAINNEGOTIATION__,RPC_GETRUNACCELERATION__,RPC_GETWALKACCELERATION__,RPC_GETPERFORMANCEANIMATION__,RPC_GETMOODSTRING__,RPC_GETWEAPONID__,RPC_GETWEAPON__,RPC_GETGUILDOBJECT__,RPC_GETGUILDID__,RPC_ISINGUILD__,RPC_SETGUILDOBJECT__GUILDOBJECT_,RPC_GETGROUPID__,RPC_GETGROUPINVITERID__,RPC_GETGROUP__,RPC_GETGROUPINVITECOUNTER__,RPC_GETTARGETID__,RPC_GETMOODID__,RPC_GETSLOPEMODPERCENT__,RPC_GETPERFORMANCECOUNTER__,RPC_GETINSTRUMENTID__,RPC_GETFROZEN__,RPC_GETHEIGHT__,RPC_GETSPECIES__,RPC_GETSPECIESNAME__,RPC_GETGENDER__,RPC_GETSKILLMOD__STRING_,RPC_HASSKILLBOX__STRING_,RPC_SETHEIGHT__FLOAT_,RPC_SETWATCHTOID__LONG_,RPC_ISCREATUREOBJECT__,RPC_ISNEXTACTIONPAST__,RPC_ISTRAINERCREATURE__,RPC_ISSWIMMING__,RPC_GETCLIENT__,RPC_ISRIDINGMOUNT__,RPC_GETCONTROLDEVICE__,RPC_GETSWIMHEIGHT__,RPC_ISINCAPACITATED__,RPC_ISDEAD__,RPC_ISKNOCKEDDOWN__,RPC_ISKNEELING__,RPC_ISPRONE__,RPC_ISSTANDING__,RPC_ISSITTING__,RPC_ISSKILLANIMATING__,RPC_ISRALLIED__,RPC_ISINCOMBAT__,RPC_ISDIZZIED__,RPC_ISBERSERKED__,RPC_ISSTUNNED__,RPC_ISBLINDED__,RPC_ISINTIMIDATED__,RPC_ISSNARED__,RPC_ISROOTED__,RPC_ISDISEASED__,RPC_ISPOISONED__,RPC_ISBLEEDING__,RPC_ISONFIRE__,RPC_ISMOUNTED__,RPC_ISRIDINGCREATURE__,RPC_ISPEACED__,RPC_ISMEDITATING__,RPC_ISAIMING__,RPC_ISINCOVER__,RPC_ISNONPLAYERCREATUREOBJECT__,RPC_ISCREATURE__,RPC_ISPLAYERCREATURE__,RPC_ISAIAGENT__,RPC_ISINFORMANTCREATURE__,RPC_ISVENDORCREATURE__};
 
 CreatureObject::CreatureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	CreatureObjectImplementation* _implementation = new CreatureObjectImplementation();
@@ -115,6 +119,20 @@ void CreatureObject::sendBaselinesTo(SceneObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->sendBaselinesTo(player);
+}
+
+void CreatureObject::sendToOwner(bool doClose) {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDTOOWNER__BOOL_);
+		method.addBooleanParameter(doClose);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendToOwner(doClose);
 }
 
 void CreatureObject::sendSystemMessage(const String& message) {
@@ -752,6 +770,20 @@ void CreatureObject::clearBuffs(bool updateclient) {
 		_implementation->clearBuffs(updateclient);
 }
 
+void CreatureObject::sendBuffsTo(CreatureObject* creature) {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDBUFFSTO__CREATUREOBJECT_);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendBuffsTo(creature);
+}
+
 Buff* CreatureObject::getBuff(unsigned int buffcrc) {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -811,6 +843,28 @@ void CreatureObject::clearDots() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->clearDots();
+}
+
+DamageOverTimeList* CreatureObject::getDamageOverTimeList() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getDamageOverTimeList();
+}
+
+void CreatureObject::removeDotsFromVector() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEDOTSFROMVECTOR__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeDotsFromVector();
 }
 
 bool CreatureObject::hasBuff(unsigned int buffcrc) {
@@ -1365,6 +1419,104 @@ void CreatureObject::selectConversationOption(int option, SceneObject* obj) {
 		_implementation->selectConversationOption(option, obj);
 }
 
+void CreatureObject::sendMessage(BasePacket* msg) {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDMESSAGE__BASEPACKET_);
+		method.addObjectParameter(msg);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendMessage(msg);
+}
+
+void CreatureObject::sendExecuteConsoleCommand(const String& command) {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDEXECUTECONSOLECOMMAND__STRING_);
+		method.addAsciiParameter(command);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendExecuteConsoleCommand(command);
+}
+
+bool CreatureObject::isAggressiveTo(CreatureObject* object) {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISAGGRESSIVETO__CREATUREOBJECT_);
+		method.addObjectParameter(object);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isAggressiveTo(object);
+}
+
+int CreatureObject::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_);
+		method.addObjectParameter(attacker);
+		method.addSignedIntParameter(condition);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->notifyObjectDestructionObservers(attacker, condition);
+}
+
+String CreatureObject::getFirstName() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFIRSTNAME__);
+
+		method.executeWithAsciiReturn(_return_getFirstName);
+		return _return_getFirstName;
+	} else
+		return _implementation->getFirstName();
+}
+
+String CreatureObject::getLastName() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETLASTNAME__);
+
+		method.executeWithAsciiReturn(_return_getLastName);
+		return _return_getLastName;
+	} else
+		return _implementation->getLastName();
+}
+
+bool CreatureObject::isOnline() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISONLINE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isOnline();
+}
+
 bool CreatureObject::canTreatInjuries() {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -1417,6 +1569,19 @@ bool CreatureObject::canTreatConditions() {
 		return _implementation->canTreatConditions();
 }
 
+PlayerObject* CreatureObject::getPlayerObject() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETPLAYEROBJECT__);
+
+		return (PlayerObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getPlayerObject();
+}
+
 bool CreatureObject::isListening() {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -1441,6 +1606,20 @@ bool CreatureObject::isWatching() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isWatching();
+}
+
+void CreatureObject::setClient(ZoneClientSession* cli) {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCLIENT__ZONECLIENTSESSION_);
+		method.addObjectParameter(cli);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setClient(cli);
 }
 
 void CreatureObject::dismount() {
@@ -1699,6 +1878,15 @@ void CreatureObject::removeAttackDelay() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->removeAttackDelay();
+}
+
+CooldownTimerMap* CreatureObject::getCooldownTimerMap() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCooldownTimerMap();
 }
 
 bool CreatureObject::hasSpice() {
@@ -2362,6 +2550,15 @@ SpeedMultiplierModChanges* CreatureObject::getSpeedMultiplierModChanges() {
 		return _implementation->getSpeedMultiplierModChanges();
 }
 
+CommandQueueActionVector* CreatureObject::getCommandQueue() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCommandQueue();
+}
+
 float CreatureObject::getRunSpeed() {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -2813,6 +3010,19 @@ bool CreatureObject::isCreatureObject() {
 		return _implementation->isCreatureObject();
 }
 
+bool CreatureObject::isNextActionPast() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISNEXTACTIONPAST__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isNextActionPast();
+}
+
 bool CreatureObject::isTrainerCreature() {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -2837,6 +3047,19 @@ bool CreatureObject::isSwimming() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isSwimming();
+}
+
+ZoneClientSession* CreatureObject::getClient() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCLIENT__);
+
+		return (ZoneClientSession*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getClient();
 }
 
 bool CreatureObject::isRidingMount() {
@@ -3229,17 +3452,17 @@ bool CreatureObject::isInCover() {
 		return _implementation->isInCover();
 }
 
-bool CreatureObject::isNonPlayerCreature() {
+bool CreatureObject::isNonPlayerCreatureObject() {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISNONPLAYERCREATURE__);
+		DistributedMethod method(this, RPC_ISNONPLAYERCREATUREOBJECT__);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->isNonPlayerCreature();
+		return _implementation->isNonPlayerCreatureObject();
 }
 
 bool CreatureObject::isCreature() {
@@ -3253,6 +3476,19 @@ bool CreatureObject::isCreature() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isCreature();
+}
+
+bool CreatureObject::isPlayerCreature() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISPLAYERCREATURE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isPlayerCreature();
 }
 
 bool CreatureObject::isAiAgent() {
@@ -4131,6 +4367,11 @@ bool CreatureObjectImplementation::hasDamage(int attribute) {
 	return (&maxHamList)->get(attribute) - (&hamList)->get(attribute);
 }
 
+void CreatureObjectImplementation::sendBuffsTo(CreatureObject* creature) {
+	// server/zone/objects/creature/CreatureObject.idl():  		creatureBuffs.sendTo(creature);
+	(&creatureBuffs)->sendTo(creature);
+}
+
 Buff* CreatureObjectImplementation::getBuff(unsigned int buffcrc) {
 	// server/zone/objects/creature/CreatureObject.idl():  		return 
 	if ((&creatureBuffs)->hasBuff(buffcrc))	// server/zone/objects/creature/CreatureObject.idl():  			return creatureBuffs.getBuffByCRC(buffcrc);
@@ -4152,6 +4393,16 @@ bool CreatureObjectImplementation::healDot(unsigned long long dotType, int reduc
 void CreatureObjectImplementation::clearDots() {
 	// server/zone/objects/creature/CreatureObject.idl():  		damageOverTimeList.clear(this);
 	(&damageOverTimeList)->clear(_this);
+}
+
+DamageOverTimeList* CreatureObjectImplementation::getDamageOverTimeList() {
+	// server/zone/objects/creature/CreatureObject.idl():  		return damageOverTimeList;
+	return (&damageOverTimeList);
+}
+
+void CreatureObjectImplementation::removeDotsFromVector() {
+	// server/zone/objects/creature/CreatureObject.idl():  		damageOverTimeList.removeAll();
+	(&damageOverTimeList)->removeAll();
 }
 
 bool CreatureObjectImplementation::hasBuff(unsigned int buffcrc) {
@@ -4219,15 +4470,20 @@ void CreatureObjectImplementation::setControlDevice(ControlDevice* device) {
 	controlDevice = device;
 }
 
-bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/creature/CreatureObject.idl():  		return false;
-	return false;
-}
-
 void CreatureObjectImplementation::sendConversationStartTo(SceneObject* player) {
 }
 
 void CreatureObjectImplementation::selectConversationOption(int option, SceneObject* obj) {
+}
+
+bool CreatureObjectImplementation::isOnline() {
+	// server/zone/objects/creature/CreatureObject.idl():  		PlayerObject ghost = getPlayerObject();
+	PlayerObject* ghost = getPlayerObject();
+	// server/zone/objects/creature/CreatureObject.idl():  		return 
+	if (ghost == NULL)	// server/zone/objects/creature/CreatureObject.idl():  			return false;
+	return false;
+	// server/zone/objects/creature/CreatureObject.idl():  		return ghost.isOnline();
+	return ghost->isOnline();
 }
 
 bool CreatureObjectImplementation::canTreatInjuries() {
@@ -4260,6 +4516,11 @@ bool CreatureObjectImplementation::isWatching() {
 	return watchToID != 0;
 }
 
+void CreatureObjectImplementation::setClient(ZoneClientSession* cli) {
+	// server/zone/objects/creature/CreatureObject.idl():  		owner = cli;
+	owner = cli;
+}
+
 void CreatureObjectImplementation::updateTimeOfDeath() {
 	// server/zone/objects/creature/CreatureObject.idl():  		timeOfDeath.updateToCurrentTime();
 	(&timeOfDeath)->updateToCurrentTime();
@@ -4273,6 +4534,11 @@ bool CreatureObjectImplementation::hasAttackDelay() {
 void CreatureObjectImplementation::removeAttackDelay() {
 	// server/zone/objects/creature/CreatureObject.idl():  		cooldownTimerMap.updateToCurrentTime("nextAttackDelay");
 	cooldownTimerMap->updateToCurrentTime("nextAttackDelay");
+}
+
+CooldownTimerMap* CreatureObjectImplementation::getCooldownTimerMap() {
+	// server/zone/objects/creature/CreatureObject.idl():  		return cooldownTimerMap;
+	return cooldownTimerMap;
 }
 
 bool CreatureObjectImplementation::hasSpice() {
@@ -4507,6 +4773,11 @@ SpeedMultiplierModChanges* CreatureObjectImplementation::getSpeedMultiplierModCh
 	return (&speedMultiplierModChanges);
 }
 
+CommandQueueActionVector* CreatureObjectImplementation::getCommandQueue() {
+	// server/zone/objects/creature/CreatureObject.idl():  		return commandQueue;
+	return commandQueue;
+}
+
 float CreatureObjectImplementation::getRunSpeed() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return runSpeed;
 	return runSpeed;
@@ -4739,6 +5010,11 @@ bool CreatureObjectImplementation::isCreatureObject() {
 	return true;
 }
 
+bool CreatureObjectImplementation::isNextActionPast() {
+	// server/zone/objects/creature/CreatureObject.idl():  		return nextAction.isPast();
+	return (&nextAction)->isPast();
+}
+
 bool CreatureObjectImplementation::isTrainerCreature() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return false;
 	return false;
@@ -4747,6 +5023,11 @@ bool CreatureObjectImplementation::isTrainerCreature() {
 bool CreatureObjectImplementation::isSwimming() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return stateBitmask & CreatureState.SWIMMING;
 	return stateBitmask & CreatureState::SWIMMING;
+}
+
+ZoneClientSession* CreatureObjectImplementation::getClient() {
+	// server/zone/objects/creature/CreatureObject.idl():  		return owner;
+	return owner;
 }
 
 bool CreatureObjectImplementation::isRidingMount() {
@@ -4899,7 +5180,7 @@ bool CreatureObjectImplementation::isInCover() {
 	return stateBitmask & CreatureState::COVER;
 }
 
-bool CreatureObjectImplementation::isNonPlayerCreature() {
+bool CreatureObjectImplementation::isNonPlayerCreatureObject() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return false;
 	return false;
 }
@@ -4907,6 +5188,11 @@ bool CreatureObjectImplementation::isNonPlayerCreature() {
 bool CreatureObjectImplementation::isCreature() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return false;
 	return false;
+}
+
+bool CreatureObjectImplementation::isPlayerCreature() {
+	// server/zone/objects/creature/CreatureObject.idl():  		return getPlayerObject() != null;
+	return getPlayerObject() != NULL;
 }
 
 bool CreatureObjectImplementation::isAiAgent() {
@@ -4949,6 +5235,9 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
+		break;
+	case RPC_SENDTOOWNER__BOOL_:
+		sendToOwner(inv->getBooleanParameter());
 		break;
 	case RPC_SENDSYSTEMMESSAGE__STRING_:
 		sendSystemMessage(inv->getAsciiParameter(_param0_sendSystemMessage__String_));
@@ -5076,6 +5365,9 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_CLEARBUFFS__BOOL_:
 		clearBuffs(inv->getBooleanParameter());
 		break;
+	case RPC_SENDBUFFSTO__CREATUREOBJECT_:
+		sendBuffsTo((CreatureObject*) inv->getObjectParameter());
+		break;
 	case RPC_GETBUFF__INT_:
 		resp->insertLong(getBuff(inv->getUnsignedIntParameter())->_getObjectID());
 		break;
@@ -5087,6 +5379,9 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_CLEARDOTS__:
 		clearDots();
+		break;
+	case RPC_REMOVEDOTSFROMVECTOR__:
+		removeDotsFromVector();
 		break;
 	case RPC_HASBUFF__INT_:
 		resp->insertBoolean(hasBuff(inv->getUnsignedIntParameter()));
@@ -5199,6 +5494,27 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_:
 		selectConversationOption(inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
+	case RPC_SENDMESSAGE__BASEPACKET_:
+		sendMessage((BasePacket*) inv->getObjectParameter());
+		break;
+	case RPC_SENDEXECUTECONSOLECOMMAND__STRING_:
+		sendExecuteConsoleCommand(inv->getAsciiParameter(_param0_sendExecuteConsoleCommand__String_));
+		break;
+	case RPC_ISAGGRESSIVETO__CREATUREOBJECT_:
+		resp->insertBoolean(isAggressiveTo((CreatureObject*) inv->getObjectParameter()));
+		break;
+	case RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_:
+		resp->insertSignedInt(notifyObjectDestructionObservers((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+		break;
+	case RPC_GETFIRSTNAME__:
+		resp->insertAscii(getFirstName());
+		break;
+	case RPC_GETLASTNAME__:
+		resp->insertAscii(getLastName());
+		break;
+	case RPC_ISONLINE__:
+		resp->insertBoolean(isOnline());
+		break;
 	case RPC_CANTREATINJURIES__:
 		resp->insertBoolean(canTreatInjuries());
 		break;
@@ -5211,11 +5527,17 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_CANTREATCONDITIONS__:
 		resp->insertBoolean(canTreatConditions());
 		break;
+	case RPC_GETPLAYEROBJECT__:
+		resp->insertLong(getPlayerObject()->_getObjectID());
+		break;
 	case RPC_ISLISTENING__:
 		resp->insertBoolean(isListening());
 		break;
 	case RPC_ISWATCHING__:
 		resp->insertBoolean(isWatching());
+		break;
+	case RPC_SETCLIENT__ZONECLIENTSESSION_:
+		setClient((ZoneClientSession*) inv->getObjectParameter());
 		break;
 	case RPC_DISMOUNT__:
 		dismount();
@@ -5505,11 +5827,17 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_ISCREATUREOBJECT__:
 		resp->insertBoolean(isCreatureObject());
 		break;
+	case RPC_ISNEXTACTIONPAST__:
+		resp->insertBoolean(isNextActionPast());
+		break;
 	case RPC_ISTRAINERCREATURE__:
 		resp->insertBoolean(isTrainerCreature());
 		break;
 	case RPC_ISSWIMMING__:
 		resp->insertBoolean(isSwimming());
+		break;
+	case RPC_GETCLIENT__:
+		resp->insertLong(getClient()->_getObjectID());
 		break;
 	case RPC_ISRIDINGMOUNT__:
 		resp->insertBoolean(isRidingMount());
@@ -5601,11 +5929,14 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_ISINCOVER__:
 		resp->insertBoolean(isInCover());
 		break;
-	case RPC_ISNONPLAYERCREATURE__:
-		resp->insertBoolean(isNonPlayerCreature());
+	case RPC_ISNONPLAYERCREATUREOBJECT__:
+		resp->insertBoolean(isNonPlayerCreatureObject());
 		break;
 	case RPC_ISCREATURE__:
 		resp->insertBoolean(isCreature());
+		break;
+	case RPC_ISPLAYERCREATURE__:
+		resp->insertBoolean(isPlayerCreature());
 		break;
 	case RPC_ISAIAGENT__:
 		resp->insertBoolean(isAiAgent());
@@ -5641,6 +5972,10 @@ void CreatureObjectAdapter::clearQueueAction(unsigned int actioncntr, float time
 
 void CreatureObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	((CreatureObjectImplementation*) impl)->sendBaselinesTo(player);
+}
+
+void CreatureObjectAdapter::sendToOwner(bool doClose) {
+	((CreatureObjectImplementation*) impl)->sendToOwner(doClose);
 }
 
 void CreatureObjectAdapter::sendSystemMessage(const String& message) {
@@ -5811,6 +6146,10 @@ void CreatureObjectAdapter::clearBuffs(bool updateclient) {
 	((CreatureObjectImplementation*) impl)->clearBuffs(updateclient);
 }
 
+void CreatureObjectAdapter::sendBuffsTo(CreatureObject* creature) {
+	((CreatureObjectImplementation*) impl)->sendBuffsTo(creature);
+}
+
 Buff* CreatureObjectAdapter::getBuff(unsigned int buffcrc) {
 	return ((CreatureObjectImplementation*) impl)->getBuff(buffcrc);
 }
@@ -5825,6 +6164,10 @@ bool CreatureObjectAdapter::healDot(unsigned long long dotType, int reduction) {
 
 void CreatureObjectAdapter::clearDots() {
 	((CreatureObjectImplementation*) impl)->clearDots();
+}
+
+void CreatureObjectAdapter::removeDotsFromVector() {
+	((CreatureObjectImplementation*) impl)->removeDotsFromVector();
 }
 
 bool CreatureObjectAdapter::hasBuff(unsigned int buffcrc) {
@@ -5975,6 +6318,34 @@ void CreatureObjectAdapter::selectConversationOption(int option, SceneObject* ob
 	((CreatureObjectImplementation*) impl)->selectConversationOption(option, obj);
 }
 
+void CreatureObjectAdapter::sendMessage(BasePacket* msg) {
+	((CreatureObjectImplementation*) impl)->sendMessage(msg);
+}
+
+void CreatureObjectAdapter::sendExecuteConsoleCommand(const String& command) {
+	((CreatureObjectImplementation*) impl)->sendExecuteConsoleCommand(command);
+}
+
+bool CreatureObjectAdapter::isAggressiveTo(CreatureObject* object) {
+	return ((CreatureObjectImplementation*) impl)->isAggressiveTo(object);
+}
+
+int CreatureObjectAdapter::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+	return ((CreatureObjectImplementation*) impl)->notifyObjectDestructionObservers(attacker, condition);
+}
+
+String CreatureObjectAdapter::getFirstName() {
+	return ((CreatureObjectImplementation*) impl)->getFirstName();
+}
+
+String CreatureObjectAdapter::getLastName() {
+	return ((CreatureObjectImplementation*) impl)->getLastName();
+}
+
+bool CreatureObjectAdapter::isOnline() {
+	return ((CreatureObjectImplementation*) impl)->isOnline();
+}
+
 bool CreatureObjectAdapter::canTreatInjuries() {
 	return ((CreatureObjectImplementation*) impl)->canTreatInjuries();
 }
@@ -5991,12 +6362,20 @@ bool CreatureObjectAdapter::canTreatConditions() {
 	return ((CreatureObjectImplementation*) impl)->canTreatConditions();
 }
 
+PlayerObject* CreatureObjectAdapter::getPlayerObject() {
+	return ((CreatureObjectImplementation*) impl)->getPlayerObject();
+}
+
 bool CreatureObjectAdapter::isListening() {
 	return ((CreatureObjectImplementation*) impl)->isListening();
 }
 
 bool CreatureObjectAdapter::isWatching() {
 	return ((CreatureObjectImplementation*) impl)->isWatching();
+}
+
+void CreatureObjectAdapter::setClient(ZoneClientSession* cli) {
+	((CreatureObjectImplementation*) impl)->setClient(cli);
 }
 
 void CreatureObjectAdapter::dismount() {
@@ -6383,12 +6762,20 @@ bool CreatureObjectAdapter::isCreatureObject() {
 	return ((CreatureObjectImplementation*) impl)->isCreatureObject();
 }
 
+bool CreatureObjectAdapter::isNextActionPast() {
+	return ((CreatureObjectImplementation*) impl)->isNextActionPast();
+}
+
 bool CreatureObjectAdapter::isTrainerCreature() {
 	return ((CreatureObjectImplementation*) impl)->isTrainerCreature();
 }
 
 bool CreatureObjectAdapter::isSwimming() {
 	return ((CreatureObjectImplementation*) impl)->isSwimming();
+}
+
+ZoneClientSession* CreatureObjectAdapter::getClient() {
+	return ((CreatureObjectImplementation*) impl)->getClient();
 }
 
 bool CreatureObjectAdapter::isRidingMount() {
@@ -6511,12 +6898,16 @@ bool CreatureObjectAdapter::isInCover() {
 	return ((CreatureObjectImplementation*) impl)->isInCover();
 }
 
-bool CreatureObjectAdapter::isNonPlayerCreature() {
-	return ((CreatureObjectImplementation*) impl)->isNonPlayerCreature();
+bool CreatureObjectAdapter::isNonPlayerCreatureObject() {
+	return ((CreatureObjectImplementation*) impl)->isNonPlayerCreatureObject();
 }
 
 bool CreatureObjectAdapter::isCreature() {
 	return ((CreatureObjectImplementation*) impl)->isCreature();
+}
+
+bool CreatureObjectAdapter::isPlayerCreature() {
+	return ((CreatureObjectImplementation*) impl)->isPlayerCreature();
 }
 
 bool CreatureObjectAdapter::isAiAgent() {

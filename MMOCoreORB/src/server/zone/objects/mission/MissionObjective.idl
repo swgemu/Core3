@@ -50,7 +50,7 @@ import server.zone.objects.mission.MissionObject;
 import server.zone.objects.mission.MissionObserver;
 import server.zone.objects.scene.SceneObject;
 import system.util.SortedVector;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import engine.log.Logger;
 import engine.core.ManagedObject;
 
@@ -100,5 +100,5 @@ class MissionObjective extends ManagedObject implements Logger {
 		return objectiveType;
 	}
 	
-	public native PlayerCreature getPlayerOwner();
+	public native CreatureObject getPlayerOwner();
 }

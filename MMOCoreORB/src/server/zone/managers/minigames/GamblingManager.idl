@@ -47,7 +47,7 @@ package server.zone.managers.minigames;
 import engine.core.ManagedObject;
 import engine.log.Logger;
 import engine.lua.Lua;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.ZoneServer;
 import system.util.VectorMap;
 import system.util.Vector;
@@ -64,10 +64,10 @@ class GamblingManager extends ManagedObject implements Logger, Observer {
 	protected ZoneServer zoneServer;
 
 	@dereferenced
-	protected VectorMap<PlayerCreature, GamblingTerminal> slotGames;
+	protected VectorMap<CreatureObject, GamblingTerminal> slotGames;
 	
 	@dereferenced
-	protected VectorMap<PlayerCreature, GamblingTerminal> rouletteGames;
+	protected VectorMap<CreatureObject, GamblingTerminal> rouletteGames;
 	
 	// Stored possible roulette bet targets
 	@dereferenced
@@ -211,7 +211,7 @@ class GamblingManager extends ManagedObject implements Logger, Observer {
 	}
 	
 	public int notify(SceneObject sceneObject) {
-		if (sceneObject.isPlayerCreature())
+		if (sceneObject.isCreatureObject())
 			return 1;
 		
 		return 0;
@@ -264,9 +264,9 @@ class GamblingManager extends ManagedObject implements Logger, Observer {
 		return false;
 	}
 	
-	public native void handleSlot(PlayerCreature player, boolean cancel, boolean other);
+	public native void handleSlot(CreatureObject player, boolean cancel, boolean other);
 	
-	protected native void refreshSlotMenu(PlayerCreature player, GamblingTerminal terminal);
+	protected native void refreshSlotMenu(CreatureObject player, GamblingTerminal terminal);
 	
 	/**
 	 * Accept bet from /bet command
@@ -274,11 +274,11 @@ class GamblingManager extends ManagedObject implements Logger, Observer {
 	 * and calls bet(terminal, player, amount, target)
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
-	 * @param player PlayerCreature betting money
+	 * @param player CreatureObject betting money
 	 * @param amount Amount of Credits to bet
 	 * @param target Target field (remains empty for slotMachine)
 	 */
-	public native void bet(PlayerCreature player, int amount, int target, int machineType);
+	public native void bet(CreatureObject player, int amount, int target, int machineType);
 	
 	/**
 	 * Accept bet from /bet command or startGame
@@ -287,22 +287,22 @@ class GamblingManager extends ManagedObject implements Logger, Observer {
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
 	 * @param terminal GamblingTerminal for which to add bet
-	 * @param player PlayerCreature betting money
+	 * @param player CreatureObject betting money
 	 * @param amount Amount of Credits to bet
 	 * @param target Target field (remains empty for slotMachine)
 	 */
-	public native void bet(GamblingTerminal terminal, PlayerCreature player, int amount, int target);
+	public native void bet(GamblingTerminal terminal, CreatureObject player, int amount, int target);
 	
 	/**
 	 * StartGame called by SuiManager
-	 * This method receives a PlayerCreature, looks it up in the machineType's corresponding VectorMap
+	 * This method receives a CreatureObject, looks it up in the machineType's corresponding VectorMap
 	 * and then calls startGame(Terminal) 
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
-	 * @param player PlayerCreature for which to start the Game
+	 * @param player CreatureObject for which to start the Game
 	 * @param machineType machine type of the Terminal, set in the SuiManager
 	 */
-	public native void startGame(PlayerCreature player, int machineType);
+	public native void startGame(CreatureObject player, int machineType);
 	
 	/**
 	 * Starts Game
@@ -315,14 +315,14 @@ class GamblingManager extends ManagedObject implements Logger, Observer {
 	
 	/**
 	 * LeaveTerminal called by SuiManager
-	 * This method receives a PlayerCreature, looks it up in the machineType's corresponding VectorMap
+	 * This method receives a CreatureObject, looks it up in the machineType's corresponding VectorMap
 	 * and then calls Terminal::leaveTerminal(player) 
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
-	 * @param player PlayerCreature who wants to leave the Terminal
+	 * @param player CreatureObject who wants to leave the Terminal
 	 * @param machineType machine type of the Terminal, set in the SuiManager
 	 */
-	public native void leaveTerminal(PlayerCreature player, int machineType);
+	public native void leaveTerminal(CreatureObject player, int machineType);
 	
 	/**
 	 * Adds player to VectorMap
@@ -330,90 +330,90 @@ class GamblingManager extends ManagedObject implements Logger, Observer {
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
 	 * @param terminal GamblingTerminal to register
-	 * @param player PlayerCreature to register
+	 * @param player CreatureObject to register
 	 */
-	public native void registerPlayer(GamblingTerminal terminal, PlayerCreature player);
+	public native void registerPlayer(GamblingTerminal terminal, CreatureObject player);
 	
 	/**
 	 * Refreshes the menu
-	 * This method receives a PlayerCreature, looks it up in the Roulette VectorMap
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
 	 * and then closes the Roulette Menu, reopening it
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
-	 * @param player PlayerCreature for which to refresh menu
+	 * @param player CreatureObject for which to refresh menu
 	 */
-	public native void refreshRouletteMenu(PlayerCreature player);
+	public native void refreshRouletteMenu(CreatureObject player);
 	
 	/**
 	 * Continues the Game
-	 * This method receives a PlayerCreature, looks it up in the Roulette VectorMap
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
 	 * and then closes the Roulette Menu, reopening it
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
-	 * @param player PlayerCreature for which to refresh menu
+	 * @param player CreatureObject for which to refresh menu
 	 */
 	public native void continueGame(GamblingTerminal terminal);
 	
 	/**
 	 * Ends the Game
-	 * This method receives a PlayerCreature, looks it up in the Roulette VectorMap
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
 	 * and then closes the Roulette Menu, reopening it
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
-	 * @param player PlayerCreature for which to refresh menu
+	 * @param player CreatureObject for which to refresh menu
 	 */
 	public native void stopGame(GamblingTerminal terminal, boolean cancel);
 	
 	/**
 	 * Calculates the results of each players' bets
-	 * This method receives a PlayerCreature, looks it up in the Roulette VectorMap
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
 	 * and then closes the Roulette Menu, reopening it
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
-	 * @param player PlayerCreature for which to refresh menu
+	 * @param player CreatureObject for which to refresh menu
 	 */
 	public native void calculateOutcome(GamblingTerminal terminal);
 	
 	/**
 	 * Creates the Windows
-	 * This method receives a PlayerCreature, looks it up in the Roulette VectorMap
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
 	 * and then closes the Roulette Menu, reopening it
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
-	 * @param player PlayerCreature for which to refresh menu
+	 * @param player CreatureObject for which to refresh menu
 	 */
-	public native unsigned int createWindow(GamblingTerminal terminal, PlayerCreature player);
+	public native unsigned int createWindow(GamblingTerminal terminal, CreatureObject player);
 	
 	/**
 	 * Creates the SlotPayoutWindow
-	 * This method receives a PlayerCreature, looks it up in the Roulette VectorMap
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
 	 * and then closes the Roulette Menu, reopening it
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
-	 * @param player PlayerCreature for which to refresh menu
+	 * @param player CreatureObject for which to refresh menu
 	 */
-	public native unsigned int createPayoutWindow(PlayerCreature player);
+	public native unsigned int createPayoutWindow(CreatureObject player);
 	
 	/**
 	 * Creates the SlotWindow
-	 * This method receives a PlayerCreature, looks it up in the Roulette VectorMap
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
 	 * and then closes the Roulette Menu, reopening it
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
-	 * @param player PlayerCreature for which to refresh menu
+	 * @param player CreatureObject for which to refresh menu
 	 * @param payoutBoxID boxID of the payout menu so it can be closed later
 	 */
-	public native unsigned int createSlotWindow(PlayerCreature player, unsigned int payoutBoxID);
+	public native unsigned int createSlotWindow(CreatureObject player, unsigned int payoutBoxID);
 	
 	/**
 	 * Creates the RouletteWindow
-	 * This method receives a PlayerCreature, looks it up in the Roulette VectorMap
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
 	 * and then closes the Roulette Menu, reopening it
 	 * @pre { this object is not locked }
 	 * @post { this object is not locked }
-	 * @param player PlayerCreature for which to refresh menu
+	 * @param player CreatureObject for which to refresh menu
 	 */
-	public native unsigned int createRouletteWindow(PlayerCreature player);
+	public native unsigned int createRouletteWindow(CreatureObject player);
 	
 	/**
 	 * Creates Events
@@ -426,7 +426,7 @@ class GamblingManager extends ManagedObject implements Logger, Observer {
 	 */
 	public native void createEvent(GamblingTerminal terminal, int time);
 	
-	public boolean isPlaying(PlayerCreature player) {
+	public boolean isPlaying(CreatureObject player) {
 		return (slotGames.contains(player) || rouletteGames.contains(player));
 	}
 	

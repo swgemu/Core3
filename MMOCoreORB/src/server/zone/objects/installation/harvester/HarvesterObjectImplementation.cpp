@@ -15,7 +15,7 @@
 #include "server/zone/packets/harvester/ResourceHarvesterActivatePageMessage.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 
-void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void HarvesterObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!isOnAdminList(player))
 		return;
 
@@ -28,7 +28,7 @@ void HarvesterObjectImplementation::synchronizedUIListen(SceneObject* player, in
 	if (!player->isPlayerCreature() || !isOnAdminList((CreatureObject*)player))
 		return;
 
-	addOperator((PlayerCreature*) player);
+	addOperator((CreatureObject*) player);
 
 	updateInstallationWork();
 
@@ -47,10 +47,10 @@ void HarvesterObjectImplementation::synchronizedUIStopListen(SceneObject* player
 	if (!player->isPlayerCreature())
 		return;
 
-	removeOperator((PlayerCreature*) player);
+	removeOperator((CreatureObject*) player);
 }
 
-int HarvesterObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int HarvesterObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (!isOnAdminList(player))
 		return 1;
 

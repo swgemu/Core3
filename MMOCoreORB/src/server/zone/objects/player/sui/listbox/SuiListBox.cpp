@@ -6,7 +6,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	SuiListBoxStub
@@ -14,7 +16,7 @@
 
 enum {RPC_INIT__ = 6,RPC_ADDMENUITEM__STRING_LONG_,RPC_GETMENUITEMNAME__INT_,RPC_REMOVEALLMENUITEMS__,RPC_GETMENUOBJECTID__INT_,RPC_GETMENUSIZE__,RPC_GENERATEMESSAGE__,RPC_SETNEXTBOX__INT_,RPC_SETPREVIOUSBOX__INT_,RPC_GETNEXTBOX__,RPC_GETPREVIOUSBOX__,RPC_ISLISTBOX__};
 
-SuiListBox::SuiListBox(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiBox(DummyConstructorParameter::instance()) {
+SuiListBox::SuiListBox(CreatureObject* player, unsigned int windowType, unsigned int listBoxType) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiListBoxImplementation* _implementation = new SuiListBoxImplementation(player, windowType, listBoxType);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -366,7 +368,7 @@ int SuiListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	return 4 + SuiBoxImplementation::writeObjectMembers(stream);
 }
 
-SuiListBoxImplementation::SuiListBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType) : SuiBoxImplementation(player, windowType, SuiBox::LISTBOX) {
+SuiListBoxImplementation::SuiListBoxImplementation(CreatureObject* player, unsigned int windowType, unsigned int listBoxType) : SuiBoxImplementation(player, windowType, SuiBox::LISTBOX) {
 	_initializeImplementation();
 	// server/zone/objects/player/sui/listbox/SuiListBox.idl():  		type = listBoxType;
 	type = listBoxType;

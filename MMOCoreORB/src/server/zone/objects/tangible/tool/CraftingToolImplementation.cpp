@@ -46,7 +46,7 @@
 
 #include "CraftingTool.h"
 #include "server/zone/Zone.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/tangible/tool/CraftingToolTemplate.h"
@@ -88,7 +88,7 @@ void CraftingToolImplementation::loadTemplateData(
 }
 
 void CraftingToolImplementation::fillObjectMenuResponse(
-		ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+		ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	if(getContainerObjectsSize() > 0 && status == "@crafting:tool_status_finished") {
@@ -105,7 +105,7 @@ TangibleObject* CraftingToolImplementation::getPrototype() {
 }
 
 int CraftingToolImplementation::handleObjectMenuSelect(
-		PlayerCreature* playerCreature, byte selectedID) {
+		CreatureObject* playerCreature, byte selectedID) {
 	PlayerObject* playerObject = playerCreature->getPlayerObject();
 
 	if (selectedID == 20) { // use object
@@ -145,7 +145,7 @@ int CraftingToolImplementation::handleObjectMenuSelect(
 }
 
 void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
-		PlayerCreature* object) {
+		CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
 	alm->insertAttribute("craft_tool_effectiveness", Math::getPrecision(
@@ -178,7 +178,7 @@ Vector<uint32>* CraftingToolImplementation::getToolTabs() {
 	return &enabledTabs;
 }
 
-void CraftingToolImplementation::requestCraftingSession(PlayerCreature* player,
+void CraftingToolImplementation::requestCraftingSession(CreatureObject* player,
 		CraftingStation* station) {
 
 	/// pre: _this locked
@@ -209,7 +209,7 @@ void CraftingToolImplementation::requestCraftingSession(PlayerCreature* player,
 	sendStart(player);
 }
 
-void CraftingToolImplementation::sendStart(PlayerCreature* player) {
+void CraftingToolImplementation::sendStart(CreatureObject* player) {
 
 	/// pre: player and _this locked
 
@@ -287,10 +287,10 @@ void CraftingToolImplementation::sendStart(PlayerCreature* player) {
 		// End OBJC 207***********************************
 	}
 
-	player->setLastCraftingToolUsed(_this);
+	playerObject->setLastCraftingToolUsed(_this);
 }
 
-void CraftingToolImplementation::sendToolStartFailure(PlayerCreature* player) {
+void CraftingToolImplementation::sendToolStartFailure(CreatureObject* player) {
 
 	// Start Object Controller **(Failed to start crafting Session************
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
@@ -302,7 +302,7 @@ void CraftingToolImplementation::sendToolStartFailure(PlayerCreature* player) {
 	player->sendMessage(objMsg);
 }
 
-void CraftingToolImplementation::cancelCraftingSession(PlayerCreature* player) {
+void CraftingToolImplementation::cancelCraftingSession(CreatureObject* player) {
 
 	clearCraftingSession();
 
@@ -349,7 +349,7 @@ void CraftingToolImplementation::clearCraftingSession() {
 
 }
 
-void CraftingToolImplementation::closeCraftingWindow(PlayerCreature* player, int clientCounter) {
+void CraftingToolImplementation::closeCraftingWindow(CreatureObject* player, int clientCounter) {
 
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(player->getObjectID(), 0x0B, 0x010C);
 	objMsg->insertInt(0x10A);
@@ -371,7 +371,7 @@ void CraftingToolImplementation::closeCraftingWindow(PlayerCreature* player, int
 	player->sendMessage(objMsg);
 }
 
-void CraftingToolImplementation::locateCraftingStation(PlayerCreature* player,
+void CraftingToolImplementation::locateCraftingStation(CreatureObject* player,
 		int toolType) {
 
 	/// pre: player and _this locked
@@ -411,7 +411,7 @@ void CraftingToolImplementation::locateCraftingStation(PlayerCreature* player,
 	}
 }
 
-void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
+void CraftingToolImplementation::selectDraftSchematic(CreatureObject* player,
 		int index) {
 
 	/// pre: _this locked
@@ -474,7 +474,7 @@ void CraftingToolImplementation::selectDraftSchematic(PlayerCreature* player,
 
 }
 
-bool CraftingToolImplementation::createSessionObjects(PlayerCreature* player, DraftSchematic* draftSchematic) {
+bool CraftingToolImplementation::createSessionObjects(CreatureObject* player, DraftSchematic* draftSchematic) {
 
 	if(createManufactureSchematic(player, draftSchematic))
 		return createPrototype(player, draftSchematic);
@@ -482,7 +482,7 @@ bool CraftingToolImplementation::createSessionObjects(PlayerCreature* player, Dr
 		return false;
 }
 
-bool CraftingToolImplementation::createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic) {
+bool CraftingToolImplementation::createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic) {
 
 	ManagedReference<ManufactureSchematic* > manufactureSchematic
 			= (ManufactureSchematic*) draftschematic->createManufactureSchematic(_this);
@@ -501,7 +501,7 @@ bool CraftingToolImplementation::createManufactureSchematic(PlayerCreature* play
 	return true;
 }
 
-bool CraftingToolImplementation::createPrototype(PlayerCreature* player, DraftSchematic* draftschematic) {
+bool CraftingToolImplementation::createPrototype(CreatureObject* player, DraftSchematic* draftschematic) {
 
 	// Remove all items, incase there are any
 	while(getContainerObjectsSize() > 0)
@@ -525,7 +525,7 @@ bool CraftingToolImplementation::createPrototype(PlayerCreature* player, DraftSc
 	return true;
 }
 
-void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature* player) {
+void CraftingToolImplementation::synchronizedUIListenForSchematic(CreatureObject* player) {
 
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
 	ManagedReference<TangibleObject *> prototype = getPrototype();
@@ -572,7 +572,7 @@ void CraftingToolImplementation::synchronizedUIListenForSchematic(PlayerCreature
 
 }
 
-void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
+void CraftingToolImplementation::addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
 	/// Tano can't be NULL
 
 	Locker locker(_this);
@@ -612,7 +612,7 @@ void CraftingToolImplementation::addIngredient(PlayerCreature* player, TangibleO
 	}
 }
 
-void CraftingToolImplementation::sendIngredientAddSuccess(PlayerCreature* player, int slot, int clientCounter) {
+void CraftingToolImplementation::sendIngredientAddSuccess(CreatureObject* player, int slot, int clientCounter) {
 
 	/// pre: _this locked
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
@@ -662,7 +662,7 @@ void CraftingToolImplementation::sendIngredientAddSuccess(PlayerCreature* player
 	sendSlotMessage(player, clientCounter, IngredientSlot::OK);
 }
 
-void CraftingToolImplementation::removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
+void CraftingToolImplementation::removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
 	/// Tano can't be NULL
 
 	Locker _locker(_this);
@@ -695,7 +695,7 @@ void CraftingToolImplementation::removeIngredient(PlayerCreature* player, Tangib
 	}
 }
 
-void CraftingToolImplementation::sendIngredientRemoveSuccess(PlayerCreature* player, int slot, int clientCounter) {
+void CraftingToolImplementation::sendIngredientRemoveSuccess(CreatureObject* player, int slot, int clientCounter) {
 
 	/// pre: _this locked
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
@@ -739,7 +739,7 @@ void CraftingToolImplementation::sendIngredientRemoveSuccess(PlayerCreature* pla
 	// End DMSCO3 *************************************************************
 }
 
-void CraftingToolImplementation::sendSlotMessage(PlayerCreature* player,
+void CraftingToolImplementation::sendSlotMessage(CreatureObject* player,
 		int counter, int message) {
 
 	// Object Controller ********************************************
@@ -754,7 +754,7 @@ void CraftingToolImplementation::sendSlotMessage(PlayerCreature* player,
 	//End Object Controller ******************************************
 }
 
-void CraftingToolImplementation::nextCraftingStage(PlayerCreature* player, int clientCounter) {
+void CraftingToolImplementation::nextCraftingStage(CreatureObject* player, int clientCounter) {
 
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
 	ManagedReference<TangibleObject *> prototype = getPrototype();
@@ -811,7 +811,7 @@ void CraftingToolImplementation::nextCraftingStage(PlayerCreature* player, int c
 
 }
 
-void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int clientCounter) {
+void CraftingToolImplementation::initialAssembly(CreatureObject* player, int clientCounter) {
 
 	/// pre: _this locked
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
@@ -958,7 +958,7 @@ void CraftingToolImplementation::initialAssembly(PlayerCreature* player, int cli
 
 }
 
-void CraftingToolImplementation::finishAssembly(PlayerCreature* player, int clientCounter) {
+void CraftingToolImplementation::finishAssembly(CreatureObject* player, int clientCounter) {
 
 	// Start Dplay9 **************************************
 	// Move crafting to State 4
@@ -984,7 +984,7 @@ void CraftingToolImplementation::finishAssembly(PlayerCreature* player, int clie
 
 }
 
-void CraftingToolImplementation::experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter) {
+void CraftingToolImplementation::experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter) {
 
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
 	ManagedReference<TangibleObject *> prototype = getPrototype();
@@ -1130,7 +1130,7 @@ void CraftingToolImplementation::experimentRow(CraftingValues* craftingValues,
 }
 
 
-void CraftingToolImplementation::customization(PlayerCreature* player, String& name, int schematicCount, String& customization) {
+void CraftingToolImplementation::customization(CreatureObject* player, String& name, int schematicCount, String& customization) {
 
 	Locker _locker(_this);
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
@@ -1195,7 +1195,7 @@ void CraftingToolImplementation::customization(PlayerCreature* player, String& n
 	state = 5;
 }
 
-void CraftingToolImplementation::finishStage1(PlayerCreature* player, int clientCounter) {
+void CraftingToolImplementation::finishStage1(CreatureObject* player, int clientCounter) {
 
 	/// pre: _this locked
 
@@ -1218,7 +1218,7 @@ void CraftingToolImplementation::finishStage1(PlayerCreature* player, int client
 	state = 6;
 }
 
-void CraftingToolImplementation::finishStage2(PlayerCreature* player, int clientCounter) {
+void CraftingToolImplementation::finishStage2(CreatureObject* player, int clientCounter) {
 
 	/// pre: _this locked
 
@@ -1242,7 +1242,7 @@ void CraftingToolImplementation::finishStage2(PlayerCreature* player, int client
 	player->sendMessage(objMsg);
 }
 
-void CraftingToolImplementation::createPrototype(PlayerCreature* player,
+void CraftingToolImplementation::createPrototype(CreatureObject* player,
 		int clientCounter, int practice) {
 
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
@@ -1289,7 +1289,7 @@ void CraftingToolImplementation::createPrototype(PlayerCreature* player,
 	}
 }
 
-void CraftingToolImplementation::createManfSchematic(PlayerCreature* player,
+void CraftingToolImplementation::createManfSchematic(CreatureObject* player,
 		int clientCounter) {
 
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
@@ -1339,7 +1339,7 @@ void CraftingToolImplementation::createManfSchematic(PlayerCreature* player,
 	}
 }
 
-void CraftingToolImplementation::createObject(PlayerCreature* player,
+void CraftingToolImplementation::createObject(CreatureObject* player,
 		int timer, bool practice) {
 
 	/// pre: _this locked
@@ -1377,7 +1377,7 @@ void CraftingToolImplementation::createObject(PlayerCreature* player,
 	}
 }
 
-void CraftingToolImplementation::depositObject(PlayerCreature* player, bool practice) {
+void CraftingToolImplementation::depositObject(CreatureObject* player, bool practice) {
 
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
 	ManagedReference<TangibleObject *> prototype = getPrototype();

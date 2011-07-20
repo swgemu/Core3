@@ -14,16 +14,16 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 #include "server/chat/ChatParameter.h"
 
@@ -54,7 +54,7 @@ public:
 
 	PersistentMessage();
 
-	void sendTo(PlayerCreature* player, bool sendBody = true);
+	void sendTo(CreatureObject* player, bool sendBody = true);
 
 	StringIdChatParameterVector* getStringIdParameters();
 
@@ -153,7 +153,7 @@ public:
 
 	PersistentMessageImplementation(DummyConstructorParameter* param);
 
-	virtual void sendTo(PlayerCreature* player, bool sendBody = true);
+	virtual void sendTo(CreatureObject* player, bool sendBody = true);
 
 	StringIdChatParameterVector* getStringIdParameters();
 
@@ -240,7 +240,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void sendTo(PlayerCreature* player, bool sendBody);
+	void sendTo(CreatureObject* player, bool sendBody);
 
 	int getMailID();
 

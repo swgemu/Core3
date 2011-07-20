@@ -94,7 +94,7 @@ public:
 			return 0;
 	}
 
-	bool add(PlayerCreature* player, TangibleObject* tano) {
+	bool add(CreatureObject* player, TangibleObject* tano) {
 
 		/// Must be a resource container to proceed
 		if (tano->isResourceContainer() && getQuantity() < requiredQuantity) {
@@ -157,7 +157,7 @@ public:
 		return false;
 	}
 
-	inline bool remove(PlayerCreature* player) {
+	inline bool remove(CreatureObject* player) {
 
 		return returnObjectToParent();
 	}

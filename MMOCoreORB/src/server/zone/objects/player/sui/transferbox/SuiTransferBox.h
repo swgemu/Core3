@@ -28,16 +28,30 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 
@@ -56,7 +70,7 @@ namespace messagebox {
 
 class SuiTransferBox : public SuiBox {
 public:
-	SuiTransferBox(PlayerCreature* player, unsigned int windowType);
+	SuiTransferBox(CreatureObject* player, unsigned int windowType);
 
 	BaseMessage* generateMessage();
 
@@ -113,7 +127,7 @@ protected:
 	String convertRatioTo;
 
 public:
-	SuiTransferBoxImplementation(PlayerCreature* player, unsigned int windowType);
+	SuiTransferBoxImplementation(CreatureObject* player, unsigned int windowType);
 
 	SuiTransferBoxImplementation(DummyConstructorParameter* param);
 

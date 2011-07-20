@@ -28,16 +28,16 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -180,9 +180,9 @@ public:
 
 	Vector<GamblingBet*>* getBets();
 
-	VectorMap<ManagedReference<PlayerCreature* >, unsigned int>* getPlayersWindows();
+	VectorMap<ManagedReference<CreatureObject* >, unsigned int>* getPlayersWindows();
 
-	VectorMap<ManagedReference<PlayerCreature* >, int>* getWinnings();
+	VectorMap<ManagedReference<CreatureObject* >, int>* getWinnings();
 
 	int getFirst();
 
@@ -220,11 +220,11 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	String getText(PlayerCreature* player);
+	String getText(CreatureObject* player);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void setGamblingRegion(const String& region);
 
@@ -232,21 +232,21 @@ public:
 
 	bool gameRunning();
 
-	void notifyOthers(PlayerCreature* player, StringIdChatParameter* text);
+	void notifyOthers(CreatureObject* player, StringIdChatParameter* text);
 
 	void notifyAll(StringIdChatParameter* text);
 
-	bool checkJoin(PlayerCreature* player);
+	bool checkJoin(CreatureObject* player);
 
-	void joinTerminal(PlayerCreature* player);
+	void joinTerminal(CreatureObject* player);
 
-	void leaveTerminal(PlayerCreature* player);
+	void leaveTerminal(CreatureObject* player);
 
-	void closeMenu(PlayerCreature* player, bool payout);
+	void closeMenu(CreatureObject* player, bool payout);
 
 	void closeAllMenus();
 
-	void statusUpdate(PlayerCreature* player, int event);
+	void statusUpdate(CreatureObject* player, int event);
 
 	void statusUpdate(int event);
 
@@ -288,11 +288,11 @@ protected:
 
 	int machineType;
 
-	VectorMap<ManagedReference<PlayerCreature* >, unsigned int> playersWindows;
+	VectorMap<ManagedReference<CreatureObject* >, unsigned int> playersWindows;
 
 	Reference<GamblingEvent* > event;
 
-	VectorMap<ManagedReference<PlayerCreature* >, int> winnings;
+	VectorMap<ManagedReference<CreatureObject* >, int> winnings;
 
 	int gameCount;
 
@@ -367,9 +367,9 @@ public:
 
 	Vector<GamblingBet*>* getBets();
 
-	VectorMap<ManagedReference<PlayerCreature* >, unsigned int>* getPlayersWindows();
+	VectorMap<ManagedReference<CreatureObject* >, unsigned int>* getPlayersWindows();
 
-	VectorMap<ManagedReference<PlayerCreature* >, int>* getWinnings();
+	VectorMap<ManagedReference<CreatureObject* >, int>* getWinnings();
 
 	int getFirst();
 
@@ -407,11 +407,11 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	String getText(PlayerCreature* player);
+	String getText(CreatureObject* player);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void setGamblingRegion(const String& region);
 
@@ -419,26 +419,26 @@ public:
 
 	bool gameRunning();
 
-	void notifyOthers(PlayerCreature* player, StringIdChatParameter* text);
+	void notifyOthers(CreatureObject* player, StringIdChatParameter* text);
 
 	void notifyAll(StringIdChatParameter* text);
 
-	bool checkJoin(PlayerCreature* player);
+	bool checkJoin(CreatureObject* player);
 
-	void joinTerminal(PlayerCreature* player);
+	void joinTerminal(CreatureObject* player);
 
-	void leaveTerminal(PlayerCreature* player);
+	void leaveTerminal(CreatureObject* player);
 
-	void closeMenu(PlayerCreature* player, bool payout);
+	void closeMenu(CreatureObject* player, bool payout);
 
 	void closeAllMenus();
 
-	void statusUpdate(PlayerCreature* player, int event);
+	void statusUpdate(CreatureObject* player, int event);
 
 	void statusUpdate(int event);
 
 protected:
-	bool invalidPosture(PlayerCreature* player);
+	bool invalidPosture(CreatureObject* player);
 
 public:
 	WeakReference<GamblingTerminal*> _this;
@@ -518,11 +518,11 @@ public:
 
 	String getMachineTypeText();
 
-	String getText(PlayerCreature* player);
+	String getText(CreatureObject* player);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void setGamblingRegion(const String& region);
 
@@ -530,17 +530,17 @@ public:
 
 	bool gameRunning();
 
-	bool checkJoin(PlayerCreature* player);
+	bool checkJoin(CreatureObject* player);
 
-	void joinTerminal(PlayerCreature* player);
+	void joinTerminal(CreatureObject* player);
 
-	void leaveTerminal(PlayerCreature* player);
+	void leaveTerminal(CreatureObject* player);
 
-	void closeMenu(PlayerCreature* player, bool payout);
+	void closeMenu(CreatureObject* player, bool payout);
 
 	void closeAllMenus();
 
-	void statusUpdate(PlayerCreature* player, int event);
+	void statusUpdate(CreatureObject* player, int event);
 
 	void statusUpdate(int event);
 

@@ -68,7 +68,8 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
+		PlayerObject* ghost = player->getPlayerObject();
 
 		Task* task = player->getPendingTask("centerofbeing");
 
@@ -100,7 +101,7 @@ public:
 		if (duration == 0 || efficacy == 0)
 			return GENERALERROR;
 
-		player->setCenteredBonus(efficacy);
+		ghost->setCenteredBonus(efficacy);
 
 		player->sendSystemMessage("combat_effects", "center_start");
 		player->showFlyText("combat_effects", "center_start_fly", 0, 255, 0);

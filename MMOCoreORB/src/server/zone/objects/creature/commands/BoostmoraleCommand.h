@@ -72,7 +72,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*)creature;
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -95,7 +95,7 @@ public:
 		return SUCCESS;
 	}
 
-	bool getWounds(PlayerCreature* leader, GroupObject* group, int* wounds) {
+	bool getWounds(CreatureObject* leader, GroupObject* group, int* wounds) {
 		if (group == NULL || leader == NULL || sizeof(wounds)/sizeof(wounds[0]) != 9)
 			return false;
 
@@ -109,7 +109,7 @@ public:
 			if (!member->isPlayerCreature())
 				continue;
 
-			PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+			CreatureObject* memberPlayer = (CreatureObject*) member.get();
 			Locker clocker(memberPlayer, leader);
 
 			for (int j = 0; j < 9; j++) {
@@ -121,7 +121,7 @@ public:
 		return true;
 	}
 
-	bool distributeWounds(PlayerCreature* leader, GroupObject* group, int* wounds) {
+	bool distributeWounds(CreatureObject* leader, GroupObject* group, int* wounds) {
 		if (group == NULL || leader == NULL || sizeof(wounds)/sizeof(wounds[0]) != 9)
 			return false;
 
@@ -134,7 +134,7 @@ public:
 			if (!member->isPlayerCreature())
 				continue;
 
-			PlayerCreature* memberPlayer = (PlayerCreature*) member.get();
+			CreatureObject* memberPlayer = (CreatureObject*) member.get();
 
 			Locker clocker(memberPlayer, leader);
 

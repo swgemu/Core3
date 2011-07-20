@@ -55,6 +55,8 @@ public:
 	 */
 	void removeFromBuilding(SceneObject* sceneObject, BuildingObject* building);
 
+	void notifySelfPositionUpdate(SceneObject* sceneObject);
+
 };
 
 

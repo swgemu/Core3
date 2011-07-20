@@ -8,9 +8,8 @@
 #ifndef PLAYERINCAPACITATIONRECOVERTASK_H_
 #define PLAYERINCAPACITATIONRECOVERTASK_H_
 
-
-#include "../PlayerCreature.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {
@@ -19,11 +18,11 @@ namespace player {
 namespace events {
 
 class PlayerIncapacitationRecoverTask : public Task {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 	bool deadRecovery;
 
 public:
-	PlayerIncapacitationRecoverTask(PlayerCreature* pl, bool deadRecovery) : Task() {
+	PlayerIncapacitationRecoverTask(CreatureObject* pl, bool deadRecovery) : Task() {
 		player = pl;
 
 		this->deadRecovery = deadRecovery;

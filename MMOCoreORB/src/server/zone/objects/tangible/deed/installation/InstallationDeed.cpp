@@ -4,7 +4,7 @@
 
 #include "InstallationDeed.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
@@ -14,7 +14,7 @@
  *	InstallationDeedStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_SETSURPLUSPOWER__INT_,RPC_ISINSTALLATIONDEED__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_SETSURPLUSPOWER__INT_,RPC_ISINSTALLATIONDEED__};
 
 InstallationDeed::InstallationDeed() : Deed(DummyConstructorParameter::instance()) {
 	InstallationDeedImplementation* _implementation = new InstallationDeedImplementation();
@@ -29,7 +29,7 @@ InstallationDeed::~InstallationDeed() {
 }
 
 
-void InstallationDeed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void InstallationDeed::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -51,13 +51,13 @@ void InstallationDeed::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-int InstallationDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int InstallationDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	InstallationDeedImplementation* _implementation = (InstallationDeedImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -332,8 +332,8 @@ Packet* InstallationDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_SETSURPLUSMAINTENANCE__INT_:
 		setSurplusMaintenance(inv->getUnsignedIntParameter());
@@ -361,7 +361,7 @@ void InstallationDeedAdapter::initializeTransientMembers() {
 	((InstallationDeedImplementation*) impl)->initializeTransientMembers();
 }
 
-int InstallationDeedAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int InstallationDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((InstallationDeedImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

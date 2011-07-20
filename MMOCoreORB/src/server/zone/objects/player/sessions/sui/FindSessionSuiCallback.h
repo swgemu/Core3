@@ -17,7 +17,7 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
 		if (!suiBox->isListBox() || cancelPressed)
 				return;
 
@@ -28,7 +28,7 @@ public:
 		ManagedReference<FindSession*> session = dynamic_cast<FindSession*>(facade.get());
 
 		if (session == NULL) {
-			ManagedReference<PlayerCreature*> pl = (PlayerCreature*) suiBox->getUsingObject();
+			ManagedReference<CreatureObject*> pl = (CreatureObject*) suiBox->getUsingObject();
 			if (pl != NULL)
 				pl->dropActiveSession(SessionFacadeType::FIND);
 

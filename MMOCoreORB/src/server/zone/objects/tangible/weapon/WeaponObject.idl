@@ -47,7 +47,7 @@ package server.zone.objects.tangible.weapon;
 import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
@@ -169,17 +169,17 @@ class WeaponObject extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
 	 * @post { this object is locked, player is locked }
-	 * @param player PlayerCreature that selected the option
+	 * @param player CreatureObject that selected the option
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	public native void updateCraftingValues(ManufactureSchematic schematic);
 	
@@ -189,7 +189,7 @@ class WeaponObject extends TangibleObject {
 	 * @post { }
 	 * @param object player object to check against
 	 */
-	public native boolean isCertifiedFor(PlayerCreature object);
+	public native boolean isCertifiedFor(CreatureObject object);
 	
 	@local
 	public Vector<string> getDamageModifiers() {

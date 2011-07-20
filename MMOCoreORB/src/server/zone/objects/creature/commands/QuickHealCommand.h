@@ -94,8 +94,8 @@ public:
 		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
-		PlayerCreature* playerTarget = (PlayerCreature*) creatureTarget;
+		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* playerTarget = (CreatureObject*) creatureTarget;
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
@@ -216,7 +216,7 @@ public:
 
 		if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-			playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)creatureTarget);
+			playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)creatureTarget);
 		}
 
 		sendHealMessage(creature, creatureTarget, healedHealth, healedAction);

@@ -30,16 +30,30 @@ using namespace server::zone::objects::creature::professions;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
@@ -52,15 +66,15 @@ namespace listbox {
 
 class TeachPlayerListBox : public SuiListBox {
 public:
-	TeachPlayerListBox(PlayerCreature* player);
+	TeachPlayerListBox(CreatureObject* player);
 
-	void setStudent(PlayerCreature* student);
+	void setStudent(CreatureObject* student);
 
-	PlayerCreature* getStudent();
+	CreatureObject* getStudent();
 
 	const String getTeachingSkillOption(int index);
 
-	bool generateSkillList(PlayerCreature* teacher, PlayerCreature* student);
+	bool generateSkillList(CreatureObject* teacher, CreatureObject* student);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -91,12 +105,12 @@ namespace sui {
 namespace listbox {
 
 class TeachPlayerListBoxImplementation : public SuiListBoxImplementation {
-	ManagedReference<PlayerCreature* > studentPlayer;
+	ManagedReference<CreatureObject* > studentPlayer;
 
 	Vector<SkillBox*> teachingSkillOptions;
 
 public:
-	TeachPlayerListBoxImplementation(PlayerCreature* player);
+	TeachPlayerListBoxImplementation(CreatureObject* player);
 
 	TeachPlayerListBoxImplementation(DummyConstructorParameter* param);
 
@@ -104,13 +118,13 @@ private:
 	void init();
 
 public:
-	void setStudent(PlayerCreature* student);
+	void setStudent(CreatureObject* student);
 
-	PlayerCreature* getStudent();
+	CreatureObject* getStudent();
 
 	const String getTeachingSkillOption(int index);
 
-	bool generateSkillList(PlayerCreature* teacher, PlayerCreature* student);
+	bool generateSkillList(CreatureObject* teacher, CreatureObject* student);
 
 	WeakReference<TeachPlayerListBox*> _this;
 
@@ -155,9 +169,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void setStudent(PlayerCreature* student);
+	void setStudent(CreatureObject* student);
 
-	bool generateSkillList(PlayerCreature* teacher, PlayerCreature* student);
+	bool generateSkillList(CreatureObject* teacher, CreatureObject* student);
 
 };
 

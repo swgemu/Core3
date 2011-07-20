@@ -6,15 +6,17 @@
 
 #include "server/zone/objects/creature/professions/SkillBox.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	PlayerLearnListBoxStub
  */
 
-enum {RPC_SETTEACHER__PLAYERCREATURE_,RPC_SETTEACHINGOFFER__STRING_,};
+enum {RPC_SETTEACHER__CREATUREOBJECT_,RPC_SETTEACHINGOFFER__STRING_,};
 
-PlayerLearnListBox::PlayerLearnListBox(PlayerCreature* player) : SuiListBox(DummyConstructorParameter::instance()) {
+PlayerLearnListBox::PlayerLearnListBox(CreatureObject* player) : SuiListBox(DummyConstructorParameter::instance()) {
 	PlayerLearnListBoxImplementation* _implementation = new PlayerLearnListBoxImplementation(player);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -27,13 +29,13 @@ PlayerLearnListBox::~PlayerLearnListBox() {
 }
 
 
-void PlayerLearnListBox::setTeacher(PlayerCreature* teacher) {
+void PlayerLearnListBox::setTeacher(CreatureObject* teacher) {
 	PlayerLearnListBoxImplementation* _implementation = (PlayerLearnListBoxImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETTEACHER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SETTEACHER__CREATUREOBJECT_);
 		method.addObjectParameter(teacher);
 
 		method.executeWithVoidReturn();
@@ -41,7 +43,7 @@ void PlayerLearnListBox::setTeacher(PlayerCreature* teacher) {
 		_implementation->setTeacher(teacher);
 }
 
-PlayerCreature* PlayerLearnListBox::getTeacher() {
+CreatureObject* PlayerLearnListBox::getTeacher() {
 	PlayerLearnListBoxImplementation* _implementation = (PlayerLearnListBoxImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -179,7 +181,7 @@ bool PlayerLearnListBoxImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 
 	if (_name == "teacherPlayer") {
-		TypeInfo<ManagedReference<PlayerCreature* > >::parseFromBinaryStream(&teacherPlayer, stream);
+		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&teacherPlayer, stream);
 		return true;
 	}
 
@@ -207,7 +209,7 @@ int PlayerLearnListBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<PlayerCreature* > >::toBinaryStream(&teacherPlayer, stream);
+	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&teacherPlayer, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -223,16 +225,16 @@ int PlayerLearnListBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	return 2 + SuiListBoxImplementation::writeObjectMembers(stream);
 }
 
-PlayerLearnListBoxImplementation::PlayerLearnListBoxImplementation(PlayerCreature* player) : SuiListBoxImplementation(player, 35, 0) {
+PlayerLearnListBoxImplementation::PlayerLearnListBoxImplementation(CreatureObject* player) : SuiListBoxImplementation(player, 35, 0) {
 	_initializeImplementation();
 }
 
-void PlayerLearnListBoxImplementation::setTeacher(PlayerCreature* teacher) {
+void PlayerLearnListBoxImplementation::setTeacher(CreatureObject* teacher) {
 	// server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.idl():   teacherPlayer = teacher;
 	teacherPlayer = teacher;
 }
 
-PlayerCreature* PlayerLearnListBoxImplementation::getTeacher() {
+CreatureObject* PlayerLearnListBoxImplementation::getTeacher() {
 	// server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.idl():   return teacherPlayer;
 	return teacherPlayer;
 }
@@ -258,8 +260,8 @@ Packet* PlayerLearnListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_SETTEACHER__PLAYERCREATURE_:
-		setTeacher((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SETTEACHER__CREATUREOBJECT_:
+		setTeacher((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SETTEACHINGOFFER__STRING_:
 		setTeachingOffer(inv->getAsciiParameter(_param0_setTeachingOffer__String_));
@@ -271,7 +273,7 @@ Packet* PlayerLearnListBoxAdapter::invokeMethod(uint32 methid, DistributedMethod
 	return resp;
 }
 
-void PlayerLearnListBoxAdapter::setTeacher(PlayerCreature* teacher) {
+void PlayerLearnListBoxAdapter::setTeacher(CreatureObject* teacher) {
 	((PlayerLearnListBoxImplementation*) impl)->setTeacher(teacher);
 }
 

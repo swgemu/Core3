@@ -30,16 +30,30 @@ using namespace server::zone::objects::creature::professions;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
@@ -52,11 +66,11 @@ namespace listbox {
 
 class PlayerLearnListBox : public SuiListBox {
 public:
-	PlayerLearnListBox(PlayerCreature* player);
+	PlayerLearnListBox(CreatureObject* player);
 
-	void setTeacher(PlayerCreature* teacher);
+	void setTeacher(CreatureObject* teacher);
 
-	PlayerCreature* getTeacher();
+	CreatureObject* getTeacher();
 
 	void setTeachingOffer(const String& name);
 
@@ -91,12 +105,12 @@ namespace sui {
 namespace listbox {
 
 class PlayerLearnListBoxImplementation : public SuiListBoxImplementation {
-	ManagedReference<PlayerCreature* > teacherPlayer;
+	ManagedReference<CreatureObject* > teacherPlayer;
 
 	String teachingOffer;
 
 public:
-	PlayerLearnListBoxImplementation(PlayerCreature* player);
+	PlayerLearnListBoxImplementation(CreatureObject* player);
 
 	PlayerLearnListBoxImplementation(DummyConstructorParameter* param);
 
@@ -104,9 +118,9 @@ private:
 	void init();
 
 public:
-	void setTeacher(PlayerCreature* teacher);
+	void setTeacher(CreatureObject* teacher);
 
-	PlayerCreature* getTeacher();
+	CreatureObject* getTeacher();
 
 	void setTeachingOffer(const String& name);
 
@@ -155,7 +169,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void setTeacher(PlayerCreature* teacher);
+	void setTeacher(CreatureObject* teacher);
 
 	void setTeachingOffer(const String& name);
 

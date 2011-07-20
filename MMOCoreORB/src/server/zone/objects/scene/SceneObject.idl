@@ -75,7 +75,7 @@ import server.zone.Zone;
 import server.zone.ZoneServer;
 import server.zone.objects.building.BuildingObject;
 import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;
 
 include server.zone.objects.scene.variables.StringId;
@@ -90,6 +90,7 @@ include server.zone.objects.scene.components.ZoneComponent;
 include server.zone.objects.scene.components.ObjectMenuComponent;
 include server.zone.objects.scene.components.ContainerComponent;
 include server.zone.objects.region.CityRegion;
+import server.zone.objects.creature.CreatureObject;
 
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
@@ -554,7 +555,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * Calls the appropriate UI Listener Function
 	 * @pre { this object is locked, object is locked }
 	 * @post {this object is locked, object is locked }
-	 * @param player PlayerCreature using the item
+	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
 	public abstract void synchronizedUIListen(SceneObject player, int value) {
@@ -565,7 +566,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * Calls the appropriate UI Stop Listener Function
 	 * @pre { this object is locked, object is locked }
 	 * @post {this object is locked, object is locked }
-	 * @param player PlayerCreature using the item
+	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
 	public abstract void synchronizedUIStopListen(SceneObject player, int value) {
@@ -609,7 +610,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param player Player that attempts to destroy this object
 	 * @returns 0 on succes, != 0 on error
 	 */
-	public abstract int canBeDestroyed(PlayerCreature player) {
+	public abstract int canBeDestroyed(CreatureObject player) {
 		return 0;
 	}
 	
@@ -720,7 +721,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked, object received the attribute list message }
 	 * @param object SceneObject that will receive the message
 	 */
-	public native abstract void sendAttributeListTo(PlayerCreature object);
+	public native abstract void sendAttributeListTo(CreatureObject object);
 	
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -730,7 +731,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public abstract void fillAttributeList(AttributeListMessage msg, PlayerCreature object) {
+	public abstract void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		
 	}
 	
@@ -750,20 +751,20 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	@local
-	public native abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native abstract void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
 	 * Opens container contents to player
 	 * @pre { }
 	 * @post { }
-	 * @param player PlayerCreature to open the container to   
+	 * @param player CreatureObject to open the container to   
 	 */
-	public abstract native void openContainerTo(PlayerCreature player);
+	public abstract native void openContainerTo(CreatureObject player);
 	
 	/**
 	 * Closes the container of a player
 	 */
-	public abstract native void closeContainerTo(PlayerCreature player, boolean notify = true);
+	public abstract native void closeContainerTo(CreatureObject player, boolean notify = true);
 	
 	/**
 	 * Inserts this object into zone
@@ -993,11 +994,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
 	 * @post { this object is locked, player is locked }
-	 * @param player PlayerCreature that selected the option
+	 * @param player CreatureObject that selected the option
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	public native abstract int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native abstract int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	public native void notifyAddedToCloseObjects();
 	public native void notifyRemovedFromCloseObjects();
@@ -1317,7 +1318,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	/**
 	 * @param player player that closed the container
 	 */
-	public native abstract void notifyCloseContainer(PlayerCreature player);
+	public native abstract void notifyCloseContainer(CreatureObject player);
 
 	public unsigned int getMovementCounter() {
 		return movementCounter;
@@ -1367,8 +1368,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return Logger.getLoggingName();
 	}
 
-	public boolean isPlayerCreature() {
-		return gameObjectType == PLAYERCREATURE;
+	public abstract boolean isPlayerCreature() {
+		return false;
 	}
 
 	public abstract boolean isVendor() {

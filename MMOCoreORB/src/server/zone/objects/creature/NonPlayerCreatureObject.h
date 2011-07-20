@@ -54,7 +54,7 @@ class NonPlayerCreatureObject : public AiAgent {
 public:
 	NonPlayerCreatureObject();
 
-	bool isNonPlayerCreature();
+	bool isNonPlayerCreatureObject();
 
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
@@ -91,7 +91,7 @@ public:
 
 	NonPlayerCreatureObjectImplementation(DummyConstructorParameter* param);
 
-	bool isNonPlayerCreature();
+	bool isNonPlayerCreatureObject();
 
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
@@ -140,7 +140,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	bool isNonPlayerCreature();
+	bool isNonPlayerCreatureObject();
 
 };
 

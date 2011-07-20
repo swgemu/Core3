@@ -14,7 +14,7 @@
 
 #include "server/zone/objects/mission/MissionObserver.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/mission/MissionObjective.h"
 

@@ -70,7 +70,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 

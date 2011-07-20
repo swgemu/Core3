@@ -4,7 +4,9 @@
 
 #include "SuiCharacterBuilderBox.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	SuiCharacterBuilderBoxStub
@@ -12,7 +14,7 @@
 
 enum {RPC_GENERATEMESSAGE__ = 6,RPC_ISCHARACTERBUILDERBOX__};
 
-SuiCharacterBuilderBox::SuiCharacterBuilderBox(PlayerCreature* player, CharacterBuilderMenuNode* root) : SuiListBox(DummyConstructorParameter::instance()) {
+SuiCharacterBuilderBox::SuiCharacterBuilderBox(CreatureObject* player, CharacterBuilderMenuNode* root) : SuiListBox(DummyConstructorParameter::instance()) {
 	SuiCharacterBuilderBoxImplementation* _implementation = new SuiCharacterBuilderBoxImplementation(player, root);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -193,7 +195,7 @@ int SuiCharacterBuilderBoxImplementation::writeObjectMembers(ObjectOutputStream*
 	return 0 + SuiListBoxImplementation::writeObjectMembers(stream);
 }
 
-SuiCharacterBuilderBoxImplementation::SuiCharacterBuilderBoxImplementation(PlayerCreature* player, CharacterBuilderMenuNode* root) : SuiListBoxImplementation(player, SuiWindowType::CHARACTER_BUILDER_LIST, 0) {
+SuiCharacterBuilderBoxImplementation::SuiCharacterBuilderBoxImplementation(CreatureObject* player, CharacterBuilderMenuNode* root) : SuiListBoxImplementation(player, SuiWindowType::CHARACTER_BUILDER_LIST, 0) {
 	_initializeImplementation();
 	// server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.idl():  		Logger.setLoggingName("SuiCharacterBuilderBox");
 	Logger::setLoggingName("SuiCharacterBuilderBox");

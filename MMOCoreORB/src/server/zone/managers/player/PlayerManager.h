@@ -129,7 +129,7 @@ class PlayerObject;
 
 using namespace server::zone::objects::player;
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/managers/player/PlayerMap.h"
 
@@ -172,7 +172,7 @@ public:
 
 	int getHighestBadgeIndex();
 
-	void sendStartingLocationsTo(PlayerCreature* player);
+	void sendStartingLocationsTo(CreatureObject* player);
 
 	StartingLocation* getStartingLocation(const String& city);
 
@@ -188,39 +188,39 @@ public:
 
 	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
 
-	void killPlayer(TangibleObject* attacker, PlayerCreature* player);
+	void killPlayer(TangibleObject* attacker, CreatureObject* player);
 
-	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
+	byte calculateIncapacitationTimer(CreatureObject* player, int condition);
 
-	bool checkEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+	bool checkEncumbrancies(CreatureObject* player, ArmorObject* armor);
 
-	void applyEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+	void applyEncumbrancies(CreatureObject* player, ArmorObject* armor);
 
-	void removeEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+	void removeEncumbrancies(CreatureObject* player, ArmorObject* armor);
 
-	void awardBadge(PlayerCreature* player, unsigned int badge);
+	void awardBadge(PlayerObject* ghost, unsigned int badge);
 
 	void setExperienceMultiplier(float globalMultiplier);
 
-	void awardExperience(PlayerCreature* player, const String& xpType, int amount, bool sendSystemMessage = true, float localMultiplier = 1.0f);
+	void awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage = true, float localMultiplier = 1.0f);
 
-	void handleAbortTradeMessage(PlayerCreature* player, bool doLock = true);
+	void handleAbortTradeMessage(CreatureObject* player, bool doLock = true);
 
-	void handleAddItemToTradeWindow(PlayerCreature* player, unsigned long long itemID);
+	void handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID);
 
-	void handleGiveMoneyMessage(PlayerCreature* player, unsigned int value);
+	void handleGiveMoneyMessage(CreatureObject* player, unsigned int value);
 
-	void handleAcceptTransactionMessage(PlayerCreature* player);
+	void handleAcceptTransactionMessage(CreatureObject* player);
 
-	void handleUnAcceptTransactionMessage(PlayerCreature* player);
+	void handleUnAcceptTransactionMessage(CreatureObject* player);
 
-	void handleVerifyTradeMessage(PlayerCreature* player);
+	void handleVerifyTradeMessage(CreatureObject* player);
 
-	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
+	bool checkTradeItems(CreatureObject* player, CreatureObject* receiver);
 
 	SceneObject* getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID = 0);
 
-	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
+	void sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target);
 
 	int getMedicalFacilityRating(CreatureObject* creature);
 
@@ -236,41 +236,41 @@ public:
 
 	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
 
-	bool squadLeaderCheck(PlayerCreature* player, GroupObject* group);
+	bool squadLeaderCheck(CreatureObject* player, GroupObject* group);
 
 	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
 
-	void sendMessageOfTheDay(PlayerCreature* player);
+	void sendMessageOfTheDay(CreatureObject* player);
 
-	void sendActivateCloneRequest(PlayerCreature* player);
+	void sendActivateCloneRequest(CreatureObject* player);
 
-	void sendPlayerToCloner(PlayerCreature* player, unsigned long long clonerID);
+	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
-	bool createAllPlayerObjects(PlayerCreature* player);
+	bool createAllPlayerObjects(CreatureObject* player);
 
-	void createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile);
+	void createDefaultPlayerItems(CreatureObject* player, const String& profession, const String& templateFile);
 
-	void createTutorialBuilding(PlayerCreature* player);
+	void createTutorialBuilding(CreatureObject* player);
 
-	void createSkippedTutorialBuilding(PlayerCreature* player);
+	void createSkippedTutorialBuilding(CreatureObject* player);
 
-	int checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier = 1);
+	int checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier = 1);
 
-	int checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent = NULL);
+	int checkSpeedHackSecondTest(CreatureObject* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent = NULL);
 
 	bool existsName(const String& name);
 
 	unsigned long long getObjectID(const String& name);
 
-	PlayerCreature* getPlayer(const String& name);
+	CreatureObject* getPlayer(const String& name);
 
-	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel = 1);
+	void updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel = 1);
 
-	void generateHologrindProfessions(PlayerCreature* player);
+	void generateHologrindProfessions(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -336,7 +336,7 @@ public:
 
 	void finalize();
 
-	void sendStartingLocationsTo(PlayerCreature* player);
+	void sendStartingLocationsTo(CreatureObject* player);
 
 	StartingLocation* getStartingLocation(const String& city);
 
@@ -352,39 +352,39 @@ public:
 
 	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
 
-	void killPlayer(TangibleObject* attacker, PlayerCreature* player);
+	void killPlayer(TangibleObject* attacker, CreatureObject* player);
 
-	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
+	byte calculateIncapacitationTimer(CreatureObject* player, int condition);
 
-	bool checkEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+	bool checkEncumbrancies(CreatureObject* player, ArmorObject* armor);
 
-	void applyEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+	void applyEncumbrancies(CreatureObject* player, ArmorObject* armor);
 
-	void removeEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+	void removeEncumbrancies(CreatureObject* player, ArmorObject* armor);
 
-	void awardBadge(PlayerCreature* player, unsigned int badge);
+	void awardBadge(PlayerObject* ghost, unsigned int badge);
 
 	void setExperienceMultiplier(float globalMultiplier);
 
-	void awardExperience(PlayerCreature* player, const String& xpType, int amount, bool sendSystemMessage = true, float localMultiplier = 1.0f);
+	void awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage = true, float localMultiplier = 1.0f);
 
-	void handleAbortTradeMessage(PlayerCreature* player, bool doLock = true);
+	void handleAbortTradeMessage(CreatureObject* player, bool doLock = true);
 
-	void handleAddItemToTradeWindow(PlayerCreature* player, unsigned long long itemID);
+	void handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID);
 
-	void handleGiveMoneyMessage(PlayerCreature* player, unsigned int value);
+	void handleGiveMoneyMessage(CreatureObject* player, unsigned int value);
 
-	void handleAcceptTransactionMessage(PlayerCreature* player);
+	void handleAcceptTransactionMessage(CreatureObject* player);
 
-	void handleUnAcceptTransactionMessage(PlayerCreature* player);
+	void handleUnAcceptTransactionMessage(CreatureObject* player);
 
-	void handleVerifyTradeMessage(PlayerCreature* player);
+	void handleVerifyTradeMessage(CreatureObject* player);
 
-	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
+	bool checkTradeItems(CreatureObject* player, CreatureObject* receiver);
 
 	SceneObject* getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID = 0);
 
-	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
+	void sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target);
 
 	int getMedicalFacilityRating(CreatureObject* creature);
 
@@ -400,41 +400,41 @@ public:
 
 	void disseminateExperience(TangibleObject* destructedObject, DamageMap* damageMap);
 
-	bool squadLeaderCheck(PlayerCreature* player, GroupObject* group);
+	bool squadLeaderCheck(CreatureObject* player, GroupObject* group);
 
 	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
 
-	void sendMessageOfTheDay(PlayerCreature* player);
+	void sendMessageOfTheDay(CreatureObject* player);
 
-	void sendActivateCloneRequest(PlayerCreature* player);
+	void sendActivateCloneRequest(CreatureObject* player);
 
-	void sendPlayerToCloner(PlayerCreature* player, unsigned long long clonerID);
+	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
-	bool createAllPlayerObjects(PlayerCreature* player);
+	bool createAllPlayerObjects(CreatureObject* player);
 
-	void createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile);
+	void createDefaultPlayerItems(CreatureObject* player, const String& profession, const String& templateFile);
 
-	void createTutorialBuilding(PlayerCreature* player);
+	void createTutorialBuilding(CreatureObject* player);
 
-	void createSkippedTutorialBuilding(PlayerCreature* player);
+	void createSkippedTutorialBuilding(CreatureObject* player);
 
-	int checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier = 1);
+	int checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier = 1);
 
-	int checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent = NULL);
+	int checkSpeedHackSecondTest(CreatureObject* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent = NULL);
 
 	bool existsName(const String& name);
 
 	unsigned long long getObjectID(const String& name);
 
-	PlayerCreature* getPlayer(const String& name);
+	CreatureObject* getPlayer(const String& name);
 
-	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel = 1);
+	void updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel = 1);
 
-	void generateHologrindProfessions(PlayerCreature* player);
+	void generateHologrindProfessions(CreatureObject* player);
 
 	WeakReference<PlayerManager*> _this;
 
@@ -491,39 +491,39 @@ public:
 
 	int notifyDefendersOfIncapacitation(TangibleObject* destructor, TangibleObject* destructedObject);
 
-	void killPlayer(TangibleObject* attacker, PlayerCreature* player);
+	void killPlayer(TangibleObject* attacker, CreatureObject* player);
 
-	byte calculateIncapacitationTimer(PlayerCreature* player, int condition);
+	byte calculateIncapacitationTimer(CreatureObject* player, int condition);
 
-	bool checkEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+	bool checkEncumbrancies(CreatureObject* player, ArmorObject* armor);
 
-	void applyEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+	void applyEncumbrancies(CreatureObject* player, ArmorObject* armor);
 
-	void removeEncumbrancies(PlayerCreature* player, ArmorObject* armor);
+	void removeEncumbrancies(CreatureObject* player, ArmorObject* armor);
 
-	void awardBadge(PlayerCreature* player, unsigned int badge);
+	void awardBadge(PlayerObject* ghost, unsigned int badge);
 
 	void setExperienceMultiplier(float globalMultiplier);
 
-	void awardExperience(PlayerCreature* player, const String& xpType, int amount, bool sendSystemMessage, float localMultiplier);
+	void awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage, float localMultiplier);
 
-	void handleAbortTradeMessage(PlayerCreature* player, bool doLock);
+	void handleAbortTradeMessage(CreatureObject* player, bool doLock);
 
-	void handleAddItemToTradeWindow(PlayerCreature* player, unsigned long long itemID);
+	void handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID);
 
-	void handleGiveMoneyMessage(PlayerCreature* player, unsigned int value);
+	void handleGiveMoneyMessage(CreatureObject* player, unsigned int value);
 
-	void handleAcceptTransactionMessage(PlayerCreature* player);
+	void handleAcceptTransactionMessage(CreatureObject* player);
 
-	void handleUnAcceptTransactionMessage(PlayerCreature* player);
+	void handleUnAcceptTransactionMessage(CreatureObject* player);
 
-	void handleVerifyTradeMessage(PlayerCreature* player);
+	void handleVerifyTradeMessage(CreatureObject* player);
 
-	bool checkTradeItems(PlayerCreature* player, PlayerCreature* receiver);
+	bool checkTradeItems(CreatureObject* player, CreatureObject* receiver);
 
 	SceneObject* getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID);
 
-	void sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target);
+	void sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target);
 
 	int getMedicalFacilityRating(CreatureObject* creature);
 
@@ -537,53 +537,53 @@ public:
 
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
-	bool squadLeaderCheck(PlayerCreature* player, GroupObject* group);
+	bool squadLeaderCheck(CreatureObject* player, GroupObject* group);
 
 	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
 
-	void sendMessageOfTheDay(PlayerCreature* player);
+	void sendMessageOfTheDay(CreatureObject* player);
 
-	void sendActivateCloneRequest(PlayerCreature* player);
+	void sendActivateCloneRequest(CreatureObject* player);
 
-	void sendPlayerToCloner(PlayerCreature* player, unsigned long long clonerID);
+	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
-	bool createAllPlayerObjects(PlayerCreature* player);
+	bool createAllPlayerObjects(CreatureObject* player);
 
-	void createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile);
+	void createDefaultPlayerItems(CreatureObject* player, const String& profession, const String& templateFile);
 
-	void createTutorialBuilding(PlayerCreature* player);
+	void createTutorialBuilding(CreatureObject* player);
 
-	void createSkippedTutorialBuilding(PlayerCreature* player);
+	void createSkippedTutorialBuilding(CreatureObject* player);
 
-	int checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent);
+	int checkSpeedHackSecondTest(CreatureObject* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent);
 
 	bool existsName(const String& name);
 
 	unsigned long long getObjectID(const String& name);
 
-	PlayerCreature* getPlayer(const String& name);
+	CreatureObject* getPlayer(const String& name);
 
-	void updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel);
+	void updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel);
 
-	void generateHologrindProfessions(PlayerCreature* player);
+	void generateHologrindProfessions(CreatureObject* player);
 
 protected:
 	String _param0_kickUser__String_String_;
 	String _param1_kickUser__String_String_;
-	String _param1_awardExperience__PlayerCreature_String_int_bool_float_;
+	String _param1_awardExperience__CreatureObject_String_int_bool_float_;
 	String _param0_checkExistentNameInDatabase__String_;
 	String _param0_createHairObject__String_String_;
 	String _param1_createHairObject__String_String_;
-	String _param1_createDefaultPlayerItems__PlayerCreature_String_String_;
-	String _param2_createDefaultPlayerItems__PlayerCreature_String_String_;
+	String _param1_createDefaultPlayerItems__CreatureObject_String_String_;
+	String _param2_createDefaultPlayerItems__CreatureObject_String_String_;
 	String _param0_existsName__String_;
 	String _param0_getObjectID__String_;
 	String _param0_getPlayer__String_;
-	String _param1_updateAdminLevel__PlayerCreature_String_int_;
+	String _param1_updateAdminLevel__CreatureObject_String_int_;
 };
 
 class PlayerManagerHelper : public DistributedObjectClassHelper, public Singleton<PlayerManagerHelper> {

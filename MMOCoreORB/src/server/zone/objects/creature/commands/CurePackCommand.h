@@ -84,8 +84,8 @@ public:
 		if (!target->isPlayerCreature())
 			return;
 
-		PlayerCreature* creature = (PlayerCreature*) object;
-		PlayerCreature* creatureTarget = (PlayerCreature*) target;
+		CreatureObject* creature = (CreatureObject*) object;
+		CreatureObject* creatureTarget = (CreatureObject*) target;
 		StringBuffer msgTarget, msgPlayer;
 		String msgSelf;
 		switch (state) {
@@ -133,7 +133,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		int amount = (int) round((float) power * 1.0f);
 

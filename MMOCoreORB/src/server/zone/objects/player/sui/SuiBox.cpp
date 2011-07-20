@@ -6,7 +6,11 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/PlayerObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	SuiBoxStub
@@ -14,7 +18,7 @@
 
 enum {RPC_INITIALIZE__ = 6,RPC_FINALIZE__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_GENERATEHEADER__SUICREATEPAGEMESSAGE_,RPC_GENERATEBODY__SUICREATEPAGEMESSAGE_,RPC_GENERATEFOOTER__SUICREATEPAGEMESSAGE_INT_,RPC_GENERATEMESSAGE__,RPC_GENERATECLOSEMESSAGE__,RPC_ADDSETTING__STRING_STRING_STRING_STRING_,RPC_ADDHEADER__STRING_STRING_,RPC_CLEAROPTIONS__,RPC_COMPARETO__SUIBOX_,RPC_HASGENERATEDMESSAGE__,RPC_SETPROMPTTITLE__STRING_,RPC_SETPROMPTTEXT__STRING_,RPC_GETPROMPTTITLE__,RPC_SETHANDLERTEXT__STRING_,RPC_SETWINDOWTYPE__INT_,RPC_SETBOXTYPE__INT_,RPC_ISINPUTBOX__,RPC_ISLISTBOX__,RPC_ISMESSAGEBOX__,RPC_ISTRANSFERBOX__,RPC_ISBANKTRANSFERBOX__,RPC_ISSLICINGBOX__,RPC_ISCHARACTERBUILDERBOX__,RPC_ISCOLORPICKER__,RPC_SETCANCELBUTTON__BOOL_STRING_,RPC_SETOTHERBUTTON__BOOL_STRING_,RPC_SETOKBUTTON__BOOL_STRING_,RPC_SETFORCECLOSEDISTANCE__FLOAT_,RPC_SETFORCECLOSEDISABLED__,RPC_GETPLAYER__,RPC_GETBOXID__,RPC_GETWINDOWTYPE__,RPC_GETUSINGOBJECT__,RPC_SETUSINGOBJECT__SCENEOBJECT_,};
 
-SuiBox::SuiBox(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype) : ManagedObject(DummyConstructorParameter::instance()) {
+SuiBox::SuiBox(CreatureObject* play, unsigned int windowtype, unsigned int boxtype) : ManagedObject(DummyConstructorParameter::instance()) {
 	SuiBoxImplementation* _implementation = new SuiBoxImplementation(play, windowtype, boxtype);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -454,7 +458,7 @@ void SuiBox::setForceCloseDisabled() {
 		_implementation->setForceCloseDisabled();
 }
 
-PlayerCreature* SuiBox::getPlayer() {
+CreatureObject* SuiBox::getPlayer() {
 	SuiBoxImplementation* _implementation = (SuiBoxImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -462,7 +466,7 @@ PlayerCreature* SuiBox::getPlayer() {
 
 		DistributedMethod method(this, RPC_GETPLAYER__);
 
-		return (PlayerCreature*) method.executeWithObjectReturn();
+		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getPlayer();
 }
@@ -642,7 +646,7 @@ bool SuiBoxImplementation::readObjectMember(ObjectInputStream* stream, const Str
 		return true;
 
 	if (_name == "player") {
-		TypeInfo<ManagedWeakReference<PlayerCreature* > >::parseFromBinaryStream(&player, stream);
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
 	}
 
@@ -760,7 +764,7 @@ int SuiBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<PlayerCreature* > >::toBinaryStream(&player, stream);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -920,7 +924,7 @@ int SuiBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	return 20 + ManagedObjectImplementation::writeObjectMembers(stream);
 }
 
-SuiBoxImplementation::SuiBoxImplementation(PlayerCreature* play, unsigned int windowtype, unsigned int boxtype) {
+SuiBoxImplementation::SuiBoxImplementation(CreatureObject* play, unsigned int windowtype, unsigned int boxtype) {
 	_initializeImplementation();
 	// server/zone/objects/player/sui/SuiBox.idl():  		player = play;
 	player = play;
@@ -937,8 +941,10 @@ SuiBoxImplementation::SuiBoxImplementation(PlayerCreature* play, unsigned int wi
 void SuiBoxImplementation::initialize() {
 	// server/zone/objects/player/sui/SuiBox.idl():  		Logger.setLoggingName("SuiBox");
 	Logger::setLoggingName("SuiBox");
-	// server/zone/objects/player/sui/SuiBox.idl():  		boxID = player.getNewSuiBoxID(windowType);
-	boxID = player->getNewSuiBoxID(windowType);
+	// server/zone/objects/player/sui/SuiBox.idl():  		PlayerObject ghost = player.getPlayerObject();
+	PlayerObject* ghost = player->getPlayerObject();
+	// server/zone/objects/player/sui/SuiBox.idl():  		boxID = ghost.getNewSuiBoxID(windowType);
+	boxID = ghost->getNewSuiBoxID(windowType);
 	// server/zone/objects/player/sui/SuiBox.idl():  		handlerStr = "msgSelected";
 	handlerStr = "msgSelected";
 	// server/zone/objects/player/sui/SuiBox.idl():  		cancelButtonText = "@cancel";
@@ -1073,7 +1079,7 @@ bool SuiBoxImplementation::isColorPicker() {
 	return false;
 }
 
-PlayerCreature* SuiBoxImplementation::getPlayer() {
+CreatureObject* SuiBoxImplementation::getPlayer() {
 	// server/zone/objects/player/sui/SuiBox.idl():  		return player;
 	return player;
 }
@@ -1365,7 +1371,7 @@ void SuiBoxAdapter::setForceCloseDisabled() {
 	((SuiBoxImplementation*) impl)->setForceCloseDisabled();
 }
 
-PlayerCreature* SuiBoxAdapter::getPlayer() {
+CreatureObject* SuiBoxAdapter::getPlayer() {
 	return ((SuiBoxImplementation*) impl)->getPlayer();
 }
 

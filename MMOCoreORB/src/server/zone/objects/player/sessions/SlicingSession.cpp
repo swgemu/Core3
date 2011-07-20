@@ -12,7 +12,7 @@
  *	SlicingSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ENDSLICING__,RPC_GETSLICINGSKILL__PLAYERCREATURE_,RPC_HASPRECISIONLASERKNIFE__BOOL_,RPC_HASWEAPONUPGRADEKIT__,RPC_HASARMORUPGRADEKIT__,RPC_USECLAMPFROMINVENTORY__SLICINGTOOL_,};
+enum {RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ENDSLICING__,RPC_GETSLICINGSKILL__CREATUREOBJECT_,RPC_HASPRECISIONLASERKNIFE__BOOL_,RPC_HASWEAPONUPGRADEKIT__,RPC_HASARMORUPGRADEKIT__,RPC_USECLAMPFROMINVENTORY__SLICINGTOOL_,};
 
 SlicingSession::SlicingSession(CreatureObject* parent) : Facade(DummyConstructorParameter::instance()) {
 	SlicingSessionImplementation* _implementation = new SlicingSessionImplementation(parent);
@@ -27,7 +27,7 @@ SlicingSession::~SlicingSession() {
 }
 
 
-void SlicingSession::initalizeSlicingMenu(PlayerCreature* pl, TangibleObject* obj) {
+void SlicingSession::initalizeSlicingMenu(CreatureObject* pl, TangibleObject* obj) {
 	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -36,7 +36,7 @@ void SlicingSession::initalizeSlicingMenu(PlayerCreature* pl, TangibleObject* ob
 		_implementation->initalizeSlicingMenu(pl, obj);
 }
 
-void SlicingSession::handleMenuSelect(PlayerCreature* pl, byte menuID, SuiListBox* suiBox) {
+void SlicingSession::handleMenuSelect(CreatureObject* pl, byte menuID, SuiListBox* suiBox) {
 	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -97,13 +97,13 @@ void SlicingSession::endSlicing() {
 		_implementation->endSlicing();
 }
 
-int SlicingSession::getSlicingSkill(PlayerCreature* slicer) {
+int SlicingSession::getSlicingSkill(CreatureObject* slicer) {
 	SlicingSessionImplementation* _implementation = (SlicingSessionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETSLICINGSKILL__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETSLICINGSKILL__CREATUREOBJECT_);
 		method.addObjectParameter(slicer);
 
 		return method.executeWithSignedIntReturn();
@@ -271,7 +271,7 @@ bool SlicingSessionImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 
 	if (_name == "player") {
-		TypeInfo<ManagedWeakReference<PlayerCreature* > >::parseFromBinaryStream(&player, stream);
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
 	}
 
@@ -329,7 +329,7 @@ int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<PlayerCreature* > >::toBinaryStream(&player, stream);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -474,8 +474,8 @@ Packet* SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_ENDSLICING__:
 		endSlicing();
 		break;
-	case RPC_GETSLICINGSKILL__PLAYERCREATURE_:
-		resp->insertSignedInt(getSlicingSkill((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_GETSLICINGSKILL__CREATUREOBJECT_:
+		resp->insertSignedInt(getSlicingSkill((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_HASPRECISIONLASERKNIFE__BOOL_:
 		resp->insertBoolean(hasPrecisionLaserKnife(inv->getBooleanParameter()));
@@ -512,7 +512,7 @@ void SlicingSessionAdapter::endSlicing() {
 	((SlicingSessionImplementation*) impl)->endSlicing();
 }
 
-int SlicingSessionAdapter::getSlicingSkill(PlayerCreature* slicer) {
+int SlicingSessionAdapter::getSlicingSkill(CreatureObject* slicer) {
 	return ((SlicingSessionImplementation*) impl)->getSlicingSkill(slicer);
 }
 

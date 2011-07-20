@@ -46,7 +46,7 @@ which carries forward this exception.
 #define FISHINGSESSION_H_
 
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {
@@ -67,7 +67,7 @@ namespace managers {
 namespace minigames {
 
 class FishingSession {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 	Reference<FishingEvent*> event;
 	ManagedReference<SceneObject*> marker;
 
@@ -78,7 +78,7 @@ class FishingSession {
 	String mood;
 
 public:
-	FishingSession(PlayerCreature* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, uint32 boxID, int fishingState, String mood) {
+	FishingSession(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, uint32 boxID, int fishingState, String mood) {
 		this->player = player;
 		this->event = event;
 		this->marker = marker;

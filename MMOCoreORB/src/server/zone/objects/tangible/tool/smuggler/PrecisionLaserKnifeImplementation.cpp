@@ -10,7 +10,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
-int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID != 20)
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 
@@ -47,7 +47,7 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(PlayerCreature* pl
 	return 0;
 }
 
-void PrecisionLaserKnifeImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void PrecisionLaserKnifeImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	SlicingToolImplementation::fillAttributeList(msg, object);
 
 	msg->insertAttribute("charges", charges);

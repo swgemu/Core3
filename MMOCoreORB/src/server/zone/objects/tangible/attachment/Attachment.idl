@@ -48,7 +48,8 @@ import server.zone.objects.tangible.TangibleObject;
 import engine.lua.LuaObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.tangible.wearables.WearableSkillModMap;
@@ -104,7 +105,7 @@ class Attachment extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	/**
 	 * Sets the ammount of Skill Mods on the attachment
@@ -163,7 +164,7 @@ class Attachment extends TangibleObject {
 	 * @post { }
 	 * @param player The player to remove the attachment from
 	 */
-	public native boolean removeAttachment(PlayerCreature player);
+	public native boolean removeAttachment(CreatureObject player);
 
 	/**
 	 * Generates random skill mods

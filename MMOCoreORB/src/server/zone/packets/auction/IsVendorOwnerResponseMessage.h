@@ -50,13 +50,13 @@ which carries forward this exception.
 #include "../BaseLineMessage.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/auction/Vendor.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
 #include "server/zone/objects/creature/vendor/VendorCreature.h"
 
 class IsVendorOwnerResponseMessage : public BaseMessage {
 public:
-    IsVendorOwnerResponseMessage(SceneObject* sceno, PlayerCreature* player, const String& planet, const String& header, uint32 errorCode = 0) {
+    IsVendorOwnerResponseMessage(SceneObject* sceno, CreatureObject* player, const String& planet, const String& header, uint32 errorCode = 0) {
 		insertShort(3);
 		insertInt(0xCE04173E);
 

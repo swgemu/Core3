@@ -73,7 +73,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		PlayerObject* ghost = player->getPlayerObject();
 
@@ -84,7 +84,7 @@ public:
 
 		ChatManager* chatManager = server->getChatManager();
 
-		ManagedReference<PlayerCreature*> targetPlayer = chatManager->getPlayer(name);
+		ManagedReference<CreatureObject*> targetPlayer = chatManager->getPlayer(name);
 
 		if (targetPlayer == NULL)
 			return GENERALERROR;

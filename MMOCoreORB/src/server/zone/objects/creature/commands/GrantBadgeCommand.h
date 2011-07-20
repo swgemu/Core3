@@ -68,7 +68,7 @@ public:
 		ManagedReference<SceneObject* > object =
 				server->getZoneServer()->getObject(target);
 
-		ManagedReference<PlayerCreature*> player = NULL;
+		ManagedReference<CreatureObject*> player = NULL;
 
 		StringTokenizer args(arguments.toString());
 
@@ -81,7 +81,7 @@ public:
 			}
 
 		} else {
-			player = (PlayerCreature*) object.get();
+			player = (CreatureObject*) object.get();
 		}
 
 		if (player == NULL) {
@@ -92,7 +92,7 @@ public:
 		int badgeId;
 		badgeId = args.getIntToken();
 
-		server->getPlayerManager()->awardBadge(player,badgeId);
+		server->getPlayerManager()->awardBadge(player->getPlayerObject(), badgeId);
 
 	} catch (Exception& e) {
 		creature->sendSystemMessage("invalid arguments for grantBadge command:  /grantBadge <firstname> <badgeId>");

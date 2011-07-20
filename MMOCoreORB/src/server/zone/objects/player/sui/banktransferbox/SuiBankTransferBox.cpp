@@ -6,7 +6,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	SuiBankTransferBoxStub
@@ -14,7 +16,7 @@
 
 enum {RPC_ADDCASH__INT_ = 6,RPC_ADDBANK__INT_,RPC_GETBANK__,RPC_GENERATEMESSAGE__,RPC_ISBANKTRANSFERBOX__};
 
-SuiBankTransferBox::SuiBankTransferBox(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype) : SuiBox(DummyConstructorParameter::instance()) {
+SuiBankTransferBox::SuiBankTransferBox(SceneObject* bankObject, CreatureObject* player, unsigned int windowtype) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiBankTransferBoxImplementation* _implementation = new SuiBankTransferBoxImplementation(bankObject, player, windowtype);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -335,7 +337,7 @@ int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* str
 	return 9 + SuiBoxImplementation::writeObjectMembers(stream);
 }
 
-SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(SceneObject* bankObject, PlayerCreature* player, unsigned int windowtype) : SuiBoxImplementation(player, windowtype, SuiBoxImplementation::BANKTRANSFERBOX) {
+SuiBankTransferBoxImplementation::SuiBankTransferBoxImplementation(SceneObject* bankObject, CreatureObject* player, unsigned int windowtype) : SuiBoxImplementation(player, windowtype, SuiBoxImplementation::BANKTRANSFERBOX) {
 	_initializeImplementation();
 	// server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.idl():  		bank = bankObject;
 	bank = bankObject;

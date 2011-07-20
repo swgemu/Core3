@@ -43,7 +43,7 @@
  */
 
 #include "VendorCheckTask.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/vendor/VendorCreature.h"
 #include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"
 #include "server/zone/objects/auction/Vendor.h"

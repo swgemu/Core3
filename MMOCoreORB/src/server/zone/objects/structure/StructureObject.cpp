@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
@@ -20,7 +20,7 @@
  *	StructureObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_,RPC_SENDSTATUSTO__PLAYERCREATURE_,RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_,RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__SCENEOBJECT_,RPC_ISONADMINLIST__LONG_,RPC_ISONENTRYLIST__SCENEOBJECT_,RPC_ISONENTRYLIST__LONG_,RPC_ISONBANLIST__SCENEOBJECT_,RPC_ISONBANLIST__LONG_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_,RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_,RPC_CREATEVENDOR__PLAYERCREATURE_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_SENDSTATUSTO__CREATUREOBJECT_,RPC_SENDMANAGEMAINTENANCETO__CREATUREOBJECT_,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__SCENEOBJECT_,RPC_ISONADMINLIST__LONG_,RPC_ISONENTRYLIST__SCENEOBJECT_,RPC_ISONENTRYLIST__LONG_,RPC_ISONBANLIST__SCENEOBJECT_,RPC_ISONBANLIST__LONG_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_ADDPERMISSION__CREATUREOBJECT_CREATUREOBJECT_STRING_,RPC_ADDPERMISSION__CREATUREOBJECT_STRING_STRING_,RPC_REMOVEPERMISSION__CREATUREOBJECT_CREATUREOBJECT_STRING_,RPC_REMOVEPERMISSION__CREATUREOBJECT_STRING_STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
@@ -84,13 +84,13 @@ int StructureObject::notifyStructurePlaced(CreatureObject* creature) {
 		return _implementation->notifyStructurePlaced(creature);
 }
 
-bool StructureObject::checkRequisitesForPlacement(PlayerCreature* player) {
+bool StructureObject::checkRequisitesForPlacement(CreatureObject* player) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -98,13 +98,13 @@ bool StructureObject::checkRequisitesForPlacement(PlayerCreature* player) {
 		return _implementation->checkRequisitesForPlacement(player);
 }
 
-void StructureObject::sendStatusTo(PlayerCreature* player) {
+void StructureObject::sendStatusTo(CreatureObject* player) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDSTATUSTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDSTATUSTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -112,13 +112,13 @@ void StructureObject::sendStatusTo(PlayerCreature* player) {
 		_implementation->sendStatusTo(player);
 }
 
-void StructureObject::sendManageMaintenanceTo(PlayerCreature* player) {
+void StructureObject::sendManageMaintenanceTo(CreatureObject* player) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDMANAGEMAINTENANCETO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -126,13 +126,13 @@ void StructureObject::sendManageMaintenanceTo(PlayerCreature* player) {
 		_implementation->sendManageMaintenanceTo(player);
 }
 
-void StructureObject::sendChangeNamePromptTo(PlayerCreature* player) {
+void StructureObject::sendChangeNamePromptTo(CreatureObject* player) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -308,13 +308,13 @@ bool StructureObject::isOnAccessList(unsigned long long oid) {
 		return _implementation->isOnAccessList(oid);
 }
 
-void StructureObject::sendPermissionListTo(PlayerCreature* player, const String& listName) {
+void StructureObject::sendPermissionListTo(CreatureObject* player, const String& listName) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_);
+		DistributedMethod method(this, RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(listName);
 
@@ -323,13 +323,13 @@ void StructureObject::sendPermissionListTo(PlayerCreature* player, const String&
 		_implementation->sendPermissionListTo(player, listName);
 }
 
-bool StructureObject::addPermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName) {
+bool StructureObject::addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_);
+		DistributedMethod method(this, RPC_ADDPERMISSION__CREATUREOBJECT_CREATUREOBJECT_STRING_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(targetPlayer);
 		method.addAsciiParameter(listName);
@@ -339,13 +339,13 @@ bool StructureObject::addPermission(PlayerCreature* player, PlayerCreature* targ
 		return _implementation->addPermission(player, targetPlayer, listName);
 }
 
-bool StructureObject::addPermission(PlayerCreature* player, const String& targetPlayerName, const String& listName) {
+bool StructureObject::addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_);
+		DistributedMethod method(this, RPC_ADDPERMISSION__CREATUREOBJECT_STRING_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(targetPlayerName);
 		method.addAsciiParameter(listName);
@@ -355,13 +355,13 @@ bool StructureObject::addPermission(PlayerCreature* player, const String& target
 		return _implementation->addPermission(player, targetPlayerName, listName);
 }
 
-bool StructureObject::removePermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName) {
+bool StructureObject::removePermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_);
+		DistributedMethod method(this, RPC_REMOVEPERMISSION__CREATUREOBJECT_CREATUREOBJECT_STRING_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(targetPlayer);
 		method.addAsciiParameter(listName);
@@ -371,13 +371,13 @@ bool StructureObject::removePermission(PlayerCreature* player, PlayerCreature* t
 		return _implementation->removePermission(player, targetPlayer, listName);
 }
 
-bool StructureObject::removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName) {
+bool StructureObject::removePermission(CreatureObject* player, const String& targetPlayerName, const String& listName) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_);
+		DistributedMethod method(this, RPC_REMOVEPERMISSION__CREATUREOBJECT_STRING_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(targetPlayerName);
 		method.addAsciiParameter(listName);
@@ -387,13 +387,13 @@ bool StructureObject::removePermission(PlayerCreature* player, const String& tar
 		return _implementation->removePermission(player, targetPlayerName, listName);
 }
 
-void StructureObject::createVendor(PlayerCreature* player) {
+void StructureObject::createVendor(CreatureObject* player) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEVENDOR__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CREATEVENDOR__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -965,7 +965,7 @@ int StructureObjectImplementation::notifyStructurePlaced(CreatureObject* creatur
 	return 0;
 }
 
-bool StructureObjectImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
+bool StructureObjectImplementation::checkRequisitesForPlacement(CreatureObject* player) {
 	// server/zone/objects/structure/StructureObject.idl():  		return true;
 	return true;
 }
@@ -1010,7 +1010,7 @@ bool StructureObjectImplementation::isOnAccessList(unsigned long long oid) {
 	return false;
 }
 
-void StructureObjectImplementation::sendPermissionListTo(PlayerCreature* player, const String& listName) {
+void StructureObjectImplementation::sendPermissionListTo(CreatureObject* player, const String& listName) {
 	// server/zone/objects/structure/StructureObject.idl():  		structurePermissionList.sendTo(player, listName);
 	(&structurePermissionList)->sendTo(player, listName);
 }
@@ -1135,17 +1135,17 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_:
 		resp->insertSignedInt(notifyStructurePlaced((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_:
-		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_:
+		resp->insertBoolean(checkRequisitesForPlacement((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_SENDSTATUSTO__PLAYERCREATURE_:
-		sendStatusTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDSTATUSTO__CREATUREOBJECT_:
+		sendStatusTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDMANAGEMAINTENANCETO__PLAYERCREATURE_:
-		sendManageMaintenanceTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDMANAGEMAINTENANCETO__CREATUREOBJECT_:
+		sendManageMaintenanceTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_:
-		sendChangeNamePromptTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_:
+		sendChangeNamePromptTo((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_GETTIMESTRING__INT_:
 		resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
@@ -1183,23 +1183,23 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_ISONACCESSLIST__LONG_:
 		resp->insertBoolean(isOnAccessList(inv->getUnsignedLongParameter()));
 		break;
-	case RPC_SENDPERMISSIONLISTTO__PLAYERCREATURE_STRING_:
-		sendPermissionListTo((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPermissionListTo__PlayerCreature_String_));
+	case RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_:
+		sendPermissionListTo((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_sendPermissionListTo__CreatureObject_String_));
 		break;
-	case RPC_ADDPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_:
-		resp->insertBoolean(addPermission((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_addPermission__PlayerCreature_PlayerCreature_String_)));
+	case RPC_ADDPERMISSION__CREATUREOBJECT_CREATUREOBJECT_STRING_:
+		resp->insertBoolean(addPermission((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_addPermission__CreatureObject_CreatureObject_String_)));
 		break;
-	case RPC_ADDPERMISSION__PLAYERCREATURE_STRING_STRING_:
-		resp->insertBoolean(addPermission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addPermission__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_addPermission__PlayerCreature_String_String_)));
+	case RPC_ADDPERMISSION__CREATUREOBJECT_STRING_STRING_:
+		resp->insertBoolean(addPermission((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addPermission__CreatureObject_String_String_), inv->getAsciiParameter(_param2_addPermission__CreatureObject_String_String_)));
 		break;
-	case RPC_REMOVEPERMISSION__PLAYERCREATURE_PLAYERCREATURE_STRING_:
-		resp->insertBoolean(removePermission((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_removePermission__PlayerCreature_PlayerCreature_String_)));
+	case RPC_REMOVEPERMISSION__CREATUREOBJECT_CREATUREOBJECT_STRING_:
+		resp->insertBoolean(removePermission((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_removePermission__CreatureObject_CreatureObject_String_)));
 		break;
-	case RPC_REMOVEPERMISSION__PLAYERCREATURE_STRING_STRING_:
-		resp->insertBoolean(removePermission((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_removePermission__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_removePermission__PlayerCreature_String_String_)));
+	case RPC_REMOVEPERMISSION__CREATUREOBJECT_STRING_STRING_:
+		resp->insertBoolean(removePermission((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_removePermission__CreatureObject_String_String_), inv->getAsciiParameter(_param2_removePermission__CreatureObject_String_String_)));
 		break;
-	case RPC_CREATEVENDOR__PLAYERCREATURE_:
-		createVendor((PlayerCreature*) inv->getObjectParameter());
+	case RPC_CREATEVENDOR__CREATUREOBJECT_:
+		createVendor((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_GETREDEEDCOST__:
 		resp->insertSignedInt(getRedeedCost());
@@ -1284,19 +1284,19 @@ int StructureObjectAdapter::notifyStructurePlaced(CreatureObject* creature) {
 	return ((StructureObjectImplementation*) impl)->notifyStructurePlaced(creature);
 }
 
-bool StructureObjectAdapter::checkRequisitesForPlacement(PlayerCreature* player) {
+bool StructureObjectAdapter::checkRequisitesForPlacement(CreatureObject* player) {
 	return ((StructureObjectImplementation*) impl)->checkRequisitesForPlacement(player);
 }
 
-void StructureObjectAdapter::sendStatusTo(PlayerCreature* player) {
+void StructureObjectAdapter::sendStatusTo(CreatureObject* player) {
 	((StructureObjectImplementation*) impl)->sendStatusTo(player);
 }
 
-void StructureObjectAdapter::sendManageMaintenanceTo(PlayerCreature* player) {
+void StructureObjectAdapter::sendManageMaintenanceTo(CreatureObject* player) {
 	((StructureObjectImplementation*) impl)->sendManageMaintenanceTo(player);
 }
 
-void StructureObjectAdapter::sendChangeNamePromptTo(PlayerCreature* player) {
+void StructureObjectAdapter::sendChangeNamePromptTo(CreatureObject* player) {
 	((StructureObjectImplementation*) impl)->sendChangeNamePromptTo(player);
 }
 
@@ -1348,27 +1348,27 @@ bool StructureObjectAdapter::isOnAccessList(unsigned long long oid) {
 	return ((StructureObjectImplementation*) impl)->isOnAccessList(oid);
 }
 
-void StructureObjectAdapter::sendPermissionListTo(PlayerCreature* player, const String& listName) {
+void StructureObjectAdapter::sendPermissionListTo(CreatureObject* player, const String& listName) {
 	((StructureObjectImplementation*) impl)->sendPermissionListTo(player, listName);
 }
 
-bool StructureObjectAdapter::addPermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName) {
+bool StructureObjectAdapter::addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName) {
 	return ((StructureObjectImplementation*) impl)->addPermission(player, targetPlayer, listName);
 }
 
-bool StructureObjectAdapter::addPermission(PlayerCreature* player, const String& targetPlayerName, const String& listName) {
+bool StructureObjectAdapter::addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName) {
 	return ((StructureObjectImplementation*) impl)->addPermission(player, targetPlayerName, listName);
 }
 
-bool StructureObjectAdapter::removePermission(PlayerCreature* player, PlayerCreature* targetPlayer, const String& listName) {
+bool StructureObjectAdapter::removePermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName) {
 	return ((StructureObjectImplementation*) impl)->removePermission(player, targetPlayer, listName);
 }
 
-bool StructureObjectAdapter::removePermission(PlayerCreature* player, const String& targetPlayerName, const String& listName) {
+bool StructureObjectAdapter::removePermission(CreatureObject* player, const String& targetPlayerName, const String& listName) {
 	return ((StructureObjectImplementation*) impl)->removePermission(player, targetPlayerName, listName);
 }
 
-void StructureObjectAdapter::createVendor(PlayerCreature* player) {
+void StructureObjectAdapter::createVendor(CreatureObject* player) {
 	((StructureObjectImplementation*) impl)->createVendor(player);
 }
 

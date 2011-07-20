@@ -168,7 +168,7 @@ private:
 		if (!creature->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		ManagedReference<SuiListBox*> suiListBox = new SuiListBox(player, SuiWindowType::TRAVEL_TICKET_SELECTION);
 		suiListBox->setPromptTitle("Select Destination");
@@ -181,7 +181,7 @@ private:
 
 		suiListBox->setCallback(new TicketSelectionSuiCallback(server->getZoneServer()));
 
-		player->addSuiBox(suiListBox);
+		player->getPlayerObject()->addSuiBox(suiListBox);
 		player->sendMessage(suiListBox->generateMessage());
 	}
 

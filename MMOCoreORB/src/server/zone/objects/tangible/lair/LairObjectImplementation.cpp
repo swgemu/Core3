@@ -36,7 +36,7 @@ int LairObjectImplementation::inflictDamage(TangibleObject* attacker, int damage
 	checkForHeal(attacker);
 
 	if (attacker->isPlayerCreature()) {
-		PlayerCreature* player = (PlayerCreature*) attacker;
+		CreatureObject* player = (CreatureObject*) attacker;
 
 		if (damage > 0)
 			damageMap.addDamage(player, damage);

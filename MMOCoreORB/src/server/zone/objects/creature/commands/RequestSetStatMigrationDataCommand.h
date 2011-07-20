@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/Races.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sessions/MigrateStatsSession.h"
 
 
@@ -59,19 +59,19 @@ public:
 
 	}
 
-	static uint32 getMaxAttribute(PlayerCreature* player, uint8 attribute) {
+	static uint32 getMaxAttribute(PlayerObject* player, uint8 attribute) {
 		int raceID = player->getRaceID();
 		const uint32 * table = Races::getAttribLimits(raceID);
 		return table[attribute * 2 + 1];
 	}
 
-	static uint32 getMinAttribute(PlayerCreature* player, uint8 attribute) {
+	static uint32 getMinAttribute(PlayerObject* player, uint8 attribute) {
 		int raceID = player->getRaceID();
 		const uint32* table = Races::getAttribLimits(raceID);
 		return table[attribute * 2];
 	}
 
-	static uint32 getTotalAttribPoints(PlayerCreature* player) {
+	static uint32 getTotalAttribPoints(PlayerObject* player) {
 		int raceID = player->getRaceID();
 		const uint32* table = Races::getAttribLimits(raceID);
 		return table[18];
@@ -89,7 +89,8 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
+		PlayerObject* ghost = player->getPlayerObject();
 
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::MIGRATESTATS);
 		ManagedReference<MigrateStatsSession*> session = dynamic_cast<MigrateStatsSession*>(facade.get());
@@ -107,7 +108,7 @@ public:
 		for (int i = 0; tokenizer.hasMoreTokens() && i < 9; ++i) {
 			uint32 value = tokenizer.getIntToken();
 
-			if (value < getMinAttribute(player, i) && value > getMaxAttribute(player, i)) {
+			if (value < getMinAttribute(ghost, i) && value > getMaxAttribute(ghost, i)) {
 				creature->info("Suspected stat migration hacking attempt.");
 				return GENERALERROR;
 			}
@@ -118,13 +119,13 @@ public:
 
 		//Here we set the stat migration target attributes.
 		//NOTE: We aren't actually migrating the stats at this point.
-		if (targetPointsTotal == getTotalAttribPoints(player)) {
+		if (targetPointsTotal == getTotalAttribPoints(ghost)) {
 			for (int i = 0; i < 9; ++i) {
 				session->setAttributeToModify(i, targetAttributes[i]);
 			}
 		} else {
 			creature->error("targetPointsTotal = " + String::valueOf(targetPointsTotal));
-			creature->error("totalAttribPoints = " + String::valueOf(getTotalAttribPoints(player)));
+			creature->error("totalAttribPoints = " + String::valueOf(getTotalAttribPoints(ghost)));
 			creature->error("Trying to set migratory stats without assigning all available points.");
 			return GENERALERROR;
 		}

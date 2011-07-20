@@ -14,7 +14,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -26,7 +26,7 @@
  *	RangedStimPackStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_GETRANGE__CREATUREOBJECT_,RPC_GETEFFECTIVENESS__,RPC_GETAREA__,RPC_ISAREA__,RPC_GETRANGEMOD__,RPC_ISRANGEDSTIMPACK__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_,RPC_GETRANGE__CREATUREOBJECT_,RPC_GETEFFECTIVENESS__,RPC_GETAREA__,RPC_ISAREA__,RPC_GETRANGEMOD__,RPC_ISRANGEDSTIMPACK__};
 
 RangedStimPack::RangedStimPack() : StimPack(DummyConstructorParameter::instance()) {
 	RangedStimPackImplementation* _implementation = new RangedStimPackImplementation();
@@ -50,7 +50,7 @@ void RangedStimPack::updateCraftingValues(ManufactureSchematic* schematic) {
 		_implementation->updateCraftingValues(schematic);
 }
 
-void RangedStimPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void RangedStimPack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -59,13 +59,13 @@ void RangedStimPack::fillAttributeList(AttributeListMessage* msg, PlayerCreature
 		_implementation->fillAttributeList(msg, object);
 }
 
-int RangedStimPack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int RangedStimPack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	RangedStimPackImplementation* _implementation = (RangedStimPackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -371,7 +371,7 @@ void RangedStimPackImplementation::updateCraftingValues(ManufactureSchematic* sc
 }
 }
 
-void RangedStimPackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void RangedStimPackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(super.effectiveness, 0));
 	msg->insertAttribute("examine_heal_damage_health", Math::getPrecision(StimPackImplementation::effectiveness, 0));
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(super.effectiveness, 0));
@@ -392,7 +392,7 @@ void RangedStimPackImplementation::fillAttributeList(AttributeListMessage* msg, 
 }
 }
 
-int RangedStimPackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int RangedStimPackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  			return 1;
 	return 1;
@@ -498,8 +498,8 @@ Packet* RangedStimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_CREATUREOBJECT_BOOL_:
 		resp->insertInt(calculatePower((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter()));
@@ -529,7 +529,7 @@ Packet* RangedStimPackAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
-int RangedStimPackAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int RangedStimPackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((RangedStimPackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

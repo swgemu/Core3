@@ -83,7 +83,7 @@ public:
 
 			Locker locker(craftingTool);
 
-			craftingTool->requestCraftingSession((PlayerCreature*)creature);
+			craftingTool->requestCraftingSession((CreatureObject*)creature);
 
 		/// Logic for if target oid is crafting station
 		} else if(object->isCraftingStation()) {
@@ -91,13 +91,13 @@ public:
 			CraftingStation* craftingStation = (CraftingStation*) object.get();
 
 			ManagedReference<CraftingTool* > craftingTool = (CraftingTool*)
-					craftingStation->findCraftingTool((PlayerCreature*)creature);
+					craftingStation->findCraftingTool((CreatureObject*)creature);
 
 			if(craftingTool != NULL) {
 
 				Locker locker(craftingTool);
 
-				craftingTool->requestCraftingSession((PlayerCreature*)creature, craftingStation);
+				craftingTool->requestCraftingSession((CreatureObject*)creature, craftingStation);
 			}
 
 		} else

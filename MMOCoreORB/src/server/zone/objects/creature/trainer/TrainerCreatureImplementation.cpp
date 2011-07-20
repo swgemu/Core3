@@ -6,7 +6,7 @@
  */
 
 #include "TrainerCreature.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
@@ -22,19 +22,20 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	if (!obj->isPlayerCreature() || profession == NULL)
 		return;
 
-	PlayerCreature* player = (PlayerCreature*) obj;
+	CreatureObject* player = (CreatureObject*) obj;
+	PlayerObject* ghost = player->getPlayerObject();
 
 	String stffile = "skill_teacher";
 
 	StartNpcConversation* conv = new StartNpcConversation(player, getObjectID(), "");
 	player->sendMessage(conv);
-	player->setLastNpcConvStr(getObjectNameStringIdName());
+	ghost->setLastNpcConvStr(getObjectNameStringIdName());
 
 	bool qual = true;
 
 	SkillBox* sBox = profession->getNoviceBox();
 
-	player->setLastNpcConvMessStr("");
+	ghost->setLastNpcConvMessStr("");
 
 	for (int i = 0; (qual == true) && (i < sBox->getRequiredSkillsSize()); i++) {
 		String skillname;
@@ -62,9 +63,9 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 			suiBox->addMenuItem(skillboxname.toString());
 		}
 
-		player->addSuiBox(suiBox);
+		player->getPlayerObject()->addSuiBox(suiBox);
 		player->sendMessage(suiBox->generateMessage());
-		player->setConversatingCreature(NULL);
+		ghost->setConversatingCreature(NULL);
 		player->sendMessage(new StringList(player));
 		player->sendMessage(new StopNpcConversation(player, getObjectID()));
 
@@ -75,7 +76,7 @@ void TrainerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 }
 
 
-void TrainerCreatureImplementation::sendInitialMessage(PlayerCreature* player) {
+void TrainerCreatureImplementation::sendInitialMessage(CreatureObject* player) {
 	String stffile = "skill_teacher";
 	String stfname = getObjectNameStringIdName();
 
@@ -83,12 +84,14 @@ void TrainerCreatureImplementation::sendInitialMessage(PlayerCreature* player) {
 	NpcConversationMessage* m1 = new NpcConversationMessage(player, params);
 	player->sendMessage(m1);
 
-	player->setLastNpcConvMessStr("trainer_initial");
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ghost->setLastNpcConvMessStr("trainer_initial");
 	sendInitialChoices(player);
 }
 
 
-void TrainerCreatureImplementation::sendInitialChoices(PlayerCreature* player) {
+void TrainerCreatureImplementation::sendInitialChoices(CreatureObject* player) {
 	StringList* slist = new StringList(player);
 
 	slist->insertOption("skill_teacher", "opt1_1");
@@ -96,12 +99,13 @@ void TrainerCreatureImplementation::sendInitialChoices(PlayerCreature* player) {
 	//slist->insertOption("skill_teacher", "opt1_3");
 	//slist->insertOption("skill_teacher", "opt1_4");
 
-	player->setLastNpcConvMessStr("trainer_initial");
+	PlayerObject* ghost = player->getPlayerObject();
+	ghost->setLastNpcConvMessStr("trainer_initial");
 
 	player->sendMessage(slist);
 }
 
-void TrainerCreatureImplementation::sendSkillBoxes(PlayerCreature* player, bool checkXp) {
+void TrainerCreatureImplementation::sendSkillBoxes(CreatureObject* player, bool checkXp) {
 	StringList* slist = new StringList(player);
 	Vector<SkillBox*>* skillBoxes;
 	String stffile = "skill_teacher";
@@ -111,7 +115,8 @@ void TrainerCreatureImplementation::sendSkillBoxes(PlayerCreature* player, bool 
 	String option;
 	int known = 0;
 
-	player->clearLastNpcConvOptions();
+	PlayerObject* ghost = player->getPlayerObject();
+	ghost->clearLastNpcConvOptions();
 
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
@@ -137,14 +142,14 @@ void TrainerCreatureImplementation::sendSkillBoxes(PlayerCreature* player, bool 
 
 		if (qual) {
 			slist->insertOption("skl_n", skillBox->getName());
-			player->addLastNpcConvOptions(skillBox->getName());
+			ghost->addLastNpcConvOptions(skillBox->getName());
 		}
 	}
 
 	if (checkXp)
-		player->setLastNpcConvMessStr("trainer_canlearn");
+		ghost->setLastNpcConvMessStr("trainer_canlearn");
 	else
-		player->setLastNpcConvMessStr("trainer_nextskills");
+		ghost->setLastNpcConvMessStr("trainer_nextskills");
 
 	if (slist->getOptionCount() > 0)
 		if (checkXp)
@@ -161,17 +166,19 @@ void TrainerCreatureImplementation::sendSkillBoxes(PlayerCreature* player, bool 
 	player->sendMessage(m2);
 
 	slist->insertOption("skill_teacher", "back");
-	player->addLastNpcConvOptions(String("back"));
+	ghost->addLastNpcConvOptions(String("back"));
 	player->sendMessage(slist);
 }
 
-void TrainerCreatureImplementation::sendSkillBoxList(PlayerCreature* player, bool checkLearned) {
+void TrainerCreatureImplementation::sendSkillBoxList(CreatureObject* player, bool checkLearned) {
 	StringList* slist = new StringList(player);
 	Vector<SkillBox*>* skillBoxes;
 
 	String stffile = "skill_teacher";
 
 	skillBoxes = profession->getSkillBoxes();
+
+	PlayerObject* ghost = player->getPlayerObject();
 
 	for (int i = 0; i < skillBoxes->size(); i++) {
 		SkillBox *skillBox = skillBoxes->get(i);
@@ -180,26 +187,26 @@ void TrainerCreatureImplementation::sendSkillBoxList(PlayerCreature* player, boo
 			continue;
 
 		slist->insertOption("skl_n", skillBox->getName());
-		player->addLastNpcConvOptions(skillBox->getName());
+		ghost->addLastNpcConvOptions(skillBox->getName());
 	}
 
 	String option;
 	if (checkLearned) {
 		option = "msg2_3";
-		player->setLastNpcConvMessStr("trainer_unlearned");
+		ghost->setLastNpcConvMessStr("trainer_unlearned");
 	} else {
 		option = "msg2_4";
-		player->setLastNpcConvMessStr("trainer_allskills");
+		ghost->setLastNpcConvMessStr("trainer_allskills");
 	}
 
 	StringIdChatParameter params(stffile, option);
 	NpcConversationMessage* m3 = new NpcConversationMessage(player, params);
 	slist->insertOption("skill_teacher", "back");
-	player->addLastNpcConvOptions(String("back"));
+	ghost->addLastNpcConvOptions(String("back"));
 	player->sendMessage(slist);
 }
 
-void TrainerCreatureImplementation::sendConfirmation(PlayerCreature* player) {
+void TrainerCreatureImplementation::sendConfirmation(CreatureObject* player) {
 	StringList* slist = new StringList(player);
 
 	slist->insertOption("skill_teacher", "yes");
@@ -212,12 +219,11 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 	if (!obj->isPlayerCreature())
 		return;
 
-	PlayerCreature* player = (PlayerCreature*) obj;
+	CreatureObject* player = (CreatureObject*) obj;
+	PlayerObject* ghost = player->getPlayerObject();
 
-	if (player->getLastNpcConvStr() != getObjectNameStringIdName())
+	if (ghost->getLastNpcConvStr() != getObjectNameStringIdName())
 		return;
-
-	PlayerObject* ghost = (PlayerObject*) player->getSlottedObject("ghost");
 
 	String stffile = "skill_teacher";
 
@@ -228,17 +234,17 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 
 	String choice;
 
-	if (player->countLastNpcConvOptions() > 0) {
-		if (player->getLastNpcConvMessStr() == "trainer_learn")
-			choice = player->getLastNpcConvOption(0);
-		else if (player->countLastNpcConvOptions() > (uint32)option)
-			choice = player->getLastNpcConvOption(option);
+	if (ghost->countLastNpcConvOptions() > 0) {
+		if (ghost->getLastNpcConvMessStr() == "trainer_learn")
+			choice = ghost->getLastNpcConvOption(0);
+		else if (ghost->countLastNpcConvOptions() > (uint32)option)
+			choice = ghost->getLastNpcConvOption(option);
 	}
 
-	player->clearLastNpcConvOptions();
+	ghost->clearLastNpcConvOptions();
 
-	if (player->getLastNpcConvMessStr() == "trainer_initial" ||
-			player->getLastNpcConvMessStr() == "jedi_trainer_initial") {
+	if (ghost->getLastNpcConvMessStr() == "trainer_initial" ||
+			ghost->getLastNpcConvMessStr() == "jedi_trainer_initial") {
 		switch (option) {
 		case 0:
 			sendSkillBoxes(player, true);
@@ -256,18 +262,18 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 			break;
 		};
 
-	} else if (player->getLastNpcConvMessStr() == "trainer_canlearn") {
+	} else if (ghost->getLastNpcConvMessStr() == "trainer_canlearn") {
 		if (choice == "back") {
 			sendInitialMessage(player);
 		} else {
 			StringIdChatParameter params(stffile, "confirm");
 			NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
-			player->setLastNpcConvMessStr("trainer_learn");
-			player->addLastNpcConvOptions(choice);
+			ghost->setLastNpcConvMessStr("trainer_learn");
+			ghost->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);
 			sendConfirmation(player);
 		}
-	} else if (player->getLastNpcConvMessStr() == "trainer_nextskills") {
+	} else if (ghost->getLastNpcConvMessStr() == "trainer_nextskills") {
 		if (choice == "back") {
 			sendInitialMessage(player);
 		} else {
@@ -276,7 +282,7 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 			player->sendMessage(skillmsg);
 			sendSkillBoxes(player, false);
 		}
-	} else if (player->getLastNpcConvMessStr() == "trainer_unlearned") {
+	} else if (ghost->getLastNpcConvMessStr() == "trainer_unlearned") {
 		if (choice == "back") {
 			sendInitialMessage(player);
 		} else {
@@ -285,7 +291,7 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 			player->sendMessage(skillmsg);
 			sendSkillBoxList(player, true);
 		}
-	} else if (player->getLastNpcConvMessStr() == "trainer_allskills") {
+	} else if (ghost->getLastNpcConvMessStr() == "trainer_allskills") {
 		if (choice == "back") {
 			sendInitialMessage(player);
 		} else {
@@ -294,7 +300,7 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 			player->sendMessage(skillmsg);
 			sendSkillBoxList(player, false);
 		}
-	} else if (player->getLastNpcConvMessStr() == "trainer_learn") {
+	} else if (ghost->getLastNpcConvMessStr() == "trainer_learn") {
 		SkillBox* sBox = NULL;
 		String optionmessage;
 		int money, sp;
@@ -320,9 +326,9 @@ void TrainerCreatureImplementation::selectConversationOption(int option, SceneOb
 				if (sBox->getSkillXpCost() > playerObject->getExperience(sBox->getSkillXpType())) {
 					params.setStringId(stffile, "prose_train_failed");
 					player->sendSystemMessage(params);
-				} else if ((player->getSkillPoints() + sBox->getSkillPointsRequired()) > 250) {
+				} else if ((ghost->getSkillPoints() + sBox->getSkillPointsRequired()) > 250) {
 					params.setDI(sp);
-					if (player->getSkillPoints() != 250) {
+					if (ghost->getSkillPoints() != 250) {
 						params.setStringId(stffile, "nsf_skill_points");
 						player->sendSystemMessage(params);
 					} else

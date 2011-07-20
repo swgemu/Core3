@@ -68,7 +68,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		BaseMessage* message = new CharacterSheetResponseMessage((PlayerCreature*)creature);
+		BaseMessage* message = new CharacterSheetResponseMessage((CreatureObject*)creature);
 		creature->sendMessage(message);
 
 		return SUCCESS;

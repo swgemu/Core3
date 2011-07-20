@@ -7,13 +7,13 @@
 
 #include "Instrument.h"
 #include "InstrumentObserver.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
 
-int InstrumentImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (instrumentType != OMNIBOX && instrumentType != NALARGON) {
 		return 1;
 	}
@@ -75,7 +75,7 @@ int InstrumentImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 	return 0;
 }
 
-void InstrumentImplementation::spawnInForeignCell(PlayerCreature* player) {
+void InstrumentImplementation::spawnInForeignCell(CreatureObject* player) {
 	if (spawnedObject == NULL) {
 		spawnedObject = ObjectManager::instance()->createObject(serverObjectCRC, 0, "sceneobjects");
 		spawnedObject->setParent(NULL);
@@ -99,7 +99,7 @@ void InstrumentImplementation::spawnInForeignCell(PlayerCreature* player) {
 	spawnerPlayer = player;
 }
 
-void InstrumentImplementation::spawnOutside(PlayerCreature* player) {
+void InstrumentImplementation::spawnOutside(CreatureObject* player) {
 	if (spawnedObject == NULL) {
 		spawnedObject = ObjectManager::instance()->createObject(serverObjectCRC, 0, "sceneobjects");
 		spawnedObject->setParent(NULL);
@@ -122,7 +122,7 @@ void InstrumentImplementation::spawnOutside(PlayerCreature* player) {
 	spawnerPlayer = player;
 }
 
-void InstrumentImplementation::spawnInAdminCell(PlayerCreature* player) {
+void InstrumentImplementation::spawnInAdminCell(CreatureObject* player) {
 	StringBuffer arguments;
 	arguments << player->getParent()->getObjectID() << " -1 " << player->getPositionX() << " " << player->getPositionZ() << " " << player->getPositionY();
 

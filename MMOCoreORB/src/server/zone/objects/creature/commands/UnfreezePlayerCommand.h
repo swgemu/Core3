@@ -71,8 +71,8 @@ public:
 
 		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
 
-		ManagedReference<PlayerCreature* > targetPlayer = NULL;
-		PlayerCreature* player = (PlayerCreature*) creature;
+		ManagedReference<CreatureObject* > targetPlayer = NULL;
+		CreatureObject* player = (CreatureObject*) creature;
 		StringTokenizer args(arguments.toString());
 
 		if (object == NULL || !object->isPlayerCreature()) {
@@ -84,7 +84,7 @@ public:
 			}
 
 		} else {
-			targetPlayer = (PlayerCreature*) object.get();
+			targetPlayer = (CreatureObject*) object.get();
 		}
 
 		if (targetPlayer == NULL) {

@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -26,7 +26,7 @@
  *	ShuttleInstallationStub
  */
 
-enum {RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_ = 6};
+enum {RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_ = 6};
 
 ShuttleInstallation::ShuttleInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
 	ShuttleInstallationImplementation* _implementation = new ShuttleInstallationImplementation();
@@ -41,13 +41,13 @@ ShuttleInstallation::~ShuttleInstallation() {
 }
 
 
-bool ShuttleInstallation::checkRequisitesForPlacement(PlayerCreature* player) {
+bool ShuttleInstallation::checkRequisitesForPlacement(CreatureObject* player) {
 	ShuttleInstallationImplementation* _implementation = (ShuttleInstallationImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -196,8 +196,8 @@ Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMetho
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_CHECKREQUISITESFORPLACEMENT__PLAYERCREATURE_:
-		resp->insertBoolean(checkRequisitesForPlacement((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_:
+		resp->insertBoolean(checkRequisitesForPlacement((CreatureObject*) inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -206,7 +206,7 @@ Packet* ShuttleInstallationAdapter::invokeMethod(uint32 methid, DistributedMetho
 	return resp;
 }
 
-bool ShuttleInstallationAdapter::checkRequisitesForPlacement(PlayerCreature* player) {
+bool ShuttleInstallationAdapter::checkRequisitesForPlacement(CreatureObject* player) {
 	return ((ShuttleInstallationImplementation*) impl)->checkRequisitesForPlacement(player);
 }
 

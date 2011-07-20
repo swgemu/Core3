@@ -8,7 +8,7 @@
 
 #include "server/zone/objects/creature/VehicleObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -16,11 +16,13 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 /*
  *	VehicleControlDeviceStub
  */
 
-enum {RPC_STOREOBJECT__PLAYERCREATURE_ = 6,RPC_GENERATEOBJECT__PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__PLAYERCREATURE_};
+enum {RPC_STOREOBJECT__CREATUREOBJECT_ = 6,RPC_GENERATEOBJECT__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_};
 
 VehicleControlDevice::VehicleControlDevice() : ControlDevice(DummyConstructorParameter::instance()) {
 	VehicleControlDeviceImplementation* _implementation = new VehicleControlDeviceImplementation();
@@ -35,13 +37,13 @@ VehicleControlDevice::~VehicleControlDevice() {
 }
 
 
-void VehicleControlDevice::storeObject(PlayerCreature* player) {
+void VehicleControlDevice::storeObject(CreatureObject* player) {
 	VehicleControlDeviceImplementation* _implementation = (VehicleControlDeviceImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_STOREOBJECT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_STOREOBJECT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -49,13 +51,13 @@ void VehicleControlDevice::storeObject(PlayerCreature* player) {
 		_implementation->storeObject(player);
 }
 
-void VehicleControlDevice::generateObject(PlayerCreature* player) {
+void VehicleControlDevice::generateObject(CreatureObject* player) {
 	VehicleControlDeviceImplementation* _implementation = (VehicleControlDeviceImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GENERATEOBJECT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GENERATEOBJECT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -63,13 +65,13 @@ void VehicleControlDevice::generateObject(PlayerCreature* player) {
 		_implementation->generateObject(player);
 }
 
-int VehicleControlDevice::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VehicleControlDevice::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	VehicleControlDeviceImplementation* _implementation = (VehicleControlDeviceImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -92,13 +94,13 @@ void VehicleControlDevice::destroyObjectFromDatabase(bool destroyContainedObject
 		_implementation->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-int VehicleControlDevice::canBeDestroyed(PlayerCreature* player) {
+int VehicleControlDevice::canBeDestroyed(CreatureObject* player) {
 	VehicleControlDeviceImplementation* _implementation = (VehicleControlDeviceImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CANBEDESTROYED__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CANBEDESTROYED__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -240,7 +242,7 @@ VehicleControlDeviceImplementation::VehicleControlDeviceImplementation() {
 	Logger::setGlobalLogging(true);
 }
 
-int VehicleControlDeviceImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VehicleControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  		Logger.info("selected call");
 	Logger::info("selected call");
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  		return 
@@ -297,20 +299,20 @@ Packet* VehicleControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMeth
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_STOREOBJECT__PLAYERCREATURE_:
-		storeObject((PlayerCreature*) inv->getObjectParameter());
+	case RPC_STOREOBJECT__CREATUREOBJECT_:
+		storeObject((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_GENERATEOBJECT__PLAYERCREATURE_:
-		generateObject((PlayerCreature*) inv->getObjectParameter());
+	case RPC_GENERATEOBJECT__CREATUREOBJECT_:
+		generateObject((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
 		destroyObjectFromDatabase(inv->getBooleanParameter());
 		break;
-	case RPC_CANBEDESTROYED__PLAYERCREATURE_:
-		resp->insertSignedInt(canBeDestroyed((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CANBEDESTROYED__CREATUREOBJECT_:
+		resp->insertSignedInt(canBeDestroyed((CreatureObject*) inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -319,15 +321,15 @@ Packet* VehicleControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMeth
 	return resp;
 }
 
-void VehicleControlDeviceAdapter::storeObject(PlayerCreature* player) {
+void VehicleControlDeviceAdapter::storeObject(CreatureObject* player) {
 	((VehicleControlDeviceImplementation*) impl)->storeObject(player);
 }
 
-void VehicleControlDeviceAdapter::generateObject(PlayerCreature* player) {
+void VehicleControlDeviceAdapter::generateObject(CreatureObject* player) {
 	((VehicleControlDeviceImplementation*) impl)->generateObject(player);
 }
 
-int VehicleControlDeviceAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VehicleControlDeviceAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((VehicleControlDeviceImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
@@ -335,7 +337,7 @@ void VehicleControlDeviceAdapter::destroyObjectFromDatabase(bool destroyContaine
 	((VehicleControlDeviceImplementation*) impl)->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-int VehicleControlDeviceAdapter::canBeDestroyed(PlayerCreature* player) {
+int VehicleControlDeviceAdapter::canBeDestroyed(CreatureObject* player) {
 	return ((VehicleControlDeviceImplementation*) impl)->canBeDestroyed(player);
 }
 

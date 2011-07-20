@@ -48,7 +48,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.Zone;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
 
@@ -73,7 +73,7 @@ class Deed extends TangibleObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
-	public native void fillAttributeList(AttributeListMessage alm, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
 	
 	@local
 	public abstract void updateCraftingValues(ManufactureSchematic schematic) {

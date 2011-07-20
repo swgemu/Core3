@@ -58,6 +58,18 @@ public:
 	 */
 	virtual int canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription);
 
+	/**
+	 * Is called when this object has been inserted with an object
+	 * @param object object that has been inserted
+	 */
+	virtual int notifyObjectInserted(SceneObject* sceneObject, SceneObject* object);
+
+	/**
+	 * Is called when an object was removed
+	 * @param object object that has been inserted
+	 */
+	virtual int notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object);
+
 };
 
 #endif /* CONTAINERCOMPONENT_H_ */

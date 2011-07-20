@@ -47,7 +47,7 @@ import engine.core.ManagedObject;
 import engine.log.Logger;
 import engine.util.Observer;
 import engine.util.Observable;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.Zone;
@@ -136,8 +136,8 @@ class CityRegion extends Observer implements Logger {
 		return false;
 	}
 	
-	//public native void sendGreetingMessage(PlayerCreature player);
-	//public native void sendDepartingMessage(PlayerCreature player);
+	//public native void sendGreetingMessage(CreatureObject player);
+	//public native void sendDepartingMessage(CreatureObject player);
 	
 	
 	public string getRegionName() {

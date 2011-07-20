@@ -9,7 +9,8 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/StringIdChatParameter.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/ZoneServer.h"
 
 Vendor::Vendor() {
 	ownerID = 0;
@@ -62,7 +63,7 @@ void Vendor::sendVendorUpdateMail(bool isEmpty) {
 	if (!strongOwnerRef->isPlayerCreature())
 		return;
 
-	PlayerCreature* owner = (PlayerCreature*) strongOwnerRef.get();
+	CreatureObject* owner = (CreatureObject*) strongOwnerRef.get();
 	ChatManager* cman = owner->getZoneServer()->getChatManager();
 
 	String sender = vendorRef->getObjectName()->getDisplayedName();
@@ -92,7 +93,7 @@ void Vendor::sendVendorDestroyMail() {
 	if (!strongOwnerRef->isPlayerCreature())
 		return;
 
-	PlayerCreature* owner = (PlayerCreature*) strongOwnerRef.get();
+	CreatureObject* owner = (CreatureObject*) strongOwnerRef.get();
 	ChatManager* cman = owner->getZoneServer()->getChatManager();
 
 	String sender = vendorRef->getObjectName()->getDisplayedName();

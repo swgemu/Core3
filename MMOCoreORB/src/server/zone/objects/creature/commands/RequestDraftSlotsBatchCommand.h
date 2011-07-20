@@ -81,7 +81,7 @@ public:
 		if(craftingManager == NULL || !creature->isPlayerCreature())
 			return GENERALERROR;
 
-		craftingManager->sendDraftSlotsTo((PlayerCreature*)creature, schematicID);
+		craftingManager->sendDraftSlotsTo((CreatureObject*)creature, schematicID);
 
 		return SUCCESS;
 	}

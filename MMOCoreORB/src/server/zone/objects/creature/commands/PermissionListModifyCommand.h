@@ -71,7 +71,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
@@ -137,7 +137,7 @@ public:
 		if (chatManager == NULL)
 			return SUCCESS;
 
-		ManagedReference<PlayerCreature*> targetPlayer = chatManager->getPlayer(targetPlayerName);
+		ManagedReference<CreatureObject*> targetPlayer = chatManager->getPlayer(targetPlayerName);
 
 		//Update the cell permissions in case the player is in the building currently.
 		if (targetPlayer != NULL && structureObject->isBuildingObject()) {

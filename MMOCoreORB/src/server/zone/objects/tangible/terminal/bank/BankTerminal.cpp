@@ -6,7 +6,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -20,7 +22,7 @@
  *	BankTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_};
 
 BankTerminal::BankTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	BankTerminalImplementation* _implementation = new BankTerminalImplementation();
@@ -48,13 +50,13 @@ void BankTerminal::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void BankTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void BankTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	BankTerminalImplementation* _implementation = (BankTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -63,13 +65,13 @@ void BankTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Play
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int BankTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int BankTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	BankTerminalImplementation* _implementation = (BankTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -215,12 +217,12 @@ void BankTerminalImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("BankTerminal");
 }
 
-void BankTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void BankTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl():  		menuResponse.addRadialMenuItem(245, 3, "@sui:bank_items");
 	menuResponse->addRadialMenuItem(245, 3, "@sui:bank_items");
 }
 
-int BankTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int BankTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl():  			return 1;
 	if (selectedID == 245){
 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl():  			SceneObject bank = player.getSlottedObject("bank");
@@ -234,12 +236,14 @@ int BankTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, b
 	ManagedReference<SuiBankTransferBox*> _ref0;
 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl():  			SuiBankTransferBox sui = new SuiBankTransferBox(this, player, SuiWindowType.BANK_TRANSFER);
 	SuiBankTransferBox* sui = _ref0 = new SuiBankTransferBox(_this, player, SuiWindowType::BANK_TRANSFER);
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl():  			PlayerObject ghost = player.getPlayerObject();
+	PlayerObject* ghost = player->getPlayerObject();
 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl():  			sui.addCash(player.getCashCredits());
 	sui->addCash(player->getCashCredits());
 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl():  			sui.addBank(player.getBankCredits());
 	sui->addBank(player->getBankCredits());
-	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl():  			player.addSuiBox(sui);
-	player->addSuiBox(sui);
+	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl():  			ghost.addSuiBox(sui);
+	ghost->addSuiBox(sui);
 	// server/zone/objects/tangible/terminal/bank/BankTerminal.idl():  			player.sendMessage(sui.generateMessage());
 	player->sendMessage(sui->generateMessage());
 }
@@ -264,11 +268,11 @@ Packet* BankTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
+		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -281,11 +285,11 @@ void BankTerminalAdapter::initializeTransientMembers() {
 	((BankTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
-void BankTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void BankTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	((BankTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
-int BankTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int BankTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((BankTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

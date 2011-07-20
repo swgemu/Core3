@@ -47,7 +47,7 @@ package server.zone.objects.creature.buffs;
 import engine.core.ManagedObject;
 import system.util.VectorMap;
 import system.lang.ref.Reference;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import system.lang.Time;
 import engine.log.Logger;
@@ -107,8 +107,8 @@ class Buff extends ManagedObject implements Logger {
 		skillModifiers.setNullValue(0);
 	}
 	
-	public native abstract void sendTo(PlayerCreature player);
-	public native abstract void sendDestroyTo(PlayerCreature player);
+	public native abstract void sendTo(CreatureObject player);
+	public native abstract void sendDestroyTo(CreatureObject player);
 
 	public native abstract void activate(boolean applyModifiers);
 	public native abstract void deactivate(boolean removeModifiers);

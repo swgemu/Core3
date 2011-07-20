@@ -12,7 +12,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -28,7 +28,7 @@
  *	ConsumableStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_ = 6,RPC_SETMODIFIERS__BUFF_BOOL_,RPC_ISSPICEEFFECT__,RPC_ISATTRIBUTEEFFECT__,RPC_ISDRINK__,RPC_ISFOOD__,RPC_ISFORAGEDFOOD__,RPC_ISSPICE__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_ = 6,RPC_SETMODIFIERS__BUFF_BOOL_,RPC_ISSPICEEFFECT__,RPC_ISATTRIBUTEEFFECT__,RPC_ISDRINK__,RPC_ISFOOD__,RPC_ISFORAGEDFOOD__,RPC_ISSPICE__};
 
 Consumable::Consumable() : TangibleObject(DummyConstructorParameter::instance()) {
 	ConsumableImplementation* _implementation = new ConsumableImplementation();
@@ -43,13 +43,13 @@ Consumable::~Consumable() {
 }
 
 
-int Consumable::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int Consumable::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -76,7 +76,7 @@ void Consumable::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void Consumable::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void Consumable::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	ConsumableImplementation* _implementation = (ConsumableImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -637,8 +637,8 @@ Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_SETMODIFIERS__BUFF_BOOL_:
 		setModifiers((Buff*) inv->getObjectParameter(), inv->getBooleanParameter());
@@ -668,7 +668,7 @@ Packet* ConsumableAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-int ConsumableAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int ConsumableAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((ConsumableImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

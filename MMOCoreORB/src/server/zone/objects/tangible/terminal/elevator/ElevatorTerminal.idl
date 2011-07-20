@@ -48,7 +48,7 @@ import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
 import system.util.VectorMap;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
@@ -68,7 +68,7 @@ class ElevatorTerminal extends Terminal {
 	public native void notifyInsert(QuadTreeEntry obj);
 		
 
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
 	 * Handles the radial selection sent by the client
@@ -76,7 +76,7 @@ class ElevatorTerminal extends Terminal {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	public boolean isElevatorTerminal() {
 		return true;

@@ -14,7 +14,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -24,7 +24,7 @@
  *	CurePackStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_,RPC_ISAREA__,RPC_GETAREA__,RPC_GETSTATE__,RPC_GETEFFECTIVENESS__,RPC_ISCUREPACK__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CALCULATEPOWER__CREATUREOBJECT_,RPC_ISAREA__,RPC_GETAREA__,RPC_GETSTATE__,RPC_GETEFFECTIVENESS__,RPC_ISCUREPACK__};
 
 CurePack::CurePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	CurePackImplementation* _implementation = new CurePackImplementation();
@@ -57,13 +57,13 @@ void CurePack::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-int CurePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CurePack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	CurePackImplementation* _implementation = (CurePackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -72,7 +72,7 @@ int CurePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void CurePack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void CurePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	CurePackImplementation* _implementation = (CurePackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -384,7 +384,7 @@ void CurePackImplementation::loadTemplateData(SharedObjectTemplate* templateData
 	commandToExecute = stimPackTemplate->getCommandToExecute();
 }
 
-int CurePackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CurePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			return 1;
 	return 1;
@@ -408,7 +408,7 @@ int CurePackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte 
 }
 }
 
-void CurePackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void CurePackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		string eff = "@obj_attr_n:dot_type_";
@@ -474,8 +474,8 @@ Packet* CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_CALCULATEPOWER__CREATUREOBJECT_:
 		resp->insertSignedInt(calculatePower((CreatureObject*) inv->getObjectParameter()));
@@ -502,7 +502,7 @@ Packet* CurePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-int CurePackAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CurePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((CurePackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

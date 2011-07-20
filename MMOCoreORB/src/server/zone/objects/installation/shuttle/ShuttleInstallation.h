@@ -28,16 +28,16 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -161,7 +161,7 @@ class ShuttleInstallation : public InstallationObject {
 public:
 	ShuttleInstallation();
 
-	bool checkRequisitesForPlacement(PlayerCreature* player);
+	bool checkRequisitesForPlacement(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -196,7 +196,7 @@ public:
 
 	ShuttleInstallationImplementation(DummyConstructorParameter* param);
 
-	bool checkRequisitesForPlacement(PlayerCreature* player);
+	bool checkRequisitesForPlacement(CreatureObject* player);
 
 	WeakReference<ShuttleInstallation*> _this;
 
@@ -241,7 +241,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	bool checkRequisitesForPlacement(PlayerCreature* player);
+	bool checkRequisitesForPlacement(CreatureObject* player);
 
 };
 

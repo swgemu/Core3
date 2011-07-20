@@ -89,12 +89,12 @@ public:
 
 				if (scenObj->isWearableObject()) {
 					WearableObject* wearable = (WearableObject*) scenObj.get();
-					wearable->applyAttachment((PlayerCreature*) creature, attachment);
+					wearable->applyAttachment((CreatureObject*) creature, attachment);
 					return SUCCESS;
 				}
 
 			} else if (object->isWearableObject() || object->isWeaponObject()) {
-				PlayerCreature* player = (PlayerCreature*) creature;
+				CreatureObject* player = (CreatureObject*) creature;
 				if (player->getSkillMod("hiring") < 90) {
 					player->sendSystemMessage("You lack the necessary skills to perform that action");
 					return GENERALERROR;
@@ -110,19 +110,19 @@ public:
 
 				if (sceno->isVendor() && sceno->isCreatureObject()) {
 					VendorCreature* vendor = dynamic_cast<VendorCreature*>(sceno.get());
-					vendor->addClothingItem((PlayerCreature*) creature, clothing);
+					vendor->addClothingItem((CreatureObject*) creature, clothing);
 					return SUCCESS;
 
 				}
 			}
 		}
 
-		ManagedReference<PlayerCreature*> pl = (PlayerCreature*) creature;
+		ManagedReference<CreatureObject*> pl = (CreatureObject*) creature;
 		ManagedReference<PlayerObject*> ghost = pl->getPlayerObject();
 		if (!ghost->hasSkill("admin"))
 			return GENERALERROR;
 
-		ManagedReference<PlayerCreature*> player = NULL;
+		ManagedReference<CreatureObject*> player = NULL;
 
 		if (object == NULL || !object->isPlayerCreature()) {
 
@@ -135,7 +135,7 @@ public:
 			}
 
 		} else {
-			player = (PlayerCreature*) object.get();
+			player = (CreatureObject*) object.get();
 		}
 
 		if (player == NULL) {

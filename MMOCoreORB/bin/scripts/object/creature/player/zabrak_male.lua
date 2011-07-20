@@ -47,6 +47,7 @@ object_creature_player_zabrak_male = object_creature_player_shared_zabrak_male:n
 	zoneComponent = "PlayerZoneComponent",
 	objectMenuComponent = "PlayerObjectMenuComponent",
 	containerComponent = "PlayerContainerComponent",
+	pvpStatusBitmask = PLAYER,
 	templateType = PLAYERCREATURE
 }
 

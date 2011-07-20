@@ -4,7 +4,7 @@
 
 #include "GroupObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/chat/room/ChatRoom.h"
 
@@ -14,7 +14,7 @@
  *	GroupObjectStub
  */
 
-enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__PLAYERCREATURE_,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__PLAYERCREATURE_,RPC_REMOVEGROUPMODIFIERS__PLAYERCREATURE_};
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_,RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_};
 
 GroupObject::GroupObject() : SceneObject(DummyConstructorParameter::instance()) {
 	GroupObjectImplementation* _implementation = new GroupObjectImplementation();
@@ -57,13 +57,13 @@ void GroupObject::broadcastMessage(BaseMessage* msg) {
 		_implementation->broadcastMessage(msg);
 }
 
-void GroupObject::broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf) {
+void GroupObject::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
 	GroupObjectImplementation* _implementation = (GroupObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_);
+		DistributedMethod method(this, RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(msg);
 		method.addBooleanParameter(sendSelf);
@@ -168,13 +168,13 @@ void GroupObject::destroyChatRoom() {
 		_implementation->destroyChatRoom();
 }
 
-float GroupObject::getGroupHarvestModifier(PlayerCreature* player) {
+float GroupObject::getGroupHarvestModifier(CreatureObject* player) {
 	GroupObjectImplementation* _implementation = (GroupObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETGROUPHARVESTMODIFIER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithFloatReturn();
@@ -323,13 +323,13 @@ void GroupObject::removeGroupModifiers() {
 		_implementation->removeGroupModifiers();
 }
 
-void GroupObject::addGroupModifiers(PlayerCreature* player) {
+void GroupObject::addGroupModifiers(CreatureObject* player) {
 	GroupObjectImplementation* _implementation = (GroupObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDGROUPMODIFIERS__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -337,13 +337,13 @@ void GroupObject::addGroupModifiers(PlayerCreature* player) {
 		_implementation->addGroupModifiers(player);
 }
 
-void GroupObject::removeGroupModifiers(PlayerCreature* player) {
+void GroupObject::removeGroupModifiers(CreatureObject* player) {
 	GroupObjectImplementation* _implementation = (GroupObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEGROUPMODIFIERS__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -581,8 +581,8 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_BROADCASTMESSAGE__BASEMESSAGE_:
 		broadcastMessage((BaseMessage*) inv->getObjectParameter());
 		break;
-	case RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_:
-		broadcastMessage((PlayerCreature*) inv->getObjectParameter(), (BaseMessage*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_:
+		broadcastMessage((CreatureObject*) inv->getObjectParameter(), (BaseMessage*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_ADDMEMBER__SCENEOBJECT_:
 		addMember((SceneObject*) inv->getObjectParameter());
@@ -605,8 +605,8 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_DESTROYCHATROOM__:
 		destroyChatRoom();
 		break;
-	case RPC_GETGROUPHARVESTMODIFIER__PLAYERCREATURE_:
-		resp->insertFloat(getGroupHarvestModifier((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_:
+		resp->insertFloat(getGroupHarvestModifier((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_GETGROUPLEVEL__:
 		resp->insertSignedInt(getGroupLevel());
@@ -638,11 +638,11 @@ Packet* GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_REMOVEGROUPMODIFIERS__:
 		removeGroupModifiers();
 		break;
-	case RPC_ADDGROUPMODIFIERS__PLAYERCREATURE_:
-		addGroupModifiers((PlayerCreature*) inv->getObjectParameter());
+	case RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_:
+		addGroupModifiers((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_REMOVEGROUPMODIFIERS__PLAYERCREATURE_:
-		removeGroupModifiers((PlayerCreature*) inv->getObjectParameter());
+	case RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_:
+		removeGroupModifiers((CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -659,7 +659,7 @@ void GroupObjectAdapter::broadcastMessage(BaseMessage* msg) {
 	((GroupObjectImplementation*) impl)->broadcastMessage(msg);
 }
 
-void GroupObjectAdapter::broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf) {
+void GroupObjectAdapter::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
 	((GroupObjectImplementation*) impl)->broadcastMessage(player, msg, sendSelf);
 }
 
@@ -691,7 +691,7 @@ void GroupObjectAdapter::destroyChatRoom() {
 	((GroupObjectImplementation*) impl)->destroyChatRoom();
 }
 
-float GroupObjectAdapter::getGroupHarvestModifier(PlayerCreature* player) {
+float GroupObjectAdapter::getGroupHarvestModifier(CreatureObject* player) {
 	return ((GroupObjectImplementation*) impl)->getGroupHarvestModifier(player);
 }
 
@@ -735,11 +735,11 @@ void GroupObjectAdapter::removeGroupModifiers() {
 	((GroupObjectImplementation*) impl)->removeGroupModifiers();
 }
 
-void GroupObjectAdapter::addGroupModifiers(PlayerCreature* player) {
+void GroupObjectAdapter::addGroupModifiers(CreatureObject* player) {
 	((GroupObjectImplementation*) impl)->addGroupModifiers(player);
 }
 
-void GroupObjectAdapter::removeGroupModifiers(PlayerCreature* player) {
+void GroupObjectAdapter::removeGroupModifiers(CreatureObject* player) {
 	((GroupObjectImplementation*) impl)->removeGroupModifiers(player);
 }
 

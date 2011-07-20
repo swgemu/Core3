@@ -21,7 +21,7 @@ void DeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	generatedObjectTemplate = generatetmpl;
 }
 
-void DeedImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void DeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 }
 

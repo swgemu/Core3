@@ -46,27 +46,28 @@ package server.zone.objects.player.sui.listbox;
 
 import server.zone.objects.player.sui.listbox.SuiListBox;
 import server.zone.objects.creature.professions.SkillBox;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
 
 class PlayerLearnListBox extends SuiListBox {
 
-    private PlayerCreature teacherPlayer;
+    private CreatureObject teacherPlayer;
     
     private string teachingOffer;
     
-	public PlayerLearnListBox(PlayerCreature player) {
+	public PlayerLearnListBox(CreatureObject player) {
 		super(player, 35, 0);
 
 	}
 
     private native void init();	
     
-    public void setTeacher(PlayerCreature teacher) {
+    public void setTeacher(CreatureObject teacher) {
         teacherPlayer = teacher;
     }
     
     @local
-    public PlayerCreature getTeacher() {
+    public CreatureObject getTeacher() {
         return teacherPlayer;
     }
     

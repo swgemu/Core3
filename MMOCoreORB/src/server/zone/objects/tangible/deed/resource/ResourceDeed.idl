@@ -47,7 +47,7 @@ package server.zone.objects.tangible.deed;
 import engine.lua.LuaObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.Zone;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.deed.Deed;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
@@ -68,7 +68,7 @@ class ResourceDeed extends Deed {
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	@local
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	
 	/**
@@ -77,9 +77,9 @@ class ResourceDeed extends Deed {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
-	public native int useObject(PlayerCreature player);
+	public native int useObject(CreatureObject player);
 	 
 	/**
 	 * Removes this object from parent container

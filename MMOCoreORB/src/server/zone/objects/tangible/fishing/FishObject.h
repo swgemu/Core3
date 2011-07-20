@@ -66,16 +66,16 @@ using namespace server::zone::packets::object;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -105,13 +105,13 @@ public:
 
 	void setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void filet(PlayerCreature* player);
+	void filet(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -158,13 +158,13 @@ public:
 
 	void setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void filet(PlayerCreature* player);
+	void filet(CreatureObject* player);
 
 	WeakReference<FishObject*> _this;
 
@@ -213,13 +213,13 @@ public:
 
 	void setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void filet(PlayerCreature* player);
+	void filet(CreatureObject* player);
 
 protected:
 	String _param0_setAttributes__String_String_String_float_;

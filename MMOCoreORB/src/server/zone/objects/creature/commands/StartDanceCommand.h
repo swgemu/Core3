@@ -71,7 +71,7 @@ public:
 		session->startDancing(dance, animation);
 	}
 
-	static void sendAvailableDances(PlayerCreature* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::DANCING_START) {
+	static void sendAvailableDances(CreatureObject* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::DANCING_START) {
 		Reference<SuiListBox*> sui = new SuiListBox(player, suiType);
 		sui->setPromptTitle("@performance:available_dances");
 		sui->setPromptText("@performance:select_dance");
@@ -92,7 +92,7 @@ public:
 			}
 		}
 
-		player->addSuiBox(sui);
+		player->getPlayerObject()->addSuiBox(sui);
 
 		player->sendMessage(sui->generateMessage());
 
@@ -110,7 +110,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());

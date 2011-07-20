@@ -46,10 +46,11 @@ package server.zone.objects.player.sui.messagebox;
 
 import engine.lua.LuaObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import engine.service.proto.BaseMessage;
 import server.zone.objects.player.sui.SuiBox;
 include server.zone.packets.ui.SuiCreatePageMessage;
+import server.zone.objects.creature.CreatureObject;
 
 class SuiTransferBox extends SuiBox {
 	protected string lblFrom;
@@ -63,7 +64,7 @@ class SuiTransferBox extends SuiBox {
 	protected string convertRatioTo;
 
 
-	public SuiTransferBox(PlayerCreature player, unsigned int windowType) {
+	public SuiTransferBox(CreatureObject player, unsigned int windowType) {
 		super(player, windowType, SuiBox.TRANSFERBOX);
 	}
 

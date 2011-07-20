@@ -13,14 +13,16 @@
 #include "TreeDirectory.h"
 
 class TreeArchive : public Logger {
-	VectorMap<String, Reference<TreeDirectory*> > nodeMap;
+	HashTable<String, Reference<TreeDirectory*> > nodeMap;
 
 public:
 	TreeArchive() {
 		setLoggingName("TreeArchive");
 		setLogging(true);
 
-		nodeMap.setNoDuplicateInsertPlan();
+		nodeMap.setNullValue(NULL);
+
+		//nodeMap.setNoDuplicateInsertPlan();
 	}
 
 	void unpackFile(const String& file) {
@@ -38,7 +40,7 @@ public:
 
 			record->setRecordName(fileName);
 
-			if (nodeMap.contains(dir)) {
+			if (nodeMap.containsKey(dir)) {
 				TreeDirectory* records = nodeMap.get(dir);
 				records->put(record);
 			} else {
@@ -85,8 +87,8 @@ public:
 
 
 	TreeDirectory* getDirectory(const String& path) {
-		if (!nodeMap.contains(path))
-			return NULL;
+		/*if (!nodeMap.containsKey(path))
+			return NULL;*/
 
 		return nodeMap.get(path);
 	}

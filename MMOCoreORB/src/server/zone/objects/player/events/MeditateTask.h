@@ -60,11 +60,11 @@
 #include "server/zone/objects/creature/CreatureAttribute.h"
 
 class MeditateTask: public Task {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 	String moodString;
 
 public:
-	MeditateTask(PlayerCreature* pl) {
+	MeditateTask(CreatureObject* pl) {
 		player = pl;
 	}
 

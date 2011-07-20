@@ -24,20 +24,6 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
-
-class PlayerCreature;
-
-} // namespace player
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::player;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace scene {
 
 class SceneObject;
@@ -65,6 +51,8 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -89,9 +77,9 @@ public:
 
 	void activateRecovery();
 
-	void sendInitialMessage(PlayerCreature* player);
+	void sendInitialMessage(CreatureObject* player);
 
-	void sendInitialChoices(PlayerCreature* player);
+	void sendInitialChoices(CreatureObject* player);
 
 	void sendConversationStartTo(SceneObject* obj);
 
@@ -103,7 +91,7 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	void createSellJunkLootSelection(PlayerCreature* player);
+	void createSellJunkLootSelection(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -156,9 +144,9 @@ public:
 
 	void activateRecovery();
 
-	void sendInitialMessage(PlayerCreature* player);
+	void sendInitialMessage(CreatureObject* player);
 
-	void sendInitialChoices(PlayerCreature* player);
+	void sendInitialChoices(CreatureObject* player);
 
 	void sendConversationStartTo(SceneObject* obj);
 
@@ -170,7 +158,7 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	void createSellJunkLootSelection(PlayerCreature* player);
+	void createSellJunkLootSelection(CreatureObject* player);
 
 	WeakReference<JunkdealerCreature*> _this;
 
@@ -217,9 +205,9 @@ public:
 
 	void activateRecovery();
 
-	void sendInitialMessage(PlayerCreature* player);
+	void sendInitialMessage(CreatureObject* player);
 
-	void sendInitialChoices(PlayerCreature* player);
+	void sendInitialChoices(CreatureObject* player);
 
 	void sendConversationStartTo(SceneObject* obj);
 
@@ -231,7 +219,7 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	void createSellJunkLootSelection(PlayerCreature* player);
+	void createSellJunkLootSelection(CreatureObject* player);
 
 protected:
 	String _param0_setLocation__String_;

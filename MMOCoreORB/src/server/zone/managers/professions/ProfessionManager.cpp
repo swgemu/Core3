@@ -60,7 +60,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/professions/OneByFourProfession.h"
 #include "server/zone/objects/creature/professions/PyramidProfession.h"
 #include "server/zone/objects/creature/professions/Skill.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/Races.h"
 
@@ -117,7 +117,7 @@ bool ProfessionManager::isValidStartingProfession(const String& profession) {
 		return false;
 }
 
-void ProfessionManager::setStartingProfession(const String& startingProfession, int raceID, PlayerCreature* player) {
+void ProfessionManager::setStartingProfession(const String& startingProfession, int raceID, CreatureObject* player) {
 	int prof;
 	String correctProfession = startingProfession;
 
@@ -198,7 +198,7 @@ void ProfessionManager::setStartingProfession(const String& startingProfession, 
 
 }
 
-bool ProfessionManager::checkPrerequisites(SkillBox* skillBox, PlayerCreature* player) {
+bool ProfessionManager::checkPrerequisites(SkillBox* skillBox, CreatureObject* player) {
 	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
 
 	if (playerSkillBoxList->contains(skillBox)) {
@@ -206,7 +206,9 @@ bool ProfessionManager::checkPrerequisites(SkillBox* skillBox, PlayerCreature* p
 		return false;
 	}
 
-	if ((player->getSkillPoints() + skillBox->skillPointsRequired) > 250) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if ((ghost->getSkillPoints() + skillBox->skillPointsRequired) > 250) {
 		//System::out << "too many skill points " << player->getSkillPoints() << endl;
 		return false;
 	}
@@ -223,7 +225,7 @@ bool ProfessionManager::checkPrerequisites(SkillBox* skillBox, PlayerCreature* p
 	return true;
 }
 
-void ProfessionManager::awardSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
+void ProfessionManager::awardSkillMods(SkillBox* skillBox, CreatureObject* player, bool updateClient) {
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
 	for (int i = 0; i < skillBox->skillMods.size(); ++i) {
@@ -234,7 +236,7 @@ void ProfessionManager::awardSkillMods(SkillBox* skillBox, PlayerCreature* playe
 	}
 }
 
-void ProfessionManager::awardDraftSchematics(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
+void ProfessionManager::awardDraftSchematics(SkillBox* skillBox, CreatureObject* player, bool updateClient) {
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
 	awardDraftSchematics(skillBox, playerObject, updateClient);
@@ -257,7 +259,7 @@ void ProfessionManager::awardDraftSchematics(SkillBox* skillBox, PlayerObject* p
 	craftingManager->awardSchematicGroup(playerObject, schematicgroups, updateClient);
 }
 
-void ProfessionManager::removeSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
+void ProfessionManager::removeSkillMods(SkillBox* skillBox, CreatureObject* player, bool updateClient) {
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
 	for (int i = 0; i < skillBox->skillMods.size(); ++i) {
@@ -268,7 +270,7 @@ void ProfessionManager::removeSkillMods(SkillBox* skillBox, PlayerCreature* play
 	}
 }
 
-void ProfessionManager::removeDraftSchematics(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
+void ProfessionManager::removeDraftSchematics(SkillBox* skillBox, CreatureObject* player, bool updateClient) {
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
 
 	ManagedReference<CraftingManager* > craftingManager = player->getZoneServer()->getCraftingManager();
@@ -286,7 +288,7 @@ void ProfessionManager::removeDraftSchematics(SkillBox* skillBox, PlayerCreature
 	craftingManager->removeSchematicGroup(playerObject, schematicgroups, updateClient);
 }
 
-void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player, bool awardRequired, bool updateClient) {
+void ProfessionManager::awardSkillBox(SkillBox* skillBox, CreatureObject* player, bool awardRequired, bool updateClient) {
 	if (player == NULL || skillBox == NULL)
 		return;
 
@@ -299,7 +301,7 @@ void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player
 
 	if (awardRequired) {
 
-		if ((player->getSkillPoints() + skillBox->skillPointsRequired) > 250)
+		if ((playerObject->getSkillPoints() + skillBox->skillPointsRequired) > 250)
 			return;
 
 		SkillBox* skillBoxReq = NULL;
@@ -317,7 +319,7 @@ void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player
 	}
 
 	player->addSkillBox(skillBox, updateClient);
-	player->addSkillPoints(skillBox->getSkillPointsRequired());
+	playerObject->addSkillPoints(skillBox->getSkillPointsRequired());
 	loadXpTypeCap(player);
 
 	playerObject->addSkills(skillBox->abilities, updateClient);
@@ -329,7 +331,7 @@ void ProfessionManager::awardSkillBox(SkillBox* skillBox, PlayerCreature* player
 }
 
 
-void ProfessionManager::loadXpTypeCap(PlayerCreature* player) {
+void ProfessionManager::loadXpTypeCap(CreatureObject* player) {
 
 	Locker locker(player);
 
@@ -425,18 +427,19 @@ void ProfessionManager::loadXpTypeCap(PlayerCreature* player) {
 	}
 }
 
-bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient) {
+bool ProfessionManager::trainSkillBox(SkillBox* skillBox, CreatureObject* player, bool updateClient) {
 	if (!checkPrerequisites(skillBox, player))
 		return false;
 
 	//System::out << "trying to teach 2" << skillBox->getName() << endl;
 
+	PlayerObject* ghost = player->getPlayerObject();
 
 	//skillManager->loadSkillBox(skillBox, player, false, updateClient);
 	awardSkillBox(skillBox, player, false, updateClient);
 
 	if (skillBox->isMasterBox()) {
-		player->awardBadge(Badge::getID(skillBox->getName()));
+		ghost->awardBadge(Badge::getID(skillBox->getName()));
 	}
 
 	/*if (skillBox->getName().compareTo("combat_smuggler_underworld_01") == 0) {
@@ -472,7 +475,7 @@ bool ProfessionManager::trainSkillBox(SkillBox* skillBox, PlayerCreature* player
 	return true;
 }
 
-bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient) {
+bool ProfessionManager::trainSkillBox(const String& skillBox, CreatureObject* player, bool updateClient) {
 	SkillBox* sBox = skillBoxMap.get(skillBox);
 
 	if (sBox != NULL)
@@ -509,7 +512,7 @@ bool ProfessionManager::trainSkillBox(const String& skillBox, PlayerCreature* pl
 }
 */
 
-bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* player, PlayerCreature* teacher) {
+bool ProfessionManager::playerTeachSkill(const String& name, CreatureObject* player, CreatureObject* teacher) {
 
 	PlayerObject* playo = (PlayerObject*)player->getSlottedObject("ghost");
 
@@ -581,7 +584,7 @@ bool ProfessionManager::playerTeachSkill(const String& name, PlayerCreature* pla
 
 }
 
-bool ProfessionManager::checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player, bool removeChildren) {
+bool ProfessionManager::checkRequisitesToSurrender(SkillBox* skillBox, CreatureObject* player, bool removeChildren) {
 	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
 
 	if (!playerSkillBoxList->contains(skillBox)) {
@@ -608,12 +611,14 @@ bool ProfessionManager::checkRequisitesToSurrender(SkillBox* skillBox, PlayerCre
 	return true;
 }
 
-bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerCreature* player, bool removeChildren, bool updateClient) {
+bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, CreatureObject* player, bool removeChildren, bool updateClient) {
 	if (!checkRequisitesToSurrender(skillBox, player, removeChildren))
 		return false;
 
+	PlayerObject* ghost = player->getPlayerObject();
+
 	player->removeSkillBox(skillBox, updateClient);
-	player->addSkillPoints(-skillBox->getSkillPointsRequired());
+	ghost->addSkillPoints(-skillBox->getSkillPointsRequired());
 	loadXpTypeCap(player);
 
 	PlayerObject* playerObject = (PlayerObject*) player->getSlottedObject("ghost");
@@ -629,7 +634,7 @@ bool ProfessionManager::surrenderSkillBox(SkillBox* skillBox, PlayerCreature* pl
 
 }
 
-bool ProfessionManager::surrenderSkillBox(const String& skillBox, PlayerCreature* player, bool removeChildren, bool updateClient) {
+bool ProfessionManager::surrenderSkillBox(const String& skillBox, CreatureObject* player, bool removeChildren, bool updateClient) {
 	SkillBox* sBox = skillBoxMap.get(skillBox);
 
 	if (sBox != NULL) {
@@ -639,7 +644,7 @@ bool ProfessionManager::surrenderSkillBox(const String& skillBox, PlayerCreature
 	return false;
 }
 
-void ProfessionManager::surrenderAll(PlayerCreature* player) {
+void ProfessionManager::surrenderAll(CreatureObject* player) {
 	if (player == NULL)
 		return;
 

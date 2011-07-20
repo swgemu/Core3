@@ -48,16 +48,16 @@ using namespace server::zone::managers::object;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -144,25 +144,25 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
+	void sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType);
 
-	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
+	void sendSurvey(CreatureObject* playerCreature, const String& resname);
 
-	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
+	void sendSample(CreatureObject* playerCreature, const String& resname, const String& sampleAnimation);
 
-	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
+	ResourceContainer* harvestResource(CreatureObject* player, const String& type, const int quantity);
 
-	void harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity);
+	void harvestResourceToPlayer(CreatureObject* player, ResourceSpawn* resourceSpawn, const int quantity);
 
-	unsigned int getAvailablePowerFromPlayer(PlayerCreature* player);
+	unsigned int getAvailablePowerFromPlayer(CreatureObject* player);
 
-	void removePowerFromPlayer(PlayerCreature* player, unsigned int power);
+	void removePowerFromPlayer(CreatureObject* player, unsigned int power);
 
 	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, const String& zoneName);
 
-	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
+	void createResourceSpawn(CreatureObject* playerCreature, const String& restype);
 
-	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
+	void givePlayerResource(CreatureObject* playerCreature, const String& restype, const int quantity);
 
 	ResourceSpawn* getCurrentSpawn(const String& restype, const String& zoneName);
 
@@ -222,25 +222,25 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
+	void sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType);
 
-	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
+	void sendSurvey(CreatureObject* playerCreature, const String& resname);
 
-	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
+	void sendSample(CreatureObject* playerCreature, const String& resname, const String& sampleAnimation);
 
-	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
+	ResourceContainer* harvestResource(CreatureObject* player, const String& type, const int quantity);
 
-	void harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity);
+	void harvestResourceToPlayer(CreatureObject* player, ResourceSpawn* resourceSpawn, const int quantity);
 
-	unsigned int getAvailablePowerFromPlayer(PlayerCreature* player);
+	unsigned int getAvailablePowerFromPlayer(CreatureObject* player);
 
-	void removePowerFromPlayer(PlayerCreature* player, unsigned int power);
+	void removePowerFromPlayer(CreatureObject* player, unsigned int power);
 
 	void getResourceListByType(Vector<ManagedReference<ResourceSpawn* > >& list, int type, const String& zoneName);
 
-	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
+	void createResourceSpawn(CreatureObject* playerCreature, const String& restype);
 
-	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
+	void givePlayerResource(CreatureObject* playerCreature, const String& restype, const int quantity);
 
 	ResourceSpawn* getCurrentSpawn(const String& restype, const String& zoneName);
 
@@ -309,23 +309,23 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
-	void sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType);
+	void sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType);
 
-	void sendSurvey(PlayerCreature* playerCreature, const String& resname);
+	void sendSurvey(CreatureObject* playerCreature, const String& resname);
 
-	void sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation);
+	void sendSample(CreatureObject* playerCreature, const String& resname, const String& sampleAnimation);
 
-	ResourceContainer* harvestResource(PlayerCreature* player, const String& type, const int quantity);
+	ResourceContainer* harvestResource(CreatureObject* player, const String& type, const int quantity);
 
-	void harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity);
+	void harvestResourceToPlayer(CreatureObject* player, ResourceSpawn* resourceSpawn, const int quantity);
 
-	unsigned int getAvailablePowerFromPlayer(PlayerCreature* player);
+	unsigned int getAvailablePowerFromPlayer(CreatureObject* player);
 
-	void removePowerFromPlayer(PlayerCreature* player, unsigned int power);
+	void removePowerFromPlayer(CreatureObject* player, unsigned int power);
 
-	void createResourceSpawn(PlayerCreature* playerCreature, const String& restype);
+	void createResourceSpawn(CreatureObject* playerCreature, const String& restype);
 
-	void givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity);
+	void givePlayerResource(CreatureObject* playerCreature, const String& restype, const int quantity);
 
 	ResourceSpawn* getCurrentSpawn(const String& restype, const String& zoneName);
 
@@ -334,13 +334,13 @@ public:
 	void addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent);
 
 protected:
-	String _param2_sendResourceListForSurvey__PlayerCreature_int_String_;
-	String _param1_sendSurvey__PlayerCreature_String_;
-	String _param1_sendSample__PlayerCreature_String_String_;
-	String _param2_sendSample__PlayerCreature_String_String_;
-	String _param1_harvestResource__PlayerCreature_String_int_;
-	String _param1_createResourceSpawn__PlayerCreature_String_;
-	String _param1_givePlayerResource__PlayerCreature_String_int_;
+	String _param2_sendResourceListForSurvey__CreatureObject_int_String_;
+	String _param1_sendSurvey__CreatureObject_String_;
+	String _param1_sendSample__CreatureObject_String_String_;
+	String _param2_sendSample__CreatureObject_String_String_;
+	String _param1_harvestResource__CreatureObject_String_int_;
+	String _param1_createResourceSpawn__CreatureObject_String_;
+	String _param1_givePlayerResource__CreatureObject_String_int_;
 	String _param0_getCurrentSpawn__String_String_;
 	String _param1_getCurrentSpawn__String_String_;
 	String _param0_getResourceSpawn__String_;

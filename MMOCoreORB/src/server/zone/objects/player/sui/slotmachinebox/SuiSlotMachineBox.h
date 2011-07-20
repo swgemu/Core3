@@ -28,16 +28,30 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -76,7 +90,7 @@ namespace slotmachinebox {
 
 class SuiSlotMachineBox : public SuiListBox {
 public:
-	SuiSlotMachineBox(PlayerCreature* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType = 0);
+	SuiSlotMachineBox(CreatureObject* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType = 0);
 
 	unsigned int getPayoutBoxID();
 
@@ -113,7 +127,7 @@ protected:
 	unsigned int payoutBoxID;
 
 public:
-	SuiSlotMachineBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType = 0);
+	SuiSlotMachineBoxImplementation(CreatureObject* player, unsigned int windowType, unsigned int payoutBox, unsigned int listBoxType = 0);
 
 	SuiSlotMachineBoxImplementation(DummyConstructorParameter* param);
 

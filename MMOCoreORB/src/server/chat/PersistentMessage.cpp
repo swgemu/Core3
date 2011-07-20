@@ -4,13 +4,13 @@
 
 #include "PersistentMessage.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	PersistentMessageStub
  */
 
-enum {RPC_SENDTO__PLAYERCREATURE_BOOL_ = 6,RPC_GETMAILID__,RPC_GETOBJECTID__,RPC_GETSENDERNAME__,RPC_GETRECEIVEROBJECTID__,RPC_GETSTATUS__,RPC_GETTIMESTAMP__,RPC_GETBODY__,RPC_GETSUBJECT__,RPC_SETSENDERNAME__STRING_,RPC_SETRECEIVEROBJECTID__LONG_,RPC_SETSTATUS__BYTE_,RPC_SETTIMESTAMP__INT_,RPC_SETBODY__UNICODESTRING_,RPC_SETSUBJECT__UNICODESTRING_,RPC_ISNEW__,RPC_ISREAD__,RPC_ISUNREAD__,};
+enum {RPC_SENDTO__CREATUREOBJECT_BOOL_ = 6,RPC_GETMAILID__,RPC_GETOBJECTID__,RPC_GETSENDERNAME__,RPC_GETRECEIVEROBJECTID__,RPC_GETSTATUS__,RPC_GETTIMESTAMP__,RPC_GETBODY__,RPC_GETSUBJECT__,RPC_SETSENDERNAME__STRING_,RPC_SETRECEIVEROBJECTID__LONG_,RPC_SETSTATUS__BYTE_,RPC_SETTIMESTAMP__INT_,RPC_SETBODY__UNICODESTRING_,RPC_SETSUBJECT__UNICODESTRING_,RPC_ISNEW__,RPC_ISREAD__,RPC_ISUNREAD__,};
 
 PersistentMessage::PersistentMessage() : ManagedObject(DummyConstructorParameter::instance()) {
 	PersistentMessageImplementation* _implementation = new PersistentMessageImplementation();
@@ -25,13 +25,13 @@ PersistentMessage::~PersistentMessage() {
 }
 
 
-void PersistentMessage::sendTo(PlayerCreature* player, bool sendBody) {
+void PersistentMessage::sendTo(CreatureObject* player, bool sendBody) {
 	PersistentMessageImplementation* _implementation = (PersistentMessageImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDTO__PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_SENDTO__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(sendBody);
 
@@ -640,8 +640,8 @@ Packet* PersistentMessageAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_SENDTO__PLAYERCREATURE_BOOL_:
-		sendTo((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_SENDTO__CREATUREOBJECT_BOOL_:
+		sendTo((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_GETMAILID__:
 		resp->insertSignedInt(getMailID());
@@ -701,7 +701,7 @@ Packet* PersistentMessageAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	return resp;
 }
 
-void PersistentMessageAdapter::sendTo(PlayerCreature* player, bool sendBody) {
+void PersistentMessageAdapter::sendTo(CreatureObject* player, bool sendBody) {
 	((PersistentMessageImplementation*) impl)->sendTo(player, sendBody);
 }
 

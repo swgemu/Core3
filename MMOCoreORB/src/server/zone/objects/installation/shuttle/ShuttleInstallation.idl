@@ -48,7 +48,7 @@ import server.zone.objects.installation.InstallationObject;
 import engine.lua.LuaObject;
 import system.util.SortedVector;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.packets.object.ObjectMenuResponse;
@@ -65,5 +65,5 @@ class ShuttleInstallation extends InstallationObject {
 		setLoggingName("ShuttleInstallation");
 	}
 	
-	public native boolean checkRequisitesForPlacement(PlayerCreature player);
+	public native boolean checkRequisitesForPlacement(CreatureObject player);
 }

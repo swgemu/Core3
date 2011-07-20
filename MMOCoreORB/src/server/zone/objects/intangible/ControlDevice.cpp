@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/creature/VehicleObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
@@ -14,11 +14,13 @@
 
 #include "server/zone/Zone.h"
 
+#include "server/zone/objects/creature/CreatureObject.h"
+
 /*
  *	ControlDeviceStub
  */
 
-enum {RPC_UPDATETODATABASEALLOBJECTS__BOOL_ = 6,RPC_STOREOBJECT__PLAYERCREATURE_,RPC_GENERATEOBJECT__PLAYERCREATURE_,RPC_SETCONTROLLEDOBJECT__TANGIBLEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISCONTROLDEVICE__};
+enum {RPC_UPDATETODATABASEALLOBJECTS__BOOL_ = 6,RPC_STOREOBJECT__CREATUREOBJECT_,RPC_GENERATEOBJECT__CREATUREOBJECT_,RPC_SETCONTROLLEDOBJECT__TANGIBLEOBJECT_,RPC_GETCONTROLLEDOBJECT__,RPC_ISCONTROLDEVICE__};
 
 ControlDevice::ControlDevice() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ControlDeviceImplementation* _implementation = new ControlDeviceImplementation();
@@ -47,13 +49,13 @@ void ControlDevice::updateToDatabaseAllObjects(bool startTask) {
 		_implementation->updateToDatabaseAllObjects(startTask);
 }
 
-void ControlDevice::storeObject(PlayerCreature* player) {
+void ControlDevice::storeObject(CreatureObject* player) {
 	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_STOREOBJECT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_STOREOBJECT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -61,13 +63,13 @@ void ControlDevice::storeObject(PlayerCreature* player) {
 		_implementation->storeObject(player);
 }
 
-void ControlDevice::generateObject(PlayerCreature* player) {
+void ControlDevice::generateObject(CreatureObject* player) {
 	ControlDeviceImplementation* _implementation = (ControlDeviceImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GENERATEOBJECT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GENERATEOBJECT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -279,12 +281,12 @@ void ControlDeviceImplementation::updateToDatabaseAllObjects(bool startTask) {
 }
 }
 
-void ControlDeviceImplementation::storeObject(PlayerCreature* player) {
+void ControlDeviceImplementation::storeObject(CreatureObject* player) {
 	// server/zone/objects/intangible/ControlDevice.idl():  		Logger.error("called storeObject on an abstract method");
 	Logger::error("called storeObject on an abstract method");
 }
 
-void ControlDeviceImplementation::generateObject(PlayerCreature* player) {
+void ControlDeviceImplementation::generateObject(CreatureObject* player) {
 	// server/zone/objects/intangible/ControlDevice.idl():  		Logger.error("called generateObject on an abstract method");
 	Logger::error("called generateObject on an abstract method");
 }
@@ -318,11 +320,11 @@ Packet* ControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
 		updateToDatabaseAllObjects(inv->getBooleanParameter());
 		break;
-	case RPC_STOREOBJECT__PLAYERCREATURE_:
-		storeObject((PlayerCreature*) inv->getObjectParameter());
+	case RPC_STOREOBJECT__CREATUREOBJECT_:
+		storeObject((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_GENERATEOBJECT__PLAYERCREATURE_:
-		generateObject((PlayerCreature*) inv->getObjectParameter());
+	case RPC_GENERATEOBJECT__CREATUREOBJECT_:
+		generateObject((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SETCONTROLLEDOBJECT__TANGIBLEOBJECT_:
 		setControlledObject((TangibleObject*) inv->getObjectParameter());
@@ -344,11 +346,11 @@ void ControlDeviceAdapter::updateToDatabaseAllObjects(bool startTask) {
 	((ControlDeviceImplementation*) impl)->updateToDatabaseAllObjects(startTask);
 }
 
-void ControlDeviceAdapter::storeObject(PlayerCreature* player) {
+void ControlDeviceAdapter::storeObject(CreatureObject* player) {
 	((ControlDeviceImplementation*) impl)->storeObject(player);
 }
 
-void ControlDeviceAdapter::generateObject(PlayerCreature* player) {
+void ControlDeviceAdapter::generateObject(CreatureObject* player) {
 	((ControlDeviceImplementation*) impl)->generateObject(player);
 }
 

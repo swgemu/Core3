@@ -8,7 +8,7 @@
 #include "VendorManager.h"
 #include "VendorSelectionNode.h"
 #include "server/zone/managers/vendor/sui/DestroyVendorSuiCallback.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/auction/Vendor.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/auction/AuctionItem.h"
@@ -61,7 +61,7 @@ bool VendorManager::isValidVendorName(const String& name) {
 	return nman->validateName(name, 0) == 7;
 }
 
-void VendorManager::handleDisplayStatus(PlayerCreature* player, Vendor* vendor) {
+void VendorManager::handleDisplayStatus(CreatureObject* player, Vendor* vendor) {
 	uint32 itemsForSaleCount = 0;
 
 	ManagedReference<SuiListBox*> statusBox = new SuiListBox(player, SuiWindowType::STRUCTURE_VENDOR_STATUS);
@@ -89,12 +89,12 @@ void VendorManager::handleDisplayStatus(PlayerCreature* player, Vendor* vendor) 
 
 	statusBox->addMenuItem("\\#32CD32Vendor Operating Normally\\#.");
 
-	player->addSuiBox(statusBox);
+	player->getPlayerObject()->addSuiBox(statusBox);
 	player->sendMessage(statusBox->generateMessage());
 
 }
 
-void VendorManager::sendDestoryTo(PlayerCreature* player, Vendor* vendor) {
+void VendorManager::sendDestoryTo(CreatureObject* player, Vendor* vendor) {
 	if (vendor->getOwnerID() != player->getObjectID())
 		return;
 
@@ -106,12 +106,12 @@ void VendorManager::sendDestoryTo(PlayerCreature* player, Vendor* vendor) {
 	destroyBox->setOkButton(true, "@yes");
 	destroyBox->setCancelButton(true, "@no");
 
-	player->addSuiBox(destroyBox);
+	player->getPlayerObject()->addSuiBox(destroyBox);
 	player->sendMessage(destroyBox->generateMessage());
 
 }
 
-void VendorManager::sendRenameVendorTo(PlayerCreature* player, TangibleObject* vendor) {
+void VendorManager::sendRenameVendorTo(CreatureObject* player, TangibleObject* vendor) {
 	SuiInputBox* input = new SuiInputBox(player, SuiWindowType::STRUCTURE_NAME_VENDOR);
 	input->setCallback(new RenameVendorSuiCallback(player->getZoneServer()));
 	input->setUsingObject(vendor);
@@ -120,10 +120,10 @@ void VendorManager::sendRenameVendorTo(PlayerCreature* player, TangibleObject* v
 	input->setPromptText("@player_structure:name_d");
 
 	player->sendMessage(input->generateMessage());
-	player->addSuiBox(input);
+	player->getPlayerObject()->addSuiBox(input);
 }
 
-void VendorManager::handleDestoryCallback(PlayerCreature* player, Vendor* vendor) {
+void VendorManager::handleDestoryCallback(CreatureObject* player, Vendor* vendor) {
 	ManagedReference<SceneObject*> vendorObj= vendor->getVendor();
 
 	if (vendorObj == NULL)
@@ -134,7 +134,7 @@ void VendorManager::handleDestoryCallback(PlayerCreature* player, Vendor* vendor
 
 }
 
-void VendorManager::sendRegisterVendorTo(PlayerCreature* player, Vendor* vendor) {
+void VendorManager::sendRegisterVendorTo(CreatureObject* player, Vendor* vendor) {
 	SceneObject* vendorObj = vendor->getVendor();
 
 	if (vendorObj == NULL)
@@ -162,11 +162,11 @@ void VendorManager::sendRegisterVendorTo(PlayerCreature* player, Vendor* vendor)
 	registerBox->addMenuItem("@player_structure:subcat_weapons");
 
 	player->sendMessage(registerBox->generateMessage());
-	player->addSuiBox(registerBox);
+	player->getPlayerObject()->addSuiBox(registerBox);
 
 }
 
-void VendorManager::handleRegisterVendorCallback(PlayerCreature* player, Vendor* vendor, const String& planetMapCategoryName) {
+void VendorManager::handleRegisterVendorCallback(CreatureObject* player, Vendor* vendor, const String& planetMapCategoryName) {
 	ManagedReference<SceneObject*> vendorObj = vendor->getVendor();
 
 	if (vendorObj == NULL)
@@ -198,7 +198,7 @@ void VendorManager::handleRegisterVendorCallback(PlayerCreature* player, Vendor*
 
 }
 
-void VendorManager::handleUnregisterVendor(PlayerCreature* player, Vendor* vendor) {
+void VendorManager::handleUnregisterVendor(CreatureObject* player, Vendor* vendor) {
 	ManagedReference<SceneObject*> vendorObj = vendor->getVendor();
 
 	if (vendorObj == NULL)
@@ -219,7 +219,7 @@ void VendorManager::handleUnregisterVendor(PlayerCreature* player, Vendor* vendo
 	player->sendSystemMessage("@player_structure:unregister_vendor_not");
 }
 
-void VendorManager::handleRenameVendor(PlayerCreature* player, TangibleObject* vendor, String& name) {
+void VendorManager::handleRenameVendor(CreatureObject* player, TangibleObject* vendor, String& name) {
 	if (vendor == NULL)
 		return;
 
@@ -270,7 +270,7 @@ void VendorManager::handleRenameVendor(PlayerCreature* player, TangibleObject* v
 
 }
 
-void VendorManager::handleAwardVendorLookXP(PlayerCreature* player, Vendor* vendor) {
+void VendorManager::handleAwardVendorLookXP(CreatureObject* player, Vendor* vendor) {
 	if (player->getObjectID() == vendor->getOwnerID())
 		return;
 
@@ -279,7 +279,7 @@ void VendorManager::handleAwardVendorLookXP(PlayerCreature* player, Vendor* vend
 	if (!ownerRef->isPlayerCreature())
 		return;
 
-	ManagedReference<PlayerCreature*> owner = (PlayerCreature*) ownerRef.get();
+	ManagedReference<CreatureObject*> owner = (CreatureObject*) ownerRef.get();
 	ManagedReference<SceneObject*> vendorRef = vendor->getVendor();
 
 	if (!player->checkCooldownRecovery("vendoruse" + String::valueOf(vendorRef->getObjectID()))) {

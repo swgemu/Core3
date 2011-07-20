@@ -69,14 +69,14 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
 
 		ManagedReference<SceneObject*> targetObject = player->getZoneServer()->getObject(target);
 
 		if (targetObject == NULL || !targetObject->isPlayerCreature())
 			return INVALIDTARGET;
 
-		PlayerCreature* targetPlayer = (PlayerCreature*) targetObject.get();
+		CreatureObject* targetPlayer = (CreatureObject*) targetObject.get();
 
 		ManagedReference<CityRegion*> cityRegion = player->getCityRegion();
 

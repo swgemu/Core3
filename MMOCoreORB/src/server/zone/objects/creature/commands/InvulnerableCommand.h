@@ -67,7 +67,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		if (player->isRidingMount() || player->isRidingCreature())
 			return GENERALERROR;
@@ -97,8 +97,6 @@ public:
 			}
 
 		} else {
-			PlayerCreatureImplementation* playerImpl = (PlayerCreatureImplementation*) player->_getImplementation();
-
 			if (player->getPvpStatusBitmask() == CreatureFlag::PLAYER) {
 				player->setPvpStatusBitmask(CreatureFlag::NONE);
 				player->sendSystemMessage("You are now invulnerable.");

@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class StructurePermissionList : public VectorMap<uint64, uint8> {
 public:
@@ -28,8 +28,8 @@ public:
 public:
 	StructurePermissionList();
 
-	void sendTo(PlayerCreature* player, uint8 permission);
-	void sendTo(PlayerCreature* player, const String& listName);
+	void sendTo(CreatureObject* player, uint8 permission);
+	void sendTo(CreatureObject* player, const String& listName);
 
 	bool addPermission(uint64 playerID, uint8 permission);
 	bool removePermission(uint64 playerID, uint8 permission);

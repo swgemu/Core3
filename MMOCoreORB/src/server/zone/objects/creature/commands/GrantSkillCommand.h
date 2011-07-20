@@ -69,7 +69,7 @@ public:
 		if (object == NULL || !object->isPlayerCreature())
 			return INVALIDTARGET;
 
-		PlayerCreature* targetPlayer = (PlayerCreature*) object.get();
+		CreatureObject* targetPlayer = (CreatureObject*) object.get();
 
 		Locker clocker(targetPlayer, creature);
 

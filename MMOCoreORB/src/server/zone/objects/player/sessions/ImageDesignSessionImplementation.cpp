@@ -28,7 +28,7 @@ void ImageDesignSessionImplementation::initializeTransientMembers() {
 	}
 }
 
-void ImageDesignSessionImplementation::startImageDesign(PlayerCreature* designer, PlayerCreature* targetPlayer) {
+void ImageDesignSessionImplementation::startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer) {
 	uint64 tentID = 0;
 
 	ManagedReference<SceneObject*> obj = designer->getParentRecursively(SceneObject::SALONBUILDING);

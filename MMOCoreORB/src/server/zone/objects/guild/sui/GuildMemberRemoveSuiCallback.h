@@ -19,7 +19,7 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
 		if (!suiBox->isMessageBox() || cancelPressed)
 			return;
 
@@ -33,7 +33,7 @@ public:
 		if (obj == NULL || !obj->isPlayerCreature())
 			return;
 
-		PlayerCreature* target = (PlayerCreature*) obj.get();
+		CreatureObject* target = (CreatureObject*) obj.get();
 
 		guildManager->kickMember(player, target);
 	}

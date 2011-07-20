@@ -47,13 +47,13 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/player/badges/Badges.h"
 
 class BadgesResponseMessage : public BaseMessage {
 public:
-    BadgesResponseMessage(PlayerCreature* player, Badges* badges) : BaseMessage() {
+    BadgesResponseMessage(SceneObject* player, Badges* badges) : BaseMessage() {
 		insertShort(0x03);
 		insertInt(0x6D89D25B);  // CRC
 		insertLong(player->getObjectID()); //Player ID

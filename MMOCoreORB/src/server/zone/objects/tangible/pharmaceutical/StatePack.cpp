@@ -14,7 +14,7 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -24,7 +24,7 @@
  *	StatePackStub
  */
 
-enum {RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_GETSTATE__,RPC_ISSTATEPACK__};
+enum {RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_GETSTATE__,RPC_ISSTATEPACK__};
 
 StatePack::StatePack() : PharmaceuticalObject(DummyConstructorParameter::instance()) {
 	StatePackImplementation* _implementation = new StatePackImplementation();
@@ -57,13 +57,13 @@ void StatePack::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-int StatePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StatePack::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	StatePackImplementation* _implementation = (StatePackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -72,7 +72,7 @@ int StatePack::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void StatePack::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void StatePack::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	StatePackImplementation* _implementation = (StatePackImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -279,7 +279,7 @@ void StatePackImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 	PharmaceuticalObjectImplementation::medicineUseRequired = stimPackTemplate->getMedicineUse();
 }
 
-int StatePackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StatePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  			return 1;
 	return 1;
@@ -307,7 +307,7 @@ int StatePackImplementation::handleObjectMenuSelect(PlayerCreature* player, byte
 }
 }
 
-void StatePackImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void StatePackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		string attributeName = CreatureState.getName(state);
@@ -341,8 +341,8 @@ Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_GETSTATE__:
 		resp->insertLong(getState());
@@ -357,7 +357,7 @@ Packet* StatePackAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	return resp;
 }
 
-int StatePackAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StatePackAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((StatePackImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

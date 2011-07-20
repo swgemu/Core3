@@ -87,11 +87,11 @@ public:
 
 	void notifyLoadFromDatabase();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isFactory();
 
@@ -99,19 +99,19 @@ public:
 
 	void updateInstallationWork();
 
-	void sendInsertManuSui(PlayerCreature* player);
+	void sendInsertManuSui(CreatureObject* player);
 
-	void sendIngredientsNeededSui(PlayerCreature* player);
+	void sendIngredientsNeededSui(CreatureObject* player);
 
-	void sendIngredientHopper(PlayerCreature* player);
+	void sendIngredientHopper(CreatureObject* player);
 
-	void sendOutputHopper(PlayerCreature* player);
+	void sendOutputHopper(CreatureObject* player);
 
-	void handleInsertFactorySchem(PlayerCreature* player, ManufactureSchematic* schematic);
+	void handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic);
 
-	void handleRemoveFactorySchem(PlayerCreature* player);
+	void handleRemoveFactorySchem(CreatureObject* player);
 
-	void handleOperateToggle(PlayerCreature* player);
+	void handleOperateToggle(CreatureObject* player);
 
 	void createNewObject();
 
@@ -162,11 +162,11 @@ public:
 
 	void notifyLoadFromDatabase();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isFactory();
 
@@ -174,19 +174,19 @@ public:
 
 	void updateInstallationWork();
 
-	void sendInsertManuSui(PlayerCreature* player);
+	void sendInsertManuSui(CreatureObject* player);
 
-	void sendIngredientsNeededSui(PlayerCreature* player);
+	void sendIngredientsNeededSui(CreatureObject* player);
 
-	void sendIngredientHopper(PlayerCreature* player);
+	void sendIngredientHopper(CreatureObject* player);
 
-	void sendOutputHopper(PlayerCreature* player);
+	void sendOutputHopper(CreatureObject* player);
 
-	void handleInsertFactorySchem(PlayerCreature* player, ManufactureSchematic* schematic);
+	void handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic);
 
-	void handleRemoveFactorySchem(PlayerCreature* player);
+	void handleRemoveFactorySchem(CreatureObject* player);
 
-	void handleOperateToggle(PlayerCreature* player);
+	void handleOperateToggle(CreatureObject* player);
 
 private:
 	bool startFactory();
@@ -255,7 +255,7 @@ public:
 
 	void notifyLoadFromDatabase();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	bool isFactory();
 
@@ -263,19 +263,19 @@ public:
 
 	void updateInstallationWork();
 
-	void sendInsertManuSui(PlayerCreature* player);
+	void sendInsertManuSui(CreatureObject* player);
 
-	void sendIngredientsNeededSui(PlayerCreature* player);
+	void sendIngredientsNeededSui(CreatureObject* player);
 
-	void sendIngredientHopper(PlayerCreature* player);
+	void sendIngredientHopper(CreatureObject* player);
 
-	void sendOutputHopper(PlayerCreature* player);
+	void sendOutputHopper(CreatureObject* player);
 
-	void handleInsertFactorySchem(PlayerCreature* player, ManufactureSchematic* schematic);
+	void handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic);
 
-	void handleRemoveFactorySchem(PlayerCreature* player);
+	void handleRemoveFactorySchem(CreatureObject* player);
 
-	void handleOperateToggle(PlayerCreature* player);
+	void handleOperateToggle(CreatureObject* player);
 
 	void createNewObject();
 

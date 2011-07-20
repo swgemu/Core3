@@ -25,7 +25,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*)client->getPlayer();
+		ManagedReference<CreatureObject*> player = (CreatureObject*)client->getPlayer();
 
 		if (player != NULL) {
 			RadialManager* radialManager = server->getZoneServer()->getRadialManager();

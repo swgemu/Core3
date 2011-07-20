@@ -46,7 +46,7 @@ which carries forward this exception.
 #define FISHCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../player/PlayerCreature.h"
+#include "../../creature/CreatureObject.h"
 #include "../../../managers/minigames/FishingManager.h"
 #include "../../../ZoneServer.h"
 
@@ -69,7 +69,7 @@ public:
 		if (creature->isPlayerCreature()) {
 			ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
 
-			PlayerCreature* player = (PlayerCreature*) creature;
+			CreatureObject* player = (CreatureObject*) creature;
 
 			// REMOVE WHEN TESTED
 			manager->freeBait(player);

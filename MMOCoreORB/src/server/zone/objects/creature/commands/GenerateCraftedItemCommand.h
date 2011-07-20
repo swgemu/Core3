@@ -70,7 +70,7 @@ public:
 		if(!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
 
 		ManagedReference<CraftingManager*> craftingManager = player->getZoneServer()->getCraftingManager();
 

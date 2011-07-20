@@ -24,16 +24,16 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -76,9 +76,9 @@ class RadialManager : public ManagedObject {
 public:
 	RadialManager(ZoneServer* server);
 
-	void handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID);
+	void handleObjectMenuSelect(CreatureObject* player, byte selectID, unsigned long long objectID);
 
-	void handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
+	void handleObjectMenuRequest(CreatureObject* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -112,9 +112,9 @@ public:
 
 	RadialManagerImplementation(DummyConstructorParameter* param);
 
-	void handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID);
+	void handleObjectMenuSelect(CreatureObject* player, byte selectID, unsigned long long objectID);
 
-	void handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
+	void handleObjectMenuRequest(CreatureObject* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
 
 	WeakReference<RadialManager*> _this;
 
@@ -159,9 +159,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void handleObjectMenuSelect(PlayerCreature* player, byte selectID, unsigned long long objectID);
+	void handleObjectMenuSelect(CreatureObject* player, byte selectID, unsigned long long objectID);
 
-	void handleObjectMenuRequest(PlayerCreature* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
+	void handleObjectMenuRequest(CreatureObject* player, ObjectMenuResponse* defaultMenuResponse, unsigned long long objectID);
 
 };
 

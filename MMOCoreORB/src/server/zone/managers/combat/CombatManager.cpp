@@ -8,7 +8,8 @@
 #include "CombatManager.h"
 #include "CreatureAttackData.h"
 #include "server/zone/objects/scene/variables/DeltaVector.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
@@ -683,7 +684,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		damage = System::random(diff) + (int) minDamage;
 
 	if (attacker->isPlayerCreature()) {
-		if (!weapon->isCertifiedFor((PlayerCreature*) attacker))
+		if (!weapon->isCertifiedFor((CreatureObject*) attacker))
 			damage /= 5;
 
 		int FR = attacker->getSkillMod("force_run");
@@ -870,8 +871,11 @@ int CombatManager::checkSecondaryDefenses(CreatureObject* creature, CreatureObje
 
 	int targetDefense = getDefenderSecondaryDefenseModifier(targetCreature, weapon);
 
-	if (targetCreature->isPlayerCreature())
-		targetDefense += ((PlayerCreature*)targetCreature)->getCenteredBonus();
+	if (targetCreature->isPlayerCreature()) {
+		PlayerObject* ghost = targetCreature->getPlayerObject();
+
+		targetDefense += ghost->getCenteredBonus();
+	}
 
 	//info("Base target secondary defense is " + String::valueOf(targetDefense));
 
@@ -1338,7 +1342,7 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 		SceneObject* object = (SceneObject*) attacker->getInRangeObject(i);
 
 		if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
-			PlayerCreature* player = (PlayerCreature*) object;
+			CreatureObject* player = (CreatureObject*) object;
 
 			CombatSpam* msg = new CombatSpam(attacker, defender, weapon, damage, "cbt_spam", stringid, player);
 			player->sendMessage(msg);
@@ -1347,14 +1351,17 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 }
 
 
-void CombatManager::requestDuel(PlayerCreature* player, PlayerCreature* targetPlayer) {
+void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPlayer) {
 	/* Pre: player != targetPlayer and not NULL; player is locked
 	 * Post: player requests duel to targetPlayer
 	 */
 
 	Locker clocker(targetPlayer, player);
 
-	if (player->requestedDuelTo(targetPlayer)) {
+	PlayerObject* ghost = player->getPlayerObject();
+	PlayerObject* targetGhost = targetPlayer->getPlayerObject();
+
+	if (ghost->requestedDuelTo(targetPlayer)) {
 		StringIdChatParameter stringId("duel", "already_challenged");
 		stringId.setTT(targetPlayer->getObjectID());
 		player->sendSystemMessage(stringId);
@@ -1364,9 +1371,9 @@ void CombatManager::requestDuel(PlayerCreature* player, PlayerCreature* targetPl
 
 	player->info("requesting duel");
 
-	player->addToDuelList(targetPlayer);
+	ghost->addToDuelList(targetPlayer);
 
-	if (targetPlayer->requestedDuelTo(player)) {
+	if (targetGhost->requestedDuelTo(player)) {
 		BaseMessage* pvpstat = new UpdatePVPStatusMessage(targetPlayer,
 				targetPlayer->getPvpStatusBitmask()
 						+ CreatureFlag::ATTACKABLE
@@ -1396,14 +1403,17 @@ void CombatManager::requestDuel(PlayerCreature* player, PlayerCreature* targetPl
 	}
 }
 
-void CombatManager::requestEndDuel(PlayerCreature* player, PlayerCreature* targetPlayer) {
+void CombatManager::requestEndDuel(CreatureObject* player, CreatureObject* targetPlayer) {
 	/* Pre: player != targetPlayer and not NULL; player is locked
 	 * Post: player requested to end the duel with targetPlayer
 	 */
 
 	Locker clocker(targetPlayer, player);
 
-	if (!player->requestedDuelTo(targetPlayer)) {
+	PlayerObject* ghost = player->getPlayerObject();
+	PlayerObject* targetGhost = targetPlayer->getPlayerObject();
+
+	if (!ghost->requestedDuelTo(targetPlayer)) {
 		StringIdChatParameter stringId("duel", "not_dueling");
 		stringId.setTT(targetPlayer->getObjectID());
 		player->sendSystemMessage(stringId);
@@ -1413,11 +1423,11 @@ void CombatManager::requestEndDuel(PlayerCreature* player, PlayerCreature* targe
 
 	player->info("ending duel");
 
-	player->removeFromDuelList(targetPlayer);
+	ghost->removeFromDuelList(targetPlayer);
 	player->removeDefender(targetPlayer);
 
-	if (targetPlayer->requestedDuelTo(player)) {
-		targetPlayer->removeFromDuelList(player);
+	if (targetGhost->requestedDuelTo(player)) {
+		targetGhost->removeFromDuelList(player);
 		targetPlayer->removeDefender(player);
 
 		player->sendPvpStatusTo(targetPlayer);
@@ -1434,27 +1444,30 @@ void CombatManager::requestEndDuel(PlayerCreature* player, PlayerCreature* targe
 	}
 }
 
-void CombatManager::freeDuelList(PlayerCreature* player, bool spam) {
+void CombatManager::freeDuelList(CreatureObject* player, bool spam) {
 	/* Pre: player not NULL and is locked
 	 * Post: player removed and warned all of the objects from its duel list
 	 */
-	if (player->isDuelListEmpty())
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost->isDuelListEmpty())
 		return;
 
 	player->info("freeing duel list");
 
-	while (player->getDuelListSize() != 0) {
-		ManagedReference<PlayerCreature*> targetPlayer = player->getDuelListObject(0);
+	while (ghost->getDuelListSize() != 0) {
+		ManagedReference<CreatureObject*> targetPlayer = ghost->getDuelListObject(0);
+		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
 
 		if (targetPlayer != NULL && targetPlayer.get() != player) {
 			try {
 				Locker clocker(targetPlayer, player);
 
-				player->removeFromDuelList(targetPlayer);
+				ghost->removeFromDuelList(targetPlayer);
 				player->removeDefender(targetPlayer);
 
-				if (targetPlayer->requestedDuelTo(player)) {
-					targetPlayer->removeFromDuelList(player);
+				if (targetGhost->requestedDuelTo(player)) {
+					targetGhost->removeFromDuelList(player);
 					targetPlayer->removeDefender(player);
 
 					player->sendPvpStatusTo(targetPlayer);
@@ -1476,7 +1489,7 @@ void CombatManager::freeDuelList(PlayerCreature* player, bool spam) {
 
 
 			} catch (ObjectNotDeployedException& e) {
-				player->removeFromDuelList(targetPlayer);
+				ghost->removeFromDuelList(targetPlayer);
 
 				System::out << "Exception on CombatManager::freeDuelList()\n"
 						<< e.getMessage() << "\n";
@@ -1485,15 +1498,18 @@ void CombatManager::freeDuelList(PlayerCreature* player, bool spam) {
 	}
 }
 
-void CombatManager::declineDuel(PlayerCreature* player, PlayerCreature* targetPlayer) {
+void CombatManager::declineDuel(CreatureObject* player, CreatureObject* targetPlayer) {
 	/* Pre: player != targetPlayer and not NULL; player is locked
 	 * Post: player declined Duel to targetPlayer
 	 */
 
 	Locker clocker(targetPlayer, player);
 
-	if (targetPlayer->requestedDuelTo(player)) {
-		targetPlayer->removeFromDuelList(player);
+	PlayerObject* ghost = player->getPlayerObject();
+	PlayerObject* targetGhost = targetPlayer->getPlayerObject();
+
+	if (targetGhost->requestedDuelTo(player)) {
+		targetGhost->removeFromDuelList(player);
 
 		StringIdChatParameter stringId("duel", "cancel_self");
 		stringId.setTT(targetPlayer->getObjectID());

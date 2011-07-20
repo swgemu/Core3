@@ -11,7 +11,8 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
@@ -54,13 +55,15 @@ void CityHallObjectImplementation::despawnCityHallObjects() {
 	}
 }
 
-bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
+bool CityHallObjectImplementation::checkRequisitesForPlacement(CreatureObject* player) {
 	Zone* zone = player->getZone();
 
 	if (zone == NULL)
 		return false;
 
-	ManagedReference<BuildingObject*> declaredResidence = player->getDeclaredResidence();
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
 
 	if (declaredResidence != NULL && declaredResidence->isCityHallBuilding()) {
 		player->sendSystemMessage("@city/city:already_mayor"); //You are already the mayor of a city. You may not be the mayor of another city.
@@ -93,7 +96,7 @@ bool CityHallObjectImplementation::checkRequisitesForPlacement(PlayerCreature* p
 	return true;
 }
 
-void CityHallObjectImplementation::sendCityNamePromptTo(PlayerCreature* player, bool newCity) {
+void CityHallObjectImplementation::sendCityNamePromptTo(CreatureObject* player, bool newCity) {
 	int windowType = SuiWindowType::CITY_CREATE;
 
 	if (!newCity)
@@ -111,7 +114,7 @@ void CityHallObjectImplementation::sendCityNamePromptTo(PlayerCreature* player, 
 
 	inputBox->setUsingObject(_this);
 
-	player->addSuiBox(inputBox);
+	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
 }
 
@@ -123,13 +126,13 @@ int CityHallObjectImplementation::notifyStructurePlaced(CreatureObject* creature
 	return 0;
 }
 
-void CityHallObjectImplementation::sendStatusTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendStatusTo(CreatureObject* player) {
 	ManagedReference<SceneObject*> mayorObject = server->getZoneServer()->getObject(mayorObjectID);
 
 	if (mayorObject == NULL || !mayorObject->isPlayerCreature())
 		return;
 
-	PlayerCreature* mayor = (PlayerCreature*) mayorObject.get();
+	CreatureObject* mayor = (CreatureObject*) mayorObject.get();
 
 	String mayorName = mayor->getObjectName()->getDisplayedName();
 
@@ -158,7 +161,7 @@ void CityHallObjectImplementation::sendStatusTo(PlayerCreature* player) {
 	player->sendMessage(listBox->generateMessage());
 }
 
-void CityHallObjectImplementation::sendCitizenshipReportTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendCitizenshipReportTo(CreatureObject* player) {
 	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, 0x00);
 	listBox->setPromptTitle("@city/city:citizen_list_t"); //City Citizenship Report
 	listBox->setPromptText("@city/city:citizen_list_d"); //The following is a list of the currently declared citizens (residents) of this city.  All citizens are eligible to vote.
@@ -181,10 +184,10 @@ void CityHallObjectImplementation::sendCitizenshipReportTo(PlayerCreature* playe
 	player->sendMessage(listBox->generateMessage());
 }
 
-void CityHallObjectImplementation::sendStructureReportTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendStructureReportTo(CreatureObject* player) {
 }
 
-void CityHallObjectImplementation::sendCityAdvancementTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendCityAdvancementTo(CreatureObject* player) {
 	if (getZone() == NULL)
 		return;
 
@@ -204,14 +207,14 @@ void CityHallObjectImplementation::sendCityAdvancementTo(PlayerCreature* player)
 	sendStatusTo(player);
 }
 
-void CityHallObjectImplementation::sendTreasuryReportTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendTreasuryReportTo(CreatureObject* player) {
 }
 
-void CityHallObjectImplementation::sendChangeCityNameTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendChangeCityNameTo(CreatureObject* player) {
 	//player->sendSystemMessage("@city/city:name_changed"); //The city name has been successfully changed.
 }
 
-void CityHallObjectImplementation::sendManageMilitiaTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendManageMilitiaTo(CreatureObject* player) {
 	if (!isMayor(player->getObjectID())) {
 		//Only the mayor can manage the militia.
 		return;
@@ -236,16 +239,16 @@ void CityHallObjectImplementation::sendManageMilitiaTo(PlayerCreature* player) {
 		if (obj == NULL || !obj->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) obj.get();
+		CreatureObject* player = (CreatureObject*) obj.get();
 
 		listBox->addMenuItem(player->getObjectName()->getDisplayedName(), playerid);
 	}
 
-	player->addSuiBox(listBox);
+	player->getPlayerObject()->addSuiBox(listBox);
 	player->sendMessage(listBox->generateMessage());
 }
 
-void CityHallObjectImplementation::sendAddMilitiaMemberTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendAddMilitiaMemberTo(CreatureObject* player) {
 	if (!isMayor(player->getObjectID())) {
 		//Only the mayor can manage the militia.
 		return;
@@ -262,20 +265,20 @@ void CityHallObjectImplementation::sendAddMilitiaMemberTo(PlayerCreature* player
 	inputBox->setUsingObject(_this);
 	inputBox->setCancelButton(true, "@cancel");
 
-	player->addSuiBox(inputBox);
+	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
 }
 
-void CityHallObjectImplementation::sendAdjustTaxesTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendAdjustTaxesTo(CreatureObject* player) {
 }
 
-void CityHallObjectImplementation::sendTreasuryDepositTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendTreasuryDepositTo(CreatureObject* player) {
 }
 
-void CityHallObjectImplementation::sendTreasuryWithdrawalTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendTreasuryWithdrawalTo(CreatureObject* player) {
 }
 
-void CityHallObjectImplementation::sendCitySpecializationSelectionTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendCitySpecializationSelectionTo(CreatureObject* player) {
 	if (cityRank < CityManager::TOWNSHIP) {
 		player->sendSystemMessage("@city/city:no_rank_spec"); //Your city must be at least rank 3 before you can set a specialization.
 		return;
@@ -294,11 +297,11 @@ void CityHallObjectImplementation::sendCitySpecializationSelectionTo(PlayerCreat
 
 }
 
-void CityHallObjectImplementation::sendMaintenanceReportTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendMaintenanceReportTo(CreatureObject* player) {
 
 }
 
-void CityHallObjectImplementation::sendEnableZoningTo(PlayerCreature* player) {
+void CityHallObjectImplementation::sendEnableZoningTo(CreatureObject* player) {
 	if (player->getObjectID() != mayorObjectID) {
 		player->sendSystemMessage("@city/city:zoning_skill"); //You must be a Politician to enable city zoning.
 		return;
@@ -311,14 +314,14 @@ void CityHallObjectImplementation::sendEnableZoningTo(PlayerCreature* player) {
 		suiBox->setUsingObject(_this);
 		suiBox->setCancelButton(true, "@cancel");
 
-		player->addSuiBox(suiBox);
+		player->getPlayerObject()->addSuiBox(suiBox);
 		player->sendMessage(suiBox->generateMessage());
 	} else {
 		toggleZoningEnabled(player);
 	}
 }
 
-void CityHallObjectImplementation::toggleCityRegistration(PlayerCreature* player) {
+void CityHallObjectImplementation::toggleCityRegistration(CreatureObject* player) {
 	if (!player->hasSkillBox("social_politician_fiscal_01")) {
 		player->sendSystemMessage("@city/city:cant_register"); //You lack the ability to register your city!
 		return;

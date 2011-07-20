@@ -20,7 +20,7 @@
 #include "server/zone/objects/creature/trainer/TrainerCreature.h"
 #include "server/zone/objects/creature/informant/InformantCreature.h"
 #include "server/zone/objects/creature/Creature.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
@@ -256,7 +256,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		destructor->unlock();
 
 	try {
-		ManagedReference<PlayerCreature*> player = copyDamageMap.getHighestDamagePlayer();
+		ManagedReference<CreatureObject*> player = copyDamageMap.getHighestDamagePlayer();
 
 		if (player != NULL)
 			player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
@@ -310,7 +310,7 @@ void CreatureManagerImplementation::loadInformants() {
 	//TODO: Load in same lua as creatures.
 }
 
-void CreatureManagerImplementation::harvest(Creature* creature, PlayerCreature* player, int selectedID) {
+void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* player, int selectedID) {
 	Zone* zone = creature->getZone();
 
 	if (zone == NULL)

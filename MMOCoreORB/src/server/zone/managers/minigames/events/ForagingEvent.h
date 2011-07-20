@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORAGINGEVENT_H_
 #define FORAGINGEVENT_H_
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/Zone.h"
 #include "../ForageManager.h"
 
@@ -57,7 +57,7 @@ namespace events {
 
 class ForagingEvent : public Task {
 
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 	ManagedReference<ZoneServer*> zoneServer;
 	bool scoutForage;
 	float forageX;
@@ -65,7 +65,7 @@ class ForagingEvent : public Task {
 	String zoneName;
 
 public:
-	ForagingEvent(PlayerCreature* player, ZoneServer* zoneServer, bool scoutForage, float playerX, float playerY, const String& planet) : Task() {
+	ForagingEvent(CreatureObject* player, ZoneServer* zoneServer, bool scoutForage, float playerX, float playerY, const String& planet) : Task() {
 		this->player = player;
 		this->zoneServer = zoneServer;
 		this->scoutForage = scoutForage;

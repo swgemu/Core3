@@ -14,7 +14,7 @@
 #include "server/zone/objects/creature/CreatureAttribute.h"
 
 
-void ForageManagerImplementation::startForaging(PlayerCreature* player, bool scoutForage) {
+void ForageManagerImplementation::startForaging(CreatureObject* player, bool scoutForage) {
 	if (player == NULL)
 		return;
 
@@ -59,7 +59,7 @@ void ForageManagerImplementation::startForaging(PlayerCreature* player, bool sco
 
 }
 
-void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& zoneName) {
+void ForageManagerImplementation::finishForaging(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& zoneName) {
 	if (player == NULL)
 		return;
 
@@ -126,7 +126,7 @@ void ForageManagerImplementation::finishForaging(PlayerCreature* player, bool sc
 
 }
 
-void ForageManagerImplementation::forageGiveItems(PlayerCreature* player, bool scoutForage, float forageX, float forageY, const String& planet) {
+void ForageManagerImplementation::forageGiveItems(CreatureObject* player, bool scoutForage, float forageX, float forageY, const String& planet) {
 	if (player == NULL)
 		return;
 
@@ -211,7 +211,7 @@ void ForageManagerImplementation::forageGiveItems(PlayerCreature* player, bool s
 
 }
 
-void ForageManagerImplementation::forageGiveResource(PlayerCreature* player, float forageX, float forageY, const String& planet) {
+void ForageManagerImplementation::forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet) {
 	if (player == NULL)
 		return;
 

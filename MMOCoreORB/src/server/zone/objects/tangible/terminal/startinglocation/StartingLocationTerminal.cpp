@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/Zone.h"
 
@@ -14,7 +14,7 @@
  *	StartingLocationTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_};
 
 StartingLocationTerminal::StartingLocationTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	StartingLocationTerminalImplementation* _implementation = new StartingLocationTerminalImplementation();
@@ -42,13 +42,13 @@ void StartingLocationTerminal::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-int StartingLocationTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StartingLocationTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	StartingLocationTerminalImplementation* _implementation = (StartingLocationTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -201,8 +201,8 @@ Packet* StartingLocationTerminalAdapter::invokeMethod(uint32 methid, Distributed
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -215,7 +215,7 @@ void StartingLocationTerminalAdapter::initializeTransientMembers() {
 	((StartingLocationTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
-int StartingLocationTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StartingLocationTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((StartingLocationTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

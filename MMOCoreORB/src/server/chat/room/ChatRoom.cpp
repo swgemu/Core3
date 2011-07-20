@@ -6,7 +6,9 @@
 
 #include "server/zone/ZoneServer.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
@@ -14,7 +16,7 @@
  *	ChatRoomStub
  */
 
-enum {RPC_INIT__ZONESERVER_CHATROOM_STRING_INT_ = 6,RPC_SENDTO__PLAYERCREATURE_,RPC_SENDDESTROYTO__PLAYERCREATURE_,RPC_ADDSUBROOM__CHATROOM_,RPC_REMOVESUBROOM__CHATROOM_,RPC_GETSUBROOM__INT_,RPC_GETSUBROOM__STRING_,RPC_ADDPLAYER__PLAYERCREATURE_BOOL_,RPC_REMOVEPLAYER__PLAYERCREATURE_BOOL_,RPC_REMOVEPLAYER__STRING_,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_HASPLAYER__PLAYERCREATURE_,RPC_HASPLAYER__STRING_,RPC_REMOVEALLPLAYERS__,RPC_SETPRIVATE__,RPC_SETPUBLIC__,RPC_ISPUBLIC__,RPC_ISPRIVATE__,RPC_ISMODERATED__,RPC_SETMODERATED__BOOL_,RPC_GETPLAYER__INT_,RPC_GETPLAYERSIZE__,RPC_SETNAME__STRING_,RPC_GETNAME__,RPC_GETFULLPATH__,RPC_GETOWNER__,RPC_GETCREATOR__,RPC_GETTITLE__,RPC_GETGALAXYNAME__,RPC_SETOWNER__STRING_,RPC_SETCREATOR__STRING_,RPC_SETTITLE__STRING_,RPC_SETROOMID__INT_,RPC_GETROOMID__,RPC_GETSUBROOMSSIZE__,RPC_GETPARENT__,RPC_COMPARETO__CHATROOM_};
+enum {RPC_INIT__ZONESERVER_CHATROOM_STRING_INT_ = 6,RPC_SENDTO__CREATUREOBJECT_,RPC_SENDDESTROYTO__CREATUREOBJECT_,RPC_ADDSUBROOM__CHATROOM_,RPC_REMOVESUBROOM__CHATROOM_,RPC_GETSUBROOM__INT_,RPC_GETSUBROOM__STRING_,RPC_ADDPLAYER__CREATUREOBJECT_BOOL_,RPC_REMOVEPLAYER__CREATUREOBJECT_BOOL_,RPC_REMOVEPLAYER__STRING_,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_HASPLAYER__CREATUREOBJECT_,RPC_HASPLAYER__STRING_,RPC_REMOVEALLPLAYERS__,RPC_SETPRIVATE__,RPC_SETPUBLIC__,RPC_ISPUBLIC__,RPC_ISPRIVATE__,RPC_ISMODERATED__,RPC_SETMODERATED__BOOL_,RPC_GETPLAYER__INT_,RPC_GETPLAYERSIZE__,RPC_SETNAME__STRING_,RPC_GETNAME__,RPC_GETFULLPATH__,RPC_GETOWNER__,RPC_GETCREATOR__,RPC_GETTITLE__,RPC_GETGALAXYNAME__,RPC_SETOWNER__STRING_,RPC_SETCREATOR__STRING_,RPC_SETTITLE__STRING_,RPC_SETROOMID__INT_,RPC_GETROOMID__,RPC_GETSUBROOMSSIZE__,RPC_GETPARENT__,RPC_COMPARETO__CHATROOM_};
 
 ChatRoom::ChatRoom() : ManagedObject(DummyConstructorParameter::instance()) {
 	ChatRoomImplementation* _implementation = new ChatRoomImplementation();
@@ -46,13 +48,13 @@ void ChatRoom::init(ZoneServer* serv, ChatRoom* par, const String& roomName, uns
 		_implementation->init(serv, par, roomName, channelID);
 }
 
-void ChatRoom::sendTo(PlayerCreature* player) {
+void ChatRoom::sendTo(CreatureObject* player) {
 	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -60,13 +62,13 @@ void ChatRoom::sendTo(PlayerCreature* player) {
 		_implementation->sendTo(player);
 }
 
-void ChatRoom::sendDestroyTo(PlayerCreature* player) {
+void ChatRoom::sendDestroyTo(CreatureObject* player) {
 	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDDESTROYTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDDESTROYTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -130,13 +132,13 @@ ChatRoom* ChatRoom::getSubRoom(const String& name) {
 		return _implementation->getSubRoom(name);
 }
 
-void ChatRoom::addPlayer(PlayerCreature* player, bool doLock) {
+void ChatRoom::addPlayer(CreatureObject* player, bool doLock) {
 	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDPLAYER__PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_ADDPLAYER__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doLock);
 
@@ -145,13 +147,13 @@ void ChatRoom::addPlayer(PlayerCreature* player, bool doLock) {
 		_implementation->addPlayer(player, doLock);
 }
 
-void ChatRoom::removePlayer(PlayerCreature* player, bool doLock) {
+void ChatRoom::removePlayer(CreatureObject* player, bool doLock) {
 	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEPLAYER__PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_REMOVEPLAYER__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doLock);
 
@@ -197,13 +199,13 @@ void ChatRoom::broadcastMessages(Vector<BaseMessage*>* messages) {
 		_implementation->broadcastMessages(messages);
 }
 
-bool ChatRoom::hasPlayer(PlayerCreature* player) {
+bool ChatRoom::hasPlayer(CreatureObject* player) {
 	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HASPLAYER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_HASPLAYER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -317,7 +319,7 @@ void ChatRoom::setModerated(bool moderate) {
 		_implementation->setModerated(moderate);
 }
 
-PlayerCreature* ChatRoom::getPlayer(int idx) {
+CreatureObject* ChatRoom::getPlayer(int idx) {
 	ChatRoomImplementation* _implementation = (ChatRoomImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -326,7 +328,7 @@ PlayerCreature* ChatRoom::getPlayer(int idx) {
 		DistributedMethod method(this, RPC_GETPLAYER__INT_);
 		method.addSignedIntParameter(idx);
 
-		return (PlayerCreature*) method.executeWithObjectReturn();
+		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getPlayer(idx);
 }
@@ -697,12 +699,12 @@ bool ChatRoomImplementation::readObjectMember(ObjectInputStream* stream, const S
 	}
 
 	if (_name == "playerList") {
-		TypeInfo<VectorMap<String, ManagedReference<PlayerCreature* > > >::parseFromBinaryStream(&playerList, stream);
+		TypeInfo<VectorMap<String, ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&playerList, stream);
 		return true;
 	}
 
 	if (_name == "moderatorList") {
-		TypeInfo<VectorMap<String, ManagedReference<PlayerCreature* > > >::parseFromBinaryStream(&moderatorList, stream);
+		TypeInfo<VectorMap<String, ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&moderatorList, stream);
 		return true;
 	}
 
@@ -804,7 +806,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VectorMap<String, ManagedReference<PlayerCreature* > > >::toBinaryStream(&playerList, stream);
+	TypeInfo<VectorMap<String, ManagedReference<CreatureObject* > > >::toBinaryStream(&playerList, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -812,7 +814,7 @@ int ChatRoomImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VectorMap<String, ManagedReference<PlayerCreature* > > >::toBinaryStream(&moderatorList, stream);
+	TypeInfo<VectorMap<String, ManagedReference<CreatureObject* > > >::toBinaryStream(&moderatorList, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -948,8 +950,8 @@ void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
 	int i = 0;
 	i < (&playerList)->size();
  ++i) {
-	// server/chat/room/ChatRoom.idl():  			PlayerCreature player = playerList.get(i);
-	PlayerCreature* player = (&playerList)->get(i);
+	// server/chat/room/ChatRoom.idl():  			CreatureObject player = playerList.get(i);
+	CreatureObject* player = (&playerList)->get(i);
 	// server/chat/room/ChatRoom.idl():  			}
 	for (	// server/chat/room/ChatRoom.idl():  			for (int j = 0;
 	int j = 0;
@@ -975,7 +977,7 @@ void ChatRoomImplementation::broadcastMessages(Vector<BaseMessage*>* messages) {
 	messages->removeAll();
 }
 
-bool ChatRoomImplementation::hasPlayer(PlayerCreature* player) {
+bool ChatRoomImplementation::hasPlayer(CreatureObject* player) {
 	Locker _locker(_this);
 	// server/chat/room/ChatRoom.idl():  		return playerList.contains(player.getFirstName());
 	return (&playerList)->contains(player->getFirstName());
@@ -1017,7 +1019,7 @@ void ChatRoomImplementation::setModerated(bool moderate) {
 	moderated = moderate;
 }
 
-PlayerCreature* ChatRoomImplementation::getPlayer(int idx) {
+CreatureObject* ChatRoomImplementation::getPlayer(int idx) {
 	// server/chat/room/ChatRoom.idl():  		return playerList.get(idx);
 	return (&playerList)->get(idx);
 }
@@ -1119,11 +1121,11 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_INIT__ZONESERVER_CHATROOM_STRING_INT_:
 		init((ZoneServer*) inv->getObjectParameter(), (ChatRoom*) inv->getObjectParameter(), inv->getAsciiParameter(_param2_init__ZoneServer_ChatRoom_String_int_), inv->getUnsignedIntParameter());
 		break;
-	case RPC_SENDTO__PLAYERCREATURE_:
-		sendTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDTO__CREATUREOBJECT_:
+		sendTo((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDDESTROYTO__PLAYERCREATURE_:
-		sendDestroyTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDDESTROYTO__CREATUREOBJECT_:
+		sendDestroyTo((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_ADDSUBROOM__CHATROOM_:
 		addSubRoom((ChatRoom*) inv->getObjectParameter());
@@ -1137,11 +1139,11 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETSUBROOM__STRING_:
 		resp->insertLong(getSubRoom(inv->getAsciiParameter(_param0_getSubRoom__String_))->_getObjectID());
 		break;
-	case RPC_ADDPLAYER__PLAYERCREATURE_BOOL_:
-		addPlayer((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_ADDPLAYER__CREATUREOBJECT_BOOL_:
+		addPlayer((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_REMOVEPLAYER__PLAYERCREATURE_BOOL_:
-		removePlayer((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_REMOVEPLAYER__CREATUREOBJECT_BOOL_:
+		removePlayer((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_REMOVEPLAYER__STRING_:
 		removePlayer(inv->getAsciiParameter(_param0_removePlayer__String_));
@@ -1149,8 +1151,8 @@ Packet* ChatRoomAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_BROADCASTMESSAGE__BASEMESSAGE_:
 		broadcastMessage((BaseMessage*) inv->getObjectParameter());
 		break;
-	case RPC_HASPLAYER__PLAYERCREATURE_:
-		resp->insertBoolean(hasPlayer((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_HASPLAYER__CREATUREOBJECT_:
+		resp->insertBoolean(hasPlayer((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_HASPLAYER__STRING_:
 		resp->insertBoolean(hasPlayer(inv->getAsciiParameter(_param0_hasPlayer__String_)));
@@ -1238,11 +1240,11 @@ void ChatRoomAdapter::init(ZoneServer* serv, ChatRoom* par, const String& roomNa
 	((ChatRoomImplementation*) impl)->init(serv, par, roomName, channelID);
 }
 
-void ChatRoomAdapter::sendTo(PlayerCreature* player) {
+void ChatRoomAdapter::sendTo(CreatureObject* player) {
 	((ChatRoomImplementation*) impl)->sendTo(player);
 }
 
-void ChatRoomAdapter::sendDestroyTo(PlayerCreature* player) {
+void ChatRoomAdapter::sendDestroyTo(CreatureObject* player) {
 	((ChatRoomImplementation*) impl)->sendDestroyTo(player);
 }
 
@@ -1262,11 +1264,11 @@ ChatRoom* ChatRoomAdapter::getSubRoom(const String& name) {
 	return ((ChatRoomImplementation*) impl)->getSubRoom(name);
 }
 
-void ChatRoomAdapter::addPlayer(PlayerCreature* player, bool doLock) {
+void ChatRoomAdapter::addPlayer(CreatureObject* player, bool doLock) {
 	((ChatRoomImplementation*) impl)->addPlayer(player, doLock);
 }
 
-void ChatRoomAdapter::removePlayer(PlayerCreature* player, bool doLock) {
+void ChatRoomAdapter::removePlayer(CreatureObject* player, bool doLock) {
 	((ChatRoomImplementation*) impl)->removePlayer(player, doLock);
 }
 
@@ -1278,7 +1280,7 @@ void ChatRoomAdapter::broadcastMessage(BaseMessage* msg) {
 	((ChatRoomImplementation*) impl)->broadcastMessage(msg);
 }
 
-bool ChatRoomAdapter::hasPlayer(PlayerCreature* player) {
+bool ChatRoomAdapter::hasPlayer(CreatureObject* player) {
 	return ((ChatRoomImplementation*) impl)->hasPlayer(player);
 }
 
@@ -1314,7 +1316,7 @@ void ChatRoomAdapter::setModerated(bool moderate) {
 	((ChatRoomImplementation*) impl)->setModerated(moderate);
 }
 
-PlayerCreature* ChatRoomAdapter::getPlayer(int idx) {
+CreatureObject* ChatRoomAdapter::getPlayer(int idx) {
 	return ((ChatRoomImplementation*) impl)->getPlayer(idx);
 }
 

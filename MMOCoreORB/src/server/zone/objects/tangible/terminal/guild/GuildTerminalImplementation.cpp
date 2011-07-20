@@ -8,13 +8,13 @@
 
 #include "GuildTerminal.h"
 #include "server/zone/ZoneServer.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 
-void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (guildObject == NULL) {
 		ManagedReference<BuildingObject*> building = (BuildingObject*) getParentRecursively(SceneObject::BUILDING);
 
@@ -66,7 +66,7 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 	return;
 }
 
-int GuildTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	Locker _lock(_this);
 
 	ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();

@@ -49,7 +49,7 @@ import engine.core.ManagedObject;
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.tangible.terminal.vendor.bazaar.BazaarTerminal;
 import server.zone.objects.area.ActiveArea;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.building.city.CityHallObject;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.StringId;
@@ -83,15 +83,15 @@ class Region extends ActiveArea {
 		}
 		
 		if (object.isPlayerCreature()) {
-			sendGreetingMessage((PlayerCreature) object);
+			sendGreetingMessage((CreatureObject) object);
 		}
 		
 		//object planetmapcat is shuttleport, then add to shuttleports vector.
 		//otherwise, die
 	}
 	
-	public native void sendGreetingMessage(PlayerCreature player);
-	public native void sendDepartingMessage(PlayerCreature player);
+	public native void sendGreetingMessage(CreatureObject player);
+	public native void sendDepartingMessage(CreatureObject player);
 	
 	public void notifyExit(SceneObject object) {
 		if (object.isTerminal()) {
@@ -102,7 +102,7 @@ class Region extends ActiveArea {
 		}
 		
 		if (object.isPlayerCreature()) {
-			sendDepartingMessage((PlayerCreature) object);
+			sendDepartingMessage((CreatureObject) object);
 		}
 	}
 	

@@ -10,11 +10,11 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "system/util/VectorMap.h"
 
-int FireworkObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FireworkObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (player == NULL)
 		return 0;
 
@@ -26,7 +26,7 @@ int FireworkObjectImplementation::handleObjectMenuSelect(PlayerCreature* player,
 }
 
 
-void FireworkObjectImplementation::launch(PlayerCreature* player) {
+void FireworkObjectImplementation::launch(CreatureObject* player) {
 	if (player == NULL)
 		return;
 

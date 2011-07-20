@@ -6,7 +6,7 @@
  */
 
 #include "VendorTerminal.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/managers/vendor/VendorManager.h"
@@ -40,7 +40,7 @@ void VendorTerminalImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 }
 
-void VendorTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void VendorTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!vendor.isInitialized())
 		TerminalImplementation::fillObjectMenuResponse(menuResponse, player);
 
@@ -79,7 +79,7 @@ void VendorTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* me
 
 }
 
-int VendorTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VendorTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	switch (selectedID) {
 	case 241: {
 		VendorManager::instance()->handleDisplayStatus(player, &vendor);

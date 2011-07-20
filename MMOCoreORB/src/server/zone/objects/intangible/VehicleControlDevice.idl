@@ -48,12 +48,13 @@ import engine.lua.LuaObject;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.creature.VehicleObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import system.lang.System;
 include server.zone.managers.radial.RadialOptions;
+import server.zone.objects.creature.CreatureObject;
 
 
 class VehicleControlDevice extends ControlDevice {
@@ -63,11 +64,11 @@ class VehicleControlDevice extends ControlDevice {
 		Logger.setGlobalLogging(true);
 	}
 	
-	public native void storeObject(PlayerCreature player);
+	public native void storeObject(CreatureObject player);
 	
-	public native void generateObject(PlayerCreature player);
+	public native void generateObject(CreatureObject player);
 	
-	public int handleObjectMenuSelect(PlayerCreature player, byte selectedID) {
+	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		Logger.info("selected call");
 		
 		if (selectedID == RadialOptions.VEHICLE_GENERATE) {
@@ -108,7 +109,7 @@ class VehicleControlDevice extends ControlDevice {
 	 * @post { this is locked }
 	 * @returns 0 on succes, != 0 on error
 	 */
-	public native int canBeDestroyed(PlayerCreature player);
+	public native int canBeDestroyed(CreatureObject player);
 	
 }
 

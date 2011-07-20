@@ -74,7 +74,7 @@ public:
 		session->startPlayingMusic(song, instrumentAnimation, intid);
 	}
 
-	static void sendAvailableSongs(PlayerCreature* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::MUSIC_START) {
+	static void sendAvailableSongs(CreatureObject* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::MUSIC_START) {
 		Reference<SuiListBox*> sui = new SuiListBox(player, suiType);
 		sui->setPromptTitle("@performance:available_songs");
 		sui->setPromptText("@performance:select_song");
@@ -95,7 +95,7 @@ public:
 			}
 		}
 
-		player->addSuiBox(sui);
+		player->getPlayerObject()->addSuiBox(sui);
 
 		player->sendMessage(sui->generateMessage());
 
@@ -113,7 +113,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());

@@ -62,16 +62,16 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -168,9 +168,9 @@ public:
 
 	int redeedStructure(CreatureObject* creature);
 
-	int declareResidence(PlayerCreature* player, StructureObject* structureObject);
+	int declareResidence(CreatureObject* player, StructureObject* structureObject);
 
-	int changePrivacy(PlayerCreature* player, StructureObject* structureObject);
+	int changePrivacy(CreatureObject* player, StructureObject* structureObject);
 
 	String getTimeString(unsigned int timestamp);
 
@@ -228,9 +228,9 @@ public:
 
 	int redeedStructure(CreatureObject* creature);
 
-	int declareResidence(PlayerCreature* player, StructureObject* structureObject);
+	int declareResidence(CreatureObject* player, StructureObject* structureObject);
 
-	int changePrivacy(PlayerCreature* player, StructureObject* structureObject);
+	int changePrivacy(CreatureObject* player, StructureObject* structureObject);
 
 	String getTimeString(unsigned int timestamp);
 
@@ -289,9 +289,9 @@ public:
 
 	int redeedStructure(CreatureObject* creature);
 
-	int declareResidence(PlayerCreature* player, StructureObject* structureObject);
+	int declareResidence(CreatureObject* player, StructureObject* structureObject);
 
-	int changePrivacy(PlayerCreature* player, StructureObject* structureObject);
+	int changePrivacy(CreatureObject* player, StructureObject* structureObject);
 
 	String getTimeString(unsigned int timestamp);
 

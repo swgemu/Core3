@@ -103,7 +103,7 @@ public:
 			 objectName->getFullPath(targetName);
 		}
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		ManagedReference<SuiListBox*> sui = new SuiListBox(player, SuiWindowType::MEDIC_DIAGNOSE);
 		StringBuffer title;
@@ -155,7 +155,7 @@ public:
 		battlefatigue << "Battle Fatigue -- " << creatureTarget->getShockWounds();
 		sui->addMenuItem(battlefatigue.toString());
 
-		player->addSuiBox(sui);
+		player->getPlayerObject()->addSuiBox(sui);
 		player->sendMessage(sui->generateMessage());
 
 		return SUCCESS;

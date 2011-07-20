@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/Zone.h"
 
@@ -18,7 +18,7 @@
  *	ElevatorTerminalStub
  */
 
-enum {RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISELEVATORTERMINAL__,RPC_SETELEVATORUP__ELEVATORTERMINAL_,RPC_SETELEVATORDOWN__ELEVATORTERMINAL_,RPC_GETELEVATORUP__,RPC_GETELEVATORDOWN__};
+enum {RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISELEVATORTERMINAL__,RPC_SETELEVATORUP__ELEVATORTERMINAL_,RPC_SETELEVATORDOWN__ELEVATORTERMINAL_,RPC_GETELEVATORUP__,RPC_GETELEVATORDOWN__};
 
 ElevatorTerminal::ElevatorTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	ElevatorTerminalImplementation* _implementation = new ElevatorTerminalImplementation();
@@ -42,13 +42,13 @@ void ElevatorTerminal::notifyInsert(QuadTreeEntry* obj) {
 		_implementation->notifyInsert(obj);
 }
 
-void ElevatorTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void ElevatorTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -57,13 +57,13 @@ void ElevatorTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, 
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int ElevatorTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int ElevatorTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	ElevatorTerminalImplementation* _implementation = (ElevatorTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -335,11 +335,11 @@ Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
+		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_ISELEVATORTERMINAL__:
 		resp->insertBoolean(isElevatorTerminal());
@@ -363,11 +363,11 @@ Packet* ElevatorTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	return resp;
 }
 
-void ElevatorTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void ElevatorTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	((ElevatorTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
-int ElevatorTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int ElevatorTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((ElevatorTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

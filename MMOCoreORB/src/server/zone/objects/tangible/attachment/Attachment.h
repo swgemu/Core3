@@ -42,16 +42,30 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -117,7 +131,7 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void setSkillModCount(int modCount);
 
@@ -133,7 +147,7 @@ public:
 
 	void addSkillMod(const String& skillModType, int skillModValue);
 
-	bool removeAttachment(PlayerCreature* player);
+	bool removeAttachment(CreatureObject* player);
 
 	void generateSkillMods();
 
@@ -196,7 +210,7 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void setSkillModCount(int modCount);
 
@@ -212,7 +226,7 @@ public:
 
 	void addSkillMod(const String& skillModType, int skillModValue);
 
-	bool removeAttachment(PlayerCreature* player);
+	bool removeAttachment(CreatureObject* player);
 
 	void generateSkillMods();
 
@@ -285,7 +299,7 @@ public:
 
 	void addSkillMod(const String& skillModType, int skillModValue);
 
-	bool removeAttachment(PlayerCreature* player);
+	bool removeAttachment(CreatureObject* player);
 
 	void generateSkillMods();
 

@@ -51,11 +51,11 @@ which carries forward this exception.
 
 class UpdateToolCountdownTask : public Task {
 	ManagedReference<CraftingTool* > craftingTool;
-	ManagedReference<PlayerCreature* > player;
+	ManagedReference<CreatureObject* > player;
 	int timeLeft;
 
 public:
-	UpdateToolCountdownTask(PlayerCreature* pl, CraftingTool* tool, int time) : Task() {
+	UpdateToolCountdownTask(CreatureObject* pl, CraftingTool* tool, int time) : Task() {
 		craftingTool = tool;
 		player = pl;
 		timeLeft = time;

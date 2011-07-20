@@ -28,16 +28,30 @@ using namespace server::zone::objects::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "engine/lua/LuaObject.h"
 
@@ -55,7 +69,7 @@ namespace resourcedeedlistbox {
 
 class ResourceDeedListBox : public SuiListBox {
 public:
-	ResourceDeedListBox(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType = 0);
+	ResourceDeedListBox(CreatureObject* player, unsigned int windowType, unsigned int listBoxType = 0);
 
 	void initializeTransientMembers();
 
@@ -109,7 +123,7 @@ class ResourceDeedListBoxImplementation : public SuiListBoxImplementation {
 	Vector<String> boxes;
 
 public:
-	ResourceDeedListBoxImplementation(PlayerCreature* player, unsigned int windowType, unsigned int listBoxType = 0);
+	ResourceDeedListBoxImplementation(CreatureObject* player, unsigned int windowType, unsigned int listBoxType = 0);
 
 	ResourceDeedListBoxImplementation(DummyConstructorParameter* param);
 

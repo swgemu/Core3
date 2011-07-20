@@ -48,7 +48,7 @@ import engine.core.ManagedObject;
 import engine.log.Logger;
 import server.zone.ZoneServer;
 
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.scene.SceneObject;
 
@@ -58,7 +58,7 @@ class RadialManager extends ManagedObject implements Logger {
 	
 	public native RadialManager(ZoneServer server);
 	
-	public native void handleObjectMenuSelect(PlayerCreature player, byte selectID, unsigned long objectID);
-	public native void handleObjectMenuRequest(PlayerCreature player, ObjectMenuResponse defaultMenuResponse, unsigned long objectID);
+	public native void handleObjectMenuSelect(CreatureObject player, byte selectID, unsigned long objectID);
+	public native void handleObjectMenuRequest(CreatureObject player, ObjectMenuResponse defaultMenuResponse, unsigned long objectID);
 	
 }

@@ -6,13 +6,13 @@
  */
 
 #include "InformantCreature.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 void InformantCreatureImplementation::sendConversationStartTo(SceneObject* player) {
 	if (!player->isPlayerCreature())
 		return;
 
-	PlayerCreature* playerCreature = (PlayerCreature*)player;
+	CreatureObject* playerCreature = (CreatureObject*)player;
 
 	if (playerCreature->getObserverCount(ObserverEventType::CONVERSE) <= 0)
 		sendDefaultConversationTo(player);

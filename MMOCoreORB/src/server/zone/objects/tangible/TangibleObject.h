@@ -28,16 +28,16 @@ using namespace server::zone::packets::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -238,9 +238,9 @@ public:
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
-	void decreaseUseCount(PlayerCreature* player = NULL);
+	void decreaseUseCount(CreatureObject* player = NULL);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void clearCombatState(bool clearDefenders = true);
 
@@ -248,9 +248,9 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	bool isAggressiveTo(PlayerCreature* object);
+	bool isAggressiveTo(CreatureObject* object);
 
-	void sendPvpStatusTo(PlayerCreature* player);
+	void sendPvpStatusTo(CreatureObject* player);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
@@ -510,9 +510,9 @@ public:
 
 	virtual void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
-	void decreaseUseCount(PlayerCreature* player = NULL);
+	void decreaseUseCount(CreatureObject* player = NULL);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	virtual void clearCombatState(bool clearDefenders = true);
 
@@ -520,9 +520,9 @@ public:
 
 	virtual bool isAttackableBy(CreatureObject* object);
 
-	virtual bool isAggressiveTo(PlayerCreature* object);
+	virtual bool isAggressiveTo(CreatureObject* object);
 
-	virtual void sendPvpStatusTo(PlayerCreature* player);
+	virtual void sendPvpStatusTo(CreatureObject* player);
 
 	virtual int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient = true);
 
@@ -687,7 +687,7 @@ public:
 
 	void setUseCount(unsigned int newUseCount, bool notifyClient);
 
-	void decreaseUseCount(PlayerCreature* player);
+	void decreaseUseCount(CreatureObject* player);
 
 	void clearCombatState(bool clearDefenders);
 
@@ -695,9 +695,9 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
-	bool isAggressiveTo(PlayerCreature* object);
+	bool isAggressiveTo(CreatureObject* object);
 
-	void sendPvpStatusTo(PlayerCreature* player);
+	void sendPvpStatusTo(CreatureObject* player);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, int damage, bool destroy, bool notifyClient);
 

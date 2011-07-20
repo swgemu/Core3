@@ -4,13 +4,15 @@
 
 #include "ShipControlDevice.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	ShipControlDeviceStub
  */
 
-enum {RPC_STOREOBJECT__PLAYERCREATURE_ = 6,RPC_GENERATEOBJECT__PLAYERCREATURE_};
+enum {RPC_STOREOBJECT__CREATUREOBJECT_ = 6,RPC_GENERATEOBJECT__CREATUREOBJECT_};
 
 ShipControlDevice::ShipControlDevice() : ControlDevice(DummyConstructorParameter::instance()) {
 	ShipControlDeviceImplementation* _implementation = new ShipControlDeviceImplementation();
@@ -25,13 +27,13 @@ ShipControlDevice::~ShipControlDevice() {
 }
 
 
-void ShipControlDevice::storeObject(PlayerCreature* player) {
+void ShipControlDevice::storeObject(CreatureObject* player) {
 	ShipControlDeviceImplementation* _implementation = (ShipControlDeviceImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_STOREOBJECT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_STOREOBJECT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -39,13 +41,13 @@ void ShipControlDevice::storeObject(PlayerCreature* player) {
 		_implementation->storeObject(player);
 }
 
-void ShipControlDevice::generateObject(PlayerCreature* player) {
+void ShipControlDevice::generateObject(CreatureObject* player) {
 	ShipControlDeviceImplementation* _implementation = (ShipControlDeviceImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GENERATEOBJECT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GENERATEOBJECT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -183,10 +185,10 @@ ShipControlDeviceImplementation::ShipControlDeviceImplementation() {
 	Logger::setLoggingName("ShipControlDevice");
 }
 
-void ShipControlDeviceImplementation::storeObject(PlayerCreature* player) {
+void ShipControlDeviceImplementation::storeObject(CreatureObject* player) {
 }
 
-void ShipControlDeviceImplementation::generateObject(PlayerCreature* player) {
+void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 }
 
 /*
@@ -200,11 +202,11 @@ Packet* ShipControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_STOREOBJECT__PLAYERCREATURE_:
-		storeObject((PlayerCreature*) inv->getObjectParameter());
+	case RPC_STOREOBJECT__CREATUREOBJECT_:
+		storeObject((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_GENERATEOBJECT__PLAYERCREATURE_:
-		generateObject((PlayerCreature*) inv->getObjectParameter());
+	case RPC_GENERATEOBJECT__CREATUREOBJECT_:
+		generateObject((CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -213,11 +215,11 @@ Packet* ShipControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	return resp;
 }
 
-void ShipControlDeviceAdapter::storeObject(PlayerCreature* player) {
+void ShipControlDeviceAdapter::storeObject(CreatureObject* player) {
 	((ShipControlDeviceImplementation*) impl)->storeObject(player);
 }
 
-void ShipControlDeviceAdapter::generateObject(PlayerCreature* player) {
+void ShipControlDeviceAdapter::generateObject(CreatureObject* player) {
 	((ShipControlDeviceImplementation*) impl)->generateObject(player);
 }
 

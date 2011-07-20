@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "../../../managers/group/GroupManager.h"
 #include "server/zone/ZoneServer.h"
-#include "../../player/PlayerCreature.h"
+#include "../../creature/CreatureObject.h"
 
 class InviteCommand : public QueueCommand {
 public:
@@ -77,7 +77,7 @@ public:
 
 
 		if (object->isPlayerCreature()) {
-			PlayerCreature* player = (PlayerCreature*) object.get();
+			CreatureObject* player = (CreatureObject*) object.get();
 
 			groupManager->inviteToGroup(creature, player);
 		}

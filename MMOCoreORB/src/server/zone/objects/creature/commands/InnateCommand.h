@@ -71,7 +71,7 @@ public:
 		if (!args.hasMoreTokens())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 		ManagedReference<PlayerObject*> po = player->getPlayerObject();
 
 		String innateCommand;

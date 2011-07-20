@@ -55,7 +55,7 @@ using namespace server::zone::objects::tangible;
 
 #include "engine/core/ManagedObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
@@ -80,9 +80,9 @@ namespace player {
 
 class CreateVendorSession : public Facade {
 public:
-	CreateVendorSession(PlayerCreature* parent);
+	CreateVendorSession(CreatureObject* parent);
 
-	void initalizeWindow(PlayerCreature* pl);
+	void initalizeWindow(CreatureObject* pl);
 
 	void handleMenuSelect(byte menuID);
 
@@ -120,7 +120,7 @@ namespace player {
 
 class CreateVendorSessionImplementation : public FacadeImplementation {
 protected:
-	ManagedWeakReference<PlayerCreature* > player;
+	ManagedWeakReference<CreatureObject* > player;
 
 	ManagedWeakReference<SceneObject* > vendor;
 
@@ -136,11 +136,11 @@ private:
 	String templatePath;
 
 public:
-	CreateVendorSessionImplementation(PlayerCreature* parent);
+	CreateVendorSessionImplementation(CreatureObject* parent);
 
 	CreateVendorSessionImplementation(DummyConstructorParameter* param);
 
-	void initalizeWindow(PlayerCreature* pl);
+	void initalizeWindow(CreatureObject* pl);
 
 	void handleMenuSelect(byte menuID);
 
@@ -195,7 +195,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void initalizeWindow(PlayerCreature* pl);
+	void initalizeWindow(CreatureObject* pl);
 
 	void handleMenuSelect(byte menuID);
 

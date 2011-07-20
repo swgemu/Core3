@@ -47,7 +47,7 @@ package server.zone.objects.tangible.terminal.structure;
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.structure.StructureObject;
 import engine.lua.LuaObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 
@@ -77,7 +77,7 @@ class StructureTerminal extends Terminal {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	/**
 	 * Fills the radial options, needs to be overriden
@@ -86,5 +86,5 @@ class StructureTerminal extends Terminal {
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	@local
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 }

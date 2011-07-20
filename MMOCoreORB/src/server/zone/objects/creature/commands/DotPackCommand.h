@@ -89,7 +89,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		int amount = (int)round((float)power);
 
@@ -206,7 +206,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return 0;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		int wpnMind = 150;
 

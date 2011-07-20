@@ -15,10 +15,10 @@
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/minigames/FishingManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 
-void FishingPoleObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void FishingPoleObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);
 
 	alm->insertAttribute("quality", String::valueOf(quality));
@@ -35,7 +35,7 @@ int FishingPoleObjectImplementation::canAddObject(SceneObject* object, int conta
 	return TransferErrorCode::BAITONLY;
 }
 
-void FishingPoleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void FishingPoleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 	String text = getText(player);
 	menuResponse->addRadialMenuItem(245, 3, text);
@@ -43,7 +43,7 @@ void FishingPoleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 	menuResponse.addRadialMenuItem(20, 3, text);*/
 }
 
-int FishingPoleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FishingPoleObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 245) {
 		doFishing(player);
 	}
@@ -51,7 +51,7 @@ int FishingPoleObjectImplementation::handleObjectMenuSelect(PlayerCreature* play
 	return 0;
 }
 
-void FishingPoleObjectImplementation::doFishing(PlayerCreature* player) {
+void FishingPoleObjectImplementation::doFishing(CreatureObject* player) {
 	ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
 
 	if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
@@ -62,7 +62,7 @@ void FishingPoleObjectImplementation::doFishing(PlayerCreature* player) {
 	}
 }
 
-String FishingPoleObjectImplementation::getText(PlayerCreature* player) {
+String FishingPoleObjectImplementation::getText(CreatureObject* player) {
 	ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
 	String text = "@fishing:mnu_start_fishing";
 
@@ -76,7 +76,7 @@ String FishingPoleObjectImplementation::getText(PlayerCreature* player) {
 bool FishingPoleObjectImplementation::removeObject(SceneObject* object, bool notifyClient) {
 	ManagedReference<FishingManager*> manager = server->getZoneServer()->getFishingManager();
 	if ((parent.get() != NULL) && (parent.get()->isPlayerCreature())) {
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*)parent.get();
+		ManagedReference<CreatureObject*> player = (CreatureObject*)parent.get();
 		if ((player != NULL) && (object->isFishingBait())) {
 			if (manager->getFishingState(player) != FishingManager::NOTFISHING) {
 				player->sendSystemMessage("Cannot remove bait while fishing pole is in use.");

@@ -46,7 +46,7 @@ package server.zone.objects.tangible.sign;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import engine.lua.LuaObject;
 import server.zone.Zone;
 
@@ -58,9 +58,9 @@ class SignObject extends TangibleObject {
 		Logger.setLoggingName("SignObject");
 	}
 
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
-	public native void sendSignNameTo(PlayerCreature player);
+	public native void sendSignNameTo(CreatureObject player);
 	
 	public boolean isSignObject() {
 		return true;

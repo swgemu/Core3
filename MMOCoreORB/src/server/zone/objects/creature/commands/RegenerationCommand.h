@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		uint32 buffcrc = BuffCRC::INNATE_BUFF_REGENERATION; // 0xD1514A47
 

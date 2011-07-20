@@ -7,7 +7,7 @@
 
 #include "VehicleObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -18,7 +18,7 @@
 #include "server/zone/objects/building/city/CityHallObject.h"
 
 
-void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!player->getPlayerObject()->isPrivileged() && linkedCreature != player)
 		return;
 
@@ -53,7 +53,7 @@ bool VehicleObjectImplementation::checkInRangeGarage() {
 }
 
 
-int VehicleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int VehicleObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 61 && linkedCreature == player) {
 		unlock();
 
@@ -67,7 +67,7 @@ int VehicleObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 	return 0;
 }
 
-void VehicleObjectImplementation::repairVehicle(PlayerCreature* player) {
+void VehicleObjectImplementation::repairVehicle(CreatureObject* player) {
 	if (!player->getPlayerObject()->isPrivileged()) {
 		//Need to check if they are city banned.
 		/*
@@ -103,7 +103,7 @@ void VehicleObjectImplementation::repairVehicle(PlayerCreature* player) {
 	sendRepairConfirmTo(player);
 }
 
-void VehicleObjectImplementation::sendRepairConfirmTo(PlayerCreature* player) {
+void VehicleObjectImplementation::sendRepairConfirmTo(CreatureObject* player) {
 	ManagedReference<SuiListBox*> listbox = new SuiListBox(player, SuiWindowType::GARAGE_REPAIR);
 	listbox->setPromptTitle("@pet/pet_menu:confirm_repairs_t"); //Confirm Vehicle Repairs
 	listbox->setPromptText("@pet/pet_menu:vehicle_repair_d"); //You have chosen to repair your vehicle. Please review the listed details and confirm your selection.
@@ -117,11 +117,11 @@ void VehicleObjectImplementation::sendRepairConfirmTo(PlayerCreature* player) {
 	listbox->addMenuItem("@pet/pet_menu:repair_cost_prompt " + String::valueOf(repairCost)); //Repair Cost:
 	listbox->addMenuItem("@pet/pet_menu:total_funds_prompt " + String::valueOf(totalFunds)); //Total Funds Available:
 
-	player->addSuiBox(listbox);
+	player->getPlayerObject()->addSuiBox(listbox);
 	player->sendMessage(listbox->generateMessage());
 }
 
-int VehicleObjectImplementation::calculateRepairCost(PlayerCreature* player) {
+int VehicleObjectImplementation::calculateRepairCost(CreatureObject* player) {
 	if (player->getPlayerObject()->isPrivileged())
 		return 0;
 

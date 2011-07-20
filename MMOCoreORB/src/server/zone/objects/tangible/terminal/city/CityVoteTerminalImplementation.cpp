@@ -7,13 +7,13 @@
 
 
 #include "CityVoteTerminal.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
-void CityVoteTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void CityVoteTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
 }
 
-int CityVoteTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CityVoteTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return 0;
 }

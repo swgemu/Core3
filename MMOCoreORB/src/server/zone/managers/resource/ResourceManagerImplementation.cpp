@@ -198,7 +198,7 @@ void ResourceManagerImplementation::shiftResources() {
 	resourceShift->schedule(shiftInterval);
 }
 
-void ResourceManagerImplementation::sendResourceListForSurvey(PlayerCreature* playerCreature, const int toolType, const String& surveyType) {
+void ResourceManagerImplementation::sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType) {
 	rlock();
 
 	try {
@@ -212,24 +212,24 @@ void ResourceManagerImplementation::sendResourceListForSurvey(PlayerCreature* pl
 	runlock();
 }
 
-ResourceContainer* ResourceManagerImplementation::harvestResource(PlayerCreature* player, const String& type, const int quantity) {
+ResourceContainer* ResourceManagerImplementation::harvestResource(CreatureObject* player, const String& type, const int quantity) {
 	return resourceSpawner->harvestResource(player, type, quantity);
 }
-void ResourceManagerImplementation::harvestResourceToPlayer(PlayerCreature* player, ResourceSpawn* resourceSpawn, const int quantity) {
+void ResourceManagerImplementation::harvestResourceToPlayer(CreatureObject* player, ResourceSpawn* resourceSpawn, const int quantity) {
 	resourceSpawner->harvestResource(player, resourceSpawn, quantity);
 }
 
-void ResourceManagerImplementation::sendSurvey(PlayerCreature* playerCreature, const String& resname) {
+void ResourceManagerImplementation::sendSurvey(CreatureObject* playerCreature, const String& resname) {
 	resourceSpawner->sendSurvey(playerCreature, resname);
 }
 
-void ResourceManagerImplementation::sendSample(PlayerCreature* playerCreature, const String& resname, const String& sampleAnimation) {
+void ResourceManagerImplementation::sendSample(CreatureObject* playerCreature, const String& resname, const String& sampleAnimation) {
 	resourceSpawner->sendSample(playerCreature, resname, sampleAnimation);
 
 	playerCreature->registerObserver(ObserverEventType::POSTURECHANGED, _this);
 }
 
-void ResourceManagerImplementation::createResourceSpawn(PlayerCreature* playerCreature, const String& restype) {
+void ResourceManagerImplementation::createResourceSpawn(CreatureObject* playerCreature, const String& restype) {
 	Locker _locker(_this);
 
 	ResourceSpawn* resourceSpawn = resourceSpawner->manualCreateResourceSpawn(restype);
@@ -304,7 +304,7 @@ void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReferenc
 	runlock();
 }
 
-uint32 ResourceManagerImplementation::getAvailablePowerFromPlayer(PlayerCreature* player) {
+uint32 ResourceManagerImplementation::getAvailablePowerFromPlayer(CreatureObject* player) {
 	SceneObject* inventory = player->getSlottedObject("inventory");
 	uint32 power = 0;
 
@@ -331,7 +331,7 @@ uint32 ResourceManagerImplementation::getAvailablePowerFromPlayer(PlayerCreature
 	return power;
 }
 
-void ResourceManagerImplementation::removePowerFromPlayer(PlayerCreature* player, uint32 power) {
+void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player, uint32 power) {
 	if (power == 0)
 		return;
 
@@ -376,7 +376,7 @@ void ResourceManagerImplementation::removePowerFromPlayer(PlayerCreature* player
 		power -= containerPower;
 	}
 }
-void ResourceManagerImplementation::givePlayerResource(PlayerCreature* playerCreature, const String& restype, const int quantity) {
+void ResourceManagerImplementation::givePlayerResource(CreatureObject* playerCreature, const String& restype, const int quantity) {
 	ManagedReference<ResourceSpawn* > spawn = getResourceSpawn(restype);
 
 	if(spawn == NULL) {

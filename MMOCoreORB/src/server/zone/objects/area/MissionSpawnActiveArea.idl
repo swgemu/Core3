@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.objects.area;
 
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.mission.DestroyMissionObjective;
 
@@ -68,9 +68,9 @@ class MissionSpawnActiveArea extends ActiveArea {
 			if (destroyMissionObjective != null) {
 				//Logger.info("objective not null", true);
 				
-				PlayerCreature missionOwner = destroyMissionObjective.getPlayerOwner();
+				CreatureObject missionOwner = destroyMissionObjective.getPlayerOwner();
 				
-				if ((PlayerCreature) player == missionOwner) {
+				if ((CreatureObject) player == missionOwner) {
 					//Logger.info("player == missionOwner", true);
 					destroyMissionObjective.spawnLair();
 					

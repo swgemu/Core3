@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 #include "FactionMap.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class FactionMap;
 
@@ -43,7 +43,7 @@ public:
 	 * @param player The player receiving the faction points for the kill.
 	 * @param faction The string key of the faction that was killed.
 	 */
-	void awardFactionStanding(PlayerCreature* player, const String& factionName);
+	void awardFactionStanding(CreatureObject* player, const String& factionName);
 
 	void awardFactionPoints(TangibleObject* killer, TangibleObject* destructedObject);
 

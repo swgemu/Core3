@@ -8,13 +8,13 @@
 
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	GuildObjectStub
  */
 
-enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__LONG_,RPC_REMOVEMEMBER__LONG_,RPC_HASMEMBER__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_HASSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDPLAYER__INT_,RPC_GETSPONSOREDPLAYERCOUNT__,RPC_SETCHATROOM__CHATROOM_,RPC_GETCHATROOM__,RPC_GETTOTALMEMBERS__,RPC_GETGUILDLEADERID__,RPC_GETGUILDABBREV__,RPC_SETGUILDABBREV__STRING_,RPC_SETGUILDLEADERID__LONG_,RPC_SETGUILDID__INT_,RPC_GETGUILDID__,RPC_SETGUILDNAME__STRING_,RPC_GETGUILDNAME__,RPC_GETGUILDKEY__,RPC_ISGUILDOBJECT__,RPC_ISGUILDLEADER__PLAYERCREATURE_,RPC_HASMAILPERMISSION__LONG_,RPC_HASSPONSORPERMISSION__LONG_,RPC_HASACCEPTPERMISSION__LONG_,RPC_HASDISBANDPERMISSION__LONG_,RPC_HASKICKPERMISSION__LONG_,RPC_HASNAMEPERMISSION__LONG_,RPC_HASTITLEPERMISSION__LONG_};
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_ADDMEMBER__LONG_,RPC_REMOVEMEMBER__LONG_,RPC_HASMEMBER__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_HASSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDPLAYER__INT_,RPC_GETSPONSOREDPLAYERCOUNT__,RPC_SETCHATROOM__CHATROOM_,RPC_GETCHATROOM__,RPC_GETTOTALMEMBERS__,RPC_GETGUILDLEADERID__,RPC_GETGUILDABBREV__,RPC_SETGUILDABBREV__STRING_,RPC_SETGUILDLEADERID__LONG_,RPC_SETGUILDID__INT_,RPC_GETGUILDID__,RPC_SETGUILDNAME__STRING_,RPC_GETGUILDNAME__,RPC_GETGUILDKEY__,RPC_ISGUILDOBJECT__,RPC_ISGUILDLEADER__CREATUREOBJECT_,RPC_HASMAILPERMISSION__LONG_,RPC_HASSPONSORPERMISSION__LONG_,RPC_HASACCEPTPERMISSION__LONG_,RPC_HASDISBANDPERMISSION__LONG_,RPC_HASKICKPERMISSION__LONG_,RPC_HASNAMEPERMISSION__LONG_,RPC_HASTITLEPERMISSION__LONG_};
 
 GuildObject::GuildObject() : SceneObject(DummyConstructorParameter::instance()) {
 	GuildObjectImplementation* _implementation = new GuildObjectImplementation();
@@ -57,13 +57,13 @@ void GuildObject::broadcastMessage(BaseMessage* msg) {
 		_implementation->broadcastMessage(msg);
 }
 
-void GuildObject::broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf) {
+void GuildObject::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
 	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_);
+		DistributedMethod method(this, RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(msg);
 		method.addBooleanParameter(sendSelf);
@@ -379,13 +379,13 @@ bool GuildObject::isGuildObject() {
 		return _implementation->isGuildObject();
 }
 
-bool GuildObject::isGuildLeader(PlayerCreature* player) {
+bool GuildObject::isGuildLeader(CreatureObject* player) {
 	GuildObjectImplementation* _implementation = (GuildObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISGUILDLEADER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ISGUILDLEADER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -823,7 +823,7 @@ bool GuildObjectImplementation::isGuildObject() {
 	return true;
 }
 
-bool GuildObjectImplementation::isGuildLeader(PlayerCreature* player) {
+bool GuildObjectImplementation::isGuildLeader(CreatureObject* player) {
 	// server/zone/objects/guild/GuildObject.idl():  		return (guildLeaderID == player.getObjectID());
 	return (guildLeaderID == player->getObjectID());
 }
@@ -845,8 +845,8 @@ Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_BROADCASTMESSAGE__BASEMESSAGE_:
 		broadcastMessage((BaseMessage*) inv->getObjectParameter());
 		break;
-	case RPC_BROADCASTMESSAGE__PLAYERCREATURE_BASEMESSAGE_BOOL_:
-		broadcastMessage((PlayerCreature*) inv->getObjectParameter(), (BaseMessage*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_:
+		broadcastMessage((CreatureObject*) inv->getObjectParameter(), (BaseMessage*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_ADDMEMBER__LONG_:
 		addMember(inv->getUnsignedLongParameter());
@@ -911,8 +911,8 @@ Packet* GuildObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_ISGUILDOBJECT__:
 		resp->insertBoolean(isGuildObject());
 		break;
-	case RPC_ISGUILDLEADER__PLAYERCREATURE_:
-		resp->insertBoolean(isGuildLeader((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_ISGUILDLEADER__CREATUREOBJECT_:
+		resp->insertBoolean(isGuildLeader((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_HASMAILPERMISSION__LONG_:
 		resp->insertBoolean(hasMailPermission(inv->getUnsignedLongParameter()));
@@ -950,7 +950,7 @@ void GuildObjectAdapter::broadcastMessage(BaseMessage* msg) {
 	((GuildObjectImplementation*) impl)->broadcastMessage(msg);
 }
 
-void GuildObjectAdapter::broadcastMessage(PlayerCreature* player, BaseMessage* msg, bool sendSelf) {
+void GuildObjectAdapter::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
 	((GuildObjectImplementation*) impl)->broadcastMessage(player, msg, sendSelf);
 }
 
@@ -1038,7 +1038,7 @@ bool GuildObjectAdapter::isGuildObject() {
 	return ((GuildObjectImplementation*) impl)->isGuildObject();
 }
 
-bool GuildObjectAdapter::isGuildLeader(PlayerCreature* player) {
+bool GuildObjectAdapter::isGuildLeader(CreatureObject* player) {
 	return ((GuildObjectImplementation*) impl)->isGuildLeader(player);
 }
 

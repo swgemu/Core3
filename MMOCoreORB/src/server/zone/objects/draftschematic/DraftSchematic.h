@@ -54,16 +54,16 @@ using namespace server::zone::templates;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -106,13 +106,13 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void sendDraftSlotsTo(PlayerCreature* player);
+	void sendDraftSlotsTo(CreatureObject* player);
 
-	void sendResourceWeightsTo(PlayerCreature* player);
+	void sendResourceWeightsTo(CreatureObject* player);
 
 	SceneObject* createManufactureSchematic(SceneObject* craftingTool = NULL);
 
@@ -213,17 +213,17 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void sendDraftSlotsTo(PlayerCreature* player);
+	void sendDraftSlotsTo(CreatureObject* player);
 
 private:
 	void insertIngredients(ObjectControllerMessage* msg);
 
 public:
-	void sendResourceWeightsTo(PlayerCreature* player);
+	void sendResourceWeightsTo(CreatureObject* player);
 
 	SceneObject* createManufactureSchematic(SceneObject* craftingTool = NULL);
 
@@ -324,9 +324,9 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	void sendDraftSlotsTo(PlayerCreature* player);
+	void sendDraftSlotsTo(CreatureObject* player);
 
-	void sendResourceWeightsTo(PlayerCreature* player);
+	void sendResourceWeightsTo(CreatureObject* player);
 
 	SceneObject* createManufactureSchematic(SceneObject* craftingTool);
 

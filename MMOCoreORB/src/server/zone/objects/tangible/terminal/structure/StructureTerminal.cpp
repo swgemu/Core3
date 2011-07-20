@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/structure/StructureObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/Zone.h"
 
@@ -16,7 +16,7 @@
  *	StructureTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,};
 
 StructureTerminal::StructureTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	StructureTerminalImplementation* _implementation = new StructureTerminalImplementation();
@@ -44,13 +44,13 @@ void StructureTerminal::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-int StructureTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StructureTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -59,7 +59,7 @@ int StructureTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selec
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void StructureTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void StructureTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	StructureTerminalImplementation* _implementation = (StructureTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -219,8 +219,8 @@ Packet* StructureTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -233,7 +233,7 @@ void StructureTerminalAdapter::initializeTransientMembers() {
 	((StructureTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
-int StructureTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StructureTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((StructureTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

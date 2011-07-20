@@ -56,8 +56,10 @@ public:
 
 	}
 
-	static void consent(PlayerCreature* player, const String& name) {
-		player->addToConsentList(name);
+	static void consent(CreatureObject* player, const String& name) {
+		PlayerObject* ghost = player->getPlayerObject();
+
+		ghost->addToConsentList(name);
 
 		StringIdChatParameter stringId("base_player", "prose_consent");
 		stringId.setTO(name);
@@ -78,9 +80,11 @@ public:
 
 		//System::out << "past initiali checks ConsentCommand" << endl;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
-		if (player->getConsentListSize() >= 20) {
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost->getConsentListSize() >= 20) {
 			player->sendSystemMessage("You are consenting too many people");
 			return GENERALERROR;
 		}
@@ -105,7 +109,7 @@ public:
 				return INVALIDTARGET;
 			}
 
-			PlayerCreature* playerTarget = (PlayerCreature*) object.get();
+			CreatureObject* playerTarget = (CreatureObject*) object.get();
 
 			consent(player, playerTarget->getFirstName().toLowerCase());
 

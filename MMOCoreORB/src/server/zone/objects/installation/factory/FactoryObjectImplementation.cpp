@@ -67,7 +67,7 @@ void FactoryObjectImplementation::createChildObjects() {
 	addObject(outputHopper, 4);
 }
 
-void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	InstallationObjectImplementation::fillAttributeList(alm, object);
 
 	if (operating && isOnAdminList(object)) {
@@ -79,7 +79,7 @@ void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, P
 	}
 }
 
-void FactoryObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void FactoryObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!isOnAdminList(player))
 		return;
 
@@ -105,7 +105,7 @@ void FactoryObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 	}
 }
 
-int FactoryObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FactoryObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (!isOnAdminList(player))
 		return 1;
 
@@ -137,7 +137,7 @@ int FactoryObjectImplementation::handleObjectMenuSelect(PlayerCreature* player, 
 /*
  * Opens a SUI with all manufacturing schematics available for the player to insert into factory
  */
-void FactoryObjectImplementation::sendInsertManuSui(PlayerCreature* player){
+void FactoryObjectImplementation::sendInsertManuSui(CreatureObject* player){
 
 	ManagedReference<SuiListBox*> schematics = NULL;
 	if(getContainerObjectsSize() == 0) {
@@ -209,7 +209,7 @@ void FactoryObjectImplementation::sendInsertManuSui(PlayerCreature* player){
 	}
 
 	schematics->setUsingObject(_this);
-	player->addSuiBox(schematics);
+	player->getPlayerObject()->addSuiBox(schematics);
 	player->sendMessage(schematics->generateMessage());
 }
 
@@ -223,7 +223,7 @@ void FactoryObjectImplementation::updateInstallationWork() {
 /*
  * Opens a SUI with all manufacturing schematics available for the player to insert into factory
  */
-void FactoryObjectImplementation::sendIngredientsNeededSui(PlayerCreature* player) {
+void FactoryObjectImplementation::sendIngredientsNeededSui(CreatureObject* player) {
 
 	if(getContainerObjectsSize() == 0)
 		return;
@@ -243,12 +243,12 @@ void FactoryObjectImplementation::sendIngredientsNeededSui(PlayerCreature* playe
 	}
 
 	ingredientList->setUsingObject(_this);
-	player->addSuiBox(ingredientList);
+	player->getPlayerObject()->addSuiBox(ingredientList);
 	player->sendMessage(ingredientList->generateMessage());
 
 }
 
-void FactoryObjectImplementation::sendIngredientHopper(PlayerCreature* player) {
+void FactoryObjectImplementation::sendIngredientHopper(CreatureObject* player) {
 
 	ManagedReference<SceneObject*> inputHopper = getSlottedObject("ingredient_hopper");
 
@@ -260,7 +260,7 @@ void FactoryObjectImplementation::sendIngredientHopper(PlayerCreature* player) {
 	inputHopper->openContainerTo(player);
 }
 
-void FactoryObjectImplementation::sendOutputHopper(PlayerCreature* player) {
+void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
 
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
@@ -273,7 +273,7 @@ void FactoryObjectImplementation::sendOutputHopper(PlayerCreature* player) {
 }
 
 void FactoryObjectImplementation::handleInsertFactorySchem(
-		PlayerCreature* player, ManufactureSchematic* schematic) {
+		CreatureObject* player, ManufactureSchematic* schematic) {
 
 	if (schematic == NULL)
 		return;
@@ -311,7 +311,7 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 	player->sendSystemMessage(message);
 }
 
-void FactoryObjectImplementation::handleRemoveFactorySchem(PlayerCreature* player) {
+void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* player) {
 
 	/// pre: player and _this are locked
 
@@ -343,7 +343,7 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(PlayerCreature* playe
 	player->sendSystemMessage(message);
 }
 
-void FactoryObjectImplementation::handleOperateToggle(PlayerCreature* player) {
+void FactoryObjectImplementation::handleOperateToggle(CreatureObject* player) {
 
 	if(!operating) {
 		currentUserName = player->getFirstName();

@@ -132,16 +132,122 @@ using namespace server::zone::templates;
 namespace server {
 namespace zone {
 namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace chat {
+namespace room {
+
+class ChatRoom;
+
+} // namespace room
+} // namespace chat
+} // namespace server
+
+using namespace server::chat::room;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace building {
+
+class BuildingObject;
+
+} // namespace building
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::building;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace tool {
+
+class SurveyTool;
+
+} // namespace tool
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::tool;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace tool {
+
+class CraftingTool;
+
+} // namespace tool
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::tool;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace player {
+namespace events {
 
-class PlayerCreature;
+class PlayerDisconnectEvent;
 
+} // namespace events
 } // namespace player
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::player::events;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace events {
+
+class PlayerRecoveryEvent;
+
+} // namespace events
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player::events;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace sui {
+
+class SuiBox;
+
+} // namespace sui
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player::sui;
 
 #include "server/zone/objects/creature/professions/Certification.h"
 
@@ -167,6 +273,12 @@ using namespace server::zone::objects::player;
 
 #include "server/zone/objects/player/variables/FactionStandingList.h"
 
+#include "server/zone/objects/player/badges/Badges.h"
+
+#include "server/zone/objects/player/TradeContainer.h"
+
+#include "server/zone/objects/player/ValidatedPosition.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"
@@ -178,6 +290,8 @@ using namespace server::zone::objects::player;
 #include "engine/service/proto/BasePacket.h"
 
 #include "engine/service/proto/BaseMessage.h"
+
+#include "system/util/SortedVector.h"
 
 namespace server {
 namespace zone {
@@ -206,9 +320,25 @@ public:
 
 	static const int DEV = 2;
 
+	static const int ONLINE = 1;
+
+	static const int OFFLINE = 2;
+
+	static const int LINKDEAD = 3;
+
+	static const int LOGGINGIN = 4;
+
+	static const int LOGGINGOUT = 5;
+
+	static const int LOADING = 6;
+
 	static const int MAXLOTS = 10;
 
 	PlayerObject();
+
+	void notifyLoadFromDatabase();
+
+	void unload();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -225,6 +355,8 @@ public:
 	int getTotalOwnedStructureCount();
 
 	int getLotsRemaining();
+
+	void notifySceneReady();
 
 	int addExperience(const String& xpType, int xp, bool notifyClient = true);
 
@@ -276,7 +408,67 @@ public:
 
 	float getFactionStanding(const String& factionName);
 
+	WaypointObject* getSurveyWaypoint();
+
+	void activateRecovery();
+
+	void doRecovery();
+
+	void disconnect(bool closeClient, bool doLock);
+
+	void reload(ZoneClientSession* client);
+
+	void setOffline();
+
+	void setLinkDead();
+
+	void setOnline();
+
+	void setLoggingOut();
+
+	void sendBadgesResponseTo(CreatureObject* player);
+
+	void logout(bool doLock);
+
 	FactionStandingList* getFactionStandingList();
+
+	void setLastNpcConvStr(const String& conv);
+
+	void setLastNpcConvMessStr(const String& mess);
+
+	String getLastNpcConvStr();
+
+	String getLastNpcConvMessStr();
+
+	String getLastNpcConvOption(int idx);
+
+	void addLastNpcConvOptions(const String& option);
+
+	int countLastNpcConvOptions();
+
+	void clearLastNpcConvOptions();
+
+	void setConversatingCreature(CreatureObject* creature);
+
+	CreatureObject* getConversatingCreature();
+
+	SortedVector<unsigned long long>* getPersistentMessages();
+
+	void addPersistentMessage(unsigned long long id);
+
+	void dropPersistentMessage(unsigned long long id);
+
+	void unloadSpawnedChildren();
+
+	void addToConsentList(const String& name);
+
+	bool hasInConsentList(const String& name);
+
+	void removeFromConsentList(const String& name);
+
+	String getConsentName(int i);
+
+	int getConsentListSize();
 
 	String getFactionRank();
 
@@ -286,13 +478,91 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
+	BuildingObject* getDeclaredResidence();
+
+	void setDeclaredResidence(BuildingObject* residence);
+
+	void setCloningFacility(BuildingObject* cloningfac);
+
+	BuildingObject* getCloningFacility();
+
 	void notifyOnline();
 
 	void doDigest();
 
 	bool isDigesting();
 
+	String getSavedTerrainName();
+
+	void setSavedParentID(unsigned long long id);
+
+	void setSavedTerrainName(const String& name);
+
+	unsigned long long getSavedParentID();
+
+	unsigned int getNewSuiBoxID(unsigned int type);
+
+	bool hasSuiBox(unsigned int boxID);
+
+	SuiBox* getSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID, bool closeWindowToClient = false);
+
+	void removeSuiBoxType(unsigned int windowType);
+
+	bool hasSuiBoxWindowType(unsigned int windowType);
+
+	void closeSuiWindowType(unsigned int windowType);
+
+	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
+
+	void addSuiBox(SuiBox* sui);
+
+	bool isFirstIncapacitationExpired();
+
+	void resetIncapacitationCounter();
+
+	void resetFirstIncapacitationTime();
+
+	void updateIncapacitationCounter();
+
+	bool isFirstIncapacitation();
+
+	byte getIncapacitationCounter();
+
+	void addToDuelList(CreatureObject* targetPlayer);
+
+	void removeFromDuelList(CreatureObject* targetPlayer);
+
+	CreatureObject* getDuelListObject(int index);
+
+	bool requestedDuelTo(CreatureObject* targetPlayer);
+
+	bool isDuelListEmpty();
+
+	int getDuelListSize();
+
+	UnicodeString getBiography();
+
 	void notifyOffline();
+
+	void setBadge(unsigned int badge);
+
+	void awardBadge(unsigned int badge);
+
+	void setSurveyTool(SurveyTool* tool);
+
+	SurveyTool* getSurveyTool();
+
+	CraftingTool* getLastCraftingToolUsed();
+
+	void setLastCraftingToolUsed(CraftingTool* tool);
+
+	void setTeleporting(bool val);
+
+	int getNumBadges();
+
+	int getBadgeTypeCount(byte type);
 
 	bool hasFriend(const String& name);
 
@@ -317,6 +587,8 @@ public:
 	unsigned int getAdminLevel();
 
 	void setAdminLevel(unsigned int adminlvl);
+
+	void setBiography(const UnicodeString& bio);
 
 	bool isDeveloper();
 
@@ -348,7 +620,7 @@ public:
 
 	DraftSchematic* getSchematic(int i);
 
-	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(PlayerCreature* player, Vector<unsigned int>* enabledTabs, int complexityLevel);
+	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(CreatureObject* player, Vector<unsigned int>* enabledTabs, int complexityLevel);
 
 	int getFoodFilling();
 
@@ -364,11 +636,89 @@ public:
 
 	DeltaVector<String>* getFriendList();
 
+	bool isTeleporting();
+
+	void addChatRoom(ChatRoom* room);
+
+	void removeChatRoom(ChatRoom* room);
+
+	void clearTradeContainer();
+
+	TradeContainer* getTradeContainer();
+
 	DeltaVector<String>* getIgnoreList();
 
 	int getExperience(const String& xp);
 
 	String getCommandMessageString(unsigned int actionCRC);
+
+	bool hasBadge(unsigned int badge);
+
+	void clearDisconnectEvent();
+
+	void clearRecoveryEvent();
+
+	bool isOnline();
+
+	bool isOffline();
+
+	bool isLoading();
+
+	bool isLinkDead();
+
+	bool isLoggingIn();
+
+	bool isLoggingOut();
+
+	void setSkillPoints(int points);
+
+	void addSkillPoints(int points);
+
+	int getSkillPoints();
+
+	ValidatedPosition* getLastValidatedPosition();
+
+	void updateLastValidatedPosition();
+
+	void setSpawnedBlueFrog();
+
+	bool hasSpawnedBlueFrog();
+
+	unsigned int getAccountID();
+
+	unsigned long long getServerMovementTimeDelta();
+
+	Time* getServerMovementTimeStamp();
+
+	void setClientLastMovementStamp(unsigned int stamp);
+
+	void updateServerLastMovementStamp();
+
+	void setAccountID(unsigned int id);
+
+	int getFactionStatus();
+
+	unsigned int getClientLastMovementStamp();
+
+	void setTeachingOrLearning(bool value);
+
+	bool isTeachingOrLearning();
+
+	int getCenteredBonus();
+
+	void setCenteredBonus(int bonus);
+
+	bool isInvisible();
+
+	void setInvisible(bool invis);
+
+	void setHologrindMask(unsigned int mask);
+
+	unsigned int getHologrindMask();
+
+	byte getRaceID();
+
+	void setRaceID(byte race);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -380,8 +730,15 @@ protected:
 	virtual ~PlayerObject();
 
 	String _return_getCommandMessageString;
+	String _return_getConsentName;
 	String _return_getFactionRank;
+	String _return_getLastNpcConvMessStr;
+	String _return_getLastNpcConvOption;
+	String _return_getLastNpcConvStr;
+	String _return_getSavedTerrainName;
 	String _return_getTitle;
+
+	UnicodeString _return_getBiography;
 
 	friend class PlayerObjectHelper;
 };
@@ -404,6 +761,12 @@ protected:
 
 	String title;
 
+	String savedTerrainName;
+
+	unsigned long long savedParentID;
+
+	Badges badges;
+
 	int forcePower;
 
 	int forcePowerMax;
@@ -415,6 +778,8 @@ protected:
 	int drinkFilling;
 
 	int drinkFillingMax;
+
+	bool teleporting;
 
 	SortedVector<ManagedReference<StructureObject* > > ownedStructures;
 
@@ -442,6 +807,74 @@ protected:
 
 	SchematicList schematicList;
 
+	byte incapacitationCounter;
+
+	unsigned int suiBoxNextID;
+
+	VectorMap<unsigned int, ManagedReference<SuiBox* > > suiBoxes;
+
+	SortedVector<ManagedReference<ChatRoom* > > chatRooms;
+
+	TradeContainer tradeContainer;
+
+	SortedVector<ManagedReference<CreatureObject* > > duelList;
+
+	ManagedWeakReference<BuildingObject* > declaredResidence;
+
+	ManagedWeakReference<BuildingObject* > cloningFacility;
+
+	ManagedWeakReference<SurveyTool* > surveyTool;
+
+	ManagedReference<CraftingTool* > lastCraftingToolUsed;
+
+	SortedVector<unsigned long long> persistentMessages;
+
+	UnicodeString biography;
+
+	SortedVector<String> consentList;
+
+	String lastNpcConvoMessage;
+
+	String lastNpcConvo;
+
+	Vector<String> lastNpcConvoOptions;
+
+	ManagedWeakReference<CreatureObject* > conversatingCreature;
+
+	Reference<PlayerDisconnectEvent*> disconnectEvent;
+
+	Reference<PlayerRecoveryEvent*> recoveryEvent;
+
+	Time logoutTimeStamp;
+
+	int onlineStatus;
+
+	int skillPoints;
+
+	bool teachingOrLearning;
+
+	int pvpRating;
+
+	int factionStatus;
+
+	bool spawnedBlueFrog;
+
+	int centeredBonus;
+
+	bool invisible;
+
+	unsigned int holoMask;
+
+	unsigned int clientLastMovementStamp;
+
+	Time serverLastMovementStamp;
+
+	ValidatedPosition lastValidatedPosition;
+
+	unsigned int accountID;
+
+	byte raceID;
+
 public:
 	static const int LFG = 1;
 
@@ -463,6 +896,18 @@ public:
 
 	static const int DEV = 2;
 
+	static const int ONLINE = 1;
+
+	static const int OFFLINE = 2;
+
+	static const int LINKDEAD = 3;
+
+	static const int LOGGINGIN = 4;
+
+	static const int LOGGINGOUT = 5;
+
+	static const int LOADING = 6;
+
 	static const int MAXLOTS = 10;
 
 	PlayerObjectImplementation();
@@ -470,6 +915,10 @@ public:
 	PlayerObjectImplementation(DummyConstructorParameter* param);
 
 	void finalize();
+
+	void notifyLoadFromDatabase();
+
+	void unload();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -486,6 +935,8 @@ public:
 	int getTotalOwnedStructureCount();
 
 	int getLotsRemaining();
+
+	void notifySceneReady();
 
 	int addExperience(const String& xpType, int xp, bool notifyClient = true);
 
@@ -537,7 +988,67 @@ public:
 
 	float getFactionStanding(const String& factionName);
 
+	WaypointObject* getSurveyWaypoint();
+
+	void activateRecovery();
+
+	void doRecovery();
+
+	void disconnect(bool closeClient, bool doLock);
+
+	void reload(ZoneClientSession* client);
+
+	void setOffline();
+
+	void setLinkDead();
+
+	void setOnline();
+
+	void setLoggingOut();
+
+	void sendBadgesResponseTo(CreatureObject* player);
+
+	void logout(bool doLock);
+
 	FactionStandingList* getFactionStandingList();
+
+	void setLastNpcConvStr(const String& conv);
+
+	void setLastNpcConvMessStr(const String& mess);
+
+	String getLastNpcConvStr();
+
+	String getLastNpcConvMessStr();
+
+	String getLastNpcConvOption(int idx);
+
+	void addLastNpcConvOptions(const String& option);
+
+	int countLastNpcConvOptions();
+
+	void clearLastNpcConvOptions();
+
+	void setConversatingCreature(CreatureObject* creature);
+
+	CreatureObject* getConversatingCreature();
+
+	SortedVector<unsigned long long>* getPersistentMessages();
+
+	void addPersistentMessage(unsigned long long id);
+
+	void dropPersistentMessage(unsigned long long id);
+
+	void unloadSpawnedChildren();
+
+	void addToConsentList(const String& name);
+
+	bool hasInConsentList(const String& name);
+
+	void removeFromConsentList(const String& name);
+
+	String getConsentName(int i);
+
+	int getConsentListSize();
 
 	String getFactionRank();
 
@@ -547,13 +1058,91 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
+	BuildingObject* getDeclaredResidence();
+
+	void setDeclaredResidence(BuildingObject* residence);
+
+	void setCloningFacility(BuildingObject* cloningfac);
+
+	BuildingObject* getCloningFacility();
+
 	void notifyOnline();
 
 	void doDigest();
 
 	bool isDigesting();
 
+	String getSavedTerrainName();
+
+	void setSavedParentID(unsigned long long id);
+
+	void setSavedTerrainName(const String& name);
+
+	unsigned long long getSavedParentID();
+
+	unsigned int getNewSuiBoxID(unsigned int type);
+
+	bool hasSuiBox(unsigned int boxID);
+
+	SuiBox* getSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID, bool closeWindowToClient = false);
+
+	void removeSuiBoxType(unsigned int windowType);
+
+	bool hasSuiBoxWindowType(unsigned int windowType);
+
+	void closeSuiWindowType(unsigned int windowType);
+
+	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
+
+	void addSuiBox(SuiBox* sui);
+
+	bool isFirstIncapacitationExpired();
+
+	void resetIncapacitationCounter();
+
+	void resetFirstIncapacitationTime();
+
+	void updateIncapacitationCounter();
+
+	bool isFirstIncapacitation();
+
+	byte getIncapacitationCounter();
+
+	void addToDuelList(CreatureObject* targetPlayer);
+
+	void removeFromDuelList(CreatureObject* targetPlayer);
+
+	CreatureObject* getDuelListObject(int index);
+
+	bool requestedDuelTo(CreatureObject* targetPlayer);
+
+	bool isDuelListEmpty();
+
+	int getDuelListSize();
+
+	UnicodeString getBiography();
+
 	void notifyOffline();
+
+	void setBadge(unsigned int badge);
+
+	void awardBadge(unsigned int badge);
+
+	void setSurveyTool(SurveyTool* tool);
+
+	SurveyTool* getSurveyTool();
+
+	CraftingTool* getLastCraftingToolUsed();
+
+	void setLastCraftingToolUsed(CraftingTool* tool);
+
+	void setTeleporting(bool val);
+
+	int getNumBadges();
+
+	int getBadgeTypeCount(byte type);
 
 	bool hasFriend(const String& name);
 
@@ -578,6 +1167,8 @@ public:
 	unsigned int getAdminLevel();
 
 	void setAdminLevel(unsigned int adminlvl);
+
+	void setBiography(const UnicodeString& bio);
 
 	bool isDeveloper();
 
@@ -609,7 +1200,7 @@ public:
 
 	DraftSchematic* getSchematic(int i);
 
-	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(PlayerCreature* player, Vector<unsigned int>* enabledTabs, int complexityLevel);
+	Vector<ManagedReference<DraftSchematic* > > filterSchematicList(CreatureObject* player, Vector<unsigned int>* enabledTabs, int complexityLevel);
 
 	int getFoodFilling();
 
@@ -625,11 +1216,89 @@ public:
 
 	DeltaVector<String>* getFriendList();
 
+	bool isTeleporting();
+
+	void addChatRoom(ChatRoom* room);
+
+	void removeChatRoom(ChatRoom* room);
+
+	void clearTradeContainer();
+
+	TradeContainer* getTradeContainer();
+
 	DeltaVector<String>* getIgnoreList();
 
 	int getExperience(const String& xp);
 
 	String getCommandMessageString(unsigned int actionCRC);
+
+	bool hasBadge(unsigned int badge);
+
+	void clearDisconnectEvent();
+
+	void clearRecoveryEvent();
+
+	bool isOnline();
+
+	bool isOffline();
+
+	bool isLoading();
+
+	bool isLinkDead();
+
+	bool isLoggingIn();
+
+	bool isLoggingOut();
+
+	void setSkillPoints(int points);
+
+	void addSkillPoints(int points);
+
+	int getSkillPoints();
+
+	ValidatedPosition* getLastValidatedPosition();
+
+	void updateLastValidatedPosition();
+
+	void setSpawnedBlueFrog();
+
+	bool hasSpawnedBlueFrog();
+
+	unsigned int getAccountID();
+
+	unsigned long long getServerMovementTimeDelta();
+
+	Time* getServerMovementTimeStamp();
+
+	void setClientLastMovementStamp(unsigned int stamp);
+
+	void updateServerLastMovementStamp();
+
+	void setAccountID(unsigned int id);
+
+	int getFactionStatus();
+
+	unsigned int getClientLastMovementStamp();
+
+	void setTeachingOrLearning(bool value);
+
+	bool isTeachingOrLearning();
+
+	int getCenteredBonus();
+
+	void setCenteredBonus(int bonus);
+
+	bool isInvisible();
+
+	void setInvisible(bool invis);
+
+	void setHologrindMask(unsigned int mask);
+
+	unsigned int getHologrindMask();
+
+	byte getRaceID();
+
+	void setRaceID(byte race);
 
 	WeakReference<PlayerObject*> _this;
 
@@ -674,6 +1343,10 @@ public:
 
 	void finalize();
 
+	void notifyLoadFromDatabase();
+
+	void unload();
+
 	void initializeTransientMembers();
 
 	void sendBaselinesTo(SceneObject* player);
@@ -687,6 +1360,8 @@ public:
 	int getTotalOwnedStructureCount();
 
 	int getLotsRemaining();
+
+	void notifySceneReady();
 
 	int addExperience(const String& xpType, int xp, bool notifyClient);
 
@@ -722,9 +1397,75 @@ public:
 
 	float getFactionStanding(const String& factionName);
 
+	WaypointObject* getSurveyWaypoint();
+
+	void activateRecovery();
+
+	void doRecovery();
+
+	void disconnect(bool closeClient, bool doLock);
+
+	void reload(ZoneClientSession* client);
+
+	void setOffline();
+
+	void setLinkDead();
+
+	void setOnline();
+
+	void setLoggingOut();
+
+	void sendBadgesResponseTo(CreatureObject* player);
+
+	void logout(bool doLock);
+
+	void setLastNpcConvStr(const String& conv);
+
+	void setLastNpcConvMessStr(const String& mess);
+
+	String getLastNpcConvStr();
+
+	String getLastNpcConvMessStr();
+
+	String getLastNpcConvOption(int idx);
+
+	void addLastNpcConvOptions(const String& option);
+
+	int countLastNpcConvOptions();
+
+	void clearLastNpcConvOptions();
+
+	void setConversatingCreature(CreatureObject* creature);
+
+	CreatureObject* getConversatingCreature();
+
+	void addPersistentMessage(unsigned long long id);
+
+	void dropPersistentMessage(unsigned long long id);
+
+	void unloadSpawnedChildren();
+
+	void addToConsentList(const String& name);
+
+	bool hasInConsentList(const String& name);
+
+	void removeFromConsentList(const String& name);
+
+	String getConsentName(int i);
+
+	int getConsentListSize();
+
 	void setCommandMessageString(unsigned int actionCRC, String& message);
 
 	void removeCommandMessageString(unsigned int actionCRC);
+
+	BuildingObject* getDeclaredResidence();
+
+	void setDeclaredResidence(BuildingObject* residence);
+
+	void setCloningFacility(BuildingObject* cloningfac);
+
+	BuildingObject* getCloningFacility();
 
 	void notifyOnline();
 
@@ -732,7 +1473,77 @@ public:
 
 	bool isDigesting();
 
+	String getSavedTerrainName();
+
+	void setSavedParentID(unsigned long long id);
+
+	void setSavedTerrainName(const String& name);
+
+	unsigned long long getSavedParentID();
+
+	unsigned int getNewSuiBoxID(unsigned int type);
+
+	bool hasSuiBox(unsigned int boxID);
+
+	SuiBox* getSuiBox(unsigned int boxID);
+
+	void removeSuiBox(unsigned int boxID, bool closeWindowToClient);
+
+	void removeSuiBoxType(unsigned int windowType);
+
+	bool hasSuiBoxWindowType(unsigned int windowType);
+
+	void closeSuiWindowType(unsigned int windowType);
+
+	SuiBox* getSuiBoxFromWindowType(unsigned int windowType);
+
+	void addSuiBox(SuiBox* sui);
+
+	bool isFirstIncapacitationExpired();
+
+	void resetIncapacitationCounter();
+
+	void resetFirstIncapacitationTime();
+
+	void updateIncapacitationCounter();
+
+	bool isFirstIncapacitation();
+
+	byte getIncapacitationCounter();
+
+	void addToDuelList(CreatureObject* targetPlayer);
+
+	void removeFromDuelList(CreatureObject* targetPlayer);
+
+	CreatureObject* getDuelListObject(int index);
+
+	bool requestedDuelTo(CreatureObject* targetPlayer);
+
+	bool isDuelListEmpty();
+
+	int getDuelListSize();
+
+	UnicodeString getBiography();
+
 	void notifyOffline();
+
+	void setBadge(unsigned int badge);
+
+	void awardBadge(unsigned int badge);
+
+	void setSurveyTool(SurveyTool* tool);
+
+	SurveyTool* getSurveyTool();
+
+	CraftingTool* getLastCraftingToolUsed();
+
+	void setLastCraftingToolUsed(CraftingTool* tool);
+
+	void setTeleporting(bool val);
+
+	int getNumBadges();
+
+	int getBadgeTypeCount(byte type);
 
 	bool hasFriend(const String& name);
 
@@ -755,6 +1566,8 @@ public:
 	unsigned int getAdminLevel();
 
 	void setAdminLevel(unsigned int adminlvl);
+
+	void setBiography(const UnicodeString& bio);
 
 	bool isDeveloper();
 
@@ -788,9 +1601,77 @@ public:
 
 	byte getLanguageID();
 
+	bool isTeleporting();
+
+	void addChatRoom(ChatRoom* room);
+
+	void removeChatRoom(ChatRoom* room);
+
 	int getExperience(const String& xp);
 
 	String getCommandMessageString(unsigned int actionCRC);
+
+	bool hasBadge(unsigned int badge);
+
+	void clearDisconnectEvent();
+
+	void clearRecoveryEvent();
+
+	bool isOnline();
+
+	bool isOffline();
+
+	bool isLoading();
+
+	bool isLinkDead();
+
+	bool isLoggingIn();
+
+	bool isLoggingOut();
+
+	void setSkillPoints(int points);
+
+	void addSkillPoints(int points);
+
+	int getSkillPoints();
+
+	void updateLastValidatedPosition();
+
+	void setSpawnedBlueFrog();
+
+	bool hasSpawnedBlueFrog();
+
+	unsigned int getAccountID();
+
+	unsigned long long getServerMovementTimeDelta();
+
+	void setClientLastMovementStamp(unsigned int stamp);
+
+	void updateServerLastMovementStamp();
+
+	void setAccountID(unsigned int id);
+
+	int getFactionStatus();
+
+	unsigned int getClientLastMovementStamp();
+
+	void setTeachingOrLearning(bool value);
+
+	int getCenteredBonus();
+
+	void setCenteredBonus(int bonus);
+
+	bool isInvisible();
+
+	void setInvisible(bool invis);
+
+	void setHologrindMask(unsigned int mask);
+
+	unsigned int getHologrindMask();
+
+	byte getRaceID();
+
+	void setRaceID(byte race);
 
 protected:
 	String _param0_addExperience__String_int_bool_;
@@ -804,11 +1685,19 @@ protected:
 	String _param0_increaseFactionStanding__String_float_;
 	String _param0_decreaseFactionStanding__String_float_;
 	String _param0_getFactionStanding__String_;
+	String _param0_setLastNpcConvStr__String_;
+	String _param0_setLastNpcConvMessStr__String_;
+	String _param0_addLastNpcConvOptions__String_;
+	String _param0_addToConsentList__String_;
+	String _param0_hasInConsentList__String_;
+	String _param0_removeFromConsentList__String_;
 	String _param1_setCommandMessageString__int_String_;
+	String _param0_setSavedTerrainName__String_;
 	String _param0_hasFriend__String_;
 	String _param0_isIgnoring__String_;
 	String _param0_addReverseFriend__String_;
 	String _param0_removeReverseFriend__String_;
+	UnicodeString _param0_setBiography__UnicodeString_;
 	String _param0_getExperience__String_;
 };
 

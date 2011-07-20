@@ -64,7 +64,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ManagedReference<PlayerCreature*> targetToKill = NULL;
+		ManagedReference<CreatureObject*> targetToKill = NULL;
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
@@ -74,7 +74,7 @@ public:
 			ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
 			if (obj != NULL && obj->isPlayerCreature())
-				targetToKill = (PlayerCreature*) obj.get();
+				targetToKill = (CreatureObject*) obj.get();
 		}
 
 		if (targetToKill == NULL)

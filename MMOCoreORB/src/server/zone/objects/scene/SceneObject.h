@@ -96,16 +96,16 @@ using namespace server::zone::packets::object;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -146,6 +146,20 @@ class ActiveArea;
 } // namespace server
 
 using namespace server::zone::objects::area;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "engine/core/ManagedObject.h"
 
@@ -774,7 +788,7 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
-	int canBeDestroyed(PlayerCreature* player);
+	int canBeDestroyed(CreatureObject* player);
 
 	void create(ZoneClientSession* client);
 
@@ -802,17 +816,17 @@ public:
 
 	void sendToOwner(bool doClose = true);
 
-	void sendAttributeListTo(PlayerCreature* object);
+	void sendAttributeListTo(CreatureObject* object);
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	void openContainerTo(PlayerCreature* player);
+	void openContainerTo(CreatureObject* player);
 
-	void closeContainerTo(PlayerCreature* player, bool notify = true);
+	void closeContainerTo(CreatureObject* player, bool notify = true);
 
 	void insertToZone(Zone* zone);
 
@@ -872,7 +886,7 @@ public:
 
 	VectorMap<unsigned int, ManagedReference<Facade* > >* getObjectActiveSessions();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void notifyAddedToCloseObjects();
 
@@ -1018,7 +1032,7 @@ public:
 
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
-	void notifyCloseContainer(PlayerCreature* player);
+	void notifyCloseContainer(CreatureObject* player);
 
 	unsigned int getMovementCounter();
 
@@ -1840,7 +1854,7 @@ public:
 
 	virtual void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
-	virtual int canBeDestroyed(PlayerCreature* player);
+	virtual int canBeDestroyed(CreatureObject* player);
 
 	void create(ZoneClientSession* client);
 
@@ -1868,17 +1882,17 @@ public:
 
 	virtual void sendToOwner(bool doClose = true);
 
-	virtual void sendAttributeListTo(PlayerCreature* object);
+	virtual void sendAttributeListTo(CreatureObject* object);
 
-	virtual void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	virtual void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	virtual void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
-	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	virtual void openContainerTo(PlayerCreature* player);
+	virtual void openContainerTo(CreatureObject* player);
 
-	virtual void closeContainerTo(PlayerCreature* player, bool notify = true);
+	virtual void closeContainerTo(CreatureObject* player, bool notify = true);
 
 	virtual void insertToZone(Zone* zone);
 
@@ -1938,7 +1952,7 @@ public:
 
 	VectorMap<unsigned int, ManagedReference<Facade* > >* getObjectActiveSessions();
 
-	virtual int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	virtual int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void notifyAddedToCloseObjects();
 
@@ -2084,7 +2098,7 @@ public:
 
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
-	virtual void notifyCloseContainer(PlayerCreature* player);
+	virtual void notifyCloseContainer(CreatureObject* player);
 
 	unsigned int getMovementCounter();
 
@@ -2102,7 +2116,7 @@ public:
 
 	String getLoggingName();
 
-	bool isPlayerCreature();
+	virtual bool isPlayerCreature();
 
 	virtual bool isVendor();
 
@@ -2333,7 +2347,7 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
-	int canBeDestroyed(PlayerCreature* player);
+	int canBeDestroyed(CreatureObject* player);
 
 	void create(ZoneClientSession* client);
 
@@ -2361,13 +2375,13 @@ public:
 
 	void sendToOwner(bool doClose);
 
-	void sendAttributeListTo(PlayerCreature* object);
+	void sendAttributeListTo(CreatureObject* object);
 
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
-	void openContainerTo(PlayerCreature* player);
+	void openContainerTo(CreatureObject* player);
 
-	void closeContainerTo(PlayerCreature* player, bool notify);
+	void closeContainerTo(CreatureObject* player, bool notify);
 
 	void insertToZone(Zone* zone);
 
@@ -2411,7 +2425,7 @@ public:
 
 	int getActiveSessionsCount();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void notifyAddedToCloseObjects();
 
@@ -2539,7 +2553,7 @@ public:
 
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
-	void notifyCloseContainer(PlayerCreature* player);
+	void notifyCloseContainer(CreatureObject* player);
 
 	unsigned int getMovementCounter();
 

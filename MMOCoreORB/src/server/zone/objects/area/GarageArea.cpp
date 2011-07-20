@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	GarageAreaStub
@@ -174,8 +174,8 @@ GarageAreaImplementation::GarageAreaImplementation() {
 void GarageAreaImplementation::notifyEnter(SceneObject* player) {
 	// server/zone/objects/area/GarageArea.idl():  	}
 	if (player->isPlayerCreature()){
-	// server/zone/objects/area/GarageArea.idl():  			PlayerCreature playerCreature = (PlayerCreature) player;
-	PlayerCreature* playerCreature = (PlayerCreature*) player;
+	// server/zone/objects/area/GarageArea.idl():  			CreatureObject playerCreature = (CreatureObject) player;
+	CreatureObject* playerCreature = (CreatureObject*) player;
 	// server/zone/objects/area/GarageArea.idl():  			playerCreature.sendSystemMessage("@pet/pet_menu:garage_proximity");
 	playerCreature->sendSystemMessage("@pet/pet_menu:garage_proximity");
 }

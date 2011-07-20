@@ -41,7 +41,7 @@ using namespace server::zone::objects::tangible;
 
 #include "engine/core/ManagedObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
@@ -68,9 +68,9 @@ class SlicingSession : public Facade {
 public:
 	SlicingSession(CreatureObject* parent);
 
-	void initalizeSlicingMenu(PlayerCreature* pl, TangibleObject* obj);
+	void initalizeSlicingMenu(CreatureObject* pl, TangibleObject* obj);
 
-	void handleMenuSelect(PlayerCreature* pl, byte menuID, SuiListBox* suiBox);
+	void handleMenuSelect(CreatureObject* pl, byte menuID, SuiListBox* suiBox);
 
 	int initializeSession();
 
@@ -80,7 +80,7 @@ public:
 
 	void endSlicing();
 
-	int getSlicingSkill(PlayerCreature* slicer);
+	int getSlicingSkill(CreatureObject* slicer);
 
 	bool hasPrecisionLaserKnife(bool removeItem = true);
 
@@ -116,7 +116,7 @@ namespace player {
 
 class SlicingSessionImplementation : public FacadeImplementation {
 protected:
-	ManagedWeakReference<PlayerCreature* > player;
+	ManagedWeakReference<CreatureObject* > player;
 
 	ManagedWeakReference<TangibleObject* > tangibleObject;
 
@@ -141,9 +141,9 @@ public:
 
 	SlicingSessionImplementation(DummyConstructorParameter* param);
 
-	void initalizeSlicingMenu(PlayerCreature* pl, TangibleObject* obj);
+	void initalizeSlicingMenu(CreatureObject* pl, TangibleObject* obj);
 
-	void handleMenuSelect(PlayerCreature* pl, byte menuID, SuiListBox* suiBox);
+	void handleMenuSelect(CreatureObject* pl, byte menuID, SuiListBox* suiBox);
 
 	int initializeSession();
 
@@ -163,7 +163,7 @@ private:
 	void handleSliceFailed();
 
 public:
-	int getSlicingSkill(PlayerCreature* slicer);
+	int getSlicingSkill(CreatureObject* slicer);
 
 	bool hasPrecisionLaserKnife(bool removeItem = true);
 
@@ -246,7 +246,7 @@ public:
 
 	void endSlicing();
 
-	int getSlicingSkill(PlayerCreature* slicer);
+	int getSlicingSkill(CreatureObject* slicer);
 
 	bool hasPrecisionLaserKnife(bool removeItem);
 

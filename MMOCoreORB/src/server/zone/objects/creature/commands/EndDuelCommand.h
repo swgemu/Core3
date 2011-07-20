@@ -71,9 +71,9 @@ public:
 		CombatManager* combatManager = CombatManager::instance();
 
 		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == creature) {
-			combatManager->freeDuelList((PlayerCreature*)creature);
+			combatManager->freeDuelList((CreatureObject*)creature);
 		} else {
-			combatManager->requestEndDuel((PlayerCreature*)creature, (PlayerCreature*)targetObject.get());
+			combatManager->requestEndDuel((CreatureObject*)creature, (CreatureObject*)targetObject.get());
 		}
 
 		return SUCCESS;

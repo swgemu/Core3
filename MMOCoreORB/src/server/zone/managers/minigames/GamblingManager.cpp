@@ -4,7 +4,7 @@
 
 #include "GamblingManager.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -20,7 +20,7 @@
  *	GamblingManagerStub
  */
 
-enum {RPC_INITIALIZESLOTTIMER__,RPC_INITIALIZEROULETTETIMER__,RPC_INITIALIZESLOTS__,RPC_INITIALIZEROULETTERED__,RPC_INITIALIZEROULETTE__,RPC_NOTIFY__SCENEOBJECT_,RPC_ISHIGH__INT_,RPC_ISLOW__INT_,RPC_ISEVEN__INT_,RPC_ISODD__INT_,RPC_ISBLACK__INT_,RPC_ISRED__INT_,RPC_HANDLESLOT__PLAYERCREATURE_BOOL_BOOL_,RPC_BET__PLAYERCREATURE_INT_INT_INT_,RPC_BET__GAMBLINGTERMINAL_PLAYERCREATURE_INT_INT_,RPC_STARTGAME__PLAYERCREATURE_INT_,RPC_STARTGAME__GAMBLINGTERMINAL_,RPC_LEAVETERMINAL__PLAYERCREATURE_INT_,RPC_REGISTERPLAYER__GAMBLINGTERMINAL_PLAYERCREATURE_,RPC_REFRESHROULETTEMENU__PLAYERCREATURE_,RPC_CONTINUEGAME__GAMBLINGTERMINAL_,RPC_STOPGAME__GAMBLINGTERMINAL_BOOL_,RPC_CALCULATEOUTCOME__GAMBLINGTERMINAL_,RPC_CREATEWINDOW__GAMBLINGTERMINAL_PLAYERCREATURE_,RPC_CREATEPAYOUTWINDOW__PLAYERCREATURE_,RPC_CREATESLOTWINDOW__PLAYERCREATURE_INT_,RPC_CREATEROULETTEWINDOW__PLAYERCREATURE_,RPC_CREATEEVENT__GAMBLINGTERMINAL_INT_,RPC_ISPLAYING__PLAYERCREATURE_};
+enum {RPC_INITIALIZESLOTTIMER__,RPC_INITIALIZEROULETTETIMER__,RPC_INITIALIZESLOTS__,RPC_INITIALIZEROULETTERED__,RPC_INITIALIZEROULETTE__,RPC_NOTIFY__SCENEOBJECT_,RPC_ISHIGH__INT_,RPC_ISLOW__INT_,RPC_ISEVEN__INT_,RPC_ISODD__INT_,RPC_ISBLACK__INT_,RPC_ISRED__INT_,RPC_HANDLESLOT__CREATUREOBJECT_BOOL_BOOL_,RPC_BET__CREATUREOBJECT_INT_INT_INT_,RPC_BET__GAMBLINGTERMINAL_CREATUREOBJECT_INT_INT_,RPC_STARTGAME__CREATUREOBJECT_INT_,RPC_STARTGAME__GAMBLINGTERMINAL_,RPC_LEAVETERMINAL__CREATUREOBJECT_INT_,RPC_REGISTERPLAYER__GAMBLINGTERMINAL_CREATUREOBJECT_,RPC_REFRESHROULETTEMENU__CREATUREOBJECT_,RPC_CONTINUEGAME__GAMBLINGTERMINAL_,RPC_STOPGAME__GAMBLINGTERMINAL_BOOL_,RPC_CALCULATEOUTCOME__GAMBLINGTERMINAL_,RPC_CREATEWINDOW__GAMBLINGTERMINAL_CREATUREOBJECT_,RPC_CREATEPAYOUTWINDOW__CREATUREOBJECT_,RPC_CREATESLOTWINDOW__CREATUREOBJECT_INT_,RPC_CREATEROULETTEWINDOW__CREATUREOBJECT_,RPC_CREATEEVENT__GAMBLINGTERMINAL_INT_,RPC_ISPLAYING__CREATUREOBJECT_};
 
 GamblingManager::GamblingManager(ZoneServer* server) : Observer(DummyConstructorParameter::instance()) {
 	GamblingManagerImplementation* _implementation = new GamblingManagerImplementation(server);
@@ -207,13 +207,13 @@ bool GamblingManager::isRed(int value) {
 		return _implementation->isRed(value);
 }
 
-void GamblingManager::handleSlot(PlayerCreature* player, bool cancel, bool other) {
+void GamblingManager::handleSlot(CreatureObject* player, bool cancel, bool other) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLESLOT__PLAYERCREATURE_BOOL_BOOL_);
+		DistributedMethod method(this, RPC_HANDLESLOT__CREATUREOBJECT_BOOL_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(cancel);
 		method.addBooleanParameter(other);
@@ -223,13 +223,13 @@ void GamblingManager::handleSlot(PlayerCreature* player, bool cancel, bool other
 		_implementation->handleSlot(player, cancel, other);
 }
 
-void GamblingManager::bet(PlayerCreature* player, int amount, int target, int machineType) {
+void GamblingManager::bet(CreatureObject* player, int amount, int target, int machineType) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_BET__PLAYERCREATURE_INT_INT_INT_);
+		DistributedMethod method(this, RPC_BET__CREATUREOBJECT_INT_INT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(amount);
 		method.addSignedIntParameter(target);
@@ -240,13 +240,13 @@ void GamblingManager::bet(PlayerCreature* player, int amount, int target, int ma
 		_implementation->bet(player, amount, target, machineType);
 }
 
-void GamblingManager::bet(GamblingTerminal* terminal, PlayerCreature* player, int amount, int target) {
+void GamblingManager::bet(GamblingTerminal* terminal, CreatureObject* player, int amount, int target) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_BET__GAMBLINGTERMINAL_PLAYERCREATURE_INT_INT_);
+		DistributedMethod method(this, RPC_BET__GAMBLINGTERMINAL_CREATUREOBJECT_INT_INT_);
 		method.addObjectParameter(terminal);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(amount);
@@ -257,13 +257,13 @@ void GamblingManager::bet(GamblingTerminal* terminal, PlayerCreature* player, in
 		_implementation->bet(terminal, player, amount, target);
 }
 
-void GamblingManager::startGame(PlayerCreature* player, int machineType) {
+void GamblingManager::startGame(CreatureObject* player, int machineType) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_STARTGAME__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_STARTGAME__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(machineType);
 
@@ -286,13 +286,13 @@ void GamblingManager::startGame(GamblingTerminal* terminal) {
 		_implementation->startGame(terminal);
 }
 
-void GamblingManager::leaveTerminal(PlayerCreature* player, int machineType) {
+void GamblingManager::leaveTerminal(CreatureObject* player, int machineType) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_LEAVETERMINAL__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_LEAVETERMINAL__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(machineType);
 
@@ -301,13 +301,13 @@ void GamblingManager::leaveTerminal(PlayerCreature* player, int machineType) {
 		_implementation->leaveTerminal(player, machineType);
 }
 
-void GamblingManager::registerPlayer(GamblingTerminal* terminal, PlayerCreature* player) {
+void GamblingManager::registerPlayer(GamblingTerminal* terminal, CreatureObject* player) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REGISTERPLAYER__GAMBLINGTERMINAL_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_REGISTERPLAYER__GAMBLINGTERMINAL_CREATUREOBJECT_);
 		method.addObjectParameter(terminal);
 		method.addObjectParameter(player);
 
@@ -316,13 +316,13 @@ void GamblingManager::registerPlayer(GamblingTerminal* terminal, PlayerCreature*
 		_implementation->registerPlayer(terminal, player);
 }
 
-void GamblingManager::refreshRouletteMenu(PlayerCreature* player) {
+void GamblingManager::refreshRouletteMenu(CreatureObject* player) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REFRESHROULETTEMENU__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_REFRESHROULETTEMENU__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -373,13 +373,13 @@ void GamblingManager::calculateOutcome(GamblingTerminal* terminal) {
 		_implementation->calculateOutcome(terminal);
 }
 
-unsigned int GamblingManager::createWindow(GamblingTerminal* terminal, PlayerCreature* player) {
+unsigned int GamblingManager::createWindow(GamblingTerminal* terminal, CreatureObject* player) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEWINDOW__GAMBLINGTERMINAL_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CREATEWINDOW__GAMBLINGTERMINAL_CREATUREOBJECT_);
 		method.addObjectParameter(terminal);
 		method.addObjectParameter(player);
 
@@ -388,13 +388,13 @@ unsigned int GamblingManager::createWindow(GamblingTerminal* terminal, PlayerCre
 		return _implementation->createWindow(terminal, player);
 }
 
-unsigned int GamblingManager::createPayoutWindow(PlayerCreature* player) {
+unsigned int GamblingManager::createPayoutWindow(CreatureObject* player) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEPAYOUTWINDOW__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CREATEPAYOUTWINDOW__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithUnsignedIntReturn();
@@ -402,13 +402,13 @@ unsigned int GamblingManager::createPayoutWindow(PlayerCreature* player) {
 		return _implementation->createPayoutWindow(player);
 }
 
-unsigned int GamblingManager::createSlotWindow(PlayerCreature* player, unsigned int payoutBoxID) {
+unsigned int GamblingManager::createSlotWindow(CreatureObject* player, unsigned int payoutBoxID) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATESLOTWINDOW__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_CREATESLOTWINDOW__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(payoutBoxID);
 
@@ -417,13 +417,13 @@ unsigned int GamblingManager::createSlotWindow(PlayerCreature* player, unsigned 
 		return _implementation->createSlotWindow(player, payoutBoxID);
 }
 
-unsigned int GamblingManager::createRouletteWindow(PlayerCreature* player) {
+unsigned int GamblingManager::createRouletteWindow(CreatureObject* player) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEROULETTEWINDOW__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CREATEROULETTEWINDOW__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithUnsignedIntReturn();
@@ -446,13 +446,13 @@ void GamblingManager::createEvent(GamblingTerminal* terminal, int time) {
 		_implementation->createEvent(terminal, time);
 }
 
-bool GamblingManager::isPlaying(PlayerCreature* player) {
+bool GamblingManager::isPlaying(CreatureObject* player) {
 	GamblingManagerImplementation* _implementation = (GamblingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISPLAYING__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ISPLAYING__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -571,12 +571,12 @@ bool GamblingManagerImplementation::readObjectMember(ObjectInputStream* stream, 
 	}
 
 	if (_name == "slotGames") {
-		TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, ManagedReference<GamblingTerminal* > > >::parseFromBinaryStream(&slotGames, stream);
+		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > >::parseFromBinaryStream(&slotGames, stream);
 		return true;
 	}
 
 	if (_name == "rouletteGames") {
-		TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, ManagedReference<GamblingTerminal* > > >::parseFromBinaryStream(&rouletteGames, stream);
+		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > >::parseFromBinaryStream(&rouletteGames, stream);
 		return true;
 	}
 
@@ -632,7 +632,7 @@ int GamblingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, ManagedReference<GamblingTerminal* > > >::toBinaryStream(&slotGames, stream);
+	TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > >::toBinaryStream(&slotGames, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -640,7 +640,7 @@ int GamblingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, ManagedReference<GamblingTerminal* > > >::toBinaryStream(&rouletteGames, stream);
+	TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > >::toBinaryStream(&rouletteGames, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -906,7 +906,7 @@ void GamblingManagerImplementation::initializeRoulette() {
 
 int GamblingManagerImplementation::notify(SceneObject* sceneObject) {
 	// server/zone/managers/minigames/GamblingManager.idl():  		return 
-	if (sceneObject->isPlayerCreature())	// server/zone/managers/minigames/GamblingManager.idl():  			return 1;
+	if (sceneObject->isCreatureObject())	// server/zone/managers/minigames/GamblingManager.idl():  			return 1;
 	return 1;
 	// server/zone/managers/minigames/GamblingManager.idl():  		return 0;
 	return 0;
@@ -980,7 +980,7 @@ bool GamblingManagerImplementation::isRed(int value) {
 	return false;
 }
 
-bool GamblingManagerImplementation::isPlaying(PlayerCreature* player) {
+bool GamblingManagerImplementation::isPlaying(CreatureObject* player) {
 	// server/zone/managers/minigames/GamblingManager.idl():  		return (slotGames.contains(player) || rouletteGames.contains(player));
 	return ((&slotGames)->contains(player) || (&rouletteGames)->contains(player));
 }
@@ -1032,29 +1032,29 @@ Packet* GamblingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_ISRED__INT_:
 		resp->insertBoolean(isRed(inv->getSignedIntParameter()));
 		break;
-	case RPC_HANDLESLOT__PLAYERCREATURE_BOOL_BOOL_:
-		handleSlot((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
+	case RPC_HANDLESLOT__CREATUREOBJECT_BOOL_BOOL_:
+		handleSlot((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_BET__PLAYERCREATURE_INT_INT_INT_:
-		bet((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+	case RPC_BET__CREATUREOBJECT_INT_INT_INT_:
+		bet((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_BET__GAMBLINGTERMINAL_PLAYERCREATURE_INT_INT_:
-		bet((GamblingTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+	case RPC_BET__GAMBLINGTERMINAL_CREATUREOBJECT_INT_INT_:
+		bet((GamblingTerminal*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_STARTGAME__PLAYERCREATURE_INT_:
-		startGame((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_STARTGAME__CREATUREOBJECT_INT_:
+		startGame((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case RPC_STARTGAME__GAMBLINGTERMINAL_:
 		startGame((GamblingTerminal*) inv->getObjectParameter());
 		break;
-	case RPC_LEAVETERMINAL__PLAYERCREATURE_INT_:
-		leaveTerminal((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_LEAVETERMINAL__CREATUREOBJECT_INT_:
+		leaveTerminal((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_REGISTERPLAYER__GAMBLINGTERMINAL_PLAYERCREATURE_:
-		registerPlayer((GamblingTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_REGISTERPLAYER__GAMBLINGTERMINAL_CREATUREOBJECT_:
+		registerPlayer((GamblingTerminal*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_REFRESHROULETTEMENU__PLAYERCREATURE_:
-		refreshRouletteMenu((PlayerCreature*) inv->getObjectParameter());
+	case RPC_REFRESHROULETTEMENU__CREATUREOBJECT_:
+		refreshRouletteMenu((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_CONTINUEGAME__GAMBLINGTERMINAL_:
 		continueGame((GamblingTerminal*) inv->getObjectParameter());
@@ -1065,23 +1065,23 @@ Packet* GamblingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_CALCULATEOUTCOME__GAMBLINGTERMINAL_:
 		calculateOutcome((GamblingTerminal*) inv->getObjectParameter());
 		break;
-	case RPC_CREATEWINDOW__GAMBLINGTERMINAL_PLAYERCREATURE_:
-		resp->insertInt(createWindow((GamblingTerminal*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CREATEWINDOW__GAMBLINGTERMINAL_CREATUREOBJECT_:
+		resp->insertInt(createWindow((GamblingTerminal*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_CREATEPAYOUTWINDOW__PLAYERCREATURE_:
-		resp->insertInt(createPayoutWindow((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CREATEPAYOUTWINDOW__CREATUREOBJECT_:
+		resp->insertInt(createPayoutWindow((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_CREATESLOTWINDOW__PLAYERCREATURE_INT_:
-		resp->insertInt(createSlotWindow((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
+	case RPC_CREATESLOTWINDOW__CREATUREOBJECT_INT_:
+		resp->insertInt(createSlotWindow((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
 		break;
-	case RPC_CREATEROULETTEWINDOW__PLAYERCREATURE_:
-		resp->insertInt(createRouletteWindow((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CREATEROULETTEWINDOW__CREATUREOBJECT_:
+		resp->insertInt(createRouletteWindow((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_CREATEEVENT__GAMBLINGTERMINAL_INT_:
 		createEvent((GamblingTerminal*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_ISPLAYING__PLAYERCREATURE_:
-		resp->insertBoolean(isPlaying((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_ISPLAYING__CREATUREOBJECT_:
+		resp->insertBoolean(isPlaying((CreatureObject*) inv->getObjectParameter()));
 		break;
 	default:
 		return NULL;
@@ -1138,19 +1138,19 @@ bool GamblingManagerAdapter::isRed(int value) {
 	return ((GamblingManagerImplementation*) impl)->isRed(value);
 }
 
-void GamblingManagerAdapter::handleSlot(PlayerCreature* player, bool cancel, bool other) {
+void GamblingManagerAdapter::handleSlot(CreatureObject* player, bool cancel, bool other) {
 	((GamblingManagerImplementation*) impl)->handleSlot(player, cancel, other);
 }
 
-void GamblingManagerAdapter::bet(PlayerCreature* player, int amount, int target, int machineType) {
+void GamblingManagerAdapter::bet(CreatureObject* player, int amount, int target, int machineType) {
 	((GamblingManagerImplementation*) impl)->bet(player, amount, target, machineType);
 }
 
-void GamblingManagerAdapter::bet(GamblingTerminal* terminal, PlayerCreature* player, int amount, int target) {
+void GamblingManagerAdapter::bet(GamblingTerminal* terminal, CreatureObject* player, int amount, int target) {
 	((GamblingManagerImplementation*) impl)->bet(terminal, player, amount, target);
 }
 
-void GamblingManagerAdapter::startGame(PlayerCreature* player, int machineType) {
+void GamblingManagerAdapter::startGame(CreatureObject* player, int machineType) {
 	((GamblingManagerImplementation*) impl)->startGame(player, machineType);
 }
 
@@ -1158,15 +1158,15 @@ void GamblingManagerAdapter::startGame(GamblingTerminal* terminal) {
 	((GamblingManagerImplementation*) impl)->startGame(terminal);
 }
 
-void GamblingManagerAdapter::leaveTerminal(PlayerCreature* player, int machineType) {
+void GamblingManagerAdapter::leaveTerminal(CreatureObject* player, int machineType) {
 	((GamblingManagerImplementation*) impl)->leaveTerminal(player, machineType);
 }
 
-void GamblingManagerAdapter::registerPlayer(GamblingTerminal* terminal, PlayerCreature* player) {
+void GamblingManagerAdapter::registerPlayer(GamblingTerminal* terminal, CreatureObject* player) {
 	((GamblingManagerImplementation*) impl)->registerPlayer(terminal, player);
 }
 
-void GamblingManagerAdapter::refreshRouletteMenu(PlayerCreature* player) {
+void GamblingManagerAdapter::refreshRouletteMenu(CreatureObject* player) {
 	((GamblingManagerImplementation*) impl)->refreshRouletteMenu(player);
 }
 
@@ -1182,19 +1182,19 @@ void GamblingManagerAdapter::calculateOutcome(GamblingTerminal* terminal) {
 	((GamblingManagerImplementation*) impl)->calculateOutcome(terminal);
 }
 
-unsigned int GamblingManagerAdapter::createWindow(GamblingTerminal* terminal, PlayerCreature* player) {
+unsigned int GamblingManagerAdapter::createWindow(GamblingTerminal* terminal, CreatureObject* player) {
 	return ((GamblingManagerImplementation*) impl)->createWindow(terminal, player);
 }
 
-unsigned int GamblingManagerAdapter::createPayoutWindow(PlayerCreature* player) {
+unsigned int GamblingManagerAdapter::createPayoutWindow(CreatureObject* player) {
 	return ((GamblingManagerImplementation*) impl)->createPayoutWindow(player);
 }
 
-unsigned int GamblingManagerAdapter::createSlotWindow(PlayerCreature* player, unsigned int payoutBoxID) {
+unsigned int GamblingManagerAdapter::createSlotWindow(CreatureObject* player, unsigned int payoutBoxID) {
 	return ((GamblingManagerImplementation*) impl)->createSlotWindow(player, payoutBoxID);
 }
 
-unsigned int GamblingManagerAdapter::createRouletteWindow(PlayerCreature* player) {
+unsigned int GamblingManagerAdapter::createRouletteWindow(CreatureObject* player) {
 	return ((GamblingManagerImplementation*) impl)->createRouletteWindow(player);
 }
 
@@ -1202,7 +1202,7 @@ void GamblingManagerAdapter::createEvent(GamblingTerminal* terminal, int time) {
 	((GamblingManagerImplementation*) impl)->createEvent(terminal, time);
 }
 
-bool GamblingManagerAdapter::isPlaying(PlayerCreature* player) {
+bool GamblingManagerAdapter::isPlaying(CreatureObject* player) {
 	return ((GamblingManagerImplementation*) impl)->isPlaying(player);
 }
 

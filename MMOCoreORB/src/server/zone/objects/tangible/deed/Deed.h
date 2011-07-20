@@ -38,16 +38,16 @@ using namespace server::zone::packets::scene;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -93,7 +93,7 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillAttributeList(AttributeListMessage* alm, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
@@ -146,7 +146,7 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillAttributeList(AttributeListMessage* alm, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
 
 	virtual void updateCraftingValues(ManufactureSchematic* schematic);
 

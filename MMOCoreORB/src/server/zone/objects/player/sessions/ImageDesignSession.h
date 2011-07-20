@@ -57,7 +57,7 @@ using namespace server::zone::objects::player::events;
 
 #include "engine/core/ManagedObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
@@ -86,7 +86,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void startImageDesign(PlayerCreature* designer, PlayerCreature* targetPlayer);
+	void startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer);
 
 	void updateImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 
@@ -134,9 +134,9 @@ class ImageDesignSessionImplementation : public FacadeImplementation {
 	Reference<ImageDesignManager* > imageDesignManager;
 
 protected:
-	ManagedWeakReference<PlayerCreature* > designerCreature;
+	ManagedWeakReference<CreatureObject* > designerCreature;
 
-	ManagedWeakReference<PlayerCreature* > targetCreature;
+	ManagedWeakReference<CreatureObject* > targetCreature;
 
 	ImageDesignData imageDesignData;
 
@@ -149,7 +149,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void startImageDesign(PlayerCreature* designer, PlayerCreature* targetPlayer);
+	void startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer);
 
 	void updateImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 

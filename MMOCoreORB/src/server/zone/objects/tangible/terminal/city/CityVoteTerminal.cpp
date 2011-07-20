@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -18,7 +18,7 @@
  *	CityVoteTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISCITYVOTETERMINAL__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISCITYVOTETERMINAL__};
 
 CityVoteTerminal::CityVoteTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	CityVoteTerminalImplementation* _implementation = new CityVoteTerminalImplementation();
@@ -46,13 +46,13 @@ void CityVoteTerminal::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void CityVoteTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void CityVoteTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -61,13 +61,13 @@ void CityVoteTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, 
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int CityVoteTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CityVoteTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	CityVoteTerminalImplementation* _implementation = (CityVoteTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -245,11 +245,11 @@ Packet* CityVoteTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
+		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_ISCITYVOTETERMINAL__:
 		resp->insertBoolean(isCityVoteTerminal());
@@ -265,11 +265,11 @@ void CityVoteTerminalAdapter::initializeTransientMembers() {
 	((CityVoteTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
-void CityVoteTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void CityVoteTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	((CityVoteTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
-int CityVoteTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CityVoteTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((CityVoteTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

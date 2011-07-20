@@ -9,7 +9,7 @@
 #define JTLSHIPLISTRESPONSE_H_
 
 #include "ObjectControllerMessage.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/Region.h"

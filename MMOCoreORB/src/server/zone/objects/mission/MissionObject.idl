@@ -53,7 +53,7 @@ import server.zone.Zone;
 include server.zone.objects.scene.variables.StringId;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.mission.MissionObserver;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import system.util.SortedVector;
 import server.zone.objects.mission.MissionObjective;
 include server.zone.templates.TemplateReference;

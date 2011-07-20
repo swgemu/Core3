@@ -51,7 +51,7 @@ import server.zone.objects.structure.events.StructureMaintenanceTask;
 
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;
 import engine.util.u3d.AABBTree;
@@ -131,13 +131,13 @@ class StructureObject extends TangibleObject {
 		return 0;
 	}
 	
-	public abstract boolean checkRequisitesForPlacement(PlayerCreature player) {
+	public abstract boolean checkRequisitesForPlacement(CreatureObject player) {
 		return true;
 	}
 	
-	public native void sendStatusTo(PlayerCreature player);
-	public native void sendManageMaintenanceTo(PlayerCreature player);
-	public abstract native void sendChangeNamePromptTo(PlayerCreature player);
+	public native void sendStatusTo(CreatureObject player);
+	public native void sendManageMaintenanceTo(CreatureObject player);
+	public abstract native void sendChangeNamePromptTo(CreatureObject player);
 	
 	public native string getTimeString(unsigned int timestamp);
 
@@ -185,16 +185,16 @@ class StructureObject extends TangibleObject {
 		return false;
 	}
 
-	public void sendPermissionListTo(PlayerCreature player, final string listName) {
+	public void sendPermissionListTo(CreatureObject player, final string listName) {
 		structurePermissionList.sendTo(player, listName);
 	}
 	
-	public native boolean addPermission(PlayerCreature player, PlayerCreature targetPlayer, final string listName);
-	public native boolean addPermission(PlayerCreature player, final string targetPlayerName, final string listName);
-	public native boolean removePermission(PlayerCreature player, PlayerCreature targetPlayer, final string listName);
-	public native boolean removePermission(PlayerCreature player, final string targetPlayerName, final string listName);
+	public native boolean addPermission(CreatureObject player, CreatureObject targetPlayer, final string listName);
+	public native boolean addPermission(CreatureObject player, final string targetPlayerName, final string listName);
+	public native boolean removePermission(CreatureObject player, CreatureObject targetPlayer, final string listName);
+	public native boolean removePermission(CreatureObject player, final string targetPlayerName, final string listName);
 
-	public native void createVendor(PlayerCreature player);
+	public native void createVendor(CreatureObject player);
 	
 	/**
 	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.

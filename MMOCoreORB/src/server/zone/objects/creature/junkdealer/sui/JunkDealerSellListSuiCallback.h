@@ -18,7 +18,7 @@ public:
 
 	}
 
-	void run(PlayerCreature* player, SuiBox* suiBox, bool cancel, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeString>* args) {
 		if (!suiBox->isListBox() || cancel != 0)
 			return;
 

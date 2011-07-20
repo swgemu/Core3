@@ -129,14 +129,14 @@ namespace server {
 
 		SkillBox* loadBox(const String& name, Profession* profession);
 
-		bool checkPrerequisites(SkillBox* skillBox, PlayerCreature* player);
-		void awardSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
-		void removeSkillMods(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
+		bool checkPrerequisites(SkillBox* skillBox, CreatureObject* player);
+		void awardSkillMods(SkillBox* skillBox, CreatureObject* player, bool updateClient);
+		void removeSkillMods(SkillBox* skillBox, CreatureObject* player, bool updateClient);
 
-		void awardDraftSchematics(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
-		void removeDraftSchematics(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
+		void awardDraftSchematics(SkillBox* skillBox, CreatureObject* player, bool updateClient);
+		void removeDraftSchematics(SkillBox* skillBox, CreatureObject* player, bool updateClient);
 
-		bool checkRequisitesToSurrender(SkillBox* skillBox, PlayerCreature* player, bool removeChildren);
+		bool checkRequisitesToSurrender(SkillBox* skillBox, CreatureObject* player, bool removeChildren);
 
 		uint8 getLangFromRace(int race);
 
@@ -150,29 +150,29 @@ namespace server {
 
 		//void surrenderAll(PlayerImplementation* player);
 		bool isValidStartingProfession(const String& profession);
-		void setStartingProfession(const String& startingProfession, int raceID, PlayerCreature* player);
+		void setStartingProfession(const String& startingProfession, int raceID, CreatureObject* player);
 
-		bool trainSkillBox(SkillBox* skillBox, PlayerCreature* player, bool updateClient);
-		bool trainSkillBox(const String& skillBox, PlayerCreature* player, bool updateClient);
+		bool trainSkillBox(SkillBox* skillBox, CreatureObject* player, bool updateClient);
+		bool trainSkillBox(const String& skillBox, CreatureObject* player, bool updateClient);
 
-		bool playerTeachSkill(const String& name, PlayerCreature* player, PlayerCreature* teacher);
+		bool playerTeachSkill(const String& name, CreatureObject* player, CreatureObject* teacher);
 
-		void awardSkillBox(SkillBox* skillBox, PlayerCreature* player, bool awardRequired, bool updateClient);
+		void awardSkillBox(SkillBox* skillBox, CreatureObject* player, bool awardRequired, bool updateClient);
 		void awardDraftSchematics(SkillBox* skillBox, PlayerObject* player, bool updateClient);
 
-		inline void awardSkillBox(const String& skillBox, PlayerCreature* player, bool awardRequired, bool updateClient) {
+		inline void awardSkillBox(const String& skillBox, CreatureObject* player, bool awardRequired, bool updateClient) {
 			SkillBox* sBox = skillBoxMap.get(skillBox);
 
 			if (sBox != NULL)
 				awardSkillBox(sBox, player, awardRequired, updateClient);
 		}
 
-		void loadXpTypeCap(PlayerCreature* player);
+		void loadXpTypeCap(CreatureObject* player);
 
-		bool surrenderSkillBox(SkillBox* skillBox, PlayerCreature* player, bool removeChildren, bool updateClient);
-		bool surrenderSkillBox(const String& skillBox, PlayerCreature* player, bool removeChildren, bool updateClient);
+		bool surrenderSkillBox(SkillBox* skillBox, CreatureObject* player, bool removeChildren, bool updateClient);
+		bool surrenderSkillBox(const String& skillBox, CreatureObject* player, bool removeChildren, bool updateClient);
 
-		void surrenderAll(PlayerCreature* player);
+		void surrenderAll(CreatureObject* player);
 
 		Skill* getSkill(const String& name);
 

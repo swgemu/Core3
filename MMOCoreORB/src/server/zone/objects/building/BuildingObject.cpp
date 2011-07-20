@@ -8,7 +8,7 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/tangible/sign/SignObject.h"
 
@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -101,13 +101,13 @@ void BuildingObject::createContainerComponent() {
 		_implementation->createContainerComponent();
 }
 
-void BuildingObject::sendChangeNamePromptTo(PlayerCreature* player) {
+void BuildingObject::sendChangeNamePromptTo(CreatureObject* player) {
 	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -143,13 +143,13 @@ void BuildingObject::updateCellPermissionsTo(SceneObject* player) {
 		_implementation->updateCellPermissionsTo(player);
 }
 
-int BuildingObject::notifyStructurePlaced(PlayerCreature* player) {
+int BuildingObject::notifyStructurePlaced(CreatureObject* player) {
 	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -372,13 +372,13 @@ int BuildingObject::getCurrentNumerOfPlayerItems() {
 		return _implementation->getCurrentNumerOfPlayerItems();
 }
 
-void BuildingObject::onEnter(PlayerCreature* player) {
+void BuildingObject::onEnter(CreatureObject* player) {
 	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ONENTER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ONENTER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -386,13 +386,13 @@ void BuildingObject::onEnter(PlayerCreature* player) {
 		_implementation->onEnter(player);
 }
 
-void BuildingObject::onExit(PlayerCreature* player) {
+void BuildingObject::onExit(CreatureObject* player) {
 	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ONEXIT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ONEXIT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -754,7 +754,7 @@ BuildingObjectImplementation::BuildingObjectImplementation() {
 	publicStructure = true;
 }
 
-int BuildingObjectImplementation::notifyStructurePlaced(PlayerCreature* player) {
+int BuildingObjectImplementation::notifyStructurePlaced(CreatureObject* player) {
 	// server/zone/objects/building/BuildingObject.idl():  		return 0;
 	return 0;
 }
@@ -774,7 +774,7 @@ int BuildingObjectImplementation::getTotalCellNumber() {
 	return totalCellNumber;
 }
 
-void BuildingObjectImplementation::onExit(PlayerCreature* player) {
+void BuildingObjectImplementation::onExit(CreatureObject* player) {
 }
 
 bool BuildingObjectImplementation::isBuildingObject() {
@@ -845,8 +845,8 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_CREATECONTAINERCOMPONENT__:
 		createContainerComponent();
 		break;
-	case RPC_SENDCHANGENAMEPROMPTTO__PLAYERCREATURE_:
-		sendChangeNamePromptTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_:
+		sendChangeNamePromptTo((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
 		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
@@ -854,8 +854,8 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_:
 		updateCellPermissionsTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_NOTIFYSTRUCTUREPLACED__PLAYERCREATURE_:
-		resp->insertSignedInt(notifyStructurePlaced((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_:
+		resp->insertSignedInt(notifyStructurePlaced((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_REMOVEFROMZONE__:
 		removeFromZone();
@@ -890,11 +890,11 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETCURRENTNUMEROFPLAYERITEMS__:
 		resp->insertSignedInt(getCurrentNumerOfPlayerItems());
 		break;
-	case RPC_ONENTER__PLAYERCREATURE_:
-		onEnter((PlayerCreature*) inv->getObjectParameter());
+	case RPC_ONENTER__CREATUREOBJECT_:
+		onEnter((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_ONEXIT__PLAYERCREATURE_:
-		onExit((PlayerCreature*) inv->getObjectParameter());
+	case RPC_ONEXIT__CREATUREOBJECT_:
+		onExit((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_ISBUILDINGOBJECT__:
 		resp->insertBoolean(isBuildingObject());
@@ -949,7 +949,7 @@ void BuildingObjectAdapter::createContainerComponent() {
 	((BuildingObjectImplementation*) impl)->createContainerComponent();
 }
 
-void BuildingObjectAdapter::sendChangeNamePromptTo(PlayerCreature* player) {
+void BuildingObjectAdapter::sendChangeNamePromptTo(CreatureObject* player) {
 	((BuildingObjectImplementation*) impl)->sendChangeNamePromptTo(player);
 }
 
@@ -961,7 +961,7 @@ void BuildingObjectAdapter::updateCellPermissionsTo(SceneObject* player) {
 	((BuildingObjectImplementation*) impl)->updateCellPermissionsTo(player);
 }
 
-int BuildingObjectAdapter::notifyStructurePlaced(PlayerCreature* player) {
+int BuildingObjectAdapter::notifyStructurePlaced(CreatureObject* player) {
 	return ((BuildingObjectImplementation*) impl)->notifyStructurePlaced(player);
 }
 
@@ -1009,11 +1009,11 @@ int BuildingObjectAdapter::getCurrentNumerOfPlayerItems() {
 	return ((BuildingObjectImplementation*) impl)->getCurrentNumerOfPlayerItems();
 }
 
-void BuildingObjectAdapter::onEnter(PlayerCreature* player) {
+void BuildingObjectAdapter::onEnter(CreatureObject* player) {
 	((BuildingObjectImplementation*) impl)->onEnter(player);
 }
 
-void BuildingObjectAdapter::onExit(PlayerCreature* player) {
+void BuildingObjectAdapter::onExit(CreatureObject* player) {
 	((BuildingObjectImplementation*) impl)->onExit(player);
 }
 

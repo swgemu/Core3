@@ -53,7 +53,7 @@ public:
 
 	bool isPsgArmorObject();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
@@ -94,7 +94,7 @@ public:
 
 	bool isPsgArmorObject();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 

@@ -12,7 +12,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 
-bool ShuttleInstallationImplementation::checkRequisitesForPlacement(PlayerCreature* player) {
+bool ShuttleInstallationImplementation::checkRequisitesForPlacement(CreatureObject* player) {
 	/*
 	ManagedReference<ActiveArea*> playerArea = player->getActiveRegion();
 

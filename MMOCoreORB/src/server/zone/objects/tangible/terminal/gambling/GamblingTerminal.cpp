@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -22,7 +22,7 @@
  *	GamblingTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_RESET__,RPC_GETFIRST__,RPC_GETSECOND__,RPC_GETTHIRD__,RPC_SETFIRST__INT_,RPC_SETSECOND__INT_,RPC_SETTHIRD__INT_,RPC_GETMINBET__,RPC_GETMAXBET__,RPC_GETSTATE__,RPC_SETSTATE__INT_,RPC_GETMACHINETYPE__,RPC_INCGAMECOUNT__,RPC_GETGAMECOUNT__,RPC_ISGONEEMPTY__,RPC_GETMACHINETYPETEXT__,RPC_GETTEXT__PLAYERCREATURE_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETGAMBLINGREGION__STRING_,RPC_GETGAMBLINGREGION__,RPC_GAMERUNNING__,RPC_CHECKJOIN__PLAYERCREATURE_,RPC_JOINTERMINAL__PLAYERCREATURE_,RPC_LEAVETERMINAL__PLAYERCREATURE_,RPC_CLOSEMENU__PLAYERCREATURE_BOOL_,RPC_CLOSEALLMENUS__,RPC_STATUSUPDATE__PLAYERCREATURE_INT_,RPC_STATUSUPDATE__INT_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_RESET__,RPC_GETFIRST__,RPC_GETSECOND__,RPC_GETTHIRD__,RPC_SETFIRST__INT_,RPC_SETSECOND__INT_,RPC_SETTHIRD__INT_,RPC_GETMINBET__,RPC_GETMAXBET__,RPC_GETSTATE__,RPC_SETSTATE__INT_,RPC_GETMACHINETYPE__,RPC_INCGAMECOUNT__,RPC_GETGAMECOUNT__,RPC_ISGONEEMPTY__,RPC_GETMACHINETYPETEXT__,RPC_GETTEXT__CREATUREOBJECT_,RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SETGAMBLINGREGION__STRING_,RPC_GETGAMBLINGREGION__,RPC_GAMERUNNING__,RPC_CHECKJOIN__CREATUREOBJECT_,RPC_JOINTERMINAL__CREATUREOBJECT_,RPC_LEAVETERMINAL__CREATUREOBJECT_,RPC_CLOSEMENU__CREATUREOBJECT_BOOL_,RPC_CLOSEALLMENUS__,RPC_STATUSUPDATE__CREATUREOBJECT_INT_,RPC_STATUSUPDATE__INT_,};
 
 GamblingTerminal::GamblingTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	GamblingTerminalImplementation* _implementation = new GamblingTerminalImplementation();
@@ -72,7 +72,7 @@ Vector<GamblingBet*>* GamblingTerminal::getBets() {
 		return _implementation->getBets();
 }
 
-VectorMap<ManagedReference<PlayerCreature* >, unsigned int>* GamblingTerminal::getPlayersWindows() {
+VectorMap<ManagedReference<CreatureObject* >, unsigned int>* GamblingTerminal::getPlayersWindows() {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -81,7 +81,7 @@ VectorMap<ManagedReference<PlayerCreature* >, unsigned int>* GamblingTerminal::g
 		return _implementation->getPlayersWindows();
 }
 
-VectorMap<ManagedReference<PlayerCreature* >, int>* GamblingTerminal::getWinnings() {
+VectorMap<ManagedReference<CreatureObject* >, int>* GamblingTerminal::getWinnings() {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -317,13 +317,13 @@ void GamblingTerminal::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-String GamblingTerminal::getText(PlayerCreature* player) {
+String GamblingTerminal::getText(CreatureObject* player) {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETTEXT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETTEXT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithAsciiReturn(_return_getText);
@@ -332,13 +332,13 @@ String GamblingTerminal::getText(PlayerCreature* player) {
 		return _implementation->getText(player);
 }
 
-void GamblingTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void GamblingTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_);
 		method.addObjectParameter(menuResponse);
 		method.addObjectParameter(player);
 
@@ -347,13 +347,13 @@ void GamblingTerminal::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, 
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int GamblingTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int GamblingTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -403,7 +403,7 @@ bool GamblingTerminal::gameRunning() {
 		return _implementation->gameRunning();
 }
 
-void GamblingTerminal::notifyOthers(PlayerCreature* player, StringIdChatParameter* text) {
+void GamblingTerminal::notifyOthers(CreatureObject* player, StringIdChatParameter* text) {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -421,13 +421,13 @@ void GamblingTerminal::notifyAll(StringIdChatParameter* text) {
 		_implementation->notifyAll(text);
 }
 
-bool GamblingTerminal::checkJoin(PlayerCreature* player) {
+bool GamblingTerminal::checkJoin(CreatureObject* player) {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHECKJOIN__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CHECKJOIN__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -435,13 +435,13 @@ bool GamblingTerminal::checkJoin(PlayerCreature* player) {
 		return _implementation->checkJoin(player);
 }
 
-void GamblingTerminal::joinTerminal(PlayerCreature* player) {
+void GamblingTerminal::joinTerminal(CreatureObject* player) {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_JOINTERMINAL__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_JOINTERMINAL__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -449,13 +449,13 @@ void GamblingTerminal::joinTerminal(PlayerCreature* player) {
 		_implementation->joinTerminal(player);
 }
 
-void GamblingTerminal::leaveTerminal(PlayerCreature* player) {
+void GamblingTerminal::leaveTerminal(CreatureObject* player) {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_LEAVETERMINAL__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_LEAVETERMINAL__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -463,13 +463,13 @@ void GamblingTerminal::leaveTerminal(PlayerCreature* player) {
 		_implementation->leaveTerminal(player);
 }
 
-void GamblingTerminal::closeMenu(PlayerCreature* player, bool payout) {
+void GamblingTerminal::closeMenu(CreatureObject* player, bool payout) {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CLOSEMENU__PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_CLOSEMENU__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(payout);
 
@@ -491,13 +491,13 @@ void GamblingTerminal::closeAllMenus() {
 		_implementation->closeAllMenus();
 }
 
-void GamblingTerminal::statusUpdate(PlayerCreature* player, int event) {
+void GamblingTerminal::statusUpdate(CreatureObject* player, int event) {
 	GamblingTerminalImplementation* _implementation = (GamblingTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_STATUSUPDATE__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_STATUSUPDATE__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(event);
 
@@ -636,12 +636,12 @@ bool GamblingTerminalImplementation::readObjectMember(ObjectInputStream* stream,
 	}
 
 	if (_name == "playersWindows") {
-		TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, unsigned int> >::parseFromBinaryStream(&playersWindows, stream);
+		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, unsigned int> >::parseFromBinaryStream(&playersWindows, stream);
 		return true;
 	}
 
 	if (_name == "winnings") {
-		TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, int> >::parseFromBinaryStream(&winnings, stream);
+		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, int> >::parseFromBinaryStream(&winnings, stream);
 		return true;
 	}
 
@@ -720,7 +720,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, unsigned int> >::toBinaryStream(&playersWindows, stream);
+	TypeInfo<VectorMap<ManagedReference<CreatureObject* >, unsigned int> >::toBinaryStream(&playersWindows, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -728,7 +728,7 @@ int GamblingTerminalImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, int> >::toBinaryStream(&winnings, stream);
+	TypeInfo<VectorMap<ManagedReference<CreatureObject* >, int> >::toBinaryStream(&winnings, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -849,12 +849,12 @@ Vector<GamblingBet*>* GamblingTerminalImplementation::getBets() {
 	return (&bets);
 }
 
-VectorMap<ManagedReference<PlayerCreature* >, unsigned int>* GamblingTerminalImplementation::getPlayersWindows() {
+VectorMap<ManagedReference<CreatureObject* >, unsigned int>* GamblingTerminalImplementation::getPlayersWindows() {
 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return playersWindows;
 	return (&playersWindows);
 }
 
-VectorMap<ManagedReference<PlayerCreature* >, int>* GamblingTerminalImplementation::getWinnings() {
+VectorMap<ManagedReference<CreatureObject* >, int>* GamblingTerminalImplementation::getWinnings() {
 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return winnings;
 	return (&winnings);
 }
@@ -971,7 +971,7 @@ void GamblingTerminalImplementation::loadTemplateData(SharedObjectTemplate* temp
 }
 }
 
-String GamblingTerminalImplementation::getText(PlayerCreature* player) {
+String GamblingTerminalImplementation::getText(CreatureObject* player) {
 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		return 
 	if ((&playersWindows)->contains(player))	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  			return "@gambling/default_interface:mnu_leave";
 	return "@gambling/default_interface:mnu_leave";
@@ -979,7 +979,7 @@ String GamblingTerminalImplementation::getText(PlayerCreature* player) {
 	return "@gambling/default_interface:mnu_join";
 }
 
-void GamblingTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void GamblingTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		string text = getText(player);
 	String text = getText(player);
 	// server/zone/objects/tangible/terminal/gambling/GamblingTerminal.idl():  		menuResponse.addRadialMenuItem(245, 3, text);
@@ -1063,14 +1063,14 @@ Packet* GamblingTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_GETMACHINETYPETEXT__:
 		resp->insertAscii(getMachineTypeText());
 		break;
-	case RPC_GETTEXT__PLAYERCREATURE_:
-		resp->insertAscii(getText((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_GETTEXT__CREATUREOBJECT_:
+		resp->insertAscii(getText((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_PLAYERCREATURE_:
-		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLOBJECTMENURESPONSE__OBJECTMENURESPONSE_CREATUREOBJECT_:
+		fillObjectMenuResponse((ObjectMenuResponse*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_SETGAMBLINGREGION__STRING_:
 		setGamblingRegion(inv->getAsciiParameter(_param0_setGamblingRegion__String_));
@@ -1081,23 +1081,23 @@ Packet* GamblingTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_GAMERUNNING__:
 		resp->insertBoolean(gameRunning());
 		break;
-	case RPC_CHECKJOIN__PLAYERCREATURE_:
-		resp->insertBoolean(checkJoin((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CHECKJOIN__CREATUREOBJECT_:
+		resp->insertBoolean(checkJoin((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_JOINTERMINAL__PLAYERCREATURE_:
-		joinTerminal((PlayerCreature*) inv->getObjectParameter());
+	case RPC_JOINTERMINAL__CREATUREOBJECT_:
+		joinTerminal((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_LEAVETERMINAL__PLAYERCREATURE_:
-		leaveTerminal((PlayerCreature*) inv->getObjectParameter());
+	case RPC_LEAVETERMINAL__CREATUREOBJECT_:
+		leaveTerminal((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_CLOSEMENU__PLAYERCREATURE_BOOL_:
-		closeMenu((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_CLOSEMENU__CREATUREOBJECT_BOOL_:
+		closeMenu((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_CLOSEALLMENUS__:
 		closeAllMenus();
 		break;
-	case RPC_STATUSUPDATE__PLAYERCREATURE_INT_:
-		statusUpdate((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_STATUSUPDATE__CREATUREOBJECT_INT_:
+		statusUpdate((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case RPC_STATUSUPDATE__INT_:
 		statusUpdate(inv->getSignedIntParameter());
@@ -1177,15 +1177,15 @@ String GamblingTerminalAdapter::getMachineTypeText() {
 	return ((GamblingTerminalImplementation*) impl)->getMachineTypeText();
 }
 
-String GamblingTerminalAdapter::getText(PlayerCreature* player) {
+String GamblingTerminalAdapter::getText(CreatureObject* player) {
 	return ((GamblingTerminalImplementation*) impl)->getText(player);
 }
 
-void GamblingTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void GamblingTerminalAdapter::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	((GamblingTerminalImplementation*) impl)->fillObjectMenuResponse(menuResponse, player);
 }
 
-int GamblingTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int GamblingTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((GamblingTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
@@ -1201,19 +1201,19 @@ bool GamblingTerminalAdapter::gameRunning() {
 	return ((GamblingTerminalImplementation*) impl)->gameRunning();
 }
 
-bool GamblingTerminalAdapter::checkJoin(PlayerCreature* player) {
+bool GamblingTerminalAdapter::checkJoin(CreatureObject* player) {
 	return ((GamblingTerminalImplementation*) impl)->checkJoin(player);
 }
 
-void GamblingTerminalAdapter::joinTerminal(PlayerCreature* player) {
+void GamblingTerminalAdapter::joinTerminal(CreatureObject* player) {
 	((GamblingTerminalImplementation*) impl)->joinTerminal(player);
 }
 
-void GamblingTerminalAdapter::leaveTerminal(PlayerCreature* player) {
+void GamblingTerminalAdapter::leaveTerminal(CreatureObject* player) {
 	((GamblingTerminalImplementation*) impl)->leaveTerminal(player);
 }
 
-void GamblingTerminalAdapter::closeMenu(PlayerCreature* player, bool payout) {
+void GamblingTerminalAdapter::closeMenu(CreatureObject* player, bool payout) {
 	((GamblingTerminalImplementation*) impl)->closeMenu(player, payout);
 }
 
@@ -1221,7 +1221,7 @@ void GamblingTerminalAdapter::closeAllMenus() {
 	((GamblingTerminalImplementation*) impl)->closeAllMenus();
 }
 
-void GamblingTerminalAdapter::statusUpdate(PlayerCreature* player, int event) {
+void GamblingTerminalAdapter::statusUpdate(CreatureObject* player, int event) {
 	((GamblingTerminalImplementation*) impl)->statusUpdate(player, event);
 }
 

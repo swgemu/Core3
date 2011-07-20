@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "WebServer.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "session/HttpSession.h"
 #include "servlets/login/LoginServlet.h"

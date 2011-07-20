@@ -81,7 +81,7 @@ class ActiveArea;
 
 using namespace server::zone::objects::area;
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectControllerMessage.h"
 
@@ -114,7 +114,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void sendTo(SceneObject* player, bool doClose);
 
@@ -160,9 +160,9 @@ public:
 
 	bool isCompleted();
 
-	void setCrafter(PlayerCreature* player);
+	void setCrafter(CreatureObject* player);
 
-	PlayerCreature* getCrafter();
+	CreatureObject* getCrafter();
 
 	CraftingValues* getCraftingValues();
 
@@ -228,7 +228,7 @@ protected:
 
 	unsigned int crcToSend;
 
-	ManagedReference<PlayerCreature* > crafter;
+	ManagedReference<CreatureObject* > crafter;
 
 	bool firstCraftingUpdate;
 
@@ -257,7 +257,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	virtual void sendTo(SceneObject* player, bool doClose);
 
@@ -303,9 +303,9 @@ public:
 
 	bool isCompleted();
 
-	void setCrafter(PlayerCreature* player);
+	void setCrafter(CreatureObject* player);
 
-	PlayerCreature* getCrafter();
+	CreatureObject* getCrafter();
 
 	CraftingValues* getCraftingValues();
 
@@ -420,9 +420,9 @@ public:
 
 	bool isCompleted();
 
-	void setCrafter(PlayerCreature* player);
+	void setCrafter(CreatureObject* player);
 
-	PlayerCreature* getCrafter();
+	CreatureObject* getCrafter();
 
 	void setExperimentingCounter(int value);
 

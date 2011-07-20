@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef FORAGECLEANUPEVENT_H_
 #define FORAGECLEANUPEVENT_H_
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {

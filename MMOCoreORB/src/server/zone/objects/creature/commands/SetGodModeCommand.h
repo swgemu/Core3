@@ -67,7 +67,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		if (!player->getPlayerObject()->hasSkill("admin") || !player->getPlayerObject()->isPrivileged())
 			return GENERALERROR;

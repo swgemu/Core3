@@ -10,7 +10,7 @@
 
 #include "engine/core/Core.h"
 #include "server/zone/objects/auction/AuctionItem.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/auction/events/VendorCheckTask.h"
 
 namespace server {
@@ -214,7 +214,7 @@ public:
 		return vendorItems.size();
 	}
 
-	inline int getOwnershipRightsOf(PlayerCreature* player) {
+	inline int getOwnershipRightsOf(CreatureObject* player) {
 		if (!initialized)
 			return 2; // mark not initalized
 

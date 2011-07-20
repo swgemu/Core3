@@ -7,7 +7,7 @@
 
 #include "PersistentMessage.h"
 #include "server/zone/packets/chat/ChatPersistentMessageToClient.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 int PersistentMessageImplementation::getMailID() {
 	return Long::hashCode(_this->_getObjectID());
@@ -17,7 +17,7 @@ uint64 PersistentMessageImplementation::getObjectID() {
 	return _this->_getObjectID();
 }
 
-void PersistentMessageImplementation::sendTo(PlayerCreature* player, bool sendBody) {
+void PersistentMessageImplementation::sendTo(CreatureObject* player, bool sendBody) {
 	Locker _lock(_this);
 
 	ChatPersistentMessageToClient* mail = new ChatPersistentMessageToClient(_this, sendBody);

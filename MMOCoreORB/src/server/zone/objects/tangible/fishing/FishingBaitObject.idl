@@ -49,7 +49,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 
 class FishingBaitObject extends TangibleObject {	
 	protected int freshness;
@@ -80,5 +80,5 @@ class FishingBaitObject extends TangibleObject {
 	
 	public native int getUseCount();
 	
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 }

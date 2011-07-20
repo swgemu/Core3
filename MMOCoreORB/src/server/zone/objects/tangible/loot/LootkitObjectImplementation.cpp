@@ -8,14 +8,14 @@
 #include "LootkitObject.h"
 #include "../TangibleObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/templates/tangible/LootkitObjectTemplate.h"
 
-void LootkitObjectImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void LootkitObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);
 
 	String boolean[] = {"No","Yes"};
@@ -42,14 +42,14 @@ void LootkitObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 	deleteComponents = LootkitData->getDeleteComponents();
 }
 
-PlayerCreature* LootkitObjectImplementation::getPlayer() {
+CreatureObject* LootkitObjectImplementation::getPlayer() {
 	SceneObject* player = getParent()->getParent();
 	if (player->isPlayerCreature()) {
-		return (PlayerCreature*) player;
+		return (CreatureObject*) player;
 	} else {
 		player = player->getParent();
 		if (player->isPlayerCreature()) {
-			return (PlayerCreature*) player;
+			return (CreatureObject*) player;
 		}
 	}
 	return NULL;
@@ -96,7 +96,7 @@ void LootkitObjectImplementation::createItem() {
 			return; // Still missing pieces
 		}
 	}
-	ManagedReference<PlayerCreature*> player = getPlayer();
+	ManagedReference<CreatureObject*> player = getPlayer();
 	if (player != NULL) {
 
 		getPlayer()->sendSystemMessage("@loot_kit:new_item_created");

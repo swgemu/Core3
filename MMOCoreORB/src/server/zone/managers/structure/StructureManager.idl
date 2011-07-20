@@ -51,7 +51,7 @@ import server.zone.ZoneProcessServer;
 import engine.log.Logger;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.structure.StructureObject;
 import system.thread.Thread;
@@ -116,9 +116,9 @@ class StructureManager extends ManagedService implements Logger {
 	 */
 	public native int redeedStructure(CreatureObject creature);
 	
-	public native int declareResidence(PlayerCreature player, StructureObject structureObject);
+	public native int declareResidence(CreatureObject player, StructureObject structureObject);
 	
-	public native int changePrivacy(PlayerCreature player, StructureObject structureObject);
+	public native int changePrivacy(CreatureObject player, StructureObject structureObject);
 	
 	
 	//TEMPORARY

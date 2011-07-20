@@ -59,12 +59,12 @@ which carries forward this exception.
 class ResourceSpawner;
 
 class SurveyTask : public Task {
-	ManagedReference<PlayerCreature* > playerCreature;
+	ManagedReference<CreatureObject* > playerCreature;
 	Survey* surveyMessage;
 	ManagedReference<WaypointObject*> waypoint;
 
 public:
-	SurveyTask(ManagedReference<PlayerCreature* > play, Survey* surveyM, ManagedReference<WaypointObject*> way) {
+	SurveyTask(ManagedReference<CreatureObject* > play, Survey* surveyM, ManagedReference<WaypointObject*> way) {
 		playerCreature = play;
 		surveyMessage = surveyM;
 		waypoint = way;

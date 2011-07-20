@@ -6,7 +6,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	SuiTransferBoxStub
@@ -14,7 +16,7 @@
 
 enum {RPC_GENERATEMESSAGE__ = 6,RPC_ADDFROM__STRING_STRING_STRING_STRING_,RPC_ADDTO__STRING_STRING_STRING_STRING_,RPC_ISTRANSFERBOX__};
 
-SuiTransferBox::SuiTransferBox(PlayerCreature* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
+SuiTransferBox::SuiTransferBox(CreatureObject* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiTransferBoxImplementation* _implementation = new SuiTransferBoxImplementation(player, windowType);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -315,7 +317,7 @@ int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	return 8 + SuiBoxImplementation::writeObjectMembers(stream);
 }
 
-SuiTransferBoxImplementation::SuiTransferBoxImplementation(PlayerCreature* player, unsigned int windowType) : SuiBoxImplementation(player, windowType, SuiBox::TRANSFERBOX) {
+SuiTransferBoxImplementation::SuiTransferBoxImplementation(CreatureObject* player, unsigned int windowType) : SuiBoxImplementation(player, windowType, SuiBox::TRANSFERBOX) {
 	_initializeImplementation();
 }
 

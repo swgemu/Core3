@@ -50,7 +50,7 @@ which carries forward this exception.
 
 #include "server/login/account/Account.h"
 
-#include "objects/player/PlayerCreature.h"
+#include "objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/player/events/ClearClientEvent.h"
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"
@@ -93,18 +93,19 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 		if (player != NULL) {
 
 			if (player->getClient() == _this) {
-				//((PlayerCreature*)player.get())->disconnect(false, true);
-				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((PlayerCreature*)player.get(), _this, DisconnectClientEvent::DISCONNECT);
+				//((CreatureObject*)player.get())->disconnect(false, true);
+				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((CreatureObject*)player.get(), _this, DisconnectClientEvent::DISCONNECT);
 				Core::getTaskManager()->executeTask(task);
 			}
 		}
 
 		closeConnection(true, false);
 	} else if (player != NULL) {
+		PlayerObject* ghost = (PlayerObject*) player->getSlottedObject("ghost");
 
-		if (((PlayerCreature*)player.get())->isLoggingOut() && player->getClient() == _this) {
-			//((PlayerCreature*)player.get())->logout(true);
-			Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((PlayerCreature*)player.get(), _this, DisconnectClientEvent::LOGOUT);
+		if (ghost->isLoggingOut() && player->getClient() == _this) {
+			//((CreatureObject*)player.get())->logout(true);
+			Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((CreatureObject*)player.get(), _this, DisconnectClientEvent::LOGOUT);
 			Core::getTaskManager()->executeTask(task);
 		}
 		else {
@@ -112,8 +113,8 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 				//player->wlock();
 
 				if (player->getClient() == _this) {
-					//((PlayerCreature*)player.get())->setLinkDead();
-					Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((PlayerCreature*)player.get(), _this, DisconnectClientEvent::SETLINKDEAD);
+					//((CreatureObject*)player.get())->setLinkDead();
+					Reference<DisconnectClientEvent*> task = new DisconnectClientEvent((CreatureObject*)player.get(), _this, DisconnectClientEvent::SETLINKDEAD);
 					Core::getTaskManager()->executeTask(task);
 				}
 
@@ -137,7 +138,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 	session->info("disconnecting client \'" + session->getIPAddress() + "\'");
 
 	ZoneServer* server = NULL;
-	ManagedReference<PlayerCreature*> play = (PlayerCreature*)player.get();
+	ManagedReference<CreatureObject*> play = (CreatureObject*)player.get();
 
 	if (play != NULL) {
 		server = play->getZoneServer();

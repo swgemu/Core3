@@ -51,17 +51,17 @@ import engine.core.ManagedReference;
 import engine.util.Facade;
 import system.lang.ref.Reference;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.player.PlayerCreature;
+include server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.SessionFacadeType;
 include server.zone.objects.player.sui.listbox.SuiListBox;
 
 class FindSession extends Facade {
 	@weakReference
-	protected PlayerCreature player;
+	protected CreatureObject player;
 
 	protected SuiListBox findSuiBox;
 		
-	public FindSession(PlayerCreature pl) {
+	public FindSession(CreatureObject pl) {
 		Logger.setLoggingName("FindSession");
 		Logger.setLogging(true);
 		

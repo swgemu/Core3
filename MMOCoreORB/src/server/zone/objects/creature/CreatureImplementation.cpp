@@ -10,7 +10,7 @@
 #include "AiAgent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
@@ -80,7 +80,7 @@ void CreatureImplementation::doAwarenessCheck(Coordinate& start, uint64 time, Cr
 			} else
 				setOblivious();
 		} else if (creo->isPlayerCreature()) {
-			PlayerCreature* play = (PlayerCreature*)creo.get();
+			CreatureObject* play = (CreatureObject*)creo.get();
 			// TODO: tweak this formula based on feedback
 			if ((getFerocity() * getLevel() / 4) < play->getLevel()) {
 				if (!tryRetreat())
@@ -119,7 +119,7 @@ void CreatureImplementation::runAway(CreatureObject* target) {
 	activateMovementEvent();
 }
 
-void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
 	/*menuResponse->addRadialMenuItem(205, 1, "@pet/pet_menu:menu_enter_exit");
 	menuResponse->addRadialMenuItem(61, 3, "");
@@ -149,7 +149,7 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 	}*/
 }
 
-int CreatureImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (getZone() == NULL)
 		return 0;
 
@@ -160,7 +160,7 @@ int CreatureImplementation::handleObjectMenuSelect(PlayerCreature* player, byte 
 	return 0;
 }
 
-void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* player) {
+void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
 	AiAgentImplementation::fillAttributeList(alm, player);
 
 	int creaKnowledge = player->getSkillMod("creature_knowledge");

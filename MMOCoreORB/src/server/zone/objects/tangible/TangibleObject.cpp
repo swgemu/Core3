@@ -6,7 +6,7 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/Zone.h"
 
@@ -24,7 +24,7 @@
  *	TangibleObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__PLAYERCREATURE_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__PLAYERCREATURE_,RPC_SENDPVPSTATUSTO__PLAYERCREATURE_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_GETUNKNOWNBYTE__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_GETPLAYERUSEMASK__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETCRAFTERSSERIAL__STRING_,RPC_SETLEVEL__INT_,RPC_GETCRAFTERSSERIAL__,RPC_ISFROMFACTORYCRATE__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_DECREASEUSECOUNT__CREATUREOBJECT_,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETCONDITIONDAMAGE__INT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_BYTE_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_BYTE_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_GETUNKNOWNBYTE__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_GETPLAYERUSEMASK__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETCRAFTERSSERIAL__STRING_,RPC_SETLEVEL__INT_,RPC_GETCRAFTERSSERIAL__,RPC_ISFROMFACTORYCRATE__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_};
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
@@ -216,13 +216,13 @@ void TangibleObject::setUseCount(unsigned int newUseCount, bool notifyClient) {
 		_implementation->setUseCount(newUseCount, notifyClient);
 }
 
-void TangibleObject::decreaseUseCount(PlayerCreature* player) {
+void TangibleObject::decreaseUseCount(CreatureObject* player) {
 	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_DECREASEUSECOUNT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_DECREASEUSECOUNT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -230,7 +230,7 @@ void TangibleObject::decreaseUseCount(PlayerCreature* player) {
 		_implementation->decreaseUseCount(player);
 }
 
-void TangibleObject::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void TangibleObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -281,13 +281,13 @@ bool TangibleObject::isAttackableBy(CreatureObject* object) {
 		return _implementation->isAttackableBy(object);
 }
 
-bool TangibleObject::isAggressiveTo(PlayerCreature* object) {
+bool TangibleObject::isAggressiveTo(CreatureObject* object) {
 	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISAGGRESSIVETO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ISAGGRESSIVETO__CREATUREOBJECT_);
 		method.addObjectParameter(object);
 
 		return method.executeWithBooleanReturn();
@@ -295,13 +295,13 @@ bool TangibleObject::isAggressiveTo(PlayerCreature* object) {
 		return _implementation->isAggressiveTo(object);
 }
 
-void TangibleObject::sendPvpStatusTo(PlayerCreature* player) {
+void TangibleObject::sendPvpStatusTo(CreatureObject* player) {
 	TangibleObjectImplementation* _implementation = (TangibleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDPVPSTATUSTO__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDPVPSTATUSTO__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -1375,7 +1375,7 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
 }
 
-bool TangibleObjectImplementation::isAggressiveTo(PlayerCreature* object) {
+bool TangibleObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return false;
 	return false;
 }
@@ -1640,8 +1640,8 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SETUSECOUNT__INT_BOOL_:
 		setUseCount(inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_DECREASEUSECOUNT__PLAYERCREATURE_:
-		decreaseUseCount((PlayerCreature*) inv->getObjectParameter());
+	case RPC_DECREASEUSECOUNT__CREATUREOBJECT_:
+		decreaseUseCount((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_CLEARCOMBATSTATE__BOOL_:
 		clearCombatState(inv->getBooleanParameter());
@@ -1652,11 +1652,11 @@ Packet* TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
 		resp->insertBoolean(isAttackableBy((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_ISAGGRESSIVETO__PLAYERCREATURE_:
-		resp->insertBoolean(isAggressiveTo((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_ISAGGRESSIVETO__CREATUREOBJECT_:
+		resp->insertBoolean(isAggressiveTo((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_SENDPVPSTATUSTO__PLAYERCREATURE_:
-		sendPvpStatusTo((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDPVPSTATUSTO__CREATUREOBJECT_:
+		sendPvpStatusTo((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_:
 		resp->insertSignedInt(inflictDamage((TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
@@ -1848,7 +1848,7 @@ void TangibleObjectAdapter::setUseCount(unsigned int newUseCount, bool notifyCli
 	((TangibleObjectImplementation*) impl)->setUseCount(newUseCount, notifyClient);
 }
 
-void TangibleObjectAdapter::decreaseUseCount(PlayerCreature* player) {
+void TangibleObjectAdapter::decreaseUseCount(CreatureObject* player) {
 	((TangibleObjectImplementation*) impl)->decreaseUseCount(player);
 }
 
@@ -1864,11 +1864,11 @@ bool TangibleObjectAdapter::isAttackableBy(CreatureObject* object) {
 	return ((TangibleObjectImplementation*) impl)->isAttackableBy(object);
 }
 
-bool TangibleObjectAdapter::isAggressiveTo(PlayerCreature* object) {
+bool TangibleObjectAdapter::isAggressiveTo(CreatureObject* object) {
 	return ((TangibleObjectImplementation*) impl)->isAggressiveTo(object);
 }
 
-void TangibleObjectAdapter::sendPvpStatusTo(PlayerCreature* player) {
+void TangibleObjectAdapter::sendPvpStatusTo(CreatureObject* player) {
 	((TangibleObjectImplementation*) impl)->sendPvpStatusTo(player);
 }
 

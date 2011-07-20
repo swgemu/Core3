@@ -54,7 +54,7 @@ void FindSessionImplementation::initalizeFindMenu() {
 	box->addMenuItem("@find_display:trainer_entertainer");
 	box->addMenuItem("@find_display:trainer_medic");
 
-	player->addSuiBox(box);
+	player->getPlayerObject()->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
 	player->addActiveSession(SessionFacadeType::FIND, _this);
 }

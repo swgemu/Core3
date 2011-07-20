@@ -23,7 +23,7 @@ public:
 	}
 
 	void run() {
-		PlayerCreature* object = (PlayerCreature*) client->getPlayer();
+		CreatureObject* object = (CreatureObject*) client->getPlayer();
 
 		if (object == NULL)
 			return;

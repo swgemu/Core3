@@ -72,13 +72,13 @@ public:
 		return SUCCESS;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
-		PlayerCreature* playerTarget = NULL;
-		PlayerCreature* designer = (PlayerCreature*) creature;
+		CreatureObject* playerTarget = NULL;
+		CreatureObject* designer = (CreatureObject*) creature;
 
 		if (object == NULL || !object->isPlayerCreature())
 			playerTarget = designer;
 		else
-			playerTarget = (PlayerCreature*) object.get();
+			playerTarget = (CreatureObject*) object.get();
 
 		Locker clocker(playerTarget, creature);
 

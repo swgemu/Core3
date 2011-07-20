@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -16,7 +16,7 @@
  *	MissionTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISMISSIONTERMINAL__,RPC_ISARTISANTERMINAL__,RPC_ISGENERALTERMINAL__,RPC_ISBOUNTYTERMINAL__,RPC_ISENTERTAINERTERMINAL__,RPC_ISIMPERIALTERMINAL__,RPC_ISNEWBIETERMINAL__,RPC_ISREBELTERMINAL__,RPC_ISSCOUTTERMINAL__,RPC_ISSTATUETERMINAL__,RPC_ISSLICER__PLAYERCREATURE_,RPC_ADDSLICER__PLAYERCREATURE_,RPC_REMOVESLICER__PLAYERCREATURE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISMISSIONTERMINAL__,RPC_ISARTISANTERMINAL__,RPC_ISGENERALTERMINAL__,RPC_ISBOUNTYTERMINAL__,RPC_ISENTERTAINERTERMINAL__,RPC_ISIMPERIALTERMINAL__,RPC_ISNEWBIETERMINAL__,RPC_ISREBELTERMINAL__,RPC_ISSCOUTTERMINAL__,RPC_ISSTATUETERMINAL__,RPC_ISSLICER__CREATUREOBJECT_,RPC_ADDSLICER__CREATUREOBJECT_,RPC_REMOVESLICER__CREATUREOBJECT_};
 
 MissionTerminal::MissionTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	MissionTerminalImplementation* _implementation = new MissionTerminalImplementation();
@@ -53,13 +53,13 @@ void MissionTerminal::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-int MissionTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int MissionTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -198,13 +198,13 @@ bool MissionTerminal::isStatueTerminal() {
 		return _implementation->isStatueTerminal();
 }
 
-bool MissionTerminal::isSlicer(PlayerCreature* slicer) {
+bool MissionTerminal::isSlicer(CreatureObject* slicer) {
 	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISSLICER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ISSLICER__CREATUREOBJECT_);
 		method.addObjectParameter(slicer);
 
 		return method.executeWithBooleanReturn();
@@ -212,13 +212,13 @@ bool MissionTerminal::isSlicer(PlayerCreature* slicer) {
 		return _implementation->isSlicer(slicer);
 }
 
-void MissionTerminal::addSlicer(PlayerCreature* slicer) {
+void MissionTerminal::addSlicer(CreatureObject* slicer) {
 	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDSLICER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ADDSLICER__CREATUREOBJECT_);
 		method.addObjectParameter(slicer);
 
 		method.executeWithVoidReturn();
@@ -226,13 +226,13 @@ void MissionTerminal::addSlicer(PlayerCreature* slicer) {
 		_implementation->addSlicer(slicer);
 }
 
-void MissionTerminal::removeSlicer(PlayerCreature* slicer) {
+void MissionTerminal::removeSlicer(CreatureObject* slicer) {
 	MissionTerminalImplementation* _implementation = (MissionTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVESLICER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_REMOVESLICER__CREATUREOBJECT_);
 		method.addObjectParameter(slicer);
 
 		method.executeWithVoidReturn();
@@ -456,7 +456,7 @@ bool MissionTerminalImplementation::isStatueTerminal() {
 	return terminalType == "statue";
 }
 
-bool MissionTerminalImplementation::isSlicer(PlayerCreature* slicer) {
+bool MissionTerminalImplementation::isSlicer(CreatureObject* slicer) {
 	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		for 
 	if (slicer == NULL)	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  			return 0;
 	return 0;
@@ -465,8 +465,8 @@ bool MissionTerminalImplementation::isSlicer(PlayerCreature* slicer) {
 	int i = 0;
 	(&slicers)->size();
  ++i) {
-	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  			PlayerCreature player = slicers.get(i);
-	PlayerCreature* player = (&slicers)->get(i);
+	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  			CreatureObject player = slicers.get(i);
+	CreatureObject* player = (&slicers)->get(i);
 	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		}
 	if (player == slicer)	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  				return true;
 	return true;
@@ -475,12 +475,12 @@ bool MissionTerminalImplementation::isSlicer(PlayerCreature* slicer) {
 	return 0;
 }
 
-void MissionTerminalImplementation::addSlicer(PlayerCreature* slicer) {
+void MissionTerminalImplementation::addSlicer(CreatureObject* slicer) {
 	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		slicers.add(slicer);
 	(&slicers)->add(slicer);
 }
 
-void MissionTerminalImplementation::removeSlicer(PlayerCreature* slicer) {
+void MissionTerminalImplementation::removeSlicer(CreatureObject* slicer) {
 	// server/zone/objects/tangible/terminal/mission/MissionTerminal.idl():  		slicers.removeElement(slicer);
 	(&slicers)->removeElement(slicer);
 }
@@ -499,8 +499,8 @@ Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_ISMISSIONTERMINAL__:
 		resp->insertBoolean(isMissionTerminal());
@@ -532,14 +532,14 @@ Packet* MissionTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_ISSTATUETERMINAL__:
 		resp->insertBoolean(isStatueTerminal());
 		break;
-	case RPC_ISSLICER__PLAYERCREATURE_:
-		resp->insertBoolean(isSlicer((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_ISSLICER__CREATUREOBJECT_:
+		resp->insertBoolean(isSlicer((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_ADDSLICER__PLAYERCREATURE_:
-		addSlicer((PlayerCreature*) inv->getObjectParameter());
+	case RPC_ADDSLICER__CREATUREOBJECT_:
+		addSlicer((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_REMOVESLICER__PLAYERCREATURE_:
-		removeSlicer((PlayerCreature*) inv->getObjectParameter());
+	case RPC_REMOVESLICER__CREATUREOBJECT_:
+		removeSlicer((CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -552,7 +552,7 @@ void MissionTerminalAdapter::initializeTransientMembers() {
 	((MissionTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
-int MissionTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int MissionTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((MissionTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
@@ -596,15 +596,15 @@ bool MissionTerminalAdapter::isStatueTerminal() {
 	return ((MissionTerminalImplementation*) impl)->isStatueTerminal();
 }
 
-bool MissionTerminalAdapter::isSlicer(PlayerCreature* slicer) {
+bool MissionTerminalAdapter::isSlicer(CreatureObject* slicer) {
 	return ((MissionTerminalImplementation*) impl)->isSlicer(slicer);
 }
 
-void MissionTerminalAdapter::addSlicer(PlayerCreature* slicer) {
+void MissionTerminalAdapter::addSlicer(CreatureObject* slicer) {
 	((MissionTerminalImplementation*) impl)->addSlicer(slicer);
 }
 
-void MissionTerminalAdapter::removeSlicer(PlayerCreature* slicer) {
+void MissionTerminalAdapter::removeSlicer(CreatureObject* slicer) {
 	((MissionTerminalImplementation*) impl)->removeSlicer(slicer);
 }
 

@@ -48,7 +48,7 @@ import engine.core.ManagedService;
 import engine.log.Logger;
 import server.zone.Zone;
 import server.zone.objects.building.city.CityHallObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.chat.StringIdChatParameter;
 import system.util.SortedVector;
 import system.util.VectorMap;
@@ -100,9 +100,9 @@ class CityManager extends ManagedService implements Logger {
 	 */
 	public native void loadLuaConfig();
 	
-	public native void createNewCity(CityHallObject city, PlayerCreature player, final string name);
+	public native void createNewCity(CityHallObject city, CreatureObject player, final string name);
 	
-	public native void changeCityName(CityHallObject city, PlayerCreature player, final string name);
+	public native void changeCityName(CityHallObject city, CreatureObject player, final string name);
 	
 	public native boolean validateCityName(final string name);
 	
@@ -157,7 +157,7 @@ class CityManager extends ManagedService implements Logger {
 	 * @param player The new citizen.
 	 * @param sendMail Should emails be sent to the player and the mayor.
 	 */
-	public native void declareCitizenship(CityHallObject city, PlayerCreature player, boolean sendMail = true);
+	public native void declareCitizenship(CityHallObject city, CreatureObject player, boolean sendMail = true);
 	
 	/**
 	 * Revokes the citizen from the city, and sends out proper mails.
@@ -165,7 +165,7 @@ class CityManager extends ManagedService implements Logger {
 	 * @param player The old citizen.
 	 * @param sendMail Should emails be sent to the mayor.
 	 */
-	public native void revokeCitizenship(CityHallObject city, PlayerCreature player, boolean sendMail = true);
+	public native void revokeCitizenship(CityHallObject city, CreatureObject player, boolean sendMail = true);
 	
 	/**
 	 * Adds an existing citizen to the rank of militia.
@@ -175,7 +175,7 @@ class CityManager extends ManagedService implements Logger {
 	 * @param player The player doing the adding.
 	 * @param citizenName The citizen's first name being added.
 	 */
-	public native void addMilitiaMember(CityHallObject city, PlayerCreature player, final string citizenName);
+	public native void addMilitiaMember(CityHallObject city, CreatureObject player, final string citizenName);
 	
 	/**
 	 * Removes an existing militia member from the militia and makes them a citizen.
@@ -185,7 +185,7 @@ class CityManager extends ManagedService implements Logger {
 	 * @param player The player doing the removing.
 	 * @param playerID The player object id of the player being removed.
 	 */
-	public native void removeMilitiaMember(CityHallObject city, PlayerCreature player, unsigned long playerID);
+	public native void removeMilitiaMember(CityHallObject city, CreatureObject player, unsigned long playerID);
 	
 	/**
 	 * Checks to see if the planet's city cap has been reached at the particular rank.

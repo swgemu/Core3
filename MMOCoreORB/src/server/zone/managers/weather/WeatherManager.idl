@@ -49,7 +49,8 @@ import engine.lua.Lua;
 import engine.log.Logger;
 import system.lang.ref.Reference;
 import server.zone.Zone;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.weather.events.WeatherChangeEvent;
 import server.zone.managers.weather.events.SandstormTickEvent;
 import system.util.Vector;
@@ -145,7 +146,7 @@ class WeatherManager extends ManagedService implements Logger {
 	 * @post Player is locked.
 	 * @param player The player that the sandstorm effects will potentially be applied to.
 	 */
-	private native void applySandstormDamage(PlayerCreature player);
+	private native void applySandstormDamage(CreatureObject player);
 
 
 	/**
@@ -157,7 +158,7 @@ class WeatherManager extends ManagedService implements Logger {
 	 * @param sandstormCoverings A Vector created in applySandstormDamage() that will store 
 	 * the number of clothing and armour pieces the player is wearing.
 	 */
-	private native void calculateSandstormProtection(PlayerCreature player, @dereferenced Vector<int> sandstormCoverings);
+	private native void calculateSandstormProtection(CreatureObject player, @dereferenced Vector<int> sandstormCoverings);
 	
 
 
@@ -195,7 +196,7 @@ class WeatherManager extends ManagedService implements Logger {
 	 * @pre Locks the player for the duration of the method.
 	 * @param player The player who will receive the new weather information.
 	 */
-	public native void sendWeatherPacket(PlayerCreature player);
+	public native void sendWeatherPacket(CreatureObject player);
 
 
 	/**
@@ -207,10 +208,10 @@ class WeatherManager extends ManagedService implements Logger {
 	public native void sandstormTick();
 
 
-	public native void enableWeather(PlayerCreature player);
-	public native void disableWeather(PlayerCreature player);
-	public native void changeWeather(PlayerCreature player, int newWeather);
-	public native void weatherInfo(PlayerCreature player);
+	public native void enableWeather(CreatureObject player);
+	public native void disableWeather(CreatureObject player);
+	public native void changeWeather(CreatureObject player, int newWeather);
+	public native void weatherInfo(CreatureObject player);
 
 
 	public void setWeatherID(unsigned int value) {

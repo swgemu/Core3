@@ -46,7 +46,7 @@ which carries forward this exception.
 #define DECLINECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../player/PlayerCreature.h"
+#include "../../creature/CreatureObject.h"
 #include "server/chat/StringIdChatParameter.h"
 
 
@@ -72,7 +72,7 @@ public:
 		if (object == NULL || !object->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* inviter = (PlayerCreature*) object.get();
+		CreatureObject* inviter = (CreatureObject*) object.get();
 
 		creature->updateGroupInviterID(0);
 

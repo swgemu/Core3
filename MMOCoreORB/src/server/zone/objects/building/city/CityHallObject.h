@@ -88,16 +88,16 @@ using namespace server::zone::objects::tangible::terminal::city;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/building/BuildingObject.h"
 
@@ -129,7 +129,7 @@ public:
 
 	void despawnCityHallObjects();
 
-	bool checkRequisitesForPlacement(PlayerCreature* player);
+	bool checkRequisitesForPlacement(CreatureObject* player);
 
 	void setCityName(const String& name);
 
@@ -137,37 +137,37 @@ public:
 
 	byte getCityRank();
 
-	void sendCityNamePromptTo(PlayerCreature* player, bool newCity = false);
+	void sendCityNamePromptTo(CreatureObject* player, bool newCity = false);
 
-	void sendStatusTo(PlayerCreature* player);
+	void sendStatusTo(CreatureObject* player);
 
-	void sendCitizenshipReportTo(PlayerCreature* player);
+	void sendCitizenshipReportTo(CreatureObject* player);
 
-	void sendStructureReportTo(PlayerCreature* player);
+	void sendStructureReportTo(CreatureObject* player);
 
-	void sendTreasuryReportTo(PlayerCreature* player);
+	void sendTreasuryReportTo(CreatureObject* player);
 
-	void sendCityAdvancementTo(PlayerCreature* player);
+	void sendCityAdvancementTo(CreatureObject* player);
 
-	void sendMaintenanceReportTo(PlayerCreature* player);
+	void sendMaintenanceReportTo(CreatureObject* player);
 
-	void sendChangeCityNameTo(PlayerCreature* player);
+	void sendChangeCityNameTo(CreatureObject* player);
 
-	void sendEnableZoningTo(PlayerCreature* player);
+	void sendEnableZoningTo(CreatureObject* player);
 
-	void sendManageMilitiaTo(PlayerCreature* player);
+	void sendManageMilitiaTo(CreatureObject* player);
 
-	void sendAddMilitiaMemberTo(PlayerCreature* player);
+	void sendAddMilitiaMemberTo(CreatureObject* player);
 
-	void sendAdjustTaxesTo(PlayerCreature* player);
+	void sendAdjustTaxesTo(CreatureObject* player);
 
-	void sendTreasuryDepositTo(PlayerCreature* player);
+	void sendTreasuryDepositTo(CreatureObject* player);
 
-	void sendTreasuryWithdrawalTo(PlayerCreature* player);
+	void sendTreasuryWithdrawalTo(CreatureObject* player);
 
-	void sendCitySpecializationSelectionTo(PlayerCreature* player);
+	void sendCitySpecializationSelectionTo(CreatureObject* player);
 
-	void toggleCityRegistration(PlayerCreature* player);
+	void toggleCityRegistration(CreatureObject* player);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
@@ -205,7 +205,7 @@ public:
 
 	bool isZoningEnabled();
 
-	void toggleZoningEnabled(PlayerCreature* player);
+	void toggleZoningEnabled(CreatureObject* player);
 
 	void setZoningEnabled(bool enabled);
 
@@ -310,7 +310,7 @@ public:
 
 	void despawnCityHallObjects();
 
-	bool checkRequisitesForPlacement(PlayerCreature* player);
+	bool checkRequisitesForPlacement(CreatureObject* player);
 
 	void setCityName(const String& name);
 
@@ -318,37 +318,37 @@ public:
 
 	byte getCityRank();
 
-	void sendCityNamePromptTo(PlayerCreature* player, bool newCity = false);
+	void sendCityNamePromptTo(CreatureObject* player, bool newCity = false);
 
-	void sendStatusTo(PlayerCreature* player);
+	void sendStatusTo(CreatureObject* player);
 
-	void sendCitizenshipReportTo(PlayerCreature* player);
+	void sendCitizenshipReportTo(CreatureObject* player);
 
-	void sendStructureReportTo(PlayerCreature* player);
+	void sendStructureReportTo(CreatureObject* player);
 
-	void sendTreasuryReportTo(PlayerCreature* player);
+	void sendTreasuryReportTo(CreatureObject* player);
 
-	void sendCityAdvancementTo(PlayerCreature* player);
+	void sendCityAdvancementTo(CreatureObject* player);
 
-	void sendMaintenanceReportTo(PlayerCreature* player);
+	void sendMaintenanceReportTo(CreatureObject* player);
 
-	void sendChangeCityNameTo(PlayerCreature* player);
+	void sendChangeCityNameTo(CreatureObject* player);
 
-	void sendEnableZoningTo(PlayerCreature* player);
+	void sendEnableZoningTo(CreatureObject* player);
 
-	void sendManageMilitiaTo(PlayerCreature* player);
+	void sendManageMilitiaTo(CreatureObject* player);
 
-	void sendAddMilitiaMemberTo(PlayerCreature* player);
+	void sendAddMilitiaMemberTo(CreatureObject* player);
 
-	void sendAdjustTaxesTo(PlayerCreature* player);
+	void sendAdjustTaxesTo(CreatureObject* player);
 
-	void sendTreasuryDepositTo(PlayerCreature* player);
+	void sendTreasuryDepositTo(CreatureObject* player);
 
-	void sendTreasuryWithdrawalTo(PlayerCreature* player);
+	void sendTreasuryWithdrawalTo(CreatureObject* player);
 
-	void sendCitySpecializationSelectionTo(PlayerCreature* player);
+	void sendCitySpecializationSelectionTo(CreatureObject* player);
 
-	void toggleCityRegistration(PlayerCreature* player);
+	void toggleCityRegistration(CreatureObject* player);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
@@ -386,7 +386,7 @@ public:
 
 	bool isZoningEnabled();
 
-	void toggleZoningEnabled(PlayerCreature* player);
+	void toggleZoningEnabled(CreatureObject* player);
 
 	void setZoningEnabled(bool enabled);
 
@@ -465,7 +465,7 @@ public:
 
 	void despawnCityHallObjects();
 
-	bool checkRequisitesForPlacement(PlayerCreature* player);
+	bool checkRequisitesForPlacement(CreatureObject* player);
 
 	void setCityName(const String& name);
 
@@ -473,37 +473,37 @@ public:
 
 	byte getCityRank();
 
-	void sendCityNamePromptTo(PlayerCreature* player, bool newCity);
+	void sendCityNamePromptTo(CreatureObject* player, bool newCity);
 
-	void sendStatusTo(PlayerCreature* player);
+	void sendStatusTo(CreatureObject* player);
 
-	void sendCitizenshipReportTo(PlayerCreature* player);
+	void sendCitizenshipReportTo(CreatureObject* player);
 
-	void sendStructureReportTo(PlayerCreature* player);
+	void sendStructureReportTo(CreatureObject* player);
 
-	void sendTreasuryReportTo(PlayerCreature* player);
+	void sendTreasuryReportTo(CreatureObject* player);
 
-	void sendCityAdvancementTo(PlayerCreature* player);
+	void sendCityAdvancementTo(CreatureObject* player);
 
-	void sendMaintenanceReportTo(PlayerCreature* player);
+	void sendMaintenanceReportTo(CreatureObject* player);
 
-	void sendChangeCityNameTo(PlayerCreature* player);
+	void sendChangeCityNameTo(CreatureObject* player);
 
-	void sendEnableZoningTo(PlayerCreature* player);
+	void sendEnableZoningTo(CreatureObject* player);
 
-	void sendManageMilitiaTo(PlayerCreature* player);
+	void sendManageMilitiaTo(CreatureObject* player);
 
-	void sendAddMilitiaMemberTo(PlayerCreature* player);
+	void sendAddMilitiaMemberTo(CreatureObject* player);
 
-	void sendAdjustTaxesTo(PlayerCreature* player);
+	void sendAdjustTaxesTo(CreatureObject* player);
 
-	void sendTreasuryDepositTo(PlayerCreature* player);
+	void sendTreasuryDepositTo(CreatureObject* player);
 
-	void sendTreasuryWithdrawalTo(PlayerCreature* player);
+	void sendTreasuryWithdrawalTo(CreatureObject* player);
 
-	void sendCitySpecializationSelectionTo(PlayerCreature* player);
+	void sendCitySpecializationSelectionTo(CreatureObject* player);
 
-	void toggleCityRegistration(PlayerCreature* player);
+	void toggleCityRegistration(CreatureObject* player);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
@@ -541,7 +541,7 @@ public:
 
 	bool isZoningEnabled();
 
-	void toggleZoningEnabled(PlayerCreature* player);
+	void toggleZoningEnabled(CreatureObject* player);
 
 	void setZoningEnabled(bool enabled);
 

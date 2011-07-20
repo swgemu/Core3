@@ -24,7 +24,7 @@
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/region/Region.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
@@ -196,7 +196,7 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 	return 0;
 }
 /*
-int StructureManagerImplementation::placeStructureFromDeed(PlayerCreature* player, uint64 deedID, float x, float y, int angle) {
+int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* player, uint64 deedID, float x, float y, int angle) {
 	ZoneServer* zoneServer = player->getZoneServer();
 	ObjectManager* objectManager = ObjectManager::instance();
 
@@ -425,7 +425,7 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 				ManagedReference<SceneObject*> obj = cellObject->getContainerObject(j);
 
 				if (obj->isPlayerCreature()) {
-					PlayerCreature* playerCreature = (PlayerCreature*) obj.get();
+					CreatureObject* playerCreature = (CreatureObject*) obj.get();
 
 					playerCreature->teleport(x, z, y, 0);
 				}
@@ -474,13 +474,15 @@ String StructureManagerImplementation::getTimeString(uint32 timestamp) {
 	return str.toString();
 }
 
-int StructureManagerImplementation::declareResidence(PlayerCreature* player, StructureObject* structureObject) {
+int StructureManagerImplementation::declareResidence(CreatureObject* player, StructureObject* structureObject) {
 	if (!structureObject->isBuildingObject()) {
 		player->sendSystemMessage("@player_structure:residence_must_be_building"); //Your declared residence must be a building.
 		return 1;
 	}
 
-	ManagedReference<BuildingObject*> declaredResidence = player->getDeclaredResidence();
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
 
 	if (declaredResidence != NULL && declaredResidence->isCityHallBuilding()) {
 		player->sendSystemMessage("@city/city:mayor_residence_change"); //As a city Mayor, your residence is always the city hall of the city in which you are mayor.  You cannot declare a new residence.
@@ -508,7 +510,7 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 	}
 
 	//Set the characters home location to this structure.
-	player->setDeclaredResidence(buildingObject);
+	ghost->setDeclaredResidence(buildingObject);
 
 
 	//If in a city, add to the cities citizens
@@ -532,7 +534,7 @@ int StructureManagerImplementation::declareResidence(PlayerCreature* player, Str
 	return 0;
 }
 
-int StructureManagerImplementation::changePrivacy(PlayerCreature* player, StructureObject* structureObject) {
+int StructureManagerImplementation::changePrivacy(CreatureObject* player, StructureObject* structureObject) {
 	SharedBuildingObjectTemplate* sbot = dynamic_cast<SharedBuildingObjectTemplate*>(templateManager->getTemplate(structureObject->getServerObjectCRC()));
 
 	if (sbot != NULL && sbot->isAlwaysPublic()) {
@@ -597,7 +599,7 @@ int StructureManagerImplementation::changePrivacy(PlayerCreature* player, Struct
 			continue;
 
 
-		PlayerCreature* targetPlayer = (PlayerCreature*) obj.get();
+		CreatureObject* targetPlayer = (CreatureObject*) obj.get();
 
 		//Permissions shouldnt change for the player if they are on the entry, access, or ban list.
 		if (buildingObject->isOnBanList(targetPlayer))
@@ -637,7 +639,7 @@ int StructureManagerImplementation::changePrivacy(PlayerCreature* player, Struct
 			if (obj == NULL || !obj->isPlayerCreature() || obj == player)
 				continue;
 
-			PlayerCreature* targetPlayer = (PlayerCreature*) obj.get();
+			CreatureObject* targetPlayer = (CreatureObject*) obj.get();
 
 			Locker _locker(targetPlayer);
 

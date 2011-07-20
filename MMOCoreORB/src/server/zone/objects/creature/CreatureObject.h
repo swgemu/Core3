@@ -98,9 +98,23 @@ using namespace server::zone::managers::objectcontroller;
 namespace server {
 namespace zone {
 namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace player {
 
-class PlayerCreature;
+class PlayerObject;
 
 } // namespace player
 } // namespace objects
@@ -205,6 +219,16 @@ class WeaponObject;
 
 using namespace server::zone::objects::tangible::weapon;
 
+namespace server {
+namespace zone {
+
+class ZoneClientSession;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
 #include "server/zone/objects/creature/variables/CommandQueueActionVector.h"
@@ -285,6 +309,8 @@ public:
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void sendToOwner(bool doClose = true);
 
 	void sendSystemMessage(const String& message);
 
@@ -372,6 +398,8 @@ public:
 
 	void clearBuffs(bool updateclient);
 
+	void sendBuffsTo(CreatureObject* creature);
+
 	Buff* getBuff(unsigned int buffcrc);
 
 	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
@@ -379,6 +407,10 @@ public:
 	bool healDot(unsigned long long dotType, int reduction);
 
 	void clearDots();
+
+	DamageOverTimeList* getDamageOverTimeList();
+
+	void removeDotsFromVector();
 
 	bool hasBuff(unsigned int buffcrc);
 
@@ -458,6 +490,20 @@ public:
 
 	void selectConversationOption(int option, SceneObject* obj);
 
+	void sendMessage(BasePacket* msg);
+
+	void sendExecuteConsoleCommand(const String& command);
+
+	bool isAggressiveTo(CreatureObject* object);
+
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	String getFirstName();
+
+	String getLastName();
+
+	bool isOnline();
+
 	bool canTreatInjuries();
 
 	bool canTreatStates();
@@ -466,9 +512,13 @@ public:
 
 	bool canTreatConditions();
 
+	PlayerObject* getPlayerObject();
+
 	bool isListening();
 
 	bool isWatching();
+
+	void setClient(ZoneClientSession* cli);
 
 	void dismount();
 
@@ -507,6 +557,8 @@ public:
 	bool hasAttackDelay();
 
 	void removeAttackDelay();
+
+	CooldownTimerMap* getCooldownTimerMap();
 
 	bool hasSpice();
 
@@ -610,6 +662,8 @@ public:
 
 	SpeedMultiplierModChanges* getSpeedMultiplierModChanges();
 
+	CommandQueueActionVector* getCommandQueue();
+
 	float getRunSpeed();
 
 	float getWalkSpeed();
@@ -680,9 +734,13 @@ public:
 
 	bool isCreatureObject();
 
+	bool isNextActionPast();
+
 	bool isTrainerCreature();
 
 	bool isSwimming();
+
+	ZoneClientSession* getClient();
 
 	bool isRidingMount();
 
@@ -744,9 +802,11 @@ public:
 
 	bool isInCover();
 
-	bool isNonPlayerCreature();
+	bool isNonPlayerCreatureObject();
 
 	bool isCreature();
+
+	bool isPlayerCreature();
 
 	bool isAiAgent();
 
@@ -763,6 +823,8 @@ protected:
 
 	virtual ~CreatureObject();
 
+	String _return_getFirstName;
+	String _return_getLastName;
 	String _return_getMoodString;
 	String _return_getPerformanceAnimation;
 	String _return_getSpeciesName;
@@ -786,6 +848,8 @@ namespace creature {
 
 class CreatureObjectImplementation : public TangibleObjectImplementation {
 protected:
+	ManagedReference<ZoneClientSession* > owner;
+
 	int bankCredits;
 
 	int cashCredits;
@@ -943,6 +1007,8 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
+	void sendToOwner(bool doClose = true);
+
 	void sendSystemMessage(const String& message);
 
 	void playMusicMessage(const String& file);
@@ -1029,6 +1095,8 @@ public:
 
 	void clearBuffs(bool updateclient);
 
+	void sendBuffsTo(CreatureObject* creature);
+
 	Buff* getBuff(unsigned int buffcrc);
 
 	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
@@ -1036,6 +1104,10 @@ public:
 	bool healDot(unsigned long long dotType, int reduction);
 
 	void clearDots();
+
+	DamageOverTimeList* getDamageOverTimeList();
+
+	void removeDotsFromVector();
 
 	bool hasBuff(unsigned int buffcrc);
 
@@ -1115,6 +1187,20 @@ public:
 
 	virtual void selectConversationOption(int option, SceneObject* obj);
 
+	void sendMessage(BasePacket* msg);
+
+	void sendExecuteConsoleCommand(const String& command);
+
+	bool isAggressiveTo(CreatureObject* object);
+
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	String getFirstName();
+
+	String getLastName();
+
+	bool isOnline();
+
 	bool canTreatInjuries();
 
 	bool canTreatStates();
@@ -1123,9 +1209,13 @@ public:
 
 	bool canTreatConditions();
 
+	PlayerObject* getPlayerObject();
+
 	bool isListening();
 
 	bool isWatching();
+
+	void setClient(ZoneClientSession* cli);
 
 	void dismount();
 
@@ -1164,6 +1254,8 @@ public:
 	bool hasAttackDelay();
 
 	void removeAttackDelay();
+
+	CooldownTimerMap* getCooldownTimerMap();
 
 	bool hasSpice();
 
@@ -1267,6 +1359,8 @@ public:
 
 	SpeedMultiplierModChanges* getSpeedMultiplierModChanges();
 
+	CommandQueueActionVector* getCommandQueue();
+
 	float getRunSpeed();
 
 	float getWalkSpeed();
@@ -1337,9 +1431,13 @@ public:
 
 	bool isCreatureObject();
 
+	bool isNextActionPast();
+
 	virtual bool isTrainerCreature();
 
 	bool isSwimming();
+
+	ZoneClientSession* getClient();
 
 	bool isRidingMount();
 
@@ -1401,9 +1499,11 @@ public:
 
 	bool isInCover();
 
-	virtual bool isNonPlayerCreature();
+	virtual bool isNonPlayerCreatureObject();
 
 	virtual bool isCreature();
+
+	bool isPlayerCreature();
 
 	virtual bool isAiAgent();
 
@@ -1461,6 +1561,8 @@ public:
 	void clearQueueAction(unsigned int actioncntr, float timer, unsigned int tab1, unsigned int tab2);
 
 	void sendBaselinesTo(SceneObject* player);
+
+	void sendToOwner(bool doClose);
 
 	void sendSystemMessage(const String& message);
 
@@ -1546,6 +1648,8 @@ public:
 
 	void clearBuffs(bool updateclient);
 
+	void sendBuffsTo(CreatureObject* creature);
+
 	Buff* getBuff(unsigned int buffcrc);
 
 	int addDotState(unsigned long long dotType, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense);
@@ -1553,6 +1657,8 @@ public:
 	bool healDot(unsigned long long dotType, int reduction);
 
 	void clearDots();
+
+	void removeDotsFromVector();
 
 	bool hasBuff(unsigned int buffcrc);
 
@@ -1628,6 +1734,20 @@ public:
 
 	void selectConversationOption(int option, SceneObject* obj);
 
+	void sendMessage(BasePacket* msg);
+
+	void sendExecuteConsoleCommand(const String& command);
+
+	bool isAggressiveTo(CreatureObject* object);
+
+	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
+
+	String getFirstName();
+
+	String getLastName();
+
+	bool isOnline();
+
 	bool canTreatInjuries();
 
 	bool canTreatStates();
@@ -1636,9 +1756,13 @@ public:
 
 	bool canTreatConditions();
 
+	PlayerObject* getPlayerObject();
+
 	bool isListening();
 
 	bool isWatching();
+
+	void setClient(ZoneClientSession* cli);
 
 	void dismount();
 
@@ -1832,9 +1956,13 @@ public:
 
 	bool isCreatureObject();
 
+	bool isNextActionPast();
+
 	bool isTrainerCreature();
 
 	bool isSwimming();
+
+	ZoneClientSession* getClient();
 
 	bool isRidingMount();
 
@@ -1896,9 +2024,11 @@ public:
 
 	bool isInCover();
 
-	bool isNonPlayerCreature();
+	bool isNonPlayerCreatureObject();
 
 	bool isCreature();
+
+	bool isPlayerCreature();
 
 	bool isAiAgent();
 
@@ -1922,6 +2052,7 @@ protected:
 	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_int_;
 	String _param0_setMoodString__String_bool_;
 	UnicodeString _param2_executeObjectControllerAction__int_long_UnicodeString_;
+	String _param0_sendExecuteConsoleCommand__String_;
 	String _param0_getScreenPlayState__String_;
 	String _param0_setScreenPlayState__String_long_;
 	String _param0_updateCooldownTimer__String_int_;

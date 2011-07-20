@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "server/zone/Zone.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
@@ -79,13 +79,13 @@ void SurveyToolImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	sampleAnimation = surveyToolData->getSampleAnimation();
 }
 
-void SurveyToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void SurveyToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 	menuResponse->addRadialMenuItem(135, 3, "@sui:tool_options");
 	menuResponse->addRadialMenuItemToRadialID(135,133, 3, "@sui:survey_range");
 }
 
-int SurveyToolImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	PlayerObject* playerObject = player->getPlayerObject();
 
 	if (!playerObject->hasSkill("survey")) {
@@ -95,7 +95,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 
 	if (selectedID == 20) { // use object
 
-		player->setSurveyTool(_this);
+		playerObject->setSurveyTool(_this);
 
 		if (range > 0)
 			sendResourceListTo(player);
@@ -107,7 +107,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 
 	if (selectedID == 133) { // Set Tool Range
 
-		player->setSurveyTool(_this);
+		playerObject->setSurveyTool(_this);
 
 		sendRangeSui(player);
 
@@ -117,7 +117,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 	return 1;
 }
 
-void SurveyToolImplementation::sendRangeSui(PlayerCreature* player) {
+void SurveyToolImplementation::sendRangeSui(CreatureObject* player) {
 	int surveyMod = player->getSkillMod("surveying");
 
 	ManagedReference<SuiListBox*> suiToolRangeBox = new SuiListBox(player, SuiWindowType::SURVEY_TOOL_RANGE, 0);
@@ -156,11 +156,11 @@ void SurveyToolImplementation::sendRangeSui(PlayerCreature* player) {
 		suiToolRangeBox->addMenuItem("1024m x 1024m", 8);
 
 
-	player->addSuiBox(suiToolRangeBox);
+	player->getPlayerObject()->addSuiBox(suiToolRangeBox);
 	player->sendMessage(suiToolRangeBox->generateMessage());
 }
 
-void SurveyToolImplementation::surveyCnodeMinigameSui(PlayerCreature* player) {
+void SurveyToolImplementation::surveyCnodeMinigameSui(CreatureObject* player) {
 	int surveyMod = player->getSkillMod("surveying");
 
 	ManagedReference<SuiListBox*> suiConcMinigameBox = new SuiListBox(
@@ -174,11 +174,11 @@ void SurveyToolImplementation::surveyCnodeMinigameSui(PlayerCreature* player) {
 
 	suiConcMinigameBox->setCancelButton(true, "Cancel");
 
-	player->addSuiBox(suiConcMinigameBox);
+	player->getPlayerObject()->addSuiBox(suiConcMinigameBox);
 	player->sendMessage(suiConcMinigameBox->generateMessage());
 }
 
-void SurveyToolImplementation::surveyGnodeMinigameSui(PlayerCreature* player) {
+void SurveyToolImplementation::surveyGnodeMinigameSui(CreatureObject* player) {
 	int surveyMod = player->getSkillMod("surveying");
 
 	ManagedReference<SuiListBox*> suiConcMinigameBox = new SuiListBox(
@@ -192,7 +192,7 @@ void SurveyToolImplementation::surveyGnodeMinigameSui(PlayerCreature* player) {
 
 	suiConcMinigameBox->setCancelButton(true, "Cancel");
 
-	player->addSuiBox(suiConcMinigameBox);
+	player->getPlayerObject()->addSuiBox(suiConcMinigameBox);
 	player->sendMessage(suiConcMinigameBox->generateMessage());
 }
 
@@ -217,7 +217,7 @@ void SurveyToolImplementation::setRange(int r) {
 	}
 }
 
-void SurveyToolImplementation::sendResourceListTo(PlayerCreature* player) {
+void SurveyToolImplementation::sendResourceListTo(CreatureObject* player) {
 
 	ManagedReference<ResourceManager* > resourceManager =
 			player->getZoneServer()->getResourceManager();
@@ -230,7 +230,7 @@ void SurveyToolImplementation::sendResourceListTo(PlayerCreature* player) {
 	resourceManager->sendResourceListForSurvey(player, type, surveyType);
 }
 
-void SurveyToolImplementation::sendSurveyTo(PlayerCreature* player, const String& resname) {
+void SurveyToolImplementation::sendSurveyTo(CreatureObject* player, const String& resname) {
 
 	ManagedReference<ResourceManager* > resourceManager =
 			player->getZoneServer()->getResourceManager();
@@ -279,7 +279,7 @@ void SurveyToolImplementation::sendSurveyTo(PlayerCreature* player, const String
 	resourceManager->sendSurvey(player, resname);
 }
 
-void SurveyToolImplementation::sendSampleTo(PlayerCreature* player, const String& resname) {
+void SurveyToolImplementation::sendSampleTo(CreatureObject* player, const String& resname) {
 	ManagedReference<ResourceManager* > resourceManager =
 			player->getZoneServer()->getResourceManager();
 
@@ -351,19 +351,19 @@ void SurveyToolImplementation::sendSampleTo(PlayerCreature* player, const String
 	}
 }
 
-void SurveyToolImplementation::sendRadioactiveWarning(PlayerCreature* player) {
+void SurveyToolImplementation::sendRadioactiveWarning(CreatureObject* player) {
 
 	ManagedReference<SuiMessageBox* > messageBox = new SuiMessageBox(player, SuiWindowType::SAMPLE_RADIOACTIVE_CONFIRM);
 	messageBox->setPromptTitle("Confirm Radioactive Sample");
 	messageBox->setPromptText("Sampling a radioactive material will result in harmful effects. Are you sure you wish to continue?");
 	messageBox->setCancelButton(true, "");
 
-	player->addSuiBox(messageBox);
+	player->getPlayerObject()->addSuiBox(messageBox);
 	player->sendMessage(messageBox->generateMessage());
 
 }
 
-void SurveyToolImplementation::consentRadioactiveSample(PlayerCreature* player) {
+void SurveyToolImplementation::consentRadioactiveSample(CreatureObject* player) {
 	radioactiveOk = true;
 
 	StringBuffer buffer;
@@ -377,7 +377,7 @@ void SurveyToolImplementation::consentRadioactiveSample(PlayerCreature* player) 
 	player->sendSystemMessage(buffer.toString());
 }
 
-void SurveyToolImplementation::surveyCnodeMinigame(PlayerCreature* player, int value) {
+void SurveyToolImplementation::surveyCnodeMinigame(CreatureObject* player, int value) {
 
 	if(value == 0) {
 
@@ -394,8 +394,10 @@ void SurveyToolImplementation::surveyCnodeMinigame(PlayerCreature* player, int v
 
 	ManagedReference<WaypointObject*> newwaypoint = NULL;
 
+	PlayerObject* ghost = player->getPlayerObject();
+
 	// Get previous survey waypoint
-	ManagedReference<WaypointObject*> waypoint = player->getSurveyWaypoint();
+	ManagedReference<WaypointObject*> waypoint = ghost->getSurveyWaypoint();
 
 	// Create new waypoint
 	if (waypoint == NULL)
@@ -413,7 +415,7 @@ void SurveyToolImplementation::surveyCnodeMinigame(PlayerCreature* player, int v
 	newwaypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
 	newwaypoint->setActive(true);
 
-	player->getPlayerObject()->addWaypoint(newwaypoint, false, true); // Should second argument be true, and waypoints with the same name thus remove their old version?
+	ghost->addWaypoint(newwaypoint, false, true); // Should second argument be true, and waypoints with the same name thus remove their old version?
 	player->sendSystemMessage("survey", "node_waypoint");
 
 	// Player must be kneeling to sample
@@ -421,7 +423,7 @@ void SurveyToolImplementation::surveyCnodeMinigame(PlayerCreature* player, int v
 		player->setPosture(CreaturePosture::UPRIGHT, true);
 }
 
-void SurveyToolImplementation::surveyGnodeMinigame(PlayerCreature* player, int value) {
+void SurveyToolImplementation::surveyGnodeMinigame(CreatureObject* player, int value) {
 
 	if(value == 1) {
 

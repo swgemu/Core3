@@ -74,8 +74,12 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerCreature* playerCreature = (PlayerCreature*) object.get();
-		playerCreature->sendBadgesResponseTo((PlayerCreature*)creature);
+		CreatureObject* playerCreature = (CreatureObject*) object.get();
+
+		PlayerObject* playerObject = dynamic_cast<PlayerObject*>(playerCreature->getSlottedObject("ghost"));
+
+		if (playerObject != NULL)
+			playerObject->sendBadgesResponseTo((CreatureObject*)creature);
 
 		return SUCCESS;
 	}

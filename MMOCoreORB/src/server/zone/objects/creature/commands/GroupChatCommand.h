@@ -66,7 +66,7 @@ public:
 			return INVALIDPOSTURE;
 
 		ChatManager* chatManager = server->getZoneServer()->getChatManager();
-		chatManager->handleGroupChat((PlayerCreature*) creature, arguments);
+		chatManager->handleGroupChat((CreatureObject*) creature, arguments);
 
 		return SUCCESS;
 	}

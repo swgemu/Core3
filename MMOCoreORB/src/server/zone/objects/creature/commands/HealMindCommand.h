@@ -75,8 +75,8 @@ public:
 		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
-		PlayerCreature* playerTarget = (PlayerCreature*) creatureTarget;
+		CreatureObject* player = (CreatureObject*) creature;
+		CreatureObject* playerTarget = (CreatureObject*) creatureTarget;
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
@@ -128,7 +128,7 @@ public:
 		/*if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;*/
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		if (creatureTarget == creature) {
 			creature->sendSystemMessage("healing", "no_heal_mind_self");
@@ -209,7 +209,7 @@ public:
 		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, healPower);
 
 		if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
-			playerManager->sendBattleFatigueMessage((PlayerCreature*)creature, (PlayerCreature*)creatureTarget);
+			playerManager->sendBattleFatigueMessage((CreatureObject*)creature, (CreatureObject*)creatureTarget);
 		}
 
 		sendHealMessage(creature, creatureTarget, healedMind);

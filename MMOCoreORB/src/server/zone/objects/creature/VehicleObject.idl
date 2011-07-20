@@ -46,7 +46,7 @@ package server.zone.objects.creature;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.intangible.VehicleControlDevice;
@@ -76,7 +76,7 @@ class VehicleObject extends CreatureObject {
 	}
 	
 	@local
-	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, PlayerCreature player);
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	public native boolean checkInRangeGarage();
 	
@@ -170,11 +170,11 @@ class VehicleObject extends CreatureObject {
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
 	 * @post { this object is locked, player is locked }
-	 * @param player PlayerCreature that selected the option
+	 * @param player CreatureObject that selected the option
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	/**
 	 * Attempts to see if the vehicle can be repaired. If tests are passed, then it sends the confirmation box to the player.
@@ -182,11 +182,11 @@ class VehicleObject extends CreatureObject {
 	 * @post { this object is locked, player is locked }
 	 * @param player The player that is repairing the vehicle.
 	 */
-	public native void repairVehicle(PlayerCreature player);
+	public native void repairVehicle(CreatureObject player);
 	
-	public native int calculateRepairCost(PlayerCreature player);
+	public native int calculateRepairCost(CreatureObject player);
 	
-	public native void sendRepairConfirmTo(PlayerCreature player);
+	public native void sendRepairConfirmTo(CreatureObject player);
 	
 	public boolean isVehicleObject() {
 		return true;

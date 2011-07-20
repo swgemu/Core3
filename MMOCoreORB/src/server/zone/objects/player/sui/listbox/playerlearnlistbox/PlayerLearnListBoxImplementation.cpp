@@ -9,7 +9,7 @@
 
 #include "PlayerLearnListBox.h"
 #include "server/zone/objects/creature/professions/SkillBox.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/group/GroupObject.h"

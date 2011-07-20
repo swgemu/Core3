@@ -11,6 +11,7 @@
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class GuildCreateNameResponseSuiCallback : public SuiCallback {
 public:
@@ -18,7 +19,7 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
 		if (player->isInGuild()) {
 			player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
 			return;
@@ -63,7 +64,7 @@ public:
 		}
 
 		//Resend the create name box.
-		player->addSuiBox(suiBox);
+		player->getPlayerObject()->addSuiBox(suiBox);
 		player->sendMessage(suiBox->generateMessage());
 	}
 };

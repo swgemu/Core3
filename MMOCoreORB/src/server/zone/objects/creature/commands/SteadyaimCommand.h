@@ -70,7 +70,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*)creature;
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -92,7 +92,7 @@ public:
 		return SUCCESS;
 	}
 
-	bool doSteadyAim(PlayerCreature* leader, GroupObject* group, int amount) {
+	bool doSteadyAim(CreatureObject* leader, GroupObject* group, int amount) {
 		if (leader == NULL || group == NULL)
 			return false;
 
@@ -103,7 +103,7 @@ public:
 			if (!member->isPlayerCreature() || member == NULL || member->getZone() != leader->getZone())
 				continue;
 
-			ManagedReference<PlayerCreature*> memberPlayer = (PlayerCreature*) member.get();
+			ManagedReference<CreatureObject*> memberPlayer = (CreatureObject*) member.get();
 			Locker clocker(memberPlayer, leader);
 
 			sendCombatSpam(memberPlayer);

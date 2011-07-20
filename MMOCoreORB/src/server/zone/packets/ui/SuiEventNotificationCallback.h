@@ -45,7 +45,7 @@ public:
 		if (playerClient == NULL)
 			return;
 
-		PlayerCreature* playerCreature = (PlayerCreature*) playerClient.get();
+		CreatureObject* playerCreature = (CreatureObject*) playerClient.get();
 
 		server->getSuiManager()->handleSuiEventNotification(opcode, playerCreature, cancel, &arguments);
 	}

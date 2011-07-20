@@ -71,7 +71,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*)creature;
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
@@ -93,7 +93,7 @@ public:
 		return SUCCESS;
 	}
 
-	bool doRally(PlayerCreature* leader, GroupObject* group) {
+	bool doRally(CreatureObject* leader, GroupObject* group) {
 		if (leader == NULL || group == NULL)
 			return false;
 
@@ -109,7 +109,7 @@ public:
 			if (!member->isPlayerCreature() || member == NULL || member->getZone() != leader->getZone())
 				continue;
 
-			ManagedReference<PlayerCreature*> memberPlayer = (PlayerCreature*) member.get();
+			ManagedReference<CreatureObject*> memberPlayer = (CreatureObject*) member.get();
 			Locker clocker(memberPlayer, leader);
 
 			ManagedReference<Buff*> buff = new Buff(memberPlayer, actionCRC, duration, BuffType::SKILL);

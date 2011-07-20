@@ -8,9 +8,11 @@
 #include "PlayerZoneComponent.h"
 
 #include "server/zone/managers/player/PlayerManager.h"
-
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/Zone.h"
 
 void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) {
 	SceneObject* scno = (SceneObject*) entry;
@@ -19,9 +21,11 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 		return;
 
 	if (scno->isPlayerCreature()) {
-		PlayerCreature* player = (PlayerCreature*) scno;
+		CreatureObject* player = (CreatureObject*) scno;
 
-		if (player->isInvisible())
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost->isInvisible())
 			return;
 
 	}
@@ -90,12 +94,13 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 	ZoneComponent::teleport(sceneObject, newPositionX, newPositionZ, newPositionY, parentID);
 
 	if (sceneObject->isPlayerCreature()) {
-		PlayerCreature* player = (PlayerCreature*) sceneObject;
+		CreatureObject* player = (CreatureObject*) sceneObject;
+		PlayerObject* ghost = player->getPlayerObject();
 
-		player->setTeleporting(true);
-		player->updateLastValidatedPosition();
+		ghost->setTeleporting(true);
+		ghost->updateLastValidatedPosition();
 		player->setMovementCounter(0);
-		player->setClientLastMovementStamp(0);
+		ghost->setClientLastMovementStamp(0);
 	}
 }
 
@@ -109,8 +114,10 @@ void PlayerZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate,
 	ZoneComponent::updateZone(sceneObject, lightUpdate, sendPackets);
 
 	if (sceneObject->isPlayerCreature()) {
-		PlayerCreature* player = (PlayerCreature*) sceneObject;
-		player->setSavedParentID(0);
+		CreatureObject* player = (CreatureObject*) sceneObject;
+		PlayerObject* ghost = player->getPlayerObject();
+
+		ghost->setSavedParentID(0);
 	}
 }
 
@@ -118,21 +125,41 @@ void PlayerZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneOb
 	ZoneComponent::updateZoneWithParent(sceneObject, newParent, lightUpdate, sendPackets);
 
 	if (sceneObject->getParent() != NULL && sceneObject->isPlayerCreature()) {
-		PlayerCreature* player = (PlayerCreature*) sceneObject;
+		CreatureObject* player = (CreatureObject*) sceneObject;
+		PlayerObject* ghost = player->getPlayerObject();
 
-		player->setSavedParentID(sceneObject->getParentID());
+		ghost->setSavedParentID(sceneObject->getParentID());
 	}
 }
 
 void PlayerZoneComponent::insertToBuilding(SceneObject* sceneObject, BuildingObject* building) {
 	ZoneComponent::insertToBuilding(sceneObject, building);
 
-	building->onEnter(dynamic_cast<PlayerCreature*>(sceneObject));
+	building->onEnter(dynamic_cast<CreatureObject*>(sceneObject));
 }
 
 void PlayerZoneComponent::removeFromBuilding(SceneObject* sceneObject, BuildingObject* building) {
 	ZoneComponent::removeFromBuilding(sceneObject, building);
 
-	building->onExit(dynamic_cast<PlayerCreature*>(sceneObject));
+	building->onExit(dynamic_cast<CreatureObject*>(sceneObject));
+}
+
+void PlayerZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) {
+	ZoneComponent::notifySelfPositionUpdate(sceneObject);
+
+	if (sceneObject->getZone() == NULL)
+		return;
+
+	/*if (activeAreas.size() != 0) {
+		info(String::valueOf(activeAreas.size()) + " areas", true);
+	}*/
+
+	SceneObject* parent = sceneObject->getParent();
+
+	if (sceneObject->getActiveAreas()->size() == 0 && sceneObject->inRangeObjectCount() < 20) {
+		if ((parent != NULL && !parent->isCellObject()) || parent == NULL) {
+			sceneObject->getZone()->getCreatureManager()->spawnRandomCreaturesAround(sceneObject);
+		}
+	}
 }
 

@@ -6,7 +6,9 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	SuiMessageBoxStub
@@ -14,7 +16,7 @@
 
 enum {RPC_GENERATEMESSAGE__ = 6,RPC_ISMESSAGEBOX__};
 
-SuiMessageBox::SuiMessageBox(PlayerCreature* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
+SuiMessageBox::SuiMessageBox(CreatureObject* player, unsigned int windowType) : SuiBox(DummyConstructorParameter::instance()) {
 	SuiMessageBoxImplementation* _implementation = new SuiMessageBoxImplementation(player, windowType);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -177,7 +179,7 @@ int SuiMessageBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	return 0 + SuiBoxImplementation::writeObjectMembers(stream);
 }
 
-SuiMessageBoxImplementation::SuiMessageBoxImplementation(PlayerCreature* player, unsigned int windowType) : SuiBoxImplementation(player, windowType, SuiBox::MESSAGEBOX) {
+SuiMessageBoxImplementation::SuiMessageBoxImplementation(CreatureObject* player, unsigned int windowType) : SuiBoxImplementation(player, windowType, SuiBox::MESSAGEBOX) {
 	_initializeImplementation();
 	// server/zone/objects/player/sui/messagebox/SuiMessageBox.idl():  		;
 }

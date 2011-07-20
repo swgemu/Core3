@@ -263,7 +263,7 @@ public:
 						Zone* zone = player->getZone();
 
 						//Here we check to see if the player is staff, and if not, we check to see if they have permission to pickup the item in the structure they are in.
-						if (player->getAdminLevel() == PlayerCreature* player->isInBuilding()) {
+						if (player->getAdminLevel() == CreatureObject* player->isInBuilding()) {
 							BuildingObject* building = (BuildingObject*) player->getBuilding();
 
 							if (building != NULL) {
@@ -316,7 +316,7 @@ public:
 
 					SceneObject* targetObject = player->getTarget();
 
-					//PlayerCreature* players inventory
+					//CreatureObject* players inventory
 					if (targetObject != NULL && targetObject->isNonPlayerCreature()) {
 						Creature* creature = (Creature*) targetObject;
 
@@ -361,7 +361,7 @@ public:
 					ManagedReference<TangibleObject*> item = validateDropAction(player, target);
 
 					//Here we check to see if the player is staff, and if not, we check to see if they have permission to drop the item in the structure they are in.
-					if (player->getAdminLevel() == PlayerCreature* player->isInBuilding()) {
+					if (player->getAdminLevel() == CreatureObject* player->isInBuilding()) {
 						BuildingObject* building = (BuildingObject*) player->getBuilding();
 
 						if (building != NULL) {

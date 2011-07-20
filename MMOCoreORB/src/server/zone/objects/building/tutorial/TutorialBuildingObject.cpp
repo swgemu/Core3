@@ -4,7 +4,7 @@
 
 #include "TutorialBuildingObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/building/tutorial/events/UnloadBuildingTask.h"
 
@@ -20,7 +20,7 @@
  *	TutorialBuildingObjectStub
  */
 
-enum {RPC_REMOVEFROMZONE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ONENTER__PLAYERCREATURE_,RPC_ONEXIT__PLAYERCREATURE_,RPC_CLEARUNLOADEVENT__,};
+enum {RPC_REMOVEFROMZONE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_CLEARUNLOADEVENT__,};
 
 TutorialBuildingObject::TutorialBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	TutorialBuildingObjectImplementation* _implementation = new TutorialBuildingObjectImplementation();
@@ -61,13 +61,13 @@ void TutorialBuildingObject::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void TutorialBuildingObject::onEnter(PlayerCreature* player) {
+void TutorialBuildingObject::onEnter(CreatureObject* player) {
 	TutorialBuildingObjectImplementation* _implementation = (TutorialBuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ONENTER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ONENTER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -75,13 +75,13 @@ void TutorialBuildingObject::onEnter(PlayerCreature* player) {
 		_implementation->onEnter(player);
 }
 
-void TutorialBuildingObject::onExit(PlayerCreature* player) {
+void TutorialBuildingObject::onExit(CreatureObject* player) {
 	TutorialBuildingObjectImplementation* _implementation = (TutorialBuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ONEXIT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ONEXIT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -243,12 +243,12 @@ void TutorialBuildingObjectImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("TutorialBuildingObject");
 }
 
-void TutorialBuildingObjectImplementation::onEnter(PlayerCreature* player) {
+void TutorialBuildingObjectImplementation::onEnter(CreatureObject* player) {
 	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		dequeueUnloadEvent();
 	dequeueUnloadEvent();
 }
 
-void TutorialBuildingObjectImplementation::onExit(PlayerCreature* player) {
+void TutorialBuildingObjectImplementation::onExit(CreatureObject* player) {
 	// server/zone/objects/building/tutorial/TutorialBuildingObject.idl():  		enqueueUnloadEvent();
 	enqueueUnloadEvent();
 }
@@ -285,11 +285,11 @@ Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMe
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_ONENTER__PLAYERCREATURE_:
-		onEnter((PlayerCreature*) inv->getObjectParameter());
+	case RPC_ONENTER__CREATUREOBJECT_:
+		onEnter((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_ONEXIT__PLAYERCREATURE_:
-		onExit((PlayerCreature*) inv->getObjectParameter());
+	case RPC_ONEXIT__CREATUREOBJECT_:
+		onExit((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_CLEARUNLOADEVENT__:
 		clearUnloadEvent();
@@ -309,11 +309,11 @@ void TutorialBuildingObjectAdapter::initializeTransientMembers() {
 	((TutorialBuildingObjectImplementation*) impl)->initializeTransientMembers();
 }
 
-void TutorialBuildingObjectAdapter::onEnter(PlayerCreature* player) {
+void TutorialBuildingObjectAdapter::onEnter(CreatureObject* player) {
 	((TutorialBuildingObjectImplementation*) impl)->onEnter(player);
 }
 
-void TutorialBuildingObjectAdapter::onExit(PlayerCreature* player) {
+void TutorialBuildingObjectAdapter::onExit(CreatureObject* player) {
 	((TutorialBuildingObjectImplementation*) impl)->onExit(player);
 }
 

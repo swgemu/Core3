@@ -121,14 +121,16 @@ public:
 
 		if (group == NULL || !group->hasMember(creatureTarget)) {
 			if (creature->isPlayerCreature()) {
-				PlayerCreature* player = (PlayerCreature*) creature;
+				CreatureObject* player = (CreatureObject*) creature;
 
 				//At this point, we know that the creatureTarget is either a player or a creaturePet.
 				//TODO: Activate this switch once creature pet's are introduced.
 				//Player* consentOwner = (creatureTarget->isPlayer()) ? (Player*) creatureTarget : (CreaturePet*) creatureTarget->getOwner();
-				PlayerCreature* consentOwner = (PlayerCreature*) creatureTarget;
+				CreatureObject* consentOwner = (CreatureObject*) creatureTarget;
 
-				if (!consentOwner->hasInConsentList(player->getFirstName().toLowerCase())) {
+				PlayerObject* ghost = consentOwner->getPlayerObject();
+
+				if (!ghost->hasInConsentList(player->getFirstName().toLowerCase())) {
 					creature->sendSystemMessage("healing_response", "must_be_grouped"); //You must be grouped with or have consent from your resuscitation target!
 					return false;
 				}
@@ -161,7 +163,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) creature;
+		CreatureObject* player = (CreatureObject*) creature;
 
 		int amount = (int)round((float)power * 0.5f);
 

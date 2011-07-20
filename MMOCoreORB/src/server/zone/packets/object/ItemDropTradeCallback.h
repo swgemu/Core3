@@ -9,7 +9,7 @@
 #define ITEMDROPTRADECALLBACK_H_
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/trade/BeginTradeMessage.h"
 #include "ObjectControllerMessageCallback.h"
 
@@ -32,7 +32,7 @@ public:
 	}
 
 	void run() {
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) client->getPlayer();
+		ManagedReference<CreatureObject*> player = (CreatureObject*) client->getPlayer();
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(targetToTrade);
 
@@ -41,9 +41,10 @@ public:
 			return;
 		}
 
-		PlayerCreature* targetPlayer = (PlayerCreature*) targetObject.get();
+		CreatureObject* targetPlayer = (CreatureObject*) targetObject.get();
+		PlayerObject* ghost = player->getPlayerObject();
 
-		TradeContainer* playerTradeContainer = player->getTradeContainer();
+		TradeContainer* playerTradeContainer = ghost->getTradeContainer();
 
 		if (playerTradeContainer->getTradeTargetPlayer() == targetToTrade || player->isInCombat()) {
 			return;
@@ -53,9 +54,11 @@ public:
 
 		Locker clocker(targetPlayer, player);
 
+		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
+
 		//player->info("asiodhjsodifjsoijghfoisjg", true);
 
-		TradeContainer* targetTradeContainer = targetPlayer->getTradeContainer();
+		TradeContainer* targetTradeContainer = targetGhost->getTradeContainer();
 
 		if (targetTradeContainer->getTradeTargetPlayer() == player->getObjectID()) {
 			BeginTradeMessage* msg = new BeginTradeMessage(targetPlayer->getObjectID());

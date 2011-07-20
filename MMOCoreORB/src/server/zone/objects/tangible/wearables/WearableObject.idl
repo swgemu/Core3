@@ -51,7 +51,8 @@ import server.zone.objects.manufactureschematic.ManufactureSchematic;
 include server.zone.objects.tangible.attachment.Attachment;
 include server.zone.objects.tangible.wearables.WearableSkillModMap;
 import server.zone.Zone;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.CreatureObject;
 
 class WearableObject extends TangibleObject {	
 	protected int socketCount;
@@ -79,14 +80,14 @@ class WearableObject extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	
 	public native void updateCraftingValues(ManufactureSchematic schematic);
 
-	public native void applyAttachment(PlayerCreature player, Attachment attachment);
+	public native void applyAttachment(CreatureObject player, Attachment attachment);
 
-	public native void setAttachmentMods(PlayerCreature player, boolean remove = false);
+	public native void setAttachmentMods(CreatureObject player, boolean remove = false);
 	
 	public boolean isWearableObject() {
 		return true;

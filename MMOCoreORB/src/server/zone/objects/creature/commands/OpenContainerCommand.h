@@ -86,7 +86,7 @@ public:
 				return GENERALERROR;
 			} else if (objectToOpen->getGameObjectType() == SceneObject::STATICLOOTCONTAINER) {
 				// TODO: Maybe a better way to handle this. (If its a world loot container, ignore parent) ??
-				objectToOpen->openContainerTo((PlayerCreature*) creature);
+				objectToOpen->openContainerTo((CreatureObject*) creature);
 				return SUCCESS;
 			}
 		}
@@ -104,7 +104,7 @@ public:
 			return GENERALERROR;
 		}
 
-		objectToOpen->openContainerTo((PlayerCreature*) creature);
+		objectToOpen->openContainerTo((CreatureObject*) creature);
 
 		objectToOpen->notifyObservers(ObserverEventType::OPENCONTAINER, creature);
 

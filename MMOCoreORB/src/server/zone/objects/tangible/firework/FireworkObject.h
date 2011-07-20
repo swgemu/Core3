@@ -66,16 +66,16 @@ using namespace server::zone::packets::object;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -107,11 +107,11 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void launch(PlayerCreature* player);
+	void launch(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -150,11 +150,11 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void launch(PlayerCreature* player);
+	void launch(CreatureObject* player);
 
 	WeakReference<FireworkObject*> _this;
 
@@ -201,9 +201,9 @@ public:
 
 	void initializeTransientMembers();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void launch(PlayerCreature* player);
+	void launch(CreatureObject* player);
 
 };
 

@@ -56,7 +56,7 @@ void ResourceSpawnImplementation::initializeTransientMembers() {
 }
 
 void ResourceSpawnImplementation::fillAttributeList(AttributeListMessage* alm,
-		PlayerCreature* object) {
+		CreatureObject* object) {
 
 		alm->insertAttribute("resource_class", getFinalClass());
 

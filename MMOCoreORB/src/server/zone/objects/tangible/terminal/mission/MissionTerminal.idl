@@ -47,7 +47,7 @@ package server.zone.objects.tangible.terminal.mission;
 import server.zone.objects.tangible.terminal.Terminal;
 import server.zone.objects.scene.SceneObject;
 import engine.lua.LuaObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 include server.zone.templates.tangible.MissionTerminalTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.Zone;
@@ -56,7 +56,7 @@ class MissionTerminal extends Terminal {
 	protected string terminalType;
 	
 	@dereferenced
-	protected transient Vector<PlayerCreature> slicers;
+	protected transient Vector<CreatureObject> slicers;
 	
 	public MissionTerminal() {
 		Logger.setLoggingName("MissionTerminal");
@@ -94,11 +94,11 @@ class MissionTerminal extends Terminal {
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
 	 * @post { this object is locked, player is locked }
-	 * @param player PlayerCreature that selected the option
+	 * @param player CreatureObject that selected the option
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	public native int handleObjectMenuSelect(PlayerCreature player, byte selectedID);
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	public boolean isMissionTerminal() {
 		return true;
@@ -140,12 +140,12 @@ class MissionTerminal extends Terminal {
 		return terminalType == "statue";
 	}
 
-	public boolean isSlicer(PlayerCreature slicer) {
+	public boolean isSlicer(CreatureObject slicer) {
 		if (slicer == null)
 			return 0;
 
 		for (int i = 0; slicers.size(); ++i) {
-			PlayerCreature player = slicers.get(i);
+			CreatureObject player = slicers.get(i);
 			if (player == slicer)
 				return true;
 		}
@@ -153,11 +153,11 @@ class MissionTerminal extends Terminal {
 		return 0;
 	}
 
-	public void addSlicer(PlayerCreature slicer) {
+	public void addSlicer(CreatureObject slicer) {
 		slicers.add(slicer);
 	}
 
-	public void removeSlicer(PlayerCreature slicer) {
+	public void removeSlicer(CreatureObject slicer) {
 		slicers.removeElement(slicer);
 	}
 }

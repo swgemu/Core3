@@ -10,7 +10,7 @@
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -18,7 +18,7 @@
  *	ContainerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_CHECKPERMISSION__PLAYERCREATURE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ISCONTAINEROBJECT__,RPC_ISCONTAINERLOCKED__,RPC_SETLOCKEDSTATUS__BOOL_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CHECKPERMISSION__CREATUREOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ISCONTAINEROBJECT__,RPC_ISCONTAINERLOCKED__,RPC_SETLOCKEDSTATUS__BOOL_};
 
 Container::Container() : TangibleObject(DummyConstructorParameter::instance()) {
 	ContainerImplementation* _implementation = new ContainerImplementation();
@@ -55,7 +55,7 @@ void Container::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void Container::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void Container::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -64,13 +64,13 @@ void Container::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerC
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int Container::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int Container::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -79,13 +79,13 @@ int Container::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-bool Container::checkPermission(PlayerCreature* player) {
+bool Container::checkPermission(CreatureObject* player) {
 	ContainerImplementation* _implementation = (ContainerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHECKPERMISSION__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CHECKPERMISSION__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -323,11 +323,11 @@ Packet* ContainerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_CHECKPERMISSION__PLAYERCREATURE_:
-		resp->insertBoolean(checkPermission((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CHECKPERMISSION__CREATUREOBJECT_:
+		resp->insertBoolean(checkPermission((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
 		resp->insertSignedInt(canAddObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_canAddObject__SceneObject_int_String_)));
@@ -352,11 +352,11 @@ void ContainerAdapter::initializeTransientMembers() {
 	((ContainerImplementation*) impl)->initializeTransientMembers();
 }
 
-int ContainerAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int ContainerAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((ContainerImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-bool ContainerAdapter::checkPermission(PlayerCreature* player) {
+bool ContainerAdapter::checkPermission(CreatureObject* player) {
 	return ((ContainerImplementation*) impl)->checkPermission(player);
 }
 

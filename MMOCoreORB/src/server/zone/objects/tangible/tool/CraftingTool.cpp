@@ -18,7 +18,7 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/templates/SharedObjectTemplate.h"
 
@@ -26,7 +26,7 @@
  *	CraftingToolStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_GETTOOLTYPE__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,RPC_REQUESTCRAFTINGSESSION__PLAYERCREATURE_CRAFTINGSTATION_,RPC_CANCELCRAFTINGSESSION__PLAYERCREATURE_,RPC_CLEARCRAFTINGSESSION__,RPC_SELECTDRAFTSCHEMATIC__PLAYERCREATURE_INT_,RPC_CREATESESSIONOBJECTS__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_CREATEMANUFACTURESCHEMATIC__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_CREATEPROTOTYPE__PLAYERCREATURE_DRAFTSCHEMATIC_,RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__PLAYERCREATURE_,RPC_ADDINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__PLAYERCREATURE_INT_,RPC_EXPERIMENT__PLAYERCREATURE_INT_STRING_INT_,RPC_CUSTOMIZATION__PLAYERCREATURE_STRING_INT_STRING_,RPC_CREATEPROTOTYPE__PLAYERCREATURE_INT_INT_,RPC_CREATEMANFSCHEMATIC__PLAYERCREATURE_INT_,RPC_CREATEOBJECT__PLAYERCREATURE_INT_BOOL_,RPC_DEPOSITOBJECT__PLAYERCREATURE_BOOL_,RPC_GETLASTEXPERIMENTATIONTIMESTAMP__,RPC_GETEXPERIMENTATIONRESULT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_GETTOOLTYPE__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,RPC_REQUESTCRAFTINGSESSION__CREATUREOBJECT_CRAFTINGSTATION_,RPC_CANCELCRAFTINGSESSION__CREATUREOBJECT_,RPC_CLEARCRAFTINGSESSION__,RPC_SELECTDRAFTSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATESESSIONOBJECTS__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEMANUFACTURESCHEMATIC__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__CREATUREOBJECT_,RPC_ADDINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__CREATUREOBJECT_INT_,RPC_EXPERIMENT__CREATUREOBJECT_INT_STRING_INT_,RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_INT_STRING_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_INT_INT_,RPC_CREATEMANFSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATEOBJECT__CREATUREOBJECT_INT_BOOL_,RPC_DEPOSITOBJECT__CREATUREOBJECT_BOOL_,RPC_GETLASTEXPERIMENTATIONTIMESTAMP__,RPC_GETEXPERIMENTATIONRESULT__};
 
 CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingToolImplementation* _implementation = new CraftingToolImplementation();
@@ -63,7 +63,7 @@ void CraftingTool::loadTemplateData(SharedObjectTemplate* templateData) {
 		_implementation->loadTemplateData(templateData);
 }
 
-void CraftingTool::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void CraftingTool::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -72,13 +72,13 @@ void CraftingTool::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Play
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int CraftingTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CraftingTool::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -87,7 +87,7 @@ int CraftingTool::handleObjectMenuSelect(PlayerCreature* player, byte selectedID
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void CraftingTool::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void CraftingTool::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -184,13 +184,13 @@ Vector<unsigned int>* CraftingTool::getToolTabs() {
 		return _implementation->getToolTabs();
 }
 
-void CraftingTool::requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation) {
+void CraftingTool::requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REQUESTCRAFTINGSESSION__PLAYERCREATURE_CRAFTINGSTATION_);
+		DistributedMethod method(this, RPC_REQUESTCRAFTINGSESSION__CREATUREOBJECT_CRAFTINGSTATION_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(craftingStation);
 
@@ -199,13 +199,13 @@ void CraftingTool::requestCraftingSession(PlayerCreature* player, CraftingStatio
 		_implementation->requestCraftingSession(player, craftingStation);
 }
 
-void CraftingTool::cancelCraftingSession(PlayerCreature* player) {
+void CraftingTool::cancelCraftingSession(CreatureObject* player) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CANCELCRAFTINGSESSION__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CANCELCRAFTINGSESSION__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -226,13 +226,13 @@ void CraftingTool::clearCraftingSession() {
 		_implementation->clearCraftingSession();
 }
 
-void CraftingTool::selectDraftSchematic(PlayerCreature* player, int index) {
+void CraftingTool::selectDraftSchematic(CreatureObject* player, int index) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SELECTDRAFTSCHEMATIC__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_SELECTDRAFTSCHEMATIC__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(index);
 
@@ -241,13 +241,13 @@ void CraftingTool::selectDraftSchematic(PlayerCreature* player, int index) {
 		_implementation->selectDraftSchematic(player, index);
 }
 
-bool CraftingTool::createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic) {
+bool CraftingTool::createSessionObjects(CreatureObject* player, DraftSchematic* draftschematic) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATESESSIONOBJECTS__PLAYERCREATURE_DRAFTSCHEMATIC_);
+		DistributedMethod method(this, RPC_CREATESESSIONOBJECTS__CREATUREOBJECT_DRAFTSCHEMATIC_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(draftschematic);
 
@@ -256,13 +256,13 @@ bool CraftingTool::createSessionObjects(PlayerCreature* player, DraftSchematic* 
 		return _implementation->createSessionObjects(player, draftschematic);
 }
 
-bool CraftingTool::createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic) {
+bool CraftingTool::createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEMANUFACTURESCHEMATIC__PLAYERCREATURE_DRAFTSCHEMATIC_);
+		DistributedMethod method(this, RPC_CREATEMANUFACTURESCHEMATIC__CREATUREOBJECT_DRAFTSCHEMATIC_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(draftschematic);
 
@@ -271,13 +271,13 @@ bool CraftingTool::createManufactureSchematic(PlayerCreature* player, DraftSchem
 		return _implementation->createManufactureSchematic(player, draftschematic);
 }
 
-bool CraftingTool::createPrototype(PlayerCreature* player, DraftSchematic* draftschematic) {
+bool CraftingTool::createPrototype(CreatureObject* player, DraftSchematic* draftschematic) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEPROTOTYPE__PLAYERCREATURE_DRAFTSCHEMATIC_);
+		DistributedMethod method(this, RPC_CREATEPROTOTYPE__CREATUREOBJECT_DRAFTSCHEMATIC_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(draftschematic);
 
@@ -286,13 +286,13 @@ bool CraftingTool::createPrototype(PlayerCreature* player, DraftSchematic* draft
 		return _implementation->createPrototype(player, draftschematic);
 }
 
-void CraftingTool::synchronizedUIListenForSchematic(PlayerCreature* player) {
+void CraftingTool::synchronizedUIListenForSchematic(CreatureObject* player) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -300,13 +300,13 @@ void CraftingTool::synchronizedUIListenForSchematic(PlayerCreature* player) {
 		_implementation->synchronizedUIListenForSchematic(player);
 }
 
-void CraftingTool::addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
+void CraftingTool::addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_);
+		DistributedMethod method(this, RPC_ADDINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
@@ -317,13 +317,13 @@ void CraftingTool::addIngredient(PlayerCreature* player, TangibleObject* tano, i
 		_implementation->addIngredient(player, tano, slot, clientCounter);
 }
 
-void CraftingTool::removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
+void CraftingTool::removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_);
+		DistributedMethod method(this, RPC_REMOVEINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(tano);
 		method.addSignedIntParameter(slot);
@@ -334,13 +334,13 @@ void CraftingTool::removeIngredient(PlayerCreature* player, TangibleObject* tano
 		_implementation->removeIngredient(player, tano, slot, clientCounter);
 }
 
-void CraftingTool::nextCraftingStage(PlayerCreature* player, int clientCounter) {
+void CraftingTool::nextCraftingStage(CreatureObject* player, int clientCounter) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_NEXTCRAFTINGSTAGE__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_NEXTCRAFTINGSTAGE__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(clientCounter);
 
@@ -349,13 +349,13 @@ void CraftingTool::nextCraftingStage(PlayerCreature* player, int clientCounter) 
 		_implementation->nextCraftingStage(player, clientCounter);
 }
 
-void CraftingTool::experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter) {
+void CraftingTool::experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_EXPERIMENT__PLAYERCREATURE_INT_STRING_INT_);
+		DistributedMethod method(this, RPC_EXPERIMENT__CREATUREOBJECT_INT_STRING_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(numRowsAttempted);
 		method.addAsciiParameter(expString);
@@ -366,13 +366,13 @@ void CraftingTool::experiment(PlayerCreature* player, int numRowsAttempted, Stri
 		_implementation->experiment(player, numRowsAttempted, expString, clientCounter);
 }
 
-void CraftingTool::customization(PlayerCreature* player, String& name, int schematicCount, String& customization) {
+void CraftingTool::customization(CreatureObject* player, String& name, int schematicCount, String& customization) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CUSTOMIZATION__PLAYERCREATURE_STRING_INT_STRING_);
+		DistributedMethod method(this, RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_INT_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
 		method.addSignedIntParameter(schematicCount);
@@ -383,13 +383,13 @@ void CraftingTool::customization(PlayerCreature* player, String& name, int schem
 		_implementation->customization(player, name, schematicCount, customization);
 }
 
-void CraftingTool::createPrototype(PlayerCreature* player, int clientCounter, int practice) {
+void CraftingTool::createPrototype(CreatureObject* player, int clientCounter, int practice) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEPROTOTYPE__PLAYERCREATURE_INT_INT_);
+		DistributedMethod method(this, RPC_CREATEPROTOTYPE__CREATUREOBJECT_INT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(clientCounter);
 		method.addSignedIntParameter(practice);
@@ -399,13 +399,13 @@ void CraftingTool::createPrototype(PlayerCreature* player, int clientCounter, in
 		_implementation->createPrototype(player, clientCounter, practice);
 }
 
-void CraftingTool::createManfSchematic(PlayerCreature* player, int clientCounter) {
+void CraftingTool::createManfSchematic(CreatureObject* player, int clientCounter) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEMANFSCHEMATIC__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_CREATEMANFSCHEMATIC__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(clientCounter);
 
@@ -414,13 +414,13 @@ void CraftingTool::createManfSchematic(PlayerCreature* player, int clientCounter
 		_implementation->createManfSchematic(player, clientCounter);
 }
 
-void CraftingTool::createObject(PlayerCreature* player, int timer, bool create) {
+void CraftingTool::createObject(CreatureObject* player, int timer, bool create) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEOBJECT__PLAYERCREATURE_INT_BOOL_);
+		DistributedMethod method(this, RPC_CREATEOBJECT__CREATUREOBJECT_INT_BOOL_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(timer);
 		method.addBooleanParameter(create);
@@ -430,13 +430,13 @@ void CraftingTool::createObject(PlayerCreature* player, int timer, bool create) 
 		_implementation->createObject(player, timer, create);
 }
 
-void CraftingTool::depositObject(PlayerCreature* player, bool practice) {
+void CraftingTool::depositObject(CreatureObject* player, bool practice) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_DEPOSITOBJECT__PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_DEPOSITOBJECT__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(practice);
 
@@ -775,8 +775,8 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_:
 		updateCraftingValues((ManufactureSchematic*) inv->getObjectParameter());
@@ -796,56 +796,56 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_GETMANUFACTURESCHEMATIC__:
 		resp->insertLong(getManufactureSchematic()->_getObjectID());
 		break;
-	case RPC_REQUESTCRAFTINGSESSION__PLAYERCREATURE_CRAFTINGSTATION_:
-		requestCraftingSession((PlayerCreature*) inv->getObjectParameter(), (CraftingStation*) inv->getObjectParameter());
+	case RPC_REQUESTCRAFTINGSESSION__CREATUREOBJECT_CRAFTINGSTATION_:
+		requestCraftingSession((CreatureObject*) inv->getObjectParameter(), (CraftingStation*) inv->getObjectParameter());
 		break;
-	case RPC_CANCELCRAFTINGSESSION__PLAYERCREATURE_:
-		cancelCraftingSession((PlayerCreature*) inv->getObjectParameter());
+	case RPC_CANCELCRAFTINGSESSION__CREATUREOBJECT_:
+		cancelCraftingSession((CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_CLEARCRAFTINGSESSION__:
 		clearCraftingSession();
 		break;
-	case RPC_SELECTDRAFTSCHEMATIC__PLAYERCREATURE_INT_:
-		selectDraftSchematic((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_SELECTDRAFTSCHEMATIC__CREATUREOBJECT_INT_:
+		selectDraftSchematic((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_CREATESESSIONOBJECTS__PLAYERCREATURE_DRAFTSCHEMATIC_:
-		resp->insertBoolean(createSessionObjects((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter()));
+	case RPC_CREATESESSIONOBJECTS__CREATUREOBJECT_DRAFTSCHEMATIC_:
+		resp->insertBoolean(createSessionObjects((CreatureObject*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter()));
 		break;
-	case RPC_CREATEMANUFACTURESCHEMATIC__PLAYERCREATURE_DRAFTSCHEMATIC_:
-		resp->insertBoolean(createManufactureSchematic((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter()));
+	case RPC_CREATEMANUFACTURESCHEMATIC__CREATUREOBJECT_DRAFTSCHEMATIC_:
+		resp->insertBoolean(createManufactureSchematic((CreatureObject*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter()));
 		break;
-	case RPC_CREATEPROTOTYPE__PLAYERCREATURE_DRAFTSCHEMATIC_:
-		resp->insertBoolean(createPrototype((PlayerCreature*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter()));
+	case RPC_CREATEPROTOTYPE__CREATUREOBJECT_DRAFTSCHEMATIC_:
+		resp->insertBoolean(createPrototype((CreatureObject*) inv->getObjectParameter(), (DraftSchematic*) inv->getObjectParameter()));
 		break;
-	case RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__PLAYERCREATURE_:
-		synchronizedUIListenForSchematic((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__CREATUREOBJECT_:
+		synchronizedUIListenForSchematic((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_ADDINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_:
-		addIngredient((PlayerCreature*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+	case RPC_ADDINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_:
+		addIngredient((CreatureObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_REMOVEINGREDIENT__PLAYERCREATURE_TANGIBLEOBJECT_INT_INT_:
-		removeIngredient((PlayerCreature*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+	case RPC_REMOVEINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_:
+		removeIngredient((CreatureObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_NEXTCRAFTINGSTAGE__PLAYERCREATURE_INT_:
-		nextCraftingStage((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_NEXTCRAFTINGSTAGE__CREATUREOBJECT_INT_:
+		nextCraftingStage((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_EXPERIMENT__PLAYERCREATURE_INT_STRING_INT_:
-		experiment((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_experiment__PlayerCreature_int_String_int_), inv->getSignedIntParameter());
+	case RPC_EXPERIMENT__CREATUREOBJECT_INT_STRING_INT_:
+		experiment((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_experiment__CreatureObject_int_String_int_), inv->getSignedIntParameter());
 		break;
-	case RPC_CUSTOMIZATION__PLAYERCREATURE_STRING_INT_STRING_:
-		customization((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_customization__PlayerCreature_String_int_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_customization__PlayerCreature_String_int_String_));
+	case RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_INT_STRING_:
+		customization((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_customization__CreatureObject_String_int_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_customization__CreatureObject_String_int_String_));
 		break;
-	case RPC_CREATEPROTOTYPE__PLAYERCREATURE_INT_INT_:
-		createPrototype((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+	case RPC_CREATEPROTOTYPE__CREATUREOBJECT_INT_INT_:
+		createPrototype((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_CREATEMANFSCHEMATIC__PLAYERCREATURE_INT_:
-		createManfSchematic((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_CREATEMANFSCHEMATIC__CREATUREOBJECT_INT_:
+		createManfSchematic((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_CREATEOBJECT__PLAYERCREATURE_INT_BOOL_:
-		createObject((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
+	case RPC_CREATEOBJECT__CREATUREOBJECT_INT_BOOL_:
+		createObject((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_DEPOSITOBJECT__PLAYERCREATURE_BOOL_:
-		depositObject((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_DEPOSITOBJECT__CREATUREOBJECT_BOOL_:
+		depositObject((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
 	case RPC_GETLASTEXPERIMENTATIONTIMESTAMP__:
 		resp->insertLong(getLastExperimentationTimestamp());
@@ -864,7 +864,7 @@ void CraftingToolAdapter::initializeTransientMembers() {
 	((CraftingToolImplementation*) impl)->initializeTransientMembers();
 }
 
-int CraftingToolAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CraftingToolAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((CraftingToolImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
@@ -892,11 +892,11 @@ ManufactureSchematic* CraftingToolAdapter::getManufactureSchematic() {
 	return ((CraftingToolImplementation*) impl)->getManufactureSchematic();
 }
 
-void CraftingToolAdapter::requestCraftingSession(PlayerCreature* player, CraftingStation* craftingStation) {
+void CraftingToolAdapter::requestCraftingSession(CreatureObject* player, CraftingStation* craftingStation) {
 	((CraftingToolImplementation*) impl)->requestCraftingSession(player, craftingStation);
 }
 
-void CraftingToolAdapter::cancelCraftingSession(PlayerCreature* player) {
+void CraftingToolAdapter::cancelCraftingSession(CreatureObject* player) {
 	((CraftingToolImplementation*) impl)->cancelCraftingSession(player);
 }
 
@@ -904,59 +904,59 @@ void CraftingToolAdapter::clearCraftingSession() {
 	((CraftingToolImplementation*) impl)->clearCraftingSession();
 }
 
-void CraftingToolAdapter::selectDraftSchematic(PlayerCreature* player, int index) {
+void CraftingToolAdapter::selectDraftSchematic(CreatureObject* player, int index) {
 	((CraftingToolImplementation*) impl)->selectDraftSchematic(player, index);
 }
 
-bool CraftingToolAdapter::createSessionObjects(PlayerCreature* player, DraftSchematic* draftschematic) {
+bool CraftingToolAdapter::createSessionObjects(CreatureObject* player, DraftSchematic* draftschematic) {
 	return ((CraftingToolImplementation*) impl)->createSessionObjects(player, draftschematic);
 }
 
-bool CraftingToolAdapter::createManufactureSchematic(PlayerCreature* player, DraftSchematic* draftschematic) {
+bool CraftingToolAdapter::createManufactureSchematic(CreatureObject* player, DraftSchematic* draftschematic) {
 	return ((CraftingToolImplementation*) impl)->createManufactureSchematic(player, draftschematic);
 }
 
-bool CraftingToolAdapter::createPrototype(PlayerCreature* player, DraftSchematic* draftschematic) {
+bool CraftingToolAdapter::createPrototype(CreatureObject* player, DraftSchematic* draftschematic) {
 	return ((CraftingToolImplementation*) impl)->createPrototype(player, draftschematic);
 }
 
-void CraftingToolAdapter::synchronizedUIListenForSchematic(PlayerCreature* player) {
+void CraftingToolAdapter::synchronizedUIListenForSchematic(CreatureObject* player) {
 	((CraftingToolImplementation*) impl)->synchronizedUIListenForSchematic(player);
 }
 
-void CraftingToolAdapter::addIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
+void CraftingToolAdapter::addIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
 	((CraftingToolImplementation*) impl)->addIngredient(player, tano, slot, clientCounter);
 }
 
-void CraftingToolAdapter::removeIngredient(PlayerCreature* player, TangibleObject* tano, int slot, int clientCounter) {
+void CraftingToolAdapter::removeIngredient(CreatureObject* player, TangibleObject* tano, int slot, int clientCounter) {
 	((CraftingToolImplementation*) impl)->removeIngredient(player, tano, slot, clientCounter);
 }
 
-void CraftingToolAdapter::nextCraftingStage(PlayerCreature* player, int clientCounter) {
+void CraftingToolAdapter::nextCraftingStage(CreatureObject* player, int clientCounter) {
 	((CraftingToolImplementation*) impl)->nextCraftingStage(player, clientCounter);
 }
 
-void CraftingToolAdapter::experiment(PlayerCreature* player, int numRowsAttempted, String& expString, int clientCounter) {
+void CraftingToolAdapter::experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter) {
 	((CraftingToolImplementation*) impl)->experiment(player, numRowsAttempted, expString, clientCounter);
 }
 
-void CraftingToolAdapter::customization(PlayerCreature* player, String& name, int schematicCount, String& customization) {
+void CraftingToolAdapter::customization(CreatureObject* player, String& name, int schematicCount, String& customization) {
 	((CraftingToolImplementation*) impl)->customization(player, name, schematicCount, customization);
 }
 
-void CraftingToolAdapter::createPrototype(PlayerCreature* player, int clientCounter, int practice) {
+void CraftingToolAdapter::createPrototype(CreatureObject* player, int clientCounter, int practice) {
 	((CraftingToolImplementation*) impl)->createPrototype(player, clientCounter, practice);
 }
 
-void CraftingToolAdapter::createManfSchematic(PlayerCreature* player, int clientCounter) {
+void CraftingToolAdapter::createManfSchematic(CreatureObject* player, int clientCounter) {
 	((CraftingToolImplementation*) impl)->createManfSchematic(player, clientCounter);
 }
 
-void CraftingToolAdapter::createObject(PlayerCreature* player, int timer, bool create) {
+void CraftingToolAdapter::createObject(CreatureObject* player, int timer, bool create) {
 	((CraftingToolImplementation*) impl)->createObject(player, timer, create);
 }
 
-void CraftingToolAdapter::depositObject(PlayerCreature* player, bool practice) {
+void CraftingToolAdapter::depositObject(CreatureObject* player, bool practice) {
 	((CraftingToolImplementation*) impl)->depositObject(player, practice);
 }
 

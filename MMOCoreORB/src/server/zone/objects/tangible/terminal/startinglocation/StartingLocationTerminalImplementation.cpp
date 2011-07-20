@@ -6,7 +6,7 @@
  */
 
 #include "StartingLocationTerminal.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
 void StartingLocationTerminalImplementation::initializeTransientMembers() {
@@ -15,7 +15,7 @@ void StartingLocationTerminalImplementation::initializeTransientMembers() {
 	setLoggingName("StartingLocationTerminal");
 }
 
-int StartingLocationTerminalImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int StartingLocationTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	//System::out << "entering start terminal radial call" << endl;
 
 	if (selectedID != 20) // not use object

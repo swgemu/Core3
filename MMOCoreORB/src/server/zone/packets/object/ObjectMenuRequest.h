@@ -134,7 +134,7 @@ public:
 
 	void run() {
 		//menuResponse->setCounter(counter);
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*)client->getPlayer();
+		ManagedReference<CreatureObject*> player = (CreatureObject*)client->getPlayer();
 
 		if (player == NULL)
 			return;

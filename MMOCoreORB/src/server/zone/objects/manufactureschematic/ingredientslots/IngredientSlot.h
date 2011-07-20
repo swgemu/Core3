@@ -161,12 +161,12 @@ public:
 		return requiredQuantity;
 	}
 
-	virtual inline bool add(PlayerCreature* player, TangibleObject* tano) {
+	virtual inline bool add(CreatureObject* player, TangibleObject* tano) {
 
 		return false;
 	}
 
-	virtual inline bool remove(PlayerCreature* player){
+	virtual inline bool remove(CreatureObject* player){
 
 		return false;
 	}

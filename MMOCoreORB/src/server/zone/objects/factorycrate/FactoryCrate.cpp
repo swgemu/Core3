@@ -10,7 +10,7 @@
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -18,7 +18,7 @@
  *	FactoryCrateStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_ISFACTORYCRATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_GETPROTOTYPE__,RPC_GETCRAFTERSNAME__,RPC_GETCRAFTERSSERIAL__,RPC_EXTRACTOBJECTTOPARENT__,RPC_EXTRACTOBJECT__INT_,RPC_SPLIT__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISFACTORYCRATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_GETPROTOTYPE__,RPC_GETCRAFTERSNAME__,RPC_GETCRAFTERSSERIAL__,RPC_EXTRACTOBJECTTOPARENT__,RPC_EXTRACTOBJECT__INT_,RPC_SPLIT__INT_};
 
 FactoryCrate::FactoryCrate() : TangibleObject(DummyConstructorParameter::instance()) {
 	FactoryCrateImplementation* _implementation = new FactoryCrateImplementation();
@@ -69,7 +69,7 @@ void FactoryCrate::sendBaselinesTo(SceneObject* player) {
 		_implementation->sendBaselinesTo(player);
 }
 
-void FactoryCrate::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void FactoryCrate::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -78,7 +78,7 @@ void FactoryCrate::fillAttributeList(AttributeListMessage* msg, PlayerCreature* 
 		_implementation->fillAttributeList(msg, object);
 }
 
-void FactoryCrate::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void FactoryCrate::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -87,13 +87,13 @@ void FactoryCrate::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Play
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int FactoryCrate::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FactoryCrate::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	FactoryCrateImplementation* _implementation = (FactoryCrateImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -364,8 +364,8 @@ Packet* FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_ISFACTORYCRATE__:
 		resp->insertBoolean(isFactoryCrate());
@@ -406,7 +406,7 @@ void FactoryCrateAdapter::sendBaselinesTo(SceneObject* player) {
 	((FactoryCrateImplementation*) impl)->sendBaselinesTo(player);
 }
 
-int FactoryCrateAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int FactoryCrateAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((FactoryCrateImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

@@ -8,7 +8,7 @@ import server.zone.objects.creature.NonPlayerCreatureObject;
 import server.zone.objects.creature.AiAgent;
 import server.zone.objects.creature.Creature;
 import server.zone.managers.ZoneManager;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.creature.CreatureTemplateManager;
 include server.zone.managers.creature.CreatureMap;
 include server.zone.managers.creature.SpawnAreaMap;
@@ -92,7 +92,7 @@ class CreatureManager extends ZoneManager {
 	
 	private native void setCreatureTemplateManager();
 	
-	public native void harvest(Creature creature, PlayerCreature player, int selectedID);
+	public native void harvest(Creature creature, CreatureObject player, int selectedID);
 	
 	public synchronized void addToReservePool(AiAgent agent) {
 		if (spawnedRandomCreatures > 0) {

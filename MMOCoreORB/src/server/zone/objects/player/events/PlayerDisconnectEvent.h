@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PLAYERDISCONNECTEVENT_H_
 #define PLAYERDISCONNECTEVENT_H_
 
-#include "../PlayerCreature.h"
+#include "../PlayerObject.h"
 
 namespace server {
 namespace zone {
@@ -54,15 +54,15 @@ namespace player {
 namespace events {
 
 class PlayerDisconnectEvent : public Task {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<PlayerObject*> player;
 
 public:
-	PlayerDisconnectEvent(PlayerCreature* pl) : Task(2000) {
+	PlayerDisconnectEvent(PlayerObject* pl) : Task(2000) {
 		player = pl;
 	}
 
 	void run() {
-		Locker locker(player);
+		Locker locker(player->getParent());
 
 		try {
 			player->clearDisconnectEvent();
@@ -74,8 +74,6 @@ public:
 
 			player->clearDisconnectEvent();
 		}
-
-		player = NULL;
 	}
 
 };

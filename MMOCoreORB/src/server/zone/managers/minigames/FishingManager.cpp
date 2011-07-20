@@ -4,7 +4,7 @@
 
 #include "FishingManager.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/ZoneServer.h"
 
@@ -26,7 +26,7 @@
  *	FishingManagerStub
  */
 
-enum {RPC_INITIALIZEBAITSTATUS__ = 6,RPC_INITIALIZEPROPERTY__,RPC_INITIALIZEACTION__,RPC_INITIALIZESTATE__,RPC_INITIALIZEFISHTYPE__,RPC_INITIALIZEFISHLENGTH__,RPC_INITIALIZELOOT__,RPC_INITIALIZECOLOR__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_CHECKFISHINGONPOSITIONUPDATE__PLAYERCREATURE_,RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_SCENEOBJECT_,RPC_STARTFISHING__PLAYERCREATURE_,RPC_STOPFISHING__PLAYERCREATURE_INT_BOOL_,RPC_FISHINGSTEP__PLAYERCREATURE_,RPC_SUCCESS__PLAYERCREATURE_INT_SCENEOBJECT_INT_,RPC_GETTIME__,RPC_SENDREWARD__PLAYERCREATURE_SCENEOBJECT_SCENEOBJECT_,RPC_CREATEWINDOW__PLAYERCREATURE_INT_,RPC_CLOSEMENU__PLAYERCREATURE_INT_,RPC_VEGETATION__SCENEOBJECT_,RPC_DENSITY__SCENEOBJECT_,RPC_GETFISH__PLAYERCREATURE_,RPC_GETNEXTACTION__PLAYERCREATURE_,RPC_SETNEXTACTION__PLAYERCREATURE_INT_,RPC_GETPOLE__PLAYERCREATURE_,RPC_GETBAIT__PLAYERCREATURE_,RPC_GETFISHBOXID__PLAYERCREATURE_,RPC_SETFISHBOXID__PLAYERCREATURE_INT_,RPC_GETFISHINGSTATE__PLAYERCREATURE_,RPC_SETFISHINGSTATE__PLAYERCREATURE_INT_,RPC_GETFISHMARKER__PLAYERCREATURE_,RPC_SETFISHMARKER__PLAYERCREATURE_SCENEOBJECT_,RPC_FREEBAIT__PLAYERCREATURE_,RPC_FISHINGPROCEED__PLAYERCREATURE_INT_SCENEOBJECT_INT_INT_INT_BOOL_STRING_,RPC_MISHAPEVENT__STRING_PLAYERCREATURE_INT_BOOL_STRING_,RPC_LOSEBAIT__PLAYERCREATURE_,RPC_ANIMATE__PLAYERCREATURE_INT_,RPC_CREATEMARKER__FLOAT_FLOAT_FLOAT_ZONE_,RPC_CREATESPLASH__FLOAT_FLOAT_FLOAT_ZONE_PLAYERCREATURE_,RPC_ISPLAYING__PLAYERCREATURE_,RPC_UPDATEMARKER__PLAYERCREATURE_SCENEOBJECT_BOOL_,RPC_REMOVEMARKER__PLAYERCREATURE_SCENEOBJECT_,RPC_REMOVESPLASH__SCENEOBJECT_,RPC_CREATEFISHINGSPLASHEVENT__PLAYERCREATURE_ZONESERVER_SCENEOBJECT_,RPC_STOPFISHINGEVENT__PLAYERCREATURE_,};
+enum {RPC_INITIALIZEBAITSTATUS__ = 6,RPC_INITIALIZEPROPERTY__,RPC_INITIALIZEACTION__,RPC_INITIALIZESTATE__,RPC_INITIALIZEFISHTYPE__,RPC_INITIALIZEFISHLENGTH__,RPC_INITIALIZELOOT__,RPC_INITIALIZECOLOR__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_CHECKFISHINGONPOSITIONUPDATE__CREATUREOBJECT_,RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_SCENEOBJECT_,RPC_STARTFISHING__CREATUREOBJECT_,RPC_STOPFISHING__CREATUREOBJECT_INT_BOOL_,RPC_FISHINGSTEP__CREATUREOBJECT_,RPC_SUCCESS__CREATUREOBJECT_INT_SCENEOBJECT_INT_,RPC_GETTIME__,RPC_SENDREWARD__CREATUREOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_CREATEWINDOW__CREATUREOBJECT_INT_,RPC_CLOSEMENU__CREATUREOBJECT_INT_,RPC_VEGETATION__SCENEOBJECT_,RPC_DENSITY__SCENEOBJECT_,RPC_GETFISH__CREATUREOBJECT_,RPC_GETNEXTACTION__CREATUREOBJECT_,RPC_SETNEXTACTION__CREATUREOBJECT_INT_,RPC_GETPOLE__CREATUREOBJECT_,RPC_GETBAIT__CREATUREOBJECT_,RPC_GETFISHBOXID__CREATUREOBJECT_,RPC_SETFISHBOXID__CREATUREOBJECT_INT_,RPC_GETFISHINGSTATE__CREATUREOBJECT_,RPC_SETFISHINGSTATE__CREATUREOBJECT_INT_,RPC_GETFISHMARKER__CREATUREOBJECT_,RPC_SETFISHMARKER__CREATUREOBJECT_SCENEOBJECT_,RPC_FREEBAIT__CREATUREOBJECT_,RPC_FISHINGPROCEED__CREATUREOBJECT_INT_SCENEOBJECT_INT_INT_INT_BOOL_STRING_,RPC_MISHAPEVENT__STRING_CREATUREOBJECT_INT_BOOL_STRING_,RPC_LOSEBAIT__CREATUREOBJECT_,RPC_ANIMATE__CREATUREOBJECT_INT_,RPC_CREATEMARKER__FLOAT_FLOAT_FLOAT_ZONE_,RPC_CREATESPLASH__FLOAT_FLOAT_FLOAT_ZONE_CREATUREOBJECT_,RPC_ISPLAYING__CREATUREOBJECT_,RPC_UPDATEMARKER__CREATUREOBJECT_SCENEOBJECT_BOOL_,RPC_REMOVEMARKER__CREATUREOBJECT_SCENEOBJECT_,RPC_REMOVESPLASH__SCENEOBJECT_,RPC_CREATEFISHINGSPLASHEVENT__CREATUREOBJECT_ZONESERVER_SCENEOBJECT_,RPC_STOPFISHINGEVENT__CREATUREOBJECT_,};
 
 FishingManager::FishingManager(ZoneServer* server) : Observer(DummyConstructorParameter::instance()) {
 	FishingManagerImplementation* _implementation = new FishingManagerImplementation(server);
@@ -162,13 +162,13 @@ int FishingManager::notifyObserverEvent(unsigned int eventType, Observable* obse
 		return _implementation->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
-void FishingManager::checkFishingOnPositionUpdate(PlayerCreature* player) {
+void FishingManager::checkFishingOnPositionUpdate(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHECKFISHINGONPOSITIONUPDATE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CHECKFISHINGONPOSITIONUPDATE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -176,13 +176,13 @@ void FishingManager::checkFishingOnPositionUpdate(PlayerCreature* player) {
 		_implementation->checkFishingOnPositionUpdate(player);
 }
 
-int FishingManager::notifyCloseContainer(PlayerCreature* player, SceneObject* container) {
+int FishingManager::notifyCloseContainer(CreatureObject* player, SceneObject* container) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_SCENEOBJECT_);
+		DistributedMethod method(this, RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_SCENEOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(container);
 
@@ -191,7 +191,7 @@ int FishingManager::notifyCloseContainer(PlayerCreature* player, SceneObject* co
 		return _implementation->notifyCloseContainer(player, container);
 }
 
-int FishingManager::checkLocation(PlayerCreature* player, int quality, float& x, float& y, float& z) {
+int FishingManager::checkLocation(CreatureObject* player, int quality, float& x, float& y, float& z) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -200,13 +200,13 @@ int FishingManager::checkLocation(PlayerCreature* player, int quality, float& x,
 		return _implementation->checkLocation(player, quality, x, y, z);
 }
 
-int FishingManager::startFishing(PlayerCreature* player) {
+int FishingManager::startFishing(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_STARTFISHING__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_STARTFISHING__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -214,13 +214,13 @@ int FishingManager::startFishing(PlayerCreature* player) {
 		return _implementation->startFishing(player);
 }
 
-void FishingManager::stopFishing(PlayerCreature* player, unsigned int boxID, bool rem) {
+void FishingManager::stopFishing(CreatureObject* player, unsigned int boxID, bool rem) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_STOPFISHING__PLAYERCREATURE_INT_BOOL_);
+		DistributedMethod method(this, RPC_STOPFISHING__CREATUREOBJECT_INT_BOOL_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(boxID);
 		method.addBooleanParameter(rem);
@@ -230,13 +230,13 @@ void FishingManager::stopFishing(PlayerCreature* player, unsigned int boxID, boo
 		_implementation->stopFishing(player, boxID, rem);
 }
 
-void FishingManager::fishingStep(PlayerCreature* player) {
+void FishingManager::fishingStep(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FISHINGSTEP__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FISHINGSTEP__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -244,13 +244,13 @@ void FishingManager::fishingStep(PlayerCreature* player) {
 		_implementation->fishingStep(player);
 }
 
-void FishingManager::success(PlayerCreature* player, int fish, SceneObject* marker, unsigned int boxID) {
+void FishingManager::success(CreatureObject* player, int fish, SceneObject* marker, unsigned int boxID) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SUCCESS__PLAYERCREATURE_INT_SCENEOBJECT_INT_);
+		DistributedMethod method(this, RPC_SUCCESS__CREATUREOBJECT_INT_SCENEOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(fish);
 		method.addObjectParameter(marker);
@@ -275,13 +275,13 @@ String FishingManager::getTime() {
 		return _implementation->getTime();
 }
 
-void FishingManager::sendReward(PlayerCreature* player, SceneObject* marker, SceneObject* loot) {
+void FishingManager::sendReward(CreatureObject* player, SceneObject* marker, SceneObject* loot) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDREWARD__PLAYERCREATURE_SCENEOBJECT_SCENEOBJECT_);
+		DistributedMethod method(this, RPC_SENDREWARD__CREATUREOBJECT_SCENEOBJECT_SCENEOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(marker);
 		method.addObjectParameter(loot);
@@ -291,13 +291,13 @@ void FishingManager::sendReward(PlayerCreature* player, SceneObject* marker, Sce
 		_implementation->sendReward(player, marker, loot);
 }
 
-unsigned int FishingManager::createWindow(PlayerCreature* player, unsigned int boxID) {
+unsigned int FishingManager::createWindow(CreatureObject* player, unsigned int boxID) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEWINDOW__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_CREATEWINDOW__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(boxID);
 
@@ -306,13 +306,13 @@ unsigned int FishingManager::createWindow(PlayerCreature* player, unsigned int b
 		return _implementation->createWindow(player, boxID);
 }
 
-void FishingManager::closeMenu(PlayerCreature* player, unsigned int boxID) {
+void FishingManager::closeMenu(CreatureObject* player, unsigned int boxID) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CLOSEMENU__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_CLOSEMENU__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(boxID);
 
@@ -349,13 +349,13 @@ int FishingManager::density(SceneObject* marker) {
 		return _implementation->density(marker);
 }
 
-int FishingManager::getFish(PlayerCreature* player) {
+int FishingManager::getFish(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETFISH__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETFISH__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -363,13 +363,13 @@ int FishingManager::getFish(PlayerCreature* player) {
 		return _implementation->getFish(player);
 }
 
-int FishingManager::getNextAction(PlayerCreature* player) {
+int FishingManager::getNextAction(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETNEXTACTION__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETNEXTACTION__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -377,13 +377,13 @@ int FishingManager::getNextAction(PlayerCreature* player) {
 		return _implementation->getNextAction(player);
 }
 
-void FishingManager::setNextAction(PlayerCreature* player, int next) {
+void FishingManager::setNextAction(CreatureObject* player, int next) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETNEXTACTION__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_SETNEXTACTION__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(next);
 
@@ -392,13 +392,13 @@ void FishingManager::setNextAction(PlayerCreature* player, int next) {
 		_implementation->setNextAction(player, next);
 }
 
-FishingPoleObject* FishingManager::getPole(PlayerCreature* player) {
+FishingPoleObject* FishingManager::getPole(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETPOLE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETPOLE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return (FishingPoleObject*) method.executeWithObjectReturn();
@@ -406,13 +406,13 @@ FishingPoleObject* FishingManager::getPole(PlayerCreature* player) {
 		return _implementation->getPole(player);
 }
 
-FishingBaitObject* FishingManager::getBait(PlayerCreature* player) {
+FishingBaitObject* FishingManager::getBait(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETBAIT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETBAIT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return (FishingBaitObject*) method.executeWithObjectReturn();
@@ -420,13 +420,13 @@ FishingBaitObject* FishingManager::getBait(PlayerCreature* player) {
 		return _implementation->getBait(player);
 }
 
-unsigned int FishingManager::getFishBoxID(PlayerCreature* player) {
+unsigned int FishingManager::getFishBoxID(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETFISHBOXID__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETFISHBOXID__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithUnsignedIntReturn();
@@ -434,13 +434,13 @@ unsigned int FishingManager::getFishBoxID(PlayerCreature* player) {
 		return _implementation->getFishBoxID(player);
 }
 
-void FishingManager::setFishBoxID(PlayerCreature* player, unsigned int boxID) {
+void FishingManager::setFishBoxID(CreatureObject* player, unsigned int boxID) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETFISHBOXID__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_SETFISHBOXID__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(boxID);
 
@@ -449,13 +449,13 @@ void FishingManager::setFishBoxID(PlayerCreature* player, unsigned int boxID) {
 		_implementation->setFishBoxID(player, boxID);
 }
 
-int FishingManager::getFishingState(PlayerCreature* player) {
+int FishingManager::getFishingState(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETFISHINGSTATE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETFISHINGSTATE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
@@ -463,13 +463,13 @@ int FishingManager::getFishingState(PlayerCreature* player) {
 		return _implementation->getFishingState(player);
 }
 
-void FishingManager::setFishingState(PlayerCreature* player, int state) {
+void FishingManager::setFishingState(CreatureObject* player, int state) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETFISHINGSTATE__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_SETFISHINGSTATE__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(state);
 
@@ -478,13 +478,13 @@ void FishingManager::setFishingState(PlayerCreature* player, int state) {
 		_implementation->setFishingState(player, state);
 }
 
-SceneObject* FishingManager::getFishMarker(PlayerCreature* player) {
+SceneObject* FishingManager::getFishMarker(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETFISHMARKER__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GETFISHMARKER__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return (SceneObject*) method.executeWithObjectReturn();
@@ -492,13 +492,13 @@ SceneObject* FishingManager::getFishMarker(PlayerCreature* player) {
 		return _implementation->getFishMarker(player);
 }
 
-void FishingManager::setFishMarker(PlayerCreature* player, SceneObject* marker) {
+void FishingManager::setFishMarker(CreatureObject* player, SceneObject* marker) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETFISHMARKER__PLAYERCREATURE_SCENEOBJECT_);
+		DistributedMethod method(this, RPC_SETFISHMARKER__CREATUREOBJECT_SCENEOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(marker);
 
@@ -507,13 +507,13 @@ void FishingManager::setFishMarker(PlayerCreature* player, SceneObject* marker) 
 		_implementation->setFishMarker(player, marker);
 }
 
-void FishingManager::freeBait(PlayerCreature* player) {
+void FishingManager::freeBait(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FREEBAIT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FREEBAIT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -521,13 +521,13 @@ void FishingManager::freeBait(PlayerCreature* player) {
 		_implementation->freeBait(player);
 }
 
-void FishingManager::fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString) {
+void FishingManager::fishingProceed(CreatureObject* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FISHINGPROCEED__PLAYERCREATURE_INT_SCENEOBJECT_INT_INT_INT_BOOL_STRING_);
+		DistributedMethod method(this, RPC_FISHINGPROCEED__CREATUREOBJECT_INT_SCENEOBJECT_INT_INT_INT_BOOL_STRING_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(nextAction);
 		method.addObjectParameter(marker);
@@ -542,13 +542,13 @@ void FishingManager::fishingProceed(PlayerCreature* player, int nextAction, Scen
 		_implementation->fishingProceed(player, nextAction, marker, fish, boxID, newstate, notifyClient, moodString);
 }
 
-void FishingManager::mishapEvent(const String& text, PlayerCreature* player, unsigned int boxID, bool losebait, String& moodString) {
+void FishingManager::mishapEvent(const String& text, CreatureObject* player, unsigned int boxID, bool losebait, String& moodString) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_MISHAPEVENT__STRING_PLAYERCREATURE_INT_BOOL_STRING_);
+		DistributedMethod method(this, RPC_MISHAPEVENT__STRING_CREATUREOBJECT_INT_BOOL_STRING_);
 		method.addAsciiParameter(text);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(boxID);
@@ -560,13 +560,13 @@ void FishingManager::mishapEvent(const String& text, PlayerCreature* player, uns
 		_implementation->mishapEvent(text, player, boxID, losebait, moodString);
 }
 
-bool FishingManager::loseBait(PlayerCreature* player) {
+bool FishingManager::loseBait(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_LOSEBAIT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_LOSEBAIT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -574,13 +574,13 @@ bool FishingManager::loseBait(PlayerCreature* player) {
 		return _implementation->loseBait(player);
 }
 
-void FishingManager::animate(PlayerCreature* player, int nextAction) {
+void FishingManager::animate(CreatureObject* player, int nextAction) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ANIMATE__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_ANIMATE__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(nextAction);
 
@@ -606,13 +606,13 @@ SceneObject* FishingManager::createMarker(float x, float y, float z, Zone* zone)
 		return _implementation->createMarker(x, y, z, zone);
 }
 
-void FishingManager::createSplash(float x, float y, float z, Zone* zone, PlayerCreature* player) {
+void FishingManager::createSplash(float x, float y, float z, Zone* zone, CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATESPLASH__FLOAT_FLOAT_FLOAT_ZONE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CREATESPLASH__FLOAT_FLOAT_FLOAT_ZONE_CREATUREOBJECT_);
 		method.addFloatParameter(x);
 		method.addFloatParameter(y);
 		method.addFloatParameter(z);
@@ -624,7 +624,7 @@ void FishingManager::createSplash(float x, float y, float z, Zone* zone, PlayerC
 		_implementation->createSplash(x, y, z, zone, player);
 }
 
-bool FishingManager::checkUpdateMarker(PlayerCreature* player, float& x, float& y, float& z) {
+bool FishingManager::checkUpdateMarker(CreatureObject* player, float& x, float& y, float& z) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -633,13 +633,13 @@ bool FishingManager::checkUpdateMarker(PlayerCreature* player, float& x, float& 
 		return _implementation->checkUpdateMarker(player, x, y, z);
 }
 
-bool FishingManager::isPlaying(PlayerCreature* player) {
+bool FishingManager::isPlaying(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ISPLAYING__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_ISPLAYING__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -647,13 +647,13 @@ bool FishingManager::isPlaying(PlayerCreature* player) {
 		return _implementation->isPlaying(player);
 }
 
-SceneObject* FishingManager::updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer) {
+SceneObject* FishingManager::updateMarker(CreatureObject* player, SceneObject* marker, bool notifyPlayer) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_UPDATEMARKER__PLAYERCREATURE_SCENEOBJECT_BOOL_);
+		DistributedMethod method(this, RPC_UPDATEMARKER__CREATUREOBJECT_SCENEOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(marker);
 		method.addBooleanParameter(notifyPlayer);
@@ -663,13 +663,13 @@ SceneObject* FishingManager::updateMarker(PlayerCreature* player, SceneObject* m
 		return _implementation->updateMarker(player, marker, notifyPlayer);
 }
 
-void FishingManager::removeMarker(PlayerCreature* player, SceneObject* container) {
+void FishingManager::removeMarker(CreatureObject* player, SceneObject* container) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEMARKER__PLAYERCREATURE_SCENEOBJECT_);
+		DistributedMethod method(this, RPC_REMOVEMARKER__CREATUREOBJECT_SCENEOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(container);
 
@@ -692,13 +692,13 @@ void FishingManager::removeSplash(SceneObject* splash) {
 		_implementation->removeSplash(splash);
 }
 
-void FishingManager::createFishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash) {
+void FishingManager::createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEFISHINGSPLASHEVENT__PLAYERCREATURE_ZONESERVER_SCENEOBJECT_);
+		DistributedMethod method(this, RPC_CREATEFISHINGSPLASHEVENT__CREATUREOBJECT_ZONESERVER_SCENEOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(zoneServer);
 		method.addObjectParameter(splash);
@@ -708,7 +708,7 @@ void FishingManager::createFishingSplashEvent(PlayerCreature* player, ZoneServer
 		_implementation->createFishingSplashEvent(player, zoneServer, splash);
 }
 
-void FishingManager::createFishingSession(PlayerCreature* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood) {
+void FishingManager::createFishingSession(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -717,7 +717,7 @@ void FishingManager::createFishingSession(PlayerCreature* player, FishingEvent* 
 		_implementation->createFishingSession(player, event, marker, nextAction, fish, boxID, fishingState, mood);
 }
 
-FishingEvent* FishingManager::createFishingEvent(PlayerCreature* player, ZoneServer* zoneServer, int state) {
+FishingEvent* FishingManager::createFishingEvent(CreatureObject* player, ZoneServer* zoneServer, int state) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -726,13 +726,13 @@ FishingEvent* FishingManager::createFishingEvent(PlayerCreature* player, ZoneSer
 		return _implementation->createFishingEvent(player, zoneServer, state);
 }
 
-void FishingManager::stopFishingEvent(PlayerCreature* player) {
+void FishingManager::stopFishingEvent(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_STOPFISHINGEVENT__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_STOPFISHINGEVENT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -740,7 +740,7 @@ void FishingManager::stopFishingEvent(PlayerCreature* player) {
 		_implementation->stopFishingEvent(player);
 }
 
-FishingEvent* FishingManager::getFishingEvent(PlayerCreature* player) {
+FishingEvent* FishingManager::getFishingEvent(CreatureObject* player) {
 	FishingManagerImplementation* _implementation = (FishingManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -905,7 +905,7 @@ bool FishingManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 	}
 
 	if (_name == "sessions") {
-		TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, FishingSession*> >::parseFromBinaryStream(&sessions, stream);
+		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, FishingSession*> >::parseFromBinaryStream(&sessions, stream);
 		return true;
 	}
 
@@ -1008,7 +1008,7 @@ int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<VectorMap<ManagedReference<PlayerCreature* >, FishingSession*> >::toBinaryStream(&sessions, stream);
+	TypeInfo<VectorMap<ManagedReference<CreatureObject* >, FishingSession*> >::toBinaryStream(&sessions, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1173,16 +1173,16 @@ void FishingManagerImplementation::initializeColor() {
 int FishingManagerImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
 	// server/zone/managers/minigames/FishingManager.idl():  		return 
 	if (eventType == ObserverEventType::POSITIONCHANGED){
-	// server/zone/managers/minigames/FishingManager.idl():  			checkFishingOnPositionUpdate((PlayerCreature) observable);
-	checkFishingOnPositionUpdate((PlayerCreature*) observable);
+	// server/zone/managers/minigames/FishingManager.idl():  			checkFishingOnPositionUpdate((CreatureObject) observable);
+	checkFishingOnPositionUpdate((CreatureObject*) observable);
 	// server/zone/managers/minigames/FishingManager.idl():  			return 0;
 	return 0;
 }
 
 	else 	// server/zone/managers/minigames/FishingManager.idl():  		return 
 	if (eventType == ObserverEventType::CLOSECONTAINER){
-	// server/zone/managers/minigames/FishingManager.idl():  			return notifyCloseContainer((PlayerCreature)arg1, (SceneObject)observable);
-	return notifyCloseContainer((PlayerCreature*) arg1, (SceneObject*) observable);
+	// server/zone/managers/minigames/FishingManager.idl():  			return notifyCloseContainer((CreatureObject)arg1, (SceneObject)observable);
+	return notifyCloseContainer((CreatureObject*) arg1, (SceneObject*) observable);
 }
 	// server/zone/managers/minigames/FishingManager.idl():  		return 1;
 	return 1;
@@ -1226,35 +1226,35 @@ Packet* FishingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_:
 		resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), (Observable*) inv->getObjectParameter(), (ManagedObject*) inv->getObjectParameter(), inv->getSignedLongParameter()));
 		break;
-	case RPC_CHECKFISHINGONPOSITIONUPDATE__PLAYERCREATURE_:
-		checkFishingOnPositionUpdate((PlayerCreature*) inv->getObjectParameter());
+	case RPC_CHECKFISHINGONPOSITIONUPDATE__CREATUREOBJECT_:
+		checkFishingOnPositionUpdate((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_NOTIFYCLOSECONTAINER__PLAYERCREATURE_SCENEOBJECT_:
-		resp->insertSignedInt(notifyCloseContainer((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter()));
+	case RPC_NOTIFYCLOSECONTAINER__CREATUREOBJECT_SCENEOBJECT_:
+		resp->insertSignedInt(notifyCloseContainer((CreatureObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter()));
 		break;
-	case RPC_STARTFISHING__PLAYERCREATURE_:
-		resp->insertSignedInt(startFishing((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_STARTFISHING__CREATUREOBJECT_:
+		resp->insertSignedInt(startFishing((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_STOPFISHING__PLAYERCREATURE_INT_BOOL_:
-		stopFishing((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
+	case RPC_STOPFISHING__CREATUREOBJECT_INT_BOOL_:
+		stopFishing((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_FISHINGSTEP__PLAYERCREATURE_:
-		fishingStep((PlayerCreature*) inv->getObjectParameter());
+	case RPC_FISHINGSTEP__CREATUREOBJECT_:
+		fishingStep((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SUCCESS__PLAYERCREATURE_INT_SCENEOBJECT_INT_:
-		success((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+	case RPC_SUCCESS__CREATUREOBJECT_INT_SCENEOBJECT_INT_:
+		success((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case RPC_GETTIME__:
 		resp->insertAscii(getTime());
 		break;
-	case RPC_SENDREWARD__PLAYERCREATURE_SCENEOBJECT_SCENEOBJECT_:
-		sendReward((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+	case RPC_SENDREWARD__CREATUREOBJECT_SCENEOBJECT_SCENEOBJECT_:
+		sendReward((CreatureObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_CREATEWINDOW__PLAYERCREATURE_INT_:
-		resp->insertInt(createWindow((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
+	case RPC_CREATEWINDOW__CREATUREOBJECT_INT_:
+		resp->insertInt(createWindow((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter()));
 		break;
-	case RPC_CLOSEMENU__PLAYERCREATURE_INT_:
-		closeMenu((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+	case RPC_CLOSEMENU__CREATUREOBJECT_INT_:
+		closeMenu((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case RPC_VEGETATION__SCENEOBJECT_:
 		resp->insertSignedInt(vegetation((SceneObject*) inv->getObjectParameter()));
@@ -1262,77 +1262,77 @@ Packet* FishingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_DENSITY__SCENEOBJECT_:
 		resp->insertSignedInt(density((SceneObject*) inv->getObjectParameter()));
 		break;
-	case RPC_GETFISH__PLAYERCREATURE_:
-		resp->insertSignedInt(getFish((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_GETFISH__CREATUREOBJECT_:
+		resp->insertSignedInt(getFish((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_GETNEXTACTION__PLAYERCREATURE_:
-		resp->insertSignedInt(getNextAction((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_GETNEXTACTION__CREATUREOBJECT_:
+		resp->insertSignedInt(getNextAction((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_SETNEXTACTION__PLAYERCREATURE_INT_:
-		setNextAction((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_SETNEXTACTION__CREATUREOBJECT_INT_:
+		setNextAction((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_GETPOLE__PLAYERCREATURE_:
-		resp->insertLong(getPole((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+	case RPC_GETPOLE__CREATUREOBJECT_:
+		resp->insertLong(getPole((CreatureObject*) inv->getObjectParameter())->_getObjectID());
 		break;
-	case RPC_GETBAIT__PLAYERCREATURE_:
-		resp->insertLong(getBait((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+	case RPC_GETBAIT__CREATUREOBJECT_:
+		resp->insertLong(getBait((CreatureObject*) inv->getObjectParameter())->_getObjectID());
 		break;
-	case RPC_GETFISHBOXID__PLAYERCREATURE_:
-		resp->insertInt(getFishBoxID((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_GETFISHBOXID__CREATUREOBJECT_:
+		resp->insertInt(getFishBoxID((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_SETFISHBOXID__PLAYERCREATURE_INT_:
-		setFishBoxID((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+	case RPC_SETFISHBOXID__CREATUREOBJECT_INT_:
+		setFishBoxID((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case RPC_GETFISHINGSTATE__PLAYERCREATURE_:
-		resp->insertSignedInt(getFishingState((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_GETFISHINGSTATE__CREATUREOBJECT_:
+		resp->insertSignedInt(getFishingState((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_SETFISHINGSTATE__PLAYERCREATURE_INT_:
-		setFishingState((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_SETFISHINGSTATE__CREATUREOBJECT_INT_:
+		setFishingState((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_GETFISHMARKER__PLAYERCREATURE_:
-		resp->insertLong(getFishMarker((PlayerCreature*) inv->getObjectParameter())->_getObjectID());
+	case RPC_GETFISHMARKER__CREATUREOBJECT_:
+		resp->insertLong(getFishMarker((CreatureObject*) inv->getObjectParameter())->_getObjectID());
 		break;
-	case RPC_SETFISHMARKER__PLAYERCREATURE_SCENEOBJECT_:
-		setFishMarker((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+	case RPC_SETFISHMARKER__CREATUREOBJECT_SCENEOBJECT_:
+		setFishMarker((CreatureObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_FREEBAIT__PLAYERCREATURE_:
-		freeBait((PlayerCreature*) inv->getObjectParameter());
+	case RPC_FREEBAIT__CREATUREOBJECT_:
+		freeBait((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_FISHINGPROCEED__PLAYERCREATURE_INT_SCENEOBJECT_INT_INT_INT_BOOL_STRING_:
-		fishingProceed((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getAsciiParameter(_param7_fishingProceed__PlayerCreature_int_SceneObject_int_int_int_bool_String_));
+	case RPC_FISHINGPROCEED__CREATUREOBJECT_INT_SCENEOBJECT_INT_INT_INT_BOOL_STRING_:
+		fishingProceed((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), (SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getAsciiParameter(_param7_fishingProceed__CreatureObject_int_SceneObject_int_int_int_bool_String_));
 		break;
-	case RPC_MISHAPEVENT__STRING_PLAYERCREATURE_INT_BOOL_STRING_:
-		mishapEvent(inv->getAsciiParameter(_param0_mishapEvent__String_PlayerCreature_int_bool_String_), (PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter(), inv->getAsciiParameter(_param4_mishapEvent__String_PlayerCreature_int_bool_String_));
+	case RPC_MISHAPEVENT__STRING_CREATUREOBJECT_INT_BOOL_STRING_:
+		mishapEvent(inv->getAsciiParameter(_param0_mishapEvent__String_CreatureObject_int_bool_String_), (CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter(), inv->getBooleanParameter(), inv->getAsciiParameter(_param4_mishapEvent__String_CreatureObject_int_bool_String_));
 		break;
-	case RPC_LOSEBAIT__PLAYERCREATURE_:
-		resp->insertBoolean(loseBait((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_LOSEBAIT__CREATUREOBJECT_:
+		resp->insertBoolean(loseBait((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_ANIMATE__PLAYERCREATURE_INT_:
-		animate((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter());
+	case RPC_ANIMATE__CREATUREOBJECT_INT_:
+		animate((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
 	case RPC_CREATEMARKER__FLOAT_FLOAT_FLOAT_ZONE_:
 		resp->insertLong(createMarker(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), (Zone*) inv->getObjectParameter())->_getObjectID());
 		break;
-	case RPC_CREATESPLASH__FLOAT_FLOAT_FLOAT_ZONE_PLAYERCREATURE_:
-		createSplash(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), (Zone*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_CREATESPLASH__FLOAT_FLOAT_FLOAT_ZONE_CREATUREOBJECT_:
+		createSplash(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), (Zone*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_ISPLAYING__PLAYERCREATURE_:
-		resp->insertBoolean(isPlaying((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_ISPLAYING__CREATUREOBJECT_:
+		resp->insertBoolean(isPlaying((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_UPDATEMARKER__PLAYERCREATURE_SCENEOBJECT_BOOL_:
-		resp->insertLong(updateMarker((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
+	case RPC_UPDATEMARKER__CREATUREOBJECT_SCENEOBJECT_BOOL_:
+		resp->insertLong(updateMarker((CreatureObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter())->_getObjectID());
 		break;
-	case RPC_REMOVEMARKER__PLAYERCREATURE_SCENEOBJECT_:
-		removeMarker((PlayerCreature*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+	case RPC_REMOVEMARKER__CREATUREOBJECT_SCENEOBJECT_:
+		removeMarker((CreatureObject*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
 	case RPC_REMOVESPLASH__SCENEOBJECT_:
 		removeSplash((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_CREATEFISHINGSPLASHEVENT__PLAYERCREATURE_ZONESERVER_SCENEOBJECT_:
-		createFishingSplashEvent((PlayerCreature*) inv->getObjectParameter(), (ZoneServer*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
+	case RPC_CREATEFISHINGSPLASHEVENT__CREATUREOBJECT_ZONESERVER_SCENEOBJECT_:
+		createFishingSplashEvent((CreatureObject*) inv->getObjectParameter(), (ZoneServer*) inv->getObjectParameter(), (SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_STOPFISHINGEVENT__PLAYERCREATURE_:
-		stopFishingEvent((PlayerCreature*) inv->getObjectParameter());
+	case RPC_STOPFISHINGEVENT__CREATUREOBJECT_:
+		stopFishingEvent((CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -1377,27 +1377,27 @@ int FishingManagerAdapter::notifyObserverEvent(unsigned int eventType, Observabl
 	return ((FishingManagerImplementation*) impl)->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
-void FishingManagerAdapter::checkFishingOnPositionUpdate(PlayerCreature* player) {
+void FishingManagerAdapter::checkFishingOnPositionUpdate(CreatureObject* player) {
 	((FishingManagerImplementation*) impl)->checkFishingOnPositionUpdate(player);
 }
 
-int FishingManagerAdapter::notifyCloseContainer(PlayerCreature* player, SceneObject* container) {
+int FishingManagerAdapter::notifyCloseContainer(CreatureObject* player, SceneObject* container) {
 	return ((FishingManagerImplementation*) impl)->notifyCloseContainer(player, container);
 }
 
-int FishingManagerAdapter::startFishing(PlayerCreature* player) {
+int FishingManagerAdapter::startFishing(CreatureObject* player) {
 	return ((FishingManagerImplementation*) impl)->startFishing(player);
 }
 
-void FishingManagerAdapter::stopFishing(PlayerCreature* player, unsigned int boxID, bool rem) {
+void FishingManagerAdapter::stopFishing(CreatureObject* player, unsigned int boxID, bool rem) {
 	((FishingManagerImplementation*) impl)->stopFishing(player, boxID, rem);
 }
 
-void FishingManagerAdapter::fishingStep(PlayerCreature* player) {
+void FishingManagerAdapter::fishingStep(CreatureObject* player) {
 	((FishingManagerImplementation*) impl)->fishingStep(player);
 }
 
-void FishingManagerAdapter::success(PlayerCreature* player, int fish, SceneObject* marker, unsigned int boxID) {
+void FishingManagerAdapter::success(CreatureObject* player, int fish, SceneObject* marker, unsigned int boxID) {
 	((FishingManagerImplementation*) impl)->success(player, fish, marker, boxID);
 }
 
@@ -1405,15 +1405,15 @@ String FishingManagerAdapter::getTime() {
 	return ((FishingManagerImplementation*) impl)->getTime();
 }
 
-void FishingManagerAdapter::sendReward(PlayerCreature* player, SceneObject* marker, SceneObject* loot) {
+void FishingManagerAdapter::sendReward(CreatureObject* player, SceneObject* marker, SceneObject* loot) {
 	((FishingManagerImplementation*) impl)->sendReward(player, marker, loot);
 }
 
-unsigned int FishingManagerAdapter::createWindow(PlayerCreature* player, unsigned int boxID) {
+unsigned int FishingManagerAdapter::createWindow(CreatureObject* player, unsigned int boxID) {
 	return ((FishingManagerImplementation*) impl)->createWindow(player, boxID);
 }
 
-void FishingManagerAdapter::closeMenu(PlayerCreature* player, unsigned int boxID) {
+void FishingManagerAdapter::closeMenu(CreatureObject* player, unsigned int boxID) {
 	((FishingManagerImplementation*) impl)->closeMenu(player, boxID);
 }
 
@@ -1425,67 +1425,67 @@ int FishingManagerAdapter::density(SceneObject* marker) {
 	return ((FishingManagerImplementation*) impl)->density(marker);
 }
 
-int FishingManagerAdapter::getFish(PlayerCreature* player) {
+int FishingManagerAdapter::getFish(CreatureObject* player) {
 	return ((FishingManagerImplementation*) impl)->getFish(player);
 }
 
-int FishingManagerAdapter::getNextAction(PlayerCreature* player) {
+int FishingManagerAdapter::getNextAction(CreatureObject* player) {
 	return ((FishingManagerImplementation*) impl)->getNextAction(player);
 }
 
-void FishingManagerAdapter::setNextAction(PlayerCreature* player, int next) {
+void FishingManagerAdapter::setNextAction(CreatureObject* player, int next) {
 	((FishingManagerImplementation*) impl)->setNextAction(player, next);
 }
 
-FishingPoleObject* FishingManagerAdapter::getPole(PlayerCreature* player) {
+FishingPoleObject* FishingManagerAdapter::getPole(CreatureObject* player) {
 	return ((FishingManagerImplementation*) impl)->getPole(player);
 }
 
-FishingBaitObject* FishingManagerAdapter::getBait(PlayerCreature* player) {
+FishingBaitObject* FishingManagerAdapter::getBait(CreatureObject* player) {
 	return ((FishingManagerImplementation*) impl)->getBait(player);
 }
 
-unsigned int FishingManagerAdapter::getFishBoxID(PlayerCreature* player) {
+unsigned int FishingManagerAdapter::getFishBoxID(CreatureObject* player) {
 	return ((FishingManagerImplementation*) impl)->getFishBoxID(player);
 }
 
-void FishingManagerAdapter::setFishBoxID(PlayerCreature* player, unsigned int boxID) {
+void FishingManagerAdapter::setFishBoxID(CreatureObject* player, unsigned int boxID) {
 	((FishingManagerImplementation*) impl)->setFishBoxID(player, boxID);
 }
 
-int FishingManagerAdapter::getFishingState(PlayerCreature* player) {
+int FishingManagerAdapter::getFishingState(CreatureObject* player) {
 	return ((FishingManagerImplementation*) impl)->getFishingState(player);
 }
 
-void FishingManagerAdapter::setFishingState(PlayerCreature* player, int state) {
+void FishingManagerAdapter::setFishingState(CreatureObject* player, int state) {
 	((FishingManagerImplementation*) impl)->setFishingState(player, state);
 }
 
-SceneObject* FishingManagerAdapter::getFishMarker(PlayerCreature* player) {
+SceneObject* FishingManagerAdapter::getFishMarker(CreatureObject* player) {
 	return ((FishingManagerImplementation*) impl)->getFishMarker(player);
 }
 
-void FishingManagerAdapter::setFishMarker(PlayerCreature* player, SceneObject* marker) {
+void FishingManagerAdapter::setFishMarker(CreatureObject* player, SceneObject* marker) {
 	((FishingManagerImplementation*) impl)->setFishMarker(player, marker);
 }
 
-void FishingManagerAdapter::freeBait(PlayerCreature* player) {
+void FishingManagerAdapter::freeBait(CreatureObject* player) {
 	((FishingManagerImplementation*) impl)->freeBait(player);
 }
 
-void FishingManagerAdapter::fishingProceed(PlayerCreature* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString) {
+void FishingManagerAdapter::fishingProceed(CreatureObject* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString) {
 	((FishingManagerImplementation*) impl)->fishingProceed(player, nextAction, marker, fish, boxID, newstate, notifyClient, moodString);
 }
 
-void FishingManagerAdapter::mishapEvent(const String& text, PlayerCreature* player, unsigned int boxID, bool losebait, String& moodString) {
+void FishingManagerAdapter::mishapEvent(const String& text, CreatureObject* player, unsigned int boxID, bool losebait, String& moodString) {
 	((FishingManagerImplementation*) impl)->mishapEvent(text, player, boxID, losebait, moodString);
 }
 
-bool FishingManagerAdapter::loseBait(PlayerCreature* player) {
+bool FishingManagerAdapter::loseBait(CreatureObject* player) {
 	return ((FishingManagerImplementation*) impl)->loseBait(player);
 }
 
-void FishingManagerAdapter::animate(PlayerCreature* player, int nextAction) {
+void FishingManagerAdapter::animate(CreatureObject* player, int nextAction) {
 	((FishingManagerImplementation*) impl)->animate(player, nextAction);
 }
 
@@ -1493,19 +1493,19 @@ SceneObject* FishingManagerAdapter::createMarker(float x, float y, float z, Zone
 	return ((FishingManagerImplementation*) impl)->createMarker(x, y, z, zone);
 }
 
-void FishingManagerAdapter::createSplash(float x, float y, float z, Zone* zone, PlayerCreature* player) {
+void FishingManagerAdapter::createSplash(float x, float y, float z, Zone* zone, CreatureObject* player) {
 	((FishingManagerImplementation*) impl)->createSplash(x, y, z, zone, player);
 }
 
-bool FishingManagerAdapter::isPlaying(PlayerCreature* player) {
+bool FishingManagerAdapter::isPlaying(CreatureObject* player) {
 	return ((FishingManagerImplementation*) impl)->isPlaying(player);
 }
 
-SceneObject* FishingManagerAdapter::updateMarker(PlayerCreature* player, SceneObject* marker, bool notifyPlayer) {
+SceneObject* FishingManagerAdapter::updateMarker(CreatureObject* player, SceneObject* marker, bool notifyPlayer) {
 	return ((FishingManagerImplementation*) impl)->updateMarker(player, marker, notifyPlayer);
 }
 
-void FishingManagerAdapter::removeMarker(PlayerCreature* player, SceneObject* container) {
+void FishingManagerAdapter::removeMarker(CreatureObject* player, SceneObject* container) {
 	((FishingManagerImplementation*) impl)->removeMarker(player, container);
 }
 
@@ -1513,11 +1513,11 @@ void FishingManagerAdapter::removeSplash(SceneObject* splash) {
 	((FishingManagerImplementation*) impl)->removeSplash(splash);
 }
 
-void FishingManagerAdapter::createFishingSplashEvent(PlayerCreature* player, ZoneServer* zoneServer, SceneObject* splash) {
+void FishingManagerAdapter::createFishingSplashEvent(CreatureObject* player, ZoneServer* zoneServer, SceneObject* splash) {
 	((FishingManagerImplementation*) impl)->createFishingSplashEvent(player, zoneServer, splash);
 }
 
-void FishingManagerAdapter::stopFishingEvent(PlayerCreature* player) {
+void FishingManagerAdapter::stopFishingEvent(CreatureObject* player) {
 	((FishingManagerImplementation*) impl)->stopFishingEvent(player);
 }
 

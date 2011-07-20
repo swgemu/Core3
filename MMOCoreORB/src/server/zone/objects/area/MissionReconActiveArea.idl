@@ -45,7 +45,7 @@ which carries forward this exception.
 package server.zone.objects.area;
 
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.objects.mission.ReconMissionObjective;
 
@@ -66,9 +66,9 @@ class MissionReconActiveArea extends ActiveArea {
 			return;
 		} else {
 			if (missionObjective != null) {
-				PlayerCreature missionOwner = missionObjective.getPlayerOwner();
+				CreatureObject missionOwner = missionObjective.getPlayerOwner();
 				
-				if ((PlayerCreature)player == missionOwner) {
+				if ((CreatureObject)player == missionOwner) {
 					missionObjective.complete();
 				}
 			} else {

@@ -12,13 +12,13 @@
 
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	CreatureStub
  */
 
-enum {RPC_ISCREATURE__ = 6,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
+enum {RPC_ISCREATURE__ = 6,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
 
 Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
 	CreatureImplementation* _implementation = new CreatureImplementation();
@@ -78,7 +78,7 @@ void Creature::runAway(CreatureObject* target) {
 		_implementation->runAway(target);
 }
 
-void Creature::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void Creature::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	CreatureImplementation* _implementation = (CreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -87,13 +87,13 @@ void Creature::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCr
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-int Creature::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int Creature::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	CreatureImplementation* _implementation = (CreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -102,13 +102,13 @@ int Creature::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
 		return _implementation->handleObjectMenuSelect(player, selectedID);
 }
 
-void Creature::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void Creature::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	CreatureImplementation* _implementation = (CreatureImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_);
 		method.addObjectParameter(msg);
 		method.addObjectParameter(object);
 
@@ -502,11 +502,11 @@ Packet* CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_RUNAWAY__CREATUREOBJECT_:
 		runAway((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
-	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_PLAYERCREATURE_:
-		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_:
+		fillAttributeList((AttributeListMessage*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_SCHEDULEDESPAWN__:
 		scheduleDespawn();
@@ -559,11 +559,11 @@ void CreatureAdapter::runAway(CreatureObject* target) {
 	((CreatureImplementation*) impl)->runAway(target);
 }
 
-int CreatureAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int CreatureAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((CreatureImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
-void CreatureAdapter::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void CreatureAdapter::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	((CreatureImplementation*) impl)->fillAttributeList(msg, object);
 }
 

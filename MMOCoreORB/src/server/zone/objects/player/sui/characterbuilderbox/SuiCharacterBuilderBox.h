@@ -14,16 +14,30 @@
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderMenuNode.h"
 
@@ -38,7 +52,7 @@ namespace characterbuilderbox {
 
 class SuiCharacterBuilderBox : public SuiListBox {
 public:
-	SuiCharacterBuilderBox(PlayerCreature* player, CharacterBuilderMenuNode* root);
+	SuiCharacterBuilderBox(CreatureObject* player, CharacterBuilderMenuNode* root);
 
 	BaseMessage* generateMessage();
 
@@ -83,7 +97,7 @@ protected:
 	Reference<CharacterBuilderMenuNode* > currentNode;
 
 public:
-	SuiCharacterBuilderBoxImplementation(PlayerCreature* player, CharacterBuilderMenuNode* root);
+	SuiCharacterBuilderBoxImplementation(CreatureObject* player, CharacterBuilderMenuNode* root);
 
 	SuiCharacterBuilderBoxImplementation(DummyConstructorParameter* param);
 

@@ -8,23 +8,26 @@
 #ifndef CENTEROFBEINGEVENT_H_
 #define CENTEROFBEINGEVENT_H_
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class CenterOfBeingEvent : public Task {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 
 public:
-	CenterOfBeingEvent(PlayerCreature* pl) {
+	CenterOfBeingEvent(CreatureObject* pl) {
 		player = pl;
 	}
 
 	void run() {
 		Locker _locker(player);
 
+		PlayerObject* ghost = player->getPlayerObject();
+
 		player->removePendingTask("centerofbeing");
 		player->sendSystemMessage("combat_effects", "center_stop");
 		player->showFlyText("combat_effects", "center_stop_fly", 255, 0, 0);
-		player->setCenteredBonus(0);
+		ghost->setCenteredBonus(0);
 	}
 };
 

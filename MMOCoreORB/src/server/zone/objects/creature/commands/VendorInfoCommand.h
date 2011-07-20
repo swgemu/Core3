@@ -19,7 +19,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return 1;
 
-		ManagedReference<PlayerCreature*> player = (PlayerCreature*) creature;
+		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
 		ManagedReference<AuctionManager*> auctionManager = player->getZoneServer()->getAuctionManager();
 		ManagedReference<AuctionsMap*> amap = auctionManager->getAuctionMap();
 

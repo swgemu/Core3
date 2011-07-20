@@ -52,16 +52,30 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 
@@ -85,13 +99,13 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
-	void applyAttachment(PlayerCreature* player, Attachment* attachment);
+	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
-	void setAttachmentMods(PlayerCreature* player, bool remove = false);
+	void setAttachmentMods(CreatureObject* player, bool remove = false);
 
 	bool isWearableObject();
 
@@ -150,13 +164,13 @@ public:
 
 	void initializeTransientMembers();
 
-	void fillAttributeList(AttributeListMessage* msg, PlayerCreature* object);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
-	void applyAttachment(PlayerCreature* player, Attachment* attachment);
+	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
-	void setAttachmentMods(PlayerCreature* player, bool remove = false);
+	void setAttachmentMods(CreatureObject* player, bool remove = false);
 
 	bool isWearableObject();
 
@@ -221,9 +235,9 @@ public:
 
 	void updateCraftingValues(ManufactureSchematic* schematic);
 
-	void applyAttachment(PlayerCreature* player, Attachment* attachment);
+	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
-	void setAttachmentMods(PlayerCreature* player, bool remove);
+	void setAttachmentMods(CreatureObject* player, bool remove);
 
 	bool isWearableObject();
 

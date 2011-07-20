@@ -54,7 +54,7 @@ import server.zone.objects.tangible.terminal.city.CityVoteTerminal;
 import system.util.SortedVector;
 import system.util.VectorMap;
 import system.lang.Time;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 
 class CityHallObject extends BuildingObject {
 	@dereferenced
@@ -153,7 +153,7 @@ class CityHallObject extends BuildingObject {
 	public native void spawnCityHallObjects();
 	public native void despawnCityHallObjects();
 	
-	public native boolean checkRequisitesForPlacement(PlayerCreature player);
+	public native boolean checkRequisitesForPlacement(CreatureObject player);
 	
 	public void setCityName(final string name) {
 		cityName = name;
@@ -167,24 +167,24 @@ class CityHallObject extends BuildingObject {
 		return cityRank;
 	}
 	
-	public native void sendCityNamePromptTo(PlayerCreature player, boolean newCity = false);
-	public native void sendStatusTo(PlayerCreature player);
-	public native void sendCitizenshipReportTo(PlayerCreature player);
-	public native void sendStructureReportTo(PlayerCreature player);
-	public native void sendTreasuryReportTo(PlayerCreature player);
-	public native void sendCityAdvancementTo(PlayerCreature player);
-	public native void sendMaintenanceReportTo(PlayerCreature player);
+	public native void sendCityNamePromptTo(CreatureObject player, boolean newCity = false);
+	public native void sendStatusTo(CreatureObject player);
+	public native void sendCitizenshipReportTo(CreatureObject player);
+	public native void sendStructureReportTo(CreatureObject player);
+	public native void sendTreasuryReportTo(CreatureObject player);
+	public native void sendCityAdvancementTo(CreatureObject player);
+	public native void sendMaintenanceReportTo(CreatureObject player);
 	
-	public native void sendChangeCityNameTo(PlayerCreature player);
-	public native void sendEnableZoningTo(PlayerCreature player);
-	public native void sendManageMilitiaTo(PlayerCreature player);
-	public native void sendAddMilitiaMemberTo(PlayerCreature player);
-	public native void sendAdjustTaxesTo(PlayerCreature player);
-	public native void sendTreasuryDepositTo(PlayerCreature player);
-	public native void sendTreasuryWithdrawalTo(PlayerCreature player);
-	public native void sendCitySpecializationSelectionTo(PlayerCreature player);
+	public native void sendChangeCityNameTo(CreatureObject player);
+	public native void sendEnableZoningTo(CreatureObject player);
+	public native void sendManageMilitiaTo(CreatureObject player);
+	public native void sendAddMilitiaMemberTo(CreatureObject player);
+	public native void sendAdjustTaxesTo(CreatureObject player);
+	public native void sendTreasuryDepositTo(CreatureObject player);
+	public native void sendTreasuryWithdrawalTo(CreatureObject player);
+	public native void sendCitySpecializationSelectionTo(CreatureObject player);
 	
-	public native void toggleCityRegistration(PlayerCreature player);
+	public native void toggleCityRegistration(CreatureObject player);
 	
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 	
@@ -266,7 +266,7 @@ class CityHallObject extends BuildingObject {
 		return zoningEnabled;
 	}
 	
-	public void toggleZoningEnabled(PlayerCreature player) {
+	public void toggleZoningEnabled(CreatureObject player) {
 		zoningEnabled = !zoningEnabled;
 		
 		if (zoningEnabled)

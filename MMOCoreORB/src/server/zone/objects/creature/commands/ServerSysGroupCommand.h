@@ -64,7 +64,7 @@ public:
 			return INVALIDPOSTURE;
 
 		if (creature->isPlayerCreature()) {
-			ManagedReference<PlayerCreature*> player = (PlayerCreature*)creature;
+			ManagedReference<CreatureObject*> player = (CreatureObject*)creature;
 			ManagedReference<GroupObject*> group = player->getGroup();
 			if (group == NULL) {
 				player->sendSystemMessage("@error_message:not_grouped");
@@ -73,7 +73,7 @@ public:
 				for (int i = 0; i < group->getGroupSize(); i++) {
 					SceneObject* member = group->getGroupMember(i);
 					if (member->isPlayerCreature()) {
-						PlayerCreature* memberPlayer = (PlayerCreature*) member;
+						CreatureObject* memberPlayer = (CreatureObject*) member;
 						memberPlayer->sendSystemMessage("Squad Leader " + player->getFirstName() + ": " + arguments.toString());
 					}
 

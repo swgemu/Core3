@@ -24,16 +24,30 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -67,9 +81,9 @@ public:
 
 	void init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID);
 
-	void sendTo(PlayerCreature* player);
+	void sendTo(CreatureObject* player);
 
-	void sendDestroyTo(PlayerCreature* player);
+	void sendDestroyTo(CreatureObject* player);
 
 	void addSubRoom(ChatRoom* channel);
 
@@ -79,9 +93,9 @@ public:
 
 	ChatRoom* getSubRoom(const String& name);
 
-	void addPlayer(PlayerCreature* player, bool doLock = true);
+	void addPlayer(CreatureObject* player, bool doLock = true);
 
-	void removePlayer(PlayerCreature* player, bool doLock = true);
+	void removePlayer(CreatureObject* player, bool doLock = true);
 
 	void removePlayer(const String& player);
 
@@ -89,7 +103,7 @@ public:
 
 	void broadcastMessages(Vector<BaseMessage*>* messages);
 
-	bool hasPlayer(PlayerCreature* player);
+	bool hasPlayer(CreatureObject* player);
 
 	bool hasPlayer(const String& name);
 
@@ -107,7 +121,7 @@ public:
 
 	void setModerated(bool moderate);
 
-	PlayerCreature* getPlayer(int idx);
+	CreatureObject* getPlayer(int idx);
 
 	int getPlayerSize();
 
@@ -189,9 +203,9 @@ protected:
 
 	ManagedReference<ChatRoom* > parent;
 
-	VectorMap<String, ManagedReference<PlayerCreature* > > playerList;
+	VectorMap<String, ManagedReference<CreatureObject* > > playerList;
 
-	VectorMap<String, ManagedReference<PlayerCreature* > > moderatorList;
+	VectorMap<String, ManagedReference<CreatureObject* > > moderatorList;
 
 	VectorMap<String, ManagedReference<ChatRoom* > > subRooms;
 
@@ -206,9 +220,9 @@ public:
 
 	void init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID);
 
-	void sendTo(PlayerCreature* player);
+	void sendTo(CreatureObject* player);
 
-	void sendDestroyTo(PlayerCreature* player);
+	void sendDestroyTo(CreatureObject* player);
 
 	void addSubRoom(ChatRoom* channel);
 
@@ -218,9 +232,9 @@ public:
 
 	ChatRoom* getSubRoom(const String& name);
 
-	void addPlayer(PlayerCreature* player, bool doLock = true);
+	void addPlayer(CreatureObject* player, bool doLock = true);
 
-	void removePlayer(PlayerCreature* player, bool doLock = true);
+	void removePlayer(CreatureObject* player, bool doLock = true);
 
 	void removePlayer(const String& player);
 
@@ -228,7 +242,7 @@ public:
 
 	void broadcastMessages(Vector<BaseMessage*>* messages);
 
-	bool hasPlayer(PlayerCreature* player);
+	bool hasPlayer(CreatureObject* player);
 
 	bool hasPlayer(const String& name);
 
@@ -246,7 +260,7 @@ public:
 
 	void setModerated(bool moderate);
 
-	PlayerCreature* getPlayer(int idx);
+	CreatureObject* getPlayer(int idx);
 
 	int getPlayerSize();
 
@@ -325,9 +339,9 @@ public:
 
 	void init(ZoneServer* serv, ChatRoom* par, const String& roomName, unsigned int channelID);
 
-	void sendTo(PlayerCreature* player);
+	void sendTo(CreatureObject* player);
 
-	void sendDestroyTo(PlayerCreature* player);
+	void sendDestroyTo(CreatureObject* player);
 
 	void addSubRoom(ChatRoom* channel);
 
@@ -337,15 +351,15 @@ public:
 
 	ChatRoom* getSubRoom(const String& name);
 
-	void addPlayer(PlayerCreature* player, bool doLock);
+	void addPlayer(CreatureObject* player, bool doLock);
 
-	void removePlayer(PlayerCreature* player, bool doLock);
+	void removePlayer(CreatureObject* player, bool doLock);
 
 	void removePlayer(const String& player);
 
 	void broadcastMessage(BaseMessage* msg);
 
-	bool hasPlayer(PlayerCreature* player);
+	bool hasPlayer(CreatureObject* player);
 
 	bool hasPlayer(const String& name);
 
@@ -363,7 +377,7 @@ public:
 
 	void setModerated(bool moderate);
 
-	PlayerCreature* getPlayer(int idx);
+	CreatureObject* getPlayer(int idx);
 
 	int getPlayerSize();
 

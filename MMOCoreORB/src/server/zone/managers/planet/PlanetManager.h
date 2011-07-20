@@ -106,16 +106,16 @@ using namespace server::zone::managers::objectcontroller;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -202,7 +202,7 @@ public:
 
 	int getTravelFare(const String& destinationPlanet);
 
-	void sendPlanetTravelPointListResponse(PlayerCreature* player);
+	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
 	Vector<ManagedReference<CityRegion* > > getRegions(StringId& regionName);
 
@@ -359,7 +359,7 @@ public:
 
 	int getTravelFare(const String& destinationPlanet);
 
-	void sendPlanetTravelPointListResponse(PlayerCreature* player);
+	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
 	Vector<ManagedReference<CityRegion* > > getRegions(StringId& regionName);
 
@@ -474,7 +474,7 @@ public:
 
 	int getTravelFare(const String& destinationPlanet);
 
-	void sendPlanetTravelPointListResponse(PlayerCreature* player);
+	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
 	WeatherManager* getWeatherManager();
 

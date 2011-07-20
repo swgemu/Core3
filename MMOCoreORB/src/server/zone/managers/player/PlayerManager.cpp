@@ -26,7 +26,7 @@
  *	PlayerManagerStub
  */
 
-enum {RPC_LOADNAMEMAP__ = 6,RPC_GETHIGHESTBADGEINDEX__,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_KILLPLAYER__TANGIBLEOBJECT_PLAYERCREATURE_,RPC_CALCULATEINCAPACITATIONTIMER__PLAYERCREATURE_INT_,RPC_CHECKENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_,RPC_AWARDBADGE__PLAYERCREATURE_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__PLAYERCREATURE_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__PLAYERCREATURE_BOOL_,RPC_HANDLEADDITEMTOTRADEWINDOW__PLAYERCREATURE_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__PLAYERCREATURE_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_,RPC_HANDLEVERIFYTRADEMESSAGE__PLAYERCREATURE_,RPC_CHECKTRADEITEMS__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_SENDBATTLEFATIGUEMESSAGE__PLAYERCREATURE_PLAYERCREATURE_,RPC_GETMEDICALFACILITYRATING__CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__PLAYERCREATURE_GROUPOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDMESSAGEOFTHEDAY__PLAYERCREATURE_,RPC_SENDACTIVATECLONEREQUEST__PLAYERCREATURE_,RPC_SENDPLAYERTOCLONER__PLAYERCREATURE_LONG_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__PLAYERCREATURE_,RPC_CREATEDEFAULTPLAYERITEMS__PLAYERCREATURE_STRING_STRING_,RPC_CREATETUTORIALBUILDING__PLAYERCREATURE_,RPC_CREATESKIPPEDTUTORIALBUILDING__PLAYERCREATURE_,RPC_CHECKSPEEDHACKSECONDTEST__PLAYERCREATURE_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEADMINLEVEL__PLAYERCREATURE_STRING_INT_,RPC_GENERATEHOLOGRINDPROFESSIONS__PLAYERCREATURE_};
+enum {RPC_LOADNAMEMAP__ = 6,RPC_GETHIGHESTBADGEINDEX__,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_,RPC_CALCULATEINCAPACITATIONTIMER__CREATUREOBJECT_INT_,RPC_CHECKENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_AWARDBADGE__PLAYEROBJECT_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__CREATUREOBJECT_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__CREATUREOBJECT_BOOL_,RPC_HANDLEADDITEMTOTRADEWINDOW__CREATUREOBJECT_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__CREATUREOBJECT_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEVERIFYTRADEMESSAGE__CREATUREOBJECT_,RPC_CHECKTRADEITEMS__CREATUREOBJECT_CREATUREOBJECT_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_SENDBATTLEFATIGUEMESSAGE__CREATUREOBJECT_CREATUREOBJECT_,RPC_GETMEDICALFACILITYRATING__CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__CREATUREOBJECT_GROUPOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDMESSAGEOFTHEDAY__CREATUREOBJECT_,RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_,RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__CREATUREOBJECT_,RPC_CREATEDEFAULTPLAYERITEMS__CREATUREOBJECT_STRING_STRING_,RPC_CREATETUTORIALBUILDING__CREATUREOBJECT_,RPC_CREATESKIPPEDTUTORIALBUILDING__CREATUREOBJECT_,RPC_CHECKSPEEDHACKSECONDTEST__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEADMINLEVEL__CREATUREOBJECT_STRING_INT_,RPC_GENERATEHOLOGRINDPROFESSIONS__CREATUREOBJECT_};
 
 PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServer* impl) : Observer(DummyConstructorParameter::instance()) {
 	PlayerManagerImplementation* _implementation = new PlayerManagerImplementation(zoneServer, impl);
@@ -67,7 +67,7 @@ int PlayerManager::getHighestBadgeIndex() {
 		return _implementation->getHighestBadgeIndex();
 }
 
-void PlayerManager::sendStartingLocationsTo(PlayerCreature* player) {
+void PlayerManager::sendStartingLocationsTo(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -166,13 +166,13 @@ int PlayerManager::notifyDefendersOfIncapacitation(TangibleObject* destructor, T
 		return _implementation->notifyDefendersOfIncapacitation(destructor, destructedObject);
 }
 
-void PlayerManager::killPlayer(TangibleObject* attacker, PlayerCreature* player) {
+void PlayerManager::killPlayer(TangibleObject* attacker, CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_KILLPLAYER__TANGIBLEOBJECT_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_);
 		method.addObjectParameter(attacker);
 		method.addObjectParameter(player);
 
@@ -181,13 +181,13 @@ void PlayerManager::killPlayer(TangibleObject* attacker, PlayerCreature* player)
 		_implementation->killPlayer(attacker, player);
 }
 
-byte PlayerManager::calculateIncapacitationTimer(PlayerCreature* player, int condition) {
+byte PlayerManager::calculateIncapacitationTimer(CreatureObject* player, int condition) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CALCULATEINCAPACITATIONTIMER__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_CALCULATEINCAPACITATIONTIMER__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addSignedIntParameter(condition);
 
@@ -196,13 +196,13 @@ byte PlayerManager::calculateIncapacitationTimer(PlayerCreature* player, int con
 		return _implementation->calculateIncapacitationTimer(player, condition);
 }
 
-bool PlayerManager::checkEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
+bool PlayerManager::checkEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHECKENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_);
+		DistributedMethod method(this, RPC_CHECKENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(armor);
 
@@ -211,13 +211,13 @@ bool PlayerManager::checkEncumbrancies(PlayerCreature* player, ArmorObject* armo
 		return _implementation->checkEncumbrancies(player, armor);
 }
 
-void PlayerManager::applyEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
+void PlayerManager::applyEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_APPLYENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_);
+		DistributedMethod method(this, RPC_APPLYENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(armor);
 
@@ -226,13 +226,13 @@ void PlayerManager::applyEncumbrancies(PlayerCreature* player, ArmorObject* armo
 		_implementation->applyEncumbrancies(player, armor);
 }
 
-void PlayerManager::removeEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
+void PlayerManager::removeEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_);
+		DistributedMethod method(this, RPC_REMOVEENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(armor);
 
@@ -241,19 +241,19 @@ void PlayerManager::removeEncumbrancies(PlayerCreature* player, ArmorObject* arm
 		_implementation->removeEncumbrancies(player, armor);
 }
 
-void PlayerManager::awardBadge(PlayerCreature* player, unsigned int badge) {
+void PlayerManager::awardBadge(PlayerObject* ghost, unsigned int badge) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_AWARDBADGE__PLAYERCREATURE_INT_);
-		method.addObjectParameter(player);
+		DistributedMethod method(this, RPC_AWARDBADGE__PLAYEROBJECT_INT_);
+		method.addObjectParameter(ghost);
 		method.addUnsignedIntParameter(badge);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->awardBadge(player, badge);
+		_implementation->awardBadge(ghost, badge);
 }
 
 void PlayerManager::setExperienceMultiplier(float globalMultiplier) {
@@ -270,13 +270,13 @@ void PlayerManager::setExperienceMultiplier(float globalMultiplier) {
 		_implementation->setExperienceMultiplier(globalMultiplier);
 }
 
-void PlayerManager::awardExperience(PlayerCreature* player, const String& xpType, int amount, bool sendSystemMessage, float localMultiplier) {
+void PlayerManager::awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage, float localMultiplier) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_AWARDEXPERIENCE__PLAYERCREATURE_STRING_INT_BOOL_FLOAT_);
+		DistributedMethod method(this, RPC_AWARDEXPERIENCE__CREATUREOBJECT_STRING_INT_BOOL_FLOAT_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(xpType);
 		method.addSignedIntParameter(amount);
@@ -288,13 +288,13 @@ void PlayerManager::awardExperience(PlayerCreature* player, const String& xpType
 		_implementation->awardExperience(player, xpType, amount, sendSystemMessage, localMultiplier);
 }
 
-void PlayerManager::handleAbortTradeMessage(PlayerCreature* player, bool doLock) {
+void PlayerManager::handleAbortTradeMessage(CreatureObject* player, bool doLock) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEABORTTRADEMESSAGE__PLAYERCREATURE_BOOL_);
+		DistributedMethod method(this, RPC_HANDLEABORTTRADEMESSAGE__CREATUREOBJECT_BOOL_);
 		method.addObjectParameter(player);
 		method.addBooleanParameter(doLock);
 
@@ -303,13 +303,13 @@ void PlayerManager::handleAbortTradeMessage(PlayerCreature* player, bool doLock)
 		_implementation->handleAbortTradeMessage(player, doLock);
 }
 
-void PlayerManager::handleAddItemToTradeWindow(PlayerCreature* player, unsigned long long itemID) {
+void PlayerManager::handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEADDITEMTOTRADEWINDOW__PLAYERCREATURE_LONG_);
+		DistributedMethod method(this, RPC_HANDLEADDITEMTOTRADEWINDOW__CREATUREOBJECT_LONG_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(itemID);
 
@@ -318,13 +318,13 @@ void PlayerManager::handleAddItemToTradeWindow(PlayerCreature* player, unsigned 
 		_implementation->handleAddItemToTradeWindow(player, itemID);
 }
 
-void PlayerManager::handleGiveMoneyMessage(PlayerCreature* player, unsigned int value) {
+void PlayerManager::handleGiveMoneyMessage(CreatureObject* player, unsigned int value) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEGIVEMONEYMESSAGE__PLAYERCREATURE_INT_);
+		DistributedMethod method(this, RPC_HANDLEGIVEMONEYMESSAGE__CREATUREOBJECT_INT_);
 		method.addObjectParameter(player);
 		method.addUnsignedIntParameter(value);
 
@@ -333,13 +333,13 @@ void PlayerManager::handleGiveMoneyMessage(PlayerCreature* player, unsigned int 
 		_implementation->handleGiveMoneyMessage(player, value);
 }
 
-void PlayerManager::handleAcceptTransactionMessage(PlayerCreature* player) {
+void PlayerManager::handleAcceptTransactionMessage(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_HANDLEACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -347,13 +347,13 @@ void PlayerManager::handleAcceptTransactionMessage(PlayerCreature* player) {
 		_implementation->handleAcceptTransactionMessage(player);
 }
 
-void PlayerManager::handleUnAcceptTransactionMessage(PlayerCreature* player) {
+void PlayerManager::handleUnAcceptTransactionMessage(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -361,13 +361,13 @@ void PlayerManager::handleUnAcceptTransactionMessage(PlayerCreature* player) {
 		_implementation->handleUnAcceptTransactionMessage(player);
 }
 
-void PlayerManager::handleVerifyTradeMessage(PlayerCreature* player) {
+void PlayerManager::handleVerifyTradeMessage(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEVERIFYTRADEMESSAGE__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_HANDLEVERIFYTRADEMESSAGE__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -375,13 +375,13 @@ void PlayerManager::handleVerifyTradeMessage(PlayerCreature* player) {
 		_implementation->handleVerifyTradeMessage(player);
 }
 
-bool PlayerManager::checkTradeItems(PlayerCreature* player, PlayerCreature* receiver) {
+bool PlayerManager::checkTradeItems(CreatureObject* player, CreatureObject* receiver) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHECKTRADEITEMS__PLAYERCREATURE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CHECKTRADEITEMS__CREATUREOBJECT_CREATUREOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(receiver);
 
@@ -405,13 +405,13 @@ SceneObject* PlayerManager::getInRangeStructureWithAdminRights(CreatureObject* c
 		return _implementation->getInRangeStructureWithAdminRights(creature, targetID);
 }
 
-void PlayerManager::sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target) {
+void PlayerManager::sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDBATTLEFATIGUEMESSAGE__PLAYERCREATURE_PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDBATTLEFATIGUEMESSAGE__CREATUREOBJECT_CREATUREOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(target);
 
@@ -529,13 +529,13 @@ void PlayerManager::disseminateExperience(TangibleObject* destructedObject, Dama
 		_implementation->disseminateExperience(destructedObject, damageMap);
 }
 
-bool PlayerManager::squadLeaderCheck(PlayerCreature* player, GroupObject* group) {
+bool PlayerManager::squadLeaderCheck(CreatureObject* player, GroupObject* group) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SQUADLEADERCHECK__PLAYERCREATURE_GROUPOBJECT_);
+		DistributedMethod method(this, RPC_SQUADLEADERCHECK__CREATUREOBJECT_GROUPOBJECT_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(group);
 
@@ -560,13 +560,13 @@ void PlayerManager::awardSquadLeaderExperience(GroupObject* group, int amount, T
 		_implementation->awardSquadLeaderExperience(group, amount, source);
 }
 
-void PlayerManager::sendMessageOfTheDay(PlayerCreature* player) {
+void PlayerManager::sendMessageOfTheDay(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDMESSAGEOFTHEDAY__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDMESSAGEOFTHEDAY__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -574,13 +574,13 @@ void PlayerManager::sendMessageOfTheDay(PlayerCreature* player) {
 		_implementation->sendMessageOfTheDay(player);
 }
 
-void PlayerManager::sendActivateCloneRequest(PlayerCreature* player) {
+void PlayerManager::sendActivateCloneRequest(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDACTIVATECLONEREQUEST__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -588,13 +588,13 @@ void PlayerManager::sendActivateCloneRequest(PlayerCreature* player) {
 		_implementation->sendActivateCloneRequest(player);
 }
 
-void PlayerManager::sendPlayerToCloner(PlayerCreature* player, unsigned long long clonerID) {
+void PlayerManager::sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDPLAYERTOCLONER__PLAYERCREATURE_LONG_);
+		DistributedMethod method(this, RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_);
 		method.addObjectParameter(player);
 		method.addUnsignedLongParameter(clonerID);
 
@@ -632,13 +632,13 @@ TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, co
 		return _implementation->createHairObject(hairObjectFile, hairCustomization);
 }
 
-bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
+bool PlayerManager::createAllPlayerObjects(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEALLPLAYEROBJECTS__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CREATEALLPLAYEROBJECTS__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithBooleanReturn();
@@ -646,13 +646,13 @@ bool PlayerManager::createAllPlayerObjects(PlayerCreature* player) {
 		return _implementation->createAllPlayerObjects(player);
 }
 
-void PlayerManager::createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile) {
+void PlayerManager::createDefaultPlayerItems(CreatureObject* player, const String& profession, const String& templateFile) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATEDEFAULTPLAYERITEMS__PLAYERCREATURE_STRING_STRING_);
+		DistributedMethod method(this, RPC_CREATEDEFAULTPLAYERITEMS__CREATUREOBJECT_STRING_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(profession);
 		method.addAsciiParameter(templateFile);
@@ -662,13 +662,13 @@ void PlayerManager::createDefaultPlayerItems(PlayerCreature* player, const Strin
 		_implementation->createDefaultPlayerItems(player, profession, templateFile);
 }
 
-void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
+void PlayerManager::createTutorialBuilding(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATETUTORIALBUILDING__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CREATETUTORIALBUILDING__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -676,13 +676,13 @@ void PlayerManager::createTutorialBuilding(PlayerCreature* player) {
 		_implementation->createTutorialBuilding(player);
 }
 
-void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
+void PlayerManager::createSkippedTutorialBuilding(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CREATESKIPPEDTUTORIALBUILDING__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_CREATESKIPPEDTUTORIALBUILDING__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -690,7 +690,7 @@ void PlayerManager::createSkippedTutorialBuilding(PlayerCreature* player) {
 		_implementation->createSkippedTutorialBuilding(player);
 }
 
-int PlayerManager::checkSpeedHackFirstTest(PlayerCreature* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier) {
+int PlayerManager::checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -699,13 +699,13 @@ int PlayerManager::checkSpeedHackFirstTest(PlayerCreature* player, float parsedS
 		return _implementation->checkSpeedHackFirstTest(player, parsedSpeed, teleportPosition, errorMultiplier);
 }
 
-int PlayerManager::checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent) {
+int PlayerManager::checkSpeedHackSecondTest(CreatureObject* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHECKSPEEDHACKSECONDTEST__PLAYERCREATURE_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_);
+		DistributedMethod method(this, RPC_CHECKSPEEDHACKSECONDTEST__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_);
 		method.addObjectParameter(player);
 		method.addFloatParameter(newX);
 		method.addFloatParameter(newZ);
@@ -746,7 +746,7 @@ unsigned long long PlayerManager::getObjectID(const String& name) {
 		return _implementation->getObjectID(name);
 }
 
-PlayerCreature* PlayerManager::getPlayer(const String& name) {
+CreatureObject* PlayerManager::getPlayer(const String& name) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -755,18 +755,18 @@ PlayerCreature* PlayerManager::getPlayer(const String& name) {
 		DistributedMethod method(this, RPC_GETPLAYER__STRING_);
 		method.addAsciiParameter(name);
 
-		return (PlayerCreature*) method.executeWithObjectReturn();
+		return (CreatureObject*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getPlayer(name);
 }
 
-void PlayerManager::updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel) {
+void PlayerManager::updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_UPDATEADMINLEVEL__PLAYERCREATURE_STRING_INT_);
+		DistributedMethod method(this, RPC_UPDATEADMINLEVEL__CREATUREOBJECT_STRING_INT_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(targetName);
 		method.addSignedIntParameter(adminLevel);
@@ -776,13 +776,13 @@ void PlayerManager::updateAdminLevel(PlayerCreature* player, const String& targe
 		_implementation->updateAdminLevel(player, targetName, adminLevel);
 }
 
-void PlayerManager::generateHologrindProfessions(PlayerCreature* player) {
+void PlayerManager::generateHologrindProfessions(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = (PlayerManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GENERATEHOLOGRINDPROFESSIONS__PLAYERCREATURE_);
+		DistributedMethod method(this, RPC_GENERATEHOLOGRINDPROFESSIONS__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
@@ -988,56 +988,56 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_NOTIFYDEFENDERSOFINCAPACITATION__TANGIBLEOBJECT_TANGIBLEOBJECT_:
 		resp->insertSignedInt(notifyDefendersOfIncapacitation((TangibleObject*) inv->getObjectParameter(), (TangibleObject*) inv->getObjectParameter()));
 		break;
-	case RPC_KILLPLAYER__TANGIBLEOBJECT_PLAYERCREATURE_:
-		killPlayer((TangibleObject*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_:
+		killPlayer((TangibleObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_CALCULATEINCAPACITATIONTIMER__PLAYERCREATURE_INT_:
-		resp->insertByte(calculateIncapacitationTimer((PlayerCreature*) inv->getObjectParameter(), inv->getSignedIntParameter()));
+	case RPC_CALCULATEINCAPACITATIONTIMER__CREATUREOBJECT_INT_:
+		resp->insertByte(calculateIncapacitationTimer((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter()));
 		break;
-	case RPC_CHECKENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_:
-		resp->insertBoolean(checkEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter()));
+	case RPC_CHECKENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_:
+		resp->insertBoolean(checkEncumbrancies((CreatureObject*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter()));
 		break;
-	case RPC_APPLYENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_:
-		applyEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter());
+	case RPC_APPLYENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_:
+		applyEncumbrancies((CreatureObject*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter());
 		break;
-	case RPC_REMOVEENCUMBRANCIES__PLAYERCREATURE_ARMOROBJECT_:
-		removeEncumbrancies((PlayerCreature*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter());
+	case RPC_REMOVEENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_:
+		removeEncumbrancies((CreatureObject*) inv->getObjectParameter(), (ArmorObject*) inv->getObjectParameter());
 		break;
-	case RPC_AWARDBADGE__PLAYERCREATURE_INT_:
-		awardBadge((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+	case RPC_AWARDBADGE__PLAYEROBJECT_INT_:
+		awardBadge((PlayerObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
 	case RPC_SETEXPERIENCEMULTIPLIER__FLOAT_:
 		setExperienceMultiplier(inv->getFloatParameter());
 		break;
-	case RPC_AWARDEXPERIENCE__PLAYERCREATURE_STRING_INT_BOOL_FLOAT_:
-		awardExperience((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_awardExperience__PlayerCreature_String_int_bool_float_), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getFloatParameter());
+	case RPC_AWARDEXPERIENCE__CREATUREOBJECT_STRING_INT_BOOL_FLOAT_:
+		awardExperience((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_awardExperience__CreatureObject_String_int_bool_float_), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getFloatParameter());
 		break;
-	case RPC_HANDLEABORTTRADEMESSAGE__PLAYERCREATURE_BOOL_:
-		handleAbortTradeMessage((PlayerCreature*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_HANDLEABORTTRADEMESSAGE__CREATUREOBJECT_BOOL_:
+		handleAbortTradeMessage((CreatureObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_HANDLEADDITEMTOTRADEWINDOW__PLAYERCREATURE_LONG_:
-		handleAddItemToTradeWindow((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+	case RPC_HANDLEADDITEMTOTRADEWINDOW__CREATUREOBJECT_LONG_:
+		handleAddItemToTradeWindow((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
-	case RPC_HANDLEGIVEMONEYMESSAGE__PLAYERCREATURE_INT_:
-		handleGiveMoneyMessage((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
+	case RPC_HANDLEGIVEMONEYMESSAGE__CREATUREOBJECT_INT_:
+		handleGiveMoneyMessage((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedIntParameter());
 		break;
-	case RPC_HANDLEACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_:
-		handleAcceptTransactionMessage((PlayerCreature*) inv->getObjectParameter());
+	case RPC_HANDLEACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_:
+		handleAcceptTransactionMessage((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__PLAYERCREATURE_:
-		handleUnAcceptTransactionMessage((PlayerCreature*) inv->getObjectParameter());
+	case RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_:
+		handleUnAcceptTransactionMessage((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEVERIFYTRADEMESSAGE__PLAYERCREATURE_:
-		handleVerifyTradeMessage((PlayerCreature*) inv->getObjectParameter());
+	case RPC_HANDLEVERIFYTRADEMESSAGE__CREATUREOBJECT_:
+		handleVerifyTradeMessage((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_CHECKTRADEITEMS__PLAYERCREATURE_PLAYERCREATURE_:
-		resp->insertBoolean(checkTradeItems((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CHECKTRADEITEMS__CREATUREOBJECT_CREATUREOBJECT_:
+		resp->insertBoolean(checkTradeItems((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_:
 		resp->insertLong(getInRangeStructureWithAdminRights((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter())->_getObjectID());
 		break;
-	case RPC_SENDBATTLEFATIGUEMESSAGE__PLAYERCREATURE_PLAYERCREATURE_:
-		sendBattleFatigueMessage((PlayerCreature*) inv->getObjectParameter(), (PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDBATTLEFATIGUEMESSAGE__CREATUREOBJECT_CREATUREOBJECT_:
+		sendBattleFatigueMessage((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter());
 		break;
 	case RPC_GETMEDICALFACILITYRATING__CREATUREOBJECT_:
 		resp->insertSignedInt(getMedicalFacilityRating((CreatureObject*) inv->getObjectParameter()));
@@ -1057,20 +1057,20 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_:
 		resp->insertSignedInt(healEnhance((CreatureObject*) inv->getObjectParameter(), (CreatureObject*) inv->getObjectParameter(), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getFloatParameter()));
 		break;
-	case RPC_SQUADLEADERCHECK__PLAYERCREATURE_GROUPOBJECT_:
-		resp->insertBoolean(squadLeaderCheck((PlayerCreature*) inv->getObjectParameter(), (GroupObject*) inv->getObjectParameter()));
+	case RPC_SQUADLEADERCHECK__CREATUREOBJECT_GROUPOBJECT_:
+		resp->insertBoolean(squadLeaderCheck((CreatureObject*) inv->getObjectParameter(), (GroupObject*) inv->getObjectParameter()));
 		break;
 	case RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_:
 		awardSquadLeaderExperience((GroupObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), (TangibleObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDMESSAGEOFTHEDAY__PLAYERCREATURE_:
-		sendMessageOfTheDay((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDMESSAGEOFTHEDAY__CREATUREOBJECT_:
+		sendMessageOfTheDay((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDACTIVATECLONEREQUEST__PLAYERCREATURE_:
-		sendActivateCloneRequest((PlayerCreature*) inv->getObjectParameter());
+	case RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_:
+		sendActivateCloneRequest((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_SENDPLAYERTOCLONER__PLAYERCREATURE_LONG_:
-		sendPlayerToCloner((PlayerCreature*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
+	case RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_:
+		sendPlayerToCloner((CreatureObject*) inv->getObjectParameter(), inv->getUnsignedLongParameter());
 		break;
 	case RPC_CHECKEXISTENTNAMEINDATABASE__STRING_:
 		resp->insertBoolean(checkExistentNameInDatabase(inv->getAsciiParameter(_param0_checkExistentNameInDatabase__String_)));
@@ -1078,20 +1078,20 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_CREATEHAIROBJECT__STRING_STRING_:
 		resp->insertLong(createHairObject(inv->getAsciiParameter(_param0_createHairObject__String_String_), inv->getAsciiParameter(_param1_createHairObject__String_String_))->_getObjectID());
 		break;
-	case RPC_CREATEALLPLAYEROBJECTS__PLAYERCREATURE_:
-		resp->insertBoolean(createAllPlayerObjects((PlayerCreature*) inv->getObjectParameter()));
+	case RPC_CREATEALLPLAYEROBJECTS__CREATUREOBJECT_:
+		resp->insertBoolean(createAllPlayerObjects((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_CREATEDEFAULTPLAYERITEMS__PLAYERCREATURE_STRING_STRING_:
-		createDefaultPlayerItems((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createDefaultPlayerItems__PlayerCreature_String_String_), inv->getAsciiParameter(_param2_createDefaultPlayerItems__PlayerCreature_String_String_));
+	case RPC_CREATEDEFAULTPLAYERITEMS__CREATUREOBJECT_STRING_STRING_:
+		createDefaultPlayerItems((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_createDefaultPlayerItems__CreatureObject_String_String_), inv->getAsciiParameter(_param2_createDefaultPlayerItems__CreatureObject_String_String_));
 		break;
-	case RPC_CREATETUTORIALBUILDING__PLAYERCREATURE_:
-		createTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+	case RPC_CREATETUTORIALBUILDING__CREATUREOBJECT_:
+		createTutorialBuilding((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_CREATESKIPPEDTUTORIALBUILDING__PLAYERCREATURE_:
-		createSkippedTutorialBuilding((PlayerCreature*) inv->getObjectParameter());
+	case RPC_CREATESKIPPEDTUTORIALBUILDING__CREATUREOBJECT_:
+		createSkippedTutorialBuilding((CreatureObject*) inv->getObjectParameter());
 		break;
-	case RPC_CHECKSPEEDHACKSECONDTEST__PLAYERCREATURE_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_:
-		resp->insertSignedInt(checkSpeedHackSecondTest((PlayerCreature*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), (SceneObject*) inv->getObjectParameter()));
+	case RPC_CHECKSPEEDHACKSECONDTEST__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_:
+		resp->insertSignedInt(checkSpeedHackSecondTest((CreatureObject*) inv->getObjectParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getUnsignedIntParameter(), (SceneObject*) inv->getObjectParameter()));
 		break;
 	case RPC_EXISTSNAME__STRING_:
 		resp->insertBoolean(existsName(inv->getAsciiParameter(_param0_existsName__String_)));
@@ -1102,11 +1102,11 @@ Packet* PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_GETPLAYER__STRING_:
 		resp->insertLong(getPlayer(inv->getAsciiParameter(_param0_getPlayer__String_))->_getObjectID());
 		break;
-	case RPC_UPDATEADMINLEVEL__PLAYERCREATURE_STRING_INT_:
-		updateAdminLevel((PlayerCreature*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_updateAdminLevel__PlayerCreature_String_int_), inv->getSignedIntParameter());
+	case RPC_UPDATEADMINLEVEL__CREATUREOBJECT_STRING_INT_:
+		updateAdminLevel((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_updateAdminLevel__CreatureObject_String_int_), inv->getSignedIntParameter());
 		break;
-	case RPC_GENERATEHOLOGRINDPROFESSIONS__PLAYERCREATURE_:
-		generateHologrindProfessions((PlayerCreature*) inv->getObjectParameter());
+	case RPC_GENERATEHOLOGRINDPROFESSIONS__CREATUREOBJECT_:
+		generateHologrindProfessions((CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -1143,63 +1143,63 @@ int PlayerManagerAdapter::notifyDefendersOfIncapacitation(TangibleObject* destru
 	return ((PlayerManagerImplementation*) impl)->notifyDefendersOfIncapacitation(destructor, destructedObject);
 }
 
-void PlayerManagerAdapter::killPlayer(TangibleObject* attacker, PlayerCreature* player) {
+void PlayerManagerAdapter::killPlayer(TangibleObject* attacker, CreatureObject* player) {
 	((PlayerManagerImplementation*) impl)->killPlayer(attacker, player);
 }
 
-byte PlayerManagerAdapter::calculateIncapacitationTimer(PlayerCreature* player, int condition) {
+byte PlayerManagerAdapter::calculateIncapacitationTimer(CreatureObject* player, int condition) {
 	return ((PlayerManagerImplementation*) impl)->calculateIncapacitationTimer(player, condition);
 }
 
-bool PlayerManagerAdapter::checkEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
+bool PlayerManagerAdapter::checkEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	return ((PlayerManagerImplementation*) impl)->checkEncumbrancies(player, armor);
 }
 
-void PlayerManagerAdapter::applyEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
+void PlayerManagerAdapter::applyEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	((PlayerManagerImplementation*) impl)->applyEncumbrancies(player, armor);
 }
 
-void PlayerManagerAdapter::removeEncumbrancies(PlayerCreature* player, ArmorObject* armor) {
+void PlayerManagerAdapter::removeEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	((PlayerManagerImplementation*) impl)->removeEncumbrancies(player, armor);
 }
 
-void PlayerManagerAdapter::awardBadge(PlayerCreature* player, unsigned int badge) {
-	((PlayerManagerImplementation*) impl)->awardBadge(player, badge);
+void PlayerManagerAdapter::awardBadge(PlayerObject* ghost, unsigned int badge) {
+	((PlayerManagerImplementation*) impl)->awardBadge(ghost, badge);
 }
 
 void PlayerManagerAdapter::setExperienceMultiplier(float globalMultiplier) {
 	((PlayerManagerImplementation*) impl)->setExperienceMultiplier(globalMultiplier);
 }
 
-void PlayerManagerAdapter::awardExperience(PlayerCreature* player, const String& xpType, int amount, bool sendSystemMessage, float localMultiplier) {
+void PlayerManagerAdapter::awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage, float localMultiplier) {
 	((PlayerManagerImplementation*) impl)->awardExperience(player, xpType, amount, sendSystemMessage, localMultiplier);
 }
 
-void PlayerManagerAdapter::handleAbortTradeMessage(PlayerCreature* player, bool doLock) {
+void PlayerManagerAdapter::handleAbortTradeMessage(CreatureObject* player, bool doLock) {
 	((PlayerManagerImplementation*) impl)->handleAbortTradeMessage(player, doLock);
 }
 
-void PlayerManagerAdapter::handleAddItemToTradeWindow(PlayerCreature* player, unsigned long long itemID) {
+void PlayerManagerAdapter::handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID) {
 	((PlayerManagerImplementation*) impl)->handleAddItemToTradeWindow(player, itemID);
 }
 
-void PlayerManagerAdapter::handleGiveMoneyMessage(PlayerCreature* player, unsigned int value) {
+void PlayerManagerAdapter::handleGiveMoneyMessage(CreatureObject* player, unsigned int value) {
 	((PlayerManagerImplementation*) impl)->handleGiveMoneyMessage(player, value);
 }
 
-void PlayerManagerAdapter::handleAcceptTransactionMessage(PlayerCreature* player) {
+void PlayerManagerAdapter::handleAcceptTransactionMessage(CreatureObject* player) {
 	((PlayerManagerImplementation*) impl)->handleAcceptTransactionMessage(player);
 }
 
-void PlayerManagerAdapter::handleUnAcceptTransactionMessage(PlayerCreature* player) {
+void PlayerManagerAdapter::handleUnAcceptTransactionMessage(CreatureObject* player) {
 	((PlayerManagerImplementation*) impl)->handleUnAcceptTransactionMessage(player);
 }
 
-void PlayerManagerAdapter::handleVerifyTradeMessage(PlayerCreature* player) {
+void PlayerManagerAdapter::handleVerifyTradeMessage(CreatureObject* player) {
 	((PlayerManagerImplementation*) impl)->handleVerifyTradeMessage(player);
 }
 
-bool PlayerManagerAdapter::checkTradeItems(PlayerCreature* player, PlayerCreature* receiver) {
+bool PlayerManagerAdapter::checkTradeItems(CreatureObject* player, CreatureObject* receiver) {
 	return ((PlayerManagerImplementation*) impl)->checkTradeItems(player, receiver);
 }
 
@@ -1207,7 +1207,7 @@ SceneObject* PlayerManagerAdapter::getInRangeStructureWithAdminRights(CreatureOb
 	return ((PlayerManagerImplementation*) impl)->getInRangeStructureWithAdminRights(creature, targetID);
 }
 
-void PlayerManagerAdapter::sendBattleFatigueMessage(PlayerCreature* player, PlayerCreature* target) {
+void PlayerManagerAdapter::sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target) {
 	((PlayerManagerImplementation*) impl)->sendBattleFatigueMessage(player, target);
 }
 
@@ -1235,7 +1235,7 @@ int PlayerManagerAdapter::healEnhance(CreatureObject* enhancer, CreatureObject* 
 	return ((PlayerManagerImplementation*) impl)->healEnhance(enhancer, patient, attribute, buffvalue, duration);
 }
 
-bool PlayerManagerAdapter::squadLeaderCheck(PlayerCreature* player, GroupObject* group) {
+bool PlayerManagerAdapter::squadLeaderCheck(CreatureObject* player, GroupObject* group) {
 	return ((PlayerManagerImplementation*) impl)->squadLeaderCheck(player, group);
 }
 
@@ -1243,15 +1243,15 @@ void PlayerManagerAdapter::awardSquadLeaderExperience(GroupObject* group, int am
 	((PlayerManagerImplementation*) impl)->awardSquadLeaderExperience(group, amount, source);
 }
 
-void PlayerManagerAdapter::sendMessageOfTheDay(PlayerCreature* player) {
+void PlayerManagerAdapter::sendMessageOfTheDay(CreatureObject* player) {
 	((PlayerManagerImplementation*) impl)->sendMessageOfTheDay(player);
 }
 
-void PlayerManagerAdapter::sendActivateCloneRequest(PlayerCreature* player) {
+void PlayerManagerAdapter::sendActivateCloneRequest(CreatureObject* player) {
 	((PlayerManagerImplementation*) impl)->sendActivateCloneRequest(player);
 }
 
-void PlayerManagerAdapter::sendPlayerToCloner(PlayerCreature* player, unsigned long long clonerID) {
+void PlayerManagerAdapter::sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID) {
 	((PlayerManagerImplementation*) impl)->sendPlayerToCloner(player, clonerID);
 }
 
@@ -1263,23 +1263,23 @@ TangibleObject* PlayerManagerAdapter::createHairObject(const String& hairObjectF
 	return ((PlayerManagerImplementation*) impl)->createHairObject(hairObjectFile, hairCustomization);
 }
 
-bool PlayerManagerAdapter::createAllPlayerObjects(PlayerCreature* player) {
+bool PlayerManagerAdapter::createAllPlayerObjects(CreatureObject* player) {
 	return ((PlayerManagerImplementation*) impl)->createAllPlayerObjects(player);
 }
 
-void PlayerManagerAdapter::createDefaultPlayerItems(PlayerCreature* player, const String& profession, const String& templateFile) {
+void PlayerManagerAdapter::createDefaultPlayerItems(CreatureObject* player, const String& profession, const String& templateFile) {
 	((PlayerManagerImplementation*) impl)->createDefaultPlayerItems(player, profession, templateFile);
 }
 
-void PlayerManagerAdapter::createTutorialBuilding(PlayerCreature* player) {
+void PlayerManagerAdapter::createTutorialBuilding(CreatureObject* player) {
 	((PlayerManagerImplementation*) impl)->createTutorialBuilding(player);
 }
 
-void PlayerManagerAdapter::createSkippedTutorialBuilding(PlayerCreature* player) {
+void PlayerManagerAdapter::createSkippedTutorialBuilding(CreatureObject* player) {
 	((PlayerManagerImplementation*) impl)->createSkippedTutorialBuilding(player);
 }
 
-int PlayerManagerAdapter::checkSpeedHackSecondTest(PlayerCreature* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent) {
+int PlayerManagerAdapter::checkSpeedHackSecondTest(CreatureObject* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent) {
 	return ((PlayerManagerImplementation*) impl)->checkSpeedHackSecondTest(player, newX, newZ, newY, newStamp, newParent);
 }
 
@@ -1291,15 +1291,15 @@ unsigned long long PlayerManagerAdapter::getObjectID(const String& name) {
 	return ((PlayerManagerImplementation*) impl)->getObjectID(name);
 }
 
-PlayerCreature* PlayerManagerAdapter::getPlayer(const String& name) {
+CreatureObject* PlayerManagerAdapter::getPlayer(const String& name) {
 	return ((PlayerManagerImplementation*) impl)->getPlayer(name);
 }
 
-void PlayerManagerAdapter::updateAdminLevel(PlayerCreature* player, const String& targetName, int adminLevel) {
+void PlayerManagerAdapter::updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel) {
 	((PlayerManagerImplementation*) impl)->updateAdminLevel(player, targetName, adminLevel);
 }
 
-void PlayerManagerAdapter::generateHologrindProfessions(PlayerCreature* player) {
+void PlayerManagerAdapter::generateHologrindProfessions(CreatureObject* player) {
 	((PlayerManagerImplementation*) impl)->generateHologrindProfessions(player);
 }
 

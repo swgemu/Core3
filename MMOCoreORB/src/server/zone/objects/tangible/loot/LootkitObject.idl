@@ -50,7 +50,7 @@ import server.zone.Zone;
 import server.zone.ZoneServer;
 import engine.lua.LuaObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import system.util.VectorMap;
 import system.lang.ref.Reference;
 import system.util.Vector;
@@ -88,12 +88,12 @@ class LootkitObject extends TangibleObject {
 	
 	protected native void createItem();
 	
-	public native PlayerCreature getPlayer();
+	public native CreatureObject getPlayer();
 	
 	protected native void addToKit(SceneObject object);
 	
 	@local
 	public abstract native void loadTemplateData(SharedObjectTemplate templateData);
 	
-	public native void fillAttributeList(AttributeListMessage msg, PlayerCreature object);
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 }

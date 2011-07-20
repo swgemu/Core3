@@ -382,7 +382,7 @@ Vector<String>& ResourceSpawner::getJtlResources() {
 	return jtlResources;
 }
 
-void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* player,
+void ResourceSpawner::sendResourceListForSurvey(CreatureObject* player,
 		const int toolType, const String& surveyType) {
 
 	ZoneResourceMap* zoneMap = resourceMap->getZoneResourceList(
@@ -415,7 +415,7 @@ void ResourceSpawner::sendResourceListForSurvey(PlayerCreature* player,
 	 }*/
 }
 
-void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) {
+void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) {
 
 	/*if (player->getHAM(CreatureAttribute::MIND) < 100) {
 		player->setPosture(CreaturePosture::UPRIGHT, true);
@@ -425,7 +425,9 @@ void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) 
 
 	player->inflictDamage(player, CreatureAttribute::MIND, 100, false, true);
 
-	ManagedReference<SurveyTool*> surveyTool = player->getSurveyTool();
+	PlayerObject* ghost = player->getPlayerObject();
+
+	ManagedReference<SurveyTool*> surveyTool = ghost->getSurveyTool();
 
 	if (surveyTool == NULL || !resourceMap->contains(resname) || player == NULL
 			|| player->getZone() == NULL)
@@ -479,7 +481,7 @@ void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) 
 
 		// Get previous survey waypoint
 		ManagedReference<WaypointObject*> waypoint =
-				player->getSurveyWaypoint();
+				ghost->getSurveyWaypoint();
 
 		// Create new waypoint
 		if (waypoint == NULL)
@@ -511,11 +513,12 @@ void ResourceSpawner::sendSurvey(PlayerCreature* player, const String& resname) 
 	player->addPendingTask("survey", surveyTask);
 }
 
-void ResourceSpawner::sendSample(PlayerCreature* player, const String& resname,
+void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 		const String& sampleAnimation) {
 
 	// Determine if survey tool is valid, and that resource actually exists
-	ManagedReference<SurveyTool*> surveyTool = player->getSurveyTool();
+	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<SurveyTool*> surveyTool = ghost->getSurveyTool();
 
 	if (surveyTool == NULL || !resourceMap->contains(resname) || player == NULL
 			|| player->getZone() == NULL)
@@ -555,11 +558,12 @@ void ResourceSpawner::sendSample(PlayerCreature* player, const String& resname,
 	player->addPendingTask("sample", sampleTask);
 }
 
-void ResourceSpawner::sendSampleResults(PlayerCreature* player,
+void ResourceSpawner::sendSampleResults(CreatureObject* player,
 		const float density, const String& resname) {
 
 	// Determine if survey tool is valid, and that resource actually exists
-	ManagedReference<SurveyTool*> surveyTool = player->getSurveyTool();
+	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<SurveyTool*> surveyTool = ghost->getSurveyTool();
 	if (surveyTool == NULL || player == NULL || player->getZone() == NULL)
 		return;
 
@@ -677,7 +681,7 @@ void ResourceSpawner::sendSampleResults(PlayerCreature* player,
 	}
 }
 
-void ResourceSpawner::addResourceToPlayerInventory(PlayerCreature* player, ResourceSpawn* resourceSpawn, int unitsExtracted) {
+void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, ResourceSpawn* resourceSpawn, int unitsExtracted) {
 	// Add resource to inventory
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject(
 			"inventory");
@@ -715,7 +719,7 @@ void ResourceSpawner::addResourceToPlayerInventory(PlayerCreature* player, Resou
 	harvestedResource->updateToDatabase();
 }
 
-ResourceContainer* ResourceSpawner::harvestResource(PlayerCreature* player,
+ResourceContainer* ResourceSpawner::harvestResource(CreatureObject* player,
 		const String& type, const int quantity) {
 
 	String zoneName = player->getZone()->getZoneName();
@@ -741,7 +745,7 @@ ResourceContainer* ResourceSpawner::harvestResource(PlayerCreature* player,
 	return NULL;
 }
 
-void ResourceSpawner::harvestResource(PlayerCreature* player, ResourceSpawn* resourceSpawn, int quantity) {
+void ResourceSpawner::harvestResource(CreatureObject* player, ResourceSpawn* resourceSpawn, int quantity) {
 
 	resourceSpawn->extractResource(player->getZone()->getZoneName(), quantity);
 

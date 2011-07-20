@@ -6,7 +6,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/Zone.h"
 
@@ -18,7 +18,7 @@
  *	TravelTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INSERTTOZONE__ZONE_,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INSERTTOZONE__ZONE_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,};
 
 TravelTerminal::TravelTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	TravelTerminalImplementation* _implementation = new TravelTerminalImplementation();
@@ -60,13 +60,13 @@ void TravelTerminal::insertToZone(Zone* zone) {
 		_implementation->insertToZone(zone);
 }
 
-int TravelTerminal::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int TravelTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	TravelTerminalImplementation* _implementation = (TravelTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -248,8 +248,8 @@ Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_INSERTTOZONE__ZONE_:
 		insertToZone((Zone*) inv->getObjectParameter());
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	default:
 		return NULL;
@@ -266,7 +266,7 @@ void TravelTerminalAdapter::insertToZone(Zone* zone) {
 	((TravelTerminalImplementation*) impl)->insertToZone(zone);
 }
 
-int TravelTerminalAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int TravelTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((TravelTerminalImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

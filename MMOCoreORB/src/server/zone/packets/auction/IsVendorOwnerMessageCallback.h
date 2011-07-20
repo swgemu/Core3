@@ -40,7 +40,7 @@ public:
 		if (zone == NULL)
 			return;
 
-		PlayerCreature* player = (PlayerCreature*) client->getPlayer();
+		CreatureObject* player = (CreatureObject*) client->getPlayer();
 
 		if (player == NULL)
 			return;

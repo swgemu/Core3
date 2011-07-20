@@ -50,12 +50,12 @@
 class CreateObjectTask : public Task {
 
 	ManagedReference<CraftingTool* > craftingTool;
-	ManagedReference<PlayerCreature* > player;
+	ManagedReference<CreatureObject* > player;
 
 	bool practice;
 
 public:
-	CreateObjectTask(PlayerCreature* pl, CraftingTool* tool, bool prac) : Task() {
+	CreateObjectTask(CreatureObject* pl, CraftingTool* tool, bool prac) : Task() {
 		craftingTool = tool;
 		player = pl;
 		practice = prac;

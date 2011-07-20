@@ -46,16 +46,16 @@ which carries forward this exception.
 #define FIREWORKEVENT_H_
 
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/ZoneServer.h"
 
 class FireworkEvent : public Task {
 	ManagedReference<StaticObject*> firework;
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 
 public:
-	FireworkEvent(PlayerCreature* player, StaticObject* firework) : Task(1000) {
+	FireworkEvent(CreatureObject* player, StaticObject* firework) : Task(1000) {
 		this->player = player;
 		this->firework = firework;
 	}

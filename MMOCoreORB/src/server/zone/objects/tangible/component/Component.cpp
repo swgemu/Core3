@@ -12,7 +12,7 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -48,7 +48,7 @@ void Component::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void Component::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player) {
+void Component::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -57,7 +57,7 @@ void Component::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerC
 		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
-void Component::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void Component::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	ComponentImplementation* _implementation = (ComponentImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);

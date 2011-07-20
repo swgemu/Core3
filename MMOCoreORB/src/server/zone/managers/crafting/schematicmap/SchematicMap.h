@@ -83,8 +83,8 @@ public:
 	void addSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
 	void removeSchematic(PlayerObject* playerObject, DraftSchematic* schematic, bool updateClient);
 
-	void sendDraftSlotsTo(PlayerCreature* player, uint32 schematicID);
-	void sendResourceWeightsTo(PlayerCreature* player, uint32 schematicID);
+	void sendDraftSlotsTo(CreatureObject* player, uint32 schematicID);
+	void sendResourceWeightsTo(CreatureObject* player, uint32 schematicID);
 
 	DraftSchematic* get(uint32 schemid) {
 		return schematicIdMap.get(schemid);

@@ -16,7 +16,7 @@ StructurePermissionList::StructurePermissionList()
 	setNullValue(0);
 }
 
-void StructurePermissionList::sendTo(PlayerCreature* player, const String& listName) {
+void StructurePermissionList::sendTo(CreatureObject* player, const String& listName) {
 	ZoneServer* zoneServer = player->getZoneServer();
 
 	PermissionListCreateMessage* listMsg = new PermissionListCreateMessage(listName);
@@ -40,7 +40,7 @@ void StructurePermissionList::sendTo(PlayerCreature* player, const String& listN
 		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
-		PlayerCreature* listedPlayer = (PlayerCreature*) obj.get();
+		CreatureObject* listedPlayer = (CreatureObject*) obj.get();
 		listMsg->addName(listedPlayer->getFirstName());
 	}
 
@@ -49,7 +49,7 @@ void StructurePermissionList::sendTo(PlayerCreature* player, const String& listN
 	player->sendMessage(listMsg);
 }
 
-void StructurePermissionList::sendTo(PlayerCreature* player, uint8 permission) {
+void StructurePermissionList::sendTo(CreatureObject* player, uint8 permission) {
 	String listName = getListName(permission);
 
 	sendTo(player, listName);

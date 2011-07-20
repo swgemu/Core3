@@ -12,7 +12,7 @@
 
 enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ADDWAYPOINT__FLOAT_FLOAT_STRING_,RPC_CLEARWAYPOINT__};
 
-FindSession::FindSession(PlayerCreature* pl) : Facade(DummyConstructorParameter::instance()) {
+FindSession::FindSession(CreatureObject* pl) : Facade(DummyConstructorParameter::instance()) {
 	FindSessionImplementation* _implementation = new FindSessionImplementation(pl);
 	_impl = _implementation;
 	_impl->_setStub(this);
@@ -217,7 +217,7 @@ bool FindSessionImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 
 	if (_name == "player") {
-		TypeInfo<ManagedWeakReference<PlayerCreature* > >::parseFromBinaryStream(&player, stream);
+		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
 	}
 
@@ -245,7 +245,7 @@ int FindSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<PlayerCreature* > >::toBinaryStream(&player, stream);
+	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -261,7 +261,7 @@ int FindSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	return 2 + FacadeImplementation::writeObjectMembers(stream);
 }
 
-FindSessionImplementation::FindSessionImplementation(PlayerCreature* pl) {
+FindSessionImplementation::FindSessionImplementation(CreatureObject* pl) {
 	_initializeImplementation();
 	// server/zone/objects/player/sessions/FindSession.idl():  		Logger.setLoggingName("FindSession");
 	Logger::setLoggingName("FindSession");

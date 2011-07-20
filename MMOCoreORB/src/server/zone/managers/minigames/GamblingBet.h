@@ -46,7 +46,7 @@ which carries forward this exception.
 #define GAMBLINGBET_H_
 
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {
@@ -54,18 +54,18 @@ namespace managers {
 namespace minigames {
 
 class GamblingBet {
-	ManagedReference<PlayerCreature*> player;
+	ManagedReference<CreatureObject*> player;
 	int amount;
 	String target;
 
 public:
-	GamblingBet(PlayerCreature* pl, int bet, String betTarget) {
+	GamblingBet(CreatureObject* pl, int bet, String betTarget) {
 		player = pl;
 		amount = bet;
 		target = betTarget;
 	}
 
-	GamblingBet(PlayerCreature* pl, int bet) {
+	GamblingBet(CreatureObject* pl, int bet) {
 		player = pl;
 		amount = bet;
 		target = "slot";
@@ -79,7 +79,7 @@ public:
 		return target;
 	}
 
-	PlayerCreature* getPlayer() {
+	CreatureObject* getPlayer() {
 		return player;
 	}
 

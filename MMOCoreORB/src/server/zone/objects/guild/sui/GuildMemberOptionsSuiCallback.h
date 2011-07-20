@@ -18,7 +18,7 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(PlayerCreature* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
 		if (!suiBox->isListBox() || cancelPressed)
 			return;
 
@@ -61,7 +61,7 @@ public:
 		if (playObj == NULL || !playObj->isPlayerCreature())
 			return;
 
-		PlayerCreature* target = (PlayerCreature*) playObj.get();
+		CreatureObject* target = (CreatureObject*) playObj.get();
 
 		//Guild Leader doesn't have the set allegiance option, so if this player is the guild leader, then we need to increment the index by 1!
 		if (guild->isGuildLeader(player))

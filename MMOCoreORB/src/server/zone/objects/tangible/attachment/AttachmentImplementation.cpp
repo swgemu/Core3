@@ -9,7 +9,7 @@
 #include "server/zone/objects/tangible/wearables/WearableSkillModMap.h"
 #include "server/zone/objects/tangible/wearables/WearableSkillMods.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 void AttachmentImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
@@ -31,7 +31,7 @@ void AttachmentImplementation::initializeMembers() {
 
 }
 
-void AttachmentImplementation::fillAttributeList(AttributeListMessage* msg, PlayerCreature* object) {
+void AttachmentImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(msg, object);
 
 	StringBuffer name;
@@ -75,7 +75,7 @@ void AttachmentImplementation::addSkillMod(const String& skillModType, int skill
 
 }
 
-bool AttachmentImplementation::removeAttachment(PlayerCreature* player) {
+bool AttachmentImplementation::removeAttachment(CreatureObject* player) {
 	SceneObject* container = parent;
 
 	if (container == NULL)

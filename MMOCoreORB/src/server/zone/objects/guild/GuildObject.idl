@@ -49,7 +49,7 @@ import server.chat.room.ChatRoom;
 import server.zone.objects.tangible.terminal.guild.GuildTerminal;
 include server.zone.objects.guild.GuildMemberList;
 include server.zone.objects.guild.GuildMemberInfo;
-import server.zone.objects.player.PlayerCreature;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import system.lang.String;
 import system.util.SortedVector;
@@ -93,7 +93,7 @@ class GuildObject extends SceneObject {
 	
 	public native void sendBaselinesTo(SceneObject player);
 	public native void broadcastMessage(BaseMessage msg);
-	public native void broadcastMessage(PlayerCreature player, BaseMessage msg, boolean sendSelf = false);
+	public native void broadcastMessage(CreatureObject player, BaseMessage msg, boolean sendSelf = false);
 
 	/**
 	 * Adds the Player to the GuildMemberList. Doesn't do anything else!
@@ -185,7 +185,7 @@ class GuildObject extends SceneObject {
 		return true;
 	}
 	
-	public boolean isGuildLeader(PlayerCreature player) {
+	public boolean isGuildLeader(CreatureObject player) {
 		return (guildLeaderID == player.getObjectID());
 	}
 	

@@ -6,7 +6,7 @@
  */
 
 #include "Consumable.h"
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/creature/buffs/DurationBuff.h"
@@ -54,7 +54,7 @@ void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateDa
 	speciesRestriction = consumable->getSpeciesRestriction();
 }
 
-int ConsumableImplementation::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID != 20)
 		return 1;
 
@@ -63,7 +63,9 @@ int ConsumableImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 		return 0;
 	}
 
-	String raceName = Races::getSpecies(player->getRaceID());
+	PlayerObject* ghost = player->getPlayerObject();
+
+	String raceName = Races::getSpecies(ghost->getRaceID());
 
 	if ((speciesRestriction == "2" && raceName != "trandoshan") || (speciesRestriction == "4" && raceName != "wookiee")) {
 		player->sendSystemMessage("@error_message:race_restriction"); //That food isn't edible by your species.
@@ -81,8 +83,6 @@ int ConsumableImplementation::handleObjectMenuSelect(PlayerCreature* player, byt
 	}
 
 	int availfill = 0;
-
-	PlayerObject* ghost = (PlayerObject*) player->getSlottedObject("ghost");
 
 	if (ghost == NULL)
 		return 1;
@@ -225,7 +225,7 @@ void ConsumableImplementation::setModifiers(Buff* buff, bool skillModifiers) {
 	}
 }
 
-void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, PlayerCreature* player) {
+void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* player) {
 	TangibleObjectImplementation::fillAttributeList(alm, player);
 
 	if (!isAttributeEffect() && !isSpiceEffect())

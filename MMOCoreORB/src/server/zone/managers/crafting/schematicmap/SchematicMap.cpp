@@ -227,7 +227,7 @@ void SchematicMap::removeSchematic(PlayerObject* playerObject,
 	playerObject->removeSchematics(schematics, updateClient);
 }
 
-void SchematicMap::sendDraftSlotsTo(PlayerCreature* player, uint32 schematicID) {
+void SchematicMap::sendDraftSlotsTo(CreatureObject* player, uint32 schematicID) {
 	ManagedReference<DraftSchematic*> schematic = schematicIdMap.get(schematicID);
 
 	if (schematic == NULL)
@@ -236,7 +236,7 @@ void SchematicMap::sendDraftSlotsTo(PlayerCreature* player, uint32 schematicID) 
 	schematic->sendDraftSlotsTo(player);
 }
 
-void SchematicMap::sendResourceWeightsTo(PlayerCreature* player, uint32 schematicID) {
+void SchematicMap::sendResourceWeightsTo(CreatureObject* player, uint32 schematicID) {
 	ManagedReference<DraftSchematic*> schematic = schematicIdMap.get(schematicID);
 
 	if (schematic == NULL)

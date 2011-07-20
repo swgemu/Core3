@@ -8,7 +8,7 @@
 
 #include "server/zone/Zone.h"
 
-#include "server/zone/objects/player/PlayerCreature.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/packets/scene/AttributeListMessage.h"
 
@@ -16,7 +16,7 @@
  *	BuildingDeedStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_ISBUILDINGDEED__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_GETSURPLUSMAINTENANCE__,RPC_ISBUILDINGDEED__};
 
 BuildingDeed::BuildingDeed() : Deed(DummyConstructorParameter::instance()) {
 	BuildingDeedImplementation* _implementation = new BuildingDeedImplementation();
@@ -31,7 +31,7 @@ BuildingDeed::~BuildingDeed() {
 }
 
 
-void BuildingDeed::fillAttributeList(AttributeListMessage* alm, PlayerCreature* object) {
+void BuildingDeed::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	BuildingDeedImplementation* _implementation = (BuildingDeedImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -53,13 +53,13 @@ void BuildingDeed::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-int BuildingDeed::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int BuildingDeed::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	BuildingDeedImplementation* _implementation = (BuildingDeedImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_);
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
 		method.addObjectParameter(player);
 		method.addByteParameter(selectedID);
 
@@ -282,8 +282,8 @@ Packet* BuildingDeedAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_HANDLEOBJECTMENUSELECT__PLAYERCREATURE_BYTE_:
-		resp->insertSignedInt(handleObjectMenuSelect((PlayerCreature*) inv->getObjectParameter(), inv->getByteParameter()));
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
 		break;
 	case RPC_SETSURPLUSMAINTENANCE__INT_:
 		setSurplusMaintenance(inv->getUnsignedIntParameter());
@@ -305,7 +305,7 @@ void BuildingDeedAdapter::initializeTransientMembers() {
 	((BuildingDeedImplementation*) impl)->initializeTransientMembers();
 }
 
-int BuildingDeedAdapter::handleObjectMenuSelect(PlayerCreature* player, byte selectedID) {
+int BuildingDeedAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	return ((BuildingDeedImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 

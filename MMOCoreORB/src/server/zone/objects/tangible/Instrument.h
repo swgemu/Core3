@@ -76,16 +76,16 @@ using namespace server::zone::packets::object;
 namespace server {
 namespace zone {
 namespace objects {
-namespace player {
+namespace creature {
 
-class PlayerCreature;
+class CreatureObject;
 
-} // namespace player
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
@@ -158,21 +158,21 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void spawnInForeignCell(PlayerCreature* spawner);
+	void spawnInForeignCell(CreatureObject* spawner);
 
-	void spawnInAdminCell(PlayerCreature* spawner);
+	void spawnInAdminCell(CreatureObject* spawner);
 
-	void spawnOutside(PlayerCreature* spawner);
+	void spawnOutside(CreatureObject* spawner);
 
 	int getInstrumentType();
 
-	PlayerCreature* getSpawnerPlayer();
+	CreatureObject* getSpawnerPlayer();
 
-	void setSpawnerPlayer(PlayerCreature* pla);
+	void setSpawnerPlayer(CreatureObject* pla);
 
 	bool isBeingUsed();
 
@@ -210,7 +210,7 @@ protected:
 
 	ManagedReference<SceneObject* > spawnedObject;
 
-	ManagedWeakReference<PlayerCreature* > spawnerPlayer;
+	ManagedWeakReference<CreatureObject* > spawnerPlayer;
 
 public:
 	static const int TRAZ = 1;
@@ -243,21 +243,21 @@ public:
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, PlayerCreature* player);
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void spawnInForeignCell(PlayerCreature* spawner);
+	void spawnInForeignCell(CreatureObject* spawner);
 
-	void spawnInAdminCell(PlayerCreature* spawner);
+	void spawnInAdminCell(CreatureObject* spawner);
 
-	void spawnOutside(PlayerCreature* spawner);
+	void spawnOutside(CreatureObject* spawner);
 
 	int getInstrumentType();
 
-	PlayerCreature* getSpawnerPlayer();
+	CreatureObject* getSpawnerPlayer();
 
-	void setSpawnerPlayer(PlayerCreature* pla);
+	void setSpawnerPlayer(CreatureObject* pla);
 
 	bool isBeingUsed();
 
@@ -310,19 +310,19 @@ public:
 
 	void notifyLoadFromDatabase();
 
-	int handleObjectMenuSelect(PlayerCreature* player, byte selectedID);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
-	void spawnInForeignCell(PlayerCreature* spawner);
+	void spawnInForeignCell(CreatureObject* spawner);
 
-	void spawnInAdminCell(PlayerCreature* spawner);
+	void spawnInAdminCell(CreatureObject* spawner);
 
-	void spawnOutside(PlayerCreature* spawner);
+	void spawnOutside(CreatureObject* spawner);
 
 	int getInstrumentType();
 
-	PlayerCreature* getSpawnerPlayer();
+	CreatureObject* getSpawnerPlayer();
 
-	void setSpawnerPlayer(PlayerCreature* pla);
+	void setSpawnerPlayer(CreatureObject* pla);
 
 	bool isBeingUsed();
 
