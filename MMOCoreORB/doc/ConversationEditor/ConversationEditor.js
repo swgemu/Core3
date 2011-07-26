@@ -54,7 +54,7 @@ function ConversationEditor() {
 
 		}
 		
-		script += "addConversationTemplate(\"" + parentObject.scriptName.value + "\", " + parentObject.scriptName.value + "_convotemplate);";
+		script += "addConversationTemplate(\"" + parentObject.scriptName.value + "_convotemplate\", " + parentObject.scriptName.value + "_convotemplate);";
 
 		parentObject.scriptWindow.innerHTML = script;
 	}
@@ -199,14 +199,18 @@ function ConversationScreen(screenName, displayName) {
 	this.writeToScript = function(script) {
 		var parentObject = (this.parentObject != null) ? this.parentObject : this;
 
-		script += parentObject.conversationScreenList.conversationEditor.scriptName.value + "_";
+		var scriptName = parentObject.conversationScreenList.conversationEditor.scriptName.value;
+		
+		script += scriptName + "_";
 
 		script += parentObject.screenName + " = ConvoScreen:new {\r\n";
 		script += "\tid = \"" + screenName + "\",\r\n";
 
 		script = parentObject.conversationWindow.writeToScript(script);
 
-		return script += "}\r\n\r\n";
+		script += "}\r\n\r\n";
+		
+		return script += scriptName + "_convotemplate:addScreen(\"" + scriptName + "_" + parentObject.screenName + "\");\r\n\r\n";
 	}
 
 	//initialize
