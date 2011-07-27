@@ -210,7 +210,7 @@ function ConversationScreen(screenName, displayName) {
 
 		script += "}\r\n\r\n";
 		
-		return script += scriptName + "_convotemplate:addScreen(\"" + scriptName + "_" + parentObject.screenName + "\");\r\n\r\n";
+		return script += scriptName + "_convotemplate:addScreen(" + scriptName + "_" + parentObject.screenName + ");\r\n\r\n";
 	}
 
 	//initialize
