@@ -28,7 +28,10 @@ rebel_recruiter = Creature:new {
 	templates = {"object/mobile/dressed_rebel_recruiter_human_female_01.iff", "object/mobile/dressed_rebel_recruiter_human_female_02.iff", "object/mobile/dressed_rebel_recruiter_moncal_male_01.iff", "object/mobile/dressed_rebel_recruiter_twilek_female_01.iff"},
 	lootgroups = {},
 	weapons = {""},
-	attacks = {}
+	attacks = {},
+	conversationTemplate = "rebel_recruiter_convotemplate",
+	optionsBitmask = 264
+
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_recruiter, "rebel_recruiter")
