@@ -10,21 +10,21 @@
 
 #include "engine/engine.h"
 
-#include "ConversationNode.h"
+#include "ConversationScreen.h"
 
 namespace server {
 namespace zone {
 namespace templates {
 namespace mobile {
 
-
 class ConversationTemplate : public Object {
 protected:
-	Reference<ConversationNode*> root;
+	String initialScreenID;
+	VectorMap<String, Reference<ConversationScreen*> > screens;
 
 public:
 	ConversationTemplate() {
-
+		screens.setNoDuplicateInsertPlan();
 	}
 
 	virtual ~ConversationTemplate() {
@@ -32,19 +32,33 @@ public:
 	}
 
 	void readObject(LuaObject* templateData) {
-		root = new ConversationNode(NULL);
-		root->readObject(templateData);
+		initialScreenID = templateData->getStringField("initialScreen");
+
+		LuaObject screensTable = templateData->getObjectField("screens");
+
+		for (int i = 1; i <= screensTable.getTableSize(); ++i) {
+			lua_rawgeti(templateData->getLuaState(), -1, i);
+
+			LuaObject luaObj(templateData->getLuaState());
+
+			Reference<ConversationScreen*> screen = new ConversationScreen();
+			screen->readObject(&luaObj);
+
+			screens.put(screen->getScreenID(), screen);
+
+			luaObj.pop();
+		}
+
+		screensTable.pop();
 	}
 
-	inline ConversationNode* getNode(const String& id) {
-		return root->findNode(id);
+	ConversationScreen* getInitialScreen() {
+		return screens.get(initialScreenID);
 	}
 
-	inline ConversationNode* getRoot() {
-		return root;
+	ConversationScreen* getScreen(const String& screenID) {
+		return screens.get(screenID);
 	}
-
-
 };
 
 }

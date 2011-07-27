@@ -1001,41 +1001,26 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 	broadcastNextPositionUpdate(&current);
 
 	CreatureObject* playerCreature = (CreatureObject*) player;
-	PlayerObject* ghost = playerCreature->getPlayerObject();
+
+	ManagedReference<PlayerObject*> ghost = playerCreature->getPlayerObject();
 
 	if (npcTemplate != NULL) {
 		uint32 convoTemplate = npcTemplate->getConversationTemplate();
 
-		ConversationTemplate* convo = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplate);
+		Reference<ConversationTemplate*> convo = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplate);
 
 		if (convo != NULL) {
-			ConversationNode* root = convo->getRoot();
+			Reference<ConversationScreen*> initialScreen = convo->getInitialScreen();
 
-			ghost->setLastNpcConvMessStr(root->getID());
+			if (initialScreen == NULL)
+				return;
+
+			//ghost->setLastNpcConvMessStr(root->getID());
 
 			StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
 			player->sendMessage(conv);
 
-			StringIdChatParameter param(root->getLeftDialog());
-
-			NpcConversationMessage* initial = new NpcConversationMessage(playerCreature, param);
-			player->sendMessage(initial);
-
-			StringList* slist = new StringList(playerCreature);
-
-			//slist->insertOption(root->getOptionText());
-
-			Vector<Reference<ConversationNode*> >* children = root->getChildren();
-
-			//playerCreature->info("children->size(): " + String::valueOf(children->size()), true);
-
-			for (int i = 0; i < children->size(); ++i) {
-				//playerCreature->info("inserting " + children->get(i)->getOptionText(), true);
-
-				slist->insertOption(children->get(i)->getOptionText());
-			}
-
-			player->sendMessage(slist);
+			initialScreen->sendTo(playerCreature);
 
 			return;
 		}
@@ -1095,71 +1080,40 @@ void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 }
 
 void AiAgentImplementation::selectConversationOption(int option, SceneObject* obj) {
-	if (!obj->isPlayerCreature())
+	if (!obj->isCreatureObject())
 		return;
 
 	CreatureObject* player = (CreatureObject*) obj;
 
-	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
 
 	String chk = ghost->getLastNpcConvMessStr();
 
 	if (npcTemplate != NULL) {
-			uint32 convoTemplate = npcTemplate->getConversationTemplate();
+			uint32 convoTemplate = npcTemplate->getConversationTemplate(); //TODO: Consider storing reference to the convo on the template?
 
-			ConversationTemplate* convo = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplate);
+			Reference<ConversationTemplate*> convo = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplate);
 
 			if (convo != NULL) {
+				Reference<ConversationScreen*> lastScreen = convo->getScreen(chk);
 
-				ConversationNode* lastNode = convo->getNode(chk);
-				ConversationNode* nextNode = NULL;
+				if (lastScreen == NULL)
+					lastScreen == convo->getInitialScreen();
 
-				if (lastNode == NULL) {
-					//info("lastNode NULL for: " + chk, true);
-					lastNode = convo->getRoot();
-					nextNode = convo->getRoot();
-				} else {
-					Vector<Reference<ConversationNode*> >* childrenT = lastNode->getChildren();
+				Reference<ConversationOption*> convoOption = lastScreen->getOption(option);
 
-					nextNode = childrenT->get(option);
-				}
+				if (convoOption == NULL || !convoOption->isLinked())
+					return; //Stop Conversation if no option exists or this option isn't linked to another option.
 
-				Vector<Reference<ConversationNode*> >* children = nextNode->getChildren();
-				StringIdChatParameter param(nextNode->getLeftDialog());
+				Reference<ConversationScreen*> nextScreen = convo->getScreen(convoOption->getLinkedScreenID());
 
-				NpcConversationMessage* response = new NpcConversationMessage(player, param);
-				player->sendMessage(response);
+				if (nextScreen == NULL)
+					return; //Couldn't find the linked screen in this conversation template.
 
-				String optionLink = nextNode->getOptionLink();
-
-				/*if (!optionLink.isEmpty()) {
-					nextNode = convo->getNode(optionLink);
-
-					if (nextNode == NULL) {
-						nextNode = convo->getRoot();
-					}
-
-					children = nextNode->getChildren();
-				}*/
-
-				// Parse and send the options:
-				StringList* slist = new StringList(player);
-
-				while (children->size() == 0 && nextNode != convo->getRoot()) {
-					nextNode = nextNode->getParent();
-					children = nextNode->getChildren();
-				}
-
-				for (int i = 0; i < children->size(); ++i) {
-					//player->info("inserting " + children->get(i)->getOptionText(), true);
-
-					slist->insertOption(children->get(i)->getOptionText());
-				}
-
-
-				player->sendMessage(slist);
-
-				ghost->setLastNpcConvMessStr(nextNode->getID());
+				nextScreen->sendTo(player);
 
 				return;
 			}
@@ -1191,8 +1145,7 @@ void AiAgentImplementation::selectConversationOption(int option, SceneObject* ob
 		break;
 	}
 
-	NpcConversationMessage* response = new NpcConversationMessage(
-			player, saying);
+	NpcConversationMessage* response = new NpcConversationMessage(player, saying);
 	player->sendMessage(response);
 
 	// Parse and send the options:
