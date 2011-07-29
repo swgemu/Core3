@@ -108,6 +108,8 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected SortedVector<StructureObject> ownedStructures;
 	
+	protected byte maximumLots;
+	
 	protected int jediState;
 	protected unsigned int adminLevel;
 	
@@ -244,10 +246,6 @@ class PlayerObject extends IntangibleObject {
 	public static final int LOGGINGOUT = 5;
 	public static final int LOADING = 6;
 	
-	
-	//TODO: Make this configurable in player_manager.lua...
-	public static final int MAXLOTS = 10;
-	
 	public PlayerObject() {
 		commandMessageStrings.setNoDuplicateInsertPlan();
 		
@@ -278,6 +276,8 @@ class PlayerObject extends IntangibleObject {
 		raceID = 0;
 		
 		clientLastMovementStamp = 0;
+		
+		maximumLots = 10;
 		
 		spawnedBlueFrog = false;
 		
@@ -320,7 +320,7 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public synchronized int getLotsRemaining() {
-		int lotsRemaining = MAXLOTS;
+		int lotsRemaining = maximumLots;
 		
 		for (int i = 0; i < ownedStructures.size(); ++i) {
 			StructureObject structure = ownedStructures.get(i);
@@ -1165,4 +1165,11 @@ class PlayerObject extends IntangibleObject {
 		raceID = race;
 	}
 	
+	public void setMaximumLots(byte lots) {
+		maximumLots = lots;
+	}
+	
+	public byte getMaximumLots() {
+		return maximumLots;
+	}
 }

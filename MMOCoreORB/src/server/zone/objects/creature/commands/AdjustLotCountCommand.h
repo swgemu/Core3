@@ -63,8 +63,32 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		//This command will be used to raise the maximum number of lots available,
-		//since lot count is now dynamic.
+		ManagedReference<SceneObject*> targetObject = creature->getZoneServer()->getObject(target);
+
+		if (targetObject == NULL || !targetObject->isCreatureObject())
+			return INVALIDTARGET;
+
+		CreatureObject* targetCreature = (CreatureObject*) targetObject.get();
+
+		ManagedReference<PlayerObject*> ghost = targetCreature->getPlayerObject();
+
+		if (ghost == NULL)
+			return INVALIDPARAMETERS;
+
+		Locker _lock(targetCreature);
+
+		int lotCount = 0;
+
+		try {
+			UnicodeTokenizer tokenizer(arguments);
+
+			lotCount = tokenizer.getIntToken();
+
+		} catch (Exception& e) {
+			creature->sendSystemMessage("SYNTAX: /adjustLotCount <lots>");
+		}
+
+		ghost->setMaximumLots(ghost->getMaximumLots() + lotCount);
 
 		return SUCCESS;
 	}

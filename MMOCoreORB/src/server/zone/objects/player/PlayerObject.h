@@ -332,8 +332,6 @@ public:
 
 	static const int LOADING = 6;
 
-	static const int MAXLOTS = 10;
-
 	PlayerObject();
 
 	void notifyLoadFromDatabase();
@@ -720,6 +718,10 @@ public:
 
 	void setRaceID(byte race);
 
+	void setMaximumLots(byte lots);
+
+	byte getMaximumLots();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -782,6 +784,8 @@ protected:
 	bool teleporting;
 
 	SortedVector<ManagedReference<StructureObject* > > ownedStructures;
+
+	byte maximumLots;
 
 	int jediState;
 
@@ -907,8 +911,6 @@ public:
 	static const int LOGGINGOUT = 5;
 
 	static const int LOADING = 6;
-
-	static const int MAXLOTS = 10;
 
 	PlayerObjectImplementation();
 
@@ -1300,6 +1302,10 @@ public:
 
 	void setRaceID(byte race);
 
+	void setMaximumLots(byte lots);
+
+	byte getMaximumLots();
+
 	WeakReference<PlayerObject*> _this;
 
 	operator const PlayerObject*();
@@ -1672,6 +1678,10 @@ public:
 	byte getRaceID();
 
 	void setRaceID(byte race);
+
+	void setMaximumLots(byte lots);
+
+	byte getMaximumLots();
 
 protected:
 	String _param0_addExperience__String_int_bool_;
