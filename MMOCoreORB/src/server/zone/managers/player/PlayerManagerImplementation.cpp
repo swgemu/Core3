@@ -398,12 +398,12 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		//ghost->setAdminLevel(account->getAdminLevel());
 
 	//NOTE/TEMPORARY: UNCOMMENT THESE LINES AND RECOMPILE FOR ADMIN ON NEW CHARACTERS.
-		/*ghost->setAdminLevel(2);
+		ghost->setAdminLevel(2);
 
 		Vector<String> skills;
 		skills.add("admin");
 
-		ghost->addSkills(skills, false);*/
+		ghost->addSkills(skills, false);
 	//STOP UNCOMMENTING
 	//}
 
@@ -2165,6 +2165,36 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 		return structure;
 
 	return NULL;
+}
+
+StructureObject* PlayerManagerImplementation::getInRangeOwnedStructure(CreatureObject* creature, float range) {
+	Locker _lock(creature);
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return NULL;
+
+	ManagedReference<StructureObject*> closestStructure = NULL;
+	float closestDistance = 16000.f;
+
+	for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
+		ManagedReference<StructureObject*> structure = ghost->getOwnedStructure(i);
+
+		Locker _slock(structure, creature);
+
+		if (creature->getZone() != structure->getZone())
+			continue;
+
+		float distance = structure->getDistanceTo(creature);
+
+		if (distance <= range && distance < closestDistance) {
+			closestStructure = structure;
+			closestDistance = distance;
+		}
+	}
+
+	return closestStructure;
 }
 
 void PlayerManagerImplementation::updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel) {

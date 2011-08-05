@@ -352,7 +352,11 @@ public:
 
 	int getTotalOwnedStructureCount();
 
+	StructureObject* getOwnedStructure(int i);
+
 	int getLotsRemaining();
+
+	bool hasLotsRemaining(int lots);
 
 	void notifySceneReady();
 
@@ -936,7 +940,11 @@ public:
 
 	int getTotalOwnedStructureCount();
 
+	StructureObject* getOwnedStructure(int i);
+
 	int getLotsRemaining();
+
+	bool hasLotsRemaining(int lots);
 
 	void notifySceneReady();
 
@@ -1365,7 +1373,11 @@ public:
 
 	int getTotalOwnedStructureCount();
 
+	StructureObject* getOwnedStructure(int i);
+
 	int getLotsRemaining();
+
+	bool hasLotsRemaining(int lots);
 
 	void notifySceneReady();
 

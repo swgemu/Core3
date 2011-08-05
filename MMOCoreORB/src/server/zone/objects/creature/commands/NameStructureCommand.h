@@ -63,6 +63,18 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		System::out << "Target: " << target << endl;
+
+		//Get the closest structure that the player has admin rights to, but check the target first.
+
+		//Open a suiInputPrompt with the structure set as the using object.
+
+		//Set a SuiCallback for handling the input of the name.
+
+		//Set the structure's name.
+
+		//Inform the user.
+
 		return SUCCESS;
 	}
 

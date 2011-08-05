@@ -48,11 +48,6 @@ import engine.log.Logger;
 import engine.lua.Lua;
 import system.util.VectorMap;
 import server.zone.managers.objectcontroller.ObjectController;
-
-include server.zone.objects.creature.CreatureObject;
-include server.zone.managers.player.PlayerMap;
-include server.zone.managers.player.CharacterNameMap;
-
 import server.zone.objects.group.GroupObject;
 import server.zone.ZoneProcessServer;
 import server.zone.managers.object.ObjectManager;
@@ -61,18 +56,20 @@ import server.zone.objects.tangible.TangibleObject;
 import engine.core.ManagedObject;
 import server.zone.ZoneServer;
 import server.zone.objects.tangible.wearables.ArmorObject;
-
-include server.zone.managers.player.StartingItemList;
-include server.zone.objects.tangible.DamageMap;
-
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.player.PlayerObject;
-include server.zone.objects.player.ValidatedPosition;
+import server.zone.objects.structure.StructureObject;
 import engine.util.u3d.Vector3;
 
 include server.zone.managers.player.StartingLocationList;
 include server.zone.managers.player.StartingLocation;
+include server.zone.objects.player.ValidatedPosition;
+include server.zone.managers.player.StartingItemList;
+include server.zone.objects.tangible.DamageMap;
+include server.zone.objects.creature.CreatureObject;
+include server.zone.managers.player.PlayerMap;
+include server.zone.managers.player.CharacterNameMap;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
@@ -179,6 +176,8 @@ class PlayerManager extends Observer implements Logger {
 	 * @param targetID The object id of the players target.
 	 */
 	public native SceneObject getInRangeStructureWithAdminRights(CreatureObject creature, unsigned long targetID = 0);
+	
+	public native StructureObject getInRangeOwnedStructure(CreatureObject creature, float range = 128);
 	
 	public native void sendBattleFatigueMessage(CreatureObject player, CreatureObject target);
 	

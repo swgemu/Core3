@@ -129,21 +129,35 @@ class PlayerObject;
 
 using namespace server::zone::objects::player;
 
-#include "server/zone/objects/creature/CreatureObject.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace structure {
 
-#include "server/zone/managers/player/PlayerMap.h"
+class StructureObject;
 
-#include "server/zone/managers/player/CharacterNameMap.h"
+} // namespace structure
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::structure;
+
+#include "server/zone/managers/player/StartingLocationList.h"
+
+#include "server/zone/managers/player/StartingLocation.h"
+
+#include "server/zone/objects/player/ValidatedPosition.h"
 
 #include "server/zone/managers/player/StartingItemList.h"
 
 #include "server/zone/objects/tangible/DamageMap.h"
 
-#include "server/zone/objects/player/ValidatedPosition.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/managers/player/StartingLocationList.h"
+#include "server/zone/managers/player/PlayerMap.h"
 
-#include "server/zone/managers/player/StartingLocation.h"
+#include "server/zone/managers/player/CharacterNameMap.h"
 
 #include "engine/log/Logger.h"
 
@@ -219,6 +233,8 @@ public:
 	bool checkTradeItems(CreatureObject* player, CreatureObject* receiver);
 
 	SceneObject* getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID = 0);
+
+	StructureObject* getInRangeOwnedStructure(CreatureObject* creature, float range = 128);
 
 	void sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target);
 
@@ -384,6 +400,8 @@ public:
 
 	SceneObject* getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID = 0);
 
+	StructureObject* getInRangeOwnedStructure(CreatureObject* creature, float range = 128);
+
 	void sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target);
 
 	int getMedicalFacilityRating(CreatureObject* creature);
@@ -522,6 +540,8 @@ public:
 	bool checkTradeItems(CreatureObject* player, CreatureObject* receiver);
 
 	SceneObject* getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID);
+
+	StructureObject* getInRangeOwnedStructure(CreatureObject* creature, float range);
 
 	void sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target);
 

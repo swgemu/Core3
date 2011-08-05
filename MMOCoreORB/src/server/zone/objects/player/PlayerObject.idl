@@ -111,7 +111,7 @@ class PlayerObject extends IntangibleObject {
 	protected byte maximumLots;
 	
 	protected int jediState;
-	protected unsigned int adminLevel;
+	protected unsigned int adminLevel; //TODO: This should be derived from the connected account object.
 	
 	protected byte languageID;
 	
@@ -142,7 +142,7 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected SchematicList schematicList;
 	
-	protected byte incapacitationCounter;
+	protected byte incapacitationCounter; //TODO: Convert this to a session!
 	
 	protected unsigned int suiBoxNextID;
 	
@@ -157,7 +157,6 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected SortedVector<CreatureObject> duelList;
-	
 	
 	@weakReference
 	protected BuildingObject declaredResidence;
@@ -184,9 +183,10 @@ class PlayerObject extends IntangibleObject {
 	protected string lastNpcConvoMessage;
 	protected string lastNpcConvo;
 	@dereferenced
-	protected Vector<string> lastNpcConvoOptions;
+	protected Vector<string> lastNpcConvoOptions; //Deprecate. Conversation could also be a session.
 	@weakReference
-	protected CreatureObject conversatingCreature;
+	protected CreatureObject conversatingCreature; //If conversation is a session, then this would be stored on the session.
+	
 	
 	@dereferenced
 	protected transient Reference<PlayerDisconnectEvent> disconnectEvent;
@@ -199,19 +199,19 @@ class PlayerObject extends IntangibleObject {
 	
 	protected int onlineStatus;
 	
-	protected int skillPoints;
+	protected int skillPoints; //TODO: This could be encapsulated in the skill list.
 	
-	protected transient boolean teachingOrLearning;
+	protected transient boolean teachingOrLearning; //TODO: Replace with a session.
 	
 	protected int pvpRating;
 
 	protected int factionStatus;
 	
-	protected transient boolean spawnedBlueFrog;
+	protected transient boolean spawnedBlueFrog; //TODO: Remove when admin permissions are implemented.
 	
 	protected int centeredBonus;
 	
-	protected boolean invisible;
+	protected boolean invisible; //TODO: Could we add this to the states mask as an unused state?
 	
 	protected unsigned int holoMask;
 	
@@ -225,7 +225,7 @@ class PlayerObject extends IntangibleObject {
 	
 	protected unsigned int accountID;
 	
-	protected byte raceID;
+	protected byte raceID; //TODO: Deprecate. This should be referenced from the ObjectTemplate instead.
 
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -319,6 +319,10 @@ class PlayerObject extends IntangibleObject {
 		return ownedStructures.size();
 	}
 	
+	public synchronized StructureObject getOwnedStructure(int i) {
+		return ownedStructures.get(i);
+	}
+	
 	public synchronized int getLotsRemaining() {
 		int lotsRemaining = maximumLots;
 		
@@ -329,6 +333,12 @@ class PlayerObject extends IntangibleObject {
 		}
 		
 		return lotsRemaining;
+	}
+	
+	public synchronized boolean hasLotsRemaining(int lots) {
+		lots += getLotsRemaining();
+		
+		return lots <= maximumLots;
 	}
 	
 	public native void notifySceneReady();
