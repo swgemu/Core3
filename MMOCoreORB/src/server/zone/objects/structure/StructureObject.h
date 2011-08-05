@@ -160,6 +160,8 @@ public:
 
 	void sendPermissionListTo(CreatureObject* player, const String& listName);
 
+	int togglePermission(const String& listName, const String& targetName);
+
 	bool addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
 
 	bool addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
@@ -311,6 +313,8 @@ public:
 
 	void sendPermissionListTo(CreatureObject* player, const String& listName);
 
+	int togglePermission(const String& listName, const String& targetName);
+
 	bool addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
 
 	bool addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
@@ -446,6 +450,8 @@ public:
 
 	void sendPermissionListTo(CreatureObject* player, const String& listName);
 
+	int togglePermission(const String& listName, const String& targetName);
+
 	bool addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
 
 	bool addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
@@ -498,6 +504,8 @@ public:
 
 protected:
 	String _param1_sendPermissionListTo__CreatureObject_String_;
+	String _param0_togglePermission__String_String_;
+	String _param1_togglePermission__String_String_;
 	String _param2_addPermission__CreatureObject_CreatureObject_String_;
 	String _param1_addPermission__CreatureObject_String_String_;
 	String _param2_addPermission__CreatureObject_String_String_;

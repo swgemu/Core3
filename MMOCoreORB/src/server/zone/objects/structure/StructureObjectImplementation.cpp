@@ -394,3 +394,20 @@ void StructureObjectImplementation::createVendor(CreatureObject* player) {
 	session->initalizeWindow(player);
 
 }
+
+int StructureObjectImplementation::togglePermission(const String& listName, const String& targetName) {
+	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+	//TODO: Consider making lists String based to prevent these conversions.
+
+	uint64 objectID = playerManager->getObjectID(targetName);
+	uint8 permission = structurePermissionList.getPermissionFromListName(listName);
+
+	if (!structurePermissionList.hasPermission(objectID, permission)) {
+		structurePermissionList.addPermission(objectID, permission);
+		return 1; //Added code
+	} else {
+		structurePermissionList.removePermission(objectID, permission);
+		return 0; //Removed code
+	}
+}

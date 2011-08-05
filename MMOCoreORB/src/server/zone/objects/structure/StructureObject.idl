@@ -189,6 +189,8 @@ class StructureObject extends TangibleObject {
 		structurePermissionList.sendTo(player, listName);
 	}
 	
+	public native int togglePermission(final string listName, final string targetName);
+	
 	public native boolean addPermission(CreatureObject player, CreatureObject targetPlayer, final string listName);
 	public native boolean addPermission(CreatureObject player, final string targetPlayerName, final string listName);
 	public native boolean removePermission(CreatureObject player, CreatureObject targetPlayer, final string listName);
