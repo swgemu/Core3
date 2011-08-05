@@ -63,6 +63,20 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+
+		//Get the target.
+
+		int amount = 0;
+
+		try {
+			UnicodeTokenizer tokenizer(arguments);
+			amount = tokenizer.getIntToken();
+		} catch (Exception& e) {
+			return INVALIDPARAMETERS;
+		}
+
+		//structure->addMaintenance(amount);
+
 		return SUCCESS;
 	}
 

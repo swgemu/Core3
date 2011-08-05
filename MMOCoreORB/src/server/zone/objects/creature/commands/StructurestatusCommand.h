@@ -63,6 +63,17 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		//This seems to be a combination of a session and a recurring task.
+		//Task stops when SUI is closed and session is cancelled.
+
+		//So structure->getStatus() should fill a StringBuffer or ListMenu which then gets displayed.
+
+		//So basically, this command will just create the session and start it.
+
+		//@player_structure:structure_status_t //Structure Status
+		//@player_structure:changed_structurestatus //Your /structureStatus target has changed. Cancelling refesh.
+		//@player_structure:no_valid_structurestatus //Your /structureStatus target is no longer valid. Cancelling refresh.
+
 		return SUCCESS;
 	}
 

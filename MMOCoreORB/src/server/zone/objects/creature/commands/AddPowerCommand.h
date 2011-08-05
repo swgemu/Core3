@@ -63,6 +63,25 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+
+		if (obj == NULL || !obj->isStructureObject())
+			return INVALIDTARGET;
+
+		StructureObject* structure = (StructureObject*) obj.get();
+
+		int amount = 0;
+
+		try {
+			UnicodeTokenizer tokenizer(arguments);
+			amount = tokenizer.getIntToken();
+		} catch (Exception& e) {
+			return INVALIDPARAMETERS;
+		}
+
+		//Ensure that the person has this much power.
+		//structure->addPower(amount);
+
 		return SUCCESS;
 	}
 
