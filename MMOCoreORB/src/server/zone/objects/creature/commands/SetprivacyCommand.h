@@ -63,6 +63,26 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		ManagedReference<SceneObject*> obj = creature->getParentRecursively(SceneObject::BUILDING);
+
+		if (obj == NULL || !obj->isBuildingObject()) {
+			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
+			return INVALIDTARGET;
+		}
+
+		BuildingObject* building = (BuildingObject*) obj.get();
+
+		//("@player_structure:force_public"); //This structure is always public.
+
+		//("@player_structure:vendor_no_private"); //A structure hosting a vendor cannot be declared private.
+
+		/*
+string/en/player_structure.stf	227	no_privacy_faction_hq	You may not alter privacy of a factional headquarters.
+string/en/player_structure.stf	368	structure_now_private	This structure is now private
+string/en/player_structure.stf	371	structure_private	This structure is private
+string/en/player_structure.stf	448	vendor_no_private	A structure hosting a vendor cannot be declared private.
+		 */
+
 		return SUCCESS;
 	}
 
