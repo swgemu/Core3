@@ -319,6 +319,10 @@ class PlayerObject extends IntangibleObject {
 		return ownedStructures.size();
 	}
 	
+	public synchronized boolean isOwnedStructure(StructureObject obj) {
+		return ownedStructures.contains(obj);
+	}
+	
 	public synchronized StructureObject getOwnedStructure(int i) {
 		return ownedStructures.get(i);
 	}

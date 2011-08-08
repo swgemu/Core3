@@ -352,6 +352,8 @@ public:
 
 	int getTotalOwnedStructureCount();
 
+	bool isOwnedStructure(StructureObject* obj);
+
 	StructureObject* getOwnedStructure(int i);
 
 	int getLotsRemaining();
@@ -940,6 +942,8 @@ public:
 
 	int getTotalOwnedStructureCount();
 
+	bool isOwnedStructure(StructureObject* obj);
+
 	StructureObject* getOwnedStructure(int i);
 
 	int getLotsRemaining();
@@ -1372,6 +1376,8 @@ public:
 	void removeOwnedStructure(StructureObject* obj);
 
 	int getTotalOwnedStructureCount();
+
+	bool isOwnedStructure(StructureObject* obj);
 
 	StructureObject* getOwnedStructure(int i);
 

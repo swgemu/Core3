@@ -79,6 +79,7 @@ public:
 			tokenizer.getStringToken(listName);
 			tokenizer.getStringToken(targetName);
 		} catch (Exception& e) {
+			creature->sendSystemMessage("@player_structure:format_setpermission_type_player"); //Format: /setPermission <type> <player>
 			return INVALIDPARAMETERS;
 		}
 

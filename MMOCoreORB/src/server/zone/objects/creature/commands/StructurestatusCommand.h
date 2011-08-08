@@ -74,6 +74,8 @@ public:
 		//@player_structure:changed_structurestatus //Your /structureStatus target has changed. Cancelling refesh.
 		//@player_structure:no_valid_structurestatus //Your /structureStatus target is no longer valid. Cancelling refresh.
 
+		//@player_structure:declared_residency //You have declared your residency here. - Goes in structure status
+
 		return SUCCESS;
 	}
 

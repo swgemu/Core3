@@ -87,27 +87,27 @@ public:
 			}
 		}
 
-		StringTokenizer tokenizer(arguments.toString());
-		tokenizer.setDelimeter(" ");
-
-		//TODO: Return a usage message?
-		if (!tokenizer.hasMoreTokens())
-			return GENERALERROR;
-
 		String dir;
-		tokenizer.getStringToken(dir);
+		int degrees = 0;
 
-		if (dir != "left" && dir != "right")
-			return GENERALERROR;
+		try {
+			UnicodeTokenizer tokenizer(arguments.toString());
+			tokenizer.getStringToken(dir);
+			degrees = tokenizer.getIntToken();
 
-		if (!tokenizer.hasMoreTokens())
-			return GENERALERROR;
+			dir = dir.toLowerCase();
 
-		int degrees = tokenizer.getIntToken();
+			if (dir != "left" && dir != "right")
+				throw Exception();
+
+		} catch (Exception& e) {
+			creature->sendSystemMessage("@player_structure:formet_rotratefurniture_degrees"); //Format: /rotateFurniture <LEFT/RIGHT> <degrees>
+			return INVALIDPARAMETERS;
+		}
 
 		if (degrees < 1 || degrees > 180) {
 			creature->sendSystemMessage("@player_structure:rotate_params"); //The amount to rotate must be between 1 and 180.
-			return GENERALERROR;
+			return INVALIDPARAMETERS;
 		}
 
 		ZoneServer* zoneServer = creature->getZoneServer();

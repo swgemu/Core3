@@ -66,18 +66,27 @@ public:
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
+		ManagedReference<CreatureObject*> targetCreature = NULL;
+
 		String targetName = arguments.toString();
 
-		//Check if the arguments are a valid player first name.
-		ManagedReference<CreatureObject*> targetCreature = playerManager->getPlayer(targetName);
+		if (!targetName.isEmpty()) {
+			//They passed in a name to whom to transfer the structure.
+			targetCreature = playerManager->getPlayer(targetName);
 
-		if (targetCreature == NULL) {
-			//The player name passed in didn't return a known player, so let's check the target
+			if (targetCreature == NULL) {
+				StringIdChatParameter param("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
+				param.setTO(targetName);
+				creature->sendSystemMessage(param);
+
+				return INVALIDTARGET;
+			}
+		} else {
 			ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
 			if (obj == NULL || !obj->isCreatureObject()) {
 				creature->sendSystemMessage("@player_structure:no_transfer_target"); //You must specify a player with whom to transfer ownership.
-				return GENERALERROR;
+				return INVALIDTARGET;
 			}
 
 			//Set the targeted creature.
@@ -97,7 +106,7 @@ public:
 		ManagedReference<StructureObject*> structure = playerManager->getInRangeOwnedStructure(creature, 128.f);
 
 		if (structure == NULL) {
-			//No structure in range.
+			creature->sendSystemMessage("@player_structure:command_no_building"); //You must be in a building or near an installation to use that command.
 			return INVALIDPARAMETERS;
 		}
 

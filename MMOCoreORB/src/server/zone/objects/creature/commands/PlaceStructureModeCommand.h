@@ -70,6 +70,10 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		//Cannot place if already placing.
+		if (creature->containsActiveSession(SessionFacadeType::PLACESTRUCTURE))
+			return GENERALERROR;
+
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
 		if (obj == NULL || !obj->isDeedObject()) {
@@ -84,7 +88,7 @@ public:
 
 		Deed* deed = (Deed*) obj.get();
 
-		PlaceStructureSession* session = new PlaceStructureSession(creature, deed);
+		ManagedReference<PlaceStructureSession*> session = new PlaceStructureSession(creature, deed);
 		session->initializeSession();
 
 		return SUCCESS;

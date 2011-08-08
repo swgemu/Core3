@@ -129,16 +129,11 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return INVALIDPARAMETERS;
-
-		CreatureObject* player = (CreatureObject*) creature;
-
 		ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
 		BuildingObject* buildingObject = rootParent != NULL ? (rootParent->isBuildingObject() ? (BuildingObject*)rootParent.get() : NULL) : NULL;
 
-		if (!player->getPlayerObject()->isPrivileged()) {
+		if (!creature->getPlayerObject()->isPrivileged()) {
 			if (buildingObject == NULL) {
 				creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
 				return GENERALERROR;
@@ -150,43 +145,43 @@ public:
 			}
 		}
 
-		StringTokenizer tokenizer(arguments.toString());
-		tokenizer.setDelimeter(" ");
-
-		if (!tokenizer.hasMoreTokens())
-			return GENERALERROR;
-
 		String dir;
-		tokenizer.getStringToken(dir);
-		dir = dir.toLowerCase();
+		int dist = 0;
 
-		if (dir != "up" && dir != "down" && dir != "forward" && dir != "back")
-			return GENERALERROR;
+		try {
+			UnicodeTokenizer tokenizer(arguments.toString());
+			tokenizer.getStringToken(dir);
+			dist = tokenizer.getIntToken();
 
-		if (!tokenizer.hasMoreTokens())
-			return GENERALERROR;
+			dir = dir.toLowerCase();
 
-		float dist = tokenizer.getFloatToken();
+			if (dir != "up" && dir != "down" && dir != "forward" && dir != "back")
+				throw Exception();
+
+		} catch (Exception& e) {
+			creature->sendSystemMessage("@player_structure:format_movefurniture_distance"); //Format: /moveFurniture <FORWARD/BACK/UP/DOWN> <distance>
+			return INVALIDPARAMETERS;
+		}
 
 		if (dist < 1 || dist > 500) {
 			creature->sendSystemMessage("@player_structure:movefurniture_params"); //The amount to move must be between 1 and 500.
-			return GENERALERROR;
+			return INVALIDPARAMETERS;
 		}
 
 		ZoneServer* zoneServer = creature->getZoneServer();
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
 
 		if (obj == NULL) {
-			creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
-			return false;
+			creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
+			return INVALIDTARGET;
 		}
 
-		if (!player->getPlayerObject()->isPrivileged()) {
+		if (!creature->getPlayerObject()->isPrivileged()) {
 			if (obj->getRootParent() != buildingObject || obj->isTerminal() || obj->isVendor()) {
 				if (obj->isVendor())
 					creature->sendSystemMessage("@player_structure:cant_move_vendor"); // To move a vendor, pick it up and drop it again in the new location.
 				else
-					creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
+					creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
 				return false;
 			}
 		}
@@ -218,13 +213,9 @@ public:
 		Vector3 endPoint(x, y, z);
 
 		if (!checkCollision(obj, endPoint)) {
-			player->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
+			creature->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
 			return GENERALERROR;
 		}
-
-		/*StringBuffer msg;
-		msg << "moving to x:" << x << " z:" << z << " y:" << y;
-		obj->info(msg.toString(), true);*/
 
 		obj->setPosition(x, z, y);
 		obj->incrementMovementCounter();
