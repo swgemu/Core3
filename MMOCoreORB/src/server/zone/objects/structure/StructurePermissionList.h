@@ -12,57 +12,96 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-class StructurePermissionList : public VectorMap<uint64, uint8> {
-public:
-	//List Permissions
-	static const uint8 BANLIST = 0x01;
-	static const uint8 HOPPERLIST = 0x02;
-	static const uint8 ENTRYLIST = 0x04;
-	static const uint8 VENDORLIST = 0x08;
-	static const uint8 ADMINLIST = 0x10;
+class StructurePermissionList : public Serializable {
+	VectorMap<String, SortedVector<String> > permissionLists;
 
-	static const uint8 OWNER = ~BANLIST;
-	static const uint8 VENDOR = VENDORLIST | ENTRYLIST;
-	static const uint8 ADMIN = ADMINLIST | VENDOR | HOPPERLIST;
+public:
+	static const int LISTNOTFOUND = 0xFF;
+	static const int GRANTED = 0x00;
+	static const int REVOKED = 0x01;
+
+	static const int MAX_ENTRIES = 50;
 
 public:
 	StructurePermissionList();
+	StructurePermissionList(const StructurePermissionList& spl);
 
-	void sendTo(CreatureObject* player, uint8 permission);
-	void sendTo(CreatureObject* player, const String& listName);
+	void addSerializableVariables();
 
-	bool addPermission(uint64 playerID, uint8 permission);
-	bool removePermission(uint64 playerID, uint8 permission);
+	/**
+	 * Sends the list to the creature so that it appears in Sui format.
+	 * @param creature The creature receiving the list.
+	 * @param listName The list to be displayed.
+	 */
+	void sendTo(CreatureObject* creature, const String& listName);
 
-	String getListName(uint8 permission);
-	uint8 getPermissionFromListName(const String& listName);
+	/**
+	 * Toggles permission on the list for the player.
+	 * @param listName The list the player is being added/removed to/from.
+	 * @param playerName The name of the player.
+	 * @return Returns either GRANTED or REVOKED depending on the operation that is performed.
+	 */
+	int togglePermission(const String& listName, const String& playerName);
 
-	bool hasPermission(uint64 playerID, uint8 permission) {
-		return (get(playerID) & permission);
+	int grantPermission(const String& listName, const String& playerName);
+	int revokePermission(const String& listName, const String& playerName);
+
+	/**
+	 * Checks to see if the specified player name is on the specified permission list.
+	 * @param listName The list to check.
+	 * @param playerName The player name to check.
+	 * @return Returns false if the permission list does not exist, or the player name is not found in the list.
+	 */
+	inline bool isOnPermissionList(const String& listName, const String& playerName) {
+		if (!permissionLists.contains(listName))
+			return false;
+
+		SortedVector<String>* list = &permissionLists.get(listName);
+
+		return list->contains(playerName);
 	}
 
-	inline bool isOwner(uint64 playerID) {
-		return (get(playerID) & OWNER);
+	/**
+	 * Checks to see if the number of entries in the specified list exceeds or is equal to the max number of entries allowed per list.
+	 * @param listName The list that is being checked.
+	 * @return Returns true if the permission list does not exist or it exceeds or equals the the max number of entries allowed per list.
+	 */
+	inline bool isListFull(const String& listName) {
+		if (!permissionLists.contains(listName))
+			return true;
+
+		SortedVector<String>* list = &permissionLists.get(listName);
+
+		return list->size() >= MAX_ENTRIES;
 	}
 
-	inline bool isOnAdminList(uint64 playerID) {
-		return (get(playerID) & ADMINLIST);
+	/**
+	 * Adds the specified list name to this permission list.
+	 * @param listName The list to add.
+	 */
+	inline void addList(const String& listName) {
+		if (permissionLists.contains(listName))
+			return;
+
+		SortedVector<String> list;
+		permissionLists.put(listName, list);
 	}
 
-	inline bool isOnBanList(uint64 playerID) {
-		return (get(playerID) & BANLIST);
+	/**
+	 * Drops the specified list name from this permission list.
+	 * @param listName The list to drop.
+	 */
+	inline void dropList(const String& listName) {
+		permissionLists.drop(listName);
 	}
 
-	inline bool isOnEntryList(uint64 playerID) {
-		return (get(playerID) & ENTRYLIST);
-	}
-
-	inline bool isOnVendorList(uint64 playerID) {
-		return (get(playerID) & VENDORLIST);
-	}
-
-	inline bool isOnHopperList(uint64 playerID) {
-		return (get(playerID) & HOPPERLIST);
+	/**
+	 * Checks to see if the specified list name exists.
+	 * @param listName The list to check for.
+	 * @return Returns true if the specified list exists, or false if it does not exist.
+	 */
+	inline bool containsList(const String& listName) {
+		return permissionLists.contains(listName);
 	}
 };
 

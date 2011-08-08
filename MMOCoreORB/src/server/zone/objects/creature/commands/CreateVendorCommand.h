@@ -79,7 +79,7 @@ public:
 
 		ManagedReference<BuildingObject*> building = (BuildingObject*) parent;
 
-		if (!building->isOnAdminList(player)) {
+		if (!building->isOnAdminList(player->getFirstName())) {
 			player->sendSystemMessage("@player_structure:must_be_admin");
 			return GENERALERROR;
 		}

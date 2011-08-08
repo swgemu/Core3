@@ -40,63 +40,39 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
-#ifndef HARVESTERACTIVATECOMMAND_H_
-#define HARVESTERACTIVATECOMMAND_H_
+package server.zone.objects.player;
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/installation/harvester/HarvesterObject.h"
-#include "server/zone/packets/harvester/HarvesterResourceDataMessage.h"
+import engine.util.Facade;
+include server.zone.objects.scene.SessionFacadeType;
 
-
-class HarvesterActivateCommand : public QueueCommand {
-public:
-
-	HarvesterActivateCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+class StructureStatusSession extends Facade {
+	@weakReference
+	protected StructureObject structureObject;
+	
+	public StructureStatusSession(StructureObject structure) {
+		Logger.setLoggingName("StructureStatusSession");
+		Logger.setLogging(true);
+		
+		structureObject = structure;
+		
+		initializeSession();
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
-
-		CreatureObject* player = (CreatureObject*) creature;
-
-		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
-
-		if (object == NULL || !object->isInstallationObject())
-			return GENERALERROR;
-
-		InstallationObject* inso = (InstallationObject*) object.get();
-
-	/*	if (!inso->isHarvesterObject())
-			return GENERALERROR;
-
-		HarvesterObject* harvester = (HarvesterObject*) inso;*/
-
-		try {
-			Locker clocker(inso, player);
-
-			if (inso->isOnAdminList(player->getFirstName()) && inso->isInRange(player, 20))
-				inso->setOperating(true);
-			else
-				player->sendSystemMessage("You are too far.");
-
-
-		} catch (Exception& e) {
-
-		}
-
-
-		return SUCCESS;
+	public int initializeSession() {
+		return 0;
 	}
-
-};
-
-#endif //HARVESTERACTIVATECOMMAND_H_
+	
+	public int updateStatus() {
+		return 0;
+	}
+	
+	public int cancelSession() {
+		return 0;
+	}
+	
+	public int clearSession() {
+		return 0;
+	}
+}

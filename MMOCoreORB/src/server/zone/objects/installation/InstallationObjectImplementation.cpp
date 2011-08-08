@@ -71,7 +71,7 @@ void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* a
 }
 
 void InstallationObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	if (!isOnAdminList(player))
+	if (!isOnAdminList(player->getFirstName()))
 		return;
 
 	menuResponse->addRadialMenuItem(118, 3, "@player_structure:management");
@@ -87,7 +87,7 @@ void InstallationObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse
 }
 
 int InstallationObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (!isOnAdminList(player))
+	if (!isOnAdminList(player->getFirstName()))
 		return 1;
 
 	switch (selectedID) {
@@ -134,7 +134,7 @@ void InstallationObjectImplementation::broadcastMessage(BasePacket* message, boo
 	Locker zoneLocker(getZone());
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		SceneObject* scno = (SceneObject*) getInRangeObject(i);
+		ManagedReference<SceneObject*> scno = (SceneObject*) getInRangeObject(i);
 
 		if (!sendSelf && scno == _this)
 			continue;
@@ -142,7 +142,9 @@ void InstallationObjectImplementation::broadcastMessage(BasePacket* message, boo
 		if(!scno->isPlayerCreature())
 			continue;
 
-		if(isOnAdminList(scno->getObjectID()))
+		CreatureObject* creo = (CreatureObject*) scno.get();
+
+		if(isOnAdminList(creo->getFirstName()))
 			scno->sendMessage(message->clone());
 	}
 

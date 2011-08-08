@@ -35,7 +35,7 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 				if (structureObject == NULL)
 					return 1;
 
-				if (!structureObject->isOnAdminList(player))
+				if (!structureObject->isOnAdminList(player->getFirstName()))
 					spawnInForeignCell(player);
 				else {
 					spawnInAdminCell(player);

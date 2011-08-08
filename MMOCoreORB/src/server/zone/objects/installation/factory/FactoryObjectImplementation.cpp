@@ -70,7 +70,7 @@ void FactoryObjectImplementation::createChildObjects() {
 void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	InstallationObjectImplementation::fillAttributeList(alm, object);
 
-	if (operating && isOnAdminList(object)) {
+	if (operating && isOnAdminList(object->getFirstName())) {
 		ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
 		if (outputHopper != NULL) {
@@ -80,7 +80,7 @@ void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, C
 }
 
 void FactoryObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	if (!isOnAdminList(player))
+	if (!isOnAdminList(player->getFirstName()))
 		return;
 
 	InstallationObjectImplementation::fillObjectMenuResponse(menuResponse, player);
@@ -106,7 +106,7 @@ void FactoryObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 }
 
 int FactoryObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (!isOnAdminList(player))
+	if (!isOnAdminList(player->getFirstName()))
 		return 1;
 
 	switch (selectedID) {

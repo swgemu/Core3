@@ -139,7 +139,7 @@ public:
 				return GENERALERROR;
 			}
 
-			if (!buildingObject->isOnAdminList(creature)) {
+			if (!buildingObject->isOnAdminList(creature->getFirstName())) {
 				creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
 				return GENERALERROR;
 			}

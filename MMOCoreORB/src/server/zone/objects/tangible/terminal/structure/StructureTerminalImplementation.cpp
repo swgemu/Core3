@@ -24,7 +24,7 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 
 	StructureObject* structureObject = (StructureObject*) controlledObject.get();
 
-	if (!structureObject->isOnAdminList(player) && !player->getPlayerObject()->isPrivileged())
+	if (!structureObject->isOnAdminList(player->getFirstName()) && !player->getPlayerObject()->isPrivileged())
 		return;
 
 	menuResponse->addRadialMenuItem(118, 3, "@player_structure:management"); //Structure Management
@@ -64,7 +64,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 
 	StructureObject* structureObject = (StructureObject*) controlledObject.get();
 
-	if (!structureObject->isOnAdminList(player) && !player->getPlayerObject()->isPrivileged())
+	if (!structureObject->isOnAdminList(player->getFirstName()) && !player->getPlayerObject()->isPrivileged())
 		return 1;
 
 	if (getZone() == NULL)
@@ -88,19 +88,19 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 		structureObject->sendPermissionListTo(player, "BAN");
 		break;
 	case 128:
-		player->executeObjectControllerAction(0x18FC1726, structureObject->getObjectID(), ""); //destroyStructure command
+		player->executeObjectControllerAction(0x18FC1726, structureObject->getObjectID(), ""); //destroyStructure
 		break;
 	case 129:
 		structureObject->sendManageMaintenanceTo(player);
 		break;
 	case 124:
-		structureObject->sendStatusTo(player);
+		player->executeObjectControllerAction(0x13F7E585, structureObject->getObjectID(), ""); //structureStatus
 		break;
 	case 127:
-		structureManager->declareResidence(player, structureObject);
+		player->executeObjectControllerAction(0xF59E3CE1, 0, ""); //declareResidence
 		break;
 	case 125:
-		structureManager->changePrivacy(player, structureObject);
+		player->executeObjectControllerAction(0x786CC38E, structureObject->getObjectID(), ""); //setPrivacy
 		break;
 	case 50:
 		structureObject->sendChangeNamePromptTo(player);

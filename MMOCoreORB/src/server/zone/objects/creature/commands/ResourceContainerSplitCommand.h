@@ -78,7 +78,7 @@ public:
 
 			ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
 
-			if (!building->isOnAdminList(creature)) {
+			if (!building->isOnAdminList(creature->getFirstName())) {
 				return GENERALERROR;
 			}
 		}

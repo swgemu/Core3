@@ -98,13 +98,14 @@ int PlaceStructureSessionImplementation::completeSession() {
 	structureObject->setOwnerObjectID(creatureObject->getObjectID());
 	structureObject->setDeedObjectID(deedObject->getObjectID());
 
-	ManagedReference<SceneObject*> ghost = creatureObject->getSlottedObject("ghost");
+	structureObject->grantPermission("ADMIN", creatureObject->getFirstName());
 
-	if (ghost != NULL && ghost->isPlayerObject()) {
-		PlayerObject* playerObject = (PlayerObject*) ghost.get();
+	ManagedReference<PlayerObject*> ghost = creatureObject->getPlayerObject();
 
-		playerObject->addOwnedStructure(structureObject);
-	}
+	if (ghost == NULL)
+		return cancelSession();
+
+	ghost->addOwnedStructure(structureObject);
 
 	//Create a waypoint.
 

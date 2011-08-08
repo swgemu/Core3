@@ -68,7 +68,7 @@ public:
 		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, target);
 
 		if (obj == NULL || !obj->isStructureObject()) {
-			//TODO: Return a message about not being near an administered structure.
+			creature->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
 			return INVALIDTARGET;
 		}
 
@@ -83,42 +83,8 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		if (targetName.length() > 40) {
-			creature->sendSystemMessage("@player_structure:permission_40_char"); //Permission list entries cannot be longer than 40 characters.
-			return INVALIDTARGET;
-		}
-
-		if (!playerManager->existsName(targetName)) {
-			StringIdChatParameter param("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
-			param.setTO(targetName);
-			creature->sendSystemMessage(param);
-
-			return INVALIDTARGET;
-		}
-
-		StructureObject* structure = (StructureObject*) obj.get();
-
-		Locker _lock(structure);
-
-		int returnCode = structure->togglePermission(listName, targetName);
-
-		//TODO: Implement messages!
-		//@player_structure:too_many_entries //You have too many entries on that list. You must remove some before adding more.
-
-		//@player_structure:must_specify_list //You must specify a valid permission list (Entry, Ban, Admin, Hopper)
-		//@player_structure:no_remove_admin //You cannot remove an admin from the entry list.
-		//@player_structure:hopper_cannot_remove_admin //You cannot remove an admin from the hopper list.
-		//@player_structure:cannot_remove_self //You cannot remove yourself from the admin list.
-		//@player_structure:cannot_remove_owner //You cannot remove the owner from the admin list.
-
-		//TODO: Handle return codes better.
-		StringIdChatParameter param("@player_structure:player_added"); //%NO added to the list.
-		param.setTO(targetName);
-
-		if (returnCode == 0)
-			param.setStringId("@player_structure:player_removed"); //%NO removed from the list.
-
-		creature->sendSystemMessage(param);
+		UnicodeString args = targetName + " " + listName + " toggle";
+		creature->executeObjectControllerAction(0x896713F2, obj->getObjectID(), args);
 
 		return SUCCESS;
 	}

@@ -602,10 +602,10 @@ int StructureManagerImplementation::changePrivacy(CreatureObject* player, Struct
 		CreatureObject* targetPlayer = (CreatureObject*) obj.get();
 
 		//Permissions shouldnt change for the player if they are on the entry, access, or ban list.
-		if (buildingObject->isOnBanList(targetPlayer))
+		if (buildingObject->isOnBanList(targetPlayer->getFirstName()))
 			continue;
 
-		if (buildingObject->isOnEntryList(targetPlayer))
+		if (buildingObject->isOnEntryList(targetPlayer->getFirstName()))
 			continue;
 
 		if (buildingObject->isOnAccessList(targetPlayer))

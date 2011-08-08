@@ -68,76 +68,104 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return INVALIDPARAMETERS;
-
-		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
-
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(player);
+		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, target);
 
 		if (obj == NULL || !obj->isStructureObject()) {
-			player->sendSystemMessage("@player_structure:command_no_building"); //You must be in a building or near an installation to use that command.
-			return GENERALERROR;
+			creature->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
+			return INVALIDTARGET;
 		}
 
 		StructureObject* structureObject = (StructureObject*) obj.get();
 
-		StringTokenizer tokenizer(arguments.toString());
-		tokenizer.setDelimeter(" ");
+		String targetName, listName, action;
 
-		if (!tokenizer.hasMoreTokens())
-			return INVALIDPARAMETERS;
+		try {
+			UnicodeTokenizer tokenizer(arguments);
+			tokenizer.getStringToken(targetName);
+			tokenizer.getStringToken(listName);
+			tokenizer.getStringToken(action);
 
-		String targetPlayerName;
-		tokenizer.getStringToken(targetPlayerName);
+			listName = listName.toUpperCase();
+			action = action.toLowerCase();
 
-		if (!tokenizer.hasMoreTokens())
-			return INVALIDPARAMETERS;
+			if (action != "remove" && action != "add" && action != "toggle")
+				throw Exception();
 
-		String listName;
-		tokenizer.getStringToken(listName);
-
-		if (!tokenizer.hasMoreTokens())
-			return INVALIDPARAMETERS;
-
-		String action;
-		tokenizer.getStringToken(action);
-
-		if (action != "remove" && !playerManager->existsName(targetPlayerName)) {
-			StringIdChatParameter params;
-			params.setStringId("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
-			params.setTO(targetPlayerName);
-			player->sendSystemMessage(params);
+		} catch (Exception& e) {
 			return INVALIDPARAMETERS;
 		}
 
-		if (listName != "ADMIN" && listName != "ENTRY" && listName != "BAN" && listName != "HOPPER" && listName != "VENDOR")
+		if (!structureObject->hasPermissionList(listName)) {
+			creature->sendSystemMessage("@player_structure:must_specify_list"); //You must specify a valid permission list (Entry, Ban, Admin, Hopper)
 			return INVALIDPARAMETERS;
+		}
 
-		if (action == "add") {
-			if (structureObject->addPermission(player, targetPlayerName, listName)) {
-				StringIdChatParameter params;
-				params.setStringId("@player_structure:player_added"); //%NO added to the list.
-				params.setTO(targetPlayerName);
-				player->sendSystemMessage(params);
+		if (structureObject->isPermissionListFull(listName)) {
+			creature->sendSystemMessage("@player_structure:too_many_entries"); //You have too many entries on that list. You must remove some before adding more.
+			return INVALIDPARAMETERS;
+		}
+
+		if (targetName.length() > 40) {
+			creature->sendSystemMessage("@player_structure:permission_40_char"); //Permission list entries cannot be longer than 40 characters.
+			return INVALIDPARAMETERS;
+		}
+
+		if (action == "remove") {
+			if (creature->getFirstName().toLowerCase() == targetName) {
+				creature->sendSystemMessage("@player_structure:cannot_remove_self"); //You cannot remove yourself from the admin list.
+				return INVALIDPARAMETERS;
 			}
-		} else if (action == "remove") {
-			if (structureObject->removePermission(player, targetPlayerName, listName)) {
-				StringIdChatParameter params;
-				params.setStringId("@player_structure:player_removed"); //%NO removed from the list.
-				params.setTO(targetPlayerName);
-				player->sendSystemMessage(params);
+
+			if (listName == "entry" && structureObject->isOnAdminList(targetName)) {
+				creature->sendSystemMessage("@player_structure:no_remove_admin"); //You cannot remove an admin from the entry list.
+				return INVALIDPARAMETERS;
+			}
+
+			if (listName == "admin" && structureObject->isOwnerOf(playerManager->getObjectID(targetName))) {
+				creature->sendSystemMessage("@player_structure:cannot_remove_owner"); //You cannot remove the owner from the admin list.
+				return INVALIDPARAMETERS;
+			}
+
+			if (listName == "hopper" && structureObject->isOnAdminList(targetName)) {
+				creature->sendSystemMessage("@player_structure:hopper_cannot_remove_admin"); //You cannot remove an admin from the hopper list.
+				return INVALIDPARAMETERS;
+			}
+		} else {
+			if (!playerManager->existsName(targetName)) {
+				StringIdChatParameter params("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
+				params.setTO(targetName);
+
+				creature->sendSystemMessage(params);
+				return INVALIDPARAMETERS;
 			}
 		}
 
-		ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
+		StringIdChatParameter params;
+		params.setTO(targetName);
 
-		if (chatManager == NULL)
-			return SUCCESS;
+		int returnCode = StructurePermissionList::LISTNOTFOUND;
 
-		ManagedReference<CreatureObject*> targetPlayer = chatManager->getPlayer(targetPlayerName);
+		if (action == "add")
+			returnCode = structureObject->grantPermission(listName, targetName);
+		else if (action == "remove")
+			returnCode = structureObject->revokePermission(listName, targetName);
+		else
+			returnCode = structureObject->togglePermission(listName, targetName);
+
+		switch (returnCode) {
+		case StructurePermissionList::GRANTED:
+			params.setStringId("@player_structure:player_added"); //%NO added to the list.
+		case StructurePermissionList::REVOKED:
+			params.setStringId("@player_structure:player_removed"); //%NO removed from the list.
+		default:
+			return GENERALERROR;
+		}
+
+		creature->sendSystemMessage(params);
+
+		ManagedReference<CreatureObject*> targetPlayer = playerManager->getPlayer(targetName);
 
 		//Update the cell permissions in case the player is in the building currently.
 		if (targetPlayer != NULL && structureObject->isBuildingObject()) {

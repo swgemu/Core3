@@ -96,7 +96,7 @@ public:
 		if (objectsParent != NULL && objectsParent->isCellObject()) {
 			ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
 
-			if (!building->isOnAdminList(creature)) {
+			if (!building->isOnAdminList(creature->getFirstName())) {
 				//info("not on admin list", true);
 				return GENERALERROR;
 			}

@@ -123,8 +123,10 @@ public:
 		}
 
 		//Ensure that they are within at least 16m of the transferrer.
-		if (!targetCreature->isInRange(creature, 16.f))
+		if (!targetCreature->isInRange(creature, 16.f) || !targetGhost->isOnline()) {
+			creature->sendSystemMessage("@cmd_err:target_range_prose"); //Your target is too far away to %TO.
 			return TOOFAR;
+		}
 
 		int lotSize = structure->getLotSize();
 
@@ -151,7 +153,7 @@ public:
 			//TODO: Also check to make sure they have zoning rights.
 		}
 
-		if (structure->isOnBanList(targetCreature)) {
+		if (structure->isOnBanList(targetCreature->getFirstName())) {
 			creature->sendSystemMessage("@player_structure:no_banned_player"); //You cannot transfer ownership to a banned player
 			return GENERALERROR;
 		}

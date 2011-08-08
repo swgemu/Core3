@@ -60,7 +60,7 @@ public:
 		try {
 			Locker clocker(inso, player);
 
-			if (!inso->isOnAdminList(player)) {
+			if (!inso->isOnAdminList(player->getFirstName())) {
 				return;
 			}
 

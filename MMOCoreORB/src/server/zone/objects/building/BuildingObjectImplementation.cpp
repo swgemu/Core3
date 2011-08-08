@@ -385,13 +385,13 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 
 	//Locker _locker(zone);
 
-	if (isOnBanList(player)) {
+	if (isOnBanList(player->getFirstName())) {
 		player->teleport(x, z, y, 0);
 		return;
 	}
 
 	if (!isPublicStructure()) {
-		if (!isOnEntryList(player))
+		if (!isOnEntryList(player->getFirstName()))
 			player->teleport(x, z, y, 0);
 	} else {
 		if (getAccessFee() > 0 && !isOnAccessList(player)) {

@@ -672,7 +672,7 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 
 	//addPermission
 
-	tutorial->addPermission(player, player, "ADMIN");
+	tutorial->togglePermission("ADMIN", player->getFirstName());
 
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
 	travelTutorialTerminal->insertToZone(zone);
@@ -2127,14 +2127,14 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 	if (targetID != 0) {
 		obj = zoneServer->getObject(targetID);
 
-		if (obj != NULL && obj->isStructureObject() && ((StructureObject*)obj.get())->isOnAdminList(creature))
+		if (obj != NULL && obj->isStructureObject() && ((StructureObject*)obj.get())->isOnAdminList(creature->getFirstName()))
 			return obj.get();
 	}
 
 
 	ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
-	if (rootParent != NULL && rootParent->isStructureObject() && ((StructureObject*)rootParent.get())->isOnAdminList(creature)) {
+	if (rootParent != NULL && rootParent->isStructureObject() && ((StructureObject*)rootParent.get())->isOnAdminList(creature->getFirstName())) {
 		return rootParent;
 	}
 
@@ -2153,7 +2153,7 @@ SceneObject* PlayerManagerImplementation::getInRangeStructureWithAdminRights(Cre
 
 				StructureObject* structureObject = (StructureObject*) tObj.get();
 
-				if (structureObject->isOnAdminList(creature) && dist < distance) {
+				if (structureObject->isOnAdminList(creature->getFirstName()) && dist < distance) {
 					structure = structureObject;
 					distance = dist;
 				}

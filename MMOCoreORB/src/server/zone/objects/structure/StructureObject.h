@@ -138,17 +138,13 @@ public:
 
 	void scheduleMaintenanceExpirationEvent();
 
-	bool isOnAdminList(SceneObject* obj);
+	bool isOnAdminList(const String& playerName);
 
-	bool isOnAdminList(unsigned long long oid);
+	bool isOnEntryList(const String& playerName);
 
-	bool isOnEntryList(SceneObject* obj);
+	bool isOnBanList(const String& playerName);
 
-	bool isOnEntryList(unsigned long long oid);
-
-	bool isOnBanList(SceneObject* obj);
-
-	bool isOnBanList(unsigned long long oid);
+	bool isOnHopperList(const String& playerName);
 
 	bool isOwnerOf(SceneObject* obj);
 
@@ -158,17 +154,17 @@ public:
 
 	bool isOnAccessList(unsigned long long oid);
 
-	void sendPermissionListTo(CreatureObject* player, const String& listName);
+	void sendPermissionListTo(CreatureObject* creature, const String& listName);
+
+	bool hasPermissionList(const String& listName);
+
+	bool isPermissionListFull(const String& listName);
 
 	int togglePermission(const String& listName, const String& targetName);
 
-	bool addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
+	int grantPermission(const String& listName, const String& targetName);
 
-	bool addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
-
-	bool removePermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
-
-	bool removePermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
+	int revokePermission(const String& listName, const String& targetName);
 
 	void createVendor(CreatureObject* player);
 
@@ -291,17 +287,13 @@ public:
 
 	void scheduleMaintenanceExpirationEvent();
 
-	bool isOnAdminList(SceneObject* obj);
+	bool isOnAdminList(const String& playerName);
 
-	bool isOnAdminList(unsigned long long oid);
+	bool isOnEntryList(const String& playerName);
 
-	bool isOnEntryList(SceneObject* obj);
+	bool isOnBanList(const String& playerName);
 
-	bool isOnEntryList(unsigned long long oid);
-
-	bool isOnBanList(SceneObject* obj);
-
-	bool isOnBanList(unsigned long long oid);
+	bool isOnHopperList(const String& playerName);
 
 	bool isOwnerOf(SceneObject* obj);
 
@@ -311,17 +303,17 @@ public:
 
 	bool isOnAccessList(unsigned long long oid);
 
-	void sendPermissionListTo(CreatureObject* player, const String& listName);
+	void sendPermissionListTo(CreatureObject* creature, const String& listName);
+
+	bool hasPermissionList(const String& listName);
+
+	bool isPermissionListFull(const String& listName);
 
 	int togglePermission(const String& listName, const String& targetName);
 
-	bool addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
+	int grantPermission(const String& listName, const String& targetName);
 
-	bool addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
-
-	bool removePermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
-
-	bool removePermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
+	int revokePermission(const String& listName, const String& targetName);
 
 	void createVendor(CreatureObject* player);
 
@@ -428,17 +420,13 @@ public:
 
 	void scheduleMaintenanceExpirationEvent();
 
-	bool isOnAdminList(SceneObject* obj);
+	bool isOnAdminList(const String& playerName);
 
-	bool isOnAdminList(unsigned long long oid);
+	bool isOnEntryList(const String& playerName);
 
-	bool isOnEntryList(SceneObject* obj);
+	bool isOnBanList(const String& playerName);
 
-	bool isOnEntryList(unsigned long long oid);
-
-	bool isOnBanList(SceneObject* obj);
-
-	bool isOnBanList(unsigned long long oid);
+	bool isOnHopperList(const String& playerName);
 
 	bool isOwnerOf(SceneObject* obj);
 
@@ -448,17 +436,17 @@ public:
 
 	bool isOnAccessList(unsigned long long oid);
 
-	void sendPermissionListTo(CreatureObject* player, const String& listName);
+	void sendPermissionListTo(CreatureObject* creature, const String& listName);
+
+	bool hasPermissionList(const String& listName);
+
+	bool isPermissionListFull(const String& listName);
 
 	int togglePermission(const String& listName, const String& targetName);
 
-	bool addPermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
+	int grantPermission(const String& listName, const String& targetName);
 
-	bool addPermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
-
-	bool removePermission(CreatureObject* player, CreatureObject* targetPlayer, const String& listName);
-
-	bool removePermission(CreatureObject* player, const String& targetPlayerName, const String& listName);
+	int revokePermission(const String& listName, const String& targetName);
 
 	void createVendor(CreatureObject* player);
 
@@ -503,15 +491,19 @@ public:
 	bool isRedeedable();
 
 protected:
+	String _param0_isOnAdminList__String_;
+	String _param0_isOnEntryList__String_;
+	String _param0_isOnBanList__String_;
+	String _param0_isOnHopperList__String_;
 	String _param1_sendPermissionListTo__CreatureObject_String_;
+	String _param0_hasPermissionList__String_;
+	String _param0_isPermissionListFull__String_;
 	String _param0_togglePermission__String_String_;
 	String _param1_togglePermission__String_String_;
-	String _param2_addPermission__CreatureObject_CreatureObject_String_;
-	String _param1_addPermission__CreatureObject_String_String_;
-	String _param2_addPermission__CreatureObject_String_String_;
-	String _param2_removePermission__CreatureObject_CreatureObject_String_;
-	String _param1_removePermission__CreatureObject_String_String_;
-	String _param2_removePermission__CreatureObject_String_String_;
+	String _param0_grantPermission__String_String_;
+	String _param1_grantPermission__String_String_;
+	String _param0_revokePermission__String_String_;
+	String _param1_revokePermission__String_String_;
 };
 
 class StructureObjectHelper : public DistributedObjectClassHelper, public Singleton<StructureObjectHelper> {

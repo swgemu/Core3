@@ -127,7 +127,7 @@ public:
 
 				ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
 
-				if (!building->isOnAdminList(creature)) {
+				if (!building->isOnAdminList(creature->getFirstName())) {
 					return GENERALERROR;
 				}
 
@@ -168,7 +168,7 @@ public:
 		if (destinationObject->isCellObject()) {
 			ManagedReference<BuildingObject*> building = (BuildingObject*) destinationObject->getParent();
 
-			if (!building->isOnAdminList(creature)) {
+			if (!building->isOnAdminList(creature->getFirstName())) {
 				return GENERALERROR;
 			}
 

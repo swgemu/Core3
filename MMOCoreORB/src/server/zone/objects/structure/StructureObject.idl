@@ -77,10 +77,10 @@ class StructureObject extends TangibleObject {
 	protected unsigned long ownerObjectID;
 	protected unsigned long deedObjectID;
 	
-	protected int lotSize;
+	protected int lotSize; //TODO: Move to template
 	
-	protected int baseMaintenanceRate;
-	protected int basePowerRate;
+	protected int baseMaintenanceRate;//TODO: Move to template
+	protected int basePowerRate; //TODO: Move to template
 	
 	protected float surplusMaintenance;
 	protected float surplusPower;
@@ -142,59 +142,79 @@ class StructureObject extends TangibleObject {
 	public native string getTimeString(unsigned int timestamp);
 
 	public native void scheduleMaintenanceExpirationEvent();
+
+	/**
+	 * Checks if the playerName is on the admin list.
+	 * @param playerName The name of the player to check for admin permission.
+	 * @return Returns true if the player name has admin permissions.
+	 */
+	public boolean isOnAdminList(final string playerName) {
+		return structurePermissionList.isOnPermissionList("ADMIN", playerName);
+	}
 	
 	/**
-	 * Returns if the object is on the admin list or not for this structure.
-	 * @param obj The object to check for admin permissions on.
-	 * @return boolean True if the object is on the admin list.
+	 * Checks if the playerName is on the entry list.
+	 * @param playerName The name of the player to check for entry permission.
+	 * @return Returns true if the player name has entry permissions.
 	 */
-	public boolean isOnAdminList(SceneObject obj) {
-		return structurePermissionList.isOnAdminList(obj.getObjectID());
+	public boolean isOnEntryList(final string playerName) {
+		return structurePermissionList.isOnPermissionList("ENTRY", playerName)
+			|| structurePermissionList.isOnPermissionList("ADMIN", playerName);
 	}
 	
-	public boolean isOnAdminList(unsigned long oid) {
-		return structurePermissionList.isOnAdminList(oid);
+	/**
+	 * Checks if the playerName is on the ban list.
+	 * @param playerName The name of the player to check for ban permission.
+	 * @return Returns true if the player name has ban permissions.
+	 */
+	public boolean isOnBanList(final string playerName) {
+		return structurePermissionList.isOnPermissionList("BAN", playerName);
 	}
 	
-	public boolean isOnEntryList(SceneObject obj) {
-		return structurePermissionList.isOnEntryList(obj.getObjectID());
-	}
-	
-	public boolean isOnEntryList(unsigned long oid) {
-		return structurePermissionList.isOnEntryList(oid);
-	}
-	
-	public boolean isOnBanList(SceneObject obj) {
-		return structurePermissionList.isOnBanList(obj.getObjectID());
-	}
-	
-	public boolean isOnBanList(unsigned long oid) {
-		return structurePermissionList.isOnBanList(oid);
+	/**
+	 * Checks if the playerName is on the hopper list.
+	 * @param playerName The name of the player to check for hopper permission.
+	 * @return Returns true if the player name has hopper permissions.
+	 */
+	public boolean isOnHopperList(final string playerName) {
+		return structurePermissionList.isOnPermissionList("HOPPER", playerName)
+		|| structurePermissionList.isOnPermissionList("ADMIN", playerName);
 	}
 	
 	public native boolean isOwnerOf(SceneObject obj);
 	public native boolean isOwnerOf(unsigned long oid);
 	
 	public boolean isOnAccessList(SceneObject obj) {
-		//TODO: Vector of objects that have temporary access to the structure.
 		return false;
 	}
 	
 	public boolean isOnAccessList(unsigned long oid) {
-		//TODO: See above.
 		return false;
 	}
 
-	public void sendPermissionListTo(CreatureObject player, final string listName) {
-		structurePermissionList.sendTo(player, listName);
+	public void sendPermissionListTo(CreatureObject creature, final string listName) {
+		structurePermissionList.sendTo(creature, listName);
 	}
 	
-	public native int togglePermission(final string listName, final string targetName);
+	public boolean hasPermissionList(final string listName) {
+		return structurePermissionList.containsList(listName);
+	}
 	
-	public native boolean addPermission(CreatureObject player, CreatureObject targetPlayer, final string listName);
-	public native boolean addPermission(CreatureObject player, final string targetPlayerName, final string listName);
-	public native boolean removePermission(CreatureObject player, CreatureObject targetPlayer, final string listName);
-	public native boolean removePermission(CreatureObject player, final string targetPlayerName, final string listName);
+	public boolean isPermissionListFull(final string listName) {
+		return structurePermissionList.isListFull(listName);
+	}
+	
+	public int togglePermission(final string listName, final string targetName) {
+		return structurePermissionList.togglePermission(listName, targetName);
+	}
+	
+	public int grantPermission(final string listName, final string targetName) {
+		return structurePermissionList.grantPermission(listName, targetName);
+	}
+	
+	public int revokePermission(final string listName, final string targetName) {
+		return structurePermissionList.revokePermission(listName, targetName);
+	}
 
 	public native void createVendor(CreatureObject player);
 	
@@ -216,11 +236,11 @@ class StructureObject extends TangibleObject {
 	
 	public native int getLotSize();
 	
-	public int getBaseMaintenanceRate() {
+	public int getBaseMaintenanceRate() { //TODO: Move to template
 		return baseMaintenanceRate;
 	}
 	
-	public int getBasePowerRate() {
+	public int getBasePowerRate() { //TODO: Move to template
 		return basePowerRate;
 	}
 	
@@ -237,26 +257,18 @@ class StructureObject extends TangibleObject {
 	}
 	
 	public void setOwnerObjectID(unsigned long objectID) {
-		//Remove the old owner from permission list.
-		structurePermissionList.removePermission(ownerObjectID, StructurePermissionList.OWNER);
-		
-		//Research: Add them as an administrator?
-		//structurePermissionList.addPermission(ownerObjectID, StructurePermissionList.ADMIN);
-
 		ownerObjectID = objectID;
-
-		structurePermissionList.addPermission(objectID, StructurePermissionList.OWNER);
 	}
 	
 	public void setDeedObjectID(unsigned long deedID) {
 		deedObjectID = deedID;
 	}
 	
-	public void setBaseMaintenanceRate(int rate) {
+	public void setBaseMaintenanceRate(int rate) { //TODO: Move to template
 		baseMaintenanceRate = rate;
 	}
 	
-	public void setBasePowerRate(int rate) {
+	public void setBasePowerRate(int rate) { //TODO: Move to template
 		basePowerRate = rate;
 	}
 	
