@@ -148,15 +148,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 	//info(msg, true);
 
 	switch (windowType) {
-	case SuiWindowType::STRUCTURE_STATUS:
-		handleStructureStatus(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::STRUCTURE_DESTROY_CONFIRM:
-		handleStructureDestroyConfirm(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::STRUCTURE_DESTROY_CODE:
-		handleStructureDestroyCode(player, suiBox, cancel, args);
-		break;
 	case SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE:
 		handleManageMaintenance(player, suiBox, cancel, args);
 		break;
@@ -1056,64 +1047,6 @@ void SuiManager::handleInsertFactorySchem3(CreatureObject* player, SuiBox* suiBo
 		ManagedReference<ManufactureSchematic*> schematic = dynamic_cast<ManufactureSchematic*>(server->getZoneServer()->getObject(listBox->getMenuObjectID(index)));
 		factory->handleInsertFactorySchem(player, schematic);
 	}
-}
-
-
-void SuiManager::handleStructureStatus(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-
-}
-
-void SuiManager::handleStructureDestroyConfirm(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isListBox() || cancel != 0)
-		return;
-
-	ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
-
-	if (usingObject == NULL || !usingObject->isStructureObject())
-		return;
-
-	StructureObject* structureObject = (StructureObject*) usingObject.get();
-
-	Locker _lock(structureObject, player);
-	//structureObject->sendDestroyCodeTo(player);
-}
-
-void SuiManager::handleStructureDestroyCode(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (!suiBox->isInputBox() || cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	int destroyCode = Integer::valueOf(args->get(0).toString());
-
-	ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
-
-	if (usingObject == NULL || !usingObject->isStructureObject())
-		return;
-
-	ManagedReference<StructureObject*> structureObject = (StructureObject*) usingObject.get();
-
-	Zone* zone = structureObject->getZone();
-
-	if (zone == NULL)
-		return;
-
-	StructureManager* structureManager = zone->getStructureManager();
-
-	if (structureManager == NULL)
-		return;
-
-	Locker _lock(structureObject, player);
-
-	/*
-	if (structureObject->getDestroyCode() == destroyCode) {
-		structureManager->redeedStructure(player, structureObject);
-	} else {
-		player->sendSystemMessage("@player_structure:incorrect_destroy_code"); //You have entered an incorrect code. You will have to issue the /destroyStructure again if you wish to continue.
-		return;
-	}
-	*/
 }
 
 void SuiManager::handleCityEnableZoning(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {

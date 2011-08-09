@@ -46,6 +46,7 @@ which carries forward this exception.
 #define ADDPOWERCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/resource/ResourceManager.h"
 
 class AddPowerCommand : public QueueCommand {
 public:
@@ -63,7 +64,9 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, target);
 
 		if (obj == NULL || !obj->isStructureObject())
 			return INVALIDTARGET;
@@ -75,12 +78,35 @@ public:
 		try {
 			UnicodeTokenizer tokenizer(arguments);
 			amount = tokenizer.getIntToken();
+
 		} catch (Exception& e) {
+			creature->sendSystemMessage("@player_structure:unable_to_parse"); //The system was unable to parse a valid power amount.
 			return INVALIDPARAMETERS;
 		}
 
-		//Ensure that the person has this much power.
-		//structure->addPower(amount);
+		if (amount < 0) {
+			creature->sendSystemMessage("@player_structure:enter_valid_over_zero"); //Please enter a valid power amount greater than 0.
+			return INVALIDPARAMETERS;
+		}
+
+		ResourceManager* resourceManager = server->getZoneServer()->getResourceManager();
+		uint32 totalPower = resourceManager->getAvailablePowerFromPlayer(creature);
+
+		if (totalPower < amount) {
+			StringIdChatParameter params("@player_structure:not_enough_energy"); //You do not have %DI units of energy in your inventory!
+			params.setDI(amount);
+
+			creature->sendSystemMessage(params);
+			return INVALIDPARAMETERS;
+		}
+
+		resourceManager->removePowerFromPlayer(creature, amount);
+		structure->addPower(amount);
+
+		StringIdChatParameter params("@player_structure:deposit_successful"); //You successfully deposit %DI units of energy.
+		params.setDI(amount);
+
+		creature->sendSystemMessage(params);
 
 		return SUCCESS;
 	}
