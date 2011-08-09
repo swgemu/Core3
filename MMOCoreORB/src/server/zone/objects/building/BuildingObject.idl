@@ -111,6 +111,8 @@ class BuildingObject extends StructureObject {
 	
 	public native void sendChangeNamePromptTo(CreatureObject player);
 	
+	public native void setCustomObjectName(final unicode name, boolean notifyClient);
+	
 	/**
 	 * Sends the contained non slotted objects to the specified player
 	 * @pre { this object is locked }

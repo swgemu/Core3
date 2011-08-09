@@ -44,10 +44,6 @@ which carries forward this exception.
 
 #include "SuiManager.h"
 
-/*
-#include "../../objects/player/sui/messagebox/SuiMessageBox.h"
-#include "../../objects/player/sui/colorpicker/SuiColorPicker.h"*/
-
 #include "../radial/RadialManager.h"
 
 #include "server/zone/ZoneProcessServer.h"
@@ -126,7 +122,10 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 
 	Locker _lock(player);
 
-	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
 
 	ManagedReference<SuiBox*> suiBox = ghost->getSuiBox(boxID);
 

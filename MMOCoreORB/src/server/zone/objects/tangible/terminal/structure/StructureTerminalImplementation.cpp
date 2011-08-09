@@ -103,7 +103,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 		player->executeObjectControllerAction(0x786CC38E, structureObject->getObjectID(), ""); //setPrivacy
 		break;
 	case 50:
-		structureObject->sendChangeNamePromptTo(player);
+		player->executeObjectControllerAction(0xC367B461, structureObject->getObjectID(), ""); //nameStructure
 		break;
 	case 130:
 		structureObject->createVendor(player);

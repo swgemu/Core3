@@ -158,6 +158,8 @@ public:
 
 	void sendChangeNamePromptTo(CreatureObject* player);
 
+	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(SceneObject* player);
@@ -285,6 +287,8 @@ public:
 
 	void sendChangeNamePromptTo(CreatureObject* player);
 
+	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(SceneObject* player);
@@ -410,6 +414,8 @@ public:
 
 	void sendChangeNamePromptTo(CreatureObject* player);
 
+	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
+
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void updateCellPermissionsTo(SceneObject* player);
@@ -464,6 +470,8 @@ public:
 
 	unsigned int getMaximumNumberOfPlayerItems();
 
+protected:
+	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

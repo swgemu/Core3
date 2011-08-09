@@ -46,6 +46,8 @@ which carries forward this exception.
 #define NAMESTRUCTURECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
+#include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
 
 class NameStructureCommand : public QueueCommand {
 public:
@@ -63,17 +65,55 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		System::out << "Target: " << target << endl;
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-		//Get the closest structure that the player has admin rights to, but check the target first.
+		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, target);
 
-		//Open a suiInputPrompt with the structure set as the using object.
+		if (obj == NULL || !obj->isStructureObject()) {
+			creature->sendSystemMessage("@player_structure:command_no_building"); //You must be in a building or near an installation to use that command.
+			return INVALIDTARGET;
+		}
 
-		//Set a SuiCallback for handling the input of the name.
+		StructureObject* structure = (StructureObject*) obj.get();
 
-		//Set the structure's name.
+		Locker _lock(structure, creature);
 
-		//Inform the user.
+		if (!structure->isOwnerOf(creature)) {
+			creature->sendSystemMessage("@player_structure:rename_must_be_owner"); //You must be the owner to rename a structure.
+			return GENERALERROR;
+		}
+
+		//("@player_structure:no_rename_hq"); //You may not rename a factional headquarters.
+
+		if (arguments.isEmpty()) {
+			ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+			if (ghost != NULL) {
+				ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(creature, SuiWindowType::OBJECT_NAME);
+				inputBox->setUsingObject(structure);
+				inputBox->setPromptTitle("@base_player:set_name"); //Set Name
+				inputBox->setPromptText("@player_structure:structure_name_prompt"); //Structure Name:
+				inputBox->setCallback(new NameStructureSuiCallback(server->getZoneServer()));
+				inputBox->setForceCloseDistance(32.f);
+
+				ghost->addSuiBox(inputBox);
+				creature->sendMessage(inputBox->generateMessage());
+			}
+
+			return GENERALERROR;
+		}
+
+		//Validate the name.
+		NameManager* nameManager = server->getNameManager();
+
+		if (nameManager->isProfane(arguments.toString())) {
+			creature->sendSystemMessage("@player_structure:obscene"); //That name was rejected by the name filter. Try a different name.
+			return INVALIDPARAMETERS;
+		}
+
+		structure->setCustomObjectName(arguments, true);
+
+		creature->sendSystemMessage("@player_structure:structure_renamed"); //Structure renamed.
 
 		return SUCCESS;
 	}

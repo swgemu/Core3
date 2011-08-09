@@ -74,6 +74,14 @@ void BuildingObjectImplementation::createContainerComponent() {
 	TangibleObjectImplementation::createContainerComponent();
 }
 
+void BuildingObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
+	if (signObject != NULL) {
+		signObject->setCustomObjectName(name, notifyClient);
+	} else {
+		TangibleObjectImplementation::setCustomObjectName(name, notifyClient);
+	}
+}
+
 void BuildingObjectImplementation::notifyLoadFromDatabase() {
 	SceneObjectImplementation::notifyLoadFromDatabase();
 
