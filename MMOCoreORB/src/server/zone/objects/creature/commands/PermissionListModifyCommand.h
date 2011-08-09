@@ -157,8 +157,10 @@ public:
 		switch (returnCode) {
 		case StructurePermissionList::GRANTED:
 			params.setStringId("@player_structure:player_added"); //%NO added to the list.
+			break;
 		case StructurePermissionList::REVOKED:
 			params.setStringId("@player_structure:player_removed"); //%NO removed from the list.
+			break;
 		default:
 			return GENERALERROR;
 		}
