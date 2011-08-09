@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -520,6 +520,19 @@ void BuildingObject::setPublicStructure(bool privacy) {
 		_implementation->setPublicStructure(privacy);
 }
 
+bool BuildingObject::togglePrivacy() {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_TOGGLEPRIVACY__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->togglePrivacy();
+}
+
 unsigned int BuildingObject::getMaximumNumberOfPlayerItems() {
 	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -822,6 +835,11 @@ void BuildingObjectImplementation::setPublicStructure(bool privacy) {
 	publicStructure = privacy;
 }
 
+bool BuildingObjectImplementation::togglePrivacy() {
+	// server/zone/objects/building/BuildingObject.idl():  		return (publicStructure = !publicStructure);
+	return (publicStructure = !publicStructure);
+}
+
 /*
  *	BuildingObjectAdapter
  */
@@ -922,6 +940,9 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_SETPUBLICSTRUCTURE__BOOL_:
 		setPublicStructure(inv->getBooleanParameter());
+		break;
+	case RPC_TOGGLEPRIVACY__:
+		resp->insertBoolean(togglePrivacy());
 		break;
 	case RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__:
 		resp->insertInt(getMaximumNumberOfPlayerItems());
@@ -1051,6 +1072,10 @@ bool BuildingObjectAdapter::isPublicStructure() {
 
 void BuildingObjectAdapter::setPublicStructure(bool privacy) {
 	((BuildingObjectImplementation*) impl)->setPublicStructure(privacy);
+}
+
+bool BuildingObjectAdapter::togglePrivacy() {
+	return ((BuildingObjectImplementation*) impl)->togglePrivacy();
 }
 
 unsigned int BuildingObjectAdapter::getMaximumNumberOfPlayerItems() {

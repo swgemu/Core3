@@ -72,16 +72,21 @@ public:
 
 		BuildingObject* building = (BuildingObject*) obj.get();
 
-		//("@player_structure:force_public"); //This structure is always public.
+		Reference<SharedBuildingObjectTemplate*> ssot = dynamic_cast<SharedBuildingObjectTemplate*>(building->getObjectTemplate());
 
+		if (ssot == NULL || ssot->isAlwaysPublic()) {
+			creature->sendSystemMessage("@player_structure:force_public"); //This structure is always public.
+			return GENERALERROR;
+		}
+
+		if (building->togglePrivacy())
+			creature->sendSystemMessage("@player_structure:structure_now_public"); //This structure is now public
+		else
+			creature->sendSystemMessage("@player_structure:structure_now_private"); //This structure is now private
+
+		//TODO: Implement Messages
 		//("@player_structure:vendor_no_private"); //A structure hosting a vendor cannot be declared private.
-
-		/*
-string/en/player_structure.stf	227	no_privacy_faction_hq	You may not alter privacy of a factional headquarters.
-string/en/player_structure.stf	368	structure_now_private	This structure is now private
-string/en/player_structure.stf	371	structure_private	This structure is private
-string/en/player_structure.stf	448	vendor_no_private	A structure hosting a vendor cannot be declared private.
-		 */
+		//("@player_structure:no_privacy_faction_hq"); //You may not alter privacy of a factional headquarters.
 
 		return SUCCESS;
 	}

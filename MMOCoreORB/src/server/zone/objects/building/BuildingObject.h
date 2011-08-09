@@ -222,6 +222,8 @@ public:
 
 	void setPublicStructure(bool privacy);
 
+	bool togglePrivacy();
+
 	unsigned int getMaximumNumberOfPlayerItems();
 
 	DistributedObjectServant* _getImplementation();
@@ -351,6 +353,8 @@ public:
 
 	void setPublicStructure(bool privacy);
 
+	bool togglePrivacy();
+
 	virtual unsigned int getMaximumNumberOfPlayerItems();
 
 	WeakReference<BuildingObject*> _this;
@@ -455,6 +459,8 @@ public:
 	bool isPublicStructure();
 
 	void setPublicStructure(bool privacy);
+
+	bool togglePrivacy();
 
 	unsigned int getMaximumNumberOfPlayerItems();
 

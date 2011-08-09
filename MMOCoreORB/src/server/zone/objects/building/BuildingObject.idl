@@ -246,6 +246,14 @@ class BuildingObject extends StructureObject {
 	}
 	
 	/**
+	 * Switches the state of this building's privacy. If it is public, it becomes private, and vice-versa.
+	 * @return Returns true if the structure is now public, or false if it is now private.
+	 */
+	public boolean togglePrivacy() {
+		return (publicStructure = !publicStructure);
+	}
+	
+	/**
 	 * Calculates the maximum number of items that can be stored by a player in this building.
 	 * @return Returns a uint32 number representing the max items that can be stored in this building.
 	 */
