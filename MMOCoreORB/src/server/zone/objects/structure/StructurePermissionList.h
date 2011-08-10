@@ -58,7 +58,7 @@ public:
 
 		SortedVector<String>* list = &permissionLists.get(listName);
 
-		return list->contains(playerName);
+		return list->contains(playerName.toLowerCase());
 	}
 
 	/**

@@ -691,6 +691,8 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 			creature->sendSystemMessage("@player_structure:deed_reclaimed_failed"); //Structure destroy and deed reclaimed FAILED!
 			return session->cancelSession();
 		} else {
+			int maint = structureObject->getSurplusMaintenance();
+
 			inventory->addObject(deed, -1, true);
 			creature->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
 		}

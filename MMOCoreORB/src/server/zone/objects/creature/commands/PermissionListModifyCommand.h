@@ -59,9 +59,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-		ZoneServer* zoneServer = creature->getZoneServer();
-		Zone* zone = creature->getZone();
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -87,6 +84,7 @@ public:
 			tokenizer.getStringToken(listName);
 			tokenizer.getStringToken(action);
 
+			targetName = targetName.toLowerCase();
 			listName = listName.toUpperCase();
 			action = action.toLowerCase();
 
@@ -118,17 +116,17 @@ public:
 				return INVALIDPARAMETERS;
 			}
 
-			if (listName == "entry" && structureObject->isOnAdminList(targetName)) {
+			if (listName == "ENTRY" && structureObject->isOnAdminList(targetName)) {
 				creature->sendSystemMessage("@player_structure:no_remove_admin"); //You cannot remove an admin from the entry list.
 				return INVALIDPARAMETERS;
 			}
 
-			if (listName == "admin" && structureObject->isOwnerOf(playerManager->getObjectID(targetName))) {
+			if (listName == "ADMIN" && structureObject->isOwnerOf(playerManager->getObjectID(targetName))) {
 				creature->sendSystemMessage("@player_structure:cannot_remove_owner"); //You cannot remove the owner from the admin list.
 				return INVALIDPARAMETERS;
 			}
 
-			if (listName == "hopper" && structureObject->isOnAdminList(targetName)) {
+			if (listName == "HOPPER" && structureObject->isOnAdminList(targetName)) {
 				creature->sendSystemMessage("@player_structure:hopper_cannot_remove_admin"); //You cannot remove an admin from the hopper list.
 				return INVALIDPARAMETERS;
 			}

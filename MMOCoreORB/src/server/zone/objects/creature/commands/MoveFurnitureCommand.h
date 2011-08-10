@@ -151,9 +151,9 @@ public:
 		try {
 			UnicodeTokenizer tokenizer(arguments.toString());
 			tokenizer.getStringToken(dir);
-			dist = tokenizer.getIntToken();
-
 			dir = dir.toLowerCase();
+
+			dist = tokenizer.getIntToken();
 
 			if (dir != "up" && dir != "down" && dir != "forward" && dir != "back")
 				throw Exception();

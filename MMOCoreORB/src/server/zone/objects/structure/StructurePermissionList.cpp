@@ -51,13 +51,15 @@ int StructurePermissionList::togglePermission(const String& listName, const Stri
 
 	SortedVector<String>* list = &permissionLists.get(listName);
 
+	String name = playerName.toLowerCase();
+
 	//If they exist, remove them.
-	if (list->contains(playerName)) {
-		list->drop(playerName);
+	if (list->contains(name)) {
+		list->drop(name);
 		return REVOKED;
 	}
 
-	list->put(playerName);
+	list->put(name);
 	return GRANTED;
 }
 
@@ -67,7 +69,7 @@ int StructurePermissionList::grantPermission(const String& listName, const Strin
 
 	SortedVector<String>* list = &permissionLists.get(listName);
 
-	list->put(playerName);
+	list->put(playerName.toLowerCase());
 	return GRANTED;
 }
 
@@ -77,6 +79,6 @@ int StructurePermissionList::revokePermission(const String& listName, const Stri
 
 	SortedVector<String>* list = &permissionLists.get(listName);
 
-	list->drop(playerName);
+	list->drop(playerName.toLowerCase());
 	return REVOKED;
 }
