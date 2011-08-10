@@ -146,7 +146,7 @@ public:
 		}
 
 		String dir;
-		int dist = 0;
+		float dist = 0.f;
 
 		try {
 			UnicodeTokenizer tokenizer(arguments.toString());
@@ -163,7 +163,7 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		if (dist < 1 || dist > 500) {
+		if (dist < 1.f || dist > 500.f) {
 			creature->sendSystemMessage("@player_structure:movefurniture_params"); //The amount to move must be between 1 and 500.
 			return INVALIDPARAMETERS;
 		}
