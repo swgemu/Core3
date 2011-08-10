@@ -73,6 +73,10 @@ public:
 
 		StructureObject* structure = (StructureObject*) obj.get();
 
+		if (structure->getBasePowerRate() <= 0) {
+			return INVALIDTARGET;
+		}
+
 		int amount = 0;
 
 		try {
