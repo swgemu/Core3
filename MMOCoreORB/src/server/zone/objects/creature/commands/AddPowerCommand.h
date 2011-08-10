@@ -105,6 +105,9 @@ public:
 		}
 
 		resourceManager->removePowerFromPlayer(creature, amount);
+
+		Locker _lock(structure);
+
 		structure->addPower(amount);
 
 		StringIdChatParameter params("@player_structure:deposit_successful"); //You successfully deposit %DI units of energy.

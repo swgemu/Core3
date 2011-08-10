@@ -90,7 +90,7 @@ public:
 			return GENERALERROR;
 		}
 
-		player->switchZone(startingLocation->getZoneName(), startingLocation->getX(), startingLocation->getX(), startingLocation->getY(), startingLocation->getCell());
+		player->switchZone(startingLocation->getZoneName(), startingLocation->getX(), startingLocation->getZ(), startingLocation->getY(), startingLocation->getCell());
 		player->setDirection(startingLocation->getHeading());
 
 		if (tutorial != NULL)

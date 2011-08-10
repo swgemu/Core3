@@ -63,8 +63,19 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (creature->getCashCredits() <= 0) {
+			creature->sendSystemMessage("@player_structure:no_money"); //You do not have any money to pay maintenance.
+			return GENERALERROR;
+		}
 
-		//Get the target.
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, target);
+
+		if (obj == NULL || !obj->isStructureObject())
+			return INVALIDTARGET;
+
+		StructureObject* structure = (StructureObject*) obj.get();
 
 		int amount = 0;
 

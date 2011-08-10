@@ -680,18 +680,19 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 	if (structureObject == NULL)
 		return 0;
 
-	//Get the deed back.
-	ManagedReference<Deed*> deed = dynamic_cast<Deed*>(zone->getZoneServer()->getObject(structureObject->getDeedObjectID()));
+	ManagedReference<SceneObject*> deed = zone->getZoneServer()->getObject(structureObject->getDeedObjectID());
+	structureObject->setDeedObjectID(0); //Set this to 0 so the deed doesn't get destroyed with the structure.
 
 	if (deed != NULL) {
-		creature->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
-
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
 		if (inventory == NULL || inventory->isContainerFull()) {
 			creature->sendSystemMessage("@player_structure:inventory_full"); //This installation can not be redeeded because your inventory does not have room to put the deed.
 			creature->sendSystemMessage("@player_structure:deed_reclaimed_failed"); //Structure destroy and deed reclaimed FAILED!
 			return session->cancelSession();
+		} else {
+			inventory->addObject(deed, -1, true);
+			creature->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.
 		}
 	} else {
 		creature->sendSystemMessage("@player_structure:structure_destroyed"); //Structured destroyed.

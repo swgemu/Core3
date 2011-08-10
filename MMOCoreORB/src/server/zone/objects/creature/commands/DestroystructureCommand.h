@@ -69,12 +69,24 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<SceneObject*> obj = creature->getZoneServer()->getObject(target);
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, target);
 
 		if (obj == NULL || !obj->isStructureObject())
 			return INVALIDTARGET;
 
 		StructureObject* structure = (StructureObject*) obj.get();
+
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == NULL)
+			return GENERALERROR;
+
+		if (!ghost->isOwnedStructure(structure)) {
+			creature->sendSystemMessage("@player_structure:destroy_must_be_owner"); //You must be the owner to destroy a structure.
+			return INVALIDTARGET;
+		}
 
 		ManagedReference<DestroyStructureSession*> session = new DestroyStructureSession(creature, structure);
 		session->initializeSession();
