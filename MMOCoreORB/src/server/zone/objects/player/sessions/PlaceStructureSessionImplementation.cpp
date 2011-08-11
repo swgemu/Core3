@@ -17,33 +17,6 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
-int PlaceStructureSessionImplementation::initializeSession() {
-	//Ensure that the deed can be placed in the current position.
-	if (deedObject == NULL)
-		return cancelSession();
-
-	TemplateManager* templateManager = TemplateManager::instance();
-
-	String serverTemplatePath = deedObject->getGeneratedObjectTemplate();
-	SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
-
-	//Ensure that enough lots exist to place the structure.
-
-	if (serverTemplate == NULL)
-		return cancelSession(); //Not a structure that is being created.
-
-	String clientTemplatePath = templateManager->getTemplateFile(serverTemplate->getClientObjectCRC());
-
-	//Add the session to the creature at this point.
-	//TODO: Should this be done here, or before the session is initialized?
-	creatureObject->addActiveSession(SessionFacadeType::PLACESTRUCTURE, _this);
-
-	EnterStructurePlacementModeMessage* espmm = new EnterStructurePlacementModeMessage(deedObject->getObjectID(), clientTemplatePath);
-	creatureObject->sendMessage(espmm);
-
-	return 0;
-}
-
 int PlaceStructureSessionImplementation::constructStructure(float x, float y, int angle) {
 	positionX = x;
 	positionY = y;
@@ -52,15 +25,13 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 	TemplateManager* templateManager = TemplateManager::instance();
 
 	String serverTemplatePath = deedObject->getGeneratedObjectTemplate();
-	SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
+	Reference<SharedStructureObjectTemplate*> serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
 
 	if (serverTemplate == NULL)
 		return cancelSession(); //Something happened, the server template is not a structure template.
 
-	//Subtract lots.
-
 	String barricadeServerTemplatePath = serverTemplate->getConstructionMarkerTemplate();
-	int constructionDuration = 100;
+	int constructionDuration = 100; //Set the duration for 100ms as a fall back if it doesn't have a barricade template.
 
 	if (!barricadeServerTemplatePath.isEmpty()) {
 		constructionBarricade = ObjectManager::instance()->createObject(barricadeServerTemplatePath.hashCode(), 0, "");
@@ -68,13 +39,12 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 		if (constructionBarricade != NULL) {
 			constructionBarricade->initializePosition(x, 0, y); //The construction barricades are always at the terrain height.
 			constructionBarricade->rotate(angle + 180); //All construction barricades need to be rotated 180 degrees for some reason.
-			constructionBarricade->insertToZone(creatureObject->getZone());
+			constructionBarricade->insertToZone(zone);
 
 			constructionDuration = serverTemplate->getLotSize() * 3000; //3 seconds per lot.
 		}
 	}
 
-	//TODO: Do the barricade removal event.
 	Task* task = new StructureConstructionCompleteTask(creatureObject);
 	task->schedule(constructionDuration);
 
@@ -87,11 +57,15 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 	String serverTemplatePath = deedObject->getGeneratedObjectTemplate();
 
-	StructureManager* structureManager = creatureObject->getZone()->getStructureManager();
+	StructureManager* structureManager = zone->getStructureManager();
 	ManagedReference<StructureObject*> structureObject = structureManager->placeStructure(creatureObject, serverTemplatePath, positionX, positionY, directionAngle);
 
 	if (structureObject == NULL) {
-		//The structure failed to create for some reason. Return the deed to the player, and refund lots.
+		ManagedReference<SceneObject*> inventory = creatureObject->getSlottedObject("inventory");
+
+		if (inventory != NULL)
+			inventory->addObject(deedObject, -1, true);
+
 		return cancelSession();
 	}
 
@@ -102,14 +76,13 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 	ManagedReference<PlayerObject*> ghost = creatureObject->getPlayerObject();
 
-	if (ghost == NULL)
-		return cancelSession();
+	if (ghost != NULL) {
+		ghost->addOwnedStructure(structureObject);
 
-	ghost->addOwnedStructure(structureObject);
+		//TODO: Create a waypoint.
 
-	//Create a waypoint.
-
-	//Create an email.
+		//TODO: Create an email.
+	}
 
 	return cancelSession(); //Cancelling the session just removes the session from the player's map.
 }

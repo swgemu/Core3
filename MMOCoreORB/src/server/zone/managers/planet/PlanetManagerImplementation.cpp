@@ -469,6 +469,10 @@ void PlanetManagerImplementation::loadPerformanceLocations() {
 void PlanetManagerImplementation::loadHuntingTargets() {
 }
 
+bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y) {
+
+}
+
 
 void PlanetManagerImplementation::loadReconLocations() {
 	info("loading recon locations ...", true);

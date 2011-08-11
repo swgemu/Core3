@@ -20,7 +20,7 @@
  *	PlaceStructureSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__ = 6,RPC_CONSTRUCTSTRUCTURE__FLOAT_FLOAT_INT_,RPC_COMPLETESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_GETDEED__};
+enum {RPC_INITIALIZESESSION__ = 6,RPC_CONSTRUCTSTRUCTURE__FLOAT_FLOAT_INT_,RPC_COMPLETESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
 
 PlaceStructureSession::PlaceStructureSession(CreatureObject* creature, Deed* deed) : Facade(DummyConstructorParameter::instance()) {
 	PlaceStructureSessionImplementation* _implementation = new PlaceStructureSessionImplementation(creature, deed);
@@ -101,19 +101,6 @@ int PlaceStructureSession::clearSession() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->clearSession();
-}
-
-Deed* PlaceStructureSession::getDeed() {
-	PlaceStructureSessionImplementation* _implementation = (PlaceStructureSessionImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETDEED__);
-
-		return (Deed*) method.executeWithObjectReturn();
-	} else
-		return _implementation->getDeed();
 }
 
 DistributedObjectServant* PlaceStructureSession::_getImplementation() {
@@ -341,6 +328,8 @@ PlaceStructureSessionImplementation::PlaceStructureSessionImplementation(Creatur
 	creatureObject = creature;
 	// server/zone/objects/player/sessions/PlaceStructureSession.idl():  		deedObject = deed;
 	deedObject = deed;
+	// server/zone/objects/player/sessions/PlaceStructureSession.idl():  		zone = creature.getZone();
+	zone = creature->getZone();
 	// server/zone/objects/player/sessions/PlaceStructureSession.idl():  		positionX = 0;
 	positionX = 0;
 	// server/zone/objects/player/sessions/PlaceStructureSession.idl():  		positionY = 0;
@@ -349,6 +338,11 @@ PlaceStructureSessionImplementation::PlaceStructureSessionImplementation(Creatur
 	directionAngle = 0;
 	// server/zone/objects/player/sessions/PlaceStructureSession.idl():  		constructionBarricade = null;
 	constructionBarricade = NULL;
+}
+
+int PlaceStructureSessionImplementation::initializeSession() {
+	// server/zone/objects/player/sessions/PlaceStructureSession.idl():  		return 0;
+	return 0;
 }
 
 int PlaceStructureSessionImplementation::cancelSession() {
@@ -361,11 +355,6 @@ int PlaceStructureSessionImplementation::cancelSession() {
 int PlaceStructureSessionImplementation::clearSession() {
 	// server/zone/objects/player/sessions/PlaceStructureSession.idl():  		return 0;
 	return 0;
-}
-
-Deed* PlaceStructureSessionImplementation::getDeed() {
-	// server/zone/objects/player/sessions/PlaceStructureSession.idl():  		return deedObject;
-	return deedObject;
 }
 
 /*
@@ -394,9 +383,6 @@ Packet* PlaceStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMet
 	case RPC_CLEARSESSION__:
 		resp->insertSignedInt(clearSession());
 		break;
-	case RPC_GETDEED__:
-		resp->insertLong(getDeed()->_getObjectID());
-		break;
 	default:
 		return NULL;
 	}
@@ -422,10 +408,6 @@ int PlaceStructureSessionAdapter::cancelSession() {
 
 int PlaceStructureSessionAdapter::clearSession() {
 	return ((PlaceStructureSessionImplementation*) impl)->clearSession();
-}
-
-Deed* PlaceStructureSessionAdapter::getDeed() {
-	return ((PlaceStructureSessionImplementation*) impl)->getDeed();
 }
 
 /*

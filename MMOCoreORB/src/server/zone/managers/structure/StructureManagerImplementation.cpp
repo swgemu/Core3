@@ -134,64 +134,55 @@ void StructureManagerImplementation::loadPlayerStructures() {
 }
 
 int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creature, uint64 deedID, float x, float y, int angle) {
-	ManagedReference<PlaceStructureSession*> session = dynamic_cast<PlaceStructureSession*>(creature->getActiveSession(SessionFacadeType::PLACESTRUCTURE));
-
-	if (session == NULL)
+	if (creature->containsActiveSession(SessionFacadeType::PLACESTRUCTURE))
 		return 1;
 
-	ManagedReference<Deed*> deed = session->getDeed();
+	ManagedReference<Deed*> deed = dynamic_cast<Deed*>(server->getZoneServer()->getObject(deedID));
+
+	Locker _lock(deed, creature);
 
 	ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
 	//Ensure that it is the correct deed, and that it is in a container in the creature's inventory.
-	//NOTE: We don't need to null check inventory, because if inventory is NULL, then the isASubChildOf will fail.
-	if (deed == NULL || deed->getObjectID() != deedID || !deed->isASubChildOf(inventory)) {
-
+	if (deed == NULL || !deed->isASubChildOf(inventory)) {
 		creature->sendSystemMessage("@player_structure:no_possession"); //You no longer are in possession of the deed for this structure. Aborting construction.
-
-		return session->cancelSession();
+		return 1;
 	}
 
 	TemplateManager* templateManager = TemplateManager::instance();
 
 	String serverTemplatePath = deed->getGeneratedObjectTemplate();
-	SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
-
-	if (serverTemplate == NULL)
-		return session->cancelSession();
+	Reference<SharedStructureObjectTemplate*> serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
 
 	//Check to see if this zone allows this structure.
-	if (!serverTemplate->isAllowedZone(zone->getZoneName())) {
+	if (serverTemplate == NULL || !serverTemplate->isAllowedZone(zone->getZoneName())) {
 		creature->sendSystemMessage("@player_structure:wrong_planet"); //That deed cannot be used on this planet.
-		return session->cancelSession();
+		return 1;
 	}
 
-	ManagedReference<SceneObject*> ghost = creature->getSlottedObject("ghost");
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-	//Player specific logic.
-	if (ghost != NULL && ghost->isPlayerObject()) {
-		PlayerObject* player = (PlayerObject*) ghost.get();
-
-		//Check that the creature has the ability required to place the structure.
+	if (ghost != NULL) {
 		String abilityRequired = serverTemplate->getAbilityRequired();
 
-		if (!abilityRequired.isEmpty() && !player->hasSkill(abilityRequired)) {
+		if (!abilityRequired.isEmpty() && !ghost->hasSkill(abilityRequired)) {
 			creature->sendSystemMessage("@player_structure:" + abilityRequired);
-			return session->cancelSession();
+			return 1;
 		}
 	}
 
 	//Validate that the structure can be placed at the given coordinates:
 		//Ensure that no other objects impede on this structures footprint, or overlap any city regions or no build areas.
-		//Make sure that it is the right zone.
 		//Make sure that the player has zoning rights in the area.
 
-	//Remove the deed from the inventory of the creature.
-	//NOTE: deed's parent cannot be NULL here because it was already checked to be in inventory.
-	deed->getParent()->removeObject(deed, true);
+	ManagedReference<PlaceStructureSession*> session = new PlaceStructureSession(creature, deed);
+	creature->addActiveSession(SessionFacadeType::PLACESTRUCTURE, session);
 
 	//Construct the structure.
 	session->constructStructure(x, y, angle);
+
+	//Remove the deed from it's container.
+	deed->getParent()->removeObject(deed, true);
 
 	return 0;
 }
@@ -357,6 +348,7 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 		return NULL;
 
 	float z = zone->getHeight(x, y);
+
 	float floraRadius = serverTemplate->getClearFloraRadius();
 	bool snapToTerrain = serverTemplate->getSnapToTerrain();
 
@@ -680,10 +672,15 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 	if (structureObject == NULL)
 		return 0;
 
-	ManagedReference<SceneObject*> deed = zone->getZoneServer()->getObject(structureObject->getDeedObjectID());
+	ManagedReference<Deed*> deed = dynamic_cast<Deed*>(zone->getZoneServer()->getObject(structureObject->getDeedObjectID()));
 	structureObject->setDeedObjectID(0); //Set this to 0 so the deed doesn't get destroyed with the structure.
 
-	if (deed != NULL) {
+	Locker _lock(deed, structureObject);
+
+	int maint = structureObject->getSurplusMaintenance();
+	int redeedCost = structureObject->getRedeedCost();
+
+	if (deed != NULL && maint >= redeedCost) {
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
 		if (inventory == NULL || inventory->isContainerFull()) {
@@ -691,7 +688,11 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 			creature->sendSystemMessage("@player_structure:deed_reclaimed_failed"); //Structure destroy and deed reclaimed FAILED!
 			return session->cancelSession();
 		} else {
-			int maint = structureObject->getSurplusMaintenance();
+			//TODO: Find a cleaner way of handling this.
+			if (deed->isBuildingDeed())
+				((BuildingDeed*) deed.get())->setSurplusMaintenance(maint - redeedCost);
+			else if (deed->isInstallationDeed())
+				((InstallationDeed*) deed.get())->setSurplusMaintenance(maint - redeedCost);
 
 			inventory->addObject(deed, -1, true);
 			creature->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.

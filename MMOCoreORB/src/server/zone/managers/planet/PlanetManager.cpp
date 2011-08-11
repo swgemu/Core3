@@ -26,7 +26,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -174,6 +174,21 @@ bool PlanetManager::isNoBuildArea(float x, float y, StringId& fullAreaName) {
 
 	} else
 		return _implementation->isNoBuildArea(x, y, fullAreaName);
+}
+
+bool PlanetManager::isBuildingPermittedAt(float x, float y) {
+	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isBuildingPermittedAt(x, y);
 }
 
 int PlanetManager::getTravelFare(const String& destinationPlanet) {
@@ -946,6 +961,9 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_LOADRECONLOCATIONS__:
 		loadReconLocations();
 		break;
+	case RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_:
+		resp->insertBoolean(isBuildingPermittedAt(inv->getFloatParameter(), inv->getFloatParameter()));
+		break;
 	case RPC_GETTRAVELFARE__STRING_:
 		resp->insertSignedInt(getTravelFare(inv->getAsciiParameter(_param0_getTravelFare__String_)));
 		break;
@@ -1048,6 +1066,10 @@ void PlanetManagerAdapter::loadHuntingTargets() {
 
 void PlanetManagerAdapter::loadReconLocations() {
 	((PlanetManagerImplementation*) impl)->loadReconLocations();
+}
+
+bool PlanetManagerAdapter::isBuildingPermittedAt(float x, float y) {
+	return ((PlanetManagerImplementation*) impl)->isBuildingPermittedAt(x, y);
 }
 
 int PlanetManagerAdapter::getTravelFare(const String& destinationPlanet) {

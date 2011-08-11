@@ -200,6 +200,8 @@ public:
 
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
+	bool isBuildingPermittedAt(float x, float y);
+
 	int getTravelFare(const String& destinationPlanet);
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
@@ -357,6 +359,8 @@ public:
 
 	bool isNoBuildArea(float x, float y, StringId& fullAreaName);
 
+	bool isBuildingPermittedAt(float x, float y);
+
 	int getTravelFare(const String& destinationPlanet);
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
@@ -471,6 +475,8 @@ public:
 	void loadHuntingTargets();
 
 	void loadReconLocations();
+
+	bool isBuildingPermittedAt(float x, float y);
 
 	int getTravelFare(const String& destinationPlanet);
 

@@ -73,6 +73,8 @@ class PlaceStructureSession extends Facade {
 		creatureObject = creature;
 		deedObject = deed;
 		
+		zone = creature.getZone();
+		
 		positionX = 0;
 		positionY = 0;
 		
@@ -81,7 +83,9 @@ class PlaceStructureSession extends Facade {
 		constructionBarricade = null;
 	}
 
-	public native int initializeSession();
+	public int initializeSession() {
+		return 0;
+	}
 	
 	public native int constructStructure(float x, float y, int angle);
 	
@@ -95,9 +99,5 @@ class PlaceStructureSession extends Facade {
 	
 	public int clearSession() {
 		return 0;
-	}
-	
-	public Deed getDeed() {
-		return deedObject;
 	}
 }

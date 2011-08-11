@@ -116,8 +116,6 @@ public:
 
 	int clearSession();
 
-	Deed* getDeed();
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -173,8 +171,6 @@ public:
 
 	int clearSession();
 
-	Deed* getDeed();
-
 	WeakReference<PlaceStructureSession*> _this;
 
 	operator const PlaceStructureSession*();
@@ -227,8 +223,6 @@ public:
 	int cancelSession();
 
 	int clearSession();
-
-	Deed* getDeed();
 
 };
 

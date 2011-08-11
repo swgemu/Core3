@@ -169,6 +169,8 @@ class PlanetManager extends ManagedService implements Logger {
 	@local
 	public native boolean isNoBuildArea(float x, float y, @dereferenced StringId fullAreaName);
 	
+	public native boolean isBuildingPermittedAt(float x, float y);
+	
 	/**
 	 * Gets the cost to travel via shuttleport/starport to the destination planet.
 	 * If the value is 0, then travel to the planet from this planet is disabled.

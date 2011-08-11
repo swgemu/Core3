@@ -63,16 +63,16 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		//Cannot place if already placing.
-		if (creature->containsActiveSession(SessionFacadeType::PLACESTRUCTURE))
-			return GENERALERROR;
+		if (creature->getCityRegion() != NULL) {
+			creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
+			return INVALIDPARAMETERS;
+		}
 
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
@@ -88,8 +88,18 @@ public:
 
 		Deed* deed = (Deed*) obj.get();
 
-		ManagedReference<PlaceStructureSession*> session = new PlaceStructureSession(creature, deed);
-		session->initializeSession();
+		TemplateManager* templateManager = TemplateManager::instance();
+
+		String serverTemplatePath = deed->getGeneratedObjectTemplate();
+		Reference<SharedObjectTemplate*> serverTemplate = templateManager->getTemplate(serverTemplatePath.hashCode());
+
+		if (serverTemplate == NULL)
+			return GENERALERROR; //Template is unknown.
+
+		String clientTemplatePath = templateManager->getTemplateFile(serverTemplate->getClientObjectCRC());
+
+		EnterStructurePlacementModeMessage* espmm = new EnterStructurePlacementModeMessage(deed->getObjectID(), clientTemplatePath);
+		creature->sendMessage(espmm);
 
 		return SUCCESS;
 	}

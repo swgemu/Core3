@@ -107,4 +107,6 @@ int DestroyStructureSessionImplementation::destroyStructure() {
 
 	StructureManager* structureManager = structureObject->getZone()->getStructureManager();
 	structureManager->redeedStructure(creatureObject);
+
+	return 0;
 }

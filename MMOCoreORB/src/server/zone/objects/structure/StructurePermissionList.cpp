@@ -18,10 +18,14 @@ StructurePermissionList::StructurePermissionList() {
 	addList("ENTRY");
 	addList("HOPPER");
 	addList("BAN");
+
+	addSerializableVariables();
 }
 
 StructurePermissionList::StructurePermissionList(const StructurePermissionList& spl) : Object() {
 	permissionLists = spl.permissionLists;
+
+	addSerializableVariables();
 }
 
 void StructurePermissionList::addSerializableVariables() {

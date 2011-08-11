@@ -15,6 +15,8 @@
 class StructurePermissionList : public Serializable {
 	VectorMap<String, SortedVector<String> > permissionLists;
 
+	void addSerializableVariables();
+
 public:
 	static const int LISTNOTFOUND = 0xFF;
 	static const int GRANTED = 0x00;
@@ -25,8 +27,6 @@ public:
 public:
 	StructurePermissionList();
 	StructurePermissionList(const StructurePermissionList& spl);
-
-	void addSerializableVariables();
 
 	/**
 	 * Sends the list to the creature so that it appears in Sui format.

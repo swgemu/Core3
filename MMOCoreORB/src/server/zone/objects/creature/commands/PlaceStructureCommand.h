@@ -64,14 +64,13 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		StringTokenizer tokenizer(arguments.toString());
-		tokenizer.setDelimeter(" ");
-
 		uint64 deedID;
 		float x, y;
 		int angle;
 
 		try {
+			UnicodeTokenizer tokenizer(arguments);
+
 			deedID = tokenizer.getLongToken();
 			x = tokenizer.getFloatToken();
 			y = tokenizer.getFloatToken();
