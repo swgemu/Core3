@@ -62,19 +62,15 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
 		StringTokenizer args(arguments.toString());
 
-		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object != NULL) {
 			if (object->isAttachment()) {
@@ -117,204 +113,60 @@ public:
 			}
 		}
 
-		ManagedReference<CreatureObject*> pl = (CreatureObject*) creature;
-		ManagedReference<PlayerObject*> ghost = pl->getPlayerObject();
-		if (!ghost->hasSkill("admin"))
-			return GENERALERROR;
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		ManagedReference<CreatureObject*> player = NULL;
-
-		if (object == NULL || !object->isPlayerCreature()) {
-
-			String firstName;
-
-			if (args.hasMoreTokens()) {
-				args.getStringToken(firstName);
-				player = server->getZoneServer()->getPlayerManager()->getPlayer(
-								firstName);
-			}
-
-		} else {
-			player = (CreatureObject*) object.get();
+		if (ghost == NULL || !ghost->isPrivileged()) {
+			creature->sendSystemMessage("@error_message:insufficient_permissions"); //You do not have sufficient permissions to perform the requested action.
+			return INSUFFICIENTPERMISSION;
 		}
-
-		if (player == NULL) {
-			creature->sendSystemMessage("Invalid target for GiveItem command");
-			return GENERALERROR;
-		}
-
-		if(!args.hasMoreTokens()) {
-			creature->sendSystemMessage("Invalid Parameters");
-			return INVALIDPARAMETERS;
-		}
-
 
 		try {
+			String commandType;
+			args.getStringToken(commandType);
 
-			String itemtype;
-			args.getStringToken(itemtype);
+			if (commandType.beginsWith("object")) {
+				Reference<SharedObjectTemplate*> shot = TemplateManager::instance()->getTemplate(commandType.hashCode());
 
-			if (itemtype.toLowerCase() == "resource") {
-				if (!args.hasMoreTokens()) {
-					creature->sendSystemMessage( "Invalid Parameters, missing resource name");
+				if (shot == NULL || !shot->isSharedTangibleObjectTemplate()) {
+					creature->sendSystemMessage("Templates must be tangible objects, or descendants of tangible objects, only.");
 					return INVALIDPARAMETERS;
 				}
 
-				String resname;
-				args.getStringToken(resname);
+				ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+				if (inventory == NULL || inventory->isContainerFull()) {
+					creature->sendSystemMessage("Your inventory is full, so the item could not be created.");
+					return INVALIDPARAMETERS;
+				}
+
+				ManagedReference<SceneObject*> object = server->getZoneServer()->createObject(shot->getServerObjectCRC(), 1);
+
+				if (object == NULL) {
+					creature->sendSystemMessage("The object '" + commandType + "' could not be created because the template could not be found.");
+					return INVALIDPARAMETERS;
+				}
+
+				inventory->addObject(object, -1, true);
+			} else if (commandType.beginsWith("resource")) {
+				String resourceName;
+				args.getStringToken(resourceName);
 
 				int quantity = 100000;
 
-				if (args.hasMoreTokens()) {
+				if (args.hasMoreTokens())
 					quantity = args.getIntToken();
-				}
 
 				ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
-				resourceManager->givePlayerResource(player, resname, quantity);
-
-			} else if (itemtype.toLowerCase() == "object") {
-				if (!args.hasMoreTokens()) {
-					creature->sendSystemMessage( "Usage: /giveItem object path/to/object.iff");
-					return INVALIDPARAMETERS;
-				}
-
-				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-				String object;
-				args.getStringToken(object);
-
-				if (inventory == NULL)
-					return GENERALERROR;
-
-				Locker inventoryLocker(inventory);
-
-				SceneObject* item = player->getZoneServer()->createObject(object.hashCode(), 1);
-
-				if (item == NULL) {
-					creature->sendSystemMessage("There was an error creating the requested item.");
-					return GENERALERROR;
-				}
-
-				inventory->addObject(item, -1);
-				item->sendTo(player, true);
-
-			} else if (itemtype.toLowerCase() == "attachment") { // Admins spawn CA/AA with skillMods -- TESTING
-				String errorMsg = "Usage: /giveItem <target> <attachment> <CA/AA> <SkillMod> <Value>";
-				if (!args.hasMoreTokens()) {
-					creature->sendSystemMessage(errorMsg);
-					return INVALIDPARAMETERS;
-				}
-
-				String attachmentType;
-				args.getStringToken(attachmentType);
-				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-				if (inventory == NULL)
-					return GENERALERROR;
-
-				Locker inventoryLocker(inventory);
-
-				if (attachmentType.toLowerCase() == "ca") {
-					SceneObject* clothing = player->getZoneServer()->createObject(String("object/tangible/gem/clothing.iff").hashCode(), 1);
-
-					if (clothing == NULL || !clothing->isAttachment())
-						return GENERALERROR;
-
-					Attachment* attachment = (Attachment*) clothing;
-
-					if (args.hasMoreTokens()) {
-						String skillMod;
-						int skillModValue = 0;
-						args.getStringToken(skillMod);
-						if (args.hasMoreTokens())
-							skillModValue = args.getIntToken();
-
-						attachment->setSkillModCount(1);
-						attachment->addSkillMod(skillMod, skillModValue);
-
-						if (args.hasMoreTokens()) {
-							args.getStringToken(skillMod);
-							skillModValue = 0;
-							if (args.hasMoreTokens())
-								skillModValue = args.getIntToken();
-
-							attachment->setSkillModCount(2);
-							attachment->addSkillMod(skillMod, skillModValue);
-
-							if (args.hasMoreTokens()) {
-								args.getStringToken(skillMod);
-								skillModValue = 0;
-								if (args.hasMoreTokens())
-									skillModValue = args.getIntToken();
-
-								attachment->setSkillModCount(3);
-								attachment->addSkillMod(skillMod, skillModValue);
-							}
-						}
-					}
-
-					inventory->addObject(attachment, -1);
-					attachment->sendTo(player, true);
-					return SUCCESS;
-
-
-				} else if (attachmentType.toLowerCase() == "aa") {
-					SceneObject* armor = player->getZoneServer()->createObject(String("object/tangible/gem/armor.iff").hashCode(), 1);
-
-					if (armor == NULL || !armor->isAttachment())
-						return GENERALERROR;
-
-					Attachment* attachment = (Attachment*) armor;
-
-					if (args.hasMoreTokens()) {
-						String skillMod;
-						int skillModValue = 0;
-						args.getStringToken(skillMod);
-						if (args.hasMoreTokens())
-							skillModValue = args.getIntToken();
-
-						attachment->setSkillModCount(1);
-						attachment->addSkillMod(skillMod, skillModValue);
-
-						if (args.hasMoreTokens()) {
-							args.getStringToken(skillMod);
-							skillModValue = 0;
-							if (args.hasMoreTokens())
-								skillModValue = args.getIntToken();
-
-							attachment->setSkillModCount(2);
-							attachment->addSkillMod(skillMod, skillModValue);
-
-							if (args.hasMoreTokens()) {
-								args.getStringToken(skillMod);
-								skillModValue = 0;
-								if (args.hasMoreTokens())
-									skillModValue = args.getIntToken();
-
-								attachment->setSkillModCount(3);
-								attachment->addSkillMod(skillMod, skillModValue);
-							}
-
-						}
-
-					}
-
-					inventory->addObject(attachment, -1);
-					attachment->sendTo(player, true);
-					return SUCCESS;
-
-				} else {
-					creature->sendSystemMessage(errorMsg);
-					return INVALIDPARAMETERS;
-				}
+				resourceManager->givePlayerResource(creature, resourceName, quantity);
 			}
-
-			return SUCCESS;
-
 		} catch (Exception& e) {
-			creature->sendSystemMessage(
-					"Invalid Parameters, missing resource name");
+			creature->sendSystemMessage("SYNTAX: /giveItem <objectTemplatePath>");
+			creature->sendSystemMessage("SYNTAX: /giveItem <resource> <resourceName> [<quantity>]");
+
 			return INVALIDPARAMETERS;
 		}
+
+		return SUCCESS;
 	}
 
 };

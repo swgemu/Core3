@@ -462,6 +462,10 @@ public:
 		return false;
 	}
 
+	virtual bool isSharedTangibleObjectTemplate() {
+		return false;
+	}
+
 	virtual bool isSharedBuildingObjectTemplate() {
 		return false;
 	}

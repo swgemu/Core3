@@ -168,6 +168,10 @@ public:
     Vector<Reference<ResourceWeight* > >* getResourceWeights() {
     	return resourceWeights;
     }
+
+    bool isSharedTangibleObjectTemplate() {
+    	return true;
+    }
 };
 
 
