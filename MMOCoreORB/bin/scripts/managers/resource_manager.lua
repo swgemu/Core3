@@ -84,22 +84,24 @@ maxSpawnQuantity = 0
 --  Resources included in the JTL update
 jtlresources = "steel_bicorbantium,steel_arveshian,aluminum_perovskitic,copper_borocarbitic,fiberplast_gravitonic,gas_reactive_organometallic,ore_siliclastic_fermionic,radioactive_polymetric"
 
-minimumpoolincludes = "steel,copper,aluminum,ore_extrusive,ore_intrusive,ore_carbonate,gemstone_crystalline,gemstone_armophous,radioactive_known,fuel_petrochem_solid,fuel_petrochem_liquid,petrochem_inert_polymer,petrochem_inert_polymer,petrochem_inert_lubricating_oil,petrochem_inert_lubricating_oil"
-minimumpoolexcludes = jtlresources
   -- The minimum pool must have one of each of the items listed above spawned at all times.
   -- The minimum pool must never include the items in the excludes
+--minimumpoolincludes = "steel,copper,aluminum,ore_extrusive,ore_intrusive,ore_carbonate,gemstone_crystalline,gemstone_armophous,radioactive_known,fuel_petrochem_solid,fuel_petrochem_liquid,petrochem_inert_polymer,petrochem_inert_polymer,petrochem_inert_lubricating_oil,petrochem_inert_lubricating_oil"
+  -- The statement below spawn all resources all the time for development
+minimumpoolincludes = "ore_intrusive_derillium,ore_intrusive_oridium,ore_intrusive_dylinium,ore_intrusive_hollinium,ore_intrusive_ionite,ore_intrusive_katrium,ore_sedimentary_unknown,ore_carbonate_alantium,ore_carbonate_barthierium,ore_carbonate_chromite,ore_carbonate_frasium,ore_carbonate_lommite,ore_carbonate_ostrine,ore_carbonate_varium,ore_carbonate_zinsiam,ore_siliclastic_ardanium,ore_siliclastic_cortosis,ore_siliclastic_crism,ore_siliclastic_malab,ore_siliclastic_robindun,ore_siliclastic_fermionic,ore_siliclastic_tertian,gemstone_unknown,gemstone_armophous,armophous_bospridium,armophous_baradium,armophous_regvis,armophous_plexite,armophous_rudic,armophous_ryll,armophous_sedrellium,armophous_stygium,armophous_vendusii,armophous_baltaran,gemstone_crystalline,crystalline_byrothsis,crystalline_gallinorian,crystalline_green_diamond,crystalline_kerol_firegem,crystalline_seafah_jewel,crystalline_sormahil_firegem,crystalline_laboi_mineral_crystal,crystalline_vertex,gas_reactive_unknown,gas_reactive_eleton,gas_reactive_irolunn,gas_reactive_methane,gas_reactive_orveth,gas_reactive_sig,gas_reactive_skevon,gas_reactive_organometallic,gas_reactive_tolium,gas_inert_unknown,gas_inert_hydron3,gas_inert_malium,gas_inert_bilal,gas_inert_corthel,gas_inert_culsion,gas_inert_dioxis,gas_inert_hurlothrombic,gas_inert_kaylon,gas_inert_korfaise,gas_inert_methanagen,gas_inert_mirth,gas_inert_obah,gas_inert_rethin"
+minimumpoolexcludes = jtlresources
 
+  -- The random pool must have one of each of the items listed above spawned at all times.
+  -- The random pool must never include the items in the excludes
 randompoolincludes = "mineral,gas,chemical,water"
 randompoolexcludes = jtlresources..",iron,fiberplast"
 randompoolsize = 27
-  -- The random pool must have one of each of the items listed above spawned at all times.
-  -- The random pool must never include the items in the excludes
-
+  
+  -- The fixed pool must have one of each of the items listed above spawned at all times.
 fixedpoolincludes = jtlresources..",iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron"
 fixedpoolexcludes = ""
-  -- The fixed pool must have one of each of the items listed above spawned at all times.
 
+  -- The native pool must have one of each of the items listed above spawned at all times, but planet restricted.
 nativepoolincludes = "milk_domesticated,milk_wild,meat_domesticated,meat_wild,meat_herbivore,meat_carnivore,meat_reptillian,meat_avian,meat_egg,meat_insect,seafood_fish,seafood_crustacean,seafood_mollusk,bone,bone_avian,bone_horn,hide_wooly,hide_bristley,hide_leathery,hide_scaley,corn_domesticated,corn_wild,rice_domesticated,rice_wild,oats_domesticated,oats_wild,wheat_domesticated,wheat_wild,vegetable_greens,vegetable_beans,vegetable_tubers,vegetable_fungi,fruit_fruits,fruit_berries,fruit_flowers,wood_deciduous,softwood,softwood_evergreen,energy_renewable_unlimited_solar,energy_renewable_unlimited_wind,fiberplast"
 nativepoolexcludes = ""
-  -- The native pool must have one of each of the items listed above spawned at all times, but planet restricted.
 
