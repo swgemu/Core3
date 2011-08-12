@@ -63,62 +63,58 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return INVALIDPARAMETERS;
-
-		CreatureObject* player = (CreatureObject*) creature;
-		player->sendSystemMessage("@error_message:sys_eject_request"); //Processing eject request...
-
+		creature->sendSystemMessage("@error_message:sys_eject_request"); //Processing eject request...
 
 		/*
 string/en/error_message.stf	122	sys_eject_fail_move	The ejection attempt failed because you moved.
 		 */
 
-		if (player->getParent() != NULL) {
-			player->sendSystemMessage("@error_message:sys_eject_fail_contained"); //The ejection attempt failed because you are inside a building.
+		if (creature->getParent() != NULL) {
+			creature->sendSystemMessage("@error_message:sys_eject_fail_contained"); //The ejection attempt failed because you are inside a building.
 			return GENERALERROR;
 		}
 
-		ManagedReference<Zone*> zone = player->getZone();
+		ManagedReference<Zone*> zone = creature->getZone();
 
 		if (zone == NULL)
 			return GENERALERROR;
 
-		float x = player->getPositionX();
-		float y = player->getPositionY();
+		float x = creature->getPositionX();
+		float y = creature->getPositionY();
 		float terrainZ = zone->getHeight(x, y);
 
-		if (terrainZ == player->getPositionZ()) {
-			player->sendSystemMessage("@error_message:sys_eject_fail_ground"); //The ejection attempt failed because you were already on the ground.
+		if (terrainZ == creature->getPositionZ()) {
+			creature->sendSystemMessage("@error_message:sys_eject_fail_ground"); //The ejection attempt failed because you were already on the ground.
 			return GENERALERROR;
 		}
 
 		Locker _lock(zone);
+
 		//Find nearest building.
 		ManagedReference<BuildingObject*> closestBuilding = NULL;
 		float minRange = 16000.f;
 
-		for (int i = 0; i < player->inRangeObjectCount(); ++i) {
-			ManagedReference<SceneObject*> obj = (SceneObject*) player->getInRangeObject(i);
+		for (int i = 0; i < creature->inRangeObjectCount(); ++i) {
+			ManagedReference<SceneObject*> obj = (SceneObject*) creature->getInRangeObject(i);
 
 			if (obj == NULL || !obj->isBuildingObject())
 				continue;
 
-			float objRange = obj->getDistanceTo(player);
+			float objRange = obj->getDistanceTo(creature);
 
-			if (objRange < minRange)
+			if (objRange < minRange) {
 				closestBuilding = (BuildingObject*) obj.get();
+				minRange = objRange;
+			}
 		}
 
 		if (closestBuilding == NULL) {
-			player->sendSystemMessage("@error_message:sys_eject_fail_proximity"); //The eject attempt failed because there isn't a building nearby.
+			creature->sendSystemMessage("@error_message:sys_eject_fail_proximity"); //The eject attempt failed because there isn't a building nearby.
 			return GENERALERROR;
 		}
 
-		Vector3 pEject = closestBuilding->getEjectionPoint();
-		player->teleport(pEject.getX(), pEject.getZ(), pEject.getY(), 0);
-
-		player->sendSystemMessage("@error_message:sys_eject_success"); //You have been moved to the nearest building's ejection point.
+		closestBuilding->ejectObject(creature);
+		creature->sendSystemMessage("@error_message:sys_eject_success"); //You have been moved to the nearest building's ejection point.
 
 		return SUCCESS;
 	}

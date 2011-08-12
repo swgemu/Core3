@@ -14,6 +14,9 @@
 
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
+#include "server/zone/templates/appearance/FloorMesh.h"
+#include "server/zone/templates/appearance/PathNode.h"
+#include "server/zone/templates/appearance/PathGraph.h"
 #include "server/zone/objects/tangible/terminal/structure/StructureTerminal.h"
 
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
@@ -24,6 +27,7 @@
 #include "server/zone/packets/tangible/TangibleObjectMessage6.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/objects/scene/components/ContainerComponent.h"
+#include "server/zone/objects/scene/WorldCoordinates.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
@@ -32,10 +36,12 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	setLoggingName("BuildingObject");
 }
 
-void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
+void BuildingObjectImplementation::loadTemplateData(
+		SharedObjectTemplate* templateData) {
 	StructureObjectImplementation::loadTemplateData(templateData);
 
-	SharedBuildingObjectTemplate* buildingData = dynamic_cast<SharedBuildingObjectTemplate*>(templateData);
+	SharedBuildingObjectTemplate* buildingData =
+			dynamic_cast<SharedBuildingObjectTemplate*> (templateData);
 
 	containerVolumeLimit = 0xFFFFFFFF;
 
@@ -53,13 +59,15 @@ void BuildingObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	publicStructure = buildingData->isPublicStructure();
 }
 
-void BuildingObjectImplementation::sendChangeNamePromptTo(CreatureObject* player) {
+void BuildingObjectImplementation::sendChangeNamePromptTo(
+		CreatureObject* player) {
 	if (signObject == NULL) {
 		StructureObjectImplementation::sendChangeNamePromptTo(player);
 		return;
 	}
 
-	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player,
+			SuiWindowType::OBJECT_NAME, 0x00);
 	inputBox->setPromptTitle("@sui:set_name_title");
 	inputBox->setPromptText("@sui:set_name_prompt");
 	inputBox->setUsingObject(signObject);
@@ -74,7 +82,8 @@ void BuildingObjectImplementation::createContainerComponent() {
 	TangibleObjectImplementation::createContainerComponent();
 }
 
-void BuildingObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
+void BuildingObjectImplementation::setCustomObjectName(
+		const UnicodeString& name, bool notifyClient) {
 	if (signObject != NULL) {
 		signObject->setCustomObjectName(name, notifyClient);
 	} else {
@@ -112,7 +121,8 @@ int BuildingObjectImplementation::getCurrentNumerOfPlayerItems() {
 
 void BuildingObjectImplementation::createCellObjects() {
 	for (int i = 0; i < totalCellNumber; ++i) {
-		SceneObject* newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
+		SceneObject* newCell = getZoneServer()->createObject(0xAD431713,
+				getPersistenceLevel());
 
 		if (!addObject(newCell, -1))
 			error("could not add cell");
@@ -156,30 +166,45 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 Vector3 BuildingObjectImplementation::getEjectionPoint() {
 	/*
+	Vector3 ejectionPoint = getWorldPosition();
+
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
 	if (portalLayout == NULL)
-		return;
+		return ejectionPoint;
 
-	FloorMesh* floorMesh = portalLayout->getFloorMesh(0);
+	FloorMesh* fmOutside = portalLayout->getFloorMesh(0);
 
-	if (floorMesh == NULL)
-		return;
-	 */
+	if (fmOutside == NULL)
+		return ejectionPoint;
 
-	Vector3 ejectionPoint = getWorldPosition();
+	PathGraph* pgOutside = fmOutside->getPathGraph();
+	Vector<PathNode*> pnOutside = pgOutside->getGlobalNodes();
 
-	//TODO: Redo with portal layouts and floor meshes.
-	/*float x = ejectionPoint.getX();
-	float y = ejectionPoint.getY();
+	FloorMesh* fmInside = portalLayout->getFloorMesh(1);
 
-	float halfLength = ((float) (length) * 8.0f) / 2.0f; //Half the length of the structure in meters.
-	float radians = getDirection()->getRadians() + Math::deg2rad(270); //Ejection point should be on south side of structure.
+	if (fmInside == NULL)
+		return ejectionPoint;
 
-	ejectionPoint.setX(x + (Math::cos(radians) * halfLength));
-	ejectionPoint.setY(y + (Math::sin(radians) * halfLength));*/
+	PathGraph* pgInside = fmInside->getPathGraph();
 
-	return ejectionPoint;
+	for (int i = 0; i < pnOutside.size(); ++i) {
+		PathNode* outsideNode = pnOutside.get(i);
+		PathNode* insideNode = pgInside->getNode(outsideNode->getGlobalGraphNodeID());
+
+		if (insideNode != NULL) {
+			ejectionPoint = outsideNode->getPosition() + Vector3::UNIT_Y;
+			WorldCoordinates coords(ejectionPoint, cells.get(0));
+			return coords.getWorldPosition();
+		}
+	}
+
+	return ejectionPoint;*/
+
+	if (signObject == NULL)
+		return getWorldPosition();
+
+	return signObject->getPosition();
 }
 
 void BuildingObjectImplementation::removeFromZone() {
@@ -195,7 +220,8 @@ void BuildingObjectImplementation::removeFromZone() {
 
 			cell->removeObject(obj);
 
-			VectorMap<uint64, ManagedReference<SceneObject*> >* cont = cell->getContainerObjects();
+			VectorMap<uint64, ManagedReference<SceneObject*> >* cont =
+					cell->getContainerObjects();
 
 			//cont->drop(obj->getObjectID());
 
@@ -288,7 +314,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 			SceneObject* child = cell->getContainerObject(j);
 
 			/*if (childStub->isCreatureObject()
-					|| (scno->getRootParent() == _this) && (scno->isInRange(childStub, 128))) {*/
+			 || (scno->getRootParent() == _this) && (scno->isInRange(childStub, 128))) {*/
 
 			if (isStaticBuilding()) {
 				child->addInRangeObject(obj, false);
@@ -339,17 +365,19 @@ void BuildingObjectImplementation::addCell(CellObject* cell) {
 	cell->setCellNumber(cells.size());
 
 	/*if (!addObject(cell, -1))
-		error("could not add cell");*/
+	 error("could not add cell");*/
 }
 
-void BuildingObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	StructureObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
-
+void BuildingObjectImplementation::destroyObjectFromDatabase(
+		bool destroyContainedObjects) {
+	StructureObjectImplementation::destroyObjectFromDatabase(
+			destroyContainedObjects);
 
 	if (!destroyContainedObjects)
 		return;
 
-	ManagedReference<SceneObject*> deed = getZoneServer()->getObject(deedObjectID);
+	ManagedReference<SceneObject*> deed = getZoneServer()->getObject(
+			deedObjectID);
 
 	if (deed != NULL)
 		deed->destroyObjectFromDatabase(true);
@@ -374,6 +402,10 @@ void BuildingObjectImplementation::broadcastCellPermissions() {
 void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creature) {
 	bool allowEntry = isAllowedEntry(creature->getFirstName());
 
+	//If they are inside, and aren't allowed to be, then kick them out!
+	if (!allowEntry && creature->getRootParent() == _this)
+		ejectObject(creature);
+
 	for (int i = 0; i < cells.size(); ++i) {
 		ManagedReference<CellObject*> cell = cells.get(i);
 
@@ -383,8 +415,11 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 		BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
 		creature->sendMessage(perm);
 	}
+}
 
-	//TODO: Check if they are inside the building. If so, then eject them.
+void BuildingObjectImplementation::ejectObject(SceneObject* obj) {
+	Vector3 ejectionPoint = getEjectionPoint();
+	obj->teleport(ejectionPoint.getX(), ejectionPoint.getZ(), ejectionPoint.getY());
 }
 
 void BuildingObjectImplementation::onEnter(CreatureObject* player) {
@@ -394,37 +429,13 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	if (isStaticObject())
 		return;
 
-	Vector3 ejectionPoint = getEjectionPoint();
-	float x = ejectionPoint.getX();
-	float y = ejectionPoint.getY();
-
-	if (isinf(x) || isnan(x) || isinf(y) || isnan(y))
-		return;
-
-	float z = getZone()->getHeight(x, y);
-
-	//Locker _locker(zone);
-
-	if (isOnBanList(player->getFirstName())) {
-		player->teleport(x, z, y, 0);
-		return;
-	}
-
-	if (!isPublicStructure()) {
-		if (!isOnEntryList(player->getFirstName()))
-			player->teleport(x, z, y, 0);
-	} else {
-		if (getAccessFee() > 0 && !isOnAccessList(player)) {
-			//Send access fee popup menu.
-
-			//Kick the player out.
-			player->teleport(x, z, y, 0);
-		}
-	}
+	//If they are inside, and aren't allowed to be, then kick them out!
+	if (!isAllowedEntry(player->getFirstName()))
+		ejectObject(player);
 }
 
 uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
-	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
+	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*> (templateObject.get());
 
 	if (ssot == NULL)
 		return 0;
@@ -438,11 +449,13 @@ uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
 	return MIN(MAXPLAYERITEMS, lots * 100);
 }
 
-bool BuildingObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
+bool BuildingObjectImplementation::addObject(SceneObject* object,
+		int containmentType, bool notifyClient) {
 	if (object->isCellObject()) {
 		addCell((CellObject*) object);
 		//return true;
 	}
 
-	return StructureObjectImplementation::addObject(object, containmentType, notifyClient);
+	return StructureObjectImplementation::addObject(object, containmentType,
+			notifyClient);
 }

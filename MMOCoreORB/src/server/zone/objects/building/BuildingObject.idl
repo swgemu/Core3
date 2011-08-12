@@ -162,6 +162,12 @@ class BuildingObject extends StructureObject {
 	@dereferenced
 	public native Vector3 getEjectionPoint();
 	
+	/**
+	 * Ejects an object to this building's ejection point.
+	 * @param obj The object to eject.
+	 */
+	public native void ejectObject(SceneObject obj);
+	
 	public native void removeFromZone();
 	
 	/**

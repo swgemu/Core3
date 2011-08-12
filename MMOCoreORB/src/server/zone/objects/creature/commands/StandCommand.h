@@ -65,13 +65,12 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		StringTokenizer args(arguments.toString());
+		//StringTokenizer args(arguments.toString());
 
 		creature->setPosture(CreaturePosture::UPRIGHT);
 
 		if (creature->isDizzied())
 			creature->queueDizzyFallEvent();
-
 
 		return SUCCESS;
 	}

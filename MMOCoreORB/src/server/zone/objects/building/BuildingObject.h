@@ -172,6 +172,8 @@ public:
 
 	Vector3 getEjectionPoint();
 
+	void ejectObject(SceneObject* obj);
+
 	void removeFromZone();
 
 	void notifyLoadFromDatabase();
@@ -307,6 +309,8 @@ public:
 
 	Vector3 getEjectionPoint();
 
+	void ejectObject(SceneObject* obj);
+
 	void removeFromZone();
 
 	void notifyLoadFromDatabase();
@@ -437,6 +441,8 @@ public:
 	bool isAllowedEntry(const String& firstName);
 
 	int notifyStructurePlaced(CreatureObject* player);
+
+	void ejectObject(SceneObject* obj);
 
 	void removeFromZone();
 
