@@ -99,6 +99,11 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 			chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, creatureObject->getFirstName(), waypointObject);
 		}
+
+		if (structureObject->isBuildingObject()) {
+			BuildingObject* building = (BuildingObject*) structureObject.get();
+			building->setCustomObjectName(creatureObject->getFirstName() + "'s House", true); //Set the house sign.
+		}
 	}
 
 	return cancelSession(); //Canceling the session just removes the session from the player's map.

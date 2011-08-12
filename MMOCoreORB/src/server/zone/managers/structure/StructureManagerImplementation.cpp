@@ -368,7 +368,7 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 	w /= 2;
 
 	if (floraRadius > 0 && !snapToTerrain)
-		z = terrainManager->getHighestHeight(x - w, y - l, x + w, y + l, 1);
+		z = terrainManager->getHighestHeight(x - w, y - l, x + w, y + l, 1) + 2.f; //Add a little extra to help with terrain issues.
 
 	ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(structureTemplatePath.hashCode(), 1, "playerstructures");
 

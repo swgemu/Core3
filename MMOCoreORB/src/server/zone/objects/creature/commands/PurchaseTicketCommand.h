@@ -67,12 +67,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
-		CreatureObject* player = (CreatureObject*) creature;
-
-		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
 		if (inventory == NULL)
 			return GENERALERROR;
@@ -85,7 +80,7 @@ public:
 
 		bool roundTrip;
 
-		StringTokenizer tokenizer(arguments.toString());
+		UnicodeTokenizer tokenizer(arguments);
 
 		try {
 			tokenizer.getStringToken(departurePlanet);
@@ -102,18 +97,36 @@ public:
 		arrivalPlanet = arrivalPlanet.replaceAll("_", " ");
 		arrivalPoint = arrivalPoint.replaceAll("_", " ");
 
-		ManagedReference<Zone*> zone = player->getZone();
-
-		//TODO:
-		//@travel:no_location_found No location was found for your destination.
+		ManagedReference<Zone*> zone = creature->getZone();
 
 		//Check to see if the departure planet is the same planet the player is on.
 		if (zone == NULL || zone->getZoneName() != departurePlanet)
 			return GENERALERROR;
 
+		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
 		//Check to see if this point can be reached from this location.
-		if (!zone->getPlanetManager()->isTravelToLocationPermitted(departurePoint, arrivalPlanet, arrivalPoint))
+		if (!planetManager->isTravelToLocationPermitted(departurePoint, arrivalPlanet, arrivalPoint))
 			return GENERALERROR;
+
+		int fare = planetManager->getTravelFare(departurePlanet);
+
+		if (creature->getCashCredits() <= fare) {
+			ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(creature, 0);
+			suiBox->setPromptTitle("");
+			suiBox->setPromptText("You do not have sufficient funds for that.");
+
+			creature->sendMessage(suiBox->generateMessage());
+			return GENERALERROR;
+		}
+
+		creature->substractCashCredits(fare);
+
+		StringIdChatParameter params("@base_player:prose_pay_acct_success"); //You successfully make a payment of %DI credits to %TO.
+		params.setDI(fare);
+		params.setTO("@money/acct_n:travelsystem"); //the Galactic Travel Commission
+
+		creature->sendSystemMessage(params);
 
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);
 
@@ -132,13 +145,13 @@ public:
 		ticket->setArrivalPoint(arrivalPoint);
 
 		inventory->addObject(ticket, -1);
-		ticket->sendTo(player, true);
+		ticket->sendTo(creature, true);
 
-		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, 0);
+		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(creature, 0);
 		suiBox->setPromptTitle("");
 		suiBox->setPromptText("@travel:ticket_purchase_complete"); //Ticket purchase complete
 
-		player->sendMessage(suiBox->generateMessage());
+		creature->sendMessage(suiBox->generateMessage());
 
 		return SUCCESS;
 	}
