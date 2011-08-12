@@ -55,12 +55,6 @@ public:
 
         insertByte((byte) allowEntry); //0 denies, 1 allows.
         insertLong(coId);
-
-        //setSize();
-
-		/*StringBuffer msg;
-		msg << hex << "UpdateCellPermissionsMessage [CellObjectID = " << coId << "]\n";
-		System::out << msg.toString();*/
 	}
 };
 #endif /*UPDATECELLPERMISSIONSMESSAGE_H_*/

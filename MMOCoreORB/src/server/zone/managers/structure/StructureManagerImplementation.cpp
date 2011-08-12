@@ -381,6 +381,8 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 	}
 
 	StructureObject* structureObject = (StructureObject*) obj.get();
+	structureObject->setOwnerObjectID(creature->getObjectID());
+	structureObject->grantPermission("ADMIN", creature->getFirstName());
 
 	if (structureObject->isBuildingObject())
 		((BuildingObject*) structureObject)->createCellObjects();
@@ -522,122 +524,6 @@ int StructureManagerImplementation::declareResidence(CreatureObject* player, Str
 	//Just need to save the players declared residence
 	player->updateToDatabaseWithoutChildren();
 	*/
-
-	return 0;
-}
-
-int StructureManagerImplementation::changePrivacy(CreatureObject* player, StructureObject* structureObject) {
-	SharedBuildingObjectTemplate* sbot = dynamic_cast<SharedBuildingObjectTemplate*>(templateManager->getTemplate(structureObject->getServerObjectCRC()));
-
-	if (sbot != NULL && sbot->isAlwaysPublic()) {
-		player->sendSystemMessage("@player_structure:force_public"); //This structure is always public.
-		return 0;
-	}
-
-	// Check for a vendor before allowing the building to be set to private.
-	if (structureObject->isPublicStructure() && structureObject->isBuildingObject()) {
-		BuildingObject* buildo = (BuildingObject*) structureObject;
-
-		for (int i = 0; i < buildo->getTotalCellNumber(); ++i) {
-			CellObject* cell = buildo->getCell(i);
-			if (cell == NULL)
-				continue;
-
-			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-				if (cell->getContainerObject(j)->isVendor()) {
-					player->sendSystemMessage("@player_structure:vendor_no_private"); //A structure hosting a vendor cannot be declared private.
-					return 0;
-				}
-			}
-		}
-	}
-
-	structureObject->setPublicStructure(!structureObject->isPublicStructure());
-
-	if (structureObject->isPublicStructure())
-		player->sendSystemMessage("@player_structure:structure_now_public"); //This structure is now public
-	else
-		player->sendSystemMessage("@player_structure:structure_now_private"); //This structure is now private
-
-	if (!structureObject->isBuildingObject())
-		return 0;
-
-	ManagedReference<BuildingObject*> buildingObject = (BuildingObject*) structureObject;
-
-	bool allowEntry = buildingObject->isPublicStructure();
-	int totalCells = buildingObject->getTotalCellNumber();
-
-	Vector<BaseMessage*> cellMessages;
-
-	for (int i = 0; i < totalCells; ++i) {
-		ManagedReference<CellObject*> cell = buildingObject->getCell(i);
-
-		if (cell == NULL)
-			continue;
-
-		UpdateCellPermissionsMessage* cellMessage = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
-		cellMessages.add(cellMessage);
-	}
-
-	Locker _locker(zone);
-
-	int inRangeObjectCount = buildingObject->inRangeObjectCount();
-
-	//All players outside, that are in range...
-	for (int i = 0; i < inRangeObjectCount; ++i) {
-		ManagedReference<SceneObject*> obj = (SceneObject*) buildingObject->getInRangeObject(i);;
-
-		if (obj == NULL || !obj->isPlayerCreature() || obj == player)
-			continue;
-
-
-		CreatureObject* targetPlayer = (CreatureObject*) obj.get();
-
-		//Permissions shouldnt change for the player if they are on the entry, access, or ban list.
-		if (buildingObject->isOnBanList(targetPlayer->getFirstName()))
-			continue;
-
-		if (buildingObject->isOnEntryList(targetPlayer->getFirstName()))
-			continue;
-
-		if (buildingObject->isOnAccessList(targetPlayer))
-			continue;
-
-		for (int j = 0; j < cellMessages.size(); ++j)
-			targetPlayer->sendMessage(cellMessages.get(j)->clone());
-	}
-
-	//Delete the messages...
-	for (int i = 0; i < cellMessages.size(); ++i) {
-		BaseMessage* msg = cellMessages.get(i);
-		delete msg;
-		msg = NULL;
-	}
-
-	_locker.release();
-
-	//Send updates out to all players inside the building...
-	for (int i = 0; i < buildingObject->getTotalCellNumber(); ++i) {
-		ManagedReference<CellObject*> cellObject = (CellObject*) buildingObject->getCell(i);
-
-		if (cellObject == NULL)
-			continue;
-
-		int cellObjectCount = cellObject->getContainerObjectsSize();
-
-		for (int j = cellObjectCount - 1; j >= 0; --j) {
-			ManagedReference<SceneObject*> obj = cellObject->getContainerObject(j);
-
-			if (obj == NULL || !obj->isPlayerCreature() || obj == player)
-				continue;
-
-			CreatureObject* targetPlayer = (CreatureObject*) obj.get();
-
-			Locker _locker(targetPlayer);
-
-			buildingObject->updateCellPermissionsTo(targetPlayer);
-		}
-	}
 
 	return 0;
 }

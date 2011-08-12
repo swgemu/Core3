@@ -186,6 +186,8 @@ public:
 
 	bool isPublicStructure();
 
+	bool isPrivateStructure();
+
 	void setOwnerObjectID(unsigned long long objectID);
 
 	void setDeedObjectID(unsigned long long deedID);
@@ -335,6 +337,8 @@ public:
 
 	virtual bool isPublicStructure();
 
+	virtual bool isPrivateStructure();
+
 	void setOwnerObjectID(unsigned long long objectID);
 
 	void setDeedObjectID(unsigned long long deedID);
@@ -467,6 +471,8 @@ public:
 	int getSurplusPower();
 
 	bool isPublicStructure();
+
+	bool isPrivateStructure();
 
 	void setOwnerObjectID(unsigned long long objectID);
 

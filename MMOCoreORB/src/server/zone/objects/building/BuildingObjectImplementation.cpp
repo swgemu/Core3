@@ -360,19 +360,31 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(bool destroyContain
 	//Loop through the cells and delete all objects from the database.
 }
 
-void BuildingObjectImplementation::updateCellPermissionsTo(SceneObject* player) {
-	/*	if (!player->isInRange(_this, 256))
-		return;*/
+void BuildingObjectImplementation::broadcastCellPermissions() {
+	Locker _lock(zone);
+
+	for (int i = 0; i < inRangeObjectCount(); ++i) {
+		ManagedReference<SceneObject*> obj = (SceneObject*) getInRangeObject(i);
+
+		if (obj->isPlayerCreature())
+			updateCellPermissionsTo(((CreatureObject*) obj.get()));
+	}
+}
+
+void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creature) {
+	bool allowEntry = isAllowedEntry(creature->getFirstName());
 
 	for (int i = 0; i < cells.size(); ++i) {
-		ManagedReference<CellObject*> cell = getCell(i);
+		ManagedReference<CellObject*> cell = cells.get(i);
 
 		if (cell == NULL)
 			continue;
 
-		BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), true);
-		player->sendMessage(perm);
+		BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), allowEntry);
+		creature->sendMessage(perm);
 	}
+
+	//TODO: Check if they are inside the building. If so, then eject them.
 }
 
 void BuildingObjectImplementation::onEnter(CreatureObject* player) {

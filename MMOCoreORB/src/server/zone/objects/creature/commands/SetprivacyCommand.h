@@ -56,7 +56,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -79,10 +78,13 @@ public:
 			return GENERALERROR;
 		}
 
-		if (building->togglePrivacy())
+		if (building->togglePrivacy()) {
 			creature->sendSystemMessage("@player_structure:structure_now_public"); //This structure is now public
-		else
+		} else {
 			creature->sendSystemMessage("@player_structure:structure_now_private"); //This structure is now private
+		}
+
+		building->broadcastCellPermissions();
 
 		//TODO: Implement Messages
 		//("@player_structure:vendor_no_private"); //A structure hosting a vendor cannot be declared private.

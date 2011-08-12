@@ -123,9 +123,33 @@ class BuildingObject extends StructureObject {
 	
 	/**
 	 * Updates the cell permissions to the player based on the players permission in the StructurePermissionList.
-	 * @param player The player to update cell permissions to.
+	 * @param creature The player to update cell permissions to.
 	 */
-	public native void updateCellPermissionsTo(SceneObject player);
+	public native void updateCellPermissionsTo(CreatureObject creature);
+	
+	/**
+	 * Updates the cell permissions to the players in the area.
+	 * @pre Zone unlocked
+	 * @post Zone unlocked
+	 */
+	public native void broadcastCellPermissions();
+	
+	/**
+	 * Checks to see if the player with the name is allowed entry.
+	 * @param firstName The name of the player.
+	 * @return Returns true if allowed to enter.
+	 */
+	public boolean isAllowedEntry(final string firstName) {
+		if (isOnBanList(firstName))
+			return false;
+		
+		if (isPrivateStructure() && !isOnEntryList(firstName))
+			return false;
+		
+		//TODO: Add AccessFee entry permissions.
+		
+		return true;
+	}
 	
 	/**
 	 * Gets called when the structure has been created;
@@ -241,6 +265,10 @@ class BuildingObject extends StructureObject {
 	
 	public boolean isPublicStructure() {
 		return publicStructure;
+	}
+	
+	public boolean isPrivateStructure() {
+		return !publicStructure;
 	}
 	
 	public void setPublicStructure(boolean privacy) {

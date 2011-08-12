@@ -256,6 +256,10 @@ class StructureObject extends TangibleObject {
 		return false;
 	}
 	
+	public abstract boolean isPrivateStructure() {
+		return false;
+	}
+	
 	public void setOwnerObjectID(unsigned long objectID) {
 		ownerObjectID = objectID;
 	}

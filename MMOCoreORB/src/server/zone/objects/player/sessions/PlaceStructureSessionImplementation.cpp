@@ -9,12 +9,14 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/chat/ChatManager.h"
 #include "server/zone/objects/scene/SessionFacadeType.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 #include "server/zone/managers/structure/tasks/StructureConstructionCompleteTask.h"
 #include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 int PlaceStructureSessionImplementation::constructStructure(float x, float y, int angle) {
@@ -69,58 +71,35 @@ int PlaceStructureSessionImplementation::completeSession() {
 		return cancelSession();
 	}
 
-	structureObject->setOwnerObjectID(creatureObject->getObjectID());
 	structureObject->setDeedObjectID(deedObject->getObjectID());
-
-	structureObject->grantPermission("ADMIN", creatureObject->getFirstName());
 
 	ManagedReference<PlayerObject*> ghost = creatureObject->getPlayerObject();
 
 	if (ghost != NULL) {
 		ghost->addOwnedStructure(structureObject);
 
-		//TODO: Create a waypoint.
-
-		//TODO: Create an email.
-	}
-
-	return cancelSession(); //Cancelling the session just removes the session from the player's map.
-}
-
-
-
-
-/*
- * 	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
-	ManagedReference<WaypointObject*> waypointObject = NULL;
-
-	if (playerObject != NULL) {
-		String full = structureObject->getCustomObjectName().toString();
-
-		if (full.isEmpty())
-			structureObject->getObjectName()->getFullPath(full);
-
-		String waypointTemplateString = "object/waypoint/world_waypoint_blue.iff";
-
-		waypointObject = (WaypointObject*) zoneServer->createObject(waypointTemplateString.hashCode(), 1);
-		waypointObject->setCustomName(full);
+		//Create Waypoint
+		ManagedReference<WaypointObject*> waypointObject = (WaypointObject*) zone->getZoneServer()->createObject(String("object/waypoint/world_waypoint_blue.iff").hashCode(), 1);
+		waypointObject->setCustomName(structureObject->getObjectName()->getDisplayedName());
 		waypointObject->setActive(true);
-		waypointObject->setPosition(x, z, y);
-		String planetName = zone->getZoneName();
-		waypointObject->setPlanetCRC(planetName.hashCode());
+		waypointObject->setPosition(positionX, 0, positionY);
+		waypointObject->setPlanetCRC(zone->getZoneCRC());
 
-		playerObject->addWaypoint(waypointObject, false, true);
+		ghost->addWaypoint(waypointObject, false, true);
+
+		//Create an email.
+		ManagedReference<ChatManager*> chatManager = zone->getZoneServer()->getChatManager();
+
+		if (chatManager != NULL) {
+			UnicodeString subject = "@player_structure:construction_complete_subject";
+
+			StringIdChatParameter emailBody("@player_structure:construction_complete");
+			emailBody.setTO(structureObject->getObjectName());
+			emailBody.setDI(ghost->getLotsRemaining());
+
+			chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, creatureObject->getFirstName(), waypointObject);
+		}
 	}
 
-	//Create an email
-	ManagedReference<ChatManager*> chatManager = zoneServer->getChatManager();
-
-	if (chatManager != NULL) {
-		StringIdChatParameter emailBody;
-		emailBody.setStringId("@player_structure:construction_complete");
-		emailBody.setTO(structureObject->getObjectName());
-		emailBody.setDI(player->getLotsRemaining());
-		UnicodeString subject = "@player_structure:construction_complete_subject";
-		chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, player->getFirstName(), waypointObject);
-	}
-	*/
+	return cancelSession(); //Canceling the session just removes the session from the player's map.
+}

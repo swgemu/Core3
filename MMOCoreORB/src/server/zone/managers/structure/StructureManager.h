@@ -170,8 +170,6 @@ public:
 
 	int declareResidence(CreatureObject* player, StructureObject* structureObject);
 
-	int changePrivacy(CreatureObject* player, StructureObject* structureObject);
-
 	String getTimeString(unsigned int timestamp);
 
 	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range = 64);
@@ -229,8 +227,6 @@ public:
 	int redeedStructure(CreatureObject* creature);
 
 	int declareResidence(CreatureObject* player, StructureObject* structureObject);
-
-	int changePrivacy(CreatureObject* player, StructureObject* structureObject);
 
 	String getTimeString(unsigned int timestamp);
 
@@ -290,8 +286,6 @@ public:
 	int redeedStructure(CreatureObject* creature);
 
 	int declareResidence(CreatureObject* player, StructureObject* structureObject);
-
-	int changePrivacy(CreatureObject* player, StructureObject* structureObject);
 
 	String getTimeString(unsigned int timestamp);
 

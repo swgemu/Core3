@@ -26,7 +26,7 @@
  *	StructureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_CHANGEPRIVACY__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
+enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_};
 
 StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
@@ -131,21 +131,6 @@ int StructureManager::declareResidence(CreatureObject* player, StructureObject* 
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->declareResidence(player, structureObject);
-}
-
-int StructureManager::changePrivacy(CreatureObject* player, StructureObject* structureObject) {
-	StructureManagerImplementation* _implementation = (StructureManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CHANGEPRIVACY__CREATUREOBJECT_STRUCTUREOBJECT_);
-		method.addObjectParameter(player);
-		method.addObjectParameter(structureObject);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->changePrivacy(player, structureObject);
 }
 
 String StructureManager::getTimeString(unsigned int timestamp) {
@@ -367,9 +352,6 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_:
 		resp->insertSignedInt(declareResidence((CreatureObject*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_CHANGEPRIVACY__CREATUREOBJECT_STRUCTUREOBJECT_:
-		resp->insertSignedInt(changePrivacy((CreatureObject*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter()));
-		break;
 	case RPC_GETTIMESTRING__INT_:
 		resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
 		break;
@@ -405,10 +387,6 @@ int StructureManagerAdapter::redeedStructure(CreatureObject* creature) {
 
 int StructureManagerAdapter::declareResidence(CreatureObject* player, StructureObject* structureObject) {
 	return ((StructureManagerImplementation*) impl)->declareResidence(player, structureObject);
-}
-
-int StructureManagerAdapter::changePrivacy(CreatureObject* player, StructureObject* structureObject) {
-	return ((StructureManagerImplementation*) impl)->changePrivacy(player, structureObject);
 }
 
 String StructureManagerAdapter::getTimeString(unsigned int timestamp) {

@@ -118,9 +118,6 @@ class StructureManager extends ManagedService implements Logger {
 	
 	public native int declareResidence(CreatureObject player, StructureObject structureObject);
 	
-	public native int changePrivacy(CreatureObject player, StructureObject structureObject);
-	
-	
 	//TEMPORARY
 	public native string getTimeString(unsigned int timestamp);
 	

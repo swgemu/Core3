@@ -77,17 +77,21 @@ void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 }*/
 
 void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	/*StringBuffer msg;
-	msg << "sending cell number " << cellNumber << " baselines";
-	info(msg.toString(), true);*/
-
 	BaseMessage* cellMsg3 = new CellObjectMessage3(getObjectID(), cellNumber);
 	player->sendMessage(cellMsg3);
 
 	BaseMessage* cellMsg6 = new CellObjectMessage6(getObjectID());
 	player->sendMessage(cellMsg6);
 
-	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), true);
+	bool allowEntry = true;
+
+	if (player->isCreatureObject() && parent != NULL && parent->isBuildingObject()) {
+		ManagedReference<CreatureObject*> creature = (CreatureObject*) player;
+
+		allowEntry = ((BuildingObject*) parent.get())->isAllowedEntry(creature->getFirstName());
+	}
+
+	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), allowEntry);
 	player->sendMessage(perm);
 }
 

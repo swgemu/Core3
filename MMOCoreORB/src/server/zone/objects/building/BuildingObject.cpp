@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -144,18 +144,45 @@ void BuildingObject::sendContainerObjectsTo(SceneObject* player) {
 		_implementation->sendContainerObjectsTo(player);
 }
 
-void BuildingObject::updateCellPermissionsTo(SceneObject* player) {
+void BuildingObject::updateCellPermissionsTo(CreatureObject* creature) {
 	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_);
-		method.addObjectParameter(player);
+		DistributedMethod method(this, RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_);
+		method.addObjectParameter(creature);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->updateCellPermissionsTo(player);
+		_implementation->updateCellPermissionsTo(creature);
+}
+
+void BuildingObject::broadcastCellPermissions() {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_BROADCASTCELLPERMISSIONS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->broadcastCellPermissions();
+}
+
+bool BuildingObject::isAllowedEntry(const String& firstName) {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISALLOWEDENTRY__STRING_);
+		method.addAsciiParameter(firstName);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isAllowedEntry(firstName);
 }
 
 int BuildingObject::notifyStructurePlaced(CreatureObject* player) {
@@ -521,6 +548,19 @@ bool BuildingObject::isPublicStructure() {
 		return _implementation->isPublicStructure();
 }
 
+bool BuildingObject::isPrivateStructure() {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISPRIVATESTRUCTURE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isPrivateStructure();
+}
+
 void BuildingObject::setPublicStructure(bool privacy) {
 	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -782,6 +822,17 @@ BuildingObjectImplementation::BuildingObjectImplementation() {
 	publicStructure = true;
 }
 
+bool BuildingObjectImplementation::isAllowedEntry(const String& firstName) {
+	// server/zone/objects/building/BuildingObject.idl():  		if 
+	if (isOnBanList(firstName))	// server/zone/objects/building/BuildingObject.idl():  			return false;
+	return false;
+	// server/zone/objects/building/BuildingObject.idl():  		return 
+	if (isPrivateStructure() && !isOnEntryList(firstName))	// server/zone/objects/building/BuildingObject.idl():  			return false;
+	return false;
+	// server/zone/objects/building/BuildingObject.idl():  		return true;
+	return true;
+}
+
 int BuildingObjectImplementation::notifyStructurePlaced(CreatureObject* player) {
 	// server/zone/objects/building/BuildingObject.idl():  		return 0;
 	return 0;
@@ -845,6 +896,11 @@ bool BuildingObjectImplementation::isPublicStructure() {
 	return publicStructure;
 }
 
+bool BuildingObjectImplementation::isPrivateStructure() {
+	// server/zone/objects/building/BuildingObject.idl():  		return !publicStructure;
+	return !publicStructure;
+}
+
 void BuildingObjectImplementation::setPublicStructure(bool privacy) {
 	// server/zone/objects/building/BuildingObject.idl():  		publicStructure = privacy;
 	publicStructure = privacy;
@@ -887,8 +943,14 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_:
 		sendContainerObjectsTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_UPDATECELLPERMISSIONSTO__SCENEOBJECT_:
-		updateCellPermissionsTo((SceneObject*) inv->getObjectParameter());
+	case RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_:
+		updateCellPermissionsTo((CreatureObject*) inv->getObjectParameter());
+		break;
+	case RPC_BROADCASTCELLPERMISSIONS__:
+		broadcastCellPermissions();
+		break;
+	case RPC_ISALLOWEDENTRY__STRING_:
+		resp->insertBoolean(isAllowedEntry(inv->getAsciiParameter(_param0_isAllowedEntry__String_)));
 		break;
 	case RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_:
 		resp->insertSignedInt(notifyStructurePlaced((CreatureObject*) inv->getObjectParameter()));
@@ -956,6 +1018,9 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_ISPUBLICSTRUCTURE__:
 		resp->insertBoolean(isPublicStructure());
 		break;
+	case RPC_ISPRIVATESTRUCTURE__:
+		resp->insertBoolean(isPrivateStructure());
+		break;
 	case RPC_SETPUBLICSTRUCTURE__BOOL_:
 		setPublicStructure(inv->getBooleanParameter());
 		break;
@@ -1000,8 +1065,16 @@ void BuildingObjectAdapter::sendContainerObjectsTo(SceneObject* player) {
 	((BuildingObjectImplementation*) impl)->sendContainerObjectsTo(player);
 }
 
-void BuildingObjectAdapter::updateCellPermissionsTo(SceneObject* player) {
-	((BuildingObjectImplementation*) impl)->updateCellPermissionsTo(player);
+void BuildingObjectAdapter::updateCellPermissionsTo(CreatureObject* creature) {
+	((BuildingObjectImplementation*) impl)->updateCellPermissionsTo(creature);
+}
+
+void BuildingObjectAdapter::broadcastCellPermissions() {
+	((BuildingObjectImplementation*) impl)->broadcastCellPermissions();
+}
+
+bool BuildingObjectAdapter::isAllowedEntry(const String& firstName) {
+	return ((BuildingObjectImplementation*) impl)->isAllowedEntry(firstName);
 }
 
 int BuildingObjectAdapter::notifyStructurePlaced(CreatureObject* player) {
@@ -1090,6 +1163,10 @@ int BuildingObjectAdapter::getAccessFee() {
 
 bool BuildingObjectAdapter::isPublicStructure() {
 	return ((BuildingObjectImplementation*) impl)->isPublicStructure();
+}
+
+bool BuildingObjectAdapter::isPrivateStructure() {
+	return ((BuildingObjectImplementation*) impl)->isPrivateStructure();
 }
 
 void BuildingObjectAdapter::setPublicStructure(bool privacy) {

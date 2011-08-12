@@ -162,7 +162,11 @@ public:
 
 	void sendContainerObjectsTo(SceneObject* player);
 
-	void updateCellPermissionsTo(SceneObject* player);
+	void updateCellPermissionsTo(CreatureObject* creature);
+
+	void broadcastCellPermissions();
+
+	bool isAllowedEntry(const String& firstName);
 
 	int notifyStructurePlaced(CreatureObject* player);
 
@@ -221,6 +225,8 @@ public:
 	int getAccessFee();
 
 	bool isPublicStructure();
+
+	bool isPrivateStructure();
 
 	void setPublicStructure(bool privacy);
 
@@ -291,7 +297,11 @@ public:
 
 	void sendContainerObjectsTo(SceneObject* player);
 
-	void updateCellPermissionsTo(SceneObject* player);
+	void updateCellPermissionsTo(CreatureObject* creature);
+
+	void broadcastCellPermissions();
+
+	bool isAllowedEntry(const String& firstName);
 
 	virtual int notifyStructurePlaced(CreatureObject* player);
 
@@ -354,6 +364,8 @@ public:
 	int getAccessFee();
 
 	bool isPublicStructure();
+
+	bool isPrivateStructure();
 
 	void setPublicStructure(bool privacy);
 
@@ -418,7 +430,11 @@ public:
 
 	void sendContainerObjectsTo(SceneObject* player);
 
-	void updateCellPermissionsTo(SceneObject* player);
+	void updateCellPermissionsTo(CreatureObject* creature);
+
+	void broadcastCellPermissions();
+
+	bool isAllowedEntry(const String& firstName);
 
 	int notifyStructurePlaced(CreatureObject* player);
 
@@ -464,6 +480,8 @@ public:
 
 	bool isPublicStructure();
 
+	bool isPrivateStructure();
+
 	void setPublicStructure(bool privacy);
 
 	bool togglePrivacy();
@@ -472,6 +490,7 @@ public:
 
 protected:
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
+	String _param0_isAllowedEntry__String_;
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {
