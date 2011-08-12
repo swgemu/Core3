@@ -111,16 +111,25 @@ public:
 
 		int fare = planetManager->getTravelFare(departurePlanet);
 
-		if (creature->getCashCredits() <= fare) {
-			ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(creature, 0);
-			suiBox->setPromptTitle("");
-			suiBox->setPromptText("You do not have sufficient funds for that.");
+		int bank = creature->getBankCredits();
+		int cash = creature->getCashCredits();
 
-			creature->sendMessage(suiBox->generateMessage());
-			return GENERALERROR;
+		if (bank < fare) {
+			int diff = fare - bank;
+
+			if (diff > cash) {
+				ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(creature, 0);
+				suiBox->setPromptTitle("");
+				suiBox->setPromptText("You do not have sufficient funds for that.");
+
+				creature->sendMessage(suiBox->generateMessage());
+				return GENERALERROR;
+			}
+
+			creature->substractCashCredits(diff);
+		} else {
+			creature->substractBankCredits(bank);
 		}
-
-		creature->substractCashCredits(fare);
 
 		StringIdChatParameter params("@base_player:prose_pay_acct_success"); //You successfully make a payment of %DI credits to %TO.
 		params.setDI(fare);
