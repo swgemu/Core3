@@ -121,3 +121,8 @@ corellia_regions = {
 	{"corellia_rebel_riverside_fort",0,0,0,0,1},
 	{"corellia_mountain_fortress",0,0,0,0,1}
 }
+
+corellia_static_spawns = {
+	--{"mobile", x, z, y, degrees heading, parentID}
+	{"corellian_butterfly_defender", 0, 0, 0, 0, 0}
+}

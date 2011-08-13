@@ -497,6 +497,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/radial/RadialManagerImplementation.cpp \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
+		server/zone/managers/creature/SpawnAreaMap.cpp \
 		server/zone/managers/creature/CreatureTemplateManager.cpp \
 		server/zone/managers/combat/CombatManager.cpp \
 		server/zone/managers/combat/CreatureAttackData.cpp \

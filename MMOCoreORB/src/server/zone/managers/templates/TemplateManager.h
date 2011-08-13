@@ -135,6 +135,8 @@ public:
 			if (cat->getIndex() == index)
 				return cat.get();
 		}
+
+		return NULL;
 	}
 
 	/**

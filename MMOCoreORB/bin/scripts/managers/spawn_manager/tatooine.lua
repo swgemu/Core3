@@ -218,3 +218,8 @@ tatooine_regions = {
 	{"mos_taike",0,0,0,0,1},
 	{"w_dune_sea_3",0,0,0,0,1}
 }
+
+tatooine_static_spawns = {
+	--{"mobile", x, z, y, degrees heading, parentID}
+	{"corellian_butterfly_defender", 0, 0, 0, 0, 0}
+}

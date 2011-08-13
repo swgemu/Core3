@@ -99,3 +99,8 @@ endor_regions = {
 	{"mertune_forest_2",0,0,0,0,1},
 	{"marauder_mountain_1",0,0,0,0,1}
 }
+
+endor_static_spawns = {
+	--{"mobile", x, z, y, degrees heading, parentID}
+	{"corellian_butterfly_defender", 0, 0, 0, 0, 0}
+}

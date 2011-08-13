@@ -86,3 +86,8 @@ naboo_regions = {
 	{"lasay_swamp",0,0,0,0,1},
 	{"paitnnu_wetlands",0,0,0,0,1}
 }
+
+naboo_static_spawns = {
+	--{"mobile", x, z, y, degrees heading, parentID}
+	{"corellian_butterfly_defender", 0, 0, 0, 0, 0}
+}

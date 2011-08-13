@@ -119,3 +119,8 @@ dantooine_regions = {
 	{"an_outpost",0,0,0,0,1},
 	{"an_imperial_outpost",0,0,0,0,1}
 }
+
+dantooine_static_spawns = {
+	--{"mobile", x, z, y, degrees heading, parentID}
+	{"corellian_butterfly_defender", 0, 0, 0, 0, 0}
+}

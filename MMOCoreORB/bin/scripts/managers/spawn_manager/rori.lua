@@ -114,3 +114,8 @@ rori_regions = {
 	{"madyn_plains_1",0,0,0,0,1},
 	{"a_rebel_outpost",0,0,0,0,1}
 }
+
+rori_static_spawns = {
+	--{"mobile", x, z, y, degrees heading, parentID}
+	{"corellian_butterfly_defender", 0, 0, 0, 0, 0}
+}

@@ -73,3 +73,7 @@ yavin4_regions = {
 	{"ersham_ridge",0,0,0,0,1},
 	{"yavin4_imperial_fort",0,0,0,0,1}
 }
+
+yavin4_static_spawns = {
+	{"corellian_butterfly_defender", 0, 0, 0, 0, 0} 
+}

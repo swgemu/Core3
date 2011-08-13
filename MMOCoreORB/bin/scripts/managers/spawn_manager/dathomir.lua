@@ -77,3 +77,8 @@ dathomir_regions = {
 	{"science_outpost",0,0,0,0,1},
 	{"trade_outpost",0,0,0,0,1}
 }
+
+dathomir_static_spawns = {
+	--{"mobile", x, z, y, degrees heading, parentID}
+	{"corellian_butterfly_defender", 0, 0, 0, 0, 0}
+}

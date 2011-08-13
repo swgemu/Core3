@@ -77,3 +77,8 @@ lok_regions = {
 	{"an_imperial_outpost",0,0,0,0,1},
 	{"nyms_stronghold",0,0,0,0,1}
 }
+
+lok_static_spawns = {
+	--{"mobile", x, z, y, degrees heading, parentID}
+	{"corellian_butterfly_defender", 0, 0, 0, 0, 0}
+}
