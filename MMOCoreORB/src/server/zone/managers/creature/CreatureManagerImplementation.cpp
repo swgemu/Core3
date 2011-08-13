@@ -269,7 +269,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			factionManager->awardFactionPoints(player, destructedObject);
 		}
 
-		if (playerManager != NULL)
+		if (player != NULL && playerManager != NULL)
 			playerManager->disseminateExperience(destructedObject, &copyDamageMap);
 
 		CombatManager::instance()->attemptPeace(destructedObject);

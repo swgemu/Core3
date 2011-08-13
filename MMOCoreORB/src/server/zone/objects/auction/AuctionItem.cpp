@@ -1068,8 +1068,6 @@ AuctionItemImplementation::AuctionItemImplementation(unsigned long long objectid
 	itemType = 0;
 	// server/zone/objects/auction/AuctionItem.idl():  		ownerID = 0;
 	ownerID = 0;
-	// server/zone/objects/auction/AuctionItem.idl():  		planet = 0;
-	planet = 0;
 	// server/zone/objects/auction/AuctionItem.idl():  		price = 0;
 	price = 0;
 	// server/zone/objects/auction/AuctionItem.idl():  		auction = true;

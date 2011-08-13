@@ -40,10 +40,10 @@ private:
 	int quantity;
 
 	/// Input hopper
-	WeakReference<SceneObject* > inputHopper;
+	ManagedReference<SceneObject* > inputHopper;
 
 	/// Matching items from factory hopper
-	Vector<WeakReference<TangibleObject*> > matchingHopperItems;
+	Vector<ManagedReference<TangibleObject*> > matchingHopperItems;
 
 public:
 

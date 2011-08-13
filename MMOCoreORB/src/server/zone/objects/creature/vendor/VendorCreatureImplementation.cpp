@@ -224,7 +224,8 @@ void VendorCreatureImplementation::createChildObjects() {
 		ManagedReference<PlayerManager*> pman = getZoneServer()->getPlayerManager();
 		TangibleObject* hair = pman->createHairObject(hairFile, hairCustomization);
 
-		addObject(hair, 4);
+		if (hair != NULL)
+			addObject(hair, 4);
 	}
 
 	Vector<uint32>* clothing = outfit->getClothing();

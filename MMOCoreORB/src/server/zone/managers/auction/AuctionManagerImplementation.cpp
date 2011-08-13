@@ -466,9 +466,9 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		String sender = "auctioner";
 
 		PlayerManager* pman = zoneServer->getPlayerManager();
-		ManagedReference<CreatureObject*> seller = pman->getPlayer(item->getOwnerName());
+		/*ManagedReference<CreatureObject*> seller = pman->getPlayer(item->getOwnerName());
 
-		Locker _locker(seller);
+		Locker _locker(seller);*/
 
 		UnicodeString subject1("@auction:subject_vendor_seller");
 
@@ -478,9 +478,9 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		body1.setDI(item->getPrice());
 
 		//Setup the mail to the buyer
-		ManagedReference<CreatureObject*> buyer = pman->getPlayer(item->getBidderName());
+		/*ManagedReference<CreatureObject*> buyer = pman->getPlayer(item->getBidderName());
 
-		Locker _locker2(buyer);
+		Locker _locker2(buyer);*/
 
 		UnicodeString subject2("@auction:subject_vendor_buyer");
 		StringIdChatParameter body2("@auction:buyer_success");
@@ -1298,6 +1298,9 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 }
 
 Vendor* AuctionManagerImplementation::getVendorFromObject(SceneObject* obj) {
+	if (obj == NULL)
+		return NULL;
+
 	Vendor* vendor = NULL;
 
 	if (obj->isTerminal()) {

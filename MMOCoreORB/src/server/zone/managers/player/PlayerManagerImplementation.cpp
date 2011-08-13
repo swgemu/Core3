@@ -1929,7 +1929,7 @@ void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 ent
 
 	creature->setMood(creature->getMoodID());
 
-	if (doSendPackets)
+	if (doSendPackets && esession != NULL)
 		esession->sendEntertainmentUpdate(creature, 0, creature->getMoodString());
 
 	//System Message.

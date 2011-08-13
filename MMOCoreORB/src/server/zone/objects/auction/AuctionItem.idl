@@ -98,7 +98,6 @@ class AuctionItem extends ManagedObject {
 		itemType = 0;
 		
 		ownerID = 0;
-		planet = 0;
 		
 		price = 0;
 		

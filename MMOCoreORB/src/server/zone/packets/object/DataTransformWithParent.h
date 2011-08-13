@@ -131,6 +131,9 @@ public:
 		if (ghost->isTeleporting())
 			return;
 
+		if (!object->isInQuadTree())
+			return;
+
 		if (positionX > 1024.0f || positionX < -1024.0f || positionY > 1024.0f || positionY < -1024.0f) {
 			StringBuffer msg;
 			msg << "position out of bounds cell:[" << parent << "]";

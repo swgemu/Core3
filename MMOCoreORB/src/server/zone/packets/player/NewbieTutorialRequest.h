@@ -99,10 +99,14 @@ public:
 			sceneObject->notifyObservers(ObserverEventType::NEWBIECLOSEINVENTORY);
 		} else if (response == "clientReady") {
 			if (player->getZone() != NULL && player->getParent() != NULL) {
-				Zone* zone = player->getZone();
+				SceneObject* par = player->getParent();
 
-				if (zone->getZoneName() == "tutorial")
-					DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
+				if (par->getParent() != NULL) {
+					Zone* zone = player->getZone();
+
+					if (zone->getZoneName() == "tutorial")
+						DirectorManager::instance()->startScreenPlay(player, "TutorialScreenPlay");
+				}
 			}
 		}
 	}

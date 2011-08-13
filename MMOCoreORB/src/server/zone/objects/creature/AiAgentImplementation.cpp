@@ -505,7 +505,7 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	reachedPosition << "(" << positionX << ", " << positionY << ")";
 	info("reached " + reachedPosition.toString(), true);*/
 
-	if (cell != NULL)
+	if (cell != NULL && cell->getParent() != NULL)
 		updateZoneWithParent(cell, false, false);
 	else
 		updateZone(false, false);
@@ -677,6 +677,8 @@ void AiAgentImplementation::doMovement() {
 		setFollowObject(NULL);
 		return;
 	}
+
+	ManagedReference<SceneObject*> storage = followObject.get();
 
 
 	if (currentSpeed != 0) {

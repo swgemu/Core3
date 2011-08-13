@@ -414,7 +414,7 @@ void ObjectManager::loadStaticObjects() {
 }
 
 int ObjectManager::commitUpdatePersistentObjectToDB(DistributedObject* object) {
-	++totalUpdatedObjects;
+	totalUpdatedObjects.increment();
 
 	/*if (!((ManagedObject*)object)->isPersistent())
 		return 1;*/
@@ -1000,10 +1000,11 @@ int ObjectManager::deployUpdateThreads(Vector<DistributedObject*>* objectsToUpda
 
 	int numberOfObjects = objectsToUpdate->size();
 
-	//info("numberOfObjects:" + String::valueOf(numberOfObjects), true);
+	info("numberOfObjects to update:" + String::valueOf(numberOfObjects), true);
 
-	int rest = numberOfObjects % MAXOBJECTSTOUPDATEPERTHREAD;
+
 	int numberOfThreads = numberOfObjects / MAXOBJECTSTOUPDATEPERTHREAD;
+	int rest = numberOfThreads > 0 ? numberOfObjects % numberOfThreads : 0;
 
 	if (rest != 0)
 		++numberOfThreads;
@@ -1061,7 +1062,7 @@ void ObjectManager::finishObjectUpdate(bool startNew) {
 	if (startNew)
 		updateModifiedObjectsTask->schedule(UPDATETODATABASETIME);
 
-	//info("updated objects: " + String::valueOf(totalUpdatedObjects), true);
+	info("updated objects: " + String::valueOf(totalUpdatedObjects), true);
 }
 
 void ObjectManager::cancelUpdateModifiedObjectsTask() {

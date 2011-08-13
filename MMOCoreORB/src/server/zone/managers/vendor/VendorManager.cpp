@@ -276,7 +276,7 @@ void VendorManager::handleAwardVendorLookXP(CreatureObject* player, Vendor* vend
 
 	ManagedReference<PlayerManager*> pman = player->getZoneServer()->getPlayerManager();
 	ManagedReference<SceneObject*> ownerRef = player->getZoneServer()->getObject(vendor->getOwnerID());
-	if (!ownerRef->isPlayerCreature())
+	if (ownerRef == NULL || !ownerRef->isPlayerCreature())
 		return;
 
 	ManagedReference<CreatureObject*> owner = (CreatureObject*) ownerRef.get();

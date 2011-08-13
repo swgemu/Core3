@@ -85,7 +85,7 @@ namespace zone {
 
 		bool objectUpdateInProcess;
 
-		int totalUpdatedObjects;
+		AtomicInteger totalUpdatedObjects;
 
 	public:
 		SceneObjectFactory<SceneObject* (), uint32> objectFactory;

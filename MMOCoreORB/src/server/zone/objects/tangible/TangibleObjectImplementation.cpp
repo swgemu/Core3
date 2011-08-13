@@ -73,6 +73,9 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(templateData);
 
+	if (tanoData == NULL)
+		return;
+
 	targetable = tanoData->getTargetable();
 
 	playerUseMask = tanoData->getPlayerUseMask();

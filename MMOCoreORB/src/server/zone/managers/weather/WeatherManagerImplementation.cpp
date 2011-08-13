@@ -74,7 +74,8 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 	if (!luaObject.isValidTable())
 		return false;
 
-	weatherEnabled = luaObject.getByteField("weatherEnabled");
+	//weatherEnabled = luaObject.getByteField("weatherEnabled");
+	weatherEnabled = false;
 
 	//Starting weather ID.
 	int startingWeatherID = luaObject.getIntField("startingWeatherID");
@@ -157,7 +158,7 @@ bool WeatherManagerImplementation::loadLuaConfig() {
 void WeatherManagerImplementation::loadDefaultValues() {
 	Locker weatherManagerLocker(_this);
 
-	weatherEnabled = true;
+	weatherEnabled = false;
 	weatherID = System::random(2);
 	targetWeatherID = weatherID;
 
@@ -538,6 +539,8 @@ void WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* 
 
 
 void WeatherManagerImplementation::enableWeather(CreatureObject* player) {
+	return;
+
 	Locker weatherManagerLocker(_this);
 	if (player == NULL)
 		return;

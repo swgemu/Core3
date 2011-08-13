@@ -87,7 +87,7 @@ public:
 
 			Time* cooldownTime = creature->getCooldownTime("declareresidence");
 
-			if (cooldownTime->isFuture()) {
+			if (cooldownTime != NULL && cooldownTime->isFuture()) {
 				int hours = (int) round((float) abs((float) cooldownTime->miliDifference()) / 3600000.f); //Divided by 1 hour.
 
 				StringIdChatParameter param("@player_structure:change_residence_time"); //You cannot change residence for %NO hours)

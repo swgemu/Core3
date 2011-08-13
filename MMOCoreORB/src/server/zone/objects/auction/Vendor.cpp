@@ -60,6 +60,9 @@ void Vendor::sendVendorUpdateMail(bool isEmpty) {
 	//Send the mail to the vendor owner
 	ManagedReference<SceneObject*> strongOwnerRef = vendorRef->getZoneServer()->getObject(ownerID);
 
+	if (strongOwnerRef == NULL)
+		return;
+
 	if (!strongOwnerRef->isPlayerCreature())
 		return;
 
@@ -90,7 +93,7 @@ void Vendor::sendVendorUpdateMail(bool isEmpty) {
 void Vendor::sendVendorDestroyMail() {
 	ManagedReference<SceneObject*> strongOwnerRef = vendorRef->getZoneServer()->getObject(ownerID);
 
-	if (!strongOwnerRef->isPlayerCreature())
+	if (strongOwnerRef == NULL || !strongOwnerRef->isPlayerCreature())
 		return;
 
 	CreatureObject* owner = (CreatureObject*) strongOwnerRef.get();

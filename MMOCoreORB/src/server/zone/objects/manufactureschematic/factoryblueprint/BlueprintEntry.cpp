@@ -145,6 +145,12 @@ bool BlueprintEntry::hasEnoughResources() {
 	for(int i = 0; i < matchingHopperItems.size(); ++i) {
 		TangibleObject* object = matchingHopperItems.get(i);
 
+		if (object == NULL) {
+			matchingHopperItems.remove(i);
+			--i;
+			continue;
+		}
+
 		if(object->getParentID() != inputHopper->getObjectID())
 			return false;
 
