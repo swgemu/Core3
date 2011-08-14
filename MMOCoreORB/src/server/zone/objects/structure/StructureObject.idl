@@ -181,6 +181,16 @@ class StructureObject extends TangibleObject {
 		|| structurePermissionList.isOnPermissionList("ADMIN", playerName);
 	}
 	
+	/**
+	 * Checks if the player name is the on the specified permission list.
+	 * @param listName The name of the list to check.
+	 * @param playerName The name of the player to check.
+	 * @return Returns true if the player name was found on the list.
+	 */
+	public boolean isOnPermissionList(final string listName, final string playerName) {
+		return structurePermissionList.isOnPermissionList(listName, playerName);
+	}
+	
 	public native boolean isOwnerOf(SceneObject obj);
 	public native boolean isOwnerOf(unsigned long oid);
 	
@@ -214,6 +224,10 @@ class StructureObject extends TangibleObject {
 	
 	public int revokePermission(final string listName, final string targetName) {
 		return structurePermissionList.revokePermission(listName, targetName);
+	}
+	
+	public int revokeAllPermissions(final string targetName) {
+		return structurePermissionList.revokeAllPermissions(targetName);
 	}
 
 	public native void createVendor(CreatureObject player);

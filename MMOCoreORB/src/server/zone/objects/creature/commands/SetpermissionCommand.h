@@ -84,7 +84,7 @@ public:
 		}
 
 		UnicodeString args = targetName + " " + listName + " toggle";
-		creature->executeObjectControllerAction(0x896713F2, obj->getObjectID(), args);
+		creature->executeObjectControllerAction(0x896713F2, obj->getObjectID(), args); //PermissionListModify
 
 		return SUCCESS;
 	}

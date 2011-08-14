@@ -45,6 +45,7 @@ public:
 
 	int grantPermission(const String& listName, const String& playerName);
 	int revokePermission(const String& listName, const String& playerName);
+	int revokeAllPermissions(const String& playerName);
 
 	/**
 	 * Checks to see if the specified player name is on the specified permission list.

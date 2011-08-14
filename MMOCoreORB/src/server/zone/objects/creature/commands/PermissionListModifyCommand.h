@@ -95,6 +95,8 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
+		Locker _lock(structureObject, creature);
+
 		if (!structureObject->hasPermissionList(listName)) {
 			creature->sendSystemMessage("@player_structure:must_specify_list"); //You must specify a valid permission list (Entry, Ban, Admin, Hopper)
 			return INVALIDPARAMETERS;
@@ -110,13 +112,29 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		if (action == "remove") {
+		bool isOwner = structureObject->isOwnerOf(creature->getObjectID());
+
+		if (structureObject->isOnBanList(targetName)) {
+			if (listName == "ENTRY" || listName == "ADMIN") {
+				creature->sendSystemMessage("@player_structure:no_banned"); //You cannot add a banned player to the entry list.
+				return INVALIDPARAMETERS;
+			} else if (listName != "BAN") {
+				StringIdChatParameter params("@player_structure:cannot_add_banned"); //%NO must first be removed from the banned list.
+				params.setTO(targetName);
+				creature->sendSystemMessage(params);
+				return INVALIDPARAMETERS;
+			}
+
+		} else if (structureObject->isOnAdminList(targetName)) {
+			if (listName == "BAN" && isOwner)
+				return INVALIDPARAMETERS; //Can't ban the owner.
+
 			if (creature->getFirstName().toLowerCase() == targetName) {
 				creature->sendSystemMessage("@player_structure:cannot_remove_self"); //You cannot remove yourself from the admin list.
 				return INVALIDPARAMETERS;
 			}
 
-			if (listName == "ENTRY" && structureObject->isOnAdminList(targetName)) {
+			if (listName == "ENTRY" && !isOwner) {
 				creature->sendSystemMessage("@player_structure:no_remove_admin"); //You cannot remove an admin from the entry list.
 				return INVALIDPARAMETERS;
 			}
@@ -126,7 +144,7 @@ public:
 				return INVALIDPARAMETERS;
 			}
 
-			if (listName == "HOPPER" && structureObject->isOnAdminList(targetName)) {
+			if (listName == "HOPPER" && !isOwner) {
 				creature->sendSystemMessage("@player_structure:hopper_cannot_remove_admin"); //You cannot remove an admin from the hopper list.
 				return INVALIDPARAMETERS;
 			}
@@ -139,6 +157,9 @@ public:
 				return INVALIDPARAMETERS;
 			}
 		}
+
+		if (listName == "BAN" && !structureObject->isOnBanList(targetName))
+			structureObject->revokeAllPermissions(targetName); //Remove all existing permissions
 
 		StringIdChatParameter params;
 		params.setTO(targetName);

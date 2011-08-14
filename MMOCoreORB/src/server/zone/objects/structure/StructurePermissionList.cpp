@@ -86,3 +86,13 @@ int StructurePermissionList::revokePermission(const String& listName, const Stri
 	list->drop(playerName.toLowerCase());
 	return REVOKED;
 }
+
+int StructurePermissionList::revokeAllPermissions(const String& playerName) {
+	for (int i = 0; i < permissionLists.size(); ++i) {
+		SortedVector<String>* list = &permissionLists.get(i);
+
+		list->drop(playerName.toLowerCase());
+	}
+
+	return REVOKED;
+}

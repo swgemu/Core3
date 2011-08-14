@@ -20,7 +20,7 @@
  *	StructureObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_SENDSTATUSTO__CREATUREOBJECT_,RPC_SENDMANAGEMAINTENANCETO__CREATUREOBJECT_,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_SENDSTATUSTO__CREATUREOBJECT_,RPC_SENDMANAGEMAINTENANCETO__CREATUREOBJECT_,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
@@ -224,6 +224,21 @@ bool StructureObject::isOnHopperList(const String& playerName) {
 		return _implementation->isOnHopperList(playerName);
 }
 
+bool StructureObject::isOnPermissionList(const String& listName, const String& playerName) {
+	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISONPERMISSIONLIST__STRING_STRING_);
+		method.addAsciiParameter(listName);
+		method.addAsciiParameter(playerName);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isOnPermissionList(listName, playerName);
+}
+
 bool StructureObject::isOwnerOf(SceneObject* obj) {
 	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -366,6 +381,20 @@ int StructureObject::revokePermission(const String& listName, const String& targ
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->revokePermission(listName, targetName);
+}
+
+int StructureObject::revokeAllPermissions(const String& targetName) {
+	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REVOKEALLPERMISSIONS__STRING_);
+		method.addAsciiParameter(targetName);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->revokeAllPermissions(targetName);
 }
 
 void StructureObject::createVendor(CreatureObject* player) {
@@ -984,6 +1013,11 @@ bool StructureObjectImplementation::isOnHopperList(const String& playerName) {
 	return (&structurePermissionList)->isOnPermissionList("HOPPER", playerName) || (&structurePermissionList)->isOnPermissionList("ADMIN", playerName);
 }
 
+bool StructureObjectImplementation::isOnPermissionList(const String& listName, const String& playerName) {
+	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.isOnPermissionList(listName, playerName);
+	return (&structurePermissionList)->isOnPermissionList(listName, playerName);
+}
+
 bool StructureObjectImplementation::isOnAccessList(SceneObject* obj) {
 	// server/zone/objects/structure/StructureObject.idl():  		return false;
 	return false;
@@ -1022,6 +1056,11 @@ int StructureObjectImplementation::grantPermission(const String& listName, const
 int StructureObjectImplementation::revokePermission(const String& listName, const String& targetName) {
 	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.revokePermission(listName, targetName);
 	return (&structurePermissionList)->revokePermission(listName, targetName);
+}
+
+int StructureObjectImplementation::revokeAllPermissions(const String& targetName) {
+	// server/zone/objects/structure/StructureObject.idl():  		return structurePermissionList.revokeAllPermissions(targetName);
+	return (&structurePermissionList)->revokeAllPermissions(targetName);
 }
 
 int StructureObjectImplementation::getRedeedCost() {
@@ -1175,6 +1214,9 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_ISONHOPPERLIST__STRING_:
 		resp->insertBoolean(isOnHopperList(inv->getAsciiParameter(_param0_isOnHopperList__String_)));
 		break;
+	case RPC_ISONPERMISSIONLIST__STRING_STRING_:
+		resp->insertBoolean(isOnPermissionList(inv->getAsciiParameter(_param0_isOnPermissionList__String_String_), inv->getAsciiParameter(_param1_isOnPermissionList__String_String_)));
+		break;
 	case RPC_ISOWNEROF__SCENEOBJECT_:
 		resp->insertBoolean(isOwnerOf((SceneObject*) inv->getObjectParameter()));
 		break;
@@ -1204,6 +1246,9 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case RPC_REVOKEPERMISSION__STRING_STRING_:
 		resp->insertSignedInt(revokePermission(inv->getAsciiParameter(_param0_revokePermission__String_String_), inv->getAsciiParameter(_param1_revokePermission__String_String_)));
+		break;
+	case RPC_REVOKEALLPERMISSIONS__STRING_:
+		resp->insertSignedInt(revokeAllPermissions(inv->getAsciiParameter(_param0_revokeAllPermissions__String_)));
 		break;
 	case RPC_CREATEVENDOR__CREATUREOBJECT_:
 		createVendor((CreatureObject*) inv->getObjectParameter());
@@ -1334,6 +1379,10 @@ bool StructureObjectAdapter::isOnHopperList(const String& playerName) {
 	return ((StructureObjectImplementation*) impl)->isOnHopperList(playerName);
 }
 
+bool StructureObjectAdapter::isOnPermissionList(const String& listName, const String& playerName) {
+	return ((StructureObjectImplementation*) impl)->isOnPermissionList(listName, playerName);
+}
+
 bool StructureObjectAdapter::isOwnerOf(SceneObject* obj) {
 	return ((StructureObjectImplementation*) impl)->isOwnerOf(obj);
 }
@@ -1372,6 +1421,10 @@ int StructureObjectAdapter::grantPermission(const String& listName, const String
 
 int StructureObjectAdapter::revokePermission(const String& listName, const String& targetName) {
 	return ((StructureObjectImplementation*) impl)->revokePermission(listName, targetName);
+}
+
+int StructureObjectAdapter::revokeAllPermissions(const String& targetName) {
+	return ((StructureObjectImplementation*) impl)->revokeAllPermissions(targetName);
 }
 
 void StructureObjectAdapter::createVendor(CreatureObject* player) {

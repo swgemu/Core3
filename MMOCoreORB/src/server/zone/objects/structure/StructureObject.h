@@ -146,6 +146,8 @@ public:
 
 	bool isOnHopperList(const String& playerName);
 
+	bool isOnPermissionList(const String& listName, const String& playerName);
+
 	bool isOwnerOf(SceneObject* obj);
 
 	bool isOwnerOf(unsigned long long oid);
@@ -165,6 +167,8 @@ public:
 	int grantPermission(const String& listName, const String& targetName);
 
 	int revokePermission(const String& listName, const String& targetName);
+
+	int revokeAllPermissions(const String& targetName);
 
 	void createVendor(CreatureObject* player);
 
@@ -297,6 +301,8 @@ public:
 
 	bool isOnHopperList(const String& playerName);
 
+	bool isOnPermissionList(const String& listName, const String& playerName);
+
 	bool isOwnerOf(SceneObject* obj);
 
 	bool isOwnerOf(unsigned long long oid);
@@ -316,6 +322,8 @@ public:
 	int grantPermission(const String& listName, const String& targetName);
 
 	int revokePermission(const String& listName, const String& targetName);
+
+	int revokeAllPermissions(const String& targetName);
 
 	void createVendor(CreatureObject* player);
 
@@ -432,6 +440,8 @@ public:
 
 	bool isOnHopperList(const String& playerName);
 
+	bool isOnPermissionList(const String& listName, const String& playerName);
+
 	bool isOwnerOf(SceneObject* obj);
 
 	bool isOwnerOf(unsigned long long oid);
@@ -451,6 +461,8 @@ public:
 	int grantPermission(const String& listName, const String& targetName);
 
 	int revokePermission(const String& listName, const String& targetName);
+
+	int revokeAllPermissions(const String& targetName);
 
 	void createVendor(CreatureObject* player);
 
@@ -501,6 +513,8 @@ protected:
 	String _param0_isOnEntryList__String_;
 	String _param0_isOnBanList__String_;
 	String _param0_isOnHopperList__String_;
+	String _param0_isOnPermissionList__String_String_;
+	String _param1_isOnPermissionList__String_String_;
 	String _param1_sendPermissionListTo__CreatureObject_String_;
 	String _param0_hasPermissionList__String_;
 	String _param0_isPermissionListFull__String_;
@@ -510,6 +524,7 @@ protected:
 	String _param1_grantPermission__String_String_;
 	String _param0_revokePermission__String_String_;
 	String _param1_revokePermission__String_String_;
+	String _param0_revokeAllPermissions__String_;
 };
 
 class StructureObjectHelper : public DistributedObjectClassHelper, public Singleton<StructureObjectHelper> {
