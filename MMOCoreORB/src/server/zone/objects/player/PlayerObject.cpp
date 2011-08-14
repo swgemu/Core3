@@ -3569,10 +3569,8 @@ int PlayerObjectImplementation::getLotsRemaining() {
 
 bool PlayerObjectImplementation::hasLotsRemaining(int lots) {
 	Locker _locker(_this);
-	// server/zone/objects/player/PlayerObject.idl():  		lots += getLotsRemaining();
-	lots += getLotsRemaining();
-	// server/zone/objects/player/PlayerObject.idl():  		return lots <= maximumLots;
-	return lots <= maximumLots;
+	// server/zone/objects/player/PlayerObject.idl():  		return lots <= getLotsRemaining();
+	return lots <= getLotsRemaining();
 }
 
 void PlayerObjectImplementation::setOffline() {

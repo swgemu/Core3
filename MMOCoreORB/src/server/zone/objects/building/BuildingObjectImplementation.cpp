@@ -419,7 +419,15 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 
 void BuildingObjectImplementation::ejectObject(SceneObject* obj) {
 	Vector3 ejectionPoint = getEjectionPoint();
-	obj->teleport(ejectionPoint.getX(), ejectionPoint.getZ(), ejectionPoint.getY());
+
+	float x = ejectionPoint.getX();
+	float y = ejectionPoint.getY();
+	float z = 0;
+
+	if (zone != NULL)
+		zone->getHeight(x, y);
+
+	obj->teleport(x, z, y);
 }
 
 void BuildingObjectImplementation::onEnter(CreatureObject* player) {

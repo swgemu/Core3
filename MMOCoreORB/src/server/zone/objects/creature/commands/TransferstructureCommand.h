@@ -66,16 +66,16 @@ public:
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, target);
+		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature);
 
 		if (obj == NULL || !obj->isStructureObject()) {
-			creature->sendSystemMessage("@player_structure:no_building"); //You must be in a building, be near an installation, or have one targeted to do that.
-			return INVALIDTARGET;
+			creature->sendSystemMessage("@player_structure:command_no_building"); //You must be in a building or near an installation to use that command.
+			return INVALIDPARAMETERS;
 		}
 
 		StructureObject* structure = (StructureObject*) obj.get();
 
-		if (structure->isOwnerOf(creature)) {
+		if (!structure->isOwnerOf(creature)) {
 			creature->sendSystemMessage("@player_structure:not_owner"); //You are not the owner of this structure.
 			return GENERALERROR;
 		}
@@ -85,20 +85,22 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<CreatureObject*> targetCreature = playerManager->getPlayer(arguments.toString());
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
-		if (targetCreature == NULL || !targetCreature->isCreatureObject()) {
+		if (targetObject == NULL || !targetObject->isCreatureObject()) {
 			creature->sendSystemMessage("@player_structure:no_transfer_target"); //You must specify a player with whom to transfer ownership.
+			return INVALIDTARGET;
+		}
+
+		if (targetObject == creature) {
+			creature->sendSystemMessage("@player_structure:already_owner"); //You are already the owner.
 			return GENERALERROR;
 		}
+
+		CreatureObject* targetCreature = (CreatureObject*) targetObject.get();
 
 		if (structure->isOnBanList(targetCreature->getFirstName())) {
 			creature->sendSystemMessage("@player_structure:no_banned_player"); //You cannot transfer ownership to a banend player.
-			return GENERALERROR;
-		}
-
-		if (targetCreature == creature) {
-			creature->sendSystemMessage("@player_structure:already_owner"); //You are already the owner.
 			return GENERALERROR;
 		}
 
@@ -124,6 +126,7 @@ public:
 		int lotSize = structure->getLotSize();
 
 		if (!targetGhost->hasLotsRemaining(lotSize)) {
+			System::out << "lotsize: " << lotSize << endl;
 			StringIdChatParameter params("@player_structure:not_able_to_own"); //%NT is not able to own this structure.
 			params.setTT(targetCreature);
 			creature->sendSystemMessage(params);
@@ -152,6 +155,12 @@ public:
 		//Transfer ownership
 		ghost->removeOwnedStructure(structure);
 		targetGhost->addOwnedStructure(structure);
+
+		structure->setOwnerObjectID(targetCreature->getObjectID());
+
+		//Setup permissions.
+		structure->grantPermission("ADMIN", targetCreature->getFirstName());
+		structure->revokePermission("ADMIN", creature->getFirstName());
 
 		//Update the cell permissions if the structure is private and a building.
 		if (!structure->isPublicStructure() && structure->isBuildingObject()) {

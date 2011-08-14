@@ -59,6 +59,29 @@ public:
 		return NULL;
 	}
 
+	/**
+	 * Gets the first city region in the region map found at the specified coordinates.
+	 * @param x The x coordinate.
+	 * @param y The y coordinate.
+	 * @return Returns a city region or NULL if one was not found.
+	 */
+	CityRegion* getCityRegionAt(float x, float y) {
+		rlock();
+
+		for (int i = 0; i < regions.size(); ++i) {
+			ManagedReference<CityRegion*> cityRegion = regions.get(i);
+
+			if (cityRegion->containsPoint(x, y)) {
+				runlock();
+				return cityRegion;
+			}
+		}
+
+		runlock();
+
+		return NULL;
+	}
+
 	Vector<ManagedReference<CityRegion*> > getRegions(StringId* regionName) {
 		Vector<ManagedReference<CityRegion*> > matches;
 

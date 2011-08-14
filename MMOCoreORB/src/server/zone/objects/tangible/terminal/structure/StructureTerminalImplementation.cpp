@@ -78,6 +78,9 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 	Locker structureLocker(structureObject, player);
 
 	switch (selectedID) {
+	case 118:
+		//structureManager->deleteAllItems();
+		break;
 	case 121:
 		structureObject->sendPermissionListTo(player, "ADMIN");
 		break;

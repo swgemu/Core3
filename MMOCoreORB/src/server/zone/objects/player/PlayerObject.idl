@@ -340,9 +340,7 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public synchronized boolean hasLotsRemaining(int lots) {
-		lots += getLotsRemaining();
-		
-		return lots <= maximumLots;
+		return lots <= getLotsRemaining();
 	}
 	
 	public native void notifySceneReady();

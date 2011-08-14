@@ -134,6 +134,13 @@ void StructureManagerImplementation::loadPlayerStructures() {
 }
 
 int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creature, uint64 deedID, float x, float y, int angle) {
+	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+	if (!planetManager->isBuildingPermittedAt(x, y)) {
+		creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
+		return 1;
+	}
+
 	if (creature->containsActiveSession(SessionFacadeType::PLACESTRUCTURE))
 		return 1;
 
@@ -559,18 +566,14 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 		return 0;
 
 	ManagedReference<Deed*> deed = dynamic_cast<Deed*>(zone->getZoneServer()->getObject(structureObject->getDeedObjectID()));
-
-	if (deed == NULL)
-		return 0;
-
 	structureObject->setDeedObjectID(0); //Set this to 0 so the deed doesn't get destroyed with the structure.
-
-	Locker _lock(deed, structureObject);
 
 	int maint = structureObject->getSurplusMaintenance();
 	int redeedCost = structureObject->getRedeedCost();
 
 	if (deed != NULL && maint >= redeedCost) {
+		Locker _lock(deed, structureObject);
+
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
 		if (inventory == NULL || inventory->isContainerFull()) {

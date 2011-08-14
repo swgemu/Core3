@@ -470,7 +470,10 @@ void PlanetManagerImplementation::loadHuntingTargets() {
 }
 
 bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y) {
+	if (cityRegionMap->getCityRegionAt(x, y) == NULL)
+		return true;
 
+	return false;
 }
 
 

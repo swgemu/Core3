@@ -340,6 +340,7 @@ int CityRegionImplementation::notifyObserverEvent(unsigned int eventType, Observ
 }
 
 bool CityRegionImplementation::containsPoint(float x, float y) {
+	Locker _locker(_this);
 	// server/zone/objects/region/CityRegion.idl():  		}
 	for (	// server/zone/objects/region/CityRegion.idl():  		for (int i = 0;
 	int i = 0;

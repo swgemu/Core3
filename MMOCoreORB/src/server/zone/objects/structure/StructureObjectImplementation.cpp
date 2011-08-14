@@ -225,8 +225,13 @@ void StructureObjectImplementation::sendChangeNamePromptTo(CreatureObject* playe
 }
 
 bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) {
-	if (obj->isPlayerCreature() && ((CreatureObject*) obj)->getPlayerObject()->isPrivileged())
-		return true;
+
+	if (obj->isCreatureObject()) {
+		ManagedReference<PlayerObject*> ghost = ((CreatureObject*) obj)->getPlayerObject();
+
+		if (ghost->isPrivileged())
+			return true;
+	}
 
 	return obj->getObjectID() == ownerObjectID;
 }
@@ -234,7 +239,6 @@ bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) {
 bool StructureObjectImplementation::isOwnerOf(uint64 objid) {
 	ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(objid);
 
-	//We have to check if the id belongs to an admin...perhaps we should have a list on playermanager of admin objectids...
 	if (obj != NULL && obj->isPlayerCreature()) {
 		CreatureObject* player = (CreatureObject*) obj.get();
 
