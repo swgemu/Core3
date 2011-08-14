@@ -584,8 +584,11 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 			//TODO: Find a cleaner way of handling this.
 			if (deed->isBuildingDeed())
 				((BuildingDeed*) deed.get())->setSurplusMaintenance(maint - redeedCost);
-			else if (deed->isInstallationDeed())
-				((InstallationDeed*) deed.get())->setSurplusMaintenance(maint - redeedCost);
+			else if (deed->isInstallationDeed()) {
+				InstallationDeed* installationDeed = (InstallationDeed*) deed.get();
+				installationDeed->setSurplusMaintenance(maint - redeedCost);
+				installationDeed->setSurplusPower(structureObject->getSurplusPower());
+			}
 
 			inventory->addObject(deed, -1, true);
 			creature->sendSystemMessage("@player_structure:deed_reclaimed"); //Structure destroyed and deed reclaimed.

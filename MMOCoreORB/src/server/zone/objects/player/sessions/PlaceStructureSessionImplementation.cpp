@@ -18,6 +18,8 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/tangible/deed/installation/InstallationDeed.h"
+#include "server/zone/objects/tangible/deed/building/BuildingDeed.h"
 
 int PlaceStructureSessionImplementation::constructStructure(float x, float y, int angle) {
 	positionX = x;
@@ -72,6 +74,17 @@ int PlaceStructureSessionImplementation::completeSession() {
 	}
 
 	structureObject->setDeedObjectID(deedObject->getObjectID());
+
+	//TODO: Encapsulate this better?
+	//Set the power and maintenance back from the deed to the structure.
+	if (deedObject->isBuildingDeed()) {
+		BuildingDeed* buildingDeed = (BuildingDeed*) deedObject.get();
+		structureObject->setSurplusMaintenance(buildingDeed->getSurplusMaintenance());
+	} else if (deedObject->isInstallationDeed()) {
+		InstallationDeed* installationDeed = (InstallationDeed*) deedObject.get();
+		structureObject->setSurplusMaintenance(installationDeed->getSurplusMaintenance());
+		structureObject->setSurplusPower(installationDeed->getSurplusPower());
+	}
 
 	ManagedReference<PlayerObject*> ghost = creatureObject->getPlayerObject();
 
