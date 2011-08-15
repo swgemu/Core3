@@ -133,8 +133,22 @@ class StructureManager extends ManagedService implements Logger {
 	/**
 	 * Sends a Sui prompt to the player asking if they wish to delete all the items in their house.
 	 * @param creature The player receiving the prompt.
-	 * @param structure The structure that will have all items deleted.
+	 * @param building The building that will have all items deleted.
 	 */
 	public native void promptDeleteAllItems(CreatureObject creature, StructureObject structure);
+	
+	/**
+	 * Sends a Sui prompt to the player asking if they want to move the first item in the house to their feet.
+	 * @param creature The creature who the item will be moved to.
+	 * @param structure The structure which holds the items.
+	 */
+	public native void promptFindLostItems(CreatureObject creature, StructureObject structure);
+	
+	/**
+	 * Moves the first object in the building to the creature's feet.
+	 * @param creature The creature to whom's feet the item will be moved.
+	 * @param structure The structure containing the item.
+	 */
+	public native void moveFirstItemTo(CreatureObject creature, StructureObject structure);
 }
 

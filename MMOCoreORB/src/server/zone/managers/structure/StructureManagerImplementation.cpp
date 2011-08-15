@@ -65,6 +65,7 @@
 #include "server/zone/objects/player/sessions/PlaceStructureSession.h"
 #include "server/zone/objects/player/sessions/DestroyStructureSession.h"
 #include "server/zone/objects/player/sui/callbacks/DeleteAllItemsSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/FindLostItemsSuiCallback.h"
 
 void StructureManagerImplementation::loadPlayerStructures() {
 
@@ -616,5 +617,45 @@ void StructureManagerImplementation::promptDeleteAllItems(CreatureObject* creatu
 	if (ghost != NULL) {
 		ghost->addSuiBox(sui);
 		creature->sendMessage(sui->generateMessage());
+	}
+}
+
+void StructureManagerImplementation::promptFindLostItems(CreatureObject* creature, StructureObject* structure) {
+	ManagedReference<SuiMessageBox*> sui = new SuiMessageBox(creature, 0x00);
+	sui->setUsingObject(structure);
+	sui->setPromptTitle("@player_structure:move_first_item"); //Find Lost Items
+	sui->setPromptText("@player_structure:move_first_item_d"); //This command will move the first item in your house to your location...
+	sui->setCallback(new FindLostItemsSuiCallback(server->getZoneServer()));
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost != NULL) {
+		ghost->addSuiBox(sui);
+		creature->sendMessage(sui->generateMessage());
+	}
+}
+
+void StructureManagerImplementation::moveFirstItemTo(CreatureObject* creature, StructureObject* structure) {
+	if (!structure->isBuildingObject())
+		return;
+
+	ManagedReference<BuildingObject*> building = (BuildingObject*) structure;
+
+	Locker _lock(building, creature);
+
+	for (int i = 0; i < building->getTotalCellNumber(); ++i) {
+		ManagedReference<CellObject*> cell = building->getCell(i);
+
+		int size = cell->getContainerObjectsSize();
+
+		for (int i = 0; i < size; ++i) {
+			ManagedReference<SceneObject*> childObject = cell->getContainerObject(i);
+
+			if (!building->containsChildObject(childObject) && !childObject->isCreatureObject()) {
+				childObject->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
+				creature->sendSystemMessage("@player_structure:moved_first_item"); //The first item in your house has been moved to your location.
+				return;
+			}
+		}
 	}
 }

@@ -83,7 +83,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 		structureManager->promptDeleteAllItems(player, structureObject);
 		break;
 	case 202:
-		//structureManager->promptFindLostItems(player, structureObject);
+		structureManager->promptFindLostItems(player, structureObject);
 		break;
 	case 121:
 		structureObject->sendPermissionListTo(player, "ADMIN");
