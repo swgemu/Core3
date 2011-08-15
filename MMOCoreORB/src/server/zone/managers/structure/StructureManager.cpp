@@ -26,7 +26,7 @@
  *	StructureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_};
 
 StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
@@ -161,6 +161,21 @@ SceneObject* StructureManager::getInRangeParkingGarage(SceneObject* obj, int ran
 		return (SceneObject*) method.executeWithObjectReturn();
 	} else
 		return _implementation->getInRangeParkingGarage(obj, range);
+}
+
+void StructureManager::reportStructureStatus(CreatureObject* creature, StructureObject* structure) {
+	StructureManagerImplementation* _implementation = (StructureManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_);
+		method.addObjectParameter(creature);
+		method.addObjectParameter(structure);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->reportStructureStatus(creature, structure);
 }
 
 void StructureManager::promptDeleteAllItems(CreatureObject* creature, StructureObject* structure) {
@@ -403,6 +418,9 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_:
 		resp->insertLong(getInRangeParkingGarage((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter())->_getObjectID());
 		break;
+	case RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_:
+		reportStructureStatus((CreatureObject*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter());
+		break;
 	case RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_:
 		promptDeleteAllItems((CreatureObject*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter());
 		break;
@@ -449,6 +467,10 @@ String StructureManagerAdapter::getTimeString(unsigned int timestamp) {
 
 SceneObject* StructureManagerAdapter::getInRangeParkingGarage(SceneObject* obj, int range) {
 	return ((StructureManagerImplementation*) impl)->getInRangeParkingGarage(obj, range);
+}
+
+void StructureManagerAdapter::reportStructureStatus(CreatureObject* creature, StructureObject* structure) {
+	((StructureManagerImplementation*) impl)->reportStructureStatus(creature, structure);
 }
 
 void StructureManagerAdapter::promptDeleteAllItems(CreatureObject* creature, StructureObject* structure) {

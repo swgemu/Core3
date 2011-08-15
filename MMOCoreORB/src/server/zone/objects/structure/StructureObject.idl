@@ -135,7 +135,6 @@ class StructureObject extends TangibleObject {
 		return true;
 	}
 	
-	public native void sendStatusTo(CreatureObject player);
 	public native void sendManageMaintenanceTo(CreatureObject player);
 	public abstract native void sendChangeNamePromptTo(CreatureObject player);
 	

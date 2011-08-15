@@ -174,6 +174,8 @@ public:
 
 	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range = 64);
 
+	void reportStructureStatus(CreatureObject* creature, StructureObject* structure);
+
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 
 	void promptFindLostItems(CreatureObject* creature, StructureObject* structure);
@@ -237,6 +239,8 @@ public:
 	String getTimeString(unsigned int timestamp);
 
 	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range = 64);
+
+	void reportStructureStatus(CreatureObject* creature, StructureObject* structure);
 
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 
@@ -302,6 +306,8 @@ public:
 	String getTimeString(unsigned int timestamp);
 
 	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range);
+
+	void reportStructureStatus(CreatureObject* creature, StructureObject* structure);
 
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 

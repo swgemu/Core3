@@ -46,6 +46,7 @@ which carries forward this exception.
 #define STRUCTURESTATUSCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/structure/StructureManager.h"
 
 class StructurestatusCommand : public QueueCommand {
 public:
@@ -63,18 +64,17 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		//This seems to be a combination of a session and a recurring task.
-		//Task stops when SUI is closed and session is cancelled.
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
-		//So structure->getStatus() should fill a StringBuffer or ListMenu which then gets displayed.
+		if (obj == NULL || !obj->isStructureObject() || obj->getZone() == NULL) {
+			creature->sendSystemMessage("@player_structure:no_building"); //you must be in a building, be near an installation, or have one targeted to do that.
+			return INVALIDTARGET;
+		}
 
-		//So basically, this command will just create the session and start it.
+		StructureObject* structure = (StructureObject*) obj.get();
 
-		//@player_structure:structure_status_t //Structure Status
-		//@player_structure:changed_structurestatus //Your /structureStatus target has changed. Cancelling refesh.
-		//@player_structure:no_valid_structurestatus //Your /structureStatus target is no longer valid. Cancelling refresh.
-
-		//@player_structure:declared_residency //You have declared your residency here. - Goes in structure status
+		ManagedReference<StructureManager*> structureManager = structure->getZone()->getStructureManager();
+		structureManager->reportStructureStatus(creature, structure);
 
 		return SUCCESS;
 	}

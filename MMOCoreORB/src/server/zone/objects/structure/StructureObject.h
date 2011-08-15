@@ -128,8 +128,6 @@ public:
 
 	bool checkRequisitesForPlacement(CreatureObject* player);
 
-	void sendStatusTo(CreatureObject* player);
-
 	void sendManageMaintenanceTo(CreatureObject* player);
 
 	void sendChangeNamePromptTo(CreatureObject* player);
@@ -283,8 +281,6 @@ public:
 
 	virtual bool checkRequisitesForPlacement(CreatureObject* player);
 
-	void sendStatusTo(CreatureObject* player);
-
 	void sendManageMaintenanceTo(CreatureObject* player);
 
 	virtual void sendChangeNamePromptTo(CreatureObject* player);
@@ -421,8 +417,6 @@ public:
 	int notifyStructurePlaced(CreatureObject* creature);
 
 	bool checkRequisitesForPlacement(CreatureObject* player);
-
-	void sendStatusTo(CreatureObject* player);
 
 	void sendManageMaintenanceTo(CreatureObject* player);
 

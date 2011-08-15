@@ -66,6 +66,7 @@
 #include "server/zone/objects/player/sessions/DestroyStructureSession.h"
 #include "server/zone/objects/player/sui/callbacks/DeleteAllItemsSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/FindLostItemsSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/StructureStatusSuiCallback.h"
 
 void StructureManagerImplementation::loadPlayerStructures() {
 
@@ -610,6 +611,7 @@ void StructureManagerImplementation::promptDeleteAllItems(CreatureObject* creatu
 	sui->setUsingObject(structure);
 	sui->setPromptTitle("@player_structure:delete_all_items"); //Delete All Items
 	sui->setPromptText("@player_structure:delete_all_items_d"); //This command will delete every object in your house.  Are you ABSOLUTELY sure you want to destroy every object in your house?
+	sui->setCancelButton(true, "@cancel");
 	sui->setCallback(new DeleteAllItemsSuiCallback(server->getZoneServer()));
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
@@ -658,4 +660,69 @@ void StructureManagerImplementation::moveFirstItemTo(CreatureObject* creature, S
 			}
 		}
 	}
+}
+
+void StructureManagerImplementation::reportStructureStatus(CreatureObject* creature, StructureObject* structure) {
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	//Close the window if it is already open.
+	ghost->closeSuiWindowType(SuiWindowType::STRUCTURE_STATUS);
+
+	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::STRUCTURE_STATUS);
+	status->setPromptTitle("@player_structure:structure_status_t"); //Structure Status
+	status->setPromptText("@player_structure:structure_name_prompt " + structure->getObjectName()->getDisplayedName()); //Structure Name:
+	status->setUsingObject(structure);
+	status->setOkButton(true, "@refresh");
+	status->setCancelButton(true, "@cancel");
+	status->setCallback(new StructureStatusSuiCallback(server->getZoneServer()));
+
+	ManagedReference<SceneObject*> ownerObject = server->getZoneServer()->getObject(structure->getOwnerObjectID());
+
+	if (ownerObject != NULL && ownerObject->isCreatureObject()) {
+		CreatureObject* owner = (CreatureObject*) ownerObject.get();
+		status->addMenuItem("@player_structure:owner_prompt " + owner->getFirstName());
+	}
+
+	ManagedReference<SceneObject*> declaredResidence = ghost->getDeclaredResidence();
+
+	if (declaredResidence == structure) {
+		status->addMenuItem("@player_structure:declared_residency"); //You have declared your residency here.
+	}
+
+	if (structure->isPrivateStructure()) {
+		status->addMenuItem("@player_structure:structure_private"); //This structure is private
+	} else {
+		status->addMenuItem("@player_structure:structure_public"); //This structure is public
+	}
+
+	status->addMenuItem("@player_structure:condition_prompt " + String::valueOf((int) ((structure->getMaxCondition() - structure->getConditionDamage()) / structure->getMaxCondition() * 100)) + "%");
+	//TODO: Calculate how much time is remaining on the current maintenance pool.
+	/*
+	ssmpool << dec << "@player_structure:maintenance_pool_prompt " << maintpool; //Maintenance Pool:
+
+	if (maintpool > 0) {
+		uint32 seconds = (uint32) floor(((float) maintpool) / (((float) maintrate) / 3600.0f));
+		ssmpool << dec << " (" << getTimeString(seconds) << ")";
+	}
+	*/
+	status->addMenuItem("@player_structure:maintenance_rate_prompt " + String::valueOf(structure->getBaseMaintenanceRate()) + " cr/hr");
+
+	if (structure->isInstallationObject()) {
+		InstallationObject* installation = (InstallationObject*) structure;
+
+		status->addMenuItem("@player_structure:power_reserve_prompt " + String::valueOf((int) installation->getSurplusPower()));
+		status->addMenuItem("@player_structure:power_consumption_prompt " + String::valueOf((int) installation->getBasePowerRate()) + " @player_structure:units_per_hour");
+	}
+
+	if (structure->isBuildingObject()) {
+		BuildingObject* building = (BuildingObject*) structure;
+
+		status->addMenuItem("@player_structure:items_in_building_prompt " + String::valueOf(building->getCurrentNumberOfPlayerItems())); //Number of Items in Building:
+	}
+
+	ghost->addSuiBox(status);
+	creature->sendMessage(status->generateMessage());
 }

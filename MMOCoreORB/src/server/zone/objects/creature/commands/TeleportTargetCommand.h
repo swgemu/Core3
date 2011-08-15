@@ -58,43 +58,63 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		StringTokenizer args(arguments.toString());
+		ManagedReference<Zone*> targetZone = creature->getZone();
 
-		String name;
-		args.getStringToken(name);
+		if (targetZone == NULL)
+			return GENERALERROR; //Creature must be in a valid zone to use the command...
 
-		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-		ManagedReference<CreatureObject*> player = playerManager->getPlayer(name);
-
-		if (player == NULL)
-			return GENERALERROR;
+		String targetName;
+		String planetName = targetZone->getZoneName();
+		float x = creature->getPositionX();
+		float y = creature->getPositionY();
+		float z = creature->getPositionZ();
+		uint64 parentID = creature->getParentID();
 
 		try {
-			Locker clocker(player, creature);
+			UnicodeTokenizer tokenizer(arguments);
+			tokenizer.getStringToken(targetName);
 
-			Zone* targetZone = creature->getZone();
+			if (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(planetName);
+				targetZone = targetZone->getZoneServer()->getZone(planetName);
 
-			if (targetZone == NULL)
-				return GENERALERROR;
+				if (targetZone == NULL)
+					throw Exception();
 
-			String zoneName = targetZone->getZoneName();
-			float posx = creature->getPositionX();
-			float posy = creature->getPositionY();
-			float posz = creature->getPositionZ();
-			uint64 parentid = creature->getParentID();
+				x = tokenizer.getFloatToken();
+				y = tokenizer.getFloatToken();
 
-			player->switchZone(zoneName, posx, posz, posy, parentid);
+				z = targetZone->getHeight(x, y);
+			}
+
+			if (tokenizer.hasMoreTokens()) {
+				z = tokenizer.getFloatToken();
+				parentID = tokenizer.getLongToken();
+			}
 
 		} catch (Exception& e) {
-			creature->sendSystemMessage("invalid arguments for teleport command");
+			creature->sendSystemMessage("SYNTAX: /teleportTarget <targetName> [<planet> <x> <y>] [<z> <parentid>]");
+			return INVALIDPARAMETERS;
 		}
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		ManagedReference<CreatureObject*> targetCreature = playerManager->getPlayer(targetName);
+
+		if (targetCreature == NULL) {
+			creature->sendSystemMessage("The specified player does not exist.");
+			return GENERALERROR;
+		}
+
+		Locker _lock(targetCreature, creature);
+
+		targetCreature->switchZone(planetName, x, z, y, parentID);
 
 		return SUCCESS;
 	}

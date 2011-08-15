@@ -131,6 +131,13 @@ class StructureManager extends ManagedService implements Logger {
 	public native SceneObject getInRangeParkingGarage(SceneObject obj, int range = 64);
 	
 	/**
+	 * Sends a sui list box containing information about the structure.
+	 * @param creature The creature receiving the report.
+	 * @param structure The structure the report is about.
+	 */
+	public native void reportStructureStatus(CreatureObject creature, StructureObject structure);
+	
+	/**
 	 * Sends a Sui prompt to the player asking if they wish to delete all the items in their house.
 	 * @param creature The player receiving the prompt.
 	 * @param building The building that will have all items deleted.
