@@ -183,6 +183,15 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	public native void sendPlanetTravelPointListResponse(CreatureObject player);
 	
+	/**
+	 * Creates a travel ticket from the departure point on this planet to the arrival point on the arrival planet.
+	 * @param departurePoint The point on this planet from which the ticket is set to depart.
+	 * @param arrivalPlanet The planet to which the ticket is set to arrive.
+	 * @param departurePoint The point on the arrival planet to which the ticket is set to arrive.
+	 * @return Returns a travel ticket for the route specified, or NULL if it could not be created.
+	 */
+	public native SceneObject createTicket(final string departurePoint, final string arrivalPlanet, final string arrivalPoint);
+	
 	@local
 	@dereferenced
 	public Vector<CityRegion> getRegions(@dereferenced StringId regionName) {

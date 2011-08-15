@@ -26,7 +26,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -217,6 +217,22 @@ void PlanetManager::sendPlanetTravelPointListResponse(CreatureObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->sendPlanetTravelPointListResponse(player);
+}
+
+SceneObject* PlanetManager::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
+	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CREATETICKET__STRING_STRING_STRING_);
+		method.addAsciiParameter(departurePoint);
+		method.addAsciiParameter(arrivalPlanet);
+		method.addAsciiParameter(arrivalPoint);
+
+		return (SceneObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
 }
 
 Vector<ManagedReference<CityRegion* > > PlanetManager::getRegions(StringId& regionName) {
@@ -970,6 +986,9 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_:
 		sendPlanetTravelPointListResponse((CreatureObject*) inv->getObjectParameter());
 		break;
+	case RPC_CREATETICKET__STRING_STRING_STRING_:
+		resp->insertLong(createTicket(inv->getAsciiParameter(_param0_createTicket__String_String_String_), inv->getAsciiParameter(_param1_createTicket__String_String_String_), inv->getAsciiParameter(_param2_createTicket__String_String_String_))->_getObjectID());
+		break;
 	case RPC_GETWEATHERMANAGER__:
 		resp->insertLong(getWeatherManager()->_getObjectID());
 		break;
@@ -1078,6 +1097,10 @@ int PlanetManagerAdapter::getTravelFare(const String& destinationPlanet) {
 
 void PlanetManagerAdapter::sendPlanetTravelPointListResponse(CreatureObject* player) {
 	((PlanetManagerImplementation*) impl)->sendPlanetTravelPointListResponse(player);
+}
+
+SceneObject* PlanetManagerAdapter::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
+	return ((PlanetManagerImplementation*) impl)->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
 }
 
 WeatherManager* PlanetManagerAdapter::getWeatherManager() {

@@ -29,6 +29,7 @@
 #include "server/zone/objects/area/BadgeActiveArea.h"
 
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/tangible/ticket/TicketObject.h"
 
 #include "PlanetTravelPoint.h"
 
@@ -481,3 +482,22 @@ void PlanetManagerImplementation::loadReconLocations() {
 	info("loading recon locations ...", true);
 }
 
+SceneObject* PlanetManagerImplementation::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
+	ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);
+
+	if (obj == NULL || !obj->isTangibleObject())
+		return NULL;
+
+	TangibleObject* tano = (TangibleObject*) obj.get();
+
+	if (!tano->isTicketObject())
+		return tano;
+
+	TicketObject* ticket = (TicketObject*) tano;
+	ticket->setDeparturePlanet(zone->getZoneName());
+	ticket->setDeparturePoint(departurePoint);
+	ticket->setArrivalPlanet(arrivalPlanet);
+	ticket->setArrivalPoint(arrivalPoint);
+
+	return ticket;
+}

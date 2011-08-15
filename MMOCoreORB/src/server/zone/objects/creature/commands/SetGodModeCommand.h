@@ -64,28 +64,27 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return INVALIDPARAMETERS;
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		CreatureObject* player = (CreatureObject*) creature;
+		if (ghost == NULL || !ghost->isPrivileged()) {
+			creature->sendSystemMessage("@error_message:insufficient_permissions"); //You do not have sufficient permissions to perform the requested action.
+			return INSUFFICIENTPERMISSION;
+		}
 
-		if (!player->getPlayerObject()->hasSkill("admin") || !player->getPlayerObject()->isPrivileged())
-			return GENERALERROR;
-
-		//Admin level defaults to CSR
-		int adminLevel = PlayerObject::CSR;
+		int adminLevel = 0;
 		String targetName;
 
-		StringTokenizer args(arguments.toString());
-
-		if (args.hasMoreTokens())
+		try {
+			UnicodeTokenizer args(arguments);
 			args.getStringToken(targetName);
-
-		if (args.hasMoreTokens())
 			adminLevel = args.getIntToken();
+		} catch (Exception& e) {
+			creature->sendSystemMessage("SYNTAX: /setGodMode <name> <admin level: 0=Player, 1=CSR, 2=Developer>.");
+			return INVALIDPARAMETERS;
+		}
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-		playerManager->updateAdminLevel(player, targetName, adminLevel);
+		playerManager->updateAdminLevel(creature, targetName, adminLevel);
 
 		return SUCCESS;
 	}

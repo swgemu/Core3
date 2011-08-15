@@ -85,6 +85,7 @@ public:
 			return;
 
 		SortedVector<String> list;
+		list.setNoDuplicateInsertPlan();
 		permissionLists.put(listName, list);
 	}
 

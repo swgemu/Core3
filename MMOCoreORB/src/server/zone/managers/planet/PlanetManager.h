@@ -206,6 +206,8 @@ public:
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
+	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
+
 	Vector<ManagedReference<CityRegion* > > getRegions(StringId& regionName);
 
 	WeatherManager* getWeatherManager();
@@ -365,6 +367,8 @@ public:
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
+	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
+
 	Vector<ManagedReference<CityRegion* > > getRegions(StringId& regionName);
 
 	WeatherManager* getWeatherManager();
@@ -482,6 +486,8 @@ public:
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
+	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
+
 	WeatherManager* getWeatherManager();
 
 	CityRegion* getRegion(float x, float y);
@@ -518,6 +524,9 @@ public:
 
 protected:
 	String _param0_getTravelFare__String_;
+	String _param0_createTicket__String_String_String_;
+	String _param1_createTicket__String_String_String_;
+	String _param2_createTicket__String_String_String_;
 	String _param0_dropRegion__String_;
 	String _param0_hasRegion__String_;
 	String _param0_addHuntingTargetTemplate__String_String_int_;

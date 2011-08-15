@@ -60,7 +60,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -72,22 +71,17 @@ public:
 		if (inventory == NULL)
 			return GENERALERROR;
 
-		String departurePlanet;
-		String departurePoint;
-
-		String arrivalPlanet;
-		String arrivalPoint;
-
+		String departurePlanet, departurePoint, arrivalPlanet, arrivalPoint;
 		bool roundTrip;
 
-		UnicodeTokenizer tokenizer(arguments);
-
 		try {
+			UnicodeTokenizer tokenizer(arguments);
 			tokenizer.getStringToken(departurePlanet);
 			tokenizer.getStringToken(departurePoint);
 			tokenizer.getStringToken(arrivalPlanet);
 			tokenizer.getStringToken(arrivalPoint);
 			roundTrip = (bool) tokenizer.getIntToken();
+
 		} catch(Exception& e) {
 			return INVALIDPARAMETERS;
 		}
@@ -97,20 +91,42 @@ public:
 		arrivalPlanet = arrivalPlanet.replaceAll("_", " ");
 		arrivalPoint = arrivalPoint.replaceAll("_", " ");
 
-		ManagedReference<Zone*> zone = creature->getZone();
+		ManagedReference<Zone*> departureZone = server->getZoneServer()->getZone(departurePlanet);
+		ManagedReference<Zone*> arrivalZone = server->getZoneServer()->getZone(arrivalPlanet);
 
 		//Check to see if the departure planet is the same planet the player is on.
-		if (zone == NULL || zone->getZoneName() != departurePlanet)
-			return GENERALERROR;
+		if (creature->getZone() != departureZone)
+			return INVALIDPARAMETERS;
 
-		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+		ManagedReference<PlanetManager*> pmDeparture = departureZone->getPlanetManager();
+		ManagedReference<PlanetManager*> pmArrival = arrivalZone->getPlanetManager();
+
+		if (pmArrival->isExistingPlanetTravelPoint(arrivalPoint)) {
+			creature->sendSystemMessage("@travel:no_location_found"); //No location was found for your destination.
+			return INVALIDPARAMETERS;
+		}
 
 		//Check to see if this point can be reached from this location.
-		if (!planetManager->isTravelToLocationPermitted(departurePoint, arrivalPlanet, arrivalPoint))
+		if (!pmDeparture->isTravelToLocationPermitted(departurePoint, arrivalPlanet, arrivalPoint))
 			return GENERALERROR;
 
-		int fare = planetManager->getTravelFare(departurePlanet);
+		if (roundTrip && !pmArrival->isTravelToLocationPermitted(arrivalPoint, departurePlanet, departurePoint))
+			return GENERALERROR; //If they are doing a round trip, make sure they can travel back.
 
+		int fare = pmDeparture->getTravelFare(arrivalPlanet);
+
+		if (roundTrip)
+			fare += pmArrival->getTravelFare(departurePlanet);
+
+		//Make sure they have space in the inventory for the tickets before purchasing them.
+		Locker _lock(inventory, creature);
+
+		if (inventory->getContainerObjectsSize() + ((roundTrip) ? 2 : 1) <= inventory->getContainerVolumeLimit()) {
+			creature->sendSystemMessage("@error_message:inv_full"); //Your inventory is full.
+			return GENERALERROR;
+		}
+
+		//Check if they have funds.
 		int bank = creature->getBankCredits();
 		int cash = creature->getCashCredits();
 
@@ -126,9 +142,10 @@ public:
 				return GENERALERROR;
 			}
 
-			creature->substractCashCredits(diff);
+			creature->substractBankCredits(bank); //Take all from the bank, since they didn't have enough to cover.
+			creature->substractCashCredits(diff); //Take the rest from the cash.
 		} else {
-			creature->substractBankCredits(bank);
+			creature->substractBankCredits(fare); //Take all of the fare from the bank.
 		}
 
 		StringIdChatParameter params("@base_player:prose_pay_acct_success"); //You successfully make a payment of %DI credits to %TO.
@@ -137,24 +154,14 @@ public:
 
 		creature->sendSystemMessage(params);
 
-		ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);
+		//ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);
+		ManagedReference<SceneObject*> ticket1 = pmDeparture->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
+		inventory->addObject(ticket1, -1, true);
 
-		if (obj == NULL || !obj->isTangibleObject())
-			return GENERALERROR;
-
-		TangibleObject* tano = (TangibleObject*) obj.get();
-
-		if (!tano->isTicketObject())
-			return GENERALERROR;
-
-		TicketObject* ticket = (TicketObject*) tano;
-		ticket->setDeparturePlanet(departurePlanet);
-		ticket->setDeparturePoint(departurePoint);
-		ticket->setArrivalPlanet(arrivalPlanet);
-		ticket->setArrivalPoint(arrivalPoint);
-
-		inventory->addObject(ticket, -1);
-		ticket->sendTo(creature, true);
+		if (roundTrip) {
+			ManagedReference<SceneObject*> ticket2 = pmArrival->createTicket(arrivalPoint, departurePlanet, departurePoint);
+			inventory->addObject(ticket2, -1, true);
+		}
 
 		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(creature, 0);
 		suiBox->setPromptTitle("");
