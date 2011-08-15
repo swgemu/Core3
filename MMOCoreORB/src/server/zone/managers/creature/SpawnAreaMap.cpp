@@ -92,7 +92,10 @@ void SpawnAreaMap::loadStaticSpawns() {
 			uint64 parentID = (uint64)lua_tonumber(obj.getLuaState(), -1);
 			lua_pop(obj.getLuaState(), 1);
 
-			ManagedReference<CreatureObject*> creatureObject = creatureManager->spawnCreature(name.hashCode(), 0, x, zone->getHeight(x, y), y, parentID);
+			if (parentID == 0)
+				z = zone->getHeight(x, y);
+
+			ManagedReference<CreatureObject*> creatureObject = creatureManager->spawnCreature(name.hashCode(), 0, x, z, y, parentID);
 
 			if (creatureObject != NULL) {
 				creatureObject->setDirection(Math::deg2rad(heading));
