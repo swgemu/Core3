@@ -297,6 +297,9 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 	
 	templateObject->readObject(templateData);
 
+	if (!clientTemplateFile.isEmpty())
+		templateObject->addDerivedFile(clientTemplateFile);
+
 	//info("loaded " + fullName);
 
 	if (templateCRCMap->put(key, templateObject) != NULL) {

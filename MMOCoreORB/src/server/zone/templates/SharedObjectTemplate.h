@@ -261,6 +261,10 @@ public:
 		return &scale;
 	}*/
 
+    inline void addDerivedFile(const String& name) {
+    	loadedDerivedFiles.put(name);
+    }
+
 	inline float getMinScale() {
 		return scale.getMin();
 	}
