@@ -2198,21 +2198,21 @@ StructureObject* PlayerManagerImplementation::getInRangeOwnedStructure(CreatureO
 }
 
 void PlayerManagerImplementation::updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel) {
-	//Make sure the player exists.
-	uint64 targetID = getObjectID(targetName);
+	ManagedReference<CreatureObject*> targetPlayer = getPlayer(targetName);
 
-	ManagedReference<SceneObject*> obj = server->getObject(targetID);
-
-	if (obj == NULL || !obj->isPlayerCreature()) {
+	if (targetPlayer == NULL) {
 		player->sendSystemMessage("That player does not exist.");
 		return;
 	}
 
-	Locker clocker(obj, player);
-
-	CreatureObject* targetPlayer = (CreatureObject*) obj.get();
+	Locker clocker(targetPlayer, player);
 
 	ManagedReference<PlayerObject*> ghost = targetPlayer->getPlayerObject();
+
+	if (ghost == NULL) {
+		player->sendSystemMessage("That player did not have a PlayerObject.");
+		return;
+	}
 
 	Vector<String> skills;
 	skills.add("admin");

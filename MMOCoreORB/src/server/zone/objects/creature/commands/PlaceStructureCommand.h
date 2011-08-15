@@ -64,6 +64,11 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (creature->getParent() != NULL) {
+			creature->sendSystemMessage("@player_structure:not_inside"); //You can not place a structure while you are inside a building.
+			return GENERALERROR;
+		}
+
 		uint64 deedID;
 		float x, y;
 		int angle;

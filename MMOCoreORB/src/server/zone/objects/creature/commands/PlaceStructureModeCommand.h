@@ -69,6 +69,11 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		if (creature->getParent() != NULL) {
+			creature->sendSystemMessage("@player_structure:not_inside"); //You can not place a structure while you are inside a building.
+			return GENERALERROR;
+		}
+
 		if (creature->getCityRegion() != NULL) {
 			creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
 			return INVALIDPARAMETERS;
