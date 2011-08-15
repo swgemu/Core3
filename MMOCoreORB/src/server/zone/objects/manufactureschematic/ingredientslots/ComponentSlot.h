@@ -109,14 +109,6 @@ public:
 
 	bool add(CreatureObject* player, TangibleObject* incomingTano) {
 
-		/// Check if incoming object derived from the template specified in
-		/// the schematic data
-		Reference<SharedObjectTemplate*> baseTemplate = incomingTano->getObjectTemplate();
-		if(!baseTemplate->isDerivedFrom(type)) {
-			player->sendSystemMessage("" + type + " not derived from " + baseTemplate->getFullTemplateString());
-			return false;
-		}
-
 		int itemsInSlot = getQuantity();
 
 		if(requiresIdentical && serial != "" && itemsInSlot > 0) {
@@ -135,6 +127,14 @@ public:
 				incomingTano = crate->extractObject(needs);
 			else
 				incomingTano = crate->extractObject(incomingTano->getUseCount());
+		}
+
+		/// Check if incoming object derived from the template specified in
+		/// the schematic data
+		Reference<SharedObjectTemplate*> baseTemplate = incomingTano->getObjectTemplate();
+		if(!baseTemplate->isDerivedFrom(type)) {
+			player->sendSystemMessage("" + type + " not derived from " + baseTemplate->getFullTemplateString());
+			return false;
 		}
 
 		if(serial = "")
