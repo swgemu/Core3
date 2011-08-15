@@ -136,12 +136,5 @@ class StructureManager extends ManagedService implements Logger {
 	 * @param structure The structure that will have all items deleted.
 	 */
 	public native void promptDeleteAllItems(CreatureObject creature, StructureObject structure);
-	
-	/**
-	 * Deletes all items from the structure that aren't a part of it's object template.
-	 * @param structure The structure that will have items deleted.
-	 * @return Returns true if the items were deleted.
-	 */
-	public native boolean deleteAllItems(StructureObject structure);
 }
 

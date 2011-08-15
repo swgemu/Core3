@@ -146,7 +146,7 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 		for (int j = 0; j < getContainerObjectsSize(); ++j) {
 			ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
-			if (!parent->containsChildObject(containerObject))
+			if (!parent->containsChildObject(containerObject) && !containerObject->isCreatureObject())
 				++count;
 		}
 	}
@@ -158,13 +158,20 @@ void CellObjectImplementation::destroyAllPlayerItems() {
 	if (parent == NULL)
 		return;
 
-	for (int j = 0; j < getContainerObjectsSize(); ++j) {
+	int containerSize = getContainerObjectsSize();
+
+	for (int j = containerSize - 1; j >= 0; --j) {
 		ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
 		if (parent->containsChildObject(containerObject))
 			continue;
 
-		removeObject(containerObject, true);
+		if (containerObject->isCreatureObject())
+			continue;
+
+		containerObject->broadcastDestroy(containerObject, false);
+		removeObject(containerObject, false);
+
 		containerObject->destroyObjectFromDatabase(true);
 	}
 }

@@ -618,12 +618,3 @@ void StructureManagerImplementation::promptDeleteAllItems(CreatureObject* creatu
 		creature->sendMessage(sui->generateMessage());
 	}
 }
-
-bool StructureManagerImplementation::deleteAllItems(StructureObject* structure) {
-	Locker _lock(structure);
-
-	if (!structure->isBuildingObject())
-		return true; //No items to delete.
-
-	BuildingObject* building = (BuildingObject*) structure;
-}

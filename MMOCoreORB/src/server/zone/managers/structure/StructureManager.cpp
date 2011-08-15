@@ -26,7 +26,7 @@
  *	StructureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_DELETEALLITEMS__STRUCTUREOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_};
 
 StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
@@ -176,20 +176,6 @@ void StructureManager::promptDeleteAllItems(CreatureObject* creature, StructureO
 		method.executeWithVoidReturn();
 	} else
 		_implementation->promptDeleteAllItems(creature, structure);
-}
-
-bool StructureManager::deleteAllItems(StructureObject* structure) {
-	StructureManagerImplementation* _implementation = (StructureManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_DELETEALLITEMS__STRUCTUREOBJECT_);
-		method.addObjectParameter(structure);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->deleteAllItems(structure);
 }
 
 DistributedObjectServant* StructureManager::_getImplementation() {
@@ -390,9 +376,6 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_:
 		promptDeleteAllItems((CreatureObject*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter());
 		break;
-	case RPC_DELETEALLITEMS__STRUCTUREOBJECT_:
-		resp->insertBoolean(deleteAllItems((StructureObject*) inv->getObjectParameter()));
-		break;
 	default:
 		return NULL;
 	}
@@ -434,10 +417,6 @@ SceneObject* StructureManagerAdapter::getInRangeParkingGarage(SceneObject* obj, 
 
 void StructureManagerAdapter::promptDeleteAllItems(CreatureObject* creature, StructureObject* structure) {
 	((StructureManagerImplementation*) impl)->promptDeleteAllItems(creature, structure);
-}
-
-bool StructureManagerAdapter::deleteAllItems(StructureObject* structure) {
-	return ((StructureManagerImplementation*) impl)->deleteAllItems(structure);
 }
 
 /*

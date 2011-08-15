@@ -176,8 +176,6 @@ public:
 
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 
-	bool deleteAllItems(StructureObject* structure);
-
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -237,8 +235,6 @@ public:
 	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range = 64);
 
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
-
-	bool deleteAllItems(StructureObject* structure);
 
 	WeakReference<StructureManager*> _this;
 
@@ -300,8 +296,6 @@ public:
 	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range);
 
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
-
-	bool deleteAllItems(StructureObject* structure);
 
 protected:
 	String _param1_placeStructure__CreatureObject_String_float_float_int_;

@@ -49,6 +49,7 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 	//menuResponse->addRadialMenuItemToRadialID(118, 200, 3, "@player_structure:withdraw_maintenance"); //Withdraw from Treasury
 	//Find lost items
 	menuResponse->addRadialMenuItemToRadialID(118, 201, 3, "@player_structure:delete_all_items"); //Delete all items
+	menuResponse->addRadialMenuItemToRadialID(118, 202, 3, "@player_structure:move_first_item"); //Find Lost Items
 
 	menuResponse->addRadialMenuItem(117, 3, "@player_structure:permissions"); //Structure Permissions
 	menuResponse->addRadialMenuItemToRadialID(117, 121, 3, "@player_structure:permission_admin"); //Administrator List
@@ -80,6 +81,9 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 	switch (selectedID) {
 	case 201:
 		structureManager->promptDeleteAllItems(player, structureObject);
+		break;
+	case 202:
+		//structureManager->promptFindLostItems(player, structureObject);
 		break;
 	case 121:
 		structureObject->sendPermissionListTo(player, "ADMIN");
