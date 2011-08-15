@@ -206,7 +206,9 @@ public:
 
 	bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
-	int getCurrentNumerOfPlayerItems();
+	int getCurrentNumberOfPlayerItems();
+
+	void destroyAllPlayerItems();
 
 	void onEnter(CreatureObject* player);
 
@@ -347,7 +349,9 @@ public:
 
 	virtual bool addObject(SceneObject* object, int containmentType, bool notifyClient = false);
 
-	int getCurrentNumerOfPlayerItems();
+	int getCurrentNumberOfPlayerItems();
+
+	void destroyAllPlayerItems();
 
 	virtual void onEnter(CreatureObject* player);
 
@@ -464,7 +468,9 @@ public:
 
 	bool addObject(SceneObject* object, int containmentType, bool notifyClient);
 
-	int getCurrentNumerOfPlayerItems();
+	int getCurrentNumberOfPlayerItems();
+
+	void destroyAllPlayerItems();
 
 	void onEnter(CreatureObject* player);
 

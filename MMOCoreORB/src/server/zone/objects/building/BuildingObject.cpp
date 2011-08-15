@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -415,17 +415,30 @@ bool BuildingObject::addObject(SceneObject* object, int containmentType, bool no
 		return _implementation->addObject(object, containmentType, notifyClient);
 }
 
-int BuildingObject::getCurrentNumerOfPlayerItems() {
+int BuildingObject::getCurrentNumberOfPlayerItems() {
 	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETCURRENTNUMEROFPLAYERITEMS__);
+		DistributedMethod method(this, RPC_GETCURRENTNUMBEROFPLAYERITEMS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getCurrentNumerOfPlayerItems();
+		return _implementation->getCurrentNumberOfPlayerItems();
+}
+
+void BuildingObject::destroyAllPlayerItems() {
+	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DESTROYALLPLAYERITEMS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->destroyAllPlayerItems();
 }
 
 void BuildingObject::onEnter(CreatureObject* player) {
@@ -1002,8 +1015,11 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_:
 		resp->insertBoolean(addObject((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter()));
 		break;
-	case RPC_GETCURRENTNUMEROFPLAYERITEMS__:
-		resp->insertSignedInt(getCurrentNumerOfPlayerItems());
+	case RPC_GETCURRENTNUMBEROFPLAYERITEMS__:
+		resp->insertSignedInt(getCurrentNumberOfPlayerItems());
+		break;
+	case RPC_DESTROYALLPLAYERITEMS__:
+		destroyAllPlayerItems();
 		break;
 	case RPC_ONENTER__CREATUREOBJECT_:
 		onEnter((CreatureObject*) inv->getObjectParameter());
@@ -1142,8 +1158,12 @@ bool BuildingObjectAdapter::addObject(SceneObject* object, int containmentType, 
 	return ((BuildingObjectImplementation*) impl)->addObject(object, containmentType, notifyClient);
 }
 
-int BuildingObjectAdapter::getCurrentNumerOfPlayerItems() {
-	return ((BuildingObjectImplementation*) impl)->getCurrentNumerOfPlayerItems();
+int BuildingObjectAdapter::getCurrentNumberOfPlayerItems() {
+	return ((BuildingObjectImplementation*) impl)->getCurrentNumberOfPlayerItems();
+}
+
+void BuildingObjectAdapter::destroyAllPlayerItems() {
+	((BuildingObjectImplementation*) impl)->destroyAllPlayerItems();
 }
 
 void BuildingObjectAdapter::onEnter(CreatureObject* player) {

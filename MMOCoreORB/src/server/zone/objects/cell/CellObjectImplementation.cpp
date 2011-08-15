@@ -99,7 +99,7 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 	if (parent != NULL && parent->isBuildingObject()) {
 		ManagedReference<BuildingObject*> building = (BuildingObject*) parent.get();
 
-		if (building->getCurrentNumerOfPlayerItems() >= building->getMaximumNumberOfPlayerItems()) {
+		if (building->getCurrentNumberOfPlayerItems() >= building->getMaximumNumberOfPlayerItems()) {
 			errorDescription = "@container_error_message:container13";
 
 			return TransferErrorCode::TOOMANYITEMSINHOUSE;
@@ -139,15 +139,32 @@ bool CellObjectImplementation::removeObject(SceneObject* object, bool notifyClie
 	return ret;
 }
 
-int CellObjectImplementation::getCurrentNumerOfPlayerItems() {
+int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 	int count = 0;
+
+	if (parent != NULL) {
+		for (int j = 0; j < getContainerObjectsSize(); ++j) {
+			ManagedReference<SceneObject*> containerObject = getContainerObject(j);
+
+			if (!parent->containsChildObject(containerObject))
+				++count;
+		}
+	}
+
+	return count;
+}
+
+void CellObjectImplementation::destroyAllPlayerItems() {
+	if (parent == NULL)
+		return;
 
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
 		ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
-		if (!containerObject->isCreatureObject() && !containerObject->isTerminal())
-			++count;
-	}
+		if (parent->containsChildObject(containerObject))
+			continue;
 
-	return count;
+		removeObject(containerObject, true);
+		containerObject->destroyObjectFromDatabase(true);
+	}
 }

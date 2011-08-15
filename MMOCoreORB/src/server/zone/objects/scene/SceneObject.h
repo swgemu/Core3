@@ -1192,7 +1192,9 @@ public:
 
 	PlanetMapCategory* getPlanetMapSubCategory();
 
-	SortedVector<ManagedReference<SceneObject* > >* getOutdoorChildObjects();
+	SortedVector<ManagedReference<SceneObject* > >* getChildObjects();
+
+	bool containsChildObject(SceneObject* obj);
 
 	SortedVector<ManagedReference<SceneObject* > >* getNotifiedSentObjects();
 
@@ -1263,7 +1265,7 @@ protected:
 
 	ManagedWeakReference<SceneObject* > parent;
 
-	SortedVector<ManagedReference<SceneObject* > > outdoorChildObjects;
+	SortedVector<ManagedReference<SceneObject* > > childObjects;
 
 	unsigned int serverObjectCRC;
 
@@ -2258,7 +2260,9 @@ public:
 
 	PlanetMapCategory* getPlanetMapSubCategory();
 
-	SortedVector<ManagedReference<SceneObject* > >* getOutdoorChildObjects();
+	SortedVector<ManagedReference<SceneObject* > >* getChildObjects();
+
+	bool containsChildObject(SceneObject* obj);
 
 	SortedVector<ManagedReference<SceneObject* > >* getNotifiedSentObjects();
 
@@ -2694,6 +2698,8 @@ public:
 	int getPlanetMapCategoryCRC();
 
 	int getPlanetMapSubCategoryCRC();
+
+	bool containsChildObject(SceneObject* obj);
 
 	void createChildObjects();
 

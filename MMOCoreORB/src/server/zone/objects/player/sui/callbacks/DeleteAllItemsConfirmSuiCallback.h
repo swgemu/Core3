@@ -30,17 +30,11 @@ public:
 
 		BuildingObject* building = (BuildingObject*) obj.get();
 
-		ManagedReference<Zone*> zone = building->getZone();
+		Locker _lock(building, creature);
 
-		if (zone == NULL)
-			return; //Building has been removed from zone...
+		building->destroyAllPlayerItems();
 
-		ManagedReference<StructureManager*> structureManager = zone->getStructureManager();
-
-		bool success = structureManager->deleteAllItems(building);
-
-		if (success)
-			creature->sendSystemMessage("@player_structure:items_deleted"); //All of the objects in your house have been deleted.
+		creature->sendSystemMessage("@player_structure:items_deleted"); //All of the objects in your house have been deleted.
 	}
 };
 

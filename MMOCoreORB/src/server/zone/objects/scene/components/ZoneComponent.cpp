@@ -128,11 +128,11 @@ void ZoneComponent::insertToZone(SceneObject* sceneObject, Zone* newZone) {
 		}
 	}
 
-	SortedVector<ManagedReference<SceneObject*> >* outdoorChildObjects = sceneObject->getOutdoorChildObjects();
+	SortedVector<ManagedReference<SceneObject*> >* childObjects = sceneObject->getChildObjects();
 
 	//Insert all outdoor child objects to zone
-	for (int i = 0; i < outdoorChildObjects->size(); ++i) {
-		ManagedReference<SceneObject*> outdoorChild = outdoorChildObjects->get(i);
+	for (int i = 0; i < childObjects->size(); ++i) {
+		ManagedReference<SceneObject*> outdoorChild = childObjects->get(i);
 
 		if (outdoorChild == NULL)
 			continue;
@@ -425,11 +425,11 @@ void ZoneComponent::removeFromZone(SceneObject* sceneObject) {
 			activeAreas->remove(0);
 		}
 
-		SortedVector<ManagedReference<SceneObject*> >* outdoorChildObjects = sceneObject->getOutdoorChildObjects();
+		SortedVector<ManagedReference<SceneObject*> >* childObjects = sceneObject->getChildObjects();
 
 		//Remove all outdoor child objects from zone
-		for (int i = 0; i < outdoorChildObjects->size(); ++i) {
-			ManagedReference<SceneObject*> outdoorChild = outdoorChildObjects->get(i);
+		for (int i = 0; i < childObjects->size(); ++i) {
+			ManagedReference<SceneObject*> outdoorChild = childObjects->get(i);
 
 			if (outdoorChild == NULL)
 				continue;

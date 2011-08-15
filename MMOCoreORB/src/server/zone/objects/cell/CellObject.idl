@@ -129,7 +129,12 @@ class CellObject extends SceneObject {
 		currentNumberOfItems = 0;
 	}*/
 	
-	public native int getCurrentNumerOfPlayerItems();
+	public native int getCurrentNumberOfPlayerItems();
+	
+	/**
+	 * This method loops through all items in the cell and attempts to destroy them from the database.
+	 */
+	public native void destroyAllPlayerItems();
 	
 	public int getCellNumber() {
 		return cellNumber;

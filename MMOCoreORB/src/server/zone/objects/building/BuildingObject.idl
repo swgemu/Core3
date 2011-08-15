@@ -217,7 +217,12 @@ class BuildingObject extends StructureObject {
 	
 	public native abstract boolean addObject(SceneObject object, int containmentType, boolean notifyClient = false);
 	
-	public native int getCurrentNumerOfPlayerItems() ;
+	public native int getCurrentNumberOfPlayerItems();
+	
+	/**
+	 * Loops through all the cells, destroying items from the database that aren't contained in the child objects vector.
+	 */
+	public native void destroyAllPlayerItems();
 	
 	/**
 	 * Abstract function that is triggered when a player enters a building.

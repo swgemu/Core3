@@ -64,7 +64,9 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	int getCurrentNumerOfPlayerItems();
+	int getCurrentNumberOfPlayerItems();
+
+	void destroyAllPlayerItems();
 
 	int getCellNumber();
 
@@ -123,7 +125,9 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	int getCurrentNumerOfPlayerItems();
+	int getCurrentNumberOfPlayerItems();
+
+	void destroyAllPlayerItems();
 
 	int getCellNumber();
 
@@ -188,7 +192,9 @@ public:
 
 	void sendBaselinesTo(SceneObject* player);
 
-	int getCurrentNumerOfPlayerItems();
+	int getCurrentNumberOfPlayerItems();
+
+	void destroyAllPlayerItems();
 
 	int getCellNumber();
 

@@ -12,7 +12,7 @@
  *	CellObjectStub
  */
 
-enum {RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMEROFPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
+enum {RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_REMOVEOBJECT__SCENEOBJECT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
 
 CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
 	CellObjectImplementation* _implementation = new CellObjectImplementation();
@@ -137,17 +137,30 @@ void CellObject::sendBaselinesTo(SceneObject* player) {
 		_implementation->sendBaselinesTo(player);
 }
 
-int CellObject::getCurrentNumerOfPlayerItems() {
+int CellObject::getCurrentNumberOfPlayerItems() {
 	CellObjectImplementation* _implementation = (CellObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETCURRENTNUMEROFPLAYERITEMS__);
+		DistributedMethod method(this, RPC_GETCURRENTNUMBEROFPLAYERITEMS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getCurrentNumerOfPlayerItems();
+		return _implementation->getCurrentNumberOfPlayerItems();
+}
+
+void CellObject::destroyAllPlayerItems() {
+	CellObjectImplementation* _implementation = (CellObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DESTROYALLPLAYERITEMS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->destroyAllPlayerItems();
 }
 
 int CellObject::getCellNumber() {
@@ -397,8 +410,11 @@ Packet* CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SENDBASELINESTO__SCENEOBJECT_:
 		sendBaselinesTo((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_GETCURRENTNUMEROFPLAYERITEMS__:
-		resp->insertSignedInt(getCurrentNumerOfPlayerItems());
+	case RPC_GETCURRENTNUMBEROFPLAYERITEMS__:
+		resp->insertSignedInt(getCurrentNumberOfPlayerItems());
+		break;
+	case RPC_DESTROYALLPLAYERITEMS__:
+		destroyAllPlayerItems();
 		break;
 	case RPC_GETCELLNUMBER__:
 		resp->insertSignedInt(getCellNumber());
@@ -444,8 +460,12 @@ void CellObjectAdapter::sendBaselinesTo(SceneObject* player) {
 	((CellObjectImplementation*) impl)->sendBaselinesTo(player);
 }
 
-int CellObjectAdapter::getCurrentNumerOfPlayerItems() {
-	return ((CellObjectImplementation*) impl)->getCurrentNumerOfPlayerItems();
+int CellObjectAdapter::getCurrentNumberOfPlayerItems() {
+	return ((CellObjectImplementation*) impl)->getCurrentNumberOfPlayerItems();
+}
+
+void CellObjectAdapter::destroyAllPlayerItems() {
+	((CellObjectImplementation*) impl)->destroyAllPlayerItems();
 }
 
 int CellObjectAdapter::getCellNumber() {

@@ -154,7 +154,7 @@ void SceneObjectImplementation::initializePrivateData() {
 
 	setLoggingName("SceneObject");
 
-	outdoorChildObjects.setNoDuplicateInsertPlan();
+	childObjects.setNoDuplicateInsertPlan();
 }
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -322,15 +322,15 @@ void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedO
 			object->destroyObjectFromDatabase(true);
 	}
 
-	//Remove all outdoor child objects from database
-	while (outdoorChildObjects.size() > 0) {
-		ManagedReference<SceneObject*> outdoorChild = outdoorChildObjects.get(0);
+	//Remove all child objects from database
+	while (childObjects.size() > 0) {
+		ManagedReference<SceneObject*> child = childObjects.get(0);
 
-		if (outdoorChild == NULL)
+		if (child == NULL)
 			continue;
 
-		outdoorChild->destroyObjectFromDatabase(true);
-		outdoorChildObjects.remove(0);
+		child->destroyObjectFromDatabase(true);
+		childObjects.remove(0);
 	}
 }
 
@@ -1072,7 +1072,6 @@ void SceneObjectImplementation::createChildObjects() {
 			int totalCells = buildingObject->getTotalCellNumber();
 
 			try {
-
 				if (totalCells > child->getCellId()) {
 					ManagedReference<CellObject*> cellObject = buildingObject->getCell(child->getCellId());
 
@@ -1104,10 +1103,9 @@ void SceneObjectImplementation::createChildObjects() {
 
 			obj->initializePosition(x, z, y);
 			obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
-
-			//Add the object to the outdoorChildObjects vector
-			outdoorChildObjects.put(obj);
 		}
+
+		childObjects.put(obj);
 
 		obj->initializeChildObject(_this);
 

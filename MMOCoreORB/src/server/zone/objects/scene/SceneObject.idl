@@ -124,7 +124,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected SceneObject parent;
 	
 	@dereferenced
-	protected SortedVector<SceneObject> outdoorChildObjects;
+	protected SortedVector<SceneObject> childObjects;
 
 	protected unsigned int serverObjectCRC;
 	protected unsigned int clientObjectCRC;
@@ -1658,8 +1658,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@local
-	public SortedVector<SceneObject> getOutdoorChildObjects() {
-		return outdoorChildObjects;
+	public SortedVector<SceneObject> getChildObjects() {
+		return childObjects;
+	}
+	
+	public boolean containsChildObject(SceneObject obj) {
+		return childObjects.contains(obj);
 	}
 	
 	@local

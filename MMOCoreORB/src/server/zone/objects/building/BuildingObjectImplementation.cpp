@@ -107,13 +107,13 @@ void BuildingObjectImplementation::notifyLoadFromDatabase() {
 	}
 }
 
-int BuildingObjectImplementation::getCurrentNumerOfPlayerItems() {
+int BuildingObjectImplementation::getCurrentNumberOfPlayerItems() {
 	int items = 0;
 
 	for (int i = 0; i < cells.size(); ++i) {
-		CellObject* cell = cells.get(i);
+		ManagedReference<CellObject*> cell = cells.get(i);
 
-		items += cell->getCurrentNumerOfPlayerItems();
+		items += cell->getCurrentNumberOfPlayerItems();
 	}
 
 	return items;
@@ -457,13 +457,19 @@ uint32 BuildingObjectImplementation::getMaximumNumberOfPlayerItems() {
 	return MIN(MAXPLAYERITEMS, lots * 100);
 }
 
-bool BuildingObjectImplementation::addObject(SceneObject* object,
-		int containmentType, bool notifyClient) {
+bool BuildingObjectImplementation::addObject(SceneObject* object, int containmentType, bool notifyClient) {
 	if (object->isCellObject()) {
 		addCell((CellObject*) object);
 		//return true;
 	}
 
-	return StructureObjectImplementation::addObject(object, containmentType,
-			notifyClient);
+	return StructureObjectImplementation::addObject(object, containmentType, notifyClient);
+}
+
+void BuildingObjectImplementation::destroyAllPlayerItems() {
+	for (int i = 0; i < cells.size(); ++i) {
+		ManagedReference<CellObject*> cell = cells.get(i);
+
+		cell->destroyAllPlayerItems();
+	}
 }

@@ -173,7 +173,7 @@ void StructureObjectImplementation::sendStatusTo(CreatureObject* player) {
 
 	if (isBuildingObject()) {
 		//TODO: Count items that can be picked up by the player (exclude terminals like structure, elevator, guild)...
-		ssnitems << dec << "@player_structure:items_in_building_prompt " << ((BuildingObjectImplementation*)this)->getCurrentNumerOfPlayerItems(); //Number of Items in Building:
+		ssnitems << dec << "@player_structure:items_in_building_prompt " << ((BuildingObjectImplementation*)this)->getCurrentNumberOfPlayerItems(); //Number of Items in Building:
 
 		statusBox->addMenuItem(ssnitems.toString());
 	}
