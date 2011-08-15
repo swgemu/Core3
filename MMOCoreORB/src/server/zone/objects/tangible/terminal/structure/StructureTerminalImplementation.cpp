@@ -78,7 +78,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 	Locker structureLocker(structureObject, player);
 
 	switch (selectedID) {
-	case 118:
+	case 201:
 		structureManager->promptDeleteAllItems(player, structureObject);
 		break;
 	case 121:
