@@ -113,7 +113,7 @@ public:
 		/// the schematic data
 		Reference<SharedObjectTemplate*> baseTemplate = incomingTano->getObjectTemplate();
 		if(!baseTemplate->isDerivedFrom(type)) {
-			player->sendSystemMessage("" + baseTemplate->getFullTemplateString() + " not derived from " + type);
+			player->sendSystemMessage("" + type + " not derived from " + baseTemplate->getFullTemplateString());
 			return false;
 		}
 
