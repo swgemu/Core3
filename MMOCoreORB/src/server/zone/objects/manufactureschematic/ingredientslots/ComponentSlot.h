@@ -119,6 +119,24 @@ public:
 		int needs = requiredQuantity - itemsInSlot;
 		SceneObject* incomingTanoParent = incomingTano->getParent();
 
+		Reference<SharedObjectTemplate*> baseTemplate = incomingTano->getObjectTemplate();
+
+		if(incomingTano->isFactoryCrate()) {
+
+			FactoryCrate* crate = (FactoryCrate*) incomingTano;
+
+			TangibleObject* prototype = crate->getPrototype();
+
+			if(prototype == NULL)
+				return false;
+
+			/// Check if prototype is correct type
+			baseTemplate = prototype->getObjectTemplate();
+		}
+
+		if(!baseTemplate->isDerivedFrom(type))
+				return false;
+
 		if(incomingTano->isFactoryCrate()) {
 
 			FactoryCrate* crate = (FactoryCrate*) incomingTano;
@@ -127,14 +145,6 @@ public:
 				incomingTano = crate->extractObject(needs);
 			else
 				incomingTano = crate->extractObject(incomingTano->getUseCount());
-		}
-
-		/// Check if incoming object derived from the template specified in
-		/// the schematic data
-		Reference<SharedObjectTemplate*> baseTemplate = incomingTano->getObjectTemplate();
-		if(!baseTemplate->isDerivedFrom(type)) {
-			player->sendSystemMessage("" + type + " not derived from " + baseTemplate->getFullTemplateString());
-			return false;
 		}
 
 		if(serial = "")
