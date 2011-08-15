@@ -75,5 +75,6 @@ yavin4_regions = {
 }
 
 yavin4_static_spawns = {
-	{"corellian_butterfly_defender", 0, 0, 0, 0, 0} 
+	--{"mobile", respawnInSeconds, x, z, y, degrees heading, parentID}
+	{"corellian_butterfly_defender", 0, 0, 0, 0, 0, 0}
 }

@@ -89,6 +89,6 @@ talus_regions = {
 }
 
 talus_static_spawns = {
-	--{"mobile", x, z, y, degrees heading, parentID}
-	{"corellian_butterfly_defender", 0, 0, 0, 0, 0}
+	--{"mobile", respawnInSeconds, x, z, y, degrees heading, parentID}
+	{"corellian_butterfly_defender", 0, 0, 0, 0, 0, 0}
 }

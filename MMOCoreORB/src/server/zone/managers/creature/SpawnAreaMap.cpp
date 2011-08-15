@@ -8,6 +8,7 @@
 #include "SpawnAreaMap.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/objects/creature/AiAgent.h"
 
 void SpawnAreaMap::loadMap(Zone* z) {
 	zone = z;
@@ -82,18 +83,23 @@ void SpawnAreaMap::loadStaticSpawns() {
 			CreatureManager* creatureManager = zone->getCreatureManager();
 
 			String name = obj.getStringAt(1);
-			float x = obj.getFloatAt(2);
-			float y = obj.getFloatAt(3);
-			float heading = obj.getFloatAt(4);
-			lua_rawgeti(obj.getLuaState(), -1, 5);
+			uint32 respawn = obj.getIntAt(2);
+			float x = obj.getFloatAt(3);
+			float y = obj.getFloatAt(4);
+			float heading = obj.getFloatAt(5);
+			lua_rawgeti(obj.getLuaState(), -1, 6);
 			uint64 parentID = (uint64)lua_tonumber(obj.getLuaState(), -1);
 			lua_pop(obj.getLuaState(), 1);
-
 
 			ManagedReference<CreatureObject*> creatureObject = creatureManager->spawnCreature(name.hashCode(), 0, x, zone->getHeight(x, y), y, parentID);
 
 			if (creatureObject != NULL) {
 				creatureObject->setDirection(Math::deg2rad(heading));
+
+				if (creatureObject->isAiAgent()) {
+					AiAgent* ai = (AiAgent*) creatureObject.get();
+					ai->setRespawnTimer(respawn);
+				}
 			} else {
 				StringBuffer msg;
 				msg << "could not spawn mobile: " + name;

@@ -71,7 +71,7 @@ public:
 
 	}
 
-	void addProperties(String title, String name, float min, float max, int prec) {
+	void addProperties(const String& title, const String& name, float min, float max, int prec) {
 		experimentalTitle = title;
 		propertyName = name;
 		minValue = min;
@@ -80,8 +80,7 @@ public:
 
 	}
 
-	void addWeight(String property, int weight) {
-
+	void addWeight(const String& property, int weight) {
 		short propertyValue = convertStringValue(property);
 		properties.add(propertyValue);
 
@@ -94,7 +93,6 @@ public:
 	}
 
 	void recalculatePercentages() {
-
 		float denominator = 0;
 
 		percentages.removeAll();
@@ -109,7 +107,7 @@ public:
 		}
 	}
 
-	uint8 convertStringValue(String property) {
+	uint8 convertStringValue(const String& property) {
 
 		uint8 expPropType = 0x00;
 
