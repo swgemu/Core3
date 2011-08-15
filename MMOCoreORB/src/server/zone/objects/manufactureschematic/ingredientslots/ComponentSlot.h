@@ -112,8 +112,10 @@ public:
 		/// Check if incoming object derived from the template specified in
 		/// the schematic data
 		Reference<SharedObjectTemplate*> baseTemplate = incomingTano->getObjectTemplate();
-		if(!baseTemplate->isDerivedFrom(type))
+		if(!baseTemplate->isDerivedFrom(type)) {
+			player->sendSystemMessage("" + baseTemplate->getFullTemplateString() + " not derived from " + type);
 			return false;
+		}
 
 		int itemsInSlot = getQuantity();
 
