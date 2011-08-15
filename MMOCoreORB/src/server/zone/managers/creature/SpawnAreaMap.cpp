@@ -85,9 +85,10 @@ void SpawnAreaMap::loadStaticSpawns() {
 			String name = obj.getStringAt(1);
 			uint32 respawn = obj.getIntAt(2);
 			float x = obj.getFloatAt(3);
-			float y = obj.getFloatAt(4);
-			float heading = obj.getFloatAt(5);
-			lua_rawgeti(obj.getLuaState(), -1, 6);
+			float z = obj.getFloatAt(4);
+			float y = obj.getFloatAt(5);
+			float heading = obj.getFloatAt(6);
+			lua_rawgeti(obj.getLuaState(), -1, 7);
 			uint64 parentID = (uint64)lua_tonumber(obj.getLuaState(), -1);
 			lua_pop(obj.getLuaState(), 1);
 
