@@ -129,5 +129,19 @@ class StructureManager extends ManagedService implements Logger {
 	 * @return Returns a SceneObject representing the nearest parking garage, or NULL if one was not found in the required range.
 	 */
 	public native SceneObject getInRangeParkingGarage(SceneObject obj, int range = 64);
+	
+	/**
+	 * Sends a Sui prompt to the player asking if they wish to delete all the items in their house.
+	 * @param creature The player receiving the prompt.
+	 * @param structure The structure that will have all items deleted.
+	 */
+	public native void promptDeleteAllItems(CreatureObject creature, StructureObject structure);
+	
+	/**
+	 * Deletes all items from the structure that aren't a part of it's object template.
+	 * @param structure The structure that will have items deleted.
+	 * @return Returns true if the items were deleted.
+	 */
+	public native boolean deleteAllItems(StructureObject structure);
 }
 

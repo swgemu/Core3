@@ -88,6 +88,11 @@ public:
 			return INVALIDTARGET;
 		}
 
+		if (structure->isBuildingObject() && ((BuildingObject*) structure)->getCurrentNumerOfPlayerItems() > 0) {
+			creature->sendSystemMessage("@player_structure:clear_building_for_delete"); //Please remove all items from the structure's interior before deleting it.
+			return INVALIDTARGET;
+		}
+
 		ManagedReference<DestroyStructureSession*> session = new DestroyStructureSession(creature, structure);
 		session->initializeSession();
 

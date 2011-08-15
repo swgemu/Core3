@@ -92,7 +92,7 @@ int InstallationObjectImplementation::handleObjectMenuSelect(CreatureObject* pla
 
 	switch (selectedID) {
 	case 124:
-		sendStatusTo(player);
+		player->executeObjectControllerAction(0x13F7E585, getObjectID(), ""); //structureStatus
 		break;
 
 	case 129:
@@ -104,7 +104,7 @@ int InstallationObjectImplementation::handleObjectMenuSelect(CreatureObject* pla
 		break;
 
 	case 50:
-		sendChangeNamePromptTo(player);
+		player->executeObjectControllerAction(0xC367B461, getObjectID(), ""); //nameStructure
 		break;
 
 	case 51:

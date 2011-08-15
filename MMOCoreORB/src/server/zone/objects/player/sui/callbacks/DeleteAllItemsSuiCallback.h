@@ -10,6 +10,7 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player//sui/callbacks/DeleteAllItemsConfirmSuiCallback.h"
 
 class DeleteAllItemsSuiCallback : public SuiCallback {
 public:

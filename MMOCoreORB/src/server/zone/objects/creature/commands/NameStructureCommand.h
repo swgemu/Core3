@@ -106,12 +106,14 @@ public:
 		//Validate the name.
 		NameManager* nameManager = server->getNameManager();
 
-		if (nameManager->isProfane(arguments.toString())) {
+		String name = arguments.toString();
+
+		if (nameManager->isProfane(name) || name.length() > 128) {
 			creature->sendSystemMessage("@player_structure:obscene"); //That name was rejected by the name filter. Try a different name.
 			return INVALIDPARAMETERS;
 		}
 
-		structure->setCustomObjectName(arguments, true);
+		structure->setCustomObjectName(name, true);
 
 		creature->sendSystemMessage("@player_structure:structure_renamed"); //Structure renamed.
 

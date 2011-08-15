@@ -79,7 +79,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 
 	switch (selectedID) {
 	case 118:
-		//structureManager->deleteAllItems();
+		structureManager->promptDeleteAllItems(player, structureObject);
 		break;
 	case 121:
 		structureObject->sendPermissionListTo(player, "ADMIN");

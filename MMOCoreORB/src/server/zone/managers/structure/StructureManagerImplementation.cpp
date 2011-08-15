@@ -29,6 +29,7 @@
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
@@ -63,6 +64,7 @@
 
 #include "server/zone/objects/player/sessions/PlaceStructureSession.h"
 #include "server/zone/objects/player/sessions/DestroyStructureSession.h"
+#include "server/zone/objects/player/sui/callbacks/DeleteAllItemsSuiCallback.h"
 
 void StructureManagerImplementation::loadPlayerStructures() {
 
@@ -600,4 +602,28 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 	destroyStructure(structureObject);
 
 	return session->cancelSession();
+}
+
+void StructureManagerImplementation::promptDeleteAllItems(CreatureObject* creature, StructureObject* structure) {
+	ManagedReference<SuiMessageBox*> sui = new SuiMessageBox(creature, 0x00);
+	sui->setUsingObject(structure);
+	sui->setPromptTitle("@player_structure:delete_all_items"); //Delete All Items
+	sui->setPromptText("@player_structure:delete_all_items_d"); //This command will delete every object in your house.  Are you ABSOLUTELY sure you want to destroy every object in your house?
+	sui->setCallback(new DeleteAllItemsSuiCallback(server->getZoneServer()));
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost != NULL) {
+		ghost->addSuiBox(sui);
+		creature->sendMessage(sui->generateMessage());
+	}
+}
+
+bool StructureManagerImplementation::deleteAllItems(StructureObject* structure) {
+	Locker _lock(structure);
+
+	if (!structure->isBuildingObject())
+		return true; //No items to delete.
+
+	BuildingObject* building = (BuildingObject*) structure;
 }
