@@ -69,6 +69,9 @@ class StructureObject extends TangibleObject {
 	protected StructurePermissionList structurePermissionList;
 	
 	@dereferenced
+	protected Time lastUpdateTimestamp;
+	
+	@dereferenced
 	protected Time maintenanceExpires;
 	
 	@dereferenced
@@ -76,8 +79,6 @@ class StructureObject extends TangibleObject {
 	
 	protected unsigned long ownerObjectID;
 	protected unsigned long deedObjectID;
-	
-	protected int lotSize; //TODO: Move to template
 	
 	protected int baseMaintenanceRate;//TODO: Move to template
 	protected int basePowerRate; //TODO: Move to template
@@ -89,8 +90,6 @@ class StructureObject extends TangibleObject {
 		Logger.setLoggingName("StructureObject");
 		
 		super.staticObject = false;
-		
-		lotSize = 0;
 		
 		ownerObjectID = 0;
 		
@@ -141,6 +140,12 @@ class StructureObject extends TangibleObject {
 	public native string getTimeString(unsigned int timestamp);
 
 	public native void scheduleMaintenanceExpirationEvent();
+	
+	/**
+	 * This method should be called anytime a method needs up to date information about
+	 * maintenance, power, and condition of the structure.
+	 */
+	public native abstract void updateStructureStatus();
 
 	/**
 	 * Checks if the playerName is on the admin list.

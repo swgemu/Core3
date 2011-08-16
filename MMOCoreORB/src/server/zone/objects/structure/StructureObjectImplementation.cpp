@@ -32,8 +32,6 @@ void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templ
 
 	SharedStructureObjectTemplate* structureTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateData);
 
-	lotSize = structureTemplate->getLotSize();
-
 	baseMaintenanceRate = structureTemplate->getBaseMaintenanceRate();
 
 	basePowerRate = structureTemplate->getBasePowerRate();
@@ -187,4 +185,18 @@ void StructureObjectImplementation::createVendor(CreatureObject* player) {
 	ManagedReference<CreateVendorSession*> session = new CreateVendorSession(player);
 	session->initalizeWindow(player);
 
+}
+
+void StructureObjectImplementation::updateStructureStatus() {
+	float timeDiff = ((float) lastUpdateTimestamp.miliDifference()) / 1000.f;
+
+	float maintenanceDue = ((float) baseMaintenanceRate / 3600.f) * timeDiff;
+	float powerDue = ((float) basePowerRate / 3600.f) * timeDiff;
+
+	surplusMaintenance -= maintenanceDue;
+	surplusPower -= powerDue;
+
+	lastUpdateTimestamp.updateToCurrentTime();
+
+	//Calculate how many resources have been harvested since the last structure update.
 }

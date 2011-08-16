@@ -708,6 +708,7 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 		ssmpool << dec << " (" << getTimeString(seconds) << ")";
 	}
 	*/
+	status->addMenuItem("@player_structure:maintenance_pool_prompt " + String::valueOf((int) floor(structure->getSurplusMaintenance())));
 	status->addMenuItem("@player_structure:maintenance_rate_prompt " + String::valueOf(structure->getBaseMaintenanceRate()) + " cr/hr");
 
 	if (structure->isInstallationObject()) {

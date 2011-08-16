@@ -136,6 +136,8 @@ public:
 
 	void scheduleMaintenanceExpirationEvent();
 
+	void updateStructureStatus();
+
 	bool isOnAdminList(const String& playerName);
 
 	bool isOnEntryList(const String& playerName);
@@ -246,6 +248,8 @@ protected:
 
 	StructurePermissionList structurePermissionList;
 
+	Time lastUpdateTimestamp;
+
 	Time maintenanceExpires;
 
 	Time powerExpires;
@@ -253,8 +257,6 @@ protected:
 	unsigned long long ownerObjectID;
 
 	unsigned long long deedObjectID;
-
-	int lotSize;
 
 	int baseMaintenanceRate;
 
@@ -288,6 +290,8 @@ public:
 	String getTimeString(unsigned int timestamp);
 
 	void scheduleMaintenanceExpirationEvent();
+
+	virtual void updateStructureStatus();
 
 	bool isOnAdminList(const String& playerName);
 
@@ -425,6 +429,8 @@ public:
 	String getTimeString(unsigned int timestamp);
 
 	void scheduleMaintenanceExpirationEvent();
+
+	void updateStructureStatus();
 
 	bool isOnAdminList(const String& playerName);
 

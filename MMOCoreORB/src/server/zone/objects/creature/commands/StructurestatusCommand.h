@@ -73,6 +73,8 @@ public:
 
 		StructureObject* structure = (StructureObject*) obj.get();
 
+		//structure->updateStructureStatus();
+
 		ManagedReference<StructureManager*> structureManager = structure->getZone()->getStructureManager();
 		structureManager->reportStructureStatus(creature, structure);
 

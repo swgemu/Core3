@@ -20,7 +20,7 @@
  *	StructureObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_SENDMANAGEMAINTENANCETO__CREATUREOBJECT_,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_SENDMANAGEMAINTENANCETO__CREATUREOBJECT_,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
@@ -152,6 +152,19 @@ void StructureObject::scheduleMaintenanceExpirationEvent() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->scheduleMaintenanceExpirationEvent();
+}
+
+void StructureObject::updateStructureStatus() {
+	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATESTRUCTURESTATUS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateStructureStatus();
 }
 
 bool StructureObject::isOnAdminList(const String& playerName) {
@@ -796,6 +809,11 @@ bool StructureObjectImplementation::readObjectMember(ObjectInputStream* stream, 
 		return true;
 	}
 
+	if (_name == "lastUpdateTimestamp") {
+		TypeInfo<Time >::parseFromBinaryStream(&lastUpdateTimestamp, stream);
+		return true;
+	}
+
 	if (_name == "maintenanceExpires") {
 		TypeInfo<Time >::parseFromBinaryStream(&maintenanceExpires, stream);
 		return true;
@@ -813,11 +831,6 @@ bool StructureObjectImplementation::readObjectMember(ObjectInputStream* stream, 
 
 	if (_name == "deedObjectID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&deedObjectID, stream);
-		return true;
-	}
-
-	if (_name == "lotSize") {
-		TypeInfo<int >::parseFromBinaryStream(&lotSize, stream);
 		return true;
 	}
 
@@ -864,6 +877,14 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
+	_name = "lastUpdateTimestamp";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeShort(0);
+	TypeInfo<Time >::toBinaryStream(&lastUpdateTimestamp, stream);
+	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
+	stream->writeShort(_offset, _totalSize);
+
 	_name = "maintenanceExpires";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -893,14 +914,6 @@ int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream
 	_offset = stream->getOffset();
 	stream->writeShort(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&deedObjectID, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "lotSize";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<int >::toBinaryStream(&lotSize, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -946,8 +959,6 @@ StructureObjectImplementation::StructureObjectImplementation() {
 	Logger::setLoggingName("StructureObject");
 	// server/zone/objects/structure/StructureObject.idl():  		super.staticObject = false;
 	TangibleObjectImplementation::staticObject = false;
-	// server/zone/objects/structure/StructureObject.idl():  		lotSize = 0;
-	lotSize = 0;
 	// server/zone/objects/structure/StructureObject.idl():  		ownerObjectID = 0;
 	ownerObjectID = 0;
 	// server/zone/objects/structure/StructureObject.idl():  		deedObjectID = 0;
@@ -1185,6 +1196,9 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__:
 		scheduleMaintenanceExpirationEvent();
 		break;
+	case RPC_UPDATESTRUCTURESTATUS__:
+		updateStructureStatus();
+		break;
 	case RPC_ISONADMINLIST__STRING_:
 		resp->insertBoolean(isOnAdminList(inv->getAsciiParameter(_param0_isOnAdminList__String_)));
 		break;
@@ -1340,6 +1354,10 @@ String StructureObjectAdapter::getTimeString(unsigned int timestamp) {
 
 void StructureObjectAdapter::scheduleMaintenanceExpirationEvent() {
 	((StructureObjectImplementation*) impl)->scheduleMaintenanceExpirationEvent();
+}
+
+void StructureObjectAdapter::updateStructureStatus() {
+	((StructureObjectImplementation*) impl)->updateStructureStatus();
 }
 
 bool StructureObjectAdapter::isOnAdminList(const String& playerName) {
