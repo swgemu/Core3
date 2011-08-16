@@ -59,25 +59,6 @@ void BuildingObjectImplementation::loadTemplateData(
 	publicStructure = buildingData->isPublicStructure();
 }
 
-void BuildingObjectImplementation::sendChangeNamePromptTo(
-		CreatureObject* player) {
-	if (signObject == NULL) {
-		StructureObjectImplementation::sendChangeNamePromptTo(player);
-		return;
-	}
-
-	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player,
-			SuiWindowType::OBJECT_NAME, 0x00);
-	inputBox->setPromptTitle("@sui:set_name_title");
-	inputBox->setPromptText("@sui:set_name_prompt");
-	inputBox->setUsingObject(signObject);
-	inputBox->setMaxInputSize(255);
-	inputBox->setDefaultInput(signObject->getCustomObjectName().toString());
-
-	player->getPlayerObject()->addSuiBox(inputBox);
-	player->sendMessage(inputBox->generateMessage());
-}
-
 void BuildingObjectImplementation::createContainerComponent() {
 	TangibleObjectImplementation::createContainerComponent();
 }

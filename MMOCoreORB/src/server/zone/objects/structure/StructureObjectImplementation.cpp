@@ -92,66 +92,25 @@ String StructureObjectImplementation::getTimeString(uint32 timestamp) {
 	return str.toString();
 }
 
-
+//Only gets called when maintenance has been changed by an outside source
 void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
-	float timeRemaining = surplusMaintenance / baseMaintenanceRate / 3600000;
+	updateStructureStatus();
+
+	int timeRemaining = (int) (surplusMaintenance * 3600.f / baseMaintenanceRate);
 
 	maintenanceExpires.updateToCurrentTime();
-	maintenanceExpires.addMiliTime(timeRemaining);
+	maintenanceExpires.addMiliTime(timeRemaining * 1000);
 
 	if (structureMaintenanceTask == NULL)
 		structureMaintenanceTask = new StructureMaintenanceTask(_this);
 
 	if (structureMaintenanceTask->isScheduled())
-		structureMaintenanceTask->reschedule();
+		structureMaintenanceTask->reschedule(timeRemaining);
 	else
 		structureMaintenanceTask->schedule(timeRemaining);
 }
 
-void StructureObjectImplementation::sendManageMaintenanceTo(CreatureObject* player) {
-	int availableCredits = player->getCashCredits();
-
-	if (availableCredits <= 0) {
-		player->sendSystemMessage("@player_structure:no_money"); //You do not have any money to pay maintenance.
-		return;
-	}
-
-	StringBuffer sstext;
-
-	ManagedReference<SuiTransferBox*> maintenanceBox = new SuiTransferBox(player, SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE);
-	maintenanceBox->setPromptTitle("@player_structure:select_amount");
-	maintenanceBox->setUsingObject(_this);
-
-	int surplusMaintenance = getSurplusMaintenance();
-
-	sstext << "@player_structure:select_maint_amount \n" << "@player_structure:current_maint_pool " << surplusMaintenance;
-	maintenanceBox->setPromptText(sstext.toString());
-
-	maintenanceBox->addFrom("@player_structure:total_funds", String::valueOf(availableCredits), String::valueOf(availableCredits), "1");
-	maintenanceBox->addTo("@player_structure:to_pay", "0", "0", "1");
-
-	player->getPlayerObject()->addSuiBox(maintenanceBox);
-	player->sendMessage(maintenanceBox->generateMessage());
-
-	//Calculate how much time until the maintenance will expire.
-	//structureObject->scheduleMaintenanceExpirationEvent();
-}
-
-void StructureObjectImplementation::sendChangeNamePromptTo(CreatureObject* player) {
-	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::OBJECT_NAME, 0x00);
-
-	inputBox->setPromptTitle("@sui:set_name_title");
-	inputBox->setPromptText("@sui:set_name_prompt");
-	inputBox->setUsingObject(_this);
-	inputBox->setMaxInputSize(255);
-	inputBox->setDefaultInput(objectName.getCustomString().toString());
-
-	player->getPlayerObject()->addSuiBox(inputBox);
-	player->sendMessage(inputBox->generateMessage());
-}
-
 bool StructureObjectImplementation::isOwnerOf(SceneObject* obj) {
-
 	if (obj->isCreatureObject()) {
 		ManagedReference<PlayerObject*> ghost = ((CreatureObject*) obj)->getPlayerObject();
 
@@ -188,15 +147,22 @@ void StructureObjectImplementation::createVendor(CreatureObject* player) {
 }
 
 void StructureObjectImplementation::updateStructureStatus() {
+	/** Points when updateStructureStatus should occur:
+	 * Prior to inserting or withdrawing maintenance or power, and after the deposit/withdrawal.
+	 * When requesting a Structure Status report.
+	 * Any time the maintenance or power surplus is changed by a hand other than this method.
+	 */
 	float timeDiff = ((float) lastUpdateTimestamp.miliDifference()) / 1000.f;
+	lastUpdateTimestamp.updateToCurrentTime();
 
 	float maintenanceDue = ((float) baseMaintenanceRate / 3600.f) * timeDiff;
 	float powerDue = ((float) basePowerRate / 3600.f) * timeDiff;
 
-	surplusMaintenance -= maintenanceDue;
-	surplusPower -= powerDue;
+	if (surplusMaintenance > 0.f)
+		surplusMaintenance -= maintenanceDue;
+	//else start ticking off condition and sending emails
 
-	lastUpdateTimestamp.updateToCurrentTime();
-
-	//Calculate how many resources have been harvested since the last structure update.
+	if (surplusPower > 0.f)
+		surplusPower -= powerDue;
+	//else if installation, shutdown.
 }

@@ -279,8 +279,6 @@ using namespace server::zone::objects::player::sui;
 
 #include "server/zone/objects/player/ValidatedPosition.h"
 
-#include "system/lang/String.h"
-
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/intangible/IntangibleObject.h"

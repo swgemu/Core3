@@ -146,6 +146,7 @@ public:
 					return INVALIDPARAMETERS;
 				}
 
+				inventory->broadcastObject(object, true);
 				inventory->addObject(object, -1, true);
 			} else if (commandType.beginsWith("resource")) {
 				String resourceName;

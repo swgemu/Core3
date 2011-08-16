@@ -98,7 +98,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 		player->executeObjectControllerAction(0x18FC1726, structureObject->getObjectID(), ""); //destroyStructure
 		break;
 	case 129:
-		structureObject->sendManageMaintenanceTo(player);
+		structureManager->promptManageMaintenance(player, structureObject);
 		break;
 	case 124:
 		player->executeObjectControllerAction(0x13F7E585, structureObject->getObjectID(), ""); //structureStatus
@@ -110,7 +110,7 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 		player->executeObjectControllerAction(0x786CC38E, structureObject->getObjectID(), ""); //setPrivacy
 		break;
 	case 50:
-		player->executeObjectControllerAction(0xC367B461, structureObject->getObjectID(), ""); //nameStructure
+		structureManager->promptNameStructure(player, structureObject);
 		break;
 	case 130:
 		structureObject->createVendor(player);

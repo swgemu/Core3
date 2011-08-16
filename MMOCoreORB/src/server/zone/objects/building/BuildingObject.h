@@ -156,8 +156,6 @@ public:
 
 	void createContainerComponent();
 
-	void sendChangeNamePromptTo(CreatureObject* player);
-
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
 	void sendContainerObjectsTo(SceneObject* player);
@@ -295,8 +293,6 @@ public:
 
 	void createContainerComponent();
 
-	void sendChangeNamePromptTo(CreatureObject* player);
-
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
 	void sendContainerObjectsTo(SceneObject* player);
@@ -431,8 +427,6 @@ public:
 	void initializeTransientMembers();
 
 	void createContainerComponent();
-
-	void sendChangeNamePromptTo(CreatureObject* player);
 
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 

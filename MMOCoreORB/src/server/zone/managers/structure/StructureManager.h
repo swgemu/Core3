@@ -176,6 +176,10 @@ public:
 
 	void reportStructureStatus(CreatureObject* creature, StructureObject* structure);
 
+	void promptNameStructure(CreatureObject* creature, StructureObject* structure);
+
+	void promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal = true);
+
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 
 	void promptFindLostItems(CreatureObject* creature, StructureObject* structure);
@@ -241,6 +245,10 @@ public:
 	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range = 64);
 
 	void reportStructureStatus(CreatureObject* creature, StructureObject* structure);
+
+	void promptNameStructure(CreatureObject* creature, StructureObject* structure);
+
+	void promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal = true);
 
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 
@@ -308,6 +316,10 @@ public:
 	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range);
 
 	void reportStructureStatus(CreatureObject* creature, StructureObject* structure);
+
+	void promptNameStructure(CreatureObject* creature, StructureObject* structure);
+
+	void promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal);
 
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 

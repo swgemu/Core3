@@ -90,13 +90,18 @@ int InstallationObjectImplementation::handleObjectMenuSelect(CreatureObject* pla
 	if (!isOnAdminList(player->getFirstName()))
 		return 1;
 
+	ManagedReference<StructureManager*> structureManager = getZone()->getStructureManager();
+
+	if (structureManager == NULL)
+		return 1;
+
 	switch (selectedID) {
 	case 124:
 		player->executeObjectControllerAction(0x13F7E585, getObjectID(), ""); //structureStatus
 		break;
 
 	case 129:
-		sendManageMaintenanceTo(player);
+		structureManager->promptManageMaintenance(player, _this);
 		break;
 
 	case 128:
@@ -104,7 +109,7 @@ int InstallationObjectImplementation::handleObjectMenuSelect(CreatureObject* pla
 		break;
 
 	case 50:
-		player->executeObjectControllerAction(0xC367B461, getObjectID(), ""); //nameStructure
+		structureManager->promptNameStructure(player, _this);
 		break;
 
 	case 51:

@@ -362,8 +362,6 @@ void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player
 			uint32 consumedUnits = (uint64) power / modifier;
 			rcno->setQuantity(quantity - consumedUnits);
 
-			player->sendSystemMessage("im deleting some resource from a container");
-
 			TangibleObjectDeltaMessage3* tanod3 = new TangibleObjectDeltaMessage3(rcno);
 			tanod3->setQuantity(rcno->getQuantity());
 			tanod3->close();

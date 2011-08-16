@@ -20,7 +20,7 @@
  *	StructureObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_SENDMANAGEMAINTENANCETO__CREATUREOBJECT_,RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
@@ -96,34 +96,6 @@ bool StructureObject::checkRequisitesForPlacement(CreatureObject* player) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->checkRequisitesForPlacement(player);
-}
-
-void StructureObject::sendManageMaintenanceTo(CreatureObject* player) {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SENDMANAGEMAINTENANCETO__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->sendManageMaintenanceTo(player);
-}
-
-void StructureObject::sendChangeNamePromptTo(CreatureObject* player) {
-	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_);
-		method.addObjectParameter(player);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->sendChangeNamePromptTo(player);
 }
 
 String StructureObject::getTimeString(unsigned int timestamp) {
@@ -1184,12 +1156,6 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_:
 		resp->insertBoolean(checkRequisitesForPlacement((CreatureObject*) inv->getObjectParameter()));
 		break;
-	case RPC_SENDMANAGEMAINTENANCETO__CREATUREOBJECT_:
-		sendManageMaintenanceTo((CreatureObject*) inv->getObjectParameter());
-		break;
-	case RPC_SENDCHANGENAMEPROMPTTO__CREATUREOBJECT_:
-		sendChangeNamePromptTo((CreatureObject*) inv->getObjectParameter());
-		break;
 	case RPC_GETTIMESTRING__INT_:
 		resp->insertAscii(getTimeString(inv->getUnsignedIntParameter()));
 		break;
@@ -1338,14 +1304,6 @@ int StructureObjectAdapter::notifyStructurePlaced(CreatureObject* creature) {
 
 bool StructureObjectAdapter::checkRequisitesForPlacement(CreatureObject* player) {
 	return ((StructureObjectImplementation*) impl)->checkRequisitesForPlacement(player);
-}
-
-void StructureObjectAdapter::sendManageMaintenanceTo(CreatureObject* player) {
-	((StructureObjectImplementation*) impl)->sendManageMaintenanceTo(player);
-}
-
-void StructureObjectAdapter::sendChangeNamePromptTo(CreatureObject* player) {
-	((StructureObjectImplementation*) impl)->sendChangeNamePromptTo(player);
 }
 
 String StructureObjectAdapter::getTimeString(unsigned int timestamp) {

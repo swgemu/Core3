@@ -108,9 +108,7 @@ class BuildingObject extends StructureObject {
 	public native void initializeTransientMembers();
 	
 	public native void createContainerComponent();
-	
-	public native void sendChangeNamePromptTo(CreatureObject player);
-	
+
 	public native void setCustomObjectName(final unicode name, boolean notifyClient);
 	
 	/**

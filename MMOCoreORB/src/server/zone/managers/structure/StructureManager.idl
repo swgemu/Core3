@@ -138,6 +138,21 @@ class StructureManager extends ManagedService implements Logger {
 	public native void reportStructureStatus(CreatureObject creature, StructureObject structure);
 	
 	/**
+	 * Sends a Sui prompt to the player asking them to enter a name for the structure.
+	 * @param creature The player receiving the prompt.
+	 * @param structure The structure that will be named.
+	 */
+	public native void promptNameStructure(CreatureObject creature, StructureObject structure);
+	
+	/**
+	 * Sends a Sui prompt to the player asking them to withdraw/deposit maintenance for the structure.
+	 * @param creature The creature receiving the prompt.
+	 * @param structure The structure receiving the maintenance.
+	 * @param allowWithdrawal Whether this structure can have maintenance withdrawn from its maintenance pool.
+	 */
+	public native void promptManageMaintenance(CreatureObject creature, StructureObject structure, boolean allowWithdrawal = true);
+	
+	/**
 	 * Sends a Sui prompt to the player asking if they wish to delete all the items in their house.
 	 * @param creature The player receiving the prompt.
 	 * @param building The building that will have all items deleted.

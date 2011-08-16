@@ -128,10 +128,6 @@ public:
 
 	bool checkRequisitesForPlacement(CreatureObject* player);
 
-	void sendManageMaintenanceTo(CreatureObject* player);
-
-	void sendChangeNamePromptTo(CreatureObject* player);
-
 	String getTimeString(unsigned int timestamp);
 
 	void scheduleMaintenanceExpirationEvent();
@@ -283,10 +279,6 @@ public:
 
 	virtual bool checkRequisitesForPlacement(CreatureObject* player);
 
-	void sendManageMaintenanceTo(CreatureObject* player);
-
-	virtual void sendChangeNamePromptTo(CreatureObject* player);
-
 	String getTimeString(unsigned int timestamp);
 
 	void scheduleMaintenanceExpirationEvent();
@@ -421,10 +413,6 @@ public:
 	int notifyStructurePlaced(CreatureObject* creature);
 
 	bool checkRequisitesForPlacement(CreatureObject* player);
-
-	void sendManageMaintenanceTo(CreatureObject* player);
-
-	void sendChangeNamePromptTo(CreatureObject* player);
 
 	String getTimeString(unsigned int timestamp);
 

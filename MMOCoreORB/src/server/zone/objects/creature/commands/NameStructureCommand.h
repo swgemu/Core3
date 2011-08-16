@@ -85,35 +85,23 @@ public:
 
 		//("@player_structure:no_rename_hq"); //You may not rename a factional headquarters.
 
-		if (arguments.isEmpty()) {
-			ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-			if (ghost != NULL) {
-				ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(creature, SuiWindowType::OBJECT_NAME);
-				inputBox->setUsingObject(structure);
-				inputBox->setPromptTitle("@base_player:set_name"); //Set Name
-				inputBox->setPromptText("@player_structure:structure_name_prompt"); //Structure Name:
-				inputBox->setCallback(new NameStructureSuiCallback(server->getZoneServer()));
-				inputBox->setForceCloseDistance(32.f);
-
-				ghost->addSuiBox(inputBox);
-				creature->sendMessage(inputBox->generateMessage());
-			}
-
-			return GENERALERROR;
-		}
-
 		//Validate the name.
 		NameManager* nameManager = server->getNameManager();
 
 		String name = arguments.toString();
 
-		if (nameManager->isProfane(name) || name.length() > 128) {
+		if (name.isEmpty() || nameManager->isProfane(name) || name.length() > 128) {
 			creature->sendSystemMessage("@player_structure:obscene"); //That name was rejected by the name filter. Try a different name.
 			return INVALIDPARAMETERS;
 		}
 
 		structure->setCustomObjectName(name, true);
+
+		if (structure->isBuildingObject() && ((BuildingObject*) structure)->getSignObject() != NULL) {
+			StringIdChatParameter params("@player_structure:prose_sign_name_updated"); //Sign name successfully updated to '%TO'.
+			params.setTO(name);
+			creature->sendSystemMessage(params);
+		}
 
 		creature->sendSystemMessage("@player_structure:structure_renamed"); //Structure renamed.
 

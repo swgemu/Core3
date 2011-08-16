@@ -133,12 +133,13 @@ class StructureObject extends TangibleObject {
 	public abstract boolean checkRequisitesForPlacement(CreatureObject player) {
 		return true;
 	}
-	
-	public native void sendManageMaintenanceTo(CreatureObject player);
-	public abstract native void sendChangeNamePromptTo(CreatureObject player);
-	
+
 	public native string getTimeString(unsigned int timestamp);
 
+	/**
+	 * Schedules the event that will be fired when maintenance is due to run out.
+	 * This method calls updateStructureStatus before running.
+	 */
 	public native void scheduleMaintenanceExpirationEvent();
 	
 	/**

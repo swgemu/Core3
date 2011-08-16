@@ -67,6 +67,8 @@
 #include "server/zone/objects/player/sui/callbacks/DeleteAllItemsSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/FindLostItemsSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructureStatusSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/StructureManageMaintenanceSuiCallback.h"
 
 void StructureManagerImplementation::loadPlayerStructures() {
 
@@ -726,4 +728,52 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 
 	ghost->addSuiBox(status);
 	creature->sendMessage(status->generateMessage());
+}
+
+void StructureManagerImplementation::promptNameStructure(CreatureObject* creature, StructureObject* structure) {
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(creature, SuiWindowType::OBJECT_NAME);
+	inputBox->setUsingObject(structure);
+	inputBox->setPromptTitle("@base_player:set_name"); //Set Name
+	inputBox->setPromptText("@player_structure:structure_name_prompt"); //Structure Name:
+	inputBox->setMaxInputSize(128);
+	inputBox->setCallback(new NameStructureSuiCallback(server->getZoneServer()));
+	inputBox->setForceCloseDistance(32.f);
+
+	ghost->addSuiBox(inputBox);
+	creature->sendMessage(inputBox->generateMessage());
+}
+
+void StructureManagerImplementation::promptManageMaintenance(CreatureObject* creature, StructureObject* structure, bool allowWithdrawal) {
+	int availableCredits = creature->getCashCredits();
+
+	if (availableCredits <= 0) {
+		creature->sendSystemMessage("@player_structure:no_money"); //You do not have any money to pay maintenance.
+		return;
+	}
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	//Get the most up to date maintenance count.
+	structure->updateStructureStatus();
+
+	int surplusMaintenance = (int) floor(structure->getSurplusMaintenance());
+
+	ManagedReference<SuiTransferBox*> sui = new SuiTransferBox(creature, SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE);
+	sui->setCallback(new StructureManageMaintenanceSuiCallback(server->getZoneServer()));
+	sui->setPromptTitle("@player_structure:select_amount"); //Select Amount
+	sui->setUsingObject(structure);
+	sui->setPromptText("@player_structure:select_maint_amount \n@player_structure:current_maint_pool " + String::valueOf(surplusMaintenance));
+	sui->addFrom("@player_structure:total_funds", String::valueOf(availableCredits), String::valueOf(availableCredits), "1");
+	sui->addTo("@player_structure:to_pay", "0", "0", "1");
+
+	ghost->addSuiBox(sui);
+	creature->sendMessage(sui->generateMessage());
 }
