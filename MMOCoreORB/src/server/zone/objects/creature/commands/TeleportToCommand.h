@@ -65,36 +65,42 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		StringTokenizer args(arguments.toString());
-
-		String name;
-		args.getStringToken(name);
-
-		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-		ManagedReference<CreatureObject*> player = playerManager->getPlayer(name);
-
-		if (player == NULL)
-			return GENERALERROR;
+		String targetName;
 
 		try {
-			Locker clocker(player, creature);
-
-			Zone* targetZone = player->getZone();
-
-			if (targetZone == NULL)
-				return GENERALERROR;
-
-			String zoneName = targetZone->getZoneName();
-			float posx = player->getPositionX();
-			float posy = player->getPositionY();
-			float posz = player->getPositionZ();
-			uint64 parentid = player->getParentID();
-
-			creature->switchZone(zoneName, posx, posz, posy, parentid);
+			UnicodeTokenizer args(arguments);
+			args.getStringToken(targetName);
 
 		} catch (Exception& e) {
-			creature->sendSystemMessage("invalid arguments for teleport command");
+			creature->sendSystemMessage("SYNTAX: /teleportTo <targetName>");
+			return INVALIDPARAMETERS;
 		}
+
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+		ManagedReference<CreatureObject*> targetCreature = playerManager->getPlayer(targetName);
+
+		if (targetCreature == NULL) {
+			creature->sendSystemMessage("The specified player does not exist.");
+			return INVALIDTARGET;
+		}
+
+		if (targetCreature->getZone() == NULL) {
+			creature->sendSystemMessage("The specified player is not in a zone that is currently loaded.");
+			return INVALIDTARGET;
+		}
+
+		if (creature == targetCreature) {
+			creature->sendSystemMessage("You cannot teleport to yourself.");
+			return INVALIDTARGET;
+		}
+
+		String zoneName = targetCreature->getZone()->getZoneName();
+		float x = targetCreature->getPositionX();
+		float y = targetCreature->getPositionY();
+		float z = targetCreature->getPositionZ();
+		uint64 parentid = targetCreature->getParentID();
+
+		creature->switchZone(zoneName, x, z, y, parentid);
 
 		return SUCCESS;
 	}

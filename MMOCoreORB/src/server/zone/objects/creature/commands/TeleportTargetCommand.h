@@ -69,6 +69,8 @@ public:
 		if (targetZone == NULL)
 			return GENERALERROR; //Creature must be in a valid zone to use the command...
 
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+
 		String targetName;
 		String planetName = targetZone->getZoneName();
 		float x = creature->getPositionX();
@@ -78,7 +80,9 @@ public:
 
 		try {
 			UnicodeTokenizer tokenizer(arguments);
-			tokenizer.getStringToken(targetName);
+
+			if (obj == NULL)
+				tokenizer.getStringToken(targetName); //If the target wasn't passed in as the target parameter.
 
 			if (tokenizer.hasMoreTokens()) {
 				tokenizer.getStringToken(planetName);
@@ -103,9 +107,15 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+		ManagedReference<CreatureObject*> targetCreature = NULL;
 
-		ManagedReference<CreatureObject*> targetCreature = playerManager->getPlayer(targetName);
+		if (obj == NULL) {
+			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+			targetCreature = playerManager->getPlayer(targetName);
+		} else {
+			if (obj->isCreatureObject())
+				targetCreature = (CreatureObject*) obj.get();
+		}
 
 		if (targetCreature == NULL) {
 			creature->sendSystemMessage("The specified player does not exist.");
