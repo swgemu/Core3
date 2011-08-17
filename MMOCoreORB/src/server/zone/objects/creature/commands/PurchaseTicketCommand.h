@@ -101,7 +101,7 @@ public:
 		ManagedReference<PlanetManager*> pmDeparture = departureZone->getPlanetManager();
 		ManagedReference<PlanetManager*> pmArrival = arrivalZone->getPlanetManager();
 
-		if (pmArrival->isExistingPlanetTravelPoint(arrivalPoint)) {
+		if (!pmArrival->isExistingPlanetTravelPoint(arrivalPoint)) {
 			creature->sendSystemMessage("@travel:no_location_found"); //No location was found for your destination.
 			return INVALIDPARAMETERS;
 		}
