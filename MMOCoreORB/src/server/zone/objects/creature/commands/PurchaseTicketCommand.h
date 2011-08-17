@@ -121,7 +121,7 @@ public:
 		//Make sure they have space in the inventory for the tickets before purchasing them.
 		Locker _lock(inventory, creature);
 
-		if (inventory->getContainerObjectsSize() + ((roundTrip) ? 2 : 1) <= inventory->getContainerVolumeLimit()) {
+		if (inventory->getContainerObjectsSize() + ((roundTrip) ? 2 : 1) >= inventory->getContainerVolumeLimit()) {
 			creature->sendSystemMessage("@error_message:inv_full"); //Your inventory is full.
 			return GENERALERROR;
 		}
@@ -156,10 +156,12 @@ public:
 
 		//ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);
 		ManagedReference<SceneObject*> ticket1 = pmDeparture->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
+		ticket1->sendTo(creature, true);
 		inventory->addObject(ticket1, -1, true);
 
 		if (roundTrip) {
 			ManagedReference<SceneObject*> ticket2 = pmArrival->createTicket(arrivalPoint, departurePlanet, departurePoint);
+			ticket2->sendTo(creature, true);
 			inventory->addObject(ticket2, -1, true);
 		}
 
