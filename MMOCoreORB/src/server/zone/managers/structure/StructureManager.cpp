@@ -26,7 +26,7 @@
  *	StructureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTMANAGEMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_BOOL_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTSETOWNER__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_PLACESTRUCTUREFROMDEED__CREATUREOBJECT_LONG_FLOAT_FLOAT_INT_,RPC_PLACESTRUCTURE__CREATUREOBJECT_STRING_FLOAT_FLOAT_INT_,RPC_DESTROYSTRUCTURE__STRUCTUREOBJECT_,RPC_REDEEDSTRUCTURE__CREATUREOBJECT_,RPC_DECLARERESIDENCE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_GETINRANGEPARKINGGARAGE__SCENEOBJECT_INT_,RPC_REPORTSTRUCTURESTATUS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTNAMESTRUCTURE__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTMANAGEMAINTENANCE__CREATUREOBJECT_STRUCTUREOBJECT_BOOL_,RPC_PROMPTDELETEALLITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_,RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_};
 
 StructureManager::StructureManager(Zone* zne, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	StructureManagerImplementation* _implementation = new StructureManagerImplementation(zne, proc);
@@ -237,21 +237,6 @@ void StructureManager::promptFindLostItems(CreatureObject* creature, StructureOb
 		method.executeWithVoidReturn();
 	} else
 		_implementation->promptFindLostItems(creature, structure);
-}
-
-void StructureManager::promptSetOwner(CreatureObject* creature, StructureObject* structure) {
-	StructureManagerImplementation* _implementation = (StructureManagerImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_PROMPTSETOWNER__CREATUREOBJECT_STRUCTUREOBJECT_);
-		method.addObjectParameter(creature);
-		method.addObjectParameter(structure);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->promptSetOwner(creature, structure);
 }
 
 void StructureManager::moveFirstItemTo(CreatureObject* creature, StructureObject* structure) {
@@ -479,9 +464,6 @@ Packet* StructureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 	case RPC_PROMPTFINDLOSTITEMS__CREATUREOBJECT_STRUCTUREOBJECT_:
 		promptFindLostItems((CreatureObject*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter());
 		break;
-	case RPC_PROMPTSETOWNER__CREATUREOBJECT_STRUCTUREOBJECT_:
-		promptSetOwner((CreatureObject*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter());
-		break;
 	case RPC_MOVEFIRSTITEMTO__CREATUREOBJECT_STRUCTUREOBJECT_:
 		moveFirstItemTo((CreatureObject*) inv->getObjectParameter(), (StructureObject*) inv->getObjectParameter());
 		break;
@@ -542,10 +524,6 @@ void StructureManagerAdapter::promptDeleteAllItems(CreatureObject* creature, Str
 
 void StructureManagerAdapter::promptFindLostItems(CreatureObject* creature, StructureObject* structure) {
 	((StructureManagerImplementation*) impl)->promptFindLostItems(creature, structure);
-}
-
-void StructureManagerAdapter::promptSetOwner(CreatureObject* creature, StructureObject* structure) {
-	((StructureManagerImplementation*) impl)->promptSetOwner(creature, structure);
 }
 
 void StructureManagerAdapter::moveFirstItemTo(CreatureObject* creature, StructureObject* structure) {

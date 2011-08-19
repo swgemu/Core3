@@ -184,8 +184,6 @@ public:
 
 	void promptFindLostItems(CreatureObject* creature, StructureObject* structure);
 
-	void promptSetOwner(CreatureObject* creature, StructureObject* structure);
-
 	void moveFirstItemTo(CreatureObject* creature, StructureObject* structure);
 
 	DistributedObjectServant* _getImplementation();
@@ -255,8 +253,6 @@ public:
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 
 	void promptFindLostItems(CreatureObject* creature, StructureObject* structure);
-
-	void promptSetOwner(CreatureObject* creature, StructureObject* structure);
 
 	void moveFirstItemTo(CreatureObject* creature, StructureObject* structure);
 
@@ -328,8 +324,6 @@ public:
 	void promptDeleteAllItems(CreatureObject* creature, StructureObject* structure);
 
 	void promptFindLostItems(CreatureObject* creature, StructureObject* structure);
-
-	void promptSetOwner(CreatureObject* creature, StructureObject* structure);
 
 	void moveFirstItemTo(CreatureObject* creature, StructureObject* structure);
 

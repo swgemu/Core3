@@ -58,35 +58,13 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-		if (ghost == NULL || !ghost->isPrivileged()) {
-			creature->sendSystemMessage("@error_message:insufficient_permissions"); //You do not have sufficient permissions to perform the requested action.
-			return INSUFFICIENTPERMISSION;
-		}
-
-		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
-
-		if (obj == NULL)
-			return INVALIDTARGET;
-
-		ManagedReference<SuiMessageBox*> confirmbox = new SuiMessageBox(creature, SuiWindowType::ADMIN_DESTROY_CONFIRM);
-		confirmbox->setCallback(new DestroyCommandSuiCallback(server->getZoneServer()));
-		confirmbox->setPromptTitle("Destroy");
-		confirmbox->setPromptText("Really destroy \\#dd3300" + obj->getObjectName()->getDisplayedName() + "\\#.?");
-		confirmbox->setUsingObject(obj);
-		confirmbox->setCancelButton(true, "@no");
-		confirmbox->setOkButton(true, "@yes");
-
-		ghost->addSuiBox(confirmbox);
-		creature->sendMessage(confirmbox->generateMessage());
+		//Note: This command doesn't do anything...
 
 		return SUCCESS;
 	}
