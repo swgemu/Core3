@@ -177,7 +177,7 @@ public:
 		}
 
 		if (!creature->getPlayerObject()->isPrivileged()) {
-			if (obj->getRootParent() != buildingObject || obj->isTerminal() || obj->isVendor()) {
+			if (obj->getRootParent() != buildingObject || buildingObject->containsChildObject(obj) || obj->isVendor()) {
 				if (obj->isVendor())
 					creature->sendSystemMessage("@player_structure:cant_move_vendor"); // To move a vendor, pick it up and drop it again in the new location.
 				else

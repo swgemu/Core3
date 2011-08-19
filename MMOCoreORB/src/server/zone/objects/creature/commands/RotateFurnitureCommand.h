@@ -65,17 +65,16 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return INVALIDPARAMETERS;
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		CreatureObject* player = (CreatureObject*) creature;
-
+		if (ghost == NULL)
+			return GENERALERROR;
 
 		ManagedReference<SceneObject*> rootParent = creature->getRootParent();
 
-		BuildingObject* buildingObject = rootParent != NULL ? (rootParent->isBuildingObject() ? (BuildingObject*)rootParent.get() : NULL) : NULL;
+		BuildingObject* buildingObject = rootParent != NULL ? (rootParent->isBuildingObject() ? (BuildingObject*) rootParent.get() : NULL) : NULL;
 
-		if (!player->getPlayerObject()->isPrivileged()) {
+		if (!ghost->isPrivileged()) {
 			if (buildingObject == NULL) {
 				creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
 				return GENERALERROR;
@@ -118,8 +117,8 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!player->getPlayerObject()->isPrivileged()) {
-			if (obj == NULL || obj->getRootParent() != buildingObject || (obj->isTerminal() && !obj->isVendor())) {
+		if (!ghost->isPrivileged()) {
+			if (obj == NULL || obj->getRootParent() != buildingObject || buildingObject->containsChildObject(obj)) {
 				creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
 				return GENERALERROR;
 
