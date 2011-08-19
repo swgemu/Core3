@@ -367,7 +367,6 @@ void ChatManagerImplementation::broadcastGalaxy(CreatureObject* player, const St
 
 		playerObject->sendSystemMessage(fullMessage.toString());
 	}
-
 }
 
 void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {

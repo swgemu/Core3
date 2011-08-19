@@ -54,7 +54,21 @@ which carries forward this exception.
 #include "engine/engine.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
 
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace sui {
+namespace listbox {
+	class SuiListBox;
+}
+}
+}
+}
+}
+}
+
+using namespace server::zone::objects::player::sui::listbox;
 
 /**
  * TypeResourceMap is a container class for VectorMap<String, ManagedReference<ResourceSpawn* > >
@@ -142,12 +156,25 @@ public:
 		else
 			return NULL;
 	}
+
+	/**
+	 * Checks to see if the type resource map contains the specified type or not.
+	 * @param typeName The type to check. For example, "aluminum_phrik".
+	 * @return Returns true if the map contains the type.
+	 */
+	bool containsType(const String& typeName) {
+		return typeResourceMap.contains(typeName);
+	}
+
+	bool containsSpawn(const String& spawnName) {
+		return contains(spawnName);
+	}
 	/**
 	 * Adds the resources in particular map to SUI for resource deed
-	 * \param name name of resource
-	 * \param suil Listbox
+	 * @param sui Listbox
+	 * @param nodeName name of resource
 	*/
-	void addToSuiListBox(const String& name, SuiListBox* suil);
+	void addToSuiListBox(SuiListBox* sui, const String& nodeName);
 };
 
 

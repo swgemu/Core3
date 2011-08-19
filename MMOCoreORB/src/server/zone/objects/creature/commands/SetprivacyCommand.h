@@ -62,7 +62,7 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ManagedReference<SceneObject*> obj = creature->getParentRecursively(SceneObject::BUILDING);
+		ManagedReference<SceneObject*> obj = creature->getRootParent();
 
 		if (obj == NULL || !obj->isBuildingObject()) {
 			creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
@@ -70,6 +70,11 @@ public:
 		}
 
 		BuildingObject* building = (BuildingObject*) obj.get();
+
+		if (!building->isOnAdminList(creature->getFirstName())) {
+			creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
+			return INSUFFICIENTPERMISSION;
+		}
 
 		Reference<SharedBuildingObjectTemplate*> ssot = dynamic_cast<SharedBuildingObjectTemplate*>(building->getObjectTemplate());
 

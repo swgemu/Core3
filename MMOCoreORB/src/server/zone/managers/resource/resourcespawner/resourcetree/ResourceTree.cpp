@@ -67,11 +67,9 @@ ResourceTree::~ResourceTree() {
 }
 
 bool ResourceTree::buildTreeFromClient() {
-
 	TemplateManager* templateManager = TemplateManager::instance();
 
-	IffStream* iffStream = templateManager->openIffFile(
-			"datatables/resource/resource_tree.iff");
+	IffStream* iffStream = templateManager->openIffFile("datatables/resource/resource_tree.iff");
 
 	if (iffStream == NULL) {
 		info("The Resource Tree could not be found.", true);
@@ -81,30 +79,28 @@ bool ResourceTree::buildTreeFromClient() {
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
 
-	Vector < String > currentClasses;
+	Vector<String> currentClasses;
 	Vector<String> currentStfClasses;
-	currentClasses.removeAll();
-	currentStfClasses.removeAll();
 
-	baseNode = new ResourceTreeNode("resource", "Resource", 0);
+	baseNode = new ResourceTreeNode("resource", "Resources", 0);
 
 	String stringvalue, randomname, resourcecontainer;
 	int intvalue;
 	bool boolValue;
 
-	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+	for (int i = 1; i < dtiff.getTotalRows(); ++i) {
 
 		DataTableRow* row = dtiff.getRow(i);
 
-		row->getCell(1)->getValue(stringvalue);
+		row->getValue(1, stringvalue);
 
 		ResourceTreeEntry* entry = new ResourceTreeEntry(stringvalue);
 
 		for (int j = 3; j <= 9; ++j) {
 			String resourceclass;
-			row->getCell(j)->getValue(resourceclass);
+			row->getValue(j, resourceclass);
 
-			if (resourceclass == "")
+			if (resourceclass.isEmpty())
 				continue;
 
 			while (currentStfClasses.size() > j - 3) {
@@ -115,13 +111,11 @@ bool ResourceTree::buildTreeFromClient() {
 			currentStfClasses.add(stringvalue);
 			currentClasses.add(resourceclass);
 		}
-		//System::out << "********* " << stringvalue << " ***********" << endl;
-		 for(int j = 0; j < currentStfClasses.size(); ++j) {
-			 entry->addClass(currentClasses.get(j));
-			 entry->addStfClass(currentStfClasses.get(j));
-		 //System::out << currentClasses.get(j) << "|" << currentStfClasses.get(j) << endl;
-		 }
-		 //System::out << "************************************" << endl;
+
+		for (int j = 0; j < currentStfClasses.size(); ++j) {
+			entry->addClass(currentClasses.get(j));
+			entry->addStfClass(currentStfClasses.get(j));
+		}
 
 		row->getValue(10, intvalue);
 		entry->setMaxtype(intvalue);
@@ -139,7 +133,7 @@ bool ResourceTree::buildTreeFromClient() {
 		entry->setRecycled(boolValue);
 
 		for (int j = 16; j <= 26; ++j) {
-			row->getCell(j)->getValue(stringvalue);
+			row->getValue(j, stringvalue);
 			if (stringvalue == "")
 				break;
 

@@ -182,6 +182,15 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 			creature->sendSystemMessage("@player_structure:" + abilityRequired);
 			return 1;
 		}
+
+		int lots = serverTemplate->getLotSize();
+
+		if (!ghost->hasLotsRemaining(lots)) {
+			StringIdChatParameter param("@player_structure:not_enough_lots");
+			param.setDI(lots);
+			creature->sendSystemMessage(param);
+			return 1;
+		}
 	}
 
 	//Validate that the structure can be placed at the given coordinates:

@@ -16,13 +16,13 @@
 
 #include "server/zone/objects/resource/ResourceContainer.h"
 
-#include "server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 /*
  *	ResourceManagerStub
  */
 
-enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_};
+enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_,RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_};
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
 	ResourceManagerImplementation* _implementation = new ResourceManagerImplementation(server, impl, objectMan);
@@ -270,20 +270,35 @@ ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
 		return _implementation->getResourceSpawn(spawnName);
 }
 
-void ResourceManager::addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent) {
+void ResourceManager::addNodeToListBox(SuiListBox* sui, const String& nodeName) {
 	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_);
-		method.addAsciiParameter(name);
-		method.addObjectParameter(suil);
-		method.addBooleanParameter(parent);
+		DistributedMethod method(this, RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_);
+		method.addObjectParameter(sui);
+		method.addAsciiParameter(nodeName);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->addChildrenToDeedListBox(name, suil, parent);
+		_implementation->addNodeToListBox(sui, nodeName);
+}
+
+String ResourceManager::addParentNodeToListBox(SuiListBox* sui, const String& currentNode) {
+	ResourceManagerImplementation* _implementation = (ResourceManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_);
+		method.addObjectParameter(sui);
+		method.addAsciiParameter(currentNode);
+
+		method.executeWithAsciiReturn(_return_addParentNodeToListBox);
+		return _return_addParentNodeToListBox;
+	} else
+		return _implementation->addParentNodeToListBox(sui, currentNode);
 }
 
 DistributedObjectServant* ResourceManager::_getImplementation() {
@@ -495,8 +510,11 @@ Packet* ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_GETRESOURCESPAWN__STRING_:
 		resp->insertLong(getResourceSpawn(inv->getAsciiParameter(_param0_getResourceSpawn__String_))->_getObjectID());
 		break;
-	case RPC_ADDCHILDRENTODEEDLISTBOX__STRING_RESOURCEDEEDLISTBOX_BOOL_:
-		addChildrenToDeedListBox(inv->getAsciiParameter(_param0_addChildrenToDeedListBox__String_ResourceDeedListBox_bool_), (ResourceDeedListBox*) inv->getObjectParameter(), inv->getBooleanParameter());
+	case RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_:
+		addNodeToListBox((SuiListBox*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addNodeToListBox__SuiListBox_String_));
+		break;
+	case RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_:
+		resp->insertAscii(addParentNodeToListBox((SuiListBox*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_addParentNodeToListBox__SuiListBox_String_)));
 		break;
 	default:
 		return NULL;
@@ -565,8 +583,12 @@ ResourceSpawn* ResourceManagerAdapter::getResourceSpawn(const String& spawnName)
 	return ((ResourceManagerImplementation*) impl)->getResourceSpawn(spawnName);
 }
 
-void ResourceManagerAdapter::addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent) {
-	((ResourceManagerImplementation*) impl)->addChildrenToDeedListBox(name, suil, parent);
+void ResourceManagerAdapter::addNodeToListBox(SuiListBox* sui, const String& nodeName) {
+	((ResourceManagerImplementation*) impl)->addNodeToListBox(sui, nodeName);
+}
+
+String ResourceManagerAdapter::addParentNodeToListBox(SuiListBox* sui, const String& currentNode) {
+	return ((ResourceManagerImplementation*) impl)->addParentNodeToListBox(sui, currentNode);
 }
 
 /*

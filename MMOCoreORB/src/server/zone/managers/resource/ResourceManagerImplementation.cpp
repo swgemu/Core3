@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "resourcespawner/SampleResultsTask.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 void ResourceManagerImplementation::initialize() {
 	lua = new Lua();
@@ -398,6 +399,10 @@ void ResourceManagerImplementation::givePlayerResource(CreatureObject* playerCre
 }
 
 /// Resource Deed Methods
-void ResourceManagerImplementation::addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent) {
-	resourceSpawner->addToListBox(name, suil, parent);
+void ResourceManagerImplementation::addNodeToListBox(SuiListBox* sui, const String& nodeName) {
+	resourceSpawner->addNodeToListBox(sui, nodeName);
+}
+
+String ResourceManagerImplementation::addParentNodeToListBox(SuiListBox* sui, const String& currentNode) {
+	return resourceSpawner->addParentNodeToListBox(sui, currentNode);
 }

@@ -93,11 +93,9 @@ namespace objects {
 namespace player {
 namespace sui {
 namespace listbox {
-namespace resourcedeedlistbox {
 
-class ResourceDeedListBox;
+class SuiListBox;
 
-} // namespace resourcedeedlistbox
 } // namespace listbox
 } // namespace sui
 } // namespace player
@@ -105,7 +103,7 @@ class ResourceDeedListBox;
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::player::sui::listbox::resourcedeedlistbox;
+using namespace server::zone::objects::player::sui::listbox;
 
 #include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
 
@@ -168,7 +166,9 @@ public:
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
-	void addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent = false);
+	void addNodeToListBox(SuiListBox* sui, const String& nodeName);
+
+	String addParentNodeToListBox(SuiListBox* sui, const String& currentNode);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -178,6 +178,8 @@ protected:
 	ResourceManager(DummyConstructorParameter* param);
 
 	virtual ~ResourceManager();
+
+	String _return_addParentNodeToListBox;
 
 	friend class ResourceManagerHelper;
 };
@@ -256,7 +258,9 @@ private:
 	void startResourceSpawner();
 
 public:
-	void addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent = false);
+	void addNodeToListBox(SuiListBox* sui, const String& nodeName);
+
+	String addParentNodeToListBox(SuiListBox* sui, const String& currentNode);
 
 	WeakReference<ResourceManager*> _this;
 
@@ -331,7 +335,9 @@ public:
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
 
-	void addChildrenToDeedListBox(const String& name, ResourceDeedListBox* suil, bool parent);
+	void addNodeToListBox(SuiListBox* sui, const String& nodeName);
+
+	String addParentNodeToListBox(SuiListBox* sui, const String& currentNode);
 
 protected:
 	String _param2_sendResourceListForSurvey__CreatureObject_int_String_;
@@ -344,7 +350,8 @@ protected:
 	String _param0_getCurrentSpawn__String_String_;
 	String _param1_getCurrentSpawn__String_String_;
 	String _param0_getResourceSpawn__String_;
-	String _param0_addChildrenToDeedListBox__String_ResourceDeedListBox_bool_;
+	String _param1_addNodeToListBox__SuiListBox_String_;
+	String _param1_addParentNodeToListBox__SuiListBox_String_;
 };
 
 class ResourceManagerHelper : public DistributedObjectClassHelper, public Singleton<ResourceManagerHelper> {

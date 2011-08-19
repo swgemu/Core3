@@ -9,6 +9,7 @@
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.h"
+#include "server/zone/objects/player/sui/callbacks/ResourceDeedSuiCallback.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -34,32 +35,30 @@ int ResourceDeedImplementation::handleObjectMenuSelect(CreatureObject* player, b
 	return 0;
 }
 
-int ResourceDeedImplementation::useObject(CreatureObject* player) {
-	if (player == NULL)
+int ResourceDeedImplementation::useObject(CreatureObject* creature) {
+	if (creature == NULL)
 		return 0;
 
-	if (generated)
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == NULL || ghost->hasSuiBoxWindowType(SuiWindowType::FREE_RESOURCE)) {
 		return 0;
+	}
 
 	ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
 
-	ResourceDeedListBox* sui1 = new ResourceDeedListBox(player, SuiWindowType::FREE_RESOURCE, SuiListBox::HANDLETHREEBUTTON);//beginning of sui chain
+	ManagedReference<SuiListBox*> sui = new SuiListBox(creature, SuiWindowType::FREE_RESOURCE);
+	sui->setUsingObject(_this);
+	sui->setCallback(new ResourceDeedSuiCallback(server->getZoneServer(), "Resource"));
+	sui->setPromptTitle("@veteran:resource_title"); //Resources
+	sui->setPromptText("@veteran:choose_class"); //Choose resource class
+	sui->setOtherButton(true, "@back");
+	sui->setOkButton(true, "@ok");
 
-	sui1->setPromptTitle("Resources");
-	sui1->setPromptText("Choose resource.");
-	sui1->setCancelButton(true, "@cancel");
-	sui1->setOtherButton(true, "@back");
+	resourceManager->addNodeToListBox(sui, "resource");
 
-	player->getPlayerObject()->addSuiBox(sui1);
-	String base = "resource";
-
-	sui1->addBox(base);
-
-	resourceManager->addChildrenToDeedListBox(base, sui1);
-
-	sui1->setUsingObject(_this);
-
-	player->sendMessage(sui1->generateMessage());
+	ghost->addSuiBox(sui);
+	creature->sendMessage(sui->generateMessage());
 
 	return 1;
 }

@@ -613,11 +613,11 @@ void ZoneServerImplementation::setServerStateOnline() {
 	info(msg, true);
 }
 
-String ZoneServerImplementation::getMessageoftheDay() {
-	return messageoftheDay;
+String ZoneServerImplementation::getLoginMessage() {
+	return loginMessage;
 }
 
-void ZoneServerImplementation::loadMessageoftheDay() {
+void ZoneServerImplementation::loadLoginMessage() {
 	Locker locker(_this);
 
 	File* file;
@@ -629,7 +629,7 @@ void ZoneServerImplementation::loadMessageoftheDay() {
 
 		String line;
 		while(reader->readLine(line)) {
-			messageoftheDay += line;
+			loginMessage += line;
 		}
 
 		reader->close();
@@ -639,7 +639,7 @@ void ZoneServerImplementation::loadMessageoftheDay() {
 	}
 }
 
-void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
+void ZoneServerImplementation::changeLoginMessage(const String& motd) {
 	Locker locker(_this);
 
 	File* file;
@@ -651,10 +651,10 @@ void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
 		file = new File("conf/motd.txt");
 		writer = new FileWriter(file);
 
-		for(int i = 0; i < newMOTD.length(); i++) {
-			if(i+1 < newMOTD.length()) {
-				char currentLetter = newMOTD.charAt(i);
-				char nextLetter = newMOTD.charAt(i+1);
+		for(int i = 0; i < motd.length(); i++) {
+			if(i+1 < motd.length()) {
+				char currentLetter = motd.charAt(i);
+				char nextLetter = motd.charAt(i+1);
 				if(currentLetter == '\\' && nextLetter == 'n') {
 					finalMOTD += "\n";
 					i++;
@@ -662,7 +662,7 @@ void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
 					finalMOTD += currentLetter;
 				}
 			} else {
-				finalMOTD += newMOTD.charAt(i);
+				finalMOTD += motd.charAt(i);
 			}
 		}
 
@@ -674,7 +674,7 @@ void ZoneServerImplementation::changeMessageoftheDay(const String& newMOTD) {
 		writer = NULL;
 	}
 
-	messageoftheDay = finalMOTD;
+	loginMessage = finalMOTD;
 }
 
 Account* ZoneServerImplementation::getAccount(uint32 accountID) {

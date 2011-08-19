@@ -69,6 +69,11 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == NULL)
+			return GENERALERROR;
+
 		if (creature->getParent() != NULL) {
 			creature->sendSystemMessage("@player_structure:not_inside"); //You can not place a structure while you are inside a building.
 			return GENERALERROR;
@@ -96,10 +101,19 @@ public:
 		TemplateManager* templateManager = TemplateManager::instance();
 
 		String serverTemplatePath = deed->getGeneratedObjectTemplate();
-		Reference<SharedObjectTemplate*> serverTemplate = templateManager->getTemplate(serverTemplatePath.hashCode());
+		Reference<SharedStructureObjectTemplate*> serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
 
 		if (serverTemplate == NULL)
 			return GENERALERROR; //Template is unknown.
+
+		int lots = serverTemplate->getLotSize();
+
+		if (!ghost->hasLotsRemaining(lots)) {
+			StringIdChatParameter param("@player_structure:not_enough_lots");
+			param.setDI(lots);
+			creature->sendSystemMessage(param);
+			return GENERALERROR;
+		}
 
 		String clientTemplatePath = templateManager->getTemplateFile(serverTemplate->getClientObjectCRC());
 

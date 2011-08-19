@@ -256,7 +256,9 @@ public:
 
 	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
 
-	void sendMessageOfTheDay(CreatureObject* player);
+	void sendLoginMessage(CreatureObject* player);
+
+	void resendLoginMessageToAll();
 
 	void sendActivateCloneRequest(CreatureObject* player);
 
@@ -422,7 +424,9 @@ public:
 
 	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
 
-	void sendMessageOfTheDay(CreatureObject* player);
+	void sendLoginMessage(CreatureObject* player);
+
+	void resendLoginMessageToAll();
 
 	void sendActivateCloneRequest(CreatureObject* player);
 
@@ -561,7 +565,9 @@ public:
 
 	void awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source);
 
-	void sendMessageOfTheDay(CreatureObject* player);
+	void sendLoginMessage(CreatureObject* player);
+
+	void resendLoginMessageToAll();
 
 	void sendActivateCloneRequest(CreatureObject* player);
 

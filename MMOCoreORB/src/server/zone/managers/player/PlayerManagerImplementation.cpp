@@ -1365,11 +1365,22 @@ void PlayerManagerImplementation::awardExperience(CreatureObject* player, const 
 	}
 }
 
-void PlayerManagerImplementation::sendMessageOfTheDay(CreatureObject* player) {
-	String motd = ConfigManager::instance()->getMessageOfTheDay();
+void PlayerManagerImplementation::sendLoginMessage(CreatureObject* creature) {
+	String motd = server->getLoginMessage();
 
 	ChatSystemMessage* csm = new ChatSystemMessage(UnicodeString(motd), ChatSystemMessage::DISPLAY_CHATONLY);
-	player->sendMessage(csm);
+	creature->sendMessage(csm);
+}
+
+void PlayerManagerImplementation::resendLoginMessageToAll() {
+	ChatManager* chatManager = server->getChatManager();
+
+	if (chatManager != NULL) {
+		String motd = server->getLoginMessage();
+
+		ChatSystemMessage* csm = new ChatSystemMessage(UnicodeString(motd), ChatSystemMessage::DISPLAY_CHATONLY);
+		chatManager->broadcastMessage(csm);
+	}
 }
 
 void PlayerManagerImplementation::handleAbortTradeMessage(CreatureObject* player, bool doLock) {

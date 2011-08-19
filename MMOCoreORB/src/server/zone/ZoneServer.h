@@ -500,11 +500,11 @@ public:
 
 	void setServerStateOnline();
 
-	void loadMessageoftheDay();
+	void loadLoginMessage();
 
-	void changeMessageoftheDay(const String& newMOTD);
+	void changeLoginMessage(const String& motd);
 
-	String getMessageoftheDay();
+	String getLoginMessage();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -516,7 +516,7 @@ protected:
 	virtual ~ZoneServer();
 
 	String _return_getGalaxyName;
-	String _return_getMessageoftheDay;
+	String _return_getLoginMessage;
 
 	friend class ZoneServerHelper;
 };
@@ -588,7 +588,7 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 
 	String galaxyName;
 
-	String messageoftheDay;
+	String loginMessage;
 
 	int galaxyID;
 
@@ -741,11 +741,11 @@ public:
 
 	void setServerStateOnline();
 
-	void loadMessageoftheDay();
+	void loadLoginMessage();
 
-	void changeMessageoftheDay(const String& newMOTD);
+	void changeLoginMessage(const String& motd);
 
-	String getMessageoftheDay();
+	String getLoginMessage();
 
 	WeakReference<ZoneServer*> _this;
 
@@ -900,16 +900,16 @@ public:
 
 	void setServerStateOnline();
 
-	void loadMessageoftheDay();
+	void loadLoginMessage();
 
-	void changeMessageoftheDay(const String& newMOTD);
+	void changeLoginMessage(const String& motd);
 
-	String getMessageoftheDay();
+	String getLoginMessage();
 
 protected:
 	String _param0_setGalaxyName__String_;
 	String _param0_getZone__String_;
-	String _param0_changeMessageoftheDay__String_;
+	String _param0_changeLoginMessage__String_;
 };
 
 class ZoneServerHelper : public DistributedObjectClassHelper, public Singleton<ZoneServerHelper> {

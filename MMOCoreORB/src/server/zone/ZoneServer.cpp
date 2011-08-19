@@ -56,7 +56,7 @@
  *	ZoneServerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__BOOL_,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATECLIENTOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETGALAXYNAME__,RPC_SETGALAXYNAME__STRING_,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__STRING_,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETAUCTIONMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADMESSAGEOFTHEDAY__,RPC_CHANGEMESSAGEOFTHEDAY__STRING_,RPC_GETMESSAGEOFTHEDAY__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZE__,RPC_SHUTDOWN__,RPC_STARTMANAGERS__,RPC_STARTZONES__,RPC_STOPMANAGERS__,RPC_START__INT_INT_,RPC_STOP__,RPC_ADDTOTALSENTPACKET__INT_,RPC_ADDTOTALRESENTPACKET__INT_,RPC_PRINTINFO__BOOL_,RPC_PRINTEVENTS__,RPC_GETOBJECT__LONG_BOOL_,RPC_CREATEOBJECT__INT_INT_LONG_,RPC_CREATECLIENTOBJECT__INT_LONG_,RPC_UPDATEOBJECTTODATABASE__SCENEOBJECT_,RPC_UPDATEOBJECTTOSTATICDATABASE__SCENEOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__LONG_,RPC_LOCK__BOOL_,RPC_UNLOCK__BOOL_,RPC_FIXSCHEDULER__,RPC_CHANGEUSERCAP__INT_,RPC_GETCONNECTIONCOUNT__,RPC_INCREASEONLINEPLAYERS__,RPC_DECREASEONLINEPLAYERS__,RPC_INCREASETOTALDELETEDPLAYERS__,RPC_GETGALAXYID__,RPC_GETGALAXYNAME__,RPC_SETGALAXYNAME__STRING_,RPC_ISSERVERLOCKED__,RPC_ISSERVERONLINE__,RPC_ISSERVEROFFLINE__,RPC_ISSERVERLOADING__,RPC_GETSERVERSTATE__,RPC_GETZONE__STRING_,RPC_GETZONE__INT_,RPC_GETZONECOUNT__,RPC_GETMAXPLAYERS__,RPC_GETTOTALPLAYERS__,RPC_GETDELETEDPLAYERS__,RPC_GETPLAYERMANAGER__,RPC_GETCHATMANAGER__,RPC_GETOBJECTCONTROLLER__,RPC_GETMISSIONMANAGER__,RPC_GETRADIALMANAGER__,RPC_GETGUILDMANAGER__,RPC_GETRESOURCEMANAGER__,RPC_GETCRAFTINGMANAGER__,RPC_GETLOOTMANAGER__,RPC_GETAUCTIONMANAGER__,RPC_GETFISHINGMANAGER__,RPC_GETGAMBLINGMANAGER__,RPC_GETFORAGEMANAGER__,RPC_GETACCOUNT__INT_,RPC_SETGALAXYID__INT_,RPC_SETSERVERSTATE__INT_,RPC_SETSERVERSTATELOCKED__,RPC_SETSERVERSTATEONLINE__,RPC_LOADLOGINMESSAGE__,RPC_CHANGELOGINMESSAGE__STRING_,RPC_GETLOGINMESSAGE__};
 
 ZoneServer::ZoneServer(ConfigManager* config) : ManagedService(DummyConstructorParameter::instance()) {
 	ZoneServerImplementation* _implementation = new ZoneServerImplementation(config);
@@ -913,45 +913,45 @@ void ZoneServer::setServerStateOnline() {
 		_implementation->setServerStateOnline();
 }
 
-void ZoneServer::loadMessageoftheDay() {
+void ZoneServer::loadLoginMessage() {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_LOADMESSAGEOFTHEDAY__);
+		DistributedMethod method(this, RPC_LOADLOGINMESSAGE__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->loadMessageoftheDay();
+		_implementation->loadLoginMessage();
 }
 
-void ZoneServer::changeMessageoftheDay(const String& newMOTD) {
+void ZoneServer::changeLoginMessage(const String& motd) {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHANGEMESSAGEOFTHEDAY__STRING_);
-		method.addAsciiParameter(newMOTD);
+		DistributedMethod method(this, RPC_CHANGELOGINMESSAGE__STRING_);
+		method.addAsciiParameter(motd);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->changeMessageoftheDay(newMOTD);
+		_implementation->changeLoginMessage(motd);
 }
 
-String ZoneServer::getMessageoftheDay() {
+String ZoneServer::getLoginMessage() {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETMESSAGEOFTHEDAY__);
+		DistributedMethod method(this, RPC_GETLOGINMESSAGE__);
 
-		method.executeWithAsciiReturn(_return_getMessageoftheDay);
-		return _return_getMessageoftheDay;
+		method.executeWithAsciiReturn(_return_getLoginMessage);
+		return _return_getLoginMessage;
 	} else
-		return _implementation->getMessageoftheDay();
+		return _implementation->getLoginMessage();
 }
 
 DistributedObjectServant* ZoneServer::_getImplementation() {
@@ -1136,8 +1136,8 @@ bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
-	if (_name == "messageoftheDay") {
-		TypeInfo<String >::parseFromBinaryStream(&messageoftheDay, stream);
+	if (_name == "loginMessage") {
+		TypeInfo<String >::parseFromBinaryStream(&loginMessage, stream);
 		return true;
 	}
 
@@ -1334,11 +1334,11 @@ int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "messageoftheDay";
+	_name = "loginMessage";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<String >::toBinaryStream(&messageoftheDay, stream);
+	TypeInfo<String >::toBinaryStream(&loginMessage, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -1712,14 +1712,14 @@ Packet* ZoneServerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETSERVERSTATEONLINE__:
 		setServerStateOnline();
 		break;
-	case RPC_LOADMESSAGEOFTHEDAY__:
-		loadMessageoftheDay();
+	case RPC_LOADLOGINMESSAGE__:
+		loadLoginMessage();
 		break;
-	case RPC_CHANGEMESSAGEOFTHEDAY__STRING_:
-		changeMessageoftheDay(inv->getAsciiParameter(_param0_changeMessageoftheDay__String_));
+	case RPC_CHANGELOGINMESSAGE__STRING_:
+		changeLoginMessage(inv->getAsciiParameter(_param0_changeLoginMessage__String_));
 		break;
-	case RPC_GETMESSAGEOFTHEDAY__:
-		resp->insertAscii(getMessageoftheDay());
+	case RPC_GETLOGINMESSAGE__:
+		resp->insertAscii(getLoginMessage());
 		break;
 	default:
 		return NULL;
@@ -1960,16 +1960,16 @@ void ZoneServerAdapter::setServerStateOnline() {
 	((ZoneServerImplementation*) impl)->setServerStateOnline();
 }
 
-void ZoneServerAdapter::loadMessageoftheDay() {
-	((ZoneServerImplementation*) impl)->loadMessageoftheDay();
+void ZoneServerAdapter::loadLoginMessage() {
+	((ZoneServerImplementation*) impl)->loadLoginMessage();
 }
 
-void ZoneServerAdapter::changeMessageoftheDay(const String& newMOTD) {
-	((ZoneServerImplementation*) impl)->changeMessageoftheDay(newMOTD);
+void ZoneServerAdapter::changeLoginMessage(const String& motd) {
+	((ZoneServerImplementation*) impl)->changeLoginMessage(motd);
 }
 
-String ZoneServerAdapter::getMessageoftheDay() {
-	return ((ZoneServerImplementation*) impl)->getMessageoftheDay();
+String ZoneServerAdapter::getLoginMessage() {
+	return ((ZoneServerImplementation*) impl)->getLoginMessage();
 }
 
 /*

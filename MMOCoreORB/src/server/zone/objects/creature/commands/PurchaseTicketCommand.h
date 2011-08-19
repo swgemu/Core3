@@ -121,7 +121,7 @@ public:
 		//Make sure they have space in the inventory for the tickets before purchasing them.
 		Locker _lock(inventory, creature);
 
-		if (inventory->getContainerObjectsSize() + ((roundTrip) ? 2 : 1) >= inventory->getContainerVolumeLimit()) {
+		if (inventory->getContainerObjectsSize() + ((roundTrip) ? 2 : 1) > inventory->getContainerVolumeLimit()) {
 			creature->sendSystemMessage("@error_message:inv_full"); //Your inventory is full.
 			return GENERALERROR;
 		}

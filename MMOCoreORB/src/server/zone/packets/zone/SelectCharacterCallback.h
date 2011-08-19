@@ -118,7 +118,7 @@ public:
 				}
 
 				if (zone == NULL)
-					zone = zoneServer->getZone("corellia");
+					zone = zoneServer->getZone(0); //Send them to whatever the first zone is...
 
 				player->insertToZone(zone);
 			}
@@ -133,7 +133,7 @@ public:
 			ghost->notifyOnline();
 
 			PlayerManager* playerManager = zoneServer->getPlayerManager();
-			playerManager->sendMessageOfTheDay(player);
+			playerManager->sendLoginMessage(player);
 
 		}
 	}

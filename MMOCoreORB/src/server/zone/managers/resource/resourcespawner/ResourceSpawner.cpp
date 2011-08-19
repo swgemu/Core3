@@ -57,6 +57,7 @@
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 ResourceSpawner::ResourceSpawner(ManagedReference<ZoneServer*> serv,
 		ZoneProcessServer* impl, ObjectManager* objMan) {
@@ -776,35 +777,63 @@ ResourceSpawn* ResourceSpawner::getFromRandomPool(const String& type) {
 	return randomPool->removeSpawn(type);
 }
 
-void ResourceSpawner::addToListBox(const String& name, ResourceDeedListBox* suil, bool parent) {
+void ResourceSpawner::addNodeToListBox(SuiListBox* sui, const String& nodeName) {
+	ResourceTreeNode* baseNode = resourceTree->getBaseNode();
 
-	ResourceTreeNode* basenode = resourceTree->getBaseNode();
-	ResourceTreeNode* node = NULL;
-	ResourceTreeEntry* entry = NULL;
+	ResourceTreeNode* node = baseNode->findNode(nodeName);
 
-	node = basenode->find(node, name);
-
-	if(node != NULL) {
-		node->addToSuiListBox(suil);
-		return;
-	}
-
-	entry = resourceTree->getEntry(name);
-
-	if (entry == NULL) {
-		basenode->addToSuiListBox(suil);
-		return;
-	}
-
-	node = entry->getMyNode();
-
+	//If we couldn't find a node
 	if (node == NULL) {
-		basenode->addToSuiListBox(suil);
-		return;
+
+		if (resourceMap->containsType(nodeName)) {
+			resourceMap->addToSuiListBox(sui, nodeName);
+			return;
+		}
+
+		node = baseNode;
 	}
 
-	if (entry == NULL)
-		node->addToSuiListBox(suil);
-	else
-		resourceMap->addToSuiListBox(name, suil);
+	node->addToSuiListBox(sui);
+}
+
+String ResourceSpawner::addParentNodeToListBox(SuiListBox* sui, const String& currentNode) {
+	//currentNode can be the resource name itself, the ResourceTreeEntry (finalClass), or a ResourceTreeNode...
+	ResourceTreeNode* baseNode = resourceTree->getBaseNode();
+
+	//If is resource name
+	if (resourceMap->contains(currentNode)) {
+		ManagedReference<ResourceSpawn*> spawn = resourceMap->get(currentNode);
+		ResourceTreeEntry* entry = baseNode->find(spawn->getFinalClass());
+
+		if (entry != NULL) {
+			resourceMap->addToSuiListBox(sui, entry->getFinalClass());
+			return entry->getFinalClass();
+		}
+	}
+
+	//If is finalClass
+	ResourceTreeEntry* entry = baseNode->find(currentNode);
+
+	if (entry != NULL) {
+		ResourceTreeNode* node = entry->getMyNode();
+
+		if (node != NULL) {
+			node->addToSuiListBox(sui);
+			return node->getName();
+		}
+	}
+
+	ResourceTreeNode* node = baseNode->findNode(currentNode);
+
+	if (node == NULL)
+		node = baseNode;
+
+	ResourceTreeNode* parentNode = node->getParentNode();
+
+	if (parentNode != NULL)
+		node = parentNode;
+
+	node->addToSuiListBox(sui);
+
+	return node->getName();
 }

@@ -54,13 +54,13 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.resource.ResourceContainer;
 import engine.service.proto.BaseMessage;
+import engine.util.Observer;
+import engine.util.Observable;
+import server.zone.objects.player.sui.listbox.SuiListBox;
 
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
 include server.zone.packets.resource.ResourceListForSurveyMessage;
 include server.zone.objects.resource.ResourceSpawn;
-import engine.util.Observer;
-import engine.util.Observable;
-import server.zone.objects.player.sui.listbox.resourcedeedlistbox.ResourceDeedListBox;
 
 /**
  * The resource manager handles all aspects of in game resources
@@ -119,9 +119,10 @@ class ResourceManager extends Observer implements Logger {
 	private native boolean loadConfigData();
 	private native void loadDefaultConfig();
 	
-	private native void startResourceSpawner();	
+	private native void startResourceSpawner();
 	
 	/// Resource Deed Methods
-	public native void addChildrenToDeedListBox(final string name, ResourceDeedListBox suil, boolean parent = false);
+	public native void addNodeToListBox(SuiListBox sui, final string nodeName);
+	public native string addParentNodeToListBox(SuiListBox sui, final string currentNode);
 }
 

@@ -49,6 +49,7 @@ which carries forward this exception.
  */
 
 #include "ResourceMap.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 ResourceMap::ResourceMap() {
 	setNoDuplicateInsertPlan();
@@ -121,7 +122,7 @@ void ResourceMap::remove(ManagedReference<ResourceSpawn* > resourceSpawn, String
 		map->drop(resourceSpawn->getName());
 }
 
-void ResourceMap::addToSuiListBox(const String& name, SuiListBox* suil) {
+void ResourceMap::addToSuiListBox(SuiListBox* suil, const String& name) {
 
 	TypeResourceMap* typemap = typeResourceMap.get(name);
 

@@ -80,8 +80,8 @@ public:
 
 	ResourceTreeEntry* getEntry(const String& type, const Vector<String>& excludes = 0, const String& zoneName = "");
 
-	ResourceTreeEntry* find(ResourceTreeEntry* entry, const String& type);
-	ResourceTreeNode* find(ResourceTreeNode* node, const String& type);
+	ResourceTreeEntry* find(const String& type, ResourceTreeEntry* entry = NULL);
+	ResourceTreeNode* findNode(const String& type, ResourceTreeNode* node = NULL);
 
 	ResourceTreeEntry* getPlanetSpecificEntry(const String& planet);
 

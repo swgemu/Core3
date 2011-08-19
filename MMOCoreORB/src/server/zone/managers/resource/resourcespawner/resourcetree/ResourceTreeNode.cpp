@@ -126,7 +126,7 @@ void ResourceTreeNode::add(ResourceTreeEntry* entry) {
 	}
 }
 
-ResourceTreeEntry* ResourceTreeNode::find(ResourceTreeEntry* entry, const String& type) {
+ResourceTreeEntry* ResourceTreeNode::find(const String& type, ResourceTreeEntry* entry) {
 	if (entry != NULL)
 		return entry;
 
@@ -140,22 +140,24 @@ ResourceTreeEntry* ResourceTreeNode::find(ResourceTreeEntry* entry, const String
 
 	for(int i = 0; i < nodes.size(); ++i) {
 		ResourceTreeNode* node = nodes.get(i);
-		entry = node->find(entry, type);
+		entry = node->find(type, entry);
 	}
 	return entry;
 }
 
-ResourceTreeNode* ResourceTreeNode::find(ResourceTreeNode* node, const String& type) {
+ResourceTreeNode* ResourceTreeNode::findNode(const String& type, ResourceTreeNode* node) {
 	if (node != NULL)
 		return node;
 
-	for(int i = 0; i < nodes.size(); ++i) {
+	for (int i = 0; i < nodes.size(); ++i) {
 		ResourceTreeNode* n = nodes.get(i);
-		if(n->getStfName() == type || n->getName() == type)
+
+		if (n->getStfName() == type || n->getName() == type)
 			return n;
-		else
-			node = n->find(node, type);
+
+		node = n->findNode(type, node);
 	}
+
 	return node;
 }
 
@@ -163,7 +165,7 @@ ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
 		const Vector<String>& excludes, const String& zoneName) {
 
 	ResourceTreeEntry* entry = NULL;
-	entry = find(entry, type);
+	entry = find(type, entry);
 
 	if(entry == NULL)
 		return NULL;
@@ -173,8 +175,7 @@ ResourceTreeEntry* ResourceTreeNode::getEntry(const String& type,
 	if(!entry->hasChildren())
 		return entry;
 
-	ResourceTreeNode* node = NULL;
-	node = entry->getMyNode()->find(node, type);
+	 ResourceTreeNode* node = entry->getMyNode()->findNode(type);
 
 	if(node == NULL)
 		return NULL;
@@ -256,12 +257,19 @@ void ResourceTreeNode::getEntryPool(Vector<ResourceTreeEntry*>& candidates,
 }*/
 
 void ResourceTreeNode::addToSuiListBox(SuiListBox* suil) {
+	suil->setPromptTitle("@veteran:resource_title"); //Resources
+
 	for(int i = 0; i < nodes.size(); ++i) {
+		if (parentNode != NULL)
+			suil->setPromptText("@veteran:choose_sub_class"); //Chose resource class from
+		else
+			suil->setPromptText("@veteran:choose_class"); //Choose resource class
 		ResourceTreeNode* node = nodes.get(i);
 		suil->addMenuItem(node->getName(), 0);
 	}
 
 	for(int i = 0; i < entries.size(); ++i) {
+		suil->setPromptText("@veteran:choose_type"); //Choose resource type from
 		ResourceTreeEntry* ent = entries.get(i);
 		if(!ent->hasChildren() && !ent->isRecycled())
 			suil->addMenuItem(ent->getFinalClass());

@@ -1103,7 +1103,7 @@ void AiAgentImplementation::selectConversationOption(int option, SceneObject* ob
 				Reference<ConversationScreen*> lastScreen = convo->getScreen(chk);
 
 				if (lastScreen == NULL)
-					lastScreen == convo->getInitialScreen();
+					lastScreen = convo->getInitialScreen();
 
 				Reference<ConversationOption*> convoOption = lastScreen->getOption(option);
 

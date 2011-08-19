@@ -140,7 +140,7 @@ class ZoneServer extends ManagedService implements Logger {
 	private int serverState;
 
 	private string galaxyName;
-	private string messageoftheDay;
+	private string loginMessage;
 
 	private int galaxyID;
 	
@@ -358,8 +358,7 @@ class ZoneServer extends ManagedService implements Logger {
 
 	public native void setServerStateOnline();
 	
-	public native void loadMessageoftheDay();
-
-	public native void changeMessageoftheDay(final string newMOTD);
-	public native string getMessageoftheDay();
+	public native void loadLoginMessage();
+	public native void changeLoginMessage(final string motd);
+	public native string getLoginMessage();
 }

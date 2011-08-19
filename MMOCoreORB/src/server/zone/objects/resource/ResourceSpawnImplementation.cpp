@@ -288,6 +288,8 @@ void ResourceSpawnImplementation::decreaseContainerReferenceCount() {
 	}*/
 }
 void ResourceSpawnImplementation::addStatsToDeedListBox(SuiListBox* suil) {
+	suil->setPromptTitle("@veteran:resource_name"); //Resource Name
+	suil->setPromptText("@veteran:confirm_choose_type"); //Please confirm that you would like to select this resource as your Veteran Reward Crate of Resources. Use the CANCEL button to go back and select a different resource.
 
 	String tempname = "Name = " + spawnName;
 	suil->addMenuItem(tempname);

@@ -847,7 +847,7 @@ void SuiManager::handleGiveFreeResource(CreatureObject* player, SuiBox* suiBox, 
 		suiListBox->setPromptTitle("Resources");
 		suiListBox->setPromptText("Choose resource.");
 
-		resourceManager->addChildrenToDeedListBox(suiListBox->getCurrentBox(), suiListBox);
+		//resourceManager->fillListBox(suiListBox, suiListBox->getCurrentBox());
 	}
 
 	suiListBox->setCancelButton(true, "@cancel");
