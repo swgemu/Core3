@@ -57,6 +57,13 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 	menuResponse->addRadialMenuItemToRadialID(117, 120, 3, "@player_structure:permission_banned"); //Ban List
 	//menuResponse->addRadialMenuItemToRadialID(118, 122, 3, "@player_structure:permission_vendor"); //Vendor List
 
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == NULL || !ghost->isPrivileged())
+		return;
+
+	menuResponse->addRadialMenuItem(119, 3, "Admin Options");
+	menuResponse->addRadialMenuItemToRadialID(119, 210, 3, "Link to Building");
 }
 
 int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -115,6 +122,19 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 	case 130:
 		structureObject->createVendor(player);
 		break;
+	case 210:
+	{
+		ManagedReference<SceneObject*> rootParent = getRootParent();
+
+		if (rootParent != NULL || !rootParent->isBuildingObject()) {
+			controlledObject = rootParent;
+			player->sendSystemMessage("Link established successfully.");
+		} else {
+			player->sendSystemMessage("Terminal must be located within a building to be linked.");
+		}
+
+		break;
+	}
 	}
 
 	return 0;
