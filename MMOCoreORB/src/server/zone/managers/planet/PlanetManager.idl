@@ -72,12 +72,17 @@ include server.zone.templates.snapshot.WorldSnapshotIff;
 include server.zone.managers.planet.PlanetTravelPointList;
 include server.zone.managers.planet.PlanetTravelPoint;
 include engine.lua.LuaObject;
+include server.zone.objects.building.tasks.ShuttleDepartureTask;
+include server.zone.objects.creature.CreaturePosture;
 
 class PlanetManager extends ManagedService implements Logger {
 	@weakReference
 	protected Zone zone;
 	
 	protected RegionMap cityRegionMap;
+	
+	@dereferenced
+	protected transient SortedVector<ShuttleDepartureTask> shuttleTasks;
 	
 	@dereferenced
 	protected VectorMap<string, int> travelFares;
@@ -326,4 +331,13 @@ class PlanetManager extends ManagedService implements Logger {
 	 * @return Returns true if travel is permitted between the two points.
 	 */
 	public native boolean isTravelToLocationPermitted(final string destinationPoint, final string arrivalPlanet, final string arrivalPoint);
+	
+	public void scheduleShuttle(CreatureObject shuttle) {
+		shuttle.setPosture(CreaturePosture.UPRIGHT);
+		
+		ShuttleDepartureTask task = new ShuttleDepartureTask(shuttle);
+		task.schedule(ShuttleDepartureTask.LANDEDTIME);
+		
+		shuttleTasks.put(task);
+	}
 }

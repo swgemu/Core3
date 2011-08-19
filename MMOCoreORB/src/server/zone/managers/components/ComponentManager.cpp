@@ -12,6 +12,7 @@
 #include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
+#include "server/zone/objects/building/components/ShuttleZoneComponent.h"
 #include "server/zone/objects/player/components/PlayerObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 
@@ -21,6 +22,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("ZoneComponent", new ZoneComponent());
 	components.put("PlayerZoneComponent", new PlayerZoneComponent());
+	components.put("ShuttleZoneComponent", new ShuttleZoneComponent());
 
 	components.put("ObjectMenuComponent", new ObjectMenuComponent());
 	components.put("TangibleObjectMenuComponent", new TangibleObjectMenuComponent());

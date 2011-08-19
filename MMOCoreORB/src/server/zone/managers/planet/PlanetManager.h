@@ -155,6 +155,10 @@ using namespace server::zone::objects::scene;
 
 #include "engine/lua/LuaObject.h"
 
+#include "server/zone/objects/building/tasks/ShuttleDepartureTask.h"
+
+#include "server/zone/objects/creature/CreaturePosture.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/log/Logger.h"
@@ -258,6 +262,8 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
+	void scheduleShuttle(CreatureObject* shuttle);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -287,6 +293,8 @@ protected:
 	ManagedWeakReference<Zone* > zone;
 
 	Reference<RegionMap* > cityRegionMap;
+
+	SortedVector<ShuttleDepartureTask*> shuttleTasks;
 
 	VectorMap<String, int> travelFares;
 
@@ -419,6 +427,8 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
+	void scheduleShuttle(CreatureObject* shuttle);
+
 	WeakReference<PlanetManager*> _this;
 
 	operator const PlanetManager*();
@@ -521,6 +531,8 @@ public:
 	bool isInterplanetaryTravelAllowed(const String& pointName);
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
+
+	void scheduleShuttle(CreatureObject* shuttle);
 
 protected:
 	String _param0_getTravelFare__String_;

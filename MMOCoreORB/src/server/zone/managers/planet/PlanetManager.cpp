@@ -26,7 +26,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADPLAYERREGIONS__,RPC_LOADNOBUILDAREAS__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_LOADHUNTINGTARGETS__,RPC_LOADRECONLOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_GETWEATHERMANAGER__,RPC_GETREGION__FLOAT_FLOAT_,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ADDMISSIONNPC__SCENEOBJECT_,RPC_ADDHUNTINGTARGETTEMPLATE__STRING_STRING_INT_,RPC_ADDRECONLOC__SCENEOBJECT_,RPC_ADDINFORMANT__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -546,6 +546,20 @@ bool PlanetManager::isTravelToLocationPermitted(const String& destinationPoint, 
 		return _implementation->isTravelToLocationPermitted(destinationPoint, arrivalPlanet, arrivalPoint);
 }
 
+void PlanetManager::scheduleShuttle(CreatureObject* shuttle) {
+	PlanetManagerImplementation* _implementation = (PlanetManagerImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SCHEDULESHUTTLE__CREATUREOBJECT_);
+		method.addObjectParameter(shuttle);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->scheduleShuttle(shuttle);
+}
+
 DistributedObjectServant* PlanetManager::_getImplementation() {
 
 	_updated = true;
@@ -936,6 +950,18 @@ PlanetTravelPoint* PlanetManagerImplementation::getPlanetTravelPoint(const Strin
 	return planetTravelPointList->get(pointName);
 }
 
+void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle) {
+	Reference<ShuttleDepartureTask*> _ref0;
+	// server/zone/managers/planet/PlanetManager.idl():  		shuttle.setPosture(CreaturePosture.UPRIGHT);
+	shuttle->setPosture(CreaturePosture::UPRIGHT);
+	// server/zone/managers/planet/PlanetManager.idl():  		ShuttleDepartureTask task = new ShuttleDepartureTask(shuttle);
+	ShuttleDepartureTask* task = _ref0 = new ShuttleDepartureTask(shuttle);
+	// server/zone/managers/planet/PlanetManager.idl():  		task.schedule(ShuttleDepartureTask.LANDEDTIME);
+	task->schedule(ShuttleDepartureTask::LANDEDTIME);
+	// server/zone/managers/planet/PlanetManager.idl():  		shuttleTasks.put(task);
+	(&shuttleTasks)->put(task);
+}
+
 /*
  *	PlanetManagerAdapter
  */
@@ -1039,6 +1065,9 @@ Packet* PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 		break;
 	case RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_:
 		resp->insertBoolean(isTravelToLocationPermitted(inv->getAsciiParameter(_param0_isTravelToLocationPermitted__String_String_String_), inv->getAsciiParameter(_param1_isTravelToLocationPermitted__String_String_String_), inv->getAsciiParameter(_param2_isTravelToLocationPermitted__String_String_String_)));
+		break;
+	case RPC_SCHEDULESHUTTLE__CREATUREOBJECT_:
+		scheduleShuttle((CreatureObject*) inv->getObjectParameter());
 		break;
 	default:
 		return NULL;
@@ -1169,6 +1198,10 @@ bool PlanetManagerAdapter::isInterplanetaryTravelAllowed(const String& pointName
 
 bool PlanetManagerAdapter::isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint) {
 	return ((PlanetManagerImplementation*) impl)->isTravelToLocationPermitted(destinationPoint, arrivalPlanet, arrivalPoint);
+}
+
+void PlanetManagerAdapter::scheduleShuttle(CreatureObject* shuttle) {
+	((PlanetManagerImplementation*) impl)->scheduleShuttle(shuttle);
 }
 
 /*

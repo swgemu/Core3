@@ -42,7 +42,8 @@
 
 
 object_mobile_player_transport = object_mobile_shared_player_transport:new {
-	optionsBitmask = 256
+	optionsBitmask = 256,
+	zoneComponent = "ShuttleZoneComponent"
 }
 
 ObjectTemplates:addTemplate(object_mobile_player_transport, "object/mobile/player_transport.iff")

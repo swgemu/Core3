@@ -276,6 +276,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/TangibleObjectMenuComponent.cpp \
 		server/zone/objects/scene/components/ObjectMenuComponent.cpp \
 		server/zone/objects/player/components/PlayerZoneComponent.cpp \
+		server/zone/objects/building/components/ShuttleZoneComponent.cpp \
 		server/zone/objects/scene/components/ZoneComponent.cpp \
 		server/zone/managers/skill/SkillManager.cpp \
 		server/zone/managers/player/creation/PlayerCreationManager.cpp \
