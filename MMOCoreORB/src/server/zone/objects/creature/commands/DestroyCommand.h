@@ -65,33 +65,28 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		if (!creature->isPlayerCreature())
-			return INVALIDPARAMETERS;
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		CreatureObject* player = (CreatureObject*) creature;
-
-		if (player->getPlayerObject()->isPrivileged())
+		if (ghost == NULL || !ghost->isPrivileged()) {
+			creature->sendSystemMessage("@error_message:insufficient_permissions"); //You do not have sufficient permissions to perform the requested action.
 			return INSUFFICIENTPERMISSION;
+		}
 
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
 		if (obj == NULL)
 			return INVALIDTARGET;
 
-		StringBuffer text;
-		text << "Really destroy \\#dd3300" << obj->getObjectName()->getDisplayedName() << "\\#.?";
-
-		ManagedReference<SuiMessageBox*> confirmbox = new SuiMessageBox(player, SuiWindowType::ADMIN_DESTROY_CONFIRM);
+		ManagedReference<SuiMessageBox*> confirmbox = new SuiMessageBox(creature, SuiWindowType::ADMIN_DESTROY_CONFIRM);
 		confirmbox->setCallback(new DestroyCommandSuiCallback(server->getZoneServer()));
-
 		confirmbox->setPromptTitle("Destroy");
-		confirmbox->setPromptText(text.toString());
+		confirmbox->setPromptText("Really destroy \\#dd3300" + obj->getObjectName()->getDisplayedName() + "\\#.?");
 		confirmbox->setUsingObject(obj);
 		confirmbox->setCancelButton(true, "@no");
 		confirmbox->setOkButton(true, "@yes");
 
-		player->getPlayerObject()->addSuiBox(confirmbox);
-		player->sendMessage(confirmbox->generateMessage());
+		ghost->addSuiBox(confirmbox);
+		creature->sendMessage(confirmbox->generateMessage());
 
 		return SUCCESS;
 	}

@@ -16,7 +16,7 @@ public:
 		: SuiCallback(server) {
 	}
 
-	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
+	void run(CreatureObject* creature, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
 		if (!suiBox->isMessageBox() || cancelPressed)
 			return;
 
@@ -26,7 +26,7 @@ public:
 			return;
 
 		if (obj->isPlayerCreature()) {
-			player->sendSystemMessage("Destroying players with this command is prohibited.");
+			creature->sendSystemMessage("Destroying players with this command is prohibited.");
 			return;
 		}
 
@@ -35,7 +35,7 @@ public:
 
 		obj->destroyObjectFromDatabase(true);
 
-		player->sendSystemMessage("The object has been successfully destroyed from the database.");
+		creature->sendSystemMessage("The object has been successfully destroyed from the database.");
 	}
 };
 
