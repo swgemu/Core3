@@ -205,6 +205,23 @@ void StructureTerminalImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("StructureTerminal");
 }
 
+void StructureTerminalImplementation::linkTerminal(CreatureObject* creature) {
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl():  		SceneObject rootParent = getRootParent();
+	SceneObject* rootParent = getRootParent();
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl():  		}
+	if (rootParent != NULL && rootParent->isBuildingObject()){
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl():  			setControlledObject(rootParent);
+	setControlledObject(rootParent);
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl():  			creature.sendSystemMessage("Link established successfully.");
+	creature->sendSystemMessage("Link established successfully.");
+}
+
+	else {
+	// server/zone/objects/tangible/terminal/structure/StructureTerminal.idl():  			creature.sendSystemMessage("Terminal must be located within a building to be linked.");
+	creature->sendSystemMessage("Terminal must be located within a building to be linked.");
+}
+}
+
 /*
  *	StructureTerminalAdapter
  */

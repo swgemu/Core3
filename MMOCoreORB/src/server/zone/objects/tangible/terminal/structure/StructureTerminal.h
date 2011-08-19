@@ -125,6 +125,10 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+private:
+	void linkTerminal(CreatureObject* creature);
+
+public:
 	WeakReference<StructureTerminal*> _this;
 
 	operator const StructureTerminal*();

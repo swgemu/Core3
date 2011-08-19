@@ -166,6 +166,7 @@ class StructureManager extends ManagedService implements Logger {
 	 */
 	public native void promptFindLostItems(CreatureObject creature, StructureObject structure);
 	
+	public native void promptSetOwner(CreatureObject creature, StructureObject structure);
 	/**
 	 * Moves the first object in the building to the creature's feet.
 	 * @param creature The creature to whom's feet the item will be moved.

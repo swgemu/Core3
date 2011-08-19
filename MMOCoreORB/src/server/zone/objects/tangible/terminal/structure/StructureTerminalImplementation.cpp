@@ -64,6 +64,7 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 
 	menuResponse->addRadialMenuItem(119, 3, "Admin Options");
 	menuResponse->addRadialMenuItemToRadialID(119, 210, 3, "Link to Building");
+	menuResponse->addRadialMenuItemToRadialID(119, 211, 3, "Set Owner");
 }
 
 int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -123,18 +124,11 @@ int StructureTerminalImplementation::handleObjectMenuSelect(CreatureObject* play
 		structureObject->createVendor(player);
 		break;
 	case 210:
-	{
-		ManagedReference<SceneObject*> rootParent = getRootParent();
-
-		if (rootParent != NULL || !rootParent->isBuildingObject()) {
-			controlledObject = rootParent;
-			player->sendSystemMessage("Link established successfully.");
-		} else {
-			player->sendSystemMessage("Terminal must be located within a building to be linked.");
-		}
-
+		linkTerminal(player);
 		break;
-	}
+	case 211:
+		structureManager->promptSetOwner(player, structureObject);
+		break;
 	}
 
 	return 0;

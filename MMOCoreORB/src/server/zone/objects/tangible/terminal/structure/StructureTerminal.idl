@@ -87,4 +87,15 @@ class StructureTerminal extends Terminal {
 	 */
 	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+	
+	private void linkTerminal(CreatureObject creature) {
+		SceneObject rootParent = getRootParent();
+		
+		if (rootParent != null && rootParent.isBuildingObject()) {
+			setControlledObject(rootParent);
+			creature.sendSystemMessage("Link established successfully.");
+		} else {
+			creature.sendSystemMessage("Terminal must be located within a building to be linked.");
+		}
+	}
 }

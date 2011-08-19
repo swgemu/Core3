@@ -69,6 +69,7 @@
 #include "server/zone/objects/player/sui/callbacks/StructureStatusSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructureManageMaintenanceSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/StructureSetOwnerSuiCallback.h"
 
 void StructureManagerImplementation::loadPlayerStructures() {
 
@@ -782,6 +783,22 @@ void StructureManagerImplementation::promptManageMaintenance(CreatureObject* cre
 	sui->setPromptText("@player_structure:select_maint_amount \n@player_structure:current_maint_pool " + String::valueOf(surplusMaintenance));
 	sui->addFrom("@player_structure:total_funds", String::valueOf(availableCredits), String::valueOf(availableCredits), "1");
 	sui->addTo("@player_structure:to_pay", "0", "0", "1");
+
+	ghost->addSuiBox(sui);
+	creature->sendMessage(sui->generateMessage());
+}
+
+void StructureManagerImplementation::promptSetOwner(CreatureObject* creature, StructureObject* structure) {
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	ManagedReference<SuiInputBox*> sui = new SuiInputBox(creature, 0x00); //Window type doesn't matter.
+	sui->setPromptTitle("Set Owner");
+	sui->setPromptText("Type in the name of the new owner of this structure.");
+	sui->setUsingObject(structure);
+	sui->setCallback(new StructureSetOwnerSuiCallback(server->getZoneServer()));
 
 	ghost->addSuiBox(sui);
 	creature->sendMessage(sui->generateMessage());
