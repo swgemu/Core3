@@ -74,13 +74,11 @@ public:
 
 		ManagedReference<SceneObject*> objectsParent = resourceContainer->getParent();
 
-		if (objectsParent != NULL && objectsParent->isCellObject()) {
+		if (objectsParent == NULL ||
+				resourceContainer->getParentRecursively(SceneObject::PLAYERCREATURE) == NULL) {
 
-			ManagedReference<BuildingObject*> building = (BuildingObject*) objectsParent->getParent();
-
-			if (!building->isOnAdminList(creature->getFirstName())) {
-				return GENERALERROR;
-			}
+			creature->sendSystemMessage("container_error_message", "container03");
+			return GENERALERROR;
 		}
 
 		resourceContainer->split(newStackSize);
