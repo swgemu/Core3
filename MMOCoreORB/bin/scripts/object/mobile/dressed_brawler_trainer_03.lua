@@ -42,7 +42,6 @@
 
 
 object_mobile_dressed_brawler_trainer_03 = object_mobile_shared_dressed_brawler_trainer_03:new {
-,
 	planetMapCategory = "trainer_brawler"
 }
 

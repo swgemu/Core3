@@ -42,7 +42,6 @@
 
 
 object_mobile_dressed_medic_trainer_02 = object_mobile_shared_dressed_medic_trainer_02:new {
-,
 	planetMapCategory = "trainer_medic"
 }
 
