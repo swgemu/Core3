@@ -42,7 +42,7 @@
 
 
 object_mobile_dressed_weaponsmith_trainer_01 = object_mobile_shared_dressed_weaponsmith_trainer_01:new {
-	gameObjectType = 1034
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_weaponsmith_trainer_01, "object/mobile/dressed_weaponsmith_trainer_01.iff")

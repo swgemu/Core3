@@ -42,7 +42,7 @@
 
 
 object_mobile_dressed_combatmedic_trainer_human_male_01 = object_mobile_shared_dressed_combatmedic_trainer_human_male_01:new {
-	gameObjectType = 1034
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_combatmedic_trainer_human_male_01, "object/mobile/dressed_combatmedic_trainer_human_male_01.iff")

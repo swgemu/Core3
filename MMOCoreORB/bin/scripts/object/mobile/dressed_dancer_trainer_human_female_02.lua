@@ -42,7 +42,7 @@
 
 
 object_mobile_dressed_dancer_trainer_human_female_02 = object_mobile_shared_dressed_dancer_trainer_human_female_02:new {
-	gameObjectType = 1034
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_dressed_dancer_trainer_human_female_02, "object/mobile/dressed_dancer_trainer_human_female_02.iff")

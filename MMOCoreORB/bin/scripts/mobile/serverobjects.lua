@@ -9,4 +9,7 @@ includeFile("npc/serverobjects.lua")
 includeFile("weapon/serverobjects.lua") 
 
 -- Spawn Groups
-includeFile("spawn/serverobjects.lua") 
+includeFile("spawn/serverobjects.lua")
+
+-- Trainer
+includeFile("trainer/serverobjects.lua")
