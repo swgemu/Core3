@@ -109,7 +109,7 @@ public:
 
 	void setRange(int r);
 
-	int getRange();
+	int getRange(CreatureObject* player);
 
 	int getPoints();
 
@@ -236,10 +236,14 @@ public:
 
 	void setRange(int r);
 
-	int getRange();
+	int getRange(CreatureObject* player);
 
 	int getPoints();
 
+private:
+	int getSkillBasedRange(int skillLevel);
+
+public:
 	bool canSampleRadioactive();
 
 	bool tryGamble();
@@ -323,7 +327,7 @@ public:
 
 	void setRange(int r);
 
-	int getRange();
+	int getRange(CreatureObject* player);
 
 	int getPoints();
 

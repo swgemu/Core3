@@ -16,7 +16,7 @@
  *	SurveyToolStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETRANGE__INT_,RPC_GETRANGE__,RPC_GETPOINTS__,RPC_CANSAMPLERADIOACTIVE__,RPC_TRYGAMBLE__,RPC_CLEARGAMBLE__,RPC_CONSENTRADIOACTIVESAMPLE__CREATUREOBJECT_,RPC_SENDRADIOACTIVEWARNING__CREATUREOBJECT_,RPC_SENDRANGESUI__CREATUREOBJECT_,RPC_SURVEYCNODEMINIGAMESUI__CREATUREOBJECT_,RPC_SURVEYCNODEMINIGAME__CREATUREOBJECT_INT_,RPC_CLEARRICHSAMPLELOCATION__,RPC_SETINUSE__BOOL_,RPC_ISINUSE__,RPC_SURVEYGNODEMINIGAMESUI__CREATUREOBJECT_,RPC_SURVEYGNODEMINIGAME__CREATUREOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SENDRESOURCELISTTO__CREATUREOBJECT_,RPC_SENDSURVEYTO__CREATUREOBJECT_STRING_,RPC_SENDSAMPLETO__CREATUREOBJECT_STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SETRANGE__INT_,RPC_GETRANGE__CREATUREOBJECT_,RPC_GETPOINTS__,RPC_CANSAMPLERADIOACTIVE__,RPC_TRYGAMBLE__,RPC_CLEARGAMBLE__,RPC_CONSENTRADIOACTIVESAMPLE__CREATUREOBJECT_,RPC_SENDRADIOACTIVEWARNING__CREATUREOBJECT_,RPC_SENDRANGESUI__CREATUREOBJECT_,RPC_SURVEYCNODEMINIGAMESUI__CREATUREOBJECT_,RPC_SURVEYCNODEMINIGAME__CREATUREOBJECT_INT_,RPC_CLEARRICHSAMPLELOCATION__,RPC_SETINUSE__BOOL_,RPC_ISINUSE__,RPC_SURVEYGNODEMINIGAMESUI__CREATUREOBJECT_,RPC_SURVEYGNODEMINIGAME__CREATUREOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_SENDRESOURCELISTTO__CREATUREOBJECT_,RPC_SENDSURVEYTO__CREATUREOBJECT_STRING_,RPC_SENDSAMPLETO__CREATUREOBJECT_STRING_};
 
 SurveyTool::SurveyTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	SurveyToolImplementation* _implementation = new SurveyToolImplementation();
@@ -85,17 +85,18 @@ void SurveyTool::setRange(int r) {
 		_implementation->setRange(r);
 }
 
-int SurveyTool::getRange() {
+int SurveyTool::getRange(CreatureObject* player) {
 	SurveyToolImplementation* _implementation = (SurveyToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETRANGE__);
+		DistributedMethod method(this, RPC_GETRANGE__CREATUREOBJECT_);
+		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getRange();
+		return _implementation->getRange(player);
 }
 
 int SurveyTool::getPoints() {
@@ -659,11 +660,6 @@ void SurveyToolImplementation::initializeTransientMembers() {
 void SurveyToolImplementation::updateCraftingValues(ManufactureSchematic* schematic) {
 }
 
-int SurveyToolImplementation::getRange() {
-	// server/zone/objects/tangible/tool/SurveyTool.idl():  		return range;
-	return range;
-}
-
 int SurveyToolImplementation::getPoints() {
 	// server/zone/objects/tangible/tool/SurveyTool.idl():  		return points;
 	return points;
@@ -721,8 +717,8 @@ Packet* SurveyToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETRANGE__INT_:
 		setRange(inv->getSignedIntParameter());
 		break;
-	case RPC_GETRANGE__:
-		resp->insertSignedInt(getRange());
+	case RPC_GETRANGE__CREATUREOBJECT_:
+		resp->insertSignedInt(getRange((CreatureObject*) inv->getObjectParameter()));
 		break;
 	case RPC_GETPOINTS__:
 		resp->insertSignedInt(getPoints());
@@ -793,8 +789,8 @@ void SurveyToolAdapter::setRange(int r) {
 	((SurveyToolImplementation*) impl)->setRange(r);
 }
 
-int SurveyToolAdapter::getRange() {
-	return ((SurveyToolImplementation*) impl)->getRange();
+int SurveyToolAdapter::getRange(CreatureObject* player) {
+	return ((SurveyToolImplementation*) impl)->getRange(player);
 }
 
 int SurveyToolAdapter::getPoints() {

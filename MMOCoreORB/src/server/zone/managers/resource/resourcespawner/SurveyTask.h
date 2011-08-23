@@ -78,7 +78,7 @@ public:
 		if (waypoint != NULL) {
 			Locker playerLocker(playerCreature);
 
-			playerCreature->getPlayerObject()->addWaypoint(waypoint, false, true);
+			playerCreature->getPlayerObject()->addWaypoint(waypoint, true, true);
 
 			// Send Waypoint System Message
 			playerCreature->sendSystemMessage("@survey:survey_waypoint");

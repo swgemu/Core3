@@ -97,7 +97,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 		playerObject->setSurveyTool(_this);
 
-		if (range > 0)
+		if (getRange(player) > 0)
 			sendResourceListTo(player);
 		else
 			sendRangeSui(player);
@@ -115,6 +115,41 @@ int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	}
 
 	return 1;
+}
+
+int SurveyToolImplementation::getRange(CreatureObject* player) {
+
+	int surveyMod = player->getSkillMod("surveying");
+	int rangeBasedOnSkill = getSkillBasedRange(surveyMod);
+
+	if (range > rangeBasedOnSkill)
+		setRange(rangeBasedOnSkill);
+
+	return range;
+}
+
+int SurveyToolImplementation::getSkillBasedRange(int skillLevel) {
+
+	if(skillLevel >= 125)
+		return 1024;
+	else if(skillLevel >= 115)
+		return 512;
+	else if(skillLevel >= 110)
+		return 448;
+	else if(skillLevel >= 105)
+		return 384;
+	else if(skillLevel >= 100)
+		return 320;
+	else if(skillLevel >= 75)
+		return 256;
+	else if(skillLevel >= 55)
+		return 192;
+	else if(skillLevel >= 35)
+		return 128;
+	else if(skillLevel >= 20)
+		return 64;
+
+	return 0;
 }
 
 void SurveyToolImplementation::sendRangeSui(CreatureObject* player) {

@@ -122,13 +122,13 @@ class SurveyTool extends ToolTangibleObject {
 	 */
 	public native void setRange(int r);
 	
-	public int getRange() {
-		return range;
-	}
+	public native int getRange(CreatureObject player);
 	
 	public int getPoints() {
 		return points;
 	}
+
+	private native int getSkillBasedRange(int skillLevel);
 	
 	public boolean canSampleRadioactive() {
 		return radioactiveOk;

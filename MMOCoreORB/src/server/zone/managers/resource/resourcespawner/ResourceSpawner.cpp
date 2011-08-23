@@ -438,11 +438,11 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 
 	Survey* surveyMessage = new Survey();
 
-	int toolRange = surveyTool->getRange();
+	int toolRange = surveyTool->getRange(player);
 	int points = surveyTool->getPoints();
 
-	if (toolRange > 384 || toolRange < 0)
-		toolRange = 384;
+	if (toolRange > 1024 || toolRange < 0)
+		toolRange = 320;
 
 	if (points <= 0 || points > 6)
 		points =  3;
@@ -476,30 +476,24 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 		posX -= (points * spacer);
 	}
 
-	ManagedReference<WaypointObject*> newwaypoint = NULL;
+	ManagedReference<WaypointObject*> waypoint = NULL;
 
 	if (maxDensity >= 0.1f) {
 
 		// Get previous survey waypoint
-		ManagedReference<WaypointObject*> waypoint =
-				ghost->getSurveyWaypoint();
+		waypoint = ghost->getSurveyWaypoint();
 
 		// Create new waypoint
 		if (waypoint == NULL)
-			newwaypoint = (WaypointObject*) server->createObject(0xc456e788, 1);
-		else {
-			player->getPlayerObject()->removeWaypoint(waypoint->getObjectID(),
-					true);
-			newwaypoint = waypoint.get();
-		}
+			waypoint = (WaypointObject*) server->createObject(0xc456e788, 1);
 
 		// Update new waypoint
-		newwaypoint->setCustomName(UnicodeString("Resource Survey"));
-		newwaypoint->setPlanetCRC(player->getZone()->getZoneCRC());
-		newwaypoint->setPosition(maxX, 0, maxY);
-		newwaypoint->setColor(WaypointObject::COLOR_BLUE);
-		newwaypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
-		newwaypoint->setActive(true);
+		waypoint->setCustomName(UnicodeString("Resource Survey"));
+		waypoint->setPlanetCRC(player->getZone()->getZoneCRC());
+		waypoint->setPosition(maxX, 0, maxY);
+		waypoint->setColor(WaypointObject::COLOR_BLUE);
+		waypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_RESOURCE);
+		waypoint->setActive(true);
 	}
 
 	// Send survey start message
@@ -509,7 +503,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	player->sendMessage(sysMessage);
 
 	Reference<SurveyTask*> surveyTask = new SurveyTask(player, surveyMessage,
-			newwaypoint);
+			waypoint);
 	surveyTask->schedule(3000);
 	player->addPendingTask("survey", surveyTask);
 }
