@@ -138,8 +138,8 @@ naboo = {
 
 rori = {
 	planetTravelPoints = {
-		{name = "Restuss Starport", x = 5301.498, z = 80, y = 6189.1694, interplanetaryTravelAllowed = 1},
-		{name = "Restuss Shuttleport", x = 5220.1011, z = 79.9114, y = 6204.8433, interplanetaryTravelAllowed = 0},
+		{name = "Restuss Starport", x = 5394.64, z = 80, y = 5770.13, interplanetaryTravelAllowed = 1},
+		{name = "Restuss Shuttleport", x = 5199, z = 79.9114, y = 5824, interplanetaryTravelAllowed = 0},
 		{name = "Narmle Starport", x = -5374.0718, z = 80, y = -2188.6143, interplanetaryTravelAllowed = 1},
 		{name = "Narmle Shuttleport", x = -5255.4116, z = 80.664185, y = -2161.6274, interplanetaryTravelAllowed = 0},
 		{name = "Rebel Outpost", x = 3691.9023, z = 96, y = -6403.4404, interplanetaryTravelAllowed = 1}

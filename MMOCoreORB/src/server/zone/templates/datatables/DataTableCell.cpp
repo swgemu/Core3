@@ -24,3 +24,18 @@ void DataTableCellString::getValue(SortedVector<String>& out) {
 		out.put(token);
 	}
 }
+
+void DataTableCellString::getValue(Vector<String>& out) {
+	String tokenizedString;
+	getValue(tokenizedString);
+
+	StringTokenizer tokenizer(tokenizedString);
+	tokenizer.setDelimeter(",");
+
+	while (tokenizer.hasMoreTokens()) {
+		String token;
+		tokenizer.getStringToken(token);
+
+		out.add(token);
+	}
+}

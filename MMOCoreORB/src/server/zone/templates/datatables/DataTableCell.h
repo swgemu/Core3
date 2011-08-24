@@ -22,6 +22,10 @@ public:
 		throw Exception("No valid type specified.");
 	}*/
 
+	virtual void getValue(Vector<String>& out) {
+		throw Exception("No valid type specified.");
+	}
+
 	virtual void getValue(SortedVector<String>& out) {
 		throw Exception("No valid type specified.");
 	}
@@ -60,6 +64,7 @@ public:
 	}
 
 	void getValue(SortedVector<String>& out);
+	void getValue(Vector<String>& out);
 
 	void parse(Chunk* chunk) {
 		chunk->readString(value);

@@ -56,29 +56,34 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		StringTokenizer args(arguments.toString());
+		float x, y;
+		float z = creature->getPositionZ();
+		String zoneName = creature->getZone()->getZoneName();
+		uint64 parentID = creature->getParentID();
 
 		try {
-			String zoneName;
-			args.getStringToken(zoneName);
-			float posx = args.getFloatToken();
-			float posy = args.getFloatToken();
+			UnicodeTokenizer tokenizer(arguments);
 
-			uint64 parent = 0;
+			x = tokenizer.getFloatToken();
+			y = tokenizer.getFloatToken();
 
-			if (args.hasMoreTokens())
-				parent = args.getLongToken();
+			if (tokenizer.hasMoreTokens())
+				tokenizer.getStringToken(zoneName);
 
-			creature->switchZone(zoneName, posx, 0, posy, parent);
+			if (tokenizer.hasMoreTokens()) {
+				z = tokenizer.getFloatToken();
+				parentID = tokenizer.getLongToken();
+			}
+
+			creature->switchZone(zoneName, x, z, y, parentID);
 		} catch (Exception& e) {
-			creature->sendSystemMessage("invalid arguments for teleport command");
+			creature->sendSystemMessage("SYNTAX: /teleport <x> <y> [<planet>] [<z> <parentID>]");
 		}
 
 		return SUCCESS;
