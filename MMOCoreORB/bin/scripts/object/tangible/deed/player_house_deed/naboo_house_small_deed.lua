@@ -43,7 +43,7 @@
 
 object_tangible_deed_player_house_deed_naboo_house_small_deed = object_tangible_deed_player_house_deed_shared_naboo_house_small_deed:new {
 	templateType = DEED,
-	generatedObjectTemplate = "object/building/player/player_house_naboo_small_style_01.iff"
+	generatedObjectTemplate = "object/building/player/player_house_naboo_small_style_02.iff"
 
 
 }
