@@ -21,7 +21,7 @@ void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 
 	ManagedReference<SceneObject*> obj = parent->getParent();
 
-	if (!obj->isBuildingObject())
+	if (obj == NULL || !obj->isBuildingObject())
 		return;
 
 	ManagedReference<BuildingObject*> buio = (BuildingObject*) obj.get();

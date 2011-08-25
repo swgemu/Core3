@@ -27,7 +27,7 @@ public:
 
 	void run() {
 		if (shuttleObject == NULL) {
-			cancel();
+			//cancel();
 			return;
 		}
 

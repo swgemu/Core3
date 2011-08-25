@@ -72,6 +72,8 @@ void UpdateModifiedObjectsThread::commitObjectsToDatabase() {
 
 				if (objectManager->commitUpdatePersistentObjectToDB(object) == 0)
 					++j;
+
+				Thread::yield();
 			}
 
 			StringBuffer msg;

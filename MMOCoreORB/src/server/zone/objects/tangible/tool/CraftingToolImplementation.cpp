@@ -1139,12 +1139,15 @@ void CraftingToolImplementation::customization(CreatureObject* player, String& n
 	if (manufactureSchematic == NULL)
 		return;
 
+	if (prototype == NULL)
+		return;
+
 	manufactureSchematic->setManufactureLimit(schematicCount);
 
 	StringTokenizer tokenizer(customization);
 	byte customizationindex, customizationvalue, customizationtype;
 
-	Database::escapeString(name);
+	//Database::escapeString(name);
 
 	UnicodeString customName(name);
 	prototype->setCustomObjectName(customName, false);

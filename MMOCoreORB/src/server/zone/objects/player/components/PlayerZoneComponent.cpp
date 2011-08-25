@@ -154,12 +154,12 @@ void PlayerZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) {
 		info(String::valueOf(activeAreas.size()) + " areas", true);
 	}*/
 
-	SceneObject* parent = sceneObject->getParent();
+	/*SceneObject* parent = sceneObject->getParent();
 
 	if (sceneObject->getActiveAreas()->size() == 0 && sceneObject->inRangeObjectCount() < 20) {
 		if ((parent != NULL && !parent->isCellObject()) || parent == NULL) {
 			sceneObject->getZone()->getCreatureManager()->spawnRandomCreaturesAround(sceneObject);
 		}
-	}
+	}*/
 }
 

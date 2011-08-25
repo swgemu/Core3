@@ -327,7 +327,7 @@ function TutorialScreenPlay:itemRoomCheck(creatureObject)
 	
 	cellNumber = creature:getInCellNumber()
 	
-	if cellNumber ~= 2 then
+	if cellNumber < 2 then
 		creature:sendSystemMessage("@newbie_tutorial/system_messages:repeat_item_room_prompt")
 		creature:playMusicMessage("sound/tut_07_comeon.snd")
 		createEvent(7000, "TutorialScreenPlay", "itemRoomCheck", creatureObject)
@@ -615,13 +615,15 @@ function TutorialScreenPlay:checkInventoryClosed(creatureObject)
 	state = player:hasScreenPlayState(256, "tutorial") -- closed inventory state
 	
 	if state == 0 then
-		player:sendSystemMessage("@newbie_tutorial/system_messages:close_inventory")
-		player:playMusicMessage("sound/tut_26_closeinventory.snd")
+	--	player:sendSystemMessage("@newbie_tutorial/system_messages:close_inventory")
+	--	player:playMusicMessage("sound/tut_26_closeinventory.snd")
 		
-		player:sendNewbieTutorialRequest("closeInventory")
-		createEvent(5000, "TutorialScreenPlay", "checkInventoryClosed", creatureObject)
+	--	player:sendNewbieTutorialRequest("closeInventory")
+	--	createEvent(5000, "TutorialScreenPlay", "checkInventoryClosed", creatureObject)
 		
-		return
+	--	return
+	
+		player:setScreenPlayState(256, "tutorial")
 	end
 		
 	player:sendNewbieTutorialEnableHudElement("toolbar", 1)

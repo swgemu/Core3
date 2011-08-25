@@ -76,12 +76,16 @@ public:
 				String zoneName = ghost->getSavedTerrainName();
 				uint64 savedParentID = ghost->getSavedParentID();
 
-				ManagedReference<SceneObject*> parent = zoneServer->getObject(savedParentID, true);
-				ManagedReference<SceneObject*> currentParent = player->getParent();
 
-				if (currentParent != NULL && parent != NULL && parent->isCellObject() && currentParent->isCellObject()) {
+				ManagedReference<SceneObject*> parent = player->getParent();
+				//ManagedReference<SceneObject*> parent;
+
+				if (parent == NULL)
+					parent = zoneServer->getObject(savedParentID, true);
+
+				/*if (currentParent != NULL && parent != NULL && parent->isCellObject() && currentParent->isCellObject()) {
 					parent = currentParent;
-				}
+				}*/
 
 				try {
 					zone = zoneServer->getZone(zoneName);
@@ -101,7 +105,7 @@ public:
 							parent->addObject(player, 4, false);
 
 					} catch (Exception& e) {
-
+						parent->error("error adding player");
 					}
 				}
 

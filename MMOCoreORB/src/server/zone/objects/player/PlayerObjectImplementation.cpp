@@ -121,6 +121,27 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	duelList.setNoDuplicateInsertPlan();
 
 	setLoggingName("PlayerObject");
+
+	/**
+	 * Here we are loading the schematics based on the skills that the
+	 * player has, we do this incase we change the items
+	 * in the schematic group.
+	 */
+	ZoneServer* zoneServer = server->getZoneServer();
+	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+
+	if (!parent->isCreatureObject() || parent == NULL)
+		return;
+
+	CreatureObject* creature = (CreatureObject*) parent.get();
+
+	SkillBoxList* playerSkillBoxList = creature->getSkillBoxList();
+
+	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
+		SkillBox* skillBox = playerSkillBoxList->get(i);
+		professionManager->awardDraftSchematics(skillBox, _this, false);
+	}
+
 }
 
 void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -206,7 +227,7 @@ void PlayerObjectImplementation::unload() {
 	if (creature->getZone() != NULL) {
 		savedTerrainName = creature->getZone()->getZoneName();
 
-		if (isInQuadTree()) {
+		//if (creature->isInQuadTree()) {
 			if (creoParent != NULL) {
 				savedParentID = creoParent->getObjectID();
 
@@ -215,7 +236,7 @@ void PlayerObjectImplementation::unload() {
 				savedParentID = 0;
 
 			creature->removeFromZone();
-		}
+		//}
 	}
 
 	if (creoParent != NULL)

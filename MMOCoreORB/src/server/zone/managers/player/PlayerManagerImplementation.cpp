@@ -19,6 +19,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/db/ServerDatabase.h"
+#include "server/db/MantisDatabase.h"
 #include "server/chat/ChatManager.h"
 #include "server/conf/ConfigManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -397,15 +398,43 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	//if (account->getAdminLevel() > 0) {
 		//ghost->setAdminLevel(account->getAdminLevel());
 
-	//NOTE/TEMPORARY: UNCOMMENT THESE LINES AND RECOMPILE FOR ADMIN ON NEW CHARACTERS.
-		ghost->setAdminLevel(2);
+	try {
+		uint32 accID = client->getAccountID();
 
-		Vector<String> skills;
-		skills.add("admin");
+		String query = "SELECT username FROM accounts WHERE account_id = " + String::valueOf(accID);
 
-		ghost->addSkills(skills, false);
-	//STOP UNCOMMENTING
-	//}
+		Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+
+		if (res->next()) {
+			String accountName = res->getString(0);
+
+			query = "SELECT access_level from mantis_user_table where username = '" + accountName;
+			query += "'";
+
+			res = MantisDatabase::instance()->executeQuery(query);
+
+			if (res->next()) {
+				uint32 level = res->getUnsignedInt(0);
+
+				if (level > 25) {
+					//NOTE/TEMPORARY: UNCOMMENT THESE LINES AND RECOMPILE FOR ADMIN ON NEW CHARACTERS.
+					ghost->setAdminLevel(2);
+
+					Vector<String> skills;
+					skills.add("admin");
+
+					ghost->addSkills(skills, false);
+					//STOP UNCOMMENTING
+					//}
+				}
+			}
+		}
+
+	} catch (Exception& e) {
+		error(e.getMessage());
+	}
+
+
 
 	createDefaultPlayerItems(playerCreature, profession, race);
 

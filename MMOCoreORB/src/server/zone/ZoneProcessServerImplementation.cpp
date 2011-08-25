@@ -99,7 +99,7 @@ void ZoneProcessServerImplementation::initialize() {
 	zonePacketHandler->setLogging(false);
 
 	nameManager = new NameManager(_this);
-	nameManager->test();
+	//nameManager->test();
 	holocronManager = new HolocronManager(_this);
 	suiManager = new SuiManager(_this);
 

@@ -967,10 +967,10 @@ int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 		error(msg);
 	}*/
 
-	DistributedObject* obj = getObject(objectID);
+	/*DistributedObject* obj = getObject(objectID);
 
 	if (obj != NULL)
-		obj->_setMarkedForDeletion(true);
+		obj->_setMarkedForDeletion(true);*/
 
 	return 1;
 }
@@ -1133,6 +1133,17 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 
 	info("copied objects into ram in " + String::valueOf(start.miliDifference()) + " ms", true);
 
+	info("objects to delete from ram: " + String::valueOf(objectsToDeleteFromRAM.size()), true);
+
+	for (int i = 0; i < objectsToDeleteFromRAM.size(); ++i) {
+		DistributedObject* object = objectsToDeleteFromRAM.get(i);
+
+		/*DistributedObjectBroker::instance()->undeploy(object->_getName());
+
+			localObjectDirectory.remove(object->_getObjectID());*/
+		localObjectDirectory.removeHelper(object->_getObjectID());
+	}
+
 #ifdef WITH_STM
 	TransactionalMemoryManager::instance()->unblockTransactions();
 #endif
@@ -1144,16 +1155,7 @@ void ObjectManager::updateModifiedObjectsToDatabase(bool startTask) {
 	Reference<CommitMasterTransactionTask*> watchDog = new CommitMasterTransactionTask(transaction, &updateModifiedObjectsThreads, numberOfThreads, startTask);
 	watchDog->schedule(500);
 
-	info("objects to delete from ram: " + String::valueOf(objectsToDeleteFromRAM.size()), true);
 
-	for (int i = 0; i < objectsToDeleteFromRAM.size(); ++i) {
-		DistributedObject* object = objectsToDeleteFromRAM.get(i);
-
-		/*DistributedObjectBroker::instance()->undeploy(object->_getName());
-
-		localObjectDirectory.remove(object->_getObjectID());*/
-		localObjectDirectory.removeHelper(object->_getObjectID());
-	}
 
 #ifndef WITH_STM
 	_locker.release();
