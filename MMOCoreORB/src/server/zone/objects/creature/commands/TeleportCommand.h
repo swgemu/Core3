@@ -65,7 +65,7 @@ public:
 		float x, y;
 		float z = creature->getPositionZ();
 		String zoneName = creature->getZone()->getZoneName();
-		uint64 parentID = creature->getParentID();
+		uint64 parentID = 0;
 
 		try {
 			UnicodeTokenizer tokenizer(arguments);
