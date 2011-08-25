@@ -98,6 +98,12 @@ int FactoryCrateImplementation::handleObjectMenuSelect(CreatureObject* player, b
 }
 
 TangibleObject* FactoryCrateImplementation::getPrototype() {
+
+	if(getContainerObjectsSize() == 0) {
+		error("FactoryCrateImplementation::getPrototype there isn't an object in the container");
+		return NULL;
+	}
+
 	TangibleObject* prototype = (TangibleObject*) getContainerObject(0);
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
