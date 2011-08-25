@@ -12,6 +12,9 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 
 void ShuttleZoneComponent::insertToZone(SceneObject* sceneObject, Zone* zone) {
+	if (sceneObject->isInQuadTree())
+			return;
+
 	ZoneComponent::insertToZone(sceneObject, zone);
 
 	if (sceneObject == NULL || !sceneObject->isCreatureObject())
@@ -19,10 +22,14 @@ void ShuttleZoneComponent::insertToZone(SceneObject* sceneObject, Zone* zone) {
 
 	CreatureObject* shuttle = (CreatureObject*) sceneObject;
 
-	sceneObject->info("inserting to zone", true);
-
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
-	planetManager->scheduleShuttle(shuttle);
+
+	Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(shuttle, 128.f);
+
+	if (ptp != NULL) {
+		planetManager->scheduleShuttle(shuttle);
+		ptp->setShuttle(shuttle);
+	}
 }
 
 void ShuttleZoneComponent::removeFromZone(SceneObject* sceneObject) {

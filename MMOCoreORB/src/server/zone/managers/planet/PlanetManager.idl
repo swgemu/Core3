@@ -72,6 +72,7 @@ include server.zone.templates.snapshot.WorldSnapshotIff;
 include server.zone.managers.planet.PlanetTravelPointList;
 include server.zone.managers.planet.PlanetTravelPoint;
 include engine.lua.LuaObject;
+include server.zone.objects.building.ShuttleMap;
 include server.zone.objects.building.tasks.ShuttleDepartureTask;
 include server.zone.objects.creature.CreaturePosture;
 
@@ -82,7 +83,7 @@ class PlanetManager extends ManagedService implements Logger {
 	protected RegionMap cityRegionMap;
 	
 	@dereferenced
-	protected transient SortedVector<ShuttleDepartureTask> shuttleTasks;
+	protected transient ShuttleMap shuttleMap;
 	
 	@dereferenced
 	protected VectorMap<string, int> travelFares;
@@ -336,8 +337,10 @@ class PlanetManager extends ManagedService implements Logger {
 		shuttle.setPosture(CreaturePosture.UPRIGHT);
 		
 		ShuttleDepartureTask task = new ShuttleDepartureTask(shuttle);
-		task.schedule(ShuttleDepartureTask.LANDEDTIME);
+		task.schedule((ShuttleDepartureTask.LANDEDTIME + ShuttleDepartureTask.LANDINGTIME) * 1000);
 		
-		shuttleTasks.put(task);
+		shuttleMap.put(shuttle.getObjectID(), task);
 	}
+	
+	public native boolean checkShuttleStatus(CreatureObject creature, CreatureObject shuttle);
 }

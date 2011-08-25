@@ -10,7 +10,21 @@
 
 #include "engine/engine.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+	class CreatureObject;
+}
+}
+}
+}
+
+using namespace server::zone::objects::creature;
+
 class PlanetTravelPoint : public Object {
+	ManagedWeakReference<CreatureObject*> shuttleObject;
+
 	String pointZone;
 	String pointName;
 	float x;
@@ -25,6 +39,8 @@ public:
 		z = 0.f;
 		y = 0.f;
 		interplanetaryTravelAllowed = false;
+
+		shuttleObject = NULL;
 	}
 
 	PlanetTravelPoint(const PlanetTravelPoint& ptp) : Object() {
@@ -34,6 +50,8 @@ public:
 		z = ptp.z;
 		y = ptp.y;
 		interplanetaryTravelAllowed = ptp.interplanetaryTravelAllowed;
+
+		shuttleObject = ptp.shuttleObject;
 	}
 
 	PlanetTravelPoint& operator= (const PlanetTravelPoint& ptp) {
@@ -46,6 +64,7 @@ public:
 		z = ptp.z;
 		y = ptp.y;
 		interplanetaryTravelAllowed = ptp.interplanetaryTravelAllowed;
+		shuttleObject = ptp.shuttleObject;
 
 		return *this;
 	}
@@ -98,6 +117,14 @@ public:
 			return true;
 
 		return (interplanetaryTravelAllowed && arrivalPoint->isInterplanetary());
+	}
+
+	void setShuttle(CreatureObject* shuttle) {
+		shuttleObject = shuttle;
+	}
+
+	CreatureObject* getShuttle() {
+		return shuttleObject;
 	}
 };
 

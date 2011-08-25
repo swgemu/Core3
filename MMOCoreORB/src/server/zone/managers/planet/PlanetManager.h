@@ -155,6 +155,8 @@ using namespace server::zone::objects::scene;
 
 #include "engine/lua/LuaObject.h"
 
+#include "server/zone/objects/building/ShuttleMap.h"
+
 #include "server/zone/objects/building/tasks/ShuttleDepartureTask.h"
 
 #include "server/zone/objects/creature/CreaturePosture.h"
@@ -264,6 +266,8 @@ public:
 
 	void scheduleShuttle(CreatureObject* shuttle);
 
+	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -294,7 +298,7 @@ protected:
 
 	Reference<RegionMap* > cityRegionMap;
 
-	SortedVector<ShuttleDepartureTask*> shuttleTasks;
+	ShuttleMap shuttleMap;
 
 	VectorMap<String, int> travelFares;
 
@@ -429,6 +433,8 @@ public:
 
 	void scheduleShuttle(CreatureObject* shuttle);
 
+	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
+
 	WeakReference<PlanetManager*> _this;
 
 	operator const PlanetManager*();
@@ -533,6 +539,8 @@ public:
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	void scheduleShuttle(CreatureObject* shuttle);
+
+	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
 
 protected:
 	String _param0_getTravelFare__String_;

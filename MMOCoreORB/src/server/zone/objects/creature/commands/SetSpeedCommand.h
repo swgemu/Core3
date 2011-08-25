@@ -75,6 +75,7 @@ public:
 
 			if (tokenizer.hasMoreTokens())
 				duration = tokenizer.getIntToken();
+
 		} catch (Exception& e) {
 			creature->sendSystemMessage("SYNTAX: /setSpeed <speed> [<duration>]");
 			return INVALIDPARAMETERS;

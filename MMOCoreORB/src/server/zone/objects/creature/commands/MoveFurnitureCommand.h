@@ -129,18 +129,36 @@ public:
 		if (!checkInvalidPostures(creature))
 			return INVALIDPOSTURE;
 
-		ManagedReference<SceneObject*> rootParent = creature->getRootParent();
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		BuildingObject* buildingObject = rootParent != NULL ? (rootParent->isBuildingObject() ? (BuildingObject*)rootParent.get() : NULL) : NULL;
+		if (ghost == NULL)
+			return GENERALERROR;
 
-		if (!creature->getPlayerObject()->isPrivileged()) {
-			if (buildingObject == NULL) {
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+
+		if (obj == NULL || !obj->isTangibleObject()) {
+			creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
+			return GENERALERROR;
+		}
+
+		ManagedReference<SceneObject*> rootParent = obj->getRootParent();
+		ManagedReference<SceneObject*> creatureParent = creature->getRootParent();
+
+		if (!ghost->isPrivileged()) {
+			if (creatureParent == NULL || !creatureParent->isBuildingObject()) {
 				creature->sendSystemMessage("@player_structure:must_be_in_building"); //You must be in a building to do that.
 				return GENERALERROR;
 			}
 
-			if (!buildingObject->isOnAdminList(creature->getFirstName())) {
+			BuildingObject* buildingObject = (BuildingObject*) creatureParent.get();
+
+			if (buildingObject != rootParent || !buildingObject->isOnAdminList(creature->getFirstName())) {
 				creature->sendSystemMessage("@player_structure:must_be_admin"); //You must be a building admin to do that.
+				return GENERALERROR;
+			}
+
+			if (buildingObject->containsChildObject(obj) || obj->isVendor()) {
+				creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
 				return GENERALERROR;
 			}
 		}
@@ -149,41 +167,28 @@ public:
 		float dist = 0.f;
 
 		try {
-			UnicodeTokenizer tokenizer(arguments.toString());
+			UnicodeTokenizer tokenizer(arguments);
 			tokenizer.getStringToken(dir);
 			dir = dir.toLowerCase();
 
-			dist = tokenizer.getIntToken();
+			if (Character::isDigit(dir.charAt(0)))
+				throw Exception("Please specify the name of the object before the direction and distance.");
 
 			if (dir != "up" && dir != "down" && dir != "forward" && dir != "back")
-				throw Exception();
+				throw Exception("@player_structure:format_movefurniture_distance"); //Format: /moveFurniture <FORWARD/BACK/UP/DOWN> <distance>
+
+			dist = tokenizer.getIntToken();
+
+			if (dist < 1.f || dist > 500.f)
+				throw Exception("@player_structure:movefurniture_params"); //The amount to move must be between 1 and 500.
+
+		} catch (ArrayIndexOutOfBoundsException& e) {
+			throw Exception("@player_structure:format_movefurniture_distance"); //Format: /moveFurniture <FORWARD/BACK/UP/DOWN> <distance>
+			return INVALIDPARAMETERS;
 
 		} catch (Exception& e) {
-			creature->sendSystemMessage("@player_structure:format_movefurniture_distance"); //Format: /moveFurniture <FORWARD/BACK/UP/DOWN> <distance>
+			creature->sendSystemMessage(e.getMessage());
 			return INVALIDPARAMETERS;
-		}
-
-		if (dist < 1.f || dist > 500.f) {
-			creature->sendSystemMessage("@player_structure:movefurniture_params"); //The amount to move must be between 1 and 500.
-			return INVALIDPARAMETERS;
-		}
-
-		ZoneServer* zoneServer = creature->getZoneServer();
-		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
-
-		if (obj == NULL) {
-			creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
-			return INVALIDTARGET;
-		}
-
-		if (!creature->getPlayerObject()->isPrivileged()) {
-			if (obj->getRootParent() != buildingObject || buildingObject->containsChildObject(obj) || obj->isVendor()) {
-				if (obj->isVendor())
-					creature->sendSystemMessage("@player_structure:cant_move_vendor"); // To move a vendor, pick it up and drop it again in the new location.
-				else
-					creature->sendSystemMessage("@player_structure:move_what"); //What do you want to move?
-				return false;
-			}
 		}
 
 		float degrees = creature->getDirectionAngle();
@@ -217,13 +222,7 @@ public:
 			return GENERALERROR;
 		}
 
-		obj->setPosition(x, z, y);
-		obj->incrementMovementCounter();
-
-		if (obj->getParent() != NULL)
-			obj->teleport(x, z, y, obj->getParent()->getObjectID());
-		else
-			obj->teleport(x, z, y);
+		obj->teleport(x, z, y, obj->getParentID());
 
 		return SUCCESS;
 	}

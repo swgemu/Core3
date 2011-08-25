@@ -501,3 +501,42 @@ SceneObject* PlanetManagerImplementation::createTicket(const String& departurePo
 
 	return ticket;
 }
+
+bool PlanetManagerImplementation::checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle) {
+	Reference<ShuttleDepartureTask*> task = shuttleMap.get(shuttle->getObjectID());
+
+	if (task == NULL)
+		return false;
+
+	int seconds = task->getSecondsRemaining();
+
+	if (!task->isLanded() && seconds > 0) {
+		if (!task->isLanding()) {
+			int minutes = seconds / 60;
+			seconds -= 60 * minutes;
+
+			StringBuffer message;
+			message << "The next shuttle will be ready to board in ";
+
+			if (minutes > 0)
+				message << minutes << " minute" << (minutes > 1 ? "s" : "");
+
+			if (seconds > 0) {
+				if (minutes > 0)
+					message << " and ";
+
+				message << seconds << " second" << (seconds > 1 ? "s" : "");
+			}
+
+			message << ".";
+
+			creature->sendSystemMessage(message.toString());
+		} else {
+			creature->sendSystemMessage("The shuttle is about to begin boarding.");
+		}
+
+		return false;
+	}
+
+	return true;
+}

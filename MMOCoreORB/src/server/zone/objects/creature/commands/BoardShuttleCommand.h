@@ -73,11 +73,25 @@ public:
 		if (zone == NULL)
 			return GENERALERROR;
 
-		Reference<PlanetTravelPoint*> closestPoint = zone->getPlanetManager()->getNearestPlanetTravelPoint(creature, 128.f);
+		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+		Reference<PlanetTravelPoint*> closestPoint = planetManager->getNearestPlanetTravelPoint(creature, 128.f);
+
+		ManagedReference<CreatureObject*> shuttle = NULL;
 
 		//Check to make sure the creature is within range of a PlanetTravelPoint
-		if (closestPoint == NULL) {
+		if (closestPoint == NULL || (shuttle = closestPoint->getShuttle()) == NULL) {
 			creature->sendSystemMessage("There is no shuttle nearby.");
+			return GENERALERROR;
+		}
+
+		float range = 128.f;
+
+		if (creature->getParent() == NULL)
+			range = 25.f; //If they are outside, the range is decreased to 25m.
+
+		if (!shuttle->isInRange(creature, range)) {
+			creature->sendSystemMessage("@player_structure:boarding_too_far"); //You are too far from the shuttle to board.
 			return GENERALERROR;
 		}
 
@@ -97,6 +111,9 @@ public:
 			creature->sendSystemMessage("@travel:no_ticket"); //You do not have a ticket to board this shuttle.
 			return GENERALERROR;
 		}
+
+		if (!planetManager->checkShuttleStatus(creature, shuttle))
+			return GENERALERROR;
 
 		String arrivalPlanet = ticketObject->getArrivalPlanet();
 		String arrivalPointName = ticketObject->getArrivalPoint();

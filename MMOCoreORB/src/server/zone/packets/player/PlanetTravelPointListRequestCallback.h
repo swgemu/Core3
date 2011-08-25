@@ -41,7 +41,7 @@ public:
 
 		//Handles unknown or disabled zones.
 		if (zone == NULL) {
-			object->info("Attempting to travel to non-existant, or disabled, zone [" + zoneName + "].", true);
+			object->info("Attempting to travel to non-existant, or disabled, zone [" + zoneName + "].");
 
 			PlanetTravelPointListResponse* ptplr = new PlanetTravelPointListResponse(zoneName);
 			ptplr->addPoint("", 0, 0, 0, 0, 0);
