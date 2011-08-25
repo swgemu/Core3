@@ -126,7 +126,7 @@ namespace server {
 
 			ManagedReference<ZoneClientSession*> client = getClientSession(session);
 
-			return server->handleMessage(client, message);
+			server->handleMessage(client, message);
 		}
 
 		void processMessage(Message* message) {
