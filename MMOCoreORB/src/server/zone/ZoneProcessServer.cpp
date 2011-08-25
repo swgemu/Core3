@@ -4,8 +4,6 @@
 
 #include "ZoneProcessServer.h"
 
-#include "server/zone/managers/skill/SkillManager.h"
-
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
 
 #include "server/zone/ZoneServer.h"

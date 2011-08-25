@@ -42,7 +42,6 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
 #include "ZoneProcessServer.h"
 
@@ -96,12 +95,11 @@ void ZoneProcessServerImplementation::initialize() {
 
 	playerCreationManager = PlayerCreationManager::instance();
 
-	skillManager = SkillManager::instance();
-
 	zonePacketHandler = new ZonePacketHandler("ZonePacketHandler", _this);
 	zonePacketHandler->setLogging(false);
 
 	nameManager = new NameManager(_this);
+	nameManager->test();
 	holocronManager = new HolocronManager(_this);
 	suiManager = new SuiManager(_this);
 
