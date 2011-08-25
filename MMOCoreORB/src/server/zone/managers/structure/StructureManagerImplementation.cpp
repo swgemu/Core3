@@ -90,17 +90,18 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	int i = 0;
 
 	try {
-		uint64 currentZoneObjectID = zone->_getObjectID();
+		//uint64 currentZoneObjectID = zone->_getObjectID();
+		String zoneName = zone->getZoneName();
 		ObjectDatabaseIterator iterator(playerStructuresDatabase);
 
 		uint64 objectID;
 		ObjectInputStream* objectData = new ObjectInputStream(2000);
 
-		uint64 zoneObjectID = 0;
 		int gameObjectType = 0;
+		String zoneReference;
 
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
-			if (!Serializable::getVariable<uint64>("zone", &zoneObjectID, objectData)) {
+			if (!Serializable::getVariable<String>("zone", &zoneReference, objectData)) {
 				objectData->clear();
 				continue;
 			}
@@ -110,7 +111,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 				continue;
 			}
 
-			if (zoneObjectID != currentZoneObjectID) {
+			if (zoneName != zoneReference) {
 				objectData->clear();
 				continue;
 			}
