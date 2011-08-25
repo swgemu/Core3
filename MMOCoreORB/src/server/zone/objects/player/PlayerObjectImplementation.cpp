@@ -474,27 +474,28 @@ void PlayerObjectImplementation::setWaypoint(WaypointObject* waypoint, bool noti
 void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient) {
 	uint64 waypointID = waypoint->getObjectID();
 	int specialTypeID = waypoint->getSpecialTypeID();
+	bool doRemove = false;
 
-	if (waypointList.contains(waypointID)) {
-		error("this contains this waypoint ID");
-		return;
-	}
+	if (waypointList.contains(waypointID))
+		doRemove = true;
 
-	if (checkName) {
+	if (!doRemove && checkName) {
 		String name = waypoint->getCustomName().toString();
-		uint64 index = waypointList.find(name);
+		waypointID = waypointList.find(name);
 
-		if (index != 0)
-			removeWaypoint(index, notifyClient);
-
+		if(waypointID != 0)
+			doRemove = true;
 	}
 
-	if (specialTypeID != 0) {
-		uint64 idx = waypointList.getWaypointBySpecialType(specialTypeID);
+	if (!doRemove && specialTypeID != 0) {
+		waypointID = waypointList.getWaypointBySpecialType(specialTypeID);
 
-		if (idx != 0)
-			removeWaypoint(idx, notifyClient);
+		if(waypointID != 0)
+			doRemove = true;
 	}
+
+	if(doRemove)
+		removeWaypoint(waypointID, notifyClient);
 
 	setWaypoint(waypoint, notifyClient);
 }
