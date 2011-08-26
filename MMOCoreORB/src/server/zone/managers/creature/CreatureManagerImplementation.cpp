@@ -36,6 +36,7 @@
 void CreatureManagerImplementation::setCreatureTemplateManager() {
 	creatureTemplateManager = CreatureTemplateManager::instance();
 	CreatureState::instance()->loadStateData();
+	CreaturePosture::instance()->loadMovementData();
 }
 
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, float x, float z, float y, uint64 parentID) {

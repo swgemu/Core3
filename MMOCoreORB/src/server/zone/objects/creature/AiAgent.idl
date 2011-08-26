@@ -111,8 +111,6 @@ class AiAgent extends CreatureObject {
 	
 	protected boolean baby;
 	
-	protected float currentSpeed;
-	
 	protected boolean despawnOnNoPlayerInRange;
 	
 	@weakReference
@@ -138,7 +136,6 @@ class AiAgent extends CreatureObject {
 		
 		followState = OBLIVIOUS;
 
-		currentSpeed = 0;
 		respawnTimer = 0;
 		
 		despawnOnNoPlayerInRange = true;

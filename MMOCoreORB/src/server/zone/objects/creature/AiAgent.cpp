@@ -1249,11 +1249,6 @@ bool AiAgentImplementation::readObjectMember(ObjectInputStream* stream, const St
 		return true;
 	}
 
-	if (_name == "currentSpeed") {
-		TypeInfo<float >::parseFromBinaryStream(&currentSpeed, stream);
-		return true;
-	}
-
 	if (_name == "despawnOnNoPlayerInRange") {
 		TypeInfo<bool >::parseFromBinaryStream(&despawnOnNoPlayerInRange, stream);
 		return true;
@@ -1363,14 +1358,6 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "currentSpeed";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<float >::toBinaryStream(&currentSpeed, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
 	_name = "despawnOnNoPlayerInRange";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1420,7 +1407,7 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 15 + CreatureObjectImplementation::writeObjectMembers(stream);
+	return 14 + CreatureObjectImplementation::writeObjectMembers(stream);
 }
 
 AiAgentImplementation::AiAgentImplementation() {
@@ -1429,8 +1416,6 @@ AiAgentImplementation::AiAgentImplementation() {
 	baby = false;
 	// server/zone/objects/creature/AiAgent.idl():  		followState = OBLIVIOUS;
 	followState = OBLIVIOUS;
-	// server/zone/objects/creature/AiAgent.idl():  		currentSpeed = 0;
-	currentSpeed = 0;
 	// server/zone/objects/creature/AiAgent.idl():  		respawnTimer = 0;
 	respawnTimer = 0;
 	// server/zone/objects/creature/AiAgent.idl():  		despawnOnNoPlayerInRange = true;

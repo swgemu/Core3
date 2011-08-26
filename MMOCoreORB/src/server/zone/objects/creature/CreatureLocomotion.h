@@ -33,6 +33,10 @@ public:
 	static const uint8 INCAPACITATED = 19;
 	static const uint8 DEAD = 20;
 	static const uint8 BLOCKING = 21;
+
+	static const uint8 STATIONARY = 0;
+	static const uint8 SLOW = 1;
+	static const uint8 FAST = 2;
 };
 
 

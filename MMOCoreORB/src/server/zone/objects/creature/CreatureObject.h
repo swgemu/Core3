@@ -338,6 +338,8 @@ public:
 
 	void setPosture(int newPosture, bool notifyClient = true);
 
+	void updateLocomotion();
+
 	void setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient = true);
 
 	void setAccelerationMultiplierMod(float newMultiplierMod, bool notifyClient = true);
@@ -636,6 +638,8 @@ public:
 
 	byte getPosture();
 
+	byte getLocomotion();
+
 	byte getFactionRank();
 
 	CreatureObject* getLinkedCreature();
@@ -898,6 +902,8 @@ protected:
 
 	float walkSpeed;
 
+	float currentSpeed;
+
 	float terrainNegotiation;
 
 	float runAcceleration;
@@ -1040,6 +1046,8 @@ public:
 	void clearCombatState(bool clearDefenders = true);
 
 	virtual void setPosture(int newPosture, bool notifyClient = true);
+
+	virtual void updateLocomotion();
 
 	void setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient = true);
 
@@ -1339,6 +1347,8 @@ public:
 
 	byte getPosture();
 
+	byte getLocomotion();
+
 	byte getFactionRank();
 
 	CreatureObject* getLinkedCreature();
@@ -1597,6 +1607,8 @@ public:
 	void clearCombatState(bool clearDefenders);
 
 	void setPosture(int newPosture, bool notifyClient);
+
+	void updateLocomotion();
 
 	void setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient);
 
@@ -1877,6 +1889,8 @@ public:
 	int getEncumbrance(int idx);
 
 	byte getPosture();
+
+	byte getLocomotion();
 
 	byte getFactionRank();
 

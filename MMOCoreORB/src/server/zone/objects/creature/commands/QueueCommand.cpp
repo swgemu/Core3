@@ -56,7 +56,7 @@ void QueueCommand::setInvalidLocomotions(const String& lStr) {
  */
 bool QueueCommand::checkInvalidLocomotions(CreatureObject* creature) {
 	for (int i = 0; i < invalidLocomotion.size(); ++i) {
-		if (invalidLocomotion.get(i) == creature->getPosture()) // TODO: incorporate locomotions instead of postures
+		if (invalidLocomotion.get(i) == creature->getLocomotion())
 			return false;
 	}
 
@@ -88,64 +88,8 @@ void QueueCommand::onStateFail(CreatureObject* creature, uint32 actioncntr) {
 }
 
 void QueueCommand::onLocomotionFail(CreatureObject* creature, uint32 actioncntr) {
-	/*
-	 * SOE is stupid so player postures do NOT match up with their respective client error message
-	 * Because of this, we have to have this switch statement to match them up manually
-	 * TODO: the client error messages are right if we use locomotions instead of postures
-	 * */
-	if (!checkInvalidLocomotions(creature)) {
-		switch(creature->getPosture()) {
-		case(CreaturePosture::UPRIGHT):
-			creature->clearQueueAction(actioncntr, 0, 1, 0);
-		break;
-		case(CreaturePosture::CROUCHED):
-			creature->clearQueueAction(actioncntr, 0, 1, 4);
-		break;
-		case(CreaturePosture::PRONE):
-			creature->clearQueueAction(actioncntr, 0, 1, 7);
-		break;
-		case(CreaturePosture::SNEAKING):
-			creature->clearQueueAction(actioncntr, 0, 1, 5);
-		break;
-		case(CreaturePosture::BLOCKING):
-			creature->clearQueueAction(actioncntr, 0, 1, 21);
-		break;
-		case(CreaturePosture::CLIMBING):
-			creature->clearQueueAction(actioncntr, 0, 1, 10);
-		break;
-		case(CreaturePosture::FLYING):
-			creature->clearQueueAction(actioncntr, 0, 1, 12);
-		break;
-		case(CreaturePosture::LYINGDOWN):
-			creature->clearQueueAction(actioncntr, 0, 1, 13);
-		break;
-		case(CreaturePosture::SITTING):
-			creature->clearQueueAction(actioncntr, 0, 1, 14);
-		break;
-		case(CreaturePosture::SKILLANIMATING):
-			creature->clearQueueAction(actioncntr, 0, 1, 15);
-		break;
-		case(CreaturePosture::DRIVINGVEHICLE):
-			creature->clearQueueAction(actioncntr, 0, 1, 16);
-		break;
-		case(CreaturePosture::RIDINGCREATURE):
-			creature->clearQueueAction(actioncntr, 0, 1, 17);
-		break;
-		case(CreaturePosture::KNOCKEDDOWN):
-			creature->clearQueueAction(actioncntr, 0, 1, 18);
-		break;
-		case(CreaturePosture::INCAPACITATED):
-			creature->clearQueueAction(actioncntr, 0, 1, 19);
-		break;
-		case(CreaturePosture::DEAD):
-			creature->clearQueueAction(actioncntr, 0, 1, 20);
-		break;
-		default:
-			error("unknown invalid posture in onPostureFail");
-			creature->clearQueueAction(actioncntr);
-			break;
-		}
-	}
+	if (!checkInvalidLocomotions(creature))
+		creature->clearQueueAction(actioncntr, 0, 1, creature->getLocomotion());
 }
 
 /*

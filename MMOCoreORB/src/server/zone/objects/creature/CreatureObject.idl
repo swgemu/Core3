@@ -122,6 +122,7 @@ class CreatureObject extends TangibleObject {
 	protected float speedMultiplierMod;
 	protected float runSpeed;
 	protected float walkSpeed;
+	protected float currentSpeed;
 	protected float terrainNegotiation;
 	protected float runAcceleration;
 	protected float walkAcceleration;
@@ -352,6 +353,13 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native abstract void setPosture(int newPosture, boolean notifyClient = true);
+	
+	/**
+	 * checks locomotion and sets a new one if appropriate
+	 * @pre { this object is locked }
+	 * @post {this object is locked, this object has the new locomotion set, if appropriate }
+	 */
+	public native abstract void updateLocomotion();
 	
 	/**
 	 * Updates the acceleration speed multiplier base
@@ -1131,6 +1139,10 @@ class CreatureObject extends TangibleObject {
 	
 	public byte getPosture() {
 		return posture;
+	}
+	
+	public byte getLocomotion() {
+		return locomotion;
 	}
 	
 	public byte getFactionRank() {

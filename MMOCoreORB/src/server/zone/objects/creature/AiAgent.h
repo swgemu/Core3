@@ -487,8 +487,6 @@ protected:
 
 	bool baby;
 
-	float currentSpeed;
-
 	bool despawnOnNoPlayerInRange;
 
 	ManagedWeakReference<SceneObject* > followObject;

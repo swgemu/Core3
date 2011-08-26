@@ -46,8 +46,74 @@ which carries forward this exception.
 #define CREATUREPOSTURE_H_
 
 #include "engine/engine.h"
+#include "server/zone/templates/datatables/DataTableIff.h"
+#include "server/zone/templates/datatables/DataTableRow.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
-class CreaturePosture {
+#include "CreatureLocomotion.h"
+
+class CreatureMovementEntry : public Variable {
+public:
+	UnsignedCharacter posture;
+	UnsignedCharacter stationary;
+	UnsignedCharacter slow;
+	UnsignedCharacter fast;
+	Float movementScale;
+	Float accelerationScale;
+	Float turnScale;
+	Float canSeeHeightMod;
+
+	CreatureMovementEntry() : Variable() {
+		posture = 0;
+		stationary = 0;
+		slow = 0;
+		fast = 0;
+		movementScale = 0;
+		accelerationScale = 0;
+		turnScale = 0;
+		canSeeHeightMod = 0;
+	}
+
+	bool operator==(CreatureMovementEntry entry) {
+		return posture == entry.posture; // only need posture here because I am sure that these are unique to entries
+	}
+
+	bool toString(String& str) {
+		return posture.toString(str) && stationary.toString(str) && slow.toString(str) && fast.toString(str) && movementScale.toString(str) && accelerationScale.toString(str) && turnScale.toString(str) && canSeeHeightMod.toString(str);
+	}
+
+	bool parseFromString(const String& str, int version = 0) {
+		return posture.parseFromString(str, version) && stationary.parseFromString(str, version) && slow.parseFromString(str, version) && fast.parseFromString(str, version) && movementScale.parseFromString(str, version) && accelerationScale.parseFromString(str, version) && turnScale.parseFromString(str, version) && canSeeHeightMod.parseFromString(str, version);
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		posture.toBinaryStream(stream);
+		stationary.toBinaryStream(stream);
+		slow.toBinaryStream(stream);
+		fast.toBinaryStream(stream);
+		movementScale.toBinaryStream(stream);
+		accelerationScale.toBinaryStream(stream);
+		turnScale.toBinaryStream(stream);
+		canSeeHeightMod.toBinaryStream(stream);
+
+		return true;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		posture.parseFromBinaryStream(stream);
+		stationary.parseFromBinaryStream(stream);
+		slow.parseFromBinaryStream(stream);
+		fast.parseFromBinaryStream(stream);
+		movementScale.parseFromBinaryStream(stream);
+		accelerationScale.parseFromBinaryStream(stream);
+		turnScale.parseFromBinaryStream(stream);
+		canSeeHeightMod.parseFromBinaryStream(stream);
+
+		return true;
+	}
+};
+
+class CreaturePosture : public Singleton<CreaturePosture>, public Logger {
 public:
 	static const uint8 INVALID = 0xFF;
 	static const uint8 UPRIGHT = 0;
@@ -65,6 +131,96 @@ public:
 	static const uint8 KNOCKEDDOWN = 12;
 	static const uint8 INCAPACITATED = 13;
 	static const uint8 DEAD = 14;
+
+	VectorMap<uint8, CreatureMovementEntry> movementTable;
+
+	CreaturePosture() {}
+
+	~CreaturePosture() {}
+
+	uint8 getLocomotion(uint8 pos, uint8 speed) {
+		CreatureMovementEntry move = movementTable.get(pos);
+
+		switch (speed) {
+		case CreatureLocomotion::STATIONARY:
+			return move.stationary;
+			break;
+		case CreatureLocomotion::SLOW:
+			return move.slow;
+			break;
+		case CreatureLocomotion::FAST:
+			return move.fast;
+			break;
+		default:
+			return CreatureLocomotion::INVALID;
+		}
+
+		return CreatureLocomotion::INVALID;
+	}
+
+	float getMovementScale(uint8 pos) {
+		return movementTable.get(pos).movementScale;
+	}
+
+	float getAccelerationScale(uint8 pos) {
+		return movementTable.get(pos).accelerationScale;
+	}
+
+	float getTurnScale(uint8 pos) {
+		return movementTable.get(pos).turnScale;
+	}
+
+	float getCanSeeHeightMod(uint8 pos) {
+		return movementTable.get(pos).canSeeHeightMod;
+	}
+
+	void loadMovementData() {
+		IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/movement/movement_human.iff");
+
+		if (iffStream == NULL) {
+			error("Could not load movement data.");
+			return;
+		}
+
+		DataTableIff dtiff;
+		dtiff.readObject(iffStream);
+
+		delete iffStream;
+
+		for (int i = 0; i < dtiff.getTotalRows(); i++) {
+			DataTableRow* row = dtiff.getRow(i);
+			CreatureMovementEntry entry;
+			int value;
+			float scale;
+
+			row->getValue(0, value);
+			if (value < 0) entry.posture = 0xFF;
+			else entry.posture = (uint8)value;
+
+			row->getValue(1, value);
+			if (value < 0) entry.stationary = 0xFF;
+			else entry.stationary = (uint8)value;
+
+			row->getValue(2, value);
+			if (value < 0) entry.slow = 0xFF;
+			else entry.slow = (uint8)value;
+
+			row->getValue(3, value);
+			if (value < 0) entry.fast = 0xFF;
+			else entry.fast = (uint8)value;
+
+			row->getValue(4, scale);
+			entry.movementScale = scale;
+			row->getValue(5, scale);
+			entry.accelerationScale = scale;
+			row->getValue(6, scale);
+			entry.turnScale = scale;
+			row->getValue(7, scale);
+			entry.canSeeHeightMod = scale;
+
+			movementTable.put(entry.posture, entry);
+		}
+	}
 };
 
 #endif /* CREATUREPOSTURE_H_ */

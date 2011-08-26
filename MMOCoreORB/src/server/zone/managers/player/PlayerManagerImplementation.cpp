@@ -262,6 +262,8 @@ bool PlayerManagerImplementation::checkExistentNameInDatabase(const String& name
 	} catch (DatabaseException& e) {
 		return false;
 	}
+
+	return false;
 }
 
 bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallback) {

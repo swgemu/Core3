@@ -161,6 +161,7 @@ void CreatureObjectImplementation::initializeMembers() {
 	accelerationMultiplierMod = 1.f;
 	speedMultiplierBase = 1.f;
 	speedMultiplierMod = 1.f;
+	currentSpeed = 0.f;
 
 	cooldownTimerMap = new CooldownTimerMap();
 	commandQueue = new CommandQueueActionVector();
@@ -966,13 +967,14 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	if (posture == newPosture)
 		return;
 
-	if (newPosture == CreaturePosture::PRONE) {
-		setSpeedMultiplierBase(0.2f);
-	} else if (posture == CreaturePosture::PRONE) {
-		setSpeedMultiplierBase(1.f);
-		if (isInCover()) {
-			clearState(CreatureState::COVER);
-		}
+	setSpeedMultiplierMod(CreaturePosture::instance()->getMovementScale((uint8)newPosture), true);
+	setAccelerationMultiplierMod(CreaturePosture::instance()->getAccelerationScale((uint8)newPosture), true);
+	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
+	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
+	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
+
+	if (posture == CreaturePosture::PRONE && isInCover()) {
+		clearState(CreatureState::COVER);
 	}
 
 	posture = newPosture;
@@ -996,7 +998,19 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 		broadcastMessages(&messages, true);
 	}
 
+	updateLocomotion();
 	notifyPostureChange(newPosture);
+}
+
+void CreatureObjectImplementation::updateLocomotion() {
+	// 0: stationary, 0-walk: slow, walk-run+; fast
+	// the movement table does not seem to want scaling factors...
+	if (currentSpeed <= walkSpeed / 10.f)
+		locomotion = CreaturePosture::instance()->getLocomotion(posture, CreatureLocomotion::STATIONARY);
+	else if (currentSpeed <= walkSpeed + walkSpeed / 10.0f)
+		locomotion = CreaturePosture::instance()->getLocomotion(posture, CreatureLocomotion::SLOW);
+	else
+		locomotion = CreaturePosture::instance()->getLocomotion(posture, CreatureLocomotion::FAST);
 }
 
 UnicodeString CreatureObjectImplementation::getCreatureName() {
@@ -1669,6 +1683,8 @@ void CreatureObjectImplementation::notifySelfPositionUpdate() {
 				terrainManager->notifyPositionUpdate(_this);
 		}
 	}
+
+	updateLocomotion();
 
 	TangibleObjectImplementation::notifySelfPositionUpdate();
 }
