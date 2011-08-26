@@ -68,5 +68,5 @@ StartTraceLoggingCommand = {
 
 }
 
-AddStartTraceLoggingCommand(StartTraceLoggingCommand)
+AddCommand(StartTraceLoggingCommand)
 

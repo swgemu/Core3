@@ -68,5 +68,5 @@ SurpriseShotCommand = {
 
 }
 
-AddSurpriseShotCommand(SurpriseShotCommand)
+AddCommand(SurpriseShotCommand)
 

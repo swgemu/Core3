@@ -50,6 +50,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
+#include "server/zone/objects/creature/CreatureLocomotion.h"
 
 
 #include "server/zone/ZoneProcessServer.h"
@@ -68,7 +69,7 @@ protected:
 	uint32 nameCRC;
 
 	uint64 stateMask;
-	Vector<int> invalidPostures;
+	Vector<int> invalidLocomotion;
 	//int target;
 	int targetType;
 	int maxRangeToTarget;
@@ -89,13 +90,13 @@ protected:
 public:
 	QueueCommand(const String& skillname, ZoneProcessServer* serv);
 
-	const static int NORMAL = 0;
+	const static int IMMEDIATE = 0;
 	const static int FRONT = 1;
-	const static int IMMEDIATE = 2;
+	const static int NORMAL = 2;
 
 	const static int SUCCESS = 0;
 	const static int GENERALERROR = 1;
-	const static int INVALIDPOSTURE = 2;
+	const static int INVALIDLOCOMOTION = 2;
 	const static int INVALIDSTATE = 3;
 	const static int INVALIDTARGET = 4;
 	const static int INVALIDWEAPON = 5;
@@ -111,12 +112,12 @@ public:
 	}
 
 	/*
-	 * Checks each invalid posture with the player's current posture
+	 * Checks each invalid locomotion with the player's current locomotion
 	 */
-	bool checkInvalidPostures(CreatureObject* creature);
+	bool checkInvalidLocomotions(CreatureObject* creature);
 
 	void onStateFail(CreatureObject* creature, uint32 actioncntr);
-	void onPostureFail(CreatureObject* creature, uint32 actioncntr);
+	void onLocomotionFail(CreatureObject* creature, uint32 actioncntr);
 
 	/*
 	 * Unsuccessful command completion alerts the player of the invalid state, must clear the queue action from client queue
@@ -129,10 +130,17 @@ public:
 	virtual void onComplete(uint32 actioncntr, CreatureObject* creature, float commandDuration);
 
 	/*
-	 * Sets the invalid postures for this command.
+	 * Sets the invalid locomotions for this command.
 	 * Parses the string from LUA's. Format: "4,12,13,"
 	 */
-	void setInvalidPostures(const String& postureStr);
+	void setInvalidLocomotions(const String& lStr);
+
+	/*
+	 * adds an invalid locomotion
+	 */
+	void addInvalidLocomotion(int l) {
+		invalidLocomotion.add(l);
+	}
 
 	/*
 	 * Override me
@@ -218,6 +226,13 @@ public:
 			defaultPriority = FRONT;
 		else
 			System::out << "Setting unknown priority " << priority << endl;
+	}
+
+	inline void setDefaultPriority(const int priority) {
+		if (priority < 0 || priority > 2)
+			System::out << "Setting unknown priority " << priority << endl;
+		else
+			defaultPriority = priority;
 	}
 
 	//getters

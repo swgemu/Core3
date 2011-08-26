@@ -68,5 +68,5 @@ NewbiehelperCommand = {
 
 }
 
-AddNewbiehelperCommand(NewbiehelperCommand)
+AddCommand(NewbiehelperCommand)
 

@@ -68,5 +68,5 @@ NextCraftingStageCommand = {
 
 }
 
-AddNextCraftingStageCommand(NextCraftingStageCommand)
+AddCommand(NextCraftingStageCommand)
 

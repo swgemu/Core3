@@ -68,5 +68,5 @@ UseReconDroneCommand = {
 
 }
 
-AddUseReconDroneCommand(UseReconDroneCommand)
+AddCommand(UseReconDroneCommand)
 

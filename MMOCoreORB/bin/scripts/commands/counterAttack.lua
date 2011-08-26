@@ -68,5 +68,5 @@ CounterAttackCommand = {
 
 }
 
-AddCounterAttackCommand(CounterAttackCommand)
+AddCommand(CounterAttackCommand)
 

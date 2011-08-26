@@ -68,5 +68,5 @@ LfgCommand = {
 
 }
 
-AddLfgCommand(LfgCommand)
+AddCommand(LfgCommand)
 

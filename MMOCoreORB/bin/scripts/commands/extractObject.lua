@@ -68,5 +68,5 @@ ExtractObjectCommand = {
 
 }
 
-AddExtractObjectCommand(ExtractObjectCommand)
+AddCommand(ExtractObjectCommand)
 

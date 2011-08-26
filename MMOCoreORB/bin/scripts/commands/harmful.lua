@@ -68,5 +68,5 @@ HarmfulCommand = {
 
 }
 
-AddHarmfulCommand(HarmfulCommand)
+AddCommand(HarmfulCommand)
 

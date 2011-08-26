@@ -68,5 +68,5 @@ ToggleCombatTauntsCommand = {
 
 }
 
-AddToggleCombatTauntsCommand(ToggleCombatTauntsCommand)
+AddCommand(ToggleCombatTauntsCommand)
 

@@ -68,5 +68,5 @@ ForceLightningSingle2Command = {
 
 }
 
-AddForceLightningSingle2Command(ForceLightningSingle2Command)
+AddCommand(ForceLightningSingle2Command)
 

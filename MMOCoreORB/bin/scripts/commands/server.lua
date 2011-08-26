@@ -68,5 +68,5 @@ ServerCommand = {
 
 }
 
-AddServerCommand(ServerCommand)
+AddCommand(ServerCommand)
 

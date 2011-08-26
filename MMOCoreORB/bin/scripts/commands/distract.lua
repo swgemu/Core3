@@ -68,5 +68,5 @@ DistractCommand = {
 
 }
 
-AddDistractCommand(DistractCommand)
+AddCommand(DistractCommand)
 

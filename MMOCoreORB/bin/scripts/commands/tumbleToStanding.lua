@@ -68,5 +68,5 @@ TumbleToStandingCommand = {
 
 }
 
-AddTumbleToStandingCommand(TumbleToStandingCommand)
+AddCommand(TumbleToStandingCommand)
 

@@ -68,5 +68,5 @@ ResendLoginMessageToAllCommand = {
 
 }
 
-AddResendLoginMessageToAllCommand(ResendLoginMessageToAllCommand)
+AddCommand(ResendLoginMessageToAllCommand)
 

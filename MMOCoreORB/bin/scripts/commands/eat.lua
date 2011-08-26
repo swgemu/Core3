@@ -68,5 +68,5 @@ EatCommand = {
 
 }
 
-AddEatCommand(EatCommand)
+AddCommand(EatCommand)
 

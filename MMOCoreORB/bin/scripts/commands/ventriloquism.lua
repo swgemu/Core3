@@ -68,5 +68,5 @@ VentriloquismCommand = {
 
 }
 
-AddVentriloquismCommand(VentriloquismCommand)
+AddCommand(VentriloquismCommand)
 

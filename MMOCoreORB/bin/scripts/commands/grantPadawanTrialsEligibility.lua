@@ -68,5 +68,5 @@ GrantPadawanTrialsEligibilityCommand = {
 
 }
 
-AddGrantPadawanTrialsEligibilityCommand(GrantPadawanTrialsEligibilityCommand)
+AddCommand(GrantPadawanTrialsEligibilityCommand)
 

@@ -68,5 +68,5 @@ KnockdownFireCommand = {
 
 }
 
-AddKnockdownFireCommand(KnockdownFireCommand)
+AddCommand(KnockdownFireCommand)
 

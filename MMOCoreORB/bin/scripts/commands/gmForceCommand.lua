@@ -68,5 +68,5 @@ GmForceCommandCommand = {
 
 }
 
-AddGmForceCommandCommand(GmForceCommandCommand)
+AddCommand(GmForceCommandCommand)
 

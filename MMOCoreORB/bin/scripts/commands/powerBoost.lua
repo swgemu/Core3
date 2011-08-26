@@ -68,5 +68,5 @@ PowerBoostCommand = {
 
 }
 
-AddPowerBoostCommand(PowerBoostCommand)
+AddCommand(PowerBoostCommand)
 

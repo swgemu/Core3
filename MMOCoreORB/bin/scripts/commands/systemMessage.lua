@@ -68,5 +68,5 @@ SystemMessageCommand = {
 
 }
 
-AddSystemMessageCommand(SystemMessageCommand)
+AddCommand(SystemMessageCommand)
 

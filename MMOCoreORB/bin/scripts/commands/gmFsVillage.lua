@@ -68,5 +68,5 @@ GmFsVillageCommand = {
 
 }
 
-AddGmFsVillageCommand(GmFsVillageCommand)
+AddCommand(GmFsVillageCommand)
 

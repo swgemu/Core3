@@ -68,5 +68,5 @@ TumbleToProneCommand = {
 
 }
 
-AddTumbleToProneCommand(TumbleToProneCommand)
+AddCommand(TumbleToProneCommand)
 

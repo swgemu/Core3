@@ -61,8 +61,8 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		// TODO: DELETE STARTING HERE
 		StringTokenizer args(arguments.toString());

@@ -68,5 +68,5 @@ SecretSpawnSpamCommand = {
 
 }
 
-AddSecretSpawnSpamCommand(SecretSpawnSpamCommand)
+AddCommand(SecretSpawnSpamCommand)
 

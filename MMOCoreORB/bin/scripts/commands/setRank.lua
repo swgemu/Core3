@@ -68,5 +68,5 @@ SetRankCommand = {
 
 }
 
-AddSetRankCommand(SetRankCommand)
+AddCommand(SetRankCommand)
 

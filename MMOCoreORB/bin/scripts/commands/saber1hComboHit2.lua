@@ -68,5 +68,5 @@ Saber1hComboHit2Command = {
 
 }
 
-AddSaber1hComboHit2Command(Saber1hComboHit2Command)
+AddCommand(Saber1hComboHit2Command)
 

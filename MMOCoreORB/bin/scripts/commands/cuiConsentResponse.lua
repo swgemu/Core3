@@ -68,5 +68,5 @@ CuiConsentResponseCommand = {
 
 }
 
-AddCuiConsentResponseCommand(CuiConsentResponseCommand)
+AddCommand(CuiConsentResponseCommand)
 

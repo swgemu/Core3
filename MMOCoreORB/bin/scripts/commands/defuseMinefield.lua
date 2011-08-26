@@ -68,5 +68,5 @@ DefuseMinefieldCommand = {
 
 }
 
-AddDefuseMinefieldCommand(DefuseMinefieldCommand)
+AddCommand(DefuseMinefieldCommand)
 

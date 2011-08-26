@@ -68,5 +68,5 @@ SplitCreditsWithGroupCommand = {
 
 }
 
-AddSplitCreditsWithGroupCommand(SplitCreditsWithGroupCommand)
+AddCommand(SplitCreditsWithGroupCommand)
 

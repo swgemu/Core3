@@ -68,5 +68,5 @@ SetNameCommand = {
 
 }
 
-AddSetNameCommand(SetNameCommand)
+AddCommand(SetNameCommand)
 

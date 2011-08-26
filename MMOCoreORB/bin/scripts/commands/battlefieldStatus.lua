@@ -68,5 +68,5 @@ BattlefieldStatusCommand = {
 
 }
 
-AddBattlefieldStatusCommand(BattlefieldStatusCommand)
+AddCommand(BattlefieldStatusCommand)
 

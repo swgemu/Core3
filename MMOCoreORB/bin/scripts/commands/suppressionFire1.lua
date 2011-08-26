@@ -68,5 +68,5 @@ SuppressionFire1Command = {
 
 }
 
-AddSuppressionFire1Command(SuppressionFire1Command)
+AddCommand(SuppressionFire1Command)
 

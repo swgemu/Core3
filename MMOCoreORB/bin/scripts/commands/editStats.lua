@@ -68,5 +68,5 @@ EditStatsCommand = {
 
 }
 
-AddEditStatsCommand(EditStatsCommand)
+AddCommand(EditStatsCommand)
 

@@ -68,5 +68,5 @@ ScatterShot1Command = {
 
 }
 
-AddScatterShot1Command(ScatterShot1Command)
+AddCommand(ScatterShot1Command)
 

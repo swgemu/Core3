@@ -68,5 +68,5 @@ StrongDiseaseCommand = {
 
 }
 
-AddStrongDiseaseCommand(StrongDiseaseCommand)
+AddCommand(StrongDiseaseCommand)
 

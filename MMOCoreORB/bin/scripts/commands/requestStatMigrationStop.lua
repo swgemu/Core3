@@ -68,5 +68,5 @@ RequestStatMigrationStopCommand = {
 
 }
 
-AddRequestStatMigrationStopCommand(RequestStatMigrationStopCommand)
+AddCommand(RequestStatMigrationStopCommand)
 

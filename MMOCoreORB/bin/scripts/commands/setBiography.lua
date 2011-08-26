@@ -68,5 +68,5 @@ SetBiographyCommand = {
 
 }
 
-AddSetBiographyCommand(SetBiographyCommand)
+AddCommand(SetBiographyCommand)
 

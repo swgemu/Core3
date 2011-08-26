@@ -68,5 +68,5 @@ Saber1hFlurryCommand = {
 
 }
 
-AddSaber1hFlurryCommand(Saber1hFlurryCommand)
+AddCommand(Saber1hFlurryCommand)
 

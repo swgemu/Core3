@@ -68,5 +68,5 @@ GrantSkillCommand = {
 
 }
 
-AddGrantSkillCommand(GrantSkillCommand)
+AddCommand(GrantSkillCommand)
 

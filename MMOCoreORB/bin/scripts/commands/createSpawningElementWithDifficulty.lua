@@ -68,5 +68,5 @@ CreateSpawningElementWithDifficultyCommand = {
 
 }
 
-AddCreateSpawningElementWithDifficultyCommand(CreateSpawningElementWithDifficultyCommand)
+AddCommand(CreateSpawningElementWithDifficultyCommand)
 

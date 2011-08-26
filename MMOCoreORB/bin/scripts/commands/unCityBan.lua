@@ -68,5 +68,5 @@ UnCityBanCommand = {
 
 }
 
-AddUnCityBanCommand(UnCityBanCommand)
+AddCommand(UnCityBanCommand)
 

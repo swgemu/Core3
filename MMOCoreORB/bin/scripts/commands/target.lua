@@ -68,5 +68,5 @@ TargetCommand = {
 
 }
 
-AddTargetCommand(TargetCommand)
+AddCommand(TargetCommand)
 

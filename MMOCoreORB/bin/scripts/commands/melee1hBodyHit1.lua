@@ -68,5 +68,5 @@ Melee1hBodyHit1Command = {
 
 }
 
-AddMelee1hBodyHit1Command(Melee1hBodyHit1Command)
+AddCommand(Melee1hBodyHit1Command)
 

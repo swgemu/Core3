@@ -68,5 +68,5 @@ ChannelForceCommand = {
 
 }
 
-AddChannelForceCommand(ChannelForceCommand)
+AddCommand(ChannelForceCommand)
 

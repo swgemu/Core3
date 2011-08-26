@@ -68,5 +68,5 @@ FireLightningSingle1Command = {
 
 }
 
-AddFireLightningSingle1Command(FireLightningSingle1Command)
+AddCommand(FireLightningSingle1Command)
 

@@ -68,5 +68,5 @@ CurePoisonCommand = {
 
 }
 
-AddCurePoisonCommand(CurePoisonCommand)
+AddCommand(CurePoisonCommand)
 

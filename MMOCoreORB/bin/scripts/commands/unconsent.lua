@@ -68,5 +68,5 @@ UnconsentCommand = {
 
 }
 
-AddUnconsentCommand(UnconsentCommand)
+AddCommand(UnconsentCommand)
 

@@ -68,5 +68,5 @@ ObjectCommand = {
 
 }
 
-AddObjectCommand(ObjectCommand)
+AddCommand(ObjectCommand)
 

@@ -68,5 +68,5 @@ Saber2hPhantomCommand = {
 
 }
 
-AddSaber2hPhantomCommand(Saber2hPhantomCommand)
+AddCommand(Saber2hPhantomCommand)
 

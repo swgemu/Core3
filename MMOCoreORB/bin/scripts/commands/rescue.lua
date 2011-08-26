@@ -68,5 +68,5 @@ RescueCommand = {
 
 }
 
-AddRescueCommand(RescueCommand)
+AddCommand(RescueCommand)
 

@@ -68,5 +68,5 @@ StunAttackCommand = {
 
 }
 
-AddStunAttackCommand(StunAttackCommand)
+AddCommand(StunAttackCommand)
 

@@ -68,5 +68,5 @@ TendDamageCommand = {
 
 }
 
-AddTendDamageCommand(TendDamageCommand)
+AddCommand(TendDamageCommand)
 

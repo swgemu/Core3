@@ -68,5 +68,5 @@ RollShotCommand = {
 
 }
 
-AddRollShotCommand(RollShotCommand)
+AddCommand(RollShotCommand)
 

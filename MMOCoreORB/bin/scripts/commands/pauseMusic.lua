@@ -68,5 +68,5 @@ PauseMusicCommand = {
 
 }
 
-AddPauseMusicCommand(PauseMusicCommand)
+AddCommand(PauseMusicCommand)
 

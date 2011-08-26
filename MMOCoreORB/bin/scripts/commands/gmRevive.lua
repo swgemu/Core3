@@ -68,5 +68,5 @@ GmReviveCommand = {
 
 }
 
-AddGmReviveCommand(GmReviveCommand)
+AddCommand(GmReviveCommand)
 

@@ -68,5 +68,5 @@ Melee1hDizzyHit2Command = {
 
 }
 
-AddMelee1hDizzyHit2Command(Melee1hDizzyHit2Command)
+AddCommand(Melee1hDizzyHit2Command)
 

@@ -68,5 +68,5 @@ KnockdownAttackCommand = {
 
 }
 
-AddKnockdownAttackCommand(KnockdownAttackCommand)
+AddCommand(KnockdownAttackCommand)
 

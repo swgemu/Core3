@@ -68,5 +68,5 @@ RegainConsciousnessCommand = {
 
 }
 
-AddRegainConsciousnessCommand(RegainConsciousnessCommand)
+AddCommand(RegainConsciousnessCommand)
 

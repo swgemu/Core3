@@ -68,5 +68,5 @@ FishCommand = {
 
 }
 
-AddFishCommand(FishCommand)
+AddCommand(FishCommand)
 

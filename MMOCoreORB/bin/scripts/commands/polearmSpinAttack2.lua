@@ -68,5 +68,5 @@ PolearmSpinAttack2Command = {
 
 }
 
-AddPolearmSpinAttack2Command(PolearmSpinAttack2Command)
+AddCommand(PolearmSpinAttack2Command)
 

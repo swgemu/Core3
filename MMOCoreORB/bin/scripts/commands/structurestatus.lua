@@ -68,5 +68,5 @@ StructurestatusCommand = {
 
 }
 
-AddStructurestatusCommand(StructurestatusCommand)
+AddCommand(StructurestatusCommand)
 

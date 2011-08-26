@@ -68,5 +68,5 @@ NewbieSelectStartingLocationCommand = {
 
 }
 
-AddNewbieSelectStartingLocationCommand(NewbieSelectStartingLocationCommand)
+AddCommand(NewbieSelectStartingLocationCommand)
 

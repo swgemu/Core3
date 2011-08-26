@@ -68,5 +68,5 @@ CreateManfSchematicCommand = {
 
 }
 
-AddCreateManfSchematicCommand(CreateManfSchematicCommand)
+AddCommand(CreateManfSchematicCommand)
 

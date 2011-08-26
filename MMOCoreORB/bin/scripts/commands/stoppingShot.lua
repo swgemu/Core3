@@ -68,5 +68,5 @@ StoppingShotCommand = {
 
 }
 
-AddStoppingShotCommand(StoppingShotCommand)
+AddCommand(StoppingShotCommand)
 

@@ -68,5 +68,5 @@ SynchronizedUiListenCommand = {
 
 }
 
-AddSynchronizedUiListenCommand(SynchronizedUiListenCommand)
+AddCommand(SynchronizedUiListenCommand)
 

@@ -68,5 +68,5 @@ CenterOfBeingCommand = {
 
 }
 
-AddCenterOfBeingCommand(CenterOfBeingCommand)
+AddCommand(CenterOfBeingCommand)
 

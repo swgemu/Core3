@@ -68,5 +68,5 @@ GetFriendListCommand = {
 
 }
 
-AddGetFriendListCommand(GetFriendListCommand)
+AddCommand(GetFriendListCommand)
 

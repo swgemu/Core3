@@ -68,5 +68,5 @@ RevivePlayerCommand = {
 
 }
 
-AddRevivePlayerCommand(RevivePlayerCommand)
+AddCommand(RevivePlayerCommand)
 

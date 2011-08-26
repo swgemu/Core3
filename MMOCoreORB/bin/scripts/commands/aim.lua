@@ -68,5 +68,5 @@ AimCommand = {
 
 }
 
-AddAimCommand(AimCommand)
+AddCommand(AimCommand)
 

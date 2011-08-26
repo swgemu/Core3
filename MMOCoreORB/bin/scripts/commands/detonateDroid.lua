@@ -68,5 +68,5 @@ DetonateDroidCommand = {
 
 }
 
-AddDetonateDroidCommand(DetonateDroidCommand)
+AddCommand(DetonateDroidCommand)
 

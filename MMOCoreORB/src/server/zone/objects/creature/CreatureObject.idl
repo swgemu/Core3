@@ -62,6 +62,7 @@ include server.zone.objects.creature.variables.CommandQueueActionVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
 include server.zone.objects.creature.variables.SkillBoxList;
 include server.zone.objects.creature.variables.CommandQueueAction;
+include server.zone.objects.creature.CreatureLocomotion;
 include server.zone.objects.creature.CreaturePosture;
 include server.zone.objects.creature.CreatureState;
 include server.zone.objects.creature.SpeedMultiplierModChanges;
@@ -94,6 +95,7 @@ class CreatureObject extends TangibleObject {
 	protected DeltaVector<int> baseHAM;
 	
 	protected byte posture;
+	protected byte locomotion;
 	protected byte factionRank;
 	
 	@weakReference
@@ -1462,11 +1464,19 @@ class CreatureObject extends TangibleObject {
 	}
 
 	public boolean isSnared() {
-		return stateBitmask & CreatureState.SNARED;
+		return stateBitmask & CreatureState.IMMOBILIZED;
+	}
+
+	public boolean isImmobilized() {
+		return stateBitmask & CreatureState.IMMOBILIZED;
 	}
 
 	public boolean isRooted() {
-		return stateBitmask & CreatureState.ROOTED;
+		return stateBitmask & CreatureState.FROZEN;
+	}
+
+	public boolean isFrozen() {
+		return stateBitmask & CreatureState.FROZEN;
 	}
 
 	public boolean isDiseased() {

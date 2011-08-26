@@ -68,5 +68,5 @@ AddBannedPlayerCommand = {
 
 }
 
-AddAddBannedPlayerCommand(AddBannedPlayerCommand)
+AddCommand(AddBannedPlayerCommand)
 

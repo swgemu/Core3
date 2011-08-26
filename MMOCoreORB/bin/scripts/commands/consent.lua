@@ -68,5 +68,5 @@ ConsentCommand = {
 
 }
 
-AddConsentCommand(ConsentCommand)
+AddCommand(ConsentCommand)
 

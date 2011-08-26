@@ -68,5 +68,5 @@ StopBandCommand = {
 
 }
 
-AddStopBandCommand(StopBandCommand)
+AddCommand(StopBandCommand)
 

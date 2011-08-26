@@ -68,5 +68,5 @@ FullAutoSingle2Command = {
 
 }
 
-AddFullAutoSingle2Command(FullAutoSingle2Command)
+AddCommand(FullAutoSingle2Command)
 

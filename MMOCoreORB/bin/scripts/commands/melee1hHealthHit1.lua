@@ -68,5 +68,5 @@ Melee1hHealthHit1Command = {
 
 }
 
-AddMelee1hHealthHit1Command(Melee1hHealthHit1Command)
+AddCommand(Melee1hHealthHit1Command)
 

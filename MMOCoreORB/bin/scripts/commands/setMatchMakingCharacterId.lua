@@ -68,5 +68,5 @@ SetMatchMakingCharacterIdCommand = {
 
 }
 
-AddSetMatchMakingCharacterIdCommand(SetMatchMakingCharacterIdCommand)
+AddCommand(SetMatchMakingCharacterIdCommand)
 

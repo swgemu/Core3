@@ -68,5 +68,5 @@ ListenCommand = {
 
 }
 
-AddListenCommand(ListenCommand)
+AddCommand(ListenCommand)
 

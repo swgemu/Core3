@@ -68,5 +68,5 @@ DisarmingShot2Command = {
 
 }
 
-AddDisarmingShot2Command(DisarmingShot2Command)
+AddCommand(DisarmingShot2Command)
 

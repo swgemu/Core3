@@ -68,5 +68,5 @@ ReconnectToTransferServerCommand = {
 
 }
 
-AddReconnectToTransferServerCommand(ReconnectToTransferServerCommand)
+AddCommand(ReconnectToTransferServerCommand)
 

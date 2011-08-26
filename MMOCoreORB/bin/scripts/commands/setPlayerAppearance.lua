@@ -68,5 +68,5 @@ SetPlayerAppearanceCommand = {
 
 }
 
-AddSetPlayerAppearanceCommand(SetPlayerAppearanceCommand)
+AddCommand(SetPlayerAppearanceCommand)
 

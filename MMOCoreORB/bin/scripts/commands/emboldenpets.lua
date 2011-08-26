@@ -68,5 +68,5 @@ EmboldenpetsCommand = {
 
 }
 
-AddEmboldenpetsCommand(EmboldenpetsCommand)
+AddCommand(EmboldenpetsCommand)
 

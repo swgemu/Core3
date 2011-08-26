@@ -68,5 +68,5 @@ CombatEscapeCommand = {
 
 }
 
-AddCombatEscapeCommand(CombatEscapeCommand)
+AddCommand(CombatEscapeCommand)
 

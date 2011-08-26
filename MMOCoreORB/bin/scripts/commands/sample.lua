@@ -68,5 +68,5 @@ SampleCommand = {
 
 }
 
-AddSampleCommand(SampleCommand)
+AddCommand(SampleCommand)
 

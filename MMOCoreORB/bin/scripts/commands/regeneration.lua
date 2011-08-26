@@ -68,5 +68,5 @@ RegenerationCommand = {
 
 }
 
-AddRegenerationCommand(RegenerationCommand)
+AddCommand(RegenerationCommand)
 

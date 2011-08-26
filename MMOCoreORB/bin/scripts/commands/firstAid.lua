@@ -68,5 +68,5 @@ FirstAidCommand = {
 
 }
 
-AddFirstAidCommand(FirstAidCommand)
+AddCommand(FirstAidCommand)
 

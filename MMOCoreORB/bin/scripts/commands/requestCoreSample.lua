@@ -68,5 +68,5 @@ RequestCoreSampleCommand = {
 
 }
 
-AddRequestCoreSampleCommand(RequestCoreSampleCommand)
+AddCommand(RequestCoreSampleCommand)
 

@@ -68,5 +68,5 @@ ReportCommand = {
 
 }
 
-AddReportCommand(ReportCommand)
+AddCommand(ReportCommand)
 

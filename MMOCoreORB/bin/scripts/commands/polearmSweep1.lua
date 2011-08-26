@@ -68,5 +68,5 @@ PolearmSweep1Command = {
 
 }
 
-AddPolearmSweep1Command(PolearmSweep1Command)
+AddCommand(PolearmSweep1Command)
 

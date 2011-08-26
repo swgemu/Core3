@@ -68,5 +68,5 @@ CraftCommand = {
 
 }
 
-AddCraftCommand(CraftCommand)
+AddCommand(CraftCommand)
 

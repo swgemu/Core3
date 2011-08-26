@@ -68,5 +68,5 @@ InnateCommand = {
 
 }
 
-AddInnateCommand(InnateCommand)
+AddCommand(InnateCommand)
 

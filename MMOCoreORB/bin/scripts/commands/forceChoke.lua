@@ -68,5 +68,5 @@ ForceChokeCommand = {
 
 }
 
-AddForceChokeCommand(ForceChokeCommand)
+AddCommand(ForceChokeCommand)
 

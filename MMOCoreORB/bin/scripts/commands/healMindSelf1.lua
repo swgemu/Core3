@@ -68,5 +68,5 @@ HealMindSelf1Command = {
 
 }
 
-AddHealMindSelf1Command(HealMindSelf1Command)
+AddCommand(HealMindSelf1Command)
 

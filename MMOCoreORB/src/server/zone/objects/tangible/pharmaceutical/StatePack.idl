@@ -115,7 +115,7 @@ class StatePack extends PharmaceuticalObject {
 			return 0;
 		} else {
 			string command = "/healstate ";
-			command = command + CreatureState.getName(state);
+			command = command + CreatureState.instance().getName(state);
 			command = command + "|";
 			command = command + String.valueOf(super.getObjectID());
 			
@@ -137,7 +137,7 @@ class StatePack extends PharmaceuticalObject {
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
 		
-		string attributeName = CreatureState.getName(state);
+		string attributeName = CreatureState.instance().getName(state);
 		string enhace = "@obj_attr_n:state_type_" + attributeName;
 		
 		msg.insertAttribute("examine_heal_state", enhace);

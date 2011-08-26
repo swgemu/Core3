@@ -68,5 +68,5 @@ MeditateCommand = {
 
 }
 
-AddMeditateCommand(MeditateCommand)
+AddCommand(MeditateCommand)
 

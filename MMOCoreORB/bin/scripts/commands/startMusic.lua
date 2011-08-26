@@ -68,5 +68,5 @@ StartMusicCommand = {
 
 }
 
-AddStartMusicCommand(StartMusicCommand)
+AddCommand(StartMusicCommand)
 

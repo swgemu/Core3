@@ -68,5 +68,5 @@ Berserk2Command = {
 
 }
 
-AddBerserk2Command(Berserk2Command)
+AddCommand(Berserk2Command)
 

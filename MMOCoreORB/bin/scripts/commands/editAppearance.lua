@@ -68,5 +68,5 @@ EditAppearanceCommand = {
 
 }
 
-AddEditAppearanceCommand(EditAppearanceCommand)
+AddCommand(EditAppearanceCommand)
 

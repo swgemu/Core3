@@ -68,5 +68,5 @@ GmForceRankCommand = {
 
 }
 
-AddGmForceRankCommand(GmForceRankCommand)
+AddCommand(GmForceRankCommand)
 

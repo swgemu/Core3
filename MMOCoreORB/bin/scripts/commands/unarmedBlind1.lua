@@ -68,5 +68,5 @@ UnarmedBlind1Command = {
 
 }
 
-AddUnarmedBlind1Command(UnarmedBlind1Command)
+AddCommand(UnarmedBlind1Command)
 

@@ -68,5 +68,5 @@ EmptyMailTargetCommand = {
 
 }
 
-AddEmptyMailTargetCommand(EmptyMailTargetCommand)
+AddCommand(EmptyMailTargetCommand)
 

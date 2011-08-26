@@ -68,5 +68,5 @@ CreateNPCCommand = {
 
 }
 
-AddCreateNPCCommand(CreateNPCCommand)
+AddCommand(CreateNPCCommand)
 

@@ -68,5 +68,5 @@ MountCommand = {
 
 }
 
-AddMountCommand(MountCommand)
+AddCommand(MountCommand)
 

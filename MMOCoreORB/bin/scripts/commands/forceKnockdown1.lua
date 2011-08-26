@@ -68,5 +68,5 @@ ForceKnockdown1Command = {
 
 }
 
-AddForceKnockdown1Command(ForceKnockdown1Command)
+AddCommand(ForceKnockdown1Command)
 

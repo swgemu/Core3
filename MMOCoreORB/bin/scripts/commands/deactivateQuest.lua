@@ -68,5 +68,5 @@ DeactivateQuestCommand = {
 
 }
 
-AddDeactivateQuestCommand(DeactivateQuestCommand)
+AddCommand(DeactivateQuestCommand)
 

@@ -68,5 +68,5 @@ FireHeavyWeaponCommand = {
 
 }
 
-AddFireHeavyWeaponCommand(FireHeavyWeaponCommand)
+AddCommand(FireHeavyWeaponCommand)
 

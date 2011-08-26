@@ -68,5 +68,5 @@ CityInfoCommand = {
 
 }
 
-AddCityInfoCommand(CityInfoCommand)
+AddCommand(CityInfoCommand)
 

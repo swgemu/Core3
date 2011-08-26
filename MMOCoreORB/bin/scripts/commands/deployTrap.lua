@@ -68,5 +68,5 @@ DeployTrapCommand = {
 
 }
 
-AddDeployTrapCommand(DeployTrapCommand)
+AddCommand(DeployTrapCommand)
 

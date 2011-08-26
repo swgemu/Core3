@@ -68,5 +68,5 @@ FactoryCrateSplitCommand = {
 
 }
 
-AddFactoryCrateSplitCommand(FactoryCrateSplitCommand)
+AddCommand(FactoryCrateSplitCommand)
 

@@ -68,5 +68,5 @@ CoupDeGraceCommand = {
 
 }
 
-AddCoupDeGraceCommand(CoupDeGraceCommand)
+AddCommand(CoupDeGraceCommand)
 

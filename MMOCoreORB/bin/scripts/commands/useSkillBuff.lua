@@ -68,5 +68,5 @@ UseSkillBuffCommand = {
 
 }
 
-AddUseSkillBuffCommand(UseSkillBuffCommand)
+AddCommand(UseSkillBuffCommand)
 

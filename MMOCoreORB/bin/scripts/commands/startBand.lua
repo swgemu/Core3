@@ -68,5 +68,5 @@ StartBandCommand = {
 
 }
 
-AddStartBandCommand(StartBandCommand)
+AddCommand(StartBandCommand)
 

@@ -68,5 +68,5 @@ MaskscentCommand = {
 
 }
 
-AddMaskscentCommand(MaskscentCommand)
+AddCommand(MaskscentCommand)
 

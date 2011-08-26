@@ -68,5 +68,5 @@ MediumPoisonCommand = {
 
 }
 
-AddMediumPoisonCommand(MediumPoisonCommand)
+AddCommand(MediumPoisonCommand)
 

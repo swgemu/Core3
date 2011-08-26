@@ -68,5 +68,5 @@ PurchaseReinforcementCommand = {
 
 }
 
-AddPurchaseReinforcementCommand(PurchaseReinforcementCommand)
+AddCommand(PurchaseReinforcementCommand)
 

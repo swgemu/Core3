@@ -68,5 +68,5 @@ LootCommand = {
 
 }
 
-AddLootCommand(LootCommand)
+AddCommand(LootCommand)
 

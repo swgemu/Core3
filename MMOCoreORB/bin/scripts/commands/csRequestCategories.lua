@@ -68,5 +68,5 @@ CsRequestCategoriesCommand = {
 
 }
 
-AddCsRequestCategoriesCommand(CsRequestCategoriesCommand)
+AddCommand(CsRequestCategoriesCommand)
 

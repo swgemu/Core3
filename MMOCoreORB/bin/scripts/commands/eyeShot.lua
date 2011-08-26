@@ -68,5 +68,5 @@ EyeShotCommand = {
 
 }
 
-AddEyeShotCommand(EyeShotCommand)
+AddCommand(EyeShotCommand)
 

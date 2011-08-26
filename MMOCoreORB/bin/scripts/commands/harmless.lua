@@ -68,5 +68,5 @@ HarmlessCommand = {
 
 }
 
-AddHarmlessCommand(HarmlessCommand)
+AddCommand(HarmlessCommand)
 

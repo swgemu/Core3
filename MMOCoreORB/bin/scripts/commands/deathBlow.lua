@@ -68,5 +68,5 @@ DeathBlowCommand = {
 
 }
 
-AddDeathBlowCommand(DeathBlowCommand)
+AddCommand(DeathBlowCommand)
 

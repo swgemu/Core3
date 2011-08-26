@@ -68,5 +68,5 @@ DeclareOvertCommand = {
 
 }
 
-AddDeclareOvertCommand(DeclareOvertCommand)
+AddCommand(DeclareOvertCommand)
 

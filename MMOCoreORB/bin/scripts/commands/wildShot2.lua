@@ -68,5 +68,5 @@ WildShot2Command = {
 
 }
 
-AddWildShot2Command(WildShot2Command)
+AddCommand(WildShot2Command)
 

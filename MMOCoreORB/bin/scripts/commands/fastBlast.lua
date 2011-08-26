@@ -68,5 +68,5 @@ FastBlastCommand = {
 
 }
 
-AddFastBlastCommand(FastBlastCommand)
+AddCommand(FastBlastCommand)
 

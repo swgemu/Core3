@@ -68,5 +68,5 @@ AssociateDroidControlDeviceWithShipCommand = {
 
 }
 
-AddAssociateDroidControlDeviceWithShipCommand(AssociateDroidControlDeviceWithShipCommand)
+AddCommand(AssociateDroidControlDeviceWithShipCommand)
 

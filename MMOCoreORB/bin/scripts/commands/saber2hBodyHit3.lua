@@ -68,5 +68,5 @@ Saber2hBodyHit3Command = {
 
 }
 
-AddSaber2hBodyHit3Command(Saber2hBodyHit3Command)
+AddCommand(Saber2hBodyHit3Command)
 

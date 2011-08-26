@@ -68,5 +68,5 @@ SnoopCommand = {
 
 }
 
-AddSnoopCommand(SnoopCommand)
+AddCommand(SnoopCommand)
 

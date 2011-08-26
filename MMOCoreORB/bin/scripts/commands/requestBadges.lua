@@ -68,5 +68,5 @@ RequestBadgesCommand = {
 
 }
 
-AddRequestBadgesCommand(RequestBadgesCommand)
+AddCommand(RequestBadgesCommand)
 

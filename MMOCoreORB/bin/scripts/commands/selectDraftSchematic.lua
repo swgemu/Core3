@@ -68,5 +68,5 @@ SelectDraftSchematicCommand = {
 
 }
 
-AddSelectDraftSchematicCommand(SelectDraftSchematicCommand)
+AddCommand(SelectDraftSchematicCommand)
 

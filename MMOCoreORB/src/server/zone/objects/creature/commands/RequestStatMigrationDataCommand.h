@@ -63,8 +63,8 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::MIGRATESTATS);
 		ManagedReference<MigrateStatsSession*> session = dynamic_cast<MigrateStatsSession*>(facade.get());

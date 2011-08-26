@@ -68,5 +68,5 @@ PlanetwarpTargetCommand = {
 
 }
 
-AddPlanetwarpTargetCommand(PlanetwarpTargetCommand)
+AddCommand(PlanetwarpTargetCommand)
 

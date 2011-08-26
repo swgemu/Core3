@@ -68,5 +68,5 @@ ForceThrow2Command = {
 
 }
 
-AddForceThrow2Command(ForceThrow2Command)
+AddCommand(ForceThrow2Command)
 

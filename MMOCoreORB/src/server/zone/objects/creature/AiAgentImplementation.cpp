@@ -243,7 +243,7 @@ bool AiAgentImplementation::validateStateAttack(CreatureObject* target, String& 
 
 		if (singleArg.indexOf("Chance") != -1) {
 			String stateName = singleArg.subString(0, args.indexOf("Chance"));
-			uint64 state = CreatureState::getState(stateName);
+			uint64 state = CreatureState::instance()->getState(stateName);
 			if (target->hasState(state) || (stateName == "postureDown" && target->isProne()) || (stateName == "knockdown" && target->isKnockedDown()) || (stateName == "postureUp" && target->isStanding())) {
 				return false;
 

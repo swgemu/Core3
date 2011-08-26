@@ -68,5 +68,5 @@ HarvesterMakeCrateCommand = {
 
 }
 
-AddHarvesterMakeCrateCommand(HarvesterMakeCrateCommand)
+AddCommand(HarvesterMakeCrateCommand)
 

@@ -68,5 +68,5 @@ NewbieRequestStartingLocationsCommand = {
 
 }
 
-AddNewbieRequestStartingLocationsCommand(NewbieRequestStartingLocationsCommand)
+AddCommand(NewbieRequestStartingLocationsCommand)
 

@@ -68,5 +68,5 @@ StartSpawnerCommand = {
 
 }
 
-AddStartSpawnerCommand(StartSpawnerCommand)
+AddCommand(StartSpawnerCommand)
 

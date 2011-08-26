@@ -68,5 +68,5 @@ HarvesterGetResourceDataCommand = {
 
 }
 
-AddHarvesterGetResourceDataCommand(HarvesterGetResourceDataCommand)
+AddCommand(HarvesterGetResourceDataCommand)
 

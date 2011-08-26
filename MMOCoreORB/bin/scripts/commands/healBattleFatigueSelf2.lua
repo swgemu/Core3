@@ -68,5 +68,5 @@ HealBattleFatigueSelf2Command = {
 
 }
 
-AddHealBattleFatigueSelf2Command(HealBattleFatigueSelf2Command)
+AddCommand(HealBattleFatigueSelf2Command)
 

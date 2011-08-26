@@ -68,5 +68,5 @@ ThrowGrenadeCommand = {
 
 }
 
-AddThrowGrenadeCommand(ThrowGrenadeCommand)
+AddCommand(ThrowGrenadeCommand)
 

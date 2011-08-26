@@ -68,5 +68,5 @@ SampleDNACommand = {
 
 }
 
-AddSampleDNACommand(SampleDNACommand)
+AddCommand(SampleDNACommand)
 

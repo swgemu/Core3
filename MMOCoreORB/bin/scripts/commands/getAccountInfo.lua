@@ -68,5 +68,5 @@ GetAccountInfoCommand = {
 
 }
 
-AddGetAccountInfoCommand(GetAccountInfoCommand)
+AddCommand(GetAccountInfoCommand)
 

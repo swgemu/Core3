@@ -68,5 +68,5 @@ StopTraceLoggingCommand = {
 
 }
 
-AddStopTraceLoggingCommand(StopTraceLoggingCommand)
+AddCommand(StopTraceLoggingCommand)
 

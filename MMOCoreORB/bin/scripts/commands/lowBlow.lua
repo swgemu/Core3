@@ -68,5 +68,5 @@ LowBlowCommand = {
 
 }
 
-AddLowBlowCommand(LowBlowCommand)
+AddCommand(LowBlowCommand)
 

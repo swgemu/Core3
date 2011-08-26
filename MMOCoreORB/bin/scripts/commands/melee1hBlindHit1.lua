@@ -68,5 +68,5 @@ Melee1hBlindHit1Command = {
 
 }
 
-AddMelee1hBlindHit1Command(Melee1hBlindHit1Command)
+AddCommand(Melee1hBlindHit1Command)
 

@@ -68,5 +68,5 @@ ConfusionShotCommand = {
 
 }
 
-AddConfusionShotCommand(ConfusionShotCommand)
+AddCommand(ConfusionShotCommand)
 

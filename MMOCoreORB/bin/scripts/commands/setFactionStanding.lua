@@ -68,5 +68,5 @@ SetFactionStandingCommand = {
 
 }
 
-AddSetFactionStandingCommand(SetFactionStandingCommand)
+AddCommand(SetFactionStandingCommand)
 

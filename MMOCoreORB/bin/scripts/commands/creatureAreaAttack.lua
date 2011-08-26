@@ -68,5 +68,5 @@ CreatureAreaAttackCommand = {
 
 }
 
-AddCreatureAreaAttackCommand(CreatureAreaAttackCommand)
+AddCommand(CreatureAreaAttackCommand)
 

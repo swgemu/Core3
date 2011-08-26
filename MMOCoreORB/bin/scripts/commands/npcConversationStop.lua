@@ -68,5 +68,5 @@ NpcConversationStopCommand = {
 
 }
 
-AddNpcConversationStopCommand(NpcConversationStopCommand)
+AddCommand(NpcConversationStopCommand)
 

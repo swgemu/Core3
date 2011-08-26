@@ -68,5 +68,5 @@ DiagnoseCommand = {
 
 }
 
-AddDiagnoseCommand(DiagnoseCommand)
+AddCommand(DiagnoseCommand)
 

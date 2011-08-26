@@ -68,5 +68,5 @@ GrantZoningRightsCommand = {
 
 }
 
-AddGrantZoningRightsCommand(GrantZoningRightsCommand)
+AddCommand(GrantZoningRightsCommand)
 

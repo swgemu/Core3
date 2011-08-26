@@ -68,5 +68,5 @@ AttackCommand = {
 
 }
 
-AddAttackCommand(AttackCommand)
+AddCommand(AttackCommand)
 

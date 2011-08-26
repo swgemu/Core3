@@ -68,5 +68,5 @@ GotoCommand = {
 
 }
 
-AddGotoCommand(GotoCommand)
+AddCommand(GotoCommand)
 

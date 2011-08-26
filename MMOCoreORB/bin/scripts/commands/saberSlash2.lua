@@ -68,5 +68,5 @@ SaberSlash2Command = {
 
 }
 
-AddSaberSlash2Command(SaberSlash2Command)
+AddCommand(SaberSlash2Command)
 

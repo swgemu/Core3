@@ -68,5 +68,5 @@ SkillCommand = {
 
 }
 
-AddSkillCommand(SkillCommand)
+AddCommand(SkillCommand)
 

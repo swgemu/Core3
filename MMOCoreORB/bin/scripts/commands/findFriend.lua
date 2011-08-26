@@ -68,5 +68,5 @@ FindFriendCommand = {
 
 }
 
-AddFindFriendCommand(FindFriendCommand)
+AddCommand(FindFriendCommand)
 

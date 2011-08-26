@@ -68,5 +68,5 @@ RemoveIgnoreCommand = {
 
 }
 
-AddRemoveIgnoreCommand(RemoveIgnoreCommand)
+AddCommand(RemoveIgnoreCommand)
 

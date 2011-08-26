@@ -68,5 +68,5 @@ GcCommand = {
 
 }
 
-AddGcCommand(GcCommand)
+AddCommand(GcCommand)
 

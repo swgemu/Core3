@@ -68,5 +68,5 @@ ExtinguishFireCommand = {
 
 }
 
-AddExtinguishFireCommand(ExtinguishFireCommand)
+AddCommand(ExtinguishFireCommand)
 

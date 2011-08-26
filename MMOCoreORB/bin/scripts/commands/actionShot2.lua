@@ -68,5 +68,5 @@ ActionShot2Command = {
 
 }
 
-AddActionShot2Command(ActionShot2Command)
+AddCommand(ActionShot2Command)
 

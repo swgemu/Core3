@@ -68,5 +68,5 @@ RequestCraftingSessionCommand = {
 
 }
 
-AddRequestCraftingSessionCommand(RequestCraftingSessionCommand)
+AddCommand(RequestCraftingSessionCommand)
 

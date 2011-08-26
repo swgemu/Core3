@@ -68,5 +68,5 @@ CsCreateTicketCommand = {
 
 }
 
-AddCsCreateTicketCommand(CsCreateTicketCommand)
+AddCommand(CsCreateTicketCommand)
 

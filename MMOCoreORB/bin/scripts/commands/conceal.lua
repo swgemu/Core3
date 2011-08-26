@@ -68,5 +68,5 @@ ConcealCommand = {
 
 }
 
-AddConcealCommand(ConcealCommand)
+AddCommand(ConcealCommand)
 

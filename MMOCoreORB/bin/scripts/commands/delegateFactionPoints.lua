@@ -68,5 +68,5 @@ DelegateFactionPointsCommand = {
 
 }
 
-AddDelegateFactionPointsCommand(DelegateFactionPointsCommand)
+AddCommand(DelegateFactionPointsCommand)
 

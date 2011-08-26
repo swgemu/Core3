@@ -68,5 +68,5 @@ ThreatenShotCommand = {
 
 }
 
-AddThreatenShotCommand(ThreatenShotCommand)
+AddCommand(ThreatenShotCommand)
 

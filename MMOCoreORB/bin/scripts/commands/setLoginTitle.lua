@@ -68,5 +68,5 @@ SetLoginTitleCommand = {
 
 }
 
-AddSetLoginTitleCommand(SetLoginTitleCommand)
+AddCommand(SetLoginTitleCommand)
 

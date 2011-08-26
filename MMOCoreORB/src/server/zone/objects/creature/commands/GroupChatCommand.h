@@ -62,8 +62,8 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		ChatManager* chatManager = server->getZoneServer()->getChatManager();
 		chatManager->handleGroupChat((CreatureObject*) creature, arguments);

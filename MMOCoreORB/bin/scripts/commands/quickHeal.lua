@@ -68,5 +68,5 @@ QuickHealCommand = {
 
 }
 
-AddQuickHealCommand(QuickHealCommand)
+AddCommand(QuickHealCommand)
 

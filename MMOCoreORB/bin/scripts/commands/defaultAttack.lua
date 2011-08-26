@@ -68,5 +68,5 @@ DefaultAttackCommand = {
 
 }
 
-AddDefaultAttackCommand(DefaultAttackCommand)
+AddCommand(DefaultAttackCommand)
 

@@ -68,5 +68,5 @@ FullAutoArea1Command = {
 
 }
 
-AddFullAutoArea1Command(FullAutoArea1Command)
+AddCommand(FullAutoArea1Command)
 

@@ -68,5 +68,5 @@ HealHealthWoundSelf1Command = {
 
 }
 
-AddHealHealthWoundSelf1Command(HealHealthWoundSelf1Command)
+AddCommand(HealHealthWoundSelf1Command)
 

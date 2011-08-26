@@ -68,5 +68,5 @@ PaWithdrawCommand = {
 
 }
 
-AddPaWithdrawCommand(PaWithdrawCommand)
+AddCommand(PaWithdrawCommand)
 

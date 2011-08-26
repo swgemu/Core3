@@ -68,5 +68,5 @@ OpenContainerCommand = {
 
 }
 
-AddOpenContainerCommand(OpenContainerCommand)
+AddCommand(OpenContainerCommand)
 

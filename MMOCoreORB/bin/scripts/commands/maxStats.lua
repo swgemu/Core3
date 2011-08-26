@@ -68,5 +68,5 @@ MaxStatsCommand = {
 
 }
 
-AddMaxStatsCommand(MaxStatsCommand)
+AddCommand(MaxStatsCommand)
 

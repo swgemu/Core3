@@ -68,5 +68,5 @@ ShowCouncilRankCommand = {
 
 }
 
-AddShowCouncilRankCommand(ShowCouncilRankCommand)
+AddCommand(ShowCouncilRankCommand)
 

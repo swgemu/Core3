@@ -68,5 +68,5 @@ BoardShuttleCommand = {
 
 }
 
-AddBoardShuttleCommand(BoardShuttleCommand)
+AddCommand(BoardShuttleCommand)
 

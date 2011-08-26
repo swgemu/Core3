@@ -68,5 +68,5 @@ TumbleToKneelingCommand = {
 
 }
 
-AddTumbleToKneelingCommand(TumbleToKneelingCommand)
+AddCommand(TumbleToKneelingCommand)
 

@@ -68,5 +68,5 @@ SetExperienceCommand = {
 
 }
 
-AddSetExperienceCommand(SetExperienceCommand)
+AddCommand(SetExperienceCommand)
 

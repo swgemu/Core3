@@ -68,5 +68,5 @@ LeaveGroupCommand = {
 
 }
 
-AddLeaveGroupCommand(LeaveGroupCommand)
+AddCommand(LeaveGroupCommand)
 

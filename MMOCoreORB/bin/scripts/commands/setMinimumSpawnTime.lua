@@ -68,5 +68,5 @@ SetMinimumSpawnTimeCommand = {
 
 }
 
-AddSetMinimumSpawnTimeCommand(SetMinimumSpawnTimeCommand)
+AddCommand(SetMinimumSpawnTimeCommand)
 

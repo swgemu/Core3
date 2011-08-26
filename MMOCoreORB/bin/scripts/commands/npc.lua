@@ -68,5 +68,5 @@ NpcCommand = {
 
 }
 
-AddNpcCommand(NpcCommand)
+AddCommand(NpcCommand)
 

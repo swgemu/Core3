@@ -68,5 +68,5 @@ DazzleCommand = {
 
 }
 
-AddDazzleCommand(DazzleCommand)
+AddCommand(DazzleCommand)
 

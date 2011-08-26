@@ -68,5 +68,5 @@ ChargeShot1Command = {
 
 }
 
-AddChargeShot1Command(ChargeShot1Command)
+AddCommand(ChargeShot1Command)
 

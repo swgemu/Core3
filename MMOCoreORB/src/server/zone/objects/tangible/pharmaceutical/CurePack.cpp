@@ -413,8 +413,8 @@ void CurePackImplementation::fillAttributeList(AttributeListMessage* msg, Creatu
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		string eff = "@obj_attr_n:dot_type_";
 	String eff = "@obj_attr_n:dot_type_";
-	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		msg.insertAttribute("examine_dot_cure", eff + CreatureState.getSpecialName(state));
-	msg->insertAttribute("examine_dot_cure", eff + CreatureState::getSpecialName(state));
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		msg.insertAttribute("examine_dot_cure", eff + CreatureState.instance().getSpecialName(state));
+	msg->insertAttribute("examine_dot_cure", eff + CreatureState::instance()->getSpecialName(state));
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		msg.insertAttribute("examine_dot_cure_power", effectiveness);
 	msg->insertAttribute("examine_dot_cure_power", effectiveness);
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		}

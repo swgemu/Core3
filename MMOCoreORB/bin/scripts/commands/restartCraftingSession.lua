@@ -68,5 +68,5 @@ RestartCraftingSessionCommand = {
 
 }
 
-AddRestartCraftingSessionCommand(RestartCraftingSessionCommand)
+AddCommand(RestartCraftingSessionCommand)
 

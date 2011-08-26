@@ -68,5 +68,5 @@ StrafeShot2Command = {
 
 }
 
-AddStrafeShot2Command(StrafeShot2Command)
+AddCommand(StrafeShot2Command)
 

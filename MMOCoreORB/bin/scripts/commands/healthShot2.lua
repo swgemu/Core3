@@ -68,5 +68,5 @@ HealthShot2Command = {
 
 }
 
-AddHealthShot2Command(HealthShot2Command)
+AddCommand(HealthShot2Command)
 

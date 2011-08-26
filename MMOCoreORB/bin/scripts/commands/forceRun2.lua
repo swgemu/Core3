@@ -68,5 +68,5 @@ ForceRun2Command = {
 
 }
 
-AddForceRun2Command(ForceRun2Command)
+AddCommand(ForceRun2Command)
 

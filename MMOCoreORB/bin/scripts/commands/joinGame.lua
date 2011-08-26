@@ -68,5 +68,5 @@ JoinGameCommand = {
 
 }
 
-AddJoinGameCommand(JoinGameCommand)
+AddCommand(JoinGameCommand)
 

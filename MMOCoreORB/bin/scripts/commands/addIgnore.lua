@@ -68,5 +68,5 @@ AddIgnoreCommand = {
 
 }
 
-AddAddIgnoreCommand(AddIgnoreCommand)
+AddCommand(AddIgnoreCommand)
 

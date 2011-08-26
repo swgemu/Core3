@@ -68,5 +68,5 @@ HealEnhanceCommand = {
 
 }
 
-AddHealEnhanceCommand(HealEnhanceCommand)
+AddCommand(HealEnhanceCommand)
 

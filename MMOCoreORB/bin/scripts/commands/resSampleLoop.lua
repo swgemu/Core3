@@ -68,5 +68,5 @@ ResSampleLoopCommand = {
 
 }
 
-AddResSampleLoopCommand(ResSampleLoopCommand)
+AddCommand(ResSampleLoopCommand)
 

@@ -68,5 +68,5 @@ RequestWaypointAtPositionCommand = {
 
 }
 
-AddRequestWaypointAtPositionCommand(RequestWaypointAtPositionCommand)
+AddCommand(RequestWaypointAtPositionCommand)
 

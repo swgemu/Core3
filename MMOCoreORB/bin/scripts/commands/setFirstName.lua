@@ -68,5 +68,5 @@ SetFirstNameCommand = {
 
 }
 
-AddSetFirstNameCommand(SetFirstNameCommand)
+AddCommand(SetFirstNameCommand)
 

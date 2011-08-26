@@ -68,5 +68,5 @@ FlashSpeederCommand = {
 
 }
 
-AddFlashSpeederCommand(FlashSpeederCommand)
+AddCommand(FlashSpeederCommand)
 

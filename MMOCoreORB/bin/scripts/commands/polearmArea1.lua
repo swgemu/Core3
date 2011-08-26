@@ -68,5 +68,5 @@ PolearmArea1Command = {
 
 }
 
-AddPolearmArea1Command(PolearmArea1Command)
+AddCommand(PolearmArea1Command)
 

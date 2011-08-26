@@ -68,5 +68,5 @@ ProneCommand = {
 
 }
 
-AddProneCommand(ProneCommand)
+AddCommand(ProneCommand)
 

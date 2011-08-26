@@ -68,5 +68,5 @@ ShowDanceVisualsCommand = {
 
 }
 
-AddShowDanceVisualsCommand(ShowDanceVisualsCommand)
+AddCommand(ShowDanceVisualsCommand)
 

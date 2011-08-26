@@ -68,5 +68,5 @@ DoubleTapCommand = {
 
 }
 
-AddDoubleTapCommand(DoubleTapCommand)
+AddCommand(DoubleTapCommand)
 

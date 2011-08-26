@@ -68,5 +68,5 @@ SetMaximumSpawnTimeCommand = {
 
 }
 
-AddSetMaximumSpawnTimeCommand(SetMaximumSpawnTimeCommand)
+AddCommand(SetMaximumSpawnTimeCommand)
 

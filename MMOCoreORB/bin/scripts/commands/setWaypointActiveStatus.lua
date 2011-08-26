@@ -68,5 +68,5 @@ SetWaypointActiveStatusCommand = {
 
 }
 
-AddSetWaypointActiveStatusCommand(SetWaypointActiveStatusCommand)
+AddCommand(SetWaypointActiveStatusCommand)
 

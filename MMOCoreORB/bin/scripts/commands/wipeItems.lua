@@ -68,5 +68,5 @@ WipeItemsCommand = {
 
 }
 
-AddWipeItemsCommand(WipeItemsCommand)
+AddCommand(WipeItemsCommand)
 

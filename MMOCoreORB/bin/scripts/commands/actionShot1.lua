@@ -68,5 +68,5 @@ ActionShot1Command = {
 
 }
 
-AddActionShot1Command(ActionShot1Command)
+AddCommand(ActionShot1Command)
 

@@ -68,5 +68,5 @@ CheckForceStatusCommand = {
 
 }
 
-AddCheckForceStatusCommand(CheckForceStatusCommand)
+AddCommand(CheckForceStatusCommand)
 

@@ -68,5 +68,5 @@ ForceMeditateCommand = {
 
 }
 
-AddForceMeditateCommand(ForceMeditateCommand)
+AddCommand(ForceMeditateCommand)
 

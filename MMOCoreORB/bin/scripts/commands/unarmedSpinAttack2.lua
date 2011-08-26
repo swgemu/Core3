@@ -68,5 +68,5 @@ UnarmedSpinAttack2Command = {
 
 }
 
-AddUnarmedSpinAttack2Command(UnarmedSpinAttack2Command)
+AddCommand(UnarmedSpinAttack2Command)
 

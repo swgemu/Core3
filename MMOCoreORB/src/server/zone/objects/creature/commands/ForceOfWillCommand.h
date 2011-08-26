@@ -96,8 +96,8 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		if (!player->checkCooldownRecovery("tkaForceOfWill")) {
 			player->sendSystemMessage("teraskasi", "forceofwill_lost"); //You have already expired your opportunity for forced recapacitation.

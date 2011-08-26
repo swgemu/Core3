@@ -68,5 +68,5 @@ SetWaypointNameCommand = {
 
 }
 
-AddSetWaypointNameCommand(SetWaypointNameCommand)
+AddCommand(SetWaypointNameCommand)
 

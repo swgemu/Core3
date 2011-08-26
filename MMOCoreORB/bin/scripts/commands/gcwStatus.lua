@@ -68,5 +68,5 @@ GcwStatusCommand = {
 
 }
 
-AddGcwStatusCommand(GcwStatusCommand)
+AddCommand(GcwStatusCommand)
 

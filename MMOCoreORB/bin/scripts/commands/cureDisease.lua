@@ -68,5 +68,5 @@ CureDiseaseCommand = {
 
 }
 
-AddCureDiseaseCommand(CureDiseaseCommand)
+AddCommand(CureDiseaseCommand)
 

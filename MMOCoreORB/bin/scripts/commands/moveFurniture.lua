@@ -68,5 +68,5 @@ MoveFurnitureCommand = {
 
 }
 
-AddMoveFurnitureCommand(MoveFurnitureCommand)
+AddCommand(MoveFurnitureCommand)
 

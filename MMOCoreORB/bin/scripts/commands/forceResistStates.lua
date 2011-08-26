@@ -68,5 +68,5 @@ ForceResistStatesCommand = {
 
 }
 
-AddForceResistStatesCommand(ForceResistStatesCommand)
+AddCommand(ForceResistStatesCommand)
 

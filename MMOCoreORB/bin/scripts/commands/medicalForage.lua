@@ -68,5 +68,5 @@ MedicalForageCommand = {
 
 }
 
-AddMedicalForageCommand(MedicalForageCommand)
+AddCommand(MedicalForageCommand)
 

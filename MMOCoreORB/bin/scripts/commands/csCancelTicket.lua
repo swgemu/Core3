@@ -68,5 +68,5 @@ CsCancelTicketCommand = {
 
 }
 
-AddCsCancelTicketCommand(CsCancelTicketCommand)
+AddCommand(CsCancelTicketCommand)
 

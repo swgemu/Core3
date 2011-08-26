@@ -68,5 +68,5 @@ ForceIntimidate1Command = {
 
 }
 
-AddForceIntimidate1Command(ForceIntimidate1Command)
+AddCommand(ForceIntimidate1Command)
 

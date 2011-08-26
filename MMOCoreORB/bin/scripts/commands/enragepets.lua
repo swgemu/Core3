@@ -68,5 +68,5 @@ EnragepetsCommand = {
 
 }
 
-AddEnragepetsCommand(EnragepetsCommand)
+AddCommand(EnragepetsCommand)
 

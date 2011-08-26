@@ -68,5 +68,5 @@ DeclareresidenceCommand = {
 
 }
 
-AddDeclareresidenceCommand(DeclareresidenceCommand)
+AddCommand(DeclareresidenceCommand)
 

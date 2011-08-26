@@ -68,5 +68,5 @@ NpcConversationStartCommand = {
 
 }
 
-AddNpcConversationStartCommand(NpcConversationStartCommand)
+AddCommand(NpcConversationStartCommand)
 

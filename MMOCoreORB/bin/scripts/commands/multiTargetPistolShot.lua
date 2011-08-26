@@ -68,5 +68,5 @@ MultiTargetPistolShotCommand = {
 
 }
 
-AddMultiTargetPistolShotCommand(MultiTargetPistolShotCommand)
+AddCommand(MultiTargetPistolShotCommand)
 

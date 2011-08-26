@@ -68,5 +68,5 @@ CsDisconnectPlayerCommand = {
 
 }
 
-AddCsDisconnectPlayerCommand(CsDisconnectPlayerCommand)
+AddCommand(CsDisconnectPlayerCommand)
 

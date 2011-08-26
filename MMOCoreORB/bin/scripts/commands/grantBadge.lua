@@ -68,5 +68,5 @@ GrantBadgeCommand = {
 
 }
 
-AddGrantBadgeCommand(GrantBadgeCommand)
+AddCommand(GrantBadgeCommand)
 

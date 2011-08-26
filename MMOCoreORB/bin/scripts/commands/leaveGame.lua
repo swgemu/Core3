@@ -68,5 +68,5 @@ LeaveGameCommand = {
 
 }
 
-AddLeaveGameCommand(LeaveGameCommand)
+AddCommand(LeaveGameCommand)
 

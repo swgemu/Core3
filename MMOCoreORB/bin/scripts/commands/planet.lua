@@ -68,5 +68,5 @@ PlanetCommand = {
 
 }
 
-AddPlanetCommand(PlanetCommand)
+AddCommand(PlanetCommand)
 

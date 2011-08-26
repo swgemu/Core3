@@ -68,5 +68,5 @@ Melee1hBodyHit3Command = {
 
 }
 
-AddMelee1hBodyHit3Command(Melee1hBodyHit3Command)
+AddCommand(Melee1hBodyHit3Command)
 

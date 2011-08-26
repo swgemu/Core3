@@ -68,5 +68,5 @@ AnimalAttackCommand = {
 
 }
 
-AddAnimalAttackCommand(AnimalAttackCommand)
+AddCommand(AnimalAttackCommand)
 

@@ -68,5 +68,5 @@ HealBattleFatigueOther2Command = {
 
 }
 
-AddHealBattleFatigueOther2Command(HealBattleFatigueOther2Command)
+AddCommand(HealBattleFatigueOther2Command)
 

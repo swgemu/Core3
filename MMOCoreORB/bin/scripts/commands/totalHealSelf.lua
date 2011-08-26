@@ -68,5 +68,5 @@ TotalHealSelfCommand = {
 
 }
 
-AddTotalHealSelfCommand(TotalHealSelfCommand)
+AddCommand(TotalHealSelfCommand)
 

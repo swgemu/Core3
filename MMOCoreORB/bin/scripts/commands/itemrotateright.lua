@@ -68,5 +68,5 @@ ItemrotaterightCommand = {
 
 }
 
-AddItemrotaterightCommand(ItemrotaterightCommand)
+AddCommand(ItemrotaterightCommand)
 

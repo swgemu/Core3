@@ -68,5 +68,5 @@ GroupSayCommand = {
 
 }
 
-AddGroupSayCommand(GroupSayCommand)
+AddCommand(GroupSayCommand)
 

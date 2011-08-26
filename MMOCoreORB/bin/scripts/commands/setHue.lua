@@ -68,5 +68,5 @@ SetHueCommand = {
 
 }
 
-AddSetHueCommand(SetHueCommand)
+AddCommand(SetHueCommand)
 

@@ -68,5 +68,5 @@ GmCreateClassResourceCommand = {
 
 }
 
-AddGmCreateClassResourceCommand(GmCreateClassResourceCommand)
+AddCommand(GmCreateClassResourceCommand)
 

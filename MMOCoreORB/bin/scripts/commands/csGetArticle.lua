@@ -68,5 +68,5 @@ CsGetArticleCommand = {
 
 }
 
-AddCsGetArticleCommand(CsGetArticleCommand)
+AddCommand(CsGetArticleCommand)
 

@@ -68,5 +68,5 @@ GroupChatCommand = {
 
 }
 
-AddGroupChatCommand(GroupChatCommand)
+AddCommand(GroupChatCommand)
 

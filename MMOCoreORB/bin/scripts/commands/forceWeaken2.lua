@@ -68,5 +68,5 @@ ForceWeaken2Command = {
 
 }
 
-AddForceWeaken2Command(ForceWeaken2Command)
+AddCommand(ForceWeaken2Command)
 

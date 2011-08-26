@@ -68,5 +68,5 @@ WatchCommand = {
 
 }
 
-AddWatchCommand(WatchCommand)
+AddCommand(WatchCommand)
 

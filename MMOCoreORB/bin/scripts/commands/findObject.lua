@@ -68,5 +68,5 @@ FindObjectCommand = {
 
 }
 
-AddFindObjectCommand(FindObjectCommand)
+AddCommand(FindObjectCommand)
 

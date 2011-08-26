@@ -68,5 +68,5 @@ EndDuelCommand = {
 
 }
 
-AddEndDuelCommand(EndDuelCommand)
+AddCommand(EndDuelCommand)
 

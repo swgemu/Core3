@@ -68,5 +68,5 @@ RestartConversionCommand = {
 
 }
 
-AddRestartConversionCommand(RestartConversionCommand)
+AddCommand(RestartConversionCommand)
 

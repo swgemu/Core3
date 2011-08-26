@@ -68,5 +68,5 @@ CreditsCommand = {
 
 }
 
-AddCreditsCommand(CreditsCommand)
+AddCommand(CreditsCommand)
 

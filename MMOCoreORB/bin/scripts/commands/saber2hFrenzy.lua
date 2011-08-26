@@ -68,5 +68,5 @@ Saber2hFrenzyCommand = {
 
 }
 
-AddSaber2hFrenzyCommand(Saber2hFrenzyCommand)
+AddCommand(Saber2hFrenzyCommand)
 

@@ -68,5 +68,5 @@ AssignDroidCommand = {
 
 }
 
-AddAssignDroidCommand(AssignDroidCommand)
+AddCommand(AssignDroidCommand)
 

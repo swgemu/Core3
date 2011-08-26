@@ -68,5 +68,5 @@ SmokebombCommand = {
 
 }
 
-AddSmokebombCommand(SmokebombCommand)
+AddCommand(SmokebombCommand)
 

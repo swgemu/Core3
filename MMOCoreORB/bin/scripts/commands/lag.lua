@@ -68,5 +68,5 @@ LagCommand = {
 
 }
 
-AddLagCommand(LagCommand)
+AddCommand(LagCommand)
 

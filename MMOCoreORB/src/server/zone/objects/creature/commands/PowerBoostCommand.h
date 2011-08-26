@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		// Replaced INVALIDPOSTURE check to return message if user is not meditating.
+		// Replaced INVALIDLOCOMOTION check to return message if user is not meditating.
 		if(!creature->isMeditating()) {
 			creature->sendSystemMessage("teraskasi", "powerboost_fail"); // You must be meditating to perform that command.
 			return GENERALERROR;

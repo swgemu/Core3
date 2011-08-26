@@ -68,5 +68,5 @@ UnsnoopCommand = {
 
 }
 
-AddUnsnoopCommand(UnsnoopCommand)
+AddCommand(UnsnoopCommand)
 

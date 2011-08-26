@@ -68,5 +68,5 @@ SitServerCommand = {
 
 }
 
-AddSitServerCommand(SitServerCommand)
+AddCommand(SitServerCommand)
 

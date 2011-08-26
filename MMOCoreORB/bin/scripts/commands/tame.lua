@@ -68,5 +68,5 @@ TameCommand = {
 
 }
 
-AddTameCommand(TameCommand)
+AddCommand(TameCommand)
 

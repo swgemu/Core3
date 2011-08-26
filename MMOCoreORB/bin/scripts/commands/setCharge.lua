@@ -68,5 +68,5 @@ SetChargeCommand = {
 
 }
 
-AddSetChargeCommand(SetChargeCommand)
+AddCommand(SetChargeCommand)
 

@@ -68,5 +68,5 @@ RegisterWithLocationCommand = {
 
 }
 
-AddRegisterWithLocationCommand(RegisterWithLocationCommand)
+AddCommand(RegisterWithLocationCommand)
 

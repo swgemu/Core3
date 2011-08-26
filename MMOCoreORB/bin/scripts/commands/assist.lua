@@ -68,5 +68,5 @@ AssistCommand = {
 
 }
 
-AddAssistCommand(AssistCommand)
+AddCommand(AssistCommand)
 

@@ -68,5 +68,5 @@ InstallMissionTerminalCommand = {
 
 }
 
-AddInstallMissionTerminalCommand(InstallMissionTerminalCommand)
+AddCommand(InstallMissionTerminalCommand)
 

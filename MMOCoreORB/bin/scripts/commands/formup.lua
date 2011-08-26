@@ -68,5 +68,5 @@ FormupCommand = {
 
 }
 
-AddFormupCommand(FormupCommand)
+AddCommand(FormupCommand)
 

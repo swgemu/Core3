@@ -68,5 +68,5 @@ CsAppendCommentCommand = {
 
 }
 
-AddCsAppendCommentCommand(CsAppendCommentCommand)
+AddCommand(CsAppendCommentCommand)
 

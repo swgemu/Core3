@@ -68,5 +68,5 @@ RequestManfSchematicSlotsCommand = {
 
 }
 
-AddRequestManfSchematicSlotsCommand(RequestManfSchematicSlotsCommand)
+AddCommand(RequestManfSchematicSlotsCommand)
 

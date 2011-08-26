@@ -68,5 +68,5 @@ HasVeteranRewardCommand = {
 
 }
 
-AddHasVeteranRewardCommand(HasVeteranRewardCommand)
+AddCommand(HasVeteranRewardCommand)
 

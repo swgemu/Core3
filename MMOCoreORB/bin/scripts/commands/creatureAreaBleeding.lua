@@ -68,5 +68,5 @@ CreatureAreaBleedingCommand = {
 
 }
 
-AddCreatureAreaBleedingCommand(CreatureAreaBleedingCommand)
+AddCommand(CreatureAreaBleedingCommand)
 

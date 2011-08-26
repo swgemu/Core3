@@ -68,5 +68,5 @@ StoplisteningCommand = {
 
 }
 
-AddStoplisteningCommand(StoplisteningCommand)
+AddCommand(StoplisteningCommand)
 

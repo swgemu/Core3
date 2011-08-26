@@ -68,5 +68,5 @@ ClearVeteranRewardCommand = {
 
 }
 
-AddClearVeteranRewardCommand(ClearVeteranRewardCommand)
+AddCommand(ClearVeteranRewardCommand)
 

@@ -68,5 +68,5 @@ SaberThrow3Command = {
 
 }
 
-AddSaberThrow3Command(SaberThrow3Command)
+AddCommand(SaberThrow3Command)
 

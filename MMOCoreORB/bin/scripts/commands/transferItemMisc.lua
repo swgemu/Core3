@@ -68,5 +68,5 @@ TransferItemMiscCommand = {
 
 }
 
-AddTransferItemMiscCommand(TransferItemMiscCommand)
+AddCommand(TransferItemMiscCommand)
 

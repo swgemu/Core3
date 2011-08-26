@@ -34,11 +34,11 @@ QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : S
 }
 
 /*
- * Sets the invalid postures for this command.
+ * Sets the invalid locomotion for this command.
  * Parses the string from LUA's. Format: "4,12,13,"
  */
-void QueueCommand::setInvalidPostures(const String& postureStr) {
-	StringTokenizer tokenizer(postureStr);
+void QueueCommand::setInvalidLocomotions(const String& lStr) {
+	StringTokenizer tokenizer(lStr);
 	tokenizer.setDelimeter(",");
 
 	String token = "";
@@ -46,17 +46,17 @@ void QueueCommand::setInvalidPostures(const String& postureStr) {
 		tokenizer.getStringToken(token);
 
 		if(!token.isEmpty())
-			invalidPostures.add(Integer::valueOf(token));
+			invalidLocomotion.add(Integer::valueOf(token));
 	}
 }
 
 
 /*
- * Checks each invalid posture with the player's current posture
+ * Checks each invalid locomotion with the player's current locomotion
  */
-bool QueueCommand::checkInvalidPostures(CreatureObject* creature) {
-	for (int i = 0; i < invalidPostures.size(); ++i) {
-		if (invalidPostures.get(i) == creature->getPosture())
+bool QueueCommand::checkInvalidLocomotions(CreatureObject* creature) {
+	for (int i = 0; i < invalidLocomotion.size(); ++i) {
+		if (invalidLocomotion.get(i) == creature->getPosture()) // TODO: incorporate locomotions instead of postures
 			return false;
 	}
 
@@ -87,12 +87,13 @@ void QueueCommand::onStateFail(CreatureObject* creature, uint32 actioncntr) {
 	error("unknown invalid state in onStateFail");
 }
 
-void QueueCommand::onPostureFail(CreatureObject* creature, uint32 actioncntr) {
+void QueueCommand::onLocomotionFail(CreatureObject* creature, uint32 actioncntr) {
 	/*
 	 * SOE is stupid so player postures do NOT match up with their respective client error message
 	 * Because of this, we have to have this switch statement to match them up manually
+	 * TODO: the client error messages are right if we use locomotions instead of postures
 	 * */
-	if (!checkInvalidPostures(creature)) {
+	if (!checkInvalidLocomotions(creature)) {
 		switch(creature->getPosture()) {
 		case(CreaturePosture::UPRIGHT):
 			creature->clearQueueAction(actioncntr, 0, 1, 0);
@@ -155,8 +156,8 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 	case INVALIDSTATE:
 		onStateFail(creature, actioncntr);
 		break;
-	case INVALIDPOSTURE:
-		onPostureFail(creature, actioncntr);
+	case INVALIDLOCOMOTION:
+		onLocomotionFail(creature, actioncntr);
 		break;
 	case INVALIDTARGET:
 		if (addToQueue)

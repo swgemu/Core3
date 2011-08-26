@@ -68,5 +68,5 @@ FireLightningCone1Command = {
 
 }
 
-AddFireLightningCone1Command(FireLightningCone1Command)
+AddCommand(FireLightningCone1Command)
 

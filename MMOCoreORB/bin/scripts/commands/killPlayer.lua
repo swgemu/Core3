@@ -68,5 +68,5 @@ KillPlayerCommand = {
 
 }
 
-AddKillPlayerCommand(KillPlayerCommand)
+AddCommand(KillPlayerCommand)
 

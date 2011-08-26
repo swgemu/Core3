@@ -68,5 +68,5 @@ CsConnectPlayerCommand = {
 
 }
 
-AddCsConnectPlayerCommand(CsConnectPlayerCommand)
+AddCommand(CsConnectPlayerCommand)
 

@@ -68,5 +68,5 @@ AuctionRetrieveCommand = {
 
 }
 
-AddAuctionRetrieveCommand(AuctionRetrieveCommand)
+AddCommand(AuctionRetrieveCommand)
 

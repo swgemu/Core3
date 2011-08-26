@@ -68,5 +68,5 @@ DismissGroupMemberCommand = {
 
 }
 
-AddDismissGroupMemberCommand(DismissGroupMemberCommand)
+AddCommand(DismissGroupMemberCommand)
 

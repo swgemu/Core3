@@ -68,5 +68,5 @@ AnimalScareCommand = {
 
 }
 
-AddAnimalScareCommand(AnimalScareCommand)
+AddCommand(AnimalScareCommand)
 

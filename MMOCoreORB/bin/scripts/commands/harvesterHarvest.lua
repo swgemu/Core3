@@ -68,5 +68,5 @@ HarvesterHarvestCommand = {
 
 }
 
-AddHarvesterHarvestCommand(HarvesterHarvestCommand)
+AddCommand(HarvesterHarvestCommand)
 

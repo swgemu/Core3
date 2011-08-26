@@ -68,5 +68,5 @@ StopCitySpawnerCommand = {
 
 }
 
-AddStopCitySpawnerCommand(StopCitySpawnerCommand)
+AddCommand(StopCitySpawnerCommand)
 

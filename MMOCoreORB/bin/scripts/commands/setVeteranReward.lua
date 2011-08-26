@@ -68,5 +68,5 @@ SetVeteranRewardCommand = {
 
 }
 
-AddSetVeteranRewardCommand(SetVeteranRewardCommand)
+AddCommand(SetVeteranRewardCommand)
 

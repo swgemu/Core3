@@ -68,5 +68,5 @@ InsertItemIntoShipComponentSlotCommand = {
 
 }
 
-AddInsertItemIntoShipComponentSlotCommand(InsertItemIntoShipComponentSlotCommand)
+AddCommand(InsertItemIntoShipComponentSlotCommand)
 

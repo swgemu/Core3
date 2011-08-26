@@ -68,5 +68,5 @@ ResourceContainerTransferCommand = {
 
 }
 
-AddResourceContainerTransferCommand(ResourceContainerTransferCommand)
+AddCommand(ResourceContainerTransferCommand)
 

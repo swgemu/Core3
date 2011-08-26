@@ -68,5 +68,5 @@ TotalHealOtherCommand = {
 
 }
 
-AddTotalHealOtherCommand(TotalHealOtherCommand)
+AddCommand(TotalHealOtherCommand)
 

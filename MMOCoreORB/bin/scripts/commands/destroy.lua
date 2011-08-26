@@ -68,5 +68,5 @@ DestroyCommand = {
 
 }
 
-AddDestroyCommand(DestroyCommand)
+AddCommand(DestroyCommand)
 

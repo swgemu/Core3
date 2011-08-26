@@ -68,5 +68,5 @@ AlertCommand = {
 
 }
 
-AddAlertCommand(AlertCommand)
+AddCommand(AlertCommand)
 

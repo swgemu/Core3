@@ -68,5 +68,5 @@ JoinCommand = {
 
 }
 
-AddJoinCommand(JoinCommand)
+AddCommand(JoinCommand)
 

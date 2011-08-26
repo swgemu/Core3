@@ -68,5 +68,5 @@ ChangeDanceCommand = {
 
 }
 
-AddChangeDanceCommand(ChangeDanceCommand)
+AddCommand(ChangeDanceCommand)
 

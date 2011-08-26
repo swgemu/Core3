@@ -68,5 +68,5 @@ AnimalCalmCommand = {
 
 }
 
-AddAnimalCalmCommand(AnimalCalmCommand)
+AddCommand(AnimalCalmCommand)
 

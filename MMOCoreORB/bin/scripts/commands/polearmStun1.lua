@@ -68,5 +68,5 @@ PolearmStun1Command = {
 
 }
 
-AddPolearmStun1Command(PolearmStun1Command)
+AddCommand(PolearmStun1Command)
 

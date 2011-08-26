@@ -68,5 +68,5 @@ InitializeComponentCommand = {
 
 }
 
-AddInitializeComponentCommand(InitializeComponentCommand)
+AddCommand(InitializeComponentCommand)
 

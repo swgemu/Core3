@@ -68,5 +68,5 @@ IntimidationAttackCommand = {
 
 }
 
-AddIntimidationAttackCommand(IntimidationAttackCommand)
+AddCommand(IntimidationAttackCommand)
 

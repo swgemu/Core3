@@ -68,5 +68,5 @@ TorsoShotCommand = {
 
 }
 
-AddTorsoShotCommand(TorsoShotCommand)
+AddCommand(TorsoShotCommand)
 

@@ -68,5 +68,5 @@ LogoutCommand = {
 
 }
 
-AddLogoutCommand(LogoutCommand)
+AddCommand(LogoutCommand)
 

@@ -68,5 +68,5 @@ GetVeteranRewardTimeCommand = {
 
 }
 
-AddGetVeteranRewardTimeCommand(GetVeteranRewardTimeCommand)
+AddCommand(GetVeteranRewardTimeCommand)
 

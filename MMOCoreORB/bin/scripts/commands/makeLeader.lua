@@ -68,5 +68,5 @@ MakeLeaderCommand = {
 
 }
 
-AddMakeLeaderCommand(MakeLeaderCommand)
+AddCommand(MakeLeaderCommand)
 

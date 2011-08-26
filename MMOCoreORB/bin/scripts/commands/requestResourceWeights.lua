@@ -68,5 +68,5 @@ RequestResourceWeightsCommand = {
 
 }
 
-AddRequestResourceWeightsCommand(RequestResourceWeightsCommand)
+AddCommand(RequestResourceWeightsCommand)
 

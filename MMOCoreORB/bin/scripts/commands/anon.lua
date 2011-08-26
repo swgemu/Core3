@@ -68,5 +68,5 @@ AnonCommand = {
 
 }
 
-AddAnonCommand(AnonCommand)
+AddCommand(AnonCommand)
 

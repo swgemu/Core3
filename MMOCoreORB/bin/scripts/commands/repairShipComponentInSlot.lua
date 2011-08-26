@@ -68,5 +68,5 @@ RepairShipComponentInSlotCommand = {
 
 }
 
-AddRepairShipComponentInSlotCommand(RepairShipComponentInSlotCommand)
+AddCommand(RepairShipComponentInSlotCommand)
 

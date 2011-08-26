@@ -68,5 +68,5 @@ ScriptCommand = {
 
 }
 
-AddScriptCommand(ScriptCommand)
+AddCommand(ScriptCommand)
 

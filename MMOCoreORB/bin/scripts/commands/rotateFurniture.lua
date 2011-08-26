@@ -68,5 +68,5 @@ RotateFurnitureCommand = {
 
 }
 
-AddRotateFurnitureCommand(RotateFurnitureCommand)
+AddCommand(RotateFurnitureCommand)
 

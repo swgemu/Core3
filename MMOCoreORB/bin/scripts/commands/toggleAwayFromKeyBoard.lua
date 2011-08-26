@@ -68,5 +68,5 @@ ToggleAwayFromKeyBoardCommand = {
 
 }
 
-AddToggleAwayFromKeyBoardCommand(ToggleAwayFromKeyBoardCommand)
+AddCommand(ToggleAwayFromKeyBoardCommand)
 

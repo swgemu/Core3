@@ -68,5 +68,5 @@ BroadcastGalaxyCommand = {
 
 }
 
-AddBroadcastGalaxyCommand(BroadcastGalaxyCommand)
+AddCommand(BroadcastGalaxyCommand)
 

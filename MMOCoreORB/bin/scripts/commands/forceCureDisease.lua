@@ -68,5 +68,5 @@ ForceCureDiseaseCommand = {
 
 }
 
-AddForceCureDiseaseCommand(ForceCureDiseaseCommand)
+AddCommand(ForceCureDiseaseCommand)
 

@@ -68,5 +68,5 @@ UnarmedLegHit1Command = {
 
 }
 
-AddUnarmedLegHit1Command(UnarmedLegHit1Command)
+AddCommand(UnarmedLegHit1Command)
 

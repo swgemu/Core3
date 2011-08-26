@@ -68,5 +68,5 @@ DragIncapacitatedPlayerCommand = {
 
 }
 
-AddDragIncapacitatedPlayerCommand(DragIncapacitatedPlayerCommand)
+AddCommand(DragIncapacitatedPlayerCommand)
 

@@ -68,5 +68,5 @@ RemoveFriendCommand = {
 
 }
 
-AddRemoveFriendCommand(RemoveFriendCommand)
+AddCommand(RemoveFriendCommand)
 

@@ -68,5 +68,5 @@ JediMindTrickCommand = {
 
 }
 
-AddJediMindTrickCommand(JediMindTrickCommand)
+AddCommand(JediMindTrickCommand)
 

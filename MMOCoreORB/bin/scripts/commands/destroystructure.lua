@@ -68,5 +68,5 @@ DestroystructureCommand = {
 
 }
 
-AddDestroystructureCommand(DestroystructureCommand)
+AddCommand(DestroystructureCommand)
 

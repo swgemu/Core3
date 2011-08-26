@@ -68,5 +68,5 @@ GuildsayCommand = {
 
 }
 
-AddGuildsayCommand(GuildsayCommand)
+AddCommand(GuildsayCommand)
 

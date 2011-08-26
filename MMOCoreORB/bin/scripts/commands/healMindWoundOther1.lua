@@ -68,5 +68,5 @@ HealMindWoundOther1Command = {
 
 }
 
-AddHealMindWoundOther1Command(HealMindWoundOther1Command)
+AddCommand(HealMindWoundOther1Command)
 

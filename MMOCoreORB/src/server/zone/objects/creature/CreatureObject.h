@@ -239,6 +239,8 @@ using namespace server::zone;
 
 #include "server/zone/objects/creature/variables/CommandQueueAction.h"
 
+#include "server/zone/objects/creature/CreatureLocomotion.h"
+
 #include "server/zone/objects/creature/CreaturePosture.h"
 
 #include "server/zone/objects/creature/CreatureState.h"
@@ -780,7 +782,11 @@ public:
 
 	bool isSnared();
 
+	bool isImmobilized();
+
 	bool isRooted();
+
+	bool isFrozen();
 
 	bool isDiseased();
 
@@ -861,6 +867,8 @@ protected:
 	DeltaVector<int> baseHAM;
 
 	byte posture;
+
+	byte locomotion;
 
 	byte factionRank;
 
@@ -1477,7 +1485,11 @@ public:
 
 	bool isSnared();
 
+	bool isImmobilized();
+
 	bool isRooted();
+
+	bool isFrozen();
 
 	bool isDiseased();
 
@@ -2002,7 +2014,11 @@ public:
 
 	bool isSnared();
 
+	bool isImmobilized();
+
 	bool isRooted();
+
+	bool isFrozen();
 
 	bool isDiseased();
 

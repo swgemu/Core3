@@ -68,5 +68,5 @@ HarvesterTakeSurveyCommand = {
 
 }
 
-AddHarvesterTakeSurveyCommand(HarvesterTakeSurveyCommand)
+AddCommand(HarvesterTakeSurveyCommand)
 

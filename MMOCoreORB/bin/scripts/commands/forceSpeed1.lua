@@ -68,5 +68,5 @@ ForceSpeed1Command = {
 
 }
 
-AddForceSpeed1Command(ForceSpeed1Command)
+AddCommand(ForceSpeed1Command)
 

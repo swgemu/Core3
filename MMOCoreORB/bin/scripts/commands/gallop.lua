@@ -68,5 +68,5 @@ GallopCommand = {
 
 }
 
-AddGallopCommand(GallopCommand)
+AddCommand(GallopCommand)
 

@@ -68,5 +68,5 @@ GuildstatusCommand = {
 
 }
 
-AddGuildstatusCommand(GuildstatusCommand)
+AddCommand(GuildstatusCommand)
 

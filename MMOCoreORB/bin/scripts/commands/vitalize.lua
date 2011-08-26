@@ -68,5 +68,5 @@ VitalizeCommand = {
 
 }
 
-AddVitalizeCommand(VitalizeCommand)
+AddCommand(VitalizeCommand)
 

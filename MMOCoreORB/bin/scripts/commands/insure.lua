@@ -68,5 +68,5 @@ InsureCommand = {
 
 }
 
-AddInsureCommand(InsureCommand)
+AddCommand(InsureCommand)
 

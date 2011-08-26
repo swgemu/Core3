@@ -68,5 +68,5 @@ GetIgnoreListCommand = {
 
 }
 
-AddGetIgnoreListCommand(GetIgnoreListCommand)
+AddCommand(GetIgnoreListCommand)
 

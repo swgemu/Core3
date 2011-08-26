@@ -68,5 +68,5 @@ HoloEmoteCommand = {
 
 }
 
-AddHoloEmoteCommand(HoloEmoteCommand)
+AddCommand(HoloEmoteCommand)
 

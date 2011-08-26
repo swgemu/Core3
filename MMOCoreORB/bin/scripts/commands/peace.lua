@@ -68,5 +68,5 @@ PeaceCommand = {
 
 }
 
-AddPeaceCommand(PeaceCommand)
+AddCommand(PeaceCommand)
 

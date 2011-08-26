@@ -68,5 +68,5 @@ HarvestCorpseCommand = {
 
 }
 
-AddHarvestCorpseCommand(HarvestCorpseCommand)
+AddCommand(HarvestCorpseCommand)
 

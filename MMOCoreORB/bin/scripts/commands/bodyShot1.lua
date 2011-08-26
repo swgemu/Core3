@@ -68,5 +68,5 @@ BodyShot1Command = {
 
 }
 
-AddBodyShot1Command(BodyShot1Command)
+AddCommand(BodyShot1Command)
 

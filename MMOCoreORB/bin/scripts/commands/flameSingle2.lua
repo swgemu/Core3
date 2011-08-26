@@ -68,5 +68,5 @@ FlameSingle2Command = {
 
 }
 
-AddFlameSingle2Command(FlameSingle2Command)
+AddCommand(FlameSingle2Command)
 

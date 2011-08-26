@@ -68,5 +68,5 @@ CreateMissionElementCommand = {
 
 }
 
-AddCreateMissionElementCommand(CreateMissionElementCommand)
+AddCommand(CreateMissionElementCommand)
 

@@ -68,5 +68,5 @@ TendWoundCommand = {
 
 }
 
-AddTendWoundCommand(TendWoundCommand)
+AddCommand(TendWoundCommand)
 

@@ -68,5 +68,5 @@ UnarmedStun1Command = {
 
 }
 
-AddUnarmedStun1Command(UnarmedStun1Command)
+AddCommand(UnarmedStun1Command)
 

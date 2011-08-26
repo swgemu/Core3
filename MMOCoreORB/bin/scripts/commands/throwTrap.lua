@@ -68,5 +68,5 @@ ThrowTrapCommand = {
 
 }
 
-AddThrowTrapCommand(ThrowTrapCommand)
+AddCommand(ThrowTrapCommand)
 

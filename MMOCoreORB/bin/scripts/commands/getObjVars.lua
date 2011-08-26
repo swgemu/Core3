@@ -68,5 +68,5 @@ GetObjVarsCommand = {
 
 }
 
-AddGetObjVarsCommand(GetObjVarsCommand)
+AddCommand(GetObjVarsCommand)
 

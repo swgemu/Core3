@@ -68,5 +68,5 @@ PistolMeleeDefense2Command = {
 
 }
 
-AddPistolMeleeDefense2Command(PistolMeleeDefense2Command)
+AddCommand(PistolMeleeDefense2Command)
 

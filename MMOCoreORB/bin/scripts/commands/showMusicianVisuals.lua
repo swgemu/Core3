@@ -68,5 +68,5 @@ ShowMusicianVisualsCommand = {
 
 }
 
-AddShowMusicianVisualsCommand(ShowMusicianVisualsCommand)
+AddCommand(ShowMusicianVisualsCommand)
 

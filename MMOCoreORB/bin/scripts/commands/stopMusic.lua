@@ -68,5 +68,5 @@ StopMusicCommand = {
 
 }
 
-AddStopMusicCommand(StopMusicCommand)
+AddCommand(StopMusicCommand)
 

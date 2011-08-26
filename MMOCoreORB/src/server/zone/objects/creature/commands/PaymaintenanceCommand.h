@@ -60,8 +60,8 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		if (creature->getCashCredits() <= 0) {
 			creature->sendSystemMessage("@player_structure:no_money"); //You do not have any money to pay maintenance.

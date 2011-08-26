@@ -68,5 +68,5 @@ UnarmedLunge1Command = {
 
 }
 
-AddUnarmedLunge1Command(UnarmedLunge1Command)
+AddCommand(UnarmedLunge1Command)
 

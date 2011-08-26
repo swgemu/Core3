@@ -68,5 +68,5 @@ SynchronizedUiStopListeningCommand = {
 
 }
 
-AddSynchronizedUiStopListeningCommand(SynchronizedUiStopListeningCommand)
+AddCommand(SynchronizedUiStopListeningCommand)
 

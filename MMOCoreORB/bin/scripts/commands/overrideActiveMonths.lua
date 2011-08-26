@@ -68,5 +68,5 @@ OverrideActiveMonthsCommand = {
 
 }
 
-AddOverrideActiveMonthsCommand(OverrideActiveMonthsCommand)
+AddCommand(OverrideActiveMonthsCommand)
 

@@ -68,5 +68,5 @@ ForceProtectionCommand = {
 
 }
 
-AddForceProtectionCommand(ForceProtectionCommand)
+AddCommand(ForceProtectionCommand)
 

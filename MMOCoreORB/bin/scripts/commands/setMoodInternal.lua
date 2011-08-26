@@ -68,5 +68,5 @@ SetMoodInternalCommand = {
 
 }
 
-AddSetMoodInternalCommand(SetMoodInternalCommand)
+AddCommand(SetMoodInternalCommand)
 

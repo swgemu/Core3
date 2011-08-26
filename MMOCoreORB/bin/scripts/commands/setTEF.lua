@@ -68,5 +68,5 @@ SetTEFCommand = {
 
 }
 
-AddSetTEFCommand(SetTEFCommand)
+AddCommand(SetTEFCommand)
 

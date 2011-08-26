@@ -68,5 +68,5 @@ RemoveAllowedPlayerCommand = {
 
 }
 
-AddRemoveAllowedPlayerCommand(RemoveAllowedPlayerCommand)
+AddCommand(RemoveAllowedPlayerCommand)
 

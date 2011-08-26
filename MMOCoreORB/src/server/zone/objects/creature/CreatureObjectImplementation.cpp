@@ -571,10 +571,10 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 		case CreatureState::INTIMIDATED:
 			showFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
 			break;
-		case CreatureState::SNARED:
+		case CreatureState::IMMOBILIZED:
 			showFlyText("combat_effects", "no_snare", 0xFF, 0, 0);
 			break;
-		case CreatureState::ROOTED:
+		case CreatureState::FROZEN:
 			showFlyText("combat_effects", "no_rooted", 0xFF, 0, 0);
 			break;
 		case CreatureState::RALLIED:
@@ -1529,7 +1529,7 @@ void CreatureObjectImplementation::setIntimidatedState(int durationSeconds) {
 }
 
 void CreatureObjectImplementation::setSnaredState(int durationSeconds) {
-	if (setState(CreatureState::SNARED)) {
+	if (setState(CreatureState::IMMOBILIZED)) {
 		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_snare", 0, 0xFF, 0);
 
@@ -1538,7 +1538,7 @@ void CreatureObjectImplementation::setSnaredState(int durationSeconds) {
 }
 
 void CreatureObjectImplementation::setRootedState(int durationSeconds) {
-	if (setState(CreatureState::ROOTED)) {
+	if (setState(CreatureState::FROZEN)) {
 		//playEffect("clienteffect/combat_special_defender_intimidate.cef");
 		showFlyText("combat_effects", "go_rooted", 0, 0xFF, 0);
 

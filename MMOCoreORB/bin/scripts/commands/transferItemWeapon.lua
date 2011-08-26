@@ -68,5 +68,5 @@ TransferItemWeaponCommand = {
 
 }
 
-AddTransferItemWeaponCommand(TransferItemWeaponCommand)
+AddCommand(TransferItemWeaponCommand)
 

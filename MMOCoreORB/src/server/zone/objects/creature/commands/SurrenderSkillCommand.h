@@ -62,8 +62,8 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		ProfessionManager* prof = server->getZoneServer()->getProfessionManager();
 		prof->surrenderSkillBox(arguments.toString(), (CreatureObject*)creature, false, true);

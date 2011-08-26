@@ -68,5 +68,5 @@ GuildremoveCommand = {
 
 }
 
-AddGuildremoveCommand(GuildremoveCommand)
+AddCommand(GuildremoveCommand)
 

@@ -68,5 +68,5 @@ TipCommand = {
 
 }
 
-AddTipCommand(TipCommand)
+AddCommand(TipCommand)
 

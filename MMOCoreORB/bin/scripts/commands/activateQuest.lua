@@ -68,5 +68,5 @@ ActivateQuestCommand = {
 
 }
 
-AddActivateQuestCommand(ActivateQuestCommand)
+AddCommand(ActivateQuestCommand)
 

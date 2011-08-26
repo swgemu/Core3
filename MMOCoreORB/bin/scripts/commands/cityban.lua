@@ -68,5 +68,5 @@ CitybanCommand = {
 
 }
 
-AddCitybanCommand(CitybanCommand)
+AddCommand(CitybanCommand)
 

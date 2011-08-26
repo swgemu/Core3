@@ -68,5 +68,5 @@ ListGuildsCommand = {
 
 }
 
-AddListGuildsCommand(ListGuildsCommand)
+AddCommand(ListGuildsCommand)
 

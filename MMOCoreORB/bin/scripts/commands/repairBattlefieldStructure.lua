@@ -68,5 +68,5 @@ RepairBattlefieldStructureCommand = {
 
 }
 
-AddRepairBattlefieldStructureCommand(RepairBattlefieldStructureCommand)
+AddCommand(RepairBattlefieldStructureCommand)
 

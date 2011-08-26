@@ -68,5 +68,5 @@ PolearmLunge2Command = {
 
 }
 
-AddPolearmLunge2Command(PolearmLunge2Command)
+AddCommand(PolearmLunge2Command)
 

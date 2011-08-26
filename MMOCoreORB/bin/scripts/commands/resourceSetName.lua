@@ -68,5 +68,5 @@ ResourceSetNameCommand = {
 
 }
 
-AddResourceSetNameCommand(ResourceSetNameCommand)
+AddCommand(ResourceSetNameCommand)
 

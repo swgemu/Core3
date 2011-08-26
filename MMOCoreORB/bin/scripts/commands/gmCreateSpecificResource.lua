@@ -68,5 +68,5 @@ GmCreateSpecificResourceCommand = {
 
 }
 
-AddGmCreateSpecificResourceCommand(GmCreateSpecificResourceCommand)
+AddCommand(GmCreateSpecificResourceCommand)
 

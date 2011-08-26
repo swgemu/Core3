@@ -68,5 +68,5 @@ ForceAbsorb1Command = {
 
 }
 
-AddForceAbsorb1Command(ForceAbsorb1Command)
+AddCommand(ForceAbsorb1Command)
 

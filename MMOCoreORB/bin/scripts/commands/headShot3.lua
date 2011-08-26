@@ -68,5 +68,5 @@ HeadShot3Command = {
 
 }
 
-AddHeadShot3Command(HeadShot3Command)
+AddCommand(HeadShot3Command)
 

@@ -68,5 +68,5 @@ OverChargeShot1Command = {
 
 }
 
-AddOverChargeShot1Command(OverChargeShot1Command)
+AddCommand(OverChargeShot1Command)
 

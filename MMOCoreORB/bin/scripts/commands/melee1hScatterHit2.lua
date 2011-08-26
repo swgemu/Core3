@@ -68,5 +68,5 @@ Melee1hScatterHit2Command = {
 
 }
 
-AddMelee1hScatterHit2Command(Melee1hScatterHit2Command)
+AddCommand(Melee1hScatterHit2Command)
 

@@ -68,5 +68,5 @@ SniperShotCommand = {
 
 }
 
-AddSniperShotCommand(SniperShotCommand)
+AddCommand(SniperShotCommand)
 

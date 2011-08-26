@@ -68,5 +68,5 @@ DrainForceCommand = {
 
 }
 
-AddDrainForceCommand(DrainForceCommand)
+AddCommand(DrainForceCommand)
 

@@ -148,7 +148,7 @@ class CurePack extends PharmaceuticalObject {
 		super.fillAttributeList(msg, object);
 		
 		string eff = "@obj_attr_n:dot_type_"; 
-		msg.insertAttribute("examine_dot_cure", eff + CreatureState.getSpecialName(state));
+		msg.insertAttribute("examine_dot_cure", eff + CreatureState.instance().getSpecialName(state));
 
 		msg.insertAttribute("examine_dot_cure_power", effectiveness);
 		

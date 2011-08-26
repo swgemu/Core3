@@ -68,5 +68,5 @@ SetFormupCommand = {
 
 }
 
-AddSetFormupCommand(SetFormupCommand)
+AddCommand(SetFormupCommand)
 

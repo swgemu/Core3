@@ -68,5 +68,5 @@ DumpZoneInformationCommand = {
 
 }
 
-AddDumpZoneInformationCommand(DumpZoneInformationCommand)
+AddCommand(DumpZoneInformationCommand)
 

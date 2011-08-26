@@ -68,5 +68,5 @@ HarvesterDiscardHopperCommand = {
 
 }
 
-AddHarvesterDiscardHopperCommand(HarvesterDiscardHopperCommand)
+AddCommand(HarvesterDiscardHopperCommand)
 

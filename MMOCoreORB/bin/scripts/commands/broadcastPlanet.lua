@@ -68,5 +68,5 @@ BroadcastPlanetCommand = {
 
 }
 
-AddBroadcastPlanetCommand(BroadcastPlanetCommand)
+AddCommand(BroadcastPlanetCommand)
 

@@ -68,5 +68,5 @@ ApplyPowerupCommand = {
 
 }
 
-AddApplyPowerupCommand(ApplyPowerupCommand)
+AddCommand(ApplyPowerupCommand)
 

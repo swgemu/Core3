@@ -68,5 +68,5 @@ FlameCone1Command = {
 
 }
 
-AddFlameCone1Command(FlameCone1Command)
+AddCommand(FlameCone1Command)
 

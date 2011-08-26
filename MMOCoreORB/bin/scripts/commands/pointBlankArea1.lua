@@ -68,5 +68,5 @@ PointBlankArea1Command = {
 
 }
 
-AddPointBlankArea1Command(PointBlankArea1Command)
+AddCommand(PointBlankArea1Command)
 

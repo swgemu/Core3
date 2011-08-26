@@ -68,5 +68,5 @@ TellpetCommand = {
 
 }
 
-AddTellpetCommand(TellpetCommand)
+AddCommand(TellpetCommand)
 

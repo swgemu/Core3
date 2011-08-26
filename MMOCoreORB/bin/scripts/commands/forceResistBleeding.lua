@@ -68,5 +68,5 @@ ForceResistBleedingCommand = {
 
 }
 
-AddForceResistBleedingCommand(ForceResistBleedingCommand)
+AddCommand(ForceResistBleedingCommand)
 

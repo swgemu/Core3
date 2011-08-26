@@ -68,5 +68,5 @@ LastDitchCommand = {
 
 }
 
-AddLastDitchCommand(LastDitchCommand)
+AddCommand(LastDitchCommand)
 

@@ -68,5 +68,5 @@ ImagedesignCommand = {
 
 }
 
-AddImagedesignCommand(ImagedesignCommand)
+AddCommand(ImagedesignCommand)
 

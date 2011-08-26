@@ -68,5 +68,5 @@ SurveyCommand = {
 
 }
 
-AddSurveyCommand(SurveyCommand)
+AddCommand(SurveyCommand)
 

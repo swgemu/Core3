@@ -68,5 +68,5 @@ Melee2hMindHit2Command = {
 
 }
 
-AddMelee2hMindHit2Command(Melee2hMindHit2Command)
+AddCommand(Melee2hMindHit2Command)
 

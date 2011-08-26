@@ -68,5 +68,5 @@ SaberPolearmHit2Command = {
 
 }
 
-AddSaberPolearmHit2Command(SaberPolearmHit2Command)
+AddCommand(SaberPolearmHit2Command)
 

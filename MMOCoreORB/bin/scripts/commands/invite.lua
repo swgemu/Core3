@@ -68,5 +68,5 @@ InviteCommand = {
 
 }
 
-AddInviteCommand(InviteCommand)
+AddCommand(InviteCommand)
 

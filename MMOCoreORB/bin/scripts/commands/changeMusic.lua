@@ -68,5 +68,5 @@ ChangeMusicCommand = {
 
 }
 
-AddChangeMusicCommand(ChangeMusicCommand)
+AddCommand(ChangeMusicCommand)
 

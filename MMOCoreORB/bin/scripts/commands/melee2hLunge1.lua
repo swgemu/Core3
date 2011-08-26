@@ -68,5 +68,5 @@ Melee2hLunge1Command = {
 
 }
 
-AddMelee2hLunge1Command(Melee2hLunge1Command)
+AddCommand(Melee2hLunge1Command)
 

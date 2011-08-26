@@ -68,5 +68,5 @@ CsGetCommentsCommand = {
 
 }
 
-AddCsGetCommentsCommand(CsGetCommentsCommand)
+AddCommand(CsGetCommentsCommand)
 

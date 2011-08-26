@@ -68,5 +68,5 @@ DumpTargetInformationCommand = {
 
 }
 
-AddDumpTargetInformationCommand(DumpTargetInformationCommand)
+AddCommand(DumpTargetInformationCommand)
 

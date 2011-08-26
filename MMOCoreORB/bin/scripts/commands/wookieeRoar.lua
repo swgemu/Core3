@@ -68,5 +68,5 @@ WookieeRoarCommand = {
 
 }
 
-AddWookieeRoarCommand(WookieeRoarCommand)
+AddCommand(WookieeRoarCommand)
 

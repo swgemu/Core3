@@ -68,5 +68,5 @@ CombatModeCheckCommand = {
 
 }
 
-AddCombatModeCheckCommand(CombatModeCheckCommand)
+AddCommand(CombatModeCheckCommand)
 

@@ -68,5 +68,5 @@ DisbandCommand = {
 
 }
 
-AddDisbandCommand(DisbandCommand)
+AddCommand(DisbandCommand)
 

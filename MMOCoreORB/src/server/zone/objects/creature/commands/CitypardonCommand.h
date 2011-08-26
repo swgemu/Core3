@@ -63,8 +63,8 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
 

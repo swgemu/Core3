@@ -68,5 +68,5 @@ EditBankCommand = {
 
 }
 
-AddEditBankCommand(EditBankCommand)
+AddCommand(EditBankCommand)
 

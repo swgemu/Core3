@@ -68,5 +68,5 @@ GmJediStateCommand = {
 
 }
 
-AddGmJediStateCommand(GmJediStateCommand)
+AddCommand(GmJediStateCommand)
 

@@ -68,5 +68,5 @@ TauntCommand = {
 
 }
 
-AddTauntCommand(TauntCommand)
+AddCommand(TauntCommand)
 

@@ -68,5 +68,5 @@ AddMapLocationCommand = {
 
 }
 
-AddAddMapLocationCommand(AddMapLocationCommand)
+AddCommand(AddMapLocationCommand)
 

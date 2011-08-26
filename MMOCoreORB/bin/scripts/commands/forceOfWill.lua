@@ -68,5 +68,5 @@ ForceOfWillCommand = {
 
 }
 
-AddForceOfWillCommand(ForceOfWillCommand)
+AddCommand(ForceOfWillCommand)
 

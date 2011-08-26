@@ -68,5 +68,5 @@ GetAttributesCommand = {
 
 }
 
-AddGetAttributesCommand(GetAttributesCommand)
+AddCommand(GetAttributesCommand)
 

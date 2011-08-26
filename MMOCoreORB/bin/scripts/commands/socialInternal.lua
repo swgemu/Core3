@@ -68,5 +68,5 @@ SocialInternalCommand = {
 
 }
 
-AddSocialInternalCommand(SocialInternalCommand)
+AddCommand(SocialInternalCommand)
 

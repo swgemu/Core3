@@ -68,5 +68,5 @@ SpatialChatInternalCommand = {
 
 }
 
-AddSpatialChatInternalCommand(SpatialChatInternalCommand)
+AddCommand(SpatialChatInternalCommand)
 

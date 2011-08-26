@@ -68,5 +68,5 @@ StartleShot2Command = {
 
 }
 
-AddStartleShot2Command(StartleShot2Command)
+AddCommand(StartleShot2Command)
 

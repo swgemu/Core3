@@ -68,5 +68,5 @@ DiveShotCommand = {
 
 }
 
-AddDiveShotCommand(DiveShotCommand)
+AddCommand(DiveShotCommand)
 

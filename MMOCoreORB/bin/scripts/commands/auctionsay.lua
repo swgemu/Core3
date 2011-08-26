@@ -68,5 +68,5 @@ AuctionsayCommand = {
 
 }
 
-AddAuctionsayCommand(AuctionsayCommand)
+AddCommand(AuctionsayCommand)
 

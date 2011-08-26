@@ -68,5 +68,5 @@ CreatePrototypeCommand = {
 
 }
 
-AddCreatePrototypeCommand(CreatePrototypeCommand)
+AddCommand(CreatePrototypeCommand)
 

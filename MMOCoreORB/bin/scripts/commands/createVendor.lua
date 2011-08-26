@@ -68,5 +68,5 @@ CreateVendorCommand = {
 
 }
 
-AddCreateVendorCommand(CreateVendorCommand)
+AddCommand(CreateVendorCommand)
 

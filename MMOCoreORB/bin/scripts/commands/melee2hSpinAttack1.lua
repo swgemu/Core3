@@ -68,5 +68,5 @@ Melee2hSpinAttack1Command = {
 
 }
 
-AddMelee2hSpinAttack1Command(Melee2hSpinAttack1Command)
+AddCommand(Melee2hSpinAttack1Command)
 

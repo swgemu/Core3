@@ -68,5 +68,5 @@ LegShot3Command = {
 
 }
 
-AddLegShot3Command(LegShot3Command)
+AddCommand(LegShot3Command)
 

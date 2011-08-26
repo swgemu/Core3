@@ -68,5 +68,5 @@ StopBleedingCommand = {
 
 }
 
-AddStopBleedingCommand(StopBleedingCommand)
+AddCommand(StopBleedingCommand)
 

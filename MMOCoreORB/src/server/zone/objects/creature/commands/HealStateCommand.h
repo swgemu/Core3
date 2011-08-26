@@ -106,7 +106,7 @@ public:
 		CreatureObject* playerTarget = (CreatureObject*) creatureTarget;
 		StringBuffer msgPlayer, msgTarget;
 
-		String stateName = CreatureState::getName(state, true);
+		String stateName = CreatureState::instance()->getName(state, true);
 
 		if (player == playerTarget) {
 			msgTarget << "You remove the " << stateName << " state from yourself.";
@@ -227,7 +227,7 @@ public:
 
 			tokenizer.getStringToken(stateName);
 
-			state = CreatureState::getState(stateName);
+			state = CreatureState::instance()->getState(stateName);
 
 			if (tokenizer.hasMoreTokens())
 				objectId = tokenizer.getLongToken();
@@ -242,8 +242,8 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 

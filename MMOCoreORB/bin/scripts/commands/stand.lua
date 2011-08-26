@@ -68,5 +68,5 @@ StandCommand = {
 
 }
 
-AddStandCommand(StandCommand)
+AddCommand(StandCommand)
 

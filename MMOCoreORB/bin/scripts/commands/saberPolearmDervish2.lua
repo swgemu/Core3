@@ -68,5 +68,5 @@ SaberPolearmDervish2Command = {
 
 }
 
-AddSaberPolearmDervish2Command(SaberPolearmDervish2Command)
+AddCommand(SaberPolearmDervish2Command)
 

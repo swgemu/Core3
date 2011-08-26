@@ -68,5 +68,5 @@ StopwatchingCommand = {
 
 }
 
-AddStopwatchingCommand(StopwatchingCommand)
+AddCommand(StopwatchingCommand)
 

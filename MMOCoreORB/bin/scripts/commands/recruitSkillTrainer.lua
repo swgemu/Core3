@@ -68,5 +68,5 @@ RecruitSkillTrainerCommand = {
 
 }
 
-AddRecruitSkillTrainerCommand(RecruitSkillTrainerCommand)
+AddCommand(RecruitSkillTrainerCommand)
 

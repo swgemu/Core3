@@ -68,5 +68,5 @@ KickCommand = {
 
 }
 
-AddKickCommand(KickCommand)
+AddCommand(KickCommand)
 

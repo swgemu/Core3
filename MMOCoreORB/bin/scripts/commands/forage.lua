@@ -68,5 +68,5 @@ ForageCommand = {
 
 }
 
-AddForageCommand(ForageCommand)
+AddCommand(ForageCommand)
 

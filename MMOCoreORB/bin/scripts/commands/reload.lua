@@ -68,5 +68,5 @@ ReloadCommand = {
 
 }
 
-AddReloadCommand(ReloadCommand)
+AddCommand(ReloadCommand)
 

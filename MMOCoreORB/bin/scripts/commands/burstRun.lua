@@ -68,5 +68,5 @@ BurstRunCommand = {
 
 }
 
-AddBurstRunCommand(BurstRunCommand)
+AddCommand(BurstRunCommand)
 

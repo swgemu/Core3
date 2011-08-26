@@ -46,9 +46,14 @@ which carries forward this exception.
 #define CREATURESTATE_H_
 
 #include "engine/engine.h"
+#include "server/zone/templates/datatables/DataTableIff.h"
+#include "server/zone/templates/datatables/DataTableRow.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
-class CreatureState {
+class CreatureState : public Singleton<CreatureState>, public Logger {
 public:
+	HashTable<String, uint64> states;
+
 	static const uint64 INVALID = 0x00;
 	static const uint64 COVER = 0x01;
 	static const uint64 COMBAT = 0x02;
@@ -66,8 +71,8 @@ public:
 	static const uint64 BLINDED = 0x2000;
 	static const uint64 DIZZY = 0x4000;
 	static const uint64 INTIMIDATED = 0x8000;
-	static const uint64 SNARED = 0x10000;
-	static const uint64 ROOTED = 0x20000;
+	static const uint64 IMMOBILIZED = 0x10000;
+	static const uint64 FROZEN = 0x20000;
 	static const uint64 SWIMMING = 0x40000;
 	static const uint64 SITTINGONCHAIR = 0x80000;
 	static const uint64 CRAFTING = 0x100000;
@@ -79,84 +84,48 @@ public:
 	static const uint64 ONFIRE = 0x4000000;
 	static const uint64 RIDINGMOUNT = 0x8000000;
 	static const uint64 MOUNTEDCREATURE = 0x10000000;
-	static const uint64 PILOTSHIP = 0x20000000;
+	static const uint64 PILOTINGSHIP = 0x20000000;
 	static const uint64 SHIPOPERATIONS = 0x40000000;
 	static const uint64 SHIPGUNNER = 0x80000000;
-	//static const uint64 SHIPINTERIOR = 0x100000000;
-	//static const uint64 PILOTINGPOBSHIP = 0x200000000;
+	static const uint64 SHIPINTERIOR = 0x100000000;
+	static const uint64 PILOTINGPOBSHIP = 0x200000000;
 
-	static uint64 getState(String state) {
-		state = state.toLowerCase();
+	void loadStateData() {
+		IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/include/state.iff");
 
-		if (state == "cover")
-			return COVER;
-		else if (state == "combat")
-			return COMBAT;
-		else if (state == "peace")
-			return PEACE;
-		else if (state == "aiming")
-			return AIMING;
-		else if (state == "alert")
-			return ALERT;
-		else if (state == "berserk")
-			return BERSERK;
-		else if (state == "feigndeath")
-			return FEIGNDEATH;
-		else if (state == "combatattitudeevasive")
-			return COMBATATTITUDEEVASIVE;
-		else if (state == "combatattitudenormal")
-			return COMBATATTITUDENORMAL;
-		else if (state == "combatattitudeaggressive")
-			return COMBATATTITUDEAGGRESSIVE;
-		else if (state == "tumbling")
-			return TUMBLING;
-		else if (state == "rallied")
-			return RALLIED;
-		else if (state == "stunned" || state == "stun")
-			return STUNNED;
-		else if (state == "blinded" || state == "blind")
-			return BLINDED;
-		else if (state == "dizzy")
-			return DIZZY;
-		else if (state == "intimidated" || state == "intimidation")
-			return INTIMIDATED;
-		else if (state == "snared" || state == "snare")
-			return SNARED;
-		else if (state == "rooted" || state == "root")
-			return ROOTED;
-		else if (state == "swimming")
-			return SWIMMING;
-		else if (state == "sittingonchair")
-			return SITTINGONCHAIR;
-		else if (state == "crafting")
-			return CRAFTING;
-		else if (state == "glowingjedi")
-			return GLOWINGJEDI;
-		else if (state == "maskscent")
-			return MASKSCENT;
-		else if (state == "poisoned" || state == "poison")
-			return POISONED;
-		else if (state == "bleeding" || state == "bleed")
-			return BLEEDING;
-		else if (state == "diseased" || state == "disease")
-			return DISEASED;
-		else if (state == "onfire")
-			return ONFIRE;
-		else if (state == "ridingmount")
-			return RIDINGMOUNT;
-		else if (state == "mountedcreature")
-			return MOUNTEDCREATURE;
-		else if (state == "pilotship")
-			return PILOTSHIP;
-		else if (state == "shipoperations")
-			return SHIPOPERATIONS;
-		else if (state == "shipgunner")
-			return SHIPGUNNER;
-		else
-			return INVALID;
+		if (iffStream == NULL) {
+			error("Could not load states.");
+			return;
+		}
+
+		DataTableIff dtiff;
+		dtiff.readObject(iffStream);
+
+		delete iffStream;
+
+		states.removeAll();
+
+		for (int i = 0; i < dtiff.getTotalRows(); i++) {
+			DataTableRow* row = dtiff.getRow(i);
+			String name;
+			int value;
+
+			row->getValue(0, name);
+			row->getValue(1, value);
+
+			if (value >= 0)
+				states.put(name.toLowerCase(), 1 << value);
+			else
+				states.put(name.toLowerCase(), 0x00);
+		}
 	}
 
-	static String getSpecialName(const uint64 state, bool initialCap = false) {
+	uint64 getState(String state) {
+		state = state.toLowerCase();
+		return states.get(state);
+	}
+
+	String getSpecialName(const uint64 state, bool initialCap = false) {
 		//This method is used for String building to match up with the tre's
 		String name = "";
 
@@ -178,110 +147,19 @@ public:
 		return name;
 	}
 
-	static String getName(const uint64 state, bool initialCap = false) {
-		String name = "";
+	String getName(const uint64 state, bool initialCap = false) {
+		String name = "invalid";
 
-		switch (state) {
-		case COVER:
-			name = "cover";
-			break;
-		case COMBAT:
-			name = "combat";
-			break;
-		case PEACE:
-			name = "peace";
-			break;
-		case AIMING:
-			name = "aiming";
-			break;
-		case ALERT:
-			name = "alert";
-			break;
-		case BERSERK:
-			name = "berserk";
-			break;
-		case FEIGNDEATH:
-			name = "feigndeath";
-			break;
-		case COMBATATTITUDEEVASIVE:
-			name = "combatattitudeevasive";
-			break;
-		case COMBATATTITUDENORMAL:
-			name = "combatattitudenormal";
-			break;
-		case COMBATATTITUDEAGGRESSIVE:
-			name = "combatattitudeaggressive";
-			break;
-		case TUMBLING:
-			name = "tumbling";
-			break;
-		case RALLIED:
-			name = "rallied";
-			break;
-		case STUNNED:
-			name = "stunned";
-			break;
-		case BLINDED:
-			name = "blinded";
-			break;
-		case DIZZY:
-			name = "dizzy";
-			break;
-		case INTIMIDATED:
-			name = "intimidated";
-			break;
-		case SNARED:
-			name = "snared";
-			break;
-		case ROOTED:
-			name = "rooted";
-			break;
-		case SWIMMING:
-			name = "swimming";
-			break;
-		case SITTINGONCHAIR:
-			name = "sittingonchair";
-			break;
-		case CRAFTING:
-			name = "crafting";
-			break;
-		case GLOWINGJEDI:
-			name = "glowingjedi";
-			break;
-		case MASKSCENT:
-			name = "maskscent";
-			break;
-		case POISONED:
-			name = "poisoned";
-			break;
-		case BLEEDING:
-			name = "bleeding";
-			break;
-		case DISEASED:
-			name = "diseased";
-			break;
-		case ONFIRE:
-			name = "onfire";
-			break;
-		case RIDINGMOUNT:
-			name = "ridingmount";
-			break;
-		case MOUNTEDCREATURE:
-			name = "mountedcreature";
-			break;
-		case PILOTSHIP:
-			name = "pilotship";
-			break;
-		case SHIPOPERATIONS:
-			name = "shipoperations";
-			break;
-		case SHIPGUNNER:
-			name = "shipgunner";
-			break;
-		case INVALID:
-		default:
-			name = "invalid";
-			break;
+		HashTableIterator<String, uint64> iter(&states);
+		iter.resetIterator();
+
+		while (iter.hasNext()) {
+			uint64 testState;
+
+			iter.getNextKeyAndValue(name, testState);
+
+			if (testState == state)
+				break;
 		}
 
 		if (initialCap)

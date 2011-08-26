@@ -68,5 +68,5 @@ DizzyAttackCommand = {
 
 }
 
-AddDizzyAttackCommand(DizzyAttackCommand)
+AddCommand(DizzyAttackCommand)
 

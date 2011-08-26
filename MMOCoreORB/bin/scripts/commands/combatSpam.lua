@@ -68,5 +68,5 @@ CombatSpamCommand = {
 
 }
 
-AddCombatSpamCommand(CombatSpamCommand)
+AddCommand(CombatSpamCommand)
 

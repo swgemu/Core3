@@ -68,5 +68,5 @@ CreatureAreaPoisonCommand = {
 
 }
 
-AddCreatureAreaPoisonCommand(CreatureAreaPoisonCommand)
+AddCommand(CreatureAreaPoisonCommand)
 

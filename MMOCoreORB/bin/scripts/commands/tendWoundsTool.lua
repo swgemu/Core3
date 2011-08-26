@@ -68,5 +68,5 @@ TendWoundsToolCommand = {
 
 }
 
-AddTendWoundsToolCommand(TendWoundsToolCommand)
+AddCommand(TendWoundsToolCommand)
 

@@ -68,5 +68,5 @@ VolleyFireAttackCommand = {
 
 }
 
-AddVolleyFireAttackCommand(VolleyFireAttackCommand)
+AddCommand(VolleyFireAttackCommand)
 

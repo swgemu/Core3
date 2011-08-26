@@ -68,5 +68,5 @@ RallyCommand = {
 
 }
 
-AddRallyCommand(RallyCommand)
+AddCommand(RallyCommand)
 

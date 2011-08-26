@@ -68,5 +68,5 @@ GsayCommand = {
 
 }
 
-AddGsayCommand(GsayCommand)
+AddCommand(GsayCommand)
 

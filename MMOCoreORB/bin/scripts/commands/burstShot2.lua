@@ -68,5 +68,5 @@ BurstShot2Command = {
 
 }
 
-AddBurstShot2Command(BurstShot2Command)
+AddCommand(BurstShot2Command)
 

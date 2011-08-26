@@ -68,5 +68,5 @@ HealPetCommand = {
 
 }
 
-AddHealPetCommand(HealPetCommand)
+AddCommand(HealPetCommand)
 

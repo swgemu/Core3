@@ -60,8 +60,8 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		//requestcharactermatch 4 characterFlagBitmask 0 0 0 factionCRC raceID skill_box firstname
 

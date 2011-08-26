@@ -68,5 +68,5 @@ BetCommand = {
 
 }
 
-AddBetCommand(BetCommand)
+AddCommand(BetCommand)
 

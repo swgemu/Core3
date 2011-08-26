@@ -68,5 +68,5 @@ StopSpawnerCommand = {
 
 }
 
-AddStopSpawnerCommand(StopSpawnerCommand)
+AddCommand(StopSpawnerCommand)
 

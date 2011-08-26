@@ -68,5 +68,5 @@ SetPerformanceBuffTargetCommand = {
 
 }
 
-AddSetPerformanceBuffTargetCommand(SetPerformanceBuffTargetCommand)
+AddCommand(SetPerformanceBuffTargetCommand)
 

@@ -68,5 +68,5 @@ PanicShotCommand = {
 
 }
 
-AddPanicShotCommand(PanicShotCommand)
+AddCommand(PanicShotCommand)
 

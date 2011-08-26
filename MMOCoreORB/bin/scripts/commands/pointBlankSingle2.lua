@@ -68,5 +68,5 @@ PointBlankSingle2Command = {
 
 }
 
-AddPointBlankSingle2Command(PointBlankSingle2Command)
+AddCommand(PointBlankSingle2Command)
 

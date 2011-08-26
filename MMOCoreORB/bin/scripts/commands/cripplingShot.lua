@@ -68,5 +68,5 @@ CripplingShotCommand = {
 
 }
 
-AddCripplingShotCommand(CripplingShotCommand)
+AddCommand(CripplingShotCommand)
 

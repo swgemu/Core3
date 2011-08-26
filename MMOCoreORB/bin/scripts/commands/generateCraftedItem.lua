@@ -68,5 +68,5 @@ GenerateCraftedItemCommand = {
 
 }
 
-AddGenerateCraftedItemCommand(GenerateCraftedItemCommand)
+AddCommand(GenerateCraftedItemCommand)
 

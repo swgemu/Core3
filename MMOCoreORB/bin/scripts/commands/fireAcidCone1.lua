@@ -68,5 +68,5 @@ FireAcidCone1Command = {
 
 }
 
-AddFireAcidCone1Command(FireAcidCone1Command)
+AddCommand(FireAcidCone1Command)
 

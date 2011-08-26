@@ -68,5 +68,5 @@ Melee2hSweep1Command = {
 
 }
 
-AddMelee2hSweep1Command(Melee2hSweep1Command)
+AddCommand(Melee2hSweep1Command)
 

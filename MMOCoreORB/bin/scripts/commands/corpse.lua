@@ -68,5 +68,5 @@ CorpseCommand = {
 
 }
 
-AddCorpseCommand(CorpseCommand)
+AddCommand(CorpseCommand)
 

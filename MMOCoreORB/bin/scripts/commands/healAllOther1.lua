@@ -68,5 +68,5 @@ HealAllOther1Command = {
 
 }
 
-AddHealAllOther1Command(HealAllOther1Command)
+AddCommand(HealAllOther1Command)
 

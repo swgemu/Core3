@@ -68,5 +68,5 @@ AdjustLotCountCommand = {
 
 }
 
-AddAdjustLotCountCommand(AdjustLotCountCommand)
+AddCommand(AdjustLotCountCommand)
 

@@ -68,5 +68,5 @@ GivevendormaintCommand = {
 
 }
 
-AddGivevendormaintCommand(GivevendormaintCommand)
+AddCommand(GivevendormaintCommand)
 

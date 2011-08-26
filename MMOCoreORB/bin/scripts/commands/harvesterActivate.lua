@@ -68,5 +68,5 @@ HarvesterActivateCommand = {
 
 }
 
-AddHarvesterActivateCommand(HarvesterActivateCommand)
+AddCommand(HarvesterActivateCommand)
 

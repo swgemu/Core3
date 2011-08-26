@@ -68,5 +68,5 @@ FireLightningSingle2Command = {
 
 }
 
-AddFireLightningSingle2Command(FireLightningSingle2Command)
+AddCommand(FireLightningSingle2Command)
 

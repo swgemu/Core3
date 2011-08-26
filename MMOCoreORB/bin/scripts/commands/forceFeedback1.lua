@@ -68,5 +68,5 @@ ForceFeedback1Command = {
 
 }
 
-AddForceFeedback1Command(ForceFeedback1Command)
+AddCommand(ForceFeedback1Command)
 

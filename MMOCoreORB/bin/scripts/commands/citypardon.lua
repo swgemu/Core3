@@ -68,5 +68,5 @@ CitypardonCommand = {
 
 }
 
-AddCitypardonCommand(CitypardonCommand)
+AddCommand(CitypardonCommand)
 

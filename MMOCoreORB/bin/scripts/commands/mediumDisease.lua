@@ -68,5 +68,5 @@ MediumDiseaseCommand = {
 
 }
 
-AddMediumDiseaseCommand(MediumDiseaseCommand)
+AddCommand(MediumDiseaseCommand)
 

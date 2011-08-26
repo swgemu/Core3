@@ -68,5 +68,5 @@ AiIgnoreCommand = {
 
 }
 
-AddAiIgnoreCommand(AiIgnoreCommand)
+AddCommand(AiIgnoreCommand)
 

@@ -68,5 +68,5 @@ WaypointCommand = {
 
 }
 
-AddWaypointCommand(WaypointCommand)
+AddCommand(WaypointCommand)
 

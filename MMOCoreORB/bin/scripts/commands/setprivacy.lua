@@ -68,5 +68,5 @@ SetprivacyCommand = {
 
 }
 
-AddSetprivacyCommand(SetprivacyCommand)
+AddCommand(SetprivacyCommand)
 

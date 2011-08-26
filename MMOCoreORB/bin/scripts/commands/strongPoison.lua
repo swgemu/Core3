@@ -68,5 +68,5 @@ StrongPoisonCommand = {
 
 }
 
-AddStrongPoisonCommand(StrongPoisonCommand)
+AddCommand(StrongPoisonCommand)
 

@@ -68,5 +68,5 @@ ResetJediCommand = {
 
 }
 
-AddResetJediCommand(ResetJediCommand)
+AddCommand(ResetJediCommand)
 

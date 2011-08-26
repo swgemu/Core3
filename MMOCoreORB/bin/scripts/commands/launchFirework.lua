@@ -68,5 +68,5 @@ LaunchFireworkCommand = {
 
 }
 
-AddLaunchFireworkCommand(LaunchFireworkCommand)
+AddCommand(LaunchFireworkCommand)
 

@@ -68,5 +68,5 @@ AvoidIncapacitationCommand = {
 
 }
 
-AddAvoidIncapacitationCommand(AvoidIncapacitationCommand)
+AddCommand(AvoidIncapacitationCommand)
 

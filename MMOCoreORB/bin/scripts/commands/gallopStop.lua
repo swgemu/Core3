@@ -68,5 +68,5 @@ GallopStopCommand = {
 
 }
 
-AddGallopStopCommand(GallopStopCommand)
+AddCommand(GallopStopCommand)
 

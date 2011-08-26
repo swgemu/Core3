@@ -68,5 +68,5 @@ ExecuteKnowledgeBaseMessageCommand = {
 
 }
 
-AddExecuteKnowledgeBaseMessageCommand(ExecuteKnowledgeBaseMessageCommand)
+AddCommand(ExecuteKnowledgeBaseMessageCommand)
 

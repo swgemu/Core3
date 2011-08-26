@@ -68,5 +68,5 @@ ActivateCloneCommand = {
 
 }
 
-AddActivateCloneCommand(ActivateCloneCommand)
+AddCommand(ActivateCloneCommand)
 

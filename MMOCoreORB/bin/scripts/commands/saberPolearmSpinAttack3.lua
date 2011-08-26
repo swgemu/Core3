@@ -68,5 +68,5 @@ SaberPolearmSpinAttack3Command = {
 
 }
 
-AddSaberPolearmSpinAttack3Command(SaberPolearmSpinAttack3Command)
+AddCommand(SaberPolearmSpinAttack3Command)
 

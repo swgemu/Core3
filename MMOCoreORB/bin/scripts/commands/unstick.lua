@@ -68,5 +68,5 @@ UnstickCommand = {
 
 }
 
-AddUnstickCommand(UnstickCommand)
+AddCommand(UnstickCommand)
 

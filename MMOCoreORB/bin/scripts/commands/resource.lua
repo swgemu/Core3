@@ -68,5 +68,5 @@ ResourceCommand = {
 
 }
 
-AddResourceCommand(ResourceCommand)
+AddCommand(ResourceCommand)
 

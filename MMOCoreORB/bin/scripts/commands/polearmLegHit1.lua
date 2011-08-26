@@ -68,5 +68,5 @@ PolearmLegHit1Command = {
 
 }
 
-AddPolearmLegHit1Command(PolearmLegHit1Command)
+AddCommand(PolearmLegHit1Command)
 

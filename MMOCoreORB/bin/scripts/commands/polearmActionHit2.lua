@@ -68,5 +68,5 @@ PolearmActionHit2Command = {
 
 }
 
-AddPolearmActionHit2Command(PolearmActionHit2Command)
+AddCommand(PolearmActionHit2Command)
 

@@ -68,5 +68,5 @@ ListCompletedQuestsCommand = {
 
 }
 
-AddListCompletedQuestsCommand(ListCompletedQuestsCommand)
+AddCommand(ListCompletedQuestsCommand)
 

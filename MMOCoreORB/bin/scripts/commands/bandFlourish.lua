@@ -68,5 +68,5 @@ BandFlourishCommand = {
 
 }
 
-AddBandFlourishCommand(BandFlourishCommand)
+AddCommand(BandFlourishCommand)
 

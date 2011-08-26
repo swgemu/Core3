@@ -68,5 +68,5 @@ HarvesterDeactivateCommand = {
 
 }
 
-AddHarvesterDeactivateCommand(HarvesterDeactivateCommand)
+AddCommand(HarvesterDeactivateCommand)
 

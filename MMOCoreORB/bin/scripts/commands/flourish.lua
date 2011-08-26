@@ -68,5 +68,5 @@ FlourishCommand = {
 
 }
 
-AddFlourishCommand(FlourishCommand)
+AddCommand(FlourishCommand)
 

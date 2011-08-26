@@ -68,5 +68,5 @@ MindBlast1Command = {
 
 }
 
-AddMindBlast1Command(MindBlast1Command)
+AddCommand(MindBlast1Command)
 

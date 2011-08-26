@@ -68,5 +68,5 @@ HeadShot2Command = {
 
 }
 
-AddHeadShot2Command(HeadShot2Command)
+AddCommand(HeadShot2Command)
 

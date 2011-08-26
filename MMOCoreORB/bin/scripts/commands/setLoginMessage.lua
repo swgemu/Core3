@@ -68,5 +68,5 @@ SetLoginMessageCommand = {
 
 }
 
-AddSetLoginMessageCommand(SetLoginMessageCommand)
+AddCommand(SetLoginMessageCommand)
 

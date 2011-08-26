@@ -68,5 +68,5 @@ TakeCoverCommand = {
 
 }
 
-AddTakeCoverCommand(TakeCoverCommand)
+AddCommand(TakeCoverCommand)
 

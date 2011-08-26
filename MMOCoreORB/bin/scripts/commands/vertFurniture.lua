@@ -68,5 +68,5 @@ VertFurnitureCommand = {
 
 }
 
-AddVertFurnitureCommand(VertFurnitureCommand)
+AddCommand(VertFurnitureCommand)
 

@@ -68,5 +68,5 @@ Melee2hHit3Command = {
 
 }
 
-AddMelee2hHit3Command(Melee2hHit3Command)
+AddCommand(Melee2hHit3Command)
 

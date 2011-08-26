@@ -68,5 +68,5 @@ PurchaseTicketCommand = {
 
 }
 
-AddPurchaseTicketCommand(PurchaseTicketCommand)
+AddCommand(PurchaseTicketCommand)
 

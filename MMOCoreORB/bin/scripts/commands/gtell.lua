@@ -68,5 +68,5 @@ GtellCommand = {
 
 }
 
-AddGtellCommand(GtellCommand)
+AddCommand(GtellCommand)
 

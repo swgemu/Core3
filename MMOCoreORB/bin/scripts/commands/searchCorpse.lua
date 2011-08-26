@@ -68,5 +68,5 @@ SearchCorpseCommand = {
 
 }
 
-AddSearchCorpseCommand(SearchCorpseCommand)
+AddCommand(SearchCorpseCommand)
 

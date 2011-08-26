@@ -68,5 +68,5 @@ PaymaintenanceCommand = {
 
 }
 
-AddPaymaintenanceCommand(PaymaintenanceCommand)
+AddCommand(PaymaintenanceCommand)
 

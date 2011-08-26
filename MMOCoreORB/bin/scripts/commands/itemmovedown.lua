@@ -68,5 +68,5 @@ ItemmovedownCommand = {
 
 }
 
-AddItemmovedownCommand(ItemmovedownCommand)
+AddCommand(ItemmovedownCommand)
 

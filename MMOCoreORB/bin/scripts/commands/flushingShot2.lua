@@ -68,5 +68,5 @@ FlushingShot2Command = {
 
 }
 
-AddFlushingShot2Command(FlushingShot2Command)
+AddCommand(FlushingShot2Command)
 

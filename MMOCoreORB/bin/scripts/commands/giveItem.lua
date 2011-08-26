@@ -68,5 +68,5 @@ GiveItemCommand = {
 
 }
 
-AddGiveItemCommand(GiveItemCommand)
+AddCommand(GiveItemCommand)
 

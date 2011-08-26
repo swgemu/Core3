@@ -68,5 +68,5 @@ AuctionCreateCommand = {
 
 }
 
-AddAuctionCreateCommand(AuctionCreateCommand)
+AddCommand(AuctionCreateCommand)
 

@@ -68,5 +68,5 @@ HealStateCommand = {
 
 }
 
-AddHealStateCommand(HealStateCommand)
+AddCommand(HealStateCommand)
 

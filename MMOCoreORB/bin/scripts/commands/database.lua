@@ -68,5 +68,5 @@ DatabaseCommand = {
 
 }
 
-AddDatabaseCommand(DatabaseCommand)
+AddCommand(DatabaseCommand)
 

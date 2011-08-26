@@ -68,5 +68,5 @@ SetOwnerCommand = {
 
 }
 
-AddSetOwnerCommand(SetOwnerCommand)
+AddCommand(SetOwnerCommand)
 

@@ -68,5 +68,5 @@ ForceLightningCone2Command = {
 
 }
 
-AddForceLightningCone2Command(ForceLightningCone2Command)
+AddCommand(ForceLightningCone2Command)
 

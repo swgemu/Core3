@@ -68,5 +68,5 @@ GetMapLocationsCommand = {
 
 }
 
-AddGetMapLocationsCommand(GetMapLocationsCommand)
+AddCommand(GetMapLocationsCommand)
 

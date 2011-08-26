@@ -68,5 +68,5 @@ UninstallShipComponentCommand = {
 
 }
 
-AddUninstallShipComponentCommand(UninstallShipComponentCommand)
+AddCommand(UninstallShipComponentCommand)
 

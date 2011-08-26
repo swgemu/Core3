@@ -68,5 +68,5 @@ GetAttributesBatchCommand = {
 
 }
 
-AddGetAttributesBatchCommand(GetAttributesBatchCommand)
+AddCommand(GetAttributesBatchCommand)
 

@@ -68,5 +68,5 @@ TransferstructureCommand = {
 
 }
 
-AddTransferstructureCommand(TransferstructureCommand)
+AddCommand(TransferstructureCommand)
 

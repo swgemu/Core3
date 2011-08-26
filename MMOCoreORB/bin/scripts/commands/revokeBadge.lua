@@ -68,5 +68,5 @@ RevokeBadgeCommand = {
 
 }
 
-AddRevokeBadgeCommand(RevokeBadgeCommand)
+AddCommand(RevokeBadgeCommand)
 

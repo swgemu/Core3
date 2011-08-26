@@ -68,5 +68,5 @@ SetMatchMakingPersonalIdCommand = {
 
 }
 
-AddSetMatchMakingPersonalIdCommand(SetMatchMakingPersonalIdCommand)
+AddCommand(SetMatchMakingPersonalIdCommand)
 

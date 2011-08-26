@@ -68,5 +68,5 @@ ToggleDisplayingFactionRankCommand = {
 
 }
 
-AddToggleDisplayingFactionRankCommand(ToggleDisplayingFactionRankCommand)
+AddCommand(ToggleDisplayingFactionRankCommand)
 

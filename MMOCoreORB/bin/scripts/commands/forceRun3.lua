@@ -68,5 +68,5 @@ ForceRun3Command = {
 
 }
 
-AddForceRun3Command(ForceRun3Command)
+AddCommand(ForceRun3Command)
 

@@ -68,5 +68,5 @@ StatCommand = {
 
 }
 
-AddStatCommand(StatCommand)
+AddCommand(StatCommand)
 

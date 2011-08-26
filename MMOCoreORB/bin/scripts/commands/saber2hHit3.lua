@@ -68,5 +68,5 @@ Saber2hHit3Command = {
 
 }
 
-AddSaber2hHit3Command(Saber2hHit3Command)
+AddCommand(Saber2hHit3Command)
 

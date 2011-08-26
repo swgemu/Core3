@@ -68,5 +68,5 @@ MoneyCommand = {
 
 }
 
-AddMoneyCommand(MoneyCommand)
+AddCommand(MoneyCommand)
 

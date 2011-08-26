@@ -68,5 +68,5 @@ TransferItemCommand = {
 
 }
 
-AddTransferItemCommand(TransferItemCommand)
+AddCommand(TransferItemCommand)
 

@@ -68,5 +68,5 @@ SetPlayerStateCommand = {
 
 }
 
-AddSetPlayerStateCommand(SetPlayerStateCommand)
+AddCommand(SetPlayerStateCommand)
 

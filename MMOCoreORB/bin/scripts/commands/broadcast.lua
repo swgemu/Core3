@@ -68,5 +68,5 @@ BroadcastCommand = {
 
 }
 
-AddBroadcastCommand(BroadcastCommand)
+AddCommand(BroadcastCommand)
 

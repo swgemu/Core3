@@ -68,5 +68,5 @@ CreatureAreaDiseaseCommand = {
 
 }
 
-AddCreatureAreaDiseaseCommand(CreatureAreaDiseaseCommand)
+AddCommand(CreatureAreaDiseaseCommand)
 

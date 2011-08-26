@@ -68,5 +68,5 @@ GuildCommand = {
 
 }
 
-AddGuildCommand(GuildCommand)
+AddCommand(GuildCommand)
 

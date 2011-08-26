@@ -68,5 +68,5 @@ ServerSysGroupCommand = {
 
 }
 
-AddServerSysGroupCommand(ServerSysGroupCommand)
+AddCommand(ServerSysGroupCommand)
 

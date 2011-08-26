@@ -68,5 +68,5 @@ SetBoostmoraleCommand = {
 
 }
 
-AddSetBoostmoraleCommand(SetBoostmoraleCommand)
+AddCommand(SetBoostmoraleCommand)
 

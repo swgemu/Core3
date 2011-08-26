@@ -68,5 +68,5 @@ GetRankCommand = {
 
 }
 
-AddGetRankCommand(GetRankCommand)
+AddCommand(GetRankCommand)
 

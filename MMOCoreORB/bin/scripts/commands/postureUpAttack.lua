@@ -68,5 +68,5 @@ PostureUpAttackCommand = {
 
 }
 
-AddPostureUpAttackCommand(PostureUpAttackCommand)
+AddCommand(PostureUpAttackCommand)
 

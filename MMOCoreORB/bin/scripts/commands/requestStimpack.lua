@@ -68,5 +68,5 @@ RequestStimpackCommand = {
 
 }
 
-AddRequestStimpackCommand(RequestStimpackCommand)
+AddCommand(RequestStimpackCommand)
 

@@ -68,5 +68,5 @@ UnarmedKnockdown2Command = {
 
 }
 
-AddUnarmedKnockdown2Command(UnarmedKnockdown2Command)
+AddCommand(UnarmedKnockdown2Command)
 

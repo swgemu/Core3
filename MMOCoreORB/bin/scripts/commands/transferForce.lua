@@ -68,5 +68,5 @@ TransferForceCommand = {
 
 }
 
-AddTransferForceCommand(TransferForceCommand)
+AddCommand(TransferForceCommand)
 

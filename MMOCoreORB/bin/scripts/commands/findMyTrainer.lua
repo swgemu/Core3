@@ -68,5 +68,5 @@ FindMyTrainerCommand = {
 
 }
 
-AddFindMyTrainerCommand(FindMyTrainerCommand)
+AddCommand(FindMyTrainerCommand)
 

@@ -68,5 +68,5 @@ RolePlayCommand = {
 
 }
 
-AddRolePlayCommand(RolePlayCommand)
+AddCommand(RolePlayCommand)
 

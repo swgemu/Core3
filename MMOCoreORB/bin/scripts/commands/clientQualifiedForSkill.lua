@@ -68,5 +68,5 @@ ClientQualifiedForSkillCommand = {
 
 }
 
-AddClientQualifiedForSkillCommand(ClientQualifiedForSkillCommand)
+AddCommand(ClientQualifiedForSkillCommand)
 

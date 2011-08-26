@@ -68,5 +68,5 @@ KipUpShotCommand = {
 
 }
 
-AddKipUpShotCommand(KipUpShotCommand)
+AddCommand(KipUpShotCommand)
 

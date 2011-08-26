@@ -68,5 +68,5 @@ TeleportCommand = {
 
 }
 
-AddTeleportCommand(TeleportCommand)
+AddCommand(TeleportCommand)
 

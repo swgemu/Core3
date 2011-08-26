@@ -61,8 +61,8 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
@@ -96,7 +96,7 @@ public:
 
 			Locker playerlocker(targetPlayer);
 
-			targetPlayer->setState(CreatureState::ROOTED, true);
+			targetPlayer->setState(CreatureState::FROZEN, true);
 			targetPlayer->sendSystemMessage("You have been frozen by \'" + player->getFirstName() + "\'");
 
 			targetPlayer->setSpeedMultiplierBase(0.f, true);

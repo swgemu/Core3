@@ -68,5 +68,5 @@ SpawnStatusCommand = {
 
 }
 
-AddSpawnStatusCommand(SpawnStatusCommand)
+AddCommand(SpawnStatusCommand)
 

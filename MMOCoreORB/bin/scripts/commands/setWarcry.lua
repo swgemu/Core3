@@ -68,5 +68,5 @@ SetWarcryCommand = {
 
 }
 
-AddSetWarcryCommand(SetWarcryCommand)
+AddCommand(SetWarcryCommand)
 

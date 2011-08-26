@@ -68,5 +68,5 @@ GCommand = {
 
 }
 
-AddGCommand(GCommand)
+AddCommand(GCommand)
 

@@ -68,5 +68,5 @@ FireAcidCone2Command = {
 
 }
 
-AddFireAcidCone2Command(FireAcidCone2Command)
+AddCommand(FireAcidCone2Command)
 

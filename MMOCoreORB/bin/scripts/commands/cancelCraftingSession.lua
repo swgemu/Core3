@@ -68,5 +68,5 @@ CancelCraftingSessionCommand = {
 
 }
 
-AddCancelCraftingSessionCommand(CancelCraftingSessionCommand)
+AddCommand(CancelCraftingSessionCommand)
 

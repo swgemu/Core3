@@ -68,5 +68,5 @@ DenyServiceCommand = {
 
 }
 
-AddDenyServiceCommand(DenyServiceCommand)
+AddCommand(DenyServiceCommand)
 

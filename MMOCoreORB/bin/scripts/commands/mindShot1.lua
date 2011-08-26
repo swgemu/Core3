@@ -68,5 +68,5 @@ MindShot1Command = {
 
 }
 
-AddMindShot1Command(MindShot1Command)
+AddCommand(MindShot1Command)
 

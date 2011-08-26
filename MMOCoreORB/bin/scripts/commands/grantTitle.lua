@@ -68,5 +68,5 @@ GrantTitleCommand = {
 
 }
 
-AddGrantTitleCommand(GrantTitleCommand)
+AddCommand(GrantTitleCommand)
 

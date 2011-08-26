@@ -68,5 +68,5 @@ SeGogglesCommand = {
 
 }
 
-AddSeGogglesCommand(SeGogglesCommand)
+AddCommand(SeGogglesCommand)
 

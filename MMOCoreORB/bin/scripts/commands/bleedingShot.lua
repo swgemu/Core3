@@ -68,5 +68,5 @@ BleedingShotCommand = {
 
 }
 
-AddBleedingShotCommand(BleedingShotCommand)
+AddCommand(BleedingShotCommand)
 

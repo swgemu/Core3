@@ -68,5 +68,5 @@ CreateSpawningElementCommand = {
 
 }
 
-AddCreateSpawningElementCommand(CreateSpawningElementCommand)
+AddCommand(CreateSpawningElementCommand)
 

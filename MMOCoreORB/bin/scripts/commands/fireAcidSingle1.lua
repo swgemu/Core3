@@ -68,5 +68,5 @@ FireAcidSingle1Command = {
 
 }
 
-AddFireAcidSingle1Command(FireAcidSingle1Command)
+AddCommand(FireAcidSingle1Command)
 

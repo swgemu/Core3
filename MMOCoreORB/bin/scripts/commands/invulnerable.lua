@@ -68,5 +68,5 @@ InvulnerableCommand = {
 
 }
 
-AddInvulnerableCommand(InvulnerableCommand)
+AddCommand(InvulnerableCommand)
 

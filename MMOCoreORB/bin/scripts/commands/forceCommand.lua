@@ -68,5 +68,5 @@ ForceCommandCommand = {
 
 }
 
-AddForceCommandCommand(ForceCommandCommand)
+AddCommand(ForceCommandCommand)
 

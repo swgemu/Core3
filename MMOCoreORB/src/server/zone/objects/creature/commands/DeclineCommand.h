@@ -63,8 +63,8 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		uint64 inviterID = creature->getGroupInviterID();
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(inviterID);

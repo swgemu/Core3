@@ -68,5 +68,5 @@ Saber2hSweep2Command = {
 
 }
 
-AddSaber2hSweep2Command(Saber2hSweep2Command)
+AddCommand(Saber2hSweep2Command)
 

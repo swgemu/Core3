@@ -68,5 +68,5 @@ SetRetreatCommand = {
 
 }
 
-AddSetRetreatCommand(SetRetreatCommand)
+AddCommand(SetRetreatCommand)
 

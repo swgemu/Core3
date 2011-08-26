@@ -68,5 +68,5 @@ FlurryShot1Command = {
 
 }
 
-AddFlurryShot1Command(FlurryShot1Command)
+AddCommand(FlurryShot1Command)
 

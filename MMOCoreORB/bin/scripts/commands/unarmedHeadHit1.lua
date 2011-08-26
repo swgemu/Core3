@@ -68,5 +68,5 @@ UnarmedHeadHit1Command = {
 
 }
 
-AddUnarmedHeadHit1Command(UnarmedHeadHit1Command)
+AddCommand(UnarmedHeadHit1Command)
 

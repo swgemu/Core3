@@ -68,5 +68,5 @@ CombatCommand = {
 
 }
 
-AddCombatCommand(CombatCommand)
+AddCommand(CombatCommand)
 

@@ -68,5 +68,5 @@ CompleteQuestCommand = {
 
 }
 
-AddCompleteQuestCommand(CompleteQuestCommand)
+AddCommand(CompleteQuestCommand)
 

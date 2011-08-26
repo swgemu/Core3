@@ -68,5 +68,5 @@ KillCommand = {
 
 }
 
-AddKillCommand(KillCommand)
+AddCommand(KillCommand)
 

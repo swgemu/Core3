@@ -68,5 +68,5 @@ BlindAttackCommand = {
 
 }
 
-AddBlindAttackCommand(BlindAttackCommand)
+AddCommand(BlindAttackCommand)
 

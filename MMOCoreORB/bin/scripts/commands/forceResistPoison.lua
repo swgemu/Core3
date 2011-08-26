@@ -68,5 +68,5 @@ ForceResistPoisonCommand = {
 
 }
 
-AddForceResistPoisonCommand(ForceResistPoisonCommand)
+AddCommand(ForceResistPoisonCommand)
 

@@ -68,5 +68,5 @@ RequestSurveyCommand = {
 
 }
 
-AddRequestSurveyCommand(RequestSurveyCommand)
+AddCommand(RequestSurveyCommand)
 

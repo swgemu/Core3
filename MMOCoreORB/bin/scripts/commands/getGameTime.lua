@@ -68,5 +68,5 @@ GetGameTimeCommand = {
 
 }
 
-AddGetGameTimeCommand(GetGameTimeCommand)
+AddCommand(GetGameTimeCommand)
 

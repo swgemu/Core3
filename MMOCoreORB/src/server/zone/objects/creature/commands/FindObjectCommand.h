@@ -62,8 +62,8 @@ public:
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
-		if (!checkInvalidPostures(creature))
-			return INVALIDPOSTURE;
+		if (!checkInvalidLocomotions(creature))
+			return INVALIDLOCOMOTION;
 
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
@@ -80,7 +80,7 @@ public:
 		Vector<WorldCoordinates>* path = manager->findPath(creature, targetObject.get());
 
 		if (path == NULL || path->size() == 0) {
-			creature->info("path NULL ||Êsize == 0", true);
+			creature->info("path NULL ||ï¿½size == 0", true);
 			return GENERALERROR;
 		}
 

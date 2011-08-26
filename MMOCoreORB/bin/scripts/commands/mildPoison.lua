@@ -68,5 +68,5 @@ MildPoisonCommand = {
 
 }
 
-AddMildPoisonCommand(MildPoisonCommand)
+AddCommand(MildPoisonCommand)
 

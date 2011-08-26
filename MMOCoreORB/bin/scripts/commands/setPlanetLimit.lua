@@ -68,5 +68,5 @@ SetPlanetLimitCommand = {
 
 }
 
-AddSetPlanetLimitCommand(SetPlanetLimitCommand)
+AddCommand(SetPlanetLimitCommand)
 

@@ -68,5 +68,5 @@ SprayShotCommand = {
 
 }
 
-AddSprayShotCommand(SprayShotCommand)
+AddCommand(SprayShotCommand)
 

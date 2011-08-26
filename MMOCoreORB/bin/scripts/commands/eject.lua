@@ -68,5 +68,5 @@ EjectCommand = {
 
 }
 
-AddEjectCommand(EjectCommand)
+AddCommand(EjectCommand)
 

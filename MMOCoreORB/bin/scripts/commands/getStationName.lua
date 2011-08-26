@@ -68,5 +68,5 @@ GetStationNameCommand = {
 
 }
 
-AddGetStationNameCommand(GetStationNameCommand)
+AddCommand(GetStationNameCommand)
 

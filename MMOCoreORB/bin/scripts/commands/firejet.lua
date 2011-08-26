@@ -68,5 +68,5 @@ FirejetCommand = {
 
 }
 
-AddFirejetCommand(FirejetCommand)
+AddCommand(FirejetCommand)
 

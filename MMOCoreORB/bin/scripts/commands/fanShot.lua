@@ -68,5 +68,5 @@ FanShotCommand = {
 
 }
 
-AddFanShotCommand(FanShotCommand)
+AddCommand(FanShotCommand)
 

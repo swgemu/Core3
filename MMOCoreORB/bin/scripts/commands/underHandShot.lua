@@ -68,5 +68,5 @@ UnderHandShotCommand = {
 
 }
 
-AddUnderHandShotCommand(UnderHandShotCommand)
+AddCommand(UnderHandShotCommand)
 

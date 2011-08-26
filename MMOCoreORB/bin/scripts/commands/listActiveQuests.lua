@@ -68,5 +68,5 @@ ListActiveQuestsCommand = {
 
 }
 
-AddListActiveQuestsCommand(ListActiveQuestsCommand)
+AddCommand(ListActiveQuestsCommand)
 

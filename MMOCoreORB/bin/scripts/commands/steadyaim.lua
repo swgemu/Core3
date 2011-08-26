@@ -68,5 +68,5 @@ SteadyaimCommand = {
 
 }
 
-AddSteadyaimCommand(SteadyaimCommand)
+AddCommand(SteadyaimCommand)
 

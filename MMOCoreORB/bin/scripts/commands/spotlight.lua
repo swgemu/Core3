@@ -68,5 +68,5 @@ SpotlightCommand = {
 
 }
 
-AddSpotlightCommand(SpotlightCommand)
+AddCommand(SpotlightCommand)
 

@@ -68,5 +68,5 @@ RemoteCommand = {
 
 }
 
-AddRemoteCommand(RemoteCommand)
+AddCommand(RemoteCommand)
 

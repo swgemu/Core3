@@ -68,5 +68,5 @@ HealDroidDamageCommand = {
 
 }
 
-AddHealDroidDamageCommand(HealDroidDamageCommand)
+AddCommand(HealDroidDamageCommand)
 

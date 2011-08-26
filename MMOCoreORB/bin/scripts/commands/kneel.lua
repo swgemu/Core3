@@ -68,5 +68,5 @@ KneelCommand = {
 
 }
 
-AddKneelCommand(KneelCommand)
+AddCommand(KneelCommand)
 

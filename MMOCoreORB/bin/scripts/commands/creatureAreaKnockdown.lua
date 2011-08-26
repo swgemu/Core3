@@ -68,5 +68,5 @@ CreatureAreaKnockdownCommand = {
 
 }
 
-AddCreatureAreaKnockdownCommand(CreatureAreaKnockdownCommand)
+AddCommand(CreatureAreaKnockdownCommand)
 

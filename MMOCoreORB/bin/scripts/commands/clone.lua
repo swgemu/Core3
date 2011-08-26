@@ -68,5 +68,5 @@ CloneCommand = {
 
 }
 
-AddCloneCommand(CloneCommand)
+AddCommand(CloneCommand)
 

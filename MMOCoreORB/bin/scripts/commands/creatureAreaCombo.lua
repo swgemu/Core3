@@ -68,5 +68,5 @@ CreatureAreaComboCommand = {
 
 }
 
-AddCreatureAreaComboCommand(CreatureAreaComboCommand)
+AddCommand(CreatureAreaComboCommand)
 

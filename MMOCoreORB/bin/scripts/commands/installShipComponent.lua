@@ -68,5 +68,5 @@ InstallShipComponentCommand = {
 
 }
 
-AddInstallShipComponentCommand(InstallShipComponentCommand)
+AddCommand(InstallShipComponentCommand)
 

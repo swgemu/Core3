@@ -294,8 +294,8 @@ int StatePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	else {
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  			string command = "/healstate ";
 	String command = "/healstate ";
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  			command = command + CreatureState.getName(state);
-	command = command + CreatureState::getName(state);
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  			command = command + CreatureState.instance().getName(state);
+	command = command + CreatureState::instance()->getName(state);
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  			command = command + "|";
 	command = command + "|";
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  			command = command + String.valueOf(super.getObjectID());
@@ -310,8 +310,8 @@ int StatePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 void StatePackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
-	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		string attributeName = CreatureState.getName(state);
-	String attributeName = CreatureState::getName(state);
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		string attributeName = CreatureState.instance().getName(state);
+	String attributeName = CreatureState::instance()->getName(state);
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		string enhace = "@obj_attr_n:state_type_" + attributeName;
 	String enhace = "@obj_attr_n:state_type_" + attributeName;
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		msg.insertAttribute("examine_heal_state", enhace);

@@ -68,5 +68,5 @@ ShowPvPRatingCommand = {
 
 }
 
-AddShowPvPRatingCommand(ShowPvPRatingCommand)
+AddCommand(ShowPvPRatingCommand)
 

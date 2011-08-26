@@ -68,5 +68,5 @@ MakeSurveyCommand = {
 
 }
 
-AddMakeSurveyCommand(MakeSurveyCommand)
+AddCommand(MakeSurveyCommand)
 

@@ -68,5 +68,5 @@ ColorlightsCommand = {
 
 }
 
-AddColorlightsCommand(ColorlightsCommand)
+AddCommand(ColorlightsCommand)
 

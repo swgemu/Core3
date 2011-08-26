@@ -68,5 +68,5 @@ Warcry2Command = {
 
 }
 
-AddWarcry2Command(Warcry2Command)
+AddCommand(Warcry2Command)
 

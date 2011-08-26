@@ -68,5 +68,5 @@ SetpermissionCommand = {
 
 }
 
-AddSetpermissionCommand(SetpermissionCommand)
+AddCommand(SetpermissionCommand)
 

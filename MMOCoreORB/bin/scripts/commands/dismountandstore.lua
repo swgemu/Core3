@@ -68,5 +68,5 @@ DismountandstoreCommand = {
 
 }
 
-AddDismountandstoreCommand(DismountandstoreCommand)
+AddCommand(DismountandstoreCommand)
 

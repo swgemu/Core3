@@ -68,5 +68,5 @@ SetGodModeCommand = {
 
 }
 
-AddSetGodModeCommand(SetGodModeCommand)
+AddCommand(SetGodModeCommand)
 

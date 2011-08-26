@@ -68,5 +68,5 @@ CreateCreatureCommand = {
 
 }
 
-AddCreateCreatureCommand(CreateCreatureCommand)
+AddCommand(CreateCreatureCommand)
 

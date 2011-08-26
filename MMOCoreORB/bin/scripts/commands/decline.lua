@@ -68,5 +68,5 @@ DeclineCommand = {
 
 }
 
-AddDeclineCommand(DeclineCommand)
+AddCommand(DeclineCommand)
 

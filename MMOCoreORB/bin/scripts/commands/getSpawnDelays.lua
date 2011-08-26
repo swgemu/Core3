@@ -68,5 +68,5 @@ GetSpawnDelaysCommand = {
 
 }
 
-AddGetSpawnDelaysCommand(GetSpawnDelaysCommand)
+AddCommand(GetSpawnDelaysCommand)
 

@@ -68,5 +68,5 @@ AddFriendCommand = {
 
 }
 
-AddAddFriendCommand(AddFriendCommand)
+AddCommand(AddFriendCommand)
 

@@ -68,5 +68,5 @@ FindCommand = {
 
 }
 
-AddFindCommand(FindCommand)
+AddCommand(FindCommand)
 

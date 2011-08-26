@@ -68,5 +68,5 @@ GetPlayerIdCommand = {
 
 }
 
-AddGetPlayerIdCommand(GetPlayerIdCommand)
+AddCommand(GetPlayerIdCommand)
 
