@@ -61,6 +61,10 @@ public:
 
 	}
 
+	~DraftSchematicGroup() {
+
+	}
+
 	bool contains(DraftSchematic* schematic) {
 		for(int i = 0; i < size(); ++i) {
 			DraftSchematic* existingSchematic = get(i);

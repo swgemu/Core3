@@ -16,7 +16,6 @@ class DraftSchematicObjectTemplate : public SharedDraftSchematicObjectTemplate {
 protected:
 
 	String customObjectName;
-	String groupName;
 
 	int craftingToolTab;
 	// The number that tells the client which crafting tool tab to put the draftSchematic in
@@ -129,10 +128,6 @@ public:
 
     Vector<byte>* getCustomizationDefaultValues() {
         return customizationDefaultValues;
-    }
-
-    String getGroupName() {
-        return groupName;
     }
 
     Vector<short >* getIngredientSlotType() {

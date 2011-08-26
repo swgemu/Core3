@@ -68,15 +68,15 @@ void SchematicList::loadLimitedUseSchematics(Vector<ManagedReference<DraftSchema
 
 	for (int i = 0; i < schematics.size(); ++i) {
 		ManagedReference<DraftSchematic*>  schematic = schematics.get(i);
-		limitedUseSchematics.add(schematic);
+		rewardedSchematics.add(schematic);
 	}
 	awardLimitedUseSchematics();
 }
 
 void SchematicList::awardLimitedUseSchematics() {
 
-	for (int i = 0; i < limitedUseSchematics.size(); ++i) {
-		ManagedReference<DraftSchematic*>  schematic = limitedUseSchematics.get(i);
+	for (int i = 0; i < rewardedSchematics.size(); ++i) {
+		ManagedReference<DraftSchematic*>  schematic = rewardedSchematics.get(i);
 		add(schematic);
 	}
 }
@@ -86,7 +86,7 @@ bool SchematicList::add(DraftSchematic* schematic, DeltaMessage* message, int up
 	bool val = vector.add(schematic);
 
 	if(schematic->getGroupName().isEmpty())
-		limitedUseSchematics.add(schematic);
+		rewardedSchematics.add(schematic);
 
 	if (val && message != NULL) {
 		if (updates != 0)

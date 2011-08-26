@@ -51,8 +51,6 @@ which carries forward this exception.
 #ifndef SCHEMATICMAP_H_
 #define SCHEMATICMAP_H_
 
-#include "engine/engine.h"\
-
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
@@ -68,6 +66,8 @@ class SchematicMap : public Singleton<SchematicMap>, public Lua {
 	VectorMap<String, DraftSchematicGroup* > groupMap;
 	ManagedReference<ZoneServer*> zoneServer;
 	ObjectManager* objectManager;
+
+	VectorMap<uint32, String> iffGroupMap;
 
 public:
 
@@ -92,6 +92,7 @@ public:
 
 private:
 
+	void loadSchematicGroups();
 	void loadDraftSchematicFile();
 	void mapDraftSchematic(DraftSchematic* schematic);
 };

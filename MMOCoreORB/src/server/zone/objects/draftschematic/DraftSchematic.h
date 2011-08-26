@@ -120,6 +120,10 @@ public:
 
 	unsigned int getSchematicID();
 
+	void setGroupName(String& name);
+
+	String getGroupName();
+
 	int getDraftSlotCount();
 
 	bool isValidDraftSchematic();
@@ -155,8 +159,6 @@ public:
 	String getCustomName();
 
 	unsigned int getTanoCRC();
-
-	String getGroupName();
 
 	int getUseCount();
 
@@ -200,6 +202,8 @@ namespace draftschematic {
 class DraftSchematicImplementation : public IntangibleObjectImplementation {
 	unsigned int schematicID;
 
+	String groupName;
+
 	Reference<DraftSchematicObjectTemplate* > schematicTemplate;
 
 	int useCount;
@@ -230,6 +234,10 @@ public:
 	void setSchematicID(unsigned int id);
 
 	unsigned int getSchematicID();
+
+	void setGroupName(String& name);
+
+	String getGroupName();
 
 	int getDraftSlotCount();
 
@@ -266,8 +274,6 @@ public:
 	String getCustomName();
 
 	unsigned int getTanoCRC();
-
-	String getGroupName();
 
 	int getUseCount();
 
@@ -334,6 +340,10 @@ public:
 
 	unsigned int getSchematicID();
 
+	void setGroupName(String& name);
+
+	String getGroupName();
+
 	int getDraftSlotCount();
 
 	bool isValidDraftSchematic();
@@ -360,8 +370,6 @@ public:
 
 	unsigned int getTanoCRC();
 
-	String getGroupName();
-
 	int getUseCount();
 
 	void setUseCount(int count);
@@ -370,6 +378,8 @@ public:
 
 	void increaseUseCount(int count);
 
+protected:
+	String _param0_setGroupName__String_;
 };
 
 class DraftSchematicHelper : public DistributedObjectClassHelper, public Singleton<DraftSchematicHelper> {

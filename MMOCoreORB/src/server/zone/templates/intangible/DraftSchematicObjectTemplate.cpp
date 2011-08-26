@@ -58,8 +58,6 @@ void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 
 	customObjectName = templateData->getStringField("customObjectName");
 
-	groupName = templateData->getStringField("groupName");
-
 	craftingToolTab = templateData->getIntField("craftingToolTab");
 	complexity = templateData->getShortField("complexity");
 	size = templateData->getShortField("size");

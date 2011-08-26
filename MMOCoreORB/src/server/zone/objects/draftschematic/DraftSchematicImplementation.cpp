@@ -225,7 +225,3 @@ String DraftSchematicImplementation::getCustomName() {
 uint32 DraftSchematicImplementation::getTanoCRC() {
 	return schematicTemplate->getTanoCRC();
 }
-
-String DraftSchematicImplementation::getGroupName() {
-	return schematicTemplate->getGroupName();
-}

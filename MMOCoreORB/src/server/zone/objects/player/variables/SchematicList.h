@@ -15,9 +15,9 @@
 class SchematicList : public DeltaVector<ManagedReference<DraftSchematic* > > {
 protected:
 
-	/// This vector is for limited use schematics when we need to reload them
+	/// This vector is for schematics without skills when we need to reload them
 	/// when skills are dropped
-	Vector<ManagedReference<DraftSchematic* > > limitedUseSchematics;
+	Vector<ManagedReference<DraftSchematic* > > rewardedSchematics;
 
 public:
 	SchematicList() {
@@ -25,7 +25,7 @@ public:
 	}
 
 	SchematicList(const SchematicList& list) : Object(), DeltaVector<ManagedReference<DraftSchematic* > >(list) {
-		limitedUseSchematics = list.limitedUseSchematics;
+		rewardedSchematics = list.rewardedSchematics;
 	}
 
 	bool add(DraftSchematic* schematic, DeltaMessage* message = NULL, int updates = 1);

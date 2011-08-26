@@ -62,21 +62,46 @@ SchematicMap::SchematicMap() {
 	info("Loading schematics...");
 
 	Lua::init();
-
-	groupMap.setNullValue(NULL);
 }
 
 SchematicMap::~SchematicMap() {
-	//TODO: fix this reclamation
-	/*while (groupMap.size() > 0)
-		delete groupMap.remove(0).getValue();*/
+	while(groupMap.size() > 0)
+		delete groupMap.get(0);
 }
 
 void SchematicMap::initialize(ZoneServer* server) {
 	zoneServer = server;
 	objectManager = zoneServer->getObjectManager();
+	loadSchematicGroups();
 	loadDraftSchematicDatabase();
 	loadDraftSchematicFile();
+}
+
+void SchematicMap::loadSchematicGroups() {
+	TemplateManager* templateManager = TemplateManager::instance();
+
+	IffStream* iffStream = templateManager->openIffFile(
+			"datatables/crafting/schematic_group.iff");
+
+	if (iffStream == NULL) {
+		info("schematic_group.iff could not be found.", true);
+		return;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	String groupId, schematicName;
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+
+		DataTableRow* row = dtiff.getRow(i);
+
+		row->getCell(0)->getValue(groupId);
+		row->getCell(1)->getValue(schematicName);
+
+		iffGroupMap.put(schematicName.hashCode(), groupId);
+	}
 }
 
 void SchematicMap::loadDraftSchematicDatabase() {
@@ -146,6 +171,9 @@ void SchematicMap::loadDraftSchematicFile() {
 }
 
 void SchematicMap::mapDraftSchematic(DraftSchematic* schematic) {
+
+	if(iffGroupMap.contains(schematic->getServerObjectCRC()))
+		schematic->setGroupName(iffGroupMap.get(schematic->getServerObjectCRC()));
 
 	if (schematic->getGroupName() != "") {
 		DraftSchematicGroup* group = groupMap.get(schematic->getGroupName());

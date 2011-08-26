@@ -62,6 +62,9 @@ class DraftSchematic extends IntangibleObject {
 	/// Arbitrary ID for the schematic
 	private unsigned int schematicID; 
 	
+	/// Name of schematic group this belongs to
+	private transient string groupName;
+	
 	/// SharedDraftSchematicTemplate
 	private transient DraftSchematicObjectTemplate schematicTemplate;
 	
@@ -71,6 +74,7 @@ class DraftSchematic extends IntangibleObject {
 		schematicTemplate = null;
 		useCount = 0;
 		schematicID = 0;
+		groupName = "";
 		
 		Logger.setLoggingName("DraftSchematic");
 	}
@@ -139,6 +143,14 @@ class DraftSchematic extends IntangibleObject {
 	 */
 	public unsigned int getSchematicID() {
 		return schematicID;
+	}
+	
+	public void setGroupName(string name) {
+		groupName = name;
+	}
+	
+	public string getGroupName() {
+		return groupName;
 	}
 	
 	public native int getDraftSlotCount();
@@ -212,8 +224,6 @@ class DraftSchematic extends IntangibleObject {
 	
 	public native unsigned int getTanoCRC();
 
-	public native string getGroupName();
-	
 	public int getUseCount() {
 		return useCount;
 	}

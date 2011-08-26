@@ -18,7 +18,7 @@
  *	DraftSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETSCHEMATICID__INT_,RPC_GETSCHEMATICID__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETGROUPNAME__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_,RPC_DECREASEUSECOUNT__INT_,RPC_INCREASEUSECOUNT__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETSCHEMATICID__INT_,RPC_GETSCHEMATICID__,RPC_SETGROUPNAME__STRING_,RPC_GETGROUPNAME__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_,RPC_DECREASEUSECOUNT__INT_,RPC_INCREASEUSECOUNT__INT_};
 
 DraftSchematic::DraftSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	DraftSchematicImplementation* _implementation = new DraftSchematicImplementation();
@@ -145,6 +145,34 @@ unsigned int DraftSchematic::getSchematicID() {
 		return method.executeWithUnsignedIntReturn();
 	} else
 		return _implementation->getSchematicID();
+}
+
+void DraftSchematic::setGroupName(String& name) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETGROUPNAME__STRING_);
+		method.addAsciiParameter(name);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setGroupName(name);
+}
+
+String DraftSchematic::getGroupName() {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETGROUPNAME__);
+
+		method.executeWithAsciiReturn(_return_getGroupName);
+		return _return_getGroupName;
+	} else
+		return _implementation->getGroupName();
 }
 
 int DraftSchematic::getDraftSlotCount() {
@@ -366,20 +394,6 @@ unsigned int DraftSchematic::getTanoCRC() {
 		return _implementation->getTanoCRC();
 }
 
-String DraftSchematic::getGroupName() {
-	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETGROUPNAME__);
-
-		method.executeWithAsciiReturn(_return_getGroupName);
-		return _return_getGroupName;
-	} else
-		return _implementation->getGroupName();
-}
-
 int DraftSchematic::getUseCount() {
 	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -593,6 +607,8 @@ DraftSchematicImplementation::DraftSchematicImplementation() {
 	useCount = 0;
 	// server/zone/objects/draftschematic/DraftSchematic.idl():  		schematicID = 0;
 	schematicID = 0;
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		groupName = "";
+	groupName = "";
 	// server/zone/objects/draftschematic/DraftSchematic.idl():  		Logger.setLoggingName("DraftSchematic");
 	Logger::setLoggingName("DraftSchematic");
 }
@@ -605,6 +621,16 @@ void DraftSchematicImplementation::setSchematicID(unsigned int id) {
 unsigned int DraftSchematicImplementation::getSchematicID() {
 	// server/zone/objects/draftschematic/DraftSchematic.idl():  		return schematicID;
 	return schematicID;
+}
+
+void DraftSchematicImplementation::setGroupName(String& name) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		groupName = name;
+	groupName = name;
+}
+
+String DraftSchematicImplementation::getGroupName() {
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		return groupName;
+	return groupName;
 }
 
 bool DraftSchematicImplementation::isValidDraftSchematic() {
@@ -664,6 +690,12 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETSCHEMATICID__:
 		resp->insertInt(getSchematicID());
 		break;
+	case RPC_SETGROUPNAME__STRING_:
+		setGroupName(inv->getAsciiParameter(_param0_setGroupName__String_));
+		break;
+	case RPC_GETGROUPNAME__:
+		resp->insertAscii(getGroupName());
+		break;
 	case RPC_GETDRAFTSLOTCOUNT__:
 		resp->insertSignedInt(getDraftSlotCount());
 		break;
@@ -702,9 +734,6 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_GETTANOCRC__:
 		resp->insertInt(getTanoCRC());
-		break;
-	case RPC_GETGROUPNAME__:
-		resp->insertAscii(getGroupName());
 		break;
 	case RPC_GETUSECOUNT__:
 		resp->insertSignedInt(getUseCount());
@@ -751,6 +780,14 @@ void DraftSchematicAdapter::setSchematicID(unsigned int id) {
 
 unsigned int DraftSchematicAdapter::getSchematicID() {
 	return ((DraftSchematicImplementation*) impl)->getSchematicID();
+}
+
+void DraftSchematicAdapter::setGroupName(String& name) {
+	((DraftSchematicImplementation*) impl)->setGroupName(name);
+}
+
+String DraftSchematicAdapter::getGroupName() {
+	return ((DraftSchematicImplementation*) impl)->getGroupName();
 }
 
 int DraftSchematicAdapter::getDraftSlotCount() {
@@ -803,10 +840,6 @@ String DraftSchematicAdapter::getCustomName() {
 
 unsigned int DraftSchematicAdapter::getTanoCRC() {
 	return ((DraftSchematicImplementation*) impl)->getTanoCRC();
-}
-
-String DraftSchematicAdapter::getGroupName() {
-	return ((DraftSchematicImplementation*) impl)->getGroupName();
 }
 
 int DraftSchematicAdapter::getUseCount() {
