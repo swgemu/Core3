@@ -43,29 +43,6 @@
 
 DefuseMinefieldCommand = {
         name = "defuseminefield",
-        animation = "",
-
-        invalidStateMask = 3894933499, --cover, combat, aiming, alert, berzerk, feigndeath, combatAttitudeEvasive, combatAttitudeNormal, combatAttitudeAggressive, tumbling, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "cmdDefuseMinefield",
-        failScriptHook = "cmdDefuseMinefieldFail",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 1,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 8,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(DefuseMinefieldCommand)

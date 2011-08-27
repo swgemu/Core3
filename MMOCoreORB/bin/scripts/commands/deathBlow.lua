@@ -43,29 +43,6 @@
 
 DeathBlowCommand = {
         name = "deathblow",
-        animation = "",
-
-        invalidStateMask = 3894542352, --alert, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "cmdCoupDeGrace",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 3,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 16,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(DeathBlowCommand)

@@ -43,29 +43,6 @@
 
 LootAiCorpseCommand = {
         name = "lootaicorpse",
-        animation = "",
-
-        invalidStateMask = 2228304, --alert, feigndeath, frozen, glowingJedi, 
-        invalidPostures = "13,14",
-        defaultPriority = "immediate",
-        scriptHook = "cmdLootAi",
-        failScriptHook = "cmdOpenFail",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 16,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(LootAiCorpseCommand)

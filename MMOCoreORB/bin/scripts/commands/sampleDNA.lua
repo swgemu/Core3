@@ -43,29 +43,6 @@
 
 SampleDNACommand = {
         name = "sampledna",
-        animation = "",
-
-        invalidStateMask = 3894881371, --cover, combat, aiming, alert, feigndeath, tumbling, rallied, blinded, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,2,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "cmdHarvestDNA",
-        failScriptHook = "cmdHarvestDNAFail",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = -1219797200,
-        disabled = 0,
-        maxRangeToTarget = 16,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(SampleDNACommand)

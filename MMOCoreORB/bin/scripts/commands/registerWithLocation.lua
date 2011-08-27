@@ -43,29 +43,6 @@
 
 RegisterWithLocationCommand = {
         name = "registerwithlocation",
-        animation = "",
-
-        invalidStateMask = 2293826, --combat, feigndeath, immobilized, frozen, glowingJedi, 
-        invalidPostures = "13,14",
-        defaultPriority = "immediate",
-        scriptHook = "cmdRegisterWithLocation",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = "registerWithLocation",
-        tempScript = "player.cmd.register",
-        targeType = "none",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(RegisterWithLocationCommand)

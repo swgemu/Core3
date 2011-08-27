@@ -43,29 +43,6 @@
 
 SampleCommand = {
         name = "sample",
-        animation = "",
-
-        invalidStateMask = 3760669682, --combat, alert, berzerk, feigndeath, combatAttitudeEvasive, combatAttitudeNormal, combatAttitudeAggressive, dizzy, immobilized, frozen, swimming, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,6,7,8,9,10,12,13,14",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "getSample",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = "sample",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 3,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(SampleCommand)

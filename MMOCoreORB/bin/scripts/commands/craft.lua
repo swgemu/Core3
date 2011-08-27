@@ -43,29 +43,6 @@
 
 CraftCommand = {
         name = "craft",
-        animation = "",
-
-        invalidStateMask = 3963092971, --cover, combat, aiming, berzerk, feigndeath, combatAttitudeEvasive, combatAttitudeNormal, combatAttitudeAggressive, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, crafting, glowingJedi, onFire, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,6,9,10,11,12,13,14,4",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = "failAdmin",
-        cppHook = "console_craft",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = "admin",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = -307921291,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(CraftCommand)

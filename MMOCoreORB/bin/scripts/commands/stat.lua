@@ -43,29 +43,6 @@
 
 StatCommand = {
         name = "stat",
-        animation = "",
-
-        invalidStateMask = 3760324704, --berzerk, feigndeath, frozen, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "13,14",
-        defaultPriority = "normal",
-        scriptHook = "cmdStat",
-        failScriptHook = "cmdStatFail",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(StatCommand)

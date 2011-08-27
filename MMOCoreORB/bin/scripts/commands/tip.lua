@@ -43,29 +43,6 @@
 
 TipCommand = {
         name = "tip",
-        animation = "",
-
-        invalidStateMask = 2097152, --glowingJedi, 
-        invalidPostures = "13,14",
-        defaultPriority = "front",
-        scriptHook = "cmdTip",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(TipCommand)

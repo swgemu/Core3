@@ -43,29 +43,6 @@
 
 VolleyFireAttackCommand = {
         name = "volleyfireattack",
-        animation = "",
-
-        invalidStateMask = 3894804512, --berzerk, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "front",
-        scriptHook = "volleyFireAttack",
-        failScriptHook = "volleyFireAttackFail",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 5,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = -560185247,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(VolleyFireAttackCommand)

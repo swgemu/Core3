@@ -43,29 +43,6 @@
 
 RequestSurveyCommand = {
         name = "requestsurvey",
-        animation = "",
-
-        invalidStateMask = 2573298, --combat, alert, berzerk, feigndeath, combatAttitudeEvasive, combatAttitudeNormal, combatAttitudeAggressive, dizzy, immobilized, frozen, swimming, glowingJedi, 
-        invalidPostures = "5,6,7,12,13,14",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "requestSurvey",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 1288814119,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(RequestSurveyCommand)

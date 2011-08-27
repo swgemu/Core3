@@ -43,29 +43,6 @@
 
 SitServerCommand = {
         name = "sitserver",
-        animation = "",
-
-        invalidStateMask = 3894935466, --combat, aiming, berzerk, combatAttitudeEvasive, combatAttitudeNormal, combatAttitudeAggressive, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "7,8,9,10,11,12,13,14",
-        defaultPriority = "normal",
-        scriptHook = "sit",
-        failScriptHook = " ",
-        cppHook = "sitServer",
-        failCppHook = " ",
-        defaultTime = 2,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(SitServerCommand)

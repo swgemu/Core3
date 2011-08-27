@@ -43,29 +43,6 @@
 
 ProneCommand = {
         name = "prone",
-        animation = "",
-
-        invalidStateMask = 3894804480, --frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "6,7,9,10,11,13,14",
-        defaultPriority = "immediate",
-        scriptHook = "prone",
-        failScriptHook = "proneFail",
-        cppHook = "setPosture",
-        failCppHook = "setPosture",
-        defaultTime = 2,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 3,
-        callOnTarget = 0,
-        commandGroup = 891527001,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(ProneCommand)

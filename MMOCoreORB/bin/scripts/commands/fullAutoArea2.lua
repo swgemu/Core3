@@ -43,29 +43,6 @@
 
 FullAutoArea2Command = {
         name = "fullautoarea2",
-        animation = "",
-
-        invalidStateMask = 3894805520, --alert, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "fullAutoArea2",
-        failScriptHook = "failSpecialAttack",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = "fullAutoArea2",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 391413347,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(FullAutoArea2Command)

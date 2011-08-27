@@ -43,29 +43,6 @@
 
 ResSampleLoopCommand = {
         name = "ressampleloop",
-        animation = "",
-
-        invalidStateMask = 3895948362, --combat, aiming, feigndeath, tumbling, stunned, blinded, dizzy, immobilized, frozen, swimming, crafting, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,10,12,13,14,4",
-        defaultPriority = "front",
-        scriptHook = "cmdResSampleLoop",
-        failScriptHook = "cmdResNoSampleLoop",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = "player.tool.surveytool",
-        targeType = "required",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(ResSampleLoopCommand)

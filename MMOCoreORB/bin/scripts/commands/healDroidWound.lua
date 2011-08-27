@@ -43,29 +43,6 @@
 
 HealDroidWoundCommand = {
         name = "healdroidwound",
-        animation = "",
-
-        invalidStateMask = 3894932603, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "2,5,7,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "healDroidWound",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 5,
-        characterAbility = " ",
-        tempScript = "item.comestible.droid_med",
-        targeType = "required",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(HealDroidWoundCommand)

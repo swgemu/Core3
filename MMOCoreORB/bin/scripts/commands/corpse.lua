@@ -43,29 +43,6 @@
 
 CorpseCommand = {
         name = "corpse",
-        animation = "",
-
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "13,14",
-        defaultPriority = "front",
-        scriptHook = "cmdCorpse",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 3,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(CorpseCommand)

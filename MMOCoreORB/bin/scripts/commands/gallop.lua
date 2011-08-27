@@ -43,29 +43,6 @@
 
 GallopCommand = {
         name = "gallop",
-        animation = "",
-
-        invalidStateMask = 2491440, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, 
-        invalidPostures = "3,5,6,7,8,9,12,13,14,4",
-        defaultPriority = "immediate",
-        scriptHook = "gallop",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1.5,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 3,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(GallopCommand)

@@ -43,29 +43,6 @@
 
 RevivePlayerCommand = {
         name = "reviveplayer",
-        animation = "",
-
-        invalidStateMask = 3894934649, --cover, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,2,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "cmdRevivePlayer",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 10,
-        characterAbility = "revivePlayer",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 16,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(RevivePlayerCommand)

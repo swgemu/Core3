@@ -394,11 +394,17 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	PlayerObject* ghost = playerCreature->getPlayerObject();
 	ghost->setAccountID(client->getAccountID()); // TODO: Could this be a weak or managed rereference?
 
-	//ghost->setAdminLevel(2);
+	ghost->setAdminLevel(2);
 
 	//Accounts with an admin level of > 0 are automatically given admin at character creation
-	//if (account->getAdminLevel() > 0) {
-		//ghost->setAdminLevel(account->getAdminLevel());
+	/*if (account->getAdminLevel() > 0) {
+		ghost->setAdminLevel(account->getAdminLevel());
+
+		Vector<String> skills;
+		skills.add("admin");
+
+		ghost->addSkills(skills, false);
+	}*/
 
 	try {
 		uint32 accID = client->getAccountID();

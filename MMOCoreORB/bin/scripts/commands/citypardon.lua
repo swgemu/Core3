@@ -43,29 +43,6 @@
 
 CitypardonCommand = {
         name = "citypardon",
-        animation = "",
-
-        invalidStateMask = 3760653056, --combatAttitudeNormal, combatAttitudeAggressive, immobilized, frozen, swimming, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,6,7,8,9,10",
-        defaultPriority = "normal",
-        scriptHook = "cmdCitypardon",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 3,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(CitypardonCommand)

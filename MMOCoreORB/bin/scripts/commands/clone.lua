@@ -43,29 +43,6 @@
 
 CloneCommand = {
         name = "clone",
-        animation = "",
-
-        invalidStateMask = 136838187, --cover, combat, aiming, berzerk, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "immediate",
-        scriptHook = "cmdSetBind",
-        failScriptHook = " ",
-        cppHook = "combatCommandHandler",
-        failCppHook = " ",
-        defaultTime = 1,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = -805919484,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(CloneCommand)

@@ -43,29 +43,6 @@
 
 WatchCommand = {
         name = "watch",
-        animation = "",
-
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "cmdWatch",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = "player.skill.performcommands",
-        targeType = "optional",
-        stringId = "0",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 1908523600,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(WatchCommand)

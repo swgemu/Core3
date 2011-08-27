@@ -43,29 +43,6 @@
 
 CustomizeDroidCommand = {
         name = "customizedroid",
-        animation = "",
-
-        invalidStateMask = 3894932603, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "2,5,7,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "cmdCustomizeDroid",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 5,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 1,
-        callOnTarget = 1,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(CustomizeDroidCommand)

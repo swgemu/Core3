@@ -43,29 +43,6 @@
 
 HoloEmoteCommand = {
         name = "holoemote",
-        animation = "",
-
-        invalidStateMask = 3760193536, --glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "13,14",
-        defaultPriority = "immediate",
-        scriptHook = "cmdHoloEmote",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = "systems.image_designer.holoemote",
-        targeType = "none",
-        stringId = " ",
-        visible = 1,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(HoloEmoteCommand)

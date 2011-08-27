@@ -43,29 +43,6 @@
 
 DuelCommand = {
         name = "duel",
-        animation = "",
-
-        invalidStateMask = 2162720, --berzerk, immobilized, glowingJedi, 
-        invalidPostures = "13",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "duel",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = "1",
-        visible = 3,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(DuelCommand)

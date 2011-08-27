@@ -43,29 +43,6 @@
 
 CreatureAreaComboCommand = {
         name = "creatureareacombo",
-        animation = "",
-
-        invalidStateMask = 3894870032, --alert, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "creatureAreaCombo",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0.25,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = -506878646,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(CreatureAreaComboCommand)

@@ -43,29 +43,6 @@
 
 KillPlayerCommand = {
         name = "killplayer",
-        animation = "",
-
-        invalidStateMask = 2097152, --glowingJedi, 
-        invalidPostures = "",
-        defaultPriority = "immediate",
-        scriptHook = "cmdKillPlayer",
-        failScriptHook = "failAdmin",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = "admin",
-        tempScript = "gm.cmd",
-        targeType = "required",
-        stringId = "0",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 10,
-        displayGroup = -307921291,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(KillPlayerCommand)

@@ -43,29 +43,6 @@
 
 MeditateCommand = {
         name = "meditate",
-        animation = "",
-
-        invalidStateMask = 3963615211, --cover, combat, aiming, berzerk, feigndeath, combatAttitudeEvasive, combatAttitudeNormal, combatAttitudeAggressive, tumbling, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, sittingOnChair, crafting, glowingJedi, onFire, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "cmdMeditate",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1.5,
-        characterAbility = "meditate",
-        tempScript = "player.skill.teraskasi",
-        targeType = "none",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(MeditateCommand)

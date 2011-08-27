@@ -43,29 +43,6 @@
 
 SocialCommand = {
         name = "social",
-        animation = "",
-
-        invalidStateMask = 3758096448, --feigndeath, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "13,14",
-        defaultPriority = "front",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "social",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(SocialCommand)

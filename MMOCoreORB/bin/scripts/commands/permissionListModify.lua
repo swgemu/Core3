@@ -43,29 +43,6 @@
 
 PermissionListModifyCommand = {
         name = "permissionlistmodify",
-        animation = "",
-
-        invalidStateMask = 2097152, --glowingJedi, 
-        invalidPostures = "",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "permissionListModify",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(PermissionListModifyCommand)

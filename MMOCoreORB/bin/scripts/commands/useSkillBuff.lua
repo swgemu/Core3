@@ -43,29 +43,6 @@
 
 UseSkillBuffCommand = {
         name = "useskillbuff",
-        animation = "",
-
-        invalidStateMask = 3963615225, --cover, aiming, alert, berzerk, feigndeath, combatAttitudeEvasive, combatAttitudeNormal, combatAttitudeAggressive, tumbling, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, sittingOnChair, crafting, glowingJedi, onFire, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,2,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "cmdUseSkillBuff",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1.5,
-        characterAbility = " ",
-        tempScript = "player.cmd.misc",
-        targeType = "required",
-        stringId = " ",
-        visible = 1,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(UseSkillBuffCommand)

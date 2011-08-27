@@ -43,29 +43,6 @@
 
 RegainConsciousnessCommand = {
         name = "regainconsciousness",
-        animation = "",
-
-        invalidStateMask = 3894807673, --cover, aiming, alert, berzerk, feigndeath, tumbling, rallied, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "0,3,1,2,5,6,7,8,9,10,11,12,13,4",
-        defaultPriority = "normal",
-        scriptHook = "regainConsciousness",
-        failScriptHook = "failSpecialAttack",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1.5,
-        characterAbility = "regainConsciousness",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = -1478973933,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(RegainConsciousnessCommand)

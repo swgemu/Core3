@@ -43,29 +43,6 @@
 
 DismountandstoreCommand = {
         name = "dismountandstore",
-        animation = "",
-
-        invalidStateMask = 3760653345, --cover, berzerk, tumbling, immobilized, frozen, swimming, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "front",
-        scriptHook = "dismountandstore",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = "player.skill.taming",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 1,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(DismountandstoreCommand)

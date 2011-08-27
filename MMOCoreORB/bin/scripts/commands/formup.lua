@@ -43,29 +43,6 @@
 
 FormupCommand = {
         name = "formup",
-        animation = "",
-
-        invalidStateMask = 3895410753, --cover, feigndeath, dizzy, immobilized, frozen, swimming, sittingOnChair, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "formup",
-        failScriptHook = "failSpecialAttack",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1.5,
-        characterAbility = "formup",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(FormupCommand)

@@ -43,29 +43,6 @@
 
 SetGodModeCommand = {
         name = "setgodmode",
-        animation = "",
-
-        invalidStateMask = 2097152, --glowingJedi, 
-        invalidPostures = "",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "admin_setGodMode",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "none",
-        stringId = "0",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(SetGodModeCommand)

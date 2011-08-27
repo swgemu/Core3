@@ -102,7 +102,7 @@ void CommandConfigManager::loadCommandData() {
 		bool position; // need to add positions one by one
 
 		row->getValue(CommandConfigManager::COMMANDNAME, name);
-		slashCommand = createCommand(name.toLowerCase());
+		slashCommand = createCommand(name.trim().toLowerCase());
 
 		if (slashCommand == NULL) {
 			error("Could not create command " + name);
@@ -348,39 +348,41 @@ int CommandConfigManager::runSlashCommandsFile(lua_State* L) {
 }
 
 void CommandConfigManager::parseOptions(LuaObject &slashcommand, QueueCommand* command) {
+	String field;
 
-	/*String field = slashcommand.getStringField("animation");
-	command->setAnimation(field);*/
-
+	// is there a better way to do overwrites?
 	uint64 mask = slashcommand.getLongField("invalidStateMask");
-	command->setStateMask(mask);
+	if (mask != 0) command->setStateMask(mask);
 
-	String field = slashcommand.getStringField("invalidPostures");
-	command->setInvalidLocomotions(field);
-
-	/*int num = slashcommand.getIntField("target");
-	command->setTarget(num);*/
+	try {
+		field = slashcommand.getStringField("invalidPostures");
+		command->setInvalidLocomotions(field);
+	} catch (IllegalArgumentException& e) {}
 
 	int num = slashcommand.getIntField("targetType");
-	command->setTargetType(num);
+	if (num != 0) command->setTargetType(num);
 
 	num = slashcommand.getIntField("disabled");
-	command->setDisabled(num);
+	if (num != 0) command->setDisabled(num);
 
 	num = slashcommand.getIntField("maxRangeToTarget");
-	command->setMaxRange(num);
+	if (num != 0) command->setMaxRange(num);
 
 	num = slashcommand.getIntField("addToCombatQueue");
-	command->setAddToCombatQueue(num);
+	if (num != 0) command->setAddToCombatQueue(num);
 
-	field = slashcommand.getStringField("characterAbility");
-	command->setCharacterAbility(field);
+	try {
+		field = slashcommand.getStringField("characterAbility");
+		command->setCharacterAbility(field);
+	} catch (IllegalArgumentException& e) {}
 
-	field = slashcommand.getStringField("defaultPriority");
-	command->setDefaultPriority(field);
+	try {
+		field = slashcommand.getStringField("defaultPriority");
+		command->setDefaultPriority(field);
+	} catch (IllegalArgumentException& e) {}
 
 	float time = slashcommand.getFloatField("defaultTime");
-	command->setDefaultTime(time);
+	if (time != 0) command->setDefaultTime(time);
 
 }
 
@@ -402,7 +404,7 @@ void CommandConfigManager::parseSlashCommand(LuaObject &slashcommand, QueueComma
 
 	parseOptions(slashcommand, slashCommand);
 
-	slashCommands->put(slashCommand);
+	//slashCommands->put(slashCommand);
 
 	/*String alternativeNames = slashcommand.getStringField("alternativeNames");
 	if (!alternativeNames.isEmpty())
@@ -415,7 +417,12 @@ int CommandConfigManager::addCommand(lua_State* L) {
 		return 0;
 
 	// get object from map, then overwrite/fill in variables
-	//String name = slashcommand.getStringField("name");
+	String name = slashcommand.getStringField("name");
+	QueueCommand* command = slashCommands->getSlashCommand(name);
+	if (command == NULL)
+		return 0;
+
+	parseSlashCommand(slashcommand, command);
 
 	return 1;
 }
@@ -800,12 +807,12 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<ListCompletedQuestsCommand>(String("listCompletedQuests").toLowerCase());
 	commandFactory.registerCommand<ListenCommand>(String("listen").toLowerCase());
 	commandFactory.registerCommand<ListGuildsCommand>(String("listGuilds").toLowerCase());
-	//commandFactory.registerCommand<LogoutServerCommand>(String("logoutServer").toLowerCase());
+	commandFactory.registerCommand<LogoutServerCommand>(String("logoutServer").toLowerCase());
 	commandFactory.registerCommand<LootCommand>(String("loot").toLowerCase());
 	commandFactory.registerCommand<LootPlayerCorpseCommand>(String("lootPlayerCorpse").toLowerCase());
 	commandFactory.registerCommand<LowBlowCommand>(String("lowBlow").toLowerCase());
 	commandFactory.registerCommand<MakeLeaderCommand>(String("makeLeader").toLowerCase());
-	//commandFactory.registerCommand<MakeMasterLooterCommand>(String("makeMasterLooter").toLowerCase());
+	commandFactory.registerCommand<MakeMasterLooterCommand>(String("makeMasterLooter").toLowerCase());
 	commandFactory.registerCommand<MakeSurveyCommand>(String("makeSurvey").toLowerCase());
 	commandFactory.registerCommand<ManufactureCommand>(String("manufacture").toLowerCase());
 	commandFactory.registerCommand<MaskscentCommand>(String("maskscent").toLowerCase());
@@ -1188,8 +1195,8 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<WipeItemsCommand>(String("wipeItems").toLowerCase());
 	commandFactory.registerCommand<WookieeRoarCommand>(String("wookieeRoar").toLowerCase());
 	commandFactory.registerCommand<CityInfoCommand>(String("cityInfo").toLowerCase());
-	//commandFactory.registerCommand<GroupLootCommand>(String("groupLoot").toLowerCase());
-	//commandFactory.registerCommand<OpenLotteryContainerCommand>(String("openLotteryContainer").toLowerCase());
-	//commandFactory.registerCommand<CloseLotteryContainerCommand>(String("closeLotteryContainer").toLowerCase());
+	commandFactory.registerCommand<GroupLootCommand>(String("groupLoot").toLowerCase());
+	commandFactory.registerCommand<OpenLotteryContainerCommand>(String("openLotteryContainer").toLowerCase());
+	commandFactory.registerCommand<CloseLotteryContainerCommand>(String("closeLotteryContainer").toLowerCase());
 	commandFactory.registerCommand<RequestQuestTimersAndCountersCommand>(String("requestQuestTimersAndCounters").toLowerCase());
 }

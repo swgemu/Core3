@@ -43,29 +43,6 @@
 
 CreateVendorCommand = {
         name = "createvendor",
-        animation = "",
-
-        invalidStateMask = 136838251, --cover, combat, aiming, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "immediate",
-        scriptHook = "createVendor",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "none",
-        stringId = "0",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(CreateVendorCommand)

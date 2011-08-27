@@ -43,29 +43,6 @@
 
 ItemmoveforwardCommand = {
         name = "itemmoveforward",
-        animation = "",
-
-        invalidStateMask = 2097152, --glowingJedi, 
-        invalidPostures = "",
-        defaultPriority = "immediate",
-        scriptHook = "itemMoveForward",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 4,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(ItemmoveforwardCommand)

@@ -43,29 +43,6 @@
 
 HarvestCorpseCommand = {
         name = "harvestcorpse",
-        animation = "",
-
-        invalidStateMask = 3894881371, --cover, combat, aiming, alert, feigndeath, tumbling, rallied, blinded, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,2,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "cmdHarvestCorpse",
-        failScriptHook = "cmdHarvestCorpseFail",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1,
-        characterAbility = "harvestCorpse",
-        tempScript = "player.skill.outdoorsman",
-        targeType = "required",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = -1884016229,
-        disabled = 0,
-        maxRangeToTarget = 16,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(HarvestCorpseCommand)

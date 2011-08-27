@@ -43,29 +43,6 @@
 
 DismountCommand = {
         name = "dismount",
-        animation = "",
-
-        invalidStateMask = 3760391201, --cover, berzerk, tumbling, immobilized, frozen, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "front",
-        scriptHook = "dismount",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = "player.skill.taming",
-        targeType = "optional",
-        stringId = " ",
-        visible = 3,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(DismountCommand)

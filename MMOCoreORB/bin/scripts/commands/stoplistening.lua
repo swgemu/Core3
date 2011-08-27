@@ -43,29 +43,6 @@
 
 StoplisteningCommand = {
         name = "stoplistening",
-        animation = "",
-
-        invalidStateMask = 3760193552, --alert, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-        defaultPriority = "normal",
-        scriptHook = "cmdStopListening",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = "player.skill.performcommands",
-        targeType = "optional",
-        stringId = "0",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 1908523600,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(StoplisteningCommand)

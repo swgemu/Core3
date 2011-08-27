@@ -43,29 +43,6 @@
 
 CombatModeCheckCommand = {
         name = "combatmodecheck",
-        animation = "",
-
-        invalidStateMask = 3760193536, --glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-        defaultPriority = "normal",
-        scriptHook = "combatModeCheck",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(CombatModeCheckCommand)

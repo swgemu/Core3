@@ -43,29 +43,6 @@
 
 MoveFurnitureCommand = {
         name = "movefurniture",
-        animation = "",
-
-        invalidStateMask = 136838267, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, 
-        invalidPostures = "3,5,6,10,11,12,13,14,4",
-        defaultPriority = "immediate",
-        scriptHook = "moveFurniture",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(MoveFurnitureCommand)

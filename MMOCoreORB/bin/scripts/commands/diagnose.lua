@@ -43,29 +43,6 @@
 
 DiagnoseCommand = {
         name = "diagnose",
-        animation = "",
-
-        invalidStateMask = 3963092091, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, crafting, glowingJedi, onFire, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "2,5,7,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "cmdDiagnose",
-        failScriptHook = "cmdFailDiagnose",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 5,
-        characterAbility = "tendWound",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(DiagnoseCommand)

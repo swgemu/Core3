@@ -43,29 +43,6 @@
 
 WookieeRoarCommand = {
         name = "wookieeroar",
-        animation = "",
-
-        invalidStateMask = 4132864, --stunned, immobilized, frozen, swimming, sittingOnChair, crafting, glowingJedi, 
-        invalidPostures = "3,1,2,5,7,8,9,12,13,14",
-        defaultPriority = "front",
-        scriptHook = "wookieeRoar",
-        failScriptHook = "cmdInnateFail",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1,
-        characterAbility = "wookieeroar",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(WookieeRoarCommand)

@@ -43,29 +43,6 @@
 
 HealActionSelf1Command = {
         name = "healactionself1",
-        animation = "",
-
-        invalidStateMask = 3894805552, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,9,10,11,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "healActionSelf1",
-        failScriptHook = "failSpecialAttack",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1.5,
-        characterAbility = "healActionSelf1",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = -1478973933,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(HealActionSelf1Command)

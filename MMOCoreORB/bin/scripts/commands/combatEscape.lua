@@ -43,29 +43,6 @@
 
 CombatEscapeCommand = {
         name = "combatescape",
-        animation = "",
-
-        invalidStateMask = 3760193568, --berzerk, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "13",
-        defaultPriority = "front",
-        scriptHook = "combatEscape",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 25,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = -560185247,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(CombatEscapeCommand)

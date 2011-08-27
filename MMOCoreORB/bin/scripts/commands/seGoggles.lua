@@ -43,29 +43,6 @@
 
 SeGogglesCommand = {
         name = "segoggles",
-        animation = "",
-
-        invalidStateMask = 2556674, --combat, combatAttitudeNormal, combatAttitudeAggressive, immobilized, frozen, swimming, glowingJedi, 
-        invalidPostures = "5,6,9,10,12,13,14",
-        defaultPriority = "immediate",
-        scriptHook = "createNewGoggles",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = "item.goggles.reset",
-        targeType = "none",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(SeGogglesCommand)

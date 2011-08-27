@@ -43,29 +43,6 @@
 
 HealDamageCommand = {
         name = "healdamage",
-        animation = "",
-
-        invalidStateMask = 3894542352, --alert, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "2,5,7,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "healDamage",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 5,
-        characterAbility = "healDamage",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(HealDamageCommand)

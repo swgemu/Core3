@@ -43,29 +43,6 @@
 
 RescueCommand = {
         name = "rescue",
-        animation = "",
-
-        invalidStateMask = 3894805521, --cover, alert, tumbling, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "rescue",
-        failScriptHook = "failSpecialAttack",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 2,
-        characterAbility = "rescue",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = -560185247,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(RescueCommand)

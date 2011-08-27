@@ -43,29 +43,6 @@
 
 GetPrototypeCommand = {
         name = "getprototype",
-        animation = "",
-
-        invalidStateMask = 137887739, --cover, combat, aiming, alert, berzerk, feigndeath, combatAttitudeEvasive, combatAttitudeNormal, combatAttitudeAggressive, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, crafting, glowingJedi, ridingMount, 
-        invalidPostures = "3,6,10,11,12,13,14,4",
-        defaultPriority = "immediate",
-        scriptHook = "getPrototype",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(GetPrototypeCommand)

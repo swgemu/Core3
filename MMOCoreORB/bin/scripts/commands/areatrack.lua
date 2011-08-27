@@ -43,29 +43,6 @@
 
 AreatrackCommand = {
         name = "areatrack",
-        animation = "",
-
-        invalidStateMask = 3894934651, --cover, combat, aiming, alert, berzerk, feigndeath, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,6,7,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "areatrack",
-        failScriptHook = "failAreatrack",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1,
-        characterAbility = "areatrack",
-        tempScript = " ",
-        targeType = "none",
-        stringId = "0",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(AreatrackCommand)

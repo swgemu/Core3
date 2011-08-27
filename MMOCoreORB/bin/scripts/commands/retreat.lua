@@ -43,29 +43,6 @@
 
 RetreatCommand = {
         name = "retreat",
-        animation = "",
-
-        invalidStateMask = 3895410769, --cover, alert, feigndeath, dizzy, immobilized, frozen, swimming, sittingOnChair, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,1,2,5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "retreat",
-        failScriptHook = "failSpecialAttack",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1.5,
-        characterAbility = "retreat",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(RetreatCommand)

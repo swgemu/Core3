@@ -43,29 +43,6 @@
 
 NpcConversationStopCommand = {
         name = "npcconversationstop",
-        animation = "",
-
-        invalidStateMask = 137564162, --combat, stunned, immobilized, frozen, crafting, glowingJedi, ridingMount, 
-        invalidPostures = "3,6,10,11,12,13,14",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "npcConversationStop",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 1,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(NpcConversationStopCommand)

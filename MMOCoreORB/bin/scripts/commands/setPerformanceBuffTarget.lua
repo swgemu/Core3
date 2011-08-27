@@ -43,29 +43,6 @@
 
 SetPerformanceBuffTargetCommand = {
         name = "setperformancebufftarget",
-        animation = "",
-
-        invalidStateMask = 3760193536, --glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "13,14",
-        defaultPriority = "normal",
-        scriptHook = "cmdSetPerformanceBuffTarget",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = "player.skill.performcommands",
-        targeType = "optional",
-        stringId = "0",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 1908523600,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(SetPerformanceBuffTargetCommand)

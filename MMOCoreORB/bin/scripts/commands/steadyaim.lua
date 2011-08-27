@@ -43,29 +43,6 @@
 
 SteadyaimCommand = {
         name = "steadyaim",
-        animation = "",
-
-        invalidStateMask = 3895410768, --alert, feigndeath, dizzy, immobilized, frozen, swimming, sittingOnChair, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "steadyaim",
-        failScriptHook = "failSpecialAttack",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1.5,
-        characterAbility = "steadyaim",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(SteadyaimCommand)

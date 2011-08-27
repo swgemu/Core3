@@ -43,29 +43,6 @@
 
 OpenContainerCommand = {
         name = "opencontainer",
-        animation = "",
-
-        invalidStateMask = 2228320, --berzerk, feigndeath, frozen, glowingJedi, 
-        invalidPostures = "13,14",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = "cmdOpenFail",
-        cppHook = "openContainer",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(OpenContainerCommand)

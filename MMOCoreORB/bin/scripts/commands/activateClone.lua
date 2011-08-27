@@ -43,29 +43,6 @@
 
 ActivateCloneCommand = {
         name = "activateclone",
-        animation = "",
-
-        invalidStateMask = 3896508415, --cover, combat, peace, aiming, alert, berzerk, feigndeath, combatAttitudeEvasive, combatAttitudeNormal, combatAttitudeAggressive, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, sittingOnChair, crafting, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "0,3,1,2,5,6,7,8,9,10,11,12,13,4",
-        defaultPriority = "normal",
-        scriptHook = "cmdActivateClone",
-        failScriptHook = "cmdActivateCloneFail",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 1,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(ActivateCloneCommand)

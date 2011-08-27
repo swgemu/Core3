@@ -43,29 +43,6 @@
 
 TellpetCommand = {
         name = "tellpet",
-        animation = "",
-
-        invalidStateMask = 2293824, --feigndeath, immobilized, frozen, glowingJedi, 
-        invalidPostures = "13,14",
-        defaultPriority = "immediate",
-        scriptHook = "cmdTellPet",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1,
-        characterAbility = " ",
-        tempScript = "player.skill.taming",
-        targeType = "optional",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(TellpetCommand)

@@ -43,29 +43,6 @@
 
 FireHeavyWeaponCommand = {
         name = "fireheavyweapon",
-        animation = "",
-
-        invalidStateMask = 3894804576, --berzerk, feigndeath, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "fireHeavyWeapon",
-        failScriptHook = "failFireHeavyWeapon",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 15,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 391413347,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(FireHeavyWeaponCommand)

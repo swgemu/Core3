@@ -43,29 +43,6 @@
 
 CenterOfBeingCommand = {
         name = "centerofbeing",
-        animation = "",
-
-        invalidStateMask = 3760587824, --alert, berzerk, tumbling, frozen, swimming, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,7,8,9,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "centerOfBeing",
-        failScriptHook = "failSpecialAttack",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1.5,
-        characterAbility = "centerOfBeing",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = -2083233742,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(CenterOfBeingCommand)

@@ -43,29 +43,6 @@
 
 RequestCraftingSessionCommand = {
         name = "requestcraftingsession",
-        animation = "",
-
-        invalidStateMask = 204996587, --cover, combat, aiming, berzerk, feigndeath, combatAttitudeEvasive, combatAttitudeNormal, combatAttitudeAggressive, tumbling, rallied, stunned, blinded, dizzy, intimidated, immobilized, frozen, swimming, crafting, glowingJedi, onFire, ridingMount, 
-        invalidPostures = "3,6,9,10,11,12,13,14,4",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "requestCraftingSession",
-        failCppHook = "requestCraftingSessionFail",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 1,
-        callOnTarget = 0,
-        commandGroup = -436806567,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(RequestCraftingSessionCommand)

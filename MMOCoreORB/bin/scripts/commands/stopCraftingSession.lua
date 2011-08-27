@@ -43,29 +43,6 @@
 
 StopCraftingSessionCommand = {
         name = "stopcraftingsession",
-        animation = "",
-
-        invalidStateMask = 2097154, --combat, glowingJedi, 
-        invalidPostures = "13,14",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "stopCraftingSession",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 1,
-        callOnTarget = 0,
-        commandGroup = -436806567,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(StopCraftingSessionCommand)

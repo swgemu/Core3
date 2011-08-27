@@ -43,29 +43,6 @@
 
 UseReconDroneCommand = {
         name = "userecondrone",
-        animation = "",
-
-        invalidStateMask = 3760193536, --glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "13,14",
-        defaultPriority = "normal",
-        scriptHook = "cmdUseReconDrone",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 1,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(UseReconDroneCommand)

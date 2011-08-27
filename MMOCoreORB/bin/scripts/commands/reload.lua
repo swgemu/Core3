@@ -43,29 +43,6 @@
 
 ReloadCommand = {
         name = "reload",
-        animation = "",
-
-        invalidStateMask = 3894870048, --berzerk, immobilized, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,6,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "reload",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 3,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = -560185247,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(ReloadCommand)

@@ -43,29 +43,6 @@
 
 InstallMissionTerminalCommand = {
         name = "installmissionterminal",
-        animation = "",
-
-        invalidStateMask = 3760653056, --combatAttitudeNormal, combatAttitudeAggressive, immobilized, frozen, swimming, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,6,7,8,9,10",
-        defaultPriority = "normal",
-        scriptHook = "cmdInstallMissionTerminal",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = "installMissionTerminal",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(InstallMissionTerminalCommand)

@@ -43,29 +43,6 @@
 
 KickCommand = {
         name = "kick",
-        animation = "",
-
-        invalidStateMask = 2097152, --glowingJedi, 
-        invalidPostures = "",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = "failAdmin",
-        cppHook = "admin_kick",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = "admin",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = "0",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = -307921291,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(KickCommand)

@@ -43,29 +43,6 @@
 
 NpcCommand = {
         name = "npc",
-        animation = "",
-
-        invalidStateMask = 2097152, --glowingJedi, 
-        invalidPostures = "",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = "failAdmin",
-        cppHook = "console_npc",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = "admin",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = -307921291,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(NpcCommand)

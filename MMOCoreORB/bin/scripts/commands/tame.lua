@@ -43,29 +43,6 @@
 
 TameCommand = {
         name = "tame",
-        animation = "",
-
-        invalidStateMask = 3895717968, --alert, feigndeath, stunned, blinded, dizzy, intimidated, immobilized, frozen, crafting, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "10,11,12,13,14",
-        defaultPriority = "normal",
-        scriptHook = "cmdTame",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0.5,
-        characterAbility = " ",
-        tempScript = "player.skill.taming",
-        targeType = "required",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 32,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(TameCommand)

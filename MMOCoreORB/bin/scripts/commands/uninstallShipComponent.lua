@@ -43,29 +43,6 @@
 
 UninstallShipComponentCommand = {
         name = "uninstallshipcomponent",
-        animation = "",
-
-        invalidStateMask = 2097152, --glowingJedi, 
-        invalidPostures = "13,14",
-        defaultPriority = "normal",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "uninstallShipComponent",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 1,
-        callOnTarget = 0,
-        commandGroup = 244939766,
-        disabled = 0,
-        maxRangeToTarget = 16,
-        godLevel = 0,
-        displayGroup = 244939766,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(UninstallShipComponentCommand)

@@ -43,29 +43,6 @@
 
 AimCommand = {
         name = "aim",
-        animation = "",
-
-        invalidStateMask = 3894804480, --frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "aim",
-        failScriptHook = "failSpecialAttack",
-        cppHook = "aim",
-        failCppHook = " ",
-        defaultTime = 1.5,
-        characterAbility = "aim",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = -1170591580,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(AimCommand)

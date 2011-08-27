@@ -43,29 +43,6 @@
 
 LaunchIntoSpaceCommand = {
         name = "launchintospace",
-        animation = "",
-
-        invalidStateMask = 4162846722, --combat, glowingJedi, ridingMount, mountedCreature, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "10,11,13,14",
-        defaultPriority = "normal",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "launchIntoSpace",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 1,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 16,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(LaunchIntoSpaceCommand)

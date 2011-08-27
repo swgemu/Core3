@@ -43,29 +43,6 @@
 
 ThrowTrapCommand = {
         name = "throwtrap",
-        animation = "",
-
-        invalidStateMask = 3894543472, --alert, berzerk, feigndeath, tumbling, frozen, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,6,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "normal",
-        scriptHook = "throwTrap",
-        failScriptHook = "failThrowTrap",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 5,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "required",
-        stringId = " ",
-        visible = 1,
-        callOnTarget = 0,
-        commandGroup = 391413347,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(ThrowTrapCommand)

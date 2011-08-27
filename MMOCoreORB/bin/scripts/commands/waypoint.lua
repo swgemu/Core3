@@ -43,29 +43,6 @@
 
 WaypointCommand = {
         name = "waypoint",
-        animation = "",
-
-        invalidStateMask = 3760324608, --frozen, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-        defaultPriority = "normal",
-        scriptHook = "cmdWaypoint",
-        failScriptHook = "cmdWaypointFail",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = "0",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(WaypointCommand)

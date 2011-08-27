@@ -43,29 +43,6 @@
 
 PeaceCommand = {
         name = "peace",
-        animation = "",
-
-        invalidStateMask = 2162720, --berzerk, immobilized, glowingJedi, 
-        invalidPostures = "13",
-        defaultPriority = "immediate",
-        scriptHook = "peace",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 3,
-        callOnTarget = 0,
-        commandGroup = -560185247,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(PeaceCommand)

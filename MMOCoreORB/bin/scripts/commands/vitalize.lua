@@ -43,29 +43,6 @@
 
 VitalizeCommand = {
         name = "vitalize",
-        animation = "",
-
-        invalidStateMask = 3762229248, --stunned, immobilized, frozen, swimming, sittingOnChair, crafting, glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "3,5,9,12,13,14",
-        defaultPriority = "front",
-        scriptHook = "cmdVitalize",
-        failScriptHook = "cmdInnateFail",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1,
-        characterAbility = "vitalize",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(VitalizeCommand)

@@ -43,29 +43,6 @@
 
 HaveconsentCommand = {
         name = "haveconsent",
-        animation = "",
-
-        invalidStateMask = 3760193536, --glowingJedi, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "",
-        defaultPriority = "front",
-        scriptHook = "cmdHaveConsent",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 3,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(HaveconsentCommand)

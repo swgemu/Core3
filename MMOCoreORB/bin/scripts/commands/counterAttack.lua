@@ -43,29 +43,6 @@
 
 CounterAttackCommand = {
         name = "counterattack",
-        animation = "",
-
-        invalidStateMask = 3894804512, --berzerk, frozen, swimming, glowingJedi, ridingMount, pilotingShip, shipOperations, shipGunner, 
-        invalidPostures = "5,7,8,9,10,11,12,13,14,4",
-        defaultPriority = "front",
-        scriptHook = "counterAttack",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 0.25,
-        characterAbility = "counterAttack",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 2,
-        callOnTarget = 0,
-        commandGroup = 391413347,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 1,
-
 }
 
 AddCommand(CounterAttackCommand)

@@ -43,29 +43,6 @@
 
 EatCommand = {
         name = "eat",
-        animation = "",
-
-        invalidStateMask = 2228288, --feigndeath, frozen, glowingJedi, 
-        invalidPostures = "13,14",
-        defaultPriority = "normal",
-        scriptHook = "cmdEat",
-        failScriptHook = " ",
-        cppHook = " ",
-        failCppHook = " ",
-        defaultTime = 1,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "optional",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(EatCommand)

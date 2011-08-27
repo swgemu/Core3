@@ -43,29 +43,6 @@
 
 SpatialChatInternalCommand = {
         name = "spatialchatinternal",
-        animation = "",
-
-        invalidStateMask = 0, --
-        invalidPostures = "13,14",
-        defaultPriority = "immediate",
-        scriptHook = " ",
-        failScriptHook = " ",
-        cppHook = "spatialChatInternal",
-        failCppHook = " ",
-        defaultTime = 0,
-        characterAbility = " ",
-        tempScript = " ",
-        targeType = "none",
-        stringId = " ",
-        visible = 0,
-        callOnTarget = 0,
-        commandGroup = 0,
-        disabled = 0,
-        maxRangeToTarget = 0,
-        godLevel = 0,
-        displayGroup = 0,
-        addToCombatQueue = 0,
-
 }
 
 AddCommand(SpatialChatInternalCommand)
