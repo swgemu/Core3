@@ -324,7 +324,7 @@ tatooine_static_spawns = {
 	{"trainer_artisan", 0, -0.0885271, 1.13306, -14.0283, 2, 1256011},
 	{"trainer_artisan", 0, -2890, 5, 2142, 19, 0},
 	{"trainer_artisan", 0, -5274, 75, -6547, 139, 0},
-	{"trainer_industrialist", 0, -1125, 12.2, -3616, 166, 0},
+--	{"trainer_industrialist", 0, -1125, 12.2, -3616, 166, 0},
 	{"trainer_weaponsmith", 0, 1210, 7.4, 3273, 170, 0},
 	{"trainer_weaponsmith", 0, 1394, 7, 3447, 95, 0},
 	{"trainer_weaponsmith", 0, -3.1, 1.1, -8.4, 95, 1154184},

@@ -138,7 +138,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 				SceneObject* childStub = cell->getContainerObject(j);
 
-				if (!childStub->isInQuadTree())
+				//if (!childStub->isInQuadTree())
 					childStub->sendTo(player, true);
 			}
 		}
@@ -246,38 +246,18 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 	//info("BuildingObjectImplementation::notifyInsertToZone");
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {
-		QuadTreeEntry* obj = getInRangeObject(i);
+		SceneObject* obj = (SceneObject*) getInRangeObject(i);
 
-		object->addInRangeObject(obj, false);
-		obj->addInRangeObject(object, false);
-	}
+		if ((obj->isCreatureObject() && isPublicStructure()) || isStaticBuilding()) {
+			object->addInRangeObject(obj, false);
+			object->sendTo(obj, true);
 
-	for (int i = 0; i < cells.size(); ++i) {
-		CellObject* cell = cells.get(i);
-
-		if (isStaticBuilding()) {
-			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-				SceneObject* child = cell->getContainerObject(j);
-
-				//if (childStub->isInRange(object, 128)) {
-				child->addInRangeObject(object, false);
-
-				if (child != object) {
-					object->notifyInsert(child);
-					//child->sendTo(object, true);
-				}
-
-				object->addInRangeObject(child, false);
-
-				if (child != object) {
-					//object->sendTo(childStub, true);
-					child->notifyInsert(object);
-				}
-
-				//}
-			}
+			obj->addInRangeObject(object, false);
+			obj->sendTo(object, true);
 		}
 	}
+
+	notifyInsert(object);
 
 	object->addInRangeObject(_this, false);
 	addInRangeObject(object, false);
@@ -287,6 +267,7 @@ void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
 void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	//info("BuildingObjectImplementation::notifyInsert");
 	SceneObject* scno = (SceneObject*) obj;
+	bool objectInThisBuilding = scno->getRootParent() == _this;
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
@@ -294,14 +275,16 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 			SceneObject* child = cell->getContainerObject(j);
 
-			/*if (childStub->isCreatureObject()
-			 || (scno->getRootParent() == _this) && (scno->isInRange(childStub, 128))) {*/
+			if (child != obj) {
+				if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
+					//if (is)
+					child->addInRangeObject(obj, false);
+					child->sendTo(scno, true);
 
-			if (isStaticBuilding()) {
-				child->addInRangeObject(obj, false);
-				obj->addInRangeObject(child, false);
+					scno->addInRangeObject(child, false);
+					scno->sendTo(child, true);
+				}
 			}
-			//}
 		}
 	}
 }
@@ -309,7 +292,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 	SceneObject* scno = (SceneObject*) obj;
 
-	removeNotifiedSentObject(scno);
+//	removeNotifiedSentObject(scno);
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
@@ -325,6 +308,31 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 
 void BuildingObjectImplementation::insert(QuadTreeEntry* entry) {
 	quadTree->insert(entry);
+
+	SceneObject* scno = (SceneObject*) entry;
+
+	for (int i = 0; i < cells.size(); ++i) {
+		CellObject* cell = cells.get(i);
+
+		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+			SceneObject* child = cell->getContainerObject(j);
+
+			if (child != scno) {
+				//if (child->isCreatureObject() && isPublicStructure()) {
+					//if (is)
+				if (!child->containsInRangeObject(scno)) {
+					child->addInRangeObject(scno, false);
+					child->sendTo(scno, true);
+				}
+
+				if (!scno->containsInRangeObject(child)) {
+					scno->addInRangeObject(child, false);
+					scno->sendTo(child, true);
+				}
+				//}
+			}
+		}
+	}
 }
 
 void BuildingObjectImplementation::remove(QuadTreeEntry* entry) {

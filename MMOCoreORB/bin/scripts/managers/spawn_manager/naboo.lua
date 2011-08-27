@@ -170,7 +170,7 @@ naboo_static_spawns = {
 	{"trainer_imagedesigner",0,-22.9,2.1287,74.7,121,5475488},
 	{"trainer_imagedesigner",0,-21.662,2.12878,75.0346,166,4105619},
 	{"trainer_imagedesigner",0,-22.2396,2.12878,72.4933,181,2725361},
-	{"trainer_industrialist",0,4702,330,-1368,124,0},
+--	{"trainer_industrialist",0,4702,330,-1368,124,0},
 	{"trainer_marksman",0,4980,0,-1425,180,0},
 	{"trainer_marksman",0,4874,360.6,-1444,0,0},
 	{"trainer_marksman",0,0,1.13306,-13,0,1741461},

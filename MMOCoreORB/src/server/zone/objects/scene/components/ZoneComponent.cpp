@@ -86,9 +86,9 @@ void ZoneComponent::insertToZone(SceneObject* sceneObject, Zone* newZone) {
 	if (parent != NULL && parent->isCellObject())
 		parent->addObject(sceneObject, -1, false);
 
-	SortedVector<ManagedReference<SceneObject*> >* notifiedSentObjects = sceneObject->getNotifiedSentObjects();
+	/*SortedVector<ManagedReference<SceneObject*> >* notifiedSentObjects = sceneObject->getNotifiedSentObjects();
 
-	notifiedSentObjects->removeAll();
+	notifiedSentObjects->removeAll();*/
 
 	sceneObject->sendToOwner(true);
 
@@ -96,22 +96,26 @@ void ZoneComponent::insertToZone(SceneObject* sceneObject, Zone* newZone) {
 		for (int i = 0; i < sceneObject->inRangeObjectCount(); ++i) {
 			SceneObject* object = (SceneObject*) sceneObject->getInRangeObject(i);
 
-			sceneObject->notifyInsert(object);
+			if (object != sceneObject->getRootParent()) //our building is sent in sendToOwner
+				sceneObject->notifyInsert(object);
 
 			if (object != sceneObject) {
-				if (object->getParentRecursively(SceneObject::BUILDING) != NULL) {
+				/*if (object->getParentRecursively(SceneObject::BUILDING) != NULL) {
 					if (notifiedSentObjects->put(object) != -1)
 						object->sendTo(sceneObject, true);
-				}
+				}*/
 
-				if (object->isPlayerCreature()) {
+				if (object->isPlayerCreature()) { //we need to destroy object to reset movement counter on near clients
 					object->notifyDissapear(sceneObject);
+					//object->sendTo(sceneObject, true);
+					sceneObject->sendTo(object, true);
+				} else
 					object->notifyInsert(sceneObject);
-				}
 			}
 		}
 	} else {
 		sceneObject->initializePosition(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY());
+		sceneObject->removeInRangeObjects();
 
 		//movementCounter = 0;
 		sceneObject->setMovementCounter(0);
@@ -384,7 +388,7 @@ void ZoneComponent::removeFromZone(SceneObject* sceneObject) {
 	SceneObject* parent = sceneObject->getParent();
 	Zone* zone = sceneObject->getZone();
 	Vector<ManagedReference<ActiveArea*> >* activeAreas = sceneObject->getActiveAreas();
-	SortedVector<ManagedReference<SceneObject*> >* notifiedSentObjects = sceneObject->getNotifiedSentObjects();
+	//SortedVector<ManagedReference<SceneObject*> >* notifiedSentObjects = sceneObject->getNotifiedSentObjects();
 
 	try {
 		Locker locker(sceneObject);
@@ -439,7 +443,7 @@ void ZoneComponent::removeFromZone(SceneObject* sceneObject) {
 
 		//removeInRangeObjects();
 
-		notifiedSentObjects->removeAll();
+		//notifiedSentObjects->removeAll();
 
 		Zone* oldZone = zone;
 		zone = NULL;
@@ -487,7 +491,7 @@ void ZoneComponent::removeFromBuilding(SceneObject* sceneObject, BuildingObject*
     if (building != NULL) {
     	building->remove(sceneObject);
 
-    	building->removeNotifiedSentObject(sceneObject);
+//    	building->removeNotifiedSentObject(sceneObject);
     }
 }
 

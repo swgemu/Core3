@@ -16,6 +16,8 @@ public:
 
 	void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry);
 
+	void insertToZone(SceneObject* sceneObject, Zone* newZone);
+
 	void teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID = 0);
 
 	/**

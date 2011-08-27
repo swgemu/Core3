@@ -14,6 +14,25 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
 
+void PlayerZoneComponent::insertToZone(SceneObject* sceneObject, Zone* newZone) {
+	SceneObject* parent = sceneObject->getParent();
+
+	if (parent == NULL && !sceneObject->isInQuadTree() && sceneObject->isPlayerCreature()) {
+		CreatureObject* player = (CreatureObject*) sceneObject;
+		PlayerObject* ghost = player->getPlayerObject();
+
+		uint64 savedParentID = 0;
+
+		if (ghost != NULL && (savedParentID = ghost->getSavedParentID()) != 0) {
+			sceneObject->setParent(sceneObject->getZoneServer()->getObject(savedParentID));
+		}
+	}
+
+	ZoneComponent::insertToZone(sceneObject, newZone);
+
+	//sceneObject->info("blia", true);
+}
+
 void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) {
 	SceneObject* scno = (SceneObject*) entry;
 
@@ -30,38 +49,16 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 
 	}
 
-	//TODO: fix cell movement for this to not happen
-	/*SceneObject* grandParent = getRootParent();
+	SceneObject* parent = scno->getParent();
 
-	if (parent != NULL) {
-		if (grandParent == scno) { // we already should have sent our grandParent to owner
-
-			if (grandParent->isBuildingObject())
-				((BuildingObject*)grandParent)->addNotifiedSentObject(sceneObject);
-
-			return;
-		}
+	if (parent != NULL && parent->isCellObject()) {
+		return;
 	}
 
-	if (scno->getParent() != NULL) {
-		//check the parent if its building
-		//check if the building has me as notified
-		//if it has me than send the object without the buio
-		//if it hasnt me than dont send me and wait for the building to be sent
-		//TODO: check if we need this for every object or only for buildings
-		SceneObject* scnoGrandParent = scno->getRootParent();
+	scno->sendTo(sceneObject, true);
 
-		if (scnoGrandParent->isBuildingObject()) {
-			BuildingObject* building = (BuildingObject*)scnoGrandParent;
-
-			if (!building->hasNotifiedSentObject(sceneObject))
-				return;
-		} else // we wait for the Objects parent to get sent
-			return;
-	}
-
-	if (scno->isBuildingObject())
-		((BuildingObject*)scno)->addNotifiedSentObject(sceneObject);*/
+	/*if (sceneObject->getParent() != NULL)
+		return;
 
 	SceneObject* rootParent = scno->getRootParent();
 
@@ -73,7 +70,7 @@ void PlayerZoneComponent::notifyInsert(SceneObject* sceneObject, QuadTreeEntry* 
 				rootParent->sendTo(sceneObject, true);
 		}
 	} else if (sceneObject->addNotifiedSentObject(scno) != -1)
-		scno->sendTo(sceneObject, true);
+		scno->sendTo(sceneObject, true);*/
 }
 
 void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry) {
@@ -84,7 +81,7 @@ void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntr
 
 	scno->sendDestroyTo(sceneObject);
 
-	sceneObject->removeNotifiedSentObject(scno);
+	//sceneObject->removeNotifiedSentObject(scno);
 }
 
 
@@ -142,6 +139,13 @@ void PlayerZoneComponent::removeFromBuilding(SceneObject* sceneObject, BuildingO
 	ZoneComponent::removeFromBuilding(sceneObject, building);
 
 	building->onExit(dynamic_cast<CreatureObject*>(sceneObject));
+
+	if (sceneObject->getParent() != NULL && sceneObject->isPlayerCreature()) {
+		CreatureObject* player = (CreatureObject*) sceneObject;
+		PlayerObject* ghost = player->getPlayerObject();
+
+		ghost->setSavedParentID(0);
+	}
 }
 
 void PlayerZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) {

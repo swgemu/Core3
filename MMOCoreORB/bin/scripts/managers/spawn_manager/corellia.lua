@@ -230,7 +230,7 @@ corellia_static_spawns = {
 	{"trainer_artisan", 0, -5081, 21, -2307, 134, 0},
 	{"trainer_artisan", 0, -5300.07, 21, -2383, 184, 0},
 	{"trainer_artisan", 0, 0, 1.13306, -14, 0, 1935454},
-	{"trainer_industrialist", 0, -218, 28, -4500, 34, 0},
+--	{"trainer_industrialist", 0, -218, 28, -4500, 34, 0},
 	{"trainer_weaponsmith", 0, -2.5, 1.13306, -8.4, 91, 2365801},
 	{"trainer_weaponsmith", 0, 47, 0, -4442, 180, 0},
 	{"trainer_weaponsmith", 0, -2.5, 1.13306, -8.4, 91, 3075413},

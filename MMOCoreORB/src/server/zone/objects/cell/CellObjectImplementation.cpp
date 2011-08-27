@@ -60,6 +60,8 @@ void CellObjectImplementation::notifyLoadFromDatabase() {
 void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	//SceneObjectImplementation::sendContainerObjectsTo(player);
 	//info("sending cell containers", true);
+	BuildingObject* building = dynamic_cast<BuildingObject*>(parent.get());
+	bool publicStructure = building->isPublicStructure();
 
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
 		SceneObject* containerObject = getContainerObject(j);
@@ -67,7 +69,10 @@ void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 		/*if (containerObject->getParent() == NULL)
 			containerObject->setParent(_this);*/
 
-		if (!containerObject->isInQuadTree() /*&& !containerObject->isPlayerCreature()*/)
+		//if (!containerObject->isInQuadTree() /*&& !containerObject->isPlayerCreature()*/)
+		//if (!containerObject->isPlayerCreature())
+
+		if (containerObject->isCreatureObject() && publicStructure)
 			containerObject->sendTo(player, true);
 	}
 }

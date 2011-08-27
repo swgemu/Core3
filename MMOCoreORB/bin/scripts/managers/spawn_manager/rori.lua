@@ -181,7 +181,7 @@ rori_static_spawns = {
 	{"trainer_artisan", 0, -0.124425, 1.13306, -13.6473, 0, 4615384},
 	{"trainer_artisan", 0, -0.112948, 1.13306, -14.1468, 0, 4635664},
 	{"trainer_artisan", 0, 5256, 80, 5600, 13, 0},
-	{"trainer_industrialist", 0, -5165, 80, -2461, 141, 0},
+--	{"trainer_industrialist", 0, -5165, 80, -2461, 141, 0},
 	{"trainer_weaponsmith", 0, -2.5, 1.13306, -8.4, 91, 4635414},
 	{"trainer_weaponsmith", 0, -5274, 0, -2424, 180, 0},
 	{"trainer_weaponsmith", 0, -2.5, 1.13306, -8.4, 91, 4635775},

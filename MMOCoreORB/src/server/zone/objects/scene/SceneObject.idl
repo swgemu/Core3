@@ -117,8 +117,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dereferenced
 	protected SortedVector<ActiveArea> activeAreas;
 	
-	@dereferenced
-	protected transient SortedVector<SceneObject> notifiedSentObjects;
+	/*@dereferenced
+	protected transient SortedVector<SceneObject> notifiedSentObjects;*/
 
 	@weakReference
 	protected SceneObject parent;
@@ -1028,7 +1028,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return 0;
 	}
 	
-	public boolean hasNotifiedSentObject(SceneObject object) {
+	/*public boolean hasNotifiedSentObject(SceneObject object) {
 		return notifiedSentObjects.contains(object);
 	}
 	
@@ -1038,7 +1038,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	public void removeNotifiedSentObject(SceneObject object) {
 		notifiedSentObjects.drop(object);
-	}
+	}*/
 	
 	public void addActiveArea(ActiveArea area) {
 		activeAreas.put(area);
@@ -1666,10 +1666,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return childObjects.contains(obj);
 	}
 	
-	@local
+	/*@local
 	public SortedVector<SceneObject> getNotifiedSentObjects() {
 		return notifiedSentObjects;
-	}
+	}*/
 	
 	@local
 	public SharedObjectTemplate getObjectTemplate() {

@@ -720,7 +720,7 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 		ssmpool << dec << " (" << getTimeString(seconds) << ")";
 	}
 	*/
-	status->addMenuItem("@player_structure:maintenance_pool_prompt " + String::valueOf((int) floor(structure->getSurplusMaintenance())));
+	status->addMenuItem("@player_structure:maintenance_pool_prompt " + String::valueOf((int) floor((float)structure->getSurplusMaintenance())));
 	status->addMenuItem("@player_structure:maintenance_rate_prompt " + String::valueOf(structure->getBaseMaintenanceRate()) + " cr/hr");
 
 	if (structure->isInstallationObject()) {
@@ -774,7 +774,7 @@ void StructureManagerImplementation::promptManageMaintenance(CreatureObject* cre
 	//Get the most up to date maintenance count.
 	structure->updateStructureStatus();
 
-	int surplusMaintenance = (int) floor(structure->getSurplusMaintenance());
+	int surplusMaintenance = (int) floor((float)structure->getSurplusMaintenance());
 
 	ManagedReference<SuiTransferBox*> sui = new SuiTransferBox(creature, SuiWindowType::STRUCTURE_MANAGE_MAINTENANCE);
 	sui->setCallback(new StructureManageMaintenanceSuiCallback(server->getZoneServer()));

@@ -258,7 +258,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 
 		grandParent->sendTo(_this, true);
 
-		addNotifiedSentObject(grandParent);
+//		addNotifiedSentObject(grandParent);
 		//notifiedSentObjects.put(grandParent);
 
 		//info("parent not null", true);
