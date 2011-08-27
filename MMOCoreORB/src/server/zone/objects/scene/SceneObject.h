@@ -902,12 +902,6 @@ public:
 
 	int notifyObjectRemoved(SceneObject* object);
 
-	bool hasNotifiedSentObject(SceneObject* object);
-
-	int addNotifiedSentObject(SceneObject* object);
-
-	void removeNotifiedSentObject(SceneObject* object);
-
 	void addActiveArea(ActiveArea* area);
 
 	void dropActiveArea(ActiveArea* area);
@@ -1196,8 +1190,6 @@ public:
 
 	bool containsChildObject(SceneObject* obj);
 
-	SortedVector<ManagedReference<SceneObject* > >* getNotifiedSentObjects();
-
 	SharedObjectTemplate* getObjectTemplate();
 
 	void createChildObjects();
@@ -1260,8 +1252,6 @@ protected:
 	ManagedWeakReference<CityRegion* > cityRegion;
 
 	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
-
-	SortedVector<ManagedReference<SceneObject* > > notifiedSentObjects;
 
 	ManagedWeakReference<SceneObject* > parent;
 
@@ -1970,12 +1960,6 @@ public:
 
 	virtual int notifyObjectRemoved(SceneObject* object);
 
-	bool hasNotifiedSentObject(SceneObject* object);
-
-	int addNotifiedSentObject(SceneObject* object);
-
-	void removeNotifiedSentObject(SceneObject* object);
-
 	void addActiveArea(ActiveArea* area);
 
 	void dropActiveArea(ActiveArea* area);
@@ -2264,8 +2248,6 @@ public:
 
 	bool containsChildObject(SceneObject* obj);
 
-	SortedVector<ManagedReference<SceneObject* > >* getNotifiedSentObjects();
-
 	SharedObjectTemplate* getObjectTemplate();
 
 	virtual void createChildObjects();
@@ -2442,12 +2424,6 @@ public:
 	int notifyObjectInserted(SceneObject* object);
 
 	int notifyObjectRemoved(SceneObject* object);
-
-	bool hasNotifiedSentObject(SceneObject* object);
-
-	int addNotifiedSentObject(SceneObject* object);
-
-	void removeNotifiedSentObject(SceneObject* object);
 
 	void addActiveArea(ActiveArea* area);
 

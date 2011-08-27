@@ -270,6 +270,22 @@ public:
 		this->damageMultiplier = damageMultiplier;
 	}
 
+	void setHealthCostMultiplier(float f) {
+		this->healthCostMultiplier = f;
+	}
+
+	void setActionCostMultiplier(float f) {
+		this->actionCostMultiplier = f;
+	}
+
+	void setMindCostMultiplier(float f) {
+		this->mindCostMultiplier = f;
+	}
+
+	void setForceCostMultiplier(float f) {
+		this->forceCostMultiplier = f;
+	}
+
 	void setDizzyStateChance(int dizzyStateChance) {
 		this->dizzyStateChance = dizzyStateChance;
 	}
@@ -288,6 +304,58 @@ public:
 
 	void setPostureUpStateChance(int postureUpStateChance) {
 		this->postureUpStateChance = postureUpStateChance;
+	}
+
+	void setNextAttackDelayChance(int i) {
+		this->nextAttackDelayChance = i;
+	}
+
+	void setDurationStateTime(int i) {
+		this->durationStateTime = i;
+	}
+
+	void setDotDuration(uint32 i) {
+		this->dotDuration = i;
+	}
+
+	void setDotType(uint64 l) {
+		this->dotType = l;
+	}
+
+	void setDotPool(uint8 c) {
+		this->dotPool = c;
+	}
+
+	void setDotStrength(uint32 i) {
+		this->dotStrength = i;
+	}
+
+	void setDotPotency(float f) {
+		this->dotPotency = f;
+	}
+
+	void setConeAngle(int i) {
+		this->coneAngle = i;
+	}
+
+	void setDotDamageOfHit(bool b) {
+		this->dotDamageOfHit = b;
+	}
+
+	void setAreaAction(bool b) {
+		this->areaAction = b;
+	}
+
+	void setConeAction(bool b) {
+		this->coneAction = b;
+	}
+
+	void setAreaRange(int i) {
+		this->areaRange = i;
+	}
+
+	void setEffectString(String s) {
+		this->effectString = s;
 	}
 
 	void setSpeedMultiplier(float speedMultiplier) {
@@ -324,6 +392,10 @@ public:
 
 	void setPoolsToDamage(int poolsToDamage) {
 		this->poolsToDamage = poolsToDamage;
+	}
+
+	void setRange(int i) {
+		this->range = i;
 	}
 
 	bool isCombatCommand() {
