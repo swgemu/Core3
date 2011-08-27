@@ -50,6 +50,7 @@ namespace scene {
 		int faceObject(lua_State* L);
 		int removeFromZone(lua_State* L);
 		int updateDirection(lua_State* L);
+		int isCreatureObject(lua_State* L);
 
 
 	private:

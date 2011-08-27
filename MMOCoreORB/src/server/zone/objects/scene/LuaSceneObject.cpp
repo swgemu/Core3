@@ -32,6 +32,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getGameObjectType", &LuaSceneObject::getGameObjectType },
 		{ "faceObject", &LuaSceneObject::faceObject },
 		{ "removeFromZone", &LuaSceneObject::removeFromZone },
+		{ "isCreatureObject", &LuaSceneObject::isCreatureObject },
 
 		{ 0, 0 }
 };
@@ -229,6 +230,14 @@ int LuaSceneObject::removeFromZone(lua_State* L) {
 	realObject->removeFromZone();
 
 	return 0;
+}
+
+int LuaSceneObject::isCreatureObject(lua_State* L) {
+	bool val = realObject->isCreatureObject();
+
+	lua_pushboolean(L, val);
+
+	return 1;
 }
 
 int LuaSceneObject::wlock(lua_State* L) {

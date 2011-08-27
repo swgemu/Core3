@@ -344,6 +344,12 @@ function TutorialScreenPlay:officer1(creatureObject, movingCreature)
 	--printf("officer1 fired\n")
 	
 	local officer = LuaSceneObject(creatureObject)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0	
+	end
+	
 	local player = LuaCreatureObject(movingCreature)
 	
 	distance = officer:getDistanceTo(movingCreature)
@@ -956,6 +962,13 @@ end
 
 function TutorialScreenPlay:panic1MoveObserver(creatureObject, movingCreature)
 	local officer = LuaSceneObject(creatureObject)
+	
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0	
+	end
+	
 	local player = LuaCreatureObject(movingCreature)
 	
 	distance = officer:getDistanceTo(movingCreature)
@@ -1015,6 +1028,12 @@ end
 
 function TutorialScreenPlay:converseWithOfficer3Observer(creatureObject, movingCreature)
 	local officer = LuaSceneObject(creatureObject)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0	
+	end
+	
 	local player = LuaCreatureObject(movingCreature)
 	
 	distance = officer:getDistanceTo(movingCreature)
@@ -1046,6 +1065,12 @@ end
 
 function TutorialScreenPlay:nearDebrisObserver(debrisObject, movingCreature)
 	local debris = LuaSceneObject(debrisObject)
+	local movedObject = LuaSceneObject(movingCreature)
+	
+	if movedObject:isCreatureObject() == false then
+		return 0	
+	end
+	
 	local player = LuaCreatureObject(movingCreature)
 	
 	distance = debris:getDistanceTo(movingCreature)
