@@ -58,7 +58,7 @@ public:
 		: QueueCommand(name, server) {
 		mindCost = 250;
 		mindWoundCost = 250;
-		defaultTime = 6;
+		//defaultTime = 6;
 		range = 5;
 	}
 

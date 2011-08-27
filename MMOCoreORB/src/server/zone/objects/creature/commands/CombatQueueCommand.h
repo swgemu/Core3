@@ -326,6 +326,10 @@ public:
 		this->poolsToDamage = poolsToDamage;
 	}
 
+	bool isCombatCommand() {
+		return true;
+	}
+
 };
 
 #endif /* COMBATQUEUECOMMAND_H_ */

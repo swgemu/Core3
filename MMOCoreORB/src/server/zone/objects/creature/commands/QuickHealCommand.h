@@ -77,7 +77,7 @@ public:
 		mindCost = 800;
 		mindWoundCost = 10;
 
-		defaultTime = 3.5;
+		//defaultTime = 3.5;
 		range = 6;
 	}
 

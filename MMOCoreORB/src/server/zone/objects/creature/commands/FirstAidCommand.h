@@ -56,7 +56,7 @@ public:
 		: QueueCommand(name, server) {
 		mindCost = 0;
 		range = 6;
-		defaultTime = 3;
+		//defaultTime = 3;
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {

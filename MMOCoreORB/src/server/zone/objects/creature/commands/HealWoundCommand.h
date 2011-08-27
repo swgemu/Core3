@@ -65,7 +65,7 @@ public:
 		: QueueCommand(name, server) {
 		mindCost = 50;
 		range = 6;
-		defaultTime = 0;
+		//defaultTime = 0;
 	}
 
 	void deactivateWoundTreatment(CreatureObject* creature) {

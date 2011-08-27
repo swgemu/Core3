@@ -161,6 +161,7 @@ public:
 	 */
 
 	virtual float getCommandDuration(CreatureObject* object) {
+		// TODO: modify this value by skill, probably need to specify which skill affects what in luas
 		return defaultTime;
 	}
 
@@ -286,9 +287,9 @@ public:
 		return addToQueue;
 	}
 
-
-
-
+	virtual bool isCombatCommand() {
+		return false;
+	}
 };
 
 

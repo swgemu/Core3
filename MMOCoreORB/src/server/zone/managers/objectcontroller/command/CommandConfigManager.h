@@ -182,7 +182,7 @@ public:
 
 	static void parseOptions(LuaObject& slashcommand, QueueCommand* command);
 	static void parseAlternativeNames(String& alternativeNames, QueueCommand* slashCommand);
-	static void parseSlashCommand(LuaObject &command, QueueCommand* slashCommand);
+	static void parseVariableData(String varName, LuaObject &command, QueueCommand* slashCommand);
 
 	// AddSlashCommand functions
 	static int addCommand(lua_State* L);

@@ -30,7 +30,7 @@ public:
 	DotPackCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		effectName = "clienteffect/healing_healenhance.cef";
-		defaultTime = 0;
+		//defaultTime = 0;
 	}
 
 	void doAnimationsRange(CreatureObject* creature, CreatureObject* creatureTarget, uint64 oid, float range, bool area) {

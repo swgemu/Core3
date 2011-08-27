@@ -55,7 +55,7 @@ public:
 	DiagnoseCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 		range = 6;
-		defaultTime = 0;
+		//defaultTime = 0;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

@@ -348,42 +348,53 @@ int CommandConfigManager::runSlashCommandsFile(lua_State* L) {
 }
 
 void CommandConfigManager::parseOptions(LuaObject &slashcommand, QueueCommand* command) {
-	String field;
+	lua_State* L = slashcommand.getLuaState();
 
-	// is there a better way to do overwrites?
-	uint64 mask = slashcommand.getLongField("invalidStateMask");
-	if (mask != 0) command->setStateMask(mask);
+	if (!slashcommand.isValidTable())
+		return;
 
-	try {
-		field = slashcommand.getStringField("invalidPostures");
-		command->setInvalidLocomotions(field);
-	} catch (IllegalArgumentException& e) {}
+	lua_pushnil(L);
+	while (lua_next(L, -2) != 0) {
+		// 'key' is at index -2 and 'value' at index -1
+		if (lua_type(L, -2) == LUA_TSTRING) {
+			String varName = lua_tolstring(L, -2, 0);
+			parseVariableData(varName, slashcommand, command);
+		} else
+			lua_pop(L, 1);
+	}
+}
 
-	int num = slashcommand.getIntField("targetType");
-	if (num != 0) command->setTargetType(num);
+void CommandConfigManager::parseVariableData(String varName, LuaObject &command, QueueCommand* slashCommand) {
+	lua_State* L = command.getLuaState();
 
-	num = slashcommand.getIntField("disabled");
-	if (num != 0) command->setDisabled(num);
-
-	num = slashcommand.getIntField("maxRangeToTarget");
-	if (num != 0) command->setMaxRange(num);
-
-	num = slashcommand.getIntField("addToCombatQueue");
-	if (num != 0) command->setAddToCombatQueue(num);
-
-	try {
-		field = slashcommand.getStringField("characterAbility");
-		command->setCharacterAbility(field);
-	} catch (IllegalArgumentException& e) {}
-
-	try {
-		field = slashcommand.getStringField("defaultPriority");
-		command->setDefaultPriority(field);
-	} catch (IllegalArgumentException& e) {}
-
-	float time = slashcommand.getFloatField("defaultTime");
-	if (time != 0) command->setDefaultTime(time);
-
+	// overwrite data from command_table
+	if (varName == "invalidStateMask")
+		slashCommand->setStateMask(Lua::getLongParameter(L));
+	else if (varName == "invalidLocomotions")
+		slashCommand->setInvalidLocomotions(Lua::getStringParameter(L));
+	else if (varName == "targetType")
+		slashCommand->setTargetType(Lua::getIntParameter(L));
+	else if (varName == "disabled")
+		slashCommand->setDisabled(Lua::getIntParameter(L));
+	else if (varName == "maxRangeToTarget")
+		slashCommand->setMaxRange(Lua::getIntParameter(L));
+	else if (varName == "addToCombatQueue")
+		slashCommand->setAddToCombatQueue(Lua::getIntParameter(L));
+	else if (varName == "characterAbility")
+		slashCommand->setCharacterAbility(Lua::getStringParameter(L));
+	else if (varName == "defaultPriority")
+		slashCommand->setDefaultPriority(Lua::getStringParameter(L));
+	else if (varName == "defaultTime")
+		slashCommand->setDefaultTime(Lua::getFloatParameter(L));
+	else if (varName == "name")
+		command.pop(); // just ignore name, it's only used to grab the object from the table
+	else if (slashCommand->isCombatCommand()) { // define combat variables (for combat commands)
+		CombatQueueCommand* combatCommand = (CombatQueueCommand*)slashCommand;
+		// TODO: put in CombatQueueCommand only variables here
+	} else {
+		Logger::console.error("unknown variable " + varName + " in command " + slashCommand->getName());
+		command.pop();
+	}
 }
 
 void CommandConfigManager::parseAlternativeNames(String& alternativeNames, QueueCommand* slashCommand) {
@@ -398,19 +409,6 @@ void CommandConfigManager::parseAlternativeNames(String& alternativeNames, Queue
 	}
 }
 
-void CommandConfigManager::parseSlashCommand(LuaObject &slashcommand, QueueCommand* slashCommand) {
-	// TODO: load the options from the iff's, then override from luas.
-	// TODO: move the modifiers from the command headers to the luas.
-
-	parseOptions(slashcommand, slashCommand);
-
-	//slashCommands->put(slashCommand);
-
-	/*String alternativeNames = slashcommand.getStringField("alternativeNames");
-	if (!alternativeNames.isEmpty())
-		parseAlternativeNames(alternativeNames, slashCommand);*/
-}
-
 int CommandConfigManager::addCommand(lua_State* L) {
 	LuaObject slashcommand(L);
 	if (!slashcommand.isValidTable())
@@ -422,7 +420,7 @@ int CommandConfigManager::addCommand(lua_State* L) {
 	if (command == NULL)
 		return 0;
 
-	parseSlashCommand(slashcommand, command);
+	parseOptions(slashcommand, command);
 
 	return 1;
 }
