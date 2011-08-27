@@ -320,15 +320,15 @@ void BuildingObjectImplementation::insert(QuadTreeEntry* entry) {
 			if (child != scno) {
 				//if (child->isCreatureObject() && isPublicStructure()) {
 					//if (is)
-				if (!child->containsInRangeObject(scno)) {
+				//if (!child->containsInRangeObject(scno)) {
 					child->addInRangeObject(scno, false);
 					child->sendTo(scno, true);
-				}
+				//}
 
-				if (!scno->containsInRangeObject(child)) {
+				//if (!scno->containsInRangeObject(child)) {
 					scno->addInRangeObject(child, false);
 					scno->sendTo(child, true);
-				}
+				//}
 				//}
 			}
 		}

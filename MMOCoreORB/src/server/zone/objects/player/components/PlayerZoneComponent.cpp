@@ -84,6 +84,16 @@ void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntr
 	//sceneObject->removeNotifiedSentObject(scno);
 }
 
+void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
+	if (sceneObject->isPlayerCreature()) {
+		CreatureObject* player = (CreatureObject*) sceneObject;
+		PlayerObject* ghost = player->getPlayerObject();
+
+		ghost->setSavedParentID(0);
+	}
+
+	ZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
+}
 
 void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
 	//sceneObject->setTeleporting(true);
@@ -140,12 +150,12 @@ void PlayerZoneComponent::removeFromBuilding(SceneObject* sceneObject, BuildingO
 
 	building->onExit(dynamic_cast<CreatureObject*>(sceneObject));
 
-	if (sceneObject->getParent() != NULL && sceneObject->isPlayerCreature()) {
+	/*if (sceneObject->getParent() != NULL && sceneObject->isPlayerCreature()) {
 		CreatureObject* player = (CreatureObject*) sceneObject;
 		PlayerObject* ghost = player->getPlayerObject();
 
 		ghost->setSavedParentID(0);
-	}
+	}*/
 }
 
 void PlayerZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) {

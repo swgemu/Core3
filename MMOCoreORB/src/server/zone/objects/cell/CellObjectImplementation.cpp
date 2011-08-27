@@ -61,7 +61,7 @@ void CellObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	//SceneObjectImplementation::sendContainerObjectsTo(player);
 	//info("sending cell containers", true);
 	BuildingObject* building = dynamic_cast<BuildingObject*>(parent.get());
-	bool publicStructure = building->isPublicStructure();
+	bool publicStructure = (building != NULL) ? building->isPublicStructure() : true;
 
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
 		SceneObject* containerObject = getContainerObject(j);
