@@ -87,8 +87,8 @@ public:
 	static const uint64 PILOTINGSHIP = 0x20000000;
 	static const uint64 SHIPOPERATIONS = 0x40000000;
 	static const uint64 SHIPGUNNER = 0x80000000;
-	static const uint64 SHIPINTERIOR = 0x100000000;
-	static const uint64 PILOTINGPOBSHIP = 0x200000000;
+	static const uint64 SHIPINTERIOR = (uint64) 1 << 32;
+	static const uint64 PILOTINGPOBSHIP = (uint64) 1 << 33;
 
 	void loadStateData() {
 		IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/include/state.iff");
