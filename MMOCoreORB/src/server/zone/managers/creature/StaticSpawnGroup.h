@@ -44,7 +44,7 @@ public:
 	}
 
 	Coordinate* getCoordinate() {
-		return &coordinate;;
+		return &coordinate;
 	}
 
 	Quaternion* getDirection() {

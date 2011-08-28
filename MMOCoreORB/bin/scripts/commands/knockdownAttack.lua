@@ -43,6 +43,8 @@
 
 KnockdownAttackCommand = {
         name = "knockdownattack",
+	knockdownStateChance = 50,
+	durationStateTime = 10
 }
 
 AddCommand(KnockdownAttackCommand)

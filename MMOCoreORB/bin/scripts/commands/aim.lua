@@ -43,6 +43,12 @@
 
 AimCommand = {
         name = "aim",
+
+	damageMultiplier = 0,
+	healthCostMultiplier = 3,
+
+	combatSpam = "aim",
+	range = -1
 }
 
 AddCommand(AimCommand)

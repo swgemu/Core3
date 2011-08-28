@@ -53,20 +53,6 @@ public:
 
 	PointBlankArea1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.5;
-		speedMultiplier = 1.05;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-		coneAngle = 60;
-		coneAction = true;
-
-		animationCRC = String("fire_area_no_trails_light").hashCode();
-
-		combatSpam = "coveringfire";
-
-		range = 10;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

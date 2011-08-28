@@ -55,17 +55,6 @@ public:
 
 	Melee1hScatterHit2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 4;
-		speedMultiplier = 2;
-
-		animationCRC = String("combo_5b_light").hashCode();
-
-		poolsToDamage = CombatManager::HEALTH | CombatManager::ACTION;
-
-		combatSpam = "scattershiak";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

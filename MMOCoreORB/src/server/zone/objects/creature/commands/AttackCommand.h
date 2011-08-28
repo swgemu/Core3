@@ -54,25 +54,6 @@ public:
 
 	AttackCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-		damageMultiplier = 1;
-		speedMultiplier = 1;
-
-		combatSpam = "attack";
-		animationCRC = 0;
-
-		healthCostMultiplier = 0;
-		actionCostMultiplier = 0;
-		mindCostMultiplier = 0;
-
-		/*dotDuration = 60;
-		dotType = CreatureState::POISONED;
-		dotPool = CreatureAttribute::HEALTH;
-		dotStrength = 15;
-		dotPotency = 2;*/
-
-		range = -1;
-
-		poolsToDamage = CombatManager::RANDOM;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

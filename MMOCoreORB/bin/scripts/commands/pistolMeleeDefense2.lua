@@ -43,6 +43,22 @@
 
 PistolMeleeDefense2Command = {
         name = "pistolmeleedefense2",
+
+	damageMultiplier = 4.1,
+	speedMultiplier = 2.5,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	knockdownStateChance = 30,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("ranged_melee_light").hashCode(),
+
+	combatSpam = "pistolwhip",
+
+	range = 5
 }
 
 AddCommand(PistolMeleeDefense2Command)

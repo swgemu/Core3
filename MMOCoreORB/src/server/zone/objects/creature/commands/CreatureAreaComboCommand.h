@@ -52,8 +52,6 @@ class CreatureAreaComboCommand : public CombatQueueCommand {
 public:
 
 	CreatureAreaComboCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
-		areaRange = 25;
-		areaAction = true;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

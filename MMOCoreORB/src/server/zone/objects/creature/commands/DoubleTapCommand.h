@@ -53,20 +53,6 @@ public:
 
 	DoubleTapCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.8;
-		speedMultiplier = 2.1;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		poolsToDamage = CombatManager::ACTION | CombatManager::HEALTH;
-
-		animationCRC = String("fire_7_single_light_face").hashCode();
-
-		combatSpam = "doubletap";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

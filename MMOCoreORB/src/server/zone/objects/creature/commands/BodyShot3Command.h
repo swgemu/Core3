@@ -53,19 +53,6 @@ public:
 
 	BodyShot3Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-		damageMultiplier = 2.5;
-		speedMultiplier = 2.4;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		poolsToDamage = CombatManager::HEALTH;
-
-		animationCRC = String("fire_1_special_single_light").hashCode();
-
-		combatSpam = "bodyshot";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

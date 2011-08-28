@@ -53,18 +53,6 @@ public:
 
 	FireLightningSingle1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 3.0;
-		speedMultiplier = 2.0;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		animationCRC = String("fire_1_special_single_medium_face").hashCode();
-
-		combatSpam = "firelightningsingle1";
-
-		range = 16;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

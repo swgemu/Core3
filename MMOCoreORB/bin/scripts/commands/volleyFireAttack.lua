@@ -43,6 +43,18 @@
 
 VolleyFireAttackCommand = {
         name = "volleyfireattack",
+
+	damageMultiplier = 1,
+	speedMultiplier = 1,
+
+	combatSpam = "volley",
+	animationCRC = 0,
+
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
+
+	range = -1
 }
 
 AddCommand(VolleyFireAttackCommand)

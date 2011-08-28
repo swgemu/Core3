@@ -54,18 +54,6 @@ public:
 
 	PolearmLunge2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2;
-		speedMultiplier = 1.5;
-
-		animationCRC = String("lower_posture_polearm_2").hashCode();
-
-		combatSpam = "polearm_knockdown";
-
-		range = 20;
-
-		knockdownStateChance = 1;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

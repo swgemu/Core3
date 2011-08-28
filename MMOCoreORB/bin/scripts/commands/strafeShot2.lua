@@ -43,6 +43,22 @@
 
 StrafeShot2Command = {
         name = "strafeshot2",
+
+	damageMultiplier = 5.0,
+	speedMultiplier = 3.5,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	coneAngle = 60,
+	coneAction = true,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_area_medium").hashCode(),
+
+	combatSpam = "advancedstrafe",
+
+	range = -1
 }
 
 AddCommand(StrafeShot2Command)

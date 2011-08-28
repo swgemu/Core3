@@ -81,62 +81,71 @@ public:
 		if (group == NULL)
 			return 0;
 
-		float modifier = (float) group->getGroupSize() / 10.0f;
+		float modifier = (float)(group->getGroupSize()) / 10.0f;
+        if(modifier < 1.0)
+            modifier += 1.0f;
 
-		if (modifier < 1.0)
-			modifier += 1.0f;
-
-		return modifier;
-	}
-
-	bool inflictHAM(CreatureObject* player, int health, int action, int mind) {
-		if (player == NULL)
+        return modifier;
+    }
+    bool inflictHAM(CreatureObject *player, int health, int action, int mind)
+    {
+        if (player == NULL)
 			return false;
+        if(health < 0 || action < 0 || mind < 0)
+            return false;
 
-		if (health < 0 || action < 0 || mind < 0)
-			return false;
+        if(player->getHAM(CreatureAttribute::ACTION) < action || player->getHAM(CreatureAttribute::HEALTH) < health || player->getHAM(CreatureAttribute::MIND) < mind)
+            return false;
 
-		if (player->getHAM(CreatureAttribute::ACTION) < action
-				|| player->getHAM(CreatureAttribute::HEALTH) < health
-				|| player->getHAM(CreatureAttribute::MIND) < mind)
-			return false;
+        if(health > 0)
+            player->inflictDamage(player, CreatureAttribute::HEALTH, health, true);
 
-		if (health > 0)
-			player->inflictDamage(player, CreatureAttribute::HEALTH, health, true);
+        if(action > 0)
+            player->inflictDamage(player, CreatureAttribute::ACTION, action, true);
 
-		if (action > 0)
-			player->inflictDamage(player, CreatureAttribute::ACTION, action, true);
+        if(mind > 0)
+            player->inflictDamage(player, CreatureAttribute::MIND, mind, true);
 
-		if (mind > 0)
-			player->inflictDamage(player, CreatureAttribute::MIND, mind, true);
-
-		return true;
-	}
-
-	void sendCombatSpam(CreatureObject* player) {
-		if (player == NULL)
+        return true;
+    }
+    void sendCombatSpam(CreatureObject *player)
+    {
+        if (player == NULL)
 			return;
+        if(combatSpam == "")
+            return;
 
-		if (combatSpam == "")
-			return;
+        player->sendSystemMessage("@cbt_spam:" + combatSpam);
+    }
+    bool setCommandMessage(CreatureObject *creature, String message)
+    {
+        if(!creature->isPlayerCreature())
+            return false;
 
-		player->sendSystemMessage("@cbt_spam:" + combatSpam);
-	}
+        ManagedReference<CreatureObject*> player = (CreatureObject*)(creature);
+        ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
+        if(message.isEmpty())
+            playerObject->removeCommandMessageString(actionCRC);
 
-	bool setCommandMessage(CreatureObject* creature, String message) {
-		if (!creature->isPlayerCreature())
-			return false;
+        else
+            playerObject->setCommandMessageString(actionCRC, message);
 
-		ManagedReference<CreatureObject*> player = (CreatureObject*) creature;
-		ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
+        return true;
+    }
+    bool isSquadLeaderCommand()
+    {
+        return true;
+    }
 
-		if (message.isEmpty())
-			playerObject->removeCommandMessageString(actionCRC);
-		else
-			playerObject->setCommandMessageString(actionCRC, message);
+    String getAction() const {
+        return action;
+    }
 
-		return true;
-	}
+    void setAction(String action) {
+        this->action = action;
+    }
 };
+
+
 
 #endif /* SQUADLEADERCOMMAND_H_ */

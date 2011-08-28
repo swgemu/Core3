@@ -43,6 +43,18 @@
 
 Melee2hSweep1Command = {
         name = "melee2hsweep1",
+
+	damageMultiplier = 1.5,
+	speedMultiplier = 1.7,
+
+	--animationCRC = String("lower_posture_2hmelee_3").hashCode(),
+
+	combatSpam = "melee2hsweep1",
+
+	postureDownStateChance = 1,
+
+	range = -1
+
 }
 
 AddCommand(Melee2hSweep1Command)

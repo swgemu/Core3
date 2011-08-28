@@ -53,22 +53,6 @@ public:
 
 	StrafeShot1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.0;
-		speedMultiplier = 2.0;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-		coneAngle = 60;
-		coneAction = true;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		animationCRC = String("fire_5_special_single_medium").hashCode();
-
-		combatSpam = "strafeshot";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

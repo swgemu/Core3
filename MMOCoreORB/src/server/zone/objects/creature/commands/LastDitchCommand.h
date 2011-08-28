@@ -53,20 +53,6 @@ public:
 
 	LastDitchCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 6.0;
-		speedMultiplier = 4.0;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		stunStateChance = 40;
-
-		animationCRC = String("fire_1_special_single_light").hashCode();
-
-		combatSpam = "lastditch";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

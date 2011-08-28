@@ -53,20 +53,6 @@ public:
 
 	ConcealShotCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.5;
-		speedMultiplier = 3;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		animationCRC = String("fire_1_special_single_medium").hashCode();
-
-		combatSpam = "concealedshot";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

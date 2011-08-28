@@ -55,19 +55,6 @@ public:
 
 	PolearmSweep1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2;
-		speedMultiplier = 1.5;
-
-		knockdownStateChance = 10;
-
-		animationCRC = String("attack_low_right_medium_0").hashCode();
-
-		combatSpam = "melee";
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

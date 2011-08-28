@@ -53,9 +53,6 @@ public:
 
 	SetFormupCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
-
-		action = "formup";
-		actionCRC = action.hashCode();
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

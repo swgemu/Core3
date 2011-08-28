@@ -43,6 +43,20 @@
 
 SniperShotCommand = {
         name = "snipershot",
+
+	damageMultiplier = 1.25,
+	speedMultiplier = 1.25,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_1_special_single_medium_face").hashCode(),
+
+	combatSpam = "snipershot",
+
+	range = -1
 }
 
 AddCommand(SniperShotCommand)

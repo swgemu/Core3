@@ -43,6 +43,20 @@
 
 PointBlankArea1Command = {
         name = "pointblankarea1",
+
+	damageMultiplier = 1.5,
+	speedMultiplier = 1.05,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	coneAngle = 60,
+	coneAction = true,
+
+	--animationCRC = String("fire_area_no_trails_light").hashCode(),
+
+	combatSpam = "coveringfire",
+
+	range = 10
 }
 
 AddCommand(PointBlankArea1Command)

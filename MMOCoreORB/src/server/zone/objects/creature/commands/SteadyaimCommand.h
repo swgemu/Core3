@@ -53,10 +53,6 @@ public:
 
 	SteadyaimCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
-
-		action = "steadyaim";
-		actionCRC = action.hashCode();
-		combatSpam = "steadyaim_buff";
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

@@ -25,11 +25,25 @@ public:
 	const static int COUNTER = 3;
 	const static int MISS = 4;
 
-
 	const static int HEALTH = 1;
 	const static int ACTION = 2;
 	const static int MIND = 4;
 	const static int RANDOM = 8;
+
+	const static int MELEEWEAPON = 0x1;
+	const static int RANGEDWEAPON = 0x2;
+	const static int THROWNWEAPON = 0x4;
+	const static int HEAVYWEAPON = 0x8;;
+	const static int MINE = 0x10;
+	const static int SPECIALHEAVYWEAPON = 0x20;
+	const static int ONEHANDMELEEWEAPON = 0x40;
+	const static int TWOHANDMELEEWEAPON = 0x80;
+	const static int POLEARM = 0x100;
+	const static int PISTOL = 0x200;
+	const static int CARBINE = 0x400;
+	const static int RIFLE = 0x800;
+	const static int GRENADE = 0x1000;
+	const static int LIGHTNINGRIFLE = 0x2000;
 
 public:
 	CombatManager() {

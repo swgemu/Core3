@@ -43,6 +43,21 @@
 
 UnarmedDizzy1Command = {
         name = "unarmeddizzy1",
+
+	damageMultiplier = 1.5,
+	speedMultiplier = 2.0,
+
+	healthCostMultiplier = 1.5,
+	actionCostMultiplier = 1.5,
+	mindCostMultiplier = 1.5,
+
+	dizzyStateChance = 1,
+
+	--animationCRC = String("attack_special_wookiee_slap_light").hashCode(),
+
+	combatSpam = "unarmed_dizzy",
+
+	range = -1
 }
 
 AddCommand(UnarmedDizzy1Command)

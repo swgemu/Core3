@@ -53,21 +53,6 @@ public:
 
 	Intimidate1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 0;
-		speedMultiplier = 1;
-		healthCostMultiplier = 0;
-		actionCostMultiplier = 0;
-		mindCostMultiplier = 0;
-
-		intimidateStateChance = 1;
-
-		combatSpam = "intim";
-		animationCRC = String("intimidate").hashCode();
-		effectString = "clienteffect/combat_special_attacker_intimidate.cef";
-		range = 15;
-
-		poolsToDamage = 0;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

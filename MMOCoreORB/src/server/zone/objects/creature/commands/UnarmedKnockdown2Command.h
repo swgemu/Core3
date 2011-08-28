@@ -53,22 +53,6 @@ public:
 
 	UnarmedKnockdown2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.5;
-		speedMultiplier = 2.0;
-
-		healthCostMultiplier = 1.5;
-		actionCostMultiplier = 1.5;
-		mindCostMultiplier = 1.5;
-
-		knockdownStateChance = 15;
-		dizzyStateChance = 1;
-
-		animationCRC = String("attack_special_hammerfist_light").hashCode();
-
-		combatSpam = "melee";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

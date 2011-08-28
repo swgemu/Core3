@@ -43,6 +43,27 @@
 
 FullAutoArea1Command = {
         name = "fullautoarea1",
+
+	damageMultiplier = 3.5,
+	speedMultiplier = 2,
+	healthCostMultiplier = 1.4,
+	actionCostMultiplier = 2,
+	mindCostMultiplier = 0.5,
+
+	--animationCRC = String("fire_defender_posture_change_down").hashCode(),
+
+	combatSpam = "a_auto",
+
+	coneAngle = 30,
+	coneAction = true,
+
+	dizzyStateChance = 30,
+	blindStateChance = 30,
+	stunStateChance = 30,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(FullAutoArea1Command)

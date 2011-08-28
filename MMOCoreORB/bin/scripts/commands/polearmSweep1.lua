@@ -43,6 +43,19 @@
 
 PolearmSweep1Command = {
         name = "polearmsweep1",
+
+	damageMultiplier = 2,
+	speedMultiplier = 1.5,
+
+	knockdownStateChance = 10,
+
+	--animationCRC = String("attack_low_right_medium_0").hashCode(),
+
+	combatSpam = "melee",
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(PolearmSweep1Command)

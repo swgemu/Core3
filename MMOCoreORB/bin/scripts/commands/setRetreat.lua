@@ -43,6 +43,9 @@
 
 SetRetreatCommand = {
         name = "setretreat",
+
+	action = "retreat",
+	--actionCRC = action.hashCode()
 }
 
 AddCommand(SetRetreatCommand)

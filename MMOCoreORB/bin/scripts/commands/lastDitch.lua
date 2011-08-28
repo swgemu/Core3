@@ -43,6 +43,20 @@
 
 LastDitchCommand = {
         name = "lastditch",
+
+	damageMultiplier = 6.0,
+	speedMultiplier = 4.0,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	stunStateChance = 40,
+
+	--animationCRC = String("fire_1_special_single_light").hashCode(),
+
+	combatSpam = "lastditch",
+
+	range = -1
 }
 
 AddCommand(LastDitchCommand)

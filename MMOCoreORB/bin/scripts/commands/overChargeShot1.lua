@@ -43,6 +43,18 @@
 
 OverChargeShot1Command = {
         name = "overchargeshot1",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 2,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	--animationCRC = String("fire_1_special_single_medium").hashCode(),
+
+	combatSpam = "overchargeshot",
+
+	range = -1
 }
 
 AddCommand(OverChargeShot1Command)

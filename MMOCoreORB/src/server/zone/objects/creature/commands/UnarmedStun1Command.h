@@ -54,17 +54,6 @@ public:
 
 	UnarmedStun1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.25;
-		speedMultiplier = 2;
-
-		animationCRC = String("combo_4c_light").hashCode();
-
-		combatSpam = "unarmed_stun";
-
-		stunStateChance = 1;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

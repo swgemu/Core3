@@ -43,6 +43,20 @@
 
 Melee2hArea3Command = {
         name = "melee2harea3",
+	damageMultiplier = 3.5,
+	speedMultiplier = 2.6,
+
+	postureDownStateChance = 15,
+	blindStateChance = 20,
+
+	areaRange = 7,
+	areaAction = true,
+
+	--animationCRC = String("combo_3a_light").hashCode(),
+
+	combatSpam = "melee",
+
+	range = -1
 }
 
 AddCommand(Melee2hArea3Command)

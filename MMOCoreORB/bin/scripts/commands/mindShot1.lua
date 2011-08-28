@@ -43,6 +43,25 @@
 
 MindShot1Command = {
         name = "mindshot1",
+
+	damageMultiplier = 1.5,
+	speedMultiplier = 1.8,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	poolsToDamage = MIND_ATTRIBUTE,
+
+	--animationCRC = String("fire_1_special_single_medium_face").hashCode(),
+
+	combatSpam = "headshot",
+
+	dotType = BLEEDING_STATE,
+	dotPool = MIND_ATTRIBUTE,
+	dotDamageOfHit = true,
+	dotDuration = 30,
+
+	range = -1
 }
 
 AddCommand(MindShot1Command)

@@ -43,6 +43,17 @@
 
 Melee2hHeadHit2Command = {
         name = "melee2hheadhit2",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 2.3,
+
+	poolsToDamage = MIND_ATTRIBUTE,
+
+	--animationCRC = String("combo_2d_light").hashCode(),
+
+	combatSpam = "melee",
+
+	range = -1
 }
 
 AddCommand(Melee2hHeadHit2Command)

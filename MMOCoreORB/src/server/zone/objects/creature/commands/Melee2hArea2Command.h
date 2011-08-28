@@ -55,20 +55,6 @@ public:
 
 	Melee2hArea2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-		damageMultiplier = 3;
-		speedMultiplier = 2.4;
-
-		postureDownStateChance = 15;
-		blindStateChance = 20;
-
-		areaRange = 7;
-		areaAction = true;
-
-		animationCRC = String("combo_4b_medium").hashCode();
-
-		combatSpam = "melee";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

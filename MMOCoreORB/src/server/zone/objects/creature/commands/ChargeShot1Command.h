@@ -53,22 +53,6 @@ public:
 
 	ChargeShot1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.0;
-		speedMultiplier = 2.3;
-		healthCostMultiplier = 0.9;
-		actionCostMultiplier = 1.4;
-		mindCostMultiplier = 0.9;
-
-		animationCRC = String("charge").hashCode();
-
-		combatSpam = "chargeshot";
-
-		knockdownStateChance = 40;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

@@ -53,22 +53,6 @@ public:
 
 	ConfusionShotCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 3.0;
-		speedMultiplier = 2.3;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		stunStateChance = 40;
-		dizzyStateChance = 30;
-
-		animationCRC = String("fire_5_special_single_medium_face").hashCode();
-
-		combatSpam = "confusionshot";
-
-		range = -1;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

@@ -43,6 +43,21 @@
 
 LegShot2Command = {
         name = "legshot2",
+
+	damageMultiplier = 3.0,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 1.3,
+	mindCostMultiplier = 1.2,
+
+	poolsToDamage = ACTION_ATTRIBUTE,
+
+	--animationCRC = String("test_homing").hashCode(),
+
+	combatSpam = "legshot",
+
+	range = -1
+
 }
 
 AddCommand(LegShot2Command)

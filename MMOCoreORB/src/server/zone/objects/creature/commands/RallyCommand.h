@@ -53,11 +53,6 @@ public:
 
 	RallyCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
-
-		action = "rally";
-		actionCRC = action.hashCode();
-		combatSpam = "rally_success_single";
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

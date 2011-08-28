@@ -53,10 +53,6 @@ public:
 
 	RetreatCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
-
-		action = "retreat";
-		actionCRC = action.hashCode();
-		combatSpam = "retreat_buff";
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

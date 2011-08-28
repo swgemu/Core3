@@ -43,6 +43,26 @@
 
 RollShotCommand = {
         name = "rollshot",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	--animationCRC = String("fire_1_special_single_light").hashCode(),
+
+	combatSpam = "rollshot",
+
+	poolsToDamage = HEALTH_ATTRIBUTE,
+
+	dotType = BLEEDING_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotDamageOfHit = true,
+	dotDuration = 30,
+
+	range = -1
+
 }
 
 AddCommand(RollShotCommand)

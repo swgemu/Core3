@@ -43,6 +43,23 @@
 
 FlushingShot1Command = {
         name = "flushingshot1",
+
+	damageMultiplier = 2,
+	speedMultiplier = 2.1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	postureUpStateChance = 20,
+	stunStateChance = 20,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_3_special_single_medium").hashCode(),
+
+	combatSpam = "flushingshot",
+
+	range = -1
 }
 
 AddCommand(FlushingShot1Command)

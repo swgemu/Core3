@@ -43,6 +43,19 @@
 
 PolearmStun2Command = {
         name = "polearmstun2",
+
+	damageMultiplier = 2,
+	speedMultiplier = 2,
+	areaRange = 7,
+	areaAction = true,
+
+	stunStateChance = 40,
+
+	--animationCRC = String("lower_posture_2hmelee_5").hashCode(),
+
+	combatSpam = "breathtaker",
+
+	range = -1
 }
 
 AddCommand(PolearmStun2Command)

@@ -53,18 +53,6 @@ public:
 
 	DisarmingShot1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.0;
-		speedMultiplier = 2.3;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		animationCRC = String("fire_3_single_light_face").hashCode();
-
-		combatSpam = "disarmshot";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

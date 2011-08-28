@@ -43,6 +43,22 @@
 
 UnarmedCombo1Command = {
         name = "unarmedcombo1",
+
+	damageMultiplier = 1.0,
+	speedMultiplier = 2.0,
+
+	healthCostMultiplier = 1.5,
+	actionCostMultiplier = 1.5,
+	mindCostMultiplier = 1.5,
+
+	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE,
+
+	--animationCRC = String("combo_4b_medium").hashCode(),
+
+	combatSpam = "melee",
+
+	range = -1
+
 }
 
 AddCommand(UnarmedCombo1Command)

@@ -43,6 +43,25 @@
 
 TorsoShotCommand = {
         name = "torsoshot",
+
+	damageMultiplier = 3.0,
+	speedMultiplier = 2.3,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	poolsToDamage = HEALTH_ATTRIBUTE,
+
+	--animationCRC = String("fire_3_special_single_light_face").hashCode(),
+
+	combatSpam = "torsoshot",
+
+	dotType = BLEEDING_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotDamageOfHit = true,
+	dotDuration = 30,
+
+	range = -1
 }
 
 AddCommand(TorsoShotCommand)

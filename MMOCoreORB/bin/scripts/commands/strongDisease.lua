@@ -43,6 +43,11 @@
 
 StrongDiseaseCommand = {
         name = "strongdisease",
+	dotDuration = 50,
+	dotType = DISEASED_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotStrength = 80,
+	dotPotency = 100
 }
 
 AddCommand(StrongDiseaseCommand)

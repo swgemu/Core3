@@ -43,6 +43,22 @@
 
 MultiTargetPistolShotCommand = {
         name = "multitargetpistolshot",
+
+	damageMultiplier = 4.2,
+	speedMultiplier = 3.5,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	coneAngle = 30,
+	coneAction = true,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_5_special_single_light").hashCode(),
+
+	combatSpam = "pistolmultishot",
+
+	range = -1
 }
 
 AddCommand(MultiTargetPistolShotCommand)

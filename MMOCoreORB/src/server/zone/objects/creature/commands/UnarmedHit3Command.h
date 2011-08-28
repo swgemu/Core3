@@ -53,21 +53,6 @@ public:
 
 	UnarmedHit3Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 4.0;
-		speedMultiplier = 3.0;
-
-		healthCostMultiplier = 2;
-		actionCostMultiplier = 2;
-		mindCostMultiplier = 2;
-
-		animationCRC = String("combo_5a_medium").hashCode();
-
-		combatSpam = "unarmed_dam2";
-
-		blindStateChance = 40;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

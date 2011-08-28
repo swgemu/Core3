@@ -53,17 +53,6 @@ public:
 
 	PointBlankSingle2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-		damageMultiplier = 2.9;
-		speedMultiplier = 1.8;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		animationCRC = String("fire_5_single_light").hashCode();
-
-		combatSpam = "pointblankblast";
-
-		range = 10;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

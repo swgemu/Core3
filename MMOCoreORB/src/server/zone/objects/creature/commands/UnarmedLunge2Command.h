@@ -54,18 +54,6 @@ public:
 
 	UnarmedLunge2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 3;
-		speedMultiplier = 2;
-
-		animationCRC = String("counter_mid_center_light").hashCode();
-
-		combatSpam = "unarmed_knockdown";
-
-		range = 20;
-
-		knockdownStateChance = 1;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

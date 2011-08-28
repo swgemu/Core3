@@ -53,21 +53,6 @@ public:
 
 	WarningShotCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.15;
-		speedMultiplier = 1.5;
-		healthCostMultiplier = 1.9;
-		actionCostMultiplier = 1.4;
-		mindCostMultiplier = 0.6;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		animationCRC = String("fire_area_light").hashCode();
-
-		combatSpam = "warningshot";
-
-		range = -1;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

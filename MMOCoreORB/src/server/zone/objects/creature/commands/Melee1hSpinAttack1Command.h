@@ -54,18 +54,6 @@ public:
 
 	Melee1hSpinAttack1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2;
-		speedMultiplier = 1.45;
-
-		animationCRC = String("attack_high_right_medium_2").hashCode();
-
-		combatSpam = "slashspin";
-
-		areaAction = true;
-		areaRange = 7;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

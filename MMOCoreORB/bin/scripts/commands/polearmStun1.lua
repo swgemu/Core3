@@ -43,6 +43,18 @@
 
 PolearmStun1Command = {
         name = "polearmstun1",
+
+	damageMultiplier = 1.5,
+	speedMultiplier = 1.6,
+
+	--animationCRC = String("combo_4a_light").hashCode(),
+
+	combatSpam = "breathstealer",
+
+	stunStateChance = 1,
+
+	range = -1
+
 }
 
 AddCommand(PolearmStun1Command)

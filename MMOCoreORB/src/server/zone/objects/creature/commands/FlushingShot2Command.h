@@ -53,25 +53,6 @@ public:
 
 	FlushingShot2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 4;
-		speedMultiplier = 2.6;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-		coneAngle = 60;
-		coneAction = true;
-
-		postureUpStateChance = 20;
-		stunStateChance = 40;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		animationCRC = String("fire_area_medium").hashCode();
-
-		combatSpam = "flushingvolley";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

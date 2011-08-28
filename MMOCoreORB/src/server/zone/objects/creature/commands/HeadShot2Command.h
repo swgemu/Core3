@@ -54,21 +54,6 @@ public:
 
 	HeadShot2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.5;
-		speedMultiplier = 1.75;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		poolsToDamage = CombatManager::MIND;
-
-		animationCRC = String("fire_1_special_single_medium_face").hashCode();
-
-		combatSpam = "expertheadshot";
-
-		range = -1;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

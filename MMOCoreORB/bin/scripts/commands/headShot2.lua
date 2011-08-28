@@ -43,6 +43,21 @@
 
 HeadShot2Command = {
         name = "headshot2",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 1.75,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	poolsToDamage = MIND_ATTRIBUTE,
+
+	--animationCRC = String("fire_1_special_single_medium_face").hashCode(),
+
+	combatSpam = "expertheadshot",
+
+	range = -1
+
 }
 
 AddCommand(HeadShot2Command)

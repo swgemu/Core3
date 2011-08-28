@@ -335,6 +335,29 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("INCAPACITATED_LOCOMOTION", CreatureLocomotion::INCAPACITATED);
 	setGlobalInt("DEAD_LOCOMOTION", CreatureLocomotion::DEAD);
 	setGlobalInt("BLOCKING_LOCOMOTION", CreatureLocomotion::BLOCKING);
+
+	// attributes
+	setGlobalInt("HEALTH_ATTRIBUTE", CombatManager::HEALTH);
+	setGlobalInt("ACTION_ATTRIBUTE", CombatManager::ACTION);
+	setGlobalInt("MIND_ATTRIBUTE", CombatManager::MIND);
+	setGlobalInt("RANDOM_ATTRIBUTE", CombatManager::RANDOM);
+
+	// weapons
+	// TODO: make valid weapons into a mask and check all combat commands
+	setGlobalInt("MELEEWEAPON_WEAPON", CombatManager::MELEEWEAPON);
+	setGlobalInt("RANGEDWEAPON_WEAPON", CombatManager::RANGEDWEAPON);
+	setGlobalInt("THROWNWEAPON_WEAPON", CombatManager::THROWNWEAPON);
+	setGlobalInt("HEAVYWEAPON_WEAPON", CombatManager::HEAVYWEAPON);
+	setGlobalInt("MINE_WEAPON", CombatManager::MINE);
+	setGlobalInt("SPECIALHEAVYWEAPON_WEAPON", CombatManager::SPECIALHEAVYWEAPON);
+	setGlobalInt("ONEHANDMELEEWEAPON_WEAPON", CombatManager::ONEHANDMELEEWEAPON);
+	setGlobalInt("TWOHANDMELEEWEAPON_WEAPON", CombatManager::TWOHANDMELEEWEAPON);
+	setGlobalInt("POLEARM_WEAPON", CombatManager::POLEARM);
+	setGlobalInt("PISTOL_WEAPON", CombatManager::PISTOL);
+	setGlobalInt("CARBINE_WEAPON", CombatManager::CARBINE);
+	setGlobalInt("RIFLE_WEAPON", CombatManager::RIFLE);
+	setGlobalInt("GRENADE_WEAPON", CombatManager::GRENADE);
+	setGlobalInt("LIGHTNINGRIFLE_WEAPON", CombatManager::LIGHTNINGRIFLE);
 }
 
 int CommandConfigManager::runSlashCommandsFile(lua_State* L) {
@@ -371,18 +394,20 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 	if (varName == "name") // just ignore name, it's only used to grab the object from the table
 		command.pop();
 	else if (varName == "invalidStateMask")
-		slashCommand->setStateMask(Lua::getLongParameter(L));
+		slashCommand->setStateMask(Lua::getUnsignedLongParameter(L));
 	else if (varName == "invalidLocomotions")
 		slashCommand->setInvalidLocomotions(Lua::getStringParameter(L));
 	else if (varName == "targetType")
 		slashCommand->setTargetType(Lua::getIntParameter(L));
-	else if (varName == "disabled")
-		slashCommand->setDisabled(Lua::getIntParameter(L));
-	else if (varName == "maxRangeToTarget")
+	else if (varName == "disabled") {
+		slashCommand->setDisabled((bool)lua_toboolean(L, -1));
+		command.pop();
+	} else if (varName == "maxRangeToTarget")
 		slashCommand->setMaxRange(Lua::getIntParameter(L));
-	else if (varName == "addToCombatQueue")
-		slashCommand->setAddToCombatQueue(Lua::getIntParameter(L));
-	else if (varName == "characterAbility")
+	else if (varName == "addToCombatQueue") {
+		slashCommand->setAddToCombatQueue((bool)lua_toboolean(L, -1));
+		command.pop();
+	} else if (varName == "characterAbility")
 		slashCommand->setCharacterAbility(Lua::getStringParameter(L));
 	else if (varName == "defaultPriority")
 		slashCommand->setDefaultPriority(Lua::getStringParameter(L));
@@ -390,67 +415,78 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 		slashCommand->setDefaultTime(Lua::getFloatParameter(L));
 	else if (slashCommand->isCombatCommand()) { // define combat variables (for combat commands)
 		CombatQueueCommand* combatCommand = (CombatQueueCommand*)slashCommand;
-		if (varName == "damageMultiplier") // float
+		if (varName == "damageMultiplier")
 			combatCommand->setDamageMultiplier(Lua::getFloatParameter(L));
-		else if (varName == "speedMultiplier") // float
+		else if (varName == "speedMultiplier")
 			combatCommand->setSpeedMultiplier(Lua::getFloatParameter(L));
-		else if (varName == "poolsToDamage") // int
+		else if (varName == "poolsToDamage")
 			combatCommand->setPoolsToDamage(Lua::getIntParameter(L));
-		else if (varName == "healthCostMultiplier") // float
+		else if (varName == "healthCostMultiplier")
 			combatCommand->setHealthCostMultiplier(Lua::getFloatParameter(L));
-		else if (varName == "actionCostMultiplier") // float
+		else if (varName == "actionCostMultiplier")
 			combatCommand->setActionCostMultiplier(Lua::getFloatParameter(L));
-		else if (varName == "mindCostMultiplier") // float
+		else if (varName == "mindCostMultiplier")
 			combatCommand->setMindCostMultiplier(Lua::getFloatParameter(L));
-		else if (varName == "forceCostMultiplier") // float
+		else if (varName == "forceCostMultiplier")
 			combatCommand->setForceCostMultiplier(Lua::getFloatParameter(L));
-		else if (varName == "knockdownStateChance") // int
+		else if (varName == "knockdownStateChance")
 			combatCommand->setKnockdownStateChance(Lua::getIntParameter(L));
-		else if (varName == "postureDownStateChance") // int
+		else if (varName == "postureDownStateChance")
 			combatCommand->setPostureDownStateChance(Lua::getIntParameter(L));
-		else if (varName == "postureUpStateChance") // int
+		else if (varName == "postureUpStateChance")
 			combatCommand->setPostureUpStateChance(Lua::getIntParameter(L));
-		else if (varName == "dizzyStateChance") // int
+		else if (varName == "dizzyStateChance")
 			combatCommand->setDizzyStateChance(Lua::getIntParameter(L));
-		else if (varName == "blindStateChance") // int
+		else if (varName == "blindStateChance")
 			combatCommand->setBlindStateChance(Lua::getIntParameter(L));
-		else if (varName == "stunStateChance") // int
+		else if (varName == "stunStateChance")
 			combatCommand->setStunStateChance(Lua::getIntParameter(L));
-		else if (varName == "intimidateStateChance") // int
+		else if (varName == "intimidateStateChance")
 			combatCommand->setIntimidateStateChance(Lua::getIntParameter(L));
-		else if (varName == "nextAttackDelayChance") // int
+		else if (varName == "nextAttackDelayChance")
 			combatCommand->setNextAttackDelayChance(Lua::getIntParameter(L));
-		else if (varName == "durationStateTime") // int
+		else if (varName == "durationStateTime")
 			combatCommand->setDurationStateTime(Lua::getIntParameter(L));
-		else if (varName == "dotDuration") // int
+		else if (varName == "dotDuration")
 			combatCommand->setDotDuration(Lua::getIntParameter(L));
-		else if (varName == "dotType") // int
+		else if (varName == "dotType")
 			combatCommand->setDotType(Lua::getLongParameter(L));
-		else if (varName == "dotPool") // int
+		else if (varName == "dotPool")
 			combatCommand->setDotPool(Lua::getUnsignedByteParameter(L));
-		else if (varName == "dotStrength") // int
+		else if (varName == "dotStrength")
 			combatCommand->setDotStrength(Lua::getIntParameter(L));
-		else if (varName == "dotPotency") // float
+		else if (varName == "dotPotency")
 			combatCommand->setDotPotency(Lua::getFloatParameter(L));
-		else if (varName == "dotDamageOfHit") // bool
-			combatCommand->setDotDamageOfHit(Lua::getByteParameter(L));
-		else if (varName == "range") // int
+		else if (varName == "dotDamageOfHit") {
+			combatCommand->setDotDamageOfHit((bool)lua_toboolean(L, -1));
+			command.pop();
+		} else if (varName == "range")
 			combatCommand->setRange(Lua::getIntParameter(L));
-		else if (varName == "areaAction") // bool
-			combatCommand->setAreaAction(Lua::getByteParameter(L));
-		else if (varName == "coneAction") // bool
-			combatCommand->setConeAction(Lua::getByteParameter(L));
-		else if (varName == "coneAngle") // int
+		else if (varName == "areaAction") {
+			combatCommand->setAreaAction((bool)lua_toboolean(L, -1));
+			command.pop();
+		} else if (varName == "coneAction") {
+			combatCommand->setConeAction((bool)lua_toboolean(L, -1));
+			command.pop();
+		} else if (varName == "coneAngle")
 			combatCommand->setConeAngle(Lua::getIntParameter(L));
-		else if (varName == "areaRange") // int
+		else if (varName == "areaRange")
 			combatCommand->setAreaRange(Lua::getIntParameter(L));
-		else if (varName == "combatSpam") // String
+		else if (varName == "combatSpam")
 			combatCommand->setCombatSpam(Lua::getStringParameter(L));
-		else if (varName == "animationCRC") // int
+		else if (varName == "animationCRC")
 			combatCommand->setAnimationCRC(Lua::getUnsignedIntParameter(L));
-		else if (varName == "effectString") // String
+		else if (varName == "effectString")
 			combatCommand->setEffectString(Lua::getStringParameter(L));
-		else {
+		else if (combatCommand->isSquadLeaderCommand()) {
+			SquadLeaderCommand* slCommand = (SquadLeaderCommand*)combatCommand;
+			if (varName == "action")
+				slCommand->setAction(Lua::getStringParameter(L));
+			else {
+				Logger::console.error("unknown variable " + varName + " in squadleader command " + slashCommand->getName());
+				command.pop();
+			}
+		} else {
 			Logger::console.error("unknown variable " + varName + " in combat command " + slashCommand->getName());
 			command.pop();
 		}

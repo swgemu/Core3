@@ -52,14 +52,6 @@ class CreatureAreaBleedingCommand : public CombatQueueCommand {
 public:
 
 	CreatureAreaBleedingCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
-		dotDuration = 10;
-		dotType = CreatureState::BLEEDING;
-		dotPool = CombatManager::HEALTH;
-		dotStrength = 50;
-		dotPotency = 50;
-
-		areaRange = 25;
-		areaAction = true;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

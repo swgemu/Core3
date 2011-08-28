@@ -43,6 +43,15 @@
 
 Melee1hHit2Command = {
         name = "melee1hhit2",
+
+	damageMultiplier = 3.5,
+	speedMultiplier = 1.25,
+
+	--animationCRC = String("combo_4a_medium").hashCode(),
+
+	combatSpam = "chosun",
+
+	range = -1,
 }
 
 AddCommand(Melee1hHit2Command)

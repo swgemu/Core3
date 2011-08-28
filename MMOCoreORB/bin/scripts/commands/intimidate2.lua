@@ -43,6 +43,23 @@
 
 Intimidate2Command = {
         name = "intimidate2",
+
+	damageMultiplier = 0,
+	speedMultiplier = 1,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
+
+	intimidateStateChance = 1,
+
+	durationStateTime = 120,
+
+	combatSpam = "intim",
+	--animationCRC = String("intimidate").hashCode(),
+	effectString = "clienteffect/combat_special_attacker_intimidate.cef",
+	range = 15,
+
+	poolsToDamage = 0
 }
 
 AddCommand(Intimidate2Command)

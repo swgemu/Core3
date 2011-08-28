@@ -43,6 +43,26 @@
 
 DiveShotCommand = {
         name = "diveshot",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 1.8,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	--animationCRC = String("fire_1_special_single_light").hashCode(),
+
+	combatSpam = "diveshot",
+
+	poolsToDamage = HEALTH_ATTRIBUTE,
+
+	dotType = BLEEDING_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotDamageOfHit = true,
+	dotDuration = 30,
+
+	range = -1
+
 }
 
 AddCommand(DiveShotCommand)

@@ -53,18 +53,6 @@ public:
 
 	VolleyFireCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
-
-		damageMultiplier = 0;
-		healthCostMultiplier = 0;
-		actionCostMultiplier = 0;
-		mindCostMultiplier = 0;
-
-		combatSpam = "volleyfire";
-		range = -1;
-
-		action = "volleyfire";
-		actionCRC = action.hashCode();
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

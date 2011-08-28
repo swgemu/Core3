@@ -43,6 +43,22 @@
 
 BurstShot2Command = {
         name = "burstshot2",
+
+	damageMultiplier = 6,
+	speedMultiplier = 2.5,
+	healthCostMultiplier = 1.4,
+	actionCostMultiplier = 1.1,
+	mindCostMultiplier = 0.5,
+	coneAngle = 30,
+	coneAction = true,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_7_single_medium").hashCode(),
+
+	combatSpam = "burstblast",
+
+	range = -1
 }
 
 AddCommand(BurstShot2Command)

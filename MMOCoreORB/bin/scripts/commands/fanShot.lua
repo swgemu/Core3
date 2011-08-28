@@ -43,6 +43,21 @@
 
 FanShotCommand = {
         name = "fanshot",
+	damageMultiplier = 4,
+	speedMultiplier = 2.4,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+	coneAngle = 60,
+	coneAction = true,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_area_light").hashCode(),
+
+	combatSpam = "fanshot",
+
+	range = -1
 }
 
 AddCommand(FanShotCommand)

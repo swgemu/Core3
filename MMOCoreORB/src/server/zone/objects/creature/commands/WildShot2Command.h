@@ -53,24 +53,6 @@ public:
 
 	WildShot2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 4.5;
-		speedMultiplier = 2.5;
-		healthCostMultiplier = 1.6;
-		actionCostMultiplier = 1.1;
-		mindCostMultiplier = 0.5;
-		coneAngle = 30;
-		coneAction = true;
-
-		animationCRC = String("fire_7_single_medium").hashCode();
-
-		combatSpam = "wildshot";
-
-		stunStateChance = 40;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

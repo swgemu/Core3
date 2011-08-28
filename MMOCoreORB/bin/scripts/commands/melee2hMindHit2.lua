@@ -43,6 +43,21 @@
 
 Melee2hMindHit2Command = {
         name = "melee2hmindhit2",
+	damageMultiplier = 2,
+	speedMultiplier = 2.5,
+
+	poolsToDamage = MIND_ATTRIBUTE,
+
+	dotType = BLEEDING_STATE,
+	dotDamageOfHit = true,
+	dotDuration = 60,
+	dotPool = MIND_ATTRIBUTE,
+
+	--animationCRC = String("combo_3c_light").hashCode(),
+
+	combatSpam = "melee2hsweep1",
+
+	range = -1
 }
 
 AddCommand(Melee2hMindHit2Command)

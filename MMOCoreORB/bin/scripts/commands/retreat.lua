@@ -43,6 +43,10 @@
 
 RetreatCommand = {
         name = "retreat",
+
+	action = "retreat",
+	--actionCRC = action.hashCode(),
+	combatSpam = "retreat_buff"
 }
 
 AddCommand(RetreatCommand)

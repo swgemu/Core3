@@ -53,22 +53,6 @@ public:
 
 	SuppressionFire1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.3;
-		speedMultiplier = 2.0;
-		healthCostMultiplier = 1.9;
-		actionCostMultiplier = 1.4;
-		mindCostMultiplier = 0.6;
-
-		postureDownStateChance = 1;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		animationCRC = String("fire_area_light").hashCode();
-
-		combatSpam = "suppressionfire";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

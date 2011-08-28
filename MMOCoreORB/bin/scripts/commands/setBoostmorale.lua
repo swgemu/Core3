@@ -43,6 +43,9 @@
 
 SetBoostmoraleCommand = {
         name = "setboostmorale",
+
+	action = "boostmorale",
+	--actionCRC = action.hashCode()
 }
 
 AddCommand(SetBoostmoraleCommand)

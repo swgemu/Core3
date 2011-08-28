@@ -53,18 +53,6 @@ public:
 
 	VolleyFireAttackCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1;
-		speedMultiplier = 1;
-
-		combatSpam = "volley";
-		animationCRC = 0;
-
-		healthCostMultiplier = 0;
-		actionCostMultiplier = 0;
-		mindCostMultiplier = 0;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

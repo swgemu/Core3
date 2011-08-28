@@ -43,6 +43,22 @@
 
 SprayShotCommand = {
         name = "sprayshot",
+
+	damageMultiplier = 5.5,
+	speedMultiplier = 3.5,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	stunStateChance = 30,
+	dizzyStateChance = 30,
+	blindStateChance = 30,
+
+	--animationCRC = String("fire_7_single_medium").hashCode(),
+
+	combatSpam = "sprayshot",
+
+	range = -1
 }
 
 AddCommand(SprayShotCommand)

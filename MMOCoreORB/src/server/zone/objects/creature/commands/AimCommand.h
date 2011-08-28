@@ -53,12 +53,6 @@ public:
 
 	AimCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 0;
-		healthCostMultiplier = 3;
-
-		combatSpam = "aim";
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

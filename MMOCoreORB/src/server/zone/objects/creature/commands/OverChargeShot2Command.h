@@ -53,19 +53,6 @@ public:
 
 	OverChargeShot2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 5.3;
-		speedMultiplier = 2.0;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		animationCRC = String("fire_1_special_single_medium").hashCode();
-
-		combatSpam = "overchargeshot";
-
-		range = -1;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

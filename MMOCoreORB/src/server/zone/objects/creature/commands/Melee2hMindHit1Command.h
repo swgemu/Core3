@@ -55,21 +55,6 @@ public:
 
 	Melee2hMindHit1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-		damageMultiplier = 1;
-		speedMultiplier = 2.3;
-
-		poolsToDamage = CombatManager::MIND;
-
-		dotType = CreatureState::BLEEDING;
-		dotDamageOfHit = true;
-		dotDuration = 30;
-		dotPool = CreatureAttribute::MIND;
-
-		animationCRC = String("combo_2b_medium").hashCode();
-
-		combatSpam = "melee2hsweep1";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

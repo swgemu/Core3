@@ -53,22 +53,6 @@ public:
 
 	FlurryShot1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.5;
-		speedMultiplier = 2.0;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		dizzyStateChance = 10;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		animationCRC = String("fire_5_special_single_medium_face").hashCode();
-
-		combatSpam = "flurryshot";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

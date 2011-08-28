@@ -43,6 +43,26 @@
 
 HealthShot1Command = {
         name = "healthshot1",
+
+	damageMultiplier = 2.0,
+	speedMultiplier = 1.0,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	poolsToDamage = HEALTH_ATTRIBUTE,
+
+	--animationCRC = String("fire_1_special_single_light").hashCode(),
+
+	combatSpam = "sapshot",
+
+	dotType = BLEEDING_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotDamageOfHit = true,
+	dotDuration = 30,
+
+	range = -1
+
 }
 
 AddCommand(HealthShot1Command)

@@ -43,6 +43,24 @@
 
 PanicShotCommand = {
         name = "panicshot",
+
+	damageMultiplier = 2.0,
+	speedMultiplier = 2.6,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	nextAttackDelayChance = 1,
+	durationStateTime = 30,
+
+	--animationCRC = String("fire_1_special_single_light").hashCode(),
+
+	combatSpam = "panicshot",
+
+	coneAction = true,
+	coneAngle = 45,
+
+	range = -1
 }
 
 AddCommand(PanicShotCommand)

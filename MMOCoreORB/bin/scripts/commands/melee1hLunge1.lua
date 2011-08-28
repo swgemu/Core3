@@ -43,6 +43,17 @@
 
 Melee1hLunge1Command = {
         name = "melee1hlunge1",
+
+	damageMultiplier = 1,
+	speedMultiplier = 1.25,
+
+	--animationCRC = String("lower_posture_1hmelee_1").hashCode(),
+
+	combatSpam = "sword1_sweep",
+
+	range = 15,
+
+	postureDownStateChance = 1
 }
 
 AddCommand(Melee1hLunge1Command)

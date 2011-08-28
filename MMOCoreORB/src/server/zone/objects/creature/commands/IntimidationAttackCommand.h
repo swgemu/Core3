@@ -52,8 +52,6 @@ class IntimidationAttackCommand : public CombatQueueCommand {
 public:
 
 	IntimidationAttackCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
-		intimidateStateChance = 50;
-		durationStateTime = 10;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

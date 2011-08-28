@@ -43,6 +43,11 @@
 
 MildPoisonCommand = {
         name = "mildpoison",
+	dotDuration = 10,
+	dotType = POISONED_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotStrength = 30,
+	dotPotency = 30
 }
 
 AddCommand(MildPoisonCommand)

@@ -43,6 +43,20 @@
 
 DoubleTapCommand = {
         name = "doubletap",
+
+	damageMultiplier = 2.8,
+	speedMultiplier = 2.1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	poolsToDamage = ACTION_ATTRIBUTE + HEALTH_ATTRIBUTE,
+
+	--animationCRC = String("fire_7_single_light_face").hashCode(),
+
+	combatSpam = "doubletap",
+
+	range = -1
 }
 
 AddCommand(DoubleTapCommand)

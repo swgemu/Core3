@@ -43,6 +43,8 @@
 
 IntimidationAttackCommand = {
         name = "intimidationattack",
+	intimidateStateChance = 50,
+	durationStateTime = 10
 }
 
 AddCommand(IntimidationAttackCommand)

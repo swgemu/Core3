@@ -53,25 +53,6 @@ public:
 
 	MindShot1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.5;
-		speedMultiplier = 1.8;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		poolsToDamage = CombatManager::MIND;
-
-		animationCRC = String("fire_1_special_single_medium_face").hashCode();
-
-		combatSpam = "headshot";
-
-		dotType = CreatureState::BLEEDING;
-		dotPool = CreatureAttribute::MIND;
-		dotDamageOfHit = true;
-		dotDuration = 30;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

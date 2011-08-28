@@ -43,6 +43,21 @@
 
 WarningShotCommand = {
         name = "warningshot",
+
+	damageMultiplier = 1.15,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 1.9,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_area_light").hashCode(),
+
+	combatSpam = "warningshot",
+
+	range = -1
+
 }
 
 AddCommand(WarningShotCommand)

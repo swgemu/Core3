@@ -52,8 +52,6 @@ class BlindAttackCommand : public CombatQueueCommand {
 public:
 
 	BlindAttackCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
-		blindStateChance = 50;
-		durationStateTime = 10;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

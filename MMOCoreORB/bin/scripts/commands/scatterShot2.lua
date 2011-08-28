@@ -43,6 +43,20 @@
 
 ScatterShot2Command = {
         name = "scattershot2",
+
+	damageMultiplier = 5.0,
+	speedMultiplier = 2.5,
+	healthCostMultiplier = 1.6,
+	actionCostMultiplier = 1.1,
+	mindCostMultiplier = 0.5,
+
+	--animationCRC = String("fire_5_single_medium").hashCode(),
+
+	combatSpam = "scattershot",
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(ScatterShot2Command)

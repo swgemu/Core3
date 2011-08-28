@@ -53,21 +53,6 @@ public:
 
 	KnockdownFireCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.5;
-		speedMultiplier = 2.0;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		knockdownStateChance = 30;
-		dizzyStateChance = 30;
-
-		animationCRC = String("fire_1_special_single_medium").hashCode();
-
-		combatSpam = "knockdownfire";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

@@ -43,6 +43,22 @@
 
 UnarmedKnockdown2Command = {
         name = "unarmedknockdown2",
+
+	damageMultiplier = 1.5,
+	speedMultiplier = 2.0,
+
+	healthCostMultiplier = 1.5,
+	actionCostMultiplier = 1.5,
+	mindCostMultiplier = 1.5,
+
+	knockdownStateChance = 15,
+	dizzyStateChance = 1,
+
+	--animationCRC = String("attack_special_hammerfist_light").hashCode(),
+
+	combatSpam = "melee",
+
+	range = -1
 }
 
 AddCommand(UnarmedKnockdown2Command)

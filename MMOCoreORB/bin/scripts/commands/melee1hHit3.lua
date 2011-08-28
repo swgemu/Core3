@@ -43,6 +43,17 @@
 
 Melee1hHit3Command = {
         name = "melee1hhit3",
+
+	damageMultiplier = 5,
+	speedMultiplier = 2,
+
+	--animationCRC = String("combo_5a_light").hashCode(),
+
+	blindStateChance = 40,
+
+	combatSpam = "chomok",
+
+	range = -1
 }
 
 AddCommand(Melee1hHit3Command)

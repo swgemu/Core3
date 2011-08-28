@@ -43,6 +43,8 @@
 
 PostureDownAttackCommand = {
         name = "posturedownattack",
+	postureDownStateChance = 50,
+	durationStateTime = 10
 }
 
 AddCommand(PostureDownAttackCommand)

@@ -43,6 +43,11 @@
 
 MildDiseaseCommand = {
         name = "milddisease",
+	dotDuration = 10,
+	dotType = DISEASED_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotStrength = 30,
+	dotPotency = 50,
 }
 
 AddCommand(MildDiseaseCommand)

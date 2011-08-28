@@ -43,6 +43,17 @@
 
 PolearmLegHit2Command = {
         name = "polearmleghit2",
+
+	damageMultiplier = 2,
+	speedMultiplier = 2,
+
+	--animationCRC = String("combo_3c_light").hashCode(),
+
+	combatSpam = "melee",
+
+	poolsToDamage = ACTION_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(PolearmLegHit2Command)

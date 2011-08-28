@@ -55,17 +55,6 @@ public:
 
 	Melee1hHit3Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 5;
-		speedMultiplier = 2;
-
-		animationCRC = String("combo_5a_light").hashCode();
-
-		blindStateChance = 40;
-
-		combatSpam = "chomok";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

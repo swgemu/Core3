@@ -43,6 +43,17 @@
 
 PolearmHit3Command = {
         name = "polearmhit3",
+	damageMultiplier = 4,
+	speedMultiplier = 3,
+
+	stunStateChance = 20,
+	postureDownStateChance = 30,
+
+	--animationCRC = String("combo_5a_medium").hashCode(),
+
+	combatSpam = "bonebreaker",
+
+	range = -1
 }
 
 AddCommand(PolearmHit3Command)

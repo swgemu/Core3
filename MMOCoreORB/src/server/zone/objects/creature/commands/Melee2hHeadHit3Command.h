@@ -55,16 +55,6 @@ public:
 
 	Melee2hHeadHit3Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-		damageMultiplier = 3.5;
-		speedMultiplier = 2.5;
-
-		poolsToDamage = CombatManager::MIND;
-
-		animationCRC = String("combo_2d_medium").hashCode();
-
-		combatSpam = "melee";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

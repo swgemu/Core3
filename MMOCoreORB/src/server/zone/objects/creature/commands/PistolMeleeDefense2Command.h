@@ -53,22 +53,6 @@ public:
 
 	PistolMeleeDefense2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 4.1;
-		speedMultiplier = 2.5;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		knockdownStateChance = 30;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		animationCRC = String("ranged_melee_light").hashCode();
-
-		combatSpam = "pistolwhip";
-
-		range = 5;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

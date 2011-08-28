@@ -43,6 +43,20 @@
 
 StoppingShotCommand = {
         name = "stoppingshot",
+
+	damageMultiplier = 5,
+	speedMultiplier = 4,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_1_special_single_light").hashCode(),
+
+	combatSpam = "stoppingshot",
+
+	range = -1
 }
 
 AddCommand(StoppingShotCommand)

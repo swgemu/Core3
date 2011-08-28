@@ -43,6 +43,28 @@
 
 ActionShot2Command = {
         name = "actionshot2",
+
+	damageMultiplier = 2.0,
+	speedMultiplier = 1.7,
+	healthCostMultiplier = 2.1,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+
+	coneAngle = 30,
+	coneAction = true,
+
+	poolsToDamage = ACTION_ATTRIBUTE,
+
+	--animationCRC = String("fire_area_medium").hashCode(),
+
+	combatSpam = "legshot",
+
+	dotType = BLEEDING_STATE,
+	dotPool = ACTION_ATTRIBUTE,
+	dotDamageOfHit = true,
+	dotDuration = 60,
+
+	range = -1
 }
 
 AddCommand(ActionShot2Command)

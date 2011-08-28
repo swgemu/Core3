@@ -43,6 +43,10 @@
 
 SteadyaimCommand = {
         name = "steadyaim",
+
+	action = "steadyaim",
+	--actionCRC = action.hashCode(),
+	combatSpam = "steadyaim_buff"
 }
 
 AddCommand(SteadyaimCommand)

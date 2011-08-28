@@ -43,6 +43,20 @@
 
 FastBlastCommand = {
         name = "fastblast",
+
+	damageMultiplier = 4.15,
+	speedMultiplier = 3.05,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	poolsToDamage = HEALTH_ATTRIBUTE,
+
+	--animationCRC = String("fire_5_special_single_light").hashCode(),
+
+	combatSpam = "fastblast",
+
+	range = -1
 }
 
 AddCommand(FastBlastCommand)

@@ -43,6 +43,14 @@
 
 CreatureAreaBleedingCommand = {
         name = "creatureareableeding",
+	dotDuration = 10,
+	dotType = BLEEDING_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotStrength = 50,
+	dotPotency = 50,
+
+	areaRange = 25,
+	areaAction = true
 }
 
 AddCommand(CreatureAreaBleedingCommand)

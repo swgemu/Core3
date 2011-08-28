@@ -53,20 +53,6 @@ public:
 
 	UnarmedBlind1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.5;
-		speedMultiplier = 2;
-		healthCostMultiplier = 1.5;
-		actionCostMultiplier = 1.5;
-		mindCostMultiplier = 1.5;
-
-		animationCRC = String("attack_high_center_light_1").hashCode();
-
-		combatSpam = "aryxslash";
-
-		blindStateChance = 1;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

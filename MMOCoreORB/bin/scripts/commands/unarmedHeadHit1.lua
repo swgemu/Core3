@@ -43,6 +43,21 @@
 
 UnarmedHeadHit1Command = {
         name = "unarmedheadhit1",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 2.0,
+
+	healthCostMultiplier = 1.75,
+	actionCostMultiplier = 1.75,
+	mindCostMultiplier = 1.75,
+
+	poolsToDamage = MIND_ATTRIBUTE,
+
+	--animationCRC = String("knockdown_unarmed_1").hashCode(),
+
+	combatSpam = "melee",
+
+	range = -1
 }
 
 AddCommand(UnarmedHeadHit1Command)

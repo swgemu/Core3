@@ -43,6 +43,22 @@
 
 PolearmArea2Command = {
         name = "polearmarea2",
+
+	damageMultiplier = 2.75,
+	speedMultiplier = 3,
+	areaRange = 7,
+	areaAction = true,
+
+	dizzyStateChance = 30,
+	stunStateChance = 30,
+
+	--animationCRC = String("lower_posture_2hmelee_6").hashCode(),
+
+	combatSpam = "melee",
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(PolearmArea2Command)

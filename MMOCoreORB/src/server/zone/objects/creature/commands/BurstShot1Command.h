@@ -53,20 +53,6 @@ public:
 
 	BurstShot1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 6;
-		speedMultiplier = 2;
-		healthCostMultiplier = 1.4;
-		actionCostMultiplier = 1.1;
-		mindCostMultiplier = 0.5;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		animationCRC = String("fire_7_single_medium").hashCode();
-
-		combatSpam = "burstshot";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

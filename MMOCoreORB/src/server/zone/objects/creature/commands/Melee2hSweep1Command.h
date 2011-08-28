@@ -54,18 +54,6 @@ public:
 
 	Melee2hSweep1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.5;
-		speedMultiplier = 1.7;
-
-		animationCRC = String("lower_posture_2hmelee_3").hashCode();
-
-		combatSpam = "melee2hsweep1";
-
-		postureDownStateChance = 1;
-
-		range = -1;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

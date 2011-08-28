@@ -43,6 +43,22 @@
 
 FlurryShot1Command = {
         name = "flurryshot1",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 2.0,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	dizzyStateChance = 10,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_5_special_single_medium_face").hashCode(),
+
+	combatSpam = "flurryshot",
+
+	range = -1
 }
 
 AddCommand(FlurryShot1Command)

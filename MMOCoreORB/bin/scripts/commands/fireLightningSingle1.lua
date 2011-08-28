@@ -43,6 +43,18 @@
 
 FireLightningSingle1Command = {
         name = "firelightningsingle1",
+
+	damageMultiplier = 3.0,
+	speedMultiplier = 2.0,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	--animationCRC = String("fire_1_special_single_medium_face").hashCode(),
+
+	combatSpam = "firelightningsingle1",
+
+	range = 16
 }
 
 AddCommand(FireLightningSingle1Command)

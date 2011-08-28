@@ -43,6 +43,9 @@
 
 SetFormupCommand = {
         name = "setformup",
+
+	action = "formup",
+	--actionCRC = action.hashCode()
 }
 
 AddCommand(SetFormupCommand)

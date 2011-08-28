@@ -43,6 +43,18 @@
 
 UnarmedLunge1Command = {
         name = "unarmedlunge1",
+
+	damageMultiplier = 1,
+	speedMultiplier = 1.5,
+
+	--animationCRC = String("counter_mid_center_light").hashCode(),
+
+	combatSpam = "unarmed_sweep",
+
+	range = 15,
+
+	postureDownStateChance = 1
+
 }
 
 AddCommand(UnarmedLunge1Command)

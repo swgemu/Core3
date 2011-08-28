@@ -55,19 +55,6 @@ public:
 
 	PolearmStun2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2;
-		speedMultiplier = 2;
-		areaRange = 7;
-		areaAction = true;
-
-		stunStateChance = 40;
-
-		animationCRC = String("lower_posture_2hmelee_5").hashCode();
-
-		combatSpam = "breathtaker";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

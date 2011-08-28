@@ -43,6 +43,17 @@
 
 PolearmLegHit3Command = {
         name = "polearmleghit3",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 3,
+
+	--animationCRC = String("combo_3b_medium").hashCode(),
+
+	combatSpam = "melee",
+
+	poolsToDamage = ACTION_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(PolearmLegHit3Command)

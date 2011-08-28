@@ -43,6 +43,18 @@
 
 Melee1hLunge2Command = {
         name = "melee1hlunge2",
+
+	damageMultiplier = 2,
+	speedMultiplier = 1.5,
+
+	--animationCRC = String("melee1hlunge2").hashCode(),
+
+	combatSpam = "sword1_knockdown",
+
+	range = 20,
+
+	knockdownStateChance = 1
+
 }
 
 AddCommand(Melee1hLunge2Command)

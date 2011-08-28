@@ -55,22 +55,6 @@ public:
 
 	Melee1hHealthHit1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.5;
-		speedMultiplier = 1.45;
-
-		poolsToDamage = CombatManager::HEALTH;
-
-		animationCRC = String("counter_low_left_light").hashCode();
-
-		combatSpam = "shiim";
-
-		dotDuration = 30;
-		dotType = CreatureState::BLEEDING;
-		dotPool = CreatureAttribute::HEALTH;
-		dotDamageOfHit = true;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

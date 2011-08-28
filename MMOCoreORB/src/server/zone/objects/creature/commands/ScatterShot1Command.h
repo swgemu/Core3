@@ -53,20 +53,6 @@ public:
 
 	ScatterShot1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 3.3;
-		speedMultiplier = 2;
-		healthCostMultiplier = 1.4;
-		actionCostMultiplier = 1.1;
-		mindCostMultiplier = 0.5;
-
-		animationCRC = String("fire_5_single_medium").hashCode();
-
-		combatSpam = "scattershot";
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

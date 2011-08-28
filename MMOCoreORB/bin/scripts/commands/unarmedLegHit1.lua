@@ -43,6 +43,21 @@
 
 UnarmedLegHit1Command = {
         name = "unarmedleghit1",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 2.0,
+
+	healthCostMultiplier = 1.75,
+	actionCostMultiplier = 1.75,
+	mindCostMultiplier = 1.75,
+
+	poolsToDamage = ACTION_ATTRIBUTE,
+
+	--animationCRC = String("attack_special_foot_stomp_medium").hashCode(),
+
+	combatSpam = "melee",
+
+	range = -1
 }
 
 AddCommand(UnarmedLegHit1Command)

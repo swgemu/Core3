@@ -43,6 +43,16 @@
 
 PolearmHit1Command = {
         name = "polearmhit1",
+
+	damageMultiplier = 2,
+	speedMultiplier = 1.5,
+
+	--animationCRC = String("combo_2b_light").hashCode(),
+
+	combatSpam = "polearm_dam1",
+
+	range = -1
+
 }
 
 AddCommand(PolearmHit1Command)

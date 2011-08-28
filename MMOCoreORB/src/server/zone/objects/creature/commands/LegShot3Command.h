@@ -53,22 +53,6 @@ public:
 
 	LegShot3Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 3.0;
-		speedMultiplier = 1.5;
-		healthCostMultiplier = 0.5;
-		actionCostMultiplier = 1.3;
-		mindCostMultiplier = 1.2;
-
-		stunStateChance = 25;
-
-		poolsToDamage = CombatManager::ACTION;
-
-		animationCRC = String("test_homing").hashCode();
-
-		combatSpam = "kneecapshot";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

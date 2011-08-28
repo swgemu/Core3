@@ -43,6 +43,22 @@
 
 SuppressionFire2Command = {
         name = "suppressionfire2",
+
+	damageMultiplier = 2.47,
+	speedMultiplier = 2.8,
+	healthCostMultiplier = 2.1,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+
+	postureDownStateChance = 40,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_area_medium").hashCode(),
+
+	combatSpam = "sup_fire",
+
+	range = -1
 }
 
 AddCommand(SuppressionFire2Command)

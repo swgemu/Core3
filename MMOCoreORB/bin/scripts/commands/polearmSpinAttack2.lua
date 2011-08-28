@@ -43,6 +43,20 @@
 
 PolearmSpinAttack2Command = {
         name = "polearmspinattack2",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 3,
+
+	areaAction = true,
+	areaRange = 7,
+
+	dizzyStateChance = 30,
+
+	--animationCRC = String("combo_2c_medium").hashCode(),
+
+	combatSpam = "melee",
+
+	range = -1
 }
 
 AddCommand(PolearmSpinAttack2Command)

@@ -43,6 +43,20 @@
 
 HeadShot1Command = {
         name = "headshot1",
+
+	damageMultiplier = 1.5,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	poolsToDamage = MIND_ATTRIBUTE,
+
+	--animationCRC = String("fire_1_special_single_medium_face").hashCode(),
+
+	combatSpam = "headshot",
+
+	range = -1
 }
 
 AddCommand(HeadShot1Command)

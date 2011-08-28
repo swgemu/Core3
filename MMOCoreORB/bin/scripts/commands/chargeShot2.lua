@@ -43,6 +43,25 @@
 
 ChargeShot2Command = {
         name = "chargeshot2",
+
+	damageMultiplier = 2.37,
+	speedMultiplier = 3,
+	healthCostMultiplier = 1.9,
+	actionCostMultiplier = 2.9,
+	mindCostMultiplier = 1.9,
+
+	--animationCRC = String("charge").hashCode(),
+
+	combatSpam = "chargeblast",
+
+	coneAngle = 30,
+	coneAction = true,
+
+	knockdownStateChance = 40,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(ChargeShot2Command)

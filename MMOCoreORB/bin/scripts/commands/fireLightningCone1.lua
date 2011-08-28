@@ -43,6 +43,21 @@
 
 FireLightningCone1Command = {
         name = "firelightningcone1",
+
+	damageMultiplier = 3.0,
+	speedMultiplier = 2.0,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	--animationCRC = String("fire_area_medium").hashCode(),
+
+	combatSpam = "firelightningcone1",
+
+	coneAngle = 60,
+	coneAction = true,
+
+	range = 16
 }
 
 AddCommand(FireLightningCone1Command)

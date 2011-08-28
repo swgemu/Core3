@@ -53,22 +53,6 @@ public:
 
 	StartleShot1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2;
-		speedMultiplier = 2.1;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		postureUpStateChance = 25;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		animationCRC = String("fire_defender_posture_change_up").hashCode();
-
-		combatSpam = "startleshot";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

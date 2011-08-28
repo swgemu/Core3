@@ -52,11 +52,6 @@ class CreatureAreaKnockdownCommand : public CombatQueueCommand {
 public:
 
 	CreatureAreaKnockdownCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
-		knockdownStateChance = 30;
-		durationStateTime = 10;
-
-		areaRange = 25;
-		areaAction = true;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

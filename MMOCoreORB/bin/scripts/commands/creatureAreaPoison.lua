@@ -43,6 +43,14 @@
 
 CreatureAreaPoisonCommand = {
         name = "creatureareapoison",
+	dotDuration = 10,
+	dotType = POISONED_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotStrength = 50,
+	dotPotency = 50,
+
+	areaRange = 25,
+	areaAction = true
 }
 
 AddCommand(CreatureAreaPoisonCommand)

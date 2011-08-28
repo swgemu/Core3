@@ -43,6 +43,14 @@
 
 CreatureAreaDiseaseCommand = {
         name = "creatureareadisease",
+	dotDuration = 10,
+	dotType = DISEASED_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotStrength = 50,
+	dotPotency = 50,
+
+	areaRange = 25,
+	areaAction = true
 }
 
 AddCommand(CreatureAreaDiseaseCommand)

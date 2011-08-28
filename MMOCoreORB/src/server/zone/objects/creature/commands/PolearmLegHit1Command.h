@@ -55,17 +55,6 @@ public:
 
 	PolearmLegHit1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.5;
-		speedMultiplier = 1.5;
-
-		animationCRC = String("attack_low_left_medium_0").hashCode();
-
-		combatSpam = "polearm_limbs";
-
-		poolsToDamage = CombatManager::ACTION;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

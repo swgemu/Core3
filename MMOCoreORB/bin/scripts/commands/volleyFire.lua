@@ -43,6 +43,18 @@
 
 VolleyFireCommand = {
         name = "volleyfire",
+
+	damageMultiplier = 0,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
+
+	combatSpam = "volleyfire",
+	range = -1,
+
+	action = "volleyfire",
+	--actionCRC = action.hashCode()
+
 }
 
 AddCommand(VolleyFireCommand)

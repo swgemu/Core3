@@ -43,6 +43,18 @@
 
 Melee1hSpinAttack1Command = {
         name = "melee1hspinattack1",
+
+	damageMultiplier = 2,
+	speedMultiplier = 1.45,
+
+	--animationCRC = String("attack_high_right_medium_2").hashCode(),
+
+	combatSpam = "slashspin",
+
+	areaAction = true,
+	areaRange = 7,
+
+	range = -1
 }
 
 AddCommand(Melee1hSpinAttack1Command)

@@ -52,8 +52,6 @@ class DizzyAttackCommand : public CombatQueueCommand {
 public:
 
 	DizzyAttackCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {
-		dizzyStateChance = 50;
-		durationStateTime = 10;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

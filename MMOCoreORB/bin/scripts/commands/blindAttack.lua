@@ -43,6 +43,8 @@
 
 BlindAttackCommand = {
         name = "blindattack",
+	blindStateChance = 50,
+	durationStateTime = 10
 }
 
 AddCommand(BlindAttackCommand)

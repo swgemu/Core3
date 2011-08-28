@@ -55,21 +55,6 @@ public:
 
 	PolearmActionHit2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-		damageMultiplier = 2;
-		speedMultiplier = 3;
-
-		animationCRC = String("lower_posture_2hmelee_2").hashCode();
-
-		combatSpam = "melee";
-
-		dotType = CreatureState::BLEEDING;
-		dotDamageOfHit = true;
-		dotDuration = 60;
-		dotPool = CreatureAttribute::ACTION;
-
-		poolsToDamage = CombatManager::ACTION;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

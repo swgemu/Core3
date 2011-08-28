@@ -43,6 +43,21 @@
 
 PolearmActionHit2Command = {
         name = "polearmactionhit2",
+	damageMultiplier = 2,
+	speedMultiplier = 3,
+
+	--animationCRC = String("lower_posture_2hmelee_2").hashCode(),
+
+	combatSpam = "melee",
+
+	dotType = BLEEDING_STATE,
+	dotDamageOfHit = true,
+	dotDuration = 60,
+	dotPool = ACTION_ATTRIBUTE,
+
+	poolsToDamage = ACTION_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(PolearmActionHit2Command)

@@ -47,12 +47,11 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-class FireAcidSingle1Command : public QueueCommand {
+class FireAcidSingle1Command : public CombatQueueCommand {
 public:
 
 	FireAcidSingle1Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+		: CombatQueueCommand(name, server) {
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

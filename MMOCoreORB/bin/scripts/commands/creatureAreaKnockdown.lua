@@ -43,6 +43,11 @@
 
 CreatureAreaKnockdownCommand = {
         name = "creatureareaknockdown",
+	knockdownStateChance = 30,
+	durationStateTime = 10,
+
+	areaRange = 25,
+	areaAction = true
 }
 
 AddCommand(CreatureAreaKnockdownCommand)

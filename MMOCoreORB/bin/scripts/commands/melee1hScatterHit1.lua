@@ -43,6 +43,17 @@
 
 Melee1hScatterHit1Command = {
         name = "melee1hscatterhit1",
+
+	damageMultiplier = 3,
+	speedMultiplier = 1.25,
+
+	--animationCRC = String("combo_3b_light").hashCode(),
+
+	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE,
+
+	combatSpam = "scatterstab",
+
+	range = -1
 }
 
 AddCommand(Melee1hScatterHit1Command)

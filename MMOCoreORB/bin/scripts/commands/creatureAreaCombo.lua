@@ -43,6 +43,8 @@
 
 CreatureAreaComboCommand = {
         name = "creatureareacombo",
+	areaRange = 25,
+	areaAction = true
 }
 
 AddCommand(CreatureAreaComboCommand)

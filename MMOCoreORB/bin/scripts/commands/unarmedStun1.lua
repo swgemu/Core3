@@ -43,6 +43,17 @@
 
 UnarmedStun1Command = {
         name = "unarmedstun1",
+
+	damageMultiplier = 1.25,
+	speedMultiplier = 2,
+
+	--animationCRC = String("combo_4c_light").hashCode(),
+
+	combatSpam = "unarmed_stun",
+
+	stunStateChance = 1,
+
+	range = -1
 }
 
 AddCommand(UnarmedStun1Command)

@@ -43,6 +43,21 @@
 
 Melee1hBlindHit1Command = {
         name = "melee1hblindhit1",
+
+	damageMultiplier = 2,
+	speedMultiplier = 1.45,
+	areaRange = 7,
+	areaAction = true,
+
+	blindStateChance = 10,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("combo_4b_medium").hashCode(),
+
+	combatSpam = "blindingstab",
+
+	range = -1
 }
 
 AddCommand(Melee1hBlindHit1Command)

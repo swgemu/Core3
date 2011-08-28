@@ -43,6 +43,11 @@
 
 FormupCommand = {
         name = "formup",
+
+	action = "formup",
+	--actionCRC = action.hashCode(),
+	combatSpam = "formup_buff"
+
 }
 
 AddCommand(FormupCommand)

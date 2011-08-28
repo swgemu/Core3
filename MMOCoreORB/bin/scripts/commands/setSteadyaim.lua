@@ -43,6 +43,9 @@
 
 SetSteadyaimCommand = {
         name = "setsteadyaim",
+
+	action = "steadyaim",
+	--actionCRC = action.hashCode()
 }
 
 AddCommand(SetSteadyaimCommand)

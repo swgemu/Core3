@@ -43,6 +43,22 @@
 
 Melee1hHealthHit1Command = {
         name = "melee1hhealthhit1",
+
+	damageMultiplier = 1.5,
+	speedMultiplier = 1.45,
+
+	poolsToDamage = HEALTH_ATTRIBUTE,
+
+	--animationCRC = String("counter_low_left_light").hashCode(),
+
+	combatSpam = "shiim",
+
+	dotDuration = 30,
+	dotType = BLEEDING_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotDamageOfHit = true,
+
+	range = -1
 }
 
 AddCommand(Melee1hHealthHit1Command)

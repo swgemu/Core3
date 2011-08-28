@@ -53,20 +53,6 @@ public:
 
 	UnarmedSpinAttack1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2;
-		speedMultiplier = 2;
-		areaAction = true;
-		areaRange = 7;
-		healthCostMultiplier = 1.5;
-		actionCostMultiplier = 1.5;
-		mindCostMultiplier = 1.5;
-
-		animationCRC = String("combo_3c_light").hashCode();
-
-		combatSpam = "spinningsmash";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

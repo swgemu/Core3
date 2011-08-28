@@ -18,7 +18,7 @@
 #include "server/zone/objects/creature/CreatureState.h"
 #include "QueueCommand.h"
 
-class CombatQueueCommand: public QueueCommand {
+class CombatQueueCommand : public QueueCommand {
 protected:
 	float damageMultiplier;
 	float speedMultiplier;
@@ -400,6 +400,9 @@ public:
 
 	bool isCombatCommand() {
 		return true;
+	}
+	virtual bool isSquadLeaderCommand() {
+		return false;
 	}
 
 };

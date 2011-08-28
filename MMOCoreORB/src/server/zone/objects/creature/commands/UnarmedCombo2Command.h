@@ -53,21 +53,6 @@ public:
 
 	UnarmedCombo2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.5;
-		speedMultiplier = 4.0;
-
-		healthCostMultiplier = 2;
-		actionCostMultiplier = 2;
-		mindCostMultiplier = 2;
-
-		poolsToDamage = CombatManager::HEALTH | CombatManager::ACTION;
-
-		animationCRC = String("combo_4a_light").hashCode();
-
-		combatSpam = "melee";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

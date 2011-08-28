@@ -43,6 +43,20 @@
 
 ConcealShotCommand = {
         name = "concealshot",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 3,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_1_special_single_medium").hashCode(),
+
+	combatSpam = "concealedshot",
+
+	range = -1
 }
 
 AddCommand(ConcealShotCommand)

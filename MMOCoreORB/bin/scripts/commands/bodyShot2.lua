@@ -43,6 +43,20 @@
 
 BodyShot2Command = {
         name = "bodyshot2",
+
+	damageMultiplier = 2.1,
+	speedMultiplier = 1.8,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	poolsToDamage = HEALTH_ATTRIBUTE,
+
+	--animationCRC = String("fire_1_special_single_light").hashCode(),
+
+	combatSpam = "bodyshot",
+
+	range = -1
 }
 
 AddCommand(BodyShot2Command)

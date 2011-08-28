@@ -43,6 +43,10 @@
 
 BoostmoraleCommand = {
         name = "boostmorale",
+
+	action = "boostmorale",
+	--actionCRC = action.hashCode(),
+	combatSpam = "boostmorale_buff",
 }
 
 AddCommand(BoostmoraleCommand)

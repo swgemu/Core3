@@ -43,6 +43,20 @@
 
 Melee1hSpinAttack2Command = {
         name = "melee1hspinattack2",
+
+	damageMultiplier = 3,
+	speedMultiplier = 1.45,
+
+	--animationCRC = String("lower_posture_2hmelee_6").hashCode(),
+
+	combatSpam = "blindspin",
+
+	areaAction = true,
+	areaRange = 7,
+
+	blindStateChance = 40,
+
+	range = -1
 }
 
 AddCommand(Melee1hSpinAttack2Command)

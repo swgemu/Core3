@@ -43,6 +43,18 @@
 
 PointBlankSingle1Command = {
         name = "pointblanksingle1",
+
+	damageMultiplier = 1.5,
+	speedMultiplier = 1.05,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	--animationCRC = String("fire_3_single_medium").hashCode(),
+
+	combatSpam = "semiautoattack",
+
+	range = 10
 }
 
 AddCommand(PointBlankSingle1Command)

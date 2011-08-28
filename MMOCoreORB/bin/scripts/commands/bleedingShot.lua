@@ -43,6 +43,23 @@
 
 BleedingShotCommand = {
         name = "bleedingshot",
+
+	damageMultiplier = 2.0,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	--animationCRC = String("fire_3_single_light").hashCode(),
+
+	combatSpam = "bleedingshot",
+
+	dotType = BLEEDING_STATE,
+	dotPool = MIND_ATTRIBUTE,
+	dotDamageOfHit = true,
+	dotDuration = 30,
+
+	range = -1
 }
 
 AddCommand(BleedingShotCommand)

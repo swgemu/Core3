@@ -53,26 +53,6 @@ public:
 
 	RollShotCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.5;
-		speedMultiplier = 1.5;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		animationCRC = String("fire_1_special_single_light").hashCode();
-
-		combatSpam = "rollshot";
-
-		poolsToDamage = CombatManager::HEALTH;
-
-		dotType = CreatureState::BLEEDING;
-		dotPool = CreatureAttribute::HEALTH;
-		dotDamageOfHit = true;
-		dotDuration = 30;
-
-		range = -1;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

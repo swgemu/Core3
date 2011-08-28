@@ -53,21 +53,6 @@ public:
 
 	UnarmedLegHit1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.5;
-		speedMultiplier = 2.0;
-
-		healthCostMultiplier = 1.75;
-		actionCostMultiplier = 1.75;
-		mindCostMultiplier = 1.75;
-
-		poolsToDamage = CombatManager::ACTION;
-
-		animationCRC = String("attack_special_foot_stomp_medium").hashCode();
-
-		combatSpam = "melee";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

@@ -54,15 +54,6 @@ public:
 
 	Melee1hHit1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.5;
-		speedMultiplier = 1.45;
-
-		animationCRC = String("counter_high_center_light").hashCode();
-
-		combatSpam = "chomai";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

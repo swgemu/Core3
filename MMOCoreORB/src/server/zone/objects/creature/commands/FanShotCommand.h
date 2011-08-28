@@ -53,21 +53,6 @@ public:
 
 	FanShotCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-		damageMultiplier = 4;
-		speedMultiplier = 2.4;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-		coneAngle = 60;
-		coneAction = true;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		animationCRC = String("fire_area_light").hashCode();
-
-		combatSpam = "fanshot";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

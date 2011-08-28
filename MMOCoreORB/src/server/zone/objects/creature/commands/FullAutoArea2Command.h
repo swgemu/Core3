@@ -53,27 +53,6 @@ public:
 
 	FullAutoArea2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 4.5;
-		speedMultiplier = 2.5;
-		healthCostMultiplier = 1.6;
-		actionCostMultiplier = 2.0;
-		mindCostMultiplier = 0.5;
-
-		animationCRC = String("fire_defender_posture_change_down").hashCode();
-
-		combatSpam = "a_auto";
-
-		coneAngle = 30;
-		coneAction = true;
-
-		dizzyStateChance = 30;
-		blindStateChance = 30;
-		stunStateChance = 30;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

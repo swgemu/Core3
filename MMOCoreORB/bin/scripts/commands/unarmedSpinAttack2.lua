@@ -43,6 +43,20 @@
 
 UnarmedSpinAttack2Command = {
         name = "unarmedspinattack2",
+
+	damageMultiplier = 3,
+	speedMultiplier = 3,
+	areaAction = true,
+	areaRange = 7,
+	healthCostMultiplier = 2,
+	actionCostMultiplier = 2,
+	mindCostMultiplier = 2,
+
+	--animationCRC = String("combo_3d_medium").hashCode(),
+
+	combatSpam = "melee",
+
+	range = -1
 }
 
 AddCommand(UnarmedSpinAttack2Command)

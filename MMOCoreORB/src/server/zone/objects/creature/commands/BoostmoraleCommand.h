@@ -55,10 +55,6 @@ public:
 
 	BoostmoraleCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
-
-		action = "boostmorale";
-		actionCRC = action.hashCode();
-		combatSpam = "boostmorale_buff";
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

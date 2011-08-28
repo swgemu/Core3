@@ -55,19 +55,6 @@ public:
 
 	Melee1hDizzyHit2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 3.5;
-		speedMultiplier = 1.8;
-		areaRange = 7;
-		areaAction = true;
-
-		animationCRC = String("combo_4a_light").hashCode();
-
-		combatSpam = "sword1_dizzy";
-
-		dizzyStateChance = 40;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

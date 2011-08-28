@@ -54,21 +54,6 @@ public:
 
 	Melee1hBlindHit1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2;
-		speedMultiplier = 1.45;
-		areaRange = 7;
-		areaAction = true;
-
-		blindStateChance = 10;
-
-		poolsToDamage = CombatManager::RANDOM;
-
-		animationCRC = String("combo_4b_medium").hashCode();
-
-		combatSpam = "blindingstab";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

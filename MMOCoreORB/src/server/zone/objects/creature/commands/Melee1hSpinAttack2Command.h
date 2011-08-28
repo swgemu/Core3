@@ -55,20 +55,6 @@ public:
 
 	Melee1hSpinAttack2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 3;
-		speedMultiplier = 1.45;
-
-		animationCRC = String("lower_posture_2hmelee_6").hashCode();
-
-		combatSpam = "blindspin";
-
-		areaAction = true;
-		areaRange = 7;
-
-		blindStateChance = 40;
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

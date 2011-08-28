@@ -43,6 +43,11 @@
 
 StrongPoisonCommand = {
         name = "strongpoison",
+	dotDuration = 20,
+	dotType = DISEASED_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotStrength = 80,
+	dotPotency = 80
 }
 
 AddCommand(StrongPoisonCommand)

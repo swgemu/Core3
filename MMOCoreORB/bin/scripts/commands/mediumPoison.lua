@@ -43,6 +43,11 @@
 
 MediumPoisonCommand = {
         name = "mediumpoison",
+	dotDuration = 10,
+	dotType = POISONED_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotStrength = 50,
+	dotPotency = 50,
 }
 
 AddCommand(MediumPoisonCommand)

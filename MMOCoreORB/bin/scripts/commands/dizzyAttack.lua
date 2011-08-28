@@ -43,6 +43,8 @@
 
 DizzyAttackCommand = {
         name = "dizzyattack",
+	dizzyStateChance = 50,
+	durationStateTime = 10
 }
 
 AddCommand(DizzyAttackCommand)

@@ -43,6 +43,19 @@
 
 CreatureAreaAttackCommand = {
         name = "creatureareaattack",
+	damageMultiplier = 1,
+	speedMultiplier = 1,
+
+	combatSpam = "attack",
+	animationCRC = 0,
+
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
+
+	range = -1,
+
+	poolsToDamage = RANDOM_ATTRIBUTE
 }
 
 AddCommand(CreatureAreaAttackCommand)

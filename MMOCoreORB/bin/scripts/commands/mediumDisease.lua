@@ -43,6 +43,11 @@
 
 MediumDiseaseCommand = {
         name = "mediumdisease",
+	dotDuration = 30,
+	dotType = DISEASED_STATE,
+	dotPool = HEALTH_ATTRIBUTE,
+	dotStrength = 50,
+	dotPotency = 80
 }
 
 AddCommand(MediumDiseaseCommand)

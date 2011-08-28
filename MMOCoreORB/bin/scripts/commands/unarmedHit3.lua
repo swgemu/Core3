@@ -43,6 +43,21 @@
 
 UnarmedHit3Command = {
         name = "unarmedhit3",
+
+	damageMultiplier = 4.0,
+	speedMultiplier = 3.0,
+
+	healthCostMultiplier = 2,
+	actionCostMultiplier = 2,
+	mindCostMultiplier = 2,
+
+	--animationCRC = String("combo_5a_medium").hashCode(),
+
+	combatSpam = "unarmed_dam2",
+
+	blindStateChance = 40,
+
+	range = -1
 }
 
 AddCommand(UnarmedHit3Command)

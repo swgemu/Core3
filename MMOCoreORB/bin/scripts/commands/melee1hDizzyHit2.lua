@@ -43,6 +43,19 @@
 
 Melee1hDizzyHit2Command = {
         name = "melee1hdizzyhit2",
+
+	damageMultiplier = 3.5,
+	speedMultiplier = 1.8,
+	areaRange = 7,
+	areaAction = true,
+
+	--animationCRC = String("combo_4a_light").hashCode(),
+
+	combatSpam = "sword1_dizzy",
+
+	dizzyStateChance = 40,
+
+	range = -1
 }
 
 AddCommand(Melee1hDizzyHit2Command)

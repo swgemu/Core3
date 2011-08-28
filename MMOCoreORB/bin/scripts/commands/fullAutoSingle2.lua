@@ -43,6 +43,24 @@
 
 FullAutoSingle2Command = {
         name = "fullautosingle2",
+
+	damageMultiplier = 5.5,
+	speedMultiplier = 1.7,
+	healthCostMultiplier = 1.6,
+	actionCostMultiplier = 2.0,
+	mindCostMultiplier = 0.5,
+
+	--animationCRC = String("fire_7_single_medium_face").hashCode(),
+
+	combatSpam = "s_auto",
+
+	dizzyStateChance = 25,
+	blindStateChance = 25,
+	stunStateChance = 25,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	range = -1
 }
 
 AddCommand(FullAutoSingle2Command)

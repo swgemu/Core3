@@ -43,6 +43,22 @@
 
 StartleShot1Command = {
         name = "startleshot1",
+
+	damageMultiplier = 2,
+	speedMultiplier = 2.1,
+	healthCostMultiplier = 1,
+	actionCostMultiplier = 1,
+	mindCostMultiplier = 1,
+
+	postureUpStateChance = 25,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	--animationCRC = String("fire_defender_posture_change_up").hashCode(),
+
+	combatSpam = "startleshot",
+
+	range = -1
 }
 
 AddCommand(StartleShot1Command)

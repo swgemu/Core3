@@ -43,6 +43,17 @@
 
 Melee1hBodyHit3Command = {
         name = "melee1hbodyhit3",
+
+	damageMultiplier = 3.5,
+	speedMultiplier = 1.45,
+
+	poolsToDamage = HEALTH_ATTRIBUTE,
+
+	--animationCRC = String("combo_3a_light").hashCode(),
+
+	combatSpam = "saitok",
+
+	range = -1
 }
 
 AddCommand(Melee1hBodyHit3Command)

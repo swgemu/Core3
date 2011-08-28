@@ -43,6 +43,17 @@
 
 PolearmLunge1Command = {
         name = "polearmlunge1",
+
+	damageMultiplier = 1,
+	speedMultiplier = 1.5,
+
+	--animationCRC = String("attack_high_center_light_2").hashCode(),
+
+	combatSpam = "polearm_sweep",
+
+	range = 15,
+
+	postureDownStateChance = 1
 }
 
 AddCommand(PolearmLunge1Command)

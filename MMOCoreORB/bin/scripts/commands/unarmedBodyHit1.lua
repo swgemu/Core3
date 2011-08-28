@@ -43,6 +43,21 @@
 
 UnarmedBodyHit1Command = {
         name = "unarmedbodyhit1",
+
+	damageMultiplier = 2.5,
+	speedMultiplier = 2.0,
+
+	healthCostMultiplier = 1.75,
+	actionCostMultiplier = 1.75,
+	mindCostMultiplier = 1.75,
+
+	poolsToDamage = HEALTH_ATTRIBUTE,
+
+	--animationCRC = String("attack_special_shoulder_bash_medium").hashCode(),
+
+	combatSpam = "melee",
+
+	range = -1
 }
 
 AddCommand(UnarmedBodyHit1Command)

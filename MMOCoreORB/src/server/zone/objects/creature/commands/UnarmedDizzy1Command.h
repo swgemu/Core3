@@ -53,21 +53,6 @@ public:
 
 	UnarmedDizzy1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.5;
-		speedMultiplier = 2.0;
-
-		healthCostMultiplier = 1.5;
-		actionCostMultiplier = 1.5;
-		mindCostMultiplier = 1.5;
-
-		dizzyStateChance = 1;
-
-		animationCRC = String("attack_special_wookiee_slap_light").hashCode();
-
-		combatSpam = "unarmed_dizzy";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

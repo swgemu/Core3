@@ -43,6 +43,8 @@
 
 PostureUpAttackCommand = {
         name = "postureupattack",
+	postureUpStateChance = 50,
+	durationStateTime = 10
 }
 
 AddCommand(PostureUpAttackCommand)

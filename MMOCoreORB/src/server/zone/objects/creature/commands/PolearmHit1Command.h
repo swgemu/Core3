@@ -55,16 +55,6 @@ public:
 
 	PolearmHit1Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2;
-		speedMultiplier = 1.5;
-
-		animationCRC = String("combo_2b_light").hashCode();
-
-		combatSpam = "polearm_dam1";
-
-		range = -1;
-
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

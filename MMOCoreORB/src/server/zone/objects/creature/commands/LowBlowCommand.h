@@ -53,20 +53,6 @@ public:
 
 	LowBlowCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 2.0;
-		speedMultiplier = 2.4;
-		healthCostMultiplier = 1;
-		actionCostMultiplier = 1;
-		mindCostMultiplier = 1;
-
-		knockdownStateChance = 30;
-
-		animationCRC = String("fire_5_single_light").hashCode();
-
-		combatSpam = "lowblow";
-
-		range = -1;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

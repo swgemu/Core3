@@ -54,25 +54,6 @@ public:
 
 	Warcry2Command(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 0;
-		speedMultiplier = 1;
-		healthCostMultiplier = 0;
-		actionCostMultiplier = 0;
-		mindCostMultiplier = 0;
-
-		nextAttackDelayChance = 1;
-		durationStateTime = 30;
-
-		combatSpam = "warcry";
-		animationCRC = String("warcry").hashCode();
-		effectString = "clienteffect/combat_special_attacker_warcry.cef";
-		range = 15;
-
-		areaAction = true;
-		areaRange = 15;
-
-		poolsToDamage = 0;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

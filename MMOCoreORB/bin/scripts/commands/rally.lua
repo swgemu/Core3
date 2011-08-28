@@ -43,6 +43,11 @@
 
 RallyCommand = {
         name = "rally",
+
+	action = "rally",
+	--actionCRC = action.hashCode(),
+	combatSpam = "rally_success_single"
+
 }
 
 AddCommand(RallyCommand)

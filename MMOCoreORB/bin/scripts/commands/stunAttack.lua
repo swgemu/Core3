@@ -43,6 +43,8 @@
 
 StunAttackCommand = {
         name = "stunattack",
+	stunStateChance = 50,
+	durationStateTime = 10
 }
 
 AddCommand(StunAttackCommand)

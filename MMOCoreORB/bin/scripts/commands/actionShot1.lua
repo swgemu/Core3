@@ -43,6 +43,25 @@
 
 ActionShot1Command = {
         name = "actionshot1",
+
+	damageMultiplier = 1.5,
+	speedMultiplier = 1.6,
+	healthCostMultiplier = 1.9,
+	actionCostMultiplier = 1.4,
+	mindCostMultiplier = 0.6,
+
+	poolsToDamage = ACTION_ATTRIBUTE,
+
+	--animationCRC = String("fire_3_single_light").hashCode(),
+
+	combatSpam = "kneecapshot",
+
+	dotType = BLEEDING_STATE,
+	dotPool = ACTION_ATTRIBUTE,
+	dotDamageOfHit = true,
+	dotDuration = 30,
+
+	range = -1
 }
 
 AddCommand(ActionShot1Command)
