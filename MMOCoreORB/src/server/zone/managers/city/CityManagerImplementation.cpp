@@ -23,7 +23,7 @@ int CityManagerImplementation::cityUpdateInterval = 0;
 int CityManagerImplementation::newCityGracePeriod = 0;
 
 void CityManagerImplementation::loadLuaConfig() {
-	info("Loading config file.", true);
+	info("Loading config file.");
 
 	String zoneName = zone->getZoneName();
 
@@ -417,7 +417,7 @@ void CityManagerImplementation::addMilitiaMember(CityHallObject* city, CreatureO
 		return;
 	}
 
-	if (!player->hasSkillBox("social_politician_martial_01")) {
+	if (!player->hasSkill("social_politician_martial_01")) {
 		player->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
 		return;
 	}
@@ -457,7 +457,7 @@ void CityManagerImplementation::removeMilitiaMember(CityHallObject* city, Creatu
 		return;
 	}
 
-	if (!player->hasSkillBox("social_politician_martial_01")) {
+	if (!player->hasSkill("social_politician_martial_01")) {
 		player->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
 		return;
 	}

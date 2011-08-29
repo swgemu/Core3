@@ -130,16 +130,16 @@ using namespace server::zone::managers::player;
 namespace server {
 namespace zone {
 namespace managers {
-namespace professions {
+namespace skill {
 
-class ProfessionManager;
+class SkillManager;
 
-} // namespace professions
+} // namespace skill
 } // namespace managers
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::managers::professions;
+using namespace server::zone::managers::skill;
 
 namespace server {
 namespace zone {
@@ -186,7 +186,7 @@ public:
 
 	ZonePacketHandler* getPacketHandler();
 
-	ProfessionManager* getProfessionManager();
+	SkillManager* getSkillManager();
 
 	ObjectController* getObjectController();
 
@@ -236,7 +236,7 @@ protected:
 
 	Reference<SuiManager* > suiManager;
 
-	Reference<ProfessionManager* > professionManager;
+	Reference<SkillManager* > professionManager;
 
 	ManagedReference<ObjectController* > objectController;
 
@@ -255,7 +255,7 @@ public:
 
 	ZonePacketHandler* getPacketHandler();
 
-	ProfessionManager* getProfessionManager();
+	SkillManager* getSkillManager();
 
 	ObjectController* getObjectController();
 

@@ -24,7 +24,7 @@
 #include "server/conf/ConfigManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/managers/professions/Performance.h"
+#include "server/zone/managers/skill/Performance.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/creature/VehicleObject.h"
@@ -48,7 +48,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/cell/CellObject.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 
 #include "server/zone/packets/trade/AbortTradeMessage.h"
 #include "server/zone/packets/trade/AcceptTransactionMessage.h"
@@ -68,6 +68,7 @@
 #include "server/zone/managers/director/DirectorManager.h"
 
 #include "server/zone/Zone.h"
+#include "server/zone/managers/player/creation/PlayerCreationManager.h"
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 	Logger("PlayerManager") {
@@ -334,6 +335,9 @@ bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallba
 }
 
 bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
+	PlayerCreationManager* pcm = PlayerCreationManager::instance();
+	return pcm->createCharacter(data);
+
 	Locker _locker(_this);
 
 	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
@@ -361,14 +365,15 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 		return false;
 	}
 
-	ProfessionManager* professionManager = server->getProfessionManager();
+	SkillManager* professionManager = server->getSkillManager();
 	String profession;
-	callback->getProfession(profession);
+	callback->getSkill(profession);
 
-	if (!professionManager->isValidStartingProfession(profession)) {
-		info("invalid starting profession: " + profession);
-		return false;
-	}
+	//TODO: Handled in PlayerCreationManager instead.
+	//if (!professionManager->isValidStartingSkill(profession)) {
+		//info("invalid starting profession: " + profession);
+		//return false;
+	//}
 
 	ManagedReference<SceneObject*> player = server->createObject(serverObjectCRC, 2); // player
 
@@ -427,11 +432,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 				if (level > 25) {
 					//NOTE/TEMPORARY: UNCOMMENT THESE LINES AND RECOMPILE FOR ADMIN ON NEW CHARACTERS.
 					ghost->setAdminLevel(2);
-
-					Vector<String> skills;
-					skills.add("admin");
-
-					ghost->addSkills(skills, false);
+					//ghost->addAbility("admin", false);
 					//STOP UNCOMMENTING
 					//}
 				}
@@ -451,7 +452,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	playerCreature->setCashCredits(10000000); // TODO: fix when not in testing / consider loading this from scripts
 	playerCreature->setBankCredits(10000000);
 
-	generateHologrindProfessions(playerCreature);
+	generateHologrindSkills(playerCreature);
 
 	String playerCustomization;
 	callback->getCustomizationString(playerCustomization);
@@ -508,7 +509,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	ghost->setBiography(biography);
 
 	//info("profession:" + profession, true);
-	professionManager->setStartingProfession(profession, raceID, playerCreature);
+	//professionManager->setStartingSkill(profession, raceID, playerCreature);
 
 	playerCreature->setClient(client);
 	client->setPlayer(player);
@@ -782,7 +783,7 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 
 	//Make profession items for species
 
-	items = startingItemList->getProfessionItems(prof, species, sex);
+	items = startingItemList->getSkillItems(prof, species, sex);
 
 	if (items == NULL)
 		return;
@@ -808,7 +809,7 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 	}
 
 	//Make profession items for that apply to all species
-	items = startingItemList->getProfessionItems(prof, all, sex);
+	items = startingItemList->getSkillItems(prof, all, sex);
 	for (int j = 0; j < items->size(); ++j) {
 		StartingItem item = items->get(j);
 
@@ -831,7 +832,7 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 
 
 	//Make general items for species
-	items = startingItemList->getProfessionItems(gen, species, sex);
+	items = startingItemList->getSkillItems(gen, species, sex);
 	for (int j = 0; j < items->size(); ++j) {
 		StartingItem item = items->get(j);
 
@@ -854,7 +855,7 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 
 
 	//Make general items that apple to all species
-	items = startingItemList->getProfessionItems(gen, all, sex);
+	items = startingItemList->getSkillItems(gen, all, sex);
 	for (int j = 0; j < items->size(); ++j) {
 		StartingItem item = items->get(j);
 
@@ -2262,13 +2263,12 @@ void PlayerManagerImplementation::updateAdminLevel(CreatureObject* player, const
 		return;
 	}
 
-	Vector<String> skills;
-	skills.add("admin");
+	SkillManager* skillManager = server->getSkillManager();
 
 	if (adminLevel == PlayerObject::NORMALPLAYER)
-		ghost->removeSkills(skills);
+		skillManager->removeAbility(ghost, "admin");
 	else
-		ghost->addSkills(skills);
+		skillManager->addAbility(ghost, "admin");
 
 	ghost->setAdminLevel(adminLevel);
 
@@ -2455,7 +2455,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 	//return 0;
 }
 
-void PlayerManagerImplementation::generateHologrindProfessions(CreatureObject* player) {
+void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player) {
 	PlayerObject* ghost = player->getPlayerObject();
 
 	uint32 holomask = 1 << (System::random(4) + 1);

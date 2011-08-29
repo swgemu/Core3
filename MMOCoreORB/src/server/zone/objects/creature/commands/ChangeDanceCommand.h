@@ -57,23 +57,16 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
-		CreatureObject* player = (CreatureObject*) creature;
-
-		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(creature->getActiveSession(SessionFacadeType::ENTERTAINING));
 
 		if (session == NULL) {
-			creature->sendSystemMessage("performance", "dance_must_be_performing_self");
+			creature->sendSystemMessage("@performance:dance_must_be_performing_self");
 			return GENERALERROR;
 		}
 
@@ -82,31 +75,30 @@ public:
 		}
 
 		if (!session->isDancing()) {
-			creature->sendSystemMessage("performance", "dance_must_be_performing_self");
-
+			creature->sendSystemMessage("@performance:dance_must_be_performing_self");
 			return GENERALERROR;
 		}
 
-		PlayerObject* ghost = dynamic_cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 		String args = arguments.toString();
 
-		PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
+		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 
 		if (args.length() < 2) {
-			StartDanceCommand::sendAvailableDances(player, ghost, SuiWindowType::DANCING_CHANGE);
+			StartDanceCommand::sendAvailableDances(creature, ghost, SuiWindowType::DANCING_CHANGE);
 			return SUCCESS;
 		}
 
 		String fullString = String("startDance") + "+" + args;
 
-		if (!ghost->hasSkill(fullString)) {
-			creature->sendSystemMessage("performance", "dance_lack_skill_self");
+		if (!ghost->hasAbility(fullString)) {
+			creature->sendSystemMessage("@performance:dance_lack_skill_self");
 			return GENERALERROR;
 		}
 
 		if (!performanceManager->hasDanceAnimation(args)) {
-			creature->sendSystemMessage("performance", "dance_lack_skill_self");
+			creature->sendSystemMessage("@performance:dance_lack_skill_self");
 			return GENERALERROR;
 		}
 

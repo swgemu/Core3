@@ -55,16 +55,13 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/UnconsentCommand.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/resource/ResourceManager.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/player/sui/SuiBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.h"
-#include "server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.h"
-#include "server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/Zone.h"
@@ -83,30 +80,20 @@ which carries forward this exception.
 #include "server/zone/managers/planet/MapLocationType.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/commands/FindCommand.h"
-
 #include "server/zone/objects/creature/commands/sui/DestroyCommandSuiCallback.h"
 #include "server/zone/objects/player/sessions/sui/FindSessionSuiCallback.h"
 #include "server/zone/objects/creature/commands/sui/ListGuildsResponseSuiCallback.h"
-
 #include "server/zone/objects/player/sessions/sui/SlicingSessionSuiCallback.h"
-
-
-
 #include "server/zone/objects/player/sessions/vendor/sui/CreateVendorSuiCallback.h"
 #include "server/zone/objects/player/sessions/vendor/sui/NameVendorSuiCallback.h"
-
 #include "server/zone/objects/creature/sui/RepairVehicleSuiCallback.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/CreatureState.h"
-
 #include "server/zone/objects/tangible/tool/sui/SurveyToolSetRangeSuiCallback.h"
-
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 #include "server/zone/objects/guild/GuildObject.h"
-
 #include "server/zone/objects/tangible/sign/SignObject.h"
-
 #include "server/zone/objects/scene/ObserverEventType.h"
 
 
@@ -201,15 +188,6 @@ void SuiManager::handleSuiEventNotification(uint32 boxID, CreatureObject* player
 		break;
 	case SuiWindowType::MEDIC_DIAGNOSE:
 		handleDiagnose(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::FREE_RESOURCE:
-		handleGiveFreeResource(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::TEACH_SKILL:
-		handleTeachSkill(player, suiBox, cancel, args);
-		break;
-	case SuiWindowType::TEACH_PLAYER:
-		handleTeachPlayer(player, suiBox, cancel, args);
 		break;
 	case SuiWindowType::OBJECT_NAME:
 		handleSetObjectName(player, suiBox, cancel, args);
@@ -648,7 +626,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 			if (templatePath == "unlearn_all_skills") {
 
 				player->sendSystemMessage("All skills unlearned.");
-				server->getProfessionManager()->surrenderAll(player);
+				//server->getSkillManager()->surrenderAll(player);
 
 			} else if (templatePath == "cleanse_character") {
 
@@ -702,8 +680,8 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 				if (templatePath.length() > 0) {
 
-					server->getProfessionManager()->awardSkillBox(templatePath, player, true, true);
-					if (player->hasSkillBox(templatePath))
+					SkillManager::instance()->awardSkill(templatePath, player, true, true);
+					if (player->hasSkill(templatePath))
 						player->sendSystemMessage("You have learned a skill.");
 
 				} else {
@@ -771,94 +749,6 @@ void SuiManager::handleCloneRequest(CreatureObject* player, SuiBox* suiBox, uint
 void SuiManager::handleDiagnose(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 }
 
-void SuiManager::handleGiveFreeResource(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	if (args->size() < 2)
-		return;
-
-	bool otherPressed = Bool::valueOf(args->get(0).toString());
-	int index = Integer::valueOf(args->get(1).toString());
-
-	ResourceDeedListBox* suiListBox = dynamic_cast<ResourceDeedListBox*>(suiBox);
-
-	if (suiListBox == NULL)
-		return;
-
-	PlayerObject* ghost = player->getPlayerObject();
-
-	ManagedReference<SceneObject*> deedObject = suiListBox->getUsingObject();
-
-	if (deedObject == NULL)
-		return;
-
-	ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
-	ManagedReference<ResourceSpawn*> spawn = NULL;
-
-	String nodeName = "";
-
-	if (otherPressed) {
-		suiListBox->removeBox();
-	} else {
-
-		if (suiListBox->getPromptTitle() != "Resources") {
-
-			resourceManager->givePlayerResource(player, suiListBox->getPromptTitle(),
-				ResourceManagerImplementation::RESOURCE_DEED_QUANTITY);
-
-			if (deedObject != NULL && deedObject->getGameObjectType() == SceneObjectImplementation::RESOURCEDEED) {
-				ResourceDeed* deed = (ResourceDeed*) deedObject.get();
-
-				Locker cLocker(deed, player);
-				deed->destroyDeed();
-			}
-
-			return;
-
-		}
-		/// If nothing was chosen
-		if (index < 0) {
-			ghost->addSuiBox(suiListBox);
-			player->sendMessage(suiListBox->generateMessage());
-			return;
-		}
-
-		nodeName = suiListBox->getMenuItemName(index);
-
-		spawn = resourceManager->getResourceSpawn(nodeName);
-
-		if (spawn != NULL)
-			suiListBox->addBox(spawn->getName());
-		else
-			suiListBox->addBox(nodeName);
-
-	}
-
-	suiListBox->clearOptions();
-	suiListBox->removeAllMenuItems();
-
-	if (spawn != NULL) {
-
-		suiListBox->setPromptTitle(spawn->getName());
-		suiListBox->setPromptText("@veteran:confirm_choose_type");
-
-		spawn->addStatsToDeedListBox(suiListBox);
-
-	} else {
-
-		suiListBox->setPromptTitle("Resources");
-		suiListBox->setPromptText("Choose resource.");
-
-		//resourceManager->fillListBox(suiListBox, suiListBox->getCurrentBox());
-	}
-
-	suiListBox->setCancelButton(true, "@cancel");
-	suiListBox->setOtherButton(true, "@back");
-
-	suiListBox->setUsingObject(deedObject);
-
-	ghost->addSuiBox(suiListBox);
-	player->sendMessage(suiListBox->generateMessage());
-}
-
 void SuiManager::handleConsentBox(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (suiBox->isListBox() || cancel != 0)
 		return;
@@ -875,125 +765,6 @@ void SuiManager::handleConsentBox(CreatureObject* player, SuiBox* suiBox, uint32
 
 	String name = suiList->getMenuItemName(index);
 	UnconsentCommand::unconscent(player, name);
-}
-
-void SuiManager::handleTeachPlayer(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	PlayerObject* ghost = player->getPlayerObject();
-
-	ghost->setTeachingOrLearning(false);
-
-	if (suiBox->isListBox() || cancel != 0)
-		return;
-
-	if (args->size() < 1)
-		return;
-
-	int value = Integer::valueOf(args->get(0).toString());
-
-	if (value == -1)
-		return;
-
-	TeachPlayerListBox* listBox = dynamic_cast<TeachPlayerListBox*>(suiBox);
-
-	if (listBox == NULL)
-		return;
-
-	ManagedReference<CreatureObject*> student = listBox->getStudent();
-
-	if (student == NULL)
-		return;
-
-	Locker _lock(student);
-
-	//if they are no longer in the same group we cancel
-	ManagedReference<GroupObject*> group = player->getGroup();
-
-	if (group == NULL || !group->hasMember(student)) {
-		player->sendSystemMessage("@teaching:not_in_same_group");
-		return;
-	}
-
-	//student->setTeachingOffer(listBox->getTeachingSkillOption(value));
-
-	StringIdChatParameter message("teaching","offer_given");
-	message.setTT(student->getFirstName());
-	message.setTO("skl_n", listBox->getTeachingSkillOption(value));
-	player->sendSystemMessage(message);
-
-	ManagedReference<PlayerLearnListBox*> mbox = new PlayerLearnListBox(student);
-	PlayerObject* ghostStudent = student->getPlayerObject();
-
-	ghostStudent->setTeachingOrLearning(true);
-
-	// TODO: redo this after I find the proper String
-	StringBuffer prompt, skillname;
-	skillname << "@skl_n:" << listBox->getTeachingSkillOption(value);
-	prompt << "Do you wish to learn the following from " << player->getFirstName() << "?";
-	mbox->setPromptTitle("@sui:teach");
-	mbox->setPromptText(prompt.toString());
-	mbox->addMenuItem(skillname.toString());
-	mbox->setCancelButton(true, "");
-	mbox->setTeacher(player);
-	mbox->setTeachingOffer(listBox->getTeachingSkillOption(value));
-
-	ghostStudent->addSuiBox(mbox);
-	student->sendMessage(mbox->generateMessage());
-}
-
-void SuiManager::handleTeachSkill(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
-	PlayerObject* ghost = player->getPlayerObject();
-	ghost->setTeachingOrLearning(false);
-
-	if (suiBox->isListBox())
-		return;
-
-	PlayerLearnListBox* listBox = dynamic_cast<PlayerLearnListBox*>(suiBox);
-
-	if (listBox == NULL)
-		return;
-
-	String teachingOffer = listBox->getTeachingOffer();
-
-	if (cancel != 0) {
-		StringIdChatParameter message("teaching","offer_refused");
-		message.setTT(player->getObjectID());
-		message.setTO("skl_n", teachingOffer);
-		listBox->getTeacher()->sendSystemMessage(message);
-
-		return;
-	}
-
-	ManagedReference<CreatureObject*> teacher = listBox->getTeacher();
-
-	if (teacher == NULL) {
-		player->sendSystemMessage("teaching","teacher_too_far");
-		return;
-	}
-
-
-	if (!player->isInRange(teacher, 128)) {
-		StringIdChatParameter message("teaching","teacher_too_far_target");
-		message.setTT(teacher->getObjectID());
-		message.setTO("skl_n", teachingOffer);
-		player->sendSystemMessage(message);
-
-		teacher->sendSystemMessage("teaching","teaching_failed");
-
-		return;
-	}
-
-	ManagedReference<GroupObject*> group = player->getGroup();
-
-	if (group == NULL || !group->hasMember(teacher)) {
-		StringIdChatParameter message("teaching","not_in_same_group");
-		message.setTT(listBox->getTeacher()->getObjectID());
-		player->sendSystemMessage(message);
-
-		teacher->sendSystemMessage("teaching","teaching_failed");
-		return;
-	}
-
-	server->getProfessionManager()->playerTeachSkill(teachingOffer, player, teacher);
 }
 
 void SuiManager::handleInsertFactorySchem2(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {

@@ -249,21 +249,15 @@ class SuiBox;
 
 using namespace server::zone::objects::player::sui;
 
-#include "server/zone/objects/creature/professions/Certification.h"
-
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
-
-#include "server/zone/objects/scene/variables/DeltaVector.h"
+#include "server/zone/objects/player/ValidatedPosition.h"
 
 #include "server/zone/objects/player/variables/WaypointList.h"
 
-#include "server/zone/objects/creature/professions/Skill.h"
+#include "server/zone/objects/creature/variables/Skill.h"
 
-#include "server/zone/objects/player/variables/SkillList.h"
+#include "server/zone/objects/player/variables/Ability.h"
+
+#include "server/zone/objects/player/variables/AbilityList.h"
 
 #include "server/zone/objects/player/variables/FriendList.h"
 
@@ -277,7 +271,13 @@ using namespace server::zone::objects::player::sui;
 
 #include "server/zone/objects/player/TradeContainer.h"
 
-#include "server/zone/objects/player/ValidatedPosition.h"
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+
+#include "server/zone/objects/scene/variables/DeltaVector.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -374,13 +374,13 @@ public:
 
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
 
-	void addSkills(Vector<String>& skills, bool notifyClient = true);
+	void addAbilities(Vector<Ability*>& abilities, bool notifyClient = true);
 
-	void addSkills(Vector<Certification*>& skills, bool notifyClient = true);
+	void addAbility(Ability* ability, bool notifyClient = true);
 
-	void removeSkills(Vector<String>& skills, bool notifyClient = true);
+	void removeAbilities(Vector<Ability*>& abilities, bool notifyClient = true);
 
-	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
+	void removeAbility(Ability* ability, bool notifyClient = true);
 
 	void addSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient = true);
 
@@ -580,7 +580,7 @@ public:
 
 	bool hasWaypoint(unsigned long long objectID);
 
-	bool hasSkill(const String& skill);
+	bool hasAbility(const String& ability);
 
 	bool hasCommandMessageString(unsigned int actionCRC);
 
@@ -618,7 +618,7 @@ public:
 
 	WaypointList* getWaypointList();
 
-	SkillList* getSkills();
+	AbilityList* getAbilityList();
 
 	SchematicList* getSchematics();
 
@@ -703,10 +703,6 @@ public:
 	int getFactionStatus();
 
 	unsigned int getClientLastMovementStamp();
-
-	void setTeachingOrLearning(bool value);
-
-	bool isTeachingOrLearning();
 
 	int getCenteredBonus();
 
@@ -807,7 +803,7 @@ protected:
 
 	WaypointList waypointList;
 
-	SkillList skillList;
+	AbilityList abilityList;
 
 	FriendList friendList;
 
@@ -964,13 +960,13 @@ public:
 
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
 
-	void addSkills(Vector<String>& skills, bool notifyClient = true);
+	void addAbilities(Vector<Ability*>& abilities, bool notifyClient = true);
 
-	void addSkills(Vector<Certification*>& skills, bool notifyClient = true);
+	void addAbility(Ability* ability, bool notifyClient = true);
 
-	void removeSkills(Vector<String>& skills, bool notifyClient = true);
+	void removeAbilities(Vector<Ability*>& abilities, bool notifyClient = true);
 
-	void removeSkills(Vector<Certification*>& skills, bool notifyClient = true);
+	void removeAbility(Ability* ability, bool notifyClient = true);
 
 	void addSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient = true);
 
@@ -1170,7 +1166,7 @@ public:
 
 	bool hasWaypoint(unsigned long long objectID);
 
-	bool hasSkill(const String& skill);
+	bool hasAbility(const String& ability);
 
 	bool hasCommandMessageString(unsigned int actionCRC);
 
@@ -1208,7 +1204,7 @@ public:
 
 	WaypointList* getWaypointList();
 
-	SkillList* getSkills();
+	AbilityList* getAbilityList();
 
 	SchematicList* getSchematics();
 
@@ -1293,10 +1289,6 @@ public:
 	int getFactionStatus();
 
 	unsigned int getClientLastMovementStamp();
-
-	void setTeachingOrLearning(bool value);
-
-	bool isTeachingOrLearning();
 
 	int getCenteredBonus();
 
@@ -1678,8 +1670,6 @@ public:
 	int getFactionStatus();
 
 	unsigned int getClientLastMovementStamp();
-
-	void setTeachingOrLearning(bool value);
 
 	int getCenteredBonus();
 

@@ -63,7 +63,7 @@ which carries forward this exception.
 #include "managers/resource/ResourceManager.h"
 #include "managers/crafting/CraftingManager.h"
 #include "managers/loot/LootManager.h"
-#include "managers/professions/ProfessionManager.h"
+#include "managers/skill/SkillManager.h"
 #include "managers/auction/AuctionManager.h"
 #include "managers/minigames/FishingManager.h"
 #include "managers/minigames/GamblingManager.h"
@@ -76,7 +76,7 @@ which carries forward this exception.
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/professions/SkillBox.h"
+#include "server/zone/objects/creature/variables/Skill.h"
 
 #include "tre3/TreeDirectory.h"
 

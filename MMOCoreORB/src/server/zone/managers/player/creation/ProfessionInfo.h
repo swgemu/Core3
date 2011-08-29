@@ -1,5 +1,5 @@
 /*
- * ProfessionInfo.h
+ * SkillInfo.h
  *
  *  Created on: Apr 21, 2011
  *      Author: crush
@@ -17,7 +17,7 @@ namespace managers {
 namespace player {
 namespace creation {
 
-class ProfessionInfo : public IffTemplate {
+class SkillInfo : public IffTemplate {
 	Vector<String> skills;
 	VectorMap<String, SortedVector<String> > items;
 	Vector<int> attributeMods;
@@ -35,7 +35,7 @@ class ProfessionInfo : public IffTemplate {
 	}
 
 public:
-	ProfessionInfo() {
+	SkillInfo() {
 		items.setNoDuplicateInsertPlan();
 
 		//initialize values for each attribute
@@ -50,13 +50,13 @@ public:
 		attributeMods.add(0);
 	}
 
-	ProfessionInfo(const ProfessionInfo& pi) : Object(), TemplateData(), IffTemplate() {
+	SkillInfo(const SkillInfo& pi) : Object(), TemplateData(), IffTemplate() {
 		skills = pi.skills;
 		items = pi.items;
 		attributeMods = pi.attributeMods;
 	}
 
-	ProfessionInfo& operator= (const ProfessionInfo& pi) {
+	SkillInfo& operator= (const SkillInfo& pi) {
 		if (this == &pi)
 			return *this;
 

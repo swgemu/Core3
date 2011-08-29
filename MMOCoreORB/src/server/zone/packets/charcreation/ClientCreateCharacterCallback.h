@@ -57,7 +57,7 @@ public:
 		hairCustomization = haircust;
 	}
 
-	inline void getProfession(String& profession) {
+	inline void getSkill(String& profession) {
 		profession = this->profession;
 	}
 

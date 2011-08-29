@@ -85,7 +85,7 @@ public:
 
 		String fullString = String("flourish") + "+" + args;
 
-		if (!ghost->hasSkill(fullString)) {
+		if (!ghost->hasAbility(fullString)) {
 			creature->sendSystemMessage("performance", "flourish_not_valid");
 			return GENERALERROR;
 		}

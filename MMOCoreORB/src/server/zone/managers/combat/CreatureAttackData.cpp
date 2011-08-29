@@ -179,7 +179,7 @@ void CreatureAttackData::setVariable(const String& var, const String& val) {
 }
 
 String CreatureAttackData::getCommandName() const {
-	return baseCommand->getName();
+	return baseCommand->getQueueCommandName();
 }
 
 uint32 CreatureAttackData::getCommandCRC() const {

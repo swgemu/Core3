@@ -1,25 +1,25 @@
 /*
- * ProfessionDataForm.h
+ * SkillDataForm.h
  *
  *  Created on: Apr 22, 2011
  *      Author: crush
  */
 
-#ifndef PROFESSIONDATAFORM_H_
-#define PROFESSIONDATAFORM_H_
+#ifndef SKILLDATAFORM_H_
+#define SKILLDATAFORM_H_
 
 #include "engine/engine.h"
 #include "server/zone/templates/IffTemplate.h"
 
-class ProfessionDataForm : public IffTemplate {
+class SkillDataForm : public IffTemplate {
 	VectorMap<String, String> professionInfoPaths;
 
 public:
-	ProfessionDataForm() {
+	SkillDataForm() {
 
 	}
 
-	~ProfessionDataForm() {
+	~SkillDataForm() {
 
 	}
 
@@ -58,15 +58,15 @@ public:
 		return professionInfoPaths.size();
 	}
 
-	inline String getPathByProfessionName(const String& professionName) {
+	inline String getPathBySkillName(const String& professionName) {
 		return professionInfoPaths.get(professionName);
 	}
 
-	inline String getProfessionNameAt(int idx) {
+	inline String getSkillNameAt(int idx) {
 		VectorMapEntry<String, String>* entry = &professionInfoPaths.elementAt(idx);
 
 		return entry->getKey();
 	}
 };
 
-#endif /* PROFESSIONDATAFORM_H_ */
+#endif /* SKILLDATAFORM_H_ */

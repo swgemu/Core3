@@ -61,7 +61,7 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		if (ghost == NULL)
 			return 1;
 
-		if (!ghost->hasSkill("startmusic")) {
+		if (!ghost->hasAbility("startmusic")) {
 			player->sendSystemMessage("performance", "music_lack_skill_instrument");
 			return 1;
 		}

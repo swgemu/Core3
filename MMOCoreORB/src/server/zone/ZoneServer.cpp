@@ -28,7 +28,7 @@
 
 #include "server/zone/managers/radial/RadialManager.h"
 
-#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 
 #include "server/zone/managers/resource/ResourceManager.h"
 
@@ -841,13 +841,13 @@ Account* ZoneServer::getAccount(unsigned int accountID) {
 		return _implementation->getAccount(accountID);
 }
 
-ProfessionManager* ZoneServer::getProfessionManager() {
+SkillManager* ZoneServer::getSkillManager() {
 	ZoneServerImplementation* _implementation = (ZoneServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getProfessionManager();
+		return _implementation->getSkillManager();
 }
 
 Time* ZoneServer::getStartTimestamp() {
@@ -1505,9 +1505,9 @@ ForageManager* ZoneServerImplementation::getForageManager() {
 	return forageManager;
 }
 
-ProfessionManager* ZoneServerImplementation::getProfessionManager() {
-	// server/zone/ZoneServer.idl():  		return processor.getProfessionManager();
-	return processor->getProfessionManager();
+SkillManager* ZoneServerImplementation::getSkillManager() {
+	// server/zone/ZoneServer.idl():  		return processor.getSkillManager();
+	return processor->getSkillManager();
 }
 
 Time* ZoneServerImplementation::getStartTimestamp() {

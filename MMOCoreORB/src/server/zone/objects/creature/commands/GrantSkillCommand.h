@@ -46,7 +46,7 @@ which carries forward this exception.
 #define GRANTSKILLCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 
 class GrantSkillCommand : public QueueCommand {
 public:
@@ -57,24 +57,28 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == NULL || !ghost->isPrivileged())
+			return INSUFFICIENTPERMISSION;
+
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isPlayerCreature())
+		if (object == NULL || !object->isCreatureObject())
 			return INVALIDTARGET;
 
-		CreatureObject* targetPlayer = (CreatureObject*) object.get();
+		CreatureObject* targetCreature = (CreatureObject*) object.get();
 
-		Locker clocker(targetPlayer, creature);
+		Locker clocker(targetCreature, creature);
 
-		ProfessionManager* professionManager = ProfessionManager::instance();
-		professionManager->awardSkillBox(arguments.toString(), targetPlayer, true, true);
+		SkillManager* skillManager = SkillManager::instance();
+		skillManager->awardSkill(arguments.toString(), targetCreature, true, true);
 
 		return SUCCESS;
 	}

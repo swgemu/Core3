@@ -101,7 +101,6 @@ core3_IDLS =	server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/objects/tangible/camp/CampKit.cpp \
 				server/zone/objects/creature/CreatureObject.cpp \
 				server/zone/objects/creature/vendor/VendorCreature.cpp \
-				server/zone/objects/creature/trainer/TrainerCreature.cpp \
 				server/zone/objects/creature/informant/InformantCreature.cpp \
 				server/zone/objects/creature/junkdealer/JunkdealerCreature.cpp \
 				server/zone/objects/creature/VehicleObject.cpp \
@@ -124,9 +123,6 @@ core3_IDLS =	server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/objects/player/sui/SuiBox.cpp \
 				server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBox.cpp \
-				server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.cpp \
-				server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.cpp \
-				server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBox.cpp \
 				server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
 				server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.cpp \
 				server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.cpp \
@@ -167,6 +163,7 @@ core3_IDLS =	server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/managers/ZoneManager.cpp \
 				server/zone/managers/objectcontroller/ObjectController.cpp \
 				server/zone/managers/player/PlayerManager.cpp \
+				server/zone/managers/skill/SkillManager.cpp \
 				server/zone/objects/draftschematic/DraftSchematic.cpp \
 				server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
 				server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.cpp \
@@ -327,9 +324,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/holocron/HolocronManager.cpp \
 		server/zone/managers/name/NameManager.cpp \
 		server/zone/managers/group/GroupManager.cpp \
-		server/zone/managers/professions/ProfessionManager.cpp \
-		server/zone/managers/professions/PerformanceManager.cpp \
-		server/zone/managers/professions/imagedesign/ImageDesignManager.cpp \
+		server/zone/managers/skill/PerformanceManager.cpp \
+		server/zone/managers/skill/imagedesign/ImageDesignManager.cpp \
 		server/zone/managers/sui/SuiManager.cpp \
 		server/zone/managers/auction/AuctionManagerImplementation.cpp \
 		server/zone/managers/minigames/FishingManagerImplementation.cpp \
@@ -415,7 +411,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
 		server/zone/objects/creature/vendor/VendorCreatureImplementation.cpp \
-		server/zone/objects/creature/trainer/TrainerCreatureImplementation.cpp \
 		server/zone/objects/creature/informant/InformantCreatureImplementation.cpp \
 		server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \
@@ -423,13 +418,13 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
 		server/zone/objects/scene/LuaSceneObject.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
-		server/zone/objects/creature/variables/SkillBoxList.cpp \
+		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/LairGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/PackGroupImplementation.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
-		server/zone/objects/player/variables/SkillList.cpp \
+		server/zone/objects/player/variables/AbilityList.cpp \
 		server/zone/objects/player/variables/SchematicList.cpp \
 		server/zone/objects/resource/ResourceSpawnImplementation.cpp \
 		server/zone/objects/resource/simplexnoise/SimplexNoise.cpp \
@@ -455,9 +450,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \
 		server/zone/objects/player/sui/inputbox/SuiInputBoxImplementation.cpp \
 		server/zone/objects/player/sui/listbox/SuiListBoxImplementation.cpp \
-		server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBoxImplementation.cpp \
-		server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBoxImplementation.cpp \
-		server/zone/objects/player/sui/listbox/playerlearnlistbox/PlayerLearnListBoxImplementation.cpp \
 		server/zone/objects/player/sui/messagebox/SuiMessageBoxImplementation.cpp \
 		server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBoxImplementation.cpp \
 		server/zone/objects/player/badges/Badge.cpp \

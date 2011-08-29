@@ -179,7 +179,7 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 	if (ghost != NULL) {
 		String abilityRequired = serverTemplate->getAbilityRequired();
 
-		if (!abilityRequired.isEmpty() && !ghost->hasSkill(abilityRequired)) {
+		if (!abilityRequired.isEmpty() && !ghost->hasAbility(abilityRequired)) {
 			creature->sendSystemMessage("@player_structure:" + abilityRequired);
 			return 1;
 		}

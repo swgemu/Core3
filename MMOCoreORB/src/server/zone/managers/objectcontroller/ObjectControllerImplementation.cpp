@@ -149,7 +149,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		if (object->isPlayerCreature()) {
 			PlayerObject* playerObject = (PlayerObject*) object->getSlottedObject("ghost");
 
-			if (!playerObject->hasSkill(characterAbility)) {
+			if (!playerObject->hasAbility(characterAbility)) {
 				object->clearQueueAction(actionCount, 0, 2);
 
 				return 0.f;

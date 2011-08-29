@@ -63,21 +63,17 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-		PlayerObject* ghost = (PlayerObject*) creature->getSlottedObject("ghost");
 		if (ghost == NULL)
 			return GENERALERROR;
 
-		String newTitle = arguments.toString();
+		String titleSkill = arguments.toString();
 
-		if (newTitle.length() > 0) {
-			if (!creature->hasSkillBox(newTitle))
-				return GENERALERROR;
-		}
+		if (titleSkill.isEmpty() || !creature->hasSkill(titleSkill))
+			return GENERALERROR;
 
-		ghost->setTitle(newTitle, true);
+		ghost->setTitle(titleSkill, true);
 
 		return SUCCESS;
 	}

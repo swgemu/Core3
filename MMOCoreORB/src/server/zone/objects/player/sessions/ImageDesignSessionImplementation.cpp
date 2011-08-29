@@ -9,8 +9,8 @@
 #include "ImageDesignSession.h"
 #include "server/zone/packets/object/ImageDesignMessage.h"
 #include "server/zone/packets/object/ImageDesignRejectMessageCallback.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
-#include "server/zone/managers/professions/imagedesign/ImageDesignManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/ZoneServer.h"
@@ -95,7 +95,7 @@ void ImageDesignSessionImplementation::updateImageDesign(uint64 designer, uint64
 		VectorMap<String, float>* bodyAttributes = imageDesignData.getBodyAttributesMap();
 		VectorMap<String, uint32>* colorAttributes = imageDesignData.getColorAttributesMap();
 
-		imageDesignManager = ProfessionManager::instance()->getImageDesignManager();
+		imageDesignManager = designerCreature->getZoneServer()->getSkillManager()->getImageDesignManager();
 
 		// if Designer is changing just Hair (with no color changes) set default hair template. BUG FIX!
 		if (bodyAttributes->isEmpty() && colorAttributes->isEmpty()) {

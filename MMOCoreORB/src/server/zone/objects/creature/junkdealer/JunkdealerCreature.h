@@ -35,9 +35,7 @@ class SceneObject;
 
 using namespace server::zone::objects::scene;
 
-#include "server/zone/objects/creature/professions/Profession.h"
-
-#include "server/zone/objects/creature/professions/ProfessionReference.h"
+#include "server/zone/objects/creature/variables/Skill.h"
 
 #include "engine/core/ManagedObject.h"
 

@@ -26,7 +26,6 @@
 #include "server/zone/objects/tangible/consumable/Drink.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/creature/trainer/TrainerCreature.h"
 #include "server/zone/objects/creature/junkdealer/JunkdealerCreature.h"
 #include "server/zone/objects/creature/informant/InformantCreature.h"
 #include "server/zone/objects/tangible/terminal/vendor/VendorTerminal.h"

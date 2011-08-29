@@ -483,15 +483,15 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			if (varName == "action")
 				slCommand->setAction(Lua::getStringParameter(L));
 			else {
-				Logger::console.error("unknown variable " + varName + " in squadleader command " + slashCommand->getName());
+				Logger::console.error("unknown variable " + varName + " in squadleader command " + slashCommand->getQueueCommandName());
 				command.pop();
 			}
 		} else {
-			Logger::console.error("unknown variable " + varName + " in combat command " + slashCommand->getName());
+			Logger::console.error("unknown variable " + varName + " in combat command " + slashCommand->getQueueCommandName());
 			command.pop();
 		}
 	} else {
-		Logger::console.error("unknown variable " + varName + " in command " + slashCommand->getName());
+		Logger::console.error("unknown variable " + varName + " in command " + slashCommand->getQueueCommandName());
 		command.pop();
 	}
 }

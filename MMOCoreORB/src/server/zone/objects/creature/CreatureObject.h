@@ -24,22 +24,6 @@ using namespace server::chat;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
-namespace professions {
-
-class SkillBox;
-
-} // namespace professions
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature::professions;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace group {
 
 class GroupObject;
@@ -229,17 +213,21 @@ class ZoneClientSession;
 
 using namespace server::zone;
 
+#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
+
+#include "server/zone/objects/creature/buffs/BuffList.h"
+
+#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
 #include "server/zone/objects/creature/variables/CommandQueueActionVector.h"
 
 #include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
+#include "server/zone/objects/creature/variables/SkillList.h"
 
 #include "server/zone/objects/creature/variables/CommandQueueAction.h"
-
-#include "server/zone/objects/creature/CreatureLocomotion.h"
 
 #include "server/zone/objects/creature/CreaturePosture.h"
 
@@ -247,11 +235,7 @@ using namespace server::zone;
 
 #include "server/zone/objects/creature/SpeedMultiplierModChanges.h"
 
-#include "server/zone/objects/creature/variables/CooldownTimerMap.h"
-
-#include "server/zone/objects/creature/buffs/BuffList.h"
-
-#include "server/zone/objects/creature/damageovertime/DamageOverTimeList.h"
+#include "server/zone/objects/creature/variables/Skill.h"
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
@@ -303,6 +287,8 @@ public:
 	CreatureObject();
 
 	void initializeMembers();
+
+	void createChildObjects();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -450,13 +436,13 @@ public:
 
 	void setTerrainNegotiation(float value, bool notifyClient = true);
 
-	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
+	void addSkill(Skill* skill, bool notifyClient = true);
 
-	void addSkillBox(const String& skillBox, bool notifyClient = true);
+	void addSkill(const String& skill, bool notifyClient = true);
 
-	void removeSkillBox(SkillBox* skillBox, bool notifyClient = true);
+	void removeSkill(Skill* skill, bool notifyClient = true);
 
-	void removeSkillBox(const String& skillBox, bool notifyClient = true);
+	void removeSkill(const String& skill, bool notifyClient = true);
 
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
 
@@ -726,11 +712,11 @@ public:
 
 	DeltaVector<int>* getBaseHAM();
 
-	SkillBoxList* getSkillBoxList();
+	SkillList* getSkillList();
 
 	long long getSkillMod(const String& skillmod);
 
-	bool hasSkillBox(const String& skillBox);
+	bool hasSkill(const String& skill);
 
 	DeltaVectorMap<String, long long>* getSkillModList();
 
@@ -954,7 +940,7 @@ protected:
 
 	String templateString;
 
-	SkillBoxList skillBoxList;
+	SkillList skillList;
 
 	DeltaVectorMap<String, long long> skillModList;
 
@@ -1012,6 +998,8 @@ public:
 	void initializeMembers();
 
 	void finalize();
+
+	void createChildObjects();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
@@ -1159,13 +1147,13 @@ public:
 
 	void setTerrainNegotiation(float value, bool notifyClient = true);
 
-	void addSkillBox(SkillBox* skillBox, bool notifyClient = true);
+	void addSkill(Skill* skill, bool notifyClient = true);
 
-	void addSkillBox(const String& skillBox, bool notifyClient = true);
+	void addSkill(const String& skill, bool notifyClient = true);
 
-	void removeSkillBox(SkillBox* skillBox, bool notifyClient = true);
+	void removeSkill(Skill* skill, bool notifyClient = true);
 
-	void removeSkillBox(const String& skillBox, bool notifyClient = true);
+	void removeSkill(const String& skill, bool notifyClient = true);
 
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
 
@@ -1435,11 +1423,11 @@ public:
 
 	DeltaVector<int>* getBaseHAM();
 
-	SkillBoxList* getSkillBoxList();
+	SkillList* getSkillList();
 
 	long long getSkillMod(const String& skillmod);
 
-	bool hasSkillBox(const String& skillBox);
+	bool hasSkill(const String& skill);
 
 	DeltaVectorMap<String, long long>* getSkillModList();
 
@@ -1577,6 +1565,8 @@ public:
 	void initializeMembers();
 
 	void finalize();
+
+	void createChildObjects();
 
 	void initializeTransientMembers();
 
@@ -1718,9 +1708,9 @@ public:
 
 	void setTerrainNegotiation(float value, bool notifyClient);
 
-	void addSkillBox(const String& skillBox, bool notifyClient);
+	void addSkill(const String& skill, bool notifyClient);
 
-	void removeSkillBox(const String& skillBox, bool notifyClient);
+	void removeSkill(const String& skill, bool notifyClient);
 
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient);
 
@@ -1974,7 +1964,7 @@ public:
 
 	long long getSkillMod(const String& skillmod);
 
-	bool hasSkillBox(const String& skillBox);
+	bool hasSkill(const String& skill);
 
 	void setHeight(float heigh);
 
@@ -2075,8 +2065,8 @@ protected:
 	String _param0_sendSystemMessage__String_String_;
 	String _param1_sendSystemMessage__String_String_;
 	String _param0_setPerformanceAnimation__String_bool_;
-	String _param0_addSkillBox__String_bool_;
-	String _param0_removeSkillBox__String_bool_;
+	String _param0_addSkill__String_bool_;
+	String _param0_removeSkill__String_bool_;
 	String _param0_addSkillMod__String_long_bool_;
 	String _param0_removeSkillMod__String_bool_;
 	UnicodeString _param3_enqueueCommand__int_int_long_UnicodeString_int_;
@@ -2093,7 +2083,7 @@ protected:
 	String _param1_playEffect__String_String_;
 	String _param0_playEffect__String_;
 	String _param0_getSkillMod__String_;
-	String _param0_hasSkillBox__String_;
+	String _param0_hasSkill__String_;
 };
 
 class CreatureObjectHelper : public DistributedObjectClassHelper, public Singleton<CreatureObjectHelper> {

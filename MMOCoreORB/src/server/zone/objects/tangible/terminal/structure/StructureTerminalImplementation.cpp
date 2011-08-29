@@ -36,7 +36,7 @@ void StructureTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 			menuResponse->addRadialMenuItemToRadialID(118, 127, 3, "@player_structure:management_residence"); //Declare Residence
 			menuResponse->addRadialMenuItemToRadialID(118, 125, 3, "@player_structure:management_privacy"); //Privacy
 
-			if (creature->hasSkillBox("crafting_artisan_business_03"))
+			if (creature->hasSkill("crafting_artisan_business_03"))
 				menuResponse->addRadialMenuItemToRadialID(118, 130, 3, "@player_structure:create_vendor"); //Create Vendor
 
 			//menuResponse->addRadialMenuItemToRadialID(118, 68, 3, "@player_structure:management_add_turnstile"); //Set Access Fee

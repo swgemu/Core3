@@ -56,7 +56,7 @@ import server.zone.managers.name.NameManager;
 import server.zone.managers.holocron.HolocronManager;
 import server.zone.managers.sui.SuiManager;
 import server.zone.managers.player.PlayerManager;
-import server.zone.managers.professions.ProfessionManager;
+import server.zone.managers.skill.SkillManager;
 import server.zone.managers.object.ObjectManager;
 import server.zone.managers.vendor.VendorManager;
 
@@ -78,7 +78,7 @@ class ZoneProcessServer extends ManagedService {
 
 	transient protected SuiManager suiManager;
 	
-	transient protected ProfessionManager professionManager;
+	transient protected SkillManager professionManager;
 
 	@weak
 	transient protected ObjectController objectController;
@@ -111,7 +111,7 @@ class ZoneProcessServer extends ManagedService {
 	}
 	
 	@local
-	public ProfessionManager getProfessionManager() {
+	public SkillManager getSkillManager() {
 		return professionManager;
 	}
 

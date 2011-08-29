@@ -211,17 +211,17 @@ int SlicingSessionImplementation::getSlicingSkill(CreatureObject* slicer) {
 	String skill4 = "combat_smuggler_slicing_04";
 	String skill5 = "combat_smuggler_master";
 
-	if (slicer->hasSkillBox(skill5))
+	if (slicer->hasSkill(skill5))
 		return 5;
-	else if (slicer->hasSkillBox(skill4))
+	else if (slicer->hasSkill(skill4))
 		return 4;
-	else if (slicer->hasSkillBox(skill3))
+	else if (slicer->hasSkill(skill3))
 		return 3;
-	else if (slicer->hasSkillBox(skill2))
+	else if (slicer->hasSkill(skill2))
 		return 2;
-	else if (slicer->hasSkillBox(skill1))
+	else if (slicer->hasSkill(skill1))
 		return 1;
-	else if (slicer->hasSkillBox(skill0))
+	else if (slicer->hasSkill(skill0))
 		return 0;
 
 	return -1;

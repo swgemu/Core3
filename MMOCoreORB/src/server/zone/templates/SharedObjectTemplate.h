@@ -75,6 +75,7 @@ protected:
 	Reference<PlanetMapCategory*> planetMapSubCategory;
 
 	String fullTemplateString;
+	String templateFileName;
 
 	int templateType;
 
@@ -316,6 +317,10 @@ public:
 		return fullTemplateString;
 	}
 
+    inline String getTemplateFileName() {
+		return templateFileName;
+	}
+
     inline String getContainerComponent() {
     	return containerComponent;
     }
@@ -459,6 +464,10 @@ public:
 
 	void setFullTemplateString(const String& str) {
 		fullTemplateString = str;
+	}
+
+	void setTemplateFileName(const String& str) {
+		templateFileName = str;
 	}
 
 public:

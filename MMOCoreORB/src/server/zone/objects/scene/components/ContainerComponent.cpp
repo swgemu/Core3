@@ -129,7 +129,7 @@ bool ContainerComponent::addObject(SceneObject* sceneObject, SceneObject* object
 			update = false;
 
 	} else {
-		sceneObject->error("unkown container type");
+		sceneObject->error("unknown container type");
 		return false;
 	}
 

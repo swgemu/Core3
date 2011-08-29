@@ -22,7 +22,7 @@
 
 #include "server/zone/managers/player/PlayerManager.h"
 
-#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
 
@@ -91,13 +91,13 @@ ZonePacketHandler* ZoneProcessServer::getPacketHandler() {
 		return _implementation->getPacketHandler();
 }
 
-ProfessionManager* ZoneProcessServer::getProfessionManager() {
+SkillManager* ZoneProcessServer::getSkillManager() {
 	ZoneProcessServerImplementation* _implementation = (ZoneProcessServerImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getProfessionManager();
+		return _implementation->getSkillManager();
 }
 
 ObjectController* ZoneProcessServer::getObjectController() {
@@ -299,7 +299,7 @@ ZonePacketHandler* ZoneProcessServerImplementation::getPacketHandler() {
 	return zonePacketHandler;
 }
 
-ProfessionManager* ZoneProcessServerImplementation::getProfessionManager() {
+SkillManager* ZoneProcessServerImplementation::getSkillManager() {
 	// server/zone/ZoneProcessServer.idl():  		return professionManager;
 	return professionManager;
 }

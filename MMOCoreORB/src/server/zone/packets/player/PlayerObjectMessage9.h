@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "../BaseLineMessage.h"
 
 #include "../../objects/player/PlayerObject.h"
+#include "server/zone/objects/player/variables/AbilityList.h"
 
 //#include "../../objects/draftschematic/DraftSchematic.h"
 
@@ -56,7 +57,7 @@ public:
 	PlayerObjectMessage9(PlayerObjectImplementation* play)
 			: BaseLineMessage(play->getObjectID(), 0x504C4159, 9, 0x13) {
 		// certifications && skills
-		DeltaVector<String>* skills = play->getSkills();
+		AbilityList* skills = play->getAbilityList();
 		skills->insertToMessage(this);
 
 		// crafting states

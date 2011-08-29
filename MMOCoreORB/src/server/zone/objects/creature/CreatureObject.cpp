@@ -6,8 +6,6 @@
 
 #include "server/chat/StringIdChatParameter.h"
 
-#include "server/zone/objects/creature/professions/SkillBox.h"
-
 #include "server/zone/objects/group/GroupObject.h"
 
 #include "server/zone/objects/guild/GuildObject.h"
@@ -40,7 +38,7 @@
  *	CreatureObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_FINALIZE__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CLEARQUEUEACTION__INT_FLOAT_INT_INT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_PLAYMUSICMESSAGE__STRING_,RPC_SENDNEWBIETUTORIALREQUEST__STRING_,RPC_SENDNEWBIETUTORIALENABLEHUDELEMENT__STRING_BOOL_,RPC_SENDOPENHOLOCRONTOPAGEMESSAGE__,RPC_SENDSYSTEMMESSAGE__UNICODESTRING_,RPC_SENDSYSTEMMESSAGE__STRING_STRING_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SETCOMBATSTATE__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETPOSTURE__INT_BOOL_,RPC_UPDATELOCOMOTION__,RPC_SETACCELERATIONMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETRUNSPEED__FLOAT_BOOL_,RPC_SETHAM__INT_INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HASDAMAGE__INT_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETBASEHAM__INT_INT_BOOL_,RPC_SETWOUNDS__INT_INT_BOOL_,RPC_ADDWOUNDS__INT_INT_BOOL_,RPC_SETMAXHAM__INT_INT_BOOL_,RPC_ADDMAXHAM__INT_INT_BOOL_,RPC_SETENCUMBRANCE__INT_INT_BOOL_,RPC_ADDENCUMBRANCE__INT_INT_BOOL_,RPC_SETWEAPON__WEAPONOBJECT_BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_SETINSTRUMENTID__INT_BOOL_,RPC_SETLISTENTOID__LONG_BOOL_,RPC_SETPERFORMANCECOUNTER__INT_BOOL_,RPC_SETPERFORMANCEANIMATION__STRING_BOOL_,RPC_SETSHOCKWOUNDS__INT_BOOL_,RPC_ADDSHOCKWOUNDS__INT_BOOL_,RPC_SETTARGETID__LONG_BOOL_,RPC_SETBANKCREDITS__INT_BOOL_,RPC_ADDBUFF__BUFF_,RPC_REMOVEBUFF__INT_,RPC_REMOVEBUFF__BUFF_,RPC_CLEARBUFFS__BOOL_,RPC_SENDBUFFSTO__CREATUREOBJECT_,RPC_GETBUFF__INT_,RPC_ADDDOTSTATE__LONG_INT_BYTE_INT_FLOAT_INT_,RPC_HEALDOT__LONG_INT_,RPC_CLEARDOTS__,RPC_REMOVEDOTSFROMVECTOR__,RPC_HASBUFF__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSTURECHANGE__INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISRESUSCITABLE__,RPC_ADDBANKCREDITS__INT_BOOL_,RPC_ADDCASHCREDITS__INT_BOOL_,RPC_SUBSTRACTBANKCREDITS__INT_,RPC_SUBSTRACTCASHCREDITS__INT_,RPC_VERIFYCASHCREDITS__INT_,RPC_VERIFYBANKCREDITS__INT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_STOPENTERTAINING__,RPC_ISENTERTAINING__,RPC_SETCASHCREDITS__INT_BOOL_,RPC_SETTERRAINNEGOTIATION__FLOAT_BOOL_,RPC_ADDSKILLBOX__STRING_BOOL_,RPC_REMOVESKILLBOX__STRING_BOOL_,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_REMOVESKILLMOD__STRING_BOOL_,RPC_UPDATEGROUPINVITERID__LONG_BOOL_,RPC_UPDATEGROUP__GROUPOBJECT_BOOL_,RPC_ENQUEUECOMMAND__INT_INT_LONG_UNICODESTRING_INT_,RPC_SETMOOD__BYTE_BOOL_,RPC_SETMOODSTRING__STRING_BOOL_,RPC_DELETEQUEUEACTION__INT_,RPC_SETSTATE__LONG_BOOL_,RPC_CLEARSTATE__LONG_BOOL_,RPC_SETCONTROLDEVICE__CONTROLDEVICE_,RPC_GETWEARABLEMASK__,RPC_SETCREATURELINK__CREATUREOBJECT_BOOL_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_LONG_UNICODESTRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_SENDEXECUTECONSOLECOMMAND__STRING_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_GETFIRSTNAME__,RPC_GETLASTNAME__,RPC_ISONLINE__,RPC_CANTREATINJURIES__,RPC_CANTREATSTATES__,RPC_CANTREATWOUNDS__,RPC_CANTREATCONDITIONS__,RPC_GETPLAYEROBJECT__,RPC_ISLISTENING__,RPC_ISWATCHING__,RPC_SETCLIENT__ZONECLIENTSESSION_,RPC_DISMOUNT__,RPC_CALCULATEBFRATIO__,RPC_SETDIZZIEDSTATE__INT_,RPC_SETRALLIEDSTATE__INT_,RPC_SETAIMINGSTATE__INT_,RPC_SETCOVERSTATE__INT_,RPC_SETBERSERKEDSTATE__INT_,RPC_SETSTUNNEDSTATE__INT_,RPC_SETBLINDEDSTATE__INT_,RPC_SETINTIMIDATEDSTATE__INT_,RPC_SETSNAREDSTATE__INT_,RPC_SETROOTEDSTATE__INT_,RPC_SETNEXTATTACKDELAY__INT_,RPC_SETMEDITATESTATE__,RPC_ACTIVATEHAMREGENERATION__,RPC_ACTIVATESTATERECOVERY__,RPC_UPDATETIMEOFDEATH__,RPC_HASATTACKDELAY__,RPC_REMOVEATTACKDELAY__,RPC_HASSPICE__,RPC_UPDATELASTSUCCESSFULCOMBATACTION__,RPC_UPDATEKNOCKDOWNRECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_UPDATELASTKNOCKDOWN__,RPC_CHECKKNOCKDOWNRECOVERY__,RPC_CHECKLASTKNOCKDOWN__,RPC_UPDATEPOSTUREDOWNRECOVERY__,RPC_UPDATEPOSTUREUPRECOVERY__,RPC_CHECKPOSTUREDOWNRECOVERY__,RPC_GETSCREENPLAYSTATE__STRING_,RPC_SETSCREENPLAYSTATE__STRING_LONG_,RPC_CHECKPOSTUREUPRECOVERY__,RPC_UPDATECOOLDOWNTIMER__STRING_INT_,RPC_CHECKCOOLDOWNRECOVERY__STRING_,RPC_ADDCOOLDOWN__STRING_INT_,RPC_DOANIMATION__STRING_,RPC_DOCOMBATANIMATION__CREATUREOBJECT_INT_BYTE_,RPC_PLAYEFFECT__STRING_STRING_,RPC_PLAYEFFECT__STRING_,RPC_ACTIVATEQUEUEACTION__,RPC_ACTIVATEIMMEDIATEACTION__,RPC_GETCREATURENAME__,RPC_ISGROUPED__,RPC_GETBANKCREDITS__,RPC_GETCASHCREDITS__,RPC_GETBASEHAM__INT_,RPC_GETWOUNDS__INT_,RPC_GETHAM__INT_,RPC_GETMAXHAM__INT_,RPC_GETENCUMBRANCE__INT_,RPC_GETPOSTURE__,RPC_GETLOCOMOTION__,RPC_GETFACTIONRANK__,RPC_GETLINKEDCREATURE__,RPC_GETCREATURELINKID__,RPC_GETSHOCKWOUNDS__,RPC_GETWATCHTOID__,RPC_GETSTATEBITMASK__,RPC_HASSTATE__LONG_,RPC_HASSTATES__,RPC_GETLISTENID__,RPC_GETACCELERATIONMULTIPLIERBASE__,RPC_GETACCELERATIONMULTIPLIERMOD__,RPC_GETSPEEDMULTIPLIERBASE__,RPC_GETSPEEDMULTIPLIERMOD__,RPC_GETRUNSPEED__,RPC_GETWALKSPEED__,RPC_GETTERRAINNEGOTIATION__,RPC_GETRUNACCELERATION__,RPC_GETWALKACCELERATION__,RPC_GETPERFORMANCEANIMATION__,RPC_GETMOODSTRING__,RPC_GETWEAPONID__,RPC_GETWEAPON__,RPC_GETGUILDOBJECT__,RPC_GETGUILDID__,RPC_ISINGUILD__,RPC_SETGUILDOBJECT__GUILDOBJECT_,RPC_GETGROUPID__,RPC_GETGROUPINVITERID__,RPC_GETGROUP__,RPC_GETGROUPINVITECOUNTER__,RPC_GETTARGETID__,RPC_GETMOODID__,RPC_GETSLOPEMODPERCENT__,RPC_GETPERFORMANCECOUNTER__,RPC_GETINSTRUMENTID__,RPC_GETFROZEN__,RPC_GETHEIGHT__,RPC_GETSPECIES__,RPC_GETSPECIESNAME__,RPC_GETGENDER__,RPC_GETSKILLMOD__STRING_,RPC_HASSKILLBOX__STRING_,RPC_SETHEIGHT__FLOAT_,RPC_SETWATCHTOID__LONG_,RPC_ISCREATUREOBJECT__,RPC_ISNEXTACTIONPAST__,RPC_ISTRAINERCREATURE__,RPC_ISSWIMMING__,RPC_GETCLIENT__,RPC_ISRIDINGMOUNT__,RPC_GETCONTROLDEVICE__,RPC_GETSWIMHEIGHT__,RPC_ISINCAPACITATED__,RPC_ISDEAD__,RPC_ISKNOCKEDDOWN__,RPC_ISKNEELING__,RPC_ISPRONE__,RPC_ISSTANDING__,RPC_ISSITTING__,RPC_ISSKILLANIMATING__,RPC_ISRALLIED__,RPC_ISINCOMBAT__,RPC_ISDIZZIED__,RPC_ISBERSERKED__,RPC_ISSTUNNED__,RPC_ISBLINDED__,RPC_ISINTIMIDATED__,RPC_ISSNARED__,RPC_ISIMMOBILIZED__,RPC_ISROOTED__,RPC_ISFROZEN__,RPC_ISDISEASED__,RPC_ISPOISONED__,RPC_ISBLEEDING__,RPC_ISONFIRE__,RPC_ISMOUNTED__,RPC_ISRIDINGCREATURE__,RPC_ISPEACED__,RPC_ISMEDITATING__,RPC_ISAIMING__,RPC_ISINCOVER__,RPC_ISNONPLAYERCREATUREOBJECT__,RPC_ISCREATURE__,RPC_ISPLAYERCREATURE__,RPC_ISAIAGENT__,RPC_ISINFORMANTCREATURE__,RPC_ISVENDORCREATURE__};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CLEARQUEUEACTION__INT_FLOAT_INT_INT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDTOOWNER__BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_PLAYMUSICMESSAGE__STRING_,RPC_SENDNEWBIETUTORIALREQUEST__STRING_,RPC_SENDNEWBIETUTORIALENABLEHUDELEMENT__STRING_BOOL_,RPC_SENDOPENHOLOCRONTOPAGEMESSAGE__,RPC_SENDSYSTEMMESSAGE__UNICODESTRING_,RPC_SENDSYSTEMMESSAGE__STRING_STRING_,RPC_SENDSLOTTEDOBJECTSTO__SCENEOBJECT_,RPC_SETCOMBATSTATE__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETPOSTURE__INT_BOOL_,RPC_UPDATELOCOMOTION__,RPC_SETACCELERATIONMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERBASE__FLOAT_BOOL_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_BOOL_,RPC_SETRUNSPEED__FLOAT_BOOL_,RPC_SETHAM__INT_INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HASDAMAGE__INT_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_SETBASEHAM__INT_INT_BOOL_,RPC_SETWOUNDS__INT_INT_BOOL_,RPC_ADDWOUNDS__INT_INT_BOOL_,RPC_SETMAXHAM__INT_INT_BOOL_,RPC_ADDMAXHAM__INT_INT_BOOL_,RPC_SETENCUMBRANCE__INT_INT_BOOL_,RPC_ADDENCUMBRANCE__INT_INT_BOOL_,RPC_SETWEAPON__WEAPONOBJECT_BOOL_,RPC_NOTIFYOBJECTINSERTED__SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVED__SCENEOBJECT_,RPC_SETINSTRUMENTID__INT_BOOL_,RPC_SETLISTENTOID__LONG_BOOL_,RPC_SETPERFORMANCECOUNTER__INT_BOOL_,RPC_SETPERFORMANCEANIMATION__STRING_BOOL_,RPC_SETSHOCKWOUNDS__INT_BOOL_,RPC_ADDSHOCKWOUNDS__INT_BOOL_,RPC_SETTARGETID__LONG_BOOL_,RPC_SETBANKCREDITS__INT_BOOL_,RPC_ADDBUFF__BUFF_,RPC_REMOVEBUFF__INT_,RPC_REMOVEBUFF__BUFF_,RPC_CLEARBUFFS__BOOL_,RPC_SENDBUFFSTO__CREATUREOBJECT_,RPC_GETBUFF__INT_,RPC_ADDDOTSTATE__LONG_INT_BYTE_INT_FLOAT_INT_,RPC_HEALDOT__LONG_INT_,RPC_CLEARDOTS__,RPC_REMOVEDOTSFROMVECTOR__,RPC_HASBUFF__INT_,RPC_NOTIFYSELFPOSITIONUPDATE__,RPC_NOTIFYPOSTURECHANGE__INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISRESUSCITABLE__,RPC_ADDBANKCREDITS__INT_BOOL_,RPC_ADDCASHCREDITS__INT_BOOL_,RPC_SUBSTRACTBANKCREDITS__INT_,RPC_SUBSTRACTCASHCREDITS__INT_,RPC_VERIFYCASHCREDITS__INT_,RPC_VERIFYBANKCREDITS__INT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_STOPENTERTAINING__,RPC_ISENTERTAINING__,RPC_SETCASHCREDITS__INT_BOOL_,RPC_SETTERRAINNEGOTIATION__FLOAT_BOOL_,RPC_ADDSKILL__STRING_BOOL_,RPC_REMOVESKILL__STRING_BOOL_,RPC_ADDSKILLMOD__STRING_LONG_BOOL_,RPC_REMOVESKILLMOD__STRING_BOOL_,RPC_UPDATEGROUPINVITERID__LONG_BOOL_,RPC_UPDATEGROUP__GROUPOBJECT_BOOL_,RPC_ENQUEUECOMMAND__INT_INT_LONG_UNICODESTRING_INT_,RPC_SETMOOD__BYTE_BOOL_,RPC_SETMOODSTRING__STRING_BOOL_,RPC_DELETEQUEUEACTION__INT_,RPC_SETSTATE__LONG_BOOL_,RPC_CLEARSTATE__LONG_BOOL_,RPC_SETCONTROLDEVICE__CONTROLDEVICE_,RPC_GETWEARABLEMASK__,RPC_SETCREATURELINK__CREATUREOBJECT_BOOL_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_,RPC_EXECUTEOBJECTCONTROLLERACTION__INT_LONG_UNICODESTRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_SENDEXECUTECONSOLECOMMAND__STRING_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_GETFIRSTNAME__,RPC_GETLASTNAME__,RPC_ISONLINE__,RPC_CANTREATINJURIES__,RPC_CANTREATSTATES__,RPC_CANTREATWOUNDS__,RPC_CANTREATCONDITIONS__,RPC_GETPLAYEROBJECT__,RPC_ISLISTENING__,RPC_ISWATCHING__,RPC_SETCLIENT__ZONECLIENTSESSION_,RPC_DISMOUNT__,RPC_CALCULATEBFRATIO__,RPC_SETDIZZIEDSTATE__INT_,RPC_SETRALLIEDSTATE__INT_,RPC_SETAIMINGSTATE__INT_,RPC_SETCOVERSTATE__INT_,RPC_SETBERSERKEDSTATE__INT_,RPC_SETSTUNNEDSTATE__INT_,RPC_SETBLINDEDSTATE__INT_,RPC_SETINTIMIDATEDSTATE__INT_,RPC_SETSNAREDSTATE__INT_,RPC_SETROOTEDSTATE__INT_,RPC_SETNEXTATTACKDELAY__INT_,RPC_SETMEDITATESTATE__,RPC_ACTIVATEHAMREGENERATION__,RPC_ACTIVATESTATERECOVERY__,RPC_UPDATETIMEOFDEATH__,RPC_HASATTACKDELAY__,RPC_REMOVEATTACKDELAY__,RPC_HASSPICE__,RPC_UPDATELASTSUCCESSFULCOMBATACTION__,RPC_UPDATEKNOCKDOWNRECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_UPDATELASTKNOCKDOWN__,RPC_CHECKKNOCKDOWNRECOVERY__,RPC_CHECKLASTKNOCKDOWN__,RPC_UPDATEPOSTUREDOWNRECOVERY__,RPC_UPDATEPOSTUREUPRECOVERY__,RPC_CHECKPOSTUREDOWNRECOVERY__,RPC_GETSCREENPLAYSTATE__STRING_,RPC_SETSCREENPLAYSTATE__STRING_LONG_,RPC_CHECKPOSTUREUPRECOVERY__,RPC_UPDATECOOLDOWNTIMER__STRING_INT_,RPC_CHECKCOOLDOWNRECOVERY__STRING_,RPC_ADDCOOLDOWN__STRING_INT_,RPC_DOANIMATION__STRING_,RPC_DOCOMBATANIMATION__CREATUREOBJECT_INT_BYTE_,RPC_PLAYEFFECT__STRING_STRING_,RPC_PLAYEFFECT__STRING_,RPC_ACTIVATEQUEUEACTION__,RPC_ACTIVATEIMMEDIATEACTION__,RPC_GETCREATURENAME__,RPC_ISGROUPED__,RPC_GETBANKCREDITS__,RPC_GETCASHCREDITS__,RPC_GETBASEHAM__INT_,RPC_GETWOUNDS__INT_,RPC_GETHAM__INT_,RPC_GETMAXHAM__INT_,RPC_GETENCUMBRANCE__INT_,RPC_GETPOSTURE__,RPC_GETLOCOMOTION__,RPC_GETFACTIONRANK__,RPC_GETLINKEDCREATURE__,RPC_GETCREATURELINKID__,RPC_GETSHOCKWOUNDS__,RPC_GETWATCHTOID__,RPC_GETSTATEBITMASK__,RPC_HASSTATE__LONG_,RPC_HASSTATES__,RPC_GETLISTENID__,RPC_GETACCELERATIONMULTIPLIERBASE__,RPC_GETACCELERATIONMULTIPLIERMOD__,RPC_GETSPEEDMULTIPLIERBASE__,RPC_GETSPEEDMULTIPLIERMOD__,RPC_GETRUNSPEED__,RPC_GETWALKSPEED__,RPC_GETTERRAINNEGOTIATION__,RPC_GETRUNACCELERATION__,RPC_GETWALKACCELERATION__,RPC_GETPERFORMANCEANIMATION__,RPC_GETMOODSTRING__,RPC_GETWEAPONID__,RPC_GETWEAPON__,RPC_GETGUILDOBJECT__,RPC_GETGUILDID__,RPC_ISINGUILD__,RPC_SETGUILDOBJECT__GUILDOBJECT_,RPC_GETGROUPID__,RPC_GETGROUPINVITERID__,RPC_GETGROUP__,RPC_GETGROUPINVITECOUNTER__,RPC_GETTARGETID__,RPC_GETMOODID__,RPC_GETSLOPEMODPERCENT__,RPC_GETPERFORMANCECOUNTER__,RPC_GETINSTRUMENTID__,RPC_GETFROZEN__,RPC_GETHEIGHT__,RPC_GETSPECIES__,RPC_GETSPECIESNAME__,RPC_GETGENDER__,RPC_GETSKILLMOD__STRING_,RPC_HASSKILL__STRING_,RPC_SETHEIGHT__FLOAT_,RPC_SETWATCHTOID__LONG_,RPC_ISCREATUREOBJECT__,RPC_ISNEXTACTIONPAST__,RPC_ISTRAINERCREATURE__,RPC_ISSWIMMING__,RPC_GETCLIENT__,RPC_ISRIDINGMOUNT__,RPC_GETCONTROLDEVICE__,RPC_GETSWIMHEIGHT__,RPC_ISINCAPACITATED__,RPC_ISDEAD__,RPC_ISKNOCKEDDOWN__,RPC_ISKNEELING__,RPC_ISPRONE__,RPC_ISSTANDING__,RPC_ISSITTING__,RPC_ISSKILLANIMATING__,RPC_ISRALLIED__,RPC_ISINCOMBAT__,RPC_ISDIZZIED__,RPC_ISBERSERKED__,RPC_ISSTUNNED__,RPC_ISBLINDED__,RPC_ISINTIMIDATED__,RPC_ISSNARED__,RPC_ISIMMOBILIZED__,RPC_ISROOTED__,RPC_ISFROZEN__,RPC_ISDISEASED__,RPC_ISPOISONED__,RPC_ISBLEEDING__,RPC_ISONFIRE__,RPC_ISMOUNTED__,RPC_ISRIDINGCREATURE__,RPC_ISPEACED__,RPC_ISMEDITATING__,RPC_ISAIMING__,RPC_ISINCOVER__,RPC_ISNONPLAYERCREATUREOBJECT__,RPC_ISCREATURE__,RPC_ISPLAYERCREATURE__,RPC_ISAIAGENT__,RPC_ISINFORMANTCREATURE__,RPC_ISVENDORCREATURE__};
 
 CreatureObject::CreatureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	CreatureObjectImplementation* _implementation = new CreatureObjectImplementation();
@@ -66,6 +64,19 @@ void CreatureObject::initializeMembers() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->initializeMembers();
+}
+
+void CreatureObject::createChildObjects() {
+	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->createChildObjects();
 }
 
 void CreatureObject::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -1116,52 +1127,52 @@ void CreatureObject::setTerrainNegotiation(float value, bool notifyClient) {
 		_implementation->setTerrainNegotiation(value, notifyClient);
 }
 
-void CreatureObject::addSkillBox(SkillBox* skillBox, bool notifyClient) {
+void CreatureObject::addSkill(Skill* skill, bool notifyClient) {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->addSkillBox(skillBox, notifyClient);
+		_implementation->addSkill(skill, notifyClient);
 }
 
-void CreatureObject::addSkillBox(const String& skillBox, bool notifyClient) {
+void CreatureObject::addSkill(const String& skill, bool notifyClient) {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_ADDSKILLBOX__STRING_BOOL_);
-		method.addAsciiParameter(skillBox);
+		DistributedMethod method(this, RPC_ADDSKILL__STRING_BOOL_);
+		method.addAsciiParameter(skill);
 		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->addSkillBox(skillBox, notifyClient);
+		_implementation->addSkill(skill, notifyClient);
 }
 
-void CreatureObject::removeSkillBox(SkillBox* skillBox, bool notifyClient) {
+void CreatureObject::removeSkill(Skill* skill, bool notifyClient) {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->removeSkillBox(skillBox, notifyClient);
+		_implementation->removeSkill(skill, notifyClient);
 }
 
-void CreatureObject::removeSkillBox(const String& skillBox, bool notifyClient) {
+void CreatureObject::removeSkill(const String& skill, bool notifyClient) {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVESKILLBOX__STRING_BOOL_);
-		method.addAsciiParameter(skillBox);
+		DistributedMethod method(this, RPC_REMOVESKILL__STRING_BOOL_);
+		method.addAsciiParameter(skill);
 		method.addBooleanParameter(notifyClient);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->removeSkillBox(skillBox, notifyClient);
+		_implementation->removeSkill(skill, notifyClient);
 }
 
 void CreatureObject::addSkillMod(const String& skillMod, long long value, bool notifyClient) {
@@ -2949,13 +2960,13 @@ DeltaVector<int>* CreatureObject::getBaseHAM() {
 		return _implementation->getBaseHAM();
 }
 
-SkillBoxList* CreatureObject::getSkillBoxList() {
+SkillList* CreatureObject::getSkillList() {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getSkillBoxList();
+		return _implementation->getSkillList();
 }
 
 long long CreatureObject::getSkillMod(const String& skillmod) {
@@ -2972,18 +2983,18 @@ long long CreatureObject::getSkillMod(const String& skillmod) {
 		return _implementation->getSkillMod(skillmod);
 }
 
-bool CreatureObject::hasSkillBox(const String& skillBox) {
+bool CreatureObject::hasSkill(const String& skill) {
 	CreatureObjectImplementation* _implementation = (CreatureObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HASSKILLBOX__STRING_);
-		method.addAsciiParameter(skillBox);
+		DistributedMethod method(this, RPC_HASSKILL__STRING_);
+		method.addAsciiParameter(skill);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->hasSkillBox(skillBox);
+		return _implementation->hasSkill(skill);
 }
 
 DeltaVectorMap<String, long long>* CreatureObject::getSkillModList() {
@@ -3920,8 +3931,8 @@ bool CreatureObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
-	if (_name == "skillBoxList") {
-		TypeInfo<SkillBoxList >::parseFromBinaryStream(&skillBoxList, stream);
+	if (_name == "skillList") {
+		TypeInfo<SkillList >::parseFromBinaryStream(&skillList, stream);
 		return true;
 	}
 
@@ -4356,11 +4367,11 @@ int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "skillBoxList";
+	_name = "skillList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<SkillBoxList >::toBinaryStream(&skillBoxList, stream);
+	TypeInfo<SkillList >::toBinaryStream(&skillList, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -5058,9 +5069,9 @@ DeltaVector<int>* CreatureObjectImplementation::getBaseHAM() {
 	return (&baseHAM);
 }
 
-SkillBoxList* CreatureObjectImplementation::getSkillBoxList() {
-	// server/zone/objects/creature/CreatureObject.idl():  		return skillBoxList;
-	return (&skillBoxList);
+SkillList* CreatureObjectImplementation::getSkillList() {
+	// server/zone/objects/creature/CreatureObject.idl():  		return skillList;
+	return (&skillList);
 }
 
 long long CreatureObjectImplementation::getSkillMod(const String& skillmod) {
@@ -5068,9 +5079,9 @@ long long CreatureObjectImplementation::getSkillMod(const String& skillmod) {
 	return (&skillModList)->get(skillmod);
 }
 
-bool CreatureObjectImplementation::hasSkillBox(const String& skillBox) {
-	// server/zone/objects/creature/CreatureObject.idl():  		return skillBoxList.containsSkillBox(skillBox);
-	return (&skillBoxList)->containsSkillBox(skillBox);
+bool CreatureObjectImplementation::hasSkill(const String& skill) {
+	// server/zone/objects/creature/CreatureObject.idl():  		return skillList.containsSkill(skill);
+	return (&skillList)->containsSkill(skill);
 }
 
 DeltaVectorMap<String, long long>* CreatureObjectImplementation::getSkillModList() {
@@ -5320,6 +5331,9 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_FINALIZE__:
 		finalize();
 		break;
+	case RPC_CREATECHILDOBJECTS__:
+		createChildObjects();
+		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
@@ -5530,11 +5544,11 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_SETTERRAINNEGOTIATION__FLOAT_BOOL_:
 		setTerrainNegotiation(inv->getFloatParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_ADDSKILLBOX__STRING_BOOL_:
-		addSkillBox(inv->getAsciiParameter(_param0_addSkillBox__String_bool_), inv->getBooleanParameter());
+	case RPC_ADDSKILL__STRING_BOOL_:
+		addSkill(inv->getAsciiParameter(_param0_addSkill__String_bool_), inv->getBooleanParameter());
 		break;
-	case RPC_REMOVESKILLBOX__STRING_BOOL_:
-		removeSkillBox(inv->getAsciiParameter(_param0_removeSkillBox__String_bool_), inv->getBooleanParameter());
+	case RPC_REMOVESKILL__STRING_BOOL_:
+		removeSkill(inv->getAsciiParameter(_param0_removeSkill__String_bool_), inv->getBooleanParameter());
 		break;
 	case RPC_ADDSKILLMOD__STRING_LONG_BOOL_:
 		addSkillMod(inv->getAsciiParameter(_param0_addSkillMod__String_long_bool_), inv->getSignedLongParameter(), inv->getBooleanParameter());
@@ -5914,8 +5928,8 @@ Packet* CreatureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_GETSKILLMOD__STRING_:
 		resp->insertSignedLong(getSkillMod(inv->getAsciiParameter(_param0_getSkillMod__String_)));
 		break;
-	case RPC_HASSKILLBOX__STRING_:
-		resp->insertBoolean(hasSkillBox(inv->getAsciiParameter(_param0_hasSkillBox__String_)));
+	case RPC_HASSKILL__STRING_:
+		resp->insertBoolean(hasSkill(inv->getAsciiParameter(_param0_hasSkill__String_)));
 		break;
 	case RPC_SETHEIGHT__FLOAT_:
 		setHeight(inv->getFloatParameter());
@@ -6065,6 +6079,10 @@ void CreatureObjectAdapter::initializeMembers() {
 
 void CreatureObjectAdapter::finalize() {
 	((CreatureObjectImplementation*) impl)->finalize();
+}
+
+void CreatureObjectAdapter::createChildObjects() {
+	((CreatureObjectImplementation*) impl)->createChildObjects();
 }
 
 void CreatureObjectAdapter::initializeTransientMembers() {
@@ -6347,12 +6365,12 @@ void CreatureObjectAdapter::setTerrainNegotiation(float value, bool notifyClient
 	((CreatureObjectImplementation*) impl)->setTerrainNegotiation(value, notifyClient);
 }
 
-void CreatureObjectAdapter::addSkillBox(const String& skillBox, bool notifyClient) {
-	((CreatureObjectImplementation*) impl)->addSkillBox(skillBox, notifyClient);
+void CreatureObjectAdapter::addSkill(const String& skill, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->addSkill(skill, notifyClient);
 }
 
-void CreatureObjectAdapter::removeSkillBox(const String& skillBox, bool notifyClient) {
-	((CreatureObjectImplementation*) impl)->removeSkillBox(skillBox, notifyClient);
+void CreatureObjectAdapter::removeSkill(const String& skill, bool notifyClient) {
+	((CreatureObjectImplementation*) impl)->removeSkill(skill, notifyClient);
 }
 
 void CreatureObjectAdapter::addSkillMod(const String& skillMod, long long value, bool notifyClient) {
@@ -6859,8 +6877,8 @@ long long CreatureObjectAdapter::getSkillMod(const String& skillmod) {
 	return ((CreatureObjectImplementation*) impl)->getSkillMod(skillmod);
 }
 
-bool CreatureObjectAdapter::hasSkillBox(const String& skillBox) {
-	return ((CreatureObjectImplementation*) impl)->hasSkillBox(skillBox);
+bool CreatureObjectAdapter::hasSkill(const String& skill) {
+	return ((CreatureObjectImplementation*) impl)->hasSkill(skill);
 }
 
 void CreatureObjectAdapter::setHeight(float heigh) {

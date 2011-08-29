@@ -57,7 +57,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -65,20 +64,17 @@ public:
 			return INVALIDLOCOMOTION;
 
 		// TODO: DELETE STARTING HERE
-		StringTokenizer args(arguments.toString());
-		args.setDelimeter(" ");
+		UnicodeTokenizer args(arguments);
 
 		if (args.hasMoreTokens()) {
-
 			if (creature->isPlayerCreature()) {
-				CreatureObject* player = (CreatureObject*) creature;
 
-				PlayerObject* ghost = player->getPlayerObject();
+				PlayerObject* ghost = creature->getPlayerObject();
 
 				if (ghost == NULL)
 					return GENERALERROR;
 
-				if (!ghost->hasSkill("admin")) {
+				if (!ghost->hasAbility("admin")) {
 					creature->setPosture(CreaturePosture::PRONE);
 
 					if (creature->isDizzied())

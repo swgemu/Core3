@@ -340,7 +340,7 @@ void WeaponObjectImplementation::updateCraftingValues(ManufactureSchematic* sche
 }
 
 bool WeaponObjectImplementation::isCertifiedFor(CreatureObject* object) {
-	PlayerObject* ghost = object->getPlayerObject();
+	ManagedReference<PlayerObject*> ghost = object->getPlayerObject();
 
 	if (ghost == NULL)
 		return false;
@@ -350,7 +350,7 @@ bool WeaponObjectImplementation::isCertifiedFor(CreatureObject* object) {
 	for (int i = 0; i < certificationsRequired->size(); ++i) {
 		String cert = certificationsRequired->get(i);
 
-		if (!ghost->hasSkill(cert)) {
+		if (!ghost->hasAbility(cert)) {
 			return false;
 		}
 	}

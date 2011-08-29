@@ -420,19 +420,19 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 				}
 				int factor = 1;
 
-				if (player->hasSkillBox("outdoors_ranger_tracking_04"))
+				if (player->hasSkill("outdoors_ranger_tracking_04"))
 					factor = 8;
-				else if (player->hasSkillBox("outdoors_ranger_tracking_03"))
+				else if (player->hasSkill("outdoors_ranger_tracking_03"))
 					factor = 7;
-				else if (player->hasSkillBox("outdoors_ranger_tracking_02"))
+				else if (player->hasSkill("outdoors_ranger_tracking_02"))
 					factor = 6;
-				else if (player->hasSkillBox("outdoors_ranger_tracking_01"))
+				else if (player->hasSkill("outdoors_ranger_tracking_01"))
 					factor = 5;
-				else if (player->hasSkillBox("outdoors_scout_camp_04"))
+				else if (player->hasSkill("outdoors_scout_camp_04"))
 					factor = 4;
-				else if (player->hasSkillBox("outdoors_scout_camp_03"))
+				else if (player->hasSkill("outdoors_scout_camp_03"))
 					factor = 3;
-				else if (player->hasSkillBox("outdoors_scout_camp_02"))
+				else if (player->hasSkill("outdoors_scout_camp_02"))
 					factor = 2;
 
 				float length = fishLength.get(fish)*factor;
@@ -441,7 +441,7 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 
 				lootFishObject->setAttributes(name, zone->getZoneName(), time, length / 100);
 
-				//if (player->hasSkillBox("outdoors_ranger_novice") || player->hasSkillBox("outdoors_scout_novice")) {
+				//if (player->hasSkill("outdoors_ranger_novice") || player->hasSkill("outdoors_scout_novice")) {
 				int xp;
 
 				if (fish == 1)

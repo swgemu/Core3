@@ -117,17 +117,12 @@ namespace server {
 	  	void handleStateTerminalRequest(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 
 	  	void handleDiagnose(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
-	  	void handleFreeResource(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
-	  	void handleGiveFreeResource(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 
 	  	void handleCloneConfirm(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleCloneRequest(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleConsentBox(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 
 	  	void handleDenyTrainingList(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
-
-	  	void handleTeachPlayer(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
-	  	void handleTeachSkill(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 
 	  	void handleInsuranceMenu(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);
 	  	void handleInsureAllConfirm(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args);

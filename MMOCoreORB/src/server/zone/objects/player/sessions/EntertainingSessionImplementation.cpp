@@ -6,9 +6,9 @@
  */
 
 #include "EntertainingSession.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
-#include "server/zone/managers/professions/Performance.h"
-#include "server/zone/managers/professions/PerformanceManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/managers/skill/Performance.h"
+#include "server/zone/managers/skill/PerformanceManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/Races.h"
@@ -31,8 +31,11 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 	//**DECLARATIONS**
 	VectorMap<ManagedReference<CreatureObject*>, EntertainingData>* patrons = NULL;
 
-	PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
+	SkillManager* skillManager = creo->getZoneServer()->getSkillManager();
+
+	PerformanceManager* performanceManager = skillManager->getPerformanceManager();
 	Performance* performance = NULL;
+
 	float enhancementSkill = 0.0f;
 	//int HealingXp = 0;
 	int campModtemp = 100;
@@ -260,7 +263,7 @@ void EntertainingSessionImplementation::doPerformanceAction() {
 
 	Performance* performance = NULL;
 
-	PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
+	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 	ManagedReference<Instrument*> instrument = getInstrument(entertainer);
 
 	if (isDancing())
@@ -475,7 +478,7 @@ void EntertainingSessionImplementation::addEntertainerFlourishBuff() {
 	// Watchers that are in our group for passive buff
 	VectorMap<ManagedReference<CreatureObject*>, EntertainingData>* patrons = NULL;
 
-	PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
+	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 	Performance* performance = NULL;
 
 	ManagedReference<Instrument*> instrument = getInstrument(entertainer);
@@ -541,7 +544,7 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber) {
 		return;
 	}
 
-	PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
+	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 	Performance* performance = NULL;
 	ManagedReference<Instrument*> instrument = getInstrument(entertainer);
 

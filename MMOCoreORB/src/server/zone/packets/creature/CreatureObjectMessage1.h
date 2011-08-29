@@ -49,7 +49,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/creature/variables/SkillBoxList.h"
+#include "server/zone/objects/creature/variables/SkillList.h"
 
 class CreatureObjectMessage1 : public BaseLineMessage {
 public:
@@ -62,8 +62,8 @@ public:
 		DeltaVector<int>* baseHam = creo->getBaseHAM();
 		baseHam->insertToMessage(this);
 
-		SkillBoxList* skillBoxList = creo->getSkillBoxList();
-		skillBoxList->insertToMessage(this);
+		SkillList* skillList = creo->getSkillList();
+		skillList->insertToMessage(this);
 
 		setSize();
 

@@ -42,19 +42,28 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef PROFESSIONMAP_H_
-#define PROFESSIONMAP_H_
+#ifndef SKILLBOXLIST_H_
+#define SKILLBOXLIST_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/scene/variables/DeltaVector.h"
 
-#include "../../objects/creature/professions/Profession.h"
+class Skill;
 
-class ProfessionMap : public HashTable<String, Reference<Profession*> > , public HashTableIterator<String, Reference<Profession*> > {
+class SkillList : public DeltaVector<Reference<Skill*> > {
 public:
-	ProfessionMap() : HashTable<String, Reference<Profession*> >(50) , HashTableIterator<String, Reference<Profession*> >(this) {
-		setNullValue(NULL);
-	}
+	bool add(Skill* skill, DeltaMessage* message = NULL);
+	void remove(Skill* skill, DeltaMessage* message = NULL);
 
+	bool containsSkill(const String& skill);
+
+	bool toBinaryStream(ObjectOutputStream* stream);
+	bool parseFromBinaryStream(ObjectInputStream* stream);
+
+	void getStringList(Vector<String>& skills);
+	void loadFromNames(Vector<String>& skills);
+
+	void insertToMessage(BaseMessage* msg);
 };
 
-#endif /*PROFESSIONMAP_H_*/
+#endif /*SKILLBOXLIST_H_*/

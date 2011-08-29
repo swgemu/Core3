@@ -47,13 +47,12 @@ which carries forward this exception.
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/room/ChatRoom.h"
-
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/ZoneClientSession.h"
@@ -67,19 +66,15 @@ which carries forward this exception.
 #include "server/zone/packets/player/AddFriendMessage.h"
 #include "server/zone/packets/player/AddIgnoreMessage.h"
 #include "server/zone/packets/player/FriendStatusChangeMessage.h"
-
 #include "server/zone/packets/player/PlayerObjectMessage6.h"
 #include "server/zone/packets/player/PlayerObjectMessage8.h"
 #include "server/zone/packets/player/PlayerObjectMessage9.h"
 #include "server/zone/packets/zone/CmdSceneReady.h"
-
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
-#include "server/zone/objects/creature/professions/Certification.h"
 #include "server/zone/objects/player/variables/PlayerList.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/chat/StringIdChatParameter.h"
-
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/area/ActiveArea.h"
@@ -89,9 +84,8 @@ which carries forward this exception.
 #include "events/PlayerRecoveryEvent.h"
 #include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
-#include "server/zone/objects/creature/professions/SkillBox.h"
+#include "server/zone/objects/creature/variables/Skill.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
@@ -99,18 +93,15 @@ which carries forward this exception.
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
-
 #include "badges/Badge.h"
 #include "badges/Badges.h"
-
 #include "server/zone/packets/player/BadgesResponseMessage.h"
-
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/weather/WeatherManager.h"
-
 #include "events/PlayerDisconnectEvent.h"
 #include "events/PlayerRecoveryEvent.h"
+#include "server/zone/objects/player/variables/Ability.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -128,18 +119,18 @@ void PlayerObjectImplementation::initializeTransientMembers() {
 	 * in the schematic group.
 	 */
 	ZoneServer* zoneServer = server->getZoneServer();
-	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+	SkillManager* skillManager = SkillManager::instance();
 
-	if (!parent->isCreatureObject() || parent == NULL)
+	if (parent == NULL || !parent->isCreatureObject())
 		return;
 
 	CreatureObject* creature = (CreatureObject*) parent.get();
 
-	SkillBoxList* playerSkillBoxList = creature->getSkillBoxList();
+	SkillList* playerSkillList = creature->getSkillList();
 
-	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
-		SkillBox* skillBox = playerSkillBoxList->get(i);
-		professionManager->awardDraftSchematics(skillBox, _this, false);
+	for(int i = 0; i < playerSkillList->size(); ++i) {
+		Skill* skill = playerSkillList->get(i);
+		skillManager->awardDraftSchematics(skill, _this, false);
 	}
 
 }
@@ -550,91 +541,71 @@ void PlayerObjectImplementation::addWaypoint(const String& planet, float positio
 	addWaypoint(obj, false, notifyClient);
 }
 
-void PlayerObjectImplementation::addSkills(Vector<String>& skills, bool notifyClient) {
-	if (skills.size() == 0)
-		return;
-
+void PlayerObjectImplementation::addAbility(Ability* ability, bool notifyClient) {
 	if (notifyClient) {
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
 		msg->startUpdate(0);
-
-		skillList.add(skills.get(0), msg, skills.size());
-
-		for (int i = 1; i < skills.size(); ++i)
-			skillList.add(skills.get(i), msg, 0);
-
+		abilityList.add(ability, msg, 1);
 		msg->close();
-
 		sendMessage(msg);
 	} else {
-		for (int i = 0; i < skills.size(); ++i)
-			skillList.add(skills.get(i));
+		abilityList.add(ability);
 	}
 }
 
-void PlayerObjectImplementation::addSkills(Vector<Certification*>& skills, bool notifyClient) {
-	if (skills.size() == 0)
+void PlayerObjectImplementation::addAbilities(Vector<Ability*>& abilities, bool notifyClient) {
+	if (abilities.size() == 0)
 		return;
 
 	if (notifyClient) {
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
 		msg->startUpdate(0);
 
-		skillList.add(skills.get(0)->getName(), msg, skills.size());
+		abilityList.add(abilities.get(0), msg, abilities.size());
 
-		for (int i = 1; i < skills.size(); ++i)
-			skillList.add(skills.get(i)->getName(), msg, 0);
+		for (int i = 1; i < abilities.size(); ++i)
+			abilityList.add(abilities.get(i), msg, 0);
 
 		msg->close();
 
 		sendMessage(msg);
 	} else {
-		for (int i = 0; i < skills.size(); ++i)
-			skillList.add(skills.get(i)->getName());
+		for (int i = 0; i < abilities.size(); ++i)
+			abilityList.add(abilities.get(i));
 	}
 }
 
-void PlayerObjectImplementation::removeSkills(Vector<String>& skills, bool notifyClient) {
-	if (skills.size() == 0)
-		return;
-
+void PlayerObjectImplementation::removeAbility(Ability* ability, bool notifyClient) {
 	if (notifyClient) {
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
 		msg->startUpdate(0);
-
-		skillList.remove(skillList.find(skills.get(0)), msg, skills.size());
-
-		for (int i = 1; i < skills.size(); ++i)
-			skillList.remove(skillList.find(skills.get(i)), msg, 0);
-
+		abilityList.remove(abilityList.find(ability), msg, 1);
 		msg->close();
-
 		sendMessage(msg);
 	} else {
-		for (int i = 0; i < skills.size(); ++i)
-			skillList.remove(skillList.find(skills.get(i)));
+		abilityList.remove(abilityList.find(ability));
 	}
 }
 
-void PlayerObjectImplementation::removeSkills(Vector<Certification*>& skills, bool notifyClient) {
-	if (skills.size() == 0)
+void PlayerObjectImplementation::removeAbilities(Vector<Ability*>& abilities, bool notifyClient) {
+	if (abilities.size() == 0)
 		return;
 
 	if (notifyClient) {
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this);
 		msg->startUpdate(0);
 
-		skillList.remove(skillList.find(skills.get(0)->getName()), msg, skills.size());
+		abilityList.remove(abilityList.find(abilities.get(0)), msg, abilities.size());
 
-		for (int i = 1; i < skills.size(); ++i)
-			skillList.remove(skillList.find(skills.get(i)->getName()), msg, 0);
+		for (int i = 1; i < abilities.size(); ++i)
+			abilityList.remove(abilityList.find(abilities.get(i)), msg, 0);
 
 		msg->close();
 
 		sendMessage(msg);
 	} else {
-		for (int i = 0; i < skills.size(); ++i)
-			skillList.remove(skillList.find(skills.get(i)->getName()));
+		for (int i = 0; i < abilities.size(); ++i)
+			abilityList.remove(abilityList.find(abilities.get(i)));
 	}
 }
 
@@ -719,16 +690,17 @@ void PlayerObjectImplementation::removeSchematics(Vector<ManagedReference<DraftS
 	 * in the schematic group.
 	 */
 	ZoneServer* zoneServer = server->getZoneServer();
-	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+	SkillManager* skillManager = zoneServer->getSkillManager();
 	CreatureObject* player = (CreatureObject*) getParentRecursively(SceneObject::PLAYERCREATURE);
 
 	if(player == NULL)
 		return;
 
-	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
+	SkillList* playerSkillBoxList = player->getSkillList();
+
 	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
-		SkillBox* skillBox = playerSkillBoxList->get(i);
-		professionManager->awardDraftSchematics(skillBox, _this, true);
+		Skill* skillBox = playerSkillBoxList->get(i);
+		skillManager->awardDraftSchematics(skillBox, _this, true);
 	}
 
 	schematicList.awardLimitedUseSchematics();
@@ -757,15 +729,16 @@ void PlayerObjectImplementation::removeSchematic(DraftSchematic* schematic, bool
 	 * in the schematic group.
 	 */
 	ZoneServer* zoneServer = server->getZoneServer();
-	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+	SkillManager* professionManager = zoneServer->getSkillManager();
 	CreatureObject* player = (CreatureObject*) getParentRecursively(SceneObject::PLAYERCREATURE);
 
 	if(player == NULL)
 		return;
 
-	SkillBoxList* playerSkillBoxList = player->getSkillBoxList();
+	SkillList* playerSkillBoxList = player->getSkillList();
+
 	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
-		SkillBox* skillBox = playerSkillBoxList->get(i);
+		Skill* skillBox = playerSkillBoxList->get(i);
 		professionManager->awardDraftSchematics(skillBox, _this, true);
 	}
 

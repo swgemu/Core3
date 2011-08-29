@@ -42,13 +42,21 @@ which carries forward this exception.
 */
 
 #include "PlayerCreationManager.h"
+#include "ProfessionDefaultsInfo.h"
 #include "RacialCreationData.h"
-#include "ProfessionInfo.h"
 #include "HairStyleInfo.h"
+#include "../PlayerManager.h"
+#include "server/chat/ChatManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/packets/MessageCallback.h"
+#include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
+#include "server/zone/packets/charcreation/ClientCreateCharacterSuccess.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/datatables/DataTableIff.h"
 #include "server/zone/templates/datatables/DataTableRow.h"
-#include "server/zone/templates/creation/ProfessionDataForm.h"
+#include "server/zone/templates/creation/SkillDataForm.h"
+#include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
+#include "server/ServerCore.h"
 
 PlayerCreationManager::PlayerCreationManager()
 		: Logger("PlayerCreationManager") {
@@ -56,12 +64,19 @@ PlayerCreationManager::PlayerCreationManager()
 	setLogging(true);
 	setGlobalLogging(false);
 
+	zoneServer = ServerCore::getZoneServer();
+
 	racialCreationData.setNoDuplicateInsertPlan();
-	professionInfo.setNoDuplicateInsertPlan();
+	professionDefaultsInfo.setNoDuplicateInsertPlan();
 	hairStyleInfo.setNoDuplicateInsertPlan();
 
+	startingCash = 100;
+	startingBank = 1000;
+
+	loadLuaConfig();
 	loadRacialCreationData();
-	loadProfessionInfo();
+	loadDefaultCharacterItems();
+	loadProfessionDefaultsInfo();
 	loadHairStyleInfo();
 }
 
@@ -122,7 +137,7 @@ void PlayerCreationManager::loadRacialCreationData() {
 	info("Loaded " + String::valueOf(racialCreationData.size()) + " playable species.");
 }
 
-void PlayerCreationManager::loadProfessionInfo() {
+void PlayerCreationManager::loadProfessionDefaultsInfo() {
 	TemplateManager* templateManager = TemplateManager::instance();
 	IffStream* iffStream = templateManager->openIffFile("creation/profession_defaults.iff");
 
@@ -131,27 +146,27 @@ void PlayerCreationManager::loadProfessionInfo() {
 		return;
 	}
 
-	ProfessionDataForm pfdt;
+	SkillDataForm pfdt;
 	pfdt.readObject(iffStream);
 
 	delete iffStream;
 
 	//Load the data into useful structs and store them in a map.
 	for (int i = 0; i < pfdt.getTotalPaths(); ++i) {
-		String name = pfdt.getProfessionNameAt(i);
-		String path = pfdt.getPathByProfessionName(name);
+		String name = pfdt.getSkillNameAt(i);
+		String path = pfdt.getPathBySkillName(name);
 
 		iffStream = templateManager->openIffFile(path);
 
 		if (iffStream == NULL)
 			continue;
 
-		Reference<ProfessionInfo*> pi = new ProfessionInfo();
-		pi->readObject(iffStream);
+		Reference<ProfessionDefaultsInfo*> pdi = new ProfessionDefaultsInfo();
+		pdi->readObject(iffStream);
 
 		delete iffStream;
 
-		professionInfo.put(name, pi);
+		professionDefaultsInfo.put(name, pdi);
 	}
 
 	//Now we want to load the profession mods.
@@ -169,19 +184,60 @@ void PlayerCreationManager::loadProfessionInfo() {
 		row->getValue(0, key);
 
 		//Check if the professionInfo for this exists.
-		Reference<ProfessionInfo*> pi = professionInfo.get(key);
+		Reference<ProfessionDefaultsInfo*> pdi = professionDefaultsInfo.get(key);
 
-		if (pi == NULL)
+		if (pdi == NULL)
 			continue;
 
 		for (int i = 1; i < 10; ++i) {
 			int value = 0;
 			row->getValue(i, value);
-			pi->setAttributeMod(i - 1, value);
+			pdi->setAttributeMod(i - 1, value);
 		}
 	}
 
-	info("Loaded " + String::valueOf(professionInfo.size()) + " creation professions.");
+	info("Loaded " + String::valueOf(professionDefaultsInfo.size()) + " creation professions.");
+}
+
+void PlayerCreationManager::loadDefaultCharacterItems() {
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("creation/default_pc_equipment.iff");
+
+	if (iffStream == NULL) {
+		error("Couldn't load creation default items.");
+		return;
+	}
+
+	iffStream->openForm('LOEQ');
+
+	uint32 version = iffStream->getNextFormType();
+	Chunk* versionChunk = iffStream->openForm(version);
+
+	for (int i = 0; i < versionChunk->getChunksSize(); ++i) {
+		Chunk* ptmpChunk = iffStream->openForm('PTMP');
+
+		String templateName;
+		Chunk* nameChunk = iffStream->openChunk('NAME');
+		nameChunk->readString(templateName);
+		iffStream->closeChunk('NAME');
+
+		SortedVector<String> items;
+
+		for (int j = 1; j < ptmpChunk->getChunksSize(); ++j) {
+			Chunk* itemChunk = iffStream->openChunk('ITEM');
+			String itemTemplate;
+			int unk1 = itemChunk->readInt();
+			itemChunk->readString(itemTemplate);
+			itemTemplate = itemTemplate.replaceFirst("shared_", "");
+			items.put(itemTemplate);
+			iffStream->closeChunk('ITEM');
+		}
+
+		defaultCharacterEquipment.put(templateName, items);
+		iffStream->closeForm('PTMP');
+	}
+
+	iffStream->closeForm(version);
+	iffStream->closeForm('LOEQ');
 }
 
 void PlayerCreationManager::loadHairStyleInfo() {
@@ -218,29 +274,210 @@ void PlayerCreationManager::loadHairStyleInfo() {
 	info("Loaded " + String::valueOf(totalHairStyles) + " total creation hair styles.");
 }
 
-void PlayerCreationManager::createCharacter() {
-	//Validate character name
+void PlayerCreationManager::loadLuaConfig() {
+	info("Loading configuration script.");
 
-	//Validate racefile
-	//Validate customization
+	Lua* lua = new Lua();
+	lua->init();
 
-	//validate location - ignore? they choose location in tutorial...
+	lua->runFile("scripts/managers/player_creation_manager.lua");
 
-	//validate hair template is valid for the list
-	//validate hair customization is valid for this hair template
+	startingCash = lua->getGlobalInt("startingCash");
+	startingBank = lua->getGlobalInt("startingBank");
 
-	//validate profession is in starting profession list
+	delete lua;
+	lua = NULL;
+}
 
-	//unknown byte possibly pre-9 jedi flag
+bool PlayerCreationManager::createCharacter(MessageCallback* data) {
+	TemplateManager* templateManager = TemplateManager::instance();
 
-	//validate character height
+	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
+	ZoneClientSession* client = data->getClient();
+
+	//Get all the data and validate it.
+	UnicodeString characterName;
+	callback->getCharacterName(characterName);
+
+	//TODO: Validate character name
+
+	String raceFile;
+	callback->getRaceFile(raceFile);
+
+	uint32 serverObjectCRC = raceFile.hashCode();
+
+	PlayerCreatureTemplate* playerTemplate = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(serverObjectCRC));
+
+	if (playerTemplate == NULL) {
+		error("Unknown player template selected.");
+		return false;
+	}
+
+	String fileName = playerTemplate->getTemplateFileName();
+	String clientTemplate = templateManager->getTemplateFile(playerTemplate->getClientObjectCRC());
+
+	RacialCreationData* raceData = racialCreationData.get(fileName);
+
+	if (raceData == NULL)
+		raceData = racialCreationData.get(0); //Just get the first race, since they tried to create a race that doesn't exist.
+
+	String profession, customization, hairTemplate, hairCustomization;
+	callback->getSkill(profession);
+	callback->getCustomizationString(customization);
+	callback->getHairObject(hairTemplate);
+	callback->getHairCustomization(hairCustomization);
+
+	float height = callback->getHeight();
+	height = MAX(MIN(height, playerTemplate->getMaxScale()), playerTemplate->getMinScale());
 
 	//validate biography
+	UnicodeString bio;
+	callback->getBiography(bio);
 
-	//tutorial flag selected?
-	//insertIntoTutorial?
+	bool doTutorial = callback->getTutorialFlag();
+
+	ManagedReference<CreatureObject*> playerCreature = dynamic_cast<CreatureObject*>(zoneServer->createObject(serverObjectCRC, 2));
+
+	if (playerCreature == NULL) {
+		error("Could not create player with template: " + raceFile);
+		return false;
+	}
+
+	playerCreature->createChildObjects();
+	playerCreature->setHeight(height);
+	playerCreature->setCustomObjectName(characterName, false); //TODO: Validate with Name Manager.
+
+	client->setPlayer(playerCreature);
+	playerCreature->setClient(client);
+
+	addCustomization(playerCreature, customization);
+	addHair(playerCreature, hairTemplate, hairCustomization);
+	addProfessionStartingItems(playerCreature, profession, clientTemplate);
+	addStartingItems(playerCreature, clientTemplate);
+	addRacialMods(playerCreature, fileName);
+
+	ManagedReference<PlayerObject*> ghost = playerCreature->getPlayerObject();
+
+	if (ghost != NULL) {
+		PlayerManager* playerManager = zoneServer->getPlayerManager();
+
+		if (doTutorial)
+			playerManager->createTutorialBuilding(playerCreature);
+		else
+			playerManager->createSkippedTutorialBuilding(playerCreature);
+
+		ValidatedPosition* lastValidatedPosition = ghost->getLastValidatedPosition();
+		lastValidatedPosition->update(playerCreature);
+
+		//generateHologrindProfessions(playerCreature);
+
+		SkillManager::instance()->addAbility(ghost, "admin", false);
+
+		ghost->setBiography(bio);
+	}
+
+	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(playerCreature->getObjectID());
+	playerCreature->sendMessage(msg);
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+	chatManager->addPlayer(playerCreature);
+
+	return true;
 }
 
 bool PlayerCreationManager::validateCharacterName(const String& characterName) {
 	return true;
+}
+
+void PlayerCreationManager::addStartingItems(CreatureObject* creature, const String& clientTemplate) {
+	SortedVector<String>* items = NULL;
+
+	if (!defaultCharacterEquipment.contains(clientTemplate))
+		items = &defaultCharacterEquipment.get(0);
+	else
+		items = &defaultCharacterEquipment.get(clientTemplate);
+
+	for (int i = 0; i < items->size(); ++i) {
+		String itemTemplate = items->get(i);
+
+		ManagedReference<SceneObject*> item = zoneServer->createObject(itemTemplate.hashCode(), 1);
+
+		if (item != NULL)
+			creature->addObject(item, 4, false);
+	}
+}
+
+void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature, const String& profession, const String& clientTemplate) {
+	ProfessionDefaultsInfo* professionData = professionDefaultsInfo.get(profession);
+
+	if (professionData == NULL)
+		professionData = professionDefaultsInfo.get(0);
+
+	Reference<Skill*> startingSkill = professionData->getSkill();
+
+	if (startingSkill != NULL)
+		creature->addSkill(startingSkill, false);
+
+	SortedVector<String>* itemTemplates = professionData->getProfessionItems(clientTemplate);
+
+	if (itemTemplates == NULL)
+		return;
+
+	for (int i = 0; i < itemTemplates->size(); ++i) {
+		String itemTemplate = itemTemplates->get(i);
+
+		ManagedReference<SceneObject*> item = zoneServer->createObject(itemTemplate.hashCode(), 1);
+
+		if (item != NULL)
+			creature->addObject(item, 4, false);
+	}
+
+	//Set the hams.
+	for (int i = 0; i < 9; ++i) {
+		int mod = professionData->getAttributeMod(i);
+		creature->setBaseHAM(i, mod, false);
+		creature->setHAM(i, mod, false);
+		creature->setMaxHAM(i, mod, false);
+	}
+}
+
+void PlayerCreationManager::addHair(CreatureObject* creature, const String& hairTemplate, const String& hairCustomization) {
+	if (hairTemplate.isEmpty())
+		return;
+
+	HairStyleInfo* hairInfo = hairStyleInfo.get(hairTemplate);
+
+	if (hairInfo == NULL)
+		hairInfo = hairStyleInfo.get(0);
+
+	ManagedReference<SceneObject*> hair = zoneServer->createObject(hairTemplate.hashCode(), 1);
+
+	//TODO: Validate hairCustomization
+	if (hair == NULL || !hair->isTangibleObject())
+		return;
+
+	TangibleObject* tanoHair = (TangibleObject*) hair.get();
+	tanoHair->setCustomizationString(hairCustomization);
+
+	creature->addObject(tanoHair, 4);
+}
+
+void PlayerCreationManager::addCustomization(CreatureObject* creature, const String& customizationString) {
+	//TODO: Validate customizationString
+
+	creature->setCustomizationString(customizationString);
+}
+
+void PlayerCreationManager::addRacialMods(CreatureObject* creature, const String& race) {
+	Reference<RacialCreationData*> racialData = racialCreationData.get(race);
+
+	if (racialData == NULL)
+		racialData = racialCreationData.get(0);
+
+	for (int i = 0; i < 9; ++i) {
+		int mod = racialData->getAttributeMod(i) + creature->getBaseHAM(i);
+		creature->setBaseHAM(i, mod, false);
+		creature->setHAM(i, mod, false);
+		creature->setMaxHAM(i, mod, false);
+	}
 }

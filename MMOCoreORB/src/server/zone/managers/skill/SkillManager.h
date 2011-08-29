@@ -41,30 +41,15 @@ which carries forward this exception.
 
 */
 
-#ifndef PLAYERCREATIONMANAGER_H_
-#define PLAYERCREATIONMANAGER_H_
+#ifndef SKILLMANAGER_H_
+#define SKILLMANAGER_H_
 
 #include "engine/engine.h"
 
+class Ability;
 class Skill;
-
-namespace server {
-namespace zone {
-	class ZoneServer;
-}
-}
-
-using namespace server::zone;
-
-namespace server {
-namespace zone {
-namespace packets {
-	class MessageCallback;
-}
-}
-}
-
-using namespace server::zone::packets;
+class PerformanceManager;
+class ImageDesignManager;
 
 namespace server {
 namespace zone {
@@ -80,59 +65,69 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
-namespace managers {
+namespace objects {
 namespace player {
-namespace creation {
+	class PlayerObject;
+}
+}
+}
+}
 
-class RacialCreationData;
-class HairStyleInfo;
-class ProfessionDefaultsInfo;
+using namespace server::zone::objects::player;
 
-class PlayerCreationManager : public Singleton<PlayerCreationManager>, public Logger, public Object {
-	ManagedWeakReference<ZoneServer*> zoneServer;
+namespace server {
+namespace zone {
+namespace managers {
+namespace skill {
 
-	VectorMap<String, Reference<RacialCreationData*> > racialCreationData;
-	VectorMap<String, Reference<ProfessionDefaultsInfo*> > professionDefaultsInfo;
-	VectorMap<String, SortedVector<String> > defaultCharacterEquipment;
-	VectorMap<String, Reference<HairStyleInfo*> > hairStyleInfo;
+class SkillManager : public Singleton<SkillManager>, public Logger, public Object {
+	PerformanceManager* performanceManager;
+	ImageDesignManager* imageDesignManager;
 
-	int startingCash;
-	int startingBank;
+	HashTable<String, Reference<Ability*> > abilityMap;
+	HashTable<String, Reference<Skill*> > skillMap;
 
-	void loadLuaConfig();
-	void loadRacialCreationData();
-	void loadDefaultCharacterItems();
-	void loadProfessionDefaultsInfo();
-	void loadHairStyleInfo();
-
-	void addCustomization(CreatureObject* creature, const String& customizationString);
-	void addHair(CreatureObject* creature, const String& hairTemplate, const String& hairCustomization);
-	void addRacialMods(CreatureObject* creature, const String& race);
-	void addStartingItems(CreatureObject* creature, const String& clientTemplate);
-	void addProfessionStartingItems(CreatureObject* creature, const String& profession, const String& clientTemplate);
-	//void generateHologrindProfessions(CreatureObject* creature);
+	Reference<Skill*> rootNode;
 
 public:
-	PlayerCreationManager();
-	~PlayerCreationManager();
+	SkillManager();
+	~SkillManager();
 
-	/**
-	 * Validates the character's name.
-	 * @param characterName The character's name.
-	 */
-	bool validateCharacterName(const String& characterName);
-	/**
-	 * Attempts to create a character, validating the information passed back by the client.
-	 */
-	bool createCharacter(MessageCallback* data);
+	void loadClientData();
+
+	void addAbility(PlayerObject* ghost, const String& abilityName, bool notifyClient = true);
+	void removeAbility(PlayerObject* ghost, const String& abilityName, bool notifyClient = true);
+
+	void addAbilities(PlayerObject* ghost, Vector<String>& abilityNames, bool notifyClient = true);
+	void removeAbilities(PlayerObject* ghost, Vector<String>& abilityNames, bool notifyClient = true);
+
+	void awardSkill(const String& skillName, CreatureObject* creature, bool notifyClient = true, bool awardRequiredSkills = false);
+	void awardDraftSchematics(Skill* skill, PlayerObject* ghost, bool notifyClient = true);
+
+	void surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient = true, bool surrenderParentSkills = true);
+
+	Skill* getSkill(const String& skillName) {
+		return skillMap.get(skillName);
+	}
+
+	Ability* getAbility(const String& abilityName) {
+		return abilityMap.get(abilityName);
+	}
+
+	PerformanceManager* getPerformanceManager() {
+		return performanceManager;
+	}
+
+	ImageDesignManager* getImageDesignManager() {
+		return imageDesignManager;
+	}
 };
 
 }
 }
 }
 }
-}
 
-using namespace server::zone::managers::player::creation;
+using namespace server::zone::managers::skill;
 
-#endif // PLAYERCREATIONMANAGER_H_
+#endif // SKILLMANAGER_H_

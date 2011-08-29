@@ -46,7 +46,7 @@ which carries forward this exception.
 #define SURRENDERSKILLCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 
 
 class SurrenderSkillCommand : public QueueCommand {
@@ -65,8 +65,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ProfessionManager* prof = server->getZoneServer()->getProfessionManager();
-		prof->surrenderSkillBox(arguments.toString(), (CreatureObject*)creature, false, true);
+		SkillManager* skillManager = SkillManager::instance();
+		skillManager->surrenderSkill(arguments.toString(), creature, false, true);
 
 		return SUCCESS;
 	}

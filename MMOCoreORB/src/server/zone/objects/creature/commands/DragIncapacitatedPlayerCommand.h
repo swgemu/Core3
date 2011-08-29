@@ -205,7 +205,7 @@ public:
 		Locker clocker(targetPlayer, creature);
 
 		//Determine if the player has the proper skill.
-		if (!player->hasSkillBox("science_medic_injury_speed_02")) {
+		if (!player->hasSkill("science_medic_injury_speed_02")) {
 			player->sendSystemMessage("healing_response", "healing_response_a9"); //"You lack the ability to drag incapacitated players!"
 			return GENERALERROR;
 		}

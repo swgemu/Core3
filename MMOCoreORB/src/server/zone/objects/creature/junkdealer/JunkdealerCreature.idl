@@ -54,8 +54,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 
-include server.zone.objects.creature.professions.Profession;
-include server.zone.objects.creature.professions.ProfessionReference;
+include server.zone.objects.creature.variables.Skill;
 
 class JunkdealerCreature extends CreatureObject {
 

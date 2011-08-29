@@ -128,7 +128,7 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 		menuResponse->addRadialMenuItem(62, 3, "Repair");*/
 
 	if (player->isInRange(_this, 10.0f)
-			&& !player->isInCombat() && player->hasSkillBox("outdoors_scout_novice")
+			&& !player->isInCombat() && player->hasSkill("outdoors_scout_novice")
 			&& isDead() && canHarvestMe(player)) {
 
 		menuResponse->addRadialMenuItem(112, 3, "@sui:harvest_corpse");
@@ -288,7 +288,7 @@ bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
 			return false;
 	}
 
-	if (player->hasSkillBox("outdoors_scout_novice"))
+	if (player->hasSkill("outdoors_scout_novice"))
 		return true;
 	else
 		return false;

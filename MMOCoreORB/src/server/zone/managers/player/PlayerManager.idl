@@ -234,5 +234,5 @@ class PlayerManager extends Observer implements Logger {
 	 * Generates 5 random hologrind professions for the player.
 	 * @param player The player whose hologrind professions should be set.
 	 */
-	public native void generateHologrindProfessions(CreatureObject player);
+	public native void generateHologrindSkills(CreatureObject player);
 }

@@ -46,27 +46,15 @@ package server.zone.objects.creature;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.chat.StringIdChatParameter;
-import server.zone.objects.creature.professions.SkillBox;
 import server.zone.objects.group.GroupObject;
 import server.zone.objects.guild.GuildObject;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.managers.objectcontroller.ObjectController;
-//import server.zone.objects.player.professions.SkillBox;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.area.ActiveArea;
-include server.zone.objects.scene.variables.DeltaVector;
-include server.zone.objects.creature.variables.CommandQueueActionVector;
-include server.zone.objects.scene.variables.DeltaVectorMap;
-include server.zone.objects.creature.variables.SkillBoxList;
-include server.zone.objects.creature.variables.CommandQueueAction;
-include server.zone.objects.creature.CreatureLocomotion;
-include server.zone.objects.creature.CreaturePosture;
-include server.zone.objects.creature.CreatureState;
-include server.zone.objects.creature.SpeedMultiplierModChanges;
-
 import engine.core.ManagedObject;
 import engine.lua.LuaObject;
 import system.util.Vector;
@@ -75,12 +63,21 @@ import system.lang.Time;
 import server.zone.Zone;
 import system.util.SortedVector;
 import server.zone.templates.SharedObjectTemplate;
-include server.zone.objects.creature.variables.CooldownTimerMap;
-include server.zone.objects.creature.buffs.BuffList;
-include server.zone.objects.creature.damageovertime.DamageOverTimeList;
 import server.zone.objects.creature.buffs.Buff;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.ZoneClientSession;
+include server.zone.objects.creature.variables.CooldownTimerMap;
+include server.zone.objects.creature.buffs.BuffList;
+include server.zone.objects.creature.damageovertime.DamageOverTimeList;
+include server.zone.objects.scene.variables.DeltaVector;
+include server.zone.objects.creature.variables.CommandQueueActionVector;
+include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.creature.variables.SkillList;
+include server.zone.objects.creature.variables.CommandQueueAction;
+include server.zone.objects.creature.CreaturePosture;
+include server.zone.objects.creature.CreatureState;
+include server.zone.objects.creature.SpeedMultiplierModChanges;
+include server.zone.objects.creature.variables.Skill;
 
 class CreatureObject extends TangibleObject {
 	protected transient ZoneClientSession owner;
@@ -162,9 +159,9 @@ class CreatureObject extends TangibleObject {
 	
 	protected string templateString;
 	
-	// Profession stuff
+	// Skill stuff
 	@dereferenced
-	protected SkillBoxList skillBoxList;
+	protected SkillList skillList;
 		
 	@dereferenced
 	protected DeltaVectorMap<string, long> skillModList;
@@ -227,6 +224,8 @@ class CreatureObject extends TangibleObject {
 	public native void initializeMembers();
 	
 	public native void finalize();
+	
+	public native void createChildObjects();
 
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
@@ -709,7 +708,7 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	@local
-	public native void addSkillBox(SkillBox skillBox, boolean notifyClient = true);
+	public native void addSkill(Skill skill, boolean notifyClient = true);
 	
 	/**
 	 * Adds the specified skillbox to this object
@@ -718,7 +717,7 @@ class CreatureObject extends TangibleObject {
 	 * @param skillbox skillbox name to add
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
-	public native void addSkillBox(final string skillBox, boolean notifyClient = true);
+	public native void addSkill(final string skill, boolean notifyClient = true);
 	
 	/**
 	 * Removes the specified skillbox from this object
@@ -728,7 +727,7 @@ class CreatureObject extends TangibleObject {
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	@local
-	public native void removeSkillBox(SkillBox skillBox, boolean notifyClient = true);
+	public native void removeSkill(Skill skill, boolean notifyClient = true);
 	
 	/**
 	 * Removes the specified skillbox from this object
@@ -737,7 +736,7 @@ class CreatureObject extends TangibleObject {
 	 * @param skillBox skillBox to remove
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
-	public native void removeSkillBox(final string skillBox, boolean notifyClient = true);
+	public native void removeSkill(final string skill, boolean notifyClient = true);
 	
 	/**
 	 * Adds new value to the specified skillmod (add a negative number to substract)
@@ -1358,16 +1357,16 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	@local
-	public SkillBoxList getSkillBoxList() {
-		return skillBoxList;
+	public SkillList getSkillList() {
+		return skillList;
 	}
 	
 	public long getSkillMod(final string skillmod) {
 		return skillModList.get(skillmod);
 	}
 	
-	public boolean hasSkillBox(final string skillBox) {
-		return skillBoxList.containsSkillBox(skillBox);
+	public boolean hasSkill(final string skill) {
+		return skillList.containsSkill(skill);
 	}
 	
 	@local

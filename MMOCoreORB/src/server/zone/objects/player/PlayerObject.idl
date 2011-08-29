@@ -51,22 +51,8 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.commands.QueueCommand;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.structure.StructureObject;
-include server.zone.objects.creature.professions.Certification;
-include server.zone.objects.draftschematic.DraftSchematic;
-include server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.ZoneClientSession;
-include server.zone.objects.scene.variables.DeltaVectorMap;
-include server.zone.objects.scene.variables.DeltaVector;
 import server.zone.objects.waypoint.WaypointObject;
-include server.zone.objects.player.variables.WaypointList;
-include server.zone.objects.creature.professions.Skill;
-include server.zone.objects.player.variables.SkillList;
-include server.zone.objects.player.variables.FriendList;
-include server.zone.objects.player.variables.IgnoreList;
-include server.zone.objects.player.variables.SchematicList;
-include server.zone.objects.player.variables.FactionStandingList;
-include server.zone.objects.player.badges.Badges;
-include server.zone.objects.player.TradeContainer;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
 import system.util.Vector;
@@ -81,8 +67,22 @@ import server.zone.objects.tangible.tool.SurveyTool;
 import server.zone.objects.tangible.tool.CraftingTool;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
-include server.zone.objects.player.ValidatedPosition;
 import server.zone.objects.player.sui.SuiBox;
+include server.zone.objects.player.ValidatedPosition;
+include server.zone.objects.player.variables.WaypointList;
+include server.zone.objects.creature.variables.Skill;
+include server.zone.objects.player.variables.Ability;
+include server.zone.objects.player.variables.AbilityList;
+include server.zone.objects.player.variables.FriendList;
+include server.zone.objects.player.variables.IgnoreList;
+include server.zone.objects.player.variables.SchematicList;
+include server.zone.objects.player.variables.FactionStandingList;
+include server.zone.objects.player.badges.Badges;
+include server.zone.objects.player.TradeContainer;
+include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.scene.variables.DeltaVector;
+include server.zone.objects.draftschematic.DraftSchematic;
+include server.zone.objects.manufactureschematic.ManufactureSchematic;
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
@@ -128,7 +128,7 @@ class PlayerObject extends IntangibleObject {
 	protected WaypointList waypointList;
 	
 	@dereferenced
-	protected SkillList skillList;
+	protected AbilityList abilityList;
 		
 	@dereferenced
 	protected FriendList friendList;
@@ -397,35 +397,18 @@ class PlayerObject extends IntangibleObject {
 	public native void removeWaypoint(unsigned long waypointID, boolean notifyClient = true);
 	
 	/**
-	 * Adds new queue commands to player
+	 * Adds new abilities commands to player
 	 * @pre { this is locked }
 	 * @post { this is locked }
-	 * @param skills Vector of skills to add
+	 * @param abilities Vector of abilities to add
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
 	@local
-	public native void addSkills(@dereferenced Vector<string> skills, boolean notifyClient = true);
+	public native void addAbilities(@dereferenced Vector<Ability> abilities, boolean notifyClient = true);
 	
-	/**
-	 * Adds new certifications to player
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 * @param skills Vector of skills to add
-	 * @param notifyClient determines whether to update the client with the changes
-	 */
 	@local
-	public native void addSkills(@dereferenced Vector<Certification> skills, boolean notifyClient = true);
-	
-	/**
-	 * Removes queue commands from player
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 * @param skills Vector of skills to add
-	 * @param notifyClient determines whether to update the client with the changes
-	 */
-	@local
-	public native void removeSkills(@dereferenced Vector<string> skills, boolean notifyClient = true);
-	
+	public native void addAbility(Ability ability, boolean notifyClient = true);
+
 	/**
 	 * Removes certifications from player
 	 * @pre { this is locked }
@@ -434,7 +417,11 @@ class PlayerObject extends IntangibleObject {
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
 	@local
-	public native void removeSkills(@dereferenced Vector<Certification> skills, boolean notifyClient = true);
+	public native void removeAbilities(@dereferenced Vector<Ability> abilities, boolean notifyClient = true);
+
+	@local
+	public native void removeAbility(Ability ability, boolean notifyClient = true);
+	
 	
 	@local
 	public native void addSchematics(@dereferenced Vector<DraftSchematic> schematics, boolean notifyClient = true);
@@ -886,9 +873,14 @@ class PlayerObject extends IntangibleObject {
 		return waypointList.contains(objectID);
 	}
 	
+	/**
+	 * Checks to see if this player object has the specified ability.
+	 * @param ability The ability to search for.
+	 * @return True if the player has the ability.
+	 */
 	@local
-	public boolean hasSkill(final string skill) {
-		return skillList.contains(skill);
+	public boolean hasAbility(final string ability) {
+		return abilityList.contains(ability);
 	}
 
 	public boolean hasCommandMessageString(unsigned int actionCRC) {
@@ -959,8 +951,8 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	@local
-	public SkillList getSkills() {
-		return skillList;
+	public AbilityList getAbilityList() {
+		return abilityList;
 	}
 	
 	@local
@@ -1134,15 +1126,6 @@ class PlayerObject extends IntangibleObject {
 	
 	public unsigned int getClientLastMovementStamp() {
 		return clientLastMovementStamp;
-	}
-	
-	public void setTeachingOrLearning(boolean value) {
-	    teachingOrLearning = value;
-	}
-	
-	@local
-	public boolean isTeachingOrLearning() {
-	    return teachingOrLearning;
 	}
 	
 	public int getCenteredBonus() {

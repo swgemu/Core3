@@ -26,7 +26,7 @@
 
 #include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
-#include "server/zone/objects/creature/professions/SkillBox.h"
+#include "server/zone/objects/creature/variables/SkillBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/listbox/teachplayerlistbox/TeachPlayerListBox.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -36,7 +36,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/professions/SkillManager.h"
 
 #include "server/chat/StringIdChatParameter.h"
 
@@ -57,13 +57,13 @@ void PlayerCreatureImplementation::initializeTransientMembers() {
 	 * in the schematic group.
 	 */
 	ZoneServer* zoneServer = server->getZoneServer();
-	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+	SkillManager* professionManager = zoneServer->getSkillManager();
 
 	SkillBoxList* playerSkillBoxList = getSkillBoxList();
 
 	if (getPlayerObject() != NULL) {
 		for(int i = 0; i < playerSkillBoxList->size(); ++i) {
-			SkillBox* skillBox = playerSkillBoxList->get(i);
+			Skill* skillBox = playerSkillBoxList->get(i);
 			professionManager->awardDraftSchematics(skillBox, getPlayerObject(), false);
 		}
 	}

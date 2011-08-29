@@ -156,16 +156,16 @@ using namespace server::zone::managers::radial;
 namespace server {
 namespace zone {
 namespace managers {
-namespace professions {
+namespace skill {
 
-class ProfessionManager;
+class SkillManager;
 
-} // namespace professions
+} // namespace skill
 } // namespace managers
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::managers::professions;
+using namespace server::zone::managers::skill;
 
 namespace server {
 namespace zone {
@@ -488,7 +488,7 @@ public:
 
 	Account* getAccount(unsigned int accountID);
 
-	ProfessionManager* getProfessionManager();
+	SkillManager* getSkillManager();
 
 	Time* getStartTimestamp();
 
@@ -729,7 +729,7 @@ public:
 
 	Account* getAccount(unsigned int accountID);
 
-	ProfessionManager* getProfessionManager();
+	SkillManager* getSkillManager();
 
 	Time* getStartTimestamp();
 

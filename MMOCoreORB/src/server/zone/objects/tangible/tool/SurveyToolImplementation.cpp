@@ -88,8 +88,8 @@ void SurveyToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRe
 int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	PlayerObject* playerObject = player->getPlayerObject();
 
-	if (!playerObject->hasSkill("survey")) {
-		player->sendSystemMessage("error_message", "insufficient_skill");
+	if (!playerObject->hasAbility("survey")) {
+		player->sendSystemMessage("@error_message:insufficient_skill");
 		return 0;
 	}
 

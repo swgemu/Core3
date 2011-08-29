@@ -61,7 +61,7 @@ using namespace server::zone::objects::player::events;
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
-#include "server/zone/managers/professions/imagedesign/ImageDesignManager.h"
+#include "server/zone/managers/skill/imagedesign/ImageDesignManager.h"
 
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 

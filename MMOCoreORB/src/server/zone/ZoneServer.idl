@@ -75,7 +75,7 @@ import server.zone.managers.object.ObjectManager;
 import server.zone.managers.player.PlayerManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.managers.radial.RadialManager;
-import server.zone.managers.professions.ProfessionManager;
+import server.zone.managers.skill.SkillManager;
 import server.zone.managers.resource.ResourceManager;
 import server.zone.managers.crafting.CraftingManager;
 import server.zone.managers.loot.LootManager;
@@ -337,8 +337,8 @@ class ZoneServer extends ManagedService implements Logger {
 	public native Account getAccount(unsigned int accountID);
 	
 	@local
-	public ProfessionManager getProfessionManager() {
-		return processor.getProfessionManager();
+	public SkillManager getSkillManager() {
+		return processor.getSkillManager();
 	}
 
 	@local

@@ -8,7 +8,6 @@
 #include "ResourceDeed.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/sui/listbox/resourcedeedlistbox/ResourceDeedListBox.h"
 #include "server/zone/objects/player/sui/callbacks/ResourceDeedSuiCallback.h"
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"

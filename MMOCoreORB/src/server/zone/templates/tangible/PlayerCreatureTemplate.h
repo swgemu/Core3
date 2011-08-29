@@ -9,7 +9,7 @@
 #define PLAYERCREATURETEMPLATE_H_
 
 #include "SharedCreatureObjectTemplate.h"
-#include "server/zone/managers/professions/imagedesign/CustomizationDataMap.h"
+#include "server/zone/managers/skill/imagedesign/CustomizationDataMap.h"
 
 class PlayerCreatureTemplate : public SharedCreatureObjectTemplate {
 	CustomizationDataMap dataMap;

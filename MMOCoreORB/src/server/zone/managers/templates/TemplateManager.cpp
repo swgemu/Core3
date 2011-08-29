@@ -283,7 +283,10 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 
 	//info("loading " + fullName, true);
 
+	String fileName = fullName.subString(fullName.lastIndexOf('/') + 1, fullName.lastIndexOf('.'));
+
 	templateObject->setFullTemplateString(fullName);
+	templateObject->setTemplateFileName(fileName);
 
 	if (!clientTemplateFile.isEmpty()) {
 		IffStream* iffStream = openIffFile(clientTemplateFile);

@@ -220,7 +220,7 @@ void CityHallObjectImplementation::sendManageMilitiaTo(CreatureObject* player) {
 		return;
 	}
 
-	if (!player->hasSkillBox("social_politician_martial_01")) {
+	if (!player->hasSkill("social_politician_martial_01")) {
 		player->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
 		return;
 	}
@@ -254,7 +254,7 @@ void CityHallObjectImplementation::sendAddMilitiaMemberTo(CreatureObject* player
 		return;
 	}
 
-	if (!player->hasSkillBox("social_politician_martial_01")) {
+	if (!player->hasSkill("social_politician_martial_01")) {
 		player->sendSystemMessage("@city/city:cant_militia"); //You lack the skill to manage the city militia.
 		return;
 	}
@@ -322,7 +322,7 @@ void CityHallObjectImplementation::sendEnableZoningTo(CreatureObject* player) {
 }
 
 void CityHallObjectImplementation::toggleCityRegistration(CreatureObject* player) {
-	if (!player->hasSkillBox("social_politician_fiscal_01")) {
+	if (!player->hasSkill("social_politician_fiscal_01")) {
 		player->sendSystemMessage("@city/city:cant_register"); //You lack the ability to register your city!
 		return;
 	}

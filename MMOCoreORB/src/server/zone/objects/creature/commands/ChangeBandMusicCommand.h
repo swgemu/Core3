@@ -50,8 +50,8 @@ which carries forward this exception.
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/group/GroupObject.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
-#include "server/zone/managers/professions/PerformanceManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/managers/skill/PerformanceManager.h"
 
 class ChangeBandMusicCommand : public QueueCommand {
 public:

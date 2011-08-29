@@ -213,7 +213,7 @@ bool GroupObjectImplementation::hasSquadLeader() {
 
 		ManagedReference<CreatureObject*> leader = (CreatureObject*) getLeader();
 
-		if (leader->hasSkillBox("outdoors_squadleader_novice"))
+		if (leader->hasSkill("outdoors_squadleader_novice"))
 			return true;
 	}
 
@@ -332,11 +332,11 @@ float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player)
 			if(groupMember == player)
 				continue;
 
-			if(groupMember->hasSkillBox(skillNovice)) {
+			if(groupMember->hasSkill(skillNovice)) {
 
 				if(groupMember->isInRange(player, 64.0f)) {
 
-					if(groupMember->hasSkillBox(skillMaster)) {
+					if(groupMember->hasSkill(skillMaster)) {
 						modifier = 1.4f;
 						break;
 					}

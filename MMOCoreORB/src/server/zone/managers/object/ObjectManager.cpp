@@ -99,7 +99,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<JunkdealerCreature>(SceneObject::JUNKDEALERCREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObject::DROIDCREATURE);
 	objectFactory.registerObject<CreatureObject>(SceneObject::PROBOTCREATURE);
-	objectFactory.registerObject<TrainerCreature>(SceneObject::TRAINERCREATURE);
 	objectFactory.registerObject<InformantCreature>(SceneObject::INFORMANTCREATURE);
 	objectFactory.registerObject<VendorCreature>(SceneObject::VENDORCREATURE);
 

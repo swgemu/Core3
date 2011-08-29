@@ -45,7 +45,7 @@ public:
 	friend class StartingItemList;
 };
 
-class StartingProfession {
+class StartingSkill {
 	Vector<StartingItem>* all;
 	Vector<StartingItem>* humanoidMale;
 	Vector<StartingItem>* humanoidFemale;
@@ -57,7 +57,7 @@ class StartingProfession {
 	Vector<StartingItem>* wookFemale;
 
 public:
-	StartingProfession() {
+	StartingSkill() {
 		all = new Vector<StartingItem>();
 		humanoidMale = new Vector<StartingItem>();
 		humanoidFemale = new Vector<StartingItem>();
@@ -69,7 +69,7 @@ public:
 		wookFemale = new Vector<StartingItem>();
 	}
 
-	~StartingProfession() {
+	~StartingSkill() {
 		delete all;
 		all = NULL;
 
@@ -129,9 +129,9 @@ public:
 	}
 };
 
-class StartingItemProfessionSet : public HashTable<String, StartingProfession *> {
+class StartingItemSkillSet : public HashTable<String, StartingSkill *> {
 public:
-	StartingItemProfessionSet() {
+	StartingItemSkillSet() {
 	}
 
 	int hash(const String& str) {
@@ -140,11 +140,11 @@ public:
 };
 
 class StartingItemList : public Lua, public Singleton<StartingItemList> {
-	StartingItemProfessionSet* professions;
+	StartingItemSkillSet* professions;
 
 public:
 	StartingItemList() {
-		professions = new StartingItemProfessionSet();
+		professions = new StartingItemSkillSet();
 		init();
 
 		setLoggingName("StartingItemList");
@@ -153,12 +153,12 @@ public:
 	}
 
 	~StartingItemList() {
-		HashTableIterator<String, StartingProfession*> iterator(professions);
+		HashTableIterator<String, StartingSkill*> iterator(professions);
 
 		iterator.resetIterator();
 
 		while (iterator.hasNext()) {
-			StartingProfession* prof = iterator.next();
+			StartingSkill* prof = iterator.next();
 
 			delete prof;
 		}
@@ -205,7 +205,7 @@ public:
 				return 0;
 			}
 
-			StartingItemList::instance()->addItemToProfession(profession, species, sex, item);
+			StartingItemList::instance()->addItemToSkill(profession, species, sex, item);
 
 		} catch (Exception& e) {
 			StringBuffer msg;
@@ -218,22 +218,22 @@ public:
 		return 0;
 	}
 
-	void addItemToProfession(const String& profession, const String& species, const String& sex, const StartingItem& item) {
+	void addItemToSkill(const String& profession, const String& species, const String& sex, const StartingItem& item) {
 		professions->get(profession)->get(species, sex)->add(item);
 	}
 
-	Vector<StartingItem>* getProfessionItems(const String& profession, const String& species, const String& sex) {
+	Vector<StartingItem>* getSkillItems(const String& profession, const String& species, const String& sex) {
 		return (professions->get(profession)->get(species, sex));
 	}
 
 	void init() {
-		professions->put("general", new StartingProfession());
-		professions->put("artisan", new StartingProfession());
-		professions->put("brawler", new StartingProfession());
-		professions->put("entertainer", new StartingProfession());
-		professions->put("marksman", new StartingProfession());
-		professions->put("medic", new StartingProfession());
-		professions->put("scout", new StartingProfession());
+		professions->put("general", new StartingSkill());
+		professions->put("artisan", new StartingSkill());
+		professions->put("brawler", new StartingSkill());
+		professions->put("entertainer", new StartingSkill());
+		professions->put("marksman", new StartingSkill());
+		professions->put("medic", new StartingSkill());
+		professions->put("scout", new StartingSkill());
 	}
 };
 

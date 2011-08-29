@@ -49,8 +49,8 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/Instrument.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
-#include "server/zone/managers/professions/PerformanceManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/managers/skill/PerformanceManager.h"
 #include "StartDanceCommand.h"
 
 class StartMusicCommand : public QueueCommand {
@@ -79,24 +79,25 @@ public:
 		sui->setPromptTitle("@performance:available_songs");
 		sui->setPromptText("@performance:select_song");
 
-		SkillList* list = ghost->getSkills();
+		AbilityList* list = ghost->getAbilityList();
 
 		for (int i = 0; i < list->size(); ++i) {
-			String name = list->get(i);
+			Ability* ability = list->get(i);
 
-			if (name.indexOf("startmusic") != -1) {
-				int args = name.indexOf("+");
+			String abilityName = ability->getAbilityName();
+
+			if (abilityName.indexOf("startmusic") != -1) {
+				int args = abilityName.indexOf("+");
 
 				if (args != -1) {
-					String arg = name.subString(args + 1);
+					String arg = abilityName.subString(args + 1);
 
 					sui->addMenuItem(arg);
 				}
 			}
 		}
 
-		player->getPlayerObject()->addSuiBox(sui);
-
+		ghost->addSuiBox(sui);
 		player->sendMessage(sui->generateMessage());
 
 		return;
@@ -164,7 +165,7 @@ public:
 				instrument->setDirection(*creature->getDirection());
 				instrument->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
 			} else {
-				creature->sendSystemMessage("performance", "music_no_instrument");
+				creature->sendSystemMessage("@performance:music_no_instrument");
 
 				return GENERALERROR;
 			}
@@ -172,7 +173,7 @@ public:
 
 		String args = arguments.toString();
 
-		PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
+		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 
 		if (args.length() < 2) {
 			sendAvailableSongs(player, ghost);
@@ -181,21 +182,21 @@ public:
 
 		String instr = performanceManager->getInstrument(instrument->getInstrumentType());
 
-		if (!ghost->hasSkill(instr)) {
-			creature->sendSystemMessage("performance", "music_lack_skill_instrument");
+		if (!ghost->hasAbility(instr)) {
+			creature->sendSystemMessage("@performance:music_lack_skill_instrument");
 
 			return GENERALERROR;
 		}
 
 		String fullString = String("startMusic") + "+" + args;
 
-		if (!ghost->hasSkill(fullString)) {
-			creature->sendSystemMessage("performance", "music_lack_skill_song_self");
+		if (!ghost->hasAbility(fullString)) {
+			creature->sendSystemMessage("@performance:music_lack_skill_song_self");
 			return GENERALERROR;
 		}
 
 		if (!performanceManager->hasInstrumentId(args)) {
-			creature->sendSystemMessage("performance", "music_lack_skill_song_self");
+			creature->sendSystemMessage("@performance:music_lack_skill_song_self");
 			return GENERALERROR;
 		}
 

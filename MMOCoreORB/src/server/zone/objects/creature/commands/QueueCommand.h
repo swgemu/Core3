@@ -54,7 +54,7 @@ which carries forward this exception.
 
 
 #include "server/zone/ZoneProcessServer.h"
-#include "../professions/Skill.h"
+#include "server/zone/objects/creature/variables/Skill.h"
 //#include "../../../managers/combat/CombatManager.h"
 
 namespace server {
@@ -64,8 +64,11 @@ namespace creature {
 namespace commands {
 
 
-class QueueCommand : public Skill, public Logger {
+class QueueCommand : public Logger {
 protected:
+	ZoneProcessServer* server;
+
+	String name;
 	uint32 nameCRC;
 
 	uint64 stateMask;
@@ -82,8 +85,6 @@ protected:
 	float defaultTime;
 
 	String characterAbility;
-
-	ZoneProcessServer* server;
 
 	int defaultPriority;
 
@@ -258,7 +259,7 @@ public:
 	}
 
 	inline String& getQueueCommandName() {
-		return Skill::name;
+		return name;
 	}
 
 	inline String& getCharacterAbility() {

@@ -48,8 +48,8 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
-#include "server/zone/managers/professions/PerformanceManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/managers/skill/PerformanceManager.h"
 
 class StartDanceCommand : public QueueCommand {
 
@@ -72,29 +72,32 @@ public:
 	}
 
 	static void sendAvailableDances(CreatureObject* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::DANCING_START) {
-		Reference<SuiListBox*> sui = new SuiListBox(player, suiType);
+		ManagedReference<SuiListBox*> sui = new SuiListBox(player, suiType);
 		sui->setPromptTitle("@performance:available_dances");
 		sui->setPromptText("@performance:select_dance");
 
-		SkillList* list = ghost->getSkills();
+		AbilityList* list = ghost->getAbilityList();
 
 		for (int i = 0; i < list->size(); ++i) {
-			String name = list->get(i);
+			Ability* ability = list->get(i);
 
-			if (name.indexOf("startdance") != -1) {
-				int args = name.indexOf("+");
+			String abilityName = ability->getAbilityName();
+
+			if (abilityName.indexOf("startdance") != -1) {
+				int args = abilityName.indexOf("+");
 
 				if (args != -1) {
-					String arg = name.subString(args + 1);
+					String arg = abilityName.subString(args + 1);
 
 					sui->addMenuItem(arg);
 				}
 			}
 		}
 
-		player->getPlayerObject()->addSuiBox(sui);
-
-		player->sendMessage(sui->generateMessage());
+		if (ghost != NULL) {
+			ghost->addSuiBox(sui);
+			player->sendMessage(sui->generateMessage());
+		}
 
 		return;
 	}
@@ -131,7 +134,7 @@ public:
 
 		String args = arguments.toString();
 
-		PerformanceManager* performanceManager = ProfessionManager::instance()->getPerformanceManager();
+		PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 
 		if (args.length() < 2) {
 			sendAvailableDances(player, ghost);
@@ -140,7 +143,7 @@ public:
 
 		String fullString = String("startDance") + "+" + args;
 
-		if (!ghost->hasSkill(fullString)) {
+		if (!ghost->hasAbility(fullString)) {
 			creature->sendSystemMessage("performance", "dance_lack_skill_self");
 			return GENERALERROR;
 		}

@@ -53,8 +53,8 @@ which carries forward this exception.
 
 #include "managers/name/NameManager.h"
 #include "managers/holocron/HolocronManager.h"
-#include "managers/professions/ProfessionManager.h"
-#include "server/zone/objects/creature/professions/SkillBox.h"
+#include "managers/skill/SkillManager.h"
+#include "server/zone/objects/creature/variables/Skill.h"
 #include "managers/vendor/VendorManager.h"
 
 #include "managers/objectcontroller/ObjectController.h"
@@ -105,8 +105,8 @@ void ZoneProcessServerImplementation::initialize() {
 
 	objectController = new ObjectController(_this);
 
-	professionManager = ProfessionManager::instance();
-	professionManager->setObjectController(objectController);
-	professionManager->initialize();
+	professionManager = SkillManager::instance();
+	//professionManager->setObjectController(objectController);
+	//professionManager->initialize();
 
 }

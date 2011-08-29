@@ -42,7 +42,7 @@
  *	PlayerObjectStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_UNLOAD__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETTOTALOWNEDSTRUCTURECOUNT__,RPC_ISOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETOWNEDSTRUCTURE__INT_,RPC_GETLOTSREMAINING__,RPC_HASLOTSREMAINING__INT_,RPC_NOTIFYSCENEREADY__,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_GETSURVEYWAYPOINT__,RPC_ACTIVATERECOVERY__,RPC_DORECOVERY__,RPC_DISCONNECT__BOOL_BOOL_,RPC_RELOAD__ZONECLIENTSESSION_,RPC_SETOFFLINE__,RPC_SETLINKDEAD__,RPC_SETONLINE__,RPC_SETLOGGINGOUT__,RPC_SENDBADGESRESPONSETO__CREATUREOBJECT_,RPC_LOGOUT__BOOL_,RPC_SETLASTNPCCONVSTR__STRING_,RPC_SETLASTNPCCONVMESSSTR__STRING_,RPC_GETLASTNPCCONVSTR__,RPC_GETLASTNPCCONVMESSSTR__,RPC_GETLASTNPCCONVOPTION__INT_,RPC_ADDLASTNPCCONVOPTIONS__STRING_,RPC_COUNTLASTNPCCONVOPTIONS__,RPC_CLEARLASTNPCCONVOPTIONS__,RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_,RPC_GETCONVERSATINGCREATURE__,RPC_ADDPERSISTENTMESSAGE__LONG_,RPC_DROPPERSISTENTMESSAGE__LONG_,RPC_UNLOADSPAWNEDCHILDREN__,RPC_ADDTOCONSENTLIST__STRING_,RPC_HASINCONSENTLIST__STRING_,RPC_REMOVEFROMCONSENTLIST__STRING_,RPC_GETCONSENTNAME__INT_,RPC_GETCONSENTLISTSIZE__,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_GETDECLAREDRESIDENCE__,RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_,RPC_SETCLONINGFACILITY__BUILDINGOBJECT_,RPC_GETCLONINGFACILITY__,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_GETSAVEDTERRAINNAME__,RPC_SETSAVEDPARENTID__LONG_,RPC_SETSAVEDTERRAINNAME__STRING_,RPC_GETSAVEDPARENTID__,RPC_GETNEWSUIBOXID__INT_,RPC_HASSUIBOX__INT_,RPC_GETSUIBOX__INT_,RPC_REMOVESUIBOX__INT_BOOL_,RPC_REMOVESUIBOXTYPE__INT_,RPC_HASSUIBOXWINDOWTYPE__INT_,RPC_CLOSESUIWINDOWTYPE__INT_,RPC_GETSUIBOXFROMWINDOWTYPE__INT_,RPC_ADDSUIBOX__SUIBOX_,RPC_ISFIRSTINCAPACITATIONEXPIRED__,RPC_RESETINCAPACITATIONCOUNTER__,RPC_RESETFIRSTINCAPACITATIONTIME__,RPC_UPDATEINCAPACITATIONCOUNTER__,RPC_ISFIRSTINCAPACITATION__,RPC_GETINCAPACITATIONCOUNTER__,RPC_ADDTODUELLIST__CREATUREOBJECT_,RPC_REMOVEFROMDUELLIST__CREATUREOBJECT_,RPC_GETDUELLISTOBJECT__INT_,RPC_REQUESTEDDUELTO__CREATUREOBJECT_,RPC_ISDUELLISTEMPTY__,RPC_GETDUELLISTSIZE__,RPC_GETBIOGRAPHY__,RPC_NOTIFYOFFLINE__,RPC_SETBADGE__INT_,RPC_AWARDBADGE__INT_,RPC_SETSURVEYTOOL__SURVEYTOOL_,RPC_GETSURVEYTOOL__,RPC_GETLASTCRAFTINGTOOLUSED__,RPC_SETLASTCRAFTINGTOOLUSED__CRAFTINGTOOL_,RPC_SETTELEPORTING__BOOL_,RPC_GETNUMBADGES__,RPC_GETBADGETYPECOUNT__BYTE_,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_SETBIOGRAPHY__UNICODESTRING_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_GETLANGUAGEID__,RPC_ISTELEPORTING__,RPC_ADDCHATROOM__CHATROOM_,RPC_REMOVECHATROOM__CHATROOM_,RPC_GETEXPERIENCE__STRING_,RPC_GETCOMMANDMESSAGESTRING__INT_,RPC_HASBADGE__INT_,RPC_CLEARDISCONNECTEVENT__,RPC_CLEARRECOVERYEVENT__,RPC_ISONLINE__,RPC_ISOFFLINE__,RPC_ISLOADING__,RPC_ISLINKDEAD__,RPC_ISLOGGINGIN__,RPC_ISLOGGINGOUT__,RPC_SETSKILLPOINTS__INT_,RPC_ADDSKILLPOINTS__INT_,RPC_GETSKILLPOINTS__,RPC_UPDATELASTVALIDATEDPOSITION__,RPC_SETSPAWNEDBLUEFROG__,RPC_HASSPAWNEDBLUEFROG__,RPC_GETACCOUNTID__,RPC_GETSERVERMOVEMENTTIMEDELTA__,RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_,RPC_UPDATESERVERLASTMOVEMENTSTAMP__,RPC_SETACCOUNTID__INT_,RPC_GETFACTIONSTATUS__,RPC_GETCLIENTLASTMOVEMENTSTAMP__,RPC_SETTEACHINGORLEARNING__BOOL_,RPC_GETCENTEREDBONUS__,RPC_SETCENTEREDBONUS__INT_,RPC_ISINVISIBLE__,RPC_SETINVISIBLE__BOOL_,RPC_SETHOLOGRINDMASK__INT_,RPC_GETHOLOGRINDMASK__,RPC_GETRACEID__,RPC_SETRACEID__BYTE_,RPC_SETMAXIMUMLOTS__BYTE_,RPC_GETMAXIMUMLOTS__};
+enum {RPC_FINALIZE__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_UNLOAD__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDMESSAGE__BASEPACKET_,RPC_ADDOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVEOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETTOTALOWNEDSTRUCTURECOUNT__,RPC_ISOWNEDSTRUCTURE__STRUCTUREOBJECT_,RPC_GETOWNEDSTRUCTURE__INT_,RPC_GETLOTSREMAINING__,RPC_HASLOTSREMAINING__INT_,RPC_NOTIFYSCENEREADY__,RPC_ADDEXPERIENCE__STRING_INT_BOOL_,RPC_REMOVEEXPERIENCE__STRING_BOOL_,RPC_ADDWAYPOINT__WAYPOINTOBJECT_BOOL_BOOL_,RPC_SETWAYPOINT__WAYPOINTOBJECT_BOOL_,RPC_ADDWAYPOINT__STRING_FLOAT_FLOAT_BOOL_,RPC_REMOVEWAYPOINT__LONG_BOOL_,RPC_SETLANGUAGEID__BYTE_BOOL_,RPC_ADDFRIEND__STRING_BOOL_,RPC_REMOVEFRIEND__STRING_BOOL_,RPC_ADDIGNORE__STRING_BOOL_,RPC_REMOVEIGNORE__STRING_BOOL_,RPC_SETTITLE__STRING_BOOL_,RPC_SETFOODFILLING__INT_BOOL_,RPC_SETDRINKFILLING__INT_BOOL_,RPC_INCREASEFACTIONSTANDING__STRING_FLOAT_,RPC_DECREASEFACTIONSTANDING__STRING_FLOAT_,RPC_GETFACTIONSTANDING__STRING_,RPC_GETSURVEYWAYPOINT__,RPC_ACTIVATERECOVERY__,RPC_DORECOVERY__,RPC_DISCONNECT__BOOL_BOOL_,RPC_RELOAD__ZONECLIENTSESSION_,RPC_SETOFFLINE__,RPC_SETLINKDEAD__,RPC_SETONLINE__,RPC_SETLOGGINGOUT__,RPC_SENDBADGESRESPONSETO__CREATUREOBJECT_,RPC_LOGOUT__BOOL_,RPC_SETLASTNPCCONVSTR__STRING_,RPC_SETLASTNPCCONVMESSSTR__STRING_,RPC_GETLASTNPCCONVSTR__,RPC_GETLASTNPCCONVMESSSTR__,RPC_GETLASTNPCCONVOPTION__INT_,RPC_ADDLASTNPCCONVOPTIONS__STRING_,RPC_COUNTLASTNPCCONVOPTIONS__,RPC_CLEARLASTNPCCONVOPTIONS__,RPC_SETCONVERSATINGCREATURE__CREATUREOBJECT_,RPC_GETCONVERSATINGCREATURE__,RPC_ADDPERSISTENTMESSAGE__LONG_,RPC_DROPPERSISTENTMESSAGE__LONG_,RPC_UNLOADSPAWNEDCHILDREN__,RPC_ADDTOCONSENTLIST__STRING_,RPC_HASINCONSENTLIST__STRING_,RPC_REMOVEFROMCONSENTLIST__STRING_,RPC_GETCONSENTNAME__INT_,RPC_GETCONSENTLISTSIZE__,RPC_SETCOMMANDMESSAGESTRING__INT_STRING_,RPC_REMOVECOMMANDMESSAGESTRING__INT_,RPC_GETDECLAREDRESIDENCE__,RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_,RPC_SETCLONINGFACILITY__BUILDINGOBJECT_,RPC_GETCLONINGFACILITY__,RPC_NOTIFYONLINE__,RPC_DODIGEST__,RPC_ISDIGESTING__,RPC_GETSAVEDTERRAINNAME__,RPC_SETSAVEDPARENTID__LONG_,RPC_SETSAVEDTERRAINNAME__STRING_,RPC_GETSAVEDPARENTID__,RPC_GETNEWSUIBOXID__INT_,RPC_HASSUIBOX__INT_,RPC_GETSUIBOX__INT_,RPC_REMOVESUIBOX__INT_BOOL_,RPC_REMOVESUIBOXTYPE__INT_,RPC_HASSUIBOXWINDOWTYPE__INT_,RPC_CLOSESUIWINDOWTYPE__INT_,RPC_GETSUIBOXFROMWINDOWTYPE__INT_,RPC_ADDSUIBOX__SUIBOX_,RPC_ISFIRSTINCAPACITATIONEXPIRED__,RPC_RESETINCAPACITATIONCOUNTER__,RPC_RESETFIRSTINCAPACITATIONTIME__,RPC_UPDATEINCAPACITATIONCOUNTER__,RPC_ISFIRSTINCAPACITATION__,RPC_GETINCAPACITATIONCOUNTER__,RPC_ADDTODUELLIST__CREATUREOBJECT_,RPC_REMOVEFROMDUELLIST__CREATUREOBJECT_,RPC_GETDUELLISTOBJECT__INT_,RPC_REQUESTEDDUELTO__CREATUREOBJECT_,RPC_ISDUELLISTEMPTY__,RPC_GETDUELLISTSIZE__,RPC_GETBIOGRAPHY__,RPC_NOTIFYOFFLINE__,RPC_SETBADGE__INT_,RPC_AWARDBADGE__INT_,RPC_SETSURVEYTOOL__SURVEYTOOL_,RPC_GETSURVEYTOOL__,RPC_GETLASTCRAFTINGTOOLUSED__,RPC_SETLASTCRAFTINGTOOLUSED__CRAFTINGTOOL_,RPC_SETTELEPORTING__BOOL_,RPC_GETNUMBADGES__,RPC_GETBADGETYPECOUNT__BYTE_,RPC_HASFRIEND__STRING_,RPC_ISIGNORING__STRING_,RPC_ADDREVERSEFRIEND__STRING_,RPC_REMOVEREVERSEFRIEND__STRING_,RPC_SENDFRIENDLISTS__,RPC_HASWAYPOINT__LONG_,RPC_HASCOMMANDMESSAGESTRING__INT_,RPC_GETCHARACTERBITMASK__,RPC_GETTITLE__,RPC_GETADMINLEVEL__,RPC_SETADMINLEVEL__INT_,RPC_SETBIOGRAPHY__UNICODESTRING_,RPC_ISDEVELOPER__,RPC_ISCSR__,RPC_ISPRIVILEGED__,RPC_SETCHARACTERBITMASK__INT_,RPC_SETCHARACTERBIT__INT_BOOL_,RPC_CLEARCHARACTERBIT__INT_BOOL_,RPC_TOGGLECHARACTERBIT__INT_,RPC_GETFORCEPOWER__,RPC_GETFORCEPOWERMAX__,RPC_GETSCHEMATIC__INT_,RPC_GETFOODFILLING__,RPC_GETFOODFILLINGMAX__,RPC_GETDRINKFILLING__,RPC_GETDRINKFILLINGMAX__,RPC_GETJEDISTATE__,RPC_GETLANGUAGEID__,RPC_ISTELEPORTING__,RPC_ADDCHATROOM__CHATROOM_,RPC_REMOVECHATROOM__CHATROOM_,RPC_GETEXPERIENCE__STRING_,RPC_GETCOMMANDMESSAGESTRING__INT_,RPC_HASBADGE__INT_,RPC_CLEARDISCONNECTEVENT__,RPC_CLEARRECOVERYEVENT__,RPC_ISONLINE__,RPC_ISOFFLINE__,RPC_ISLOADING__,RPC_ISLINKDEAD__,RPC_ISLOGGINGIN__,RPC_ISLOGGINGOUT__,RPC_SETSKILLPOINTS__INT_,RPC_ADDSKILLPOINTS__INT_,RPC_GETSKILLPOINTS__,RPC_UPDATELASTVALIDATEDPOSITION__,RPC_SETSPAWNEDBLUEFROG__,RPC_HASSPAWNEDBLUEFROG__,RPC_GETACCOUNTID__,RPC_GETSERVERMOVEMENTTIMEDELTA__,RPC_SETCLIENTLASTMOVEMENTSTAMP__INT_,RPC_UPDATESERVERLASTMOVEMENTSTAMP__,RPC_SETACCOUNTID__INT_,RPC_GETFACTIONSTATUS__,RPC_GETCLIENTLASTMOVEMENTSTAMP__,RPC_GETCENTEREDBONUS__,RPC_SETCENTEREDBONUS__INT_,RPC_ISINVISIBLE__,RPC_SETINVISIBLE__BOOL_,RPC_SETHOLOGRINDMASK__INT_,RPC_GETHOLOGRINDMASK__,RPC_GETRACEID__,RPC_SETRACEID__BYTE_,RPC_SETMAXIMUMLOTS__BYTE_,RPC_GETMAXIMUMLOTS__};
 
 PlayerObject::PlayerObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	PlayerObjectImplementation* _implementation = new PlayerObjectImplementation();
@@ -336,40 +336,40 @@ void PlayerObject::removeWaypoint(unsigned long long waypointID, bool notifyClie
 		_implementation->removeWaypoint(waypointID, notifyClient);
 }
 
-void PlayerObject::addSkills(Vector<String>& skills, bool notifyClient) {
+void PlayerObject::addAbilities(Vector<Ability*>& abilities, bool notifyClient) {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->addSkills(skills, notifyClient);
+		_implementation->addAbilities(abilities, notifyClient);
 }
 
-void PlayerObject::addSkills(Vector<Certification*>& skills, bool notifyClient) {
+void PlayerObject::addAbility(Ability* ability, bool notifyClient) {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->addSkills(skills, notifyClient);
+		_implementation->addAbility(ability, notifyClient);
 }
 
-void PlayerObject::removeSkills(Vector<String>& skills, bool notifyClient) {
+void PlayerObject::removeAbilities(Vector<Ability*>& abilities, bool notifyClient) {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->removeSkills(skills, notifyClient);
+		_implementation->removeAbilities(abilities, notifyClient);
 }
 
-void PlayerObject::removeSkills(Vector<Certification*>& skills, bool notifyClient) {
+void PlayerObject::removeAbility(Ability* ability, bool notifyClient) {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->removeSkills(skills, notifyClient);
+		_implementation->removeAbility(ability, notifyClient);
 }
 
 void PlayerObject::addSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient) {
@@ -1702,13 +1702,13 @@ bool PlayerObject::hasWaypoint(unsigned long long objectID) {
 		return _implementation->hasWaypoint(objectID);
 }
 
-bool PlayerObject::hasSkill(const String& skill) {
+bool PlayerObject::hasAbility(const String& ability) {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->hasSkill(skill);
+		return _implementation->hasAbility(ability);
 }
 
 bool PlayerObject::hasCommandMessageString(unsigned int actionCRC) {
@@ -1943,13 +1943,13 @@ WaypointList* PlayerObject::getWaypointList() {
 		return _implementation->getWaypointList();
 }
 
-SkillList* PlayerObject::getSkills() {
+AbilityList* PlayerObject::getAbilityList() {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getSkills();
+		return _implementation->getAbilityList();
 }
 
 SchematicList* PlayerObject::getSchematics() {
@@ -2477,29 +2477,6 @@ unsigned int PlayerObject::getClientLastMovementStamp() {
 		return _implementation->getClientLastMovementStamp();
 }
 
-void PlayerObject::setTeachingOrLearning(bool value) {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETTEACHINGORLEARNING__BOOL_);
-		method.addBooleanParameter(value);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setTeachingOrLearning(value);
-}
-
-bool PlayerObject::isTeachingOrLearning() {
-	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->isTeachingOrLearning();
-}
-
 int PlayerObject::getCenteredBonus() {
 	PlayerObjectImplementation* _implementation = (PlayerObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
@@ -2843,8 +2820,8 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
-	if (_name == "skillList") {
-		TypeInfo<SkillList >::parseFromBinaryStream(&skillList, stream);
+	if (_name == "abilityList") {
+		TypeInfo<AbilityList >::parseFromBinaryStream(&abilityList, stream);
 		return true;
 	}
 
@@ -3196,11 +3173,11 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "skillList";
+	_name = "abilityList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<SkillList >::toBinaryStream(&skillList, stream);
+	TypeInfo<AbilityList >::toBinaryStream(&abilityList, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
@@ -3947,9 +3924,9 @@ bool PlayerObjectImplementation::hasWaypoint(unsigned long long objectID) {
 	return (&waypointList)->contains(objectID);
 }
 
-bool PlayerObjectImplementation::hasSkill(const String& skill) {
-	// server/zone/objects/player/PlayerObject.idl():  		return skillList.contains(skill);
-	return (&skillList)->contains(skill);
+bool PlayerObjectImplementation::hasAbility(const String& ability) {
+	// server/zone/objects/player/PlayerObject.idl():  		return abilityList.contains(ability);
+	return (&abilityList)->contains(ability);
 }
 
 bool PlayerObjectImplementation::hasCommandMessageString(unsigned int actionCRC) {
@@ -4027,9 +4004,9 @@ WaypointList* PlayerObjectImplementation::getWaypointList() {
 	return (&waypointList);
 }
 
-SkillList* PlayerObjectImplementation::getSkills() {
-	// server/zone/objects/player/PlayerObject.idl():  		return skillList;
-	return (&skillList);
+AbilityList* PlayerObjectImplementation::getAbilityList() {
+	// server/zone/objects/player/PlayerObject.idl():  		return abilityList;
+	return (&abilityList);
 }
 
 SchematicList* PlayerObjectImplementation::getSchematics() {
@@ -4227,16 +4204,6 @@ int PlayerObjectImplementation::getFactionStatus() {
 unsigned int PlayerObjectImplementation::getClientLastMovementStamp() {
 	// server/zone/objects/player/PlayerObject.idl():  		return clientLastMovementStamp;
 	return clientLastMovementStamp;
-}
-
-void PlayerObjectImplementation::setTeachingOrLearning(bool value) {
-	// server/zone/objects/player/PlayerObject.idl():  	 teachingOrLearning = value;
-	teachingOrLearning = value;
-}
-
-bool PlayerObjectImplementation::isTeachingOrLearning() {
-	// server/zone/objects/player/PlayerObject.idl():  	 return teachingOrLearning;
-	return teachingOrLearning;
 }
 
 int PlayerObjectImplementation::getCenteredBonus() {
@@ -4779,9 +4746,6 @@ Packet* PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		break;
 	case RPC_GETCLIENTLASTMOVEMENTSTAMP__:
 		resp->insertInt(getClientLastMovementStamp());
-		break;
-	case RPC_SETTEACHINGORLEARNING__BOOL_:
-		setTeachingOrLearning(inv->getBooleanParameter());
 		break;
 	case RPC_GETCENTEREDBONUS__:
 		resp->insertSignedInt(getCenteredBonus());
@@ -5458,10 +5422,6 @@ int PlayerObjectAdapter::getFactionStatus() {
 
 unsigned int PlayerObjectAdapter::getClientLastMovementStamp() {
 	return ((PlayerObjectImplementation*) impl)->getClientLastMovementStamp();
-}
-
-void PlayerObjectAdapter::setTeachingOrLearning(bool value) {
-	((PlayerObjectImplementation*) impl)->setTeachingOrLearning(value);
 }
 
 int PlayerObjectAdapter::getCenteredBonus() {

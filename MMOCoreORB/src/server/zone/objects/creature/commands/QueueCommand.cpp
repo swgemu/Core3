@@ -8,9 +8,10 @@
 #include "QueueCommand.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
-QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : Skill(skillname), Logger() {
+QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : Logger() {
 	server = serv;
 
+	name = skillname;
 	nameCRC = skillname.hashCode();
 
 	maxRangeToTarget = 0;
@@ -25,8 +26,6 @@ QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : S
 	cooldown = 0;
 
 	defaultPriority = NORMAL;
-
-	skillType = QUEUECOMMAND;
 
 	setLogging(true);
 	setGlobalLogging(true);

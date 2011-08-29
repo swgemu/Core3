@@ -48,7 +48,7 @@ which carries forward this exception.
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/creature/CreatureObjectMessage1.h"
@@ -90,12 +90,11 @@ which carries forward this exception.
 
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
-#include "server/zone/managers/professions/ProfessionManager.h"
 #include "server/zone/managers/resource/resourcespawner/SampleTask.h"
 
 #include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 
-#include "professions/SkillBox.h"
+#include "variables/Skill.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 
 #include "server/zone/packets/zone/unkByteFlag.h"
@@ -865,50 +864,49 @@ void CreatureObjectImplementation::setCashCredits(int credits, bool notifyClient
 	}
 }
 
-void CreatureObjectImplementation::addSkillBox(SkillBox* skillBox, bool notifyClient) {
-	if (skillBoxList.contains(skillBox))
+void CreatureObjectImplementation::addSkill(Skill* skill, bool notifyClient) {
+	if (skillList.contains(skill))
 		return;
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage1* msg = new CreatureObjectDeltaMessage1(this);
 		msg->startUpdate(0x03);
-		skillBoxList.add(skillBox, msg);
+		skillList.add(skill, msg);
 		msg->close();
 
 		sendMessage(msg);
 	} else {
-		skillBoxList.add(skillBox, NULL);
+		skillList.add(skill, NULL);
 	}
 }
 
-void CreatureObjectImplementation::removeSkillBox(SkillBox* skillBox, bool notifyClient) {
-	if (!skillBoxList.contains(skillBox))
+void CreatureObjectImplementation::removeSkill(Skill* skill, bool notifyClient) {
+	if (!skillList.contains(skill))
 		return;
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage1* msg = new CreatureObjectDeltaMessage1(this);
 		msg->startUpdate(0x03);
-		skillBoxList.remove(skillBox, msg);
+		skillList.remove(skill, msg);
 		msg->close();
 
 		sendMessage(msg);
 	} else {
-		skillBoxList.remove(skillBox);
+		skillList.remove(skill);
 	}
 }
 
-void CreatureObjectImplementation::removeSkillBox(const String& skillBox, bool notifyClient) {
-	ZoneServer* zoneServer = server->getZoneServer();
-	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+void CreatureObjectImplementation::removeSkill(const String& skill, bool notifyClient) {
+	SkillManager* skillManager = server->getZoneServer()->getSkillManager();
 
-	SkillBox* skillBoxObject = professionManager->getSkillBox(skillBox);
+	Reference<Skill*> skillObject = skillManager->getSkill(skill);
 
-	if (skillBoxObject == NULL) {
-		error("trying to remove null skill box " + skillBox);
+	if (skillObject == NULL) {
+		error("trying to remove null skill  " + skill);
 		return;
 	}
 
-	removeSkillBox(skillBoxObject, notifyClient);
+	removeSkill(skillObject, notifyClient);
 }
 
 void CreatureObjectImplementation::removeSkillMod(const String& skillMod, bool notifyClient) {
@@ -949,18 +947,17 @@ void CreatureObjectImplementation::addSkillMod(const String& skillMod, int64 val
 	}
 }
 
-void CreatureObjectImplementation::addSkillBox(const String& skillBox, bool notifyClient) {
-	ZoneServer* zoneServer = server->getZoneServer();
-	ProfessionManager* professionManager = zoneServer->getProfessionManager();
+void CreatureObjectImplementation::addSkill(const String& skill, bool notifyClient) {
+	SkillManager* skillManager = server->getZoneServer()->getSkillManager();
 
-	SkillBox* skillBoxObject = professionManager->getSkillBox(skillBox);
+	Reference<Skill*> skillObject = skillManager->getSkill(skill);
 
-	if (skillBoxObject == NULL) {
-		error("trying to add null skill box " + skillBox);
+	if (skillObject == NULL) {
+		error("trying to add null skill box " + skill);
 		return;
 	}
 
-	addSkillBox(skillBoxObject, notifyClient);
+	addSkill(skillObject, notifyClient);
 }
 
 void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient) {
@@ -1495,7 +1492,7 @@ void CreatureObjectImplementation::setCoverState(int durationSeconds) {
 		showFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
 		sendSystemMessage("cbt_spam", "cover_success_single");
 
-		if(hasSkillBox("combat_rifleman_speed_03")) {
+		if(hasSkill("combat_rifleman_speed_03")) {
 			setSpeedMultiplierMod(0.5f);
 		} else {
 			setSpeedMultiplierMod(0.f);
@@ -1903,5 +1900,25 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
 
+void CreatureObjectImplementation::createChildObjects() {
+	ZoneServer* zoneServer = server->getZoneServer();
 
+	for (int i = 0; i < templateObject->getChildObjectsSize(); ++i) {
+		ChildObject* child = templateObject->getChildObject(i);
+
+		if (child == NULL)
+			continue;
+
+		ManagedReference<SceneObject*> obj = zoneServer->createObject(child->getTemplateFile().hashCode(), 1);
+
+		if (obj == NULL)
+			continue;
+
+		childObjects.put(obj);
+
+		obj->initializeChildObject(_this);
+
+		addObject(obj, child->getContainmentType());
+	}
+}
 
