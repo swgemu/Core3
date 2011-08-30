@@ -165,8 +165,11 @@ public:
 
 	bool loadSlashCommandsFile(CommandList* sCommands) {
 		slashCommands = sCommands;
-		//info("Loading commands...");
-		loadCommandData();
+		info("Loading commands...");
+		loadCommandData("datatables/command/command_tables_shared.iff");
+		loadCommandData("datatables/command/command_tables_shared_ground.iff");
+		loadCommandData("datatables/command/command_tables_shared_space.iff");
+
 		return runFile("scripts/commands/commands.lua");
 	}
 
@@ -174,7 +177,7 @@ public:
 		return commandFactory.containsCommand(name);
 	}
 
-	void loadCommandData();
+	void loadCommandData(String filename);
 	QueueCommand* createCommand(String name);
 
 	//lua functions

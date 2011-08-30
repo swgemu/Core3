@@ -70,183 +70,206 @@ CommandConfigManager::CommandConfigManager(ZoneProcessServer* serv) {
 	registerCommands();
 }
 
-void CommandConfigManager::loadCommandData() {
-	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/command/command_table.iff");
+void CommandConfigManager::loadCommandData(String filename) {
+	int num = 0;
 
-	if (iffStream == NULL) {
-		error("Could not load commands.");
+	IffStream* metatable = TemplateManager::instance()->openIffFile(filename);
+
+	if (metatable == NULL) {
+		error("Could not load command table " + filename + ".");
 		return;
 	}
 
-	DataTableIff dtiff;
-	dtiff.readObject(iffStream);
+	DataTableIff tablesToLoad;
+	tablesToLoad.readObject(metatable);
 
-	delete iffStream;
+	delete metatable;
 
-	int i;
-	for (i = 0; i < dtiff.getTotalRows(); ++i) {
-		DataTableRow* row = dtiff.getRow(i);
-		QueueCommand* slashCommand;
+	for (int j = 0; j < tablesToLoad.getTotalRows(); ++j) {
+		DataTableRow* tableRow = tablesToLoad.getRow(j);
+		String tableName;
+		tableRow->getValue(0, tableName);
 
-		bool disabled; // check disabled first and don't load it
 
-		String name;
-		bool combat;
-		int targetType;
-		float maxRangeToTarget;
-		String characterAbility;
-		float defaultTime;
-		int defaultPriority;
-		uint64 stateMask = 0; // need to construct statemask
-		bool state;
-		bool position; // need to add positions one by one
+		IffStream* iffStream = TemplateManager::instance()->openIffFile(tableName);
 
-		row->getValue(CommandConfigManager::COMMANDNAME, name);
-		slashCommand = createCommand(name.trim().toLowerCase());
-
-		if (slashCommand == NULL) {
-			error("Could not create command " + name);
-			continue;
+		if (iffStream == NULL) {
+			error("Could not load commands from " + tableName + ".");
+			return;
 		}
 
-		row->getValue(CommandConfigManager::ADDTOCOMBATQUEUE, combat);
-		slashCommand->setAddToCombatQueue(combat);
+		DataTableIff dtiff;
+		dtiff.readObject(iffStream);
 
-		row->getValue(CommandConfigManager::TARGETTYPE, targetType);
-		slashCommand->setTargetType(targetType);
+		delete iffStream;
 
-		row->getValue(CommandConfigManager::MAXRANGETOTARGET, maxRangeToTarget);
-		slashCommand->setMaxRange(maxRangeToTarget);
+		for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+			DataTableRow* row = dtiff.getRow(i);
+			QueueCommand* slashCommand;
 
-		row->getValue(CommandConfigManager::CHARACTERABILITY, characterAbility);
-		slashCommand->setCharacterAbility(characterAbility);
+			bool disabled; // check disabled first and don't load it
 
-		row->getValue(CommandConfigManager::DEFAULTTIME, defaultTime);
-		slashCommand->setDefaultTime(defaultTime);
+			String name;
+			bool combat = true;
+			int targetType;
+			float maxRangeToTarget;
+			String characterAbility;
+			float defaultTime;
+			int defaultPriority;
+			uint64 stateMask = 0; // need to construct statemask
+			bool state;
+			bool position; // need to add positions one by one
 
-		row->getValue(CommandConfigManager::DEFAULTPRIORITY, defaultPriority);
-		slashCommand->setDefaultPriority(defaultPriority);
+			row->getValue(CommandConfigManager::COMMANDNAME, name);
+			slashCommand = createCommand(name.trim().toLowerCase());
 
-		// build state mask
-		row->getValue(CommandConfigManager::COVER, state);
-		if (!state) stateMask |= CreatureState::COVER;
-		row->getValue(CommandConfigManager::COMBAT, state);
-		if (!state) stateMask |= CreatureState::COMBAT;
-		row->getValue(CommandConfigManager::PEACE, state);
-		if (!state) stateMask |= CreatureState::PEACE;
-		row->getValue(CommandConfigManager::AIMING, state);
-		if (!state) stateMask |= CreatureState::AIMING;
-		row->getValue(CommandConfigManager::ALERT, state);
-		if (!state) stateMask |= CreatureState::ALERT;
-		row->getValue(CommandConfigManager::BERSERK, state);
-		if (!state) stateMask |= CreatureState::BERSERK;
-		row->getValue(CommandConfigManager::FEIGNDEATH, state);
-		if (!state) stateMask |= CreatureState::FEIGNDEATH;
-		row->getValue(CommandConfigManager::COMBATATTITUDEEVASIVE, state);
-		if (!state) stateMask |= CreatureState::COMBATATTITUDEEVASIVE;
-		row->getValue(CommandConfigManager::COMBATATTITUDENORMAL, state);
-		if (!state) stateMask |= CreatureState::COMBATATTITUDENORMAL;
-		row->getValue(CommandConfigManager::COMBATATTITUDEAGGRESSIVE, state);
-		if (!state) stateMask |= CreatureState::COMBATATTITUDEAGGRESSIVE;
-		row->getValue(CommandConfigManager::TUMBLING, state);
-		if (!state) stateMask |= CreatureState::TUMBLING;
-		row->getValue(CommandConfigManager::RALLIED, state);
-		if (!state) stateMask |= CreatureState::RALLIED;
-		row->getValue(CommandConfigManager::STUNNED, state);
-		if (!state) stateMask |= CreatureState::STUNNED;
-		row->getValue(CommandConfigManager::BLINDED, state);
-		if (!state) stateMask |= CreatureState::BLINDED;
-		row->getValue(CommandConfigManager::DIZZY, state);
-		if (!state) stateMask |= CreatureState::DIZZY;
-		row->getValue(CommandConfigManager::INTIMIDATED, state);
-		if (!state) stateMask |= CreatureState::INTIMIDATED;
-		row->getValue(CommandConfigManager::IMMOBILIZED, state);
-		if (!state) stateMask |= CreatureState::IMMOBILIZED;
-		row->getValue(CommandConfigManager::FROZEN, state);
-		if (!state) stateMask |= CreatureState::FROZEN;
-		row->getValue(CommandConfigManager::SWIMMING, state);
-		if (!state) stateMask |= CreatureState::SWIMMING;
-		row->getValue(CommandConfigManager::SITTINGONCHAIR, state);
-		if (!state) stateMask |= CreatureState::SITTINGONCHAIR;
-		row->getValue(CommandConfigManager::CRAFTING, state);
-		if (!state) stateMask |= CreatureState::CRAFTING;
-		row->getValue(CommandConfigManager::GLOWINGJEDI, state);
-		if (!state) stateMask |= CreatureState::GLOWINGJEDI;
-		row->getValue(CommandConfigManager::MASKSCENT, state);
-		if (!state) stateMask |= CreatureState::MASKSCENT;
-		row->getValue(CommandConfigManager::POISONED, state);
-		if (!state) stateMask |= CreatureState::POISONED;
-		row->getValue(CommandConfigManager::BLEEDING, state);
-		if (!state) stateMask |= CreatureState::BLEEDING;
-		row->getValue(CommandConfigManager::DISEASED, state);
-		if (!state) stateMask |= CreatureState::DISEASED;
-		row->getValue(CommandConfigManager::ONFIRE, state);
-		if (!state) stateMask |= CreatureState::ONFIRE;
-		row->getValue(CommandConfigManager::RIDINGMOUNT, state);
-		if (!state) stateMask |= CreatureState::RIDINGMOUNT;
-		row->getValue(CommandConfigManager::MOUNTEDCREATURE, state);
-		if (!state) stateMask |= CreatureState::MOUNTEDCREATURE;
-		row->getValue(CommandConfigManager::PILOTINGSHIP, state);
-		if (!state) stateMask |= CreatureState::PILOTINGSHIP;
-		row->getValue(CommandConfigManager::PILOTINGPOBSHIP, state);
-		if (!state) stateMask |= CreatureState::PILOTINGPOBSHIP;
-		row->getValue(CommandConfigManager::SHIPOPERATIONS, state);
-		if (!state) stateMask |= CreatureState::SHIPOPERATIONS;
-		row->getValue(CommandConfigManager::SHIPGUNNER, state);
-		if (!state) stateMask |= CreatureState::SHIPGUNNER;
-		row->getValue(CommandConfigManager::SHIPINTERIOR, state);
-		if (!state) stateMask |= CreatureState::SHIPINTERIOR;
+			if (slashCommand == NULL) {
+				error("Could not create command " + name);
+				continue;
+			}
 
-		slashCommand->setStateMask(stateMask);
+			if (!tableName.contains("space"))
+				row->getValue(CommandConfigManager::ADDTOCOMBATQUEUE, combat);
+			slashCommand->setAddToCombatQueue(combat);
 
-		// add prohibited locomotions
-		row->getValue(CommandConfigManager::STANDING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::STANDING);
-		row->getValue(CommandConfigManager::SNEAKING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::SNEAKING);
-		row->getValue(CommandConfigManager::WALKING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::WALKING);
-		row->getValue(CommandConfigManager::RUNNING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::RUNNING);
-		row->getValue(CommandConfigManager::KNEELING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::KNEELING);
-		row->getValue(CommandConfigManager::CROUCHSNEAKING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::CROUCHSNEAKING);
-		row->getValue(CommandConfigManager::CROUCHWALKING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::CROUCHWALKING);
-		row->getValue(CommandConfigManager::PRONE, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::PRONE);
-		row->getValue(CommandConfigManager::CRAWLING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::CRAWLING);
-		row->getValue(CommandConfigManager::CLIMBINGSTATIONARY, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::CLIMBINGSTATIONARY);
-		row->getValue(CommandConfigManager::CLIMBING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::CLIMBING);
-		row->getValue(CommandConfigManager::HOVERING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::HOVERING);
-		row->getValue(CommandConfigManager::FLYING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::FLYING);
-		row->getValue(CommandConfigManager::LYINGDOWN, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::LYINGDOWN);
-		row->getValue(CommandConfigManager::SITTING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::SITTING);
-		row->getValue(CommandConfigManager::SKILLANIMATING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::SKILLANIMATING);
-		row->getValue(CommandConfigManager::DRIVINGVEHICLE, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::DRIVINGVEHICLE);
-		row->getValue(CommandConfigManager::RIDINGCREATURE, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::RIDINGCREATURE);
-		row->getValue(CommandConfigManager::KNOCKEDDOWN, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::KNOCKEDDOWN);
-		row->getValue(CommandConfigManager::INCAPACITATED, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::INCAPACITATED);
-		row->getValue(CommandConfigManager::DEAD, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::DEAD);
-		row->getValue(CommandConfigManager::BLOCKING, position);
-		if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::BLOCKING);
+			row->getValue(CommandConfigManager::TARGETTYPE, targetType);
+			slashCommand->setTargetType(targetType);
+
+			row->getValue(CommandConfigManager::MAXRANGETOTARGET, maxRangeToTarget);
+			slashCommand->setMaxRange(maxRangeToTarget);
+
+			row->getValue(CommandConfigManager::CHARACTERABILITY, characterAbility);
+			slashCommand->setCharacterAbility(characterAbility);
+
+			row->getValue(CommandConfigManager::DEFAULTTIME, defaultTime);
+			slashCommand->setDefaultTime(defaultTime);
+
+			row->getValue(CommandConfigManager::DEFAULTPRIORITY, defaultPriority);
+			slashCommand->setDefaultPriority(defaultPriority);
+
+			// build state mask
+			row->getValue(CommandConfigManager::COVER, state);
+			if (!state) stateMask |= CreatureState::COVER;
+			row->getValue(CommandConfigManager::COMBAT, state);
+			if (!state) stateMask |= CreatureState::COMBAT;
+			row->getValue(CommandConfigManager::PEACE, state);
+			if (!state) stateMask |= CreatureState::PEACE;
+			row->getValue(CommandConfigManager::AIMING, state);
+			if (!state) stateMask |= CreatureState::AIMING;
+			row->getValue(CommandConfigManager::ALERT, state);
+			if (!state) stateMask |= CreatureState::ALERT;
+			row->getValue(CommandConfigManager::BERSERK, state);
+			if (!state) stateMask |= CreatureState::BERSERK;
+			row->getValue(CommandConfigManager::FEIGNDEATH, state);
+			if (!state) stateMask |= CreatureState::FEIGNDEATH;
+			row->getValue(CommandConfigManager::COMBATATTITUDEEVASIVE, state);
+			if (!state) stateMask |= CreatureState::COMBATATTITUDEEVASIVE;
+			row->getValue(CommandConfigManager::COMBATATTITUDENORMAL, state);
+			if (!state) stateMask |= CreatureState::COMBATATTITUDENORMAL;
+			row->getValue(CommandConfigManager::COMBATATTITUDEAGGRESSIVE, state);
+			if (!state) stateMask |= CreatureState::COMBATATTITUDEAGGRESSIVE;
+			row->getValue(CommandConfigManager::TUMBLING, state);
+			if (!state) stateMask |= CreatureState::TUMBLING;
+			row->getValue(CommandConfigManager::RALLIED, state);
+			if (!state) stateMask |= CreatureState::RALLIED;
+			row->getValue(CommandConfigManager::STUNNED, state);
+			if (!state) stateMask |= CreatureState::STUNNED;
+			row->getValue(CommandConfigManager::BLINDED, state);
+			if (!state) stateMask |= CreatureState::BLINDED;
+			row->getValue(CommandConfigManager::DIZZY, state);
+			if (!state) stateMask |= CreatureState::DIZZY;
+			row->getValue(CommandConfigManager::INTIMIDATED, state);
+			if (!state) stateMask |= CreatureState::INTIMIDATED;
+			row->getValue(CommandConfigManager::IMMOBILIZED, state);
+			if (!state) stateMask |= CreatureState::IMMOBILIZED;
+			row->getValue(CommandConfigManager::FROZEN, state);
+			if (!state) stateMask |= CreatureState::FROZEN;
+			row->getValue(CommandConfigManager::SWIMMING, state);
+			if (!state) stateMask |= CreatureState::SWIMMING;
+			row->getValue(CommandConfigManager::SITTINGONCHAIR, state);
+			if (!state) stateMask |= CreatureState::SITTINGONCHAIR;
+			row->getValue(CommandConfigManager::CRAFTING, state);
+			if (!state) stateMask |= CreatureState::CRAFTING;
+			row->getValue(CommandConfigManager::GLOWINGJEDI, state);
+			if (!state) stateMask |= CreatureState::GLOWINGJEDI;
+			row->getValue(CommandConfigManager::MASKSCENT, state);
+			if (!state) stateMask |= CreatureState::MASKSCENT;
+			row->getValue(CommandConfigManager::POISONED, state);
+			if (!state) stateMask |= CreatureState::POISONED;
+			row->getValue(CommandConfigManager::BLEEDING, state);
+			if (!state) stateMask |= CreatureState::BLEEDING;
+			row->getValue(CommandConfigManager::DISEASED, state);
+			if (!state) stateMask |= CreatureState::DISEASED;
+			row->getValue(CommandConfigManager::ONFIRE, state);
+			if (!state) stateMask |= CreatureState::ONFIRE;
+			row->getValue(CommandConfigManager::RIDINGMOUNT, state);
+			if (!state) stateMask |= CreatureState::RIDINGMOUNT;
+			row->getValue(CommandConfigManager::MOUNTEDCREATURE, state);
+			if (!state) stateMask |= CreatureState::MOUNTEDCREATURE;
+			row->getValue(CommandConfigManager::PILOTINGSHIP, state);
+			if (!state) stateMask |= CreatureState::PILOTINGSHIP;
+			row->getValue(CommandConfigManager::PILOTINGPOBSHIP, state);
+			if (!state) stateMask |= CreatureState::PILOTINGPOBSHIP;
+			row->getValue(CommandConfigManager::SHIPOPERATIONS, state);
+			if (!state) stateMask |= CreatureState::SHIPOPERATIONS;
+			row->getValue(CommandConfigManager::SHIPGUNNER, state);
+			if (!state) stateMask |= CreatureState::SHIPGUNNER;
+			row->getValue(CommandConfigManager::SHIPINTERIOR, state);
+			if (!state) stateMask |= CreatureState::SHIPINTERIOR;
+
+			slashCommand->setStateMask(stateMask);
+
+			// add prohibited locomotions
+			row->getValue(CommandConfigManager::STANDING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::STANDING);
+			row->getValue(CommandConfigManager::SNEAKING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::SNEAKING);
+			row->getValue(CommandConfigManager::WALKING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::WALKING);
+			row->getValue(CommandConfigManager::RUNNING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::RUNNING);
+			row->getValue(CommandConfigManager::KNEELING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::KNEELING);
+			row->getValue(CommandConfigManager::CROUCHSNEAKING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::CROUCHSNEAKING);
+			row->getValue(CommandConfigManager::CROUCHWALKING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::CROUCHWALKING);
+			row->getValue(CommandConfigManager::PRONE, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::PRONE);
+			row->getValue(CommandConfigManager::CRAWLING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::CRAWLING);
+			row->getValue(CommandConfigManager::CLIMBINGSTATIONARY, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::CLIMBINGSTATIONARY);
+			row->getValue(CommandConfigManager::CLIMBING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::CLIMBING);
+			row->getValue(CommandConfigManager::HOVERING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::HOVERING);
+			row->getValue(CommandConfigManager::FLYING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::FLYING);
+			row->getValue(CommandConfigManager::LYINGDOWN, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::LYINGDOWN);
+			row->getValue(CommandConfigManager::SITTING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::SITTING);
+			row->getValue(CommandConfigManager::SKILLANIMATING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::SKILLANIMATING);
+			row->getValue(CommandConfigManager::DRIVINGVEHICLE, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::DRIVINGVEHICLE);
+			row->getValue(CommandConfigManager::RIDINGCREATURE, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::RIDINGCREATURE);
+			row->getValue(CommandConfigManager::KNOCKEDDOWN, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::KNOCKEDDOWN);
+			row->getValue(CommandConfigManager::INCAPACITATED, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::INCAPACITATED);
+			row->getValue(CommandConfigManager::DEAD, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::DEAD);
+			row->getValue(CommandConfigManager::BLOCKING, position);
+			if (!position) slashCommand->addInvalidLocomotion(CreatureLocomotion::BLOCKING);
+
+			num++;
+		}
 	}
 
-	info("Loaded " + String::valueOf(i) + " commands.");
+	info("Loaded " + String::valueOf(num) + " commands from " + filename + ".");
 }
 
 QueueCommand* CommandConfigManager::createCommand(String name) {
@@ -1296,4 +1319,56 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<OpenLotteryContainerCommand>(String("openLotteryContainer").toLowerCase());
 	commandFactory.registerCommand<CloseLotteryContainerCommand>(String("closeLotteryContainer").toLowerCase());
 	commandFactory.registerCommand<RequestQuestTimersAndCountersCommand>(String("requestQuestTimersAndCounters").toLowerCase());
+	commandFactory.registerCommand<EjectCommand>(String("eject").toLowerCase());
+	commandFactory.registerCommand<LaunchIntoSpaceCommand>(String("launchIntoSpace").toLowerCase());
+	commandFactory.registerCommand<UnstickCommand>(String("unstick").toLowerCase());
+	commandFactory.registerCommand<WaypointCommand>(String("waypoint").toLowerCase());
+	commandFactory.registerCommand<CreateVendorCommand>(String("createVendor").toLowerCase());
+	commandFactory.registerCommand<PilotShipCommand>(String("pilotShip").toLowerCase());
+	commandFactory.registerCommand<UnpilotShipCommand>(String("unpilotShip").toLowerCase());
+	commandFactory.registerCommand<LeaveStationCommand>(String("leaveStation").toLowerCase());
+	commandFactory.registerCommand<OpenWingsCommand>(String("openWings").toLowerCase());
+	commandFactory.registerCommand<CloseWingsCommand>(String("closeWings").toLowerCase());
+	commandFactory.registerCommand<LaunchMissileCommand>(String("launchMissile").toLowerCase());
+	commandFactory.registerCommand<LaunchCountermeasureCommand>(String("launchCountermeasure").toLowerCase());
+	commandFactory.registerCommand<BoosterOnCommand>(String("boosterOn").toLowerCase());
+	commandFactory.registerCommand<BoosterOffCommand>(String("boosterOff").toLowerCase());
+	commandFactory.registerCommand<InspectCommand>(String("inspect").toLowerCase());
+	commandFactory.registerCommand<DockCommand>(String("dock").toLowerCase());
+	commandFactory.registerCommand<PumpreactorCommand>(String("pumpreactor").toLowerCase());
+	commandFactory.registerCommand<IffscrambleCommand>(String("iffscramble").toLowerCase());
+	commandFactory.registerCommand<DroidCommand>(String("droid").toLowerCase());
+	commandFactory.registerCommand<LootAllCommand>(String("lootAll").toLowerCase());
+	commandFactory.registerCommand<ServerAsteroidDataListenCommand>(String("serverAsteroidDataListen").toLowerCase());
+	commandFactory.registerCommand<ServerAsteroidDataStopListeningCommand>(String("serverAsteroidDataStopListening").toLowerCase());
+	commandFactory.registerCommand<DisableTargetCommand>(String("disableTarget").toLowerCase());
+	commandFactory.registerCommand<DestroyTargetCommand>(String("destroyTarget").toLowerCase());
+	commandFactory.registerCommand<SendFormObjectDataCommand>(String("sendFormObjectData").toLowerCase());
+	commandFactory.registerCommand<WaypointCommand>(String("waypoint").toLowerCase());
+	commandFactory.registerCommand<InspacerepairCommand>(String("inspacerepair").toLowerCase());
+	commandFactory.registerCommand<LightEngineScrambleCommand>(String("lightEngineScramble").toLowerCase());
+	commandFactory.registerCommand<HyperspaceCommand>(String("hyperspace").toLowerCase());
+	commandFactory.registerCommand<AborthyperspaceCommand>(String("aborthyperspace").toLowerCase());
+	commandFactory.registerCommand<EweaponsCommand>(String("eweapons").toLowerCase());
+	commandFactory.registerCommand<EshieldsCommand>(String("eshields").toLowerCase());
+	commandFactory.registerCommand<EthrustCommand>(String("ethrust").toLowerCase());
+	commandFactory.registerCommand<VrepairCommand>(String("vrepair").toLowerCase());
+	commandFactory.registerCommand<Bstrike1Command>(String("bstrike1").toLowerCase());
+	commandFactory.registerCommand<Bstrike2Command>(String("bstrike2").toLowerCase());
+	commandFactory.registerCommand<Bstrike3Command>(String("bstrike3").toLowerCase());
+	commandFactory.registerCommand<Ptrap1Command>(String("ptrap1").toLowerCase());
+	commandFactory.registerCommand<Ptrap2Command>(String("ptrap2").toLowerCase());
+	commandFactory.registerCommand<Epulse1Command>(String("epulse1").toLowerCase());
+	commandFactory.registerCommand<Epulse2Command>(String("epulse2").toLowerCase());
+	commandFactory.registerCommand<Epulse3Command>(String("epulse3").toLowerCase());
+	commandFactory.registerCommand<NblastCommand>(String("nblast").toLowerCase());
+	commandFactory.registerCommand<VrepairotherCommand>(String("vrepairother").toLowerCase());
+	commandFactory.registerCommand<UndockCommand>(String("undock").toLowerCase());
+	commandFactory.registerCommand<Jstart1Command>(String("jstart1").toLowerCase());
+	commandFactory.registerCommand<Jstart2Command>(String("jstart2").toLowerCase());
+	commandFactory.registerCommand<Jstart3Command>(String("jstart3").toLowerCase());
+	commandFactory.registerCommand<EscapePodCommand>(String("escapePod").toLowerCase());
+	commandFactory.registerCommand<InspacereloadCommand>(String("inspacereload").toLowerCase());
+	commandFactory.registerCommand<InspacerrCommand>(String("inspacerr").toLowerCase());
+	commandFactory.registerCommand<RequestSpaceTrainerCommand>(String("requestSpaceTrainer").toLowerCase());
 }
