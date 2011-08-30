@@ -134,13 +134,18 @@ void ResourceContainerImplementation::split(int newStackSize) {
 	if(parent == NULL || newResource == NULL || newResource->getSpawnObject() == NULL)
 		return;
 
-	parent->addObject(newResource, -1, true);
-	parent->broadcastObject(newResource, true);
+	if(parent->addObject(newResource, -1, true)) {
+		parent->broadcastObject(newResource, true);
 
-	setQuantity(getQuantity() - newStackSize);
+		setQuantity(getQuantity() - newStackSize);
 
-   	newResource->updateToDatabase();
-   	updateToDatabase();
+	   	newResource->updateToDatabase();
+	   	updateToDatabase();
+	} else {
+		StringBuffer errorMessage;
+		errorMessage << "Unable to split resource in container type: " << parent->getGameObjectType() << " " << parent->getObjectName()->getDisplayedName();
+		error(errorMessage.toString());
+	}
 }
 
 void ResourceContainerImplementation::split(int newStackSize, CreatureObject* player) {
@@ -151,13 +156,16 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 	if (newResource == NULL || newResource->getSpawnObject() == NULL)
 		return;
 
-	newResource->sendTo(player, true);
-	inventory->addObject(newResource, -1, true);
+	if(inventory->addObject(newResource, -1, true)) {
+		newResource->sendTo(player, true);
 
-	setQuantity(getQuantity() - newStackSize);
+		setQuantity(getQuantity() - newStackSize);
 
-   	newResource->updateToDatabase();
-   	updateToDatabase();
+	   	newResource->updateToDatabase();
+	   	updateToDatabase();
+	} else {
+		error("Unable to split resource to player: " + player->getFirstName());
+	}
 }
 
 void ResourceContainerImplementation::combine(ResourceContainer* fromContainer) {

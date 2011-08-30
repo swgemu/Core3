@@ -697,7 +697,8 @@ void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 			ManagedReference<ResourceContainer*> resource =
 					(ResourceContainer*) object.get();
 
-			if (resource->getSpawnName() == resourceSpawn->getName()) {
+			if (resource->getSpawnName() == resourceSpawn->getName() &&
+					resource->getQuantity() < ResourceContainer::MAXSIZE) {
 				int newStackSize = resource->getQuantity() + unitsExtracted;
 
 				resource->setQuantity(newStackSize);

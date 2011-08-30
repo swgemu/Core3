@@ -42,18 +42,18 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
  */
 
-#include <iostream>
-#include <fstream>
 
 #include "NameManager.h"
 
-#include "../../ZoneServer.h"
+#include "../../ZoneProcessServer.h"
 #include "../../ZoneClientSession.h"
 #include "../../objects/player/Races.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 NameManager::NameManager(ZoneProcessServer* serv) : Logger("NameManager") {
 	server = serv;
+
+	initialize();
 
 	profaneNames = new Vector<String>(55, 5); //based on the original number of banned words
 	developerNames = new BannedNameSet();
@@ -63,13 +63,104 @@ NameManager::NameManager(ZoneProcessServer* serv) : Logger("NameManager") {
 	fillNames();
 
 	setLogging(false);
+
 }
 
 NameManager::~NameManager() {
+
+	delete lua;
+
 	delete(profaneNames);
 	delete(developerNames);
 	delete(reservedNames);
 	delete(fictionNames);
+}
+
+void NameManager::initialize() {
+	lua = new Lua();
+	lua->init();
+
+	info("loading configuration");
+	if(!loadConfigData()) {
+
+		loadDefaultConfig();
+
+		error("Configuration error(s), using defaults");
+	}
+
+	info("initialized");
+
+}
+
+bool NameManager::loadConfigFile() {
+	return lua->runFile("scripts/managers/name_manager.lua");
+}
+
+bool NameManager::loadConfigData() {
+	if (!loadConfigFile())
+		return false;
+
+	letterMappings.put("a", lua->getGlobalString("a"));
+	letterMappings.put("b", lua->getGlobalString("b"));
+	letterMappings.put("c", lua->getGlobalString("c"));
+	letterMappings.put("d", lua->getGlobalString("d"));
+	letterMappings.put("e", lua->getGlobalString("e"));
+	letterMappings.put("f", lua->getGlobalString("f"));
+	letterMappings.put("g", lua->getGlobalString("g"));
+	letterMappings.put("h", lua->getGlobalString("h"));
+	letterMappings.put("i", lua->getGlobalString("i"));
+	letterMappings.put("j", lua->getGlobalString("j"));
+	letterMappings.put("k", lua->getGlobalString("k"));
+	letterMappings.put("l", lua->getGlobalString("l"));
+	letterMappings.put("m", lua->getGlobalString("m"));
+	letterMappings.put("n", lua->getGlobalString("n"));
+	letterMappings.put("o", lua->getGlobalString("o"));
+	letterMappings.put("p", lua->getGlobalString("p"));
+	letterMappings.put("q", lua->getGlobalString("q"));
+	letterMappings.put("r", lua->getGlobalString("r"));
+	letterMappings.put("s", lua->getGlobalString("s"));
+	letterMappings.put("t", lua->getGlobalString("t"));
+	letterMappings.put("u", lua->getGlobalString("u"));
+	letterMappings.put("v", lua->getGlobalString("v"));
+	letterMappings.put("w", lua->getGlobalString("w"));
+	letterMappings.put("x", lua->getGlobalString("x"));
+	letterMappings.put("y", lua->getGlobalString("y"));
+	letterMappings.put("z", lua->getGlobalString("z"));
+
+	letterMappings.put("qu", lua->getGlobalString("qu"));
+	letterMappings.put("doublevowel", lua->getGlobalString("doublevowel"));
+	letterMappings.put("doubleconsonent", lua->getGlobalString("doubleconsonent"));
+
+	LuaObject organicPrefixesObject = lua->getGlobalObject("organicprefixes");
+	for (int i = 1; i <= organicPrefixesObject.getTableSize(); ++i)
+		organicPrefixes.add(organicPrefixesObject.getStringAt(i));
+
+	LuaObject organicSuffixesObject = lua->getGlobalObject("organicsuffixes");
+	for (int i = 1; i <= organicSuffixesObject.getTableSize(); ++i)
+		organicPrefixes.add(organicSuffixesObject.getStringAt(i));
+
+	LuaObject inorganicPrefixesObject = lua->getGlobalObject("inorganicprefixes");
+	for (int i = 1; i <= inorganicPrefixesObject.getTableSize(); ++i)
+		inorganicPrefixes.add(inorganicPrefixesObject.getStringAt(i));
+
+	LuaObject inorganicSuffixesObject = lua->getGlobalObject("inorganicsuffixes");
+	for (int i = 1; i <= inorganicSuffixesObject.getTableSize(); ++i)
+		inorganicSuffixes.add(inorganicSuffixesObject.getStringAt(i));
+
+	LuaObject npcFirstNamesObject = lua->getGlobalObject("npcfirstnames");
+	for (int i = 1; i <= npcFirstNamesObject.getTableSize(); ++i)
+		npcFirstNames.add(npcFirstNamesObject.getStringAt(i));
+
+	LuaObject npcSurnamesObject = lua->getGlobalObject("npcsurnames");
+	for (int i = 1; i <= npcSurnamesObject.getTableSize(); ++i)
+		npcSurnames.add(npcSurnamesObject.getStringAt(i));
+
+	return true;
+}
+
+void NameManager::loadDefaultConfig() {
+
+
 }
 
 void NameManager::fillNames() {
@@ -193,7 +284,7 @@ int NameManager::validateName(const String& name, int species) {
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
 	//Wookies are not allowed to have last names.
-	if (!lname.isEmpty() && species == CreatureObjectImplementation::WOOKIE)
+	if (!lname.isEmpty() && species == CreatureObject::WOOKIE)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
 	//If the name has a hyphen or apostrophe, make sure they are the proper species.
@@ -218,247 +309,93 @@ int NameManager::validateName(const String& name, int species) {
 	return NameManagerResult::ACCEPTED;
 }
 
-const String NameManager::makeCreatureName(bool surname) {
-	bool lastName = surname;
-	bool inLastName = false;
-	int nameLength = 3 + System::random(3);
-	char* name = (char*) malloc(sizeof(char) * (nameLength + 1));//new char[nameLength + 1];
+const String NameManager::makeCreatureName(bool lastName) {
 
-	while (true) {
-		int x = 0;
+	String name = makeName(3 + System::random(6));
 
-		name[0] = chooseNextLetter(' ', ' ');
-		name[1] = chooseNextLetter(name[0], ' ');
-
-		x = 2;
-
-		for (; x < nameLength + 1; x++) {
-			if (x < nameLength) {
-				if (inLastName) {
-					name[x] = Character::toUpperCase(chooseNextLetter(name[x-1], name[x-2]));
-					inLastName = false;
-				} else
-					name[x] = chooseNextLetter(name[x-1], name[x-2]);
-			} else {
-				if (lastName && x == nameLength) {
-					name[x] = ' ';
-					nameLength += 4 + System::random(3);
-
-					name = (char*) realloc(name, nameLength + 1);
-
-					lastName = false;
-					inLastName = true;
-				} else {
-					name[x] = '\0';
-					break;
-				}
-			}
-		}
-
-		name[0] = toupper(name[0]);
-
-		if (!isProfane(name))
-			break;
+	if(lastName) {
+		name += " ";
+		name += makeName(3 + System::random(6));
 	}
-	
-	String ret(name);
 
-	//delete [] name;
-	free(name);
+	return name;
+}
 
-	return ret;
+String NameManager::makeName(int nameLength) {
+	String name;
+
+	do {
+		name = "";
+
+		/// Get first 2 letters
+		name += chooseNextLetter(' ', ' ');
+		name += chooseNextLetter(name[0], ' ');
+
+		while (name.length() < nameLength)
+				name += chooseNextLetter(name[name.length() - 1], name[name.length() - 2]);
+
+		name[0] = Character::toUpperCase(name[0]);
+
+	} while (validateName(name, -1) != NameManagerResult::ACCEPTED);
+
+	return name;
 }
 
 const String NameManager::makeResourceName(bool isOrganic) {
 	int nameLength = 4 + System::random(6);
-	char* name = new char[nameLength + 1];
+	String name;
 
-	int x = 0;
+	do {
+		name = "";
 
-	while (true) {
-		if (System::random(2) == 1 && nameLength > 5 && !isOrganic) {
-			x = addPrefix(name);
+		if (nameLength > 5 && System::random(2) == 1) {
+			addPrefix(name, isOrganic);
 		} else {
-			name[0] = chooseNextLetter(' ', ' ');
-			name[1] = chooseNextLetter(name[0], ' ');
-
-			x = 2;
+			name += chooseNextLetter(' ', ' ');
+			name += chooseNextLetter(name[0], ' ');
 		}
 
-		for (; x < nameLength + 1; x++) {
-			if (x < nameLength) {
-				name[x] = chooseNextLetter(name[x-1], name[x-2]);
-			} else {
-				if (System::random(1) == 1 && !isOrganic && !isVowel(name[x-1])	&& name[x-1] != 'q' && x < nameLength - 4)
-					addSuffix(name, x);
-				else
-					name[x] = '\0';
+		while (name.length() < nameLength)
+				name += chooseNextLetter(name[name.length() - 1], name[name.length() - 2]);
 
-				break;
-			}
-		}
+		if (!isVowel(name[name.length() - 1]) && name[name.length() - 1] != 'q' && System::random(1) == 1 )
+			addSuffix(name, isOrganic);
 
-		name[0] = toupper(name[0]);
+		name[0] = Character::toUpperCase(name[0]);
 
-		if (!isProfane(name))
-			break;
-	}
+	} while (validateName(name, -1) != NameManagerResult::ACCEPTED);
 
-	String ret(name);
-
-	delete [] name;
-
-	return ret;
+	return name;
 }
 
 char NameManager::chooseNextLetter(const char lastLetter, const char letterBeforeLast) {
+
 	if (letterBeforeLast == ' ' && lastLetter == ' ')
 		return 97 + System::random(25);
 
-	if ((!isVowel(lastLetter) && !isVowel(letterBeforeLast) && letterBeforeLast	!= ' ')
-			|| (lastLetter == 'u' && letterBeforeLast == 'q')) {
-		char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm',
-				'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-				'\0' };
+	StringBuffer last;
+	last << Character::toLowerCase(lastLetter);
 
-		return chooseLetterExcluding(exclusion);
+	String inclusion = "abcdefghijklmnopqrstuvwxyz";
+
+	if (letterBeforeLast != ' ' && (!isVowel(lastLetter) && !isVowel(letterBeforeLast))) {
+
+		inclusion = letterMappings.get("doubleconsonent");
+
+	} else if ((letterBeforeLast != ' ' && isVowel(lastLetter) && isVowel(letterBeforeLast))) {
+
+		inclusion = letterMappings.get("doublevowel");
+
+	} else if ((letterBeforeLast != ' ' && lastLetter == 'u' && letterBeforeLast == 'q')) {
+
+		inclusion = letterMappings.get("qu");
+
+	} else if(letterMappings.contains(last.toString())) {
+
+		inclusion = letterMappings.get(last.toString());
 	}
 
-	if ((isVowel(lastLetter) && isVowel(letterBeforeLast) && letterBeforeLast != ' ')) {
-		char exclusion[] = { 'a', 'e', 'i', 'o', 'u', 'y', '\0' };
-
-		return chooseLetterExcluding(exclusion);
-	} else {
-		switch (tolower(lastLetter)) {
-		case 'a': {
-			char exclusion[] = { 'a', 'e', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'b': {
-			char exclusion[] = { 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k',
-					'm', 'n', 'p', 'q', 's', 't', 'v', 'w', 'x', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'c': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'j', 'k', 'm', 'n',
-					'p', 'q', 's', 't', 'v', 'w', 'x', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'd': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm',
-					'n', 'p', 'q', 's', 't', 'v', 'w', 'x', 'y', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'f': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'm',
-					'n', 'p', 'q', 's', 't', 'v', 'w', 'x', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'g': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'j', 'k', 'm', 'n',
-					'p', 'q', 's', 't', 'v', 'w', 'x', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'h': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k',
-					'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
-					'x', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'i': {
-			char exclusion[] = { 'i', 'j', 'u', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'j': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l',
-					'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
-					'\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'k': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'm',
-					'n', 'p', 'q', 's', 't', 'v', 'w', 'x', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'l': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k',
-					'l', 'm', 'n', 'p', 'q', 'r', 's', 'v', 'w',
-					'x', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'm': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l',
-					'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
-					'\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'n': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l',
-					'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
-					'\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'p': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'j', 'k', 'm', 'n',
-					'p', 'q', 's', 't', 'v', 'w', 'x', 'y', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'q':
-			return 'u';
-		case 'r': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k',
-					'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
-					'x', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 's': {
-			char exclusion[] = { 'b', 'd', 'f', 'g', 'j', 'v', 'x', 'y', 'z',
-					'\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 't': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm',
-					'n', 'p', 'q', 't', 'v', 'x', 'y', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'u': {
-			char exclusion[] = { 'a', 'b', 'd', 'e', 'h', 'j', 'i', 'm', 'o', 'r',
-					'u', 'v', 'x', 'y', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'v': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k',
-					'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
-					'x', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'w': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm',
-					'n', 'p', 'q', 's', 't', 'v', 'w', 'x', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'x': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k',
-					'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w',
-					'x', 'y', 'z', '\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'y': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l',
-					'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
-					'\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		case 'z': {
-			char exclusion[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l',
-					'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z',
-					'\0' };
-			return chooseLetterExcluding(exclusion);
-		}
-		default:
-			return 97 + System::random(25);
-		}
-	}
+	return chooseLetterInclusive(inclusion);
 }
 
 inline bool NameManager::isVowel(const char inChar) {
@@ -469,110 +406,52 @@ inline bool NameManager::isVowel(const char inChar) {
 		return false;
 }
 
-char NameManager::chooseLetterExcluding(const char exclude[]) {
-	char x = 97 + System::random(25);
+char NameManager::chooseLetterInclusive(String include) {
 
-	for (int i = 0; i < 25 && exclude[i] != '\0'; i++) {
-		if (x == exclude[i]) {
-			x = 97 + System::random(25);
-
-			i = -1;
-		}
-	}
-
-	return x;
+	return include.charAt(System::random(include.length() - 1));
 }
 
-inline int NameManager::addPrefix(char* name) {
-	int x = 1 + System::random(4);
+inline void NameManager::addPrefix(String& name, bool isOrganic) {
 
-	switch (x) {
-	case 1:
-		name[0] = 'c';
-		name[1] = 'a';
-		name[2] = 'r';
-		name[3] = 'b';
-		return 4;
-	case 2:
-		name[0] = 'd';
-		name[1] = 'u';
-		name[2] = 'r';
-		return 3;
-	case 3:
-		name[0] = 'o';
-		name[1] = 'm';
-		name[2] = 'n';
-		name[3] = 'i';
-		return 4;
-	case 4:
-		name[0] = 'q';
-		name[1] = 'u';
-		name[2] = 'a';
-		name[3] = 'd';
-		return 4;
-	case 5:
-		name[0] = 't';
-		name[1] = 'r';
-		name[2] = 'i';
-		return 3;
-	default:
-		return 0;
-	}
+	if(isOrganic && organicPrefixes.size() > 0)
+		name += organicPrefixes.get(System::random(organicPrefixes.size() - 1));
+
+	if(!isOrganic && inorganicPrefixes.size() > 0)
+		name += inorganicPrefixes.get(System::random(inorganicPrefixes.size() - 1));
 }
 
-inline void NameManager::addSuffix(char* name, int location) {
-	int x = 1 + System::random(7);
+inline void NameManager::addSuffix(String& name, bool isOrganic) {
 
-	switch (x) {
-	case 1:
-		name[location] = 'i';
-		name[location+1] = 'u';
-		name[location+2] = 'm';
-		name[location+3] = '\0';
-		break;
-	case 2:
-		name[location] = 'i';
-		name[location+1] = 'a';
-		name[location+2] = 'n';
-		name[location+3] = '\0';
-		break;
-	case 3:
-		name[location] = 'i';
-		name[location+1] = 's';
-		name[location+2] = 'm';
-		name[location+3] = '\0';
-		break;
-	case 4:
-		name[location] = 'i';
-		name[location+1] = 't';
-		name[location+2] = 'e';
-		name[location+3] = '\0';
-		break;
-	case 5:
-		name[location] = 's';
-		name[location+1] = 'i';
-		name[location+2] = 's';
-		name[location+3] = '\0';
-		break;
-	case 6:
-		name[location] = 'i';
-		name[location+1] = 'n';
-		name[location+2] = 'e';
-		name[location+3] = '\0';
-		break;
-	case 7:
-		name[location] = 'i';
-		name[location+1] = 'c';
-		name[location+2] = '\0';
-		break;
-	case 8:
-		name[location] = 'i';
-		name[location+1] = 'd';
-		name[location+2] = 'e';
-		name[location+3] = '\0';
-		break;
-	default:
-		break;
-	}
+	if(isOrganic && organicSuffixes.size() > 0)
+		name += organicSuffixes.get(System::random(organicSuffixes.size() - 1));
+
+	if(!isOrganic && inorganicSuffixes.size() > 0)
+		name += inorganicSuffixes.get(System::random(inorganicSuffixes.size() - 1));
+
 }
 
+void NameManager::test() {
+	uint64 start = Time::currentNanoTime();
+
+	for(int i = 0;i < 100000; ++i)
+		//System::out << makeResourceName(false) << endl;
+		makeResourceName(false);
+
+	for(int i = 0;i < 100000; ++i)
+		//System::out << makeResourceName(true) << endl;
+		makeResourceName(true);
+
+	for(int i = 0;i < 100000; ++i)
+		//System::out << makeCreatureName(true) << endl;
+		makeCreatureName(true);
+
+	for(int i = 0;i < 10; ++i)
+		//System::out << makeCreatureName(false) << endl;
+		makeCreatureName(false);
+
+	uint64 end = Time::currentNanoTime();
+	float nano = (end - start) / 10;
+	float milli = nano * .000001;
+	float seconds = milli / 1000;
+	System::out << nano << " nanoseconds / " << milli << " milliseconds" << seconds << " seconds" << endl;
+}

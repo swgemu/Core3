@@ -45,7 +45,10 @@ which carries forward this exception.
 #ifndef NAMEMANAGER_H_
 #define NAMEMANAGER_H_
 
-#include "engine/engine.h"
+#include "engine/lua/Lua.h"
+#include "engine/lua/LuaObject.h"
+#include "engine/core/ManagedReference.h"
+#include "server/zone/managers/templates/TemplateManager.h"
 
 namespace server {
 	namespace zone {
@@ -97,13 +100,36 @@ namespace server {
 		namespace managers {
 			namespace name {
 
-class NameManager : public Logger, public Object {
+class NameManager : public Singleton<TemplateManager>, public Logger, public Object {
 	ManagedReference<ZoneProcessServer*> server;
+
+	Lua* lua;
 
 	Vector<String>* profaneNames;
 	BannedNameSet* developerNames;
 	BannedNameSet* fictionNames;
 	BannedNameSet* reservedNames;
+
+	VectorMap<String, String> letterMappings;
+
+	Vector<String> organicPrefixes;
+	Vector<String> organicSuffixes;
+
+	Vector<String> inorganicPrefixes;
+	Vector<String> inorganicSuffixes;
+
+	Vector<String> npcFirstNames;
+	Vector<String> npcSurnames;
+
+private:
+
+	void initialize();
+
+	bool loadConfigFile();
+
+	bool loadConfigData();
+
+	void loadDefaultConfig();
 
 	void fillNames();
 
@@ -117,16 +143,20 @@ class NameManager : public Logger, public Object {
 
 	inline bool isVowel(const char);
 
-	int addPrefix(char* name);
+	inline void addPrefix(String& name, bool isOrganic);
 
-	void addSuffix(char* name, int location);
+	inline void addSuffix(String& name, bool isOrganic);
 
-	char chooseLetterExcluding(const char*);
+	char chooseLetterInclusive(String include);
+
+	String makeName(int nameLength);
 
 public:
 	NameManager(ZoneProcessServer* serv);
 
 	~NameManager();
+
+	void test();
 
 	bool isProfane(String name);
 

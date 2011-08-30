@@ -84,7 +84,7 @@ namespace server {
 
 			Reference<LoginClient*> client = getClient(session);
 
-			return server->handleMessage(client, message);
+			server->handleMessage(client, message);
 		}
 
 		void processMessage(Message* message) {

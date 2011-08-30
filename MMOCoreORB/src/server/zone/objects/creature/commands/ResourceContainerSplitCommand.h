@@ -75,7 +75,7 @@ public:
 		ManagedReference<SceneObject*> objectsParent = resourceContainer->getParent();
 
 		if (objectsParent == NULL ||
-				resourceContainer->getParentRecursively(SceneObject::PLAYERCREATURE) == NULL) {
+				objectsParent->isCellObject()) {
 
 			creature->sendSystemMessage("container_error_message", "container03");
 			return GENERALERROR;
