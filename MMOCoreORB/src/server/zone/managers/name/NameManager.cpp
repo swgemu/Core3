@@ -135,25 +135,37 @@ bool NameManager::loadConfigData() {
 	for (int i = 1; i <= organicPrefixesObject.getTableSize(); ++i)
 		organicPrefixes.add(organicPrefixesObject.getStringAt(i));
 
+	organicPrefixesObject.pop();
+
 	LuaObject organicSuffixesObject = lua->getGlobalObject("organicsuffixes");
 	for (int i = 1; i <= organicSuffixesObject.getTableSize(); ++i)
 		organicPrefixes.add(organicSuffixesObject.getStringAt(i));
+
+	organicSuffixesObject.pop();
 
 	LuaObject inorganicPrefixesObject = lua->getGlobalObject("inorganicprefixes");
 	for (int i = 1; i <= inorganicPrefixesObject.getTableSize(); ++i)
 		inorganicPrefixes.add(inorganicPrefixesObject.getStringAt(i));
 
+	inorganicPrefixesObject.pop();
+
 	LuaObject inorganicSuffixesObject = lua->getGlobalObject("inorganicsuffixes");
 	for (int i = 1; i <= inorganicSuffixesObject.getTableSize(); ++i)
 		inorganicSuffixes.add(inorganicSuffixesObject.getStringAt(i));
+
+	inorganicSuffixesObject.pop();
 
 	LuaObject npcFirstNamesObject = lua->getGlobalObject("npcfirstnames");
 	for (int i = 1; i <= npcFirstNamesObject.getTableSize(); ++i)
 		npcFirstNames.add(npcFirstNamesObject.getStringAt(i));
 
+	npcFirstNamesObject.pop();
+
 	LuaObject npcSurnamesObject = lua->getGlobalObject("npcsurnames");
 	for (int i = 1; i <= npcSurnamesObject.getTableSize(); ++i)
 		npcSurnames.add(npcSurnamesObject.getStringAt(i));
+
+	npcSurnamesObject.pop();
 
 	return true;
 }

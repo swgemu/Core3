@@ -100,7 +100,7 @@ namespace server {
 		namespace managers {
 			namespace name {
 
-class NameManager : public Singleton<TemplateManager>, public Logger, public Object {
+class NameManager : public Singleton<NameManager>, public Logger, public Object {
 	ManagedReference<ZoneProcessServer*> server;
 
 	Lua* lua;
