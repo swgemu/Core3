@@ -131,7 +131,7 @@ bool NameManager::loadConfigData() {
 	letterMappings.put("doublevowel", lua->getGlobalString("doublevowel"));
 	letterMappings.put("doubleconsonent", lua->getGlobalString("doubleconsonent"));
 
-		LuaObject organicPrefixesObject = lua->getGlobalObject("organicprefixes");
+	LuaObject organicPrefixesObject = lua->getGlobalObject("organicprefixes");
 	for (int i = 1; i <= organicPrefixesObject.getTableSize(); ++i)
 		organicPrefixes.add(organicPrefixesObject.getStringAt(i));
 
