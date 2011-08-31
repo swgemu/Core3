@@ -362,7 +362,9 @@ const String NameManager::makeResourceName(bool isOrganic) {
 
 		if (nameLength > 5 && System::random(2) == 1) {
 			addPrefix(name, isOrganic);
-		} else {
+		}
+
+		if(name.length() < 2) {
 			name += chooseNextLetter(' ', ' ');
 			name += chooseNextLetter(name[0], ' ');
 		}
@@ -445,25 +447,29 @@ inline void NameManager::addSuffix(String& name, bool isOrganic) {
 void NameManager::test() {
 	uint64 start = Time::currentNanoTime();
 
-	for(int i = 0;i < 100000; ++i)
+	int iterations = 1000000;
+
+	for(int i = 0;i < iterations; ++i)
 		//System::out << makeResourceName(false) << endl;
 		makeResourceName(false);
 
-	for(int i = 0;i < 100000; ++i)
+	for(int i = 0;i < iterations; ++i)
 		//System::out << makeResourceName(true) << endl;
 		makeResourceName(true);
 
-	for(int i = 0;i < 100000; ++i)
+	for(int i = 0;i < iterations; ++i)
 		//System::out << makeCreatureName(true) << endl;
 		makeCreatureName(true);
 
-	for(int i = 0;i < 10; ++i)
+	for(int i = 0;i < iterations; ++i)
 		//System::out << makeCreatureName(false) << endl;
 		makeCreatureName(false);
 
 	uint64 end = Time::currentNanoTime();
-	float nano = (end - start) / 10;
+
+	float nano = (end - start);
 	float milli = nano * .000001;
 	float seconds = milli / 1000;
-	System::out << nano << " nanoseconds / " << milli << " milliseconds" << seconds << " seconds" << endl;
+	System::out << "Average: " << nano / iterations  << " nanoseconds / " << milli / iterations << " milliseconds" << seconds / iterations  << " seconds" << endl;
+	System::out << "Total: " << nano << " nanoseconds / " << milli << " milliseconds" << seconds << " seconds" << endl;
 }
