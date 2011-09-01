@@ -594,7 +594,6 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 
 	if (insertSelf) {
 
-		setOptionsBitmask(0x2100);
 		updateToDatabase();
 
 		if (parent != NULL) {
