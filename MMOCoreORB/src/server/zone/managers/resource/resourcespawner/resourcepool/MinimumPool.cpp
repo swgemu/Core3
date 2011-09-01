@@ -99,7 +99,6 @@ bool MinimumPool::update() {
 			if(newSpawn != NULL) {
 
 				newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
-				newSpawn->updateToDatabase();
 				spawnedCount++;
 
 				setElementAt(ii, newSpawn);
@@ -120,7 +119,6 @@ bool MinimumPool::update() {
 
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
-			spawn->updateToDatabase();
 			despawnedCount++;
 
 			ManagedReference<ResourceSpawn* > newSpawn = resourceSpawner->getFromRandomPool(spawn->getType());
@@ -129,7 +127,6 @@ bool MinimumPool::update() {
 				newSpawn = resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
 
 			newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL);
-			newSpawn->updateToDatabase();
 
 			setElementAt(ii, newSpawn);
 			spawnedCount++;

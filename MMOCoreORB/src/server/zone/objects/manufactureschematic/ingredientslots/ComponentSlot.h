@@ -175,7 +175,6 @@ public:
 
 				int newCount = incomingTano->getUseCount() - needs;
 				incomingTano->setUseCount(newCount, true);
-				incomingTano->updateToDatabase();
 
 				TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(incomingTano);
 				dtano3->setQuantity(newCount);
@@ -202,7 +201,6 @@ public:
 			if (incomingTano->getUseCount() > needs) {
 
 				incomingTano->setUseCount(incomingTano->getUseCount() - needs, true);
-				incomingTano->updateToDatabase();
 
 				TangibleObject* newTano = (TangibleObject*) objectManager->cloneObject(incomingTano);
 				newTano->setUseCount(needs, true);

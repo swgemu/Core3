@@ -393,7 +393,6 @@ void ResourceManagerImplementation::givePlayerResource(CreatureObject* playerCre
 			spawn->extractResource("", quantity);
 			inventory->broadcastObject(newResource, true);
 			inventory->addObject(newResource, -1, true);
-			newResource->updateToDatabase();
 		}
 	}
 }

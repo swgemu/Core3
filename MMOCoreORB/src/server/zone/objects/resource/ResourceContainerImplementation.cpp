@@ -104,9 +104,6 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 		stackQuantity = ResourceContainer::MAXSIZE;
 	}
 
-	if(!doNotify)
-		return;
-
 	if (newStackSize > 0) {
 		if (parent != NULL) {
 
@@ -114,9 +111,11 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 
 			parent->addObject(harvestedResource, -1, true);
 			parent->broadcastObject(harvestedResource, true);
-			harvestedResource->updateToDatabase();
 		}
 	}
+
+	if(!doNotify)
+		return;
 
 	ResourceContainerObjectDeltaMessage3* rcnod3 =
 			new ResourceContainerObjectDeltaMessage3(_this);
@@ -138,9 +137,6 @@ void ResourceContainerImplementation::split(int newStackSize) {
 		parent->broadcastObject(newResource, true);
 
 		setQuantity(getQuantity() - newStackSize);
-
-	   	newResource->updateToDatabase();
-	   	updateToDatabase();
 	} else {
 		StringBuffer errorMessage;
 		errorMessage << "Unable to split resource in container type: " << parent->getGameObjectType() << " " << parent->getObjectName()->getDisplayedName();
@@ -160,9 +156,6 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 		newResource->sendTo(player, true);
 
 		setQuantity(getQuantity() - newStackSize);
-
-	   	newResource->updateToDatabase();
-	   	updateToDatabase();
 	} else {
 		error("Unable to split resource to player: " + player->getFirstName());
 	}

@@ -107,9 +107,6 @@ public:
 				}
 			}
 
-			inventory->updateToDatabaseAllObjects(false);
-			inso->updateToDatabaseAllObjects(false);
-
 			inso->broadcastToOperators(new HarvesterObjectMessage7(inso));
 
 		} catch (Exception& e) {

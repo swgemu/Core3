@@ -1328,11 +1328,6 @@ void CraftingToolImplementation::createManfSchematic(CreatureObject* player,
 
 		datapad->addObject(manufactureSchematic, -1, true);
 		manufactureSchematic->setPrototype(prototype);
-		manufactureSchematic->updateToDatabase();
-		prototype->updateToDatabase();
-
-		updateToDatabase();
-		datapad->updateToDatabase();
 
 	} else {
 
@@ -1412,7 +1407,4 @@ void CraftingToolImplementation::depositObject(CreatureObject* player, bool prac
 	}
 
 	prototype->setPersistent(2);
-	prototype->updateToDatabase();
-
-	updateToDatabase();
 }

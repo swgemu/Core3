@@ -18,7 +18,7 @@
  *	ManufactureSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__CREATUREOBJECT_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__CREATUREOBJECT_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
 
 ManufactureSchematic::ManufactureSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ManufactureSchematicImplementation* _implementation = new ManufactureSchematicImplementation();
@@ -112,20 +112,6 @@ void ManufactureSchematic::synchronizedUIStopListen(SceneObject* player, int val
 		method.executeWithVoidReturn();
 	} else
 		_implementation->synchronizedUIStopListen(player, value);
-}
-
-void ManufactureSchematic::updateToDatabaseAllObjects(bool startTask) {
-	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_UPDATETODATABASEALLOBJECTS__BOOL_);
-		method.addBooleanParameter(startTask);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->updateToDatabaseAllObjects(startTask);
 }
 
 bool ManufactureSchematic::isManufactureSchematic() {
@@ -1026,9 +1012,6 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 	case RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_:
 		synchronizedUIStopListen((SceneObject*) inv->getObjectParameter(), inv->getSignedIntParameter());
 		break;
-	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
-		updateToDatabaseAllObjects(inv->getBooleanParameter());
-		break;
 	case RPC_ISMANUFACTURESCHEMATIC__:
 		resp->insertBoolean(isManufactureSchematic());
 		break;
@@ -1141,10 +1124,6 @@ void ManufactureSchematicAdapter::synchronizedUIListen(SceneObject* player, int 
 
 void ManufactureSchematicAdapter::synchronizedUIStopListen(SceneObject* player, int value) {
 	((ManufactureSchematicImplementation*) impl)->synchronizedUIStopListen(player, value);
-}
-
-void ManufactureSchematicAdapter::updateToDatabaseAllObjects(bool startTask) {
-	((ManufactureSchematicImplementation*) impl)->updateToDatabaseAllObjects(startTask);
 }
 
 bool ManufactureSchematicAdapter::isManufactureSchematic() {

@@ -273,7 +273,6 @@ ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
    	StringId customString;
    	customString.setCustomString(getFamilyName());
    	newResource->setObjectName(customString);
-   	newResource->updateToDatabase();
 
    	++containerReferenceCount;
 

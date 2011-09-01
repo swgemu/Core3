@@ -97,7 +97,6 @@ bool RandomPool::update() {
 			ManagedReference<ResourceSpawn* > newSpawn =
 					resourceSpawner->createResourceSpawn(includedResources, excludedResources);
 			newSpawn->setSpawnPool(ResourcePool::RANDOMPOOL);
-			newSpawn->updateToDatabase();
 			spawnedCount++;
 
 			setElementAt(ii, newSpawn);
@@ -121,7 +120,6 @@ bool RandomPool::update() {
 
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
-			spawn->updateToDatabase();
 			despawnedCount++;
 
 			ManagedReference<ResourceSpawn* > newSpawn = NULL;// =
@@ -131,7 +129,6 @@ bool RandomPool::update() {
 				newSpawn = resourceSpawner->createResourceSpawn(includedResources, excludedResources);
 
 			newSpawn->setSpawnPool(ResourcePool::RANDOMPOOL);
-			newSpawn->updateToDatabase();
 			spawnedCount++;
 
 			setElementAt(ii, newSpawn);

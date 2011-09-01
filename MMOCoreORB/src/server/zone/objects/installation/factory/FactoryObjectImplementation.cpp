@@ -296,10 +296,7 @@ void FactoryObjectImplementation::handleInsertFactorySchem(
 
 	datapad->removeObject(schematic, true);
 
-	datapad->updateToDatabase();
-
 	addObject(schematic, -1, true);
-	updateToDatabase();
 
 	StringIdChatParameter message("manf_station", "schematic_added"); //Schematic %TT has been inserted into the station. The station is now ready to manufacture items.
 
@@ -329,9 +326,6 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* playe
 
 	datapad->addObject(schematic, -1, true);
 	datapad->broadcastObject(schematic, true);
-	datapad->updateToDatabase();
-
-	updateToDatabase();
 
 	StringIdChatParameter message("manf_station", "schematic_removed"); //Schematic %TT has been removed from the station and been placed in your datapad. Have a nice day!
 
@@ -378,7 +372,6 @@ bool FactoryObjectImplementation::startFactory() {
 
 	operating = true;
 
-	updateToDatabase();
 	return true;
 }
 
@@ -436,8 +429,6 @@ void FactoryObjectImplementation::stopFactory(const String& message, const Strin
 
 		chatManager->sendMail(getObjectName()->getDisplayedName(), subject, emailBody, currentUserName);
 	}
-
-	updateToDatabase();
 }
 
 void FactoryObjectImplementation::stopFactory(String &type, String &displayedName) {
@@ -518,8 +509,6 @@ void FactoryObjectImplementation::createNewObject() {
 		pending->reschedule(timer * 1000);
 	else
 		stopFactory("manf_error", "", "", -1);
-
-	updateToDatabase();
 }
 
 FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObject* prototype) {
@@ -568,8 +557,6 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 
 	outputHopper->addObject(crate, -1, true);
 	broadcastObject(crate, true);
-
-	crate->updateToDatabase();
 
 	return crate;
 }

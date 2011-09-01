@@ -294,7 +294,6 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 		newSpawn->setIsEnergy(true);
 
 	resourceMap->add(name, newSpawn);
-	newSpawn->updateToDatabase();
 
 	//resourceEntry->toString();
 	//newSpawn->print();
@@ -712,7 +711,6 @@ void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 
 	harvestedResource->sendTo(player, true);
 	inventory->addObject(harvestedResource, -1, true);
-	harvestedResource->updateToDatabase();
 }
 
 ResourceContainer* ResourceSpawner::harvestResource(CreatureObject* player,

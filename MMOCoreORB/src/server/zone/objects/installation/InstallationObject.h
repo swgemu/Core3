@@ -206,8 +206,6 @@ public:
 
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
 
-	void updateToDatabaseAllObjects(bool startTask);
-
 	void setOperating(bool operating, bool notifyClient = true);
 
 	void activateUiSync();
@@ -333,8 +331,6 @@ public:
 
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
 
-	void updateToDatabaseAllObjects(bool startTask);
-
 	virtual void setOperating(bool operating, bool notifyClient = true);
 
 	void activateUiSync();
@@ -447,8 +443,6 @@ public:
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient);
-
-	void updateToDatabaseAllObjects(bool startTask);
 
 	void setOperating(bool operating, bool notifyClient);
 

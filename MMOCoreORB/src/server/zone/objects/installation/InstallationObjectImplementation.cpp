@@ -216,8 +216,6 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 	inso7->close();
 
 	broadcastToOperators(inso7);
-
-	updateToDatabaseAllObjects(false);
 }
 
 void InstallationObjectImplementation::setActiveResource(ResourceContainer* container) {
@@ -249,8 +247,6 @@ void InstallationObjectImplementation::setActiveResource(ResourceContainer* cont
 			broadcastToOperators(inso7);
 		}
 	}
-
-	updateToDatabase();
 }
 
 void InstallationObjectImplementation::handleStructureAddEnergy(CreatureObject* player) {
@@ -372,8 +368,6 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 
 	lastMaintenanceTime.updateToCurrentTime();
 
-	updateToDatabase();
-
 	return shutdownWork;
 }
 
@@ -424,8 +418,6 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	if (shutdownAfterUpdate)
 		setOperating(false);
 
-	updateToDatabaseAllObjects(false);
-
 	/*InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this);
 	inso7->startUpdate(0x0D);
 	resourceHopper.set(0, container, inso7, 1);
@@ -470,8 +462,6 @@ void InstallationObjectImplementation::clearResourceHopper() {
 	}*/
 
 	setOperating(false);
-
-	updateToDatabase();
 }
 
 void InstallationObjectImplementation::removeResourceFromHopper(ResourceContainer* container) {
@@ -498,8 +488,6 @@ void InstallationObjectImplementation::removeResourceFromHopper(ResourceContaine
 
 	if (resourceHopper.size() == 0)
 		setOperating(false);
-
-	updateToDatabase();
 }
 
 void InstallationObjectImplementation::addResourceToHopper(ResourceContainer* container) {
@@ -514,8 +502,6 @@ void InstallationObjectImplementation::addResourceToHopper(ResourceContainer* co
 	inso7->close();
 
 	broadcastToOperators(inso7);
-
-	updateToDatabase();
 }
 
 void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
@@ -558,8 +544,6 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 	inso7->close();
 
 	broadcastToOperators(inso7);
-
-	updateToDatabase();
 }
 
 void InstallationObjectImplementation::broadcastToOperators(BasePacket* packet) {
@@ -649,18 +633,7 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 	}
 
 	//broadcastToOperators(new InstallationObjectDeltaMessage7(_this));
-
-	updateToDatabase();
 }
-
-void InstallationObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
-	TangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
-
-	for (int i = 0; i < resourceHopper.size(); ++i) {
-		resourceHopper.get(i)->updateToDatabaseAllObjects(false);
-	}
-}
-
 
 uint64 InstallationObjectImplementation::getActiveResourceSpawnID() {
 	if (resourceHopper.size() == 0) {

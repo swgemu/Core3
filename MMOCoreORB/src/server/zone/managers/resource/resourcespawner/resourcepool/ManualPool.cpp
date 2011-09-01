@@ -82,7 +82,6 @@ bool ManualPool::update() {
 
 			removeElement(spawn);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
-			spawn->updateToDatabase();
 			despawnedCount++;
 		}
 	}

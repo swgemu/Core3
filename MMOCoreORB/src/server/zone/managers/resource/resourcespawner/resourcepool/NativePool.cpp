@@ -109,7 +109,6 @@ bool NativePool::update() {
 				if (newSpawn != NULL) {
 
 					newSpawn->setSpawnPool(ResourcePool::NATIVEPOOL);
-					newSpawn->updateToDatabase();
 					spawnedCount++;
 
 					setElementAt(indexoffset, newSpawn);
@@ -127,14 +126,12 @@ bool NativePool::update() {
 
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
-			spawn->updateToDatabase();
 			despawnedCount++;
 
 			ManagedReference<ResourceSpawn* > newSpawn =
 					resourceSpawner->createResourceSpawn(spawn->getType(), excludedResources);
 
 			newSpawn->setSpawnPool(ResourcePool::NATIVEPOOL);
-			newSpawn->updateToDatabase();
 			spawnedCount++;
 
 			setElementAt(ii, newSpawn);

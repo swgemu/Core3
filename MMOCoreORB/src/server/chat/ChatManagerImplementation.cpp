@@ -668,8 +668,6 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 
 	if (player->isOnline())
 		mail->sendTo(player, false);
-
-	player->updateToDatabase();
 }
 
 int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters) {
@@ -724,8 +722,6 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	if (receiver->isOnline())
 		mail->sendTo(receiver, false);
 
-	receiver->updateToDatabase();
-
 	return IM_SUCCESS;
 }
 
@@ -766,8 +762,6 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 	if (receiver->isOnline())
 		mail->sendTo(receiver, false);
-
-	receiver->updateToDatabase();
 
 	return IM_SUCCESS;
 }

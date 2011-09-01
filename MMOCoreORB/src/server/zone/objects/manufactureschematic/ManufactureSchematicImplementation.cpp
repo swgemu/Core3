@@ -85,14 +85,6 @@ void ManufactureSchematicImplementation::fillAttributeList(AttributeListMessage*
 	}
 }
 
-void ManufactureSchematicImplementation::updateToDatabaseAllObjects(bool startTask) {
-
-	if(prototype != NULL)
-		prototype->updateToDatabase();
-
-	IntangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
-}
-
 void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (isStaticObject())
 		return;
@@ -278,8 +270,6 @@ void ManufactureSchematicImplementation::setPrototype(TangibleObject* tano) {
 	createFactoryBlueprint();
 
 	cleanupIngredientSlots();
-
-	updateToDatabase();
 }
 
 void ManufactureSchematicImplementation::createFactoryBlueprint() {

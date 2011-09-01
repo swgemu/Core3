@@ -39,7 +39,6 @@ public:
 			//strongRef->updateOperators();
 			strongRef->verifyOperators();
 			strongRef->activateUiSync();
-			strongRef->updateToDatabase();
 
 		} catch (Exception& e) {
 			error(e.getMessage());

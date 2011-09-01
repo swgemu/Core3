@@ -149,9 +149,7 @@ class ManufactureSchematic extends IntangibleObject {
 	 * @param value value from packet
 	 */
 	public native abstract void synchronizedUIStopListen(SceneObject player, int value);
-	
-	public native void updateToDatabaseAllObjects(boolean startTask);
-	
+
 	public boolean isManufactureSchematic() {
 		return true;
 	}

@@ -99,7 +99,6 @@ bool FixedPool::update() {
 			if (newSpawn != NULL) {
 
 				newSpawn->setSpawnPool(ResourcePool::FIXEDPOOL);
-				newSpawn->updateToDatabase();
 				spawnedCount++;
 
 				setElementAt(ii, newSpawn);
@@ -124,7 +123,6 @@ bool FixedPool::update() {
 
 			setElementAt(ii, NULL);
 			spawn->setSpawnPool(ResourcePool::NOPOOL);
-			spawn->updateToDatabase();
 			despawnedCount++;
 
 			ManagedReference<ResourceSpawn* > newSpawn = NULL;
@@ -133,7 +131,6 @@ bool FixedPool::update() {
 				newSpawn = resourceSpawner->createResourceSpawn(includedResources.get(ii), excludedResources);
 
 			newSpawn->setSpawnPool(ResourcePool::FIXEDPOOL);
-			newSpawn->updateToDatabase();
 			spawnedCount++;
 
 			//buffer << " and replacing with " << newSpawn->getName() << " : " << newSpawn->getType() << endl;

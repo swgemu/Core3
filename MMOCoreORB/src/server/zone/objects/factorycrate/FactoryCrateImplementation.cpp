@@ -266,8 +266,6 @@ void FactoryCrateImplementation::setUseCount(uint32 newUseCount, bool notifyClie
 		return;
 	}
 
-	updateToDatabase();
-
 	if (!notifyClient)
 		return;
 

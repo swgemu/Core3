@@ -160,7 +160,6 @@ void SchematicMap::loadDraftSchematicFile() {
 			}
 
 			schematic->setSchematicID(id);
-			schematic->updateToDatabase();
 			mapDraftSchematic(schematic);
 		}
 	}

@@ -170,14 +170,6 @@ class InstallationObject extends StructureObject {
 	
 	public native void updateResourceContainerQuantity(ResourceContainer container, int newQuantity, boolean notifyClient = true);
 
-	/**
-	 * Updates this object and childre objects to database
-	 * @pre { this object is locked }
-	 * @post { this object is locked }
-	 * @param startTask if true, queues a new update task
-	 */
-	public native void updateToDatabaseAllObjects(boolean startTask);
-	
 	public abstract native void setOperating(boolean operating, boolean notifyClient = true);
 	
 	public native void activateUiSync();

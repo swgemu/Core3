@@ -30,7 +30,7 @@
  *	InstallationObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_REMOVERESOURCEFROMHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__};
 
 InstallationObject::InstallationObject() : StructureObject(DummyConstructorParameter::instance()) {
 	InstallationObjectImplementation* _implementation = new InstallationObjectImplementation();
@@ -143,20 +143,6 @@ void InstallationObject::updateResourceContainerQuantity(ResourceContainer* cont
 		method.executeWithVoidReturn();
 	} else
 		_implementation->updateResourceContainerQuantity(container, newQuantity, notifyClient);
-}
-
-void InstallationObject::updateToDatabaseAllObjects(bool startTask) {
-	InstallationObjectImplementation* _implementation = (InstallationObjectImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_UPDATETODATABASEALLOBJECTS__BOOL_);
-		method.addBooleanParameter(startTask);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->updateToDatabaseAllObjects(startTask);
 }
 
 void InstallationObject::setOperating(bool operating, bool notifyClient) {
@@ -884,9 +870,6 @@ Packet* InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod
 	case RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_:
 		updateResourceContainerQuantity((ResourceContainer*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		break;
-	case RPC_UPDATETODATABASEALLOBJECTS__BOOL_:
-		updateToDatabaseAllObjects(inv->getBooleanParameter());
-		break;
 	case RPC_SETOPERATING__BOOL_BOOL_:
 		setOperating(inv->getBooleanParameter(), inv->getBooleanParameter());
 		break;
@@ -993,10 +976,6 @@ void InstallationObjectAdapter::broadcastMessage(BasePacket* message, bool sendS
 
 void InstallationObjectAdapter::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
 	((InstallationObjectImplementation*) impl)->updateResourceContainerQuantity(container, newQuantity, notifyClient);
-}
-
-void InstallationObjectAdapter::updateToDatabaseAllObjects(bool startTask) {
-	((InstallationObjectImplementation*) impl)->updateToDatabaseAllObjects(startTask);
 }
 
 void InstallationObjectAdapter::setOperating(bool operating, bool notifyClient) {

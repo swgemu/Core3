@@ -124,8 +124,6 @@ public:
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
-	void updateToDatabaseAllObjects(bool startTask);
-
 	bool isManufactureSchematic();
 
 	void setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic);
@@ -267,8 +265,6 @@ public:
 
 	virtual void synchronizedUIStopListen(SceneObject* player, int value);
 
-	void updateToDatabaseAllObjects(bool startTask);
-
 	bool isManufactureSchematic();
 
 	void setDraftSchematic(SceneObject* craftingTool, DraftSchematic* schematic);
@@ -385,8 +381,6 @@ public:
 	void synchronizedUIListen(SceneObject* player, int value);
 
 	void synchronizedUIStopListen(SceneObject* player, int value);
-
-	void updateToDatabaseAllObjects(bool startTask);
 
 	bool isManufactureSchematic();
 

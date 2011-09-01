@@ -594,8 +594,6 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 
 	if (insertSelf) {
 
-		updateToDatabase();
-
 		if (parent != NULL) {
 			parent->removeObject(_this, true);
 		}
@@ -611,15 +609,12 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 
 		protoclone->setParent(NULL);
 		protoclone->setOptionsBitmask(0x2100);
-		protoclone->updateToDatabase();
 		crate->addObject(protoclone, -1, false);
 	}
 
 	crate->setObjectName(*getObjectName());
 
 	crate->setUseCount(1);
-
-	crate->updateToDatabase();
 
 	return crate;
 }
