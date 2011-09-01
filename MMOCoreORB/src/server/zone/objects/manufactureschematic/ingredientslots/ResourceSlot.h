@@ -108,7 +108,6 @@ public:
 				return false;
 
 			if (contents != NULL) {
-//System::out << "Has: " << contents->getQuantity() << " Incoming: " << incomingResource->getQuantity() << " " << endl ;
 
 				int needs = requiredQuantity - contents->getQuantity();
 
@@ -123,7 +122,6 @@ public:
 				}
 
 			} else if (contents == NULL && incomingResource->getQuantity() > requiredQuantity) {
-//System::out << "Empty " << " Incoming: " << incomingResource->getQuantity() << " " << endl ;
 
 				ResourceSpawn* spawn = incomingResource->getSpawnObject();
 
@@ -138,7 +136,6 @@ public:
 				contents->sendAttributeListTo(player);
 
 			} else {
-//System::out << "Empty " << " Incoming: " << incomingResource->getQuantity() << " " << endl ;
 
 				contents = incomingResource;
 
@@ -149,7 +146,6 @@ public:
 				if(previousParent != NULL)
 					previousParent->removeObject(incomingResource, true);
 			}
-//System::out << "Now Has: " << contents->getQuantity() << " Incoming: " << incomingResource->getQuantity() << " " << endl << endl;;
 
 			return true;
 		}
@@ -184,7 +180,7 @@ public:
 
 	inline bool returnObjectToParent() {
 
-		if(contents == NULL || previousParent == NULL)
+		if(contents == NULL || previousParent == NULL || contents->getQuantity() > requiredQuantity)
 			return false;
 
 		if(contents->getParent() != NULL)
