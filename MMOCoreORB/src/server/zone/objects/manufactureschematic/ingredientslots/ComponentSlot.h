@@ -147,7 +147,7 @@ public:
 				incomingTano = crate->extractObject(incomingTano->getUseCount());
 		}
 
-		if(serial = "")
+		if(serial == "")
 			serial = incomingTano->getCraftersSerial();
 
 		if (itemsInSlot < requiredQuantity) {
@@ -173,6 +173,7 @@ public:
 
 					int newCount = incomingTano->getUseCount() - needs;
 					incomingTano->setUseCount(newCount, true);
+					incomingTano->updateToDatabase();
 
 					TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(incomingTano);
 					dtano3->setQuantity(newCount);
@@ -197,6 +198,7 @@ public:
 				if (incomingTano->getUseCount() > needs) {
 
 					incomingTano->setUseCount(incomingTano->getUseCount() - needs, true);
+					incomingTano->updateToDatabase();
 
 					TangibleObject* newTano = (TangibleObject*) objectManager->cloneObject(incomingTano);
 					newTano->setParent(NULL);
@@ -245,6 +247,10 @@ public:
 
 			if(item->getParent() != NULL)
 				item->getParent()->removeObject(item, true);
+
+			Reference<SharedObjectTemplate*> baseTemplate = item->getObjectTemplate();
+			if(!baseTemplate->isDerivedFrom(type))
+				continue;
 
 			TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(item);
 			dtano3->setQuantity(item->getUseCount());
