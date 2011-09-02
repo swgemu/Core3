@@ -101,10 +101,10 @@ public:
 	void addAbilities(PlayerObject* ghost, Vector<String>& abilityNames, bool notifyClient = true);
 	void removeAbilities(PlayerObject* ghost, Vector<String>& abilityNames, bool notifyClient = true);
 
-	void awardSkill(const String& skillName, CreatureObject* creature, bool notifyClient = true, bool awardRequiredSkills = false);
+	bool awardSkill(const String& skillName, CreatureObject* creature, bool notifyClient = true, bool awardRequiredSkills = false);
 	void awardDraftSchematics(Skill* skill, PlayerObject* ghost, bool notifyClient = true);
 
-	void surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient = true, bool surrenderParentSkills = true);
+	bool surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient = true);
 
 	Skill* getSkill(const String& skillName) {
 		return skillMap.get(skillName);

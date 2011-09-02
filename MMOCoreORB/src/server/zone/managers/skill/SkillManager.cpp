@@ -86,8 +86,10 @@ void SkillManager::loadClientData() {
 
 		Skill* parent = skillMap.get(skill->getParentName());
 
-		if (parent != NULL)
-			skill->setParentNode(parent);
+		if (parent == NULL)
+			parent = rootNode;
+
+		parent->addChild(skill);
 
 		skillMap.put(skill->getSkillName(), skill);
 
@@ -103,39 +105,25 @@ void SkillManager::loadClientData() {
 		}
 	}
 
-	//Now, iterate back through and set child relationships...
-	HashTableIterator<String, Reference<Skill*> > iterator = skillMap.iterator();
+	//If the admin ability isn't in the ability map, then we want to add it manually.
+	if (!abilityMap.containsKey("admin"))
+		abilityMap.put("admin", new Ability("admin"));
 
-	while (iterator.hasNext()) {
-		Skill* skill = iterator.getNextValue();
-
-		Vector<String> requiredSkills = skill->skillsRequired;
-
-		for (int i = 0; i < requiredSkills.size(); ++i) {
-			Skill* requiredSkill = skillMap.get(requiredSkills.get(i));
-
-			if (requiredSkill == NULL)
-				continue;
-
-			skill->addChildNode(requiredSkill);
-		}
-	}
-
-	info("Successfully loaded " + String::valueOf(skillMap.size()) + " skills.", true);
+	info("Successfully loaded " + String::valueOf(skillMap.size()) + " skills and " + String::valueOf(abilityMap.size()) + " abilities.", true);
 }
 
 void SkillManager::addAbility(PlayerObject* ghost, const String& abilityName, bool notifyClient) {
 	Ability* ability = abilityMap.get(abilityName);
 
 	if (ability != NULL)
-		ghost->removeAbility(ability, notifyClient);
+		ghost->addAbility(ability, notifyClient);
 }
 
 void SkillManager::removeAbility(PlayerObject* ghost, const String& abilityName, bool notifyClient) {
 	Ability* ability = abilityMap.get(abilityName);
 
 	if (ability != NULL)
-		ghost->addAbility(ability, notifyClient);
+		ghost->removeAbility(ability, notifyClient);
 }
 
 void SkillManager::addAbilities(PlayerObject* ghost, Vector<String>& abilityNames, bool notifyClient) {
@@ -172,31 +160,55 @@ void SkillManager::removeAbilities(PlayerObject* ghost, Vector<String>& abilityN
 	return true;
 }*/
 
-void SkillManager::awardSkill(const String& skillName, CreatureObject* creature, bool notifyClient, bool awardRequiredSkills) {
+bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature, bool notifyClient, bool awardRequiredSkills) {
 	Skill* skill = skillMap.get(skillName);
 
 	if (skill == NULL)
-		return;
+		return false;
+
+	//If they already have the skill, then return true.
+	if (creature->hasSkill(skillName))
+		return true;
+
+	//Check for required skills.
+	Vector<String>* requiredSkills = skill->getSkillsRequired();
+	for (int i = 0; i < requiredSkills->size(); ++i) {
+		String requiredSkillName = requiredSkills->get(i);
+		Skill* requiredSkill = skillMap.get(requiredSkillName);
+
+		if (requiredSkill == NULL)
+			continue;
+
+		if (awardRequiredSkills)
+			awardSkill(requiredSkillName, creature, notifyClient, awardRequiredSkills);
+
+		if (!creature->hasSkill(requiredSkillName))
+			return false;
+	}
 
 	creature->addSkill(skill, notifyClient);
 
-	if (awardRequiredSkills) {
-		for (int i = 0; i < skill->getTotalChildren(); ++i) {
-			Skill* childSkill = skill->getChildNode(i);
-
-			if (childSkill == NULL)
-				continue;
-
-			String childSkillName = childSkill->getSkillName();
-
-			if (!creature->hasSkill(childSkillName))
-				awardSkill(childSkillName, creature, notifyClient, awardRequiredSkills);
-		}
-	}
+	return true;
 }
 
-void SkillManager::surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient, bool surrenderParentSkills) {
+bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient) {
+	Skill* skill = skillMap.get(skillName);
 
+	if (skill == NULL)
+		return false;
+
+	SkillList* skillList = creature->getSkillList();
+
+	for (int i = 0; i < skillList->size(); ++i) {
+		Skill* checkSkill = skillList->get(i);
+
+		if (checkSkill->isRequiredSkillOf(skill))
+			return false;
+	}
+
+	creature->removeSkill(skill, notifyClient);
+
+	return true;
 }
 
 void SkillManager::awardDraftSchematics(Skill* skill, PlayerObject* ghost, bool notifyClient) {

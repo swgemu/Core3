@@ -199,6 +199,28 @@ PerformanceManager::~PerformanceManager() {
 }
 
 void PerformanceManager::loadPerformances() {
+	/*
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/performance/performance.iff");
+
+	if (iffStream == NULL) {
+		error("Could not open performances datatable.");
+		return;
+	}
+
+	DataTableIff dtable;
+	dtable.readObject(iffStream);
+
+	delete iffStream;
+
+	for (int i = 0; i < dtable.getTotalRows(); ++i) {
+		DataTableRow* row = dtable.getRow(i);
+
+		Reference<Performance*> performance = new Performance();
+		performance->parseDataTableRow(row);
+	}
+
+	info("Loaded " + String::valueOf(performanceMap.size()) + " performances.", true);*/
+
 	performances = new Vector<Performance*>();
 
 	try {

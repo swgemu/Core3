@@ -290,6 +290,8 @@ public:
 
 	void generateHologrindSkills(CreatureObject* player);
 
+	void addPlayer(CreatureObject* player);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -458,6 +460,8 @@ public:
 
 	void generateHologrindSkills(CreatureObject* player);
 
+	void addPlayer(CreatureObject* player);
+
 	WeakReference<PlayerManager*> _this;
 
 	operator const PlayerManager*();
@@ -596,6 +600,8 @@ public:
 	void updateAdminLevel(CreatureObject* player, const String& targetName, int adminLevel);
 
 	void generateHologrindSkills(CreatureObject* player);
+
+	void addPlayer(CreatureObject* player);
 
 protected:
 	String _param0_kickUser__String_String_;

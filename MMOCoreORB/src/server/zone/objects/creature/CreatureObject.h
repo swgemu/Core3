@@ -444,6 +444,8 @@ public:
 
 	void removeSkill(const String& skill, bool notifyClient = true);
 
+	void removeAllSkills(bool notifyClient = true);
+
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
 
 	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
@@ -1155,6 +1157,8 @@ public:
 
 	void removeSkill(const String& skill, bool notifyClient = true);
 
+	void removeAllSkills(bool notifyClient = true);
+
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient = true);
 
 	void removeSkillMod(const String& skillMod, bool notifyCLient = true);
@@ -1711,6 +1715,8 @@ public:
 	void addSkill(const String& skill, bool notifyClient);
 
 	void removeSkill(const String& skill, bool notifyClient);
+
+	void removeAllSkills(bool notifyClient);
 
 	void addSkillMod(const String& skillMod, long long value, bool notifyClient);
 

@@ -19,7 +19,7 @@ using namespace server::zone::managers::skill;
 class Skill : public Object {
 protected:
 	Reference<Skill*> parentNode;
-	SortedVector<Reference<Skill*> > childNodes;
+	Vector<Reference<Skill*> > childNodes;
 
 	String skillName;
 	String parentName;
@@ -60,6 +60,7 @@ protected:
 
 public:
 	Skill() {
+		skillName = "root";
 	}
 
 	~Skill() {
@@ -150,15 +151,24 @@ public:
 		return parentName;
 	}
 
+	inline void addChild(Skill* skill) {
+		skill->setParentNode(this);
+		childNodes.add(skill);
+	}
+
+	inline Vector<String>* getSkillsRequired() {
+		return &skillsRequired;
+	}
+
+	inline bool isRequiredSkillOf(Skill* skill) {
+		return skillsRequired.contains(skill->getSkillName());
+	}
+
+private:
 	inline void setParentNode(Skill* skill) {
 		parentNode = skill;
 	}
 
-	inline void addChildNode(Skill* skill) {
-		childNodes.put(skill);
-	}
-
-private:
 	void parseSkillMods(const String& modstring) {
 		StringTokenizer tokenizer(modstring);
 		tokenizer.setDelimeter(",");

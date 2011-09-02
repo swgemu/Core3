@@ -235,4 +235,8 @@ class PlayerManager extends Observer implements Logger {
 	 * @param player The player whose hologrind professions should be set.
 	 */
 	public native void generateHologrindSkills(CreatureObject player);
+	
+	public void addPlayer(CreatureObject player) {
+		nameMap.put(player);
+	}
 }

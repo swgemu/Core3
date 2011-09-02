@@ -41,6 +41,8 @@ which carries forward this exception.
 
 */
 
+#include "server/db/ServerDatabase.h"
+#include "server/db/MantisDatabase.h"
 #include "PlayerCreationManager.h"
 #include "ProfessionDefaultsInfo.h"
 #include "RacialCreationData.h"
@@ -295,11 +297,17 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	ClientCreateCharacterCallback* callback = (ClientCreateCharacterCallback*) data;
 	ZoneClientSession* client = data->getClient();
 
+	PlayerManager* playerManager = zoneServer->getPlayerManager();
+
+	SkillManager* skillManager = SkillManager::instance();
+
 	//Get all the data and validate it.
 	UnicodeString characterName;
 	callback->getCharacterName(characterName);
 
-	//TODO: Validate character name
+	//TODO: Replace this at some point?
+	if (!playerManager->checkPlayerName(callback))
+		return false;
 
 	String raceFile;
 	callback->getRaceFile(raceFile);
@@ -307,6 +315,8 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	uint32 serverObjectCRC = raceFile.hashCode();
 
 	PlayerCreatureTemplate* playerTemplate = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(serverObjectCRC));
+
+	int raceID = playerTemplate->getRace();
 
 	if (playerTemplate == NULL) {
 		error("Unknown player template selected.");
@@ -359,7 +369,36 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	ManagedReference<PlayerObject*> ghost = playerCreature->getPlayerObject();
 
 	if (ghost != NULL) {
-		PlayerManager* playerManager = zoneServer->getPlayerManager();
+		ghost->setAccountID(client->getAccountID());
+
+		try {
+			uint32 accID = client->getAccountID();
+
+			String query = "SELECT username FROM accounts WHERE account_id = " + String::valueOf(accID);
+
+			Reference<ResultSet*> res = ServerDatabase::instance()->executeQuery(query);
+
+			if (res->next()) {
+				String accountName = res->getString(0);
+
+				query = "SELECT access_level from mantis_user_table where username = '" + accountName;
+				query += "'";
+
+				res = MantisDatabase::instance()->executeQuery(query);
+
+				if (res->next()) {
+					uint32 level = res->getUnsignedInt(0);
+
+					if (level > 25) {
+						ghost->setAdminLevel(2);
+						skillManager->addAbility(ghost, "admin", false);
+					}
+				}
+			}
+
+		} catch (Exception& e) {
+			error(e.getMessage());
+		}
 
 		if (doTutorial)
 			playerManager->createTutorialBuilding(playerCreature);
@@ -369,11 +408,12 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 		ValidatedPosition* lastValidatedPosition = ghost->getLastValidatedPosition();
 		lastValidatedPosition->update(playerCreature);
 
+		playerManager->generateHologrindSkills(playerCreature);
+
 		//generateHologrindProfessions(playerCreature);
 
-		SkillManager::instance()->addAbility(ghost, "admin", false);
-
 		ghost->setBiography(bio);
+		ghost->setRaceID(raceID);
 	}
 
 	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(playerCreature->getObjectID());
@@ -381,6 +421,22 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	ChatManager* chatManager = zoneServer->getChatManager();
 	chatManager->addPlayer(playerCreature);
+
+	String firstName = playerCreature->getFirstName();
+	String lastName = playerCreature->getLastName();
+
+	try {
+		StringBuffer query;
+		query << "INSERT INTO `characters` (`character_oid`, `account_id`, `galaxy_id`, `firstname`, `surname`, `race`, `gender`, `template`)"
+				<< " VALUES (" <<  playerCreature->getObjectID() << "," << client->getAccountID() <<  "," << zoneServer->getGalaxyID() << ","
+				<< "'" << firstName.escapeString() << "','" << lastName.escapeString() << "'," << raceID << "," <<  0 << ",'" << raceFile.escapeString() << "')";
+
+		ServerDatabase::instance()->executeStatement(query);
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	}
+
+	playerManager->addPlayer(playerCreature);
 
 	return true;
 }
