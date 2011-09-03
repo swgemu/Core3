@@ -132,6 +132,15 @@ void ZoneComponent::insertToZone(SceneObject* sceneObject, Zone* newZone) {
 		}
 	}
 
+
+	zone->updateActiveAreas(sceneObject);
+
+	sceneObject->teleport(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), sceneObject->getParentID());
+
+	insertChildObjectsToZone(sceneObject, zone);
+}
+
+void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zone) {
 	SortedVector<ManagedReference<SceneObject*> >* childObjects = sceneObject->getChildObjects();
 
 	//Insert all outdoor child objects to zone
@@ -141,12 +150,9 @@ void ZoneComponent::insertToZone(SceneObject* sceneObject, Zone* newZone) {
 		if (outdoorChild == NULL)
 			continue;
 
-		outdoorChild->insertToZone(zone);
+		if (outdoorChild->getContainmentType() != 4)
+			outdoorChild->insertToZone(zone);
 	}
-
-	zone->updateActiveAreas(sceneObject);
-
-	sceneObject->teleport(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), sceneObject->getParentID());
 }
 
 void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {

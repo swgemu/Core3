@@ -35,6 +35,8 @@ using namespace server::zone;
 #include "engine/util/u3d/QuadTreeEntry.h"
 
 class ZoneComponent : public SceneObjectComponent, public Logger {
+protected:
+	void insertChildObjectsToZone(SceneObject* sceneObject, Zone* zone);
 
 public:
 	/**
@@ -44,6 +46,8 @@ public:
 	 * @param zone Zone object where this object will be inserted
 	 */
 	virtual void insertToZone(SceneObject* sceneObject, Zone* zone);
+
+
 
 	/**
 	 * Inserts this object into the building, this method is only to be called from insertToZone
