@@ -22,6 +22,7 @@ private:
 	void loadFromNames(Vector<String>& abilities);
 
 public:
+	bool add(Ability* ability, DeltaMessage* message = NULL, int updates = 1);
 	bool contains(const String& element);
 
 	bool toBinaryStream(ObjectOutputStream* stream);

@@ -54,7 +54,7 @@ protected:
 
 	Vector<String> skillAbility;
 	Vector<String> commands;
-	VectorMap<String, int> skillMods;
+	VectorMap<String, int> skillModifiers;
 	Vector<String> schematicsGranted;
 	Vector<String> schematicsRevoked;
 
@@ -156,6 +156,18 @@ public:
 		childNodes.add(skill);
 	}
 
+	inline Vector<String>* getAbilities() {
+		return &commands;
+	}
+
+	inline Vector<String>* getSchematicsGranted() {
+		return &schematicsGranted;
+	}
+
+	inline VectorMap<String, int>* getSkillModifiers() {
+		return &skillModifiers;
+	}
+
 	inline Vector<String>* getSkillsRequired() {
 		return &skillsRequired;
 	}
@@ -185,7 +197,7 @@ private:
 			String k = token.subString(0, pos);
 			String v = token.subString(pos + 1);
 
-			skillMods.put(k, Integer::valueOf(v));
+			skillModifiers.put(k, Integer::valueOf(v));
 		}
 	}
 

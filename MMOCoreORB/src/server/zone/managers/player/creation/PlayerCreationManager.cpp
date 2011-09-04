@@ -471,8 +471,7 @@ void PlayerCreationManager::addProfessionStartingItems(CreatureObject* creature,
 
 	Reference<Skill*> startingSkill = professionData->getSkill();
 
-	if (startingSkill != NULL)
-		creature->addSkill(startingSkill, false);
+	SkillManager::instance()->awardSkill(startingSkill->getSkillName(), creature, false, true);
 
 	SortedVector<String>* itemTemplates = professionData->getProfessionItems(clientTemplate);
 

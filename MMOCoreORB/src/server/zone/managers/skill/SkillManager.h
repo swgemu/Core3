@@ -105,6 +105,7 @@ public:
 	void awardDraftSchematics(Skill* skill, PlayerObject* ghost, bool notifyClient = true);
 
 	bool surrenderSkill(const String& skillName, CreatureObject* creature, bool notifyClient = true);
+	void surrenderAllSkills(CreatureObject* creature, bool notifyClient = true);
 
 	Skill* getSkill(const String& skillName) {
 		return skillMap.get(skillName);

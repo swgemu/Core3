@@ -86,3 +86,21 @@ void AbilityList::loadFromNames(Vector<String>& abilities) {
 		vector.add(ability);
 	}
 }
+
+bool AbilityList::add(Ability* ability, DeltaMessage* message, int updates) {
+	if (ability == NULL)
+		return false;
+
+	bool val = vector.add(ability);
+
+	if (message != NULL) {
+		if (updates != 0)
+			message->startList(updates, updateCounter += updates);
+
+		message->insertByte(1);
+		message->insertShort(vector.size() - 1);
+		ability->toBinaryStream(message);
+	}
+
+	return val;
+}

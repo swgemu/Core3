@@ -909,13 +909,6 @@ void CreatureObjectImplementation::removeSkill(const String& skill, bool notifyC
 	removeSkill(skillObject, notifyClient);
 }
 
-void CreatureObjectImplementation::removeAllSkills(bool notifyClient) {
-	Skill* skill = NULL;
-
-	while ((skill = skillList.get(0)) != NULL)
-		removeSkill(skill, notifyClient);
-}
-
 void CreatureObjectImplementation::removeSkillMod(const String& skillMod, bool notifyClient) {
 	if (!skillModList.contains(skillMod))
 		return;

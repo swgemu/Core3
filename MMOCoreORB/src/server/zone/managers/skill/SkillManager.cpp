@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/datatables/DataTableIff.h"
 #include "server/zone/templates/datatables/DataTableRow.h"
+#include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 
 SkillManager::SkillManager()
 		: Logger("SkillManager") {
@@ -188,6 +189,26 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 
 	creature->addSkill(skill, notifyClient);
 
+	//Add skill modifiers
+	VectorMap<String, int>* skillModifiers = skill->getSkillModifiers();
+
+	for (int i = 0; i < skillModifiers->size(); ++i) {
+		VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
+		creature->addSkillMod(entry->getKey(), entry->getValue(), notifyClient);
+	}
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost != NULL) {
+		//Add abilities
+		Vector<String>* abilityNames = skill->getAbilities();
+		addAbilities(ghost, *abilityNames, notifyClient);
+
+		//Add draft schematic groups
+		Vector<String>* schematicsGranted = skill->getSchematicsGranted();
+		SchematicMap::instance()->addSchematics(ghost, *schematicsGranted, notifyClient);
+	}
+
 	return true;
 }
 
@@ -208,7 +229,57 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 
 	creature->removeSkill(skill, notifyClient);
 
+	//Remove skill modifiers
+	VectorMap<String, int>* skillModifiers = skill->getSkillModifiers();
+
+	for (int i = 0; i < skillModifiers->size(); ++i) {
+		VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
+		creature->addSkillMod(entry->getKey(), -entry->getValue(), notifyClient);
+	}
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if (ghost != NULL) {
+		//Remove abilities
+		Vector<String>* abilityNames = skill->getAbilities();
+		removeAbilities(ghost, *abilityNames, notifyClient);
+
+		//Remove draft schematic groups
+		Vector<String>* schematicsGranted = skill->getSchematicsGranted();
+		SchematicMap::instance()->removeSchematics(ghost, *schematicsGranted, notifyClient);
+	}
+
 	return true;
+}
+
+void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClient) {
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	SkillList* skillList = creature->getSkillList();
+
+	while (skillList->size() > 0) {
+		Skill* skill = skillList->get(0);
+
+		creature->removeSkill(skill, notifyClient);
+
+		//Remove skill modifiers
+		VectorMap<String, int>* skillModifiers = skill->getSkillModifiers();
+
+		for (int i = 0; i < skillModifiers->size(); ++i) {
+			VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
+			creature->addSkillMod(entry->getKey(), -entry->getValue(), notifyClient);
+		}
+
+		if (ghost != NULL) {
+			//Remove abilities
+			Vector<String>* abilityNames = skill->getAbilities();
+			removeAbilities(ghost, *abilityNames, notifyClient);
+
+			//Remove draft schematic groups
+			Vector<String>* schematicsGranted = skill->getSchematicsGranted();
+			SchematicMap::instance()->removeSchematics(ghost, *schematicsGranted, notifyClient);
+		}
+	}
 }
 
 void SkillManager::awardDraftSchematics(Skill* skill, PlayerObject* ghost, bool notifyClient) {

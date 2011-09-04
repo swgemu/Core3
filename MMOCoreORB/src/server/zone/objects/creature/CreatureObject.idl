@@ -738,8 +738,6 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void removeSkill(final string skill, boolean notifyClient = true);
 	
-	public native void removeAllSkills(boolean notifyClient = true);
-	
 	/**
 	 * Adds new value to the specified skillmod (add a negative number to substract)
 	 * @pre { this object is locked }
