@@ -12,6 +12,7 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/Zone.h"
 
 int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (instrumentType != OMNIBOX && instrumentType != NALARGON) {
@@ -87,7 +88,8 @@ void InstrumentImplementation::spawnInForeignCell(CreatureObject* player) {
 		player->getParent()->addObject(instrument, -1);
 		instrument->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 		instrument->setSpawnerPlayer(player);
-		instrument->insertToZone(player->getZone());
+		//instrument->insertToZone(player->getZone());
+		player->getZone()->addObject(instrument, -1, true);
 
 		ManagedReference<InstrumentObserver*> posObserver = new InstrumentObserver(instrument);
 		player->registerObserver(ObserverEventType::POSITIONCHANGED, posObserver);
@@ -110,7 +112,8 @@ void InstrumentImplementation::spawnOutside(CreatureObject* player) {
 		Instrument* instrument = (Instrument*) spawnedObject.get();
 		instrument->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 		instrument->setSpawnerPlayer(player);
-		instrument->insertToZone(player->getZone());
+		//instrument->insertToZone(player->getZone());
+		player->getZone()->addObject(instrument, -1, true);
 
 		ManagedReference<InstrumentObserver*> posObserver = new InstrumentObserver(instrument);
 		player->registerObserver(ObserverEventType::POSITIONCHANGED, posObserver);

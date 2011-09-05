@@ -8,8 +8,6 @@
 
 #include "server/zone/managers/structure/StructureManager.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-
 #include "server/zone/objects/area/ActiveArea.h"
 
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -28,15 +26,15 @@
  *	ZoneStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETSTRUCTUREMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTCLONINGBUILDING__CREATUREOBJECT_,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECONTAINERCOMPONENT__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETSTRUCTUREMANAGER__,RPC_GETCITYMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
 
-Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : ManagedObject(DummyConstructorParameter::instance()) {
+Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : SceneObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
 	_impl = _implementation;
 	_impl->_setStub(this);
 }
 
-Zone::Zone(DummyConstructorParameter* param) : ManagedObject(param) {
+Zone::Zone(DummyConstructorParameter* param) : SceneObject(param) {
 }
 
 Zone::~Zone() {
@@ -114,6 +112,19 @@ int Zone::getInRangeObjects(float x, float y, float range, SortedVector<ManagedR
 
 	} else
 		return _implementation->getInRangeObjects(x, y, range, objects);
+}
+
+void Zone::createContainerComponent() {
+	ZoneImplementation* _implementation = (ZoneImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CREATECONTAINERCOMPONENT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->createContainerComponent();
 }
 
 int Zone::getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea* > >* objects) {
@@ -479,7 +490,7 @@ void Zone::_setImplementation(DistributedObjectServant* servant) {
  *	ZoneImplementation
  */
 
-ZoneImplementation::ZoneImplementation(DummyConstructorParameter* param) : ManagedObjectImplementation(param) {
+ZoneImplementation::ZoneImplementation(DummyConstructorParameter* param) : SceneObjectImplementation(param) {
 	_initializeImplementation();
 }
 
@@ -499,7 +510,7 @@ void ZoneImplementation::_initializeImplementation() {
 
 void ZoneImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = (Zone*) stub;
-	ManagedObjectImplementation::_setStub(stub);
+	SceneObjectImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* ZoneImplementation::_getStub() {
@@ -539,7 +550,7 @@ void ZoneImplementation::runlock(bool doLock) {
 }
 
 void ZoneImplementation::_serializationHelperMethod() {
-	ManagedObjectImplementation::_serializationHelperMethod();
+	SceneObjectImplementation::_serializationHelperMethod();
 
 	_setClassName("Zone");
 
@@ -565,7 +576,7 @@ void ZoneImplementation::readObject(ObjectInputStream* stream) {
 }
 
 bool ZoneImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
 	if (_name == "zoneName") {
@@ -578,43 +589,13 @@ bool ZoneImplementation::readObjectMember(ObjectInputStream* stream, const Strin
 		return true;
 	}
 
-	if (_name == "objectMap") {
-		TypeInfo<Reference<ObjectMap* > >::parseFromBinaryStream(&objectMap, stream);
+	if (_name == "regionTree") {
+		TypeInfo<QuadTreeReference >::parseFromBinaryStream(&regionTree, stream);
 		return true;
 	}
 
-	if (_name == "planetManager") {
-		TypeInfo<ManagedReference<PlanetManager* > >::parseFromBinaryStream(&planetManager, stream);
-		return true;
-	}
-
-	if (_name == "structureManager") {
-		TypeInfo<ManagedReference<StructureManager* > >::parseFromBinaryStream(&structureManager, stream);
-		return true;
-	}
-
-	if (_name == "cityManager") {
-		TypeInfo<ManagedReference<CityManager* > >::parseFromBinaryStream(&cityManager, stream);
-		return true;
-	}
-
-	if (_name == "creatureManager") {
-		TypeInfo<ManagedReference<CreatureManager* > >::parseFromBinaryStream(&creatureManager, stream);
-		return true;
-	}
-
-	if (_name == "server") {
-		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
-		return true;
-	}
-
-	if (_name == "galacticTime") {
-		TypeInfo<Time >::parseFromBinaryStream(&galacticTime, stream);
-		return true;
-	}
-
-	if (_name == "managersStarted") {
-		TypeInfo<bool >::parseFromBinaryStream(&managersStarted, stream);
+	if (_name == "quadTree") {
+		TypeInfo<QuadTreeReference >::parseFromBinaryStream(&quadTree, stream);
 		return true;
 	}
 
@@ -649,77 +630,29 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "objectMap";
+	_name = "regionTree";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<Reference<ObjectMap* > >::toBinaryStream(&objectMap, stream);
+	TypeInfo<QuadTreeReference >::toBinaryStream(&regionTree, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
-	_name = "planetManager";
+	_name = "quadTree";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeShort(0);
-	TypeInfo<ManagedReference<PlanetManager* > >::toBinaryStream(&planetManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "structureManager";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<StructureManager* > >::toBinaryStream(&structureManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "cityManager";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<CityManager* > >::toBinaryStream(&cityManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "creatureManager";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedReference<CreatureManager* > >::toBinaryStream(&creatureManager, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "server";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&server, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "galacticTime";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<Time >::toBinaryStream(&galacticTime, stream);
-	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
-	stream->writeShort(_offset, _totalSize);
-
-	_name = "managersStarted";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeShort(0);
-	TypeInfo<bool >::toBinaryStream(&managersStarted, stream);
+	TypeInfo<QuadTreeReference >::toBinaryStream(&quadTree, stream);
 	_totalSize = (uint16) (stream->getOffset() - (_offset + 2));
 	stream->writeShort(_offset, _totalSize);
 
 
-	return 10 + ManagedObjectImplementation::writeObjectMembers(stream);
+	return 4 + SceneObjectImplementation::writeObjectMembers(stream);
 }
 
 QuadTree* ZoneImplementation::getRegionTree() {
-	// server/zone/Zone.idl():  		return regionTree;
-	return regionTree;
+	// server/zone/Zone.idl():  		return regionTree.get();
+	return (&regionTree)->get();
 }
 
 PlanetManager* ZoneImplementation::getPlanetManager() {
@@ -771,7 +704,7 @@ unsigned int ZoneImplementation::getZoneCRC() {
  *	ZoneAdapter
  */
 
-ZoneAdapter::ZoneAdapter(ZoneImplementation* obj) : ManagedObjectAdapter(obj) {
+ZoneAdapter::ZoneAdapter(ZoneImplementation* obj) : SceneObjectAdapter(obj) {
 }
 
 Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
@@ -792,6 +725,9 @@ Packet* ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_INITIALIZEPRIVATEDATA__:
 		initializePrivateData();
+		break;
+	case RPC_CREATECONTAINERCOMPONENT__:
+		createContainerComponent();
 		break;
 	case RPC_UPDATEACTIVEAREAS__SCENEOBJECT_:
 		updateActiveAreas((SceneObject*) inv->getObjectParameter());
@@ -884,6 +820,10 @@ SceneObject* ZoneAdapter::getNearestPlanetaryObject(SceneObject* object, const S
 
 void ZoneAdapter::initializePrivateData() {
 	((ZoneImplementation*) impl)->initializePrivateData();
+}
+
+void ZoneAdapter::createContainerComponent() {
+	((ZoneImplementation*) impl)->createContainerComponent();
 }
 
 void ZoneAdapter::updateActiveAreas(SceneObject* object) {

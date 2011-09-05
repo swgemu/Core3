@@ -133,7 +133,8 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 			obj->initializePosition(x, z, y);
 			obj->setDirection(ow, ox, oy, oz);
 			//TODO: Parent
-			obj->insertToZone(zone);
+			//obj->insertToZone(zone);
+			zone->addObject(obj, -1, true);
 		}
 
 		planetObject.pop();
@@ -200,7 +201,8 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 		parentObject->addObject(object, -1);
 
 	if (parentObject == NULL || parentObject->isCellObject())
-		object->insertToZone(zone);
+		//object->insertToZone(zone);
+		zone->addObject(object, -1, true);
 
 	//Load child nodes
 	for (int i = 0; i < node->getNodeCount(); ++i) {

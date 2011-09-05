@@ -27,17 +27,19 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace creature {
+namespace packets {
+namespace object {
 
-class CreatureObject;
+class ObjectMenuResponse;
 
-} // namespace creature
-} // namespace objects
+} // namespace object
+} // namespace packets
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::creature;
+using namespace server::zone::packets::object;
+
+#include "server/zone/managers/radial/RadialOptions.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -55,6 +57,10 @@ public:
 	void storeObject(CreatureObject* player);
 
 	void generateObject(CreatureObject* player);
+
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -90,6 +96,10 @@ public:
 	void storeObject(CreatureObject* player);
 
 	void generateObject(CreatureObject* player);
+
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
+
+	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
 	WeakReference<ShipControlDevice*> _this;
 
@@ -137,6 +147,8 @@ public:
 	void storeObject(CreatureObject* player);
 
 	void generateObject(CreatureObject* player);
+
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 };
 

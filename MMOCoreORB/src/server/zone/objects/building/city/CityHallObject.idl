@@ -128,16 +128,16 @@ class CityHallObject extends BuildingObject {
 	 * @post { this object is locked and inserted into zone }
 	 * @param zone Zone object where this object will be inserted
 	 */
-	public void insertToZone(Zone zone) {
-		super.insertToZone(zone);
+	public void notifyInsertToZone(Zone zone) {
+		super.notifyInsertToZone(zone);
 		
 		spawnCityHallObjects();
 	}
 	
-	public void removeFromZone() {
+	public void notifyRemoveFromZone() {
 		despawnCityHallObjects();
 	
-		super.removeFromZone();
+		super.notifyRemoveFromZone();
 		
 		updateToDatabaseWithoutChildren();
 	}

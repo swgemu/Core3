@@ -105,6 +105,8 @@ public:
 		parsedSpeed = message->parseFloat();
 
 		//client->info(message->toStringData(), true);
+
+		//info("datatransform", true);
 	}
 
 	void run() {
@@ -134,12 +136,6 @@ public:
 
 			return;
 		}
-
-		//object->info("received data transform with parsed speed " + String::valueOf(parsedSpeed), true);
-
-		/*StringBuffer movementMsg;
-		movementMsg << "received movement update 0x:" << hex << movementCounter;
-		object->info(movementMsg.toString(), true);*/
 
 		uint32 objectMovementCounter = object->getMovementCounter();
 
@@ -176,8 +172,6 @@ public:
 		slopeMsg << "dist:" << dist << " speed:" << speed * 1000.f << " deltaTime:" << deltaTime << " slope: " << slope << " angle:" << angle << " degrees:" << deg;
 		object->info(slopeMsg.toString(), true);*/
 
-
-
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
 		if (playerManager == NULL)
@@ -202,21 +196,11 @@ public:
 
 		object->setPosition(positionX, positionZ, positionY);
 		ghost->setClientLastMovementStamp(movementStamp);
-		//object->updateServerLastMovementStamp();
 
-		/*Vector<Reference<MessageCallback*> >* updates = object->getLastMovementUpdates();
-
-		if (updates->size() > 5)
-			updates->remove(0);
-
-		updates->add(this);*/
 
 		/*StringBuffer posMsg;
 		posMsg << "setting position: " << positionX << " " << positionZ << " " << positionY;
 		object->info(posMsg.toString());*/
-
-
-		//TODO: add improved Speed Hack checks
 
 		if (objectControllerMain->getPriority() == 0x23)
 			object->updateZone(false);

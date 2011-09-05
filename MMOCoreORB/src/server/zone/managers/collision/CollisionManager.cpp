@@ -15,8 +15,11 @@
 #include "server/zone/templates/appearance/PathGraph.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/ship/ShipObject.h"
 
-float CollisionManager::getCollisionPoint(CreatureObject* creature) {
+float CollisionManager::getRayOriginPoint(CreatureObject* creature) {
 	float heightOrigin = creature->getHeight() - 0.3f;
 
 	if (creature->isProne() || creature->isKnockedDown() || creature->isIncapacitated()) {
@@ -27,7 +30,6 @@ float CollisionManager::getCollisionPoint(CreatureObject* creature) {
 
 	return heightOrigin;
 }
-
 
 bool CollisionManager::checkLineOfSightInBuilding(SceneObject* object1, SceneObject* object2, SceneObject* building) {
 	SharedObjectTemplate* objectTemplate = building->getObjectTemplate();
@@ -68,6 +70,35 @@ bool CollisionManager::checkLineOfSightInBuilding(SceneObject* object1, SceneObj
 	return true;
 }
 
+AABBTree* CollisionManager::getAABBTree(SceneObject* scno, int collisionBlockFlags) {
+	SharedObjectTemplate* templateObject = scno->getObjectTemplate();
+
+	if (templateObject == NULL)
+		return NULL;
+
+	if (!(templateObject->getCollisionActionBlockFlags() & collisionBlockFlags))
+		return NULL;
+
+	PortalLayout* portalLayout = templateObject->getPortalLayout();
+	MeshAppearanceTemplate* mesh = NULL;
+
+	if (portalLayout != NULL) {
+		mesh = portalLayout->getMeshAppearanceTemplate(0);
+	} else {
+		AppearanceTemplate* appTemplate = templateObject->getAppearanceTemplate();
+
+		if (appTemplate == NULL)
+			return NULL;
+
+		mesh = dynamic_cast<MeshAppearanceTemplate*>(appTemplate->getFirstMesh());
+	}
+
+	if (mesh == NULL)
+		return NULL;
+
+	return mesh->getAABBTree();
+}
+
 bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
 	Zone* zone = object1->getZone();
 
@@ -94,10 +125,10 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	float heightEnd = 1.f;
 
 	if (object1->isCreatureObject())
-		heightOrigin = getCollisionPoint((CreatureObject*)object1);
+		heightOrigin = getRayOriginPoint((CreatureObject*)object1);
 
 	if (object2->isCreatureObject())
-		heightEnd = getCollisionPoint((CreatureObject*)object2);
+		heightEnd = getRayOriginPoint((CreatureObject*)object2);
 
 	rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ() + heightOrigin);
 
@@ -116,38 +147,15 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 		SceneObject* scno = (SceneObject*) object1->getInRangeObject(i);
 
 		try {
-			SharedObjectTemplate* templateObject = scno->getObjectTemplate();
-
-			if (templateObject == NULL)
-				continue;
-
-			if (templateObject->getCollisionActionBlockFlags() != 255)
-				continue;
-
-			PortalLayout* portalLayout = templateObject->getPortalLayout();
-			MeshAppearanceTemplate* mesh = NULL;
-
-			if (portalLayout != NULL) {
-				mesh = portalLayout->getMeshAppearanceTemplate(0);
-			} else {
-				AppearanceTemplate* appTemplate = templateObject->getAppearanceTemplate();
-
-				if (appTemplate == NULL)
-					continue;
-
-				mesh = dynamic_cast<MeshAppearanceTemplate*>(appTemplate->getFirstMesh());
-			}
-
-			if (mesh == NULL)
-				continue;
-
-			aabbTree = mesh->getAABBTree();
+			aabbTree = getAABBTree(scno, 255);
 
 			if (aabbTree == NULL)
 				continue;
 
-		} catch (...) {
+		} catch (Exception& e) {
 			aabbTree = NULL;
+		} catch (...) {
+			zone->runlock();
 
 			throw;
 		}
@@ -157,33 +165,7 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 			zone->runlock();
 
 			try {
-				Matrix4 translationMatrix;
-				translationMatrix.setTranslation(-scno->getPositionX(), -scno->getPositionZ(), -scno->getPositionY());
-
-				float rad = -scno->getDirection()->getRadians();
-				float cosRad = cos(rad);
-				float sinRad = sin(rad);
-
-				Matrix3 rot;
-				rot[0][0] = cosRad;
-				rot[0][2] = -sinRad;
-				rot[1][1] = 1;
-				rot[2][0] = sinRad;
-				rot[2][2] = cosRad;
-
-				Matrix4 rotateMatrix;
-				rotateMatrix.setRotationMatrix(rot);
-
-				Matrix4 modelMatrix;
-				modelMatrix = translationMatrix * rotateMatrix;
-
-				Vector3 transformedOrigin = rayOrigin * modelMatrix;
-				Vector3 transformedEnd = rayEnd * modelMatrix;
-
-				Vector3 norm = transformedEnd - transformedOrigin;
-				norm.normalize();
-
-				Ray ray(transformedOrigin, norm);
+				Ray ray = convertToModelSpace(rayOrigin, rayEnd, scno);
 
 				//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
 
@@ -234,6 +216,124 @@ TriangleNode* CollisionManager::getTriangle(const Vector3& point, FloorMesh* flo
 	}
 
 	return triangleNode;
+}
+
+Ray CollisionManager::convertToModelSpace(const Vector3& rayOrigin, const Vector3& rayEnd, SceneObject* model) {
+	Matrix4 translationMatrix;
+	translationMatrix.setTranslation(-model->getPositionX(), -model->getPositionZ(), -model->getPositionY());
+
+	float rad = -model->getDirection()->getRadians();
+	float cosRad = cos(rad);
+	float sinRad = sin(rad);
+
+	Matrix3 rot;
+	rot[0][0] = cosRad;
+	rot[0][2] = -sinRad;
+	rot[1][1] = 1;
+	rot[2][0] = sinRad;
+	rot[2][2] = cosRad;
+
+	Matrix4 rotateMatrix;
+	rotateMatrix.setRotationMatrix(rot);
+
+	Matrix4 modelMatrix;
+	modelMatrix = translationMatrix * rotateMatrix;
+
+	Vector3 transformedOrigin = rayOrigin * modelMatrix;
+	Vector3 transformedEnd = rayEnd * modelMatrix;
+
+	Vector3 norm = transformedEnd - transformedOrigin;
+	norm.normalize();
+
+	Ray ray(transformedOrigin, norm);
+
+	return ray;
+}
+
+bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targetPosition, Vector3& collisionPoint) {
+	Zone* zone = ship->getZone();
+
+	if (zone == NULL)
+		return false;
+
+	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
+
+	float height = terrainManager->getHeight(targetPosition.getX(), targetPosition.getY());
+
+	float waterHeight = -16368.f;
+
+	if (terrainManager->getWaterHeight(targetPosition.getY(), targetPosition.getY(), waterHeight))
+		height = MAX(waterHeight, height);
+
+	if (height > targetPosition.getZ()) {
+		collisionPoint = targetPosition;
+		collisionPoint.setZ(height);
+		//ship->info("colliding with terrain", true);
+		return true;
+	}
+
+	Vector3 rayOrigin = ship->getWorldPosition();
+
+	rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ());
+
+	Vector3 rayEnd;
+	rayEnd.set(targetPosition.getX(), targetPosition.getY(), targetPosition.getZ());
+
+	float dist = rayEnd.distanceTo(rayOrigin);
+	float intersectionDistance;
+	Triangle* triangle = NULL;
+
+	SortedVector<ManagedReference<SceneObject*> >* objects = new SortedVector<ManagedReference<SceneObject*> >();
+	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), 1024, objects);
+
+	for (int i = 0; i < objects->size(); ++i) {
+		AABBTree* aabbTree = NULL;
+
+		SceneObject* scno = objects->get(i);
+
+		try {
+			aabbTree = getAABBTree(scno, -1);
+
+			if (aabbTree == NULL)
+				continue;
+
+		} catch (Exception& e) {
+			aabbTree = NULL;
+		} catch (...) {
+			throw;
+		}
+
+		if (aabbTree != NULL) {
+			//moving ray to model space
+
+			try {
+				Ray ray = convertToModelSpace(rayOrigin, rayEnd, scno);
+
+				//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
+
+				if (aabbTree->intersects(ray, dist, intersectionDistance, triangle, true)) {
+
+					//rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ());
+					Vector3 direction = rayEnd - rayOrigin;
+					direction.normalize();
+					//intersectionDistance -= 0.5f;
+
+					collisionPoint.set(rayOrigin.getX() + (direction.getX() * intersectionDistance), rayOrigin.getY() + (direction.getY() * intersectionDistance), rayOrigin.getZ() + (direction.getZ() * intersectionDistance));
+					//ship->info("colliding with building", true);
+
+					return true;
+				}
+			} catch (Exception& e) {
+				ship->error(e.getMessage());
+			} catch (...) {
+				throw;
+			}
+
+
+		}
+	}
+
+	return false;
 }
 
 PathNode* CollisionManager::findNearestPathNode(TriangleNode* triangle, FloorMesh* floor, const Vector3& finalTarget) {

@@ -172,7 +172,7 @@ public:
 
 	void ejectObject(SceneObject* obj);
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void notifyLoadFromDatabase();
 
@@ -180,7 +180,7 @@ public:
 
 	void notifyDissapear(QuadTreeEntry* obj);
 
-	void notifyInsertToZone(SceneObject* object);
+	void notifyObjectInsertedToZone(SceneObject* object);
 
 	void insert(QuadTreeEntry* obj);
 
@@ -309,7 +309,7 @@ public:
 
 	void ejectObject(SceneObject* obj);
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void notifyLoadFromDatabase();
 
@@ -317,7 +317,7 @@ public:
 
 	void notifyDissapear(QuadTreeEntry* obj);
 
-	void notifyInsertToZone(SceneObject* object);
+	void notifyObjectInsertedToZone(SceneObject* object);
 
 	void insert(QuadTreeEntry* obj);
 
@@ -442,11 +442,11 @@ public:
 
 	void ejectObject(SceneObject* obj);
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void notifyLoadFromDatabase();
 
-	void notifyInsertToZone(SceneObject* object);
+	void notifyObjectInsertedToZone(SceneObject* object);
 
 	void sendTo(SceneObject* player, bool doClose);
 

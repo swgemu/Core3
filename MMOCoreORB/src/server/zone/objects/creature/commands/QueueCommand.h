@@ -64,7 +64,7 @@ namespace creature {
 namespace commands {
 
 
-class QueueCommand : public Logger {
+class QueueCommand : public Logger, public Object {
 protected:
 	ZoneProcessServer* server;
 

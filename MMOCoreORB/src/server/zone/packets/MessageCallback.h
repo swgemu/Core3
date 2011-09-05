@@ -18,7 +18,7 @@ namespace server {
 namespace zone {
 namespace packets {
 
-	class MessageCallback : public Task, Logger {
+	class MessageCallback : public Task, public Logger {
 	protected:
 		Reference<ZoneClientSession*> client;
 

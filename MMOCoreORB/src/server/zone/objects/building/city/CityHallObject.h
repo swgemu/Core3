@@ -119,9 +119,9 @@ class CityHallObject : public BuildingObject {
 public:
 	CityHallObject();
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void notifyLoadFromDatabase();
 
@@ -300,9 +300,9 @@ public:
 
 	CityHallObjectImplementation(DummyConstructorParameter* param);
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void notifyLoadFromDatabase();
 
@@ -455,9 +455,9 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void notifyLoadFromDatabase();
 

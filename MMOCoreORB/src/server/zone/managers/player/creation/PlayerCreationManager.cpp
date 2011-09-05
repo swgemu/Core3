@@ -59,6 +59,8 @@ which carries forward this exception.
 #include "server/zone/templates/creation/SkillDataForm.h"
 #include "server/zone/templates/tangible/PlayerCreatureTemplate.h"
 #include "server/ServerCore.h"
+#include "server/zone/objects/intangible/ShipControlDevice.h"
+#include "server/zone/objects/ship/ShipObject.h"
 
 PlayerCreationManager::PlayerCreationManager()
 		: Logger("PlayerCreationManager") {
@@ -400,6 +402,8 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 			error(e.getMessage());
 		}
 
+		//ghost->setAdminLevel(2);
+
 		if (doTutorial)
 			playerManager->createTutorialBuilding(playerCreature);
 		else
@@ -415,6 +419,19 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 		ghost->setBiography(bio);
 		ghost->setRaceID(raceID);
 	}
+
+	//Add a ship
+	ShipControlDevice* shipControlDevice = (ShipControlDevice*) zoneServer->createObject(String("object/intangible/ship/basic_tiefighter_pcd.iff").hashCode(), 1);
+	//ShipObject* ship = (ShipObject*) server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1);
+	ShipObject* ship = (ShipObject*) zoneServer->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1);
+
+	shipControlDevice->setControlledObject(ship);
+
+	if (!shipControlDevice->addObject(ship, 4))
+		error("Adding of ship to device failed");
+
+	SceneObject* datapad = playerCreature->getSlottedObject("datapad");
+	datapad->addObject(shipControlDevice, -1);
 
 	ClientCreateCharacterSuccess* msg = new ClientCreateCharacterSuccess(playerCreature->getObjectID());
 	playerCreature->sendMessage(msg);

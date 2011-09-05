@@ -109,8 +109,10 @@ class Instrument extends TangibleObject {
 		
 		beingUsed = false;
 		
-		if (spawnedObject != null)
-			spawnedObject.removeFromZone();
+		if (spawnedObject != null) {
+			spawnedObject.getZone().removeObject(spawnedObject, true);
+			//spawnedObject.removeFromZone();
+		}
 	}
 	
 	@local

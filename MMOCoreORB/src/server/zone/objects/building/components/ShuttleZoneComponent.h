@@ -37,8 +37,8 @@ using namespace server::zone;
 class ShuttleZoneComponent : public ZoneComponent {
 
 public:
-	virtual void insertToZone(SceneObject* sceneObject, Zone* zone);
-	virtual void removeFromZone(SceneObject* sceneObject);
+	void notifyInsertToZone(SceneObject* sceneObject, Zone* zone);
+	void notifyRemoveFromZone(SceneObject* sceneObject);
 };
 
 #endif /* SHUTTLEZONECOMPONENT_H_ */

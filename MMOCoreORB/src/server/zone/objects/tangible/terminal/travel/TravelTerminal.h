@@ -98,7 +98,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
@@ -143,7 +143,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
@@ -194,7 +194,7 @@ public:
 
 	void initializeTransientMembers();
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 

@@ -343,6 +343,8 @@ String NameManager::makeName(int nameLength) {
 		name += chooseNextLetter(' ', ' ');
 		name += chooseNextLetter(name[0], ' ');
 
+		assert(name.length() != 0);
+
 		while (name.length() < nameLength)
 				name += chooseNextLetter(name[name.length() - 1], name[name.length() - 2]);
 
@@ -368,6 +370,8 @@ const String NameManager::makeResourceName(bool isOrganic) {
 			name += chooseNextLetter(' ', ' ');
 			name += chooseNextLetter(name[0], ' ');
 		}
+
+		assert(name.length() != 0);
 
 		while (name.length() < nameLength)
 				name += chooseNextLetter(name[name.length() - 1], name[name.length() - 2]);

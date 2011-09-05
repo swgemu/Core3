@@ -114,7 +114,8 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 		int x = System::random(15000) - 7500;
 		int y = System::random(15000) - 7500;
 		npcTarget->initializePosition(x, zone->getHeight(x, y), y);
-		npcTarget->insertToZone(zone);
+		//npcTarget->insertToZone(zone);
+		zone->addObject(npcTarget, -1, true);
 
 		ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
 		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");

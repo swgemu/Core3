@@ -144,9 +144,9 @@ public:
 
 	void notifyExit(SceneObject* object);
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void despawnCityObjects();
 
@@ -207,9 +207,9 @@ public:
 
 	void notifyExit(SceneObject* object);
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void despawnCityObjects();
 
@@ -276,9 +276,9 @@ public:
 
 	void notifyExit(SceneObject* object);
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void despawnCityObjects();
 

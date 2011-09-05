@@ -86,7 +86,7 @@ class VehicleObject extends CreatureObject {
 	 * @post { this object is locked and inserted into zone }
 	 * @param zone Zone object where this object will be inserted
 	 */
-	public native void insertToZone(Zone zone);
+	public native void notifyInsertToZone(Zone zone);
 	
 	/**
 	 * Sets a new posture

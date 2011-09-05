@@ -54,10 +54,10 @@ public:
 	ShipObjectMessage4(ShipObject* ship)
 			: BaseLineMessage(ship->getObjectID(), 0x53484950, 4, 0x06) {
 
-		insertInt(0);
 		insertFloat(0.80000001f);
 		insertFloat(512.f);
 		insertFloat(100.f);
+		insertInt(0);
 
 		insertInt(0);
 		insertInt(0);

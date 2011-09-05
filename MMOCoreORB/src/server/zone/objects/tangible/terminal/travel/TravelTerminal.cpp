@@ -18,7 +18,7 @@
  *	TravelTerminalStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INSERTTOZONE__ZONE_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,};
 
 TravelTerminal::TravelTerminal() : Terminal(DummyConstructorParameter::instance()) {
 	TravelTerminalImplementation* _implementation = new TravelTerminalImplementation();
@@ -46,18 +46,18 @@ void TravelTerminal::initializeTransientMembers() {
 		_implementation->initializeTransientMembers();
 }
 
-void TravelTerminal::insertToZone(Zone* zone) {
+void TravelTerminal::notifyInsertToZone(Zone* zone) {
 	TravelTerminalImplementation* _implementation = (TravelTerminalImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
+		DistributedMethod method(this, RPC_NOTIFYINSERTTOZONE__ZONE_);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->insertToZone(zone);
+		_implementation->notifyInsertToZone(zone);
 }
 
 int TravelTerminal::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -221,9 +221,11 @@ void TravelTerminalImplementation::initializeTransientMembers() {
 	TerminalImplementation::initializeTransientMembers();
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		Logger.setLoggingName("TravelTerminal");
 	Logger::setLoggingName("TravelTerminal");
+	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  		Zone zone = getZone();
+	Zone* zone = getZone();
 	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  	}
-	if (getZone() != NULL)	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  			planetTravelPoint = getZone().getPlanetManager().getNearestPlanetTravelPoint(this);
-	planetTravelPoint = getZone()->getPlanetManager()->getNearestPlanetTravelPoint(_this);
+	if (zone != NULL)	// server/zone/objects/tangible/terminal/travel/TravelTerminal.idl():  			planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
+	planetTravelPoint = zone->getPlanetManager()->getNearestPlanetTravelPoint(_this);
 }
 
 PlanetTravelPoint* TravelTerminalImplementation::getPlanetTravelPoint() {
@@ -245,8 +247,8 @@ Packet* TravelTerminalAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
 		break;
-	case RPC_INSERTTOZONE__ZONE_:
-		insertToZone((Zone*) inv->getObjectParameter());
+	case RPC_NOTIFYINSERTTOZONE__ZONE_:
+		notifyInsertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
@@ -262,8 +264,8 @@ void TravelTerminalAdapter::initializeTransientMembers() {
 	((TravelTerminalImplementation*) impl)->initializeTransientMembers();
 }
 
-void TravelTerminalAdapter::insertToZone(Zone* zone) {
-	((TravelTerminalImplementation*) impl)->insertToZone(zone);
+void TravelTerminalAdapter::notifyInsertToZone(Zone* zone) {
+	((TravelTerminalImplementation*) impl)->notifyInsertToZone(zone);
 }
 
 int TravelTerminalAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

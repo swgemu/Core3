@@ -27,8 +27,8 @@ int TravelTerminalImplementation::handleObjectMenuSelect(CreatureObject* player,
 	return 0;
 }
 
-void TravelTerminalImplementation::insertToZone(Zone* zone) {
-	TerminalImplementation::insertToZone(zone);
+void TravelTerminalImplementation::notifyInsertToZone(Zone* zone) {
+	TerminalImplementation::notifyInsertToZone(zone);
 
 	//Set the travel point name to which this travel terminal is bound.
 	PlanetManager* planetManager = zone->getPlanetManager();

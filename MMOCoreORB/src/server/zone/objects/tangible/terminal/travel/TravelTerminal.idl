@@ -69,11 +69,12 @@ class TravelTerminal extends Terminal {
 		
 		Logger.setLoggingName("TravelTerminal");
 		
-		if (getZone() != null)
-			planetTravelPoint = getZone().getPlanetManager().getNearestPlanetTravelPoint(this);
+		Zone zone = getZone();
+		if (zone != null)
+			planetTravelPoint = zone.getPlanetManager().getNearestPlanetTravelPoint(this);
 	}
 	
-	public native void insertToZone(Zone zone);
+	public native void notifyInsertToZone(Zone zone);
 	
 	
 	/**

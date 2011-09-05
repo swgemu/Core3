@@ -43,7 +43,8 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 		if (constructionBarricade != NULL) {
 			constructionBarricade->initializePosition(x, 0, y); //The construction barricades are always at the terrain height.
 			constructionBarricade->rotate(angle + 180); //All construction barricades need to be rotated 180 degrees for some reason.
-			constructionBarricade->insertToZone(zone);
+			//constructionBarricade->insertToZone(zone);
+			zone->addObject(constructionBarricade, -1, true);
 
 			constructionDuration = serverTemplate->getLotSize() * 3000; //3 seconds per lot.
 		}

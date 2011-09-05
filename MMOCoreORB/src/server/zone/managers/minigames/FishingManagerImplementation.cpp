@@ -973,7 +973,8 @@ SceneObject* FishingManagerImplementation::createMarker(float x, float y, float 
 		return NULL;
 
 	markerObject->initializePosition(x, z, y);
-	markerObject->insertToZone(zone);
+	//markerObject->insertToZone(zone);
+	zone->addObject(markerObject, -1, true);
 
 	markerObject->registerObserver(ObserverEventType::CLOSECONTAINER, _this);
 
@@ -988,7 +989,8 @@ void FishingManagerImplementation::createSplash(float x, float y, float z, Zone*
 
 		if (splashObject != NULL) {
 			splashObject->initializePosition(x, z + 0.5, y);
-			splashObject->insertToZone(zone);
+			//splashObject->insertToZone(zone);
+			zone->addObject(splashObject, -1, true);
 
 			createFishingSplashEvent(player, zoneServer, splashObject);
 		}

@@ -6,6 +6,7 @@
  */
 
 #include "CreatureTemplateManager.h"
+#include "server/zone/templates/mobile/LairTemplate.h"
 
 CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateManager") {
 	/*setLogging(false);

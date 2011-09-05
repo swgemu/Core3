@@ -399,19 +399,19 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	PlayerObject* ghost = playerCreature->getPlayerObject();
 	ghost->setAccountID(client->getAccountID()); // TODO: Could this be a weak or managed rereference?
 
-	//ghost->setAdminLevel(2);
+	ghost->setAdminLevel(2);
 
 	//Accounts with an admin level of > 0 are automatically given admin at character creation
-	/*if (account->getAdminLevel() > 0) {
-		ghost->setAdminLevel(account->getAdminLevel());
+	//if (account->getAdminLevel() > 0) {
+//		ghost->setAdminLevel(account->getAdminLevel());
 
-		Vector<String> skills;
+	/*	Vector<String> skills;
 		skills.add("admin");
 
-		ghost->addSkills(skills, false);
-	}*/
+		ghost->addSkills(skills, false);*/
+	//}
 
-	try {
+	/*try {
 		uint32 accID = client->getAccountID();
 
 		String query = "SELECT username FROM accounts WHERE account_id = " + String::valueOf(accID);
@@ -441,7 +441,7 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 
 	} catch (Exception& e) {
 		error(e.getMessage());
-	}
+	}*/
 
 
 
@@ -670,7 +670,9 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 
 	//Add a ship
 	ShipControlDevice* shipControlDevice = (ShipControlDevice*) server->createObject(String("object/intangible/ship/sorosuub_space_yacht_pcd.iff").hashCode(), 1);
-	ShipObject* ship = (ShipObject*) server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1);
+	//ShipObject* ship = (ShipObject*) server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1);
+	ShipObject* ship = (ShipObject*) server->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1);
+	
 	shipControlDevice->setControlledObject(ship);
 
 	if (!shipControlDevice->addObject(ship, 4))
@@ -706,14 +708,16 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	SceneObject* cellTutPlayer = tutorial->getCell(0);
 //	cellTut->addObject(blueFrogTemplate, -1);
 
-	tutorial->insertToZone(zone);
+	//tutorial->insertToZone(zone);
+	zone->addObject(tutorial, -1, true);
 
 	//addPermission
 
 	tutorial->togglePermission("ADMIN", player->getFirstName());
 
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
-	travelTutorialTerminal->insertToZone(zone);
+	//travelTutorialTerminal->insertToZone(zone);
+	zone->addObject(travelTutorialTerminal, -1, true);
 //	blueFrogTemplate->initializePosition(27.0f, -3.5f, -165.0f);
 //	blueFrogTemplate->insertToZone(zone);
 
@@ -743,9 +747,11 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* 
 	SceneObject* cellTut = tutorial->getCell(0);
 	cellTut->addObject(travelTutorialTerminal, -1);
 
-	tutorial->insertToZone(zone);
+	//tutorial->insertToZone(zone);
+	zone->addObject(tutorial, -1, true);
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
-	travelTutorialTerminal->insertToZone(zone);
+	//travelTutorialTerminal->insertToZone(zone);
+	zone->addObject(travelTutorialTerminal, -1, true);
 
 	player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->setZone(zone);

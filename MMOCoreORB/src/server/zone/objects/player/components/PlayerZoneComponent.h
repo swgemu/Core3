@@ -18,7 +18,7 @@ public:
 
 	void switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID = 0);
 
-	void insertToZone(SceneObject* sceneObject, Zone* newZone);
+	void notifyInsertToZone(SceneObject* sceneObject, Zone* newZone);
 
 	void teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID = 0);
 

@@ -828,7 +828,7 @@ public:
 
 	void closeContainerTo(CreatureObject* player, bool notify = true);
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
 	void insertToBuilding(BuildingObject* building);
 
@@ -843,6 +843,8 @@ public:
 	void notifyDissapear(QuadTreeEntry* entry);
 
 	void removeFromZone();
+
+	void notifyRemoveFromZone();
 
 	void removeFromBuilding(BuildingObject* building);
 
@@ -1063,6 +1065,8 @@ public:
 	bool isRegion();
 
 	bool isCreatureObject();
+
+	bool isShipObject();
 
 	bool isVehicleObject();
 
@@ -1886,7 +1890,7 @@ public:
 
 	virtual void closeContainerTo(CreatureObject* player, bool notify = true);
 
-	virtual void insertToZone(Zone* zone);
+	virtual void notifyInsertToZone(Zone* zone);
 
 	virtual void insertToBuilding(BuildingObject* building);
 
@@ -1900,7 +1904,9 @@ public:
 
 	void notifyDissapear(QuadTreeEntry* entry);
 
-	virtual void removeFromZone();
+	void removeFromZone();
+
+	virtual void notifyRemoveFromZone();
 
 	virtual void removeFromBuilding(BuildingObject* building);
 
@@ -2121,6 +2127,8 @@ public:
 	virtual bool isRegion();
 
 	virtual bool isCreatureObject();
+
+	virtual bool isShipObject();
 
 	virtual bool isVehicleObject();
 
@@ -2369,7 +2377,7 @@ public:
 
 	void closeContainerTo(CreatureObject* player, bool notify);
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
 	void insertToBuilding(BuildingObject* building);
 
@@ -2380,6 +2388,8 @@ public:
 	void updateDirection(float fw, float fx, float fy, float fz);
 
 	void removeFromZone();
+
+	void notifyRemoveFromZone();
 
 	void removeFromBuilding(BuildingObject* building);
 
@@ -2566,6 +2576,8 @@ public:
 	bool isRegion();
 
 	bool isCreatureObject();
+
+	bool isShipObject();
 
 	bool isVehicleObject();
 

@@ -11,11 +11,11 @@
 #include "server/zone/objects/building/tasks/ShuttleDepartureTask.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 
-void ShuttleZoneComponent::insertToZone(SceneObject* sceneObject, Zone* zone) {
+void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) {
 	if (sceneObject->isInQuadTree())
 			return;
 
-	ZoneComponent::insertToZone(sceneObject, zone);
+	ZoneComponent::notifyInsertToZone(sceneObject, zone);
 
 	if (sceneObject == NULL || !sceneObject->isCreatureObject())
 		return;
@@ -32,6 +32,6 @@ void ShuttleZoneComponent::insertToZone(SceneObject* sceneObject, Zone* zone) {
 	}
 }
 
-void ShuttleZoneComponent::removeFromZone(SceneObject* sceneObject) {
-	ZoneComponent::removeFromZone(sceneObject);
+void ShuttleZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
+	ZoneComponent::notifyRemoveFromZone(sceneObject);
 }

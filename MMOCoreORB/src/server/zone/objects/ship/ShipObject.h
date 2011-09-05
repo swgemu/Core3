@@ -24,11 +24,17 @@ class ShipObject : public TangibleObject {
 public:
 	ShipObject();
 
+	unsigned short getUniqueID();
+
+	void initializeTransientMembers();
+
 	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
 
 	float getTotalMass();
+
+	bool isShipObject();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -63,11 +69,17 @@ public:
 
 	ShipObjectImplementation(DummyConstructorParameter* param);
 
+	unsigned short getUniqueID();
+
+	void initializeTransientMembers();
+
 	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
 
 	float getTotalMass();
+
+	bool isShipObject();
 
 	WeakReference<ShipObject*> _this;
 
@@ -112,11 +124,17 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	unsigned short getUniqueID();
+
+	void initializeTransientMembers();
+
 	void sendTo(SceneObject* player, bool doClose);
 
 	void sendBaselinesTo(SceneObject* player);
 
 	float getTotalMass();
+
+	bool isShipObject();
 
 };
 

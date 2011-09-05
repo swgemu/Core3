@@ -772,7 +772,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @post { this object is locked and inserted into zone }
 	 * @param zone Zone object where this object will be inserted
 	 */
-	public native abstract void insertToZone(Zone zone);
+	public native abstract void notifyInsertToZone(Zone zone);
 
 	/**
 	 * Inserts this object into the building, this method is only to be called from insertToZone
@@ -816,7 +816,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @pre { this object is locked }
 	 * @post { this object is locked and not in zone}
 	 */
-	public native abstract void removeFromZone();
+	public void removeFromZone() {
+		if (zone.get() != null)
+			zone.get().removeObject(this, true);
+	}
+	
+	public native abstract void notifyRemoveFromZone();
 
 	/**
 	 * Removes this object from the building, this method is only to be called from removeFromZone
@@ -1407,6 +1412,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	public abstract boolean isCreatureObject() {
+		return false;
+	}
+	
+	public abstract boolean isShipObject() {
 		return false;
 	}
 	

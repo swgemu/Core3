@@ -157,7 +157,8 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	for (int j = 7; j <= areaObj.getTableSize(); ++j)
 		area->addTemplate(areaObj.getStringAt(j).hashCode());
 
-	area->insertToZone(zone);
+	//area->insertToZone(zone);
+	zone->addObject(area, -1, true);
 
 	area->updateToDatabase();
 

@@ -201,7 +201,8 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 
 	creature->initializePosition(x, z, y);
 
-	creature->insertToZone(zone);
+	//creature->insertToZone(zone);
+	zone->addObject(creature, -1, true);
 }
 
 bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject* creature) {

@@ -10,6 +10,8 @@
 
 #include "server/zone/objects/mission/ReconMissionObjective.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	MissionReconActiveAreaStub
  */
@@ -224,8 +226,8 @@ void MissionReconActiveAreaImplementation::notifyEnter(SceneObject* player) {
 }
 
 	else {
-	// server/zone/objects/area/MissionReconActiveArea.idl():  				super.removeFromZone();
-	ActiveAreaImplementation::removeFromZone();
+	// server/zone/objects/area/MissionReconActiveArea.idl():  				getZone().removeObject(this, true);
+	getZone()->removeObject(_this, true);
 }
 }
 }

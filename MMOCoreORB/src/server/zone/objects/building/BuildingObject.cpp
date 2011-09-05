@@ -24,7 +24,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__STRING_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_ADDOBJECT__SCENEOBJECT_INT_BOOL_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_ISBUILDINGOBJECT__,RPC_ISMEDICALBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISCITYHALLBUILDING__,RPC_SETACCESSFEE__INT_,RPC_GETACCESSFEE__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -208,17 +208,17 @@ void BuildingObject::ejectObject(SceneObject* obj) {
 		_implementation->ejectObject(obj);
 }
 
-void BuildingObject::removeFromZone() {
+void BuildingObject::notifyRemoveFromZone() {
 	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
+		DistributedMethod method(this, RPC_NOTIFYREMOVEFROMZONE__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->removeFromZone();
+		_implementation->notifyRemoveFromZone();
 }
 
 void BuildingObject::notifyLoadFromDatabase() {
@@ -252,18 +252,18 @@ void BuildingObject::notifyDissapear(QuadTreeEntry* obj) {
 		_implementation->notifyDissapear(obj);
 }
 
-void BuildingObject::notifyInsertToZone(SceneObject* object) {
+void BuildingObject::notifyObjectInsertedToZone(SceneObject* object) {
 	BuildingObjectImplementation* _implementation = (BuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_);
+		DistributedMethod method(this, RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_);
 		method.addObjectParameter(object);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->notifyInsertToZone(object);
+		_implementation->notifyObjectInsertedToZone(object);
 }
 
 void BuildingObject::insert(QuadTreeEntry* obj) {
@@ -835,6 +835,19 @@ BuildingObjectImplementation::BuildingObjectImplementation() {
 	publicStructure = true;
 }
 
+void BuildingObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
+	// server/zone/objects/building/BuildingObject.idl():  		}
+	if (signObject != NULL){
+	// server/zone/objects/building/BuildingObject.idl():  			signObject.setCustomObjectName(name, notifyClient);
+	signObject->setCustomObjectName(name, notifyClient);
+}
+
+	else {
+	// server/zone/objects/building/BuildingObject.idl():  			super.setCustomObjectName(name, notifyClient);
+	StructureObjectImplementation::setCustomObjectName(name, notifyClient);
+}
+}
+
 bool BuildingObjectImplementation::isAllowedEntry(const String& firstName) {
 	// server/zone/objects/building/BuildingObject.idl():  		if 
 	if (isOnBanList(firstName))	// server/zone/objects/building/BuildingObject.idl():  			return false;
@@ -968,14 +981,14 @@ Packet* BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	case RPC_EJECTOBJECT__SCENEOBJECT_:
 		ejectObject((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_REMOVEFROMZONE__:
-		removeFromZone();
+	case RPC_NOTIFYREMOVEFROMZONE__:
+		notifyRemoveFromZone();
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
 		break;
-	case RPC_NOTIFYINSERTTOZONE__SCENEOBJECT_:
-		notifyInsertToZone((SceneObject*) inv->getObjectParameter());
+	case RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_:
+		notifyObjectInsertedToZone((SceneObject*) inv->getObjectParameter());
 		break;
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
 		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
@@ -1097,16 +1110,16 @@ void BuildingObjectAdapter::ejectObject(SceneObject* obj) {
 	((BuildingObjectImplementation*) impl)->ejectObject(obj);
 }
 
-void BuildingObjectAdapter::removeFromZone() {
-	((BuildingObjectImplementation*) impl)->removeFromZone();
+void BuildingObjectAdapter::notifyRemoveFromZone() {
+	((BuildingObjectImplementation*) impl)->notifyRemoveFromZone();
 }
 
 void BuildingObjectAdapter::notifyLoadFromDatabase() {
 	((BuildingObjectImplementation*) impl)->notifyLoadFromDatabase();
 }
 
-void BuildingObjectAdapter::notifyInsertToZone(SceneObject* object) {
-	((BuildingObjectImplementation*) impl)->notifyInsertToZone(object);
+void BuildingObjectAdapter::notifyObjectInsertedToZone(SceneObject* object) {
+	((BuildingObjectImplementation*) impl)->notifyObjectInsertedToZone(object);
 }
 
 void BuildingObjectAdapter::sendTo(SceneObject* player, bool doClose) {

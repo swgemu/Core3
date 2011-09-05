@@ -12,7 +12,7 @@
  *	ActiveAreaStub
  */
 
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS__,RPC_GETRADIUS2__,RPC_SETRADIUS__FLOAT_};
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS__,RPC_GETRADIUS2__,RPC_SETRADIUS__FLOAT_};
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
@@ -122,33 +122,6 @@ bool ActiveArea::isRegion() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isRegion();
-}
-
-void ActiveArea::insertToZone(Zone* zone) {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
-		method.addObjectParameter(zone);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->insertToZone(zone);
-}
-
-void ActiveArea::removeFromZone() {
-	ActiveAreaImplementation* _implementation = (ActiveAreaImplementation*) _getImplementation();
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeFromZone();
 }
 
 bool ActiveArea::containsPoint(float x, float y) {
@@ -428,12 +401,6 @@ Packet* ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISREGION__:
 		resp->insertBoolean(isRegion());
 		break;
-	case RPC_INSERTTOZONE__ZONE_:
-		insertToZone((Zone*) inv->getObjectParameter());
-		break;
-	case RPC_REMOVEFROMZONE__:
-		removeFromZone();
-		break;
 	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
 		resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
 		break;
@@ -479,14 +446,6 @@ bool ActiveAreaAdapter::isActiveArea() {
 
 bool ActiveAreaAdapter::isRegion() {
 	return ((ActiveAreaImplementation*) impl)->isRegion();
-}
-
-void ActiveAreaAdapter::insertToZone(Zone* zone) {
-	((ActiveAreaImplementation*) impl)->insertToZone(zone);
-}
-
-void ActiveAreaAdapter::removeFromZone() {
-	((ActiveAreaImplementation*) impl)->removeFromZone();
 }
 
 bool ActiveAreaAdapter::containsPoint(float x, float y) {

@@ -13,6 +13,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "system/util/VectorMap.h"
+#include "server/zone/Zone.h"
 
 int FireworkObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (player == NULL)
@@ -52,7 +53,8 @@ void FireworkObjectImplementation::launch(CreatureObject* player) {
 	int z = player->getPositionZ();
 
 	launcherObject->initializePosition(x, z, y);
-	launcherObject->insertToZone(player->getZone());
+	//launcherObject->insertToZone(player->getZone());
+	player->getZone()->addObject(launcherObject, -1, true);
 
 	if (getUseCount() > 1) {
 		setUseCount(getUseCount() - 1, true);

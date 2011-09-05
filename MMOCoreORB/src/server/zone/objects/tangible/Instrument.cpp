@@ -406,8 +406,10 @@ void InstrumentImplementation::notifyLoadFromDatabase() {
 	// server/zone/objects/tangible/Instrument.idl():  		beingUsed = false;
 	beingUsed = false;
 	// server/zone/objects/tangible/Instrument.idl():  	}
-	if (spawnedObject != NULL)	// server/zone/objects/tangible/Instrument.idl():  			spawnedObject.removeFromZone();
-	spawnedObject->removeFromZone();
+	if (spawnedObject != NULL){
+	// server/zone/objects/tangible/Instrument.idl():  			spawnedObject.getZone().removeObject(spawnedObject, true);
+	spawnedObject->getZone()->removeObject(spawnedObject, true);
+}
 }
 
 void InstrumentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {

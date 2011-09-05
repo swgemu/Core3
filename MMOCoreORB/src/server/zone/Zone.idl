@@ -68,46 +68,48 @@ include server.zone.managers.planet.HeightMap;
 include server.zone.managers.object.ObjectMap;
 include server.zone.managers.planet.MapLocationTable;
 include engine.util.u3d.Vector3;
+include server.zone.QuadTreeReference;
 
 import system.lang.System;
 import server.zone.objects.building.cloning.CloningBuildingObject;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.scene.SceneObject;
 
-class Zone extends ManagedObject {
+class Zone extends SceneObject {
 	private string zoneName;
 	
 	private unsigned int zoneCRC;
 	
 	private transient ZoneProcessServer processor;
 
-	private ObjectMap objectMap;
+	private transient ObjectMap objectMap;
 
-	private PlanetManager planetManager;
+	private transient PlanetManager planetManager;
 	
-	private StructureManager structureManager;
+	private transient StructureManager structureManager;
 	
-	private CityManager cityManager;
+	private transient CityManager cityManager;
 	
-	private CreatureManager creatureManager;
+	private transient CreatureManager creatureManager;
 	
 	@weakReference
-	private ZoneServer server;
+	private transient ZoneServer server;
 	
-	@transactional
-	private transient QuadTree regionTree;
-
-	@transactional
-	private transient QuadTree quadTree;
+	@dereferenced
+	private QuadTreeReference regionTree;
 
 	@dereferenced
-	private Time galacticTime;
+	private QuadTreeReference quadTree;
+
+	@dereferenced
+	private transient Time galacticTime;
 	
 	private transient HeightMap heightMap;
 	
 	@transactional
 	private transient MapLocationTable mapLocations;
 	
-	private boolean managersStarted;
+	private transient boolean managersStarted;
 	
 	public native Zone(ZoneProcessServer processor, final string zoneName);
 	public native void initializeTransientMembers();
@@ -121,11 +123,13 @@ class Zone extends ManagedObject {
 	
 	@local
 	public QuadTree getRegionTree() {
-		return regionTree;
+		return regionTree.get();
 	}
 	
 	@local
 	public native int getInRangeObjects(float x, float y, float range, SortedVector<SceneObject> objects);
+	
+	public native void createContainerComponent();
 	
 	@local
 	public native int getInRangeActiveAreas(float x, float y, float range, SortedVector<ActiveArea> objects);

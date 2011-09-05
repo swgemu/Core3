@@ -62,10 +62,6 @@ public:
 
 	bool isRegion();
 
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
-
 	bool containsPoint(float x, float y);
 
 	float getRadius();
@@ -122,10 +118,6 @@ public:
 	bool isActiveArea();
 
 	virtual bool isRegion();
-
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
 
 	bool containsPoint(float x, float y);
 
@@ -191,10 +183,6 @@ public:
 	bool isActiveArea();
 
 	bool isRegion();
-
-	void insertToZone(Zone* zone);
-
-	void removeFromZone();
 
 	bool containsPoint(float x, float y);
 

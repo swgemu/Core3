@@ -97,7 +97,8 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	if (!lairObject->isInQuadTree()) {
 		lairObject->initializePosition(newX, zone->getHeight(newX, newY), newY);
-		lairObject->insertToZone(zone);
+		//lairObject->insertToZone(zone);
+		zone->addObject(lairObject, -1, true);
 
 		ManagedReference<MissionObserver*> observer = new MissionObserver(_this);
 		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");

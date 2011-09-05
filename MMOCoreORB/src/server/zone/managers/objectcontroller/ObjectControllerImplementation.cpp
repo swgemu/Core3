@@ -16,6 +16,8 @@
 
 #include "server/db/ServerDatabase.h"
 
+#include "server/zone/Zone.h"
+
 void ObjectControllerImplementation::loadCommands() {
 	configManager = new CommandConfigManager(server);
 	queueCommands = new CommandList();
@@ -87,7 +89,8 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 		if (parent->isCellObject()) {
 			Zone* zne = destinationObject->getParent()->getZone();
 
-			objectToTransfer->insertToZone(zne);
+			//objectToTransfer->insertToZone(zne);
+			zne->addObject(objectToTransfer, -1, true);
 		}
 
 		return false;
@@ -98,7 +101,8 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 			Zone* zne = destinationObject->getParent()->getZone();
 
 			if (zne != NULL) {
-				objectToTransfer->insertToZone(zne);
+				//objectToTransfer->insertToZone(zne);
+				zne->addObject(objectToTransfer, -1, true);
 				//System::out << "Inserted to zone" << endl;
 			}
 		}
@@ -143,7 +147,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 
 	String characterAbility = queueCommand->getCharacterAbility();
 
-	if (characterAbility.length() > 1) {
+	/*if (characterAbility.length() > 1) {
 		object->info("activating characterAbility " + characterAbility);
 
 		if (object->isPlayerCreature()) {
@@ -155,7 +159,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 				return 0.f;
 			}
 		}
-	}
+	}*/
 
 	int errorNumber = queueCommand->doQueueCommand(object, targetID, arguments);
 

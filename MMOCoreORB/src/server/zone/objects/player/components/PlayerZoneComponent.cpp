@@ -14,7 +14,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
 
-void PlayerZoneComponent::insertToZone(SceneObject* sceneObject, Zone* newZone) {
+void PlayerZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) {
 	SceneObject* parent = sceneObject->getParent();
 
 	if (parent == NULL && !sceneObject->isInQuadTree() && sceneObject->isPlayerCreature()) {
@@ -28,7 +28,7 @@ void PlayerZoneComponent::insertToZone(SceneObject* sceneObject, Zone* newZone) 
 		}
 	}
 
-	ZoneComponent::insertToZone(sceneObject, newZone);
+	ZoneComponent::notifyInsertToZone(sceneObject, newZone);
 
 	//sceneObject->info("blia", true);
 }

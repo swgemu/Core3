@@ -303,6 +303,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/ZonePacketHandler.cpp \
 		server/zone/ZoneProcessServerImplementation.cpp \
 		server/zone/ZoneImplementation.cpp \
+		server/zone/QuadTreeReference.cpp \
+		server/zone/ZoneContainerComponent.cpp \
 		server/zone/managers/crafting/CraftingManagerImplementation.cpp \
 		server/zone/managers/director/DirectorManager.cpp \
 		server/zone/managers/loot/LootManagerImplementation.cpp \

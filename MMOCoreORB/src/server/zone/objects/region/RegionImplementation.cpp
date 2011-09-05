@@ -30,8 +30,8 @@ void RegionImplementation::sendGreetingMessage(CreatureObject* player) {
 		player->sendSystemMessage("@city/city:youre_city_banned"); //You are banned from this city and may not use any of its public services and structures.
 }
 
-void RegionImplementation::insertToZone(Zone* zone) {
-	ActiveAreaImplementation::insertToZone(zone);
+void RegionImplementation::notifyInsertToZone(Zone* zone) {
+	ActiveAreaImplementation::notifyInsertToZone(zone);
 
 	Locker locker(_this);
 

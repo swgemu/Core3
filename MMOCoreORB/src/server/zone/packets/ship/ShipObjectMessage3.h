@@ -53,30 +53,76 @@ public:
 	ShipObjectMessage3(ShipObject* ship)
 			: TangibleObjectMessage3(ship, 0x53484950, 0x16) {
 
-		insertFloat(1.9f); //?Speed or Acceleration?
-		insertFloat(10000.f); //chassis cur
-		insertFloat(10000.f); //chassis max
+		insertFloat(10.9f); //?Speed or Acceleration?
+		insertFloat(800.f); //chassis cur
+		insertFloat(800.f); //chassis max
 		insertInt(0x16B73FE9); //unk
 		
-		insertInt(0);
-		insertInt(0);
+		//armor
+		/*insertInt(0);
+		insertInt(0);*/
 
-		insertInt(0);
-		insertInt(0);
+		insertDummyList(0x42c80000);
 
-		insertInt(0);
-		insertInt(0);
+		//max armor
+		/*insertInt(0);
+		insertInt(0);*/
+		insertDummyList(0x42c80000);
 
-		insertInt(0);
-		insertInt(0);
+		//cur hit
+		/*insertInt(0);
+		insertInt(0);*/
 
-		insertInt(0);
-		insertInt(0);
+		insertDummyList(0x43480000);
+
+		//max hit
+		/*insertInt(0);
+		insertInt(0);*/
+		insertDummyList(0x43480000);
+
+		//unk
+		/*insertInt(0);
+		insertInt(0);*/
+
+		insertDummyList(0x2);
 		
-		insertFloat(0.f);
-		insertFloat(0.f);
+		insertFloat(300.f);
+		insertFloat(300.f);
 
 		setSize();
+	}
+
+	void insertDummyList(int val) {
+		insertInt(7);
+		insertInt(7);
+
+		insertByte(0);
+		insertInt(0);
+		insertInt(val); // 0xDC, 0xBF, 0xBD, 0x9A,
+
+		insertByte(0);
+		insertInt(1);
+		insertInt(val); // 0x05, 0xC7, 0xA0, 0x35,
+
+		insertByte(0);
+		insertInt(2);
+		insertInt(val); // 0xBE, 0x17, 0x32, 0xE7
+
+		insertByte(0);
+		insertInt(4);
+		insertInt(val); // 0x9E, 0x60, 0xCB, 0xE1,
+
+		insertByte(0);
+		insertInt(5);
+		insertInt(val); // 0x9E, 0x60, 0xCB, 0xE1,
+
+		insertByte(0);
+		insertInt(6);
+		insertInt(val); // 0xEE, 0xD6, 0xCE, 0x20,
+
+		insertByte(0);
+		insertInt(0x0f);
+		insertInt(val); //0x3D, 0x3C, 0x82, 0x2C,
 	}
 };
 

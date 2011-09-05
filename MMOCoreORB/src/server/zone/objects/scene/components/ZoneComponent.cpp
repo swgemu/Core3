@@ -54,90 +54,17 @@ which carries forward this exception.
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/objects/region/CityRegion.h"
 
-void ZoneComponent::insertToZone(SceneObject* sceneObject, Zone* newZone) {
+void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) {
 	info("inserting to zone");
 
 	if (newZone == NULL)
 		return;
 
-	Zone* zone = sceneObject->getZone();
-
-	Vector<ManagedReference<ActiveArea*> >* activeAreas = sceneObject->getActiveAreas();
-
-	activeAreas->removeAll();
-
-	Locker zoneLocker(newZone);
-
-	if (sceneObject->isInQuadTree() && newZone != zone) {
-		error("trying to insert to zone an object that is already in a different quadtree");
-
-		removeFromZone(sceneObject);
-
-		//StackTrace::printStackTrace();
-	}
-
-	sceneObject->setZone(newZone);
-	zone = newZone;
-
-	zone->addSceneObject(sceneObject);
-
-	SceneObject* parent = sceneObject->getParent();
-
-	if (parent != NULL && parent->isCellObject())
-		parent->addObject(sceneObject, -1, false);
-
-	/*SortedVector<ManagedReference<SceneObject*> >* notifiedSentObjects = sceneObject->getNotifiedSentObjects();
-
-	notifiedSentObjects->removeAll();*/
-
-	sceneObject->sendToOwner(true);
-
-	if (sceneObject->isInQuadTree()) {
-		for (int i = 0; i < sceneObject->inRangeObjectCount(); ++i) {
-			SceneObject* object = (SceneObject*) sceneObject->getInRangeObject(i);
-
-			if (object != sceneObject->getRootParent()) //our building is sent in sendToOwner
-				sceneObject->notifyInsert(object);
-
-			if (object != sceneObject) {
-				/*if (object->getParentRecursively(SceneObject::BUILDING) != NULL) {
-					if (notifiedSentObjects->put(object) != -1)
-						object->sendTo(sceneObject, true);
-				}*/
-
-				if (object->isPlayerCreature()) { //we need to destroy object to reset movement counter on near clients
-					object->notifyDissapear(sceneObject);
-					//object->sendTo(sceneObject, true);
-					sceneObject->sendTo(object, true);
-				} else
-					object->notifyInsert(sceneObject);
-			}
-		}
-	} else {
-		sceneObject->initializePosition(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY());
-		sceneObject->removeInRangeObjects();
-
-		//movementCounter = 0;
-		sceneObject->setMovementCounter(0);
-
-		if (parent == NULL || !parent->isCellObject() || parent->getParent() == NULL) {
-			zone->insert(sceneObject);
-
-			zone->inRange(sceneObject, 192);
-		} else if (parent->isCellObject()) {
-			BuildingObject* building = (BuildingObject*) parent->getParent();
-			sceneObject->insertToBuilding(building);
-
-			building->notifyInsertToZone(sceneObject);
-		}
-	}
-
-
-	zone->updateActiveAreas(sceneObject);
+	//newZone->addObject(sceneObject, -1, true);
 
 	sceneObject->teleport(sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY(), sceneObject->getParentID());
 
-	insertChildObjectsToZone(sceneObject, zone);
+	insertChildObjectsToZone(sceneObject, newZone);
 }
 
 void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zone) {
@@ -151,7 +78,8 @@ void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zon
 			continue;
 
 		if (outdoorChild->getContainmentType() != 4)
-			outdoorChild->insertToZone(zone);
+			//outdoorChild->insertToZone(zone);
+			zone->addObject(outdoorChild, -1, true);
 	}
 }
 
@@ -351,7 +279,8 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	if (newZone == NULL)
 		return;
 
-	removeFromZone(sceneObject);
+	//removeObject(sceneObject, false);
+	sceneObject->removeFromZone();
 
 	SceneObject* newParent = sceneObject->getZoneServer()->getObject(parentID);
 
@@ -362,7 +291,8 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 
 	sceneObject->initializePosition(newPostionX, newPositionZ, newPositionY);
 
-	insertToZone(sceneObject, newZone);
+	//insertToZone(sceneObject, newZone);
+	newZone->addObject(sceneObject, -1, true);
 }
 
 void ZoneComponent::insertToBuilding(SceneObject* sceneObject, BuildingObject* building) {
@@ -389,93 +319,11 @@ void ZoneComponent::insertToBuilding(SceneObject* sceneObject, BuildingObject* b
 	}
 }
 
-void ZoneComponent::removeFromZone(SceneObject* sceneObject) {
-	ManagedReference<SceneObject*> thisLocker = sceneObject;
-	SceneObject* parent = sceneObject->getParent();
+void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
+	/*ManagedReference<SceneObject*> thisLocker = sceneObject;
 	Zone* zone = sceneObject->getZone();
-	Vector<ManagedReference<ActiveArea*> >* activeAreas = sceneObject->getActiveAreas();
-	//SortedVector<ManagedReference<SceneObject*> >* notifiedSentObjects = sceneObject->getNotifiedSentObjects();
 
-	try {
-		Locker locker(sceneObject);
-
-		if (zone == NULL)
-			return;
-
-		info("removing from zone");
-
-		Locker zoneLocker(zone);
-
-		//ManagedReference<SceneObject*> par = parent.get();
-
-		if (parent != NULL && parent->isCellObject()) {
-			BuildingObject* building = (BuildingObject*)parent->getParent();
-
-			//par = parent;
-			if (building != NULL)
-				removeFromBuilding(sceneObject, building);
-			else
-				zone->remove(sceneObject);
-		} else
-			zone->remove(sceneObject);
-
-		while (sceneObject->inRangeObjectCount() > 0) {
-			QuadTreeEntry* obj = sceneObject->getInRangeObject(0);
-
-			if (obj != sceneObject)
-				obj->removeInRangeObject(sceneObject);
-
-			sceneObject->removeInRangeObject((int) 0);
-		}
-
-		while (activeAreas->size() > 0) {
-			ManagedReference<ActiveArea*> area = activeAreas->get(0);
-			area->enqueueExitEvent(sceneObject);
-
-			activeAreas->remove(0);
-		}
-
-		SortedVector<ManagedReference<SceneObject*> >* childObjects = sceneObject->getChildObjects();
-
-		//Remove all outdoor child objects from zone
-		for (int i = 0; i < childObjects->size(); ++i) {
-			ManagedReference<SceneObject*> outdoorChild = childObjects->get(i);
-
-			if (outdoorChild == NULL)
-				continue;
-
-			outdoorChild->removeFromZone();
-		}
-
-		//removeInRangeObjects();
-
-		//notifiedSentObjects->removeAll();
-
-		Zone* oldZone = zone;
-		zone = NULL;
-
-		oldZone->dropSceneObject(sceneObject);
-	} catch (Exception& e) {
-
-	}
-
-	sceneObject->notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, NULL, 0);
-
-	VectorMap<uint32, ManagedReference<Facade*> >* objectActiveSessions = sceneObject->getObjectActiveSessions();
-
-	while (objectActiveSessions->size()) {
-		ManagedReference<Facade*> facade = objectActiveSessions->remove(0).getValue();
-
-		if (facade == NULL)
-			continue;
-
-		facade->cancelSession();
-		//objectActiveSessions.remove(0);
-	}
-
-	//activeAreas.removeAll();
-
-	info("removed from zone");
+	zone->removeObject(sceneObject);*/
 }
 
 void ZoneComponent::removeFromBuilding(SceneObject* sceneObject, BuildingObject* building) {

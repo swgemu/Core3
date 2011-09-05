@@ -112,12 +112,12 @@ class Region extends ActiveArea {
 	 * @post { this object is locked and inserted into zone }
 	 * @param zone Zone object where this object will be inserted
 	 */
-	public native void insertToZone(Zone zone);
+	public native void notifyInsertToZone(Zone zone);
 	
-	public void removeFromZone() {
+	public void notifyRemoveFromZone() {
 		despawnCityObjects();
 			
-		super.removeFromZone();
+		super.notifyRemoveFromZone();
 		
 		updateToDatabaseWithoutChildren();
 	}

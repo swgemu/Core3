@@ -112,6 +112,8 @@ public:
 		positionY = message->parseFloat();
 
 		parsedSpeed = message->parseFloat();
+
+		//info("datatransform with parent", true);
 	}
 
 	void run() {
@@ -145,10 +147,6 @@ public:
 		if (object->getZone() == NULL)
 			return;
 
-		/*StringBuffer movementMsg;
-		movementMsg << "received movement update 0x:" << hex << movementCounter;
-		object->info(movementMsg.toString(), true);*/
-
 		if (object->isRidingMount()) {
 			ZoneServer* zoneServer = server->getZoneServer();
 
@@ -158,15 +156,13 @@ public:
 
 		uint32 objectMovementCounter = object->getMovementCounter();
 
-		/*if (objectMovementCounter > movementCounter) { // we already parsed an more updated movement counter
+		/*if (objectMovementCounter > movementCounter) { // we already parsed a more updated movement counter
 			StringBuffer msg;
 			msg << "trying to parse movement update: 0x" << hex << movementCounter << " but we already parsed 0x" << hex << objectMovementCounter;
 			object->info(msg.toString(), true);
 			return;
 		}*/
 
-		/*if (object->isMounted())
-				object->dismount(true, true);*/
 
 		ManagedReference<SceneObject*> newParent = server->getZoneServer()->getObject(parent, true);
 
@@ -226,16 +222,7 @@ public:
 		object->setDirection(directionW, directionX, directionY, directionZ);
 		object->setPosition(positionX, positionZ, positionY);
 		ghost->setClientLastMovementStamp(movementStamp);
-		//object->updateServerLastMovementStamp();
 
-		/*Vector<Reference<MessageCallback*> >* updates = object->getLastMovementUpdates();
-
-		if (updates->size() > 5)
-			updates->remove(0);
-
-		updates->add(this);*/
-
-		//TODO: add improved Speed Hack checks
 
 		if (objectControllerMain->getPriority() == 0x23)
 			object->updateZoneWithParent(newParent, false);

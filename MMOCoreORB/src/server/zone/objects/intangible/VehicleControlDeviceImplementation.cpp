@@ -10,6 +10,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
 
 void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) {
 	if (player->getParent() != NULL)
@@ -57,7 +58,8 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 		((CreatureObject*)controlledObject.get())->setControlDevice(_this);
 	}
 
-	controlledObject->insertToZone(player->getZone());
+	//controlledObject->insertToZone(player->getZone());
+	player->getZone()->addObject(controlledObject, -1, true);
 	controlledObject->inflictDamage(player, 0, System::random(50), true);
 
 	updateStatus(1);

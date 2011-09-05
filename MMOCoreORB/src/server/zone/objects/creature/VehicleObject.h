@@ -114,7 +114,7 @@ public:
 
 	bool checkInRangeGarage();
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
 	void setPosture(int newPosture, bool notifyClient = true);
 
@@ -181,7 +181,7 @@ public:
 
 	bool checkInRangeGarage();
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
 	void setPosture(int newPosture, bool notifyClient = true);
 
@@ -254,7 +254,7 @@ public:
 
 	bool checkInRangeGarage();
 
-	void insertToZone(Zone* zone);
+	void notifyInsertToZone(Zone* zone);
 
 	void setPosture(int newPosture, bool notifyClient);
 

@@ -123,7 +123,8 @@ public:
 
 				object->initializePosition(x, z, y);
 				object->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
-				object->insertToZone(creature->getZone());
+				//object->insertToZone(creature->getZone());
+				creature->getZone()->addObject(object, -1, true);
 
 				uint64 objectID = object->getObjectID();
 				creature->sendSystemMessage("oid: " + String::valueOf(objectID));

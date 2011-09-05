@@ -86,21 +86,6 @@ class ActiveArea extends SceneObject {
 		return false;
 	}
 	
-	/**
-	 * Inserts this object into zone
-	 * @pre { this object is locked }
-	 * @post { this object is locked and inserted into zone }
-	 * @param zone Zone object where this object will be inserted
-	 */
-	public native void insertToZone(Zone zone);
-	
-	/**
-	 * Removes object from zone
-	 * @pre { this object is locked }
-	 * @post { this object is locked and not in zone}
-	 */
-	public native void removeFromZone();
-	
 	public native boolean containsPoint(float x, float y);
 	
 	public float getRadius() {

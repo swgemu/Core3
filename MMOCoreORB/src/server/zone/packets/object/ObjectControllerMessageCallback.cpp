@@ -63,9 +63,11 @@ void ObjectControllerMessageCallback::run() {
 	Locker _locker(player);
 
 	if (objectID != player->getObjectID()) {
-		player->error("wrong object id in object controller message?");
+		if (player->getParentID() != objectID) {
+			player->error("wrong object id in object controller message?");
 
-		return;
+			return;
+		}
 	}
 
 	objectControllerCallback->run();

@@ -63,7 +63,7 @@ class TutorialBuildingObject extends BuildingObject {
 		Logger.setLoggingName("TutorialBuildingObject");
 	}
 	
-	public native void removeFromZone();
+	public native void notifyRemoveFromZone();
 	
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();

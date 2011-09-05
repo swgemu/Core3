@@ -54,7 +54,7 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
-	if (containmentType == 4) {
+	if (containmentType == 4 || containmentType == 5) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {
@@ -104,7 +104,7 @@ bool ContainerComponent::addObject(SceneObject* sceneObject, SceneObject* object
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
 	//if (containerType == 1 || containerType == 5) {
-	if (containmentType == 4) {
+	if (containmentType == 4 || containmentType == 5) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {
@@ -173,7 +173,7 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 	//info("trying to remove object with containedType " + String::valueOf(containedType), true);
 
-	if (containedType == 4/*containerType == 1 || containerType == 5*/) {
+	if (containedType == 4 || containedType == 5) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {

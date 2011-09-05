@@ -124,7 +124,8 @@ public:
 				if (zone == NULL)
 					zone = zoneServer->getZone(0); //Send them to whatever the first zone is...
 
-				player->insertToZone(zone);
+				//player->insertToZone(zone);
+				zone->addObject(player, -1, true);
 			}
 
 			ghost->setSavedParentID(0);

@@ -487,7 +487,8 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 	}
 
 	if (parent == NULL && getZone() != NULL) {
-		insertToZone(getZone());
+		//insertToZone(getZone());
+		getZone()->addObject(_this, -1, true);
 	}
 }
 
@@ -764,7 +765,7 @@ void SceneObjectImplementation::updateVehiclePosition() {
 
 	parent->incrementMovementCounter();
 
-	parent->updateZone(true);
+	parent->updateZone(false);
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {
@@ -794,8 +795,8 @@ void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, boo
 	zoneComponent->updateZoneWithParent(_this, newParent, lightUpdate, sendPackets);
 }
 
-void SceneObjectImplementation::insertToZone(Zone* newZone) {
-	zoneComponent->insertToZone(_this, newZone);
+void SceneObjectImplementation::notifyInsertToZone(Zone* newZone) {
+	zoneComponent->notifyInsertToZone(_this, newZone);
 }
 
 void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
@@ -824,8 +825,8 @@ void SceneObjectImplementation::updateDirection(float fw, float fx, float fy, fl
 	}
 }
 
-void SceneObjectImplementation::removeFromZone() {
-	zoneComponent->removeFromZone(_this);
+void SceneObjectImplementation::notifyRemoveFromZone() {
+	zoneComponent->notifyRemoveFromZone(_this);
 }
 
 void SceneObjectImplementation::notifyAddedToCloseObjects() {
@@ -1109,7 +1110,8 @@ void SceneObjectImplementation::createChildObjects() {
 
 		obj->initializeChildObject(_this);
 
-		obj->insertToZone(getZone());
+		//obj->insertToZone(getZone());
+		getZone()->addObject(obj, -1, true);
 	}
 }
 

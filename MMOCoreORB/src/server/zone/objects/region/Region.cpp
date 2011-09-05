@@ -22,7 +22,7 @@
  *	RegionStub
  */
 
-enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SENDGREETINGMESSAGE__CREATUREOBJECT_,RPC_SENDDEPARTINGMESSAGE__CREATUREOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_INSERTTOZONE__ZONE_,RPC_REMOVEFROMZONE__,RPC_DESPAWNCITYOBJECTS__,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__,RPC_GETCITYHALL__,RPC_SETCITYHALL__CITYHALLOBJECT_};
+enum {RPC_NOTIFYENTER__SCENEOBJECT_ = 6,RPC_SENDGREETINGMESSAGE__CREATUREOBJECT_,RPC_SENDDEPARTINGMESSAGE__CREATUREOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYREMOVEFROMZONE__,RPC_DESPAWNCITYOBJECTS__,RPC_ADDBAZAAR__BAZAARTERMINAL_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_ISREGION__,RPC_GETCITYHALL__,RPC_SETCITYHALL__CITYHALLOBJECT_};
 
 Region::Region() : ActiveArea(DummyConstructorParameter::instance()) {
 	RegionImplementation* _implementation = new RegionImplementation();
@@ -93,31 +93,31 @@ void Region::notifyExit(SceneObject* object) {
 		_implementation->notifyExit(object);
 }
 
-void Region::insertToZone(Zone* zone) {
+void Region::notifyInsertToZone(Zone* zone) {
 	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
+		DistributedMethod method(this, RPC_NOTIFYINSERTTOZONE__ZONE_);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->insertToZone(zone);
+		_implementation->notifyInsertToZone(zone);
 }
 
-void Region::removeFromZone() {
+void Region::notifyRemoveFromZone() {
 	RegionImplementation* _implementation = (RegionImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
+		DistributedMethod method(this, RPC_NOTIFYREMOVEFROMZONE__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->removeFromZone();
+		_implementation->notifyRemoveFromZone();
 }
 
 void Region::despawnCityObjects() {
@@ -417,11 +417,11 @@ void RegionImplementation::notifyExit(SceneObject* object) {
 }
 }
 
-void RegionImplementation::removeFromZone() {
+void RegionImplementation::notifyRemoveFromZone() {
 	// server/zone/objects/region/Region.idl():  		despawnCityObjects();
 	despawnCityObjects();
-	// server/zone/objects/region/Region.idl():  		super.removeFromZone();
-	ActiveAreaImplementation::removeFromZone();
+	// server/zone/objects/region/Region.idl():  		super.notifyRemoveFromZone();
+	ActiveAreaImplementation::notifyRemoveFromZone();
 	// server/zone/objects/region/Region.idl():  		updateToDatabaseWithoutChildren();
 	updateToDatabaseWithoutChildren();
 }
@@ -479,11 +479,11 @@ Packet* RegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_NOTIFYEXIT__SCENEOBJECT_:
 		notifyExit((SceneObject*) inv->getObjectParameter());
 		break;
-	case RPC_INSERTTOZONE__ZONE_:
-		insertToZone((Zone*) inv->getObjectParameter());
+	case RPC_NOTIFYINSERTTOZONE__ZONE_:
+		notifyInsertToZone((Zone*) inv->getObjectParameter());
 		break;
-	case RPC_REMOVEFROMZONE__:
-		removeFromZone();
+	case RPC_NOTIFYREMOVEFROMZONE__:
+		notifyRemoveFromZone();
 		break;
 	case RPC_DESPAWNCITYOBJECTS__:
 		despawnCityObjects();
@@ -529,12 +529,12 @@ void RegionAdapter::notifyExit(SceneObject* object) {
 	((RegionImplementation*) impl)->notifyExit(object);
 }
 
-void RegionAdapter::insertToZone(Zone* zone) {
-	((RegionImplementation*) impl)->insertToZone(zone);
+void RegionAdapter::notifyInsertToZone(Zone* zone) {
+	((RegionImplementation*) impl)->notifyInsertToZone(zone);
 }
 
-void RegionAdapter::removeFromZone() {
-	((RegionImplementation*) impl)->removeFromZone();
+void RegionAdapter::notifyRemoveFromZone() {
+	((RegionImplementation*) impl)->notifyRemoveFromZone();
 }
 
 void RegionAdapter::despawnCityObjects() {

@@ -417,7 +417,8 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	if (cell != NULL)
 		cell->addObject(_this, -1);
 
-	insertToZone(zone);
+	//insertToZone(zone);
+	zone->addObject(_this, -1, true);
 }
 
 void AiAgentImplementation::notifyDespawn(Zone* zone) {

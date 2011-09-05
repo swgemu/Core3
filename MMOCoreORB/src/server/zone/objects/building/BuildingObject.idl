@@ -109,7 +109,13 @@ class BuildingObject extends StructureObject {
 	
 	public native void createContainerComponent();
 
-	public native void setCustomObjectName(final unicode name, boolean notifyClient);
+	public void setCustomObjectName(final unicode name, boolean notifyClient) {
+		if (signObject != null) {
+			signObject.setCustomObjectName(name, notifyClient);
+		} else {
+			super.setCustomObjectName(name, notifyClient);
+		}
+	}
 	
 	/**
 	 * Sends the contained non slotted objects to the specified player
@@ -166,7 +172,7 @@ class BuildingObject extends StructureObject {
 	 */
 	public native void ejectObject(SceneObject obj);
 	
-	public native void removeFromZone();
+	public native void notifyRemoveFromZone();
 	
 	/**
 	 * Gets called when this objects is loaded from database
@@ -181,7 +187,7 @@ class BuildingObject extends StructureObject {
 	@local
 	public native void notifyDissapear(QuadTreeEntry obj);
 
-	public native void notifyInsertToZone(SceneObject object);
+	public native void notifyObjectInsertedToZone(SceneObject object);
 	
 	@local
 	public native void insert(QuadTreeEntry obj);

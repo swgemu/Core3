@@ -20,7 +20,7 @@
  *	CityHallObjectStub
  */
 
-enum {RPC_INSERTTOZONE__ZONE_ = 6,RPC_REMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_SPAWNCITYHALLOBJECTS__,RPC_DESPAWNCITYHALLOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_SETCITYNAME__STRING_,RPC_GETCITYNAME__,RPC_GETCITYRANK__,RPC_SENDCITYNAMEPROMPTTO__CREATUREOBJECT_BOOL_,RPC_SENDSTATUSTO__CREATUREOBJECT_,RPC_SENDCITIZENSHIPREPORTTO__CREATUREOBJECT_,RPC_SENDSTRUCTUREREPORTTO__CREATUREOBJECT_,RPC_SENDTREASURYREPORTTO__CREATUREOBJECT_,RPC_SENDCITYADVANCEMENTTO__CREATUREOBJECT_,RPC_SENDMAINTENANCEREPORTTO__CREATUREOBJECT_,RPC_SENDCHANGECITYNAMETO__CREATUREOBJECT_,RPC_SENDENABLEZONINGTO__CREATUREOBJECT_,RPC_SENDMANAGEMILITIATO__CREATUREOBJECT_,RPC_SENDADDMILITIAMEMBERTO__CREATUREOBJECT_,RPC_SENDADJUSTTAXESTO__CREATUREOBJECT_,RPC_SENDTREASURYDEPOSITTO__CREATUREOBJECT_,RPC_SENDTREASURYWITHDRAWALTO__CREATUREOBJECT_,RPC_SENDCITYSPECIALIZATIONSELECTIONTO__CREATUREOBJECT_,RPC_TOGGLECITYREGISTRATION__CREATUREOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_ISCITYHALLBUILDING__,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_GETMAYOROBJECTID__,RPC_SETMAYOROBJECTID__LONG_,RPC_ISMAYOR__LONG_,RPC_ISBANNED__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_GETCITYTERMINAL__,RPC_GETCITYVOTETERMINAL__,RPC_GETCITYREGION__,RPC_SETCITYREGION__REGION_,RPC_GETCIVICSTRUCTURECAP__,RPC_ISZONINGENABLED__,RPC_TOGGLEZONINGENABLED__CREATUREOBJECT_,RPC_SETZONINGENABLED__BOOL_,RPC_ISCITYUPDATEPAST__,RPC_RESCHEDULECITYUPDATE__INT_,RPC_GETCITIZENCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_GETCITIZENOBJECTID__INT_,RPC_SETCITYRANK__BYTE_};
+enum {RPC_NOTIFYINSERTTOZONE__ZONE_ = 6,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_SPAWNCITYHALLOBJECTS__,RPC_DESPAWNCITYHALLOBJECTS__,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_SETCITYNAME__STRING_,RPC_GETCITYNAME__,RPC_GETCITYRANK__,RPC_SENDCITYNAMEPROMPTTO__CREATUREOBJECT_BOOL_,RPC_SENDSTATUSTO__CREATUREOBJECT_,RPC_SENDCITIZENSHIPREPORTTO__CREATUREOBJECT_,RPC_SENDSTRUCTUREREPORTTO__CREATUREOBJECT_,RPC_SENDTREASURYREPORTTO__CREATUREOBJECT_,RPC_SENDCITYADVANCEMENTTO__CREATUREOBJECT_,RPC_SENDMAINTENANCEREPORTTO__CREATUREOBJECT_,RPC_SENDCHANGECITYNAMETO__CREATUREOBJECT_,RPC_SENDENABLEZONINGTO__CREATUREOBJECT_,RPC_SENDMANAGEMILITIATO__CREATUREOBJECT_,RPC_SENDADDMILITIAMEMBERTO__CREATUREOBJECT_,RPC_SENDADJUSTTAXESTO__CREATUREOBJECT_,RPC_SENDTREASURYDEPOSITTO__CREATUREOBJECT_,RPC_SENDTREASURYWITHDRAWALTO__CREATUREOBJECT_,RPC_SENDCITYSPECIALIZATIONSELECTIONTO__CREATUREOBJECT_,RPC_TOGGLECITYREGISTRATION__CREATUREOBJECT_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_ISCITYHALLBUILDING__,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_GETMAYOROBJECTID__,RPC_SETMAYOROBJECTID__LONG_,RPC_ISMAYOR__LONG_,RPC_ISBANNED__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_GETCITYTERMINAL__,RPC_GETCITYVOTETERMINAL__,RPC_GETCITYREGION__,RPC_SETCITYREGION__REGION_,RPC_GETCIVICSTRUCTURECAP__,RPC_ISZONINGENABLED__,RPC_TOGGLEZONINGENABLED__CREATUREOBJECT_,RPC_SETZONINGENABLED__BOOL_,RPC_ISCITYUPDATEPAST__,RPC_RESCHEDULECITYUPDATE__INT_,RPC_GETCITIZENCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ISCITIZEN__LONG_,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_GETCITIZENOBJECTID__INT_,RPC_SETCITYRANK__BYTE_};
 
 CityHallObject::CityHallObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	CityHallObjectImplementation* _implementation = new CityHallObjectImplementation();
@@ -35,31 +35,31 @@ CityHallObject::~CityHallObject() {
 }
 
 
-void CityHallObject::insertToZone(Zone* zone) {
+void CityHallObject::notifyInsertToZone(Zone* zone) {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
+		DistributedMethod method(this, RPC_NOTIFYINSERTTOZONE__ZONE_);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->insertToZone(zone);
+		_implementation->notifyInsertToZone(zone);
 }
 
-void CityHallObject::removeFromZone() {
+void CityHallObject::notifyRemoveFromZone() {
 	CityHallObjectImplementation* _implementation = (CityHallObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
+		DistributedMethod method(this, RPC_NOTIFYREMOVEFROMZONE__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->removeFromZone();
+		_implementation->notifyRemoveFromZone();
 }
 
 void CityHallObject::notifyLoadFromDatabase() {
@@ -1188,18 +1188,18 @@ CityHallObjectImplementation::CityHallObjectImplementation() {
 	(&bannedPlayers)->setInsertPlan(3);
 }
 
-void CityHallObjectImplementation::insertToZone(Zone* zone) {
-	// server/zone/objects/building/city/CityHallObject.idl():  		super.insertToZone(zone);
-	BuildingObjectImplementation::insertToZone(zone);
+void CityHallObjectImplementation::notifyInsertToZone(Zone* zone) {
+	// server/zone/objects/building/city/CityHallObject.idl():  		super.notifyInsertToZone(zone);
+	BuildingObjectImplementation::notifyInsertToZone(zone);
 	// server/zone/objects/building/city/CityHallObject.idl():  		spawnCityHallObjects();
 	spawnCityHallObjects();
 }
 
-void CityHallObjectImplementation::removeFromZone() {
+void CityHallObjectImplementation::notifyRemoveFromZone() {
 	// server/zone/objects/building/city/CityHallObject.idl():  		despawnCityHallObjects();
 	despawnCityHallObjects();
-	// server/zone/objects/building/city/CityHallObject.idl():  		super.removeFromZone();
-	BuildingObjectImplementation::removeFromZone();
+	// server/zone/objects/building/city/CityHallObject.idl():  		super.notifyRemoveFromZone();
+	BuildingObjectImplementation::notifyRemoveFromZone();
 	// server/zone/objects/building/city/CityHallObject.idl():  		updateToDatabaseWithoutChildren();
 	updateToDatabaseWithoutChildren();
 }
@@ -1375,11 +1375,11 @@ Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_INSERTTOZONE__ZONE_:
-		insertToZone((Zone*) inv->getObjectParameter());
+	case RPC_NOTIFYINSERTTOZONE__ZONE_:
+		notifyInsertToZone((Zone*) inv->getObjectParameter());
 		break;
-	case RPC_REMOVEFROMZONE__:
-		removeFromZone();
+	case RPC_NOTIFYREMOVEFROMZONE__:
+		notifyRemoveFromZone();
 		break;
 	case RPC_NOTIFYLOADFROMDATABASE__:
 		notifyLoadFromDatabase();
@@ -1550,12 +1550,12 @@ Packet* CityHallObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 	return resp;
 }
 
-void CityHallObjectAdapter::insertToZone(Zone* zone) {
-	((CityHallObjectImplementation*) impl)->insertToZone(zone);
+void CityHallObjectAdapter::notifyInsertToZone(Zone* zone) {
+	((CityHallObjectImplementation*) impl)->notifyInsertToZone(zone);
 }
 
-void CityHallObjectAdapter::removeFromZone() {
-	((CityHallObjectImplementation*) impl)->removeFromZone();
+void CityHallObjectAdapter::notifyRemoveFromZone() {
+	((CityHallObjectImplementation*) impl)->notifyRemoveFromZone();
 }
 
 void CityHallObjectAdapter::notifyLoadFromDatabase() {

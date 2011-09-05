@@ -219,8 +219,9 @@ void ZoneServerImplementation::startZones() {
 		info("Loading zone " + zoneName + ".");
 
 		Zone* zone = new Zone(processor, zoneName);
+		zone->createContainerComponent();
 		zone->initializePrivateData();
-		zone->_setObjectID(~0 - i);
+//		zone->_setObjectID(~0 - i);
 		zone->deploy("Zone " + zoneName);
 
 		zones->put(zoneName, zone);

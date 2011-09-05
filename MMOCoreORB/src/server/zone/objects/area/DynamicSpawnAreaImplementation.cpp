@@ -152,7 +152,8 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, PlayerObj
 
 	group->setPosition(x, z, y);
 
-	group->insertToZone(getZone());
+	//group->insertToZone(getZone());
+	getZone()->addObject(group, -1, true);
 
 	group->setup(templ);
 

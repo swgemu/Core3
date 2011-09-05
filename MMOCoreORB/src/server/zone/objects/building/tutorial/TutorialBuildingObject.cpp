@@ -20,7 +20,7 @@
  *	TutorialBuildingObjectStub
  */
 
-enum {RPC_REMOVEFROMZONE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_CLEARUNLOADEVENT__,};
+enum {RPC_NOTIFYREMOVEFROMZONE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_,RPC_CLEARUNLOADEVENT__,};
 
 TutorialBuildingObject::TutorialBuildingObject() : BuildingObject(DummyConstructorParameter::instance()) {
 	TutorialBuildingObjectImplementation* _implementation = new TutorialBuildingObjectImplementation();
@@ -35,17 +35,17 @@ TutorialBuildingObject::~TutorialBuildingObject() {
 }
 
 
-void TutorialBuildingObject::removeFromZone() {
+void TutorialBuildingObject::notifyRemoveFromZone() {
 	TutorialBuildingObjectImplementation* _implementation = (TutorialBuildingObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEFROMZONE__);
+		DistributedMethod method(this, RPC_NOTIFYREMOVEFROMZONE__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->removeFromZone();
+		_implementation->notifyRemoveFromZone();
 }
 
 void TutorialBuildingObject::initializeTransientMembers() {
@@ -279,8 +279,8 @@ Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMe
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
-	case RPC_REMOVEFROMZONE__:
-		removeFromZone();
+	case RPC_NOTIFYREMOVEFROMZONE__:
+		notifyRemoveFromZone();
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
 		initializeTransientMembers();
@@ -301,8 +301,8 @@ Packet* TutorialBuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMe
 	return resp;
 }
 
-void TutorialBuildingObjectAdapter::removeFromZone() {
-	((TutorialBuildingObjectImplementation*) impl)->removeFromZone();
+void TutorialBuildingObjectAdapter::notifyRemoveFromZone() {
+	((TutorialBuildingObjectImplementation*) impl)->notifyRemoveFromZone();
 }
 
 void TutorialBuildingObjectAdapter::initializeTransientMembers() {

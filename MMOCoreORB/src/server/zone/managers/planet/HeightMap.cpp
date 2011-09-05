@@ -33,7 +33,7 @@ HeightMap::~HeightMap() {
 			delete plane;
 	}
 
-	free(planes);
+	::free(planes);
 }
 
 void HeightMap::load(const String& path) {

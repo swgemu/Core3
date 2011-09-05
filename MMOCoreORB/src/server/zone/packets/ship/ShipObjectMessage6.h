@@ -53,27 +53,66 @@ public:
 	ShipObjectMessage6(ShipObject* ship)
 			: TangibleObjectMessage6(ship, 0x53484950, 0x18) {
 
-		insertShort(0);
+		insertShort(ship->getUniqueID());
 
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertLong(ship->getObjectID()); //This is zeroed out on NGE packet caps?
+		insertFloat(50.f);
+		insertFloat(50.f); //min speed
+
+		insertFloat(0.174532935 * 4);
+		insertFloat(0.174532935 * 4);
+		insertFloat(0.174532935 * 4);
+
+		insertFloat(1.260066867 * 4);
+		insertFloat(1.260066867 * 4);
+		insertFloat(1.260066867 * 4);
+
+		insertFloat(50.f); // max speed
+		//insertLong(ship->getObjectID()); //This is zeroed out on NGE packet caps?
+		insertLong(0);
+
+		insertInt(0); //length
+		insertInt(0); // list?
+
+		insertInt(0);
+
+		//components
+		insertInt(7);
+		insertInt(7);
+
+		insertByte(0);
+		insertInt(0);
+		insertInt(0x9abdbfdc); // 0xDC, 0xBF, 0xBD, 0x9A,
+
+		insertByte(0);
+		insertInt(1);
+		insertInt(0x35a0c705); // 0x05, 0xC7, 0xA0, 0x35,
+
+		insertByte(0);
+		insertInt(2);
+		insertInt(0xe73217be); // 0xBE, 0x17, 0x32, 0xE7
+
+		insertByte(0);
+		insertInt(4);
+		insertInt(0x9e60cbe1); // 0x9E, 0x60, 0xCB, 0xE1,
+
+		insertByte(0);
+		insertInt(5);
+		insertInt(0x9e60cbe1); // 0x9E, 0x60, 0xCB, 0xE1,
+
+		insertByte(0);
+		insertInt(6);
+		insertInt(0x20ced6ee); // 0xEE, 0xD6, 0xCE, 0x20,
+
+		insertByte(0);
+		insertInt(0x0f);
+		insertInt(0x2c823c3d); //0x3D, 0x3C, 0x82, 0x2C,
+
+
 
 		insertInt(0);
 		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
 
-		insertInt(0);
-		insertInt(0);
+/*
 
 		insertInt(0);
 		insertInt(0);
@@ -85,10 +124,10 @@ public:
 		insertInt(0);
 
 		insertInt(0);
-		insertInt(0);
+		insertInt(0);*/
 
-		insertFloat(0.f);
-		insertFloat(0.f);
+		insertFloat(300.f);
+		insertFloat(300.f);
 
 		insertInt(0);
 

@@ -51,7 +51,7 @@ void TutorialBuildingObjectImplementation::enqueueUnloadEvent() {
 	unloadTask->schedule(1000);
 }
 
-void TutorialBuildingObjectImplementation::removeFromZone() {
+void TutorialBuildingObjectImplementation::notifyRemoveFromZone() {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 
@@ -75,6 +75,6 @@ void TutorialBuildingObjectImplementation::removeFromZone() {
 		}
 	}
 
-	TangibleObjectImplementation::removeFromZone();
+	TangibleObjectImplementation::notifyRemoveFromZone();
 }
 

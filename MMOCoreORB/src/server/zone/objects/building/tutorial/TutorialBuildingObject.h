@@ -113,7 +113,7 @@ class TutorialBuildingObject : public BuildingObject {
 public:
 	TutorialBuildingObject();
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void initializeTransientMembers();
 
@@ -158,7 +158,7 @@ public:
 
 	TutorialBuildingObjectImplementation(DummyConstructorParameter* param);
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void initializeTransientMembers();
 
@@ -217,7 +217,7 @@ public:
 
 	Packet* invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	void removeFromZone();
+	void notifyRemoveFromZone();
 
 	void initializeTransientMembers();
 

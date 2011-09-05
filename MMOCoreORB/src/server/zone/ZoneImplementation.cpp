@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
@@ -62,7 +63,7 @@ which carries forward this exception.
 #include "server/zone/templates/appearance/PathGraph.h"
 
 
-ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) : ManagedObjectImplementation() {
+ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) {
 	processor = serv;
 	server = processor->getZoneServer();
 
@@ -84,6 +85,10 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	planetManager = NULL;
 	structureManager = NULL;
 	cityManager = NULL;
+}
+
+void ZoneImplementation::createContainerComponent() {
+	containerComponent = ComponentManager::instance()->getComponent<ContainerComponent*>("ZoneContainerComponent");
 }
 
 void ZoneImplementation::initializePrivateData() {

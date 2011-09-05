@@ -45,7 +45,7 @@ public:
 	 * @post { this object is locked and inserted into zone }
 	 * @param zone Zone object where this object will be inserted
 	 */
-	virtual void insertToZone(SceneObject* sceneObject, Zone* zone);
+	virtual void notifyInsertToZone(SceneObject* sceneObject, Zone* zone);
 
 
 
@@ -75,7 +75,7 @@ public:
 	 * @pre { this object is locked }
 	 * @post { this object is locked and not in zone}
 	 */
-	virtual void removeFromZone(SceneObject* sceneObject);
+	virtual void notifyRemoveFromZone(SceneObject* sceneObject);
 
 	/**
 	 * Removes this object from the building, this method is only to be called from removeFromZone

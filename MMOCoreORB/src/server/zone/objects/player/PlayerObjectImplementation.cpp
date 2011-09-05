@@ -1181,7 +1181,8 @@ void PlayerObjectImplementation::doRecovery() {
 		SceneObject* building = creature->getParent()->getParent();
 
 		if (building != NULL && building->getZone() != NULL)
-			creature->insertToZone(building->getZone());
+			//creature->insertToZone(building->getZone());
+			building->getZone()->addObject(creature, -1, true);
 	}
 
 	if (isLinkDead()) {
@@ -1284,7 +1285,8 @@ void PlayerObjectImplementation::reload(ZoneClientSession* client) {
 		creature->clearState(CreatureState::RIDINGMOUNT);
 	}
 
-	creature->insertToZone(creature->getZone());
+	//creature->insertToZone(creature->getZone());
+	creature->getZone()->addObject(creature, -1, true);
 }
 
 void PlayerObjectImplementation::disconnect(bool closeClient, bool doLock) {

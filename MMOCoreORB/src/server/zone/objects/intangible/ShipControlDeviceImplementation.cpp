@@ -42,3 +42,49 @@ which carries forward this exception.
 */
 
 #include "ShipControlDevice.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/Zone.h"
+
+void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
+	//info("generating ship", true);
+	ZoneServer* zoneServer = getZoneServer();
+
+	Locker clocker(controlledObject, player);
+
+	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ() + 10, player->getPositionY());
+
+	player->getZone()->addObject(controlledObject, -1, true);
+	//controlledObject->insertToZone(player->getZone());
+
+	removeObject(controlledObject, true);
+
+	controlledObject->addObject(player, 5, true);
+	player->setState(CreatureState::PILOTINGSHIP);
+	//controlledObject->inflictDamage(player, 0, System::random(50), true);
+
+	updateStatus(1);
+}
+
+void ShipControlDeviceImplementation::storeObject(CreatureObject* player) {
+	player->clearState(CreatureState::PILOTINGSHIP);
+
+	Locker clocker(controlledObject, player);
+	//if (controlledObject->isInQua
+	controlledObject->removeObject(player, true);
+	controlledObject->removeFromZone();
+	
+	addObject(controlledObject, 4, true);
+	
+	updateStatus(0);
+}
+
+void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	//ControlDeviceImplementation::fillObjectMenuResponse(menuResponse, player);
+
+	if (!controlledObject->isInQuadTree())
+		menuResponse->addRadialMenuItem(60, 3, "Launch Ship"); //Launch
+	else
+		menuResponse->addRadialMenuItem(61, 3, "Land Ship"); //Launch
+	//menuResponse->addRadialMenuItem(61, 3, "Launch Ship"); //Launch
+}

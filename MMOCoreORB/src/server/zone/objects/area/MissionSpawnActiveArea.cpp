@@ -10,6 +10,8 @@
 
 #include "server/zone/objects/mission/DestroyMissionObjective.h"
 
+#include "server/zone/Zone.h"
+
 /*
  *	MissionSpawnActiveAreaStub
  */
@@ -222,8 +224,8 @@ void MissionSpawnActiveAreaImplementation::notifyEnter(SceneObject* player) {
 }
 
 	else {
-	// server/zone/objects/area/MissionSpawnActiveArea.idl():  				super.removeFromZone();
-	ActiveAreaImplementation::removeFromZone();
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  				getZone().removeObject(this, true);
+	getZone()->removeObject(_this, true);
 }
 }
 }

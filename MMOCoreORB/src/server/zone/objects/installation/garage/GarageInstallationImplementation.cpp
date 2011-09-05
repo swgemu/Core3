@@ -10,6 +10,7 @@
 #include "GarageInstallation.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
 
 void GarageInstallationImplementation::createChildObjects() {
 	float positionX = coordinates.getPositionX();
@@ -26,7 +27,8 @@ void GarageInstallationImplementation::createChildObjects() {
 
 	activeArea->setRadius(64);
 	activeArea->initializePosition(getPositionX(), getPositionZ(), getPositionY());
-	activeArea->insertToZone(getZone());
+	//activeArea->insertToZone(getZone());
+	getZone()->addObject(activeArea, -1, true);
 
 	garageArea = activeArea;
 }

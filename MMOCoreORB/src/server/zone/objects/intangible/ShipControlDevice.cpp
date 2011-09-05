@@ -6,13 +6,13 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
 
 /*
  *	ShipControlDeviceStub
  */
 
-enum {RPC_STOREOBJECT__CREATUREOBJECT_ = 6,RPC_GENERATEOBJECT__CREATUREOBJECT_};
+enum {RPC_STOREOBJECT__CREATUREOBJECT_ = 6,RPC_GENERATEOBJECT__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,};
 
 ShipControlDevice::ShipControlDevice() : ControlDevice(DummyConstructorParameter::instance()) {
 	ShipControlDeviceImplementation* _implementation = new ShipControlDeviceImplementation();
@@ -53,6 +53,30 @@ void ShipControlDevice::generateObject(CreatureObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->generateObject(player);
+}
+
+int ShipControlDevice::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	ShipControlDeviceImplementation* _implementation = (ShipControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
+		method.addObjectParameter(player);
+		method.addByteParameter(selectedID);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->handleObjectMenuSelect(player, selectedID);
+}
+
+void ShipControlDevice::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	ShipControlDeviceImplementation* _implementation = (ShipControlDeviceImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->fillObjectMenuResponse(menuResponse, player);
 }
 
 DistributedObjectServant* ShipControlDevice::_getImplementation() {
@@ -185,10 +209,51 @@ ShipControlDeviceImplementation::ShipControlDeviceImplementation() {
 	Logger::setLoggingName("ShipControlDevice");
 }
 
-void ShipControlDeviceImplementation::storeObject(CreatureObject* player) {
+int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	// server/zone/objects/intangible/ShipControlDevice.idl():  		Logger.info("selected call");
+	Logger::info("selected call");
+	// server/zone/objects/intangible/ShipControlDevice.idl():  		return 
+	if (selectedID == RadialOptions::VEHICLE_GENERATE){
+	// server/zone/objects/intangible/ShipControlDevice.idl():  		}
+	if (ControlDeviceImplementation::controlledObject.getForUpdate() == NULL){
+	// server/zone/objects/intangible/ShipControlDevice.idl():  				Logger.error("null controlled object in vehicle control device");
+	Logger::error("null controlled object in vehicle control device");
+	// server/zone/objects/intangible/ShipControlDevice.idl():  				return 1;
+	return 1;
 }
 
-void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
+	else 	// server/zone/objects/intangible/ShipControlDevice.idl():  		}
+	if (player->getParent() == NULL){
+	// server/zone/objects/intangible/ShipControlDevice.idl():  				this.generateObject(player);
+	_this->generateObject(player);
+}
+}
+
+	else 	// server/zone/objects/intangible/ShipControlDevice.idl():  		return 
+	if (selectedID == RadialOptions::VEHICLE_STORE){
+	// server/zone/objects/intangible/ShipControlDevice.idl():  			}
+	if (ControlDeviceImplementation::controlledObject.getForUpdate() == NULL){
+	// server/zone/objects/intangible/ShipControlDevice.idl():  				Logger.error("null controlled object in vehicle control device");
+	Logger::error("null controlled object in vehicle control device");
+	// server/zone/objects/intangible/ShipControlDevice.idl():  				return 1;
+	return 1;
+}
+
+	else {
+	// server/zone/objects/intangible/ShipControlDevice.idl():  				}
+	if (ControlDeviceImplementation::status == 1 && !ControlDeviceImplementation::controlledObject.getForUpdate()->isInQuadTree()){
+	// server/zone/objects/intangible/ShipControlDevice.idl():  					this.generateObject(player);
+	_this->generateObject(player);
+}
+
+	else {
+	// server/zone/objects/intangible/ShipControlDevice.idl():  					this.storeObject(player);
+	_this->storeObject(player);
+}
+}
+}
+	// server/zone/objects/intangible/ShipControlDevice.idl():  		return 0;
+	return 0;
 }
 
 /*
@@ -208,6 +273,9 @@ Packet* ShipControlDeviceAdapter::invokeMethod(uint32 methid, DistributedMethod*
 	case RPC_GENERATEOBJECT__CREATUREOBJECT_:
 		generateObject((CreatureObject*) inv->getObjectParameter());
 		break;
+	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
+		resp->insertSignedInt(handleObjectMenuSelect((CreatureObject*) inv->getObjectParameter(), inv->getByteParameter()));
+		break;
 	default:
 		return NULL;
 	}
@@ -221,6 +289,10 @@ void ShipControlDeviceAdapter::storeObject(CreatureObject* player) {
 
 void ShipControlDeviceAdapter::generateObject(CreatureObject* player) {
 	((ShipControlDeviceImplementation*) impl)->generateObject(player);
+}
+
+int ShipControlDeviceAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	return ((ShipControlDeviceImplementation*) impl)->handleObjectMenuSelect(player, selectedID);
 }
 
 /*

@@ -54,8 +54,12 @@ class ShipObject extends TangibleObject {
 		
 		super.unknownByte = 1;
 		
-		totalMass = 5000.0;
+		totalMass = 500.0;
 	}
+	
+	public native unsigned short getUniqueID();
+	
+	public native void initializeTransientMembers();
 	
 	public native void sendTo(SceneObject player, boolean doClose);
 	
@@ -63,5 +67,9 @@ class ShipObject extends TangibleObject {
 	
 	public float getTotalMass() {
 		return totalMass;
+	}
+	
+	public boolean isShipObject() {
+		return true;
 	}
 }

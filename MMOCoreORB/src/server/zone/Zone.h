@@ -38,20 +38,6 @@ using namespace server::zone::managers::structure;
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
-
-class SceneObject;
-
-} // namespace scene
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
 namespace area {
 
 class ActiveArea;
@@ -159,6 +145,8 @@ using namespace server::zone::objects::creature;
 
 #include "engine/util/u3d/Vector3.h"
 
+#include "server/zone/QuadTreeReference.h"
+
 #include "engine/util/u3d/QuadTree.h"
 
 #include "engine/util/u3d/QuadTreeEntry.h"
@@ -169,16 +157,20 @@ using namespace server::zone::objects::creature;
 
 #include "engine/core/ManagedObject.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 #include "system/util/VectorMap.h"
 
 #include "system/util/SortedVector.h"
 
 #include "system/lang/System.h"
 
+#include "server/zone/objects/scene/SceneObject.h"
+
 namespace server {
 namespace zone {
 
-class Zone : public ManagedObject {
+class Zone : public SceneObject {
 public:
 	Zone(ZoneProcessServer* processor, const String& zoneName);
 
@@ -193,6 +185,8 @@ public:
 	QuadTree* getRegionTree();
 
 	int getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject* > >* objects);
+
+	void createContainerComponent();
 
 	int getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea* > >* objects);
 
@@ -272,7 +266,7 @@ using namespace server::zone;
 namespace server {
 namespace zone {
 
-class ZoneImplementation : public ManagedObjectImplementation {
+class ZoneImplementation : public SceneObjectImplementation {
 	String zoneName;
 
 	unsigned int zoneCRC;
@@ -291,9 +285,9 @@ class ZoneImplementation : public ManagedObjectImplementation {
 
 	ManagedWeakReference<ZoneServer* > server;
 
-	Reference<QuadTree* > regionTree;
+	QuadTreeReference regionTree;
 
-	Reference<QuadTree* > quadTree;
+	QuadTreeReference quadTree;
 
 	Time galacticTime;
 
@@ -321,6 +315,8 @@ public:
 	QuadTree* getRegionTree();
 
 	int getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<SceneObject* > >* objects);
+
+	void createContainerComponent();
 
 	int getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea* > >* objects);
 
@@ -413,7 +409,7 @@ protected:
 	friend class Zone;
 };
 
-class ZoneAdapter : public ManagedObjectAdapter {
+class ZoneAdapter : public SceneObjectAdapter {
 public:
 	ZoneAdapter(ZoneImplementation* impl);
 
@@ -428,6 +424,8 @@ public:
 	SceneObject* getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType);
 
 	void initializePrivateData();
+
+	void createContainerComponent();
 
 	void updateActiveAreas(SceneObject* object);
 

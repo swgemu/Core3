@@ -63,15 +63,6 @@ void BuildingObjectImplementation::createContainerComponent() {
 	TangibleObjectImplementation::createContainerComponent();
 }
 
-void BuildingObjectImplementation::setCustomObjectName(
-		const UnicodeString& name, bool notifyClient) {
-	if (signObject != NULL) {
-		signObject->setCustomObjectName(name, notifyClient);
-	} else {
-		TangibleObjectImplementation::setCustomObjectName(name, notifyClient);
-	}
-}
-
 void BuildingObjectImplementation::notifyLoadFromDatabase() {
 	SceneObjectImplementation::notifyLoadFromDatabase();
 
@@ -82,7 +73,8 @@ void BuildingObjectImplementation::notifyLoadFromDatabase() {
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
 				SceneObject* containerObject = cell->getContainerObject(j);
 
-				containerObject->insertToZone(getZone());
+				//containerObject->insertToZone(getZone());
+				getZone()->addObject(containerObject, -1, true);
 			}
 		}
 	}
@@ -188,7 +180,7 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 	return signObject->getPosition();
 }
 
-void BuildingObjectImplementation::removeFromZone() {
+void BuildingObjectImplementation::notifyRemoveFromZone() {
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
 
@@ -242,7 +234,7 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(buio6);
 }
 
-void BuildingObjectImplementation::notifyInsertToZone(SceneObject* object) {
+void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* object) {
 	//info("BuildingObjectImplementation::notifyInsertToZone");
 
 	for (int i = 0; i < inRangeObjectCount(); ++i) {

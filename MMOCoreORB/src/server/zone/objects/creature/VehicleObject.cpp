@@ -20,7 +20,7 @@
  *	VehicleObjectStub
  */
 
-enum {RPC_CHECKINRANGEGARAGE__,RPC_INSERTTOZONE__ZONE_,RPC_SETPOSTURE__INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_REPAIRVEHICLE__CREATUREOBJECT_,RPC_CALCULATEREPAIRCOST__CREATUREOBJECT_,RPC_SENDREPAIRCONFIRMTO__CREATUREOBJECT_,RPC_ISVEHICLEOBJECT__};
+enum {RPC_CHECKINRANGEGARAGE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_SETPOSTURE__INT_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_REPAIRVEHICLE__CREATUREOBJECT_,RPC_CALCULATEREPAIRCOST__CREATUREOBJECT_,RPC_SENDREPAIRCONFIRMTO__CREATUREOBJECT_,RPC_ISVEHICLEOBJECT__};
 
 VehicleObject::VehicleObject() : CreatureObject(DummyConstructorParameter::instance()) {
 	VehicleObjectImplementation* _implementation = new VehicleObjectImplementation();
@@ -66,18 +66,18 @@ bool VehicleObject::checkInRangeGarage() {
 		return _implementation->checkInRangeGarage();
 }
 
-void VehicleObject::insertToZone(Zone* zone) {
+void VehicleObject::notifyInsertToZone(Zone* zone) {
 	VehicleObjectImplementation* _implementation = (VehicleObjectImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_INSERTTOZONE__ZONE_);
+		DistributedMethod method(this, RPC_NOTIFYINSERTTOZONE__ZONE_);
 		method.addObjectParameter(zone);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->insertToZone(zone);
+		_implementation->notifyInsertToZone(zone);
 }
 
 void VehicleObject::setPosture(int newPosture, bool notifyClient) {
@@ -470,8 +470,8 @@ Packet* VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_CHECKINRANGEGARAGE__:
 		resp->insertBoolean(checkInRangeGarage());
 		break;
-	case RPC_INSERTTOZONE__ZONE_:
-		insertToZone((Zone*) inv->getObjectParameter());
+	case RPC_NOTIFYINSERTTOZONE__ZONE_:
+		notifyInsertToZone((Zone*) inv->getObjectParameter());
 		break;
 	case RPC_SETPOSTURE__INT_BOOL_:
 		setPosture(inv->getSignedIntParameter(), inv->getBooleanParameter());
@@ -523,8 +523,8 @@ bool VehicleObjectAdapter::checkInRangeGarage() {
 	return ((VehicleObjectImplementation*) impl)->checkInRangeGarage();
 }
 
-void VehicleObjectAdapter::insertToZone(Zone* zone) {
-	((VehicleObjectImplementation*) impl)->insertToZone(zone);
+void VehicleObjectAdapter::notifyInsertToZone(Zone* zone) {
+	((VehicleObjectImplementation*) impl)->notifyInsertToZone(zone);
 }
 
 void VehicleObjectAdapter::setPosture(int newPosture, bool notifyClient) {

@@ -8,7 +8,7 @@
  *	ShipObjectStub
  */
 
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETTOTALMASS__};
+enum {RPC_GETUNIQUEID__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETTOTALMASS__,RPC_ISSHIPOBJECT__};
 
 ShipObject::ShipObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	ShipObjectImplementation* _implementation = new ShipObjectImplementation();
@@ -22,6 +22,32 @@ ShipObject::ShipObject(DummyConstructorParameter* param) : TangibleObject(param)
 ShipObject::~ShipObject() {
 }
 
+
+unsigned short ShipObject::getUniqueID() {
+	ShipObjectImplementation* _implementation = (ShipObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETUNIQUEID__);
+
+		return method.executeWithUnsignedShortReturn();
+	} else
+		return _implementation->getUniqueID();
+}
+
+void ShipObject::initializeTransientMembers() {
+	ShipObjectImplementation* _implementation = (ShipObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeTransientMembers();
+}
 
 void ShipObject::sendTo(SceneObject* player, bool doClose) {
 	ShipObjectImplementation* _implementation = (ShipObjectImplementation*) _getImplementation();
@@ -63,6 +89,19 @@ float ShipObject::getTotalMass() {
 		return method.executeWithFloatReturn();
 	} else
 		return _implementation->getTotalMass();
+}
+
+bool ShipObject::isShipObject() {
+	ShipObjectImplementation* _implementation = (ShipObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISSHIPOBJECT__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isShipObject();
 }
 
 DistributedObjectServant* ShipObject::_getImplementation() {
@@ -208,13 +247,18 @@ ShipObjectImplementation::ShipObjectImplementation() {
 	Logger::setLoggingName("ShipObject");
 	// server/zone/objects/ship/ShipObject.idl():  		super.unknownByte = 1;
 	TangibleObjectImplementation::unknownByte = 1;
-	// server/zone/objects/ship/ShipObject.idl():  		totalMass = 5000.0;
-	totalMass = 5000.0;
+	// server/zone/objects/ship/ShipObject.idl():  		totalMass = 500.0;
+	totalMass = 500.0;
 }
 
 float ShipObjectImplementation::getTotalMass() {
 	// server/zone/objects/ship/ShipObject.idl():  		return totalMass;
 	return totalMass;
+}
+
+bool ShipObjectImplementation::isShipObject() {
+	// server/zone/objects/ship/ShipObject.idl():  		return true;
+	return true;
 }
 
 /*
@@ -228,6 +272,12 @@ Packet* ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	Packet* resp = new MethodReturnMessage(0);
 
 	switch (methid) {
+	case RPC_GETUNIQUEID__:
+		resp->insertShort(getUniqueID());
+		break;
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
+		initializeTransientMembers();
+		break;
 	case RPC_SENDTO__SCENEOBJECT_BOOL_:
 		sendTo((SceneObject*) inv->getObjectParameter(), inv->getBooleanParameter());
 		break;
@@ -237,11 +287,22 @@ Packet* ShipObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETTOTALMASS__:
 		resp->insertFloat(getTotalMass());
 		break;
+	case RPC_ISSHIPOBJECT__:
+		resp->insertBoolean(isShipObject());
+		break;
 	default:
 		return NULL;
 	}
 
 	return resp;
+}
+
+unsigned short ShipObjectAdapter::getUniqueID() {
+	return ((ShipObjectImplementation*) impl)->getUniqueID();
+}
+
+void ShipObjectAdapter::initializeTransientMembers() {
+	((ShipObjectImplementation*) impl)->initializeTransientMembers();
 }
 
 void ShipObjectAdapter::sendTo(SceneObject* player, bool doClose) {
@@ -254,6 +315,10 @@ void ShipObjectAdapter::sendBaselinesTo(SceneObject* player) {
 
 float ShipObjectAdapter::getTotalMass() {
 	return ((ShipObjectImplementation*) impl)->getTotalMass();
+}
+
+bool ShipObjectAdapter::isShipObject() {
+	return ((ShipObjectImplementation*) impl)->isShipObject();
 }
 
 /*

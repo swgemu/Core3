@@ -120,6 +120,8 @@ which carries forward this exception.
 #include "packets/trade/AddItemMessageCallback.h"
 #include "packets/trade/GiveMoneyMessageCallback.h"
 
+#include "packets/ship/ShipUpdateTransformCallback.h"
+
 #include "packets/auction/IsVendorOwnerMessageCallback.h"
 
 ZonePacketHandler::ZonePacketHandler(const String& s, ZoneProcessServer* serv) : Logger(s) {
@@ -185,6 +187,7 @@ void ZonePacketHandler::registerMessages() {
 	messageCallbackFactory.registerObject<CreateTicketMessageCallback>(0x40E64DAC);
 	messageCallbackFactory.registerObject<CancelLiveAuctionMessageCallback>(0x3687A4D2);
 	messageCallbackFactory.registerObject<FactionRequestMessageCallback>(0xC1B03B81);
+	messageCallbackFactory.registerObject<ShipUpdateTransformCallback>(0x76026fb9);
 }
 
 void ZonePacketHandler::registerObjectControllerMessages() {
