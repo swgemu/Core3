@@ -107,7 +107,7 @@ void ServerCore::initialize() {
 		mantisDatabase = new MantisDatabase(configManager);
 
 		String& orbaddr = configManager->getORBNamingDirectoryAddress();
-		orb = DistributedObjectBroker::initialize(orbaddr, 44439);
+		orb = DistributedObjectBroker::initialize(orbaddr, 44496);
 
 		orb->setCustomObjectManager(ObjectManager::instance());
 
@@ -182,11 +182,11 @@ void ServerCore::initialize() {
 			pingServer->start(pingPort, pingAllowedConnections);
 		}
 
+	#ifndef WITH_STM
 		ObjectManager::instance()->scheduleUpdateToDatabase();
-
-	#ifdef WITH_STM
+	#else
 		Task* statiscticsTask = new ZoneStatisticsTask(zoneServerRef);
-		statiscticsTask->schedulePeriodic(1000, 100000);
+		statiscticsTask->schedulePeriodic(1000, 1000);
 	#endif
 
 		info("initialized", true);

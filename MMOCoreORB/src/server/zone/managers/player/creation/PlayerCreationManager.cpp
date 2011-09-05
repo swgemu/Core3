@@ -318,12 +318,13 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	PlayerCreatureTemplate* playerTemplate = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(serverObjectCRC));
 
-	int raceID = playerTemplate->getRace();
-
 	if (playerTemplate == NULL) {
-		error("Unknown player template selected.");
+		error("Unknown player template selected: " + raceFile);
 		return false;
 	}
+
+	int raceID = playerTemplate->getRace();
+
 
 	String fileName = playerTemplate->getTemplateFileName();
 	String clientTemplate = templateManager->getTemplateFile(playerTemplate->getClientObjectCRC());

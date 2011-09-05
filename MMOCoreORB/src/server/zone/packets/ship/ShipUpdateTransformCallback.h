@@ -118,10 +118,10 @@ public:
 
 		ShipObject* ship = dynamic_cast<ShipObject*>(object->getParent());
 
-		Locker clocker(ship, object);
-
 		if (ship == NULL)
 			return;
+
+		Locker clocker(ship, object);
 
 		Vector3 collisionPoint, targetPosition(positionX, positionY, positionZ);
 

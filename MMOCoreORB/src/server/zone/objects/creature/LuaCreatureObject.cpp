@@ -44,14 +44,14 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 };
 
 LuaCreatureObject::LuaCreatureObject(lua_State *L) : LuaSceneObject(L) {
-	realObject = (CreatureObject*)lua_touserdata(L, 1);
+	realObject = static_cast<CreatureObject*>(lua_touserdata(L, 1));
 }
 
 LuaCreatureObject::~LuaCreatureObject(){
 }
 
 int LuaCreatureObject::_setObject(lua_State* L) {
-	realObject = (CreatureObject*)lua_touserdata(L, -1);
+	realObject = static_cast<CreatureObject*>(lua_touserdata(L, -1));
 
 	return 0;
 }

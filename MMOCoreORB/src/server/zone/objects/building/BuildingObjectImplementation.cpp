@@ -212,7 +212,7 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 		}
 	}
 
-	TangibleObjectImplementation::removeFromZone();
+	TangibleObjectImplementation::notifyRemoveFromZone();
 }
 
 void BuildingObjectImplementation::sendDestroyTo(SceneObject* player) {
