@@ -135,7 +135,7 @@ public:
 			object->broadcastMessage(msg, true);
 
 			PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(ship, "clienteffect/space_collision.cef", "");
-			object->broadcastMessage(msg, true);
+			object->broadcastMessage(effect, true);
 
 			return;
 		}
