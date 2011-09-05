@@ -102,7 +102,8 @@ public:
 
 				blueFrog->initializePosition(x, z, y);
 				blueFrog->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
-				blueFrog->insertToZone(creature->getZone());
+				//blueFrog->insertToZone(creature->getZone());
+				creature->getZone()->addObject(blueFrog, -1, true);
 
 				info("blue frog created", true);
 			}
