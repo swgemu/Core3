@@ -89,6 +89,7 @@ which carries forward this exception.
 #include "packets/object/ImageDesignRejectMessageCallback.h"
 #include "packets/object/ImageDesignChangeMessageCallback.h"
 #include "packets/object/JtlShipListRequestCallback.h"
+#include "packets/object/InsertedAsPilotCallback.h"
 
 #include "packets/ui/RequestCategoriesResponseMessage.h"
 #include "packets/ui/NewTicketActivityResponseMessage.h"
@@ -215,6 +216,8 @@ void ZonePacketHandler::registerObjectControllerMessages() {
 	objectMessageControllerFactory->registerObject<ImageDesignChangeMessageCallback>(0x238);
 	objectMessageControllerFactory->registerObject<ImageDesignRejectMessageCallback>(0x239);
 	objectMessageControllerFactory->registerObject<JtlShipListRequestCallback>(0x41C);
+	objectMessageControllerFactory->registerObject<InsertedAsPilotCallback>(0x3fa);
+
 }
 
 Task* ZonePacketHandler::generateMessageTask(ZoneClientSession* client, Message* pack) {

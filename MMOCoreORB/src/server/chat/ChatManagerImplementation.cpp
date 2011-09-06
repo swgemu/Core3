@@ -415,8 +415,8 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		param = new StringIdChatParameter(message.toString());
 	}
 
-	//Locker zoneLocker(zone);
-	zone->rlock();
+	Locker zoneLocker(zone);
+	//zone->rlock();
 
 	try {
 
@@ -454,12 +454,12 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		}
 
 	} catch (...) {
-		zone->runlock();
+		//zone->runlock();
 
 		throw;
 	}
 
-	zone->runlock();
+	//zone->runlock();
 
 }
 

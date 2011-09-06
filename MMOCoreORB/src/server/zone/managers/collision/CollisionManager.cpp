@@ -283,13 +283,13 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 	float intersectionDistance;
 	Triangle* triangle = NULL;
 
-	SortedVector<ManagedReference<SceneObject*> >* objects = new SortedVector<ManagedReference<SceneObject*> >();
-	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), 1024, objects);
+	SortedVector<ManagedReference<SceneObject*> > objects(512, 512);
+	zone->getInRangeObjects(targetPosition.getX(), targetPosition.getY(), 512, &objects);
 
-	for (int i = 0; i < objects->size(); ++i) {
+	for (int i = 0; i < objects.size(); ++i) {
 		AABBTree* aabbTree = NULL;
 
-		SceneObject* scno = objects->get(i);
+		SceneObject* scno = objects.get(i);
 
 		try {
 			aabbTree = getAABBTree(scno, -1);

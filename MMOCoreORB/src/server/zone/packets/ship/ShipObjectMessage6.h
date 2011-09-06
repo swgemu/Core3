@@ -58,13 +58,13 @@ public:
 		insertFloat(50.f);
 		insertFloat(50.f); //min speed
 
-		insertFloat(0.174532935 * 4);
-		insertFloat(0.174532935 * 4);
-		insertFloat(0.174532935 * 4);
+		insertFloat(0.174532935 * 3);
+		insertFloat(0.174532935 * 3);
+		insertFloat(0.174532935 * 3);
 
-		insertFloat(1.260066867 * 4);
-		insertFloat(1.260066867 * 4);
-		insertFloat(1.260066867 * 4);
+		insertFloat(1.260066867 * 2);
+		insertFloat(1.260066867 * 2);
+		insertFloat(1.260066867 * 2);
 
 		insertFloat(50.f); // max speed
 		//insertLong(ship->getObjectID()); //This is zeroed out on NGE packet caps?

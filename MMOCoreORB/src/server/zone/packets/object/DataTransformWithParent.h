@@ -169,7 +169,12 @@ public:
 		if (newParent == NULL)
 			return;
 
-		if (!newParent->isCellObject())
+		if (!newParent->isCellObject() || newParent->getParent() == NULL)
+			return;
+
+		ManagedReference<SceneObject*> par = object->getParent();
+
+		if (par != NULL && par->isShipObject())
 			return;
 
 		/*

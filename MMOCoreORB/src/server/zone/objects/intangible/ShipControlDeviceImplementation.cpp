@@ -43,6 +43,7 @@ which carries forward this exception.
 
 #include "ShipControlDevice.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/Zone.h"
 
@@ -64,6 +65,11 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 	//controlledObject->inflictDamage(player, 0, System::random(50), true);
 
 	updateStatus(1);
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost != NULL)
+		ghost->setTeleporting(true);
 }
 
 void ShipControlDeviceImplementation::storeObject(CreatureObject* player) {

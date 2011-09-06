@@ -108,7 +108,7 @@ public:
 		if (!object->isInQuadTree())
 			return;
 
-		if (positionX > 7680.0f || positionX < -7680.0f || positionY > 7680.0f || positionY < -7680.0f) {
+		if (positionX > 8000.0f || positionX < -8000.0f || positionY > 8000.0f || positionY < -8000.0f) {
 			StringBuffer msg;
 			msg << "position out of bounds";
 			object->error(msg.toString());
@@ -150,8 +150,12 @@ public:
 		ship->setDirection(directionW, directionX, directionY, directionZ);
 		ship->updateZone(false);
 
-		ShipUpdateTransformMessage* msga = new ShipUpdateTransformMessage(dynamic_cast<ShipObject*>(ship), dirX, dirY, dirZ, dirW, posX, posZ, posY, velA, velB, rotA, rotB, rotC);
-		object->broadcastMessage(msga, false);		
+		ShipUpdateTransformMessage* msga = new ShipUpdateTransformMessage(ship, dirX, dirY, dirZ, dirW, posX, posZ, posY, velA, velB, rotA, rotB, rotC);
+		object->broadcastMessage(msga, false);
+
+		ValidatedPosition* last = ghost->getLastValidatedPosition();
+		last->setPosition(positionX, positionZ, positionY);
+		ghost->updateServerLastMovementStamp();
 	}
 };
 

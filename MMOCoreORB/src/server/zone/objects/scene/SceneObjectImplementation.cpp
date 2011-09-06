@@ -654,9 +654,9 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 		}
 	}
 
-	//Locker zoneLocker(zone);
+	Locker zoneLocker(zone);
 
-	getZone()->rlock(lockZone);
+	//getZone()->rlock(lockZone);
 
 	try {
 		for (int i = 0; i < inRangeObjectCount(); ++i) {
@@ -670,14 +670,14 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 			}
 		}
 	} catch (...) {
-		getZone()->runlock(lockZone);
+		//getZone()->runlock(lockZone);
 
 		delete message;
 
 		throw;
 	}
 
-	getZone()->runlock(lockZone);
+	//getZone()->runlock(lockZone);
 
 	delete message;
 }
@@ -699,7 +699,8 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 		}
 	}
 
-	getZone()->rlock();
+	//getZone()->rlock();
+	Locker zoneLocker(zone);
 
 	try {
 
@@ -721,7 +722,8 @@ void SceneObjectImplementation::broadcastMessages(Vector<BasePacket*>* messages,
 
 	}
 
-	getZone()->runlock();
+	//getZone()->runlock();
+	zoneLocker.release();
 
 	while (!messages->isEmpty()) {
 		delete messages->remove(0);
@@ -781,14 +783,16 @@ void SceneObjectImplementation::notifyCloseContainer(CreatureObject* player) {
 }
 
 void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-#ifdef WITH_STM
-	notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
-#else
 	if (_this == NULL || entry == NULL || _this == entry)
 		return;
 
-	Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));
-#endif
+//#ifdef WITH_STM
+	notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
+//#else
+
+
+	//Core::getTaskManager()->executeTask(new PositionUpdateTask(_this, entry));
+//#endif
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {

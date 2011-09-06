@@ -143,7 +143,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 
 	parent = sceneObject->getParent();
 
-	zone->inRange(sceneObject, 192);
+	zone->inRange(sceneObject, 512);
 
 	if (sendPackets && (parent == NULL || !parent->isVehicleObject())) {
 		if (lightUpdate) {
@@ -178,10 +178,11 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 	if (zone == NULL)
 		return;
 
-	/*SceneObject* parent = sceneObject->getParent();*/
+	ManagedReference<SceneObject*> par = sceneObject->getParent();
 
-	if (sceneObject->getParent() != NULL && sceneObject->getParent()->isVehicleObject())
+	if (par != NULL && !par->isCellObject()) {
 		return;
+	}
 
 	bool insert = false;
 
@@ -239,7 +240,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 	} else {
 		building->update(sceneObject);
 
-		building->inRange(sceneObject, 192);
+		building->inRange(sceneObject, 512);
 	}
 
 	if (sendPackets) {
@@ -308,7 +309,7 @@ void ZoneComponent::insertToBuilding(SceneObject* sceneObject, BuildingObject* b
 
 		building->insert(sceneObject);
 
-		building->inRange(sceneObject, 192);
+		building->inRange(sceneObject, 512);
 
 		sceneObject->broadcastMessage(sceneObject->link(parent->getObjectID(), 0xFFFFFFFF), true, false);
 
