@@ -154,9 +154,14 @@ public:
 				incomingTano = crate->extractObject(incomingTano->getUseCount());
 		}
 
+		if(incomingTano == NULL)
+			return false;
+
 		ObjectManager* objectManager = ObjectManager::instance();
 
 		if (contents.isEmpty()) {
+
+			serial = incomingTano->getCraftersSerial();
 
 			if (incomingTano->getUseCount() <= needs) {
 
@@ -194,8 +199,6 @@ public:
 				}
 			}
 
-			serial = incomingTano->getCraftersSerial();
-
 		} else {
 
 			if (incomingTano->getUseCount() > needs) {
@@ -222,11 +225,9 @@ public:
 					craftingTool->addObject(incomingTano, -1, false);
 				}
 			}
-
-			return true;
 		}
 
-		return false;
+		return true;
 	}
 
 	inline bool remove(CreatureObject* player) {
