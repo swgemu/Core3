@@ -80,6 +80,7 @@ class ManufactureSchematic extends IntangibleObject {
 	
 	protected boolean assembled;
 	protected boolean completed;
+	protected transient int ingredientCounter;
 	protected int experimentingCounter;
 	protected int experimentingCounterPrevious;
 	
@@ -232,6 +233,14 @@ class ManufactureSchematic extends IntangibleObject {
 
 	public int getExperimentingCounterPrevious() {
 		return experimentingCounterPrevious;
+	}
+	
+	public void updateIngredientCounter() {
+		ingredientCounter += 4;
+	}
+	
+	public int getIngredientCounter() {
+		return ingredientCounter;
 	}
 	
 	public void setManufactureLimit(int limit) {

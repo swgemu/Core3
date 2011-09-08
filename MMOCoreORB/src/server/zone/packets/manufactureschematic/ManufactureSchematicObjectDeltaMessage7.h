@@ -68,7 +68,7 @@ public:
 		update4(size, size, slot);
 		update5(size+1, size+1, slot);
 		update6(size, size, slot);
-		update7();
+		update7(manufactureSchematic->getIngredientCounter());
 		//initializeExperimentalValues(draftSchematic);
 		update14();
 	}
@@ -82,10 +82,10 @@ public:
 		updateResource(1, counter, slot, ingredientSlot);
 		updateQuantity(1, counter, slot, ingredientSlot);
 		update5(1, counter, slot);
-		update7();
+		update7(manufactureSchematic->getIngredientCounter());
 	}
 
-	void removeResource(int slot, int counter){
+	void removeResource(int slot, int counter, int ingredientCounter){
 		startUpdate(1);
 		startList(1, counter);
 		removeListIntElement(slot, 0);
@@ -102,12 +102,13 @@ public:
 		startList(1, counter);
 		removeListIntElement(slot, 0xFFFFFFFF);
 
-		update7();
+		update7(ingredientCounter);
 	}
 
 	void updateForAssembly(ManufactureSchematic* manufactureSchematic, float failureRate){
-		initializeExperimentalValues(manufactureSchematic);  // Temp
+		initialAssemblyUpdate(manufactureSchematic);
 		update9(manufactureSchematic, true);
+		//update0A(manufactureSchematic);
 		update0B(manufactureSchematic);
 		update0C(manufactureSchematic);
 		update12(failureRate);
@@ -252,14 +253,14 @@ public:
 			removeListIntElement(i, i);
 		}
 	}
-	void update7() {
+	void update7(int counter) {
 
 		startUpdate(7);
-		insertByte(16); // No clue, was Decimal 24 for Scatter and 16 for Bofa
-
+		insertByte(counter);
 	}
 
-	void initializeExperimentalValues(ManufactureSchematic* manufactureSchematic) {
+	// update 8
+	void initialAssemblyUpdate(ManufactureSchematic* manufactureSchematic) {
 
 		CraftingValues* craftingValues = manufactureSchematic->getCraftingValues();
 
@@ -316,7 +317,7 @@ public:
 		for (int i = 0; i < titleCount; i++) {
 			addListFloatElement(i, 0);
 		}
-		//!**********************************/
+		//!**********************************
 
 	}
 

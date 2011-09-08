@@ -594,6 +594,9 @@ void CraftingToolImplementation::addIngredient(CreatureObject* player, TangibleO
 	// Increment the insert counter
 	insertCounter++;
 
+	/// Increase the ingredient counter
+	manufactureSchematic->updateIngredientCounter();
+
 	if (ingredientSlot == NULL) {
 		sendSlotMessage(player, clientCounter, IngredientSlot::INVALIDINGREDIENT);
 		return;
@@ -684,6 +687,9 @@ void CraftingToolImplementation::removeIngredient(CreatureObject* player, Tangib
 	// Increment the insert counter
 	insertCounter++;
 
+	/// Increase the ingredient counter
+	manufactureSchematic->updateIngredientCounter();
+
 	if(ingredientSlot->remove(player)) {
 
 		sendIngredientRemoveSuccess(player, slot, clientCounter);
@@ -708,7 +714,7 @@ void CraftingToolImplementation::sendIngredientRemoveSuccess(CreatureObject* pla
 					manufactureSchematic->getObjectID());
 
 	dMsco7->removeResource(slot, manufactureSchematic->getSlotCount()
-			+ insertCounter);
+			+ insertCounter, manufactureSchematic->getIngredientCounter());
 
 	dMsco7->close();
 

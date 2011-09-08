@@ -170,6 +170,10 @@ public:
 
 	int getExperimentingCounterPrevious();
 
+	void updateIngredientCounter();
+
+	int getIngredientCounter();
+
 	void setManufactureLimit(int limit);
 
 	int getManufactureLimit();
@@ -237,6 +241,8 @@ protected:
 	bool assembled;
 
 	bool completed;
+
+	int ingredientCounter;
 
 	int experimentingCounter;
 
@@ -310,6 +316,10 @@ public:
 	int getExperimentingCounter();
 
 	int getExperimentingCounterPrevious();
+
+	void updateIngredientCounter();
+
+	int getIngredientCounter();
 
 	void setManufactureLimit(int limit);
 
@@ -423,6 +433,10 @@ public:
 	int getExperimentingCounter();
 
 	int getExperimentingCounterPrevious();
+
+	void updateIngredientCounter();
+
+	int getIngredientCounter();
 
 	void setManufactureLimit(int limit);
 

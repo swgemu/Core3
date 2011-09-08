@@ -729,7 +729,7 @@ void PlayerObjectImplementation::removeSchematic(DraftSchematic* schematic, bool
 	 * in the schematic group.
 	 */
 	ZoneServer* zoneServer = server->getZoneServer();
-	SkillManager* professionManager = zoneServer->getSkillManager();
+	SkillManager* skillManager = zoneServer->getSkillManager();
 	CreatureObject* player = (CreatureObject*) getParentRecursively(SceneObject::PLAYERCREATURE);
 
 	if(player == NULL)
@@ -739,7 +739,7 @@ void PlayerObjectImplementation::removeSchematic(DraftSchematic* schematic, bool
 
 	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
 		Skill* skillBox = playerSkillBoxList->get(i);
-		professionManager->awardDraftSchematics(skillBox, _this, true);
+		skillManager->awardDraftSchematics(skillBox, _this, true);
 	}
 
 	schematicList.awardLimitedUseSchematics();

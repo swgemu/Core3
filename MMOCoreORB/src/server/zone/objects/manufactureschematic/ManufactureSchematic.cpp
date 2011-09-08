@@ -18,7 +18,7 @@
  *	ManufactureSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__CREATUREOBJECT_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_ISMANUFACTURESCHEMATIC__,RPC_SETDRAFTSCHEMATIC__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_INITIALIZEINGREDIENTSLOTS__SCENEOBJECT_DRAFTSCHEMATIC_,RPC_CLEANUPINGREDIENTSLOTS__,RPC_GETDRAFTSCHEMATIC__,RPC_GETSLOTCOUNT__,RPC_INCREASECOMPLEXITY__,RPC_DECREASECOMPLEXITY__,RPC_GETCOMPLEXITY__,RPC_ISFIRSTCRAFTINGUPDATE__,RPC_SETFIRSTCRAFTINGUPDATECOMPLETE__,RPC_ISREADYFORASSEMBLY__,RPC_SETASSEMBLED__,RPC_ISASSEMBLED__,RPC_SETCOMPLETED__,RPC_ISCOMPLETED__,RPC_SETCRAFTER__CREATUREOBJECT_,RPC_GETCRAFTER__,RPC_SETEXPERIMENTINGCOUNTER__INT_,RPC_GETEXPERIMENTINGCOUNTER__,RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__,RPC_UPDATEINGREDIENTCOUNTER__,RPC_GETINGREDIENTCOUNTER__,RPC_SETMANUFACTURELIMIT__INT_,RPC_GETMANUFACTURELIMIT__,RPC_SETPROTOTYPE__TANGIBLEOBJECT_,RPC_GETPROTOTYPE__,RPC_CANMANUFACTUREITEM__STRING_STRING_,RPC_MANUFACTUREITEM__,RPC_CREATEFACTORYBLUEPRINT__,RPC_GETBLUEPRINTSIZE__,};
 
 ManufactureSchematic::ManufactureSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	ManufactureSchematicImplementation* _implementation = new ManufactureSchematicImplementation();
@@ -409,6 +409,32 @@ int ManufactureSchematic::getExperimentingCounterPrevious() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getExperimentingCounterPrevious();
+}
+
+void ManufactureSchematic::updateIngredientCounter() {
+	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEINGREDIENTCOUNTER__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateIngredientCounter();
+}
+
+int ManufactureSchematic::getIngredientCounter() {
+	ManufactureSchematicImplementation* _implementation = (ManufactureSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETINGREDIENTCOUNTER__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getIngredientCounter();
 }
 
 void ManufactureSchematic::setManufactureLimit(int limit) {
@@ -966,6 +992,16 @@ int ManufactureSchematicImplementation::getExperimentingCounterPrevious() {
 	return experimentingCounterPrevious;
 }
 
+void ManufactureSchematicImplementation::updateIngredientCounter() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		ingredientCounter += 4;
+	ingredientCounter += 4;
+}
+
+int ManufactureSchematicImplementation::getIngredientCounter() {
+	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		return ingredientCounter;
+	return ingredientCounter;
+}
+
 void ManufactureSchematicImplementation::setManufactureLimit(int limit) {
 	// server/zone/objects/manufactureschematic/ManufactureSchematic.idl():  		manufactureLimit = limit;
 	manufactureLimit = limit;
@@ -1074,6 +1110,12 @@ Packet* ManufactureSchematicAdapter::invokeMethod(uint32 methid, DistributedMeth
 		break;
 	case RPC_GETEXPERIMENTINGCOUNTERPREVIOUS__:
 		resp->insertSignedInt(getExperimentingCounterPrevious());
+		break;
+	case RPC_UPDATEINGREDIENTCOUNTER__:
+		updateIngredientCounter();
+		break;
+	case RPC_GETINGREDIENTCOUNTER__:
+		resp->insertSignedInt(getIngredientCounter());
 		break;
 	case RPC_SETMANUFACTURELIMIT__INT_:
 		setManufactureLimit(inv->getSignedIntParameter());
@@ -1208,6 +1250,14 @@ int ManufactureSchematicAdapter::getExperimentingCounter() {
 
 int ManufactureSchematicAdapter::getExperimentingCounterPrevious() {
 	return ((ManufactureSchematicImplementation*) impl)->getExperimentingCounterPrevious();
+}
+
+void ManufactureSchematicAdapter::updateIngredientCounter() {
+	((ManufactureSchematicImplementation*) impl)->updateIngredientCounter();
+}
+
+int ManufactureSchematicAdapter::getIngredientCounter() {
+	return ((ManufactureSchematicImplementation*) impl)->getIngredientCounter();
 }
 
 void ManufactureSchematicAdapter::setManufactureLimit(int limit) {

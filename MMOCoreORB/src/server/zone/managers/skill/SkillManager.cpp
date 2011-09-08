@@ -283,5 +283,9 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 }
 
 void SkillManager::awardDraftSchematics(Skill* skill, PlayerObject* ghost, bool notifyClient) {
-
+	if (ghost != NULL) {
+		//Add draft schematic groups
+		Vector<String>* schematicsGranted = skill->getSchematicsGranted();
+		SchematicMap::instance()->addSchematics(ghost, *schematicsGranted, notifyClient);
+	}
 }
