@@ -12,9 +12,6 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 
 void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zone) {
-	if (sceneObject->isInQuadTree())
-			return;
-
 	ZoneComponent::notifyInsertToZone(sceneObject, zone);
 
 	if (sceneObject == NULL || !sceneObject->isCreatureObject())
