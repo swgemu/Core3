@@ -151,8 +151,9 @@ bool BlueprintEntry::hasEnoughResources() {
 			continue;
 		}
 
-		if(object->getParentID() != inputHopper->getObjectID())
-			return false;
+		if(object->getParentID() != inputHopper->getObjectID()) {
+			continue;
+		}
 
 		count += object->getUseCount();
 	}
@@ -178,6 +179,10 @@ void BlueprintEntry::removeResources() {
 		}
 
 		object->setUseCount(object->getUseCount() - (quantity - count), true);
+
+		if(object->getUseCount() == 0)
+			matchingHopperItems.removeElement(object);
+
 		break;
 	}
 }
