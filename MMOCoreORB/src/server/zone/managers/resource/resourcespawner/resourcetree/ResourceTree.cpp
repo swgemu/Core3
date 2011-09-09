@@ -220,7 +220,7 @@ void ResourceTree::setSurveyToolType(ResourceTreeEntry* entry) {
 	} else if(entry->isType("chemical"))
 		entry->setSurveyToolType(SurveyTool::CHEMICAL);
 
-	else if(entry->isType("flora_resource"))
+	else if(entry->isType("flora_resources"))
 		entry->setSurveyToolType(SurveyTool::FLORA);
 
 	else if(entry->isType("gas"))
