@@ -585,13 +585,17 @@ void ConsumableImplementation::updateCraftingValues(ManufactureSchematic* schema
 	TangibleObjectImplementation::maxCondition = cond;
 	// server/zone/objects/tangible/consumable/Consumable.idl():  	}
 	if (!isSpice()){
-	// server/zone/objects/tangible/consumable/Consumable.idl():  			filling = (fillingMax - fillingMin) * craftingValues.getCurrentPercentage("filling") + fillingMin;
+	// server/zone/objects/tangible/consumable/Consumable.idl():  			if(
+	if (craftingValues->hasProperty("filling"))	// server/zone/objects/tangible/consumable/Consumable.idl():  				filling = (fillingMax - fillingMin) * craftingValues.getCurrentPercentage("filling") + fillingMin;
 	filling = (fillingMax - fillingMin) * craftingValues->getCurrentPercentage("filling") + fillingMin;
-	// server/zone/objects/tangible/consumable/Consumable.idl():  			super.setUseCount((quantityMax - quantityMin) * craftingValues.getCurrentPercentage("quantity") + quantityMin);
+	// server/zone/objects/tangible/consumable/Consumable.idl():  			if(
+	if (craftingValues->hasProperty("quantity"))	// server/zone/objects/tangible/consumable/Consumable.idl():  				super.setUseCount((quantityMax - quantityMin) * craftingValues.getCurrentPercentage("quantity") + quantityMin);
 	TangibleObjectImplementation::setUseCount((quantityMax - quantityMin) * craftingValues->getCurrentPercentage("quantity") + quantityMin);
-	// server/zone/objects/tangible/consumable/Consumable.idl():  			duration = (flavorMax - flavorMin) * craftingValues.getCurrentPercentage("flavor") + flavorMin;
+	// server/zone/objects/tangible/consumable/Consumable.idl():  			if(
+	if (craftingValues->hasProperty("flavor"))	// server/zone/objects/tangible/consumable/Consumable.idl():  				duration = (flavorMax - flavorMin) * craftingValues.getCurrentPercentage("flavor") + flavorMin;
 	duration = (flavorMax - flavorMin) * craftingValues->getCurrentPercentage("flavor") + flavorMin;
-	// server/zone/objects/tangible/consumable/Consumable.idl():  			nutrition = (nutritionMax - nutritionMin) * craftingValues.getCurrentPercentage("nutrition") + nutritionMin;
+	// server/zone/objects/tangible/consumable/Consumable.idl():  		}
+	if (craftingValues->hasProperty("nutrition"))	// server/zone/objects/tangible/consumable/Consumable.idl():  				nutrition = (nutritionMax - nutritionMin) * craftingValues.getCurrentPercentage("nutrition") + nutritionMin;
 	nutrition = (nutritionMax - nutritionMin) * craftingValues->getCurrentPercentage("nutrition") + nutritionMin;
 }
 }

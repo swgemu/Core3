@@ -137,8 +137,6 @@ class Consumable extends TangibleObject {
 		CraftingValues craftingValues = schematic.getCraftingValues();
 
 		int cond = craftingValues.getCurrentValue("hitpoints");
-		//setCondition(cond, cond);
-		super.conditionDamage = cond;
 		super.maxCondition = cond;
 
 		if (!isSpice()) {
