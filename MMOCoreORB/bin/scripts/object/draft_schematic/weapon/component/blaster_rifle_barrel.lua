@@ -74,7 +74,6 @@ object_draft_schematic_weapon_component_blaster_rifle_barrel = object_draft_sche
    targetTemplate = "object/tangible/component/weapon/blaster_rifle_barrel.iff",
 
    additionalTemplates = {
-              "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff",
              }
 
 }

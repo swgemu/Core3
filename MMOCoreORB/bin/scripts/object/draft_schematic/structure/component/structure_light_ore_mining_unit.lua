@@ -74,7 +74,6 @@ object_draft_schematic_structure_component_structure_light_ore_mining_unit = obj
    targetTemplate = "object/tangible/component/structure/light_ore_mining_unit.iff",
 
    additionalTemplates = {
-              "object/tangible/component/structure/shared_light_ore_mining_unit.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_bookcase_modern = object_draft_schema
    targetTemplate = "object/tangible/furniture/modern/bookcase_modern_style_01.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/modern/shared_bookcase_modern_style_01.iff",
              }
 
 }

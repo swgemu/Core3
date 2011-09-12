@@ -74,7 +74,6 @@ object_draft_schematic_munition_grenade_proton = object_draft_schematic_munition
    targetTemplate = "object/weapon/ranged/grenade/grenade_proton.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/grenade/shared_grenade_proton.iff",
              }
 
 }

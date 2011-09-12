@@ -74,7 +74,6 @@ object_draft_schematic_chemistry_medpack_wound_constitution_b = object_draft_sch
    targetTemplate = "object/tangible/medicine/crafted/medpack_wound_constitution_b.iff",
 
    additionalTemplates = {
-              "object/tangible/medicine/crafted/shared_medpack_wound_constitution_b.iff",
              }
 
 }

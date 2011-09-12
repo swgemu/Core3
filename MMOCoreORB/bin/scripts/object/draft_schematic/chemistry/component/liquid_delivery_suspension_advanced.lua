@@ -74,7 +74,6 @@ object_draft_schematic_chemistry_component_liquid_delivery_suspension_advanced =
    targetTemplate = "object/tangible/component/chemistry/liquid_delivery_suspension_advanced.iff",
 
    additionalTemplates = {
-              "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff",
              }
 
 }

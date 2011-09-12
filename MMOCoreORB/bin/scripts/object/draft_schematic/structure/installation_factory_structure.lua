@@ -74,7 +74,6 @@ object_draft_schematic_structure_installation_factory_structure = object_draft_s
    targetTemplate = "object/tangible/deed/factory_deed/factory_structure_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/factory_deed/shared_factory_structure_deed.iff",
              }
 
 }

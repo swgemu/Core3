@@ -74,7 +74,6 @@ object_draft_schematic_structure_installation_generator_solar = object_draft_sch
    targetTemplate = "object/tangible/deed/generator_deed/generator_solar_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/generator_deed/shared_generator_solar_deed.iff",
              }
 
 }

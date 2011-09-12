@@ -74,7 +74,6 @@ object_draft_schematic_scout_item_trap_state_def_1 = object_draft_schematic_scou
    targetTemplate = "object/tangible/scout/trap/trap_state_def_1.iff",
 
    additionalTemplates = {
-              "object/tangible/scout/trap/shared_trap_state_def_1.iff",
              }
 
 }

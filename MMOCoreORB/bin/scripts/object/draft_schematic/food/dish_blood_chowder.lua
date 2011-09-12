@@ -74,7 +74,6 @@ object_draft_schematic_food_dish_blood_chowder = object_draft_schematic_food_sha
    targetTemplate = "object/tangible/food/crafted/dish_blood_chowder.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dish_blood_chowder.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_scout_item_trap_drowsy_dart = object_draft_schematic_scou
    targetTemplate = "object/tangible/scout/trap/trap_drowsy_dart.iff",
 
    additionalTemplates = {
-              "object/tangible/scout/trap/shared_trap_drowsy_dart.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_creature_creature_guf_drolg = object_draft_s
    targetTemplate = "object/tangible/deed/pet_deed/guf_drolg_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_guf_drolg_deed.iff",
              }
 
 }

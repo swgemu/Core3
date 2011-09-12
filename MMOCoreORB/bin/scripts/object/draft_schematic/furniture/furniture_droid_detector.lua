@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_droid_detector = object_draft_schemat
    targetTemplate = "object/tangible/furniture/tatooine/frn_tatt_cantina_droid_detector.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/tatooine/shared_frn_tatt_cantina_droid_detector.iff",
              }
 
 }

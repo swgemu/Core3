@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_hat_chef_02 = object_draft_schematic_cl
    targetTemplate = "object/tangible/wearables/hat/hat_chef_s02.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/hat/shared_hat_chef_s02.iff",
              }
 
 }

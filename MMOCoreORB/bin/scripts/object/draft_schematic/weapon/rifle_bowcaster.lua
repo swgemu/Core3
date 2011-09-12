@@ -74,7 +74,6 @@ object_draft_schematic_weapon_rifle_bowcaster = object_draft_schematic_weapon_sh
    targetTemplate = "object/weapon/ranged/rifle/rifle_bowcaster.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/rifle/shared_rifle_bowcaster.iff",
              }
 
 }

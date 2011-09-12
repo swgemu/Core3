@@ -74,7 +74,6 @@ object_draft_schematic_chemistry_medpack_disease_area_action_c = object_draft_sc
    targetTemplate = "object/tangible/medicine/crafted/medpack_disease_area_action_c.iff",
 
    additionalTemplates = {
-              "object/tangible/medicine/crafted/shared_medpack_disease_area_action_c.iff",
              }
 
 }

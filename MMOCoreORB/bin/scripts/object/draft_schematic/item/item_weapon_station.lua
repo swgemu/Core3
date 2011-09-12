@@ -74,7 +74,6 @@ object_draft_schematic_item_item_weapon_station = object_draft_schematic_item_sh
    targetTemplate = "object/tangible/crafting/station/weapon_station.iff",
 
    additionalTemplates = {
-              "object/tangible/crafting/station/shared_weapon_station.iff",
              }
 
 }

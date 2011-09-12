@@ -74,7 +74,6 @@ object_draft_schematic_weapon_rifle_flame_thrower = object_draft_schematic_weapo
    targetTemplate = "object/weapon/ranged/rifle/rifle_flame_thrower.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff",
              }
 
 }

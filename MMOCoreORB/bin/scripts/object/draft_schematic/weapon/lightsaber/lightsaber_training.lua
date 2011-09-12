@@ -74,7 +74,6 @@ object_draft_schematic_weapon_lightsaber_lightsaber_training = object_draft_sche
    targetTemplate = "object/weapon/melee/sword/crafted_saber/sword_lightsaber_training.iff",
 
    additionalTemplates = {
-              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_training.iff",
              }
 
 }

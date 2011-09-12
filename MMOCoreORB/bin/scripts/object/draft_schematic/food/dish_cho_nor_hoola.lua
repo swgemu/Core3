@@ -74,7 +74,6 @@ object_draft_schematic_food_dish_cho_nor_hoola = object_draft_schematic_food_sha
    targetTemplate = "object/tangible/food/crafted/dish_cho_nor_hoola.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dish_cho_nor_hoola.iff",
              }
 
 }

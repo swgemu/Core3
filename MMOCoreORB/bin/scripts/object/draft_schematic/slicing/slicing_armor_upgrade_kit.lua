@@ -74,7 +74,6 @@ object_draft_schematic_slicing_slicing_armor_upgrade_kit = object_draft_schemati
    targetTemplate = "object/tangible/slicing/slicing_armor_upgrade_kit.iff",
 
    additionalTemplates = {
-              "object/tangible/slicing/shared_slicing_armor_upgrade_kit.iff",
              }
 
 }

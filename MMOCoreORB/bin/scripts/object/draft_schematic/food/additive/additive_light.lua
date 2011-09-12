@@ -74,7 +74,6 @@ object_draft_schematic_food_additive_additive_light = object_draft_schematic_foo
    targetTemplate = "object/tangible/food/crafted/additive/additive_light.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/additive/shared_additive_light.iff",
              }
 
 }

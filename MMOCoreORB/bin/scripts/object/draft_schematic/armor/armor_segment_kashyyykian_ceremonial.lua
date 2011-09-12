@@ -74,7 +74,6 @@ object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial = object_draft
    targetTemplate = "object/tangible/component/armor/armor_segment_kashyyykian_ceremonial.iff",
 
    additionalTemplates = {
-              "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial.iff",
              }
 
 }

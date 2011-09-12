@@ -74,7 +74,6 @@ object_draft_schematic_item_item_fishing_pole = object_draft_schematic_item_shar
    targetTemplate = "object/tangible/fishing/fishing_pole.iff",
 
    additionalTemplates = {
-              "object/tangible/fishing/shared_fishing_pole.iff",
              }
 
 }

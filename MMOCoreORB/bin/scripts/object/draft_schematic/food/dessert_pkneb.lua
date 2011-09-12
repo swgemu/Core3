@@ -74,7 +74,6 @@ object_draft_schematic_food_dessert_pkneb = object_draft_schematic_food_shared_d
    targetTemplate = "object/tangible/food/crafted/dessert_pkneb.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dessert_pkneb.iff",
              }
 
 }

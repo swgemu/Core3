@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_bodysuit_casual_08 = object_draft_schem
    targetTemplate = "object/tangible/wearables/bodysuit/bodysuit_s08.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/bodysuit/shared_bodysuit_s08.iff",
              }
 
 }

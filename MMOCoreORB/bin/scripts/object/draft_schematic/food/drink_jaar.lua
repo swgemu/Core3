@@ -74,7 +74,6 @@ object_draft_schematic_food_drink_jaar = object_draft_schematic_food_shared_drin
    targetTemplate = "object/tangible/food/crafted/drink_jaar.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_drink_jaar.iff",
              }
 
 }

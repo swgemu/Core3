@@ -74,7 +74,6 @@ object_draft_schematic_food_dish_travel_biscuits = object_draft_schematic_food_s
    targetTemplate = "object/tangible/food/crafted/dish_travel_biscuits.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dish_travel_biscuits.iff",
              }
 
 }

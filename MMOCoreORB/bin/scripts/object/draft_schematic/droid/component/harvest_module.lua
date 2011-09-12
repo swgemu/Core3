@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_harvest_module = object_draft_schematic_d
    targetTemplate = "object/tangible/component/droid/harvest_module.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_harvest_module.iff",
              }
 
 }

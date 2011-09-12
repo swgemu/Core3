@@ -74,7 +74,6 @@ object_draft_schematic_structure_city_hospital_corellia = object_draft_schematic
    targetTemplate = "object/tangible/deed/city_deed/hospital_corellia_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/city_deed/shared_hospital_corellia_deed.iff",
              }
 
 }

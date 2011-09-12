@@ -74,7 +74,6 @@ object_draft_schematic_instrument_instrument_bandfill = object_draft_schematic_i
    targetTemplate = "object/tangible/instrument/bandfill.iff",
 
    additionalTemplates = {
-              "object/tangible/instrument/shared_bandfill.iff",
              }
 
 }

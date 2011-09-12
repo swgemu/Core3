@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_armor_zam_gloves = object_draft_schemat
    targetTemplate = "object/tangible/wearables/armor/zam/armor_zam_wesell_gloves.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_gloves.iff",
              }
 
 }

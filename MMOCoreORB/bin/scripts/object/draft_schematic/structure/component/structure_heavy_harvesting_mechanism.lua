@@ -74,7 +74,6 @@ object_draft_schematic_structure_component_structure_heavy_harvesting_mechanism 
    targetTemplate = "object/tangible/component/structure/heavy_harvesting_mechanism.iff",
 
    additionalTemplates = {
-              "object/tangible/component/structure/shared_heavy_harvesting_mechanism.iff",
              }
 
 }

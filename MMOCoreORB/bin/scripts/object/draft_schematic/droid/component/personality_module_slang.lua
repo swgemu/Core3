@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_personality_module_slang = object_draft_s
    targetTemplate = "object/tangible/component/droid/personality_module_slang.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_personality_module_slang.iff",
              }
 
 }

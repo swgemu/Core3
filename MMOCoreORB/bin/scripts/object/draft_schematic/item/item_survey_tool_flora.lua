@@ -74,7 +74,6 @@ object_draft_schematic_item_item_survey_tool_flora = object_draft_schematic_item
    targetTemplate = "object/tangible/survey_tool/survey_tool_lumber.iff",
 
    additionalTemplates = {
-              "object/tangible/survey_tool/shared_survey_tool_lumber.iff",
              }
 
 }

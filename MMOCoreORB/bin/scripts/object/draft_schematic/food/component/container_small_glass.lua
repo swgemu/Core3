@@ -74,7 +74,6 @@ object_draft_schematic_food_component_container_small_glass = object_draft_schem
    targetTemplate = "object/tangible/component/food/container_small_glass.iff",
 
    additionalTemplates = {
-              "object/tangible/component/food/shared_container_small_glass.iff",
              }
 
 }

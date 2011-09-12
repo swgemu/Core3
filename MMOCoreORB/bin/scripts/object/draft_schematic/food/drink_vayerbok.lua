@@ -74,7 +74,6 @@ object_draft_schematic_food_drink_vayerbok = object_draft_schematic_food_shared_
    targetTemplate = "object/tangible/food/crafted/drink_vayerbok.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_drink_vayerbok.iff",
              }
 
 }

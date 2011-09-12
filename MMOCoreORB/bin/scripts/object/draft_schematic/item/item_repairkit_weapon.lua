@@ -74,7 +74,6 @@ object_draft_schematic_item_item_repairkit_weapon = object_draft_schematic_item_
    targetTemplate = "object/tangible/crafting/station/weapon_repair.iff",
 
    additionalTemplates = {
-              "object/tangible/crafting/station/shared_weapon_repair.iff",
              }
 
 }

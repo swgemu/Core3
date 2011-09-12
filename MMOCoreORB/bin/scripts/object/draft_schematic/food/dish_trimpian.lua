@@ -74,7 +74,6 @@ object_draft_schematic_food_dish_trimpian = object_draft_schematic_food_shared_d
    targetTemplate = "object/tangible/food/crafted/dish_trimpian.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dish_trimpian.iff",
              }
 
 }

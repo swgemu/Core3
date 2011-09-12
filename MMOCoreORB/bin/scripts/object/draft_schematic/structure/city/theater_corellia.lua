@@ -74,7 +74,6 @@ object_draft_schematic_structure_city_theater_corellia = object_draft_schematic_
    targetTemplate = "object/tangible/deed/city_deed/theater_corellia_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/city_deed/shared_theater_corellia_deed.iff",
              }
 
 }

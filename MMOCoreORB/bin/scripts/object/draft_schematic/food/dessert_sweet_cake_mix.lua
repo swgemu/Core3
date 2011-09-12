@@ -74,7 +74,6 @@ object_draft_schematic_food_dessert_sweet_cake_mix = object_draft_schematic_food
    targetTemplate = "object/tangible/food/crafted/dessert_sweet_cake_mix.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dessert_sweet_cake_mix.iff",
              }
 
 }

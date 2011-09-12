@@ -74,7 +74,6 @@ object_draft_schematic_instrument_instrument_fizz = object_draft_schematic_instr
    targetTemplate = "object/tangible/instrument/fizz.iff",
 
    additionalTemplates = {
-              "object/tangible/instrument/shared_fizz.iff",
              }
 
 }

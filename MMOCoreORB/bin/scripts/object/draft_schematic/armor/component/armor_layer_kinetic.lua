@@ -74,7 +74,6 @@ object_draft_schematic_armor_component_armor_layer_kinetic = object_draft_schema
    targetTemplate = "object/tangible/component/armor/armor_layer_kinetic.iff",
 
    additionalTemplates = {
-              "object/tangible/component/armor/shared_armor_layer_kinetic.iff",
              }
 
 }

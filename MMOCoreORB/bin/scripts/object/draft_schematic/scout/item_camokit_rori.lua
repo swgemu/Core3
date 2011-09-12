@@ -74,7 +74,6 @@ object_draft_schematic_scout_item_camokit_rori = object_draft_schematic_scout_sh
    targetTemplate = "object/tangible/scout/camokit/camokit_rori.iff",
 
    additionalTemplates = {
-              "object/tangible/scout/camokit/shared_camokit_rori.iff",
              }
 
 }

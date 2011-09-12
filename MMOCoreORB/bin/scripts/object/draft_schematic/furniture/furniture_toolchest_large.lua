@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_toolchest_large = object_draft_schema
    targetTemplate = "object/tangible/furniture/all/frn_all_toolchest_lg_s01.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/all/shared_frn_all_toolchest_lg_s01.iff",
              }
 
 }

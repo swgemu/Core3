@@ -74,7 +74,6 @@ object_draft_schematic_armor_armor_segment_bone = object_draft_schematic_armor_s
    targetTemplate = "object/tangible/component/armor/armor_segment_bone.iff",
 
    additionalTemplates = {
-              "object/tangible/component/armor/shared_armor_segment_bone.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_structure_corellia_house_player_small_style_02_floorplan_
    targetTemplate = "object/tangible/deed/player_house_deed/corellia_house_small_style_02_floor_02_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/player_house_deed/shared_corellia_house_small_style_02_floor_02_deed.iff",
              }
 
 }

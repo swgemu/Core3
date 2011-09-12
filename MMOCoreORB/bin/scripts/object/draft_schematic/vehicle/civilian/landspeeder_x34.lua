@@ -74,7 +74,6 @@ object_draft_schematic_vehicle_civilian_landspeeder_x34 = object_draft_schematic
    targetTemplate = "object/tangible/deed/vehicle_deed/landspeeder_x34_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/vehicle_deed/shared_landspeeder_x34_deed.iff",
              }
 
 }

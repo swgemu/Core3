@@ -74,7 +74,6 @@ object_draft_schematic_item_component_item_electronic_control_unit = object_draf
    targetTemplate = "object/tangible/component/item/electronic_control_unit.iff",
 
    additionalTemplates = {
-              "object/tangible/component/item/shared_electronic_control_unit.iff",
              }
 
 }

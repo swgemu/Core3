@@ -74,7 +74,6 @@ object_draft_schematic_chemistry_medpack_wound_strength_d = object_draft_schemat
    targetTemplate = "object/tangible/medicine/crafted/medpack_wound_strength_d.iff",
 
    additionalTemplates = {
-              "object/tangible/medicine/crafted/shared_medpack_wound_strength_d.iff",
              }
 
 }

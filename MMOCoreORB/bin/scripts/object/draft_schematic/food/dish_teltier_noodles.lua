@@ -74,7 +74,6 @@ object_draft_schematic_food_dish_teltier_noodles = object_draft_schematic_food_s
    targetTemplate = "object/tangible/food/crafted/dish_teltier_noodles.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dish_teltier_noodles.iff",
              }
 
 }

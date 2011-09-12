@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_ceremonial_bracer_r =
    targetTemplate = "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_bracer_r.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_bracer_r.iff",
              }
 
 }

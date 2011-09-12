@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_skirt_casual_04 = object_draft_schemati
    targetTemplate = "object/tangible/wearables/skirt/skirt_s04.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/skirt/shared_skirt_s04.iff",
              }
 
 }

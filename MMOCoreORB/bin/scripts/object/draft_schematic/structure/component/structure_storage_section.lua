@@ -74,7 +74,6 @@ object_draft_schematic_structure_component_structure_storage_section = object_dr
    targetTemplate = "object/tangible/component/structure/structure_storage_section.iff",
 
    additionalTemplates = {
-              "object/tangible/component/structure/shared_structure_storage_section.iff",
              }
 
 }

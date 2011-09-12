@@ -74,7 +74,6 @@ object_draft_schematic_structure_city_garden_exotic_dathomir = object_draft_sche
    targetTemplate = "object/tangible/deed/city_deed/garden_dathomir_lrg_01_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/city_deed/shared_garden_dathomir_lrg_01_deed.iff",
              }
 
 }

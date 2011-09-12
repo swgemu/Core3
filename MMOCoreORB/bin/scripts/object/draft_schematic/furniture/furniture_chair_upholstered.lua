@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_chair_upholstered = object_draft_sche
    targetTemplate = "object/tangible/furniture/all/frn_all_chair_upholstered_s1.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/all/shared_frn_all_chair_upholstered_s1.iff",
              }
 
 }

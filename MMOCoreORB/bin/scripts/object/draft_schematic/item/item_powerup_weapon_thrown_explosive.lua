@@ -74,7 +74,6 @@ object_draft_schematic_item_item_powerup_weapon_thrown_explosive = object_draft_
    targetTemplate = "object/tangible/powerup/weapon/thrown_explosive.iff",
 
    additionalTemplates = {
-              "object/tangible/powerup/weapon/shared_thrown_explosive.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_creature_creature_carrion_spat = object_draf
    targetTemplate = "object/tangible/deed/pet_deed/carrion_spat_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_carrion_spat_deed.iff",
              }
 
 }

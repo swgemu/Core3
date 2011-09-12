@@ -74,7 +74,6 @@ object_draft_schematic_weapon_sword_curved = object_draft_schematic_weapon_share
    targetTemplate = "object/weapon/melee/sword/sword_02.iff",
 
    additionalTemplates = {
-              "object/weapon/melee/sword/shared_sword_02.iff",
              }
 
 }

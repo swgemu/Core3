@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_ith_apron_chef_01 = object_draft_schema
    targetTemplate = "object/tangible/wearables/ithorian/apron_chef_jacket_s01_ith.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/ithorian/shared_apron_chef_jacket_s01_ith.iff",
              }
 
 }

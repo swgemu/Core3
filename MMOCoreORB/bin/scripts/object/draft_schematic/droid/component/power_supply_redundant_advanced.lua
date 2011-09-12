@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_power_supply_redundant_advanced = object_
    targetTemplate = "object/tangible/component/droid/repair/power_supply_redundant_advanced.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/repair/shared_power_supply_redundant_advanced.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schemati
    targetTemplate = "object/tangible/component/droid/droid_interplanetary_survey.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_droid_interplanetary_survey.iff",
              }
 
 }

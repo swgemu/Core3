@@ -74,7 +74,6 @@ object_draft_schematic_weapon_staff_reinforced = object_draft_schematic_weapon_s
    targetTemplate = "object/weapon/melee/polearm/lance_staff_wood_s2.iff",
 
    additionalTemplates = {
-              "object/weapon/melee/polearm/shared_lance_staff_wood_s2.iff",
              }
 
 }

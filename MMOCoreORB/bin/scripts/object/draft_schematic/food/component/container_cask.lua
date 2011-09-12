@@ -74,7 +74,6 @@ object_draft_schematic_food_component_container_cask = object_draft_schematic_fo
    targetTemplate = "object/tangible/component/food/container_cask.iff",
 
    additionalTemplates = {
-              "object/tangible/component/food/shared_container_cask.iff",
              }
 
 }

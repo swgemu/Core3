@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_sofachair_modern = object_draft_schem
    targetTemplate = "object/tangible/furniture/modern/sofa_chair_modern_style_01.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/modern/shared_sofa_chair_modern_style_01.iff",
              }
 
 }

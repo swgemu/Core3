@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_creature_creature_bol = object_draft_schemat
    targetTemplate = "object/tangible/deed/pet_deed/bol_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_bol_deed.iff",
              }
 
 }

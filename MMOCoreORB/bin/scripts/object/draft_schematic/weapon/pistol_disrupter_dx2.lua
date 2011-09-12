@@ -74,7 +74,6 @@ object_draft_schematic_weapon_pistol_disrupter_dx2 = object_draft_schematic_weap
    targetTemplate = "object/weapon/ranged/pistol/pistol_dx2.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/pistol/shared_pistol_dx2.iff",
              }
 
 }

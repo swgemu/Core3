@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_armor_ithorian_sentinel_bicep_r = objec
    targetTemplate = "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_bicep_r.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_bicep_r.iff",
              }
 
 }

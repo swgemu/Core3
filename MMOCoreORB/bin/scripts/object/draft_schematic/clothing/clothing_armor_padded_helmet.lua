@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_armor_padded_helmet = object_draft_sche
    targetTemplate = "object/tangible/wearables/armor/padded/armor_padded_s01_helmet.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/armor/padded/shared_armor_padded_s01_helmet.iff",
              }
 
 }

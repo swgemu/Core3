@@ -74,7 +74,6 @@ object_draft_schematic_food_dish_dustcrepe = object_draft_schematic_food_shared_
    targetTemplate = "object/tangible/food/crafted/dish_dustcrepe.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dish_dustcrepe.iff",
              }
 
 }

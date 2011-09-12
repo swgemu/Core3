@@ -74,7 +74,6 @@ object_draft_schematic_armor_armor_segment = object_draft_schematic_armor_shared
    targetTemplate = "object/tangible/component/armor/armor_segment.iff",
 
    additionalTemplates = {
-              "object/tangible/component/armor/shared_armor_segment.iff",
              }
 
 }

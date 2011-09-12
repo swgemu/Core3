@@ -74,7 +74,6 @@ object_draft_schematic_structure_component_structure_harvesting_mechanism = obje
    targetTemplate = "object/tangible/component/structure/harvesting_mechanism.iff",
 
    additionalTemplates = {
-              "object/tangible/component/structure/shared_harvesting_mechanism.iff",
              }
 
 }

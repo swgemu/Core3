@@ -74,7 +74,6 @@ object_draft_schematic_armor_armor_segment_kashyyykian_hunting = object_draft_sc
    targetTemplate = "object/tangible/component/armor/armor_segment_kashyyykian_hunting.iff",
 
    additionalTemplates = {
-              "object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting.iff",
              }
 
 }

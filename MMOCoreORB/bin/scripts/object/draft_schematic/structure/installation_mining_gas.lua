@@ -74,7 +74,6 @@ object_draft_schematic_structure_installation_mining_gas = object_draft_schemati
    targetTemplate = "object/tangible/deed/harvester_deed/harvester_gas_deed_medium.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/harvester_deed/shared_harvester_gas_deed_medium.iff",
              }
 
 }

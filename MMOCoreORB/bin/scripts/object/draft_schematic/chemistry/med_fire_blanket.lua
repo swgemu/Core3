@@ -74,7 +74,6 @@ object_draft_schematic_chemistry_med_fire_blanket = object_draft_schematic_chemi
    targetTemplate = "object/tangible/medicine/crafted/medic_fire_blanket.iff",
 
    additionalTemplates = {
-              "object/tangible/medicine/crafted/shared_medic_fire_blanket.iff",
              }
 
 }

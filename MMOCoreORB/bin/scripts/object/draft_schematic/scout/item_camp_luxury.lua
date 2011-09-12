@@ -74,7 +74,6 @@ object_draft_schematic_scout_item_camp_luxury = object_draft_schematic_scout_sha
    targetTemplate = "object/tangible/scout/camp/camp_luxury.iff",
 
    additionalTemplates = {
-              "object/tangible/scout/camp/shared_camp_luxury.iff",
              }
 
 }

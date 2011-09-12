@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_armor_padded_belt = object_draft_schema
    targetTemplate = "object/tangible/wearables/armor/padded/armor_padded_s01_belt.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/armor/padded/shared_armor_padded_s01_belt.iff",
              }
 
 }

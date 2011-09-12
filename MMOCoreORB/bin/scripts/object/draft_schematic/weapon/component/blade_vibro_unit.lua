@@ -74,7 +74,6 @@ object_draft_schematic_weapon_component_blade_vibro_unit = object_draft_schemati
    targetTemplate = "object/tangible/component/weapon/vibro_unit.iff",
 
    additionalTemplates = {
-              "object/tangible/component/weapon/shared_vibro_unit.iff",
              }
 
 }

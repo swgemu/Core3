@@ -74,7 +74,6 @@ object_draft_schematic_item_item_survey_tool_solar = object_draft_schematic_item
    targetTemplate = "object/tangible/survey_tool/survey_tool_solar.iff",
 
    additionalTemplates = {
-              "object/tangible/survey_tool/shared_survey_tool_solar.iff",
              }
 
 }

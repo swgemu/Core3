@@ -74,7 +74,6 @@ object_draft_schematic_weapon_pistol_republic_blaster = object_draft_schematic_w
    targetTemplate = "object/weapon/ranged/pistol/pistol_republic_blaster.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/pistol/shared_pistol_republic_blaster.iff",
              }
 
 }

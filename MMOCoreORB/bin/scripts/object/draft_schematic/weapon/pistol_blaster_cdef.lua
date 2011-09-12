@@ -74,7 +74,6 @@ object_draft_schematic_weapon_pistol_blaster_cdef = object_draft_schematic_weapo
    targetTemplate = "object/weapon/ranged/pistol/pistol_cdef.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/pistol/shared_pistol_cdef.iff",
              }
 
 }

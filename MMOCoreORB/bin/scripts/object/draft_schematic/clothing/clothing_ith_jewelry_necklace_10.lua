@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_10 = object_draft_
    targetTemplate = "object/tangible/wearables/ithorian/ith_necklace_s10.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/ithorian/shared_ith_necklace_s10.iff",
              }
 
 }

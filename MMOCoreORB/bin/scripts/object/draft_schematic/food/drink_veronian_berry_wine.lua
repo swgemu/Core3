@@ -74,7 +74,6 @@ object_draft_schematic_food_drink_veronian_berry_wine = object_draft_schematic_f
    targetTemplate = "object/tangible/food/crafted/drink_veronian_berry_wine.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_drink_veronian_berry_wine.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_chair_loveseat_elegant = object_draft
    targetTemplate = "object/tangible/furniture/elegant/love_seat_s01.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/elegant/shared_love_seat_s01.iff",
              }
 
 }

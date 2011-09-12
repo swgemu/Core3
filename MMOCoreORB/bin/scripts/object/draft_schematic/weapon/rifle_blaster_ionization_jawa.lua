@@ -74,7 +74,6 @@ object_draft_schematic_weapon_rifle_blaster_ionization_jawa = object_draft_schem
    targetTemplate = "object/weapon/ranged/rifle/rifle_jawa_ion.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/rifle/shared_rifle_jawa_ion.iff",
              }
 
 }

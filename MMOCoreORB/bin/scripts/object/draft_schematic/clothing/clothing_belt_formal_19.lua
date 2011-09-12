@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_belt_formal_19 = object_draft_schematic
    targetTemplate = "object/tangible/wearables/belt/belt_s19.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/belt/shared_belt_s19.iff",
              }
 
 }

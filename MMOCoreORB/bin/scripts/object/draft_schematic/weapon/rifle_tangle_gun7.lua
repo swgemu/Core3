@@ -74,7 +74,6 @@ object_draft_schematic_weapon_rifle_tangle_gun7 = object_draft_schematic_weapon_
    targetTemplate = "object/weapon/ranged/pistol/pistol_tangle.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/pistol/shared_pistol_tangle.iff",
              }
 
 }

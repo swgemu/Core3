@@ -74,7 +74,6 @@ object_draft_schematic_scout_item_camokit_lok = object_draft_schematic_scout_sha
    targetTemplate = "object/tangible/scout/camokit/camokit_lok.iff",
 
    additionalTemplates = {
-              "object/tangible/scout/camokit/shared_camokit_lok.iff",
              }
 
 }

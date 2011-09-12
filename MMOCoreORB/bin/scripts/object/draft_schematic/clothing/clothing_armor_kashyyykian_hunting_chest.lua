@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_hunting_chest = objec
    targetTemplate = "object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_chest_plate.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/armor/kashyyykian_hunting/shared_armor_kashyyykian_hunting_chest_plate.iff",
              }
 
 }

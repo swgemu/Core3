@@ -74,7 +74,6 @@ object_draft_schematic_structure_installation_mining_liquid_vapor = object_draft
    targetTemplate = "object/tangible/deed/harvester_deed/harvester_moisture_deed_medium.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_medium.iff",
              }
 
 }

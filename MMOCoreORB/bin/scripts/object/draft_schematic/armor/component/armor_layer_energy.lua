@@ -74,7 +74,6 @@ object_draft_schematic_armor_component_armor_layer_energy = object_draft_schemat
    targetTemplate = "object/tangible/component/armor/armor_layer_energy.iff",
 
    additionalTemplates = {
-              "object/tangible/component/armor/shared_armor_layer_energy.iff",
              }
 
 }

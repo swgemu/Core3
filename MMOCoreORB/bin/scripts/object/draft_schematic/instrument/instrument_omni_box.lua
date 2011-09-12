@@ -74,7 +74,6 @@ object_draft_schematic_instrument_instrument_omni_box = object_draft_schematic_i
    targetTemplate = "object/tangible/instrument/ommni_box.iff",
 
    additionalTemplates = {
-              "object/tangible/instrument/shared_ommni_box.iff",
              }
 
 }

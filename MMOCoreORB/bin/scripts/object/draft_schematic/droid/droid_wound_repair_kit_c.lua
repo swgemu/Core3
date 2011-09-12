@@ -74,7 +74,6 @@ object_draft_schematic_droid_droid_wound_repair_kit_c = object_draft_schematic_d
    targetTemplate = "object/tangible/medicine/pet/droid_wound_kit_c.iff",
 
    additionalTemplates = {
-              "object/tangible/medicine/pet/shared_droid_wound_kit_c.iff",
              }
 
 }

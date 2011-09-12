@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_filli
    targetTemplate = "object/tangible/component/bio/bio_component_food_light_filling.iff",
 
    additionalTemplates = {
-              "object/tangible/component/bio/shared_bio_component_food_light_filling.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_weapon_component_scope_weapon = object_draft_schematic_we
    targetTemplate = "object/tangible/component/weapon/scope_weapon.iff",
 
    additionalTemplates = {
-              "object/tangible/component/weapon/shared_scope_weapon.iff",
              }
 
 }

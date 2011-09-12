@@ -74,7 +74,6 @@ object_draft_schematic_food_dish_karkan_ribenes = object_draft_schematic_food_sh
    targetTemplate = "object/tangible/food/crafted/dish_karkan_ribenes.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dish_karkan_ribenes.iff",
              }
 
 }

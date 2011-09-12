@@ -74,7 +74,6 @@ object_draft_schematic_food_dessert_almond_kwevvu_crisp_munchies = object_draft_
    targetTemplate = "object/tangible/food/crafted/dessert_almond_kwevvu_crisp_munchies.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dessert_almond_kwevvu_crisp_munchies.iff",
              }
 
 }

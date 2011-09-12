@@ -74,7 +74,6 @@ object_draft_schematic_instrument_instrument_mandoviol = object_draft_schematic_
    targetTemplate = "object/tangible/instrument/mandoviol.iff",
 
    additionalTemplates = {
-              "object/tangible/instrument/shared_mandoviol.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_spices_spice_neutron_pixey = object_draft_schematic_spice
    targetTemplate = "object/tangible/food/spice/spice_neutron_pixey.iff",
 
    additionalTemplates = {
-              "object/tangible/food/spice/shared_spice_neutron_pixey.iff",
              }
 
 }

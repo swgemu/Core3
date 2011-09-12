@@ -74,7 +74,6 @@ object_draft_schematic_weapon_rifle_light_blaster_laser_carbine = object_draft_s
    targetTemplate = "object/weapon/ranged/carbine/carbine_laser.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/carbine/shared_carbine_laser.iff",
              }
 
 }

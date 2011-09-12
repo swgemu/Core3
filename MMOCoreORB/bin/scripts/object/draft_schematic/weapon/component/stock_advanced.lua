@@ -74,7 +74,6 @@ object_draft_schematic_weapon_component_stock_advanced = object_draft_schematic_
    targetTemplate = "object/tangible/component/weapon/stock_advanced.iff",
 
    additionalTemplates = {
-              "object/tangible/component/weapon/shared_stock_advanced.iff",
              }
 
 }

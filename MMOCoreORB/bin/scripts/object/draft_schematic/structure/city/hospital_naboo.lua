@@ -74,7 +74,6 @@ object_draft_schematic_structure_city_hospital_naboo = object_draft_schematic_st
    targetTemplate = "object/tangible/deed/city_deed/hospital_naboo_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/city_deed/shared_hospital_naboo_deed.iff",
              }
 
 }

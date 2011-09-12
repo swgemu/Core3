@@ -74,7 +74,6 @@ object_draft_schematic_item_item_powerup_weapon_thrown_wiring = object_draft_sch
    targetTemplate = "object/tangible/powerup/weapon/thrown_wiring.iff",
 
    additionalTemplates = {
-              "object/tangible/powerup/weapon/shared_thrown_wiring.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_table_endtable_small_modern = object_
    targetTemplate = "object/tangible/furniture/modern/end_table_small_modern_style_01.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/modern/shared_end_table_small_modern_style_01.iff",
              }
 
 }

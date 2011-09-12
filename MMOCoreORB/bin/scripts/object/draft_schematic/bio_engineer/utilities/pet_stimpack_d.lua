@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_utilities_pet_stimpack_d = object_draft_sche
    targetTemplate = "object/tangible/medicine/pet/pet_stimpack_d.iff",
 
    additionalTemplates = {
-              "object/tangible/medicine/pet/shared_pet_stimpack_d.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_weapon_baton_gaderiffi = object_draft_schematic_weapon_sh
    targetTemplate = "object/weapon/melee/baton/baton_gaderiffi.iff",
 
    additionalTemplates = {
-              "object/weapon/melee/baton/shared_baton_gaderiffi.iff",
              }
 
 }

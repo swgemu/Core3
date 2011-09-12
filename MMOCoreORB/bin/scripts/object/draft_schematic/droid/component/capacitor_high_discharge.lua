@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_capacitor_high_discharge = object_draft_s
    targetTemplate = "object/tangible/component/droid/repair/capacitor_high_discharge.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/repair/shared_capacitor_high_discharge.iff",
              }
 
 }

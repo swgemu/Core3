@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_hat_twilek_formal_04 = object_draft_sch
    targetTemplate = "object/tangible/wearables/hat/hat_twilek_s04.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/hat/shared_hat_twilek_s04.iff",
              }
 
 }

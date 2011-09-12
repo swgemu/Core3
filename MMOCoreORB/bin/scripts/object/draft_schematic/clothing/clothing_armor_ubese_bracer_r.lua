@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_armor_ubese_bracer_r = object_draft_sch
    targetTemplate = "object/tangible/wearables/armor/ubese/armor_ubese_bracer_r.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/armor/ubese/shared_armor_ubese_bracer_r.iff",
              }
 
 }

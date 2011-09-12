@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_droid_storage_compartment = object_draft_
    targetTemplate = "object/tangible/component/droid/droid_storage_compartment.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_droid_storage_compartment.iff",
              }
 
 }

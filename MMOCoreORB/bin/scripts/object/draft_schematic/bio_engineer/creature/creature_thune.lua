@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_creature_creature_thune = object_draft_schem
    targetTemplate = "object/tangible/deed/pet_deed/thune_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_thune_deed.iff",
              }
 
 }

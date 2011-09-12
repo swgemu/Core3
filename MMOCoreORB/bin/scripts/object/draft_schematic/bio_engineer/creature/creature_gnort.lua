@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_creature_creature_gnort = object_draft_schem
    targetTemplate = "object/tangible/deed/pet_deed/gnort_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_gnort_deed.iff",
              }
 
 }

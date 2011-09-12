@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_struct_maint_module_2 = object_draft_sche
    targetTemplate = "object/tangible/component/droid/struct_maint_module_2.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_struct_maint_module_2.iff",
              }
 
 }

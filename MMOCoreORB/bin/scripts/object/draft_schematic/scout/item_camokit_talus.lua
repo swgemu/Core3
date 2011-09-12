@@ -74,7 +74,6 @@ object_draft_schematic_scout_item_camokit_talus = object_draft_schematic_scout_s
    targetTemplate = "object/tangible/scout/camokit/camokit_talus.iff",
 
    additionalTemplates = {
-              "object/tangible/scout/camokit/shared_camokit_talus.iff",
              }
 
 }

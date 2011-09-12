@@ -74,7 +74,6 @@ object_draft_schematic_instrument_instrument_kloo_horn = object_draft_schematic_
    targetTemplate = "object/tangible/instrument/kloo_horn.iff",
 
    additionalTemplates = {
-              "object/tangible/instrument/shared_kloo_horn.iff",
              }
 
 }

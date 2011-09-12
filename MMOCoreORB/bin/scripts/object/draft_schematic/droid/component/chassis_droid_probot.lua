@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_chassis_droid_probot = object_draft_schem
    targetTemplate = "object/tangible/component/droid/probot_droid_chassis.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_probot_droid_chassis.iff",
              }
 
 }

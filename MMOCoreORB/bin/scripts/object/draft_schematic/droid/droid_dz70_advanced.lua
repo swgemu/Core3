@@ -74,7 +74,6 @@ object_draft_schematic_droid_droid_dz70_advanced = object_draft_schematic_droid_
    targetTemplate = "object/tangible/deed/pet_deed/deed_dz70_advanced_basic.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_deed_dz70_advanced_basic.iff",
              }
 
 }

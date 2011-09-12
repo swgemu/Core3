@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_droid_motive_system = object_draft_schema
    targetTemplate = "object/tangible/component/droid/droid_motive_system.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_droid_motive_system.iff",
              }
 
 }

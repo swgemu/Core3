@@ -74,7 +74,6 @@ object_draft_schematic_food_dessert_smugglers_delight = object_draft_schematic_f
    targetTemplate = "object/tangible/food/crafted/dessert_smugglers_delight.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dessert_smugglers_delight.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_advanced_droid_frame = object_draft_schem
    targetTemplate = "object/tangible/component/droid/advanced_droid_frame.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_advanced_droid_frame.iff",
              }
 
 }

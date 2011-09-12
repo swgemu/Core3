@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_repair_module = object_draft_schematic_dr
    targetTemplate = "object/tangible/component/droid/repair_module.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_repair_module.iff",
              }
 
 }

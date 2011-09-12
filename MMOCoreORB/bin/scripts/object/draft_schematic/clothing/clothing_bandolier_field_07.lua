@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_bandolier_field_07 = object_draft_schem
    targetTemplate = "object/tangible/wearables/bandolier/bandolier_s07.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/bandolier/shared_bandolier_s07.iff",
              }
 
 }

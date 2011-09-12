@@ -74,7 +74,6 @@ object_draft_schematic_weapon_rifle_disrupter_dxr6 = object_draft_schematic_weap
    targetTemplate = "object/weapon/ranged/carbine/carbine_dxr6.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/carbine/shared_carbine_dxr6.iff",
              }
 
 }

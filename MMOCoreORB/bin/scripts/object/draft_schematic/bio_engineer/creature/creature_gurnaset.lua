@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_creature_creature_gurnaset = object_draft_sc
    targetTemplate = "object/tangible/deed/pet_deed/gurnaset_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_gurnaset_deed.iff",
              }
 
 }

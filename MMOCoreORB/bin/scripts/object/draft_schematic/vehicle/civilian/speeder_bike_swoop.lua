@@ -74,7 +74,6 @@ object_draft_schematic_vehicle_civilian_speeder_bike_swoop = object_draft_schema
    targetTemplate = "object/tangible/deed/vehicle_deed/speederbike_swoop_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/vehicle_deed/shared_speederbike_swoop_deed.iff",
              }
 
 }

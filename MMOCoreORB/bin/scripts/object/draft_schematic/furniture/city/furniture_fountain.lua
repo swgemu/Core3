@@ -74,7 +74,6 @@ object_draft_schematic_furniture_city_furniture_fountain = object_draft_schemati
    targetTemplate = "object/tangible/furniture/city/fountain_generic.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/city/shared_fountain_generic.iff",
              }
 
 }

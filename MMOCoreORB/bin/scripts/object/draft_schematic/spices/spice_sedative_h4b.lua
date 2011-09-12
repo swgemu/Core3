@@ -74,7 +74,6 @@ object_draft_schematic_spices_spice_sedative_h4b = object_draft_schematic_spices
    targetTemplate = "object/tangible/food/spice/spice_sedative_h4b.iff",
 
    additionalTemplates = {
-              "object/tangible/food/spice/shared_spice_sedative_h4b.iff",
              }
 
 }

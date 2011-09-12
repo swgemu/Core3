@@ -74,7 +74,6 @@ object_draft_schematic_munition_grenade_glop = object_draft_schematic_munition_s
    targetTemplate = "object/weapon/ranged/grenade/grenade_glop.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/grenade/shared_grenade_glop.iff",
              }
 
 }

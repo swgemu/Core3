@@ -74,7 +74,6 @@ object_draft_schematic_food_dessert_won_won = object_draft_schematic_food_shared
    targetTemplate = "object/tangible/food/crafted/dessert_won_won.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dessert_won_won.iff",
              }
 
 }

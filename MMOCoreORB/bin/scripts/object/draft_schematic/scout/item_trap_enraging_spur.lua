@@ -74,7 +74,6 @@ object_draft_schematic_scout_item_trap_enraging_spur = object_draft_schematic_sc
    targetTemplate = "object/tangible/scout/trap/trap_enraging_spur.iff",
 
    additionalTemplates = {
-              "object/tangible/scout/trap/shared_trap_enraging_spur.iff",
              }
 
 }

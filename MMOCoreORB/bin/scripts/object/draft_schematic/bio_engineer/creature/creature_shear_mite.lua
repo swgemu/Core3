@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_creature_creature_shear_mite = object_draft_
    targetTemplate = "object/tangible/deed/pet_deed/shear_mite_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_shear_mite_deed.iff",
              }
 
 }

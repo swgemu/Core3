@@ -74,7 +74,6 @@ object_draft_schematic_item_item_space_tool = object_draft_schematic_item_shared
    targetTemplate = "object/tangible/crafting/station/space_tool.iff",
 
    additionalTemplates = {
-              "object/tangible/crafting/station/shared_space_tool.iff",
              }
 
 }

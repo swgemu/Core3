@@ -74,7 +74,6 @@ object_draft_schematic_slicing_slicing_molecular_clamp = object_draft_schematic_
    targetTemplate = "object/tangible/slicing/slicing_molecular_clamp.iff",
 
    additionalTemplates = {
-              "object/tangible/slicing/shared_slicing_molecular_clamp.iff",
              }
 
 }

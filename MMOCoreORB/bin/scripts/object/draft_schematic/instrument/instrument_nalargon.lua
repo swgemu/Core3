@@ -74,7 +74,6 @@ object_draft_schematic_instrument_instrument_nalargon = object_draft_schematic_i
    targetTemplate = "object/tangible/instrument/nalargon.iff",
 
    additionalTemplates = {
-              "object/tangible/instrument/shared_nalargon.iff",
              }
 
 }

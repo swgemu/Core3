@@ -74,7 +74,6 @@ object_draft_schematic_structure_house_player_medium = object_draft_schematic_st
    targetTemplate = "object/tangible/deed/player_house_deed/tatooine_house_medium_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/player_house_deed/shared_tatooine_house_medium_deed.iff",
              }
 
 }

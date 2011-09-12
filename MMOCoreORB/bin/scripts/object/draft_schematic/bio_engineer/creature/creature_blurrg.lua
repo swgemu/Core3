@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_creature_creature_blurrg = object_draft_sche
    targetTemplate = "object/tangible/deed/pet_deed/blurrg_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_blurrg_deed.iff",
              }
 
 }

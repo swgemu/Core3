@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_armor_ithorian_guardian_boots = object_
    targetTemplate = "object/tangible/wearables/armor/ithorian_guardian/ith_armor_s02_boots.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_boots.iff",
              }
 
 }

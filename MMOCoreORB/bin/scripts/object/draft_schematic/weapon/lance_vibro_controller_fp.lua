@@ -74,7 +74,6 @@ object_draft_schematic_weapon_lance_vibro_controller_fp = object_draft_schematic
    targetTemplate = "object/weapon/melee/polearm/lance_controllerfp.iff",
 
    additionalTemplates = {
-              "object/weapon/melee/polearm/shared_lance_controllerfp.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_food_dish_ormachek = object_draft_schematic_food_shared_d
    targetTemplate = "object/tangible/food/crafted/dish_ormachek.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dish_ormachek.iff",
              }
 
 }

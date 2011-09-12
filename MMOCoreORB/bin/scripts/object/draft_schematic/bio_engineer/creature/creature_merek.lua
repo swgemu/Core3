@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_creature_creature_merek = object_draft_schem
    targetTemplate = "object/tangible/deed/pet_deed/merek_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_merek_deed.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_structure_corellia_house_player_medium = object_draft_sch
    targetTemplate = "object/tangible/deed/player_house_deed/corellia_house_medium_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/player_house_deed/shared_corellia_house_medium_deed.iff",
              }
 
 }

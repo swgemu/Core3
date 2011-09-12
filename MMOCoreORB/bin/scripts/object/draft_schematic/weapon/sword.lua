@@ -74,7 +74,6 @@ object_draft_schematic_weapon_sword = object_draft_schematic_weapon_shared_sword
    targetTemplate = "object/weapon/melee/sword/sword_01.iff",
 
    additionalTemplates = {
-              "object/weapon/melee/sword/shared_sword_01.iff",
              }
 
 }

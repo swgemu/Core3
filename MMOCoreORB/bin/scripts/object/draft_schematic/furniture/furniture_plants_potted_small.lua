@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_plants_potted_small = object_draft_sc
    targetTemplate = "object/tangible/furniture/all/frn_all_potted_plants_sml_s01.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s01.iff",
              }
 
 }

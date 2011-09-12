@@ -74,7 +74,6 @@ object_draft_schematic_food_dish_exo_protein_wafers = object_draft_schematic_foo
    targetTemplate = "object/tangible/food/crafted/dish_exo_protein_wafers.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dish_exo_protein_wafers.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_personality_module_sarcastic = object_dra
    targetTemplate = "object/tangible/component/droid/personality_module_sarcastic.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_personality_module_sarcastic.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_chemistry_component_release_mechanism_duration = object_d
    targetTemplate = "object/tangible/component/chemistry/release_mechanism_duration.iff",
 
    additionalTemplates = {
-              "object/tangible/component/chemistry/shared_release_mechanism_duration.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_food_dessert_deneelian_fizz_pudding = object_draft_schema
    targetTemplate = "object/tangible/food/crafted/dessert_deneelian_fizz_pudding.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dessert_deneelian_fizz_pudding.iff",
              }
 
 }

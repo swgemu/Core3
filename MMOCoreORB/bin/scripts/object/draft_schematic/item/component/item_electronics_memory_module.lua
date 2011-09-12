@@ -74,7 +74,6 @@ object_draft_schematic_item_component_item_electronics_memory_module = object_dr
    targetTemplate = "object/tangible/component/item/electronics_memory_module.iff",
 
    additionalTemplates = {
-              "object/tangible/component/item/shared_electronics_memory_module.iff",
              }
 
 }

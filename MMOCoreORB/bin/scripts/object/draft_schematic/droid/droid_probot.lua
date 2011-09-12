@@ -74,7 +74,6 @@ object_draft_schematic_droid_droid_probot = object_draft_schematic_droid_shared_
    targetTemplate = "object/tangible/deed/pet_deed/deed_probot_basic.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_deed_probot_basic.iff",
              }
 
 }

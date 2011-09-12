@@ -74,7 +74,6 @@ object_draft_schematic_droid_droid_le_repair = object_draft_schematic_droid_shar
    targetTemplate = "object/tangible/deed/pet_deed/deed_le_repair_basic.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_deed_le_repair_basic.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_weapon_rifle_spray_stick_stohli = object_draft_schematic_
    targetTemplate = "object/weapon/ranged/rifle/rifle_spraystick.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/rifle/shared_rifle_spraystick.iff",
              }
 
 }

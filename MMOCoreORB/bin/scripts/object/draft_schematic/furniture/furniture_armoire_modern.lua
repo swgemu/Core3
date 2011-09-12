@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_armoire_modern = object_draft_schemat
    targetTemplate = "object/tangible/furniture/modern/armoire_modern_style_01.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/modern/shared_armoire_modern_style_01.iff",
              }
 
 }

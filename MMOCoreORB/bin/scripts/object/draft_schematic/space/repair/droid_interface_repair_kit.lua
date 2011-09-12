@@ -74,7 +74,6 @@ object_draft_schematic_space_repair_droid_interface_repair_kit = object_draft_sc
    targetTemplate = "object/tangible/ship/crafted/repair/repair_kit_droid_interface.iff",
 
    additionalTemplates = {
-              "object/tangible/ship/crafted/repair/shared_repair_kit_droid_interface.iff",
              }
 
 }

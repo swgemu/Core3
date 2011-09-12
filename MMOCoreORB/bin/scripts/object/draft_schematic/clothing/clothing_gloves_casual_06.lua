@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_gloves_casual_06 = object_draft_schemat
    targetTemplate = "object/tangible/wearables/gloves/gloves_s06.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/gloves/shared_gloves_s06.iff",
              }
 
 }

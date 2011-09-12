@@ -74,7 +74,6 @@ object_draft_schematic_weapon_rifle_projectile_tusken = object_draft_schematic_w
    targetTemplate = "object/weapon/ranged/rifle/rifle_tusken.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/rifle/shared_rifle_tusken.iff",
              }
 
 }

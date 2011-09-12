@@ -74,7 +74,6 @@ object_draft_schematic_weapon_component_blaster_power_handler = object_draft_sch
    targetTemplate = "object/tangible/component/weapon/blaster_power_handler.iff",
 
    additionalTemplates = {
-              "object/tangible/component/weapon/shared_blaster_power_handler.iff",
              }
 
 }

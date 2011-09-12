@@ -74,7 +74,6 @@ object_draft_schematic_chemistry_component_solid_delivery_shell = object_draft_s
    targetTemplate = "object/tangible/component/chemistry/solid_delivery_shell.iff",
 
    additionalTemplates = {
-              "object/tangible/component/chemistry/shared_solid_delivery_shell.iff",
              }
 
 }

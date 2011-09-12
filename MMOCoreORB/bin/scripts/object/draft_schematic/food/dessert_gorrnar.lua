@@ -74,7 +74,6 @@ object_draft_schematic_food_dessert_gorrnar = object_draft_schematic_food_shared
    targetTemplate = "object/tangible/food/crafted/dessert_gorrnar.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dessert_gorrnar.iff",
              }
 
 }

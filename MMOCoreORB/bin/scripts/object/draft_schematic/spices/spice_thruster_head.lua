@@ -74,7 +74,6 @@ object_draft_schematic_spices_spice_thruster_head = object_draft_schematic_spice
    targetTemplate = "object/tangible/food/spice/spice_thruster_head.iff",
 
    additionalTemplates = {
-              "object/tangible/food/spice/shared_spice_thruster_head.iff",
              }
 
 }

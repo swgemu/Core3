@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_creature_creature_hermit_spider = object_dra
    targetTemplate = "object/tangible/deed/pet_deed/hermit_spider_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_hermit_spider_deed.iff",
              }
 
 }

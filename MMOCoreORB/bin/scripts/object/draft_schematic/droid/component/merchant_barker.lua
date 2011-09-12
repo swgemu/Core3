@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_merchant_barker = object_draft_schematic_
    targetTemplate = "object/tangible/component/droid/merchant_barker.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_merchant_barker.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_droid_bounty_probot_transmitter = object_draft_schematic_
    targetTemplate = "object/tangible/mission/mission_bounty_droid_probot.iff",
 
    additionalTemplates = {
-              "object/tangible/mission/shared_mission_bounty_droid_probot.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_structure_installation_mining_organic_flora_heavy = objec
    targetTemplate = "object/tangible/deed/harvester_deed/harvester_flora_deed_heavy.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/harvester_deed/shared_harvester_flora_deed_heavy.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_wke_gloves_s03 = object_draft_schematic
    targetTemplate = "object/tangible/wearables/wookiee/wke_gloves_s03.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/wookiee/shared_wke_gloves_s03.iff",
              }
 
 }

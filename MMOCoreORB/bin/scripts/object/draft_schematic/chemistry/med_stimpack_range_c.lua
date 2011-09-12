@@ -74,7 +74,6 @@ object_draft_schematic_chemistry_med_stimpack_range_c = object_draft_schematic_c
    targetTemplate = "object/tangible/medicine/crafted/medpack_grenade_damage_c.iff",
 
    additionalTemplates = {
-              "object/tangible/medicine/crafted/shared_medpack_grenade_damage_c.iff",
              }
 
 }

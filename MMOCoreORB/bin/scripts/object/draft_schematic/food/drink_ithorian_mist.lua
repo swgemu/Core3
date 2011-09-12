@@ -74,7 +74,6 @@ object_draft_schematic_food_drink_ithorian_mist = object_draft_schematic_food_sh
    targetTemplate = "object/tangible/food/crafted/drink_ithorian_mist.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_drink_ithorian_mist.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_weapon_rifle_beam = object_draft_schematic_weapon_shared_
    targetTemplate = "object/weapon/ranged/rifle/rifle_beam.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/rifle/shared_rifle_beam.iff",
              }
 
 }

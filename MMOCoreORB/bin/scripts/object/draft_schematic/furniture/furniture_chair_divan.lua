@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_chair_divan = object_draft_schematic_
    targetTemplate = "object/tangible/furniture/all/frn_all_couch_divan_s1.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/all/shared_frn_all_couch_divan_s1.iff",
              }
 
 }

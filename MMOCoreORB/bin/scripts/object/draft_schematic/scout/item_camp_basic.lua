@@ -74,7 +74,6 @@ object_draft_schematic_scout_item_camp_basic = object_draft_schematic_scout_shar
    targetTemplate = "object/tangible/scout/camp/camp_basic.iff",
 
    additionalTemplates = {
-              "object/tangible/scout/camp/shared_camp_basic.iff",
              }
 
 }

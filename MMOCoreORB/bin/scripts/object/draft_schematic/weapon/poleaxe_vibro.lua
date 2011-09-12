@@ -74,7 +74,6 @@ object_draft_schematic_weapon_poleaxe_vibro = object_draft_schematic_weapon_shar
    targetTemplate = "object/weapon/melee/polearm/polearm_vibro_axe.iff",
 
    additionalTemplates = {
-              "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff",
              }
 
 }

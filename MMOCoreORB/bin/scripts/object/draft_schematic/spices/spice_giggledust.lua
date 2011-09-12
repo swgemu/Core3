@@ -74,7 +74,6 @@ object_draft_schematic_spices_spice_giggledust = object_draft_schematic_spices_s
    targetTemplate = "object/tangible/food/spice/spice_giggledust.iff",
 
    additionalTemplates = {
-              "object/tangible/food/spice/shared_spice_giggledust.iff",
              }
 
 }

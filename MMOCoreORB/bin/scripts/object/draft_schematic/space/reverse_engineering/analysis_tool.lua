@@ -74,7 +74,6 @@ object_draft_schematic_space_reverse_engineering_analysis_tool = object_draft_sc
    targetTemplate = "object/tangible/ship/crafted/reverse_engineering/analysis_tool.iff",
 
    additionalTemplates = {
-              "object/tangible/ship/crafted/reverse_engineering/shared_analysis_tool.iff",
              }
 
 }

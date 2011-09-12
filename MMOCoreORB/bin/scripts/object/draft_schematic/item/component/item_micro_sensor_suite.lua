@@ -74,7 +74,6 @@ object_draft_schematic_item_component_item_micro_sensor_suite = object_draft_sch
    targetTemplate = "object/tangible/component/item/micro_sensor_suite.iff",
 
    additionalTemplates = {
-              "object/tangible/component/item/shared_micro_sensor_suite.iff",
              }
 
 }

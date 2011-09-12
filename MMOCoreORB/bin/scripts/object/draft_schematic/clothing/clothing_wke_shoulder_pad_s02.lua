@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_wke_shoulder_pad_s02 = object_draft_sch
    targetTemplate = "object/tangible/wearables/wookiee/wke_shoulder_pad_s02.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s02.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_armor_component_armor_layer_blast = object_draft_schemati
    targetTemplate = "object/tangible/component/armor/armor_layer_blast.iff",
 
    additionalTemplates = {
-              "object/tangible/component/armor/shared_armor_layer_blast.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_armor_component_deflector_shield_generator_energy_ray = o
    targetTemplate = "object/tangible/component/armor/deflector_shield_generator_energy_ray.iff",
 
    additionalTemplates = {
-              "object/tangible/component/armor/shared_deflector_shield_generator_energy_ray.iff",
              }
 
 }

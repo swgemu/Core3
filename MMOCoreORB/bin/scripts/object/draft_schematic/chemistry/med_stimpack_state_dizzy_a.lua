@@ -74,7 +74,6 @@ object_draft_schematic_chemistry_med_stimpack_state_dizzy_a = object_draft_schem
    targetTemplate = "object/tangible/medicine/crafted/medpack_dizzy_a.iff",
 
    additionalTemplates = {
-              "object/tangible/medicine/crafted/shared_medpack_dizzy_a.iff",
              }
 
 }

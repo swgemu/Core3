@@ -74,7 +74,6 @@ object_draft_schematic_armor_armor_segment_kashyyykian_black_mtn_advanced = obje
    targetTemplate = "object/tangible/component/armor/armor_segment_kashyyykian_black_mtn_advanced.iff",
 
    additionalTemplates = {
-              "object/tangible/component/armor/shared_armor_segment_kashyyykian_black_mtn_advanced.iff",
              }
 
 }

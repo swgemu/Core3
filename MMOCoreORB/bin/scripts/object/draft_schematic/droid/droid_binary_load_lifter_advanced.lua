@@ -74,7 +74,6 @@ object_draft_schematic_droid_droid_binary_load_lifter_advanced = object_draft_sc
    targetTemplate = "object/tangible/deed/pet_deed/deed_binary_load_lifter_advanced_basic.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_deed_binary_load_lifter_advanced_basic.iff",
              }
 
 }

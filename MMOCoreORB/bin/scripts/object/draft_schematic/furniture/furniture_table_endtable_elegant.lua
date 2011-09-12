@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_table_endtable_elegant = object_draft
    targetTemplate = "object/tangible/furniture/elegant/end_table_s01.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/elegant/shared_end_table_s01.iff",
              }
 
 }

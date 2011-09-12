@@ -74,7 +74,6 @@ object_draft_schematic_item_item_generic_tool = object_draft_schematic_item_shar
    targetTemplate = "object/tangible/crafting/station/generic_tool.iff",
 
    additionalTemplates = {
-              "object/tangible/crafting/station/shared_generic_tool.iff",
              }
 
 }

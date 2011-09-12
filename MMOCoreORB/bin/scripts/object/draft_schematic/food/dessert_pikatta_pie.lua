@@ -74,7 +74,6 @@ object_draft_schematic_food_dessert_pikatta_pie = object_draft_schematic_food_sh
    targetTemplate = "object/tangible/food/crafted/dessert_pikatta_pie.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_dessert_pikatta_pie.iff",
              }
 
 }

@@ -74,7 +74,6 @@ object_draft_schematic_scout_item_camokit_endor = object_draft_schematic_scout_s
    targetTemplate = "object/tangible/scout/camokit/camokit_endor.iff",
 
    additionalTemplates = {
-              "object/tangible/scout/camokit/shared_camokit_endor.iff",
              }
 
 }

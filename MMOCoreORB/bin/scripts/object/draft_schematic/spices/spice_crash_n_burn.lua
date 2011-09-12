@@ -74,7 +74,6 @@ object_draft_schematic_spices_spice_crash_n_burn = object_draft_schematic_spices
    targetTemplate = "object/tangible/food/spice/spice_crash_n_burn.iff",
 
    additionalTemplates = {
-              "object/tangible/food/spice/shared_spice_crash_n_burn.iff",
              }
 
 }

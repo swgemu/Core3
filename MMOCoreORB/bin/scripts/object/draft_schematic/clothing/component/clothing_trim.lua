@@ -74,7 +74,6 @@ object_draft_schematic_clothing_component_clothing_trim = object_draft_schematic
    targetTemplate = "object/tangible/component/clothing/trim.iff",
 
    additionalTemplates = {
-              "object/tangible/component/clothing/shared_trim.iff",
              }
 
 }

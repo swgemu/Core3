@@ -74,7 +74,6 @@ object_draft_schematic_spices_spice_muon_gold = object_draft_schematic_spices_sh
    targetTemplate = "object/tangible/food/spice/spice_muon_gold.iff",
 
    additionalTemplates = {
-              "object/tangible/food/spice/shared_spice_muon_gold.iff",
              }
 
 }

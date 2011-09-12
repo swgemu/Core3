@@ -74,7 +74,6 @@ object_draft_schematic_chemistry_component_biologic_effect_controller_advanced =
    targetTemplate = "object/tangible/component/chemistry/biologic_effect_controller_advanced.iff",
 
    additionalTemplates = {
-              "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff",
              }
 
 }

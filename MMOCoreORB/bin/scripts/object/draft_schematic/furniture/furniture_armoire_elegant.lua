@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_armoire_elegant = object_draft_schema
    targetTemplate = "object/tangible/furniture/elegant/armoire_elegant_s01.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/elegant/shared_armoire_elegant_s01.iff",
              }
 
 }

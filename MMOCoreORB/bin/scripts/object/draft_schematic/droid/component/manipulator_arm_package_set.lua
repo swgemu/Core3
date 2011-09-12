@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_manipulator_arm_package_set = object_draf
    targetTemplate = "object/tangible/component/droid/manipulator_arm_package_set.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/shared_manipulator_arm_package_set.iff",
              }
 
 }

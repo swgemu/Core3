@@ -74,7 +74,6 @@ object_draft_schematic_furniture_furniture_chair_kitchen = object_draft_schemati
    targetTemplate = "object/tangible/furniture/all/frn_all_chair_kitchen_s1.iff",
 
    additionalTemplates = {
-              "object/tangible/furniture/all/shared_frn_all_chair_kitchen_s1.iff",
              }
 
 }

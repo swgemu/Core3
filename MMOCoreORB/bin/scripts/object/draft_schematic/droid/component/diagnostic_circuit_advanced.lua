@@ -74,7 +74,6 @@ object_draft_schematic_droid_component_diagnostic_circuit_advanced = object_draf
    targetTemplate = "object/tangible/component/droid/repair/diagnostic_circuit_advanced.iff",
 
    additionalTemplates = {
-              "object/tangible/component/droid/repair/shared_diagnostic_circuit_advanced.iff",
              }
 
 }

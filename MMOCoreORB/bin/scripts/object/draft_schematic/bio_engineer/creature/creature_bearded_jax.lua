@@ -74,7 +74,6 @@ object_draft_schematic_bio_engineer_creature_creature_bearded_jax = object_draft
    targetTemplate = "object/tangible/deed/pet_deed/bearded_jax_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/pet_deed/shared_bearded_jax_deed.iff",
              }
 
 }

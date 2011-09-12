@@ -74,7 +74,6 @@ object_draft_schematic_munition_detonator_thermal_imperial_issue = object_draft_
    targetTemplate = "object/weapon/ranged/grenade/grenade_imperial_detonator.iff",
 
    additionalTemplates = {
-              "object/weapon/ranged/grenade/shared_grenade_imperial_detonator.iff",
              }
 
 }

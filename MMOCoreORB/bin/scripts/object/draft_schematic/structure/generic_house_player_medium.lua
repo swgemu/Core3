@@ -74,7 +74,6 @@ object_draft_schematic_structure_generic_house_player_medium = object_draft_sche
    targetTemplate = "object/tangible/deed/player_house_deed/generic_house_medium_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/player_house_deed/shared_generic_house_medium_deed.iff",
              }
 
 }

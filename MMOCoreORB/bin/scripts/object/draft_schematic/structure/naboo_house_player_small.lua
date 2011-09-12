@@ -74,7 +74,6 @@ object_draft_schematic_structure_naboo_house_player_small = object_draft_schemat
    targetTemplate = "object/tangible/deed/naboo/player_house_deed/naboo_house_small_deed.iff",
 
    additionalTemplates = {
-              "object/tangible/deed/naboo/player_house_deed/shared_naboo_house_small_deed.iff",
              }
 
 }

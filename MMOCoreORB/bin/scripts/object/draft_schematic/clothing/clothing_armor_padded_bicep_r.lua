@@ -74,7 +74,6 @@ object_draft_schematic_clothing_clothing_armor_padded_bicep_r = object_draft_sch
    targetTemplate = "object/tangible/wearables/armor/padded/armor_padded_s01_bicep_r.iff",
 
    additionalTemplates = {
-              "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bicep_r.iff",
              }
 
 }

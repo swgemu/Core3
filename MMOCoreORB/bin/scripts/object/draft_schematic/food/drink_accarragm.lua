@@ -74,7 +74,6 @@ object_draft_schematic_food_drink_accarragm = object_draft_schematic_food_shared
    targetTemplate = "object/tangible/food/crafted/drink_accarragm.iff",
 
    additionalTemplates = {
-              "object/tangible/food/crafted/shared_drink_accarragm.iff",
              }
 
 }

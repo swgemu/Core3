@@ -74,7 +74,6 @@ object_draft_schematic_chemistry_medpack_enhance_quickness_a = object_draft_sche
    targetTemplate = "object/tangible/medicine/crafted/medpack_enhance_quickness_a.iff",
 
    additionalTemplates = {
-              "object/tangible/medicine/crafted/shared_medpack_enhance_quickness_a.iff",
              }
 
 }
