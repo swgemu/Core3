@@ -62,7 +62,7 @@ which carries forward this exception.
 
 class SchematicMap : public Singleton<SchematicMap>, public Lua {
 
-	VectorMap<uint32, ManagedReference<DraftSchematic* > > schematicIdMap;
+	VectorMap<uint32, ManagedReference<DraftSchematic* > > schematicCrcMap;
 	VectorMap<String, DraftSchematicGroup* > groupMap;
 	ManagedReference<ZoneServer*> zoneServer;
 	ObjectManager* objectManager;
@@ -87,14 +87,14 @@ public:
 	void sendResourceWeightsTo(CreatureObject* player, uint32 schematicID);
 
 	DraftSchematic* get(uint32 schemid) {
-		return schematicIdMap.get(schemid);
+		return schematicCrcMap.get(schemid);
 	}
 
 private:
 
 	void loadSchematicGroups();
 	void loadDraftSchematicFile();
-	void mapDraftSchematic(DraftSchematic* schematic);
+	void buildSchematicGroups();
 };
 
 #endif /* SCHEMATICMAP_H_ */

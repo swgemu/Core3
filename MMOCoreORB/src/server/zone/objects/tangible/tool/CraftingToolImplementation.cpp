@@ -1138,15 +1138,18 @@ void CraftingToolImplementation::experimentRow(CraftingValues* craftingValues,
 
 void CraftingToolImplementation::customization(CreatureObject* player, String& name, int schematicCount, String& customization) {
 
-	Locker _locker(_this);
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
 	ManagedReference<TangibleObject *> prototype = getPrototype();
 
-	if (manufactureSchematic == NULL)
+	if(manufactureSchematic == NULL) {
+		sendSlotMessage(player, 0, IngredientSlot::NOSCHEMATIC);
 		return;
+	}
 
-	if (prototype == NULL)
+	if (prototype == NULL) {
+		sendSlotMessage(player, 0, IngredientSlot::PROTOTYPENOTFOUND);
 		return;
+	}
 
 	manufactureSchematic->setManufactureLimit(schematicCount);
 

@@ -1,5 +1,5 @@
 /*
- * InstallationObjectImplementation.cpp
+ * FactoryObjectImplementation.cpp
  *
  *  Created on: Jun 4, 2010
  *      Author: kyle

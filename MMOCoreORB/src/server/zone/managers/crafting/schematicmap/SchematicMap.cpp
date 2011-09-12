@@ -62,6 +62,8 @@ SchematicMap::SchematicMap() {
 	info("Loading schematics...");
 
 	Lua::init();
+
+	iffGroupMap.setAllowDuplicateInsertPlan();
 }
 
 SchematicMap::~SchematicMap() {
@@ -72,9 +74,10 @@ SchematicMap::~SchematicMap() {
 void SchematicMap::initialize(ZoneServer* server) {
 	zoneServer = server;
 	objectManager = zoneServer->getObjectManager();
-	loadSchematicGroups();
+
 	loadDraftSchematicDatabase();
 	loadDraftSchematicFile();
+	loadSchematicGroups();
 }
 
 void SchematicMap::loadSchematicGroups() {
@@ -102,6 +105,8 @@ void SchematicMap::loadSchematicGroups() {
 
 		iffGroupMap.put(schematicName.hashCode(), groupId);
 	}
+
+	buildSchematicGroups();
 }
 
 void SchematicMap::loadDraftSchematicDatabase() {
@@ -119,7 +124,9 @@ void SchematicMap::loadDraftSchematicDatabase() {
 
 		if(draftSchematic != NULL) {
 
-			mapDraftSchematic(draftSchematic);
+			if(!schematicCrcMap.contains(draftSchematic->getSchematicID()))
+				schematicCrcMap.put(draftSchematic->getSchematicID(), draftSchematic);
+
 			count++;
 		}
 	}
@@ -144,10 +151,9 @@ void SchematicMap::loadDraftSchematicFile() {
 		lua_rawgeti(L, -1, i + 1);
 		LuaObject luaObject(L);
 
-		uint32 id = luaObject.getIntField("id") + 0x10000000;
 		uint32 servercrc = luaObject.getIntField("crc");
 
-		DraftSchematic* schematic = schematicIdMap.get(id);
+		DraftSchematic* schematic = schematicCrcMap.get(servercrc);
 
 		luaObject.pop();
 
@@ -159,8 +165,10 @@ void SchematicMap::loadDraftSchematicFile() {
 				continue;
 			}
 
-			schematic->setSchematicID(id);
-			mapDraftSchematic(schematic);
+			schematic->setSchematicID(servercrc);
+
+			if(!schematicCrcMap.contains(schematic->getSchematicID()))
+				schematicCrcMap.put(schematic->getSchematicID(), schematic);
 		}
 	}
 
@@ -169,24 +177,29 @@ void SchematicMap::loadDraftSchematicFile() {
 	serverScriptCRCList.pop();
 }
 
-void SchematicMap::mapDraftSchematic(DraftSchematic* schematic) {
+void SchematicMap::buildSchematicGroups() {
 
-	if(iffGroupMap.contains(schematic->getServerObjectCRC()))
-		schematic->setGroupName(iffGroupMap.get(schematic->getServerObjectCRC()));
+	while(iffGroupMap.size() > 0) {
+		VectorMapEntry<uint32, String> entry = iffGroupMap.remove(0);
+		String groupName = entry.getValue();
 
-	if (schematic->getGroupName() != "") {
-		DraftSchematicGroup* group = groupMap.get(schematic->getGroupName());
+		DraftSchematic* schematic = schematicCrcMap.get(entry.getKey());
 
-		if (group == NULL) {
-			group = new DraftSchematicGroup();
-			groupMap.put(schematic->getGroupName(), group);
+		if(schematic != NULL) {
+
+			schematic->setGroupName(groupName);
+
+			DraftSchematicGroup* group = groupMap.get(groupName);
+
+			if (group == NULL) {
+				group = new DraftSchematicGroup();
+				groupMap.put(groupName, group);
+			}
+
+			if(!group->contains(schematic))
+				group->add(schematic);
 		}
-
-		if(!group->contains(schematic))
-			group->add(schematic);
 	}
-
-	schematicIdMap.put(schematic->getSchematicID(), schematic);
 }
 
 void SchematicMap::addSchematics(PlayerObject* playerObject,
@@ -202,9 +215,8 @@ void SchematicMap::addSchematics(PlayerObject* playerObject,
 
 			DraftSchematicGroup* dsg = groupMap.get(groupName);
 
-			for(int j = 0; j < dsg->size(); ++j) {
+			for(int j = 0; j < dsg->size(); ++j)
 				schematics.add(dsg->get(j));
-			}
 		}
 	}
 
@@ -255,7 +267,7 @@ void SchematicMap::removeSchematic(PlayerObject* playerObject,
 }
 
 void SchematicMap::sendDraftSlotsTo(CreatureObject* player, uint32 schematicID) {
-	ManagedReference<DraftSchematic*> schematic = schematicIdMap.get(schematicID);
+	ManagedReference<DraftSchematic*> schematic = schematicCrcMap.get(schematicID);
 
 	if (schematic == NULL)
 		return;
@@ -264,7 +276,7 @@ void SchematicMap::sendDraftSlotsTo(CreatureObject* player, uint32 schematicID) 
 }
 
 void SchematicMap::sendResourceWeightsTo(CreatureObject* player, uint32 schematicID) {
-	ManagedReference<DraftSchematic*> schematic = schematicIdMap.get(schematicID);
+	ManagedReference<DraftSchematic*> schematic = schematicCrcMap.get(schematicID);
 
 	if (schematic == NULL)
 		return;

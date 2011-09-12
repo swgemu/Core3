@@ -881,7 +881,6 @@ schematics = {
 {id = 840, crc = 2950111121}, -- object/draft_schematic/instrument/instrument_nalargon.iff
 {id = 841, crc = 796573052}, -- object/draft_schematic/chemistry/component/biologic_effect_controller.iff
 {id = 842, crc = 999660434}, -- object/draft_schematic/chemistry/component/liquid_delivery_suspension.iff
-{id = 843, crc = 3124938858}, -- object/draft_schematic/item/item_food_tool2.iff
 {id = 844, crc = 2630865920}, -- object/draft_schematic/chemistry/component/release_mechanism_duration.iff
 {id = 845, crc = 985687651}, -- object/draft_schematic/chemistry/component/solid_delivery_shell.iff
 {id = 846, crc = 84195930}, -- object/draft_schematic/chemistry/component/dispersal_mechanism.iff

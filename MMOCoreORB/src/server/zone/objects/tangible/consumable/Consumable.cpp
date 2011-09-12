@@ -579,8 +579,6 @@ void ConsumableImplementation::updateCraftingValues(ManufactureSchematic* schema
 	CraftingValues* craftingValues = schematic->getCraftingValues();
 	// server/zone/objects/tangible/consumable/Consumable.idl():  		int cond = craftingValues.getCurrentValue("hitpoints");
 	int cond = craftingValues->getCurrentValue("hitpoints");
-	// server/zone/objects/tangible/consumable/Consumable.idl():  		super.conditionDamage = cond;
-	TangibleObjectImplementation::conditionDamage = cond;
 	// server/zone/objects/tangible/consumable/Consumable.idl():  		super.maxCondition = cond;
 	TangibleObjectImplementation::maxCondition = cond;
 	// server/zone/objects/tangible/consumable/Consumable.idl():  	}
