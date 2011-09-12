@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_bookcase_modern = object_draft_schema
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/furniture/modern/shared_bookcase_modern_style_01.iff",
+
+   targetTemplate = "object/tangible/furniture/modern/bookcase_modern_style_01.iff",
+
+   additionalTemplates = {
              }
 
 }

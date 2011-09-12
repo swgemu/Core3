@@ -70,8 +70,10 @@ object_draft_schematic_structure_component_structure_small_storage_section = obj
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/structure/shared_structure_small_storage_section.iff",
+
+   targetTemplate = "object/tangible/component/structure/structure_small_storage_section.iff",
+
+   additionalTemplates = {
              }
 
 }

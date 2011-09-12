@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_armor_zam_pants = object_draft_schemati
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants.iff",
+
+   targetTemplate = "object/tangible/wearables/armor/zam/armor_zam_wesell_pants.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_droid_navicomputer_2 = object_draft_schematic_droid_share
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/droid/shared_navicomputer_2.iff",
+
+   targetTemplate = "object/tangible/droid/navicomputer_2.iff",
+
+   additionalTemplates = {
              }
 
 }

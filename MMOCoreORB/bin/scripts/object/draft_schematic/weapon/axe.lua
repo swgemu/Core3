@@ -70,8 +70,10 @@ object_draft_schematic_weapon_axe = object_draft_schematic_weapon_shared_axe:new
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/axe/shared_axe_heavy_duty.iff",
+
+   targetTemplate = "object/weapon/melee/axe/axe_heavy_duty.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_armor_shield_generator_personal_c = object_draft_schemati
    combineTypes = {0, 0, 0, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/armor/shared_shield_generator_personal_c.iff",
+
+   targetTemplate = "object/tangible/component/armor/shield_generator_personal_c.iff",
+
+   additionalTemplates = {
              }
 
 }

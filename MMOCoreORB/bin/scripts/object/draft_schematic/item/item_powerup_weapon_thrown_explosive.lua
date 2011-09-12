@@ -70,8 +70,10 @@ object_draft_schematic_item_item_powerup_weapon_thrown_explosive = object_draft_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/powerup/weapon/shared_thrown_explosive.iff",
+
+   targetTemplate = "object/tangible/powerup/weapon/thrown_explosive.iff",
+
+   additionalTemplates = {
              }
 
 }

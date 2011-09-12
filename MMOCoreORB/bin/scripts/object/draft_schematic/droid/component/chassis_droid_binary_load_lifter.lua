@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_chassis_droid_binary_load_lifter = object
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_binary_load_lifter_droid_chassis.iff",
+
+   targetTemplate = "object/tangible/component/droid/binary_load_lifter_droid_chassis.iff",
+
+   additionalTemplates = {
              }
 
 }

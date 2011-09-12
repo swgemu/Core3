@@ -70,8 +70,10 @@ object_draft_schematic_bio_engineer_creature_creature_kwi = object_draft_schemat
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/pet_deed/shared_kwi_deed.iff",
+
+   targetTemplate = "object/tangible/deed/pet_deed/kwi_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_item_item_parrot_cage = object_draft_schematic_item_share
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/parrot_cage/shared_parrot_cage.iff",
+
+   targetTemplate = "object/tangible/parrot_cage/parrot_cage.iff",
+
+   additionalTemplates = {
              }
 
 }

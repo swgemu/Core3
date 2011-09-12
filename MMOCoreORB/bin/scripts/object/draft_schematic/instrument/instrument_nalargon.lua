@@ -70,8 +70,10 @@ object_draft_schematic_instrument_instrument_nalargon = object_draft_schematic_i
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/instrument/shared_nalargon.iff",
+
+   targetTemplate = "object/tangible/instrument/nalargon.iff",
+
+   additionalTemplates = {
              }
 
 }

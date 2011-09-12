@@ -70,8 +70,10 @@ object_draft_schematic_item_item_repairkit_armor = object_draft_schematic_item_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/crafting/station/shared_armor_repair.iff",
+
+   targetTemplate = "object/tangible/crafting/station/armor_repair.iff",
+
+   additionalTemplates = {
              }
 
 }

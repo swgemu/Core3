@@ -70,8 +70,10 @@ object_draft_schematic_item_item_structure_tool = object_draft_schematic_item_sh
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/crafting/station/shared_structure_tool.iff",
+
+   targetTemplate = "object/tangible/crafting/station/structure_tool.iff",
+
+   additionalTemplates = {
              }
 
 }

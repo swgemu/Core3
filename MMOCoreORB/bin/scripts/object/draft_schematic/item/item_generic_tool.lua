@@ -70,8 +70,10 @@ object_draft_schematic_item_item_generic_tool = object_draft_schematic_item_shar
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/crafting/station/shared_generic_tool.iff",
+
+   targetTemplate = "object/tangible/crafting/station/generic_tool.iff",
+
+   additionalTemplates = {
              }
 
 }

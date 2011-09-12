@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_component_solid_delivery_shell_advanced = objec
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/chemistry/shared_solid_delivery_shell_advanced.iff",
+
+   targetTemplate = "object/tangible/component/chemistry/solid_delivery_shell_advanced.iff",
+
+   additionalTemplates = {
              }
 
 }

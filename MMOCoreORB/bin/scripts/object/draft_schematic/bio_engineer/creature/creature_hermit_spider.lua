@@ -70,8 +70,10 @@ object_draft_schematic_bio_engineer_creature_creature_hermit_spider = object_dra
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/pet_deed/shared_hermit_spider_deed.iff",
+
+   targetTemplate = "object/tangible/deed/pet_deed/hermit_spider_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

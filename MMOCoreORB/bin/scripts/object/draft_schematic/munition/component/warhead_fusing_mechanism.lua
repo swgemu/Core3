@@ -70,8 +70,10 @@ object_draft_schematic_munition_component_warhead_fusing_mechanism = object_draf
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff",
+
+   targetTemplate = "object/tangible/component/munition/warhead_fusing_mechanism.iff",
+
+   additionalTemplates = {
              }
 
 }

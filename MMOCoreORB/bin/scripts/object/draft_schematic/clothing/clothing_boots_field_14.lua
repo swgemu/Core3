@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_boots_field_14 = object_draft_schematic
    combineTypes = {0, 1, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/boots/shared_boots_s14.iff",
+
+   targetTemplate = "object/tangible/wearables/boots/boots_s14.iff",
+
+   additionalTemplates = {
              }
 
 }

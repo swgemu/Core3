@@ -70,8 +70,10 @@ object_draft_schematic_structure_installation_factory_clothing = object_draft_sc
    combineTypes = {0, 1, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/factory_deed/shared_factory_clothing_deed.iff",
+
+   targetTemplate = "object/tangible/deed/factory_deed/factory_clothing_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_structure_generic_house_player_large = object_draft_schem
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/player_house_deed/shared_generic_house_large_deed.iff",
+
+   targetTemplate = "object/tangible/deed/player_house_deed/generic_house_large_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

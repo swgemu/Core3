@@ -70,8 +70,10 @@ object_draft_schematic_food_dish_travel_biscuits = object_draft_schematic_food_s
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_dish_travel_biscuits.iff",
+
+   targetTemplate = "object/tangible/food/crafted/dish_travel_biscuits.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_bio_engineer_creature_creature_veermok = object_draft_sch
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/pet_deed/shared_veermok_deed.iff",
+
+   targetTemplate = "object/tangible/deed/pet_deed/veermok_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

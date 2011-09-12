@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_plants_potted_small = object_draft_sc
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/furniture/all/shared_frn_all_potted_plants_sml_s01.iff",
+
+   targetTemplate = "object/tangible/furniture/all/frn_all_potted_plants_sml_s01.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_weapon_battleaxe = object_draft_schematic_weapon_shared_b
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe.iff",
+
+   targetTemplate = "object/weapon/melee/2h_sword/2h_sword_battleaxe.iff",
+
+   additionalTemplates = {
              }
 
 }

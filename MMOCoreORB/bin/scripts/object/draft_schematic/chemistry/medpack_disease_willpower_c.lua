@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_medpack_disease_willpower_c = object_draft_sche
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/medicine/crafted/shared_medpack_disease_willpower_c.iff",
+
+   targetTemplate = "object/tangible/medicine/crafted/medpack_disease_willpower_c.iff",
+
+   additionalTemplates = {
              }
 
 }

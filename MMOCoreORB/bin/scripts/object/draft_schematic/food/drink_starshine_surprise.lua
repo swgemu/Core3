@@ -70,8 +70,10 @@ object_draft_schematic_food_drink_starshine_surprise = object_draft_schematic_fo
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_drink_starshine_surprise.iff",
+
+   targetTemplate = "object/tangible/food/crafted/drink_starshine_surprise.iff",
+
+   additionalTemplates = {
              }
 
 }

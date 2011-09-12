@@ -70,8 +70,10 @@ object_draft_schematic_weapon_rifle_t21 = object_draft_schematic_weapon_shared_r
    combineTypes = {0, 0, 0, 0, 1, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/rifle/shared_rifle_t21.iff",
+
+   targetTemplate = "object/weapon/ranged/rifle/rifle_t21.iff",
+
+   additionalTemplates = {
              }
 
 }

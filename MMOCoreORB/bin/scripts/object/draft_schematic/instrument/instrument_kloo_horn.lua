@@ -70,8 +70,10 @@ object_draft_schematic_instrument_instrument_kloo_horn = object_draft_schematic_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/instrument/shared_kloo_horn.iff",
+
+   targetTemplate = "object/tangible/instrument/kloo_horn.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_weapon_knife_vibroblade = object_draft_schematic_weapon_s
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/knife/shared_knife_vibroblade.iff",
+
+   targetTemplate = "object/weapon/melee/knife/knife_vibroblade.iff",
+
+   additionalTemplates = {
              }
 
 }

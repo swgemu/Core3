@@ -70,8 +70,10 @@ object_draft_schematic_structure_installation_mining_gas = object_draft_schemati
    combineTypes = {0, 0, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/harvester_deed/shared_harvester_gas_deed_medium.iff",
+
+   targetTemplate = "object/tangible/deed/harvester_deed/harvester_gas_deed_medium.iff",
+
+   additionalTemplates = {
              }
 
 }

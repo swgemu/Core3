@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_bodysuit_formal_06 = object_draft_schem
    combineTypes = {0, 1, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/bodysuit/shared_bodysuit_s06.iff",
+
+   targetTemplate = "object/tangible/wearables/bodysuit/bodysuit_s06.iff",
+
+   additionalTemplates = {
              }
 
 }

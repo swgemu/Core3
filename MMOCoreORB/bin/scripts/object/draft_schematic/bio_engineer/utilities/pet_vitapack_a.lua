@@ -70,8 +70,10 @@ object_draft_schematic_bio_engineer_utilities_pet_vitapack_a = object_draft_sche
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/medicine/pet/shared_pet_vitapack_a.iff",
+
+   targetTemplate = "object/tangible/medicine/pet/pet_vitapack_a.iff",
+
+   additionalTemplates = {
              }
 
 }

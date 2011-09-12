@@ -70,8 +70,10 @@ object_draft_schematic_weapon_component_chemical_dispersion_mechanism = object_d
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/component/weapon/shared_chemical_dispersion_mechanism.iff",
+
+   targetTemplate = "object/tangible/component/weapon/chemical_dispersion_mechanism.iff",
+
+   additionalTemplates = {
              }
 
 }

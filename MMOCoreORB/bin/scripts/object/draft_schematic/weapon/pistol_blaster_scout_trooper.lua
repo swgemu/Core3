@@ -70,8 +70,10 @@ object_draft_schematic_weapon_pistol_blaster_scout_trooper = object_draft_schema
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/pistol/shared_pistol_scout_blaster.iff",
+
+   targetTemplate = "object/weapon/ranged/pistol/pistol_scout_blaster.iff",
+
+   additionalTemplates = {
              }
 
 }

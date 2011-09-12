@@ -70,8 +70,10 @@ object_draft_schematic_food_component_ingredient_ball_of_dough = object_draft_sc
    combineTypes = {0},
    contribution = {100},
 
-   templates = {
-              "object/tangible/component/food/shared_ingredient_ball_of_dough.iff",
+
+   targetTemplate = "object/tangible/component/food/ingredient_ball_of_dough.iff",
+
+   additionalTemplates = {
              }
 
 }

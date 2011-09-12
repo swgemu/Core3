@@ -70,8 +70,10 @@ object_draft_schematic_scout_item_camokit_talus = object_draft_schematic_scout_s
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/scout/camokit/shared_camokit_talus.iff",
+
+   targetTemplate = "object/tangible/scout/camokit/camokit_talus.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_structure_installation_mining_organic_flora = object_draf
    combineTypes = {0, 0, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/harvester_deed/shared_harvester_flora_deed_medium.iff",
+
+   targetTemplate = "object/tangible/deed/harvester_deed/harvester_flora_deed_medium.iff",
+
+   additionalTemplates = {
              }
 
 }

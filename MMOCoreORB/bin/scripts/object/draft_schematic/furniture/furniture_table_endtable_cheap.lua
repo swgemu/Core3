@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_table_endtable_cheap = object_draft_s
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/furniture/cheap/shared_end_table_s01.iff",
+
+   targetTemplate = "object/tangible/furniture/cheap/end_table_s01.iff",
+
+   additionalTemplates = {
              }
 
 }

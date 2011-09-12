@@ -70,8 +70,10 @@ object_draft_schematic_food_drink_vasarian_brandy = object_draft_schematic_food_
    combineTypes = {1, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_drink_vasarian_brandy.iff",
+
+   targetTemplate = "object/tangible/food/crafted/drink_vasarian_brandy.iff",
+
+   additionalTemplates = {
              }
 
 }

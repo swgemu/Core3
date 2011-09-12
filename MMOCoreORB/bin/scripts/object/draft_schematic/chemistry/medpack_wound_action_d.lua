@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_medpack_wound_action_d = object_draft_schematic
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/medicine/crafted/shared_medpack_wound_action_d.iff",
+
+   targetTemplate = "object/tangible/medicine/crafted/medpack_wound_action_d.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_med_stimpack_e = object_draft_schematic_chemist
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_e.iff",
+
+   targetTemplate = "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_e.iff",
+
+   additionalTemplates = {
              }
 
 }

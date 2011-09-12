@@ -70,8 +70,10 @@ object_draft_schematic_weapon_rifle_blaster_dlt20 = object_draft_schematic_weapo
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/rifle/shared_rifle_dlt20.iff",
+
+   targetTemplate = "object/weapon/ranged/rifle/rifle_dlt20.iff",
+
+   additionalTemplates = {
              }
 
 }

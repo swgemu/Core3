@@ -70,8 +70,10 @@ object_draft_schematic_food_dessert_almond_kwevvu_crisp_munchies = object_draft_
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_dessert_almond_kwevvu_crisp_munchies.iff",
+
+   targetTemplate = "object/tangible/food/crafted/dessert_almond_kwevvu_crisp_munchies.iff",
+
+   additionalTemplates = {
              }
 
 }

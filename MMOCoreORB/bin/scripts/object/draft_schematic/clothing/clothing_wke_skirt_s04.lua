@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_wke_skirt_s04 = object_draft_schematic_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/wearables/wookiee/shared_wke_skirt_s04.iff",
+
+   targetTemplate = "object/tangible/wearables/wookiee/wke_skirt_s04.iff",
+
+   additionalTemplates = {
              }
 
 }

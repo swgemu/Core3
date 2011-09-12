@@ -70,8 +70,10 @@ object_draft_schematic_weapon_poleaxe_vibro = object_draft_schematic_weapon_shar
    combineTypes = {0, 0, 0, 1, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff",
+
+   targetTemplate = "object/weapon/melee/polearm/polearm_vibro_axe.iff",
+
+   additionalTemplates = {
              }
 
 }

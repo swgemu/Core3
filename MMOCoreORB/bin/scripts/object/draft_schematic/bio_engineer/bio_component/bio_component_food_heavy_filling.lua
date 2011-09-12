@@ -70,8 +70,10 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_heavy_filli
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/bio/shared_bio_component_food_heavy_filling.iff",
+
+   targetTemplate = "object/tangible/component/bio/bio_component_food_heavy_filling.iff",
+
+   additionalTemplates = {
              }
 
 }

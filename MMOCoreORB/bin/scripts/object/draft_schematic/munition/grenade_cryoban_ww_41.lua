@@ -70,8 +70,10 @@ object_draft_schematic_munition_grenade_cryoban_ww_41 = object_draft_schematic_m
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/grenade/shared_grenade_cryoban.iff",
+
+   targetTemplate = "object/weapon/ranged/grenade/grenade_cryoban.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_munition_grenade_proton = object_draft_schematic_munition
    combineTypes = {0, 0, 0, 0, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/grenade/shared_grenade_proton.iff",
+
+   targetTemplate = "object/weapon/ranged/grenade/grenade_proton.iff",
+
+   additionalTemplates = {
              }
 
 }

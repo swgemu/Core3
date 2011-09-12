@@ -70,8 +70,10 @@ object_draft_schematic_item_component_item_electronic_control_unit = object_draf
    combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/item/shared_electronic_control_unit.iff",
+
+   targetTemplate = "object/tangible/component/item/electronic_control_unit.iff",
+
+   additionalTemplates = {
              }
 
 }

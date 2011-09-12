@@ -70,8 +70,10 @@ object_draft_schematic_food_dessert_dweezel = object_draft_schematic_food_shared
    combineTypes = {1, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_dessert_dweezel.iff",
+
+   targetTemplate = "object/tangible/food/crafted/dessert_dweezel.iff",
+
+   additionalTemplates = {
              }
 
 }

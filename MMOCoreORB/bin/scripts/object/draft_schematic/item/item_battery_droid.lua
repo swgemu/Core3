@@ -70,8 +70,10 @@ object_draft_schematic_item_item_battery_droid = object_draft_schematic_item_sha
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/droid_battery/shared_battery.iff",
+
+   targetTemplate = "object/tangible/droid_battery/battery.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_spices_spice_gunjack = object_draft_schematic_spices_shar
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/food/spice/shared_spice_gunjack.iff",
+
+   targetTemplate = "object/tangible/food/spice/spice_gunjack.iff",
+
+   additionalTemplates = {
              }
 
 }

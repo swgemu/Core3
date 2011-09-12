@@ -70,8 +70,10 @@ object_draft_schematic_food_additive_additive_medium = object_draft_schematic_fo
    combineTypes = {0, 1},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/additive/shared_additive_medium.iff",
+
+   targetTemplate = "object/tangible/food/crafted/additive/additive_medium.iff",
+
+   additionalTemplates = {
              }
 
 }

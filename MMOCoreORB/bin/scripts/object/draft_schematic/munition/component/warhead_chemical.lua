@@ -70,8 +70,10 @@ object_draft_schematic_munition_component_warhead_chemical = object_draft_schema
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/munition/shared_warhead_chemical.iff",
+
+   targetTemplate = "object/tangible/component/munition/warhead_chemical.iff",
+
+   additionalTemplates = {
              }
 
 }

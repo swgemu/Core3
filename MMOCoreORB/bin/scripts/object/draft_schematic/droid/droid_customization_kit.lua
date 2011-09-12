@@ -70,8 +70,10 @@ object_draft_schematic_droid_droid_customization_kit = object_draft_schematic_dr
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/item/shared_droid_customization.iff",
+
+   targetTemplate = "object/tangible/item/droid_customization.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_weapon_pistol_blaster_cdef = object_draft_schematic_weapo
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/pistol/shared_pistol_cdef.iff",
+
+   targetTemplate = "object/weapon/ranged/pistol/pistol_cdef.iff",
+
+   additionalTemplates = {
              }
 
 }

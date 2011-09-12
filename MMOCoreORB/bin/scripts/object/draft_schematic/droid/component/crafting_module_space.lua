@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_crafting_module_space = object_draft_sche
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_crafting_module_space.iff",
+
+   targetTemplate = "object/tangible/component/droid/crafting_module_space.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_droid_bounty_probot_transmitter = object_draft_schematic_
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/mission/shared_mission_bounty_droid_probot.iff",
+
+   targetTemplate = "object/tangible/mission/mission_bounty_droid_probot.iff",
+
+   additionalTemplates = {
              }
 
 }

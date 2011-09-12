@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_ceremonial_leggings =
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_leggings.iff",
+
+   targetTemplate = "object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_leggings.iff",
+
+   additionalTemplates = {
              }
 
 }

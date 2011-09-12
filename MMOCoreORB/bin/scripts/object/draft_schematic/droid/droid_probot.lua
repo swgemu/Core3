@@ -70,8 +70,10 @@ object_draft_schematic_droid_droid_probot = object_draft_schematic_droid_shared_
    combineTypes = {0, 0, 0, 1, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/pet_deed/shared_deed_probot_basic.iff",
+
+   targetTemplate = "object/tangible/deed/pet_deed/deed_probot_basic.iff",
+
+   additionalTemplates = {
              }
 
 }

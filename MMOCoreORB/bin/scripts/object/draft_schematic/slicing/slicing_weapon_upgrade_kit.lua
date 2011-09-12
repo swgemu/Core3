@@ -70,8 +70,10 @@ object_draft_schematic_slicing_slicing_weapon_upgrade_kit = object_draft_schemat
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/slicing/shared_slicing_weapon_upgrade_kit.iff",
+
+   targetTemplate = "object/tangible/slicing/slicing_weapon_upgrade_kit.iff",
+
+   additionalTemplates = {
              }
 
 }

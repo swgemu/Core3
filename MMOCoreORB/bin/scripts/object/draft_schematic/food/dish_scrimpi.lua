@@ -70,8 +70,10 @@ object_draft_schematic_food_dish_scrimpi = object_draft_schematic_food_shared_di
    combineTypes = {0, 1, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_dish_scrimpi.iff",
+
+   targetTemplate = "object/tangible/food/crafted/dish_scrimpi.iff",
+
+   additionalTemplates = {
              }
 
 }

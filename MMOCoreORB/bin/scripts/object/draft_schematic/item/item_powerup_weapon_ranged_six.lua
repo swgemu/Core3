@@ -70,8 +70,10 @@ object_draft_schematic_item_item_powerup_weapon_ranged_six = object_draft_schema
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/powerup/weapon/shared_ranged_stock.iff",
+
+   targetTemplate = "object/tangible/powerup/weapon/ranged_stock.iff",
+
+   additionalTemplates = {
              }
 
 }

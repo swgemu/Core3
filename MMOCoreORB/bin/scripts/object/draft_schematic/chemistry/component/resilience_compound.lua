@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_component_resilience_compound = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/chemistry/shared_resilience_compound.iff",
+
+   targetTemplate = "object/tangible/component/chemistry/resilience_compound.iff",
+
+   additionalTemplates = {
              }
 
 }

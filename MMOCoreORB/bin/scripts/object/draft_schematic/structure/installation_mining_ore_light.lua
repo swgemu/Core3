@@ -70,8 +70,10 @@ object_draft_schematic_structure_installation_mining_ore_light = object_draft_sc
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/harvester_deed/shared_harvester_ore_s1_deed.iff",
+
+   targetTemplate = "object/tangible/deed/harvester_deed/harvester_ore_s1_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

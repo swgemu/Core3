@@ -70,8 +70,10 @@ object_draft_schematic_weapon_sword = object_draft_schematic_weapon_shared_sword
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/sword/shared_sword_01.iff",
+
+   targetTemplate = "object/weapon/melee/sword/sword_01.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_droid_droid_treadwell = object_draft_schematic_droid_shar
    combineTypes = {0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/pet_deed/shared_deed_treadwell_basic.iff",
+
+   targetTemplate = "object/tangible/deed/pet_deed/deed_treadwell_basic.iff",
+
+   additionalTemplates = {
              }
 
 }

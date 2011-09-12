@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_hat_twilek_casual_02 = object_draft_sch
    combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/hat/shared_hat_twilek_s02.iff",
+
+   targetTemplate = "object/tangible/wearables/hat/hat_twilek_s02.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_armor_composite_bracer_l = object_draft
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/armor/composite/shared_armor_composite_bracer_l.iff",
+
+   targetTemplate = "object/tangible/wearables/armor/composite/armor_composite_bracer_l.iff",
+
+   additionalTemplates = {
              }
 
 }

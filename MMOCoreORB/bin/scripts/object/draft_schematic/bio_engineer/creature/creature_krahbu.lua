@@ -70,8 +70,10 @@ object_draft_schematic_bio_engineer_creature_creature_krahbu = object_draft_sche
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/pet_deed/shared_krahbu_deed.iff",
+
+   targetTemplate = "object/tangible/deed/pet_deed/krahbu_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_manipulator_arm_package_set = object_draf
    combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_manipulator_arm_package_set.iff",
+
+   targetTemplate = "object/tangible/component/droid/manipulator_arm_package_set.iff",
+
+   additionalTemplates = {
              }
 
 }

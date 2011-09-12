@@ -70,8 +70,10 @@ object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = objec
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff",
+
+   targetTemplate = "object/tangible/component/weapon/lightsaber/lightsaber_refined_crystal_pack.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_structure_city_hospital_naboo = object_draft_schematic_st
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/city_deed/shared_hospital_naboo_deed.iff",
+
+   targetTemplate = "object/tangible/deed/city_deed/hospital_naboo_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

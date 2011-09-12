@@ -70,8 +70,10 @@ object_draft_schematic_structure_installation_generator_fusion = object_draft_sc
    combineTypes = {0, 0, 1, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/generator_deed/shared_generator_fusion_deed.iff",
+
+   targetTemplate = "object/tangible/deed/generator_deed/generator_fusion_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

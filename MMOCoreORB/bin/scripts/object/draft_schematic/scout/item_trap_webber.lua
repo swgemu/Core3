@@ -70,8 +70,10 @@ object_draft_schematic_scout_item_trap_webber = object_draft_schematic_scout_sha
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/scout/trap/shared_trap_webber.iff",
+
+   targetTemplate = "object/tangible/scout/trap/trap_webber.iff",
+
+   additionalTemplates = {
              }
 
 }

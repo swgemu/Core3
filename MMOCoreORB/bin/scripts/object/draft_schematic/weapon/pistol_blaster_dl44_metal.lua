@@ -70,8 +70,10 @@ object_draft_schematic_weapon_pistol_blaster_dl44_metal = object_draft_schematic
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/pistol/shared_pistol_dl44_metal.iff",
+
+   targetTemplate = "object/weapon/ranged/pistol/pistol_dl44_metal.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_munition_component_warhead_light = object_draft_schematic
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/munition/shared_warhead_light.iff",
+
+   targetTemplate = "object/tangible/component/munition/warhead_light.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_item_component_item_electronics_memory_module = object_dr
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/item/shared_electronics_memory_module.iff",
+
+   targetTemplate = "object/tangible/component/item/electronics_memory_module.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_clothing_component_clothing_reinforced_fiber_panels = obj
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff",
+
+   targetTemplate = "object/tangible/component/clothing/reinforced_fiber_panels.iff",
+
+   additionalTemplates = {
              }
 
 }

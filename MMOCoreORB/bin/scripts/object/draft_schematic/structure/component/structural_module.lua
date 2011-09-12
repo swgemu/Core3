@@ -70,8 +70,10 @@ object_draft_schematic_structure_component_structural_module = object_draft_sche
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/component/structure/shared_structural_module.iff",
+
+   targetTemplate = "object/tangible/component/structure/structural_module.iff",
+
+   additionalTemplates = {
              }
 
 }

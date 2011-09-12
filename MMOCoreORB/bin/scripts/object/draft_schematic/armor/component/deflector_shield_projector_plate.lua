@@ -70,8 +70,10 @@ object_draft_schematic_armor_component_deflector_shield_projector_plate = object
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/component/armor/shared_deflector_shield_projector_plate.iff",
+
+   targetTemplate = "object/tangible/component/armor/deflector_shield_projector_plate.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_weapon_sword_curved = object_draft_schematic_weapon_share
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/sword/shared_sword_02.iff",
+
+   targetTemplate = "object/weapon/melee/sword/sword_02.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_weapon_component_reinforcement_core = object_draft_schema
    combineTypes = {0},
    contribution = {100},
 
-   templates = {
-              "object/tangible/component/weapon/shared_reinforcement_core.iff",
+
+   targetTemplate = "object/tangible/component/weapon/reinforcement_core.iff",
+
+   additionalTemplates = {
              }
 
 }

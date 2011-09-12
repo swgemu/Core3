@@ -70,8 +70,10 @@ object_draft_schematic_item_item_firework_three = object_draft_schematic_item_sh
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/firework/shared_firework_three.iff",
+
+   targetTemplate = "object/tangible/firework/firework_three.iff",
+
+   additionalTemplates = {
              }
 
 }

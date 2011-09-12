@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_ith_hat_chef_02 = object_draft_schemati
    combineTypes = {1, 0, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/ithorian/shared_hat_chef_s02_ith.iff",
+
+   targetTemplate = "object/tangible/wearables/ithorian/hat_chef_s02_ith.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_med_fire_blanket = object_draft_schematic_chemi
    combineTypes = {0, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/medicine/crafted/shared_medic_fire_blanket.iff",
+
+   targetTemplate = "object/tangible/medicine/crafted/medic_fire_blanket.iff",
+
+   additionalTemplates = {
              }
 
 }

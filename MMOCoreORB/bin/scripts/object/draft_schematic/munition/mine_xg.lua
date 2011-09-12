@@ -70,8 +70,10 @@ object_draft_schematic_munition_mine_xg = object_draft_schematic_munition_shared
    combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/mine/shared_wp_mine_xg.iff",
+
+   targetTemplate = "object/weapon/mine/wp_mine_xg.iff",
+
+   additionalTemplates = {
              }
 
 }

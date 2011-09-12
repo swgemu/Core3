@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_backpack_field_03 = object_draft_schema
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/backpack/shared_backpack_s03.iff",
+
+   targetTemplate = "object/tangible/wearables/backpack/backpack_s03.iff",
+
+   additionalTemplates = {
              }
 
 }

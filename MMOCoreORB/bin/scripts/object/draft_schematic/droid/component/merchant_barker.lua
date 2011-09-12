@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_merchant_barker = object_draft_schematic_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_merchant_barker.iff",
+
+   targetTemplate = "object/tangible/component/droid/merchant_barker.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_weapon_lance_vibro = object_draft_schematic_weapon_shared
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/polearm/shared_lance_vibrolance.iff",
+
+   targetTemplate = "object/weapon/melee/polearm/lance_vibrolance.iff",
+
+   additionalTemplates = {
              }
 
 }

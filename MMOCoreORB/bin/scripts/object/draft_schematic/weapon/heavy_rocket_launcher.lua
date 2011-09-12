@@ -70,8 +70,10 @@ object_draft_schematic_weapon_heavy_rocket_launcher = object_draft_schematic_wea
    combineTypes = {0, 0, 0, 1, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/heavy/shared_heavy_rocket_launcher.iff",
+
+   targetTemplate = "object/weapon/ranged/heavy/heavy_rocket_launcher.iff",
+
+   additionalTemplates = {
              }
 
 }

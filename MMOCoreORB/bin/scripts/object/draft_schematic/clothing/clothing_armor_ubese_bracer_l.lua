@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_armor_ubese_bracer_l = object_draft_sch
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/armor/ubese/shared_armor_ubese_bracer_l.iff",
+
+   targetTemplate = "object/tangible/wearables/armor/ubese/armor_ubese_bracer_l.iff",
+
+   additionalTemplates = {
              }
 
 }

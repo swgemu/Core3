@@ -70,8 +70,10 @@ object_draft_schematic_weapon_component_blaster_pistol_barrel_advanced = object_
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/weapon/shared_blaster_pistol_barrel_advanced.iff",
+
+   targetTemplate = "object/tangible/component/weapon/blaster_pistol_barrel_advanced.iff",
+
+   additionalTemplates = {
              }
 
 }

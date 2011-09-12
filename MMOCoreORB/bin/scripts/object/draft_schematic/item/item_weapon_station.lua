@@ -70,8 +70,10 @@ object_draft_schematic_item_item_weapon_station = object_draft_schematic_item_sh
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/crafting/station/shared_weapon_station.iff",
+
+   targetTemplate = "object/tangible/crafting/station/weapon_station.iff",
+
+   additionalTemplates = {
              }
 
 }

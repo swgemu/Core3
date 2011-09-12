@@ -70,8 +70,10 @@ object_draft_schematic_item_item_repairkit_clothing = object_draft_schematic_ite
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/crafting/station/shared_clothing_repair.iff",
+
+   targetTemplate = "object/tangible/crafting/station/clothing_repair.iff",
+
+   additionalTemplates = {
              }
 
 }

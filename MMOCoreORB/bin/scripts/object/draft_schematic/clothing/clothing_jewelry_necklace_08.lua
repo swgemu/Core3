@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_08 = object_draft_sche
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/necklace/shared_necklace_s08.iff",
+
+   targetTemplate = "object/tangible/wearables/necklace/necklace_s08.iff",
+
+   additionalTemplates = {
              }
 
 }

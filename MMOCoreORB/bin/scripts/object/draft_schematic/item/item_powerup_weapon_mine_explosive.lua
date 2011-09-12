@@ -70,8 +70,10 @@ object_draft_schematic_item_item_powerup_weapon_mine_explosive = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/powerup/weapon/shared_mine_explosive.iff",
+
+   targetTemplate = "object/tangible/powerup/weapon/mine_explosive.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_bookcase_cheap = object_draft_schemat
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/furniture/cheap/shared_bookcase_s01.iff",
+
+   targetTemplate = "object/tangible/furniture/cheap/bookcase_s01.iff",
+
+   additionalTemplates = {
              }
 
 }

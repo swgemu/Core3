@@ -70,8 +70,10 @@ object_draft_schematic_structure_component_structure_light_power_core_unit = obj
    combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/structure/shared_light_power_core_unit.iff",
+
+   targetTemplate = "object/tangible/component/structure/light_power_core_unit.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_chair_loveseat_modern = object_draft_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/furniture/modern/shared_love_seat_modern_style_01.iff",
+
+   targetTemplate = "object/tangible/furniture/modern/love_seat_modern_style_01.iff",
+
+   additionalTemplates = {
              }
 
 }

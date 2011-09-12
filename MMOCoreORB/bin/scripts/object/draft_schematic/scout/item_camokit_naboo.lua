@@ -70,8 +70,10 @@ object_draft_schematic_scout_item_camokit_naboo = object_draft_schematic_scout_s
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/scout/camokit/shared_camokit_naboo.iff",
+
+   targetTemplate = "object/tangible/scout/camokit/camokit_naboo.iff",
+
+   additionalTemplates = {
              }
 
 }

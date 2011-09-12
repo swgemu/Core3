@@ -70,8 +70,10 @@ object_draft_schematic_scout_item_camp_quality = object_draft_schematic_scout_sh
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/scout/camp/shared_camp_quality.iff",
+
+   targetTemplate = "object/tangible/scout/camp/camp_quality.iff",
+
+   additionalTemplates = {
              }
 
 }

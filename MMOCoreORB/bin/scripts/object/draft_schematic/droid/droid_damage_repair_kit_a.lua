@@ -70,8 +70,10 @@ object_draft_schematic_droid_droid_damage_repair_kit_a = object_draft_schematic_
    combineTypes = {0, 0, 0, 1, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/medicine/pet/shared_droid_damage_kit_a.iff",
+
+   targetTemplate = "object/tangible/medicine/pet/droid_damage_kit_a.iff",
+
+   additionalTemplates = {
              }
 
 }

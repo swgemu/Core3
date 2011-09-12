@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_chassis_droid_surgical = object_draft_sch
    combineTypes = {1, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_surgical_droid_chassis.iff",
+
+   targetTemplate = "object/tangible/component/droid/surgical_droid_chassis.iff",
+
+   additionalTemplates = {
              }
 
 }

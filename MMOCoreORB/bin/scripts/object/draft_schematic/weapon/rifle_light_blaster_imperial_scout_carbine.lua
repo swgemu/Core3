@@ -70,8 +70,10 @@ object_draft_schematic_weapon_rifle_light_blaster_imperial_scout_carbine = objec
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/carbine/shared_carbine_elite.iff",
+
+   targetTemplate = "object/weapon/ranged/carbine/carbine_elite.iff",
+
+   additionalTemplates = {
              }
 
 }

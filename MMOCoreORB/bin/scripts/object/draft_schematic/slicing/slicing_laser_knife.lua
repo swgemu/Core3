@@ -70,8 +70,10 @@ object_draft_schematic_slicing_slicing_laser_knife = object_draft_schematic_slic
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/slicing/shared_slicing_laser_knife.iff",
+
+   targetTemplate = "object/tangible/slicing/slicing_laser_knife.iff",
+
+   additionalTemplates = {
              }
 
 }

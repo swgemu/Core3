@@ -70,8 +70,10 @@ object_draft_schematic_structure_component_structure_harvesting_mechanism = obje
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/structure/shared_harvesting_mechanism.iff",
+
+   targetTemplate = "object/tangible/component/structure/harvesting_mechanism.iff",
+
+   additionalTemplates = {
              }
 
 }

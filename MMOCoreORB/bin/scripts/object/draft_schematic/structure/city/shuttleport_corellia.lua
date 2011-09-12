@@ -70,8 +70,10 @@ object_draft_schematic_structure_city_shuttleport_corellia = object_draft_schema
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/city_deed/shared_shuttleport_corellia_deed.iff",
+
+   targetTemplate = "object/tangible/deed/city_deed/shuttleport_corellia_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

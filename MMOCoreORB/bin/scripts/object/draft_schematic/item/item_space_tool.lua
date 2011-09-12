@@ -70,8 +70,10 @@ object_draft_schematic_item_item_space_tool = object_draft_schematic_item_shared
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/crafting/station/shared_space_tool.iff",
+
+   targetTemplate = "object/tangible/crafting/station/space_tool.iff",
+
+   additionalTemplates = {
              }
 
 }

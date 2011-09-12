@@ -70,8 +70,10 @@ object_draft_schematic_weapon_knife_survival = object_draft_schematic_weapon_sha
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/knife/shared_knife_survival.iff",
+
+   targetTemplate = "object/weapon/melee/knife/knife_survival.iff",
+
+   additionalTemplates = {
              }
 
 }

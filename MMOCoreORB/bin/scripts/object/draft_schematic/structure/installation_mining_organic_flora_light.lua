@@ -70,8 +70,10 @@ object_draft_schematic_structure_installation_mining_organic_flora_light = objec
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/harvester_deed/shared_harvester_flora_deed.iff",
+
+   targetTemplate = "object/tangible/deed/harvester_deed/harvester_flora_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

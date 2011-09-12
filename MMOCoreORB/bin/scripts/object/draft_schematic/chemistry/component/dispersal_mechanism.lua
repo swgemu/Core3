@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_component_dispersal_mechanism = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/chemistry/shared_dispersal_mechanism.iff",
+
+   targetTemplate = "object/tangible/component/chemistry/dispersal_mechanism.iff",
+
+   additionalTemplates = {
              }
 
 }

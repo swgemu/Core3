@@ -70,8 +70,10 @@ object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine = object_draft_sc
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/carbine/shared_carbine_dh17.iff",
+
+   targetTemplate = "object/weapon/ranged/carbine/carbine_dh17.iff",
+
+   additionalTemplates = {
              }
 
 }

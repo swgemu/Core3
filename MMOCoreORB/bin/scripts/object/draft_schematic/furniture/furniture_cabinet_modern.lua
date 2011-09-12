@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_cabinet_modern = object_draft_schemat
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/furniture/modern/shared_cabinet_modern_style_01.iff",
+
+   targetTemplate = "object/tangible/furniture/modern/cabinet_modern_style_01.iff",
+
+   additionalTemplates = {
              }
 
 }

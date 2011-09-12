@@ -70,8 +70,10 @@ object_draft_schematic_scout_item_trap_noise_maker = object_draft_schematic_scou
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/scout/trap/shared_trap_noise_maker.iff",
+
+   targetTemplate = "object/tangible/scout/trap/trap_noise_maker.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_vehicle_civilian_speeder_bike = object_draft_schematic_ve
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/deed/vehicle_deed/shared_speederbike_deed.iff",
+
+   targetTemplate = "object/tangible/deed/vehicle_deed/speederbike_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

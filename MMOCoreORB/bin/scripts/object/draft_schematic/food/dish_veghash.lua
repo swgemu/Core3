@@ -70,8 +70,10 @@ object_draft_schematic_food_dish_veghash = object_draft_schematic_food_shared_di
    combineTypes = {1, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_dish_veghash.iff",
+
+   targetTemplate = "object/tangible/food/crafted/dish_veghash.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_structure_city_bank_tatooine = object_draft_schematic_str
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/city_deed/shared_bank_tatooine_deed.iff",
+
+   targetTemplate = "object/tangible/deed/city_deed/bank_tatooine_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

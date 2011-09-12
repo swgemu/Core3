@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_ith_shirt_casual_09 = object_draft_sche
    combineTypes = {1, 1, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/ithorian/shared_ith_shirt_s09.iff",
+
+   targetTemplate = "object/tangible/wearables/ithorian/ith_shirt_s09.iff",
+
+   additionalTemplates = {
              }
 
 }

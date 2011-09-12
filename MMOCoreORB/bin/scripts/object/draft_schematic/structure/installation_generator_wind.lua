@@ -70,8 +70,10 @@ object_draft_schematic_structure_installation_generator_wind = object_draft_sche
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/generator_deed/shared_generator_wind_deed.iff",
+
+   targetTemplate = "object/tangible/deed/generator_deed/generator_wind_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

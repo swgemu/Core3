@@ -70,8 +70,10 @@ object_draft_schematic_food_dish_havla = object_draft_schematic_food_shared_dish
    combineTypes = {1, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_dish_havla.iff",
+
+   targetTemplate = "object/tangible/food/crafted/dish_havla.iff",
+
+   additionalTemplates = {
              }
 
 }

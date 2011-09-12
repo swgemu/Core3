@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_gloves_field_11 = object_draft_schemati
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/gloves/shared_gloves_s11.iff",
+
+   targetTemplate = "object/tangible/wearables/gloves/gloves_s11.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_droid_droid_le_repair = object_draft_schematic_droid_shar
    combineTypes = {1, 0, 1, 1, 1, 1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/pet_deed/shared_deed_le_repair_basic.iff",
+
+   targetTemplate = "object/tangible/deed/pet_deed/deed_le_repair_basic.iff",
+
+   additionalTemplates = {
              }
 
 }

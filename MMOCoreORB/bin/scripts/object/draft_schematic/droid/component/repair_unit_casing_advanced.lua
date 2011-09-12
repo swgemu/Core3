@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_repair_unit_casing_advanced = object_draf
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/droid/repair/shared_repair_unit_casing_advanced.iff",
+
+   targetTemplate = "object/tangible/component/droid/repair/repair_unit_casing_advanced.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_structure_component_structure_generator_turbine = object_
    combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/structure/shared_generator_turbine.iff",
+
+   targetTemplate = "object/tangible/component/structure/generator_turbine.iff",
+
+   additionalTemplates = {
              }
 
 }

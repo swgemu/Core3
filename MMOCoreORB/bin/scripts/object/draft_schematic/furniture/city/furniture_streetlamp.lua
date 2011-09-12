@@ -70,8 +70,10 @@ object_draft_schematic_furniture_city_furniture_streetlamp = object_draft_schema
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/furniture/city/shared_streetlamp_large_01.iff",
+
+   targetTemplate = "object/tangible/furniture/city/streetlamp_large_01.iff",
+
+   additionalTemplates = {
              }
 
 }

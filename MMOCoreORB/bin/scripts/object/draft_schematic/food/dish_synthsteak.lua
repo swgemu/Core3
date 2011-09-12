@@ -70,8 +70,10 @@ object_draft_schematic_food_dish_synthsteak = object_draft_schematic_food_shared
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_dish_synthsteak.iff",
+
+   targetTemplate = "object/tangible/food/crafted/dish_synthsteak.iff",
+
+   additionalTemplates = {
              }
 
 }

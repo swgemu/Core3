@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_advanced_droid_frame = object_draft_schem
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_advanced_droid_frame.iff",
+
+   targetTemplate = "object/tangible/component/droid/advanced_droid_frame.iff",
+
+   additionalTemplates = {
              }
 
 }

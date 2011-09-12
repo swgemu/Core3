@@ -70,8 +70,10 @@ object_draft_schematic_structure_city_bank_naboo = object_draft_schematic_struct
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/city_deed/shared_bank_naboo_deed.iff",
+
+   targetTemplate = "object/tangible/deed/city_deed/bank_naboo_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

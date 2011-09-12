@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_belt_formal_14 = object_draft_schematic
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/belt/shared_belt_s14.iff",
+
+   targetTemplate = "object/tangible/wearables/belt/belt_s14.iff",
+
+   additionalTemplates = {
              }
 
 }

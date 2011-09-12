@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_component_release_mechanism_duration = object_d
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/chemistry/shared_release_mechanism_duration.iff",
+
+   targetTemplate = "object/tangible/component/chemistry/release_mechanism_duration.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_jewelry_ring_02 = object_draft_schemati
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/ring/shared_ring_s02.iff",
+
+   targetTemplate = "object/tangible/wearables/ring/ring_s02.iff",
+
+   additionalTemplates = {
              }
 
 }

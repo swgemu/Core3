@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_casual_01 = object_draft_s
    combineTypes = {1, 1, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/ithorian/shared_ith_bodysuit_s01.iff",
+
+   targetTemplate = "object/tangible/wearables/ithorian/ith_bodysuit_s01.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_armor_bone_gloves = object_draft_schema
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/armor/bone/shared_armor_bone_s01_gloves.iff",
+
+   targetTemplate = "object/tangible/wearables/armor/bone/armor_bone_s01_gloves.iff",
+
+   additionalTemplates = {
              }
 
 }

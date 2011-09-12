@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_armor_padded_belt = object_draft_schema
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/armor/padded/shared_armor_padded_s01_belt.iff",
+
+   targetTemplate = "object/tangible/wearables/armor/padded/armor_padded_s01_belt.iff",
+
+   additionalTemplates = {
              }
 
 }

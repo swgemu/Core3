@@ -70,8 +70,10 @@ object_draft_schematic_food_component_ingredient_carbosyrup = object_draft_schem
    combineTypes = {0},
    contribution = {100},
 
-   templates = {
-              "object/tangible/component/food/shared_ingredient_carbosyrup.iff",
+
+   targetTemplate = "object/tangible/component/food/ingredient_carbosyrup.iff",
+
+   additionalTemplates = {
              }
 
 }

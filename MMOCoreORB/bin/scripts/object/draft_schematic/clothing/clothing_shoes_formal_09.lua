@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_shoes_formal_09 = object_draft_schemati
    combineTypes = {0, 1, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/shoes/shared_shoes_s09.iff",
+
+   targetTemplate = "object/tangible/wearables/shoes/shoes_s09.iff",
+
+   additionalTemplates = {
              }
 
 }

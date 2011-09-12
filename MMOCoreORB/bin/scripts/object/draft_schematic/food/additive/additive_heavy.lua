@@ -70,8 +70,10 @@ object_draft_schematic_food_additive_additive_heavy = object_draft_schematic_foo
    combineTypes = {0, 1},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/additive/shared_additive_heavy.iff",
+
+   targetTemplate = "object/tangible/food/crafted/additive/additive_heavy.iff",
+
+   additionalTemplates = {
              }
 
 }

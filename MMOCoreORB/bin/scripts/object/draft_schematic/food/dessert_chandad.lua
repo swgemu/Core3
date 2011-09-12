@@ -70,8 +70,10 @@ object_draft_schematic_food_dessert_chandad = object_draft_schematic_food_shared
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_dessert_chandad.iff",
+
+   targetTemplate = "object/tangible/food/crafted/dessert_chandad.iff",
+
+   additionalTemplates = {
              }
 
 }

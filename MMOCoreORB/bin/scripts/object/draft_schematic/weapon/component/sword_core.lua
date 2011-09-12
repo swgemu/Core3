@@ -70,8 +70,10 @@ object_draft_schematic_weapon_component_sword_core = object_draft_schematic_weap
    combineTypes = {0},
    contribution = {100},
 
-   templates = {
-              "object/tangible/component/weapon/shared_sword_core.iff",
+
+   targetTemplate = "object/tangible/component/weapon/sword_core.iff",
+
+   additionalTemplates = {
              }
 
 }

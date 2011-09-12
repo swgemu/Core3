@@ -70,8 +70,10 @@ object_draft_schematic_item_item_fishing_pole = object_draft_schematic_item_shar
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/fishing/shared_fishing_pole.iff",
+
+   targetTemplate = "object/tangible/fishing/fishing_pole.iff",
+
+   additionalTemplates = {
              }
 
 }

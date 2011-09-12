@@ -70,8 +70,10 @@ object_draft_schematic_vehicle_civilian_landspeeder_x34 = object_draft_schematic
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/deed/vehicle_deed/shared_landspeeder_x34_deed.iff",
+
+   targetTemplate = "object/tangible/deed/vehicle_deed/landspeeder_x34_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

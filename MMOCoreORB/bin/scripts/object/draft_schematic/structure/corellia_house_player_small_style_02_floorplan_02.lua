@@ -70,8 +70,10 @@ object_draft_schematic_structure_corellia_house_player_small_style_02_floorplan_
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/player_house_deed/shared_corellia_house_small_style_02_floor_02_deed.iff",
+
+   targetTemplate = "object/tangible/deed/player_house_deed/corellia_house_small_style_02_floor_02_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

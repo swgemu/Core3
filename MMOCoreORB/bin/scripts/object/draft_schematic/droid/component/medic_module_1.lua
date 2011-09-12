@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_medic_module_1 = object_draft_schematic_d
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_medic_module_1.iff",
+
+   targetTemplate = "object/tangible/component/droid/medic_module_1.iff",
+
+   additionalTemplates = {
              }
 
 }

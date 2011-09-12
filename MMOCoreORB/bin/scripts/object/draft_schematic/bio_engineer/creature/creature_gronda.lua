@@ -70,8 +70,10 @@ object_draft_schematic_bio_engineer_creature_creature_gronda = object_draft_sche
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/pet_deed/shared_gronda_deed.iff",
+
+   targetTemplate = "object/tangible/deed/pet_deed/gronda_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

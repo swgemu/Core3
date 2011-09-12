@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_medpack_disease_area_focus_a = object_draft_sch
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/medicine/crafted/shared_medpack_disease_area_focus_a.iff",
+
+   targetTemplate = "object/tangible/medicine/crafted/medpack_disease_area_focus_a.iff",
+
+   additionalTemplates = {
              }
 
 }

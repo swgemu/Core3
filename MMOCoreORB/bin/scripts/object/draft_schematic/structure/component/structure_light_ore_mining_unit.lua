@@ -70,8 +70,10 @@ object_draft_schematic_structure_component_structure_light_ore_mining_unit = obj
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/structure/shared_light_ore_mining_unit.iff",
+
+   targetTemplate = "object/tangible/component/structure/light_ore_mining_unit.iff",
+
+   additionalTemplates = {
              }
 
 }

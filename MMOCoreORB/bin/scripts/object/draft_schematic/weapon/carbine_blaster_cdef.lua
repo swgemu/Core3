@@ -70,8 +70,10 @@ object_draft_schematic_weapon_carbine_blaster_cdef = object_draft_schematic_weap
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/carbine/shared_carbine_cdef.iff",
+
+   targetTemplate = "object/weapon/ranged/carbine/carbine_cdef.iff",
+
+   additionalTemplates = {
              }
 
 }

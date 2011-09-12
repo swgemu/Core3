@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_armor_ithorian_guardian_helmet = object
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_helmet.iff",
+
+   targetTemplate = "object/tangible/wearables/armor/ithorian_guardian/ith_armor_s02_helmet.iff",
+
+   additionalTemplates = {
              }
 
 }

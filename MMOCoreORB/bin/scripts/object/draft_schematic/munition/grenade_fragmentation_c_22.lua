@@ -70,8 +70,10 @@ object_draft_schematic_munition_grenade_fragmentation_c_22 = object_draft_schema
    combineTypes = {0, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/grenade/shared_grenade_fragmentation.iff",
+
+   targetTemplate = "object/weapon/ranged/grenade/grenade_fragmentation.iff",
+
+   additionalTemplates = {
              }
 
 }

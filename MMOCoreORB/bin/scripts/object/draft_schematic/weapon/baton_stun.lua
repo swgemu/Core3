@@ -70,8 +70,10 @@ object_draft_schematic_weapon_baton_stun = object_draft_schematic_weapon_shared_
    combineTypes = {0, 0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/baton/shared_baton_stun.iff",
+
+   targetTemplate = "object/weapon/melee/baton/baton_stun.iff",
+
+   additionalTemplates = {
              }
 
 }

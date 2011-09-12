@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_table_endtable_modern = object_draft_
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/furniture/modern/shared_end_table_large_modern_style_01.iff",
+
+   targetTemplate = "object/tangible/furniture/modern/end_table_large_modern_style_01.iff",
+
+   additionalTemplates = {
              }
 
 }

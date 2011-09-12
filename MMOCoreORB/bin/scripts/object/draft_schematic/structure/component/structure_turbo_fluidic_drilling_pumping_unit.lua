@@ -70,8 +70,10 @@ object_draft_schematic_structure_component_structure_turbo_fluidic_drilling_pump
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/structure/shared_turbo_fluidic_drilling_pumping_unit.iff",
+
+   targetTemplate = "object/tangible/component/structure/turbo_fluidic_drilling_pumping_unit.iff",
+
+   additionalTemplates = {
              }
 
 }

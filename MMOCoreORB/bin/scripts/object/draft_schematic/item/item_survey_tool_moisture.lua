@@ -70,8 +70,10 @@ object_draft_schematic_item_item_survey_tool_moisture = object_draft_schematic_i
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/survey_tool/shared_survey_tool_moisture.iff",
+
+   targetTemplate = "object/tangible/survey_tool/survey_tool_moisture.iff",
+
+   additionalTemplates = {
              }
 
 }

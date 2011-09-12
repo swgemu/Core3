@@ -70,8 +70,10 @@ object_draft_schematic_structure_corellia_house_guild_hall = object_draft_schema
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/guild_deed/shared_corellia_guild_deed.iff",
+
+   targetTemplate = "object/tangible/deed/guild_deed/corellia_guild_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

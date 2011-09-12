@@ -70,8 +70,10 @@ object_draft_schematic_item_component_item_micro_sensor_suite = object_draft_sch
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/item/shared_micro_sensor_suite.iff",
+
+   targetTemplate = "object/tangible/component/item/micro_sensor_suite.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_couch_elegant = object_draft_schemati
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/furniture/elegant/shared_couch_s01.iff",
+
+   targetTemplate = "object/tangible/furniture/elegant/couch_s01.iff",
+
+   additionalTemplates = {
              }
 
 }

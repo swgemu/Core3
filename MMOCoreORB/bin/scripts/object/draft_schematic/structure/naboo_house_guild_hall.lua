@@ -70,8 +70,10 @@ object_draft_schematic_structure_naboo_house_guild_hall = object_draft_schematic
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/guild_deed/shared_naboo_guild_deed.iff",
+
+   targetTemplate = "object/tangible/deed/guild_deed/naboo_guild_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

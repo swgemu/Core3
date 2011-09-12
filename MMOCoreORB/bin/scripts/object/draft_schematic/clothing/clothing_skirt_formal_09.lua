@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_skirt_formal_09 = object_draft_schemati
    combineTypes = {0, 1, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/skirt/shared_skirt_s09.iff",
+
+   targetTemplate = "object/tangible/wearables/skirt/skirt_s09.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_combat_module = object_draft_schematic_dr
    combineTypes = {0, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_combat_module.iff",
+
+   targetTemplate = "object/tangible/component/droid/combat_module.iff",
+
+   additionalTemplates = {
              }
 
 }

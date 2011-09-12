@@ -70,8 +70,10 @@ object_draft_schematic_slicing_slicing_flow_analyzer = object_draft_schematic_sl
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/slicing/shared_slicing_flow_analyzer.iff",
+
+   targetTemplate = "object/tangible/slicing/slicing_flow_analyzer.iff",
+
+   additionalTemplates = {
              }
 
 }

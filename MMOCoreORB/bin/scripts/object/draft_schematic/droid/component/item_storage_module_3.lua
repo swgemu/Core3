@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_item_storage_module_3 = object_draft_sche
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_item_storage_module_3.iff",
+
+   targetTemplate = "object/tangible/component/droid/item_storage_module_3.iff",
+
+   additionalTemplates = {
              }
 
 }

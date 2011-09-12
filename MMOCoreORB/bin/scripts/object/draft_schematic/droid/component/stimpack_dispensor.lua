@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_stimpack_dispensor = object_draft_schemat
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_stimpack_dispensor.iff",
+
+   targetTemplate = "object/tangible/component/droid/stimpack_dispensor.iff",
+
+   additionalTemplates = {
              }
 
 }

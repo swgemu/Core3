@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_component_biologic_effect_controller = object_d
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/chemistry/shared_biologic_effect_controller.iff",
+
+   targetTemplate = "object/tangible/component/chemistry/biologic_effect_controller.iff",
+
+   additionalTemplates = {
              }
 
 }

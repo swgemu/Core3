@@ -70,8 +70,10 @@ object_draft_schematic_weapon_component_blaster_power_handler_advanced = object_
    combineTypes = {0, 0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/weapon/shared_blaster_power_handler_advanced.iff",
+
+   targetTemplate = "object/tangible/component/weapon/blaster_power_handler_advanced.iff",
+
+   additionalTemplates = {
              }
 
 }

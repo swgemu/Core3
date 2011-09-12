@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_bustier_casual_03 = object_draft_schema
    combineTypes = {1, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/bustier/shared_bustier_s03.iff",
+
+   targetTemplate = "object/tangible/wearables/bustier/bustier_s03.iff",
+
+   additionalTemplates = {
              }
 
 }

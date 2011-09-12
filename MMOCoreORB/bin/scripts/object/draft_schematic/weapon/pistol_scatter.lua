@@ -70,8 +70,10 @@ object_draft_schematic_weapon_pistol_scatter = object_draft_schematic_weapon_sha
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/pistol/shared_pistol_scatter.iff",
+
+   targetTemplate = "object/weapon/ranged/pistol/pistol_scatter.iff",
+
+   additionalTemplates = {
              }
 
 }

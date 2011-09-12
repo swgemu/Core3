@@ -70,8 +70,10 @@ object_draft_schematic_food_dish_vercupti_of_agazza_boleruuee = object_draft_sch
    combineTypes = {0, 0, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_dish_vercupti_of_agazza_boleruuee.iff",
+
+   targetTemplate = "object/tangible/food/crafted/dish_vercupti_of_agazza_boleruuee.iff",
+
+   additionalTemplates = {
              }
 
 }

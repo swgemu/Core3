@@ -70,8 +70,10 @@ object_draft_schematic_weapon_staff_reinforced = object_draft_schematic_weapon_s
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/polearm/shared_lance_staff_wood_s2.iff",
+
+   targetTemplate = "object/weapon/melee/polearm/lance_staff_wood_s2.iff",
+
+   additionalTemplates = {
              }
 
 }

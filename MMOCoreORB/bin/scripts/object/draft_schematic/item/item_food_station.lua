@@ -70,8 +70,10 @@ object_draft_schematic_item_item_food_station = object_draft_schematic_item_shar
    combineTypes = {0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/crafting/station/shared_food_station.iff",
+
+   targetTemplate = "object/tangible/crafting/station/food_station.iff",
+
+   additionalTemplates = {
              }
 
 }

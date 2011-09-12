@@ -70,8 +70,10 @@ object_draft_schematic_item_item_configurable_sided_dice = object_draft_schemati
    combineTypes = {0, 0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/dice/shared_eqp_configurable_group_dice.iff",
+
+   targetTemplate = "object/tangible/dice/eqp_configurable_group_dice.iff",
+
+   additionalTemplates = {
              }
 
 }

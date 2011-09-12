@@ -70,8 +70,10 @@ object_draft_schematic_scout_item_camp_elite = object_draft_schematic_scout_shar
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/scout/camp/shared_camp_elite.iff",
+
+   targetTemplate = "object/tangible/scout/camp/camp_elite.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_ith_robe_formal_02 = object_draft_schem
    combineTypes = {0, 1, 1, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/ithorian/shared_ith_robe_s03.iff",
+
+   targetTemplate = "object/tangible/wearables/ithorian/ith_robe_s03.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_bookcase_elegant = object_draft_schem
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/furniture/elegant/shared_bookcase_s01.iff",
+
+   targetTemplate = "object/tangible/furniture/elegant/bookcase_s01.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_weapon_lightsaber_lightsaber_training = object_draft_sche
    combineTypes = {0, 1, 0, 0, 1, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_training.iff",
+
+   targetTemplate = "object/weapon/melee/sword/crafted_saber/sword_lightsaber_training.iff",
+
+   additionalTemplates = {
              }
 
 }

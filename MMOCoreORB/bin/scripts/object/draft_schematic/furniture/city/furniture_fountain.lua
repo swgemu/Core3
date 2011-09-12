@@ -70,8 +70,10 @@ object_draft_schematic_furniture_city_furniture_fountain = object_draft_schemati
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/furniture/city/shared_fountain_generic.iff",
+
+   targetTemplate = "object/tangible/furniture/city/fountain_generic.iff",
+
+   additionalTemplates = {
              }
 
 }

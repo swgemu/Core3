@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_chassis_droid_le_repair = object_draft_sc
    combineTypes = {1, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_le_repair_droid_chassis.iff",
+
+   targetTemplate = "object/tangible/component/droid/le_repair_droid_chassis.iff",
+
+   additionalTemplates = {
              }
 
 }

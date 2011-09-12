@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_armor_padded_gloves = object_draft_sche
    combineTypes = {0, 0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/armor/padded/shared_armor_padded_s01_gloves.iff",
+
+   targetTemplate = "object/tangible/wearables/armor/padded/armor_padded_s01_gloves.iff",
+
+   additionalTemplates = {
              }
 
 }

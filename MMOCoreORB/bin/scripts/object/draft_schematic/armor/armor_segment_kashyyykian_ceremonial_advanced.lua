@@ -70,8 +70,10 @@ object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial_advanced = obj
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial_advanced.iff",
+
+   targetTemplate = "object/tangible/component/armor/armor_segment_kashyyykian_ceremonial_advanced.iff",
+
+   additionalTemplates = {
              }
 
 }

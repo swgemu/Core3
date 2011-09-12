@@ -70,8 +70,10 @@ object_draft_schematic_clothing_component_clothing_jewelry_setting = object_draf
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/component/clothing/shared_jewelry_setting.iff",
+
+   targetTemplate = "object/tangible/component/clothing/jewelry_setting.iff",
+
+   additionalTemplates = {
              }
 
 }

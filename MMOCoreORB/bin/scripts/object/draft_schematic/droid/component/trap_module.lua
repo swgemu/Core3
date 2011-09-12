@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_trap_module = object_draft_schematic_droi
    combineTypes = {0, 0, 0, 0},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_trap_module.iff",
+
+   targetTemplate = "object/tangible/component/droid/trap_module.iff",
+
+   additionalTemplates = {
              }
 
 }

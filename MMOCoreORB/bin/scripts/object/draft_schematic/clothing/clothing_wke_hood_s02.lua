@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_wke_hood_s02 = object_draft_schematic_c
    combineTypes = {1, 1, 0, 1, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/wookiee/shared_wke_hood_s02.iff",
+
+   targetTemplate = "object/tangible/wearables/wookiee/wke_hood_s02.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_spices_spice_booster_blue = object_draft_schematic_spices
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/food/spice/shared_spice_booster_blue.iff",
+
+   targetTemplate = "object/tangible/food/spice/spice_booster_blue.iff",
+
+   additionalTemplates = {
              }
 
 }

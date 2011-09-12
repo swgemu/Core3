@@ -70,8 +70,10 @@ object_draft_schematic_food_dessert_bofa_treat = object_draft_schematic_food_sha
    combineTypes = {0, 0, 1},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/food/crafted/shared_dessert_bofa_treat.iff",
+
+   targetTemplate = "object/tangible/food/crafted/dessert_bofa_treat.iff",
+
+   additionalTemplates = {
              }
 
 }

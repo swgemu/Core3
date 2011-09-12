@@ -70,8 +70,10 @@ object_draft_schematic_space_reverse_engineering_analysis_tool = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/ship/crafted/reverse_engineering/shared_analysis_tool.iff",
+
+   targetTemplate = "object/tangible/ship/crafted/reverse_engineering/analysis_tool.iff",
+
+   additionalTemplates = {
              }
 
 }

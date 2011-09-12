@@ -70,8 +70,10 @@ object_draft_schematic_armor_armor_segment_composite_advanced = object_draft_sch
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/armor/shared_armor_segment_composite_advanced.iff",
+
+   targetTemplate = "object/tangible/component/armor/armor_segment_composite_advanced.iff",
+
+   additionalTemplates = {
              }
 
 }

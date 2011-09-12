@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_armoire_cheap = object_draft_schemati
    combineTypes = {0},
    contribution = {100},
 
-   templates = {
-              "object/tangible/furniture/cheap/shared_armoire_s01.iff",
+
+   targetTemplate = "object/tangible/furniture/cheap/armoire_s01.iff",
+
+   additionalTemplates = {
              }
 
 }

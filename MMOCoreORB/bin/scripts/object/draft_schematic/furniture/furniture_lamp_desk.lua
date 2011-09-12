@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_lamp_desk = object_draft_schematic_fu
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/furniture/all/shared_frn_all_lamp_desk_s01.iff",
+
+   targetTemplate = "object/tangible/furniture/all/frn_all_lamp_desk_s01.iff",
+
+   additionalTemplates = {
              }
 
 }

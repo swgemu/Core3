@@ -70,8 +70,10 @@ object_draft_schematic_weapon_knife_twilek_dagger = object_draft_schematic_weapo
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/weapon/melee/knife/shared_knife_dagger.iff",
+
+   targetTemplate = "object/weapon/melee/knife/knife_dagger.iff",
+
+   additionalTemplates = {
              }
 
 }

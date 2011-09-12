@@ -70,8 +70,10 @@ object_draft_schematic_space_repair_droid_interface_repair_kit = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/ship/crafted/repair/shared_repair_kit_droid_interface.iff",
+
+   targetTemplate = "object/tangible/ship/crafted/repair/repair_kit_droid_interface.iff",
+
+   additionalTemplates = {
              }
 
 }

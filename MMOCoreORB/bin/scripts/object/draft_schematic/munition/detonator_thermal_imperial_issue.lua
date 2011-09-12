@@ -70,8 +70,10 @@ object_draft_schematic_munition_detonator_thermal_imperial_issue = object_draft_
    combineTypes = {0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/grenade/shared_grenade_imperial_detonator.iff",
+
+   targetTemplate = "object/weapon/ranged/grenade/grenade_imperial_detonator.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_clothing_component_clothing_metal_fasteners = object_draf
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/clothing/shared_metal_fasteners.iff",
+
+   targetTemplate = "object/tangible/component/clothing/metal_fasteners.iff",
+
+   additionalTemplates = {
              }
 
 }

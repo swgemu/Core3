@@ -70,8 +70,10 @@ object_draft_schematic_structure_city_garage_naboo = object_draft_schematic_stru
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/city_deed/shared_garage_naboo_deed.iff",
+
+   targetTemplate = "object/tangible/deed/city_deed/garage_naboo_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_droid_motive_system = object_draft_schema
    combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_droid_motive_system.iff",
+
+   targetTemplate = "object/tangible/component/droid/droid_motive_system.iff",
+
+   additionalTemplates = {
              }
 
 }

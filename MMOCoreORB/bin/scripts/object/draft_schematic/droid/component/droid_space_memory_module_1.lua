@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draf
    combineTypes = {0, 0, 0, 0, 1},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/droid/shared_droid_space_memory_module_1.iff",
+
+   targetTemplate = "object/tangible/droid/droid_space_memory_module_1.iff",
+
+   additionalTemplates = {
              }
 
 }

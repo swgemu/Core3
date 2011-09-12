@@ -70,8 +70,10 @@ object_draft_schematic_munition_detonator_thermal_class_a = object_draft_schemat
    combineTypes = {0, 0, 0, 0, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/weapon/ranged/grenade/shared_grenade_thermal_detonator.iff",
+
+   targetTemplate = "object/weapon/ranged/grenade/grenade_thermal_detonator.iff",
+
+   additionalTemplates = {
              }
 
 }

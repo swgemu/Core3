@@ -70,8 +70,10 @@ object_draft_schematic_structure_installation_generator_solar = object_draft_sch
    combineTypes = {0, 0, 0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/generator_deed/shared_generator_solar_deed.iff",
+
+   targetTemplate = "object/tangible/deed/generator_deed/generator_solar_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

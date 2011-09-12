@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_wke_shoulder_pad_s02 = object_draft_sch
    combineTypes = {1, 0, 1, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s02.iff",
+
+   targetTemplate = "object/tangible/wearables/wookiee/wke_shoulder_pad_s02.iff",
+
+   additionalTemplates = {
              }
 
 }

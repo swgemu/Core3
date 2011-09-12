@@ -70,8 +70,10 @@ object_draft_schematic_structure_naboo_house_player_large = object_draft_schemat
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/deed/player_house_deed/shared_naboo_house_large_deed.iff",
+
+   targetTemplate = "object/tangible/deed/player_house_deed/naboo_house_large_deed.iff",
+
+   additionalTemplates = {
              }
 
 }

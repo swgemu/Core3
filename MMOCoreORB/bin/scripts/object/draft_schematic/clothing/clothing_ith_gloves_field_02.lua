@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_ith_gloves_field_02 = object_draft_sche
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/ithorian/shared_ith_gloves_s02.iff",
+
+   targetTemplate = "object/tangible/wearables/ithorian/ith_gloves_s02.iff",
+
+   additionalTemplates = {
              }
 
 }

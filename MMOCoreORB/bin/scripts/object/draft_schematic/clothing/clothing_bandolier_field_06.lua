@@ -70,8 +70,10 @@ object_draft_schematic_clothing_clothing_bandolier_field_06 = object_draft_schem
    combineTypes = {1, 0, 0, 1},
    contribution = {100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/wearables/bandolier/shared_bandolier_s06.iff",
+
+   targetTemplate = "object/tangible/wearables/bandolier/bandolier_s06.iff",
+
+   additionalTemplates = {
              }
 
 }

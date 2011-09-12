@@ -70,8 +70,10 @@ object_draft_schematic_weapon_component_stock = object_draft_schematic_weapon_co
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/weapon/shared_stock.iff",
+
+   targetTemplate = "object/tangible/component/weapon/stock.iff",
+
+   additionalTemplates = {
              }
 
 }

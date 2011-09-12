@@ -70,8 +70,10 @@ object_draft_schematic_instrument_instrument_fanfar = object_draft_schematic_ins
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/instrument/shared_fanfar.iff",
+
+   targetTemplate = "object/tangible/instrument/fanfar.iff",
+
+   additionalTemplates = {
              }
 
 }

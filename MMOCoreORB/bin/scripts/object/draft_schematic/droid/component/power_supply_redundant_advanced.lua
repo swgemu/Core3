@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_power_supply_redundant_advanced = object_
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/repair/shared_power_supply_redundant_advanced.iff",
+
+   targetTemplate = "object/tangible/component/droid/repair/power_supply_redundant_advanced.iff",
+
+   additionalTemplates = {
              }
 
 }

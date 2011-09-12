@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_sensor_package_droid = object_draft_schem
    combineTypes = {0, 0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_sensor_package_droid.iff",
+
+   targetTemplate = "object/tangible/component/droid/sensor_package_droid.iff",
+
+   additionalTemplates = {
              }
 
 }

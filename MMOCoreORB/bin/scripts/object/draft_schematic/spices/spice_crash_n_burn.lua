@@ -70,8 +70,10 @@ object_draft_schematic_spices_spice_crash_n_burn = object_draft_schematic_spices
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/food/spice/shared_spice_crash_n_burn.iff",
+
+   targetTemplate = "object/tangible/food/spice/spice_crash_n_burn.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_clothing_component_clothing_fiberplast_panel = object_dra
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/clothing/shared_fiberplast_panel.iff",
+
+   targetTemplate = "object/tangible/component/clothing/fiberplast_panel.iff",
+
+   additionalTemplates = {
              }
 
 }

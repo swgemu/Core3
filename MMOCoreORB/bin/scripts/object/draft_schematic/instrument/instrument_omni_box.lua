@@ -70,8 +70,10 @@ object_draft_schematic_instrument_instrument_omni_box = object_draft_schematic_i
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/instrument/shared_ommni_box.iff",
+
+   targetTemplate = "object/tangible/instrument/ommni_box.iff",
+
+   additionalTemplates = {
              }
 
 }

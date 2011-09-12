@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_med_stimpack_state_blinded_a = object_draft_sch
    combineTypes = {0, 0, 0, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/medicine/crafted/shared_medpack_blinded_a.iff",
+
+   targetTemplate = "object/tangible/medicine/crafted/medpack_blinded_a.iff",
+
+   additionalTemplates = {
              }
 
 }

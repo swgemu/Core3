@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_performer_effects_c = object_draft_schema
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/component/droid/shared_performer_effects_c.iff",
+
+   targetTemplate = "object/tangible/component/droid/performer_effects_c.iff",
+
+   additionalTemplates = {
              }
 
 }

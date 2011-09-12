@@ -70,8 +70,10 @@ object_draft_schematic_weapon_component_scope_weapon_advanced = object_draft_sch
    combineTypes = {0, 0, 0, 0, 0},
    contribution = {100, 100, 100, 100, 100},
 
-   templates = {
-              "object/tangible/component/weapon/shared_scope_weapon_advanced.iff",
+
+   targetTemplate = "object/tangible/component/weapon/scope_weapon_advanced.iff",
+
+   additionalTemplates = {
              }
 
 }

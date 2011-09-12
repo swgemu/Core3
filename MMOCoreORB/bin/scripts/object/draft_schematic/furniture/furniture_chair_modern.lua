@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_chair_modern = object_draft_schematic
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/furniture/modern/shared_chair_modern_style_01.iff",
+
+   targetTemplate = "object/tangible/furniture/modern/chair_modern_style_01.iff",
+
+   additionalTemplates = {
              }
 
 }

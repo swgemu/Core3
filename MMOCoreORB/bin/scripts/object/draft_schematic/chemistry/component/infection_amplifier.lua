@@ -70,8 +70,10 @@ object_draft_schematic_chemistry_component_infection_amplifier = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/chemistry/shared_infection_amplifier.iff",
+
+   targetTemplate = "object/tangible/component/chemistry/infection_amplifier.iff",
+
+   additionalTemplates = {
              }
 
 }

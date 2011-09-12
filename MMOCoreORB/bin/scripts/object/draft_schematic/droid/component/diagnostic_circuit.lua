@@ -70,8 +70,10 @@ object_draft_schematic_droid_component_diagnostic_circuit = object_draft_schemat
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/component/droid/repair/shared_diagnostic_circuit.iff",
+
+   targetTemplate = "object/tangible/component/droid/repair/diagnostic_circuit.iff",
+
+   additionalTemplates = {
              }
 
 }

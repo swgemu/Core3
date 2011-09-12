@@ -70,8 +70,10 @@ object_draft_schematic_scout_item_camokit_dantooine = object_draft_schematic_sco
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/scout/camokit/shared_camokit_dantooine.iff",
+
+   targetTemplate = "object/tangible/scout/camokit/camokit_dantooine.iff",
+
+   additionalTemplates = {
              }
 
 }

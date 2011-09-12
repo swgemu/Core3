@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_chair_metal_wheeled = object_draft_sc
    combineTypes = {0, 0, 0},
    contribution = {100, 100, 100},
 
-   templates = {
-              "object/tangible/furniture/all/shared_frn_all_chair_meatal_wheeled_s1.iff",
+
+   targetTemplate = "object/tangible/furniture/all/frn_all_chair_meatal_wheeled_s1.iff",
+
+   additionalTemplates = {
              }
 
 }

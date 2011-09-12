@@ -70,8 +70,10 @@ object_draft_schematic_item_item_twenty_sided_dice = object_draft_schematic_item
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/dice/shared_eqp_twenty_sided_dice_set.iff",
+
+   targetTemplate = "object/tangible/dice/eqp_twenty_sided_dice_set.iff",
+
+   additionalTemplates = {
              }
 
 }

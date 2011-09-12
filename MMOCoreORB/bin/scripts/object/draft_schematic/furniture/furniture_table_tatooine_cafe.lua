@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_table_tatooine_cafe = object_draft_sc
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/furniture/tatooine/shared_frn_tato_tbl_cafe_table_style_01.iff",
+
+   targetTemplate = "object/tangible/furniture/tatooine/frn_tato_tbl_cafe_table_style_01.iff",
+
+   additionalTemplates = {
              }
 
 }

@@ -70,8 +70,10 @@ object_draft_schematic_instrument_instrument_slitherhorn = object_draft_schemati
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/instrument/shared_slitherhorn.iff",
+
+   targetTemplate = "object/tangible/instrument/slitherhorn.iff",
+
+   additionalTemplates = {
              }
 
 }

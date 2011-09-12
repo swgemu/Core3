@@ -70,8 +70,10 @@ object_draft_schematic_furniture_furniture_droid_detector = object_draft_schemat
    combineTypes = {0, 0},
    contribution = {100, 100},
 
-   templates = {
-              "object/tangible/furniture/tatooine/shared_frn_tatt_cantina_droid_detector.iff",
+
+   targetTemplate = "object/tangible/furniture/tatooine/frn_tatt_cantina_droid_detector.iff",
+
+   additionalTemplates = {
              }
 
 }
