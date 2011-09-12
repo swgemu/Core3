@@ -74,6 +74,7 @@ object_draft_schematic_chemistry_medpack_enhance_poison_c = object_draft_schemat
    targetTemplate = "object/tangible/medicine/crafted/medpack_enhance_poison_c.iff",
 
    additionalTemplates = {
+              "object/tangible/medicine/crafted/shared_medpack_enhance_poison_c.iff",
              }
 
 }

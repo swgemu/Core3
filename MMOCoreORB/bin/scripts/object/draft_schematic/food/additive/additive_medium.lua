@@ -74,6 +74,7 @@ object_draft_schematic_food_additive_additive_medium = object_draft_schematic_fo
    targetTemplate = "object/tangible/food/crafted/additive/additive_medium.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/additive/shared_additive_medium.iff",
              }
 
 }

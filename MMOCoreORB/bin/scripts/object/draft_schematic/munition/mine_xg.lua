@@ -74,6 +74,7 @@ object_draft_schematic_munition_mine_xg = object_draft_schematic_munition_shared
    targetTemplate = "object/weapon/mine/wp_mine_xg.iff",
 
    additionalTemplates = {
+              "object/weapon/mine/shared_wp_mine_xg.iff",
              }
 
 }

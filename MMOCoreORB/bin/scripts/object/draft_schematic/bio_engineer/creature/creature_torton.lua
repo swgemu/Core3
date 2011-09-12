@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_creature_creature_torton = object_draft_sche
    targetTemplate = "object/tangible/deed/pet_deed/torton_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_torton_deed.iff",
              }
 
 }

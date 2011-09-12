@@ -74,6 +74,7 @@ object_draft_schematic_structure_installation_mining_liquid_heavy = object_draft
    targetTemplate = "object/tangible/deed/harvester_deed/harvester_liquid_deed_heavy.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_heavy.iff",
              }
 
 }

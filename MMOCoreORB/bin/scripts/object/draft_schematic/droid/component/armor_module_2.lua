@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_armor_module_2 = object_draft_schematic_d
    targetTemplate = "object/tangible/component/droid/armor_module_2.iff",
 
    additionalTemplates = {
+              "object/tangible/component/droid/shared_armor_module_2.iff",
              }
 
 }

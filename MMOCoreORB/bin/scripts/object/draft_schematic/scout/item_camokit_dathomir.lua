@@ -74,6 +74,7 @@ object_draft_schematic_scout_item_camokit_dathomir = object_draft_schematic_scou
    targetTemplate = "object/tangible/scout/camokit/camokit_dathomir.iff",
 
    additionalTemplates = {
+              "object/tangible/scout/camokit/shared_camokit_dathomir.iff",
              }
 
 }

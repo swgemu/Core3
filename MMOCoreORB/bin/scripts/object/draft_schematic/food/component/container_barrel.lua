@@ -74,6 +74,7 @@ object_draft_schematic_food_component_container_barrel = object_draft_schematic_
    targetTemplate = "object/tangible/component/food/container_barrel.iff",
 
    additionalTemplates = {
+              "object/tangible/component/food/shared_container_barrel.iff",
              }
 
 }

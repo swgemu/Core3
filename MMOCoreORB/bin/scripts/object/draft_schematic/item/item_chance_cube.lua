@@ -74,6 +74,7 @@ object_draft_schematic_item_item_chance_cube = object_draft_schematic_item_share
    targetTemplate = "object/tangible/dice/eqp_chance_cube.iff",
 
    additionalTemplates = {
+              "object/tangible/dice/shared_eqp_chance_cube.iff",
              }
 
 }

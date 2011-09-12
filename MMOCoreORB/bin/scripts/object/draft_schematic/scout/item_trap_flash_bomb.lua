@@ -74,6 +74,7 @@ object_draft_schematic_scout_item_trap_flash_bomb = object_draft_schematic_scout
    targetTemplate = "object/tangible/scout/trap/trap_flash_bomb.iff",
 
    additionalTemplates = {
+              "object/tangible/scout/trap/shared_trap_flash_bomb.iff",
              }
 
 }

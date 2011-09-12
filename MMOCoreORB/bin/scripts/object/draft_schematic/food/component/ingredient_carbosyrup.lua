@@ -74,6 +74,7 @@ object_draft_schematic_food_component_ingredient_carbosyrup = object_draft_schem
    targetTemplate = "object/tangible/component/food/ingredient_carbosyrup.iff",
 
    additionalTemplates = {
+              "object/tangible/component/food/shared_ingredient_carbosyrup.iff",
              }
 
 }

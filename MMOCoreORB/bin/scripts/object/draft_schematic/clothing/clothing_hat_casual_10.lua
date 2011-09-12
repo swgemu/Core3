@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_hat_casual_10 = object_draft_schematic_
    targetTemplate = "object/tangible/wearables/hat/hat_s10.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/hat/shared_hat_s10.iff",
              }
 
 }

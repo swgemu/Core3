@@ -74,6 +74,7 @@ object_draft_schematic_munition_mine_dxr55 = object_draft_schematic_munition_sha
    targetTemplate = "object/weapon/mine/wp_mine_drx55.iff",
 
    additionalTemplates = {
+              "object/weapon/mine/shared_wp_mine_drx55.iff",
              }
 
 }

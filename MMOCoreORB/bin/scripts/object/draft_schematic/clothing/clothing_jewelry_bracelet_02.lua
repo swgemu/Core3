@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_jewelry_bracelet_02 = object_draft_sche
    targetTemplate = "object/tangible/wearables/bracelet/bracelet_s02_l.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/bracelet/shared_bracelet_s02_l.iff",
              }
 
 }

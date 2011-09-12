@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draf
    targetTemplate = "object/tangible/droid/droid_space_memory_module_1.iff",
 
    additionalTemplates = {
+              "object/tangible/droid/shared_droid_space_memory_module_1.iff",
              }
 
 }

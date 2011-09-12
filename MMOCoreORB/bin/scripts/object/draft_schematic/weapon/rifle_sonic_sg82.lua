@@ -74,6 +74,7 @@ object_draft_schematic_weapon_rifle_sonic_sg82 = object_draft_schematic_weapon_s
    targetTemplate = "object/weapon/ranged/rifle/rifle_sg82.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/rifle/shared_rifle_sg82.iff",
              }
 
 }

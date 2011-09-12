@@ -74,6 +74,7 @@ object_draft_schematic_spices_spice_gunjack = object_draft_schematic_spices_shar
    targetTemplate = "object/tangible/food/spice/spice_gunjack.iff",
 
    additionalTemplates = {
+              "object/tangible/food/spice/shared_spice_gunjack.iff",
              }
 
 }

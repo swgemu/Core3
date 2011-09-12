@@ -74,6 +74,7 @@ object_draft_schematic_droid_droid_customization_kit = object_draft_schematic_dr
    targetTemplate = "object/tangible/item/droid_customization.iff",
 
    additionalTemplates = {
+              "object/tangible/item/shared_droid_customization.iff",
              }
 
 }

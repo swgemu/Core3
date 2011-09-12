@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_chitin_helmet = object_draft_sche
    targetTemplate = "object/tangible/wearables/armor/chitin/armor_chitin_s01_helmet.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_helmet.iff",
              }
 
 }

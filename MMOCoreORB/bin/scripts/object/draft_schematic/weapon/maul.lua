@@ -74,6 +74,7 @@ object_draft_schematic_weapon_maul = object_draft_schematic_weapon_shared_maul:n
    targetTemplate = "object/weapon/melee/2h_sword/2h_sword_maul.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff",
              }
 
 }

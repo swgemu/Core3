@@ -74,6 +74,7 @@ object_draft_schematic_food_drink_jawa_beer = object_draft_schematic_food_shared
    targetTemplate = "object/tangible/food/crafted/drink_jawa_beer.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_drink_jawa_beer.iff",
              }
 
 }

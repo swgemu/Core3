@@ -74,6 +74,7 @@ object_draft_schematic_munition_detonator_thermal_class_a = object_draft_schemat
    targetTemplate = "object/weapon/ranged/grenade/grenade_thermal_detonator.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/grenade/shared_grenade_thermal_detonator.iff",
              }
 
 }

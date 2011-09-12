@@ -74,6 +74,7 @@ object_draft_schematic_food_dish_thakitillo = object_draft_schematic_food_shared
    targetTemplate = "object/tangible/food/crafted/dish_thakitillo.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dish_thakitillo.iff",
              }
 
 }

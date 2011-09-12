@@ -74,6 +74,7 @@ object_draft_schematic_chemistry_medpack_wound_quickness_e = object_draft_schema
    targetTemplate = "object/tangible/medicine/crafted/medpack_wound_quickness_e.iff",
 
    additionalTemplates = {
+              "object/tangible/medicine/crafted/shared_medpack_wound_quickness_e.iff",
              }
 
 }

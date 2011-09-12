@@ -74,6 +74,7 @@ object_draft_schematic_structure_city_cloning_corellia = object_draft_schematic_
    targetTemplate = "object/tangible/deed/city_deed/cloning_corellia_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/city_deed/shared_cloning_corellia_deed.iff",
              }
 
 }

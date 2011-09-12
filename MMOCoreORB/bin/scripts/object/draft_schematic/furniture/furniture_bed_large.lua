@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_bed_large = object_draft_schematic_fu
    targetTemplate = "object/tangible/furniture/all/frn_all_bed_lg_s1.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/all/shared_frn_all_bed_lg_s1.iff",
              }
 
 }

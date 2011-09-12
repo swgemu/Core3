@@ -74,6 +74,7 @@ object_draft_schematic_structure_city_shuttleport_naboo = object_draft_schematic
    targetTemplate = "object/tangible/deed/city_deed/shuttleport_naboo_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/city_deed/shared_shuttleport_naboo_deed.iff",
              }
 
 }

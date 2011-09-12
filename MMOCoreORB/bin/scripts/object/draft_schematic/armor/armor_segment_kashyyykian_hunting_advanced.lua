@@ -74,6 +74,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_hunting_advanced = object
    targetTemplate = "object/tangible/component/armor/armor_segment_kashyyykian_hunting_advanced.iff",
 
    additionalTemplates = {
+              "object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting_advanced.iff",
              }
 
 }

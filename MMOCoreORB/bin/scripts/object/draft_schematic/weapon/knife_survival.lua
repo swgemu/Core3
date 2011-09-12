@@ -74,6 +74,7 @@ object_draft_schematic_weapon_knife_survival = object_draft_schematic_weapon_sha
    targetTemplate = "object/weapon/melee/knife/knife_survival.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/knife/shared_knife_survival.iff",
              }
 
 }

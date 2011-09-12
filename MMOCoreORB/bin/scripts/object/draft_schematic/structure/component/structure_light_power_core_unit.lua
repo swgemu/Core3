@@ -74,6 +74,7 @@ object_draft_schematic_structure_component_structure_light_power_core_unit = obj
    targetTemplate = "object/tangible/component/structure/light_power_core_unit.iff",
 
    additionalTemplates = {
+              "object/tangible/component/structure/shared_light_power_core_unit.iff",
              }
 
 }

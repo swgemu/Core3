@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_table_small_tatooine = object_draft_s
    targetTemplate = "object/tangible/furniture/tatooine/frn_tato_table_small_style_01.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_01.iff",
              }
 
 }

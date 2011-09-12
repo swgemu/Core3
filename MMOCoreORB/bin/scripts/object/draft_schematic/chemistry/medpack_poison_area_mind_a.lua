@@ -74,6 +74,7 @@ object_draft_schematic_chemistry_medpack_poison_area_mind_a = object_draft_schem
    targetTemplate = "object/tangible/medicine/crafted/medpack_poison_area_mind_a.iff",
 
    additionalTemplates = {
+              "object/tangible/medicine/crafted/shared_medpack_poison_area_mind_a.iff",
              }
 
 }

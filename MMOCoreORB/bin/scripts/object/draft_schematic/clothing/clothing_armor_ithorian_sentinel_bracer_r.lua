@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_ithorian_sentinel_bracer_r = obje
    targetTemplate = "object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_bracer_r.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_bracer_r.iff",
              }
 
 }

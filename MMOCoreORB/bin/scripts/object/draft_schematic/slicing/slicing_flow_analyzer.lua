@@ -74,6 +74,7 @@ object_draft_schematic_slicing_slicing_flow_analyzer = object_draft_schematic_sl
    targetTemplate = "object/tangible/slicing/slicing_flow_analyzer.iff",
 
    additionalTemplates = {
+              "object/tangible/slicing/shared_slicing_flow_analyzer.iff",
              }
 
 }

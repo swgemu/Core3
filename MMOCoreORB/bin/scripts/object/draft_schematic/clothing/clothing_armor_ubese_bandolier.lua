@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_ubese_bandolier = object_draft_sc
    targetTemplate = "object/tangible/wearables/armor/ubese/armor_ubese_bandolier.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/ubese/shared_armor_ubese_bandolier.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_chemistry_medpack_revive = object_draft_schematic_chemist
    targetTemplate = "object/tangible/medicine/crafted/medpack_revive.iff",
 
    additionalTemplates = {
+              "object/tangible/medicine/crafted/shared_medpack_revive.iff",
              }
 
 }

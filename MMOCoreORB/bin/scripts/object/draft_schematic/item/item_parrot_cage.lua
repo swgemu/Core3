@@ -74,6 +74,7 @@ object_draft_schematic_item_item_parrot_cage = object_draft_schematic_item_share
    targetTemplate = "object/tangible/parrot_cage/parrot_cage.iff",
 
    additionalTemplates = {
+              "object/tangible/parrot_cage/shared_parrot_cage.iff",
              }
 
 }

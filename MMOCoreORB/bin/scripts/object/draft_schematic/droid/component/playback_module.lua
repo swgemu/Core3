@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_playback_module = object_draft_schematic_
    targetTemplate = "object/tangible/component/droid/playback_module.iff",
 
    additionalTemplates = {
+              "object/tangible/component/droid/shared_playback_module.iff",
              }
 
 }

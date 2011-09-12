@@ -74,6 +74,7 @@ object_draft_schematic_chemistry_component_resilience_compound_advanced = object
    targetTemplate = "object/tangible/component/chemistry/resilience_compound_advanced.iff",
 
    additionalTemplates = {
+              "object/tangible/component/chemistry/shared_resilience_compound_advanced.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_armor_component_armor_layer_electrical = object_draft_sch
    targetTemplate = "object/tangible/component/armor/armor_layer_electrical.iff",
 
    additionalTemplates = {
+              "object/tangible/component/armor/shared_armor_layer_electrical.iff",
              }
 
 }

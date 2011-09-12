@@ -74,6 +74,7 @@ object_draft_schematic_weapon_sword_ryyk_blade = object_draft_schematic_weapon_s
    targetTemplate = "object/weapon/melee/sword/sword_blade_ryyk.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/sword/shared_sword_blade_ryyk.iff",
              }
 
 }

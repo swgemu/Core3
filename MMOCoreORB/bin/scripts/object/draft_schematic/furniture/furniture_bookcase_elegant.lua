@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_bookcase_elegant = object_draft_schem
    targetTemplate = "object/tangible/furniture/elegant/bookcase_s01.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/elegant/shared_bookcase_s01.iff",
              }
 
 }

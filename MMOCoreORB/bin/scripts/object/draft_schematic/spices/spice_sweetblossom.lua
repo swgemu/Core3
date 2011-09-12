@@ -74,6 +74,7 @@ object_draft_schematic_spices_spice_sweetblossom = object_draft_schematic_spices
    targetTemplate = "object/tangible/food/spice/spice_sweetblossom.iff",
 
    additionalTemplates = {
+              "object/tangible/food/spice/shared_spice_sweetblossom.iff",
              }
 
 }

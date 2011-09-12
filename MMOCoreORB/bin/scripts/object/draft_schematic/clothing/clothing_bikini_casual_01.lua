@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_bikini_casual_01 = object_draft_schemat
    targetTemplate = "object/tangible/wearables/bikini/bikini_s01.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/bikini/shared_bikini_s01.iff",
              }
 
 }

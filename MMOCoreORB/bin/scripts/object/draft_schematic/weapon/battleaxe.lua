@@ -74,6 +74,7 @@ object_draft_schematic_weapon_battleaxe = object_draft_schematic_weapon_shared_b
    targetTemplate = "object/weapon/melee/2h_sword/2h_sword_battleaxe.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe.iff",
              }
 
 }

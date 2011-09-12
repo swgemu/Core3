@@ -74,6 +74,7 @@ object_draft_schematic_chemistry_medpack_enhance_constitution_d = object_draft_s
    targetTemplate = "object/tangible/medicine/crafted/medpack_enhance_constitution_d.iff",
 
    additionalTemplates = {
+              "object/tangible/medicine/crafted/shared_medpack_enhance_constitution_d.iff",
              }
 
 }

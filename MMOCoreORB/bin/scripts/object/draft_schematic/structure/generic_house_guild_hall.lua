@@ -74,6 +74,7 @@ object_draft_schematic_structure_generic_house_guild_hall = object_draft_schemat
    targetTemplate = "object/tangible/deed/guild_deed/generic_guild_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/guild_deed/shared_generic_guild_deed.iff",
              }
 
 }

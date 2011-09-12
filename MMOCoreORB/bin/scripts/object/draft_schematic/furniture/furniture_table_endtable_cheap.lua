@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_table_endtable_cheap = object_draft_s
    targetTemplate = "object/tangible/furniture/cheap/end_table_s01.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/cheap/shared_end_table_s01.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_clothing_component_clothing_jewelry_setting = object_draf
    targetTemplate = "object/tangible/component/clothing/jewelry_setting.iff",
 
    additionalTemplates = {
+              "object/tangible/component/clothing/shared_jewelry_setting.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_chemistry_component_dispersal_mechanism = object_draft_sc
    targetTemplate = "object/tangible/component/chemistry/dispersal_mechanism.iff",
 
    additionalTemplates = {
+              "object/tangible/component/chemistry/shared_dispersal_mechanism.iff",
              }
 
 }

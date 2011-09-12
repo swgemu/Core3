@@ -74,6 +74,7 @@ object_draft_schematic_item_item_jedi_tool = object_draft_schematic_item_shared_
    targetTemplate = "object/tangible/crafting/station/jedi_tool.iff",
 
    additionalTemplates = {
+              "object/tangible/crafting/station/shared_jedi_tool.iff",
              }
 
 }

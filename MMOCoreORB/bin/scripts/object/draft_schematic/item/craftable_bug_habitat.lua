@@ -74,6 +74,7 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
    targetTemplate = "object/tangible/bug_jar/craftable_bug_habitat.iff",
 
    additionalTemplates = {
+              "object/tangible/bug_jar/shared_craftable_bug_habitat.iff",
              }
 
 }

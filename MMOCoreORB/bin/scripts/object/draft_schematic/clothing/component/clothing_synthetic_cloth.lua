@@ -74,6 +74,7 @@ object_draft_schematic_clothing_component_clothing_synthetic_cloth = object_draf
    targetTemplate = "object/tangible/component/clothing/synthetic_cloth.iff",
 
    additionalTemplates = {
+              "object/tangible/component/clothing/shared_synthetic_cloth.iff",
              }
 
 }

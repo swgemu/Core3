@@ -74,6 +74,7 @@ object_draft_schematic_structure_corellia_house_guild_hall = object_draft_schema
    targetTemplate = "object/tangible/deed/guild_deed/corellia_guild_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/guild_deed/shared_corellia_guild_deed.iff",
              }
 
 }

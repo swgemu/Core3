@@ -74,6 +74,7 @@ object_draft_schematic_furniture_city_furniture_statue = object_draft_schematic_
    targetTemplate = "object/tangible/furniture/city/statue_gungan_head.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/city/shared_statue_gungan_head.iff",
              }
 
 }

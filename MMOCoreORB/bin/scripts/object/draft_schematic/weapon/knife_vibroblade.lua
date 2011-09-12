@@ -74,6 +74,7 @@ object_draft_schematic_weapon_knife_vibroblade = object_draft_schematic_weapon_s
    targetTemplate = "object/weapon/melee/knife/knife_vibroblade.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/knife/shared_knife_vibroblade.iff",
              }
 
 }

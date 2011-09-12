@@ -74,6 +74,7 @@ object_draft_schematic_droid_droid_treadwell_advanced = object_draft_schematic_d
    targetTemplate = "object/tangible/deed/pet_deed/deed_treadwell_advanced_basic.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_deed_treadwell_advanced_basic.iff",
              }
 
 }

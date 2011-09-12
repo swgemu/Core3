@@ -74,6 +74,7 @@ object_draft_schematic_structure_component_wall_module = object_draft_schematic_
    targetTemplate = "object/tangible/component/structure/wall_module.iff",
 
    additionalTemplates = {
+              "object/tangible/component/structure/shared_wall_module.iff",
              }
 
 }

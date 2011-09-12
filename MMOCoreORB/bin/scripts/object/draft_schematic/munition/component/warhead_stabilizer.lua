@@ -74,6 +74,7 @@ object_draft_schematic_munition_component_warhead_stabilizer = object_draft_sche
    targetTemplate = "object/tangible/component/munition/warhead_stabilizer.iff",
 
    additionalTemplates = {
+              "object/tangible/component/munition/shared_warhead_stabilizer.iff",
              }
 
 }

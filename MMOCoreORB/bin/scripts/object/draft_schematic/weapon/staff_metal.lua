@@ -74,6 +74,7 @@ object_draft_schematic_weapon_staff_metal = object_draft_schematic_weapon_shared
    targetTemplate = "object/weapon/melee/polearm/lance_staff_metal.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/polearm/shared_lance_staff_metal.iff",
              }
 
 }

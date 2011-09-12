@@ -74,6 +74,7 @@ object_draft_schematic_munition_mine_anti_vehicle = object_draft_schematic_munit
    targetTemplate = "object/weapon/mine/wp_mine_anti_vehicle.iff",
 
    additionalTemplates = {
+              "object/weapon/mine/shared_wp_mine_anti_vehicle.iff",
              }
 
 }

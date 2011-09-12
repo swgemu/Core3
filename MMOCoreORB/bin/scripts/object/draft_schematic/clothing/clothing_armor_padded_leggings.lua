@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_padded_leggings = object_draft_sc
    targetTemplate = "object/tangible/wearables/armor/padded/armor_padded_s01_leggings.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/padded/shared_armor_padded_s01_leggings.iff",
              }
 
 }

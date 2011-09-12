@@ -74,6 +74,7 @@ object_draft_schematic_item_item_powerup_weapon_ranged_three = object_draft_sche
    targetTemplate = "object/tangible/powerup/weapon/ranged_muzzle.iff",
 
    additionalTemplates = {
+              "object/tangible/powerup/weapon/shared_ranged_muzzle.iff",
              }
 
 }

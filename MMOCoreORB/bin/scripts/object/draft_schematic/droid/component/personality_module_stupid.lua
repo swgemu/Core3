@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_personality_module_stupid = object_draft_
    targetTemplate = "object/tangible/component/droid/personality_module_stupid.iff",
 
    additionalTemplates = {
+              "object/tangible/component/droid/shared_personality_module_stupid.iff",
              }
 
 }

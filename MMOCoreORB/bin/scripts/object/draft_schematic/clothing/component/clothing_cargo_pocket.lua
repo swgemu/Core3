@@ -74,6 +74,7 @@ object_draft_schematic_clothing_component_clothing_cargo_pocket = object_draft_s
    targetTemplate = "object/tangible/component/clothing/cargo_pocket.iff",
 
    additionalTemplates = {
+              "object/tangible/component/clothing/shared_cargo_pocket.iff",
              }
 
 }

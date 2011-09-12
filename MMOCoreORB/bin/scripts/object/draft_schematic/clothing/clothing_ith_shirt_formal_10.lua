@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_ith_shirt_formal_10 = object_draft_sche
    targetTemplate = "object/tangible/wearables/ithorian/ith_shirt_s10.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/ithorian/shared_ith_shirt_s10.iff",
              }
 
 }

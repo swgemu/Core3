@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_lamp_table = object_draft_schematic_f
    targetTemplate = "object/tangible/furniture/all/frn_all_lamp_tbl_s01.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/all/shared_frn_all_lamp_tbl_s01.iff",
              }
 
 }

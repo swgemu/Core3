@@ -74,6 +74,7 @@ object_draft_schematic_food_dessert_blap_biscuit = object_draft_schematic_food_s
    targetTemplate = "object/tangible/food/crafted/dessert_blap_biscuit.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dessert_blap_biscuit.iff",
              }
 
 }

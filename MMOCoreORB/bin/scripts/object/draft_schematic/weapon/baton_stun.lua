@@ -74,6 +74,7 @@ object_draft_schematic_weapon_baton_stun = object_draft_schematic_weapon_shared_
    targetTemplate = "object/weapon/melee/baton/baton_stun.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/baton/shared_baton_stun.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_instrument_instrument_flute_droopy = object_draft_schemat
    targetTemplate = "object/tangible/instrument/flute_droopy.iff",
 
    additionalTemplates = {
+              "object/tangible/instrument/shared_flute_droopy.iff",
              }
 
 }

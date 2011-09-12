@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_bustier_casual_03 = object_draft_schema
    targetTemplate = "object/tangible/wearables/bustier/bustier_s03.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/bustier/shared_bustier_s03.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_space_weapon_missile_countermeasure_chaff_pack = object_d
    targetTemplate = "object/tangible/ship/crafted/weapon/missile/countermeasure_chaff_pack.iff",
 
    additionalTemplates = {
+              "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_chaff_pack.iff",
              }
 
 }

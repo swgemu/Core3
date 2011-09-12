@@ -74,6 +74,7 @@ object_draft_schematic_scout_item_trap_webber = object_draft_schematic_scout_sha
    targetTemplate = "object/tangible/scout/trap/trap_webber.iff",
 
    additionalTemplates = {
+              "object/tangible/scout/trap/shared_trap_webber.iff",
              }
 
 }

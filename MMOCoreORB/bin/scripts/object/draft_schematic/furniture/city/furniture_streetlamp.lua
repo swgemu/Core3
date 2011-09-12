@@ -74,6 +74,7 @@ object_draft_schematic_furniture_city_furniture_streetlamp = object_draft_schema
    targetTemplate = "object/tangible/furniture/city/streetlamp_large_01.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/city/shared_streetlamp_large_01.iff",
              }
 
 }

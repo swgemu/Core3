@@ -74,6 +74,7 @@ object_draft_schematic_item_component_item_electronic_energy_distributor = objec
    targetTemplate = "object/tangible/component/item/electronic_energy_distributor.iff",
 
    additionalTemplates = {
+              "object/tangible/component/item/shared_electronic_energy_distributor.iff",
              }
 
 }

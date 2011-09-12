@@ -74,6 +74,7 @@ object_draft_schematic_food_component_ingredient_ball_of_dough = object_draft_sc
    targetTemplate = "object/tangible/component/food/ingredient_ball_of_dough.iff",
 
    additionalTemplates = {
+              "object/tangible/component/food/shared_ingredient_ball_of_dough.iff",
              }
 
 }

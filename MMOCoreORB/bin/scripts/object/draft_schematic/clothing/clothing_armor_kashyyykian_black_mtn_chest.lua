@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_black_mtn_chest = obj
    targetTemplate = "object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_chest_plate.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_chest_plate.iff",
              }
 
 }

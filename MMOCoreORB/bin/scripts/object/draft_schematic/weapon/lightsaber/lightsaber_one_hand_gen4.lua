@@ -74,6 +74,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen4 = object_draft
    targetTemplate = "object/weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen4.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen4.iff",
              }
 
 }

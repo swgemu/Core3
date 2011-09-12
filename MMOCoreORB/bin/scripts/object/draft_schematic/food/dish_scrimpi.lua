@@ -74,6 +74,7 @@ object_draft_schematic_food_dish_scrimpi = object_draft_schematic_food_shared_di
    targetTemplate = "object/tangible/food/crafted/dish_scrimpi.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dish_scrimpi.iff",
              }
 
 }

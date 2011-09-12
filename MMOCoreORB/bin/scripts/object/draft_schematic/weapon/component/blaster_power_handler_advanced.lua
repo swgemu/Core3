@@ -74,6 +74,7 @@ object_draft_schematic_weapon_component_blaster_power_handler_advanced = object_
    targetTemplate = "object/tangible/component/weapon/blaster_power_handler_advanced.iff",
 
    additionalTemplates = {
+              "object/tangible/component/weapon/shared_blaster_power_handler_advanced.iff",
              }
 
 }

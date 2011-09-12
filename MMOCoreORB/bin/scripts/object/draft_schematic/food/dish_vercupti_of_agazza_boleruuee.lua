@@ -74,6 +74,7 @@ object_draft_schematic_food_dish_vercupti_of_agazza_boleruuee = object_draft_sch
    targetTemplate = "object/tangible/food/crafted/dish_vercupti_of_agazza_boleruuee.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dish_vercupti_of_agazza_boleruuee.iff",
              }
 
 }

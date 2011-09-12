@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_droid_brain_advanced = object_draft_schem
    targetTemplate = "object/tangible/component/droid/droid_brain_advanced.iff",
 
    additionalTemplates = {
+              "object/tangible/component/droid/shared_droid_brain_advanced.iff",
              }
 
 }

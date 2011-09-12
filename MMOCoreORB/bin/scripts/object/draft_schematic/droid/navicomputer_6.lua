@@ -74,6 +74,7 @@ object_draft_schematic_droid_navicomputer_6 = object_draft_schematic_droid_share
    targetTemplate = "object/tangible/droid/navicomputer_6.iff",
 
    additionalTemplates = {
+              "object/tangible/droid/shared_navicomputer_6.iff",
              }
 
 }

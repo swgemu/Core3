@@ -74,6 +74,7 @@ object_draft_schematic_slicing_slicing_laser_knife = object_draft_schematic_slic
    targetTemplate = "object/tangible/slicing/slicing_laser_knife.iff",
 
    additionalTemplates = {
+              "object/tangible/slicing/shared_slicing_laser_knife.iff",
              }
 
 }

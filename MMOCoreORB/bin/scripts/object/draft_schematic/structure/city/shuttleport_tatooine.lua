@@ -74,6 +74,7 @@ object_draft_schematic_structure_city_shuttleport_tatooine = object_draft_schema
    targetTemplate = "object/tangible/deed/city_deed/shuttleport_tatooine_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/city_deed/shared_shuttleport_tatooine_deed.iff",
              }
 
 }

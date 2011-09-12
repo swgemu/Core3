@@ -74,6 +74,7 @@ object_draft_schematic_chemistry_component_infection_amplifier_advanced = object
    targetTemplate = "object/tangible/component/chemistry/infection_amplifier_advanced.iff",
 
    additionalTemplates = {
+              "object/tangible/component/chemistry/shared_infection_amplifier_advanced.iff",
              }
 
 }

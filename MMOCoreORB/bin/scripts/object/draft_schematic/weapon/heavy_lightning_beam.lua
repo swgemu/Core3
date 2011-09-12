@@ -74,6 +74,7 @@ object_draft_schematic_weapon_heavy_lightning_beam = object_draft_schematic_weap
    targetTemplate = "object/weapon/ranged/heavy/heavy_lightning_beam.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/heavy/shared_heavy_lightning_beam.iff",
              }
 
 }

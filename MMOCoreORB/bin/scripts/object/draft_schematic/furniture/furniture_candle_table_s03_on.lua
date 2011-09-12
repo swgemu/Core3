@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_candle_table_s03_on = object_draft_sc
    targetTemplate = "object/tangible/furniture/all/frn_all_light_lamp_candlestick_tbl_s03.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_tbl_s03.iff",
              }
 
 }

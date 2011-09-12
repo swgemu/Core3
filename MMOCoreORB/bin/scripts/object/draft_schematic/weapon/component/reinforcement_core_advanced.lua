@@ -74,6 +74,7 @@ object_draft_schematic_weapon_component_reinforcement_core_advanced = object_dra
    targetTemplate = "object/tangible/component/weapon/reinforcement_core_advanced.iff",
 
    additionalTemplates = {
+              "object/tangible/component/weapon/shared_reinforcement_core_advanced.iff",
              }
 
 }

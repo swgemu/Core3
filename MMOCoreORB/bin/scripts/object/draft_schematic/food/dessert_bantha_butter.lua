@@ -74,6 +74,7 @@ object_draft_schematic_food_dessert_bantha_butter = object_draft_schematic_food_
    targetTemplate = "object/tangible/food/crafted/dessert_bantha_butter.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dessert_bantha_butter.iff",
              }
 
 }

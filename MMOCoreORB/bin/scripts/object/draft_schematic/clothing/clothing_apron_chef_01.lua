@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_apron_chef_01 = object_draft_schematic_
    targetTemplate = "object/tangible/wearables/apron/apron_chef_s01.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/apron/shared_apron_chef_s01.iff",
              }
 
 }

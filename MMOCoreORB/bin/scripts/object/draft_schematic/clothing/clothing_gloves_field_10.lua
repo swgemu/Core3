@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_gloves_field_10 = object_draft_schemati
    targetTemplate = "object/tangible/wearables/gloves/gloves_s10.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/gloves/shared_gloves_s10.iff",
              }
 
 }

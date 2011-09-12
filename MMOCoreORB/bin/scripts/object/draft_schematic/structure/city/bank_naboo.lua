@@ -74,6 +74,7 @@ object_draft_schematic_structure_city_bank_naboo = object_draft_schematic_struct
    targetTemplate = "object/tangible/deed/city_deed/bank_naboo_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/city_deed/shared_bank_naboo_deed.iff",
              }
 
 }

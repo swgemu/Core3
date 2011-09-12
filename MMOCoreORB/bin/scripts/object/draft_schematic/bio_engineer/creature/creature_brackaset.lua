@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_creature_creature_brackaset = object_draft_s
    targetTemplate = "object/tangible/deed/pet_deed/brackaset_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_brackaset_deed.iff",
              }
 
 }

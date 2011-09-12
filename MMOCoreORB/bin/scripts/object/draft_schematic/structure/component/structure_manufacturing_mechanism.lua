@@ -74,6 +74,7 @@ object_draft_schematic_structure_component_structure_manufacturing_mechanism = o
    targetTemplate = "object/tangible/component/structure/manufacturing_mechanism.iff",
 
    additionalTemplates = {
+              "object/tangible/component/structure/shared_manufacturing_mechanism.iff",
              }
 
 }

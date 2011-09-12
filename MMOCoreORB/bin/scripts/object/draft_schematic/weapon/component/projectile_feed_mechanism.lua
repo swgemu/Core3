@@ -74,6 +74,7 @@ object_draft_schematic_weapon_component_projectile_feed_mechanism = object_draft
    targetTemplate = "object/tangible/component/weapon/projectile_feed_mechanism.iff",
 
    additionalTemplates = {
+              "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_structure_house_guild_hall = object_draft_schematic_struc
    targetTemplate = "object/tangible/deed/guild_deed/tatooine_guild_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/guild_deed/shared_tatooine_guild_deed.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_food_drink_deuterium_pyro = object_draft_schematic_food_s
    targetTemplate = "object/tangible/food/crafted/drink_deuterium_pyro.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_drink_deuterium_pyro.iff",
              }
 
 }

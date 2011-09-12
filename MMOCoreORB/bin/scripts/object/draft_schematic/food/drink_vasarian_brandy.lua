@@ -74,6 +74,7 @@ object_draft_schematic_food_drink_vasarian_brandy = object_draft_schematic_food_
    targetTemplate = "object/tangible/food/crafted/drink_vasarian_brandy.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_drink_vasarian_brandy.iff",
              }
 
 }

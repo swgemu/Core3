@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_lamp_free_s04_on = object_draft_schem
    targetTemplate = "object/tangible/furniture/all/frn_all_light_lamp_free_s04.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/all/shared_frn_all_light_lamp_free_s04.iff",
              }
 
 }

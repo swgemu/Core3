@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_composite_chest = object_draft_sc
    targetTemplate = "object/tangible/wearables/armor/composite/armor_composite_chest_plate.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/composite/shared_armor_composite_chest_plate.iff",
              }
 
 }

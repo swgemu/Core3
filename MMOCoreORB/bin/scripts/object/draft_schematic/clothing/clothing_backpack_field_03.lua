@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_backpack_field_03 = object_draft_schema
    targetTemplate = "object/tangible/wearables/backpack/backpack_s03.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/backpack/shared_backpack_s03.iff",
              }
 
 }

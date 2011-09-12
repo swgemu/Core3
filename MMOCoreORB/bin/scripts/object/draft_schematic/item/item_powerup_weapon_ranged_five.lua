@@ -74,6 +74,7 @@ object_draft_schematic_item_item_powerup_weapon_ranged_five = object_draft_schem
    targetTemplate = "object/tangible/powerup/weapon/ranged_scope.iff",
 
    additionalTemplates = {
+              "object/tangible/powerup/weapon/shared_ranged_scope.iff",
              }
 
 }

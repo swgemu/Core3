@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_creature_creature_piket = object_draft_schem
    targetTemplate = "object/tangible/deed/pet_deed/piket_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_piket_deed.iff",
              }
 
 }

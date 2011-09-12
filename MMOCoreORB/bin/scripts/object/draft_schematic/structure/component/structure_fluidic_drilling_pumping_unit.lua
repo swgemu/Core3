@@ -74,6 +74,7 @@ object_draft_schematic_structure_component_structure_fluidic_drilling_pumping_un
    targetTemplate = "object/tangible/component/structure/fluidic_drilling_pumping_unit.iff",
 
    additionalTemplates = {
+              "object/tangible/component/structure/shared_fluidic_drilling_pumping_unit.iff",
              }
 
 }

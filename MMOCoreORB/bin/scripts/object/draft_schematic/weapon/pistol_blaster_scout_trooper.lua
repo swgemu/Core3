@@ -74,6 +74,7 @@ object_draft_schematic_weapon_pistol_blaster_scout_trooper = object_draft_schema
    targetTemplate = "object/weapon/ranged/pistol/pistol_scout_blaster.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/pistol/shared_pistol_scout_blaster.iff",
              }
 
 }

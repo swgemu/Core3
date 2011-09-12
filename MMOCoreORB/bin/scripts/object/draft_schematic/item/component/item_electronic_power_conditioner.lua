@@ -74,6 +74,7 @@ object_draft_schematic_item_component_item_electronic_power_conditioner = object
    targetTemplate = "object/tangible/component/item/electronic_power_conditioner.iff",
 
    additionalTemplates = {
+              "object/tangible/component/item/shared_electronic_power_conditioner.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_food_dish_rakririan_burnout_sauce = object_draft_schemati
    targetTemplate = "object/tangible/food/crafted/dish_rakririan_burnout_sauce.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dish_rakririan_burnout_sauce.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_food_drink_corellian_ale = object_draft_schematic_food_sh
    targetTemplate = "object/tangible/food/crafted/drink_corellian_ale.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_drink_corellian_ale.iff",
              }
 
 }

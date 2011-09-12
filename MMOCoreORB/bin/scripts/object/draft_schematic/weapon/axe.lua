@@ -74,6 +74,7 @@ object_draft_schematic_weapon_axe = object_draft_schematic_weapon_shared_axe:new
    targetTemplate = "object/weapon/melee/axe/axe_heavy_duty.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/axe/shared_axe_heavy_duty.iff",
              }
 
 }

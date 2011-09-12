@@ -74,6 +74,7 @@ object_draft_schematic_item_item_ballot_box_terminal = object_draft_schematic_it
    targetTemplate = "object/tangible/terminal/terminal_ballot_box.iff",
 
    additionalTemplates = {
+              "object/tangible/terminal/shared_terminal_ballot_box.iff",
              }
 
 }

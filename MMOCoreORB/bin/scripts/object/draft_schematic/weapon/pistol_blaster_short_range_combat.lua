@@ -74,6 +74,7 @@ object_draft_schematic_weapon_pistol_blaster_short_range_combat = object_draft_s
    targetTemplate = "object/weapon/ranged/pistol/pistol_srcombat.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/pistol/shared_pistol_srcombat.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_weapon_heavy_particle_beam = object_draft_schematic_weapo
    targetTemplate = "object/weapon/ranged/heavy/heavy_particle_beam.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/heavy/shared_heavy_particle_beam.iff",
              }
 
 }

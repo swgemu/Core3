@@ -74,6 +74,7 @@ object_draft_schematic_food_drink_alcohol = object_draft_schematic_food_shared_d
    targetTemplate = "object/tangible/food/crafted/drink_alcohol.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_drink_alcohol.iff",
              }
 
 }

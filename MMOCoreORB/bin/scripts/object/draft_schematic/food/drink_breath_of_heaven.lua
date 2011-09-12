@@ -74,6 +74,7 @@ object_draft_schematic_food_drink_breath_of_heaven = object_draft_schematic_food
    targetTemplate = "object/tangible/food/crafted/drink_breath_of_heaven.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_drink_breath_of_heaven.iff",
              }
 
 }

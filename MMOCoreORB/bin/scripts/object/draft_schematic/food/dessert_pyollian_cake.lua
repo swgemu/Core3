@@ -74,6 +74,7 @@ object_draft_schematic_food_dessert_pyollian_cake = object_draft_schematic_food_
    targetTemplate = "object/tangible/food/crafted/dessert_pyollian_cake.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dessert_pyollian_cake.iff",
              }
 
 }

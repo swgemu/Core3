@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_terminal_freestanding = object_draft_
    targetTemplate = "object/tangible/furniture/all/frn_all_data_terminal_free_s1.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/all/shared_frn_all_data_terminal_free_s1.iff",
              }
 
 }

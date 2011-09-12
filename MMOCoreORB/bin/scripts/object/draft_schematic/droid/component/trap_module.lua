@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_trap_module = object_draft_schematic_droi
    targetTemplate = "object/tangible/component/droid/trap_module.iff",
 
    additionalTemplates = {
+              "object/tangible/component/droid/shared_trap_module.iff",
              }
 
 }

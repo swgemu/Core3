@@ -74,6 +74,7 @@ object_draft_schematic_chemistry_med_stimpack_state_intimidated_a = object_draft
    targetTemplate = "object/tangible/medicine/crafted/medpack_intimidated_a.iff",
 
    additionalTemplates = {
+              "object/tangible/medicine/crafted/shared_medpack_intimidated_a.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_weapon_rifle_acid_beam = object_draft_schematic_weapon_sh
    targetTemplate = "object/weapon/ranged/rifle/rifle_acid_beam.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/rifle/shared_rifle_acid_beam.iff",
              }
 
 }

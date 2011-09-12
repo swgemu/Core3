@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_unit_delivery_cartridge_advanced = object
    targetTemplate = "object/tangible/component/droid/repair/unit_delivery_cartridge_advanced.iff",
 
    additionalTemplates = {
+              "object/tangible/component/droid/repair/shared_unit_delivery_cartridge_advanced.iff",
              }
 
 }

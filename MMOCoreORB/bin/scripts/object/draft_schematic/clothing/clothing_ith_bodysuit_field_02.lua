@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_field_02 = object_draft_sc
    targetTemplate = "object/tangible/wearables/ithorian/ith_bodysuit_s02.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/ithorian/shared_ith_bodysuit_s02.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_chassis_droid_r3 = object_draft_schematic
    targetTemplate = "object/tangible/component/droid/r3_droid_chassis.iff",
 
    additionalTemplates = {
+              "object/tangible/component/droid/shared_r3_droid_chassis.iff",
              }
 
 }

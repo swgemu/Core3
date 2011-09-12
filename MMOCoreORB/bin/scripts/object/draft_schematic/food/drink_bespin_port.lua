@@ -74,6 +74,7 @@ object_draft_schematic_food_drink_bespin_port = object_draft_schematic_food_shar
    targetTemplate = "object/tangible/food/crafted/drink_bespin_port.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_drink_bespin_port.iff",
              }
 
 }

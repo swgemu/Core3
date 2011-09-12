@@ -74,6 +74,7 @@ object_draft_schematic_weapon_knuckler_vibro = object_draft_schematic_weapon_sha
    targetTemplate = "object/weapon/melee/special/vibroknuckler.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/special/shared_vibroknuckler.iff",
              }
 
 }

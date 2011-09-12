@@ -74,6 +74,7 @@ object_draft_schematic_weapon_pistol_flechette_fwg5 = object_draft_schematic_wea
    targetTemplate = "object/weapon/ranged/pistol/pistol_fwg5.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/pistol/shared_pistol_fwg5.iff",
              }
 
 }

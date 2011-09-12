@@ -74,6 +74,7 @@ object_draft_schematic_weapon_heavy_acid_beam = object_draft_schematic_weapon_sh
    targetTemplate = "object/weapon/ranged/heavy/heavy_acid_beam.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/heavy/shared_heavy_acid_beam.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_food_dish_bivoli_tempari = object_draft_schematic_food_sh
    targetTemplate = "object/tangible/food/crafted/dish_bivoli_tempari.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dish_bivoli_tempari.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_structure_city_cantina_tatooine = object_draft_schematic_
    targetTemplate = "object/tangible/deed/city_deed/cantina_tatooine_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/city_deed/shared_cantina_tatooine_deed.iff",
              }
 
 }

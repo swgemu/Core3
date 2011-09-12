@@ -74,6 +74,7 @@ object_draft_schematic_weapon_axe_vibro = object_draft_schematic_weapon_shared_a
    targetTemplate = "object/weapon/melee/axe/axe_vibroaxe.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/axe/shared_axe_vibroaxe.iff",
              }
 
 }

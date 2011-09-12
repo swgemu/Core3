@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_boots_field_05 = object_draft_schematic
    targetTemplate = "object/tangible/wearables/boots/boots_s05.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/boots/shared_boots_s05.iff",
              }
 
 }

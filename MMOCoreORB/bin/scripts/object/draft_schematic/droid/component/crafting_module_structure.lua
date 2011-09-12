@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_crafting_module_structure = object_draft_
    targetTemplate = "object/tangible/component/droid/crafting_module_structure.iff",
 
    additionalTemplates = {
+              "object/tangible/component/droid/shared_crafting_module_structure.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_droid_droid_surgical_advanced = object_draft_schematic_dr
    targetTemplate = "object/tangible/deed/pet_deed/deed_surgical_advanced_basic.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_deed_surgical_advanced_basic.iff",
              }
 
 }

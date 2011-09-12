@@ -74,6 +74,7 @@ object_draft_schematic_spices_spice_pyrepenol = object_draft_schematic_spices_sh
    targetTemplate = "object/tangible/food/spice/spice_pyrepenol.iff",
 
    additionalTemplates = {
+              "object/tangible/food/spice/shared_spice_pyrepenol.iff",
              }
 
 }

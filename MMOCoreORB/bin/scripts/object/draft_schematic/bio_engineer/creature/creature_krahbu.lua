@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_creature_creature_krahbu = object_draft_sche
    targetTemplate = "object/tangible/deed/pet_deed/krahbu_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_krahbu_deed.iff",
              }
 
 }

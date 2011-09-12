@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_tantel_helmet = object_draft_sche
    targetTemplate = "object/tangible/wearables/armor/tantel/armor_tantel_skreej_helmet.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_helmet.iff",
              }
 
 }

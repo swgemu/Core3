@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_tree_potted = object_draft_schematic_
    targetTemplate = "object/tangible/furniture/all/frn_all_tree_potted_s1.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/all/shared_frn_all_tree_potted_s1.iff",
              }
 
 }

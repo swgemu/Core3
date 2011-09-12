@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_table_coffee_modern = object_draft_sc
    targetTemplate = "object/tangible/furniture/modern/coffee_table_modern_style_01.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/modern/shared_coffee_table_modern_style_01.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_combat_socket_bank = object_draft_schemat
    targetTemplate = "object/tangible/component/droid/combat_socket_bank.iff",
 
    additionalTemplates = {
+              "object/tangible/component/droid/shared_combat_socket_bank.iff",
              }
 
 }

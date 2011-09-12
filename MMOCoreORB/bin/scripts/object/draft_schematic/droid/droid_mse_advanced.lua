@@ -74,6 +74,7 @@ object_draft_schematic_droid_droid_mse_advanced = object_draft_schematic_droid_s
    targetTemplate = "object/tangible/deed/pet_deed/deed_mse_advanced_basic.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_deed_mse_advanced_basic.iff",
              }
 
 }

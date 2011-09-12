@@ -74,6 +74,7 @@ object_draft_schematic_food_drink_elshandruu_pica_thundercloud = object_draft_sc
    targetTemplate = "object/tangible/food/crafted/drink_elshandruu_pica_thundercloud.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_drink_elshandruu_pica_thundercloud.iff",
              }
 
 }

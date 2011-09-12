@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_creature_creature_falumpaset = object_draft_
    targetTemplate = "object/tangible/deed/pet_deed/falumpaset_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_falumpaset_deed.iff",
              }
 
 }

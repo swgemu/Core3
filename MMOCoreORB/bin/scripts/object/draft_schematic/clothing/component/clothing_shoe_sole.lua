@@ -74,6 +74,7 @@ object_draft_schematic_clothing_component_clothing_shoe_sole = object_draft_sche
    targetTemplate = "object/tangible/component/clothing/shoe_sole.iff",
 
    additionalTemplates = {
+              "object/tangible/component/clothing/shared_shoe_sole.iff",
              }
 
 }

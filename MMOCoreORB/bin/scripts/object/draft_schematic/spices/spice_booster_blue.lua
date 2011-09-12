@@ -74,6 +74,7 @@ object_draft_schematic_spices_spice_booster_blue = object_draft_schematic_spices
    targetTemplate = "object/tangible/food/spice/spice_booster_blue.iff",
 
    additionalTemplates = {
+              "object/tangible/food/spice/shared_spice_booster_blue.iff",
              }
 
 }

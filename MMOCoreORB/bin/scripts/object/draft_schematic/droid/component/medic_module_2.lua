@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_medic_module_2 = object_draft_schematic_d
    targetTemplate = "object/tangible/component/droid/medic_module_2.iff",
 
    additionalTemplates = {
+              "object/tangible/component/droid/shared_medic_module_2.iff",
              }
 
 }

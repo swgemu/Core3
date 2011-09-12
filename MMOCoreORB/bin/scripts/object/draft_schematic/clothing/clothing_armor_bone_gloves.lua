@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_bone_gloves = object_draft_schema
    targetTemplate = "object/tangible/wearables/armor/bone/armor_bone_s01_gloves.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/bone/shared_armor_bone_s01_gloves.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_item_component_item_electronics_gp_module = object_draft_
    targetTemplate = "object/tangible/component/item/electronics_gp_module.iff",
 
    additionalTemplates = {
+              "object/tangible/component/item/shared_electronics_gp_module.iff",
              }
 
 }

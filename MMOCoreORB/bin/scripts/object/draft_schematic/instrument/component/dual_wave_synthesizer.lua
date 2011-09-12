@@ -74,6 +74,7 @@ object_draft_schematic_instrument_component_dual_wave_synthesizer = object_draft
    targetTemplate = "object/tangible/component/instrument/dual_wave_synthesizer.iff",
 
    additionalTemplates = {
+              "object/tangible/component/instrument/shared_dual_wave_synthesizer.iff",
              }
 
 }

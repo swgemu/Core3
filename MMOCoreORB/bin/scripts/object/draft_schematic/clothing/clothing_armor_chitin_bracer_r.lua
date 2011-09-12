@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_chitin_bracer_r = object_draft_sc
    targetTemplate = "object/tangible/wearables/armor/chitin/armor_chitin_s01_bracer_r.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bracer_r.iff",
              }
 
 }

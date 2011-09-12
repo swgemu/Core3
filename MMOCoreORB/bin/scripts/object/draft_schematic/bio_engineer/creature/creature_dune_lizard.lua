@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_creature_creature_dune_lizard = object_draft
    targetTemplate = "object/tangible/deed/pet_deed/dune_lizard_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_dune_lizard_deed.iff",
              }
 
 }

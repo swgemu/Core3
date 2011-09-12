@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_zam_belt = object_draft_schematic
    targetTemplate = "object/tangible/wearables/armor/zam/armor_zam_wesell_belt.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_belt.iff",
              }
 
 }

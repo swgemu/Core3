@@ -74,6 +74,7 @@ object_draft_schematic_munition_component_warhead_medium = object_draft_schemati
    targetTemplate = "object/tangible/component/munition/warhead_medium.iff",
 
    additionalTemplates = {
+              "object/tangible/component/munition/shared_warhead_medium.iff",
              }
 
 }

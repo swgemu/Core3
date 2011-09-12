@@ -74,6 +74,7 @@ object_draft_schematic_structure_generic_house_player_small_floorplan_02 = objec
    targetTemplate = "object/tangible/deed/player_house_deed/generic_house_small_floor_02_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/player_house_deed/shared_generic_house_small_floor_02_deed.iff",
              }
 
 }

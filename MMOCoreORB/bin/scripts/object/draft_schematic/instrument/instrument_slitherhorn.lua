@@ -74,6 +74,7 @@ object_draft_schematic_instrument_instrument_slitherhorn = object_draft_schemati
    targetTemplate = "object/tangible/instrument/slitherhorn.iff",
 
    additionalTemplates = {
+              "object/tangible/instrument/shared_slitherhorn.iff",
              }
 
 }

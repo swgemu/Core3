@@ -74,6 +74,7 @@ object_draft_schematic_item_item_firework_ten = object_draft_schematic_item_shar
    targetTemplate = "object/tangible/firework/firework_s10.iff",
 
    additionalTemplates = {
+              "object/tangible/firework/shared_firework_s10.iff",
              }
 
 }

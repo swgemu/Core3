@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_chest_cheap = object_draft_schematic_
    targetTemplate = "object/tangible/furniture/cheap/chest_s01.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/cheap/shared_chest_s01.iff",
              }
 
 }

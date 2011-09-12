@@ -74,6 +74,7 @@ object_draft_schematic_weapon_knife_twilek_dagger = object_draft_schematic_weapo
    targetTemplate = "object/weapon/melee/knife/knife_dagger.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/knife/shared_knife_dagger.iff",
              }
 
 }

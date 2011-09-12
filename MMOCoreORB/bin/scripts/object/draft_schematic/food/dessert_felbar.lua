@@ -74,6 +74,7 @@ object_draft_schematic_food_dessert_felbar = object_draft_schematic_food_shared_
    targetTemplate = "object/tangible/food/crafted/dessert_felbar.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dessert_felbar.iff",
              }
 
 }

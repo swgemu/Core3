@@ -74,6 +74,7 @@ object_draft_schematic_spices_spice_scramjet = object_draft_schematic_spices_sha
    targetTemplate = "object/tangible/food/spice/spice_scramjet.iff",
 
    additionalTemplates = {
+              "object/tangible/food/spice/shared_spice_scramjet.iff",
              }
 
 }

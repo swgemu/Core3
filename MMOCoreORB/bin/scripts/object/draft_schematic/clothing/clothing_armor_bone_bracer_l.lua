@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_bone_bracer_l = object_draft_sche
    targetTemplate = "object/tangible/wearables/armor/bone/armor_bone_s01_bracer_l.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/bone/shared_armor_bone_s01_bracer_l.iff",
              }
 
 }

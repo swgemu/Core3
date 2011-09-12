@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_lamp_table_cantina = object_draft_sch
    targetTemplate = "object/tangible/furniture/all/frn_all_lamp_tatt_s01.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/all/shared_frn_all_lamp_tatt_s01.iff",
              }
 
 }

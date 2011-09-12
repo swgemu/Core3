@@ -74,6 +74,7 @@ object_draft_schematic_spices_spice_droid_lube = object_draft_schematic_spices_s
    targetTemplate = "object/tangible/food/spice/spice_droid_lube.iff",
 
    additionalTemplates = {
+              "object/tangible/food/spice/shared_spice_droid_lube.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_food_dessert_cavaellin_creams = object_draft_schematic_fo
    targetTemplate = "object/tangible/food/crafted/dessert_cavaellin_creams.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dessert_cavaellin_creams.iff",
              }
 
 }

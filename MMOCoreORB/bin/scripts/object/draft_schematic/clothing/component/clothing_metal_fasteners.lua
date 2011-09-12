@@ -74,6 +74,7 @@ object_draft_schematic_clothing_component_clothing_metal_fasteners = object_draf
    targetTemplate = "object/tangible/component/clothing/metal_fasteners.iff",
 
    additionalTemplates = {
+              "object/tangible/component/clothing/shared_metal_fasteners.iff",
              }
 
 }

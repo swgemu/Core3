@@ -74,6 +74,7 @@ object_draft_schematic_food_dish_vegeparsine = object_draft_schematic_food_share
    targetTemplate = "object/tangible/food/crafted/dish_vegeparsine.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dish_vegeparsine.iff",
              }
 
 }

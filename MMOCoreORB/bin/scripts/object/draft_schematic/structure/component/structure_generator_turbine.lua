@@ -74,6 +74,7 @@ object_draft_schematic_structure_component_structure_generator_turbine = object_
    targetTemplate = "object/tangible/component/structure/generator_turbine.iff",
 
    additionalTemplates = {
+              "object/tangible/component/structure/shared_generator_turbine.iff",
              }
 
 }

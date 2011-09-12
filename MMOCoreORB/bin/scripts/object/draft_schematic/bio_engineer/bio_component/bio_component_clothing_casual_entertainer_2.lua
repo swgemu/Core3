@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_
    targetTemplate = "object/tangible/component/bio/bio_component_clothing_casual_entertainer_2.iff",
 
    additionalTemplates = {
+              "object/tangible/component/bio/shared_bio_component_clothing_casual_entertainer_2.iff",
              }
 
 }

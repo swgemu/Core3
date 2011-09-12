@@ -74,6 +74,7 @@ object_draft_schematic_food_dessert_kiwik_clusjo_swirl = object_draft_schematic_
    targetTemplate = "object/tangible/food/crafted/dessert_kiwik_clusjo_swirl.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dessert_kiwik_clusjo_swirl.iff",
              }
 
 }

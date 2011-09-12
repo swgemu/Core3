@@ -74,6 +74,7 @@ object_draft_schematic_chemistry_med_stimpack_a = object_draft_schematic_chemist
    targetTemplate = "object/tangible/medicine/crafted/crafted_stimpack_sm_s1_a.iff",
 
    additionalTemplates = {
+              "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_a.iff",
              }
 
 }

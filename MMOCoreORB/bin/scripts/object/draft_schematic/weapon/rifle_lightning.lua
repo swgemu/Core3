@@ -74,6 +74,7 @@ object_draft_schematic_weapon_rifle_lightning = object_draft_schematic_weapon_sh
    targetTemplate = "object/weapon/ranged/rifle/rifle_lightning.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/rifle/shared_rifle_lightning.iff",
              }
 
 }

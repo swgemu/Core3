@@ -74,6 +74,7 @@ object_draft_schematic_clothing_component_clothing_padding_segment = object_draf
    targetTemplate = "object/tangible/component/clothing/padding_segment.iff",
 
    additionalTemplates = {
+              "object/tangible/component/clothing/shared_padding_segment.iff",
              }
 
 }

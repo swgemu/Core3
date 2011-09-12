@@ -74,6 +74,7 @@ object_draft_schematic_space_repair_engine_repair_kit = object_draft_schematic_s
    targetTemplate = "object/tangible/ship/crafted/repair/repair_kit_engine.iff",
 
    additionalTemplates = {
+              "object/tangible/ship/crafted/repair/shared_repair_kit_engine.iff",
              }
 
 }

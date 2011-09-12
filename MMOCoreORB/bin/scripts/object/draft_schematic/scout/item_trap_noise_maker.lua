@@ -74,6 +74,7 @@ object_draft_schematic_scout_item_trap_noise_maker = object_draft_schematic_scou
    targetTemplate = "object/tangible/scout/trap/trap_noise_maker.iff",
 
    additionalTemplates = {
+              "object/tangible/scout/trap/shared_trap_noise_maker.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_creature_creature_zucca_boar = object_draft_
    targetTemplate = "object/tangible/deed/pet_deed/zucca_boar_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_zucca_boar_deed.iff",
              }
 
 }

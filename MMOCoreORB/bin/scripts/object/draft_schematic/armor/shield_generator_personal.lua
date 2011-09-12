@@ -74,6 +74,7 @@ object_draft_schematic_armor_shield_generator_personal = object_draft_schematic_
    targetTemplate = "object/tangible/component/armor/shield_generator_personal.iff",
 
    additionalTemplates = {
+              "object/tangible/component/armor/shared_shield_generator_personal.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_weapon_lance_vibro = object_draft_schematic_weapon_shared
    targetTemplate = "object/weapon/melee/polearm/lance_vibrolance.iff",
 
    additionalTemplates = {
+              "object/weapon/melee/polearm/shared_lance_vibrolance.iff",
              }
 
 }

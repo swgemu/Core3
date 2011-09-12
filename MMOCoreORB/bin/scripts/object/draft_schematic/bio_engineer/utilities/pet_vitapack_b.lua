@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_utilities_pet_vitapack_b = object_draft_sche
    targetTemplate = "object/tangible/medicine/pet/pet_vitapack_b.iff",
 
    additionalTemplates = {
+              "object/tangible/medicine/pet/shared_pet_vitapack_b.iff",
              }
 
 }

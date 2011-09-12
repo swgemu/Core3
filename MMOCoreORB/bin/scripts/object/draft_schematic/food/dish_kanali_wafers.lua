@@ -74,6 +74,7 @@ object_draft_schematic_food_dish_kanali_wafers = object_draft_schematic_food_sha
    targetTemplate = "object/tangible/food/crafted/dish_kanali_wafers.iff",
 
    additionalTemplates = {
+              "object/tangible/food/crafted/shared_dish_kanali_wafers.iff",
              }
 
 }

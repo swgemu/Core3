@@ -74,6 +74,7 @@ object_draft_schematic_vehicle_vehicle_customization_kit = object_draft_schemati
    targetTemplate = "object/tangible/item/vehicle_customization.iff",
 
    additionalTemplates = {
+              "object/tangible/item/shared_vehicle_customization.iff",
              }
 
 }

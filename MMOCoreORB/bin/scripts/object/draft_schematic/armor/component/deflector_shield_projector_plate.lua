@@ -74,6 +74,7 @@ object_draft_schematic_armor_component_deflector_shield_projector_plate = object
    targetTemplate = "object/tangible/component/armor/deflector_shield_projector_plate.iff",
 
    additionalTemplates = {
+              "object/tangible/component/armor/shared_deflector_shield_projector_plate.iff",
              }
 
 }

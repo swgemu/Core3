@@ -74,6 +74,7 @@ object_draft_schematic_chemistry_medpack_disease_action_b = object_draft_schemat
    targetTemplate = "object/tangible/medicine/crafted/medpack_disease_action_b.iff",
 
    additionalTemplates = {
+              "object/tangible/medicine/crafted/shared_medpack_disease_action_b.iff",
              }
 
 }

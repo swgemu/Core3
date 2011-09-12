@@ -74,6 +74,7 @@ object_draft_schematic_structure_city_garden_medium = object_draft_schematic_str
    targetTemplate = "object/tangible/deed/city_deed/garden_corellia_med_01_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/city_deed/shared_garden_corellia_med_01_deed.iff",
              }
 
 }

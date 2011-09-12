@@ -74,6 +74,7 @@ object_draft_schematic_weapon_component_chemical_dispersion_mechanism = object_d
    targetTemplate = "object/tangible/component/weapon/chemical_dispersion_mechanism.iff",
 
    additionalTemplates = {
+              "object/tangible/component/weapon/shared_chemical_dispersion_mechanism.iff",
              }
 
 }

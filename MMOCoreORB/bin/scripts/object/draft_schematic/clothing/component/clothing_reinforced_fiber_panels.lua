@@ -74,6 +74,7 @@ object_draft_schematic_clothing_component_clothing_reinforced_fiber_panels = obj
    targetTemplate = "object/tangible/component/clothing/reinforced_fiber_panels.iff",
 
    additionalTemplates = {
+              "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff",
              }
 
 }

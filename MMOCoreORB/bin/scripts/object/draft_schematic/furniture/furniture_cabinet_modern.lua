@@ -74,6 +74,7 @@ object_draft_schematic_furniture_furniture_cabinet_modern = object_draft_schemat
    targetTemplate = "object/tangible/furniture/modern/cabinet_modern_style_01.iff",
 
    additionalTemplates = {
+              "object/tangible/furniture/modern/shared_cabinet_modern_style_01.iff",
              }
 
 }

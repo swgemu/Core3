@@ -74,6 +74,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = objec
    targetTemplate = "object/tangible/component/weapon/lightsaber/lightsaber_refined_crystal_pack.iff",
 
    additionalTemplates = {
+              "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff",
              }
 
 }

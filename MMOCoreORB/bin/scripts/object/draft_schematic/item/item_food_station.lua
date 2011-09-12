@@ -74,6 +74,7 @@ object_draft_schematic_item_item_food_station = object_draft_schematic_item_shar
    targetTemplate = "object/tangible/crafting/station/food_station.iff",
 
    additionalTemplates = {
+              "object/tangible/crafting/station/shared_food_station.iff",
              }
 
 }

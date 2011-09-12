@@ -74,6 +74,7 @@ object_draft_schematic_weapon_component_sword_core = object_draft_schematic_weap
    targetTemplate = "object/tangible/component/weapon/sword_core.iff",
 
    additionalTemplates = {
+              "object/tangible/component/weapon/shared_sword_core.iff",
              }
 
 }

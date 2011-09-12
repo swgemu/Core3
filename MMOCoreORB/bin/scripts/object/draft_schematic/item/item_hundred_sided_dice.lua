@@ -74,6 +74,7 @@ object_draft_schematic_item_item_hundred_sided_dice = object_draft_schematic_ite
    targetTemplate = "object/tangible/dice/eqp_one_hundred_sided_dice_set.iff",
 
    additionalTemplates = {
+              "object/tangible/dice/shared_eqp_one_hundred_sided_dice_set.iff",
              }
 
 }

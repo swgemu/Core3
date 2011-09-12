@@ -74,6 +74,7 @@ object_draft_schematic_munition_grenade_fragmentation_c_22 = object_draft_schema
    targetTemplate = "object/weapon/ranged/grenade/grenade_fragmentation.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/grenade/shared_grenade_fragmentation.iff",
              }
 
 }

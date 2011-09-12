@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_creature_creature_langlatch = object_draft_s
    targetTemplate = "object/tangible/deed/pet_deed/langlatch_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_langlatch_deed.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_weapon_pistol_launcher = object_draft_schematic_weapon_sh
    targetTemplate = "object/weapon/ranged/pistol/pistol_launcher.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/pistol/shared_pistol_launcher.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_instrument_instrument_fanfar = object_draft_schematic_ins
    targetTemplate = "object/tangible/instrument/fanfar.iff",
 
    additionalTemplates = {
+              "object/tangible/instrument/shared_fanfar.iff",
              }
 
 }

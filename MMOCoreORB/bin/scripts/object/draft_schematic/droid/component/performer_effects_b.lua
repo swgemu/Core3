@@ -74,6 +74,7 @@ object_draft_schematic_droid_component_performer_effects_b = object_draft_schema
    targetTemplate = "object/tangible/component/droid/performer_effects_b.iff",
 
    additionalTemplates = {
+              "object/tangible/component/droid/shared_performer_effects_b.iff",
              }
 
 }

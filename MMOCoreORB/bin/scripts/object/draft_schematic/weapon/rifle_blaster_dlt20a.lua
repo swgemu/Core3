@@ -74,6 +74,7 @@ object_draft_schematic_weapon_rifle_blaster_dlt20a = object_draft_schematic_weap
    targetTemplate = "object/weapon/ranged/rifle/rifle_dlt20a.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/rifle/shared_rifle_dlt20a.iff",
              }
 
 }

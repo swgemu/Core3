@@ -74,6 +74,7 @@ object_draft_schematic_clothing_component_clothing_fiberplast_panel = object_dra
    targetTemplate = "object/tangible/component/clothing/fiberplast_panel.iff",
 
    additionalTemplates = {
+              "object/tangible/component/clothing/shared_fiberplast_panel.iff",
              }
 
 }

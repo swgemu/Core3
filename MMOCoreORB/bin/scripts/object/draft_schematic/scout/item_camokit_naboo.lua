@@ -74,6 +74,7 @@ object_draft_schematic_scout_item_camokit_naboo = object_draft_schematic_scout_s
    targetTemplate = "object/tangible/scout/camokit/camokit_naboo.iff",
 
    additionalTemplates = {
+              "object/tangible/scout/camokit/shared_camokit_naboo.iff",
              }
 
 }

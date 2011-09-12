@@ -74,6 +74,7 @@ object_draft_schematic_weapon_pistol_projectile_striker = object_draft_schematic
    targetTemplate = "object/weapon/ranged/pistol/pistol_striker.iff",
 
    additionalTemplates = {
+              "object/weapon/ranged/pistol/shared_pistol_striker.iff",
              }
 
 }

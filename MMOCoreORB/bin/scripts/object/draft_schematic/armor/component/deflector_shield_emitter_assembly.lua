@@ -74,6 +74,7 @@ object_draft_schematic_armor_component_deflector_shield_emitter_assembly = objec
    targetTemplate = "object/tangible/component/armor/deflector_shield_emitter_assembly.iff",
 
    additionalTemplates = {
+              "object/tangible/component/armor/shared_deflector_shield_emitter_assembly.iff",
              }
 
 }

@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_wke_hood_s02 = object_draft_schematic_c
    targetTemplate = "object/tangible/wearables/wookiee/wke_hood_s02.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/wookiee/shared_wke_hood_s02.iff",
              }
 
 }

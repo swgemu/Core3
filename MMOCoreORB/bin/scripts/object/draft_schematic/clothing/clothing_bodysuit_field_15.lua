@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_bodysuit_field_15 = object_draft_schema
    targetTemplate = "object/tangible/wearables/bodysuit/bodysuit_s15.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/bodysuit/shared_bodysuit_s15.iff",
              }
 
 }

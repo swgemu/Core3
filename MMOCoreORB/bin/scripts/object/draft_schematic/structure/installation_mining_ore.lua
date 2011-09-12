@@ -74,6 +74,7 @@ object_draft_schematic_structure_installation_mining_ore = object_draft_schemati
    targetTemplate = "object/tangible/deed/harvester_deed/harvester_ore_s2_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/harvester_deed/shared_harvester_ore_s2_deed.iff",
              }
 
 }

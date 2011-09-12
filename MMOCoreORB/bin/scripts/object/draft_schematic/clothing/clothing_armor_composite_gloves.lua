@@ -74,6 +74,7 @@ object_draft_schematic_clothing_clothing_armor_composite_gloves = object_draft_s
    targetTemplate = "object/tangible/wearables/armor/composite/armor_composite_gloves.iff",
 
    additionalTemplates = {
+              "object/tangible/wearables/armor/composite/shared_armor_composite_gloves.iff",
              }
 
 }

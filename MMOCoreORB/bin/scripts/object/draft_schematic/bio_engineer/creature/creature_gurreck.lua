@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_creature_creature_gurreck = object_draft_sch
    targetTemplate = "object/tangible/deed/pet_deed/gurreck_deed.iff",
 
    additionalTemplates = {
+              "object/tangible/deed/pet_deed/shared_gurreck_deed.iff",
              }
 
 }

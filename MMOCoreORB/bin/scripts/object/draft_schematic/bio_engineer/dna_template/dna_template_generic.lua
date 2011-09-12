@@ -74,6 +74,7 @@ object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_d
    targetTemplate = "object/tangible/component/dna/dna_template_generic.iff",
 
    additionalTemplates = {
+              "object/tangible/component/dna/shared_dna_template_generic.iff",
              }
 
 }
