@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_customization_kit = object_draft_schematic_dr
 
    customObjectName = "Droid Customization Kit",
 
-   groupName = "craftdroidGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_customization_kit = object_draft_schematic_dr
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3780648213, -- Script: 'object/tangible/item/droid_customization.iff'
+              "object/tangible/item/shared_droid_customization.iff",
              }
 
 }

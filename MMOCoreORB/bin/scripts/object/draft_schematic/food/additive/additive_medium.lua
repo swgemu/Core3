@@ -47,8 +47,6 @@ object_draft_schematic_food_additive_additive_medium = object_draft_schematic_fo
 
    customObjectName = "Medium Food Additive",
 
-   groupName = "craftFoodNoviceGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 7, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_additive_additive_medium = object_draft_schematic_fo
    contribution = {100, 100},
 
    templates = {
-              1269715552, -- Script: 'object/tangible/food/crafted/additive/additive_medium.iff'
+              "object/tangible/food/crafted/additive/shared_additive_medium.iff",
              }
 
 }

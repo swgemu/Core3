@@ -47,8 +47,6 @@ object_draft_schematic_weapon_axe = object_draft_schematic_weapon_shared_axe:new
 
    customObjectName = "Heavy Axe",
 
-   groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_axe = object_draft_schematic_weapon_shared_axe:new
    contribution = {100, 100, 100},
 
    templates = {
-              3768853699, -- Script: 'object/weapon/melee/axe/axe_heavy_duty.iff'
+              "object/weapon/melee/axe/shared_axe_heavy_duty.iff",
              }
 
 }

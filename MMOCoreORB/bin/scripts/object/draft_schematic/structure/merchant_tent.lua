@@ -47,8 +47,6 @@ object_draft_schematic_structure_merchant_tent = object_draft_schematic_structur
 
    customObjectName = "Deed for: Merchant Tent",
 
-   groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 13, 
    size = 10, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_merchant_tent = object_draft_schematic_structur
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3260268069, -- Script: 'object/tangible/deed/player_house_deed/merchant_tent_style_01_deed.iff'
+              "object/tangible/deed/player_house_deed/shared_merchant_tent_style_01_deed.iff",
              }
 
 }

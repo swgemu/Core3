@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_shirt_formal_10 = object_draft_sche
 
    customObjectName = "Ithorian Mystic Shirt",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_shirt_formal_10 = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              2370256828, -- Script: 'object/tangible/wearables/ithorian/ith_shirt_s10.iff'
+              "object/tangible/wearables/ithorian/shared_ith_shirt_s10.iff",
              }
 
 }

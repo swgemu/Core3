@@ -47,8 +47,6 @@ object_draft_schematic_spices_spice_crash_n_burn = object_draft_schematic_spices
 
    customObjectName = "Crash n' Burn",
 
-   groupName = "craftSmugglerSpiceC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_spices_spice_crash_n_burn = object_draft_schematic_spices
    contribution = {100, 100, 100},
 
    templates = {
-              4093488394, -- Script: 'object/tangible/food/spice/spice_crash_n_burn.iff'
+              "object/tangible/food/spice/shared_spice_crash_n_burn.iff",
              }
 
 }

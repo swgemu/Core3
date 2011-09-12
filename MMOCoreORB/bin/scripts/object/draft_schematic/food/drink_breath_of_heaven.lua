@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_breath_of_heaven = object_draft_schematic_food
 
    customObjectName = "Breath of Heaven",
 
-   groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_breath_of_heaven = object_draft_schematic_food
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1492257317, -- Script: 'object/tangible/food/crafted/drink_breath_of_heaven.iff'
+              "object/tangible/food/crafted/shared_drink_breath_of_heaven.iff",
              }
 
 }

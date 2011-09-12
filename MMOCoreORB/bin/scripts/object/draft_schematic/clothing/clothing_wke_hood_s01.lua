@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_wke_hood_s01 = object_draft_schematic_c
 
    customObjectName = "Tree-Dweller's Hood",
 
-   groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 9, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_wke_hood_s01 = object_draft_schematic_c
    contribution = {100, 100},
 
    templates = {
-              31933594, -- Script: 'object/tangible/wearables/wookiee/wke_hood_s01.iff'
+              "object/tangible/wearables/wookiee/shared_wke_hood_s01.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_bookcase_modern = object_draft_schema
 
    customObjectName = "Bookcase",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_bookcase_modern = object_draft_schema
    contribution = {100, 100},
 
    templates = {
-              3499045206, -- Script: 'object/tangible/furniture/modern/bookcase_modern_style_01.iff'
+              "object/tangible/furniture/modern/shared_bookcase_modern_style_01.iff",
              }
 
 }

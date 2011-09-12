@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_enhance_strength_c = object_draft_schem
 
    customObjectName = "Enhance Strength Medpack - C",
 
-   groupName = "craftMedpackBEnhanceGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 32, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_enhance_strength_c = object_draft_schem
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1878704988, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_strength_c.iff'
+              "object/tangible/medicine/crafted/shared_medpack_enhance_strength_c.iff",
              }
 
 }

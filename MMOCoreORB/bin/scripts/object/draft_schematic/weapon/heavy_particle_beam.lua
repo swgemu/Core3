@@ -47,8 +47,6 @@ object_draft_schematic_weapon_heavy_particle_beam = object_draft_schematic_weapo
 
    customObjectName = "Heavy Particle Beam Cannon",
 
-   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 50, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_heavy_particle_beam = object_draft_schematic_weapo
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              180006972, -- Script: 'object/weapon/ranged/heavy/heavy_particle_beam.iff'
+              "object/weapon/ranged/heavy/shared_heavy_particle_beam.iff",
              }
 
 }

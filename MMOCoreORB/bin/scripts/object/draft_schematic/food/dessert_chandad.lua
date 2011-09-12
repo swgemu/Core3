@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_chandad = object_draft_schematic_food_shared
 
    customObjectName = "Chandad",
 
-   groupName = "craftFoodDessertGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 6, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_chandad = object_draft_schematic_food_shared
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2965229400, -- Script: 'object/tangible/food/crafted/dessert_chandad.iff'
+              "object/tangible/food/crafted/shared_dessert_chandad.iff",
              }
 
 }

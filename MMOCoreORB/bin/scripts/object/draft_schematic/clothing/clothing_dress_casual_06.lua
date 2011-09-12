@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_dress_casual_06 = object_draft_schemati
 
    customObjectName = "Maidens Dress",
 
-   groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_dress_casual_06 = object_draft_schemati
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              315638215, -- Script: 'object/tangible/wearables/dress/dress_s06.iff'
+              "object/tangible/wearables/dress/shared_dress_s06.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_ithorian_guardian_bracer_l = obje
 
    customObjectName = "Ithorian Guardian Bracer (Left)",
 
-   groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_ithorian_guardian_bracer_l = obje
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1837916498, -- Script: 'object/tangible/wearables/armor/ithorian_guardian/ith_armor_s02_bracer_l.iff'
+              "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_bracer_l.iff",
              }
 
 }

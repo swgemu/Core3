@@ -47,8 +47,6 @@ object_draft_schematic_instrument_instrument_kloo_horn = object_draft_schematic_
 
    customObjectName = "a Kloo Horn",
 
-   groupName = "craftInstrumentGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_instrument_instrument_kloo_horn = object_draft_schematic_
    contribution = {100, 100},
 
    templates = {
-              3599959175, -- Script: 'object/tangible/instrument/kloo_horn.iff'
+              "object/tangible/instrument/shared_kloo_horn.iff",
              }
 
 }

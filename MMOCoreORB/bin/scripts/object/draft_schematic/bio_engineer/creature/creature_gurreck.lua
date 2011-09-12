@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_gurreck = object_draft_sch
 
    customObjectName = "Gurreck",
 
-   groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 27, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_gurreck = object_draft_sch
    contribution = {100, 100, 100},
 
    templates = {
-              2636087453, -- Script: 'object/tangible/deed/pet_deed/gurreck_deed.iff'
+              "object/tangible/deed/pet_deed/shared_gurreck_deed.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_chitin_bracer_r = object_draft_sc
 
    customObjectName = "Chitin Armor Right Bracer",
 
-   groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_chitin_bracer_r = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              247689044, -- Script: 'object/tangible/wearables/armor/chitin/armor_chitin_s01_bracer_r.iff'
+              "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_bracer_r.iff",
              }
 
 }

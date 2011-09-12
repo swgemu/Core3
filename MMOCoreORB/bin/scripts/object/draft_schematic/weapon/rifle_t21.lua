@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_t21 = object_draft_schematic_weapon_shared_r
 
    customObjectName = "T21 Rifle",
 
-   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_t21 = object_draft_schematic_weapon_shared_r
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2920650591, -- Script: 'object/weapon/ranged/rifle/rifle_t21.iff'
+              "object/weapon/ranged/rifle/shared_rifle_t21.iff",
              }
 
 }

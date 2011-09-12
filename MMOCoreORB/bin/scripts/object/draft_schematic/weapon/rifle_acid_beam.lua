@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_acid_beam = object_draft_schematic_weapon_sh
 
    customObjectName = "Heavy Acid Rifle",
 
-   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_acid_beam = object_draft_schematic_weapon_sh
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              4227426203, -- Script: 'object/weapon/ranged/rifle/rifle_acid_beam.iff'
+              "object/weapon/ranged/rifle/shared_rifle_acid_beam.iff",
              }
 
 }

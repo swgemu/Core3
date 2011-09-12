@@ -47,8 +47,6 @@ object_draft_schematic_munition_mine_anti_vehicle = object_draft_schematic_munit
 
    customObjectName = "Anti-Vehicular Mine",
 
-   groupName = "craftMunitionsGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_munition_mine_anti_vehicle = object_draft_schematic_munit
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              394148601, -- Script: 'object/weapon/mine/wp_mine_anti_vehicle.iff'
+              "object/weapon/mine/shared_wp_mine_anti_vehicle.iff",
              }
 
 }

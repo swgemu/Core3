@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_bodysuit_formal_06 = object_draft_schem
 
    customObjectName = "Revealing Fleshwrap",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_bodysuit_formal_06 = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              3508305094, -- Script: 'object/tangible/wearables/bodysuit/bodysuit_s06.iff'
+              "object/tangible/wearables/bodysuit/shared_bodysuit_s06.iff",
              }
 
 }

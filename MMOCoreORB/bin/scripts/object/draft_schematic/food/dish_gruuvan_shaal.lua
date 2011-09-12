@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_gruuvan_shaal = object_draft_schematic_food_sha
 
    customObjectName = "Gruuvan Shaal",
 
-   groupName = "craftFoodDishGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_gruuvan_shaal = object_draft_schematic_food_sha
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1353161551, -- Script: 'object/tangible/food/crafted/dish_gruuvan_shaal.iff'
+              "object/tangible/food/crafted/shared_dish_gruuvan_shaal.iff",
              }
 
 }

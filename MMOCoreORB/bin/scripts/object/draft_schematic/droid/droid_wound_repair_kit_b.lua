@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_wound_repair_kit_b = object_draft_schematic_d
 
    customObjectName = "Droid Reconstruction Kit - B",
 
-   groupName = "craftDroidWoundRepairB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_wound_repair_kit_b = object_draft_schematic_d
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2109827310, -- Script: 'object/tangible/medicine/pet/droid_wound_kit_b.iff'
+              "object/tangible/medicine/pet/shared_droid_wound_kit_b.iff",
              }
 
 }

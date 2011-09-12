@@ -47,8 +47,6 @@ object_draft_schematic_slicing_slicing_armor_upgrade_kit = object_draft_schemati
 
    customObjectName = "Armor Upgrade Kit",
 
-   groupName = "craftArmorPersonalGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_slicing_slicing_armor_upgrade_kit = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              4280755295, -- Script: 'object/tangible/slicing/slicing_armor_upgrade_kit.iff'
+              "object/tangible/slicing/shared_slicing_armor_upgrade_kit.iff",
              }
 
 }

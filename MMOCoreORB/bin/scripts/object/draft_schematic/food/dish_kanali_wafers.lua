@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_kanali_wafers = object_draft_schematic_food_sha
 
    customObjectName = "Kanali Wafers",
 
-   groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 4, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_kanali_wafers = object_draft_schematic_food_sha
    contribution = {100, 100, 100, 100},
 
    templates = {
-              179201581, -- Script: 'object/tangible/food/crafted/dish_kanali_wafers.iff'
+              "object/tangible/food/crafted/shared_dish_kanali_wafers.iff",
              }
 
 }

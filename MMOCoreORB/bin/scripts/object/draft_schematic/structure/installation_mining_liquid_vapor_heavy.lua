@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_mining_liquid_vapor_heavy = object
 
    customObjectName = "Deed for: High Efficiency Moisture Vaporator",
 
-   groupName = "craftInstallationGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 8, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_mining_liquid_vapor_heavy = object
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2334135912, -- Script: 'object/tangible/deed/harvester_deed/harvester_moisture_deed_heavy.iff'
+              "object/tangible/deed/harvester_deed/shared_harvester_moisture_deed_heavy.iff",
              }
 
 }

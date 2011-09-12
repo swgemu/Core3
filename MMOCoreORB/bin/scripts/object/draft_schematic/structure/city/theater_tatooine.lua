@@ -47,8 +47,6 @@ object_draft_schematic_structure_city_theater_tatooine = object_draft_schematic_
 
    customObjectName = "Deed for: Tatooine Theater",
 
-   groupName = "craftPlayerCityC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 14, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_city_theater_tatooine = object_draft_schematic_
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1184163772, -- Script: 'object/tangible/deed/city_deed/theater_tatooine_deed.iff'
+              "object/tangible/deed/city_deed/shared_theater_tatooine_deed.iff",
              }
 
 }

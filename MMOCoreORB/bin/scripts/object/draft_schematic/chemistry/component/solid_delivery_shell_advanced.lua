@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_component_solid_delivery_shell_advanced = objec
 
    customObjectName = "Advanced Solid Delivery Shell",
 
-   groupName = "craftMedicineComponentGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_component_solid_delivery_shell_advanced = objec
    contribution = {100, 100},
 
    templates = {
-              1851480794, -- Script: 'object/tangible/component/chemistry/solid_delivery_shell_advanced.iff'
+              "object/tangible/component/chemistry/shared_solid_delivery_shell_advanced.iff",
              }
 
 }

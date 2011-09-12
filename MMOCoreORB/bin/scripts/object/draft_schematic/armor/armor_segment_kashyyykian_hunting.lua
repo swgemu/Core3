@@ -47,8 +47,6 @@ object_draft_schematic_armor_armor_segment_kashyyykian_hunting = object_draft_sc
 
    customObjectName = "Kashyyykian Hunting Armor Segment",
 
-   groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_hunting = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2160769057, -- Script: 'object/tangible/component/armor/armor_segment_kashyyykian_hunting.iff'
+              "object/tangible/component/armor/shared_armor_segment_kashyyykian_hunting.iff",
              }
 
 }

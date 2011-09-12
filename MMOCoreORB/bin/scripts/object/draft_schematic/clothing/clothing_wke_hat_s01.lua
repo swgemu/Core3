@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_wke_hat_s01 = object_draft_schematic_cl
 
    customObjectName = "Wookiee Traveller's Helm",
 
-   groupName = "craftClothingNoviceGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_wke_hat_s01 = object_draft_schematic_cl
    contribution = {100, 100, 100},
 
    templates = {
-              2179821147, -- Script: 'object/tangible/wearables/wookiee/wke_hat_s01.iff'
+              "object/tangible/wearables/wookiee/shared_wke_hat_s01.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_armor_armor_segment_bone = object_draft_schematic_armor_s
 
    customObjectName = "Bone Armor Segment",
 
-   groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_armor_segment_bone = object_draft_schematic_armor_s
    contribution = {100, 100, 100},
 
    templates = {
-              3508303758, -- Script: 'object/tangible/component/armor/armor_segment_bone.iff'
+              "object/tangible/component/armor/shared_armor_segment_bone.iff",
              }
 
 }

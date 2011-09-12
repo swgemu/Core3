@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_apron_chef_01 = object_draft_schematic_
 
    customObjectName = "Chef's Apron",
 
-   groupName = "craftClothingFormalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_apron_chef_01 = object_draft_schematic_
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1574719069, -- Script: 'object/tangible/wearables/apron/apron_chef_s01.iff'
+              "object/tangible/wearables/apron/shared_apron_chef_s01.iff",
              }
 
 }

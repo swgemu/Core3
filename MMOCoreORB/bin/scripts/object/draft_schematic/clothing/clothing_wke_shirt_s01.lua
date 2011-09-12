@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_wke_shirt_s01 = object_draft_schematic_
 
    customObjectName = "Wookiee Hide Jerkin",
 
-   groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 4, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_wke_shirt_s01 = object_draft_schematic_
    contribution = {100, 100},
 
    templates = {
-              4063563888, -- Script: 'object/tangible/wearables/wookiee/wke_shirt_s01.iff'
+              "object/tangible/wearables/wookiee/shared_wke_shirt_s01.iff",
              }
 
 }

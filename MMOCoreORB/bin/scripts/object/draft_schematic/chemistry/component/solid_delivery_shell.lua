@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_component_solid_delivery_shell = object_draft_s
 
    customObjectName = "Solid Delivery Shell",
 
-   groupName = "craftMedicineComponentGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_component_solid_delivery_shell = object_draft_s
    contribution = {100, 100},
 
    templates = {
-              3737748835, -- Script: 'object/tangible/component/chemistry/solid_delivery_shell.iff'
+              "object/tangible/component/chemistry/shared_solid_delivery_shell.iff",
              }
 
 }

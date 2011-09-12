@@ -47,8 +47,6 @@ object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = objec
 
    customObjectName = "A Refined Crystal Pack",
 
-   groupName = "craftJediTool", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_refined_crystal_pack = objec
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              855539713, -- Script: 'object/tangible/component/weapon/lightsaber/lightsaber_refined_crystal_pack.iff'
+              "object/tangible/component/weapon/lightsaber/shared_lightsaber_refined_crystal_pack.iff",
              }
 
 }

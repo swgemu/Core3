@@ -47,8 +47,6 @@ object_draft_schematic_armor_armor_segment_composite_advanced = object_draft_sch
 
    customObjectName = "Advanced Composite Armor Segment",
 
-   groupName = "craftArmorPersonalGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_armor_segment_composite_advanced = object_draft_sch
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1741906969, -- Script: 'object/tangible/component/armor/armor_segment_composite_advanced.iff'
+              "object/tangible/component/armor/shared_armor_segment_composite_advanced.iff",
              }
 
 }

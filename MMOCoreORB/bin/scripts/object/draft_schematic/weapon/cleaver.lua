@@ -47,8 +47,6 @@ object_draft_schematic_weapon_cleaver = object_draft_schematic_weapon_shared_cle
 
    customObjectName = "Two-handed Cleaver",
 
-   groupName = "craftWeaponMeleeGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_cleaver = object_draft_schematic_weapon_shared_cle
    contribution = {100, 100, 100},
 
    templates = {
-              237038605, -- Script: 'object/weapon/melee/2h_sword/2h_sword_cleaver.iff'
+              "object/weapon/melee/2h_sword/shared_2h_sword_cleaver.iff",
              }
 
 }

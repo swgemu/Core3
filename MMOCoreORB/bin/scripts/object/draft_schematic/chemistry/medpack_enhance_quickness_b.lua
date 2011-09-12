@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_enhance_quickness_b = object_draft_sche
 
    customObjectName = "Enhance Quickness Medpack - B",
 
-   groupName = "craftMedpackBEnhanceGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 27, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_enhance_quickness_b = object_draft_sche
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3795080877, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_quickness_b.iff'
+              "object/tangible/medicine/crafted/shared_medpack_enhance_quickness_b.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_component_clothing_shoe_sole = object_draft_sche
 
    customObjectName = "Shoe Sole",
 
-   groupName = "craftClothingCasualGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_component_clothing_shoe_sole = object_draft_sche
    contribution = {100, 100},
 
    templates = {
-              3400573006, -- Script: 'object/tangible/component/clothing/shoe_sole.iff'
+              "object/tangible/component/clothing/shared_shoe_sole.iff",
              }
 
 }

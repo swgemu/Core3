@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_poison_area_health_a = object_draft_sch
 
    customObjectName = "Health Area Poison Delivery Unit - A",
 
-   groupName = "craftApplyPoisonAreaGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_poison_area_health_a = object_draft_sch
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2344183742, -- Script: 'object/tangible/medicine/crafted/medpack_poison_area_health_a.iff'
+              "object/tangible/medicine/crafted/shared_medpack_poison_area_health_a.iff",
              }
 
 }

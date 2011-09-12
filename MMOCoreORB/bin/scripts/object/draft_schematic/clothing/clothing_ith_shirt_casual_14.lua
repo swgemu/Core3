@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_shirt_casual_14 = object_draft_sche
 
    customObjectName = "Ithorian Fiery Shirt",
 
-   groupName = "craftClothingCasualGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_shirt_casual_14 = object_draft_sche
    contribution = {100, 100},
 
    templates = {
-              2914237503, -- Script: 'object/tangible/wearables/ithorian/ith_shirt_s14.iff'
+              "object/tangible/wearables/ithorian/shared_ith_shirt_s14.iff",
              }
 
 }

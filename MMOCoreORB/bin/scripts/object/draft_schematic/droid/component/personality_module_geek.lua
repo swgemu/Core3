@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_personality_module_geek = object_draft_sc
 
    customObjectName = "Geeky Droid Personality Chip",
 
-   groupName = "craftdroidgenmodGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_personality_module_geek = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              789436461, -- Script: 'object/tangible/component/droid/personality_module_geek.iff'
+              "object/tangible/component/droid/shared_personality_module_geek.iff",
              }
 
 }

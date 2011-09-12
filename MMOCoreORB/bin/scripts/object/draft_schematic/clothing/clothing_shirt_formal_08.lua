@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_shirt_formal_08 = object_draft_schemati
 
    customObjectName = "Sidebuttoned Shirt",
 
-   groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_shirt_formal_08 = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              2288027724, -- Script: 'object/tangible/wearables/shirt/shirt_s08.iff'
+              "object/tangible/wearables/shirt/shared_shirt_s08.iff",
              }
 
 }

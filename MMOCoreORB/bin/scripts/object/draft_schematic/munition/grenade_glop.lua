@@ -47,8 +47,6 @@ object_draft_schematic_munition_grenade_glop = object_draft_schematic_munition_s
 
    customObjectName = "Glop Grenade",
 
-   groupName = "craftMunitionsGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_munition_grenade_glop = object_draft_schematic_munition_s
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              869624722, -- Script: 'object/weapon/ranged/grenade/grenade_glop.iff'
+              "object/weapon/ranged/grenade/shared_grenade_glop.iff",
              }
 
 }

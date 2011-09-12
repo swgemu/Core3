@@ -47,8 +47,6 @@ object_draft_schematic_armor_armor_segment_ubese_advanced = object_draft_schemat
 
    customObjectName = "Advanced Ubese Armor Segment",
 
-   groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_armor_segment_ubese_advanced = object_draft_schemat
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1102511316, -- Script: 'object/tangible/component/armor/armor_segment_ubese_advanced.iff'
+              "object/tangible/component/armor/shared_armor_segment_ubese_advanced.iff",
              }
 
 }

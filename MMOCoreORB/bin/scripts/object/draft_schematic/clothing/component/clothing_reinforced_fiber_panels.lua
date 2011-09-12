@@ -47,8 +47,6 @@ object_draft_schematic_clothing_component_clothing_reinforced_fiber_panels = obj
 
    customObjectName = "Reinforced Fiber Panel",
 
-   groupName = "craftClothingFieldGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_component_clothing_reinforced_fiber_panels = obj
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1726701612, -- Script: 'object/tangible/component/clothing/reinforced_fiber_panels.iff'
+              "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_armor_armor_segment_chitin_advanced = object_draft_schema
 
    customObjectName = "Advanced Chitin Armor Segment",
 
-   groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_armor_segment_chitin_advanced = object_draft_schema
    contribution = {100, 100, 100},
 
    templates = {
-              1415954991, -- Script: 'object/tangible/component/armor/armor_segment_chitin_advanced.iff'
+              "object/tangible/component/armor/shared_armor_segment_chitin_advanced.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_munition_component_warhead_light = object_draft_schematic
 
    customObjectName = "Light Warhead Mechanism",
 
-   groupName = "craftMunitionsGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_munition_component_warhead_light = object_draft_schematic
    contribution = {100, 100, 100, 100},
 
    templates = {
-              647613120, -- Script: 'object/tangible/component/munition/warhead_light.iff'
+              "object/tangible/component/munition/shared_warhead_light.iff",
              }
 
 }

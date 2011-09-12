@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_disease_willpower_c = object_draft_sche
 
    customObjectName = "Willpower Disease Delivery Unit - C",
 
-   groupName = "craftApplyDiseaseGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 50, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_disease_willpower_c = object_draft_sche
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              985567150, -- Script: 'object/tangible/medicine/crafted/medpack_disease_willpower_c.iff'
+              "object/tangible/medicine/crafted/shared_medpack_disease_willpower_c.iff",
              }
 
 }

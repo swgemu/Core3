@@ -47,8 +47,6 @@ object_draft_schematic_structure_component_structure_heavy_harvesting_mechanism 
 
    customObjectName = "Heavy Harvesting Mechanism",
 
-   groupName = "craftInstallationGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 8, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_component_structure_heavy_harvesting_mechanism 
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3985463405, -- Script: 'object/tangible/component/structure/heavy_harvesting_mechanism.iff'
+              "object/tangible/component/structure/shared_heavy_harvesting_mechanism.iff",
              }
 
 }

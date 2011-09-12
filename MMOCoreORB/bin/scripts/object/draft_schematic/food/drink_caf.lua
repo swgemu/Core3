@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_caf = object_draft_schematic_food_shared_drink
 
    customObjectName = "Caf",
 
-   groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_caf = object_draft_schematic_food_shared_drink
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1543376981, -- Script: 'object/tangible/food/crafted/drink_caf.iff'
+              "object/tangible/food/crafted/shared_drink_caf.iff",
              }
 
 }

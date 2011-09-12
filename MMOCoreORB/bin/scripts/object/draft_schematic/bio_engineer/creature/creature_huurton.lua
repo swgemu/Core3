@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_huurton = object_draft_sch
 
    customObjectName = "Huurton",
 
-   groupName = "craftDomesticCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_huurton = object_draft_sch
    contribution = {100, 100, 100},
 
    templates = {
-              846836555, -- Script: 'object/tangible/deed/pet_deed/huurton_deed.iff'
+              "object/tangible/deed/pet_deed/shared_huurton_deed.iff",
              }
 
 }

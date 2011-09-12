@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_sweet_cake_mix = object_draft_schematic_food
 
    customObjectName = "Sweet Cake Mix",
 
-   groupName = "craftFoodDessertGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_sweet_cake_mix = object_draft_schematic_food
    contribution = {100, 100, 100},
 
    templates = {
-              1684725977, -- Script: 'object/tangible/food/crafted/dessert_sweet_cake_mix.iff'
+              "object/tangible/food/crafted/shared_dessert_sweet_cake_mix.iff",
              }
 
 }

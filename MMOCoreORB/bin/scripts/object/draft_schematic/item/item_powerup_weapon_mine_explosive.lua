@@ -47,8 +47,6 @@ object_draft_schematic_item_item_powerup_weapon_mine_explosive = object_draft_sc
 
    customObjectName = "Mine Explosives Kit",
 
-   groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_powerup_weapon_mine_explosive = object_draft_sc
    contribution = {100, 100},
 
    templates = {
-              2177419691, -- Script: 'object/tangible/powerup/weapon/mine_explosive.iff'
+              "object/tangible/powerup/weapon/shared_mine_explosive.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_component_stock = object_draft_schematic_weapon_co
 
    customObjectName = "Rifle Stock",
 
-   groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_component_stock = object_draft_schematic_weapon_co
    contribution = {100, 100},
 
    templates = {
-              3643274181, -- Script: 'object/tangible/component/weapon/stock.iff'
+              "object/tangible/component/weapon/shared_stock.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_spray_stick_stohli = object_draft_schematic_
 
    customObjectName = "Spraystick",
 
-   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_spray_stick_stohli = object_draft_schematic_
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2069010987, -- Script: 'object/weapon/ranged/rifle/rifle_spraystick.iff'
+              "object/weapon/ranged/rifle/shared_rifle_spraystick.iff",
              }
 
 }

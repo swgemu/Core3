@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_repair_unit_casing = object_draft_schemat
 
    customObjectName = "Repair Unit Casing",
 
-   groupName = "craftDroidRepairCompA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_repair_unit_casing = object_draft_schemat
    contribution = {100, 100},
 
    templates = {
-              2140634822, -- Script: 'object/tangible/component/droid/repair/repair_unit_casing.iff'
+              "object/tangible/component/droid/repair/shared_repair_unit_casing.iff",
              }
 
 }

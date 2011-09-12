@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_bol = object_draft_schemat
 
    customObjectName = "Bol",
 
-   groupName = "craftDomesticCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_bol = object_draft_schemat
    contribution = {100, 100, 100},
 
    templates = {
-              2337253459, -- Script: 'object/tangible/deed/pet_deed/bol_deed.iff'
+              "object/tangible/deed/pet_deed/shared_bol_deed.iff",
              }
 
 }

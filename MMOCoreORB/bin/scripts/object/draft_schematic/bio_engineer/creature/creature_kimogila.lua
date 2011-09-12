@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_kimogila = object_draft_sc
 
    customObjectName = "Kimogila",
 
-   groupName = "craftAdvancedCreatureGroup", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 32, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_kimogila = object_draft_sc
    contribution = {100, 100, 100},
 
    templates = {
-              1490220985, -- Script: 'object/tangible/deed/pet_deed/kimogila_deed.iff'
+              "object/tangible/deed/pet_deed/shared_kimogila_deed.iff",
              }
 
 }

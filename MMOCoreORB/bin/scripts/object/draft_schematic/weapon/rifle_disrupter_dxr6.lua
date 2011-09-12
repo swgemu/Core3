@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_disrupter_dxr6 = object_draft_schematic_weap
 
    customObjectName = "Tenloss DXR-6 Disruptor Rifle",
 
-   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_disrupter_dxr6 = object_draft_schematic_weap
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              4015891191, -- Script: 'object/weapon/ranged/carbine/carbine_dxr6.iff'
+              "object/weapon/ranged/carbine/shared_carbine_dxr6.iff",
              }
 
 }

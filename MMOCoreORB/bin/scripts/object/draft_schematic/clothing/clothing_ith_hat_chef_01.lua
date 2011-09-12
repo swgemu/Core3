@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_hat_chef_01 = object_draft_schemati
 
    customObjectName = "Pouffy Ithorian Chef Hat",
 
-   groupName = "craftClothingFormalGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_hat_chef_01 = object_draft_schemati
    contribution = {100, 100, 100, 100},
 
    templates = {
-              706689447, -- Script: 'object/tangible/wearables/ithorian/hat_chef_s01_ith.iff'
+              "object/tangible/wearables/ithorian/shared_hat_chef_s01_ith.iff",
              }
 
 }

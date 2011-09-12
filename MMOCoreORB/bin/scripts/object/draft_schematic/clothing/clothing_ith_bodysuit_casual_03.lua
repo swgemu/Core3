@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_casual_03 = object_draft_s
 
    customObjectName = "Ithorian Tight Fit Jumpsuit",
 
-   groupName = "craftClothingCasualGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_casual_03 = object_draft_s
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2358001264, -- Script: 'object/tangible/wearables/ithorian/ith_bodysuit_s03.iff'
+              "object/tangible/wearables/ithorian/shared_ith_bodysuit_s03.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_wke_hood_s02 = object_draft_schematic_c
 
    customObjectName = "Wookiee Sage's Hood",
 
-   groupName = "craftClothingFormalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_wke_hood_s02 = object_draft_schematic_c
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3673222157, -- Script: 'object/tangible/wearables/wookiee/wke_hood_s02.iff'
+              "object/tangible/wearables/wookiee/shared_wke_hood_s02.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_structure_city_cantina_corellia = object_draft_schematic_
 
    customObjectName = "Deed for: Corellia Cantina",
 
-   groupName = "craftPlayerCityC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 14, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_city_cantina_corellia = object_draft_schematic_
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              3552625379, -- Script: 'object/tangible/deed/city_deed/cantina_corellia_deed.iff'
+              "object/tangible/deed/city_deed/shared_cantina_corellia_deed.iff",
              }
 
 }

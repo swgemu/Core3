@@ -47,8 +47,6 @@ object_draft_schematic_spices_spice_pyrepenol = object_draft_schematic_spices_sh
 
    customObjectName = "Pyrepenol",
 
-   groupName = "craftSmugglerSpiceB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_spices_spice_pyrepenol = object_draft_schematic_spices_sh
    contribution = {100, 100, 100},
 
    templates = {
-              1936734520, -- Script: 'object/tangible/food/spice/spice_pyrepenol.iff'
+              "object/tangible/food/spice/shared_spice_pyrepenol.iff",
              }
 
 }

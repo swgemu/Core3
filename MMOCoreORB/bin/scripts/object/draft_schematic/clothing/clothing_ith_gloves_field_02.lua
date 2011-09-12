@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_gloves_field_02 = object_draft_sche
 
    customObjectName = "Ithorian Leather Work Gloves",
 
-   groupName = "craftClothingNoviceGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_gloves_field_02 = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              542007204, -- Script: 'object/tangible/wearables/ithorian/ith_gloves_s02.iff'
+              "object/tangible/wearables/ithorian/shared_ith_gloves_s02.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_munition_grenade_cryoban_ww_41 = object_draft_schematic_m
 
    customObjectName = "CryoBan Grenade",
 
-   groupName = "craftMunitionsGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_munition_grenade_cryoban_ww_41 = object_draft_schematic_m
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1007504804, -- Script: 'object/weapon/ranged/grenade/grenade_cryoban.iff'
+              "object/weapon/ranged/grenade/shared_grenade_cryoban.iff",
              }
 
 }

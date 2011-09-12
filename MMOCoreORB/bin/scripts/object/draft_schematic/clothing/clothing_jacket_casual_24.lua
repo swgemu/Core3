@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jacket_casual_24 = object_draft_schemat
 
    customObjectName = "Sleeveless Jacket",
 
-   groupName = "craftClothingCasualGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jacket_casual_24 = object_draft_schemat
    contribution = {100, 100, 100},
 
    templates = {
-              874083108, -- Script: 'object/tangible/wearables/jacket/jacket_s24.iff'
+              "object/tangible/wearables/jacket/shared_jacket_s24.iff",
              }
 
 }

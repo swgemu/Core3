@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_camokit_dantooine = object_draft_schematic_sco
 
    customObjectName = "Camo Kit: Dantooine",
 
-   groupName = "craftRangerCamoGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 2, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_camokit_dantooine = object_draft_schematic_sco
    contribution = {100, 100},
 
    templates = {
-              2217205281, -- Script: 'object/tangible/scout/camokit/camokit_dantooine.iff'
+              "object/tangible/scout/camokit/shared_camokit_dantooine.iff",
              }
 
 }

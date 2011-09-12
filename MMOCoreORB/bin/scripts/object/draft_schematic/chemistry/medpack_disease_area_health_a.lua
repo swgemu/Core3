@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_disease_area_health_a = object_draft_sc
 
    customObjectName = "Health Area Disease Delivery Unit - A",
 
-   groupName = "craftApplyDiseaseAreaGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_disease_area_health_a = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2257799270, -- Script: 'object/tangible/medicine/crafted/medpack_disease_area_health_a.iff'
+              "object/tangible/medicine/crafted/shared_medpack_disease_area_health_a.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_bone_chest = object_draft_schemat
 
    customObjectName = "Bone Armor Chest Plate",
 
-   groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_bone_chest = object_draft_schemat
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1994709940, -- Script: 'object/tangible/wearables/armor/bone/armor_bone_s01_chest_plate.iff'
+              "object/tangible/wearables/armor/bone/shared_armor_bone_s01_chest_plate.iff",
              }
 
 }

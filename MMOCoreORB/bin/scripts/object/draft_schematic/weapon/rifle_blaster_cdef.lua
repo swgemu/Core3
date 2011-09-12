@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_blaster_cdef = object_draft_schematic_weapon
 
    customObjectName = "CDEF Rifle",
 
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_blaster_cdef = object_draft_schematic_weapon
    contribution = {100, 100, 100},
 
    templates = {
-              2857240634, -- Script: 'object/weapon/ranged/rifle/rifle_cdef.iff'
+              "object/weapon/ranged/rifle/shared_rifle_cdef.iff",
              }
 
 }

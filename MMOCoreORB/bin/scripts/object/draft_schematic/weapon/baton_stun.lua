@@ -47,8 +47,6 @@ object_draft_schematic_weapon_baton_stun = object_draft_schematic_weapon_shared_
 
    customObjectName = "Stun Baton",
 
-   groupName = "craftWeaponMeleeGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_baton_stun = object_draft_schematic_weapon_shared_
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              257663710, -- Script: 'object/weapon/melee/baton/baton_stun.iff'
+              "object/weapon/melee/baton/shared_baton_stun.iff",
              }
 
 }

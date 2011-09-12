@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_mining_liquid = object_draft_schem
 
    customObjectName = "Deed for: Chemical Extractor",
 
-   groupName = "craftInstallationGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 10, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_mining_liquid = object_draft_schem
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1666074688, -- Script: 'object/tangible/deed/harvester_deed/harvester_liquid_deed_medium.iff'
+              "object/tangible/deed/harvester_deed/shared_harvester_liquid_deed_medium.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_travel_biscuits = object_draft_schematic_food_s
 
    customObjectName = "Travel Biscuits",
 
-   groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_travel_biscuits = object_draft_schematic_food_s
    contribution = {100, 100, 100},
 
    templates = {
-              3894738662, -- Script: 'object/tangible/food/crafted/dish_travel_biscuits.iff'
+              "object/tangible/food/crafted/shared_dish_travel_biscuits.iff",
              }
 
 }

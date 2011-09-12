@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_02 = object_draft_sche
 
    customObjectName = "Stately Necklace",
 
-   groupName = "craftClothingFormalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_02 = object_draft_sche
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3774766973, -- Script: 'object/tangible/wearables/necklace/necklace_s02.iff'
+              "object/tangible/wearables/necklace/shared_necklace_s02.iff",
              }
 
 }

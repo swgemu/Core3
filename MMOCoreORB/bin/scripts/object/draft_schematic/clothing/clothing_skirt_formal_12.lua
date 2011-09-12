@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_skirt_formal_12 = object_draft_schemati
 
    customObjectName = "Refined Skirt",
 
-   groupName = "craftClothingFormalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_skirt_formal_12 = object_draft_schemati
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3486060298, -- Script: 'object/tangible/wearables/skirt/skirt_s12.iff'
+              "object/tangible/wearables/skirt/shared_skirt_s12.iff",
              }
 
 }

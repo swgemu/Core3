@@ -47,8 +47,6 @@ object_draft_schematic_structure_generic_house_player_medium = object_draft_sche
 
    customObjectName = "Deed for: Medium Generic Planet House",
 
-   groupName = "craftStructureGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 12, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_generic_house_player_medium = object_draft_sche
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1104298913, -- Script: 'object/tangible/deed/player_house_deed/generic_house_medium_deed.iff'
+              "object/tangible/deed/player_house_deed/shared_generic_house_medium_deed.iff",
              }
 
 }

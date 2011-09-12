@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_ruby_bliel = object_draft_schematic_food_share
 
    customObjectName = "Ruby Bliel",
 
-   groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 4, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_ruby_bliel = object_draft_schematic_food_share
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3685363360, -- Script: 'object/tangible/food/crafted/drink_ruby_bliel.iff'
+              "object/tangible/food/crafted/shared_drink_ruby_bliel.iff",
              }
 
 }

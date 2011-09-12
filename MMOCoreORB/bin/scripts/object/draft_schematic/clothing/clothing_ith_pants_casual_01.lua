@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_pants_casual_01 = object_draft_sche
 
    customObjectName = "Ithorian Striped Pants",
 
-   groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 6, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_pants_casual_01 = object_draft_sche
    contribution = {100, 100},
 
    templates = {
-              3865734900, -- Script: 'object/tangible/wearables/ithorian/ith_pants_s01.iff'
+              "object/tangible/wearables/ithorian/shared_ith_pants_s01.iff",
              }
 
 }

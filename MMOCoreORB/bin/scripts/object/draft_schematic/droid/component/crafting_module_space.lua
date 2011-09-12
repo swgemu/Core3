@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_crafting_module_space = object_draft_sche
 
    customObjectName = "Ship Component Crafting Module",
 
-   groupName = "craftdroidgenmodGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_crafting_module_space = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              125145913, -- Script: 'object/tangible/component/droid/crafting_module_space.iff'
+              "object/tangible/component/droid/shared_crafting_module_space.iff",
              }
 
 }

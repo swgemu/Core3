@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_veghash = object_draft_schematic_food_shared_di
 
    customObjectName = "Veghash",
 
-   groupName = "craftFoodDishGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_veghash = object_draft_schematic_food_shared_di
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1602372839, -- Script: 'object/tangible/food/crafted/dish_veghash.iff'
+              "object/tangible/food/crafted/shared_dish_veghash.iff",
              }
 
 }

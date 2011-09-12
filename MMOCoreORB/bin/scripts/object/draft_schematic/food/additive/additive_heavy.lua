@@ -47,8 +47,6 @@ object_draft_schematic_food_additive_additive_heavy = object_draft_schematic_foo
 
    customObjectName = "Heavy Food Additive",
 
-   groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 9, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_additive_additive_heavy = object_draft_schematic_foo
    contribution = {100, 100},
 
    templates = {
-              3509640022, -- Script: 'object/tangible/food/crafted/additive/additive_heavy.iff'
+              "object/tangible/food/crafted/additive/shared_additive_heavy.iff",
              }
 
 }

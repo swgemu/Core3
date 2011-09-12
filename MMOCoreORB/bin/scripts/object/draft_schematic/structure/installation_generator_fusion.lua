@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_generator_fusion = object_draft_sc
 
    customObjectName = "Deed for: Fusion Power Generator",
 
-   groupName = "craftInstallationGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 12, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_generator_fusion = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              153768002, -- Script: 'object/tangible/deed/generator_deed/generator_fusion_deed.iff'
+              "object/tangible/deed/generator_deed/shared_generator_fusion_deed.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_boots_casual_19 = object_draft_schemati
 
    customObjectName = "Thermal Boots",
 
-   groupName = "craftClothingCasualGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_boots_casual_19 = object_draft_schemati
    contribution = {100, 100, 100, 100},
 
    templates = {
-              4244884752, -- Script: 'object/tangible/wearables/boots/boots_s19.iff'
+              "object/tangible/wearables/boots/shared_boots_s19.iff",
              }
 
 }

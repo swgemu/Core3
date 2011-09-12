@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_03 = object_draft_sche
 
    customObjectName = "Crested Neckpiece",
 
-   groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_03 = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              2851289328, -- Script: 'object/tangible/wearables/necklace/necklace_s03.iff'
+              "object/tangible/wearables/necklace/shared_necklace_s03.iff",
              }
 
 }

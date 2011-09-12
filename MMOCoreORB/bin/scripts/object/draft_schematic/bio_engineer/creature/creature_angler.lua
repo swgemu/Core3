@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_angler = object_draft_sche
 
    customObjectName = "Angler",
 
-   groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_angler = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              1282130191, -- Script: 'object/tangible/deed/pet_deed/angler_deed.iff'
+              "object/tangible/deed/pet_deed/shared_angler_deed.iff",
              }
 
 }

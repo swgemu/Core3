@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_lamp_desk_s01_on = object_draft_schem
 
    customObjectName = "Desk Lamp 'Bantha'",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_lamp_desk_s01_on = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              3745632348, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_desk_s01.iff'
+              "object/tangible/furniture/all/shared_frn_all_light_lamp_desk_s01.iff",
              }
 
 }

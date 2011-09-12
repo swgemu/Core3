@@ -47,8 +47,6 @@ object_draft_schematic_structure_corellia_house_player_small_style_02 = object_d
 
    customObjectName = "Deed for: Small Corellia House (Style 2)",
 
-   groupName = "craftStructureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 10, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_corellia_house_player_small_style_02 = object_d
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2284333771, -- Script: 'object/tangible/deed/player_house_deed/corellia_house_small_style_02_deed.iff'
+              "object/tangible/deed/player_house_deed/shared_corellia_house_small_style_02_deed.iff",
              }
 
 }

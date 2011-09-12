@@ -47,8 +47,6 @@ object_draft_schematic_weapon_knife_twilek_dagger = object_draft_schematic_weapo
 
    customObjectName = "Dagger",
 
-   groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 9, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_knife_twilek_dagger = object_draft_schematic_weapo
    contribution = {100, 100, 100},
 
    templates = {
-              3564281985, -- Script: 'object/weapon/melee/knife/knife_dagger.iff'
+              "object/weapon/melee/knife/shared_knife_dagger.iff",
              }
 
 }

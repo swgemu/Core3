@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_cure_disease_a = object_draft_schematic
 
    customObjectName = "Cure Disease Medpack - A",
 
-   groupName = "craftCureDiseaseGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_cure_disease_a = object_draft_schematic
    contribution = {100, 100, 100, 100},
 
    templates = {
-              157634799, -- Script: 'object/tangible/medicine/crafted/medpack_cure_disease_a.iff'
+              "object/tangible/medicine/crafted/shared_medpack_cure_disease_a.iff",
              }
 
 }

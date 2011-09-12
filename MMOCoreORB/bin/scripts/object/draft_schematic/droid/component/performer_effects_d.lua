@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_performer_effects_d = object_draft_schema
 
    customObjectName = "Effects Module (Mind Bloom)",
 
-   groupName = "craftdroidgenmodGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_performer_effects_d = object_draft_schema
    contribution = {100, 100, 100},
 
    templates = {
-              1760996239, -- Script: 'object/tangible/component/droid/performer_effects_d.iff'
+              "object/tangible/component/droid/shared_performer_effects_d.iff",
              }
 
 }

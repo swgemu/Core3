@@ -47,8 +47,6 @@ object_draft_schematic_structure_generic_house_guild_hall = object_draft_schemat
 
    customObjectName = "Deed for: Generic Planet Guild Hall",
 
-   groupName = "craftStructureGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 39, 
    size = 14, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_generic_house_guild_hall = object_draft_schemat
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              515603184, -- Script: 'object/tangible/deed/guild_deed/generic_guild_deed.iff'
+              "object/tangible/deed/guild_deed/shared_generic_guild_deed.iff",
              }
 
 }

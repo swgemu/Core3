@@ -47,8 +47,6 @@ object_draft_schematic_munition_component_warhead_fusing_mechanism = object_draf
 
    customObjectName = "Warhead Fusing Mechanism",
 
-   groupName = "craftMunitionsGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_munition_component_warhead_fusing_mechanism = object_draf
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              425324353, -- Script: 'object/tangible/component/munition/warhead_fusing_mechanism.iff'
+              "object/tangible/component/munition/shared_warhead_fusing_mechanism.iff",
              }
 
 }

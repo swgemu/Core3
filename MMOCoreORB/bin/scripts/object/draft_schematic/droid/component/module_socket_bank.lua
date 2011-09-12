@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_module_socket_bank = object_draft_schemat
 
    customObjectName = "General Droid Module Socket Cluster",
 
-   groupName = "craftdroidgenmodGroupDD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_module_socket_bank = object_draft_schemat
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3606382606, -- Script: 'object/tangible/component/droid/socket_bank.iff'
+              "object/tangible/component/droid/shared_socket_bank.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jewelry_bracelet_03 = object_draft_sche
 
    customObjectName = "Golden Bracelet",
 
-   groupName = "craftClothingFormalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jewelry_bracelet_03 = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              104385424, -- Script: 'object/tangible/wearables/bracelet/bracelet_s03_r.iff'
+              "object/tangible/wearables/bracelet/shared_bracelet_s03_r.iff",
              }
 
 }

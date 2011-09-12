@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_vayerbok = object_draft_schematic_food_shared_
 
    customObjectName = "Vayerbok",
 
-   groupName = "craftFoodDrinkGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_vayerbok = object_draft_schematic_food_shared_
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1368313349, -- Script: 'object/tangible/food/crafted/drink_vayerbok.iff'
+              "object/tangible/food/crafted/shared_drink_vayerbok.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_felbar = object_draft_schematic_food_shared_
 
    customObjectName = "Felbar",
 
-   groupName = "craftFoodDessertGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_felbar = object_draft_schematic_food_shared_
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3264524389, -- Script: 'object/tangible/food/crafted/dessert_felbar.iff'
+              "object/tangible/food/crafted/shared_dessert_felbar.iff",
              }
 
 }

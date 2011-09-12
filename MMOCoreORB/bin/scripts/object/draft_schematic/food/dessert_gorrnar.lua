@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_gorrnar = object_draft_schematic_food_shared
 
    customObjectName = "Gorrnar",
 
-   groupName = "craftFoodDessertGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_gorrnar = object_draft_schematic_food_shared
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              281064494, -- Script: 'object/tangible/food/crafted/dessert_gorrnar.iff'
+              "object/tangible/food/crafted/shared_dessert_gorrnar.iff",
              }
 
 }

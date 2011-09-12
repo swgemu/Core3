@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_damage_repair_kit_c = object_draft_schematic_
 
    customObjectName = "Droid Repair Kit - C",
 
-   groupName = "craftDroidDamageRepairC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_damage_repair_kit_c = object_draft_schematic_
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3700861172, -- Script: 'object/tangible/medicine/pet/droid_damage_kit_c.iff'
+              "object/tangible/medicine/pet/shared_droid_damage_kit_c.iff",
              }
 
 }

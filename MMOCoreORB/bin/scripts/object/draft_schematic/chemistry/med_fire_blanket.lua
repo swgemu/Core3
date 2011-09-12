@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_med_fire_blanket = object_draft_schematic_chemi
 
    customObjectName = "Flame Suppression Blanket",
 
-   groupName = "craftMedpackBGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_med_fire_blanket = object_draft_schematic_chemi
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3041993284, -- Script: 'object/tangible/medicine/crafted/medic_fire_blanket.iff'
+              "object/tangible/medicine/crafted/shared_medic_fire_blanket.iff",
              }
 
 }

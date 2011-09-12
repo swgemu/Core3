@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_mining_gas_heavy = object_draft_sc
 
    customObjectName = "Deed for: Heavy Natural Gas Processor",
 
-   groupName = "craftInstallationGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 10, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_mining_gas_heavy = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1681804016, -- Script: 'object/tangible/deed/harvester_deed/harvester_gas_deed_heavy.iff'
+              "object/tangible/deed/harvester_deed/shared_harvester_gas_deed_heavy.iff",
              }
 
 }

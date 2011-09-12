@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_component_release_mechanism_duration_advanced =
 
    customObjectName = "Advanced Chemical Release Duration Mechanism",
 
-   groupName = "craftMedicineComponentGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_component_release_mechanism_duration_advanced =
    contribution = {100, 100},
 
    templates = {
-              3985820000, -- Script: 'object/tangible/component/chemistry/release_mechanism_duration_advanced.iff'
+              "object/tangible/component/chemistry/shared_release_mechanism_duration_advanced.iff",
              }
 
 }

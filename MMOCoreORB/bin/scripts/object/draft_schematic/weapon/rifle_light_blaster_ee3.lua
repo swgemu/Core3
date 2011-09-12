@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_light_blaster_ee3 = object_draft_schematic_w
 
    customObjectName = "EE3 Carbine",
 
-   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_light_blaster_ee3 = object_draft_schematic_w
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              418740352, -- Script: 'object/weapon/ranged/carbine/carbine_ee3.iff'
+              "object/weapon/ranged/carbine/shared_carbine_ee3.iff",
              }
 
 }

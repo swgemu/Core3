@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_factory_food = object_draft_schema
 
    customObjectName = "Deed for: Food Factory",
 
-   groupName = "craftInstallationGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 16, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_factory_food = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              912895825, -- Script: 'object/tangible/deed/factory_deed/factory_food_deed.iff'
+              "object/tangible/deed/factory_deed/shared_factory_food_deed.iff",
              }
 
 }

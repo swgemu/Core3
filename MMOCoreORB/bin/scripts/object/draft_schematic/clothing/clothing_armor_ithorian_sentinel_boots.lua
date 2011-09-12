@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_ithorian_sentinel_boots = object_
 
    customObjectName = "Ithorian Sentinel Boots",
 
-   groupName = "craftArmorPersonalGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 45, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_ithorian_sentinel_boots = object_
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1205005532, -- Script: 'object/tangible/wearables/armor/ithorian_sentinel/ith_armor_s03_boots.iff'
+              "object/tangible/wearables/armor/ithorian_sentinel/shared_ith_armor_s03_boots.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_component_infection_amplifier = object_draft_sc
 
    customObjectName = "Infection Amplifier",
 
-   groupName = "craftMedicineComponentGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_component_infection_amplifier = object_draft_sc
    contribution = {100, 100},
 
    templates = {
-              4183588171, -- Script: 'object/tangible/component/chemistry/infection_amplifier.iff'
+              "object/tangible/component/chemistry/shared_infection_amplifier.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_dress_formal_35 = object_draft_schemati
 
    customObjectName = "Grand Ball Gown",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_dress_formal_35 = object_draft_schemati
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              3837787864, -- Script: 'object/tangible/wearables/dress/dress_s35.iff'
+              "object/tangible/wearables/dress/shared_dress_s35.iff",
              }
 
 }

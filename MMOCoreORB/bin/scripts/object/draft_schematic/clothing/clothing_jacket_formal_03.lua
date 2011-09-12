@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jacket_formal_03 = object_draft_schemat
 
    customObjectName = "Long Formal Jacket",
 
-   groupName = "craftClothingFormalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jacket_formal_03 = object_draft_schemat
    contribution = {100, 100, 100, 100},
 
    templates = {
-              4188684992, -- Script: 'object/tangible/wearables/jacket/jacket_s03.iff'
+              "object/tangible/wearables/jacket/shared_jacket_s03.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_disease_mind_b = object_draft_schematic
 
    customObjectName = "Mind Disease Delivery Unit - B",
 
-   groupName = "craftApplyDiseaseGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_disease_mind_b = object_draft_schematic
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              464620118, -- Script: 'object/tangible/medicine/crafted/medpack_disease_mind_b.iff'
+              "object/tangible/medicine/crafted/shared_medpack_disease_mind_b.iff",
              }
 
 }

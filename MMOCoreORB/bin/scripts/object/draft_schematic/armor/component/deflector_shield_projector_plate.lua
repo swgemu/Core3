@@ -47,8 +47,6 @@ object_draft_schematic_armor_component_deflector_shield_projector_plate = object
 
    customObjectName = "Deflector Shield Projector Plate",
 
-   groupName = "craftArmorShieldsGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_component_deflector_shield_projector_plate = object
    contribution = {100, 100, 100},
 
    templates = {
-              1906195493, -- Script: 'object/tangible/component/armor/deflector_shield_projector_plate.iff'
+              "object/tangible/component/armor/shared_deflector_shield_projector_plate.iff",
              }
 
 }

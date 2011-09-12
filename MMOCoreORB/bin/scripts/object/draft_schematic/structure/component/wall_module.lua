@@ -47,8 +47,6 @@ object_draft_schematic_structure_component_wall_module = object_draft_schematic_
 
    customObjectName = "Wall Module",
 
-   groupName = "craftStructureGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_component_wall_module = object_draft_schematic_
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1742616016, -- Script: 'object/tangible/component/structure/wall_module.iff'
+              "object/tangible/component/structure/shared_wall_module.iff",
              }
 
 }

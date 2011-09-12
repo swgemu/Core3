@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_bikini_casual_03 = object_draft_schemat
 
    customObjectName = "Low-Cut Top",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_bikini_casual_03 = object_draft_schemat
    contribution = {100, 100, 100},
 
    templates = {
-              908349905, -- Script: 'object/tangible/wearables/bikini/bikini_s03.iff'
+              "object/tangible/wearables/bikini/shared_bikini_s03.iff",
              }
 
 }

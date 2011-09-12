@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_med_stimpack_d = object_draft_schematic_chemist
 
    customObjectName = "Small Stimpack - D",
 
-   groupName = "craftMedicineStimpackGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_med_stimpack_d = object_draft_schematic_chemist
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              4106750396, -- Script: 'object/tangible/medicine/crafted/crafted_stimpack_sm_s1_d.iff'
+              "object/tangible/medicine/crafted/shared_crafted_stimpack_sm_s1_d.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_ceremonial_leggings =
 
    customObjectName = "Kashyyykian Ceremonial Leggings",
 
-   groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_ceremonial_leggings =
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              4203702650, -- Script: 'object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_leggings.iff'
+              "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_leggings.iff",
              }
 
 }

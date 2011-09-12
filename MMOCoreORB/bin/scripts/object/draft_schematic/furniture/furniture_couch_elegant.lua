@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_couch_elegant = object_draft_schemati
 
    customObjectName = "Couch",
 
-   groupName = "craftFurnitureGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_couch_elegant = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              1746815878, -- Script: 'object/tangible/furniture/elegant/couch_s01.iff'
+              "object/tangible/furniture/elegant/shared_couch_s01.iff",
              }
 
 }

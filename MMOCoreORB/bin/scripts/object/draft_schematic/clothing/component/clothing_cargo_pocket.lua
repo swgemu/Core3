@@ -47,8 +47,6 @@ object_draft_schematic_clothing_component_clothing_cargo_pocket = object_draft_s
 
    customObjectName = "Cargo Pocket",
 
-   groupName = "craftClothingFieldGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_component_clothing_cargo_pocket = object_draft_s
    contribution = {100, 100},
 
    templates = {
-              1125237674, -- Script: 'object/tangible/component/clothing/cargo_pocket.iff'
+              "object/tangible/component/clothing/shared_cargo_pocket.iff",
              }
 
 }

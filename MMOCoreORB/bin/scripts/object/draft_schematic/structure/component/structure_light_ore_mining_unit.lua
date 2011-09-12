@@ -47,8 +47,6 @@ object_draft_schematic_structure_component_structure_light_ore_mining_unit = obj
 
    customObjectName = "Light Ore Mining Unit",
 
-   groupName = "craftInstallationGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_component_structure_light_ore_mining_unit = obj
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              83506741, -- Script: 'object/tangible/component/structure/light_ore_mining_unit.iff'
+              "object/tangible/component/structure/shared_light_ore_mining_unit.iff",
              }
 
 }

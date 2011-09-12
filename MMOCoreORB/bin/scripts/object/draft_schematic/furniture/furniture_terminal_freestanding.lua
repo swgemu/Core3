@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_terminal_freestanding = object_draft_
 
    customObjectName = "Data Terminal",
 
-   groupName = "craftFurnitureGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 36, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_terminal_freestanding = object_draft_
    contribution = {100, 100, 100},
 
    templates = {
-              1842503243, -- Script: 'object/tangible/furniture/all/frn_all_data_terminal_free_s1.iff'
+              "object/tangible/furniture/all/shared_frn_all_data_terminal_free_s1.iff",
              }
 
 }

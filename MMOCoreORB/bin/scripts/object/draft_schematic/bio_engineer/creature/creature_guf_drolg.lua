@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_guf_drolg = object_draft_s
 
    customObjectName = "Guf Drolg",
 
-   groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 29, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_guf_drolg = object_draft_s
    contribution = {100, 100, 100},
 
    templates = {
-              2035805315, -- Script: 'object/tangible/deed/pet_deed/guf_drolg_deed.iff'
+              "object/tangible/deed/pet_deed/shared_guf_drolg_deed.iff",
              }
 
 }

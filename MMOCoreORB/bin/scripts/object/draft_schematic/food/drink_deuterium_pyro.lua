@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_deuterium_pyro = object_draft_schematic_food_s
 
    customObjectName = "Deuterium-pyro",
 
-   groupName = "craftFoodDrinkGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_deuterium_pyro = object_draft_schematic_food_s
    contribution = {100, 100, 100, 100},
 
    templates = {
-              4114442654, -- Script: 'object/tangible/food/crafted/drink_deuterium_pyro.iff'
+              "object/tangible/food/crafted/shared_drink_deuterium_pyro.iff",
              }
 
 }

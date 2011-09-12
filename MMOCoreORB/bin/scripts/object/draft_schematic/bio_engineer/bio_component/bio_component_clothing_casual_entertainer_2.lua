@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_
 
    customObjectName = "Enhanced Myoflex Treatment",
 
-   groupName = "craftTissueGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_casual_
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3282482926, -- Script: 'object/tangible/component/bio/bio_component_clothing_casual_entertainer_2.iff'
+              "object/tangible/component/bio/shared_bio_component_clothing_casual_entertainer_2.iff",
              }
 
 }

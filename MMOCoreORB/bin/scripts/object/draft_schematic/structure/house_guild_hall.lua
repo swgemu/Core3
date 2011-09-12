@@ -47,8 +47,6 @@ object_draft_schematic_structure_house_guild_hall = object_draft_schematic_struc
 
    customObjectName = "Deed for: Tatooine Guildhall",
 
-   groupName = "craftStructureGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 36, 
    size = 14, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_house_guild_hall = object_draft_schematic_struc
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              3502677060, -- Script: 'object/tangible/deed/guild_deed/tatooine_guild_deed.iff'
+              "object/tangible/deed/guild_deed/shared_tatooine_guild_deed.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_instrument_instrument_nalargon = object_draft_schematic_i
 
    customObjectName = "a Nalargon",
 
-   groupName = "craftInstrumentGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_instrument_instrument_nalargon = object_draft_schematic_i
    contribution = {100, 100},
 
    templates = {
-              4212938940, -- Script: 'object/tangible/instrument/nalargon.iff'
+              "object/tangible/instrument/shared_nalargon.iff",
              }
 
 }

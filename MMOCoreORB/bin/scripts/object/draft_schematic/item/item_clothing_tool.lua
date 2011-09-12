@@ -47,8 +47,6 @@ object_draft_schematic_item_item_clothing_tool = object_draft_schematic_item_sha
 
    customObjectName = "Clothing and Armor Crafting Tool",
 
-   groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_clothing_tool = object_draft_schematic_item_sha
    contribution = {100, 100, 100},
 
    templates = {
-              1239655550, -- Script: 'object/tangible/crafting/station/clothing_tool.iff'
+              "object/tangible/crafting/station/shared_clothing_tool.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_pistol_blaster_dl44_metal = object_draft_schematic
 
    customObjectName = "DL44 Metal Pistol",
 
-   groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_pistol_blaster_dl44_metal = object_draft_schematic
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2369917394, -- Script: 'object/weapon/ranged/pistol/pistol_dl44_metal.iff'
+              "object/weapon/ranged/pistol/shared_pistol_dl44_metal.iff",
              }
 
 }

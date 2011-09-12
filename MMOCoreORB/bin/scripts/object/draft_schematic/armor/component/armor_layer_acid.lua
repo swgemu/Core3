@@ -47,8 +47,6 @@ object_draft_schematic_armor_component_armor_layer_acid = object_draft_schematic
 
    customObjectName = "Acid Protection Armor Layer",
 
-   groupName = "craftArmorLightLayersGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_component_armor_layer_acid = object_draft_schematic
    contribution = {100, 100, 100},
 
    templates = {
-              1875688539, -- Script: 'object/tangible/component/armor/armor_layer_acid.iff'
+              "object/tangible/component/armor/shared_armor_layer_acid.iff",
              }
 
 }

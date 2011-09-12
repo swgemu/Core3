@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_ithorian_defender_chest = object_
 
    customObjectName = "Ithorian Defender Chest Plate",
 
-   groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_ithorian_defender_chest = object_
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1756768751, -- Script: 'object/tangible/wearables/armor/ithorian_defender/ith_armor_s01_chest_plate.iff'
+              "object/tangible/wearables/armor/ithorian_defender/shared_ith_armor_s01_chest_plate.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_battleaxe = object_draft_schematic_weapon_shared_b
 
    customObjectName = "Two-handed Axe",
 
-   groupName = "craftWeaponMeleeGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_battleaxe = object_draft_schematic_weapon_shared_b
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3657264180, -- Script: 'object/weapon/melee/2h_sword/2h_sword_battleaxe.iff'
+              "object/weapon/melee/2h_sword/shared_2h_sword_battleaxe.iff",
              }
 
 }

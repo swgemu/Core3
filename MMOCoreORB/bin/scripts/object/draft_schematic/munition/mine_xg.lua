@@ -47,8 +47,6 @@ object_draft_schematic_munition_mine_xg = object_draft_schematic_munition_shared
 
    customObjectName = "XG Mine",
 
-   groupName = "craftMunitionsGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_munition_mine_xg = object_draft_schematic_munition_shared
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1696035582, -- Script: 'object/weapon/mine/wp_mine_xg.iff'
+              "object/weapon/mine/shared_wp_mine_xg.iff",
              }
 
 }

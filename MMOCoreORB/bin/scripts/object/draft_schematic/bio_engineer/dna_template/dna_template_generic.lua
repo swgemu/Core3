@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_d
 
    customObjectName = "Generic DNA Template",
 
-   groupName = "craftBasicCreatureGroup", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8192, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_d
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3537593180, -- Script: 'object/tangible/component/dna/dna_template_generic.iff'
+              "object/tangible/component/dna/shared_dna_template_generic.iff",
              }
 
 }

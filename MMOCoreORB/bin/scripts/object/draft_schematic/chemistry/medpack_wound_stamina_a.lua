@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_wound_stamina_a = object_draft_schemati
 
    customObjectName = "Stamina Wound Medpack - A",
 
-   groupName = "craftMedpackBGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_wound_stamina_a = object_draft_schemati
    contribution = {100, 100},
 
    templates = {
-              1054345815, -- Script: 'object/tangible/medicine/crafted/medpack_wound_stamina_a.iff'
+              "object/tangible/medicine/crafted/shared_medpack_wound_stamina_a.iff",
              }
 
 }

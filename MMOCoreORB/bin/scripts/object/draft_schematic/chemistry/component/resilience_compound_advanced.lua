@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_component_resilience_compound_advanced = object
 
    customObjectName = "Advanced Resilience Compound",
 
-   groupName = "craftMedicineComponentGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_component_resilience_compound_advanced = object
    contribution = {100, 100},
 
    templates = {
-              2082233857, -- Script: 'object/tangible/component/chemistry/resilience_compound_advanced.iff'
+              "object/tangible/component/chemistry/shared_resilience_compound_advanced.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_playback_module = object_draft_schematic_
 
    customObjectName = "Playback Module",
 
-   groupName = "craftdroidgenmodGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_playback_module = object_draft_schematic_
    contribution = {100, 100, 100},
 
    templates = {
-              3696957141, -- Script: 'object/tangible/component/droid/playback_module.iff'
+              "object/tangible/component/droid/shared_playback_module.iff",
              }
 
 }

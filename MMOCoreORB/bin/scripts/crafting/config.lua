@@ -42,1381 +42,1382 @@
 
 
 schematics = {
-{id = 0, crc = 4169942957}, -- object/draft_schematic/slicing/slicing_armor_upgrade_kit.iff
-{id = 1, crc = 617388220}, -- object/draft_schematic/armor/armor_segment_zam.iff
-{id = 2, crc = 2786121242}, -- object/draft_schematic/clothing/clothing_armor_zam_belt.iff
-{id = 3, crc = 634041730}, -- object/draft_schematic/clothing/clothing_armor_zam_boots.iff
-{id = 4, crc = 113424029}, -- object/draft_schematic/clothing/clothing_armor_zam_chest.iff
-{id = 5, crc = 3261070241}, -- object/draft_schematic/clothing/clothing_armor_zam_gloves.iff
-{id = 6, crc = 1956584105}, -- object/draft_schematic/clothing/clothing_armor_zam_helmet.iff
-{id = 7, crc = 2610005248}, -- object/draft_schematic/clothing/clothing_armor_zam_pants.iff
-{id = 8, crc = 1128302628}, -- object/draft_schematic/armor/armor_segment.iff
-{id = 9, crc = 4010206275}, -- object/draft_schematic/armor/armor_segment_chitin.iff
-{id = 10, crc = 258816648}, -- object/draft_schematic/clothing/clothing_armor_chitin_bicep_l.iff
-{id = 11, crc = 2142797595}, -- object/draft_schematic/clothing/clothing_armor_chitin_bicep_r.iff
-{id = 12, crc = 3407722819}, -- object/draft_schematic/clothing/clothing_armor_chitin_boots.iff
-{id = 13, crc = 4249731129}, -- object/draft_schematic/clothing/clothing_armor_chitin_bracer_l.iff
-{id = 14, crc = 2375583146}, -- object/draft_schematic/clothing/clothing_armor_chitin_bracer_r.iff
-{id = 15, crc = 3893738076}, -- object/draft_schematic/clothing/clothing_armor_chitin_chest.iff
-{id = 16, crc = 3967073490}, -- object/draft_schematic/clothing/clothing_armor_chitin_gloves.iff
-{id = 17, crc = 1521769946}, -- object/draft_schematic/clothing/clothing_armor_chitin_helmet.iff
-{id = 18, crc = 1919491366}, -- object/draft_schematic/clothing/clothing_armor_chitin_leggings.iff
-{id = 19, crc = 1007852298}, -- object/draft_schematic/clothing/clothing_armor_ithorian_guardian_bicep_l.iff
-{id = 20, crc = 1288167065}, -- object/draft_schematic/clothing/clothing_armor_ithorian_guardian_bicep_r.iff
-{id = 21, crc = 3766215711}, -- object/draft_schematic/clothing/clothing_armor_ithorian_guardian_boots.iff
-{id = 22, crc = 1537018224}, -- object/draft_schematic/clothing/clothing_armor_ithorian_guardian_bracer_l.iff
-{id = 23, crc = 726158563}, -- object/draft_schematic/clothing/clothing_armor_ithorian_guardian_bracer_r.iff
-{id = 24, crc = 3279152896}, -- object/draft_schematic/clothing/clothing_armor_ithorian_guardian_chest.iff
-{id = 25, crc = 960601427}, -- object/draft_schematic/clothing/clothing_armor_ithorian_guardian_gloves.iff
-{id = 26, crc = 2407627867}, -- object/draft_schematic/clothing/clothing_armor_ithorian_guardian_helmet.iff
-{id = 27, crc = 3568948335}, -- object/draft_schematic/clothing/clothing_armor_ithorian_guardian_leggings.iff
-{id = 28, crc = 1903468439}, -- object/draft_schematic/armor/armor_segment_kashyyykian_ceremonial.iff
-{id = 29, crc = 1287199818}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_ceremonial_chest.iff
-{id = 30, crc = 849537955}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_ceremonial_leggings.iff
-{id = 31, crc = 3179689660}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_ceremonial_bracer_l.iff
-{id = 32, crc = 3444798255}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_ceremonial_bracer_r.iff
-{id = 33, crc = 1547457885}, -- object/draft_schematic/armor/armor_segment_padded.iff
-{id = 34, crc = 3706067144}, -- object/draft_schematic/clothing/clothing_armor_tantel_boots.iff
-{id = 35, crc = 4293794775}, -- object/draft_schematic/clothing/clothing_armor_tantel_chest.iff
-{id = 36, crc = 4081278383}, -- object/draft_schematic/clothing/clothing_armor_tantel_helmet.iff
-{id = 37, crc = 3829456791}, -- object/draft_schematic/armor/armor_segment_bone_advanced.iff
-{id = 38, crc = 47893516}, -- object/draft_schematic/armor/armor_segment_zam_advanced.iff
-{id = 39, crc = 391661222}, -- object/draft_schematic/armor/armor_segment_kashyyykian_black_mtn.iff
-{id = 40, crc = 349945186}, -- object/draft_schematic/armor/armor_segment_ubese.iff
-{id = 41, crc = 846858100}, -- object/draft_schematic/clothing/clothing_armor_ubese_bandolier.iff
-{id = 42, crc = 4139721832}, -- object/draft_schematic/clothing/clothing_armor_ubese_boots.iff
-{id = 43, crc = 4003475446}, -- object/draft_schematic/clothing/clothing_armor_ubese_bracer_l.iff
-{id = 44, crc = 2658495077}, -- object/draft_schematic/clothing/clothing_armor_ubese_bracer_r.iff
-{id = 45, crc = 2870377617}, -- object/draft_schematic/clothing/clothing_armor_ubese_gloves.iff
-{id = 46, crc = 500604313}, -- object/draft_schematic/clothing/clothing_armor_ubese_helmet.iff
-{id = 47, crc = 678294671}, -- object/draft_schematic/clothing/clothing_armor_ubese_jacket.iff
-{id = 48, crc = 1222907114}, -- object/draft_schematic/clothing/clothing_armor_ubese_pants.iff
-{id = 49, crc = 2625632199}, -- object/draft_schematic/clothing/clothing_armor_ubese_shirt.iff
-{id = 50, crc = 1524961627}, -- object/draft_schematic/armor/armor_segment_chitin_advanced.iff
-{id = 51, crc = 1743851572}, -- object/draft_schematic/armor/armor_segment_kashyyykian_ceremonial_advanced.iff
-{id = 52, crc = 1250270457}, -- object/draft_schematic/armor/armor_segment_padded_advanced.iff
-{id = 53, crc = 1413206625}, -- object/draft_schematic/armor/armor_segment_kashyyykian_black_mtn_advanced.iff
-{id = 54, crc = 4013705746}, -- object/draft_schematic/armor/armor_segment_composite.iff
-{id = 55, crc = 4110027428}, -- object/draft_schematic/clothing/clothing_armor_padded_belt.iff
-{id = 56, crc = 3151192318}, -- object/draft_schematic/clothing/clothing_armor_padded_bicep_l.iff
-{id = 57, crc = 3406177645}, -- object/draft_schematic/clothing/clothing_armor_padded_bicep_r.iff
-{id = 58, crc = 3187907563}, -- object/draft_schematic/clothing/clothing_armor_padded_boots.iff
-{id = 59, crc = 3979169179}, -- object/draft_schematic/clothing/clothing_armor_padded_bracer_l.iff
-{id = 60, crc = 2650277896}, -- object/draft_schematic/clothing/clothing_armor_padded_bracer_r.iff
-{id = 61, crc = 2634782964}, -- object/draft_schematic/clothing/clothing_armor_padded_chest.iff
-{id = 62, crc = 86467166}, -- object/draft_schematic/clothing/clothing_armor_padded_gloves.iff
-{id = 63, crc = 3018294102}, -- object/draft_schematic/clothing/clothing_armor_padded_helmet.iff
-{id = 64, crc = 1644793988}, -- object/draft_schematic/clothing/clothing_armor_padded_leggings.iff
-{id = 65, crc = 4281977898}, -- object/draft_schematic/armor/armor_segment_ubese_advanced.iff
-{id = 66, crc = 123280472}, -- object/draft_schematic/armor/armor_segment_kashyyykian_hunting.iff
-{id = 67, crc = 3429873045}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_black_mtn_chest.iff
-{id = 68, crc = 3831471683}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_black_mtn_leggings.iff
-{id = 69, crc = 1803240284}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_black_mtn_bracer_l.iff
-{id = 70, crc = 464389839}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_black_mtn_bracer_r.iff
-{id = 71, crc = 2112484317}, -- object/draft_schematic/clothing/clothing_armor_ithorian_defender_bicep_l.iff
-{id = 72, crc = 222082638}, -- object/draft_schematic/clothing/clothing_armor_ithorian_defender_bicep_r.iff
-{id = 73, crc = 188136293}, -- object/draft_schematic/clothing/clothing_armor_ithorian_defender_boots.iff
-{id = 74, crc = 2427630512}, -- object/draft_schematic/clothing/clothing_armor_ithorian_defender_bracer_l.iff
-{id = 75, crc = 3764909603}, -- object/draft_schematic/clothing/clothing_armor_ithorian_defender_bracer_r.iff
-{id = 76, crc = 675199098}, -- object/draft_schematic/clothing/clothing_armor_ithorian_defender_chest.iff
-{id = 77, crc = 2600208971}, -- object/draft_schematic/clothing/clothing_armor_ithorian_defender_gloves.iff
-{id = 78, crc = 742189891}, -- object/draft_schematic/clothing/clothing_armor_ithorian_defender_helmet.iff
-{id = 79, crc = 529952431}, -- object/draft_schematic/clothing/clothing_armor_ithorian_defender_leggings.iff
-{id = 80, crc = 3688824820}, -- object/draft_schematic/clothing/clothing_armor_composite_bicep_l.iff
-{id = 81, crc = 2869672551}, -- object/draft_schematic/clothing/clothing_armor_composite_bicep_r.iff
-{id = 82, crc = 1681118965}, -- object/draft_schematic/clothing/clothing_armor_composite_boots.iff
-{id = 83, crc = 1276608780}, -- object/draft_schematic/clothing/clothing_armor_composite_bracer_l.iff
-{id = 84, crc = 1019397279}, -- object/draft_schematic/clothing/clothing_armor_composite_bracer_r.iff
-{id = 85, crc = 1195103722}, -- object/draft_schematic/clothing/clothing_armor_composite_chest.iff
-{id = 86, crc = 192668001}, -- object/draft_schematic/clothing/clothing_armor_composite_gloves.iff
-{id = 87, crc = 3183149161}, -- object/draft_schematic/clothing/clothing_armor_composite_helmet.iff
-{id = 88, crc = 3274923027}, -- object/draft_schematic/clothing/clothing_armor_composite_leggings.iff
-{id = 89, crc = 3745525976}, -- object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_bicep_l.iff
-{id = 90, crc = 2945807691}, -- object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_bicep_r.iff
-{id = 91, crc = 3310355387}, -- object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_boots.iff
-{id = 92, crc = 3252476880}, -- object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_bracer_l.iff
-{id = 93, crc = 2970197571}, -- object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_bracer_r.iff
-{id = 94, crc = 3864527012}, -- object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_chest.iff
-{id = 95, crc = 2638275800}, -- object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_gloves.iff
-{id = 96, crc = 729810384}, -- object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_helmet.iff
-{id = 97, crc = 1324877519}, -- object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_leggings.iff
-{id = 98, crc = 2274451099}, -- object/draft_schematic/armor/armor_segment_composite_advanced.iff
-{id = 99, crc = 2689572552}, -- object/draft_schematic/armor/armor_segment_kashyyykian_hunting_advanced.iff
-{id = 100, crc = 3922904980}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_hunting_chest.iff
-{id = 101, crc = 2664292411}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_hunting_leggings.iff
-{id = 102, crc = 300498212}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_hunting_bracer_l.iff
-{id = 103, crc = 1631353015}, -- object/draft_schematic/clothing/clothing_armor_kashyyykian_hunting_bracer_r.iff
-{id = 104, crc = 4104646760}, -- object/draft_schematic/armor/component/armor_layer_kinetic.iff
-{id = 105, crc = 1596776522}, -- object/draft_schematic/armor/component/armor_layer_energy.iff
-{id = 106, crc = 564979262}, -- object/draft_schematic/armor/component/armor_layer_blast.iff
-{id = 107, crc = 2026899260}, -- object/draft_schematic/armor/component/armor_layer_heat.iff
-{id = 108, crc = 2150844876}, -- object/draft_schematic/armor/component/armor_layer_cold.iff
-{id = 109, crc = 1832311574}, -- object/draft_schematic/armor/component/armor_layer_electrical.iff
-{id = 110, crc = 173870805}, -- object/draft_schematic/armor/component/armor_layer_acid.iff
-{id = 111, crc = 3464740493}, -- object/draft_schematic/armor/component/armor_layer_stun.iff
-{id = 112, crc = 284239909}, -- object/draft_schematic/armor/component/deflector_shield_generator_particle.iff
-{id = 113, crc = 1650125304}, -- object/draft_schematic/armor/component/deflector_shield_generator_energy_ray.iff
-{id = 114, crc = 3283638406}, -- object/draft_schematic/armor/component/deflector_shield_emitter_assembly.iff
-{id = 115, crc = 969072040}, -- object/draft_schematic/armor/component/deflector_shield_projector_plate.iff
-{id = 116, crc = 3084458001}, -- object/draft_schematic/armor/shield_generator_personal.iff
-{id = 117, crc = 3486358557}, -- object/draft_schematic/armor/shield_generator_personal_b.iff
-{id = 118, crc = 2260794256}, -- object/draft_schematic/armor/shield_generator_personal_c.iff
-{id = 119, crc = 313037991}, -- object/draft_schematic/item/item_survey_tool_gas.iff
-{id = 120, crc = 1589959863}, -- object/draft_schematic/item/item_survey_tool_liquid.iff
-{id = 121, crc = 4082544292}, -- object/draft_schematic/item/item_survey_tool_mineral.iff
-{id = 122, crc = 401471280}, -- object/draft_schematic/item/item_survey_tool_moisture.iff
-{id = 123, crc = 876418116}, -- object/draft_schematic/item/item_survey_tool_flora.iff
-{id = 124, crc = 3856567543}, -- object/draft_schematic/item/item_survey_tool_solar.iff
-{id = 125, crc = 1071468515}, -- object/draft_schematic/item/item_survey_tool_wind.iff
-{id = 126, crc = 316445988}, -- object/draft_schematic/item/item_food_tool.iff
-{id = 127, crc = 2204639382}, -- object/draft_schematic/item/item_clothing_tool.iff
-{id = 128, crc = 2995597702}, -- object/draft_schematic/item/item_structure_tool.iff
-{id = 129, crc = 1004917366}, -- object/draft_schematic/item/item_weapon_tool.iff
-{id = 130, crc = 1048146095}, -- object/draft_schematic/item/item_space_tool.iff
-{id = 131, crc = 747828735}, -- object/draft_schematic/weapon/knife_survival.iff
-{id = 132, crc = 3037084411}, -- object/draft_schematic/item/item_chance_cube.iff
-{id = 133, crc = 1609498729}, -- object/draft_schematic/item/item_six_sided_dice.iff
-{id = 134, crc = 637927477}, -- object/draft_schematic/item/item_ten_sided_dice.iff
-{id = 135, crc = 4242849043}, -- object/draft_schematic/weapon/pistol_blaster_cdef.iff
-{id = 136, crc = 955011726}, -- object/draft_schematic/weapon/carbine_blaster_cdef.iff
-{id = 137, crc = 2026058069}, -- object/draft_schematic/weapon/rifle_blaster_cdef.iff
-{id = 138, crc = 1832863191}, -- object/draft_schematic/item/item_generic_tool.iff
-{id = 139, crc = 984541747}, -- object/draft_schematic/item/item_fishing_pole.iff
-{id = 140, crc = 3135096296}, -- object/draft_schematic/item/item_firework_one.iff
-{id = 141, crc = 1505072482}, -- object/draft_schematic/item/item_firework_two.iff
-{id = 142, crc = 2170588894}, -- object/draft_schematic/item/item_firework_three.iff
-{id = 143, crc = 996671491}, -- object/draft_schematic/item/item_powerup_weapon_ranged_one.iff
-{id = 144, crc = 3623899273}, -- object/draft_schematic/item/item_powerup_weapon_ranged_two.iff
-{id = 145, crc = 952220150}, -- object/draft_schematic/item/item_powerup_weapon_melee_generic.iff
-{id = 146, crc = 1037480425}, -- object/draft_schematic/item/item_twelve_sided_dice.iff
-{id = 147, crc = 556118607}, -- object/draft_schematic/item/item_twenty_sided_dice.iff
-{id = 148, crc = 1630955409}, -- object/draft_schematic/item/item_hundred_sided_dice.iff
-{id = 149, crc = 3197767481}, -- object/draft_schematic/weapon/staff.iff
-{id = 150, crc = 200380262}, -- object/draft_schematic/item/item_battery_droid.iff
-{id = 151, crc = 3202707855}, -- object/draft_schematic/item/item_powerup_weapon_ranged_three.iff
-{id = 152, crc = 3301705993}, -- object/draft_schematic/item/item_powerup_weapon_ranged_four.iff
-{id = 153, crc = 482615120}, -- object/draft_schematic/item/item_firework_four.iff
-{id = 154, crc = 4005511185}, -- object/draft_schematic/item/item_firework_five.iff
-{id = 155, crc = 1161747465}, -- object/draft_schematic/item/craftable_bug_habitat.iff
-{id = 156, crc = 3544746582}, -- object/draft_schematic/item/item_repairkit_weapon.iff
-{id = 157, crc = 1277167676}, -- object/draft_schematic/item/item_repairkit_armor.iff
-{id = 158, crc = 2086000111}, -- object/draft_schematic/item/item_configurable_sided_dice.iff
-{id = 159, crc = 1600716532}, -- object/draft_schematic/weapon/staff_reinforced.iff
-{id = 160, crc = 2586258756}, -- object/draft_schematic/armor/armor_segment_bone.iff
-{id = 161, crc = 321288919}, -- object/draft_schematic/clothing/clothing_armor_bone_gloves.iff
-{id = 162, crc = 3439111381}, -- object/draft_schematic/clothing/clothing_armor_bone_boots.iff
-{id = 163, crc = 1262141591}, -- object/draft_schematic/item/item_powerup_weapon_thrown_wiring.iff
-{id = 164, crc = 2427003432}, -- object/draft_schematic/item/item_firework_ten.iff
-{id = 165, crc = 917984840}, -- object/draft_schematic/item/item_powerup_weapon_ranged_five.iff
-{id = 166, crc = 762714609}, -- object/draft_schematic/weapon/knife_twilek_dagger.iff
-{id = 167, crc = 3965484860}, -- object/draft_schematic/clothing/clothing_armor_bone_bicep_l.iff
-{id = 168, crc = 2626239151}, -- object/draft_schematic/clothing/clothing_armor_bone_bicep_r.iff
-{id = 169, crc = 2345052550}, -- object/draft_schematic/clothing/clothing_armor_bone_leggings.iff
-{id = 170, crc = 2783353823}, -- object/draft_schematic/clothing/clothing_armor_bone_helmet.iff
-{id = 171, crc = 82857848}, -- object/draft_schematic/structure/installation_generator_wind.iff
-{id = 172, crc = 600642901}, -- object/draft_schematic/structure/installation_mining_ore_light.iff
-{id = 173, crc = 3510293514}, -- object/draft_schematic/structure/installation_mining_organic_flora_light.iff
-{id = 174, crc = 3156640225}, -- object/draft_schematic/item/item_firework_eleven.iff
-{id = 175, crc = 2590301001}, -- object/draft_schematic/item/item_powerup_weapon_mine_explosive.iff
-{id = 176, crc = 1479954439}, -- object/draft_schematic/item/item_firework_show.iff
-{id = 177, crc = 2487964893}, -- object/draft_schematic/weapon/axe.iff
-{id = 178, crc = 81949849}, -- object/draft_schematic/clothing/clothing_armor_bone_bracer_l.iff
-{id = 179, crc = 1949774090}, -- object/draft_schematic/clothing/clothing_armor_bone_bracer_r.iff
-{id = 180, crc = 4025790410}, -- object/draft_schematic/clothing/clothing_armor_bone_chest.iff
-{id = 181, crc = 2972911685}, -- object/draft_schematic/structure/installation_mining_gas_light.iff
-{id = 182, crc = 4185428428}, -- object/draft_schematic/structure/installation_mining_liquid_light.iff
-{id = 183, crc = 3266813869}, -- object/draft_schematic/structure/installation_mining_liquid_vapor_light.iff
-{id = 184, crc = 2108030646}, -- object/draft_schematic/item/item_powerup_weapon_ranged_six.iff
-{id = 185, crc = 1639699258}, -- object/draft_schematic/item/item_powerup_weapon_thrown_explosive.iff
-{id = 186, crc = 3219518339}, -- object/draft_schematic/item/item_firework_eighteen.iff
-{id = 187, crc = 1694309261}, -- object/draft_schematic/food/dessert_bofa_treat.iff
-{id = 188, crc = 3805048945}, -- object/draft_schematic/food/dish_travel_biscuits.iff
-{id = 189, crc = 2209013520}, -- object/draft_schematic/food/drink_spiced_tea.iff
-{id = 190, crc = 1269972142}, -- object/draft_schematic/food/component/container_small_glass.iff
-{id = 191, crc = 2312997833}, -- object/draft_schematic/clothing/clothing_shirt_casual_04.iff
-{id = 192, crc = 1837828294}, -- object/draft_schematic/clothing/clothing_shoes_casual_02.iff
-{id = 193, crc = 3990156385}, -- object/draft_schematic/clothing/clothing_pants_casual_25.iff
-{id = 194, crc = 4049287817}, -- object/draft_schematic/clothing/clothing_wke_shirt_s01.iff
-{id = 195, crc = 185727219}, -- object/draft_schematic/food/component/ingredient_carbosyrup.iff
-{id = 196, crc = 469974999}, -- object/draft_schematic/food/dessert_blob_candy.iff
-{id = 197, crc = 379017797}, -- object/draft_schematic/food/dish_exo_protein_wafers.iff
-{id = 198, crc = 1600005607}, -- object/draft_schematic/food/drink_aitha.iff
-{id = 199, crc = 461358486}, -- object/draft_schematic/clothing/component/clothing_fiberplast_panel.iff
-{id = 200, crc = 1387670771}, -- object/draft_schematic/clothing/clothing_pants_casual_17.iff
-{id = 201, crc = 2840922087}, -- object/draft_schematic/clothing/clothing_pants_casual_10.iff
-{id = 202, crc = 947374863}, -- object/draft_schematic/clothing/clothing_ith_pants_casual_01.iff
-{id = 203, crc = 205419974}, -- object/draft_schematic/clothing/clothing_hat_casual_14.iff
-{id = 204, crc = 3749030522}, -- object/draft_schematic/clothing/clothing_dress_casual_10.iff
-{id = 205, crc = 207498403}, -- object/draft_schematic/item/item_repairkit_clothing.iff
-{id = 206, crc = 3180104014}, -- object/draft_schematic/clothing/clothing_wke_gloves_s02.iff
-{id = 207, crc = 2428107661}, -- object/draft_schematic/clothing/clothing_wke_skirt_s04.iff
-{id = 208, crc = 589547994}, -- object/draft_schematic/clothing/clothing_ith_shirt_casual_01.iff
-{id = 209, crc = 2153867660}, -- object/draft_schematic/food/component/ingredient_ball_of_dough.iff
-{id = 210, crc = 709155581}, -- object/draft_schematic/food/dish_rations.iff
-{id = 211, crc = 191419320}, -- object/draft_schematic/food/dish_crispic.iff
-{id = 212, crc = 2689107612}, -- object/draft_schematic/food/drink_caf.iff
-{id = 213, crc = 193458339}, -- object/draft_schematic/clothing/component/clothing_metal_fasteners.iff
-{id = 214, crc = 586955760}, -- object/draft_schematic/clothing/clothing_boots_casual_04.iff
-{id = 215, crc = 1299146080}, -- object/draft_schematic/clothing/clothing_dress_casual_12.iff
-{id = 216, crc = 1665207629}, -- object/draft_schematic/clothing/clothing_wke_hood_s01.iff
-{id = 217, crc = 2116997623}, -- object/draft_schematic/clothing/clothing_jacket_casual_02.iff
-{id = 218, crc = 896033306}, -- object/draft_schematic/clothing/clothing_skirt_casual_10.iff
-{id = 219, crc = 1687828910}, -- object/draft_schematic/clothing/clothing_shirt_casual_27.iff
-{id = 220, crc = 2787430538}, -- object/draft_schematic/clothing/clothing_ith_vest_field_01.iff
-{id = 221, crc = 3636519630}, -- object/draft_schematic/clothing/clothing_ith_shirt_casual_06.iff
-{id = 222, crc = 3481147185}, -- object/draft_schematic/food/dessert_pkneb.iff
-{id = 223, crc = 2428786573}, -- object/draft_schematic/food/dish_kanali_wafers.iff
-{id = 224, crc = 2709930731}, -- object/draft_schematic/food/drink_ruby_bliel.iff
-{id = 225, crc = 3532353485}, -- object/draft_schematic/food/drink_jawa_beer.iff
-{id = 226, crc = 2067053324}, -- object/draft_schematic/clothing/clothing_pants_field_04.iff
-{id = 227, crc = 3539139309}, -- object/draft_schematic/clothing/clothing_pants_field_12.iff
-{id = 228, crc = 2444331758}, -- object/draft_schematic/clothing/clothing_ith_pants_casual_17.iff
-{id = 229, crc = 2533824791}, -- object/draft_schematic/clothing/clothing_ith_pants_field_04.iff
-{id = 230, crc = 782564595}, -- object/draft_schematic/clothing/clothing_belt_field_07.iff
-{id = 231, crc = 2271395090}, -- object/draft_schematic/clothing/clothing_belt_field_11.iff
-{id = 232, crc = 2762316865}, -- object/draft_schematic/clothing/clothing_shirt_casual_34.iff
-{id = 233, crc = 1515240832}, -- object/draft_schematic/clothing/clothing_gloves_field_12.iff
-{id = 234, crc = 1694948495}, -- object/draft_schematic/clothing/clothing_jacket_casual_12.iff
-{id = 235, crc = 709661214}, -- object/draft_schematic/clothing/clothing_wke_shirt_s02.iff
-{id = 236, crc = 2446165315}, -- object/draft_schematic/clothing/clothing_ith_shirt_casual_07.iff
-{id = 237, crc = 3065994234}, -- object/draft_schematic/food/additive/additive_light.iff
-{id = 238, crc = 4180864985}, -- object/draft_schematic/food/component/container_large_glass.iff
-{id = 239, crc = 1389553336}, -- object/draft_schematic/food/drink_jaar.iff
-{id = 240, crc = 3908292198}, -- object/draft_schematic/food/drink_starshine_surprise.iff
-{id = 241, crc = 2114106261}, -- object/draft_schematic/food/dish_dustcrepe.iff
-{id = 242, crc = 1775863456}, -- object/draft_schematic/food/dish_teltier_noodles.iff
-{id = 243, crc = 927256146}, -- object/draft_schematic/clothing/clothing_dress_formal_18.iff
-{id = 244, crc = 3912995397}, -- object/draft_schematic/clothing/clothing_dress_formal_26.iff
-{id = 245, crc = 1466448305}, -- object/draft_schematic/clothing/clothing_boots_field_03.iff
-{id = 246, crc = 1852135885}, -- object/draft_schematic/clothing/clothing_jacket_field_15.iff
-{id = 247, crc = 2660160588}, -- object/draft_schematic/clothing/clothing_bandolier_field_07.iff
-{id = 248, crc = 612694110}, -- object/draft_schematic/clothing/clothing_bandolier_field_08.iff
-{id = 249, crc = 1991502747}, -- object/draft_schematic/clothing/clothing_dress_casual_06.iff
-{id = 250, crc = 3325204770}, -- object/draft_schematic/clothing/clothing_backpack_field_01.iff
-{id = 251, crc = 4049322583}, -- object/draft_schematic/clothing/clothing_wke_hood_s03.iff
-{id = 252, crc = 2918054456}, -- object/draft_schematic/item/item_parrot_cage.iff
-{id = 253, crc = 2674062438}, -- object/draft_schematic/item/component/item_micro_sensor_suite.iff
-{id = 254, crc = 1574046383}, -- object/draft_schematic/item/component/item_electronics_memory_module.iff
-{id = 255, crc = 3436569507}, -- object/draft_schematic/item/component/item_electronics_gp_module.iff
-{id = 256, crc = 3173543605}, -- object/draft_schematic/item/component/item_electronic_power_conditioner.iff
-{id = 257, crc = 2473056865}, -- object/draft_schematic/item/component/item_electronic_energy_distributor.iff
-{id = 258, crc = 1443146565}, -- object/draft_schematic/item/component/item_electronic_control_unit.iff
-{id = 259, crc = 123302985}, -- object/draft_schematic/space/repair/generic_repair_kit.iff
-{id = 260, crc = 1411929656}, -- object/draft_schematic/clothing/clothing_backpack_field_03.iff
-{id = 261, crc = 329003908}, -- object/draft_schematic/clothing/component/clothing_synthetic_cloth.iff
-{id = 262, crc = 1566422973}, -- object/draft_schematic/clothing/clothing_jacket_field_08.iff
-{id = 263, crc = 1916707037}, -- object/draft_schematic/clothing/clothing_shirt_casual_03.iff
-{id = 264, crc = 1388979038}, -- object/draft_schematic/clothing/clothing_shirt_casual_07.iff
-{id = 265, crc = 4218449170}, -- object/draft_schematic/clothing/clothing_pants_casual_01.iff
-{id = 266, crc = 3682922129}, -- object/draft_schematic/clothing/clothing_pants_casual_05.iff
-{id = 267, crc = 9651718}, -- object/draft_schematic/clothing/clothing_pants_casual_06.iff
-{id = 268, crc = 2244868835}, -- object/draft_schematic/clothing/clothing_jacket_casual_05.iff
-{id = 269, crc = 3622342678}, -- object/draft_schematic/clothing/clothing_jacket_casual_14.iff
-{id = 270, crc = 4122170468}, -- object/draft_schematic/clothing/clothing_belt_field_04.iff
-{id = 271, crc = 1098428664}, -- object/draft_schematic/clothing/clothing_gloves_field_02.iff
-{id = 272, crc = 2189367013}, -- object/draft_schematic/clothing/clothing_ith_gloves_field_02.iff
-{id = 273, crc = 1612494452}, -- object/draft_schematic/clothing/clothing_pants_field_14.iff
-{id = 274, crc = 2812653709}, -- object/draft_schematic/clothing/clothing_shirt_field_09.iff
-{id = 275, crc = 1801113753}, -- object/draft_schematic/clothing/clothing_wke_skirt_s03.iff
-{id = 276, crc = 578004066}, -- object/draft_schematic/clothing/clothing_wke_hat_s01.iff
-{id = 277, crc = 734505297}, -- object/draft_schematic/clothing/clothing_ith_shirt_casual_08.iff
-{id = 278, crc = 3810290741}, -- object/draft_schematic/clothing/clothing_ith_shirt_casual_12.iff
-{id = 279, crc = 2914673091}, -- object/draft_schematic/clothing/clothing_dress_formal_13.iff
-{id = 280, crc = 2160227915}, -- object/draft_schematic/clothing/clothing_dress_formal_23.iff
-{id = 281, crc = 1395768919}, -- object/draft_schematic/clothing/clothing_dress_formal_29.iff
-{id = 282, crc = 2222321169}, -- object/draft_schematic/clothing/clothing_jewelry_bracelet_05.iff
-{id = 283, crc = 1600276102}, -- object/draft_schematic/clothing/clothing_jewelry_bracelet_06.iff
-{id = 284, crc = 3234778763}, -- object/draft_schematic/clothing/clothing_shirt_formal_13.iff
-{id = 285, crc = 1762168682}, -- object/draft_schematic/clothing/clothing_shirt_formal_05.iff
-{id = 286, crc = 3825328085}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_06.iff
-{id = 287, crc = 3433925597}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_06.iff
-{id = 288, crc = 386307146}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_08.iff
-{id = 289, crc = 1068154946}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_08.iff
-{id = 290, crc = 80411065}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_11.iff
-{id = 291, crc = 744926641}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_11.iff
-{id = 292, crc = 325127918}, -- object/draft_schematic/clothing/component/clothing_shoe_sole.iff
-{id = 293, crc = 1893290245}, -- object/draft_schematic/clothing/clothing_boots_casual_15.iff
-{id = 294, crc = 2102773006}, -- object/draft_schematic/clothing/clothing_boots_casual_21.iff
-{id = 295, crc = 2217329246}, -- object/draft_schematic/clothing/clothing_gloves_casual_03.iff
-{id = 296, crc = 3989841488}, -- object/draft_schematic/clothing/clothing_gloves_casual_06.iff
-{id = 297, crc = 258131415}, -- object/draft_schematic/clothing/clothing_wke_gloves_s04.iff
-{id = 298, crc = 3434727305}, -- object/draft_schematic/clothing/clothing_dress_casual_09.iff
-{id = 299, crc = 246738145}, -- object/draft_schematic/clothing/clothing_skirt_casual_04.iff
-{id = 300, crc = 1203342188}, -- object/draft_schematic/clothing/clothing_skirt_casual_05.iff
-{id = 301, crc = 612790091}, -- object/draft_schematic/clothing/clothing_shoes_casual_03.iff
-{id = 302, crc = 74640584}, -- object/draft_schematic/clothing/clothing_shoes_casual_07.iff
-{id = 303, crc = 3195584730}, -- object/draft_schematic/clothing/clothing_shoes_casual_08.iff
-{id = 304, crc = 1800960930}, -- object/draft_schematic/clothing/clothing_ith_hat_casual_01.iff
-{id = 305, crc = 3814744984}, -- object/draft_schematic/clothing/clothing_ith_pants_casual_02.iff
-{id = 306, crc = 2859271189}, -- object/draft_schematic/clothing/clothing_ith_pants_casual_03.iff
-{id = 307, crc = 4065776160}, -- object/draft_schematic/clothing/clothing_ith_jacket_casual_01.iff
-{id = 308, crc = 1615600954}, -- object/draft_schematic/clothing/clothing_ith_jacket_casual_03.iff
-{id = 309, crc = 1255812564}, -- object/draft_schematic/clothing/clothing_ith_shirt_casual_04.iff
-{id = 310, crc = 2973304512}, -- object/draft_schematic/clothing/clothing_ith_shirt_casual_03.iff
-{id = 311, crc = 2853243832}, -- object/draft_schematic/clothing/clothing_ith_shirt_casual_13.iff
-{id = 312, crc = 1374822572}, -- object/draft_schematic/clothing/clothing_ith_shirt_casual_14.iff
-{id = 313, crc = 15681963}, -- object/draft_schematic/clothing/clothing_shirt_casual_16.iff
-{id = 314, crc = 1469313712}, -- object/draft_schematic/clothing/clothing_shirt_casual_42.iff
-{id = 315, crc = 3317176516}, -- object/draft_schematic/clothing/clothing_shirt_casual_38.iff
-{id = 316, crc = 399980025}, -- object/draft_schematic/clothing/clothing_jacket_casual_07.iff
-{id = 317, crc = 218052737}, -- object/draft_schematic/clothing/clothing_jacket_casual_17.iff
-{id = 318, crc = 4294472478}, -- object/draft_schematic/clothing/clothing_jacket_casual_19.iff
-{id = 319, crc = 4086566297}, -- object/draft_schematic/clothing/clothing_pants_casual_08.iff
-{id = 320, crc = 3763888234}, -- object/draft_schematic/clothing/clothing_pants_casual_11.iff
-{id = 321, crc = 918772982}, -- object/draft_schematic/clothing/clothing_pants_casual_26.iff
-{id = 322, crc = 3130616340}, -- object/draft_schematic/clothing/clothing_pants_casual_09.iff
-{id = 323, crc = 957307045}, -- object/draft_schematic/clothing/clothing_vest_casual_04.iff
-{id = 324, crc = 1879195432}, -- object/draft_schematic/clothing/clothing_vest_casual_05.iff
-{id = 325, crc = 47437406}, -- object/draft_schematic/clothing/clothing_vest_casual_10.iff
-{id = 326, crc = 3627372781}, -- object/draft_schematic/clothing/clothing_wke_shoulder_pad_s01.iff
-{id = 327, crc = 814984068}, -- object/draft_schematic/clothing/clothing_ith_pants_casual_08.iff
-{id = 328, crc = 2040450057}, -- object/draft_schematic/clothing/clothing_ith_pants_casual_09.iff
-{id = 329, crc = 162920756}, -- object/draft_schematic/clothing/clothing_ith_jacket_casual_06.iff
-{id = 330, crc = 3015693606}, -- object/draft_schematic/clothing/clothing_ith_jacket_casual_09.iff
-{id = 331, crc = 2335865361}, -- object/draft_schematic/clothing/clothing_boots_casual_12.iff
-{id = 332, crc = 298112384}, -- object/draft_schematic/clothing/clothing_boots_casual_19.iff
-{id = 333, crc = 2913223436}, -- object/draft_schematic/clothing/clothing_dress_casual_05.iff
-{id = 334, crc = 1069452310}, -- object/draft_schematic/clothing/clothing_dress_casual_07.iff
-{id = 335, crc = 1163908408}, -- object/draft_schematic/clothing/clothing_robe_casual_04.iff
-{id = 336, crc = 206746293}, -- object/draft_schematic/clothing/clothing_robe_casual_05.iff
-{id = 337, crc = 3252825922}, -- object/draft_schematic/clothing/clothing_robe_casual_05b.iff
-{id = 338, crc = 1063935173}, -- object/draft_schematic/clothing/clothing_robe_casual_18.iff
-{id = 339, crc = 2784506919}, -- object/draft_schematic/clothing/clothing_hat_casual_02.iff
-{id = 340, crc = 751498821}, -- object/draft_schematic/clothing/clothing_hat_casual_10.iff
-{id = 341, crc = 3201317215}, -- object/draft_schematic/clothing/clothing_hat_casual_12.iff
-{id = 342, crc = 1548140557}, -- object/draft_schematic/clothing/clothing_bustier_casual_01.iff
-{id = 343, crc = 2270259354}, -- object/draft_schematic/clothing/clothing_bustier_casual_02.iff
-{id = 344, crc = 3462139671}, -- object/draft_schematic/clothing/clothing_bustier_casual_03.iff
-{id = 345, crc = 584947195}, -- object/draft_schematic/clothing/clothing_ith_bodysuit_casual_04.iff
-{id = 346, crc = 4102155971}, -- object/draft_schematic/clothing/clothing_wke_gloves_s03.iff
-{id = 347, crc = 4181898424}, -- object/draft_schematic/clothing/clothing_ith_hat_casual_03.iff
-{id = 348, crc = 3636260195}, -- object/draft_schematic/clothing/clothing_ith_pants_casual_16.iff
-{id = 349, crc = 733718268}, -- object/draft_schematic/clothing/clothing_ith_pants_casual_18.iff
-{id = 350, crc = 845772751}, -- object/draft_schematic/clothing/clothing_ith_jacket_casual_12.iff
-{id = 351, crc = 2156346198}, -- object/draft_schematic/clothing/clothing_ith_jacket_casual_14.iff
-{id = 352, crc = 1657458396}, -- object/draft_schematic/clothing/clothing_ith_shirt_casual_09.iff
-{id = 353, crc = 4211892927}, -- object/draft_schematic/clothing/clothing_shirt_casual_11.iff
-{id = 354, crc = 3213726009}, -- object/draft_schematic/clothing/clothing_shirt_casual_24.iff
-{id = 355, crc = 2219909058}, -- object/draft_schematic/clothing/clothing_shirt_casual_30.iff
-{id = 356, crc = 3069514899}, -- object/draft_schematic/clothing/clothing_jacket_casual_18.iff
-{id = 357, crc = 4203775902}, -- object/draft_schematic/clothing/clothing_jacket_casual_24.iff
-{id = 358, crc = 1940014588}, -- object/draft_schematic/clothing/clothing_jacket_casual_36.iff
-{id = 359, crc = 3904635105}, -- object/draft_schematic/clothing/clothing_pants_casual_18.iff
-{id = 360, crc = 2765722604}, -- object/draft_schematic/clothing/clothing_pants_casual_24.iff
-{id = 361, crc = 1358347435}, -- object/draft_schematic/clothing/clothing_vest_casual_01.iff
-{id = 362, crc = 2346783804}, -- object/draft_schematic/clothing/clothing_vest_casual_02.iff
-{id = 363, crc = 3270276017}, -- object/draft_schematic/clothing/clothing_vest_casual_03.iff
-{id = 364, crc = 1272885715}, -- object/draft_schematic/clothing/clothing_vest_casual_11.iff
-{id = 365, crc = 570559564}, -- object/draft_schematic/clothing/clothing_hat_twilek_casual_01.iff
-{id = 366, crc = 4178945243}, -- object/draft_schematic/clothing/clothing_hat_twilek_casual_02.iff
-{id = 367, crc = 1260679669}, -- object/draft_schematic/clothing/clothing_ith_bodysuit_casual_01.iff
-{id = 368, crc = 3644767983}, -- object/draft_schematic/clothing/clothing_ith_bodysuit_casual_03.iff
-{id = 369, crc = 1808855670}, -- object/draft_schematic/clothing/clothing_ith_bodysuit_casual_05.iff
-{id = 370, crc = 237490687}, -- object/draft_schematic/clothing/clothing_ith_pants_casual_21.iff
-{id = 371, crc = 2815998266}, -- object/draft_schematic/clothing/component/clothing_cargo_pocket.iff
-{id = 372, crc = 2949348652}, -- object/draft_schematic/clothing/clothing_backpack_field_04.iff
-{id = 373, crc = 3850794280}, -- object/draft_schematic/clothing/clothing_boots_field_05.iff
-{id = 374, crc = 3080921053}, -- object/draft_schematic/clothing/clothing_boots_field_14.iff
-{id = 375, crc = 2180187437}, -- object/draft_schematic/clothing/clothing_boots_field_34.iff
-{id = 376, crc = 3474923014}, -- object/draft_schematic/clothing/clothing_hat_field_04.iff
-{id = 377, crc = 3718494060}, -- object/draft_schematic/clothing/clothing_belt_field_09.iff
-{id = 378, crc = 679564534}, -- object/draft_schematic/clothing/clothing_gloves_field_07.iff
-{id = 379, crc = 3700102484}, -- object/draft_schematic/clothing/clothing_jacket_field_13.iff
-{id = 380, crc = 3044208986}, -- object/draft_schematic/clothing/clothing_jacket_field_16.iff
-{id = 381, crc = 1721442777}, -- object/draft_schematic/clothing/clothing_wke_gloves_s01.iff
-{id = 382, crc = 3725229722}, -- object/draft_schematic/clothing/clothing_ith_pants_field_05.iff
-{id = 383, crc = 85841421}, -- object/draft_schematic/clothing/clothing_ith_pants_field_06.iff
-{id = 384, crc = 1302976956}, -- object/draft_schematic/clothing/clothing_ith_jacket_field_02.iff
-{id = 385, crc = 1215306892}, -- object/draft_schematic/clothing/clothing_vest_field_06.iff
-{id = 386, crc = 4068094110}, -- object/draft_schematic/clothing/clothing_vest_field_09.iff
-{id = 387, crc = 713790995}, -- object/draft_schematic/clothing/clothing_ith_shirt_field_05.iff
-{id = 388, crc = 290920680}, -- object/draft_schematic/clothing/clothing_ith_shirt_field_11.iff
-{id = 389, crc = 3909044008}, -- object/draft_schematic/clothing/component/clothing_reinforced_fiber_panels.iff
-{id = 390, crc = 3026836862}, -- object/draft_schematic/clothing/clothing_shirt_field_10.iff
-{id = 391, crc = 2493341437}, -- object/draft_schematic/clothing/clothing_shirt_field_14.iff
-{id = 392, crc = 738166383}, -- object/draft_schematic/clothing/clothing_shirt_field_26.iff
-{id = 393, crc = 2524121451}, -- object/draft_schematic/clothing/clothing_pants_field_27.iff
-{id = 394, crc = 1702118132}, -- object/draft_schematic/clothing/clothing_pants_field_29.iff
-{id = 395, crc = 2686653339}, -- object/draft_schematic/clothing/clothing_pants_field_07.iff
-{id = 396, crc = 2622140522}, -- object/draft_schematic/clothing/clothing_belt_field_01.iff
-{id = 397, crc = 2168919319}, -- object/draft_schematic/clothing/clothing_gloves_field_11.iff
-{id = 398, crc = 3904827673}, -- object/draft_schematic/clothing/clothing_gloves_field_14.iff
-{id = 399, crc = 211032918}, -- object/draft_schematic/clothing/clothing_bandolier_field_05.iff
-{id = 400, crc = 3615732673}, -- object/draft_schematic/clothing/clothing_bandolier_field_06.iff
-{id = 401, crc = 3871742625}, -- object/draft_schematic/clothing/clothing_backpack_field_05.iff
-{id = 402, crc = 1665267091}, -- object/draft_schematic/clothing/clothing_wke_shirt_s03.iff
-{id = 403, crc = 1276162432}, -- object/draft_schematic/clothing/clothing_ith_pants_field_07.iff
-{id = 404, crc = 1052858614}, -- object/draft_schematic/clothing/clothing_ith_pants_field_12.iff
-{id = 405, crc = 3058365096}, -- object/draft_schematic/clothing/clothing_ith_jacket_field_05.iff
-{id = 406, crc = 609238450}, -- object/draft_schematic/clothing/clothing_ith_jacket_field_07.iff
-{id = 407, crc = 1987582007}, -- object/draft_schematic/clothing/component/clothing_padding_segment.iff
-{id = 408, crc = 1037152822}, -- object/draft_schematic/clothing/clothing_backpack_field_06.iff
-{id = 409, crc = 4151783490}, -- object/draft_schematic/clothing/clothing_bandolier_field_02.iff
-{id = 410, crc = 3195688911}, -- object/draft_schematic/clothing/clothing_bandolier_field_03.iff
-{id = 411, crc = 1167686875}, -- object/draft_schematic/clothing/clothing_bandolier_field_04.iff
-{id = 412, crc = 127712707}, -- object/draft_schematic/clothing/clothing_jacket_field_10.iff
-{id = 413, crc = 1676266950}, -- object/draft_schematic/clothing/clothing_jacket_field_21.iff
-{id = 414, crc = 1479885629}, -- object/draft_schematic/clothing/clothing_jacket_field_35.iff
-{id = 415, crc = 746136953}, -- object/draft_schematic/clothing/clothing_pants_field_28.iff
-{id = 416, crc = 1991782151}, -- object/draft_schematic/clothing/clothing_pants_field_30.iff
-{id = 417, crc = 2009874299}, -- object/draft_schematic/clothing/clothing_ith_pants_field_13.iff
-{id = 418, crc = 3307369442}, -- object/draft_schematic/clothing/clothing_ith_pants_field_15.iff
-{id = 419, crc = 1197283581}, -- object/draft_schematic/clothing/clothing_belt_field_02.iff
-{id = 420, crc = 52623482}, -- object/draft_schematic/clothing/clothing_wke_shoulder_pad_s02.iff
-{id = 421, crc = 529314633}, -- object/draft_schematic/clothing/clothing_ith_jacket_field_13.iff
-{id = 422, crc = 614286834}, -- object/draft_schematic/clothing/clothing_pants_field_21.iff
-{id = 423, crc = 4287294821}, -- object/draft_schematic/clothing/clothing_pants_field_22.iff
-{id = 424, crc = 2755655527}, -- object/draft_schematic/clothing/clothing_ith_pants_field_19.iff
-{id = 425, crc = 2174976100}, -- object/draft_schematic/clothing/clothing_ith_pants_field_20.iff
-{id = 426, crc = 240156528}, -- object/draft_schematic/clothing/clothing_belt_field_03.iff
-{id = 427, crc = 3166581737}, -- object/draft_schematic/clothing/clothing_belt_field_05.iff
-{id = 428, crc = 3360322202}, -- object/draft_schematic/clothing/clothing_gloves_field_10.iff
-{id = 429, crc = 324917773}, -- object/draft_schematic/clothing/clothing_gloves_field_13.iff
-{id = 430, crc = 3805595235}, -- object/draft_schematic/clothing/clothing_bodysuit_field_13.iff
-{id = 431, crc = 2334990957}, -- object/draft_schematic/clothing/clothing_bodysuit_field_16.iff
-{id = 432, crc = 1505827354}, -- object/draft_schematic/clothing/clothing_robe_field_27.iff
-{id = 433, crc = 2560810631}, -- object/draft_schematic/clothing/clothing_wke_shirt_s04.iff
-{id = 434, crc = 3112834964}, -- object/draft_schematic/clothing/clothing_ith_bodysuit_field_02.iff
-{id = 435, crc = 2375449683}, -- object/draft_schematic/clothing/clothing_ith_jacket_field_11.iff
-{id = 436, crc = 4244681502}, -- object/draft_schematic/clothing/component/clothing_trim.iff
-{id = 437, crc = 1092119650}, -- object/draft_schematic/clothing/clothing_shirt_formal_08.iff
-{id = 438, crc = 2001237650}, -- object/draft_schematic/clothing/clothing_shirt_formal_28.iff
-{id = 439, crc = 1374421603}, -- object/draft_schematic/clothing/clothing_ith_shirt_formal_02.iff
-{id = 440, crc = 3139020835}, -- object/draft_schematic/clothing/clothing_belt_formal_15.iff
-{id = 441, crc = 1611530420}, -- object/draft_schematic/clothing/clothing_belt_formal_16.iff
-{id = 442, crc = 2466859819}, -- object/draft_schematic/clothing/clothing_belt_formal_18.iff
-{id = 443, crc = 534967489}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_01.iff
-{id = 444, crc = 927899849}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_01.iff
-{id = 445, crc = 2381855707}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_03.iff
-{id = 446, crc = 2773774291}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_03.iff
-{id = 447, crc = 2903291992}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_07.iff
-{id = 448, crc = 2241915984}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_07.iff
-{id = 449, crc = 524600191}, -- object/draft_schematic/clothing/clothing_shoes_formal_01.iff
-{id = 450, crc = 1588446329}, -- object/draft_schematic/clothing/clothing_shoes_formal_09.iff
-{id = 451, crc = 896942293}, -- object/draft_schematic/clothing/clothing_skirt_formal_06.iff
-{id = 452, crc = 2088445784}, -- object/draft_schematic/clothing/clothing_skirt_formal_07.iff
-{id = 453, crc = 3158606519}, -- object/draft_schematic/clothing/clothing_skirt_formal_14.iff
-{id = 454, crc = 576173844}, -- object/draft_schematic/clothing/clothing_wke_skirt_s02.iff
-{id = 455, crc = 1972751014}, -- object/draft_schematic/clothing/clothing_ith_dress_formal_03.iff
-{id = 456, crc = 1399509381}, -- object/draft_schematic/clothing/clothing_ith_jacket_formal_08.iff
-{id = 457, crc = 227724764}, -- object/draft_schematic/clothing/clothing_ith_skirt_formal_01.iff
-{id = 458, crc = 3599066443}, -- object/draft_schematic/clothing/clothing_ith_skirt_formal_02.iff
-{id = 459, crc = 3117034449}, -- object/draft_schematic/clothing/component/clothing_jewelry_setting.iff
-{id = 460, crc = 1067495129}, -- object/draft_schematic/clothing/clothing_dress_formal_11.iff
-{id = 461, crc = 3292759501}, -- object/draft_schematic/clothing/clothing_dress_formal_16.iff
-{id = 462, crc = 3538361534}, -- object/draft_schematic/clothing/clothing_dress_formal_32.iff
-{id = 463, crc = 1090159415}, -- object/draft_schematic/clothing/clothing_belt_formal_12.iff
-{id = 464, crc = 4061450158}, -- object/draft_schematic/clothing/clothing_belt_formal_14.iff
-{id = 465, crc = 3657706662}, -- object/draft_schematic/clothing/clothing_belt_formal_19.iff
-{id = 466, crc = 2140587269}, -- object/draft_schematic/clothing/clothing_jewelry_bracelet_02.iff
-{id = 467, crc = 916169352}, -- object/draft_schematic/clothing/clothing_jewelry_bracelet_03.iff
-{id = 468, crc = 3447228828}, -- object/draft_schematic/clothing/clothing_jewelry_bracelet_04.iff
-{id = 469, crc = 4144116058}, -- object/draft_schematic/clothing/clothing_jacket_formal_06.iff
-{id = 470, crc = 399054646}, -- object/draft_schematic/clothing/clothing_jacket_formal_11.iff
-{id = 471, crc = 3243387818}, -- object/draft_schematic/clothing/clothing_jacket_formal_26.iff
-{id = 472, crc = 3270660478}, -- object/draft_schematic/clothing/clothing_vest_formal_15.iff
-{id = 473, crc = 2407296199}, -- object/draft_schematic/clothing/clothing_skirt_formal_09.iff
-{id = 474, crc = 3092686298}, -- object/draft_schematic/clothing/clothing_wke_hood_s02.iff
-{id = 475, crc = 1224236611}, -- object/draft_schematic/clothing/clothing_hat_chef_02.iff
-{id = 476, crc = 2783575352}, -- object/draft_schematic/clothing/clothing_ith_hat_chef_02.iff
-{id = 477, crc = 3280650964}, -- object/draft_schematic/clothing/clothing_ith_pants_formal_10.iff
-{id = 478, crc = 2390155698}, -- object/draft_schematic/clothing/clothing_ith_dress_formal_04.iff
-{id = 479, crc = 846681344}, -- object/draft_schematic/clothing/clothing_ith_jacket_formal_04.iff
-{id = 480, crc = 2676490950}, -- object/draft_schematic/clothing/clothing_ith_skirt_formal_03.iff
-{id = 481, crc = 2311301382}, -- object/draft_schematic/clothing/clothing_shirt_formal_12.iff
-{id = 482, crc = 1914733074}, -- object/draft_schematic/clothing/clothing_shirt_formal_15.iff
-{id = 483, crc = 3214128118}, -- object/draft_schematic/clothing/clothing_shirt_formal_32.iff
-{id = 484, crc = 2118756831}, -- object/draft_schematic/clothing/clothing_dress_formal_19.iff
-{id = 485, crc = 2687956424}, -- object/draft_schematic/clothing/clothing_dress_formal_27.iff
-{id = 486, crc = 1090376612}, -- object/draft_schematic/clothing/clothing_dress_formal_30.iff
-{id = 487, crc = 166769705}, -- object/draft_schematic/clothing/clothing_dress_formal_31.iff
-{id = 488, crc = 1577841607}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_09.iff
-{id = 489, crc = 1990698959}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_09.iff
-{id = 490, crc = 1304927796}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_10.iff
-{id = 491, crc = 1701562940}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_10.iff
-{id = 492, crc = 3755823406}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_12.iff
-{id = 493, crc = 4151379238}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_12.iff
-{id = 494, crc = 2581406078}, -- object/draft_schematic/clothing/clothing_jewelry_ring_01.iff
-{id = 495, crc = 1120569833}, -- object/draft_schematic/clothing/clothing_jewelry_ring_02.iff
-{id = 496, crc = 1577401852}, -- object/draft_schematic/clothing/clothing_hat_formal_13.iff
-{id = 497, crc = 2144344500}, -- object/draft_schematic/clothing/clothing_pants_formal_31.iff
-{id = 498, crc = 3989493422}, -- object/draft_schematic/clothing/clothing_pants_formal_33.iff
-{id = 499, crc = 4181729155}, -- object/draft_schematic/clothing/clothing_wke_skirt_s01.iff
-{id = 500, crc = 2481977044}, -- object/draft_schematic/clothing/clothing_hat_chef_01.iff
-{id = 501, crc = 2130597295}, -- object/draft_schematic/clothing/clothing_ith_hat_chef_01.iff
-{id = 502, crc = 429371419}, -- object/draft_schematic/clothing/clothing_ith_hat_formal_02.iff
-{id = 503, crc = 2324145497}, -- object/draft_schematic/clothing/clothing_ith_pants_formal_11.iff
-{id = 504, crc = 162257915}, -- object/draft_schematic/clothing/clothing_ith_jacket_formal_10.iff
-{id = 505, crc = 1448692439}, -- object/draft_schematic/clothing/clothing_dress_formal_14.iff
-{id = 506, crc = 2615835443}, -- object/draft_schematic/clothing/clothing_dress_formal_33.iff
-{id = 507, crc = 1611223079}, -- object/draft_schematic/clothing/clothing_dress_formal_34.iff
-{id = 508, crc = 167240890}, -- object/draft_schematic/clothing/clothing_belt_formal_13.iff
-{id = 509, crc = 688088889}, -- object/draft_schematic/clothing/clothing_belt_formal_17.iff
-{id = 510, crc = 4288175013}, -- object/draft_schematic/clothing/clothing_belt_formal_20.iff
-{id = 511, crc = 2667304276}, -- object/draft_schematic/clothing/clothing_jacket_formal_03.iff
-{id = 512, crc = 3785795625}, -- object/draft_schematic/clothing/clothing_jacket_formal_22.iff
-{id = 513, crc = 440763197}, -- object/draft_schematic/clothing/clothing_jacket_formal_25.iff
-{id = 514, crc = 3304414294}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_02.iff
-{id = 515, crc = 3965257822}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_02.iff
-{id = 516, crc = 3585959609}, -- object/draft_schematic/clothing/clothing_skirt_formal_11.iff
-{id = 517, crc = 246074926}, -- object/draft_schematic/clothing/clothing_skirt_formal_12.iff
-{id = 518, crc = 1202170275}, -- object/draft_schematic/clothing/clothing_skirt_formal_13.iff
-{id = 519, crc = 3684355166}, -- object/draft_schematic/clothing/clothing_pants_formal_13.iff
-{id = 520, crc = 1769242823}, -- object/draft_schematic/clothing/clothing_pants_formal_15.iff
-{id = 521, crc = 2764550435}, -- object/draft_schematic/clothing/clothing_pants_formal_32.iff
-{id = 522, crc = 2084234633}, -- object/draft_schematic/clothing/clothing_apron_chef_01.iff
-{id = 523, crc = 1770848923}, -- object/draft_schematic/clothing/clothing_ith_apron_chef_01.iff
-{id = 524, crc = 2876898434}, -- object/draft_schematic/clothing/clothing_ith_hat_formal_04.iff
-{id = 525, crc = 1766715395}, -- object/draft_schematic/clothing/clothing_ith_robe_formal_01.iff
-{id = 526, crc = 3816702295}, -- object/draft_schematic/clothing/clothing_ith_pants_formal_14.iff
-{id = 527, crc = 1616003061}, -- object/draft_schematic/clothing/clothing_ith_jacket_formal_15.iff
-{id = 528, crc = 3635499002}, -- object/draft_schematic/clothing/clothing_bikini_casual_01.iff
-{id = 529, crc = 61269869}, -- object/draft_schematic/clothing/clothing_bikini_casual_02.iff
-{id = 530, crc = 1252753632}, -- object/draft_schematic/clothing/clothing_bikini_casual_03.iff
-{id = 531, crc = 2974329844}, -- object/draft_schematic/clothing/clothing_bikini_casual_04.iff
-{id = 532, crc = 2336834912}, -- object/draft_schematic/clothing/clothing_bikini_leggings_casual_01.iff
-{id = 533, crc = 447931249}, -- object/draft_schematic/clothing/clothing_bodysuit_casual_08.iff
-{id = 534, crc = 3530106389}, -- object/draft_schematic/clothing/clothing_bodysuit_casual_12.iff
-{id = 535, crc = 1810236417}, -- object/draft_schematic/clothing/clothing_bodysuit_field_01.iff
-{id = 536, crc = 423095671}, -- object/draft_schematic/clothing/clothing_bodysuit_field_14.iff
-{id = 537, crc = 1346013946}, -- object/draft_schematic/clothing/clothing_bodysuit_field_15.iff
-{id = 538, crc = 1080937408}, -- object/draft_schematic/clothing/clothing_bodysuit_formal_06.iff
-{id = 539, crc = 421476815}, -- object/draft_schematic/clothing/clothing_ith_bodysuit_formal_06.iff
-{id = 540, crc = 3638476801}, -- object/draft_schematic/clothing/clothing_ith_shirt_formal_10.iff
-{id = 541, crc = 745325354}, -- object/draft_schematic/clothing/clothing_dress_formal_08.iff
-{id = 542, crc = 525610330}, -- object/draft_schematic/clothing/clothing_dress_formal_15.iff
-{id = 543, crc = 688142250}, -- object/draft_schematic/clothing/clothing_dress_formal_35.iff
-{id = 544, crc = 543671685}, -- object/draft_schematic/clothing/clothing_pants_casual_02.iff
-{id = 545, crc = 2239648280}, -- object/draft_schematic/clothing/clothing_robe_formal_01.iff
-{id = 546, crc = 1161951223}, -- object/draft_schematic/clothing/clothing_robe_formal_12.iff
-{id = 547, crc = 2992265364}, -- object/draft_schematic/clothing/clothing_ith_robe_formal_02.iff
-{id = 548, crc = 432054392}, -- object/draft_schematic/clothing/clothing_hat_twilek_formal_03.iff
-{id = 549, crc = 3793980268}, -- object/draft_schematic/clothing/clothing_hat_twilek_formal_04.iff
-{id = 550, crc = 2871979233}, -- object/draft_schematic/clothing/clothing_hat_twilek_formal_05.iff
-{id = 551, crc = 1981485263}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_04.iff
-{id = 552, crc = 1589068999}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_04.iff
-{id = 553, crc = 1058436930}, -- object/draft_schematic/clothing/clothing_jewelry_necklace_05.iff
-{id = 554, crc = 398074698}, -- object/draft_schematic/clothing/clothing_ith_jewelry_necklace_05.iff
-{id = 555, crc = 4116170741}, -- object/draft_schematic/clothing/clothing_skirt_casual_03.iff
-{id = 556, crc = 2008759260}, -- object/draft_schematic/food/additive/additive_medium.iff
-{id = 557, crc = 977153224}, -- object/draft_schematic/food/dish_soypro.iff
-{id = 558, crc = 3215065179}, -- object/draft_schematic/food/dessert_air_cake.iff
-{id = 559, crc = 675972821}, -- object/draft_schematic/food/dessert_almond_kwevvu_crisp_munchies.iff
-{id = 560, crc = 2075941079}, -- object/draft_schematic/food/dessert_blap_biscuit.iff
-{id = 561, crc = 1057722373}, -- object/draft_schematic/food/drink_alcohol.iff
-{id = 562, crc = 3561999020}, -- object/draft_schematic/food/dish_protato.iff
-{id = 563, crc = 161296769}, -- object/draft_schematic/food/dish_synthsteak.iff
-{id = 564, crc = 2241290737}, -- object/draft_schematic/food/dish_cho_nor_hoola.iff
-{id = 565, crc = 2775132280}, -- object/draft_schematic/food/dish_blood_chowder.iff
-{id = 566, crc = 2355379132}, -- object/draft_schematic/food/dish_karkan_ribenes.iff
-{id = 567, crc = 1772202898}, -- object/draft_schematic/food/dish_trimpian.iff
-{id = 568, crc = 1325355937}, -- object/draft_schematic/food/dish_veghash.iff
-{id = 569, crc = 1788144420}, -- object/draft_schematic/food/dish_ormachek.iff
-{id = 570, crc = 3402476271}, -- object/draft_schematic/food/dish_gruuvan_shaal.iff
-{id = 571, crc = 2498862367}, -- object/draft_schematic/food/dish_havla.iff
-{id = 572, crc = 150429317}, -- object/draft_schematic/food/dish_scrimpi.iff
-{id = 573, crc = 3439389849}, -- object/draft_schematic/food/dish_ahrisa.iff
-{id = 574, crc = 3332137492}, -- object/draft_schematic/food/dish_vegeparsine.iff
-{id = 575, crc = 1830293327}, -- object/draft_schematic/food/dish_bivoli_tempari.iff
-{id = 576, crc = 3165401049}, -- object/draft_schematic/food/dish_terratta.iff
-{id = 577, crc = 2936483911}, -- object/draft_schematic/food/dish_rakririan_burnout_sauce.iff
-{id = 578, crc = 1949373121}, -- object/draft_schematic/food/dessert_bantha_butter.iff
-{id = 579, crc = 2898122268}, -- object/draft_schematic/food/dessert_pastebread.iff
-{id = 580, crc = 2226944558}, -- object/draft_schematic/food/dessert_won_won.iff
-{id = 581, crc = 3564651140}, -- object/draft_schematic/food/dessert_chandad.iff
-{id = 582, crc = 602338885}, -- object/draft_schematic/food/dessert_sweet_cake_mix.iff
-{id = 583, crc = 56056640}, -- object/draft_schematic/food/dessert_parwan_nutricake.iff
-{id = 584, crc = 2428519857}, -- object/draft_schematic/food/dessert_pyollian_cake.iff
-{id = 585, crc = 1704055708}, -- object/draft_schematic/food/dessert_dweezel.iff
-{id = 586, crc = 3336794526}, -- object/draft_schematic/food/dessert_felbar.iff
-{id = 587, crc = 881543756}, -- object/draft_schematic/food/dessert_citros_snow_cake.iff
-{id = 588, crc = 2124227778}, -- object/draft_schematic/food/dessert_pikatta_pie.iff
-{id = 589, crc = 1946499570}, -- object/draft_schematic/food/dessert_gorrnar.iff
-{id = 590, crc = 2092541892}, -- object/draft_schematic/food/dessert_kiwik_clusjo_swirl.iff
-{id = 591, crc = 2966945082}, -- object/draft_schematic/food/dessert_cavaellin_creams.iff
-{id = 592, crc = 3116166781}, -- object/draft_schematic/food/dessert_vagnerian_canape.iff
-{id = 593, crc = 2597830243}, -- object/draft_schematic/food/dessert_sweesonberry_rolls.iff
-{id = 594, crc = 2286980240}, -- object/draft_schematic/food/dessert_smugglers_delight.iff
-{id = 595, crc = 4292208393}, -- object/draft_schematic/food/drink_deuterium_pyro.iff
-{id = 596, crc = 2489115435}, -- object/draft_schematic/food/drink_gralinyn_juice.iff
-{id = 597, crc = 2220392937}, -- object/draft_schematic/food/drink_corellian_ale.iff
-{id = 598, crc = 67061890}, -- object/draft_schematic/food/drink_blue_milk.iff
-{id = 599, crc = 3186496701}, -- object/draft_schematic/food/component/container_cask.iff
-{id = 600, crc = 1327665213}, -- object/draft_schematic/food/drink_veronian_berry_wine.iff
-{id = 601, crc = 3426887248}, -- object/draft_schematic/food/drink_durindfire.iff
-{id = 602, crc = 925686489}, -- object/draft_schematic/food/drink_ithorian_mist.iff
-{id = 603, crc = 4225753314}, -- object/draft_schematic/food/drink_corellian_brandy.iff
-{id = 604, crc = 3822631213}, -- object/draft_schematic/food/drink_tssolok.iff
-{id = 605, crc = 865153045}, -- object/draft_schematic/food/drink_vasarian_brandy.iff
-{id = 606, crc = 3760023318}, -- object/draft_schematic/food/drink_accarragm.iff
-{id = 607, crc = 1765559976}, -- object/draft_schematic/food/drink_garrmorl.iff
-{id = 608, crc = 743732598}, -- object/draft_schematic/food/drink_bespin_port.iff
-{id = 609, crc = 2747211706}, -- object/draft_schematic/food/drink_elshandruu_pica_thundercloud.iff
-{id = 610, crc = 3717072897}, -- object/draft_schematic/food/drink_tilla_tiil.iff
-{id = 611, crc = 1442385918}, -- object/draft_schematic/food/drink_vayerbok.iff
-{id = 612, crc = 2011653924}, -- object/draft_schematic/food/additive/additive_heavy.iff
-{id = 613, crc = 3768032514}, -- object/draft_schematic/food/component/container_barrel.iff
-{id = 614, crc = 528358585}, -- object/draft_schematic/food/drink_breath_of_heaven.iff
-{id = 615, crc = 321906794}, -- object/draft_schematic/food/drink_flameout.iff
-{id = 616, crc = 2501026935}, -- object/draft_schematic/food/dish_thakitillo.iff
-{id = 617, crc = 679244878}, -- object/draft_schematic/food/dish_vercupti_of_agazza_boleruuee.iff
-{id = 618, crc = 3787937867}, -- object/draft_schematic/food/dessert_deneelian_fizz_pudding.iff
-{id = 619, crc = 3858676613}, -- object/draft_schematic/droid/droid_mse.iff
-{id = 620, crc = 1672213547}, -- object/draft_schematic/droid/component/manipulator_arm.iff
-{id = 621, crc = 3734650123}, -- object/draft_schematic/droid/component/droid_motive_system.iff
-{id = 622, crc = 77426828}, -- object/draft_schematic/droid/component/droid_storage_compartment.iff
-{id = 623, crc = 3171787343}, -- object/draft_schematic/droid/droid_customization_kit.iff
-{id = 624, crc = 2401362222}, -- object/draft_schematic/droid/navicomputer_1.iff
-{id = 625, crc = 4159398120}, -- object/draft_schematic/droid/component/medic_module_1.iff
-{id = 626, crc = 1137261424}, -- object/draft_schematic/droid/component/data_storage_module_1.iff
-{id = 627, crc = 2510952192}, -- object/draft_schematic/droid/component/item_storage_module_1.iff
-{id = 628, crc = 4248339208}, -- object/draft_schematic/droid/component/personality_module_stupid.iff
-{id = 629, crc = 2259150308}, -- object/draft_schematic/droid/component/playback_module.iff
-{id = 630, crc = 2258475077}, -- object/draft_schematic/droid/component/performer_effects_a.iff
-{id = 631, crc = 2472100333}, -- object/draft_schematic/droid/component/performer_effects_aa.iff
-{id = 632, crc = 325370397}, -- object/draft_schematic/droid/component/droid_space_memory_module_1.iff
-{id = 633, crc = 1205938880}, -- object/draft_schematic/droid/component/armor_module_1.iff
-{id = 634, crc = 1821030737}, -- object/draft_schematic/droid/droid_treadwell.iff
-{id = 635, crc = 2120145418}, -- object/draft_schematic/droid/droid_dz70.iff
-{id = 636, crc = 2604747988}, -- object/draft_schematic/droid/droid_r5.iff
-{id = 637, crc = 2016573305}, -- object/draft_schematic/droid/bounty_seeker_transmitter.iff
-{id = 638, crc = 1461584201}, -- object/draft_schematic/droid/component/sensor_package_droid.iff
-{id = 639, crc = 331084994}, -- object/draft_schematic/droid/droid_mse_advanced.iff
-{id = 640, crc = 825881093}, -- object/draft_schematic/droid/component/manipulator_arm_package_set.iff
-{id = 641, crc = 1412843961}, -- object/draft_schematic/droid/navicomputer_2.iff
-{id = 642, crc = 754763903}, -- object/draft_schematic/droid/component/medic_module_2.iff
-{id = 643, crc = 2564723687}, -- object/draft_schematic/droid/component/data_storage_module_2.iff
-{id = 644, crc = 1321058199}, -- object/draft_schematic/droid/component/item_storage_module_2.iff
-{id = 645, crc = 389762657}, -- object/draft_schematic/droid/component/harvest_module.iff
-{id = 646, crc = 157810281}, -- object/draft_schematic/droid/component/personality_module_sarcastic.iff
-{id = 647, crc = 1080333340}, -- object/draft_schematic/droid/component/crafting_module_weapon.iff
-{id = 648, crc = 1154714733}, -- object/draft_schematic/droid/component/struct_maint_module_1.iff
-{id = 649, crc = 2493801623}, -- object/draft_schematic/droid/component/merchant_barker.iff
-{id = 650, crc = 1569337554}, -- object/draft_schematic/droid/component/performer_effects_b.iff
-{id = 651, crc = 2633400919}, -- object/draft_schematic/droid/component/armor_module_2.iff
-{id = 652, crc = 2159631814}, -- object/draft_schematic/droid/component/droid_motive_system_advanced.iff
-{id = 653, crc = 1670455601}, -- object/draft_schematic/droid/droid_power.iff
-{id = 654, crc = 3528207193}, -- object/draft_schematic/droid/droid_r4.iff
-{id = 655, crc = 3595296577}, -- object/draft_schematic/droid/component/droid_brain.iff
-{id = 656, crc = 2147333083}, -- object/draft_schematic/droid/component/advanced_droid_frame.iff
-{id = 657, crc = 3135159002}, -- object/draft_schematic/droid/droid_treadwell_advanced.iff
-{id = 658, crc = 1569506913}, -- object/draft_schematic/droid/droid_dz70_advanced.iff
-{id = 659, crc = 715442090}, -- object/draft_schematic/droid/droid_r5_advanced.iff
-{id = 660, crc = 3142280704}, -- object/draft_schematic/droid/component/chassis_droid_r4.iff
-{id = 661, crc = 490417716}, -- object/draft_schematic/droid/navicomputer_3.iff
-{id = 662, crc = 1710338034}, -- object/draft_schematic/droid/component/medic_module_3.iff
-{id = 663, crc = 3767984860}, -- object/draft_schematic/droid/component/trap_module.iff
-{id = 664, crc = 3520328810}, -- object/draft_schematic/droid/component/data_storage_module_3.iff
-{id = 665, crc = 129030170}, -- object/draft_schematic/droid/component/item_storage_module_3.iff
-{id = 666, crc = 1840333430}, -- object/draft_schematic/droid/component/personality_module_prissy.iff
-{id = 667, crc = 2896765854}, -- object/draft_schematic/droid/component/stimpack_dispensor.iff
-{id = 668, crc = 344414047}, -- object/draft_schematic/droid/component/performer_effects_c.iff
-{id = 669, crc = 3590055386}, -- object/draft_schematic/droid/component/armor_module_3.iff
-{id = 670, crc = 3465622643}, -- object/draft_schematic/droid/component/repair_module.iff
-{id = 671, crc = 3681232356}, -- object/draft_schematic/droid/component/crafting_module_food.iff
-{id = 672, crc = 2991717266}, -- object/draft_schematic/droid/component/combat_module.iff
-{id = 673, crc = 3265666928}, -- object/draft_schematic/droid/component/combat_socket_bank.iff
-{id = 674, crc = 3463402131}, -- object/draft_schematic/droid/droid_le_repair.iff
-{id = 675, crc = 1508430658}, -- object/draft_schematic/droid/droid_surgical.iff
-{id = 676, crc = 1621256128}, -- object/draft_schematic/droid/droid_r2.iff
-{id = 677, crc = 2404993384}, -- object/draft_schematic/droid/droid_probot.iff
-{id = 678, crc = 2944581931}, -- object/draft_schematic/droid/bounty_probot_transmitter.iff
-{id = 679, crc = 4012213120}, -- object/draft_schematic/droid/component/droid_brain_advanced.iff
-{id = 680, crc = 1995911740}, -- object/draft_schematic/droid/droid_power_advanced.iff
-{id = 681, crc = 1834158443}, -- object/draft_schematic/droid/droid_r4_advanced.iff
-{id = 682, crc = 161819289}, -- object/draft_schematic/droid/component/chassis_droid_r2.iff
-{id = 683, crc = 2453819015}, -- object/draft_schematic/droid/component/chassis_droid_probot.iff
-{id = 684, crc = 3257874391}, -- object/draft_schematic/droid/component/chassis_droid_le_repair.iff
-{id = 685, crc = 880409447}, -- object/draft_schematic/droid/component/chassis_droid_surgical.iff
-{id = 686, crc = 3872916768}, -- object/draft_schematic/droid/navicomputer_4.iff
-{id = 687, crc = 2652013798}, -- object/draft_schematic/droid/component/medic_module_4.iff
-{id = 688, crc = 707846014}, -- object/draft_schematic/droid/component/data_storage_module_4.iff
-{id = 689, crc = 4233360142}, -- object/draft_schematic/droid/component/item_storage_module_4.iff
-{id = 690, crc = 1958111371}, -- object/draft_schematic/droid/component/personality_module_worshipful.iff
-{id = 691, crc = 2680431866}, -- object/draft_schematic/droid/component/struct_maint_module_2.iff
-{id = 692, crc = 3352627197}, -- object/draft_schematic/droid/component/auto_repair_module.iff
-{id = 693, crc = 4016340043}, -- object/draft_schematic/droid/component/performer_effects_d.iff
-{id = 694, crc = 773377742}, -- object/draft_schematic/droid/component/armor_module_4.iff
-{id = 695, crc = 1594695039}, -- object/draft_schematic/droid/component/crafting_module_clothing.iff
-{id = 696, crc = 2620777448}, -- object/draft_schematic/droid/component/module_socket_bank.iff
-{id = 697, crc = 699334733}, -- object/draft_schematic/droid/droid_r3.iff
-{id = 698, crc = 4172663180}, -- object/draft_schematic/droid/droid_binary_load_lifter.iff
-{id = 699, crc = 2190892355}, -- object/draft_schematic/droid/droid_3p0.iff
-{id = 700, crc = 4188189274}, -- object/draft_schematic/droid/droid_r2_advanced.iff
-{id = 701, crc = 907533116}, -- object/draft_schematic/droid/droid_probot_advanced.iff
-{id = 702, crc = 2439585297}, -- object/draft_schematic/droid/droid_le_repair_advanced.iff
-{id = 703, crc = 3649143248}, -- object/draft_schematic/droid/droid_surgical_advanced.iff
-{id = 704, crc = 1084771604}, -- object/draft_schematic/droid/component/chassis_droid_r3.iff
-{id = 705, crc = 2601785804}, -- object/draft_schematic/droid/component/chassis_droid_binary_load_lifter.iff
-{id = 706, crc = 196555483}, -- object/draft_schematic/droid/component/chassis_droid_3p0.iff
-{id = 707, crc = 2949997229}, -- object/draft_schematic/droid/navicomputer_5.iff
-{id = 708, crc = 3609191275}, -- object/draft_schematic/droid/component/medic_module_5.iff
-{id = 709, crc = 1664989427}, -- object/draft_schematic/droid/component/data_storage_module_5.iff
-{id = 710, crc = 3042874499}, -- object/draft_schematic/droid/component/item_storage_module_5.iff
-{id = 711, crc = 1637989985}, -- object/draft_schematic/droid/component/personality_module_slang.iff
-{id = 712, crc = 1414264700}, -- object/draft_schematic/droid/component/crafting_module_structure.iff
-{id = 713, crc = 2791906246}, -- object/draft_schematic/droid/component/performer_effects_e.iff
-{id = 714, crc = 1729472835}, -- object/draft_schematic/droid/component/armor_module_5.iff
-{id = 715, crc = 3193273499}, -- object/draft_schematic/droid/droid_r3_advanced.iff
-{id = 716, crc = 3530268607}, -- object/draft_schematic/droid/droid_binary_load_lifter_advanced.iff
-{id = 717, crc = 1497916686}, -- object/draft_schematic/droid/droid_3p0_advanced.iff
-{id = 718, crc = 4120912697}, -- object/draft_schematic/droid/droid_interplanetary_survey.iff
-{id = 719, crc = 1958922810}, -- object/draft_schematic/droid/navicomputer_6.iff
-{id = 720, crc = 201870332}, -- object/draft_schematic/droid/component/medic_module_6.iff
-{id = 721, crc = 3089764452}, -- object/draft_schematic/droid/component/data_storage_module_6.iff
-{id = 722, crc = 1850293268}, -- object/draft_schematic/droid/component/item_storage_module_6.iff
-{id = 723, crc = 3453910621}, -- object/draft_schematic/droid/component/personality_module_geek.iff
-{id = 724, crc = 3603514231}, -- object/draft_schematic/droid/component/struct_maint_module_3.iff
-{id = 725, crc = 712681321}, -- object/draft_schematic/droid/component/detonation_module.iff
-{id = 726, crc = 1231893803}, -- object/draft_schematic/droid/component/crafting_module_space.iff
-{id = 727, crc = 3154248148}, -- object/draft_schematic/droid/component/armor_module_6.iff
-{id = 728, crc = 1322156040}, -- object/draft_schematic/droid/component/unit_delivery_cartridge.iff
-{id = 729, crc = 2856435378}, -- object/draft_schematic/droid/component/repair_unit_casing.iff
-{id = 730, crc = 909913109}, -- object/draft_schematic/droid/component/power_supply_redundant.iff
-{id = 731, crc = 1402738031}, -- object/draft_schematic/droid/component/diagnostic_circuit.iff
-{id = 732, crc = 864704052}, -- object/draft_schematic/droid/component/capacitor_low_discharge.iff
-{id = 733, crc = 145139695}, -- object/draft_schematic/droid/component/unit_delivery_cartridge_advanced.iff
-{id = 734, crc = 469513885}, -- object/draft_schematic/droid/component/repair_unit_casing_advanced.iff
-{id = 735, crc = 4209777142}, -- object/draft_schematic/droid/component/power_supply_redundant_advanced.iff
-{id = 736, crc = 1240290421}, -- object/draft_schematic/droid/component/diagnostic_circuit_advanced.iff
-{id = 737, crc = 264496420}, -- object/draft_schematic/droid/component/capacitor_high_discharge.iff
-{id = 738, crc = 296957298}, -- object/draft_schematic/droid/droid_wound_repair_kit_a.iff
-{id = 739, crc = 3399785957}, -- object/draft_schematic/droid/droid_wound_repair_kit_b.iff
-{id = 740, crc = 2208954984}, -- object/draft_schematic/droid/droid_wound_repair_kit_c.iff
-{id = 741, crc = 2018169212}, -- object/draft_schematic/droid/droid_wound_repair_kit_d.iff
-{id = 742, crc = 1254605751}, -- object/draft_schematic/droid/droid_damage_repair_kit_a.iff
-{id = 743, crc = 2446355232}, -- object/draft_schematic/droid/droid_damage_repair_kit_b.iff
-{id = 744, crc = 3638365357}, -- object/draft_schematic/droid/droid_damage_repair_kit_c.iff
-{id = 745, crc = 591275961}, -- object/draft_schematic/droid/droid_damage_repair_kit_d.iff
-{id = 746, crc = 4119037179}, -- object/draft_schematic/furniture/furniture_tree_potted.iff
-{id = 747, crc = 391541681}, -- object/draft_schematic/furniture/furniture_tiki_torch.iff
-{id = 748, crc = 2527771511}, -- object/draft_schematic/furniture/furniture_plants_potted_large.iff
-{id = 749, crc = 2729520990}, -- object/draft_schematic/furniture/furniture_plants_potted_small.iff
-{id = 750, crc = 4096702853}, -- object/draft_schematic/furniture/furniture_armoire_cheap.iff
-{id = 751, crc = 4213024279}, -- object/draft_schematic/furniture/furniture_chair_loveseat_cheap.iff
-{id = 752, crc = 937077891}, -- object/draft_schematic/furniture/furniture_bookcase_cheap.iff
-{id = 753, crc = 3518071725}, -- object/draft_schematic/furniture/furniture_chest_cheap.iff
-{id = 754, crc = 1363645230}, -- object/draft_schematic/furniture/furniture_couch_cheap.iff
-{id = 755, crc = 3447382756}, -- object/draft_schematic/item/item_weapon_station.iff
-{id = 756, crc = 4252397635}, -- object/draft_schematic/item/item_structure_station.iff
-{id = 757, crc = 3910186354}, -- object/draft_schematic/item/item_food_station.iff
-{id = 758, crc = 4139065364}, -- object/draft_schematic/item/item_clothing_station.iff
-{id = 759, crc = 3084693615}, -- object/draft_schematic/item/item_space_station.iff
-{id = 760, crc = 842681787}, -- object/draft_schematic/furniture/furniture_toolchest_medium.iff
-{id = 761, crc = 2189234369}, -- object/draft_schematic/furniture/furniture_table_coffee_cheap.iff
-{id = 762, crc = 759052342}, -- object/draft_schematic/furniture/furniture_chair_cheap.iff
-{id = 763, crc = 172202747}, -- object/draft_schematic/furniture/furniture_table_endtable_cheap.iff
-{id = 764, crc = 3862987468}, -- object/draft_schematic/furniture/furniture_chair_divan.iff
-{id = 765, crc = 143412015}, -- object/draft_schematic/furniture/furniture_chair_futon.iff
-{id = 766, crc = 1200851451}, -- object/draft_schematic/furniture/furniture_chair_kitchen.iff
-{id = 767, crc = 2361307993}, -- object/draft_schematic/furniture/furniture_chair_love_seat.iff
-{id = 768, crc = 2982516969}, -- object/draft_schematic/furniture/furniture_table_small_tatooine.iff
-{id = 769, crc = 2629732896}, -- object/draft_schematic/furniture/furniture_table_tatooine_cafe.iff
-{id = 770, crc = 679249670}, -- object/draft_schematic/furniture/furniture_chair_metal.iff
-{id = 771, crc = 765803376}, -- object/draft_schematic/furniture/furniture_chair_metal_wheeled.iff
-{id = 772, crc = 3138414464}, -- object/draft_schematic/furniture/furniture_chair_ottoman.iff
-{id = 773, crc = 2187080980}, -- object/draft_schematic/furniture/furniture_bed_small.iff
-{id = 774, crc = 1376272243}, -- object/draft_schematic/furniture/furniture_toolchest_large.iff
-{id = 775, crc = 370403584}, -- object/draft_schematic/furniture/furniture_chair_recliner.iff
-{id = 776, crc = 2746307717}, -- object/draft_schematic/furniture/furniture_chair_tatooine_cafe.iff
-{id = 777, crc = 3081707422}, -- object/draft_schematic/furniture/furniture_chair_upholstered.iff
-{id = 778, crc = 1998191889}, -- object/draft_schematic/furniture/furniture_chair_wooden.iff
-{id = 779, crc = 962972333}, -- object/draft_schematic/furniture/furniture_couch_large.iff
-{id = 780, crc = 226385540}, -- object/draft_schematic/furniture/furniture_couch_small.iff
-{id = 781, crc = 545029424}, -- object/draft_schematic/furniture/furniture_droid_detector.iff
-{id = 782, crc = 69448729}, -- object/draft_schematic/furniture/furniture_candle_free_s01_on.iff
-{id = 783, crc = 3905016135}, -- object/draft_schematic/furniture/furniture_candle_free_s02_on.iff
-{id = 784, crc = 1722449887}, -- object/draft_schematic/furniture/furniture_candle_table_s01_on.iff
-{id = 785, crc = 2319981185}, -- object/draft_schematic/furniture/furniture_candle_table_s02_on.iff
-{id = 786, crc = 3521758795}, -- object/draft_schematic/furniture/furniture_candle_table_s03_on.iff
-{id = 787, crc = 1224750096}, -- object/draft_schematic/furniture/furniture_lamp_desk.iff
-{id = 788, crc = 1888725745}, -- object/draft_schematic/furniture/furniture_lamp_desk_s01_on.iff
-{id = 789, crc = 2624704431}, -- object/draft_schematic/furniture/furniture_lamp_desk_s02_on.iff
-{id = 790, crc = 2759324352}, -- object/draft_schematic/furniture/furniture_lamp_freestanding.iff
-{id = 791, crc = 2451752848}, -- object/draft_schematic/furniture/furniture_lamp_free_s01_on.iff
-{id = 792, crc = 2126553806}, -- object/draft_schematic/furniture/furniture_lamp_free_s02_on.iff
-{id = 793, crc = 627146244}, -- object/draft_schematic/furniture/furniture_lamp_free_s03_on.iff
-{id = 794, crc = 2747626949}, -- object/draft_schematic/furniture/furniture_lamp_free_s04_on.iff
-{id = 795, crc = 1331168646}, -- object/draft_schematic/furniture/furniture_lamp_tatt_s01_on.iff
-{id = 796, crc = 3510268605}, -- object/draft_schematic/furniture/furniture_lamp_table.iff
-{id = 797, crc = 1480753395}, -- object/draft_schematic/furniture/furniture_lamp_table_s01_on.iff
-{id = 798, crc = 3030443437}, -- object/draft_schematic/furniture/furniture_lamp_table_s02_on.iff
-{id = 799, crc = 4009834855}, -- object/draft_schematic/furniture/furniture_lamp_table_s03_on.iff
-{id = 800, crc = 821340044}, -- object/draft_schematic/furniture/furniture_lamp_table_cantina.iff
-{id = 801, crc = 3909684876}, -- object/draft_schematic/furniture/furniture_armoire_modern.iff
-{id = 802, crc = 1305853644}, -- object/draft_schematic/furniture/furniture_bookcase_modern.iff
-{id = 803, crc = 1374862955}, -- object/draft_schematic/furniture/furniture_cabinet_modern.iff
-{id = 804, crc = 3797492017}, -- object/draft_schematic/furniture/furniture_chair_loveseat_modern.iff
-{id = 805, crc = 651196108}, -- object/draft_schematic/item/item_ballot_box_terminal.iff
-{id = 806, crc = 3058147645}, -- object/draft_schematic/furniture/furniture_bed_large.iff
-{id = 807, crc = 1724487913}, -- object/draft_schematic/furniture/furniture_couch_modern.iff
-{id = 808, crc = 4191550215}, -- object/draft_schematic/furniture/furniture_chest_modern.iff
-{id = 809, crc = 3403286122}, -- object/draft_schematic/furniture/furniture_chair_modern.iff
-{id = 810, crc = 108559483}, -- object/draft_schematic/furniture/furniture_terminal_freestanding.iff
-{id = 811, crc = 3591868074}, -- object/draft_schematic/furniture/furniture_terminal_wall.iff
-{id = 812, crc = 1552643216}, -- object/draft_schematic/furniture/furniture_sofachair_modern.iff
-{id = 813, crc = 823930255}, -- object/draft_schematic/furniture/furniture_table_endtable_modern.iff
-{id = 814, crc = 3494594048}, -- object/draft_schematic/furniture/furniture_table_endtable_small_modern.iff
-{id = 815, crc = 1041479339}, -- object/draft_schematic/furniture/furniture_table_modern.iff
-{id = 816, crc = 1083316953}, -- object/draft_schematic/furniture/furniture_table_coffee_modern.iff
-{id = 817, crc = 3095179771}, -- object/draft_schematic/furniture/furniture_table_dining_modern.iff
-{id = 818, crc = 359081122}, -- object/draft_schematic/furniture/furniture_table_coffee_elegant.iff
-{id = 819, crc = 2133160690}, -- object/draft_schematic/furniture/furniture_table_endtable_elegant.iff
-{id = 820, crc = 3426807792}, -- object/draft_schematic/furniture/furniture_couch_elegant.iff
-{id = 821, crc = 1570101155}, -- object/draft_schematic/furniture/furniture_armoire_elegant.iff
-{id = 822, crc = 1661908849}, -- object/draft_schematic/furniture/furniture_bookcase_elegant.iff
-{id = 823, crc = 469606810}, -- object/draft_schematic/furniture/furniture_chair_elegant.iff
-{id = 824, crc = 653369794}, -- object/draft_schematic/furniture/furniture_chair_loveseat_elegant.iff
-{id = 825, crc = 3446769619}, -- object/draft_schematic/furniture/furniture_chest_elegant.iff
-{id = 830, crc = 392115204}, -- object/draft_schematic/instrument/instrument_slitherhorn.iff
-{id = 831, crc = 199838439}, -- object/draft_schematic/instrument/instrument_fizz.iff
-{id = 832, crc = 259069009}, -- object/draft_schematic/instrument/instrument_fanfar.iff
-{id = 833, crc = 1984427100}, -- object/draft_schematic/instrument/instrument_kloo_horn.iff
-{id = 834, crc = 4278183100}, -- object/draft_schematic/instrument/component/dual_wave_synthesizer.iff
-{id = 835, crc = 3789879595}, -- object/draft_schematic/instrument/instrument_mandoviol.iff
-{id = 836, crc = 398055134}, -- object/draft_schematic/instrument/instrument_traz.iff
-{id = 837, crc = 300807190}, -- object/draft_schematic/instrument/instrument_bandfill.iff
-{id = 838, crc = 4045704532}, -- object/draft_schematic/instrument/instrument_flute_droopy.iff
-{id = 839, crc = 3871170290}, -- object/draft_schematic/instrument/instrument_omni_box.iff
-{id = 840, crc = 2950111121}, -- object/draft_schematic/instrument/instrument_nalargon.iff
-{id = 841, crc = 796573052}, -- object/draft_schematic/chemistry/component/biologic_effect_controller.iff
-{id = 842, crc = 999660434}, -- object/draft_schematic/chemistry/component/liquid_delivery_suspension.iff
-{id = 844, crc = 2630865920}, -- object/draft_schematic/chemistry/component/release_mechanism_duration.iff
-{id = 845, crc = 985687651}, -- object/draft_schematic/chemistry/component/solid_delivery_shell.iff
-{id = 846, crc = 84195930}, -- object/draft_schematic/chemistry/component/dispersal_mechanism.iff
-{id = 847, crc = 4189615272}, -- object/draft_schematic/chemistry/component/infection_amplifier.iff
-{id = 848, crc = 3803876740}, -- object/draft_schematic/chemistry/component/resilience_compound.iff
-{id = 849, crc = 55858522}, -- object/draft_schematic/chemistry/component/biologic_effect_controller_advanced.iff
-{id = 850, crc = 3846361087}, -- object/draft_schematic/chemistry/component/liquid_delivery_suspension_advanced.iff
-{id = 851, crc = 2593669129}, -- object/draft_schematic/chemistry/component/release_mechanism_duration_advanced.iff
-{id = 852, crc = 386142169}, -- object/draft_schematic/chemistry/component/solid_delivery_shell_advanced.iff
-{id = 853, crc = 3259682874}, -- object/draft_schematic/chemistry/component/dispersal_mechanism_advanced.iff
-{id = 854, crc = 3348538121}, -- object/draft_schematic/chemistry/component/infection_amplifier_advanced.iff
-{id = 855, crc = 2194683657}, -- object/draft_schematic/chemistry/component/resilience_compound_advanced.iff
-{id = 856, crc = 908874491}, -- object/draft_schematic/chemistry/med_stimpack_a.iff
-{id = 857, crc = 3980130924}, -- object/draft_schematic/chemistry/med_stimpack_b.iff
-{id = 858, crc = 2755042785}, -- object/draft_schematic/chemistry/med_stimpack_c.iff
-{id = 859, crc = 1607841525}, -- object/draft_schematic/chemistry/med_stimpack_d.iff
-{id = 860, crc = 383308152}, -- object/draft_schematic/chemistry/med_stimpack_e.iff
-{id = 861, crc = 1047128287}, -- object/draft_schematic/chemistry/medpack_wound_action_a.iff
-{id = 862, crc = 3151404771}, -- object/draft_schematic/chemistry/medpack_wound_health_a.iff
-{id = 863, crc = 3850256456}, -- object/draft_schematic/chemistry/medpack_wound_action_b.iff
-{id = 864, crc = 1623275124}, -- object/draft_schematic/chemistry/medpack_wound_health_b.iff
-{id = 865, crc = 2893227973}, -- object/draft_schematic/chemistry/medpack_wound_action_c.iff
-{id = 866, crc = 701256185}, -- object/draft_schematic/chemistry/medpack_wound_health_c.iff
-{id = 867, crc = 1469058257}, -- object/draft_schematic/chemistry/medpack_wound_action_d.iff
-{id = 868, crc = 3526327021}, -- object/draft_schematic/chemistry/medpack_wound_health_d.iff
-{id = 869, crc = 2360286856}, -- object/draft_schematic/chemistry/medpack_revive.iff
-{id = 870, crc = 513633116}, -- object/draft_schematic/chemistry/medpack_wound_action_e.iff
-{id = 871, crc = 2602704224}, -- object/draft_schematic/chemistry/medpack_wound_health_e.iff
-{id = 872, crc = 97163544}, -- object/draft_schematic/chemistry/medpack_wound_quickness_a.iff
-{id = 873, crc = 3464906318}, -- object/draft_schematic/chemistry/medpack_wound_stamina_a.iff
-{id = 874, crc = 3406975233}, -- object/draft_schematic/chemistry/medpack_wound_strength_a.iff
-{id = 875, crc = 258968644}, -- object/draft_schematic/chemistry/medpack_wound_constitution_a.iff
-{id = 876, crc = 3739038095}, -- object/draft_schematic/chemistry/medpack_wound_quickness_b.iff
-{id = 877, crc = 361885401}, -- object/draft_schematic/chemistry/medpack_wound_stamina_b.iff
-{id = 878, crc = 268827030}, -- object/draft_schematic/chemistry/medpack_wound_strength_b.iff
-{id = 879, crc = 3564643539}, -- object/draft_schematic/chemistry/medpack_wound_constitution_b.iff
-{id = 880, crc = 2547013122}, -- object/draft_schematic/chemistry/medpack_wound_quickness_c.iff
-{id = 881, crc = 1553762644}, -- object/draft_schematic/chemistry/medpack_wound_stamina_c.iff
-{id = 882, crc = 1493736987}, -- object/draft_schematic/chemistry/medpack_wound_strength_c.iff
-{id = 883, crc = 2641707870}, -- object/draft_schematic/chemistry/medpack_wound_constitution_c.iff
-{id = 884, crc = 1815313686}, -- object/draft_schematic/chemistry/medpack_wound_quickness_d.iff
-{id = 885, crc = 2810159680}, -- object/draft_schematic/chemistry/medpack_wound_stamina_d.iff
-{id = 886, crc = 2733356303}, -- object/draft_schematic/chemistry/medpack_wound_strength_d.iff
-{id = 887, crc = 1721133130}, -- object/draft_schematic/chemistry/medpack_wound_constitution_d.iff
-{id = 888, crc = 1027778527}, -- object/draft_schematic/chemistry/med_fire_blanket.iff
-{id = 889, crc = 624827035}, -- object/draft_schematic/chemistry/medpack_wound_quickness_e.iff
-{id = 890, crc = 4000499149}, -- object/draft_schematic/chemistry/medpack_wound_stamina_e.iff
-{id = 891, crc = 3957772930}, -- object/draft_schematic/chemistry/medpack_wound_strength_e.iff
-{id = 892, crc = 798691271}, -- object/draft_schematic/chemistry/medpack_wound_constitution_e.iff
-{id = 893, crc = 710859724}, -- object/draft_schematic/chemistry/medpack_enhance_action_a.iff
-{id = 894, crc = 2950802928}, -- object/draft_schematic/chemistry/medpack_enhance_health_a.iff
-{id = 895, crc = 4048122715}, -- object/draft_schematic/chemistry/medpack_enhance_action_b.iff
-{id = 896, crc = 1962280295}, -- object/draft_schematic/chemistry/medpack_enhance_health_b.iff
-{id = 897, crc = 3091469526}, -- object/draft_schematic/chemistry/medpack_enhance_action_c.iff
-{id = 898, crc = 1039885034}, -- object/draft_schematic/chemistry/medpack_enhance_health_c.iff
-{id = 899, crc = 1135034306}, -- object/draft_schematic/chemistry/medpack_enhance_action_d.iff
-{id = 900, crc = 3323480574}, -- object/draft_schematic/chemistry/medpack_enhance_health_d.iff
-{id = 901, crc = 3434329057}, -- object/draft_schematic/chemistry/medpack_enhance_constitution_a.iff
-{id = 902, crc = 3530455922}, -- object/draft_schematic/chemistry/medpack_enhance_quickness_a.iff
-{id = 903, crc = 2795567330}, -- object/draft_schematic/chemistry/medpack_enhance_stamina_a.iff
-{id = 904, crc = 1728173614}, -- object/draft_schematic/chemistry/medpack_enhance_strength_a.iff
-{id = 905, crc = 2936048532}, -- object/draft_schematic/chemistry/medpack_enhance_poison_a.iff
-{id = 906, crc = 1737700407}, -- object/draft_schematic/chemistry/medpack_enhance_disease_a.iff
-{id = 907, crc = 396630902}, -- object/draft_schematic/chemistry/medpack_enhance_constitution_b.iff
-{id = 908, crc = 158979045}, -- object/draft_schematic/chemistry/medpack_enhance_quickness_b.iff
-{id = 909, crc = 2109165685}, -- object/draft_schematic/chemistry/medpack_enhance_stamina_b.iff
-{id = 910, crc = 3155590841}, -- object/draft_schematic/chemistry/medpack_enhance_strength_b.iff
-{id = 911, crc = 1588165883}, -- object/draft_schematic/chemistry/medpack_enhance_constitution_c.iff
-{id = 912, crc = 1081390184}, -- object/draft_schematic/chemistry/medpack_enhance_quickness_c.iff
-{id = 913, crc = 884619256}, -- object/draft_schematic/chemistry/medpack_enhance_stamina_c.iff
-{id = 914, crc = 4112193844}, -- object/draft_schematic/chemistry/medpack_enhance_strength_c.iff
-{id = 915, crc = 1947673347}, -- object/draft_schematic/chemistry/medpack_enhance_poison_b.iff
-{id = 916, crc = 3162807456}, -- object/draft_schematic/chemistry/medpack_enhance_disease_b.iff
-{id = 917, crc = 2773112815}, -- object/draft_schematic/chemistry/medpack_enhance_constitution_d.iff
-{id = 918, crc = 3147276156}, -- object/draft_schematic/chemistry/medpack_enhance_quickness_d.iff
-{id = 919, crc = 3478723820}, -- object/draft_schematic/chemistry/medpack_enhance_stamina_d.iff
-{id = 920, crc = 251146784}, -- object/draft_schematic/chemistry/medpack_enhance_strength_d.iff
-{id = 921, crc = 1025131662}, -- object/draft_schematic/chemistry/medpack_enhance_poison_c.iff
-{id = 922, crc = 4119460653}, -- object/draft_schematic/chemistry/medpack_enhance_disease_c.iff
-{id = 923, crc = 1486902519}, -- object/draft_schematic/munition/component/warhead_fusing_mechanism.iff
-{id = 924, crc = 3193308902}, -- object/draft_schematic/munition/component/warhead_light.iff
-{id = 925, crc = 331242491}, -- object/draft_schematic/munition/grenade_fragmentation_c_12.iff
-{id = 926, crc = 2831777444}, -- object/draft_schematic/munition/component/warhead_chemical.iff
-{id = 927, crc = 3102657124}, -- object/draft_schematic/munition/component/warhead_medium.iff
-{id = 928, crc = 1053183091}, -- object/draft_schematic/munition/grenade_fragmentation_c_22.iff
-{id = 929, crc = 730754459}, -- object/draft_schematic/munition/mine_dxr55.iff
-{id = 930, crc = 4262436510}, -- object/draft_schematic/munition/grenade_glop.iff
-{id = 931, crc = 1531317568}, -- object/draft_schematic/munition/grenade_cryoban_ww_41.iff
-{id = 932, crc = 826834481}, -- object/draft_schematic/munition/component/warhead_stabilizer.iff
-{id = 933, crc = 2131638840}, -- object/draft_schematic/munition/component/warhead_heavy.iff
-{id = 934, crc = 3616771755}, -- object/draft_schematic/munition/detonator_thermal_class_a.iff
-{id = 935, crc = 3726395226}, -- object/draft_schematic/munition/mine_xg.iff
-{id = 936, crc = 3489561834}, -- object/draft_schematic/munition/grenade_proton.iff
-{id = 937, crc = 201051010}, -- object/draft_schematic/munition/mine_anti_vehicle.iff
-{id = 938, crc = 357775197}, -- object/draft_schematic/weapon/heavy_rocket_launcher.iff
-{id = 939, crc = 3744483617}, -- object/draft_schematic/munition/detonator_thermal_imperial_issue.iff
-{id = 940, crc = 3425439554}, -- object/draft_schematic/chemistry/med_stimpack_range_a.iff
-{id = 941, crc = 389785557}, -- object/draft_schematic/chemistry/med_stimpack_range_b.iff
-{id = 942, crc = 1580646488}, -- object/draft_schematic/chemistry/med_stimpack_range_c.iff
-{id = 943, crc = 287343550}, -- object/draft_schematic/chemistry/med_stimpack_area_a.iff
-{id = 944, crc = 2782260044}, -- object/draft_schematic/chemistry/med_stimpack_range_d.iff
-{id = 945, crc = 3392613161}, -- object/draft_schematic/chemistry/med_stimpack_area_b.iff
-{id = 946, crc = 3973614785}, -- object/draft_schematic/chemistry/med_stimpack_range_e.iff
-{id = 947, crc = 2201636004}, -- object/draft_schematic/chemistry/med_stimpack_area_c.iff
-{id = 948, crc = 353599290}, -- object/draft_schematic/chemistry/med_stimpack_state_blinded_a.iff
-{id = 949, crc = 2594729110}, -- object/draft_schematic/chemistry/med_stimpack_state_dizzy_a.iff
-{id = 950, crc = 3909568442}, -- object/draft_schematic/chemistry/med_stimpack_state_intimidated_a.iff
-{id = 951, crc = 4285668914}, -- object/draft_schematic/chemistry/med_stimpack_state_stunned_a.iff
-{id = 952, crc = 1435140737}, -- object/draft_schematic/chemistry/medpack_cure_poison_a.iff
-{id = 953, crc = 2676064508}, -- object/draft_schematic/chemistry/medpack_cure_poison_area_a.iff
-{id = 954, crc = 2392664598}, -- object/draft_schematic/chemistry/medpack_cure_poison_b.iff
-{id = 955, crc = 1150691435}, -- object/draft_schematic/chemistry/medpack_cure_poison_area_b.iff
-{id = 956, crc = 3348123035}, -- object/draft_schematic/chemistry/medpack_cure_poison_c.iff
-{id = 957, crc = 228282342}, -- object/draft_schematic/chemistry/medpack_cure_poison_area_c.iff
-{id = 958, crc = 1269304040}, -- object/draft_schematic/chemistry/medpack_cure_disease_a.iff
-{id = 959, crc = 1652577307}, -- object/draft_schematic/chemistry/medpack_cure_disease_area_a.iff
-{id = 960, crc = 2428478079}, -- object/draft_schematic/chemistry/medpack_cure_disease_b.iff
-{id = 961, crc = 3113745548}, -- object/draft_schematic/chemistry/medpack_cure_disease_area_b.iff
-{id = 962, crc = 3652371954}, -- object/draft_schematic/chemistry/medpack_cure_disease_c.iff
-{id = 963, crc = 4036664065}, -- object/draft_schematic/chemistry/medpack_cure_disease_area_c.iff
-{id = 964, crc = 3895618234}, -- object/draft_schematic/chemistry/medpack_poison_health_a.iff
-{id = 965, crc = 1837964422}, -- object/draft_schematic/chemistry/medpack_poison_action_a.iff
-{id = 966, crc = 4018125043}, -- object/draft_schematic/chemistry/medpack_poison_mind_a.iff
-{id = 967, crc = 858112557}, -- object/draft_schematic/chemistry/medpack_poison_health_b.iff
-{id = 968, crc = 3063591953}, -- object/draft_schematic/chemistry/medpack_poison_action_b.iff
-{id = 969, crc = 879235172}, -- object/draft_schematic/chemistry/medpack_poison_mind_b.iff
-{id = 970, crc = 2049484192}, -- object/draft_schematic/chemistry/medpack_poison_health_c.iff
-{id = 971, crc = 4288140188}, -- object/draft_schematic/chemistry/medpack_poison_action_c.iff
-{id = 972, crc = 2103801833}, -- object/draft_schematic/chemistry/medpack_poison_mind_c.iff
-{id = 973, crc = 685687462}, -- object/draft_schematic/chemistry/medpack_poison_area_health_a.iff
-{id = 974, crc = 2908861594}, -- object/draft_schematic/chemistry/medpack_poison_area_action_a.iff
-{id = 975, crc = 1089682359}, -- object/draft_schematic/chemistry/medpack_poison_area_mind_a.iff
-{id = 976, crc = 4090063409}, -- object/draft_schematic/chemistry/medpack_poison_area_health_b.iff
-{id = 977, crc = 1987451917}, -- object/draft_schematic/chemistry/medpack_poison_area_action_b.iff
-{id = 978, crc = 2615448352}, -- object/draft_schematic/chemistry/medpack_poison_area_mind_b.iff
-{id = 979, crc = 3133410748}, -- object/draft_schematic/chemistry/medpack_poison_area_health_c.iff
-{id = 980, crc = 1065057152}, -- object/draft_schematic/chemistry/medpack_poison_area_action_c.iff
-{id = 981, crc = 3538547885}, -- object/draft_schematic/chemistry/medpack_poison_area_mind_c.iff
-{id = 982, crc = 2386380903}, -- object/draft_schematic/chemistry/medpack_disease_action_a.iff
-{id = 983, crc = 1497923436}, -- object/draft_schematic/chemistry/medpack_disease_constitution_a.iff
-{id = 984, crc = 901957469}, -- object/draft_schematic/chemistry/medpack_disease_focus_a.iff
-{id = 985, crc = 193085019}, -- object/draft_schematic/chemistry/medpack_disease_health_a.iff
-{id = 986, crc = 2188081350}, -- object/draft_schematic/chemistry/medpack_disease_mind_a.iff
-{id = 987, crc = 2451505904}, -- object/draft_schematic/chemistry/medpack_disease_quickness_a.iff
-{id = 988, crc = 655913776}, -- object/draft_schematic/chemistry/medpack_disease_stamina_a.iff
-{id = 989, crc = 2991061367}, -- object/draft_schematic/chemistry/medpack_disease_strength_a.iff
-{id = 990, crc = 1139394044}, -- object/draft_schematic/chemistry/medpack_disease_willpower_a.iff
-{id = 991, crc = 1428873456}, -- object/draft_schematic/chemistry/medpack_disease_action_b.iff
-{id = 992, crc = 2187319291}, -- object/draft_schematic/chemistry/medpack_disease_constitution_b.iff
-{id = 993, crc = 4006965194}, -- object/draft_schematic/chemistry/medpack_disease_focus_b.iff
-{id = 994, crc = 3499464396}, -- object/draft_schematic/chemistry/medpack_disease_health_b.iff
-{id = 995, crc = 1501352017}, -- object/draft_schematic/chemistry/medpack_disease_mind_b.iff
-{id = 996, crc = 1225304679}, -- object/draft_schematic/chemistry/medpack_disease_quickness_b.iff
-{id = 997, crc = 4228897703}, -- object/draft_schematic/chemistry/medpack_disease_stamina_b.iff
-{id = 998, crc = 1766871520}, -- object/draft_schematic/chemistry/medpack_disease_strength_b.iff
-{id = 999, crc = 2566810987}, -- object/draft_schematic/chemistry/medpack_disease_willpower_b.iff
-{id = 1000, crc = 472352637}, -- object/draft_schematic/chemistry/medpack_disease_action_c.iff
-{id = 1001, crc = 3411193974}, -- object/draft_schematic/chemistry/medpack_disease_constitution_c.iff
-{id = 1002, crc = 2815952967}, -- object/draft_schematic/chemistry/medpack_disease_focus_c.iff
-{id = 1003, crc = 2576937281}, -- object/draft_schematic/chemistry/medpack_disease_health_c.iff
-{id = 1004, crc = 275888092}, -- object/draft_schematic/chemistry/medpack_disease_mind_c.iff
-{id = 1005, crc = 380394}, -- object/draft_schematic/chemistry/medpack_disease_quickness_c.iff
-{id = 1006, crc = 3036855338}, -- object/draft_schematic/chemistry/medpack_disease_stamina_c.iff
-{id = 1007, crc = 542979693}, -- object/draft_schematic/chemistry/medpack_disease_strength_c.iff
-{id = 1008, crc = 3522366182}, -- object/draft_schematic/chemistry/medpack_disease_willpower_c.iff
-{id = 1009, crc = 2565166733}, -- object/draft_schematic/chemistry/medpack_disease_area_action_a.iff
-{id = 1010, crc = 512854080}, -- object/draft_schematic/chemistry/medpack_disease_area_constitution_a.iff
-{id = 1011, crc = 460370517}, -- object/draft_schematic/chemistry/medpack_disease_area_focus_a.iff
-{id = 1012, crc = 492445873}, -- object/draft_schematic/chemistry/medpack_disease_area_health_a.iff
-{id = 1013, crc = 3676280040}, -- object/draft_schematic/chemistry/medpack_disease_area_mind_a.iff
-{id = 1014, crc = 1208628861}, -- object/draft_schematic/chemistry/medpack_disease_area_quickness_a.iff
-{id = 1015, crc = 2844856306}, -- object/draft_schematic/chemistry/medpack_disease_area_stamina_a.iff
-{id = 1016, crc = 1857649555}, -- object/draft_schematic/chemistry/medpack_disease_area_strength_a.iff
-{id = 1017, crc = 2583490929}, -- object/draft_schematic/chemistry/medpack_disease_area_willpower_a.iff
-{id = 1018, crc = 1139998234}, -- object/draft_schematic/chemistry/medpack_disease_area_action_b.iff
-{id = 1019, crc = 3313901783}, -- object/draft_schematic/chemistry/medpack_disease_area_constitution_b.iff
-{id = 1020, crc = 3227982530}, -- object/draft_schematic/chemistry/medpack_disease_area_focus_b.iff
-{id = 1021, crc = 3326969894}, -- object/draft_schematic/chemistry/medpack_disease_area_health_b.iff
-{id = 1022, crc = 539775}, -- object/draft_schematic/chemistry/medpack_disease_area_mind_b.iff
-{id = 1023, crc = 2468191978}, -- object/draft_schematic/chemistry/medpack_disease_area_quickness_b.iff
-{id = 1024, crc = 1921427301}, -- object/draft_schematic/chemistry/medpack_disease_area_stamina_b.iff
-{id = 1025, crc = 3048133380}, -- object/draft_schematic/chemistry/medpack_disease_area_strength_b.iff
-{id = 1026, crc = 1122720230}, -- object/draft_schematic/chemistry/medpack_disease_area_willpower_b.iff
-{id = 1027, crc = 184523159}, -- object/draft_schematic/chemistry/medpack_disease_area_action_c.iff
-{id = 1028, crc = 2357938010}, -- object/draft_schematic/chemistry/medpack_disease_area_constitution_c.iff
-{id = 1029, crc = 2305457487}, -- object/draft_schematic/chemistry/medpack_disease_area_focus_c.iff
-{id = 1030, crc = 2403397547}, -- object/draft_schematic/chemistry/medpack_disease_area_health_c.iff
-{id = 1031, crc = 1225087986}, -- object/draft_schematic/chemistry/medpack_disease_area_mind_c.iff
-{id = 1032, crc = 3658545511}, -- object/draft_schematic/chemistry/medpack_disease_area_quickness_c.iff
-{id = 1033, crc = 999014632}, -- object/draft_schematic/chemistry/medpack_disease_area_stamina_c.iff
-{id = 1034, crc = 4238587017}, -- object/draft_schematic/chemistry/medpack_disease_area_strength_c.iff
-{id = 1035, crc = 199638635}, -- object/draft_schematic/chemistry/medpack_disease_area_willpower_c.iff
-{id = 1036, crc = 3845702605}, -- object/draft_schematic/structure/component/structural_module.iff
-{id = 1037, crc = 392632087}, -- object/draft_schematic/structure/component/structure_light_power_core_unit.iff
-{id = 1038, crc = 2793322459}, -- object/draft_schematic/structure/component/structure_small_storage_section.iff
-{id = 1039, crc = 306241616}, -- object/draft_schematic/structure/house_player_small.iff
-{id = 1040, crc = 1265693680}, -- object/draft_schematic/structure/corellia_house_player_small.iff
-{id = 1041, crc = 4082830894}, -- object/draft_schematic/structure/corellia_house_player_small_floorplan_02.iff
-{id = 1042, crc = 1065102414}, -- object/draft_schematic/structure/naboo_house_player_small.iff
-{id = 1043, crc = 3090323563}, -- object/draft_schematic/structure/component/structure_generator_turbine.iff
-{id = 1044, crc = 2123001694}, -- object/draft_schematic/structure/component/wall_module.iff
-{id = 1045, crc = 2148306388}, -- object/draft_schematic/structure/component/structure_power_core_unit.iff
-{id = 1046, crc = 307859371}, -- object/draft_schematic/structure/component/structure_storage_section.iff
-{id = 1047, crc = 1972981643}, -- object/draft_schematic/structure/corellia_house_player_small_style_02_floorplan_02.iff
-{id = 1048, crc = 754816825}, -- object/draft_schematic/structure/corellia_house_player_small_style_02.iff
-{id = 1049, crc = 581126977}, -- object/draft_schematic/structure/naboo_house_player_small_style_02.iff
-{id = 1050, crc = 558121948}, -- object/draft_schematic/structure/house_player_small_style_02.iff
-{id = 1051, crc = 2941976833}, -- object/draft_schematic/structure/generic_house_player_small_floorplan_02.iff
-{id = 1052, crc = 35494552}, -- object/draft_schematic/structure/generic_house_player_small.iff
-{id = 1053, crc = 4169979784}, -- object/draft_schematic/structure/corellia_house_player_medium.iff
-{id = 1054, crc = 132317875}, -- object/draft_schematic/structure/naboo_house_player_medium.iff
-{id = 1055, crc = 2462133376}, -- object/draft_schematic/structure/house_player_medium.iff
-{id = 1056, crc = 873800076}, -- object/draft_schematic/structure/generic_house_player_small_style_02.iff
-{id = 1057, crc = 743246081}, -- object/draft_schematic/structure/generic_house_player_small_style_02_floorplan_02.iff
-{id = 1058, crc = 2137745369}, -- object/draft_schematic/structure/corellia_house_player_large.iff
-{id = 1059, crc = 191346791}, -- object/draft_schematic/structure/naboo_house_player_large.iff
-{id = 1060, crc = 643527801}, -- object/draft_schematic/structure/house_player_large.iff
-{id = 1061, crc = 2208972784}, -- object/draft_schematic/structure/generic_house_player_medium.iff
-{id = 1062, crc = 4220110361}, -- object/draft_schematic/structure/generic_house_player_medium_style_02.iff
-{id = 1063, crc = 215048335}, -- object/draft_schematic/structure/corellia_house_player_large_style_02.iff
-{id = 1064, crc = 906366641}, -- object/draft_schematic/structure/generic_house_player_large.iff
-{id = 1065, crc = 339334714}, -- object/draft_schematic/structure/generic_house_player_large_style_02.iff
-{id = 1066, crc = 1731282806}, -- object/draft_schematic/structure/corellia_house_guild_hall.iff
-{id = 1067, crc = 520884248}, -- object/draft_schematic/structure/generic_house_guild_hall.iff
-{id = 1068, crc = 735272007}, -- object/draft_schematic/structure/house_guild_hall.iff
-{id = 1069, crc = 3187584926}, -- object/draft_schematic/structure/naboo_house_guild_hall.iff
-{id = 1070, crc = 3899494698}, -- object/draft_schematic/structure/installation_factory_weapon.iff
-{id = 1071, crc = 2786230684}, -- object/draft_schematic/structure/installation_mining_liquid_vapor.iff
-{id = 1072, crc = 3822977569}, -- object/draft_schematic/structure/component/structure_fluidic_drilling_pumping_unit.iff
-{id = 1073, crc = 2850004762}, -- object/draft_schematic/structure/component/structure_harvesting_mechanism.iff
-{id = 1074, crc = 991733822}, -- object/draft_schematic/structure/component/structure_ore_mining_unit.iff
-{id = 1075, crc = 4010006961}, -- object/draft_schematic/structure/component/structure_manufacturing_mechanism.iff
-{id = 1076, crc = 2893492989}, -- object/draft_schematic/structure/component/structure_light_ore_mining_unit.iff
-{id = 1077, crc = 1351958684}, -- object/draft_schematic/structure/installation_factory_clothing.iff
-{id = 1078, crc = 2124927097}, -- object/draft_schematic/structure/installation_factory_food.iff
-{id = 1079, crc = 4099516865}, -- object/draft_schematic/structure/installation_factory_structure.iff
-{id = 1080, crc = 3867198041}, -- object/draft_schematic/structure/installation_mining_ore.iff
-{id = 1081, crc = 933736710}, -- object/draft_schematic/structure/installation_generator_solar.iff
-{id = 1082, crc = 1069295253}, -- object/draft_schematic/structure/installation_mining_gas.iff
-{id = 1083, crc = 3194436190}, -- object/draft_schematic/structure/installation_mining_liquid.iff
-{id = 1084, crc = 333540935}, -- object/draft_schematic/structure/component/structure_heavy_harvesting_mechanism.iff
-{id = 1085, crc = 2034960844}, -- object/draft_schematic/structure/component/structure_turbo_fluidic_drilling_pumping_unit.iff
-{id = 1086, crc = 941665554}, -- object/draft_schematic/structure/installation_mining_liquid_heavy.iff
-{id = 1087, crc = 1975868409}, -- object/draft_schematic/structure/installation_mining_organic_flora.iff
-{id = 1088, crc = 66036595}, -- object/draft_schematic/structure/installation_mining_liquid_vapor_heavy.iff
-{id = 1089, crc = 274917588}, -- object/draft_schematic/structure/installation_mining_organic_flora_heavy.iff
-{id = 1090, crc = 1886074011}, -- object/draft_schematic/structure/installation_mining_gas_heavy.iff
-{id = 1091, crc = 3801426315}, -- object/draft_schematic/structure/installation_mining_ore_heavy.iff
-{id = 1092, crc = 3964702021}, -- object/draft_schematic/structure/installation_generator_fusion.iff
-{id = 1093, crc = 2561146275}, -- object/draft_schematic/weapon/component/blade_vibro_unit.iff
-{id = 1094, crc = 2672408965}, -- object/draft_schematic/weapon/component/sword_core.iff
-{id = 1095, crc = 1089430440}, -- object/draft_schematic/weapon/component/reinforcement_core.iff
-{id = 1096, crc = 3465039005}, -- object/draft_schematic/weapon/sword.iff
-{id = 1097, crc = 3569551962}, -- object/draft_schematic/weapon/staff_metal.iff
-{id = 1098, crc = 2812466990}, -- object/draft_schematic/weapon/lance_vibro_controller_fp.iff
-{id = 1099, crc = 2475958755}, -- object/draft_schematic/weapon/baton_gaderiffi.iff
-{id = 1100, crc = 2015967877}, -- object/draft_schematic/weapon/battleaxe.iff
-{id = 1101, crc = 709786125}, -- object/draft_schematic/weapon/knuckler_vibro.iff
-{id = 1102, crc = 307318890}, -- object/draft_schematic/weapon/sword_curved.iff
-{id = 1103, crc = 2806023845}, -- object/draft_schematic/weapon/component/sword_core_advanced.iff
-{id = 1104, crc = 3401056913}, -- object/draft_schematic/weapon/component/reinforcement_core_advanced.iff
-{id = 1105, crc = 1073701122}, -- object/draft_schematic/weapon/knife_vibroblade.iff
-{id = 1106, crc = 842845022}, -- object/draft_schematic/weapon/sword_ryyk_blade.iff
-{id = 1107, crc = 3697895053}, -- object/draft_schematic/weapon/katana.iff
-{id = 1108, crc = 2122228047}, -- object/draft_schematic/weapon/component/blade_vibro_unit_advanced.iff
-{id = 1109, crc = 4068860028}, -- object/draft_schematic/weapon/baton_stun.iff
-{id = 1110, crc = 2967727775}, -- object/draft_schematic/weapon/axe_vibro.iff
-{id = 1111, crc = 164959911}, -- object/draft_schematic/weapon/lance_vibro.iff
-{id = 1112, crc = 874732242}, -- object/draft_schematic/weapon/cleaver.iff
-{id = 1113, crc = 903015916}, -- object/draft_schematic/weapon/poleaxe_vibro.iff
-{id = 1114, crc = 4202776406}, -- object/draft_schematic/weapon/maul.iff
-{id = 1115, crc = 2967846330}, -- object/draft_schematic/slicing/slicing_weapon_upgrade_kit.iff
-{id = 1116, crc = 3261179886}, -- object/draft_schematic/weapon/component/blaster_pistol_barrel.iff
-{id = 1117, crc = 3122404624}, -- object/draft_schematic/weapon/component/blaster_power_handler.iff
-{id = 1118, crc = 546087499}, -- object/draft_schematic/weapon/component/projectile_feed_mechanism.iff
-{id = 1119, crc = 530571176}, -- object/draft_schematic/weapon/component/projectile_pistol_barrel.iff
-{id = 1120, crc = 2403503626}, -- object/draft_schematic/weapon/component/scope_weapon.iff
-{id = 1121, crc = 2729467871}, -- object/draft_schematic/weapon/component/stock.iff
-{id = 1122, crc = 4237058307}, -- object/draft_schematic/weapon/pistol_blaster_d18.iff
-{id = 1123, crc = 346006763}, -- object/draft_schematic/weapon/rifle_blaster_dlt20.iff
-{id = 1124, crc = 1059921255}, -- object/draft_schematic/weapon/component/blaster_rifle_barrel.iff
-{id = 1125, crc = 84630436}, -- object/draft_schematic/weapon/component/projectile_rifle_barrel.iff
-{id = 1126, crc = 1426155773}, -- object/draft_schematic/weapon/component/chemical_dispersion_mechanism.iff
-{id = 1127, crc = 3793221614}, -- object/draft_schematic/weapon/rifle_light_blaster_dh17_carbine.iff
-{id = 1128, crc = 1670896513}, -- object/draft_schematic/weapon/pistol_blaster_dl44.iff
-{id = 1129, crc = 4142901029}, -- object/draft_schematic/weapon/pistol_blaster_scout_trooper.iff
-{id = 1130, crc = 3187339037}, -- object/draft_schematic/weapon/rifle_blaster_dlt20a.iff
-{id = 1131, crc = 780275181}, -- object/draft_schematic/weapon/pistol_flechette_fwg5.iff
-{id = 1132, crc = 569803170}, -- object/draft_schematic/weapon/pistol_projectile_striker.iff
-{id = 1133, crc = 2836195994}, -- object/draft_schematic/weapon/pistol_blaster_dl44_metal.iff
-{id = 1134, crc = 1841574443}, -- object/draft_schematic/weapon/rifle_light_blaster_dh17_carbine_snubnose.iff
-{id = 1135, crc = 3785742790}, -- object/draft_schematic/weapon/rifle_projectile_tusken.iff
-{id = 1136, crc = 4136957565}, -- object/draft_schematic/weapon/pistol_blaster_dh17.iff
-{id = 1137, crc = 1932962758}, -- object/draft_schematic/weapon/pistol_blaster_power5.iff
-{id = 1138, crc = 1239532776}, -- object/draft_schematic/weapon/rifle_light_blaster_e11_carbine.iff
-{id = 1139, crc = 2168518318}, -- object/draft_schematic/weapon/rifle_blaster_e11.iff
-{id = 1140, crc = 3618518451}, -- object/draft_schematic/weapon/rifle_sonic_sg82.iff
-{id = 1141, crc = 2456313049}, -- object/draft_schematic/weapon/component/blaster_pistol_barrel_advanced.iff
-{id = 1142, crc = 977161249}, -- object/draft_schematic/weapon/component/blaster_power_handler_advanced.iff
-{id = 1143, crc = 1345257935}, -- object/draft_schematic/weapon/component/projectile_feed_mechanism_advanced.iff
-{id = 1144, crc = 4014040426}, -- object/draft_schematic/weapon/component/projectile_pistol_barrel_advanced.iff
-{id = 1145, crc = 2081117760}, -- object/draft_schematic/weapon/component/scope_weapon_advanced.iff
-{id = 1146, crc = 3547572600}, -- object/draft_schematic/weapon/component/stock_advanced.iff
-{id = 1147, crc = 1295047576}, -- object/draft_schematic/weapon/pistol_launcher.iff
-{id = 1148, crc = 1544468125}, -- object/draft_schematic/weapon/pistol_scatter.iff
-{id = 1149, crc = 602488319}, -- object/draft_schematic/weapon/pistol_blaster_short_range_combat.iff
-{id = 1150, crc = 3134294265}, -- object/draft_schematic/weapon/rifle_light_blaster_laser_carbine.iff
-{id = 1151, crc = 13256327}, -- object/draft_schematic/weapon/rifle_blaster_laser_rifle.iff
-{id = 1152, crc = 2411394281}, -- object/draft_schematic/weapon/rifle_light_blaster_ee3.iff
-{id = 1153, crc = 382261784}, -- object/draft_schematic/weapon/rifle_spray_stick_stohli.iff
-{id = 1154, crc = 687926522}, -- object/draft_schematic/weapon/component/blaster_rifle_barrel_advanced.iff
-{id = 1155, crc = 2259985704}, -- object/draft_schematic/weapon/component/projectile_rifle_barrel_advanced.iff
-{id = 1156, crc = 3341400006}, -- object/draft_schematic/weapon/component/chemical_dispersion_mechanism_advanced.iff
-{id = 1157, crc = 2937361693}, -- object/draft_schematic/weapon/heavy_particle_beam.iff
-{id = 1158, crc = 1884834461}, -- object/draft_schematic/weapon/heavy_lightning_beam.iff
-{id = 1159, crc = 1150731332}, -- object/draft_schematic/weapon/rifle_lightning.iff
-{id = 1160, crc = 2004140562}, -- object/draft_schematic/weapon/rifle_beam.iff
-{id = 1161, crc = 283297031}, -- object/draft_schematic/weapon/rifle_tangle_gun7.iff
-{id = 1162, crc = 672739607}, -- object/draft_schematic/weapon/pistol_disrupter_dx2.iff
-{id = 1163, crc = 2442364215}, -- object/draft_schematic/weapon/rifle_light_blaster_imperial_scout_carbine.iff
-{id = 1164, crc = 3114651593}, -- object/draft_schematic/weapon/rifle_disrupter_dxr6.iff
-{id = 1165, crc = 2704096479}, -- object/draft_schematic/weapon/rifle_blaster_ionization_jawa.iff
-{id = 1166, crc = 2066504603}, -- object/draft_schematic/weapon/rifle_t21.iff
-{id = 1167, crc = 2160704204}, -- object/draft_schematic/weapon/heavy_acid_beam.iff
-{id = 1168, crc = 156651270}, -- object/draft_schematic/weapon/pistol_republic_blaster.iff
-{id = 1169, crc = 2832759398}, -- object/draft_schematic/weapon/rifle_acid_beam.iff
-{id = 1170, crc = 975991386}, -- object/draft_schematic/weapon/rifle_flame_thrower.iff
-{id = 1171, crc = 856946324}, -- object/draft_schematic/scout/item_camp_basic.iff
-{id = 1172, crc = 454723632}, -- object/draft_schematic/scout/item_camp_multi.iff
-{id = 1173, crc = 3340336681}, -- object/draft_schematic/scout/item_camp_improved.iff
-{id = 1174, crc = 3174185914}, -- object/draft_schematic/scout/item_camp_quality.iff
-{id = 1175, crc = 2692447325}, -- object/draft_schematic/scout/item_camp_elite.iff
-{id = 1176, crc = 2290235383}, -- object/draft_schematic/scout/item_camp_luxury.iff
-{id = 1177, crc = 4180710292}, -- object/draft_schematic/scout/item_trap_drowsy_dart.iff
-{id = 1178, crc = 1693268724}, -- object/draft_schematic/scout/item_trap_melee_def_1.iff
-{id = 1179, crc = 4229651811}, -- object/draft_schematic/scout/item_trap_enraging_spur.iff
-{id = 1180, crc = 643067676}, -- object/draft_schematic/scout/item_trap_ranged_def_1.iff
-{id = 1181, crc = 1777956434}, -- object/draft_schematic/scout/item_trap_noise_maker.iff
-{id = 1182, crc = 4286701289}, -- object/draft_schematic/scout/item_trap_state_def_1.iff
-{id = 1183, crc = 2139022649}, -- object/draft_schematic/scout/item_trap_tranq_dart.iff
-{id = 1184, crc = 386844773}, -- object/draft_schematic/scout/item_trap_melee_ranged_def_1.iff
-{id = 1185, crc = 723149335}, -- object/draft_schematic/scout/item_trap_webber.iff
-{id = 1186, crc = 3323797930}, -- object/draft_schematic/scout/item_trap_flash_bomb.iff
-{id = 1187, crc = 98537127}, -- object/draft_schematic/scout/item_trap_sonic_pulse.iff
-{id = 1188, crc = 3560241959}, -- object/draft_schematic/scout/item_camokit_corellia.iff
-{id = 1189, crc = 2179414203}, -- object/draft_schematic/scout/item_camokit_naboo.iff
-{id = 1190, crc = 3900152504}, -- object/draft_schematic/scout/item_camokit_tatooine.iff
-{id = 1191, crc = 4101200404}, -- object/draft_schematic/scout/item_camokit_rori.iff
-{id = 1192, crc = 2562018961}, -- object/draft_schematic/scout/item_camokit_talus.iff
-{id = 1193, crc = 2184203672}, -- object/draft_schematic/scout/item_camokit_yavin.iff
-{id = 1194, crc = 2245585499}, -- object/draft_schematic/scout/item_camokit_dantooine.iff
-{id = 1195, crc = 2767880917}, -- object/draft_schematic/scout/item_camokit_lok.iff
-{id = 1196, crc = 1136496313}, -- object/draft_schematic/scout/item_camokit_endor.iff
-{id = 1197, crc = 1089305607}, -- object/draft_schematic/scout/item_camokit_dathomir.iff
-{id = 1198, crc = 3968308332}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_bleeding.iff
-{id = 1199, crc = 2219423251}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_light_flavor.iff
-{id = 1200, crc = 1048290330}, -- object/draft_schematic/bio_engineer/utilities/pet_stimpack_a.iff
-{id = 1201, crc = 3142253944}, -- object/draft_schematic/bio_engineer/dna_template/dna_template_generic.iff
-{id = 1202, crc = 4156377431}, -- object/draft_schematic/bio_engineer/creature/creature_bearded_jax.iff
-{id = 1203, crc = 1821371636}, -- object/draft_schematic/bio_engineer/creature/creature_eopie.iff
-{id = 1204, crc = 1257955655}, -- object/draft_schematic/bio_engineer/creature/creature_kaadu.iff
-{id = 1205, crc = 577122129}, -- object/draft_schematic/bio_engineer/creature/creature_gnort.iff
-{id = 1206, crc = 4008964924}, -- object/draft_schematic/bio_engineer/creature/creature_durni.iff
-{id = 1207, crc = 754199101}, -- object/draft_schematic/bio_engineer/creature/creature_vir_vur.iff
-{id = 1208, crc = 1359781584}, -- object/draft_schematic/bio_engineer/creature/creature_squall.iff
-{id = 1209, crc = 634433535}, -- object/draft_schematic/bio_engineer/creature/creature_ikopi.iff
-{id = 1210, crc = 1940042375}, -- object/draft_schematic/bio_engineer/creature/creature_swirl_prong.iff
-{id = 1211, crc = 750318103}, -- object/draft_schematic/bio_engineer/creature/creature_dewback.iff
-{id = 1212, crc = 1770051396}, -- object/draft_schematic/bio_engineer/creature/creature_gualama.iff
-{id = 1213, crc = 1584551897}, -- object/draft_schematic/bio_engineer/creature/creature_kahmurra.iff
-{id = 1214, crc = 2285441813}, -- object/draft_schematic/bio_engineer/creature/creature_krahbu.iff
-{id = 1215, crc = 3220654324}, -- object/draft_schematic/bio_engineer/creature/creature_tybis.iff
-{id = 1216, crc = 736070655}, -- object/draft_schematic/bio_engineer/creature/creature_kwi.iff
-{id = 1217, crc = 2873361276}, -- object/draft_schematic/bio_engineer/creature/creature_mott.iff
-{id = 1218, crc = 3669197524}, -- object/draft_schematic/bio_engineer/creature/creature_verne.iff
-{id = 1219, crc = 2159823530}, -- object/draft_schematic/bio_engineer/creature/creature_cu_pa.iff
-{id = 1220, crc = 1378778477}, -- object/draft_schematic/bio_engineer/creature/creature_roba.iff
-{id = 1221, crc = 986724731}, -- object/draft_schematic/bio_engineer/creature/creature_huurton.iff
-{id = 1222, crc = 2261017307}, -- object/draft_schematic/bio_engineer/creature/creature_bageraset.iff
-{id = 1223, crc = 2377169565}, -- object/draft_schematic/bio_engineer/creature/creature_gurnaset.iff
-{id = 1224, crc = 117881881}, -- object/draft_schematic/bio_engineer/creature/creature_choku.iff
-{id = 1225, crc = 2714033115}, -- object/draft_schematic/bio_engineer/creature/creature_carrion_spat.iff
-{id = 1226, crc = 4005636218}, -- object/draft_schematic/bio_engineer/creature/creature_pugoriss.iff
-{id = 1227, crc = 4075123446}, -- object/draft_schematic/bio_engineer/creature/creature_kusak.iff
-{id = 1228, crc = 103933562}, -- object/draft_schematic/bio_engineer/creature/creature_gurrcat.iff
-{id = 1229, crc = 567306893}, -- object/draft_schematic/bio_engineer/creature/creature_zucca_boar.iff
-{id = 1230, crc = 1799980783}, -- object/draft_schematic/bio_engineer/creature/creature_langlatch.iff
-{id = 1231, crc = 1332870955}, -- object/draft_schematic/bio_engineer/creature/creature_kima.iff
-{id = 1232, crc = 1488874069}, -- object/draft_schematic/bio_engineer/creature/creature_dune_lizard.iff
-{id = 1233, crc = 2432684944}, -- object/draft_schematic/bio_engineer/creature/creature_bocatt.iff
-{id = 1234, crc = 2461876430}, -- object/draft_schematic/bio_engineer/creature/creature_boar_wolf.iff
-{id = 1235, crc = 2991134456}, -- object/draft_schematic/bio_engineer/creature/creature_vesp.iff
-{id = 1236, crc = 3344729657}, -- object/draft_schematic/bio_engineer/creature/creature_blurrg.iff
-{id = 1237, crc = 2808358351}, -- object/draft_schematic/bio_engineer/creature/creature_bantha.iff
-{id = 1238, crc = 290053617}, -- object/draft_schematic/bio_engineer/creature/creature_bol.iff
-{id = 1239, crc = 1403547701}, -- object/draft_schematic/bio_engineer/creature/creature_bolle_bol.iff
-{id = 1240, crc = 1535969042}, -- object/draft_schematic/bio_engineer/creature/creature_bolma.iff
-{id = 1241, crc = 2281638334}, -- object/draft_schematic/bio_engineer/creature/creature_brackaset.iff
-{id = 1242, crc = 75089485}, -- object/draft_schematic/bio_engineer/creature/creature_falumpaset.iff
-{id = 1243, crc = 1514679293}, -- object/draft_schematic/bio_engineer/creature/creature_ronto.iff
-{id = 1244, crc = 3734905760}, -- object/draft_schematic/bio_engineer/creature/creature_snorbal.iff
-{id = 1245, crc = 1810688274}, -- object/draft_schematic/bio_engineer/creature/creature_bordok.iff
-{id = 1246, crc = 3272939896}, -- object/draft_schematic/bio_engineer/creature/creature_gronda.iff
-{id = 1247, crc = 2768438973}, -- object/draft_schematic/bio_engineer/creature/creature_piket.iff
-{id = 1248, crc = 930980100}, -- object/draft_schematic/bio_engineer/creature/creature_thune.iff
-{id = 1249, crc = 2545733541}, -- object/draft_schematic/bio_engineer/creature/creature_angler.iff
-{id = 1250, crc = 1161012135}, -- object/draft_schematic/bio_engineer/creature/creature_dalyrake.iff
-{id = 1251, crc = 1900645320}, -- object/draft_schematic/bio_engineer/creature/creature_guf_drolg.iff
-{id = 1252, crc = 2928390981}, -- object/draft_schematic/bio_engineer/creature/creature_gurreck.iff
-{id = 1253, crc = 613786139}, -- object/draft_schematic/bio_engineer/creature/creature_narglatch.iff
-{id = 1254, crc = 1431158213}, -- object/draft_schematic/bio_engineer/creature/creature_sand_panther.iff
-{id = 1255, crc = 3182373188}, -- object/draft_schematic/bio_engineer/creature/creature_slice_hound.iff
-{id = 1256, crc = 3316134965}, -- object/draft_schematic/bio_engineer/creature/creature_kliknik.iff
-{id = 1257, crc = 1651897912}, -- object/draft_schematic/bio_engineer/creature/creature_mawgax.iff
-{id = 1258, crc = 1498107638}, -- object/draft_schematic/bio_engineer/creature/creature_merek.iff
-{id = 1259, crc = 1581221315}, -- object/draft_schematic/bio_engineer/creature/creature_hermit_spider.iff
-{id = 1260, crc = 4227711909}, -- object/draft_schematic/bio_engineer/creature/creature_shear_mite.iff
-{id = 1261, crc = 1479772833}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_entertainer.iff
-{id = 1262, crc = 4052702297}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_intimidate.iff
-{id = 1263, crc = 1860856593}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_light_nutrition.iff
-{id = 1264, crc = 607682695}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_light_quantity.iff
-{id = 1265, crc = 2825672077}, -- object/draft_schematic/bio_engineer/utilities/pet_vitapack_a.iff
-{id = 1266, crc = 568453111}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_medic.iff
-{id = 1267, crc = 3994507993}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_taming.iff
-{id = 1268, crc = 2205912562}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_camo.iff
-{id = 1269, crc = 2556916737}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_cover.iff
-{id = 1270, crc = 2764858938}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_light_filling.iff
-{id = 1271, crc = 394826424}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_medium_quantity.iff
-{id = 1272, crc = 3849063565}, -- object/draft_schematic/bio_engineer/utilities/pet_stimpack_b.iff
-{id = 1273, crc = 3661555959}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_defense.iff
-{id = 1274, crc = 1823006266}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_entertainer_2.iff
-{id = 1275, crc = 721777052}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_bleeding_2.iff
-{id = 1276, crc = 265419929}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_medium_flavor.iff
-{id = 1277, crc = 126426968}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_medium_nutrition.iff
-{id = 1278, crc = 2126628789}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_medium_filling.iff
-{id = 1279, crc = 1937505562}, -- object/draft_schematic/bio_engineer/utilities/pet_vitapack_b.iff
-{id = 1280, crc = 805498186}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_medic_2.iff
-{id = 1281, crc = 1616892941}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_taming_2.iff
-{id = 1282, crc = 1380806835}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_camo_2.iff
-{id = 1283, crc = 978433845}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_cover_2.iff
-{id = 1284, crc = 2509016272}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_heavy_flavor.iff
-{id = 1285, crc = 2533106106}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_heavy_quantity.iff
-{id = 1286, crc = 2892065536}, -- object/draft_schematic/bio_engineer/utilities/pet_stimpack_c.iff
-{id = 1287, crc = 3309696659}, -- object/draft_schematic/bio_engineer/creature/creature_torton.iff
-{id = 1288, crc = 2367279075}, -- object/draft_schematic/bio_engineer/creature/creature_kimogila.iff
-{id = 1289, crc = 2674702584}, -- object/draft_schematic/bio_engineer/creature/creature_rancor.iff
-{id = 1290, crc = 3278767814}, -- object/draft_schematic/bio_engineer/creature/creature_fambaa.iff
-{id = 1291, crc = 3552530041}, -- object/draft_schematic/bio_engineer/creature/creature_veermok.iff
-{id = 1292, crc = 1721501294}, -- object/draft_schematic/bio_engineer/creature/creature_graul.iff
-{id = 1293, crc = 896380986}, -- object/draft_schematic/bio_engineer/creature/creature_huf_dun.iff
-{id = 1294, crc = 4159090013}, -- object/draft_schematic/bio_engineer/creature/creature_malkloc.iff
-{id = 1295, crc = 1636610738}, -- object/draft_schematic/bio_engineer/creature/creature_sharnaff.iff
-{id = 1296, crc = 2318609309}, -- object/draft_schematic/bio_engineer/creature/creature_woolamander.iff
-{id = 1297, crc = 491593342}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_defense_2.iff
-{id = 1298, crc = 3223102480}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_intimidate_2.iff
-{id = 1299, crc = 690381821}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_heavy_filling.iff
-{id = 1300, crc = 519561217}, -- object/draft_schematic/bio_engineer/bio_component/bio_component_food_heavy_nutrition.iff
-{id = 1301, crc = 980851351}, -- object/draft_schematic/bio_engineer/utilities/pet_vitapack_c.iff
-{id = 1302, crc = 1468153876}, -- object/draft_schematic/bio_engineer/utilities/pet_stimpack_d.iff
-{id = 1303, crc = 1206613277}, -- object/draft_schematic/spices/spice_grey_gabaki.iff
-{id = 1304, crc = 3617518273}, -- object/draft_schematic/spices/spice_scramjet.iff
-{id = 1305, crc = 873796069}, -- object/draft_schematic/spices/spice_shadowpaw.iff
-{id = 1306, crc = 2294947942}, -- object/draft_schematic/spices/spice_yarrock.iff
-{id = 1307, crc = 3449983271}, -- object/draft_schematic/spices/spice_giggledust.iff
-{id = 1308, crc = 1544892362}, -- object/draft_schematic/spices/spice_sweetblossom.iff
-{id = 1309, crc = 3341957593}, -- object/draft_schematic/spices/spice_droid_lube.iff
-{id = 1310, crc = 2927345113}, -- object/draft_schematic/spices/spice_pyrepenol.iff
-{id = 1311, crc = 3906338507}, -- object/draft_schematic/spices/spice_sedative_h4b.iff
-{id = 1312, crc = 534705962}, -- object/draft_schematic/spices/spice_crash_n_burn.iff
-{id = 1313, crc = 1071385877}, -- object/draft_schematic/spices/spice_gunjack.iff
-{id = 1314, crc = 736721133}, -- object/draft_schematic/spices/spice_thruster_head.iff
-{id = 1315, crc = 2408900591}, -- object/draft_schematic/spices/spice_booster_blue.iff
-{id = 1316, crc = 671818443}, -- object/draft_schematic/spices/spice_muon_gold.iff
-{id = 1317, crc = 3754193127}, -- object/draft_schematic/spices/spice_neutron_pixey.iff
-{id = 1318, crc = 992183803}, -- object/draft_schematic/slicing/slicing_laser_knife.iff
-{id = 1319, crc = 515508998}, -- object/draft_schematic/slicing/slicing_flow_analyzer.iff
-{id = 1320, crc = 3440762066}, -- object/draft_schematic/slicing/slicing_molecular_clamp.iff
-{id = 1321, crc = 3754742642}, -- object/draft_schematic/weapon/rifle_bowcaster.iff
-{id = 1323, crc = 2549563513}, -- object/draft_schematic/item/item_jedi_tool.iff
-{id = 1324, crc = 3266520130}, -- object/draft_schematic/weapon/lightsaber/lightsaber_refined_crystal_pack.iff
-{id = 1325, crc = 86905545}, -- object/draft_schematic/weapon/lightsaber/lightsaber_training.iff
-{id = 1326, crc = 67753121}, -- object/draft_schematic/weapon/lightsaber/lightsaber_one_hand_gen1.iff
-{id = 1327, crc = 318902059}, -- object/draft_schematic/weapon/lightsaber/lightsaber_two_hand_gen1.iff
-{id = 1328, crc = 4203939183}, -- object/draft_schematic/weapon/lightsaber/lightsaber_polearm_gen1.iff
-{id = 1329, crc = 3743317046}, -- object/draft_schematic/weapon/lightsaber/lightsaber_one_hand_gen2.iff
-{id = 1330, crc = 2517834683}, -- object/draft_schematic/weapon/lightsaber/lightsaber_one_hand_gen3.iff
-{id = 1332, crc = 3356862396}, -- object/draft_schematic/weapon/lightsaber/lightsaber_two_hand_gen2.iff
-{id = 1333, crc = 2165882929}, -- object/draft_schematic/weapon/lightsaber/lightsaber_two_hand_gen3.iff
-{id = 1335, crc = 562343416}, -- object/draft_schematic/weapon/lightsaber/lightsaber_polearm_gen2.iff
-{id = 1336, crc = 1753860725}, -- object/draft_schematic/weapon/lightsaber/lightsaber_polearm_gen3.iff
-{id = 1337, crc = 2473255265}, -- object/draft_schematic/weapon/lightsaber/lightsaber_polearm_gen4.iff
-{id = 1338, crc = 1844457647}, -- object/draft_schematic/weapon/lightsaber/lightsaber_one_hand_gen4.iff
-{id = 1339, crc = 2063330085}, -- object/draft_schematic/weapon/lightsaber/lightsaber_two_hand_gen4.iff
-{id = 1341, crc = 2198012980}, -- object/draft_schematic/structure/city/bank_corellia.iff
-{id = 1342, crc = 1301515259}, -- object/draft_schematic/structure/city/bank_naboo.iff
-{id = 1343, crc = 3208668587}, -- object/draft_schematic/structure/city/bank_tatooine.iff
-{id = 1344, crc = 2957151930}, -- object/draft_schematic/furniture/city/furniture_streetlamp.iff
-{id = 1345, crc = 3030080982}, -- object/draft_schematic/furniture/city/furniture_statue.iff
-{id = 1346, crc = 1866312112}, -- object/draft_schematic/structure/merchant_tent.iff
-{id = 1347, crc = 3025656289}, -- object/draft_schematic/structure/city/cloning_corellia.iff
-{id = 1348, crc = 1788695732}, -- object/draft_schematic/structure/city/cloning_naboo.iff
-{id = 1349, crc = 2283059326}, -- object/draft_schematic/structure/city/cloning_tatooine.iff
-{id = 1350, crc = 1776613319}, -- object/draft_schematic/structure/city/shuttleport_corellia.iff
-{id = 1351, crc = 2789096608}, -- object/draft_schematic/structure/city/shuttleport_naboo.iff
-{id = 1352, crc = 1437046360}, -- object/draft_schematic/structure/city/shuttleport_tatooine.iff
-{id = 1353, crc = 148924399}, -- object/draft_schematic/furniture/city/furniture_fountain.iff
-{id = 1354, crc = 3611235545}, -- object/draft_schematic/structure/city/garden_small.iff
-{id = 1355, crc = 1000718181}, -- object/draft_schematic/structure/city/cantina_corellia.iff
-{id = 1356, crc = 2521133905}, -- object/draft_schematic/structure/city/cantina_naboo.iff
-{id = 1357, crc = 132570874}, -- object/draft_schematic/structure/city/cantina_tatooine.iff
-{id = 1358, crc = 732371060}, -- object/draft_schematic/structure/city/hospital_corellia.iff
-{id = 1359, crc = 1376444929}, -- object/draft_schematic/structure/city/hospital_naboo.iff
-{id = 1360, crc = 400849387}, -- object/draft_schematic/structure/city/hospital_tatooine.iff
-{id = 1361, crc = 564035978}, -- object/draft_schematic/structure/city/theater_corellia.iff
-{id = 1362, crc = 1312546584}, -- object/draft_schematic/structure/city/theater_naboo.iff
-{id = 1363, crc = 501080085}, -- object/draft_schematic/structure/city/theater_tatooine.iff
-{id = 1364, crc = 2809814642}, -- object/draft_schematic/structure/city/garden_medium.iff
-{id = 1365, crc = 3881652279}, -- object/draft_schematic/structure/city/garage_corellia.iff
-{id = 1366, crc = 2057931183}, -- object/draft_schematic/structure/city/garage_naboo.iff
-{id = 1367, crc = 3676189096}, -- object/draft_schematic/structure/city/garage_tatooine.iff
-{id = 1368, crc = 1664958911}, -- object/draft_schematic/structure/city/cityhall_corellia.iff
-{id = 1369, crc = 3448974360}, -- object/draft_schematic/structure/city/cityhall_naboo.iff
-{id = 1370, crc = 1602101280}, -- object/draft_schematic/structure/city/cityhall_tatooine.iff
-{id = 1371, crc = 3810820336}, -- object/draft_schematic/structure/city/garden_large.iff
-{id = 1372, crc = 3409327929}, -- object/draft_schematic/structure/city/garden_exotic_dantooine.iff
-{id = 1373, crc = 3040735052}, -- object/draft_schematic/structure/city/garden_exotic_dathomir.iff
-{id = 1374, crc = 2172059402}, -- object/draft_schematic/structure/city/garden_exotic_endor.iff
-{id = 1375, crc = 3381119609}, -- object/draft_schematic/vehicle/civilian/landspeeder_x34.iff
-{id = 1376, crc = 1570866911}, -- object/draft_schematic/vehicle/civilian/speeder_bike_swoop.iff
-{id = 1377, crc = 1074207177}, -- object/draft_schematic/vehicle/civilian/speeder_bike.iff
-{id = 1378, crc = 2527581045}, -- object/draft_schematic/vehicle/vehicle_customization_kit.iff
-{id = 1388, crc = 1921287912}, -- object/draft_schematic/space/reverse_engineering/analysis_tool.iff
-{id = 1389, crc = 3698519860}, -- object/draft_schematic/space/repair/armor_repair_kit.iff
-{id = 1390, crc = 1609042606}, -- object/draft_schematic/space/repair/engine_repair_kit.iff
-{id = 1391, crc = 3957461751}, -- object/draft_schematic/space/repair/chassis_repair_kit.iff
-{id = 1393, crc = 268651080}, -- object/draft_schematic/space/repair/booster_repair_kit.iff
-{id = 1395, crc = 387917901}, -- object/draft_schematic/space/repair/droid_interface_repair_kit.iff
-{id = 1406, crc = 1927453857}, -- object/draft_schematic/space/weapon/missile/countermeasure_chaff_pack.iff
+{path="object/draft_schematic/slicing/slicing_armor_upgrade_kit.iff"},
+{path="object/draft_schematic/armor/armor_segment_zam.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_zam_belt.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_zam_boots.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_zam_chest.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_zam_gloves.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_zam_helmet.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_zam_pants.iff"},
+{path="object/draft_schematic/armor/armor_segment.iff"},
+{path="object/draft_schematic/armor/armor_segment_chitin.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_chitin_bicep_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_chitin_bicep_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_chitin_boots.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_chitin_bracer_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_chitin_bracer_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_chitin_chest.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_chitin_gloves.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_chitin_helmet.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_chitin_leggings.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_guardian_bicep_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_guardian_bicep_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_guardian_boots.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_guardian_bracer_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_guardian_bracer_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_guardian_chest.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_guardian_gloves.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_guardian_helmet.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_guardian_leggings.iff"},
+{path="object/draft_schematic/armor/armor_segment_kashyyykian_ceremonial.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_ceremonial_chest.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_ceremonial_leggings.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_ceremonial_bracer_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_ceremonial_bracer_r.iff"},
+{path="object/draft_schematic/armor/armor_segment_padded.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_tantel_boots.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_tantel_chest.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_tantel_helmet.iff"},
+{path="object/draft_schematic/armor/armor_segment_bone_advanced.iff"},
+{path="object/draft_schematic/armor/armor_segment_zam_advanced.iff"},
+{path="object/draft_schematic/armor/armor_segment_kashyyykian_black_mtn.iff"},
+{path="object/draft_schematic/armor/armor_segment_ubese.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ubese_bandolier.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ubese_boots.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ubese_bracer_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ubese_bracer_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ubese_gloves.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ubese_helmet.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ubese_jacket.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ubese_pants.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ubese_shirt.iff"},
+{path="object/draft_schematic/armor/armor_segment_chitin_advanced.iff"},
+{path="object/draft_schematic/armor/armor_segment_kashyyykian_ceremonial_advanced.iff"},
+{path="object/draft_schematic/armor/armor_segment_padded_advanced.iff"},
+{path="object/draft_schematic/armor/armor_segment_kashyyykian_black_mtn_advanced.iff"},
+{path="object/draft_schematic/armor/armor_segment_composite.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_padded_belt.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_padded_bicep_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_padded_bicep_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_padded_boots.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_padded_bracer_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_padded_bracer_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_padded_chest.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_padded_gloves.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_padded_helmet.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_padded_leggings.iff"},
+{path="object/draft_schematic/armor/armor_segment_ubese_advanced.iff"},
+{path="object/draft_schematic/armor/armor_segment_kashyyykian_hunting.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_black_mtn_chest.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_black_mtn_leggings.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_black_mtn_bracer_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_black_mtn_bracer_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_defender_bicep_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_defender_bicep_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_defender_boots.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_defender_bracer_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_defender_bracer_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_defender_chest.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_defender_gloves.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_defender_helmet.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_defender_leggings.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_composite_bicep_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_composite_bicep_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_composite_boots.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_composite_bracer_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_composite_bracer_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_composite_chest.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_composite_gloves.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_composite_helmet.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_composite_leggings.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_bicep_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_bicep_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_boots.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_bracer_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_bracer_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_chest.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_gloves.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_helmet.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_ithorian_sentinel_leggings.iff"},
+{path="object/draft_schematic/armor/armor_segment_composite_advanced.iff"},
+{path="object/draft_schematic/armor/armor_segment_kashyyykian_hunting_advanced.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_hunting_chest.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_hunting_leggings.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_hunting_bracer_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_kashyyykian_hunting_bracer_r.iff"},
+{path="object/draft_schematic/armor/component/armor_layer_kinetic.iff"},
+{path="object/draft_schematic/armor/component/armor_layer_energy.iff"},
+{path="object/draft_schematic/armor/component/armor_layer_blast.iff"},
+{path="object/draft_schematic/armor/component/armor_layer_heat.iff"},
+{path="object/draft_schematic/armor/component/armor_layer_cold.iff"},
+{path="object/draft_schematic/armor/component/armor_layer_electrical.iff"},
+{path="object/draft_schematic/armor/component/armor_layer_acid.iff"},
+{path="object/draft_schematic/armor/component/armor_layer_stun.iff"},
+{path="object/draft_schematic/armor/component/deflector_shield_generator_particle.iff"},
+{path="object/draft_schematic/armor/component/deflector_shield_generator_energy_ray.iff"},
+{path="object/draft_schematic/armor/component/deflector_shield_emitter_assembly.iff"},
+{path="object/draft_schematic/armor/component/deflector_shield_projector_plate.iff"},
+{path="object/draft_schematic/armor/shield_generator_personal.iff"},
+{path="object/draft_schematic/armor/shield_generator_personal_b.iff"},
+{path="object/draft_schematic/armor/shield_generator_personal_c.iff"},
+{path="object/draft_schematic/item/item_survey_tool_gas.iff"},
+{path="object/draft_schematic/item/item_survey_tool_liquid.iff"},
+{path="object/draft_schematic/item/item_survey_tool_mineral.iff"},
+{path="object/draft_schematic/item/item_survey_tool_moisture.iff"},
+{path="object/draft_schematic/item/item_survey_tool_flora.iff"},
+{path="object/draft_schematic/item/item_survey_tool_solar.iff"},
+{path="object/draft_schematic/item/item_survey_tool_wind.iff"},
+{path="object/draft_schematic/item/item_food_tool.iff"},
+{path="object/draft_schematic/item/item_clothing_tool.iff"},
+{path="object/draft_schematic/item/item_structure_tool.iff"},
+{path="object/draft_schematic/item/item_weapon_tool.iff"},
+{path="object/draft_schematic/item/item_space_tool.iff"},
+{path="object/draft_schematic/weapon/knife_survival.iff"},
+{path="object/draft_schematic/item/item_chance_cube.iff"},
+{path="object/draft_schematic/item/item_six_sided_dice.iff"},
+{path="object/draft_schematic/item/item_ten_sided_dice.iff"},
+{path="object/draft_schematic/weapon/pistol_blaster_cdef.iff"},
+{path="object/draft_schematic/weapon/carbine_blaster_cdef.iff"},
+{path="object/draft_schematic/weapon/rifle_blaster_cdef.iff"},
+{path="object/draft_schematic/item/item_generic_tool.iff"},
+{path="object/draft_schematic/item/item_fishing_pole.iff"},
+{path="object/draft_schematic/item/item_firework_one.iff"},
+{path="object/draft_schematic/item/item_firework_two.iff"},
+{path="object/draft_schematic/item/item_firework_three.iff"},
+{path="object/draft_schematic/item/item_powerup_weapon_ranged_one.iff"},
+{path="object/draft_schematic/item/item_powerup_weapon_ranged_two.iff"},
+{path="object/draft_schematic/item/item_powerup_weapon_melee_generic.iff"},
+{path="object/draft_schematic/item/item_twelve_sided_dice.iff"},
+{path="object/draft_schematic/item/item_twenty_sided_dice.iff"},
+{path="object/draft_schematic/item/item_hundred_sided_dice.iff"},
+{path="object/draft_schematic/weapon/staff.iff"},
+{path="object/draft_schematic/item/item_battery_droid.iff"},
+{path="object/draft_schematic/item/item_powerup_weapon_ranged_three.iff"},
+{path="object/draft_schematic/item/item_powerup_weapon_ranged_four.iff"},
+{path="object/draft_schematic/item/item_firework_four.iff"},
+{path="object/draft_schematic/item/item_firework_five.iff"},
+{path="object/draft_schematic/item/craftable_bug_habitat.iff"},
+{path="object/draft_schematic/item/item_repairkit_weapon.iff"},
+{path="object/draft_schematic/item/item_repairkit_armor.iff"},
+{path="object/draft_schematic/item/item_configurable_sided_dice.iff"},
+{path="object/draft_schematic/weapon/staff_reinforced.iff"},
+{path="object/draft_schematic/armor/armor_segment_bone.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_bone_gloves.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_bone_boots.iff"},
+{path="object/draft_schematic/item/item_powerup_weapon_thrown_wiring.iff"},
+{path="object/draft_schematic/item/item_firework_ten.iff"},
+{path="object/draft_schematic/item/item_powerup_weapon_ranged_five.iff"},
+{path="object/draft_schematic/weapon/knife_twilek_dagger.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_bone_bicep_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_bone_bicep_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_bone_leggings.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_bone_helmet.iff"},
+{path="object/draft_schematic/structure/installation_generator_wind.iff"},
+{path="object/draft_schematic/structure/installation_mining_ore_light.iff"},
+{path="object/draft_schematic/structure/installation_mining_organic_flora_light.iff"},
+{path="object/draft_schematic/item/item_firework_eleven.iff"},
+{path="object/draft_schematic/item/item_powerup_weapon_mine_explosive.iff"},
+{path="object/draft_schematic/item/item_firework_show.iff"},
+{path="object/draft_schematic/weapon/axe.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_bone_bracer_l.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_bone_bracer_r.iff"},
+{path="object/draft_schematic/clothing/clothing_armor_bone_chest.iff"},
+{path="object/draft_schematic/structure/installation_mining_gas_light.iff"},
+{path="object/draft_schematic/structure/installation_mining_liquid_light.iff"},
+{path="object/draft_schematic/structure/installation_mining_liquid_vapor_light.iff"},
+{path="object/draft_schematic/item/item_powerup_weapon_ranged_six.iff"},
+{path="object/draft_schematic/item/item_powerup_weapon_thrown_explosive.iff"},
+{path="object/draft_schematic/item/item_firework_eighteen.iff"},
+{path="object/draft_schematic/food/dessert_bofa_treat.iff"},
+{path="object/draft_schematic/food/dish_travel_biscuits.iff"},
+{path="object/draft_schematic/food/drink_spiced_tea.iff"},
+{path="object/draft_schematic/food/component/container_small_glass.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_casual_04.iff"},
+{path="object/draft_schematic/clothing/clothing_shoes_casual_02.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_25.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_shirt_s01.iff"},
+{path="object/draft_schematic/food/component/ingredient_carbosyrup.iff"},
+{path="object/draft_schematic/food/dessert_blob_candy.iff"},
+{path="object/draft_schematic/food/dish_exo_protein_wafers.iff"},
+{path="object/draft_schematic/food/drink_aitha.iff"},
+{path="object/draft_schematic/clothing/component/clothing_fiberplast_panel.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_17.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_10.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_casual_01.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_casual_14.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_casual_10.iff"},
+{path="object/draft_schematic/item/item_repairkit_clothing.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_gloves_s02.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_skirt_s04.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_casual_01.iff"},
+{path="object/draft_schematic/food/component/ingredient_ball_of_dough.iff"},
+{path="object/draft_schematic/food/dish_rations.iff"},
+{path="object/draft_schematic/food/dish_crispic.iff"},
+{path="object/draft_schematic/food/drink_caf.iff"},
+{path="object/draft_schematic/clothing/component/clothing_metal_fasteners.iff"},
+{path="object/draft_schematic/clothing/clothing_boots_casual_04.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_casual_12.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_hood_s01.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_casual_02.iff"},
+{path="object/draft_schematic/clothing/clothing_skirt_casual_10.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_casual_27.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_vest_field_01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_casual_06.iff"},
+{path="object/draft_schematic/food/dessert_pkneb.iff"},
+{path="object/draft_schematic/food/dish_kanali_wafers.iff"},
+{path="object/draft_schematic/food/drink_ruby_bliel.iff"},
+{path="object/draft_schematic/food/drink_jawa_beer.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_field_04.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_field_12.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_casual_17.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_field_04.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_field_07.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_field_11.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_casual_34.iff"},
+{path="object/draft_schematic/clothing/clothing_gloves_field_12.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_casual_12.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_shirt_s02.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_casual_07.iff"},
+{path="object/draft_schematic/food/additive/additive_light.iff"},
+{path="object/draft_schematic/food/component/container_large_glass.iff"},
+{path="object/draft_schematic/food/drink_jaar.iff"},
+{path="object/draft_schematic/food/drink_starshine_surprise.iff"},
+{path="object/draft_schematic/food/dish_dustcrepe.iff"},
+{path="object/draft_schematic/food/dish_teltier_noodles.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_18.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_26.iff"},
+{path="object/draft_schematic/clothing/clothing_boots_field_03.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_field_15.iff"},
+{path="object/draft_schematic/clothing/clothing_bandolier_field_07.iff"},
+{path="object/draft_schematic/clothing/clothing_bandolier_field_08.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_casual_06.iff"},
+{path="object/draft_schematic/clothing/clothing_backpack_field_01.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_hood_s03.iff"},
+{path="object/draft_schematic/item/item_parrot_cage.iff"},
+{path="object/draft_schematic/item/component/item_micro_sensor_suite.iff"},
+{path="object/draft_schematic/item/component/item_electronics_memory_module.iff"},
+{path="object/draft_schematic/item/component/item_electronics_gp_module.iff"},
+{path="object/draft_schematic/item/component/item_electronic_power_conditioner.iff"},
+{path="object/draft_schematic/item/component/item_electronic_energy_distributor.iff"},
+{path="object/draft_schematic/item/component/item_electronic_control_unit.iff"},
+{path="object/draft_schematic/space/repair/generic_repair_kit.iff"},
+{path="object/draft_schematic/clothing/clothing_backpack_field_03.iff"},
+{path="object/draft_schematic/clothing/component/clothing_synthetic_cloth.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_field_08.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_casual_03.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_casual_07.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_01.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_05.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_06.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_casual_05.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_casual_14.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_field_04.iff"},
+{path="object/draft_schematic/clothing/clothing_gloves_field_02.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_gloves_field_02.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_field_14.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_field_09.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_skirt_s03.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_hat_s01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_casual_08.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_casual_12.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_13.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_23.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_29.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_bracelet_05.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_bracelet_06.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_formal_13.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_formal_05.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_06.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_06.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_08.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_08.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_11.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_11.iff"},
+{path="object/draft_schematic/clothing/component/clothing_shoe_sole.iff"},
+{path="object/draft_schematic/clothing/clothing_boots_casual_15.iff"},
+{path="object/draft_schematic/clothing/clothing_boots_casual_21.iff"},
+{path="object/draft_schematic/clothing/clothing_gloves_casual_03.iff"},
+{path="object/draft_schematic/clothing/clothing_gloves_casual_06.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_gloves_s04.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_casual_09.iff"},
+{path="object/draft_schematic/clothing/clothing_skirt_casual_04.iff"},
+{path="object/draft_schematic/clothing/clothing_skirt_casual_05.iff"},
+{path="object/draft_schematic/clothing/clothing_shoes_casual_03.iff"},
+{path="object/draft_schematic/clothing/clothing_shoes_casual_07.iff"},
+{path="object/draft_schematic/clothing/clothing_shoes_casual_08.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_hat_casual_01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_casual_02.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_casual_03.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_casual_01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_casual_03.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_casual_04.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_casual_03.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_casual_13.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_casual_14.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_casual_16.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_casual_42.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_casual_38.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_casual_07.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_casual_17.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_casual_19.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_08.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_11.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_26.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_09.iff"},
+{path="object/draft_schematic/clothing/clothing_vest_casual_04.iff"},
+{path="object/draft_schematic/clothing/clothing_vest_casual_05.iff"},
+{path="object/draft_schematic/clothing/clothing_vest_casual_10.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_shoulder_pad_s01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_casual_08.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_casual_09.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_casual_06.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_casual_09.iff"},
+{path="object/draft_schematic/clothing/clothing_boots_casual_12.iff"},
+{path="object/draft_schematic/clothing/clothing_boots_casual_19.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_casual_05.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_casual_07.iff"},
+{path="object/draft_schematic/clothing/clothing_robe_casual_04.iff"},
+{path="object/draft_schematic/clothing/clothing_robe_casual_05.iff"},
+{path="object/draft_schematic/clothing/clothing_robe_casual_05b.iff"},
+{path="object/draft_schematic/clothing/clothing_robe_casual_18.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_casual_02.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_casual_10.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_casual_12.iff"},
+{path="object/draft_schematic/clothing/clothing_bustier_casual_01.iff"},
+{path="object/draft_schematic/clothing/clothing_bustier_casual_02.iff"},
+{path="object/draft_schematic/clothing/clothing_bustier_casual_03.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_bodysuit_casual_04.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_gloves_s03.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_hat_casual_03.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_casual_16.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_casual_18.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_casual_12.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_casual_14.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_casual_09.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_casual_11.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_casual_24.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_casual_30.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_casual_18.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_casual_24.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_casual_36.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_18.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_24.iff"},
+{path="object/draft_schematic/clothing/clothing_vest_casual_01.iff"},
+{path="object/draft_schematic/clothing/clothing_vest_casual_02.iff"},
+{path="object/draft_schematic/clothing/clothing_vest_casual_03.iff"},
+{path="object/draft_schematic/clothing/clothing_vest_casual_11.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_twilek_casual_01.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_twilek_casual_02.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_bodysuit_casual_01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_bodysuit_casual_03.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_bodysuit_casual_05.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_casual_21.iff"},
+{path="object/draft_schematic/clothing/component/clothing_cargo_pocket.iff"},
+{path="object/draft_schematic/clothing/clothing_backpack_field_04.iff"},
+{path="object/draft_schematic/clothing/clothing_boots_field_05.iff"},
+{path="object/draft_schematic/clothing/clothing_boots_field_14.iff"},
+{path="object/draft_schematic/clothing/clothing_boots_field_34.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_field_04.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_field_09.iff"},
+{path="object/draft_schematic/clothing/clothing_gloves_field_07.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_field_13.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_field_16.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_gloves_s01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_field_05.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_field_06.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_field_02.iff"},
+{path="object/draft_schematic/clothing/clothing_vest_field_06.iff"},
+{path="object/draft_schematic/clothing/clothing_vest_field_09.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_field_05.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_field_11.iff"},
+{path="object/draft_schematic/clothing/component/clothing_reinforced_fiber_panels.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_field_10.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_field_14.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_field_26.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_field_27.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_field_29.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_field_07.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_field_01.iff"},
+{path="object/draft_schematic/clothing/clothing_gloves_field_11.iff"},
+{path="object/draft_schematic/clothing/clothing_gloves_field_14.iff"},
+{path="object/draft_schematic/clothing/clothing_bandolier_field_05.iff"},
+{path="object/draft_schematic/clothing/clothing_bandolier_field_06.iff"},
+{path="object/draft_schematic/clothing/clothing_backpack_field_05.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_shirt_s03.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_field_07.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_field_12.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_field_05.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_field_07.iff"},
+{path="object/draft_schematic/clothing/component/clothing_padding_segment.iff"},
+{path="object/draft_schematic/clothing/clothing_backpack_field_06.iff"},
+{path="object/draft_schematic/clothing/clothing_bandolier_field_02.iff"},
+{path="object/draft_schematic/clothing/clothing_bandolier_field_03.iff"},
+{path="object/draft_schematic/clothing/clothing_bandolier_field_04.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_field_10.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_field_21.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_field_35.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_field_28.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_field_30.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_field_13.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_field_15.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_field_02.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_shoulder_pad_s02.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_field_13.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_field_21.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_field_22.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_field_19.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_field_20.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_field_03.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_field_05.iff"},
+{path="object/draft_schematic/clothing/clothing_gloves_field_10.iff"},
+{path="object/draft_schematic/clothing/clothing_gloves_field_13.iff"},
+{path="object/draft_schematic/clothing/clothing_bodysuit_field_13.iff"},
+{path="object/draft_schematic/clothing/clothing_bodysuit_field_16.iff"},
+{path="object/draft_schematic/clothing/clothing_robe_field_27.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_shirt_s04.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_bodysuit_field_02.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_field_11.iff"},
+{path="object/draft_schematic/clothing/component/clothing_trim.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_formal_08.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_formal_28.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_formal_02.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_formal_15.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_formal_16.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_formal_18.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_01.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_03.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_03.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_07.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_07.iff"},
+{path="object/draft_schematic/clothing/clothing_shoes_formal_01.iff"},
+{path="object/draft_schematic/clothing/clothing_shoes_formal_09.iff"},
+{path="object/draft_schematic/clothing/clothing_skirt_formal_06.iff"},
+{path="object/draft_schematic/clothing/clothing_skirt_formal_07.iff"},
+{path="object/draft_schematic/clothing/clothing_skirt_formal_14.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_skirt_s02.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_dress_formal_03.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_formal_08.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_skirt_formal_01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_skirt_formal_02.iff"},
+{path="object/draft_schematic/clothing/component/clothing_jewelry_setting.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_11.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_16.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_32.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_formal_12.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_formal_14.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_formal_19.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_bracelet_02.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_bracelet_03.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_bracelet_04.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_formal_06.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_formal_11.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_formal_26.iff"},
+{path="object/draft_schematic/clothing/clothing_vest_formal_15.iff"},
+{path="object/draft_schematic/clothing/clothing_skirt_formal_09.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_hood_s02.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_chef_02.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_hat_chef_02.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_formal_10.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_dress_formal_04.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_formal_04.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_skirt_formal_03.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_formal_12.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_formal_15.iff"},
+{path="object/draft_schematic/clothing/clothing_shirt_formal_32.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_19.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_27.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_30.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_31.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_09.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_09.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_10.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_10.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_12.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_12.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_ring_01.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_ring_02.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_formal_13.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_formal_31.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_formal_33.iff"},
+{path="object/draft_schematic/clothing/clothing_wke_skirt_s01.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_chef_01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_hat_chef_01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_hat_formal_02.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_formal_11.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_formal_10.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_14.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_33.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_34.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_formal_13.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_formal_17.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_formal_20.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_formal_03.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_formal_22.iff"},
+{path="object/draft_schematic/clothing/clothing_jacket_formal_25.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_02.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_02.iff"},
+{path="object/draft_schematic/clothing/clothing_skirt_formal_11.iff"},
+{path="object/draft_schematic/clothing/clothing_skirt_formal_12.iff"},
+{path="object/draft_schematic/clothing/clothing_skirt_formal_13.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_formal_13.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_formal_15.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_formal_32.iff"},
+{path="object/draft_schematic/clothing/clothing_apron_chef_01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_apron_chef_01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_hat_formal_04.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_robe_formal_01.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_pants_formal_14.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jacket_formal_15.iff"},
+{path="object/draft_schematic/clothing/clothing_bikini_casual_01.iff"},
+{path="object/draft_schematic/clothing/clothing_bikini_casual_02.iff"},
+{path="object/draft_schematic/clothing/clothing_bikini_casual_03.iff"},
+{path="object/draft_schematic/clothing/clothing_bikini_casual_04.iff"},
+{path="object/draft_schematic/clothing/clothing_bikini_leggings_casual_01.iff"},
+{path="object/draft_schematic/clothing/clothing_bodysuit_casual_08.iff"},
+{path="object/draft_schematic/clothing/clothing_bodysuit_casual_12.iff"},
+{path="object/draft_schematic/clothing/clothing_bodysuit_field_01.iff"},
+{path="object/draft_schematic/clothing/clothing_bodysuit_field_14.iff"},
+{path="object/draft_schematic/clothing/clothing_bodysuit_field_15.iff"},
+{path="object/draft_schematic/clothing/clothing_bodysuit_formal_06.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_bodysuit_formal_06.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_shirt_formal_10.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_08.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_15.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_35.iff"},
+{path="object/draft_schematic/clothing/clothing_pants_casual_02.iff"},
+{path="object/draft_schematic/clothing/clothing_robe_formal_01.iff"},
+{path="object/draft_schematic/clothing/clothing_robe_formal_12.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_robe_formal_02.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_twilek_formal_03.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_twilek_formal_04.iff"},
+{path="object/draft_schematic/clothing/clothing_hat_twilek_formal_05.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_04.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_04.iff"},
+{path="object/draft_schematic/clothing/clothing_jewelry_necklace_05.iff"},
+{path="object/draft_schematic/clothing/clothing_ith_jewelry_necklace_05.iff"},
+{path="object/draft_schematic/clothing/clothing_skirt_casual_03.iff"},
+{path="object/draft_schematic/food/additive/additive_medium.iff"},
+{path="object/draft_schematic/food/dish_soypro.iff"},
+{path="object/draft_schematic/food/dessert_air_cake.iff"},
+{path="object/draft_schematic/food/dessert_almond_kwevvu_crisp_munchies.iff"},
+{path="object/draft_schematic/food/dessert_blap_biscuit.iff"},
+{path="object/draft_schematic/food/drink_alcohol.iff"},
+{path="object/draft_schematic/food/dish_protato.iff"},
+{path="object/draft_schematic/food/dish_synthsteak.iff"},
+{path="object/draft_schematic/food/dish_cho_nor_hoola.iff"},
+{path="object/draft_schematic/food/dish_blood_chowder.iff"},
+{path="object/draft_schematic/food/dish_karkan_ribenes.iff"},
+{path="object/draft_schematic/food/dish_trimpian.iff"},
+{path="object/draft_schematic/food/dish_veghash.iff"},
+{path="object/draft_schematic/food/dish_ormachek.iff"},
+{path="object/draft_schematic/food/dish_gruuvan_shaal.iff"},
+{path="object/draft_schematic/food/dish_havla.iff"},
+{path="object/draft_schematic/food/dish_scrimpi.iff"},
+{path="object/draft_schematic/food/dish_ahrisa.iff"},
+{path="object/draft_schematic/food/dish_vegeparsine.iff"},
+{path="object/draft_schematic/food/dish_bivoli_tempari.iff"},
+{path="object/draft_schematic/food/dish_terratta.iff"},
+{path="object/draft_schematic/food/dish_rakririan_burnout_sauce.iff"},
+{path="object/draft_schematic/food/dessert_bantha_butter.iff"},
+{path="object/draft_schematic/food/dessert_pastebread.iff"},
+{path="object/draft_schematic/food/dessert_won_won.iff"},
+{path="object/draft_schematic/food/dessert_chandad.iff"},
+{path="object/draft_schematic/food/dessert_sweet_cake_mix.iff"},
+{path="object/draft_schematic/food/dessert_parwan_nutricake.iff"},
+{path="object/draft_schematic/food/dessert_pyollian_cake.iff"},
+{path="object/draft_schematic/food/dessert_dweezel.iff"},
+{path="object/draft_schematic/food/dessert_felbar.iff"},
+{path="object/draft_schematic/food/dessert_citros_snow_cake.iff"},
+{path="object/draft_schematic/food/dessert_pikatta_pie.iff"},
+{path="object/draft_schematic/food/dessert_gorrnar.iff"},
+{path="object/draft_schematic/food/dessert_kiwik_clusjo_swirl.iff"},
+{path="object/draft_schematic/food/dessert_cavaellin_creams.iff"},
+{path="object/draft_schematic/food/dessert_vagnerian_canape.iff"},
+{path="object/draft_schematic/food/dessert_sweesonberry_rolls.iff"},
+{path="object/draft_schematic/food/dessert_smugglers_delight.iff"},
+{path="object/draft_schematic/food/drink_deuterium_pyro.iff"},
+{path="object/draft_schematic/food/drink_gralinyn_juice.iff"},
+{path="object/draft_schematic/food/drink_corellian_ale.iff"},
+{path="object/draft_schematic/food/drink_blue_milk.iff"},
+{path="object/draft_schematic/food/component/container_cask.iff"},
+{path="object/draft_schematic/food/drink_veronian_berry_wine.iff"},
+{path="object/draft_schematic/food/drink_durindfire.iff"},
+{path="object/draft_schematic/food/drink_ithorian_mist.iff"},
+{path="object/draft_schematic/food/drink_corellian_brandy.iff"},
+{path="object/draft_schematic/food/drink_tssolok.iff"},
+{path="object/draft_schematic/food/drink_vasarian_brandy.iff"},
+{path="object/draft_schematic/food/drink_accarragm.iff"},
+{path="object/draft_schematic/food/drink_garrmorl.iff"},
+{path="object/draft_schematic/food/drink_bespin_port.iff"},
+{path="object/draft_schematic/food/drink_elshandruu_pica_thundercloud.iff"},
+{path="object/draft_schematic/food/drink_tilla_tiil.iff"},
+{path="object/draft_schematic/food/drink_vayerbok.iff"},
+{path="object/draft_schematic/food/additive/additive_heavy.iff"},
+{path="object/draft_schematic/food/component/container_barrel.iff"},
+{path="object/draft_schematic/food/drink_breath_of_heaven.iff"},
+{path="object/draft_schematic/food/drink_flameout.iff"},
+{path="object/draft_schematic/food/dish_thakitillo.iff"},
+{path="object/draft_schematic/food/dish_vercupti_of_agazza_boleruuee.iff"},
+{path="object/draft_schematic/food/dessert_deneelian_fizz_pudding.iff"},
+{path="object/draft_schematic/droid/droid_mse.iff"},
+{path="object/draft_schematic/droid/component/manipulator_arm.iff"},
+{path="object/draft_schematic/droid/component/droid_motive_system.iff"},
+{path="object/draft_schematic/droid/component/droid_storage_compartment.iff"},
+{path="object/draft_schematic/droid/droid_customization_kit.iff"},
+{path="object/draft_schematic/droid/navicomputer_1.iff"},
+{path="object/draft_schematic/droid/component/medic_module_1.iff"},
+{path="object/draft_schematic/droid/component/data_storage_module_1.iff"},
+{path="object/draft_schematic/droid/component/item_storage_module_1.iff"},
+{path="object/draft_schematic/droid/component/personality_module_stupid.iff"},
+{path="object/draft_schematic/droid/component/playback_module.iff"},
+{path="object/draft_schematic/droid/component/performer_effects_a.iff"},
+{path="object/draft_schematic/droid/component/performer_effects_aa.iff"},
+{path="object/draft_schematic/droid/component/droid_space_memory_module_1.iff"},
+{path="object/draft_schematic/droid/component/armor_module_1.iff"},
+{path="object/draft_schematic/droid/droid_treadwell.iff"},
+{path="object/draft_schematic/droid/droid_dz70.iff"},
+{path="object/draft_schematic/droid/droid_r5.iff"},
+{path="object/draft_schematic/droid/bounty_seeker_transmitter.iff"},
+{path="object/draft_schematic/droid/component/sensor_package_droid.iff"},
+{path="object/draft_schematic/droid/droid_mse_advanced.iff"},
+{path="object/draft_schematic/droid/component/manipulator_arm_package_set.iff"},
+{path="object/draft_schematic/droid/navicomputer_2.iff"},
+{path="object/draft_schematic/droid/component/medic_module_2.iff"},
+{path="object/draft_schematic/droid/component/data_storage_module_2.iff"},
+{path="object/draft_schematic/droid/component/item_storage_module_2.iff"},
+{path="object/draft_schematic/droid/component/harvest_module.iff"},
+{path="object/draft_schematic/droid/component/personality_module_sarcastic.iff"},
+{path="object/draft_schematic/droid/component/crafting_module_weapon.iff"},
+{path="object/draft_schematic/droid/component/struct_maint_module_1.iff"},
+{path="object/draft_schematic/droid/component/merchant_barker.iff"},
+{path="object/draft_schematic/droid/component/performer_effects_b.iff"},
+{path="object/draft_schematic/droid/component/armor_module_2.iff"},
+{path="object/draft_schematic/droid/component/droid_motive_system_advanced.iff"},
+{path="object/draft_schematic/droid/droid_power.iff"},
+{path="object/draft_schematic/droid/droid_r4.iff"},
+{path="object/draft_schematic/droid/component/droid_brain.iff"},
+{path="object/draft_schematic/droid/component/advanced_droid_frame.iff"},
+{path="object/draft_schematic/droid/droid_treadwell_advanced.iff"},
+{path="object/draft_schematic/droid/droid_dz70_advanced.iff"},
+{path="object/draft_schematic/droid/droid_r5_advanced.iff"},
+{path="object/draft_schematic/droid/component/chassis_droid_r4.iff"},
+{path="object/draft_schematic/droid/navicomputer_3.iff"},
+{path="object/draft_schematic/droid/component/medic_module_3.iff"},
+{path="object/draft_schematic/droid/component/trap_module.iff"},
+{path="object/draft_schematic/droid/component/data_storage_module_3.iff"},
+{path="object/draft_schematic/droid/component/item_storage_module_3.iff"},
+{path="object/draft_schematic/droid/component/personality_module_prissy.iff"},
+{path="object/draft_schematic/droid/component/stimpack_dispensor.iff"},
+{path="object/draft_schematic/droid/component/performer_effects_c.iff"},
+{path="object/draft_schematic/droid/component/armor_module_3.iff"},
+{path="object/draft_schematic/droid/component/repair_module.iff"},
+{path="object/draft_schematic/droid/component/crafting_module_food.iff"},
+{path="object/draft_schematic/droid/component/combat_module.iff"},
+{path="object/draft_schematic/droid/component/combat_socket_bank.iff"},
+{path="object/draft_schematic/droid/droid_le_repair.iff"},
+{path="object/draft_schematic/droid/droid_surgical.iff"},
+{path="object/draft_schematic/droid/droid_r2.iff"},
+{path="object/draft_schematic/droid/droid_probot.iff"},
+{path="object/draft_schematic/droid/bounty_probot_transmitter.iff"},
+{path="object/draft_schematic/droid/component/droid_brain_advanced.iff"},
+{path="object/draft_schematic/droid/droid_power_advanced.iff"},
+{path="object/draft_schematic/droid/droid_r4_advanced.iff"},
+{path="object/draft_schematic/droid/component/chassis_droid_r2.iff"},
+{path="object/draft_schematic/droid/component/chassis_droid_probot.iff"},
+{path="object/draft_schematic/droid/component/chassis_droid_le_repair.iff"},
+{path="object/draft_schematic/droid/component/chassis_droid_surgical.iff"},
+{path="object/draft_schematic/droid/navicomputer_4.iff"},
+{path="object/draft_schematic/droid/component/medic_module_4.iff"},
+{path="object/draft_schematic/droid/component/data_storage_module_4.iff"},
+{path="object/draft_schematic/droid/component/item_storage_module_4.iff"},
+{path="object/draft_schematic/droid/component/personality_module_worshipful.iff"},
+{path="object/draft_schematic/droid/component/struct_maint_module_2.iff"},
+{path="object/draft_schematic/droid/component/auto_repair_module.iff"},
+{path="object/draft_schematic/droid/component/performer_effects_d.iff"},
+{path="object/draft_schematic/droid/component/armor_module_4.iff"},
+{path="object/draft_schematic/droid/component/crafting_module_clothing.iff"},
+{path="object/draft_schematic/droid/component/module_socket_bank.iff"},
+{path="object/draft_schematic/droid/droid_r3.iff"},
+{path="object/draft_schematic/droid/droid_binary_load_lifter.iff"},
+{path="object/draft_schematic/droid/droid_3p0.iff"},
+{path="object/draft_schematic/droid/droid_r2_advanced.iff"},
+{path="object/draft_schematic/droid/droid_probot_advanced.iff"},
+{path="object/draft_schematic/droid/droid_le_repair_advanced.iff"},
+{path="object/draft_schematic/droid/droid_surgical_advanced.iff"},
+{path="object/draft_schematic/droid/component/chassis_droid_r3.iff"},
+{path="object/draft_schematic/droid/component/chassis_droid_binary_load_lifter.iff"},
+{path="object/draft_schematic/droid/component/chassis_droid_3p0.iff"},
+{path="object/draft_schematic/droid/navicomputer_5.iff"},
+{path="object/draft_schematic/droid/component/medic_module_5.iff"},
+{path="object/draft_schematic/droid/component/data_storage_module_5.iff"},
+{path="object/draft_schematic/droid/component/item_storage_module_5.iff"},
+{path="object/draft_schematic/droid/component/personality_module_slang.iff"},
+{path="object/draft_schematic/droid/component/crafting_module_structure.iff"},
+{path="object/draft_schematic/droid/component/performer_effects_e.iff"},
+{path="object/draft_schematic/droid/component/armor_module_5.iff"},
+{path="object/draft_schematic/droid/droid_r3_advanced.iff"},
+{path="object/draft_schematic/droid/droid_binary_load_lifter_advanced.iff"},
+{path="object/draft_schematic/droid/droid_3p0_advanced.iff"},
+{path="object/draft_schematic/droid/droid_interplanetary_survey.iff"},
+{path="object/draft_schematic/droid/navicomputer_6.iff"},
+{path="object/draft_schematic/droid/component/medic_module_6.iff"},
+{path="object/draft_schematic/droid/component/data_storage_module_6.iff"},
+{path="object/draft_schematic/droid/component/item_storage_module_6.iff"},
+{path="object/draft_schematic/droid/component/personality_module_geek.iff"},
+{path="object/draft_schematic/droid/component/struct_maint_module_3.iff"},
+{path="object/draft_schematic/droid/component/detonation_module.iff"},
+{path="object/draft_schematic/droid/component/crafting_module_space.iff"},
+{path="object/draft_schematic/droid/component/armor_module_6.iff"},
+{path="object/draft_schematic/droid/component/unit_delivery_cartridge.iff"},
+{path="object/draft_schematic/droid/component/repair_unit_casing.iff"},
+{path="object/draft_schematic/droid/component/power_supply_redundant.iff"},
+{path="object/draft_schematic/droid/component/diagnostic_circuit.iff"},
+{path="object/draft_schematic/droid/component/capacitor_low_discharge.iff"},
+{path="object/draft_schematic/droid/component/unit_delivery_cartridge_advanced.iff"},
+{path="object/draft_schematic/droid/component/repair_unit_casing_advanced.iff"},
+{path="object/draft_schematic/droid/component/power_supply_redundant_advanced.iff"},
+{path="object/draft_schematic/droid/component/diagnostic_circuit_advanced.iff"},
+{path="object/draft_schematic/droid/component/capacitor_high_discharge.iff"},
+{path="object/draft_schematic/droid/droid_wound_repair_kit_a.iff"},
+{path="object/draft_schematic/droid/droid_wound_repair_kit_b.iff"},
+{path="object/draft_schematic/droid/droid_wound_repair_kit_c.iff"},
+{path="object/draft_schematic/droid/droid_wound_repair_kit_d.iff"},
+{path="object/draft_schematic/droid/droid_damage_repair_kit_a.iff"},
+{path="object/draft_schematic/droid/droid_damage_repair_kit_b.iff"},
+{path="object/draft_schematic/droid/droid_damage_repair_kit_c.iff"},
+{path="object/draft_schematic/droid/droid_damage_repair_kit_d.iff"},
+{path="object/draft_schematic/furniture/furniture_tree_potted.iff"},
+{path="object/draft_schematic/furniture/furniture_tiki_torch.iff"},
+{path="object/draft_schematic/furniture/furniture_plants_potted_large.iff"},
+{path="object/draft_schematic/furniture/furniture_plants_potted_small.iff"},
+{path="object/draft_schematic/furniture/furniture_armoire_cheap.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_loveseat_cheap.iff"},
+{path="object/draft_schematic/furniture/furniture_bookcase_cheap.iff"},
+{path="object/draft_schematic/furniture/furniture_chest_cheap.iff"},
+{path="object/draft_schematic/furniture/furniture_couch_cheap.iff"},
+{path="object/draft_schematic/item/item_weapon_station.iff"},
+{path="object/draft_schematic/item/item_structure_station.iff"},
+{path="object/draft_schematic/item/item_food_station.iff"},
+{path="object/draft_schematic/item/item_clothing_station.iff"},
+{path="object/draft_schematic/item/item_space_station.iff"},
+{path="object/draft_schematic/furniture/furniture_toolchest_medium.iff"},
+{path="object/draft_schematic/furniture/furniture_table_coffee_cheap.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_cheap.iff"},
+{path="object/draft_schematic/furniture/furniture_table_endtable_cheap.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_divan.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_futon.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_kitchen.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_love_seat.iff"},
+{path="object/draft_schematic/furniture/furniture_table_small_tatooine.iff"},
+{path="object/draft_schematic/furniture/furniture_table_tatooine_cafe.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_metal.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_metal_wheeled.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_ottoman.iff"},
+{path="object/draft_schematic/furniture/furniture_bed_small.iff"},
+{path="object/draft_schematic/furniture/furniture_toolchest_large.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_recliner.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_tatooine_cafe.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_upholstered.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_wooden.iff"},
+{path="object/draft_schematic/furniture/furniture_couch_large.iff"},
+{path="object/draft_schematic/furniture/furniture_couch_small.iff"},
+{path="object/draft_schematic/furniture/furniture_droid_detector.iff"},
+{path="object/draft_schematic/furniture/furniture_candle_free_s01_on.iff"},
+{path="object/draft_schematic/furniture/furniture_candle_free_s02_on.iff"},
+{path="object/draft_schematic/furniture/furniture_candle_table_s01_on.iff"},
+{path="object/draft_schematic/furniture/furniture_candle_table_s02_on.iff"},
+{path="object/draft_schematic/furniture/furniture_candle_table_s03_on.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_desk.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_desk_s01_on.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_desk_s02_on.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_freestanding.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_free_s01_on.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_free_s02_on.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_free_s03_on.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_free_s04_on.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_tatt_s01_on.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_table.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_table_s01_on.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_table_s02_on.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_table_s03_on.iff"},
+{path="object/draft_schematic/furniture/furniture_lamp_table_cantina.iff"},
+{path="object/draft_schematic/furniture/furniture_armoire_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_bookcase_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_cabinet_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_loveseat_modern.iff"},
+{path="object/draft_schematic/item/item_ballot_box_terminal.iff"},
+{path="object/draft_schematic/furniture/furniture_bed_large.iff"},
+{path="object/draft_schematic/furniture/furniture_couch_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_chest_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_terminal_freestanding.iff"},
+{path="object/draft_schematic/furniture/furniture_terminal_wall.iff"},
+{path="object/draft_schematic/furniture/furniture_sofachair_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_table_endtable_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_table_endtable_small_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_table_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_table_coffee_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_table_dining_modern.iff"},
+{path="object/draft_schematic/furniture/furniture_table_coffee_elegant.iff"},
+{path="object/draft_schematic/furniture/furniture_table_endtable_elegant.iff"},
+{path="object/draft_schematic/furniture/furniture_couch_elegant.iff"},
+{path="object/draft_schematic/furniture/furniture_armoire_elegant.iff"},
+{path="object/draft_schematic/furniture/furniture_bookcase_elegant.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_elegant.iff"},
+{path="object/draft_schematic/furniture/furniture_chair_loveseat_elegant.iff"},
+{path="object/draft_schematic/furniture/furniture_chest_elegant.iff"},
+{path="object/draft_schematic/instrument/instrument_slitherhorn.iff"},
+{path="object/draft_schematic/instrument/instrument_fizz.iff"},
+{path="object/draft_schematic/instrument/instrument_fanfar.iff"},
+{path="object/draft_schematic/instrument/instrument_kloo_horn.iff"},
+{path="object/draft_schematic/instrument/component/dual_wave_synthesizer.iff"},
+{path="object/draft_schematic/instrument/instrument_mandoviol.iff"},
+{path="object/draft_schematic/instrument/instrument_traz.iff"},
+{path="object/draft_schematic/instrument/instrument_bandfill.iff"},
+{path="object/draft_schematic/instrument/instrument_flute_droopy.iff"},
+{path="object/draft_schematic/instrument/instrument_omni_box.iff"},
+{path="object/draft_schematic/instrument/instrument_nalargon.iff"},
+{path="object/draft_schematic/chemistry/component/biologic_effect_controller.iff"},
+{path="object/draft_schematic/chemistry/component/liquid_delivery_suspension.iff"},
+{path="object/draft_schematic/item/item_food_tool.iff"},
+{path="object/draft_schematic/chemistry/component/release_mechanism_duration.iff"},
+{path="object/draft_schematic/chemistry/component/solid_delivery_shell.iff"},
+{path="object/draft_schematic/chemistry/component/dispersal_mechanism.iff"},
+{path="object/draft_schematic/chemistry/component/infection_amplifier.iff"},
+{path="object/draft_schematic/chemistry/component/resilience_compound.iff"},
+{path="object/draft_schematic/chemistry/component/biologic_effect_controller_advanced.iff"},
+{path="object/draft_schematic/chemistry/component/liquid_delivery_suspension_advanced.iff"},
+{path="object/draft_schematic/chemistry/component/release_mechanism_duration_advanced.iff"},
+{path="object/draft_schematic/chemistry/component/solid_delivery_shell_advanced.iff"},
+{path="object/draft_schematic/chemistry/component/dispersal_mechanism_advanced.iff"},
+{path="object/draft_schematic/chemistry/component/infection_amplifier_advanced.iff"},
+{path="object/draft_schematic/chemistry/component/resilience_compound_advanced.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_a.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_b.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_c.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_d.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_e.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_action_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_health_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_action_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_health_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_action_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_health_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_action_d.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_health_d.iff"},
+{path="object/draft_schematic/chemistry/medpack_revive.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_action_e.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_health_e.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_quickness_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_stamina_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_strength_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_constitution_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_quickness_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_stamina_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_strength_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_constitution_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_quickness_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_stamina_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_strength_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_constitution_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_quickness_d.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_stamina_d.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_strength_d.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_constitution_d.iff"},
+{path="object/draft_schematic/chemistry/med_fire_blanket.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_quickness_e.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_stamina_e.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_strength_e.iff"},
+{path="object/draft_schematic/chemistry/medpack_wound_constitution_e.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_action_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_health_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_action_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_health_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_action_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_health_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_action_d.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_health_d.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_constitution_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_quickness_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_stamina_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_strength_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_poison_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_disease_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_constitution_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_quickness_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_stamina_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_strength_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_constitution_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_quickness_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_stamina_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_strength_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_poison_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_disease_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_constitution_d.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_quickness_d.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_stamina_d.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_strength_d.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_poison_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_enhance_disease_c.iff"},
+{path="object/draft_schematic/munition/component/warhead_fusing_mechanism.iff"},
+{path="object/draft_schematic/munition/component/warhead_light.iff"},
+{path="object/draft_schematic/munition/grenade_fragmentation_c_12.iff"},
+{path="object/draft_schematic/munition/component/warhead_chemical.iff"},
+{path="object/draft_schematic/munition/component/warhead_medium.iff"},
+{path="object/draft_schematic/munition/grenade_fragmentation_c_22.iff"},
+{path="object/draft_schematic/munition/mine_dxr55.iff"},
+{path="object/draft_schematic/munition/grenade_glop.iff"},
+{path="object/draft_schematic/munition/grenade_cryoban_ww_41.iff"},
+{path="object/draft_schematic/munition/component/warhead_stabilizer.iff"},
+{path="object/draft_schematic/munition/component/warhead_heavy.iff"},
+{path="object/draft_schematic/munition/detonator_thermal_class_a.iff"},
+{path="object/draft_schematic/munition/mine_xg.iff"},
+{path="object/draft_schematic/munition/grenade_proton.iff"},
+{path="object/draft_schematic/munition/mine_anti_vehicle.iff"},
+{path="object/draft_schematic/weapon/heavy_rocket_launcher.iff"},
+{path="object/draft_schematic/munition/detonator_thermal_imperial_issue.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_range_a.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_range_b.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_range_c.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_area_a.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_range_d.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_area_b.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_range_e.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_area_c.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_state_blinded_a.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_state_dizzy_a.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_state_intimidated_a.iff"},
+{path="object/draft_schematic/chemistry/med_stimpack_state_stunned_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_poison_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_poison_area_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_poison_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_poison_area_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_poison_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_poison_area_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_disease_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_disease_area_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_disease_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_disease_area_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_disease_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_cure_disease_area_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_health_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_action_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_mind_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_health_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_action_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_mind_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_health_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_action_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_mind_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_area_health_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_area_action_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_area_mind_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_area_health_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_area_action_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_area_mind_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_area_health_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_area_action_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_poison_area_mind_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_action_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_constitution_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_focus_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_health_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_mind_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_quickness_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_stamina_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_strength_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_willpower_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_action_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_constitution_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_focus_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_health_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_mind_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_quickness_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_stamina_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_strength_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_willpower_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_action_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_constitution_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_focus_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_health_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_mind_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_quickness_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_stamina_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_strength_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_willpower_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_action_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_constitution_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_focus_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_health_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_mind_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_quickness_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_stamina_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_strength_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_willpower_a.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_action_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_constitution_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_focus_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_health_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_mind_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_quickness_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_stamina_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_strength_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_willpower_b.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_action_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_constitution_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_focus_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_health_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_mind_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_quickness_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_stamina_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_strength_c.iff"},
+{path="object/draft_schematic/chemistry/medpack_disease_area_willpower_c.iff"},
+{path="object/draft_schematic/structure/component/structural_module.iff"},
+{path="object/draft_schematic/structure/component/structure_light_power_core_unit.iff"},
+{path="object/draft_schematic/structure/component/structure_small_storage_section.iff"},
+{path="object/draft_schematic/structure/house_player_small.iff"},
+{path="object/draft_schematic/structure/corellia_house_player_small.iff"},
+{path="object/draft_schematic/structure/corellia_house_player_small_floorplan_02.iff"},
+{path="object/draft_schematic/structure/naboo_house_player_small.iff"},
+{path="object/draft_schematic/structure/component/structure_generator_turbine.iff"},
+{path="object/draft_schematic/structure/component/wall_module.iff"},
+{path="object/draft_schematic/structure/component/structure_power_core_unit.iff"},
+{path="object/draft_schematic/structure/component/structure_storage_section.iff"},
+{path="object/draft_schematic/structure/corellia_house_player_small_style_02_floorplan_02.iff"},
+{path="object/draft_schematic/structure/corellia_house_player_small_style_02.iff"},
+{path="object/draft_schematic/structure/naboo_house_player_small_style_02.iff"},
+{path="object/draft_schematic/structure/house_player_small_style_02.iff"},
+{path="object/draft_schematic/structure/generic_house_player_small_floorplan_02.iff"},
+{path="object/draft_schematic/structure/generic_house_player_small.iff"},
+{path="object/draft_schematic/structure/corellia_house_player_medium.iff"},
+{path="object/draft_schematic/structure/naboo_house_player_medium.iff"},
+{path="object/draft_schematic/structure/house_player_medium.iff"},
+{path="object/draft_schematic/structure/generic_house_player_small_style_02.iff"},
+{path="object/draft_schematic/structure/generic_house_player_small_style_02_floorplan_02.iff"},
+{path="object/draft_schematic/structure/corellia_house_player_large.iff"},
+{path="object/draft_schematic/structure/naboo_house_player_large.iff"},
+{path="object/draft_schematic/structure/house_player_large.iff"},
+{path="object/draft_schematic/structure/generic_house_player_medium.iff"},
+{path="object/draft_schematic/structure/generic_house_player_medium_style_02.iff"},
+{path="object/draft_schematic/structure/corellia_house_player_large_style_02.iff"},
+{path="object/draft_schematic/structure/generic_house_player_large.iff"},
+{path="object/draft_schematic/structure/generic_house_player_large_style_02.iff"},
+{path="object/draft_schematic/structure/corellia_house_guild_hall.iff"},
+{path="object/draft_schematic/structure/generic_house_guild_hall.iff"},
+{path="object/draft_schematic/structure/house_guild_hall.iff"},
+{path="object/draft_schematic/structure/naboo_house_guild_hall.iff"},
+{path="object/draft_schematic/structure/installation_factory_weapon.iff"},
+{path="object/draft_schematic/structure/installation_mining_liquid_vapor.iff"},
+{path="object/draft_schematic/structure/component/structure_fluidic_drilling_pumping_unit.iff"},
+{path="object/draft_schematic/structure/component/structure_harvesting_mechanism.iff"},
+{path="object/draft_schematic/structure/component/structure_ore_mining_unit.iff"},
+{path="object/draft_schematic/structure/component/structure_manufacturing_mechanism.iff"},
+{path="object/draft_schematic/structure/component/structure_light_ore_mining_unit.iff"},
+{path="object/draft_schematic/structure/installation_factory_clothing.iff"},
+{path="object/draft_schematic/structure/installation_factory_food.iff"},
+{path="object/draft_schematic/structure/installation_factory_structure.iff"},
+{path="object/draft_schematic/structure/installation_mining_ore.iff"},
+{path="object/draft_schematic/structure/installation_generator_solar.iff"},
+{path="object/draft_schematic/structure/installation_mining_gas.iff"},
+{path="object/draft_schematic/structure/installation_mining_liquid.iff"},
+{path="object/draft_schematic/structure/component/structure_heavy_harvesting_mechanism.iff"},
+{path="object/draft_schematic/structure/component/structure_turbo_fluidic_drilling_pumping_unit.iff"},
+{path="object/draft_schematic/structure/installation_mining_liquid_heavy.iff"},
+{path="object/draft_schematic/structure/installation_mining_organic_flora.iff"},
+{path="object/draft_schematic/structure/installation_mining_liquid_vapor_heavy.iff"},
+{path="object/draft_schematic/structure/installation_mining_organic_flora_heavy.iff"},
+{path="object/draft_schematic/structure/installation_mining_gas_heavy.iff"},
+{path="object/draft_schematic/structure/installation_mining_ore_heavy.iff"},
+{path="object/draft_schematic/structure/installation_generator_fusion.iff"},
+{path="object/draft_schematic/weapon/component/blade_vibro_unit.iff"},
+{path="object/draft_schematic/weapon/component/sword_core.iff"},
+{path="object/draft_schematic/weapon/component/reinforcement_core.iff"},
+{path="object/draft_schematic/weapon/sword.iff"},
+{path="object/draft_schematic/weapon/staff_metal.iff"},
+{path="object/draft_schematic/weapon/lance_vibro_controller_fp.iff"},
+{path="object/draft_schematic/weapon/baton_gaderiffi.iff"},
+{path="object/draft_schematic/weapon/battleaxe.iff"},
+{path="object/draft_schematic/weapon/knuckler_vibro.iff"},
+{path="object/draft_schematic/weapon/sword_curved.iff"},
+{path="object/draft_schematic/weapon/component/sword_core_advanced.iff"},
+{path="object/draft_schematic/weapon/component/reinforcement_core_advanced.iff"},
+{path="object/draft_schematic/weapon/knife_vibroblade.iff"},
+{path="object/draft_schematic/weapon/sword_ryyk_blade.iff"},
+{path="object/draft_schematic/weapon/katana.iff"},
+{path="object/draft_schematic/weapon/component/blade_vibro_unit_advanced.iff"},
+{path="object/draft_schematic/weapon/baton_stun.iff"},
+{path="object/draft_schematic/weapon/axe_vibro.iff"},
+{path="object/draft_schematic/weapon/lance_vibro.iff"},
+{path="object/draft_schematic/weapon/cleaver.iff"},
+{path="object/draft_schematic/weapon/poleaxe_vibro.iff"},
+{path="object/draft_schematic/weapon/maul.iff"},
+{path="object/draft_schematic/slicing/slicing_weapon_upgrade_kit.iff"},
+{path="object/draft_schematic/weapon/component/blaster_pistol_barrel.iff"},
+{path="object/draft_schematic/weapon/component/blaster_power_handler.iff"},
+{path="object/draft_schematic/weapon/component/projectile_feed_mechanism.iff"},
+{path="object/draft_schematic/weapon/component/projectile_pistol_barrel.iff"},
+{path="object/draft_schematic/weapon/component/scope_weapon.iff"},
+{path="object/draft_schematic/weapon/component/stock.iff"},
+{path="object/draft_schematic/weapon/pistol_blaster_d18.iff"},
+{path="object/draft_schematic/weapon/rifle_blaster_dlt20.iff"},
+{path="object/draft_schematic/weapon/component/blaster_rifle_barrel.iff"},
+{path="object/draft_schematic/weapon/component/projectile_rifle_barrel.iff"},
+{path="object/draft_schematic/weapon/component/chemical_dispersion_mechanism.iff"},
+{path="object/draft_schematic/weapon/rifle_light_blaster_dh17_carbine.iff"},
+{path="object/draft_schematic/weapon/pistol_blaster_dl44.iff"},
+{path="object/draft_schematic/weapon/pistol_blaster_scout_trooper.iff"},
+{path="object/draft_schematic/weapon/rifle_blaster_dlt20a.iff"},
+{path="object/draft_schematic/weapon/pistol_flechette_fwg5.iff"},
+{path="object/draft_schematic/weapon/pistol_projectile_striker.iff"},
+{path="object/draft_schematic/weapon/pistol_blaster_dl44_metal.iff"},
+{path="object/draft_schematic/weapon/rifle_light_blaster_dh17_carbine_snubnose.iff"},
+{path="object/draft_schematic/weapon/rifle_projectile_tusken.iff"},
+{path="object/draft_schematic/weapon/pistol_blaster_dh17.iff"},
+{path="object/draft_schematic/weapon/pistol_blaster_power5.iff"},
+{path="object/draft_schematic/weapon/rifle_light_blaster_e11_carbine.iff"},
+{path="object/draft_schematic/weapon/rifle_blaster_e11.iff"},
+{path="object/draft_schematic/weapon/rifle_sonic_sg82.iff"},
+{path="object/draft_schematic/weapon/component/blaster_pistol_barrel_advanced.iff"},
+{path="object/draft_schematic/weapon/component/blaster_power_handler_advanced.iff"},
+{path="object/draft_schematic/weapon/component/projectile_feed_mechanism_advanced.iff"},
+{path="object/draft_schematic/weapon/component/projectile_pistol_barrel_advanced.iff"},
+{path="object/draft_schematic/weapon/component/scope_weapon_advanced.iff"},
+{path="object/draft_schematic/weapon/component/stock_advanced.iff"},
+{path="object/draft_schematic/weapon/pistol_launcher.iff"},
+{path="object/draft_schematic/weapon/pistol_scatter.iff"},
+{path="object/draft_schematic/weapon/pistol_blaster_short_range_combat.iff"},
+{path="object/draft_schematic/weapon/rifle_light_blaster_laser_carbine.iff"},
+{path="object/draft_schematic/weapon/rifle_blaster_laser_rifle.iff"},
+{path="object/draft_schematic/weapon/rifle_light_blaster_ee3.iff"},
+{path="object/draft_schematic/weapon/rifle_spray_stick_stohli.iff"},
+{path="object/draft_schematic/weapon/component/blaster_rifle_barrel_advanced.iff"},
+{path="object/draft_schematic/weapon/component/projectile_rifle_barrel_advanced.iff"},
+{path="object/draft_schematic/weapon/component/chemical_dispersion_mechanism_advanced.iff"},
+{path="object/draft_schematic/weapon/heavy_particle_beam.iff"},
+{path="object/draft_schematic/weapon/heavy_lightning_beam.iff"},
+{path="object/draft_schematic/weapon/rifle_lightning.iff"},
+{path="object/draft_schematic/weapon/rifle_beam.iff"},
+{path="object/draft_schematic/weapon/rifle_tangle_gun7.iff"},
+{path="object/draft_schematic/weapon/pistol_disrupter_dx2.iff"},
+{path="object/draft_schematic/weapon/rifle_light_blaster_imperial_scout_carbine.iff"},
+{path="object/draft_schematic/weapon/rifle_disrupter_dxr6.iff"},
+{path="object/draft_schematic/weapon/rifle_blaster_ionization_jawa.iff"},
+{path="object/draft_schematic/weapon/rifle_t21.iff"},
+{path="object/draft_schematic/weapon/heavy_acid_beam.iff"},
+{path="object/draft_schematic/weapon/pistol_republic_blaster.iff"},
+{path="object/draft_schematic/weapon/rifle_acid_beam.iff"},
+{path="object/draft_schematic/weapon/rifle_flame_thrower.iff"},
+{path="object/draft_schematic/scout/item_camp_basic.iff"},
+{path="object/draft_schematic/scout/item_camp_multi.iff"},
+{path="object/draft_schematic/scout/item_camp_improved.iff"},
+{path="object/draft_schematic/scout/item_camp_quality.iff"},
+{path="object/draft_schematic/scout/item_camp_elite.iff"},
+{path="object/draft_schematic/scout/item_camp_luxury.iff"},
+{path="object/draft_schematic/scout/item_trap_drowsy_dart.iff"},
+{path="object/draft_schematic/scout/item_trap_melee_def_1.iff"},
+{path="object/draft_schematic/scout/item_trap_enraging_spur.iff"},
+{path="object/draft_schematic/scout/item_trap_ranged_def_1.iff"},
+{path="object/draft_schematic/scout/item_trap_noise_maker.iff"},
+{path="object/draft_schematic/scout/item_trap_state_def_1.iff"},
+{path="object/draft_schematic/scout/item_trap_tranq_dart.iff"},
+{path="object/draft_schematic/scout/item_trap_melee_ranged_def_1.iff"},
+{path="object/draft_schematic/scout/item_trap_webber.iff"},
+{path="object/draft_schematic/scout/item_trap_flash_bomb.iff"},
+{path="object/draft_schematic/scout/item_trap_sonic_pulse.iff"},
+{path="object/draft_schematic/scout/item_camokit_corellia.iff"},
+{path="object/draft_schematic/scout/item_camokit_naboo.iff"},
+{path="object/draft_schematic/scout/item_camokit_tatooine.iff"},
+{path="object/draft_schematic/scout/item_camokit_rori.iff"},
+{path="object/draft_schematic/scout/item_camokit_talus.iff"},
+{path="object/draft_schematic/scout/item_camokit_yavin.iff"},
+{path="object/draft_schematic/scout/item_camokit_dantooine.iff"},
+{path="object/draft_schematic/scout/item_camokit_lok.iff"},
+{path="object/draft_schematic/scout/item_camokit_endor.iff"},
+{path="object/draft_schematic/scout/item_camokit_dathomir.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_bleeding.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_light_flavor.iff"},
+{path="object/draft_schematic/bio_engineer/utilities/pet_stimpack_a.iff"},
+{path="object/draft_schematic/bio_engineer/dna_template/dna_template_generic.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_bearded_jax.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_eopie.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_kaadu.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_gnort.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_durni.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_vir_vur.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_squall.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_ikopi.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_swirl_prong.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_dewback.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_gualama.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_kahmurra.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_krahbu.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_tybis.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_kwi.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_mott.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_verne.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_cu_pa.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_roba.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_huurton.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_bageraset.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_gurnaset.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_choku.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_carrion_spat.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_pugoriss.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_kusak.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_gurrcat.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_zucca_boar.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_langlatch.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_kima.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_dune_lizard.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_bocatt.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_boar_wolf.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_vesp.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_blurrg.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_bantha.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_bol.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_bolle_bol.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_bolma.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_brackaset.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_falumpaset.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_ronto.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_snorbal.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_bordok.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_gronda.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_piket.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_thune.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_angler.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_dalyrake.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_guf_drolg.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_gurreck.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_narglatch.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_sand_panther.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_slice_hound.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_kliknik.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_mawgax.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_merek.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_hermit_spider.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_shear_mite.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_entertainer.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_intimidate.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_light_nutrition.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_light_quantity.iff"},
+{path="object/draft_schematic/bio_engineer/utilities/pet_vitapack_a.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_medic.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_taming.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_camo.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_cover.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_light_filling.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_medium_quantity.iff"},
+{path="object/draft_schematic/bio_engineer/utilities/pet_stimpack_b.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_defense.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_entertainer_2.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_bleeding_2.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_medium_flavor.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_medium_nutrition.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_medium_filling.iff"},
+{path="object/draft_schematic/bio_engineer/utilities/pet_vitapack_b.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_medic_2.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_casual_taming_2.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_camo_2.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_cover_2.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_heavy_flavor.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_heavy_quantity.iff"},
+{path="object/draft_schematic/bio_engineer/utilities/pet_stimpack_c.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_torton.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_kimogila.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_rancor.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_fambaa.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_veermok.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_graul.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_huf_dun.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_malkloc.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_sharnaff.iff"},
+{path="object/draft_schematic/bio_engineer/creature/creature_woolamander.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_defense_2.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_clothing_field_intimidate_2.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_heavy_filling.iff"},
+{path="object/draft_schematic/bio_engineer/bio_component/bio_component_food_heavy_nutrition.iff"},
+{path="object/draft_schematic/bio_engineer/utilities/pet_vitapack_c.iff"},
+{path="object/draft_schematic/bio_engineer/utilities/pet_stimpack_d.iff"},
+{path="object/draft_schematic/spices/spice_grey_gabaki.iff"},
+{path="object/draft_schematic/spices/spice_scramjet.iff"},
+{path="object/draft_schematic/spices/spice_shadowpaw.iff"},
+{path="object/draft_schematic/spices/spice_yarrock.iff"},
+{path="object/draft_schematic/spices/spice_giggledust.iff"},
+{path="object/draft_schematic/spices/spice_sweetblossom.iff"},
+{path="object/draft_schematic/spices/spice_droid_lube.iff"},
+{path="object/draft_schematic/spices/spice_pyrepenol.iff"},
+{path="object/draft_schematic/spices/spice_sedative_h4b.iff"},
+{path="object/draft_schematic/spices/spice_crash_n_burn.iff"},
+{path="object/draft_schematic/spices/spice_gunjack.iff"},
+{path="object/draft_schematic/spices/spice_thruster_head.iff"},
+{path="object/draft_schematic/spices/spice_booster_blue.iff"},
+{path="object/draft_schematic/spices/spice_muon_gold.iff"},
+{path="object/draft_schematic/spices/spice_neutron_pixey.iff"},
+{path="object/draft_schematic/slicing/slicing_laser_knife.iff"},
+{path="object/draft_schematic/slicing/slicing_flow_analyzer.iff"},
+{path="object/draft_schematic/slicing/slicing_molecular_clamp.iff"},
+{path="object/draft_schematic/weapon/rifle_bowcaster.iff"},
+{path="object/draft_schematic/item/item_jedi_tool.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_refined_crystal_pack.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_training.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_one_hand_gen1.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_two_hand_gen1.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_polearm_gen1.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_one_hand_gen2.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_one_hand_gen3.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_two_hand_gen2.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_two_hand_gen3.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_polearm_gen2.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_polearm_gen3.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_polearm_gen4.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_one_hand_gen4.iff"},
+{path="object/draft_schematic/weapon/lightsaber/lightsaber_two_hand_gen4.iff"},
+{path="object/draft_schematic/structure/city/bank_corellia.iff"},
+{path="object/draft_schematic/structure/city/bank_naboo.iff"},
+{path="object/draft_schematic/structure/city/bank_tatooine.iff"},
+{path="object/draft_schematic/furniture/city/furniture_streetlamp.iff"},
+{path="object/draft_schematic/furniture/city/furniture_statue.iff"},
+{path="object/draft_schematic/structure/merchant_tent.iff"},
+{path="object/draft_schematic/structure/city/cloning_corellia.iff"},
+{path="object/draft_schematic/structure/city/cloning_naboo.iff"},
+{path="object/draft_schematic/structure/city/cloning_tatooine.iff"},
+{path="object/draft_schematic/structure/city/shuttleport_corellia.iff"},
+{path="object/draft_schematic/structure/city/shuttleport_naboo.iff"},
+{path="object/draft_schematic/structure/city/shuttleport_tatooine.iff"},
+{path="object/draft_schematic/furniture/city/furniture_fountain.iff"},
+{path="object/draft_schematic/structure/city/garden_small.iff"},
+{path="object/draft_schematic/structure/city/cantina_corellia.iff"},
+{path="object/draft_schematic/structure/city/cantina_naboo.iff"},
+{path="object/draft_schematic/structure/city/cantina_tatooine.iff"},
+{path="object/draft_schematic/structure/city/hospital_corellia.iff"},
+{path="object/draft_schematic/structure/city/hospital_naboo.iff"},
+{path="object/draft_schematic/structure/city/hospital_tatooine.iff"},
+{path="object/draft_schematic/structure/city/theater_corellia.iff"},
+{path="object/draft_schematic/structure/city/theater_naboo.iff"},
+{path="object/draft_schematic/structure/city/theater_tatooine.iff"},
+{path="object/draft_schematic/structure/city/garden_medium.iff"},
+{path="object/draft_schematic/structure/city/garage_corellia.iff"},
+{path="object/draft_schematic/structure/city/garage_naboo.iff"},
+{path="object/draft_schematic/structure/city/garage_tatooine.iff"},
+{path="object/draft_schematic/structure/city/cityhall_corellia.iff"},
+{path="object/draft_schematic/structure/city/cityhall_naboo.iff"},
+{path="object/draft_schematic/structure/city/cityhall_tatooine.iff"},
+{path="object/draft_schematic/structure/city/garden_large.iff"},
+{path="object/draft_schematic/structure/city/garden_exotic_dantooine.iff"},
+{path="object/draft_schematic/structure/city/garden_exotic_dathomir.iff"},
+{path="object/draft_schematic/structure/city/garden_exotic_endor.iff"},
+{path="object/draft_schematic/vehicle/civilian/landspeeder_x34.iff"},
+{path="object/draft_schematic/vehicle/civilian/speeder_bike_swoop.iff"},
+{path="object/draft_schematic/vehicle/civilian/speeder_bike.iff"},
+{path="object/draft_schematic/vehicle/vehicle_customization_kit.iff"},
+{path="object/draft_schematic/space/reverse_engineering/analysis_tool.iff"},
+{path="object/draft_schematic/space/repair/armor_repair_kit.iff"},
+{path="object/draft_schematic/space/repair/engine_repair_kit.iff"},
+{path="object/draft_schematic/space/repair/chassis_repair_kit.iff"},
+{path="object/draft_schematic/space/repair/booster_repair_kit.iff"},
+{path="object/draft_schematic/space/repair/droid_interface_repair_kit.iff"},
+{path="object/draft_schematic/space/weapon/missile/countermeasure_chaff_pack.iff"},
 };

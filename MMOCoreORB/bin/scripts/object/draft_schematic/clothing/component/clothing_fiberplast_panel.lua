@@ -47,8 +47,6 @@ object_draft_schematic_clothing_component_clothing_fiberplast_panel = object_dra
 
    customObjectName = "Fiberplast Panel",
 
-   groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_component_clothing_fiberplast_panel = object_dra
    contribution = {100, 100},
 
    templates = {
-              300281711, -- Script: 'object/tangible/component/clothing/fiberplast_panel.iff'
+              "object/tangible/component/clothing/shared_fiberplast_panel.iff",
              }
 
 }

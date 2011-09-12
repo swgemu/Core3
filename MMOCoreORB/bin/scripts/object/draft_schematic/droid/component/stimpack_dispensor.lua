@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_stimpack_dispensor = object_draft_schemat
 
    customObjectName = "Stimpack Dispensor Module",
 
-   groupName = "craftdroidgenmodGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_stimpack_dispensor = object_draft_schemat
    contribution = {100, 100, 100},
 
    templates = {
-              1137924050, -- Script: 'object/tangible/component/droid/stimpack_dispensor.iff'
+              "object/tangible/component/droid/shared_stimpack_dispensor.iff",
              }
 
 }

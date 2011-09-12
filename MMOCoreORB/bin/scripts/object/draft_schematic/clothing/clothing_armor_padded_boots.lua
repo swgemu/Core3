@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_padded_boots = object_draft_schem
 
    customObjectName = "Padded Armor Boots",
 
-   groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_padded_boots = object_draft_schem
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3331166495, -- Script: 'object/tangible/wearables/armor/padded/armor_padded_s01_boots.iff'
+              "object/tangible/wearables/armor/padded/shared_armor_padded_s01_boots.iff",
              }
 
 }

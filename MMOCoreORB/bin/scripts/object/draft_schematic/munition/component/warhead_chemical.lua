@@ -47,8 +47,6 @@ object_draft_schematic_munition_component_warhead_chemical = object_draft_schema
 
    customObjectName = "Chemical Warhead",
 
-   groupName = "craftMunitionsGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_munition_component_warhead_chemical = object_draft_schema
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1729827693, -- Script: 'object/tangible/component/munition/warhead_chemical.iff'
+              "object/tangible/component/munition/shared_warhead_chemical.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_bodysuit_field_15 = object_draft_schema
 
    customObjectName = "Tactical Skinsuit",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_bodysuit_field_15 = object_draft_schema
    contribution = {100, 100, 100},
 
    templates = {
-              287562025, -- Script: 'object/tangible/wearables/bodysuit/bodysuit_s15.iff'
+              "object/tangible/wearables/bodysuit/shared_bodysuit_s15.iff",
              }
 
 }

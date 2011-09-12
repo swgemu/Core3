@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_manipulator_arm_package_set = object_draf
 
    customObjectName = "Manipulator Arm Package Set",
 
-   groupName = "craftdroidGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_manipulator_arm_package_set = object_draf
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              854336035, -- Script: 'object/tangible/component/droid/manipulator_arm_package_set.iff'
+              "object/tangible/component/droid/shared_manipulator_arm_package_set.iff",
              }
 
 }

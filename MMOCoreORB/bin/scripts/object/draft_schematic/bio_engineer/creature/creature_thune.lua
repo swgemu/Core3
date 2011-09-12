@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_thune = object_draft_schem
 
    customObjectName = "Thune",
 
-   groupName = "craftDomesticCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_thune = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              3655370061, -- Script: 'object/tangible/deed/pet_deed/thune_deed.iff'
+              "object/tangible/deed/pet_deed/shared_thune_deed.iff",
              }
 
 }

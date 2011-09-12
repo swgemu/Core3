@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_droid_motive_system = object_draft_schema
 
    customObjectName = "Droid Motive System",
 
-   groupName = "craftdroidGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 14, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_droid_motive_system = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1493756623, -- Script: 'object/tangible/component/droid/droid_motive_system.iff'
+              "object/tangible/component/droid/shared_droid_motive_system.iff",
              }
 
 }

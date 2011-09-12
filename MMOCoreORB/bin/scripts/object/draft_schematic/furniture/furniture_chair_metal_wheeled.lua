@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_chair_metal_wheeled = object_draft_sc
 
    customObjectName = "Metal Chair",
 
-   groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_chair_metal_wheeled = object_draft_sc
    contribution = {100, 100, 100},
 
    templates = {
-              1461870291, -- Script: 'object/tangible/furniture/all/frn_all_chair_meatal_wheeled_s1.iff'
+              "object/tangible/furniture/all/shared_frn_all_chair_meatal_wheeled_s1.iff",
              }
 
 }

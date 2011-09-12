@@ -47,8 +47,6 @@ object_draft_schematic_spices_spice_scramjet = object_draft_schematic_spices_sha
 
    customObjectName = "Scramjet",
 
-   groupName = "craftSmugglerSpiceNovice", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_spices_spice_scramjet = object_draft_schematic_spices_sha
    contribution = {100, 100},
 
    templates = {
-              1577598037, -- Script: 'object/tangible/food/spice/spice_scramjet.iff'
+              "object/tangible/food/spice/shared_spice_scramjet.iff",
              }
 
 }

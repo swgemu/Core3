@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_lightning = object_draft_schematic_weapon_sh
 
    customObjectName = "Light Lightning Cannon",
 
-   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_lightning = object_draft_schematic_weapon_sh
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              397924793, -- Script: 'object/weapon/ranged/rifle/rifle_lightning.iff'
+              "object/weapon/ranged/rifle/shared_rifle_lightning.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_blaster_dlt20a = object_draft_schematic_weap
 
    customObjectName = "DLT20a Rifle",
 
-   groupName = "craftWeaponRangedGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_blaster_dlt20a = object_draft_schematic_weap
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2940025064, -- Script: 'object/weapon/ranged/rifle/rifle_dlt20a.iff'
+              "object/weapon/ranged/rifle/shared_rifle_dlt20a.iff",
              }
 
 }

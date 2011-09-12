@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_hat_casual_10 = object_draft_schematic_
 
    customObjectName = "Sunguard",
 
-   groupName = "craftClothingCasualGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_hat_casual_10 = object_draft_schematic_
    contribution = {100, 100, 100},
 
    templates = {
-              3880886409, -- Script: 'object/tangible/wearables/hat/hat_s10.iff'
+              "object/tangible/wearables/hat/shared_hat_s10.iff",
              }
 
 }

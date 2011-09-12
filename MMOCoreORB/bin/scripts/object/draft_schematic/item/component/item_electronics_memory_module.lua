@@ -47,8 +47,6 @@ object_draft_schematic_item_component_item_electronics_memory_module = object_dr
 
    customObjectName = "Electronics Memory Module",
 
-   groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_component_item_electronics_memory_module = object_dr
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              270787698, -- Script: 'object/tangible/component/item/electronics_memory_module.iff'
+              "object/tangible/component/item/shared_electronics_memory_module.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_munition_grenade_fragmentation_c_22 = object_draft_schema
 
    customObjectName = "C22 Fragmentation Grenade",
 
-   groupName = "craftMunitionsGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 36, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_munition_grenade_fragmentation_c_22 = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2665193921, -- Script: 'object/weapon/ranged/grenade/grenade_fragmentation.iff'
+              "object/weapon/ranged/grenade/shared_grenade_fragmentation.iff",
              }
 
 }

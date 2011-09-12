@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_table_modern = object_draft_schematic
 
    customObjectName = "Table",
 
-   groupName = "craftFurnitureGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 29, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_table_modern = object_draft_schematic
    contribution = {100, 100},
 
    templates = {
-              1384894624, -- Script: 'object/tangible/furniture/modern/table_modern_style_01.iff'
+              "object/tangible/furniture/modern/shared_table_modern_style_01.iff",
              }
 
 }

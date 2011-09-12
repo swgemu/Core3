@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_ubese_pants = object_draft_schema
 
    customObjectName = "Ubese Armor Pants",
 
-   groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_ubese_pants = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              4117292503, -- Script: 'object/tangible/wearables/armor/ubese/armor_ubese_pants.iff'
+              "object/tangible/wearables/armor/ubese/shared_armor_ubese_pants.iff",
              }
 
 }

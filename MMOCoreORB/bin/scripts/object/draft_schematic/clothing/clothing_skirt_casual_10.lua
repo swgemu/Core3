@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_skirt_casual_10 = object_draft_schemati
 
    customObjectName = "Wrapped Skirt",
 
-   groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 9, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_skirt_casual_10 = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              1574158352, -- Script: 'object/tangible/wearables/skirt/skirt_s10.iff'
+              "object/tangible/wearables/skirt/shared_skirt_s10.iff",
              }
 
 }

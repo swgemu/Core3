@@ -47,8 +47,6 @@ object_draft_schematic_clothing_component_clothing_trim = object_draft_schematic
 
    customObjectName = "Trim",
 
-   groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_component_clothing_trim = object_draft_schematic
    contribution = {100, 100},
 
    templates = {
-              1645938657, -- Script: 'object/tangible/component/clothing/trim.iff'
+              "object/tangible/component/clothing/shared_trim.iff",
              }
 
 }

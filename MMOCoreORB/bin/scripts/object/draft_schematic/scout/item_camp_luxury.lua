@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_camp_luxury = object_draft_schematic_scout_sha
 
    customObjectName = "High Tech Field Base Kit",
 
-   groupName = "craftRangerCampGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_camp_luxury = object_draft_schematic_scout_sha
    contribution = {100, 100, 100},
 
    templates = {
-              3193855134, -- Script: 'object/tangible/scout/camp/camp_luxury.iff'
+              "object/tangible/scout/camp/shared_camp_luxury.iff",
              }
 
 }

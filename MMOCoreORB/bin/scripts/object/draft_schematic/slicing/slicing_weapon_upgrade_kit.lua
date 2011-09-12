@@ -47,8 +47,6 @@ object_draft_schematic_slicing_slicing_weapon_upgrade_kit = object_draft_schemat
 
    customObjectName = "Weapon Upgrade Kit",
 
-   groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_slicing_slicing_weapon_upgrade_kit = object_draft_schemat
    contribution = {100, 100, 100},
 
    templates = {
-              96542655, -- Script: 'object/tangible/slicing/slicing_weapon_upgrade_kit.iff'
+              "object/tangible/slicing/shared_slicing_weapon_upgrade_kit.iff",
              }
 
 }

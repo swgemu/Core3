@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_robe_field_27 = object_draft_schematic_
 
    customObjectName = "Gunmans Duster",
 
-   groupName = "craftClothingFieldGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_robe_field_27 = object_draft_schematic_
    contribution = {100, 100},
 
    templates = {
-              4228134801, -- Script: 'object/tangible/wearables/robe/robe_s27.iff'
+              "object/tangible/wearables/robe/shared_robe_s27.iff",
              }
 
 }

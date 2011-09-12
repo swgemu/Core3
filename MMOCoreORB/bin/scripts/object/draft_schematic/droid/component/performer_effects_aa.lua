@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_performer_effects_aa = object_draft_schem
 
    customObjectName = "Effects Module (Avian)",
 
-   groupName = "craftdroidgenmodGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_performer_effects_aa = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              1992635654, -- Script: 'object/tangible/component/droid/performer_effects_aa.iff'
+              "object/tangible/component/droid/shared_performer_effects_aa.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_sword_ryyk_blade = object_draft_schematic_weapon_s
 
    customObjectName = "Ryyk Blade",
 
-   groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_sword_ryyk_blade = object_draft_schematic_weapon_s
    contribution = {100, 100, 100},
 
    templates = {
-              2964575136, -- Script: 'object/weapon/melee/sword/sword_blade_ryyk.iff'
+              "object/weapon/melee/sword/shared_sword_blade_ryyk.iff",
              }
 
 }

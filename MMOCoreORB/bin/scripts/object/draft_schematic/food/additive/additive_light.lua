@@ -47,8 +47,6 @@ object_draft_schematic_food_additive_additive_light = object_draft_schematic_foo
 
    customObjectName = "Light Food Additive",
 
-   groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_additive_additive_light = object_draft_schematic_foo
    contribution = {100, 100},
 
    templates = {
-              275310472, -- Script: 'object/tangible/food/crafted/additive/additive_light.iff'
+              "object/tangible/food/crafted/additive/shared_additive_light.iff",
              }
 
 }

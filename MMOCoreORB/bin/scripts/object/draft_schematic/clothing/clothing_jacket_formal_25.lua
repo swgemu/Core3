@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jacket_formal_25 = object_draft_schemat
 
    customObjectName = "Dress Uniform Jacket",
 
-   groupName = "craftClothingFormalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jacket_formal_25 = object_draft_schemat
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2098468009, -- Script: 'object/tangible/wearables/jacket/jacket_s25.iff'
+              "object/tangible/wearables/jacket/shared_jacket_s25.iff",
              }
 
 }

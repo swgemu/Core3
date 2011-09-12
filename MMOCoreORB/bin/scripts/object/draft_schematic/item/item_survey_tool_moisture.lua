@@ -47,8 +47,6 @@ object_draft_schematic_item_item_survey_tool_moisture = object_draft_schematic_i
 
    customObjectName = "Water Survey Device",
 
-   groupName = "craftArtisanSurveyGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 7, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_survey_tool_moisture = object_draft_schematic_i
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2771444274, -- Script: 'object/tangible/survey_tool/survey_tool_moisture.iff'
+              "object/tangible/survey_tool/shared_survey_tool_moisture.iff",
              }
 
 }

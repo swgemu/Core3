@@ -47,8 +47,6 @@ object_draft_schematic_item_item_powerup_weapon_ranged_one = object_draft_schema
 
    customObjectName = "Barrel",
 
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_powerup_weapon_ranged_one = object_draft_schema
    contribution = {100, 100},
 
    templates = {
-              352903310, -- Script: 'object/tangible/powerup/weapon/ranged_barrel.iff'
+              "object/tangible/powerup/weapon/shared_ranged_barrel.iff",
              }
 
 }

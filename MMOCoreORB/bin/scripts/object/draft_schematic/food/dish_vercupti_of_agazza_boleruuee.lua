@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_vercupti_of_agazza_boleruuee = object_draft_sch
 
    customObjectName = "Vercupti of Agazza Boleruuee",
 
-   groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_vercupti_of_agazza_boleruuee = object_draft_sch
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2036727535, -- Script: 'object/tangible/food/crafted/dish_vercupti_of_agazza_boleruuee.iff'
+              "object/tangible/food/crafted/shared_dish_vercupti_of_agazza_boleruuee.iff",
              }
 
 }

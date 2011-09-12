@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_droid_storage_compartment = object_draft_
 
    customObjectName = "Droid Storage Compartment",
 
-   groupName = "craftdroidGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 13, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_droid_storage_compartment = object_draft_
    contribution = {100, 100, 100},
 
    templates = {
-              4256039233, -- Script: 'object/tangible/component/droid/droid_storage_compartment.iff'
+              "object/tangible/component/droid/shared_droid_storage_compartment.iff",
              }
 
 }

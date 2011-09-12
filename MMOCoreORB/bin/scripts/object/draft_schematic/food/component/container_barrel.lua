@@ -47,8 +47,6 @@ object_draft_schematic_food_component_container_barrel = object_draft_schematic_
 
    customObjectName = "Barrel",
 
-   groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_component_container_barrel = object_draft_schematic_
    contribution = {100, 100, 100},
 
    templates = {
-              3961204086, -- Script: 'object/tangible/component/food/container_barrel.iff'
+              "object/tangible/component/food/shared_container_barrel.iff",
              }
 
 }

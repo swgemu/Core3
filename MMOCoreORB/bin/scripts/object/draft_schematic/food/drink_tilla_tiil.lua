@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_tilla_tiil = object_draft_schematic_food_share
 
    customObjectName = "T'illa-T'iil",
 
-   groupName = "craftFoodDrinkGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_tilla_tiil = object_draft_schematic_food_share
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2812437578, -- Script: 'object/tangible/food/crafted/drink_tilla_tiil.iff'
+              "object/tangible/food/crafted/shared_drink_tilla_tiil.iff",
              }
 
 }

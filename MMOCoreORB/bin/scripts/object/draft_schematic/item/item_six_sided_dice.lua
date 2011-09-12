@@ -47,8 +47,6 @@ object_draft_schematic_item_item_six_sided_dice = object_draft_schematic_item_sh
 
    customObjectName = "Six Sided Dice Set",
 
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 2, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_six_sided_dice = object_draft_schematic_item_sh
    contribution = {100, 100},
 
    templates = {
-              1448016811, -- Script: 'object/tangible/dice/eqp_six_sided_dice_set.iff'
+              "object/tangible/dice/shared_eqp_six_sided_dice_set.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_munition_detonator_thermal_imperial_issue = object_draft_
 
    customObjectName = "Imperial Detonator",
 
-   groupName = "craftMunitionsGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_munition_detonator_thermal_imperial_issue = object_draft_
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              247923643, -- Script: 'object/weapon/ranged/grenade/grenade_imperial_detonator.iff'
+              "object/weapon/ranged/grenade/shared_grenade_imperial_detonator.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_factory_weapon = object_draft_sche
 
    customObjectName = "Deed for: Equipment Factory",
 
-   groupName = "craftInstallationGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 16, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_factory_weapon = object_draft_sche
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              77296590, -- Script: 'object/tangible/deed/factory_deed/factory_item_deed.iff'
+              "object/tangible/deed/factory_deed/shared_factory_item_deed.iff",
              }
 
 }

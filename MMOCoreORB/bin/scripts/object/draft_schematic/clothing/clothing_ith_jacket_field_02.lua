@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_jacket_field_02 = object_draft_sche
 
    customObjectName = "Ithorian Cargo Jacket",
 
-   groupName = "craftClothingFieldGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_jacket_field_02 = object_draft_sche
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3265058950, -- Script: 'object/tangible/wearables/ithorian/ith_jacket_s02.iff'
+              "object/tangible/wearables/ithorian/shared_ith_jacket_s02.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_veronian_berry_wine = object_draft_schematic_f
 
    customObjectName = "Veronian Berry Wine",
 
-   groupName = "craftFoodDrinkGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_veronian_berry_wine = object_draft_schematic_f
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3145063113, -- Script: 'object/tangible/food/crafted/drink_veronian_berry_wine.iff'
+              "object/tangible/food/crafted/shared_drink_veronian_berry_wine.iff",
              }
 
 }

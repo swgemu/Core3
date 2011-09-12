@@ -47,8 +47,6 @@ object_draft_schematic_structure_city_garage_tatooine = object_draft_schematic_s
 
    customObjectName = "Deed for: Tatooine Garage",
 
-   groupName = "craftPlayerCityC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_city_garage_tatooine = object_draft_schematic_s
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1476259630, -- Script: 'object/tangible/deed/city_deed/garage_tatooine_deed.iff'
+              "object/tangible/deed/city_deed/shared_garage_tatooine_deed.iff",
              }
 
 }

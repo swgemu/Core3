@@ -47,8 +47,6 @@ object_draft_schematic_instrument_component_dual_wave_synthesizer = object_draft
 
    customObjectName = "Dual Wave Synthesizer",
 
-   groupName = "craftInstrumentGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_instrument_component_dual_wave_synthesizer = object_draft
    contribution = {100, 100, 100},
 
    templates = {
-              89531137, -- Script: 'object/tangible/component/instrument/dual_wave_synthesizer.iff'
+              "object/tangible/component/instrument/shared_dual_wave_synthesizer.iff",
              }
 
 }

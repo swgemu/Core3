@@ -47,8 +47,6 @@ object_draft_schematic_furniture_city_furniture_statue = object_draft_schematic_
 
    customObjectName = "Gungan Head Statue",
 
-   groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_city_furniture_statue = object_draft_schematic_
    contribution = {100, 100},
 
    templates = {
-              311218477, -- Script: 'object/tangible/furniture/city/statue_gungan_head.iff'
+              "object/tangible/furniture/city/shared_statue_gungan_head.iff",
              }
 
 }

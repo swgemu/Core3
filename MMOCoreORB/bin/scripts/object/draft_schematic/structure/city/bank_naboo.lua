@@ -47,8 +47,6 @@ object_draft_schematic_structure_city_bank_naboo = object_draft_schematic_struct
 
    customObjectName = "Deed for: Naboo Bank",
 
-   groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 12, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_city_bank_naboo = object_draft_schematic_struct
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2238795217, -- Script: 'object/tangible/deed/city_deed/bank_naboo_deed.iff'
+              "object/tangible/deed/city_deed/shared_bank_naboo_deed.iff",
              }
 
 }

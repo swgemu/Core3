@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_belt_formal_15 = object_draft_schematic
 
    customObjectName = "Strap Belt",
 
-   groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_belt_formal_15 = object_draft_schematic
    contribution = {100, 100, 100},
 
    templates = {
-              2858581424, -- Script: 'object/tangible/wearables/belt/belt_s15.iff'
+              "object/tangible/wearables/belt/shared_belt_s15.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_item_item_powerup_weapon_thrown_explosive = object_draft_
 
    customObjectName = "Grenade Explosives Kit",
 
-   groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_powerup_weapon_thrown_explosive = object_draft_
    contribution = {100, 100},
 
    templates = {
-              1602787778, -- Script: 'object/tangible/powerup/weapon/thrown_explosive.iff'
+              "object/tangible/powerup/weapon/shared_thrown_explosive.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_item_item_twenty_sided_dice = object_draft_schematic_item
 
    customObjectName = "Twenty Sided Dice Set",
 
-   groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 4, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_twenty_sided_dice = object_draft_schematic_item
    contribution = {100, 100},
 
    templates = {
-              605327906, -- Script: 'object/tangible/dice/eqp_twenty_sided_dice_set.iff'
+              "object/tangible/dice/shared_eqp_twenty_sided_dice_set.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_06 = object_draft_
 
    customObjectName = "Ithorian Metal Necklace",
 
-   groupName = "craftClothingNoviceGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_jewelry_necklace_06 = object_draft_
    contribution = {100, 100, 100},
 
    templates = {
-              956284367, -- Script: 'object/tangible/wearables/ithorian/ith_necklace_s06.iff'
+              "object/tangible/wearables/ithorian/shared_ith_necklace_s06.iff",
              }
 
 }

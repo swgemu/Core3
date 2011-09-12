@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_chassis_droid_le_repair = object_draft_sc
 
    customObjectName = "LE Repair ADV Droid Chassis",
 
-   groupName = "craftdroidGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_chassis_droid_le_repair = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1522593136, -- Script: 'object/tangible/component/droid/le_repair_droid_chassis.iff'
+              "object/tangible/component/droid/shared_le_repair_droid_chassis.iff",
              }
 
 }

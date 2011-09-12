@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_bodysuit_field_16 = object_draft_schema
 
    customObjectName = "Infiltration Suit",
 
-   groupName = "craftClothingFieldGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_bodysuit_field_16 = object_draft_schema
    contribution = {100, 100},
 
    templates = {
-              3392434622, -- Script: 'object/tangible/wearables/bodysuit/bodysuit_s16.iff'
+              "object/tangible/wearables/bodysuit/shared_bodysuit_s16.iff",
              }
 
 }

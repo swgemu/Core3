@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_smugglers_delight = object_draft_schematic_f
 
    customObjectName = "Smuggler's Delight",
 
-   groupName = "craftFoodDessertGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_smugglers_delight = object_draft_schematic_f
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2080884324, -- Script: 'object/tangible/food/crafted/dessert_smugglers_delight.iff'
+              "object/tangible/food/crafted/shared_dessert_smugglers_delight.iff",
              }
 
 }

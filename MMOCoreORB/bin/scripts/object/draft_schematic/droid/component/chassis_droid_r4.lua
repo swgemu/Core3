@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_chassis_droid_r4 = object_draft_schematic
 
    customObjectName = "R4 ADV Droid Chassis",
 
-   groupName = "craftdroidGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 8, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_chassis_droid_r4 = object_draft_schematic
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              484121242, -- Script: 'object/tangible/component/droid/r4_droid_chassis.iff'
+              "object/tangible/component/droid/shared_r4_droid_chassis.iff",
              }
 
 }

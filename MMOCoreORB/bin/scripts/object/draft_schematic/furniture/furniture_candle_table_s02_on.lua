@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_candle_table_s02_on = object_draft_sc
 
    customObjectName = "Candle 'Theed'",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_candle_table_s02_on = object_draft_sc
    contribution = {100, 100, 100},
 
    templates = {
-              2228928709, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_candlestick_tbl_s02.iff'
+              "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_tbl_s02.iff",
              }
 
 }

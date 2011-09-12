@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_air_cake = object_draft_schematic_food_share
 
    customObjectName = "Air Cake",
 
-   groupName = "craftFoodNoviceGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_air_cake = object_draft_schematic_food_share
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3314445328, -- Script: 'object/tangible/food/crafted/dessert_air_cake.iff'
+              "object/tangible/food/crafted/shared_dessert_air_cake.iff",
              }
 
 }

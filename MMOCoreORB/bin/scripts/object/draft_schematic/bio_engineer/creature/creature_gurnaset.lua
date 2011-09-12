@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_gurnaset = object_draft_sc
 
    customObjectName = "Gurnaset",
 
-   groupName = "craftDomesticCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_gurnaset = object_draft_sc
    contribution = {100, 100, 100},
 
    templates = {
-              2038355118, -- Script: 'object/tangible/deed/pet_deed/gurnaset_deed.iff'
+              "object/tangible/deed/pet_deed/shared_gurnaset_deed.iff",
              }
 
 }

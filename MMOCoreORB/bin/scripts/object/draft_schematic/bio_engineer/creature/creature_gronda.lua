@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_gronda = object_draft_sche
 
    customObjectName = "Gronda",
 
-   groupName = "craftDomesticCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 26, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_gronda = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              3452304205, -- Script: 'object/tangible/deed/pet_deed/gronda_deed.iff'
+              "object/tangible/deed/pet_deed/shared_gronda_deed.iff",
              }
 
 }

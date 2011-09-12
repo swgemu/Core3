@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_trap_flash_bomb = object_draft_schematic_scout
 
    customObjectName = "Flash Bomb",
 
-   groupName = "craftRangerTrapGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 14, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_trap_flash_bomb = object_draft_schematic_scout
    contribution = {100, 100},
 
    templates = {
-              1976282709, -- Script: 'object/tangible/scout/trap/trap_flash_bomb.iff'
+              "object/tangible/scout/trap/shared_trap_flash_bomb.iff",
              }
 
 }

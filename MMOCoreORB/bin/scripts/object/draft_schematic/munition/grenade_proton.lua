@@ -47,8 +47,6 @@ object_draft_schematic_munition_grenade_proton = object_draft_schematic_munition
 
    customObjectName = "Proton Grenade",
 
-   groupName = "craftMunitionsGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_munition_grenade_proton = object_draft_schematic_munition
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3663525414, -- Script: 'object/weapon/ranged/grenade/grenade_proton.iff'
+              "object/weapon/ranged/grenade/shared_grenade_proton.iff",
              }
 
 }

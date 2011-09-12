@@ -47,8 +47,6 @@ object_draft_schematic_item_item_firework_eighteen = object_draft_schematic_item
 
    customObjectName = "Type 18 Firework",
 
-   groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_firework_eighteen = object_draft_schematic_item
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3349073419, -- Script: 'object/tangible/firework/firework_s18.iff'
+              "object/tangible/firework/shared_firework_s18.iff",
              }
 
 }

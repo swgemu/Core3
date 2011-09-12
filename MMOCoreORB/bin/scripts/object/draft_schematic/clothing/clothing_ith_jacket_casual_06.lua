@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_jacket_casual_06 = object_draft_sch
 
    customObjectName = "Ithorian Short Trim Jacket",
 
-   groupName = "craftClothingCasualGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_jacket_casual_06 = object_draft_sch
    contribution = {100, 100, 100},
 
    templates = {
-              3798489861, -- Script: 'object/tangible/wearables/ithorian/ith_jacket_s06.iff'
+              "object/tangible/wearables/ithorian/shared_ith_jacket_s06.iff",
              }
 
 }

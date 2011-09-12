@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_mining_ore_light = object_draft_sc
 
    customObjectName = "Deed for: Personal Mineral Extractor",
 
-   groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 13, 
    size = 10, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_mining_ore_light = object_draft_sc
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2895649226, -- Script: 'object/tangible/deed/harvester_deed/harvester_ore_s1_deed.iff'
+              "object/tangible/deed/harvester_deed/shared_harvester_ore_s1_deed.iff",
              }
 
 }

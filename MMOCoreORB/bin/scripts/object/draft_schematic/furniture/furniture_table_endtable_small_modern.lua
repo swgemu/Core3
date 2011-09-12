@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_table_endtable_small_modern = object_
 
    customObjectName = "Small Modern End Table",
 
-   groupName = "craftFurnitureGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_table_endtable_small_modern = object_
    contribution = {100, 100},
 
    templates = {
-              776834604, -- Script: 'object/tangible/furniture/modern/end_table_small_modern_style_01.iff'
+              "object/tangible/furniture/modern/shared_end_table_small_modern_style_01.iff",
              }
 
 }

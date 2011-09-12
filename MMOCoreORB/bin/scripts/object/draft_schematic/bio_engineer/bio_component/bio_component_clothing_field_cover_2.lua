@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_c
 
    customObjectName = "Mimetic Circuitry",
 
-   groupName = "craftTissueGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
    complexity = 27, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_c
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2862106760, -- Script: 'object/tangible/component/bio/bio_component_clothing_field_cover_2.iff'
+              "object/tangible/component/bio/shared_bio_component_clothing_field_cover_2.iff",
              }
 
 }

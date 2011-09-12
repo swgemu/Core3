@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_vesp = object_draft_schema
 
    customObjectName = "Vesp",
 
-   groupName = "craftAggressiveCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_vesp = object_draft_schema
    contribution = {100, 100, 100},
 
    templates = {
-              2542775602, -- Script: 'object/tangible/deed/pet_deed/vesp_deed.iff'
+              "object/tangible/deed/pet_deed/shared_vesp_deed.iff",
              }
 
 }

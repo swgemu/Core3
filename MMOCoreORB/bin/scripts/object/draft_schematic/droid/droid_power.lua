@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_power = object_draft_schematic_droid_shared_d
 
    customObjectName = "Deed for: Power Droid",
 
-   groupName = "craftdroidGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_power = object_draft_schematic_droid_shared_d
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3524435208, -- Script: 'object/tangible/deed/pet_deed/deed_power_basic.iff'
+              "object/tangible/deed/pet_deed/shared_deed_power_basic.iff",
              }
 
 }

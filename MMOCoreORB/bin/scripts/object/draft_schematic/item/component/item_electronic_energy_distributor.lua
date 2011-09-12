@@ -47,8 +47,6 @@ object_draft_schematic_item_component_item_electronic_energy_distributor = objec
 
    customObjectName = "Energy Distributor",
 
-   groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_component_item_electronic_energy_distributor = objec
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              178069991, -- Script: 'object/tangible/component/item/electronic_energy_distributor.iff'
+              "object/tangible/component/item/shared_electronic_energy_distributor.iff",
              }
 
 }

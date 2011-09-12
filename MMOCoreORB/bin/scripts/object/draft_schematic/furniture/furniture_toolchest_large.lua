@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_toolchest_large = object_draft_schema
 
    customObjectName = "Toolchest",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_toolchest_large = object_draft_schema
    contribution = {100, 100},
 
    templates = {
-              3475702053, -- Script: 'object/tangible/furniture/all/frn_all_toolchest_lg_s01.iff'
+              "object/tangible/furniture/all/shared_frn_all_toolchest_lg_s01.iff",
              }
 
 }

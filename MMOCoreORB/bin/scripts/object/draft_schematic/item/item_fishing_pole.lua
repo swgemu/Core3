@@ -47,8 +47,6 @@ object_draft_schematic_item_item_fishing_pole = object_draft_schematic_item_shar
 
    customObjectName = "Fishing Pole",
 
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_fishing_pole = object_draft_schematic_item_shar
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2403580220, -- Script: 'object/tangible/fishing/fishing_pole.iff'
+              "object/tangible/fishing/shared_fishing_pole.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_pkneb = object_draft_schematic_food_shared_d
 
    customObjectName = "Caramelized Pkneb",
 
-   groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 4, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_pkneb = object_draft_schematic_food_shared_d
    contribution = {100, 100, 100, 100},
 
    templates = {
-              4206467062, -- Script: 'object/tangible/food/crafted/dessert_pkneb.iff'
+              "object/tangible/food/crafted/shared_dessert_pkneb.iff",
              }
 
 }

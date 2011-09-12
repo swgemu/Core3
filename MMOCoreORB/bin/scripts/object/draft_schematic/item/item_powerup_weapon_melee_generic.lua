@@ -47,8 +47,6 @@ object_draft_schematic_item_item_powerup_weapon_melee_generic = object_draft_sch
 
    customObjectName = "Generic Melee Weapon Kit",
 
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_powerup_weapon_melee_generic = object_draft_sch
    contribution = {100, 100},
 
    templates = {
-              1327818409, -- Script: 'object/tangible/powerup/weapon/melee_generic.iff'
+              "object/tangible/powerup/weapon/shared_melee_generic.iff",
              }
 
 }

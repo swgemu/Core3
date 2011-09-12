@@ -47,8 +47,6 @@ object_draft_schematic_weapon_component_reinforcement_core = object_draft_schema
 
    customObjectName = "Reinforcement Core",
 
-   groupName = "craftWeaponMeleeGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_component_reinforcement_core = object_draft_schema
    contribution = {100},
 
    templates = {
-              4069474310, -- Script: 'object/tangible/component/weapon/reinforcement_core.iff'
+              "object/tangible/component/weapon/shared_reinforcement_core.iff",
              }
 
 }

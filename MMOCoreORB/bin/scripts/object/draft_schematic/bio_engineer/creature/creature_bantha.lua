@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_bantha = object_draft_sche
 
    customObjectName = "Bantha",
 
-   groupName = "craftDomesticCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_bantha = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              1385471724, -- Script: 'object/tangible/deed/pet_deed/bantha_deed.iff'
+              "object/tangible/deed/pet_deed/shared_bantha_deed.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_chair_recliner = object_draft_schemat
 
    customObjectName = "Reclining Chair",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_chair_recliner = object_draft_schemat
    contribution = {100, 100, 100},
 
    templates = {
-              1085882005, -- Script: 'object/tangible/furniture/all/frn_all_chair_recliner_s1.iff'
+              "object/tangible/furniture/all/shared_frn_all_chair_recliner_s1.iff",
              }
 
 }

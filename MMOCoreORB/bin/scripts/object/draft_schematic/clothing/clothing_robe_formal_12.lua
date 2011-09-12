@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_robe_formal_12 = object_draft_schematic
 
    customObjectName = "Grand Mayoral Robe",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_robe_formal_12 = object_draft_schematic
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              3095774231, -- Script: 'object/tangible/wearables/robe/robe_s12.iff'
+              "object/tangible/wearables/robe/shared_robe_s12.iff",
              }
 
 }

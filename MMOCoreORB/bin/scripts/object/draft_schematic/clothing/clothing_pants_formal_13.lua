@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_pants_formal_13 = object_draft_schemati
 
    customObjectName = "Comfortable Slacks",
 
-   groupName = "craftClothingFormalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_pants_formal_13 = object_draft_schemati
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              736760781, -- Script: 'object/tangible/wearables/pants/pants_s13.iff'
+              "object/tangible/wearables/pants/shared_pants_s13.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_armor_armor_segment = object_draft_schematic_armor_shared
 
    customObjectName = "Armor Segment",
 
-   groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_armor_segment = object_draft_schematic_armor_shared
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3846936871, -- Script: 'object/tangible/component/armor/armor_segment.iff'
+              "object/tangible/component/armor/shared_armor_segment.iff",
              }
 
 }

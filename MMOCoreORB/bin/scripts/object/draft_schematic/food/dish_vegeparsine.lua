@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_vegeparsine = object_draft_schematic_food_share
 
    customObjectName = "Vegeparsine",
 
-   groupName = "craftFoodDishGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_vegeparsine = object_draft_schematic_food_share
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3165654623, -- Script: 'object/tangible/food/crafted/dish_vegeparsine.iff'
+              "object/tangible/food/crafted/shared_dish_vegeparsine.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_personality_module_worshipful = object_dr
 
    customObjectName = "Worshipful Droid Personality Chip",
 
-   groupName = "craftdroidgenmodGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_personality_module_worshipful = object_dr
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3492091866, -- Script: 'object/tangible/component/droid/personality_module_worshipful.iff'
+              "object/tangible/component/droid/shared_personality_module_worshipful.iff",
              }
 
 }

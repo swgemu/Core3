@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_casual_01 = object_draft_s
 
    customObjectName = "Ithorian Comfort-Flex",
 
-   groupName = "craftClothingCasualGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_casual_01 = object_draft_s
    contribution = {100, 100, 100, 100},
 
    templates = {
-              513208682, -- Script: 'object/tangible/wearables/ithorian/ith_bodysuit_s01.iff'
+              "object/tangible/wearables/ithorian/shared_ith_bodysuit_s01.iff",
              }
 
 }

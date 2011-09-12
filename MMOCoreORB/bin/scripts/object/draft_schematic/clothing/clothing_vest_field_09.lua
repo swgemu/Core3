@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_vest_field_09 = object_draft_schematic_
 
    customObjectName = "Cargo Vest",
 
-   groupName = "craftClothingFieldGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_vest_field_09 = object_draft_schematic_
    contribution = {100, 100, 100},
 
    templates = {
-              688395783, -- Script: 'object/tangible/wearables/vest/vest_s09.iff'
+              "object/tangible/wearables/vest/shared_vest_s09.iff",
              }
 
 }

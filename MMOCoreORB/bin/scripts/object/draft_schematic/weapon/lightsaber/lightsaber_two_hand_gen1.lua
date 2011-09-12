@@ -47,8 +47,6 @@ object_draft_schematic_weapon_lightsaber_lightsaber_two_hand_gen1 = object_draft
 
    customObjectName = "Two-Handed First Generation Lightsaber",
 
-   groupName = "craftSaberNovice", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_two_hand_gen1 = object_draft
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              431995434, -- Script: 'object/weapon/melee/2h_sword/crafted_saber/sword_lightsaber_two_handed_gen1.iff'
+              "object/weapon/melee/2h_sword/crafted_saber/shared_sword_lightsaber_two_handed_gen1.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_mining_organic_flora_heavy = objec
 
    customObjectName = "Deed for: High Capacity Flora Farm",
 
-   groupName = "craftInstallationGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 32, 
    size = 8, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_mining_organic_flora_heavy = objec
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              608712167, -- Script: 'object/tangible/deed/harvester_deed/harvester_flora_deed_heavy.iff'
+              "object/tangible/deed/harvester_deed/shared_harvester_flora_deed_heavy.iff",
              }
 
 }

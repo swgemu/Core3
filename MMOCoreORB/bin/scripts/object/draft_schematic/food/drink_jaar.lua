@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_jaar = object_draft_schematic_food_shared_drin
 
    customObjectName = "Jaar",
 
-   groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_jaar = object_draft_schematic_food_shared_drin
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1186404816, -- Script: 'object/tangible/food/crafted/drink_jaar.iff'
+              "object/tangible/food/crafted/shared_drink_jaar.iff",
              }
 
 }

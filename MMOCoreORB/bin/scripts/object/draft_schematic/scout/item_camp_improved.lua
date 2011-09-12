@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_camp_improved = object_draft_schematic_scout_s
 
    customObjectName = "Improved Camp Kit",
 
-   groupName = "craftScoutCampGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 7, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_camp_improved = object_draft_schematic_scout_s
    contribution = {100, 100},
 
    templates = {
-              1573108791, -- Script: 'object/tangible/scout/camp/camp_improved.iff'
+              "object/tangible/scout/camp/shared_camp_improved.iff",
              }
 
 }

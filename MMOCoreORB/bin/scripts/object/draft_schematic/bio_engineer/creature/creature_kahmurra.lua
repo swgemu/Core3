@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_kahmurra = object_draft_sc
 
    customObjectName = "Kahmurra",
 
-   groupName = "craftDomesticCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_kahmurra = object_draft_sc
    contribution = {100, 100, 100},
 
    templates = {
-              1283405728, -- Script: 'object/tangible/deed/pet_deed/kahmurra_deed.iff'
+              "object/tangible/deed/pet_deed/shared_kahmurra_deed.iff",
              }
 
 }

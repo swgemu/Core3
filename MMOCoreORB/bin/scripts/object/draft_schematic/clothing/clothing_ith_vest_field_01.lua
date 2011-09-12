@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_vest_field_01 = object_draft_schema
 
    customObjectName = "Ithorian Lifejacket",
 
-   groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 9, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_vest_field_01 = object_draft_schema
    contribution = {100, 100},
 
    templates = {
-              2098025238, -- Script: 'object/tangible/wearables/ithorian/ith_vest_s01.iff'
+              "object/tangible/wearables/ithorian/shared_ith_vest_s01.iff",
              }
 
 }

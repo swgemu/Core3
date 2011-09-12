@@ -47,8 +47,6 @@ object_draft_schematic_clothing_component_clothing_synthetic_cloth = object_draf
 
    customObjectName = "Synthetic Cloth",
 
-   groupName = "craftClothingNoviceGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_component_clothing_synthetic_cloth = object_draf
    contribution = {100, 100, 100},
 
    templates = {
-              1899204179, -- Script: 'object/tangible/component/clothing/synthetic_cloth.iff'
+              "object/tangible/component/clothing/shared_synthetic_cloth.iff",
              }
 
 }

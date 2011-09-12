@@ -47,8 +47,6 @@ object_draft_schematic_weapon_poleaxe_vibro = object_draft_schematic_weapon_shar
 
    customObjectName = "Long Vibro Axe",
 
-   groupName = "craftWeaponMeleeGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_poleaxe_vibro = object_draft_schematic_weapon_shar
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3206801025, -- Script: 'object/weapon/melee/polearm/polearm_vibro_axe.iff'
+              "object/weapon/melee/polearm/shared_polearm_vibro_axe.iff",
              }
 
 }

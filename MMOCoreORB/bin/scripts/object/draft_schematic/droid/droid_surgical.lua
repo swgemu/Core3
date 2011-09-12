@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_surgical = object_draft_schematic_droid_share
 
    customObjectName = "Deed for: Surgical Droid",
 
-   groupName = "craftdroidGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_surgical = object_draft_schematic_droid_share
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2131786640, -- Script: 'object/tangible/deed/pet_deed/deed_surgical_basic.iff'
+              "object/tangible/deed/pet_deed/shared_deed_surgical_basic.iff",
              }
 
 }

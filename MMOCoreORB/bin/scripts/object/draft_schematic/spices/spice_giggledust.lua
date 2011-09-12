@@ -47,8 +47,6 @@ object_draft_schematic_spices_spice_giggledust = object_draft_schematic_spices_s
 
    customObjectName = "Giggledust",
 
-   groupName = "craftSmugglerSpiceA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_spices_spice_giggledust = object_draft_schematic_spices_s
    contribution = {100, 100, 100},
 
    templates = {
-              3866148125, -- Script: 'object/tangible/food/spice/spice_giggledust.iff'
+              "object/tangible/food/spice/shared_spice_giggledust.iff",
              }
 
 }

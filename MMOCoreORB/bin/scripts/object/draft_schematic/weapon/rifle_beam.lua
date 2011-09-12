@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_beam = object_draft_schematic_weapon_shared_
 
    customObjectName = "Beam Rifle",
 
-   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 50, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_beam = object_draft_schematic_weapon_shared_
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1223042704, -- Script: 'object/weapon/ranged/rifle/rifle_beam.iff'
+              "object/weapon/ranged/rifle/shared_rifle_beam.iff",
              }
 
 }

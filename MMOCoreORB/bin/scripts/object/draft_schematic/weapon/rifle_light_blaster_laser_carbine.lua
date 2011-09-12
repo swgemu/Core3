@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_light_blaster_laser_carbine = object_draft_s
 
    customObjectName = "Laser Carbine",
 
-   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_light_blaster_laser_carbine = object_draft_s
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              764829944, -- Script: 'object/weapon/ranged/carbine/carbine_laser.iff'
+              "object/weapon/ranged/carbine/shared_carbine_laser.iff",
              }
 
 }

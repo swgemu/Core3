@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_table_coffee_modern = object_draft_sc
 
    customObjectName = "Cafe Table",
 
-   groupName = "craftFurnitureGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 27, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_table_coffee_modern = object_draft_sc
    contribution = {100, 100},
 
    templates = {
-              1262291503, -- Script: 'object/tangible/furniture/modern/coffee_table_modern_style_01.iff'
+              "object/tangible/furniture/modern/shared_coffee_table_modern_style_01.iff",
              }
 
 }

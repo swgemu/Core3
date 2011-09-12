@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_sand_panther = object_draf
 
    customObjectName = "Razor Cat",
 
-   groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 29, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_sand_panther = object_draf
    contribution = {100, 100, 100},
 
    templates = {
-              3600154500, -- Script: 'object/tangible/deed/pet_deed/sand_panther_deed.iff'
+              "object/tangible/deed/pet_deed/shared_sand_panther_deed.iff",
              }
 
 }

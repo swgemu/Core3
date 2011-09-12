@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_bed_small = object_draft_schematic_fu
 
    customObjectName = "Small Bed",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_bed_small = object_draft_schematic_fu
    contribution = {100, 100},
 
    templates = {
-              4205895681, -- Script: 'object/tangible/furniture/all/frn_all_bed_sm_s1.iff'
+              "object/tangible/furniture/all/shared_frn_all_bed_sm_s1.iff",
              }
 
 }

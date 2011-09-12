@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_binary_load_lifter = object_draft_schematic_d
 
    customObjectName = "Deed for: Binary Load Lifter Droid",
 
-   groupName = "craftdroidGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_binary_load_lifter = object_draft_schematic_d
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1668047966, -- Script: 'object/tangible/deed/pet_deed/deed_binary_load_lifter_basic.iff'
+              "object/tangible/deed/pet_deed/shared_deed_binary_load_lifter_basic.iff",
              }
 
 }

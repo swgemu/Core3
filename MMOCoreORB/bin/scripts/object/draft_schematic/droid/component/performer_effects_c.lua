@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_performer_effects_c = object_draft_schema
 
    customObjectName = "Type C Lighting Effects",
 
-   groupName = "craftdroidgenmodGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_performer_effects_c = object_draft_schema
    contribution = {100, 100, 100},
 
    templates = {
-              2467659931, -- Script: 'object/tangible/component/droid/performer_effects_c.iff'
+              "object/tangible/component/droid/shared_performer_effects_c.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_component_biologic_effect_controller = object_d
 
    customObjectName = "Biological Effect Controller",
 
-   groupName = "craftMedicineComponentGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_component_biologic_effect_controller = object_d
    contribution = {100, 100},
 
    templates = {
-              2874741112, -- Script: 'object/tangible/component/chemistry/biologic_effect_controller.iff'
+              "object/tangible/component/chemistry/shared_biologic_effect_controller.iff",
              }
 
 }

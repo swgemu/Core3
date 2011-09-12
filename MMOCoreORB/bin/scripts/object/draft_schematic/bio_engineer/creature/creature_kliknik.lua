@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_kliknik = object_draft_sch
 
    customObjectName = "Kliknik",
 
-   groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_kliknik = object_draft_sch
    contribution = {100, 100, 100},
 
    templates = {
-              272178190, -- Script: 'object/tangible/deed/pet_deed/kliknik_deed.iff'
+              "object/tangible/deed/pet_deed/shared_kliknik_deed.iff",
              }
 
 }

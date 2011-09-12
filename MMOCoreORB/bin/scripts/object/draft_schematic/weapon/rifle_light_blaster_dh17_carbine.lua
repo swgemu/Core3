@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine = object_draft_sc
 
    customObjectName = "DH17 Carbine",
 
-   groupName = "craftWeaponRangedGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3185522316, -- Script: 'object/weapon/ranged/carbine/carbine_dh17.iff'
+              "object/weapon/ranged/carbine/shared_carbine_dh17.iff",
              }
 
 }

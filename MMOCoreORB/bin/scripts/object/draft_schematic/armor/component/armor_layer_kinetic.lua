@@ -47,8 +47,6 @@ object_draft_schematic_armor_component_armor_layer_kinetic = object_draft_schema
 
    customObjectName = "Kinetic Protection Armor Layer",
 
-   groupName = "craftArmorLightLayersGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_component_armor_layer_kinetic = object_draft_schema
    contribution = {100, 100, 100},
 
    templates = {
-              3311102868, -- Script: 'object/tangible/component/armor/armor_layer_kinetic.iff'
+              "object/tangible/component/armor/shared_armor_layer_kinetic.iff",
              }
 
 }

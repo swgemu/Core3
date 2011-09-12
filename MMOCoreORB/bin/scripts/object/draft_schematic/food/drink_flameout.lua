@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_flameout = object_draft_schematic_food_shared_
 
    customObjectName = "Flameout",
 
-   groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_flameout = object_draft_schematic_food_shared_
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              391653777, -- Script: 'object/tangible/food/crafted/drink_flameout.iff'
+              "object/tangible/food/crafted/shared_drink_flameout.iff",
              }
 
 }

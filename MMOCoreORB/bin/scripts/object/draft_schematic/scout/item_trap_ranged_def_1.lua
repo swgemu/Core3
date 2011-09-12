@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_trap_ranged_def_1 = object_draft_schematic_sco
 
    customObjectName = "Glow-Juice Trap",
 
-   groupName = "craftScoutTrapGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 4, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_trap_ranged_def_1 = object_draft_schematic_sco
    contribution = {100, 100, 100},
 
    templates = {
-              1646478137, -- Script: 'object/tangible/scout/trap/trap_ranged_def_1.iff'
+              "object/tangible/scout/trap/shared_trap_ranged_def_1.iff",
              }
 
 }

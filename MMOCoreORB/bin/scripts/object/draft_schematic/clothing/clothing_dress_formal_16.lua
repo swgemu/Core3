@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_dress_formal_16 = object_draft_schemati
 
    customObjectName = "Cloaked Dress",
 
-   groupName = "craftClothingFormalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_dress_formal_16 = object_draft_schemati
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              167267519, -- Script: 'object/tangible/wearables/dress/dress_s16.iff'
+              "object/tangible/wearables/dress/shared_dress_s16.iff",
              }
 
 }

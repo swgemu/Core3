@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_bandolier_field_03 = object_draft_schem
 
    customObjectName = "Two-Strap Bandolier",
 
-   groupName = "craftClothingFieldGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_03 = object_draft_schem
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              293236393, -- Script: 'object/tangible/wearables/bandolier/bandolier_s03.iff'
+              "object/tangible/wearables/bandolier/shared_bandolier_s03.iff",
              }
 
 }

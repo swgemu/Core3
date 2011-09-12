@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_c
 
    customObjectName = "Visual Camouflage",
 
-   groupName = "craftTissueGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_c
    contribution = {100, 100, 100},
 
    templates = {
-              207537610, -- Script: 'object/tangible/component/bio/bio_component_clothing_field_cover.iff'
+              "object/tangible/component/bio/shared_bio_component_clothing_field_cover.iff",
              }
 
 }

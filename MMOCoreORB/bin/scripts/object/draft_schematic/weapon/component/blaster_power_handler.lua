@@ -47,8 +47,6 @@ object_draft_schematic_weapon_component_blaster_power_handler = object_draft_sch
 
    customObjectName = "Blaster Power-handler",
 
-   groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_component_blaster_power_handler = object_draft_sch
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              702649693, -- Script: 'object/tangible/component/weapon/blaster_power_handler.iff'
+              "object/tangible/component/weapon/shared_blaster_power_handler.iff",
              }
 
 }

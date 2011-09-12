@@ -47,8 +47,6 @@ object_draft_schematic_food_component_container_cask = object_draft_schematic_fo
 
    customObjectName = "Cask",
 
-   groupName = "craftFoodDrinkGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_component_container_cask = object_draft_schematic_fo
    contribution = {100, 100},
 
    templates = {
-              3552621287, -- Script: 'object/tangible/component/food/container_cask.iff'
+              "object/tangible/component/food/shared_container_cask.iff",
              }
 
 }

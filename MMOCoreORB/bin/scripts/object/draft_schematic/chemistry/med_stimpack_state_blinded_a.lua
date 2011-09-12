@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_med_stimpack_state_blinded_a = object_draft_sch
 
    customObjectName = "Blinded State Medpack - A",
 
-   groupName = "craftStimpackStateGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_med_stimpack_state_blinded_a = object_draft_sch
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              273431060, -- Script: 'object/tangible/medicine/crafted/medpack_blinded_a.iff'
+              "object/tangible/medicine/crafted/shared_medpack_blinded_a.iff",
              }
 
 }

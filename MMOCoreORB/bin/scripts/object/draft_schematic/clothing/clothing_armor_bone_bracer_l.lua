@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_bone_bracer_l = object_draft_sche
 
    customObjectName = "Bone Armor Left Bracer",
 
-   groupName = "craftArtisanEngineeringGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 14, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_bone_bracer_l = object_draft_sche
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1185807341, -- Script: 'object/tangible/wearables/armor/bone/armor_bone_s01_bracer_l.iff'
+              "object/tangible/wearables/armor/bone/shared_armor_bone_s01_bracer_l.iff",
              }
 
 }

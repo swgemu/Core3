@@ -47,8 +47,6 @@ object_draft_schematic_item_item_generic_tool = object_draft_schematic_item_shar
 
    customObjectName = "Generic Crafting Tool",
 
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_generic_tool = object_draft_schematic_item_shar
    contribution = {100, 100, 100},
 
    templates = {
-              339194814, -- Script: 'object/tangible/crafting/station/generic_tool.iff'
+              "object/tangible/crafting/station/shared_generic_tool.iff",
              }
 
 }

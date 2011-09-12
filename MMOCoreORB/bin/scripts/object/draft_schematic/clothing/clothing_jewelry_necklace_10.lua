@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_10 = object_draft_sche
 
    customObjectName = "Heavy Crystal Symbol",
 
-   groupName = "craftClothingFormalGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 0, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_10 = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              1775017247, -- Script: 'object/tangible/wearables/necklace/necklace_s10.iff'
+              "object/tangible/wearables/necklace/shared_necklace_s10.iff",
              }
 
 }

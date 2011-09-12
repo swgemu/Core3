@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_trap_tranq_dart = object_draft_schematic_scout
 
    customObjectName = "Phecnacine Dart",
 
-   groupName = "craftScoutTrapGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_trap_tranq_dart = object_draft_schematic_scout
    contribution = {100, 100, 100},
 
    templates = {
-              3433589446, -- Script: 'object/tangible/scout/trap/trap_tranq_dart.iff'
+              "object/tangible/scout/trap/shared_trap_tranq_dart.iff",
              }
 
 }

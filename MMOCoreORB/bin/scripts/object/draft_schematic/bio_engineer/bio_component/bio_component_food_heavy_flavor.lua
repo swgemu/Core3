@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_heavy_flavo
 
    customObjectName = "Multisaccharide Pentamate",
 
-   groupName = "craftTissueGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
    complexity = 26, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_heavy_flavo
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1775068808, -- Script: 'object/tangible/component/bio/bio_component_food_heavy_flavor.iff'
+              "object/tangible/component/bio/shared_bio_component_food_heavy_flavor.iff",
              }
 
 }

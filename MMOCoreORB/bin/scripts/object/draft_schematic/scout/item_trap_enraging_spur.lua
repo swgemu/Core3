@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_trap_enraging_spur = object_draft_schematic_sc
 
    customObjectName = "Sharp Bone Spur",
 
-   groupName = "craftScoutTrapGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 4, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_trap_enraging_spur = object_draft_schematic_sc
    contribution = {100, 100, 100},
 
    templates = {
-              2897575624, -- Script: 'object/tangible/scout/trap/trap_enraging_spur.iff'
+              "object/tangible/scout/trap/shared_trap_enraging_spur.iff",
              }
 
 }

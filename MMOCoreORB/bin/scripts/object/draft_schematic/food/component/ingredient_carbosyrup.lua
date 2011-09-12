@@ -47,8 +47,6 @@ object_draft_schematic_food_component_ingredient_carbosyrup = object_draft_schem
 
    customObjectName = "Carbosyrup",
 
-   groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_component_ingredient_carbosyrup = object_draft_schem
    contribution = {100},
 
    templates = {
-              3081531044, -- Script: 'object/tangible/component/food/ingredient_carbosyrup.iff'
+              "object/tangible/component/food/shared_ingredient_carbosyrup.iff",
              }
 
 }

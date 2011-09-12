@@ -47,8 +47,6 @@ object_draft_schematic_spices_spice_yarrock = object_draft_schematic_spices_shar
 
    customObjectName = "Yarrock",
 
-   groupName = "craftSmugglerSpiceA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_spices_spice_yarrock = object_draft_schematic_spices_shar
    contribution = {100, 100, 100},
 
    templates = {
-              375006515, -- Script: 'object/tangible/food/spice/spice_yarrock.iff'
+              "object/tangible/food/spice/shared_spice_yarrock.iff",
              }
 
 }

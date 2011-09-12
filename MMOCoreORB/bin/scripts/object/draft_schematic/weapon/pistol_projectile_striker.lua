@@ -47,8 +47,6 @@ object_draft_schematic_weapon_pistol_projectile_striker = object_draft_schematic
 
    customObjectName = "Striker Pistol",
 
-   groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_pistol_projectile_striker = object_draft_schematic
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2375243758, -- Script: 'object/weapon/ranged/pistol/pistol_striker.iff'
+              "object/weapon/ranged/pistol/shared_pistol_striker.iff",
              }
 
 }

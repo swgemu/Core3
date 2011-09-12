@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_revive = object_draft_schematic_chemist
 
    customObjectName = "Resuscitation Kit",
 
-   groupName = "craftMedpackGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 32, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_revive = object_draft_schematic_chemist
    contribution = {100, 100, 100, 100},
 
    templates = {
-              794688942, -- Script: 'object/tangible/medicine/crafted/medpack_revive.iff'
+              "object/tangible/medicine/crafted/shared_medpack_revive.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_axe_vibro = object_draft_schematic_weapon_shared_a
 
    customObjectName = "Vibro Axe",
 
-   groupName = "craftWeaponMeleeGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_axe_vibro = object_draft_schematic_weapon_shared_a
    contribution = {100, 100, 100},
 
    templates = {
-              589649861, -- Script: 'object/weapon/melee/axe/axe_vibroaxe.iff'
+              "object/weapon/melee/axe/shared_axe_vibroaxe.iff",
              }
 
 }

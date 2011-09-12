@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine_snubnose = object
 
    customObjectName = "DH17 Short Carbine",
 
-   groupName = "craftWeaponRangedGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_light_blaster_dh17_carbine_snubnose = object
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              648215202, -- Script: 'object/weapon/ranged/carbine/carbine_dh17_snubnose.iff'
+              "object/weapon/ranged/carbine/shared_carbine_dh17_snubnose.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_chest_cheap = object_draft_schematic_
 
    customObjectName = "Chest",
 
-   groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_chest_cheap = object_draft_schematic_
    contribution = {100, 100},
 
    templates = {
-              303725605, -- Script: 'object/tangible/furniture/cheap/chest_s01.iff'
+              "object/tangible/furniture/cheap/shared_chest_s01.iff",
              }
 
 }

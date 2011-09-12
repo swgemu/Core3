@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_pikatta_pie = object_draft_schematic_food_sh
 
    customObjectName = "Pikatta Pie",
 
-   groupName = "craftFoodDessertGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_pikatta_pie = object_draft_schematic_food_sh
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              507210122, -- Script: 'object/tangible/food/crafted/dessert_pikatta_pie.iff'
+              "object/tangible/food/crafted/shared_dessert_pikatta_pie.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_lamp_table_cantina = object_draft_sch
 
    customObjectName = "Table-top Lamp 'Coruscant'",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_lamp_table_cantina = object_draft_sch
    contribution = {100, 100, 100},
 
    templates = {
-              2345066053, -- Script: 'object/tangible/furniture/all/frn_all_lamp_tatt_s01.iff'
+              "object/tangible/furniture/all/shared_frn_all_lamp_tatt_s01.iff",
              }
 
 }

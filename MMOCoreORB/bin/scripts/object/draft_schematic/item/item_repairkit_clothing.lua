@@ -47,8 +47,6 @@ object_draft_schematic_item_item_repairkit_clothing = object_draft_schematic_ite
 
    customObjectName = "Clothing Repair Tool",
 
-   groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 7, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_repairkit_clothing = object_draft_schematic_ite
    contribution = {100, 100},
 
    templates = {
-              2302530121, -- Script: 'object/tangible/crafting/station/clothing_repair.iff'
+              "object/tangible/crafting/station/shared_clothing_repair.iff",
              }
 
 }

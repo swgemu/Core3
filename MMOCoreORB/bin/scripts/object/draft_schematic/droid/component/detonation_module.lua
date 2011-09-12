@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_detonation_module = object_draft_schemati
 
    customObjectName = "Detonation Module",
 
-   groupName = "craftdroidgenmodGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_detonation_module = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              508750598, -- Script: 'object/tangible/component/droid/detonation_module.iff'
+              "object/tangible/component/droid/shared_detonation_module.iff",
              }
 
 }

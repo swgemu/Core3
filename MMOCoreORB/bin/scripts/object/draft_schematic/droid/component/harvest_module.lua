@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_harvest_module = object_draft_schematic_d
 
    customObjectName = "Creature Harvest Module",
 
-   groupName = "craftdroidgenmodGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_harvest_module = object_draft_schematic_d
    contribution = {100, 100, 100},
 
    templates = {
-              1840155737, -- Script: 'object/tangible/component/droid/harvest_module.iff'
+              "object/tangible/component/droid/shared_harvest_module.iff",
              }
 
 }

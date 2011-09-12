@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_tantel_boots = object_draft_schem
 
    customObjectName = "Tantel Armor Boots",
 
-   groupName = "craftArmorPersonalGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_tantel_boots = object_draft_schem
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2233569603, -- Script: 'object/tangible/wearables/armor/tantel/armor_tantel_skreej_boots.iff'
+              "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_boots.iff",
              }
 
 }

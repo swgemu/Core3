@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_belt_field_04 = object_draft_schematic_
 
    customObjectName = "Workman's Belt",
 
-   groupName = "craftClothingNoviceGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_belt_field_04 = object_draft_schematic_
    contribution = {100, 100, 100},
 
    templates = {
-              4165408581, -- Script: 'object/tangible/wearables/belt/belt_s04.iff'
+              "object/tangible/wearables/belt/shared_belt_s04.iff",
              }
 
 }

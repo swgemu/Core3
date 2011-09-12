@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_camokit_endor = object_draft_schematic_scout_s
 
    customObjectName = "Camo Kit: Endor",
 
-   groupName = "craftRangerCamoGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 2, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_camokit_endor = object_draft_schematic_scout_s
    contribution = {100, 100, 100},
 
    templates = {
-              4036311659, -- Script: 'object/tangible/scout/camokit/camokit_endor.iff'
+              "object/tangible/scout/camokit/shared_camokit_endor.iff",
              }
 
 }

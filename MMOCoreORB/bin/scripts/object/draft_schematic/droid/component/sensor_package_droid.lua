@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_sensor_package_droid = object_draft_schem
 
    customObjectName = "Droid Sensor Package",
 
-   groupName = "craftdroidGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_sensor_package_droid = object_draft_schem
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2994894242, -- Script: 'object/tangible/component/droid/sensor_package_droid.iff'
+              "object/tangible/component/droid/shared_sensor_package_droid.iff",
              }
 
 }

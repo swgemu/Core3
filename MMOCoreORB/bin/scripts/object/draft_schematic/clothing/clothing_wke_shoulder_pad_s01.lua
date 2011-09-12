@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_wke_shoulder_pad_s01 = object_draft_sch
 
    customObjectName = "Heavy Shoulder Pad",
 
-   groupName = "craftClothingCasualGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_wke_shoulder_pad_s01 = object_draft_sch
    contribution = {100, 100},
 
    templates = {
-              2913090417, -- Script: 'object/tangible/wearables/wookiee/wke_shoulder_pad_s01.iff'
+              "object/tangible/wearables/wookiee/shared_wke_shoulder_pad_s01.iff",
              }
 
 }

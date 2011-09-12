@@ -47,8 +47,6 @@ object_draft_schematic_clothing_component_clothing_padding_segment = object_draf
 
    customObjectName = "Armor Padding",
 
-   groupName = "craftClothingFieldGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_component_clothing_padding_segment = object_draf
    contribution = {100, 100, 100},
 
    templates = {
-              349677024, -- Script: 'object/tangible/component/clothing/padding_segment.iff'
+              "object/tangible/component/clothing/shared_padding_segment.iff",
              }
 
 }

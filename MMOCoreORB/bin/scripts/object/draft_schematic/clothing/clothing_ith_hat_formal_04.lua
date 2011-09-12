@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_hat_formal_04 = object_draft_schema
 
    customObjectName = "Ithorian Ceremonial Garb",
 
-   groupName = "craftClothingFormalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_hat_formal_04 = object_draft_schema
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              481136361, -- Script: 'object/tangible/wearables/ithorian/ith_hat_s04.iff'
+              "object/tangible/wearables/ithorian/shared_ith_hat_s04.iff",
              }
 
 }

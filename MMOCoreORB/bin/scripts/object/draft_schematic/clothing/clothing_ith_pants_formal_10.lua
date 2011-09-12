@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_pants_formal_10 = object_draft_sche
 
    customObjectName = "Ithorian Buckle Pants",
 
-   groupName = "craftClothingFormalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_pants_formal_10 = object_draft_sche
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3025077249, -- Script: 'object/tangible/wearables/ithorian/ith_pants_s10.iff'
+              "object/tangible/wearables/ithorian/shared_ith_pants_s10.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_factory_clothing = object_draft_sc
 
    customObjectName = "Deed for: Wearables Factory",
 
-   groupName = "craftInstallationGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 16, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_factory_clothing = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              494810594, -- Script: 'object/tangible/deed/factory_deed/factory_clothing_deed.iff'
+              "object/tangible/deed/factory_deed/shared_factory_clothing_deed.iff",
              }
 
 }

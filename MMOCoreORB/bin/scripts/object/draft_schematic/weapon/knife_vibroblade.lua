@@ -47,8 +47,6 @@ object_draft_schematic_weapon_knife_vibroblade = object_draft_schematic_weapon_s
 
    customObjectName = "Vibroblade",
 
-   groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_knife_vibroblade = object_draft_schematic_weapon_s
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1982554682, -- Script: 'object/weapon/melee/knife/knife_vibroblade.iff'
+              "object/weapon/melee/knife/shared_knife_vibroblade.iff",
              }
 
 }

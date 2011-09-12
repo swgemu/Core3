@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_robe_formal_02 = object_draft_schem
 
    customObjectName = "Ithorian Merchant's Robe",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_robe_formal_02 = object_draft_schem
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2443220766, -- Script: 'object/tangible/wearables/ithorian/ith_robe_s03.iff'
+              "object/tangible/wearables/ithorian/shared_ith_robe_s03.iff",
              }
 
 }

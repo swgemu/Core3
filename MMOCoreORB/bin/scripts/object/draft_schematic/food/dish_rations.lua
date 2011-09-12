@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_rations = object_draft_schematic_food_shared_di
 
    customObjectName = "K-18 Rations",
 
-   groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_rations = object_draft_schematic_food_shared_di
    contribution = {100, 100, 100, 100},
 
    templates = {
-              993643963, -- Script: 'object/tangible/food/crafted/dish_rations.iff'
+              "object/tangible/food/crafted/shared_dish_rations.iff",
              }
 
 }

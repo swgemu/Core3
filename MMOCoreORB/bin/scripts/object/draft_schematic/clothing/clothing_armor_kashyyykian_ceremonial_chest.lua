@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_ceremonial_chest = ob
 
    customObjectName = "Kashyyykian Ceremonial Chest Plate",
 
-   groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_ceremonial_chest = ob
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              856491201, -- Script: 'object/tangible/wearables/armor/kashyyykian_ceremonial/armor_kashyyykian_ceremonial_chest_plate.iff'
+              "object/tangible/wearables/armor/kashyyykian_ceremonial/shared_armor_kashyyykian_ceremonial_chest_plate.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_item_item_repairkit_weapon = object_draft_schematic_item_
 
    customObjectName = "Weapon Repair Tool",
 
-   groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 7, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_repairkit_weapon = object_draft_schematic_item_
    contribution = {100, 100},
 
    templates = {
-              4269687909, -- Script: 'object/tangible/crafting/station/weapon_repair.iff'
+              "object/tangible/crafting/station/shared_weapon_repair.iff",
              }
 
 }

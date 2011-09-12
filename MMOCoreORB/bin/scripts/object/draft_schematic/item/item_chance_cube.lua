@@ -47,8 +47,6 @@ object_draft_schematic_item_item_chance_cube = object_draft_schematic_item_share
 
    customObjectName = "Chance Cube",
 
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 2, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_chance_cube = object_draft_schematic_item_share
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1191840474, -- Script: 'object/tangible/dice/eqp_chance_cube.iff'
+              "object/tangible/dice/shared_eqp_chance_cube.iff",
              }
 
 }

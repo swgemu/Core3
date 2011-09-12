@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_robe_casual_05b = object_draft_schemati
 
    customObjectName = "Cloak (Hood Up)",
 
-   groupName = "craftClothingCasualGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_robe_casual_05b = object_draft_schemati
    contribution = {100, 100},
 
    templates = {
-              2090607316, -- Script: 'object/tangible/wearables/robe/robe_s05_h1.iff'
+              "object/tangible/wearables/robe/shared_robe_s05_h1.iff",
              }
 
 }

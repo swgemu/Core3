@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_skirt_formal_11 = object_draft_schemati
 
    customObjectName = "Noble Skirt",
 
-   groupName = "craftClothingFormalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_skirt_formal_11 = object_draft_schemati
    contribution = {100, 100, 100, 100},
 
    templates = {
-              350136221, -- Script: 'object/tangible/wearables/skirt/skirt_s11.iff'
+              "object/tangible/wearables/skirt/shared_skirt_s11.iff",
              }
 
 }

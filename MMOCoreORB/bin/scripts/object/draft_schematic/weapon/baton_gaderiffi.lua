@@ -47,8 +47,6 @@ object_draft_schematic_weapon_baton_gaderiffi = object_draft_schematic_weapon_sh
 
    customObjectName = "Gaderiffi Baton",
 
-   groupName = "craftWeaponMeleeGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_baton_gaderiffi = object_draft_schematic_weapon_sh
    contribution = {100, 100, 100, 100},
 
    templates = {
-              4274961640, -- Script: 'object/weapon/melee/baton/baton_gaderiffi.iff'
+              "object/weapon/melee/baton/shared_baton_gaderiffi.iff",
              }
 
 }

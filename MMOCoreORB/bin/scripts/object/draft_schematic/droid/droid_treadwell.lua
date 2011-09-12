@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_treadwell = object_draft_schematic_droid_shar
 
    customObjectName = "Deed for: Treadwell Droid",
 
-   groupName = "craftdroidGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_treadwell = object_draft_schematic_droid_shar
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              128351985, -- Script: 'object/tangible/deed/pet_deed/deed_treadwell_basic.iff'
+              "object/tangible/deed/pet_deed/shared_deed_treadwell_basic.iff",
              }
 
 }

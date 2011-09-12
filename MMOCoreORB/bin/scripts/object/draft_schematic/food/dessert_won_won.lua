@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_won_won = object_draft_schematic_food_shared
 
    customObjectName = "Won-Won",
 
-   groupName = "craftFoodDessertGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 6, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_won_won = object_draft_schematic_food_shared
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3766089714, -- Script: 'object/tangible/food/crafted/dessert_won_won.iff'
+              "object/tangible/food/crafted/shared_dessert_won_won.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_pistol_blaster_power5 = object_draft_schematic_wea
 
    customObjectName = "Power5 Pistol",
 
-   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_pistol_blaster_power5 = object_draft_schematic_wea
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1687234741, -- Script: 'object/weapon/ranged/pistol/pistol_power5.iff'
+              "object/weapon/ranged/pistol/shared_pistol_power5.iff",
              }
 
 }

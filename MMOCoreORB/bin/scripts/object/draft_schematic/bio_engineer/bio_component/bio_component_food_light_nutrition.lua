@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_nutri
 
    customObjectName = "Micronutrient Supplement",
 
-   groupName = "craftTissueGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_food_light_nutri
    contribution = {100, 100, 100, 100},
 
    templates = {
-              4208188122, -- Script: 'object/tangible/component/bio/bio_component_food_light_nutrition.iff'
+              "object/tangible/component/bio/shared_bio_component_food_light_nutrition.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_armor_component_armor_layer_energy = object_draft_schemat
 
    customObjectName = "Energy Protection Armor Layer",
 
-   groupName = "craftArmorLightLayersGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_component_armor_layer_energy = object_draft_schemat
    contribution = {100, 100, 100, 100},
 
    templates = {
-              983989372, -- Script: 'object/tangible/component/armor/armor_layer_energy.iff'
+              "object/tangible/component/armor/shared_armor_layer_energy.iff",
              }
 
 }

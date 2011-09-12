@@ -47,8 +47,6 @@ object_draft_schematic_weapon_lance_vibro_controller_fp = object_draft_schematic
 
    customObjectName = "Lance",
 
-   groupName = "craftWeaponMeleeGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 5, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_lance_vibro_controller_fp = object_draft_schematic
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3892633613, -- Script: 'object/weapon/melee/polearm/lance_controllerfp.iff'
+              "object/weapon/melee/polearm/shared_lance_controllerfp.iff",
              }
 
 }

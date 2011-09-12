@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_backpack_field_05 = object_draft_schema
 
    customObjectName = "Bounty Hunter Pack",
 
-   groupName = "craftClothingFieldGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_backpack_field_05 = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              314455252, -- Script: 'object/tangible/wearables/backpack/backpack_s05.iff'
+              "object/tangible/wearables/backpack/shared_backpack_s05.iff",
              }
 
 }

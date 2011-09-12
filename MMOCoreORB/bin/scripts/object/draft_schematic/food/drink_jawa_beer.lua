@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_jawa_beer = object_draft_schematic_food_shared
 
    customObjectName = "Jawa Beer",
 
-   groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 4, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_jawa_beer = object_draft_schematic_food_shared
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3058622993, -- Script: 'object/tangible/food/crafted/drink_jawa_beer.iff'
+              "object/tangible/food/crafted/shared_drink_jawa_beer.iff",
              }
 
 }

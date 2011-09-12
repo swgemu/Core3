@@ -47,8 +47,6 @@ object_draft_schematic_structure_component_structure_small_storage_section = obj
 
    customObjectName = "Small Structure Storage Module",
 
-   groupName = "craftStructureGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_component_structure_small_storage_section = obj
    contribution = {100, 100},
 
    templates = {
-              2655229135, -- Script: 'object/tangible/component/structure/structure_small_storage_section.iff'
+              "object/tangible/component/structure/shared_structure_small_storage_section.iff",
              }
 
 }

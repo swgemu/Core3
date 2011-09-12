@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_wound_quickness_e = object_draft_schema
 
    customObjectName = "Quickness Wound Medpack - E",
 
-   groupName = "craftMedpackBGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_wound_quickness_e = object_draft_schema
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3724937335, -- Script: 'object/tangible/medicine/crafted/medpack_wound_quickness_e.iff'
+              "object/tangible/medicine/crafted/shared_medpack_wound_quickness_e.iff",
              }
 
 }

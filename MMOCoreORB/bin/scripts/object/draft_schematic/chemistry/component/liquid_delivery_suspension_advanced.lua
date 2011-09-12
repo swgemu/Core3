@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_component_liquid_delivery_suspension_advanced =
 
    customObjectName = "Advanced Liquid Suspension",
 
-   groupName = "craftMedicineComponentGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_component_liquid_delivery_suspension_advanced =
    contribution = {100, 100},
 
    templates = {
-              2454210198, -- Script: 'object/tangible/component/chemistry/liquid_delivery_suspension_advanced.iff'
+              "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff",
              }
 
 }

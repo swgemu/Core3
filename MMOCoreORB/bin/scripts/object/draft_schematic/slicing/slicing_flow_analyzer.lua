@@ -47,8 +47,6 @@ object_draft_schematic_slicing_slicing_flow_analyzer = object_draft_schematic_sl
 
    customObjectName = "Flow Analyzer Node",
 
-   groupName = "craftSmugglerToolsB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 7, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_slicing_slicing_flow_analyzer = object_draft_schematic_sl
    contribution = {100, 100, 100},
 
    templates = {
-              3083691712, -- Script: 'object/tangible/slicing/slicing_flow_analyzer.iff'
+              "object/tangible/slicing/shared_slicing_flow_analyzer.iff",
              }
 
 }

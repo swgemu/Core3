@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_mining_ore_heavy = object_draft_sc
 
    customObjectName = "Deed for: Heavy Mineral Mining Installation",
 
-   groupName = "craftInstallationGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 12, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_mining_ore_heavy = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3028322575, -- Script: 'object/tangible/deed/harvester_deed/harvester_ore_heavy_deed.iff'
+              "object/tangible/deed/harvester_deed/shared_harvester_ore_heavy_deed.iff",
              }
 
 }

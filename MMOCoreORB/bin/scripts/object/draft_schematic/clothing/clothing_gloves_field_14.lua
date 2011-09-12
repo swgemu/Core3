@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_gloves_field_14 = object_draft_schemati
 
    customObjectName = "Link-Steel Reinforced Gloves",
 
-   groupName = "craftClothingFieldGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_gloves_field_14 = object_draft_schemati
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1102736425, -- Script: 'object/tangible/wearables/gloves/gloves_s14.iff'
+              "object/tangible/wearables/gloves/shared_gloves_s14.iff",
              }
 
 }

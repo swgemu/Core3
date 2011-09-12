@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jacket_field_10 = object_draft_schemati
 
    customObjectName = "Heavy Reinforced Jacket",
 
-   groupName = "craftClothingFieldGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jacket_field_10 = object_draft_schemati
    contribution = {100, 100, 100, 100},
 
    templates = {
-              966125359, -- Script: 'object/tangible/wearables/jacket/jacket_s10.iff'
+              "object/tangible/wearables/jacket/shared_jacket_s10.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_chitin_gloves = object_draft_sche
 
    customObjectName = "Chitin Armor Gloves",
 
-   groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_chitin_gloves = object_draft_sche
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1252870946, -- Script: 'object/tangible/wearables/armor/chitin/armor_chitin_s01_gloves.iff'
+              "object/tangible/wearables/armor/chitin/shared_armor_chitin_s01_gloves.iff",
              }
 
 }

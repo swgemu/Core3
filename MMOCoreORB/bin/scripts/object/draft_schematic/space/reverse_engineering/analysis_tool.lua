@@ -47,8 +47,6 @@ object_draft_schematic_space_reverse_engineering_analysis_tool = object_draft_sc
 
    customObjectName = "Component Analysis Tool",
 
-   groupName = "craftShipwrightNoviceGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_space_reverse_engineering_analysis_tool = object_draft_sc
    contribution = {100, 100},
 
    templates = {
-              368231243, -- Script: 'object/tangible/ship/crafted/reverse_engineering/analysis_tool.iff'
+              "object/tangible/ship/crafted/reverse_engineering/shared_analysis_tool.iff",
              }
 
 }

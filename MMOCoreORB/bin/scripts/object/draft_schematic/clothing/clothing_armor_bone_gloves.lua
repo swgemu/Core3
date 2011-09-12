@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_bone_gloves = object_draft_schema
 
    customObjectName = "Bone Armor Gloves",
 
-   groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_bone_gloves = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2805367763, -- Script: 'object/tangible/wearables/armor/bone/armor_bone_s01_gloves.iff'
+              "object/tangible/wearables/armor/bone/shared_armor_bone_s01_gloves.iff",
              }
 
 }

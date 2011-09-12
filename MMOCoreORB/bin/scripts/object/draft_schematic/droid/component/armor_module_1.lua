@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_armor_module_1 = object_draft_schematic_d
 
    customObjectName = "Droid Armor Module 1",
 
-   groupName = "craftdroiddefmodGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 9, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_armor_module_1 = object_draft_schematic_d
    contribution = {100, 100},
 
    templates = {
-              1031071992, -- Script: 'object/tangible/component/droid/armor_module_1.iff'
+              "object/tangible/component/droid/shared_armor_module_1.iff",
              }
 
 }

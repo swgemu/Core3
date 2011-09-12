@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_blaster_laser_rifle = object_draft_schematic
 
    customObjectName = "Laser Rifle",
 
-   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_blaster_laser_rifle = object_draft_schematic
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2973754715, -- Script: 'object/weapon/ranged/rifle/rifle_laser.iff'
+              "object/weapon/ranged/rifle/shared_rifle_laser.iff",
              }
 
 }

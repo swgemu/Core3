@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_kima = object_draft_schema
 
    customObjectName = "Kima",
 
-   groupName = "craftAggressiveCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_kima = object_draft_schema
    contribution = {100, 100, 100},
 
    templates = {
-              3747937576, -- Script: 'object/tangible/deed/pet_deed/kima_deed.iff'
+              "object/tangible/deed/pet_deed/shared_kima_deed.iff",
              }
 
 }

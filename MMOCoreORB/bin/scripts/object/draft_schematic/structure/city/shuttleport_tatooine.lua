@@ -47,8 +47,6 @@ object_draft_schematic_structure_city_shuttleport_tatooine = object_draft_schema
 
    customObjectName = "Deed for: Tatooine Shuttleport",
 
-   groupName = "craftPlayerCityB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_city_shuttleport_tatooine = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3625663873, -- Script: 'object/tangible/deed/city_deed/shuttleport_tatooine_deed.iff'
+              "object/tangible/deed/city_deed/shared_shuttleport_tatooine_deed.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_gloves_field_11 = object_draft_schemati
 
    customObjectName = "Workman's Gloves",
 
-   groupName = "craftClothingFieldGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_gloves_field_11 = object_draft_schemati
    contribution = {100, 100, 100, 100},
 
    templates = {
-              675514407, -- Script: 'object/tangible/wearables/gloves/gloves_s11.iff'
+              "object/tangible/wearables/gloves/shared_gloves_s11.iff",
              }
 
 }

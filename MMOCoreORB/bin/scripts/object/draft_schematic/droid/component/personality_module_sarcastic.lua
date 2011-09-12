@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_personality_module_sarcastic = object_dra
 
    customObjectName = "Sarcastic Droid Personality Chip",
 
-   groupName = "craftdroidgenmodGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_personality_module_sarcastic = object_dra
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3522494128, -- Script: 'object/tangible/component/droid/personality_module_sarcastic.iff'
+              "object/tangible/component/droid/shared_personality_module_sarcastic.iff",
              }
 
 }

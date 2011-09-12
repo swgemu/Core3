@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_ubese_gloves = object_draft_schem
 
    customObjectName = "Ubese Armor Gloves",
 
-   groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_ubese_gloves = object_draft_schem
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2870233660, -- Script: 'object/tangible/wearables/armor/ubese/armor_ubese_gloves.iff'
+              "object/tangible/wearables/armor/ubese/shared_armor_ubese_gloves.iff",
              }
 
 }

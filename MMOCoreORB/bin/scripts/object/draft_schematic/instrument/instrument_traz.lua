@@ -47,8 +47,6 @@ object_draft_schematic_instrument_instrument_traz = object_draft_schematic_instr
 
    customObjectName = "a Traz",
 
-   groupName = "craftInstrumentGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_instrument_instrument_traz = object_draft_schematic_instr
    contribution = {100, 100},
 
    templates = {
-              2939341884, -- Script: 'object/tangible/instrument/traz.iff'
+              "object/tangible/instrument/shared_traz.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_hat_twilek_formal_05 = object_draft_sch
 
    customObjectName = "Grand Twi'lek Headpiece",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_hat_twilek_formal_05 = object_draft_sch
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2169492787, -- Script: 'object/tangible/wearables/hat/hat_twilek_s05.iff'
+              "object/tangible/wearables/hat/shared_hat_twilek_s05.iff",
              }
 
 }

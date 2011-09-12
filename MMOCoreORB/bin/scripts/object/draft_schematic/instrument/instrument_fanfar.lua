@@ -47,8 +47,6 @@ object_draft_schematic_instrument_instrument_fanfar = object_draft_schematic_ins
 
    customObjectName = "a Fanfar",
 
-   groupName = "craftInstrumentGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 14, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_instrument_instrument_fanfar = object_draft_schematic_ins
    contribution = {100, 100},
 
    templates = {
-              1877084449, -- Script: 'object/tangible/instrument/fanfar.iff'
+              "object/tangible/instrument/shared_fanfar.iff",
              }
 
 }

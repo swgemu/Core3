@@ -47,8 +47,6 @@ object_draft_schematic_weapon_heavy_rocket_launcher = object_draft_schematic_wea
 
    customObjectName = "Rocket Launcher",
 
-   groupName = "craftMunitionsGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 50, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_heavy_rocket_launcher = object_draft_schematic_wea
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3368144786, -- Script: 'object/weapon/ranged/heavy/heavy_rocket_launcher.iff'
+              "object/weapon/ranged/heavy/shared_heavy_rocket_launcher.iff",
              }
 
 }

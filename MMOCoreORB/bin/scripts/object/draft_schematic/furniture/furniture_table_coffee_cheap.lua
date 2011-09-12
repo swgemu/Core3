@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_table_coffee_cheap = object_draft_sch
 
    customObjectName = "Cheap Cafe Table",
 
-   groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_table_coffee_cheap = object_draft_sch
    contribution = {100, 100},
 
    templates = {
-              1249740868, -- Script: 'object/tangible/furniture/cheap/coffee_table_s01.iff'
+              "object/tangible/furniture/cheap/shared_coffee_table_s01.iff",
              }
 
 }

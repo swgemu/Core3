@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_chassis_droid_3p0 = object_draft_schemati
 
    customObjectName = "Protocol ADV Droid Chassis",
 
-   groupName = "craftdroidGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 32, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_chassis_droid_3p0 = object_draft_schemati
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1555047506, -- Script: 'object/tangible/component/droid/p0_droid_chassis.iff'
+              "object/tangible/component/droid/shared_p0_droid_chassis.iff",
              }
 
 }

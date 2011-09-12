@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_durindfire = object_draft_schematic_food_share
 
    customObjectName = "Durindfire",
 
-   groupName = "craftFoodDrinkGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_durindfire = object_draft_schematic_food_share
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3060681243, -- Script: 'object/tangible/food/crafted/drink_durindfire.iff'
+              "object/tangible/food/crafted/shared_drink_durindfire.iff",
              }
 
 }

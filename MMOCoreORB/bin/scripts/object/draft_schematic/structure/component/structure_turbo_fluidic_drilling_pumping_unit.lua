@@ -47,8 +47,6 @@ object_draft_schematic_structure_component_structure_turbo_fluidic_drilling_pump
 
    customObjectName = "Turbo Fluidic Drilling Pump Unit",
 
-   groupName = "craftInstallationGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_component_structure_turbo_fluidic_drilling_pump
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              135758881, -- Script: 'object/tangible/component/structure/turbo_fluidic_drilling_pumping_unit.iff'
+              "object/tangible/component/structure/shared_turbo_fluidic_drilling_pumping_unit.iff",
              }
 
 }

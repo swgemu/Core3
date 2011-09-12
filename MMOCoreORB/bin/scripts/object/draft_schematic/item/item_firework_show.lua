@@ -47,8 +47,6 @@ object_draft_schematic_item_item_firework_show = object_draft_schematic_item_sha
 
    customObjectName = "Fireworks Show Package",
 
-   groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_firework_show = object_draft_schematic_item_sha
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2570315118, -- Script: 'object/tangible/firework/show.iff'
+              "object/tangible/firework/shared_show.iff",
              }
 
 }

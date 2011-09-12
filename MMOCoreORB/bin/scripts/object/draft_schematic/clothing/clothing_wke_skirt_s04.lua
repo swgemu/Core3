@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_wke_skirt_s04 = object_draft_schematic_
 
    customObjectName = "Simple Waist Wrap",
 
-   groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 6, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_wke_skirt_s04 = object_draft_schematic_
    contribution = {100, 100},
 
    templates = {
-              2480394612, -- Script: 'object/tangible/wearables/wookiee/wke_skirt_s04.iff'
+              "object/tangible/wearables/wookiee/shared_wke_skirt_s04.iff",
              }
 
 }

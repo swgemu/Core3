@@ -47,8 +47,6 @@ object_draft_schematic_instrument_instrument_mandoviol = object_draft_schematic_
 
    customObjectName = "a Mandoviol",
 
-   groupName = "craftInstrumentGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 0, 
@@ -73,7 +71,7 @@ object_draft_schematic_instrument_instrument_mandoviol = object_draft_schematic_
    contribution = {100, 100},
 
    templates = {
-              1093667312, -- Script: 'object/tangible/instrument/mandoviol.iff'
+              "object/tangible/instrument/shared_mandoviol.iff",
              }
 
 }

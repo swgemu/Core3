@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_zucca_boar = object_draft_
 
    customObjectName = "Zucca Boar",
 
-   groupName = "craftAggressiveCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_zucca_boar = object_draft_
    contribution = {100, 100, 100},
 
    templates = {
-              3873592423, -- Script: 'object/tangible/deed/pet_deed/zucca_boar_deed.iff'
+              "object/tangible/deed/pet_deed/shared_zucca_boar_deed.iff",
              }
 
 }

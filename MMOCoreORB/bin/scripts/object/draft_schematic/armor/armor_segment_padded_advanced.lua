@@ -47,8 +47,6 @@ object_draft_schematic_armor_armor_segment_padded_advanced = object_draft_schema
 
    customObjectName = "Advanced Padded Armor Segment",
 
-   groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_armor_segment_padded_advanced = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1141198733, -- Script: 'object/tangible/component/armor/armor_segment_padded_advanced.iff'
+              "object/tangible/component/armor/shared_armor_segment_padded_advanced.iff",
              }
 
 }

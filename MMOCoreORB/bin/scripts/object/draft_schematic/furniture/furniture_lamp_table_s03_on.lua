@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_lamp_table_s03_on = object_draft_sche
 
    customObjectName = "Table-top Lamp 'Naboo'",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_lamp_table_s03_on = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              2271757755, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_table_s03.iff'
+              "object/tangible/furniture/all/shared_frn_all_light_lamp_table_s03.iff",
              }
 
 }

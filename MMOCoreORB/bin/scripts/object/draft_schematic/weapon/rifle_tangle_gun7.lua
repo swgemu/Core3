@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_tangle_gun7 = object_draft_schematic_weapon_
 
    customObjectName = "Tangle Pistol",
 
-   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_tangle_gun7 = object_draft_schematic_weapon_
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              3357582048, -- Script: 'object/weapon/ranged/pistol/pistol_tangle.iff'
+              "object/weapon/ranged/pistol/shared_pistol_tangle.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_padded_gloves = object_draft_sche
 
    customObjectName = "Padded Armor Gloves",
 
-   groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_padded_gloves = object_draft_sche
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1301374465, -- Script: 'object/tangible/wearables/armor/padded/armor_padded_s01_gloves.iff'
+              "object/tangible/wearables/armor/padded/shared_armor_padded_s01_gloves.iff",
              }
 
 }

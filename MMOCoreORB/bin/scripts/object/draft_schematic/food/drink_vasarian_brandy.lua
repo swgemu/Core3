@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_vasarian_brandy = object_draft_schematic_food_
 
    customObjectName = "Vasarian Brandy",
 
-   groupName = "craftFoodDrinkGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_vasarian_brandy = object_draft_schematic_food_
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              4103434691, -- Script: 'object/tangible/food/crafted/drink_vasarian_brandy.iff'
+              "object/tangible/food/crafted/shared_drink_vasarian_brandy.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_disease_area_strength_c = object_draft_
 
    customObjectName = "Strength Area Disease Delivery Unit - C",
 
-   groupName = "craftApplyDiseaseAreaGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 45, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_disease_area_strength_c = object_draft_
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2169080597, -- Script: 'object/tangible/medicine/crafted/medpack_disease_area_strength_c.iff'
+              "object/tangible/medicine/crafted/shared_medpack_disease_area_strength_c.iff",
              }
 
 }

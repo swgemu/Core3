@@ -47,8 +47,6 @@ object_draft_schematic_structure_city_garden_exotic_endor = object_draft_schemat
 
    customObjectName = "Deed for: Endor Huts (Garden)",
 
-   groupName = "craftPlayerCityE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 27, 
    size = 12, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_city_garden_exotic_endor = object_draft_schemat
    contribution = {100, 100, 100},
 
    templates = {
-              3619763926, -- Script: 'object/tangible/deed/city_deed/garden_endor_lrg_01_deed.iff'
+              "object/tangible/deed/city_deed/shared_garden_endor_lrg_01_deed.iff",
              }
 
 }

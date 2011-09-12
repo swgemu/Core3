@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_dalyrake = object_draft_sc
 
    customObjectName = "Dalyrake",
 
-   groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_dalyrake = object_draft_sc
    contribution = {100, 100, 100},
 
    templates = {
-              4253493662, -- Script: 'object/tangible/deed/pet_deed/dalyrake_deed.iff'
+              "object/tangible/deed/pet_deed/shared_dalyrake_deed.iff",
              }
 
 }

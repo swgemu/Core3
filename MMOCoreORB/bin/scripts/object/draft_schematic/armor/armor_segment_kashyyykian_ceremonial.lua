@@ -47,8 +47,6 @@ object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial = object_draft
 
    customObjectName = "Kashyyykian Ceremonial Armor Segment",
 
-   groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_ceremonial = object_draft
    contribution = {100, 100, 100},
 
    templates = {
-              3811878664, -- Script: 'object/tangible/component/armor/armor_segment_kashyyykian_ceremonial.iff'
+              "object/tangible/component/armor/shared_armor_segment_kashyyykian_ceremonial.iff",
              }
 
 }

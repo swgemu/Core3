@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_pants_casual_02 = object_draft_schemati
 
    customObjectName = "Winged Hawtpants",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_pants_casual_02 = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              2043640120, -- Script: 'object/tangible/wearables/pants/pants_s02.iff'
+              "object/tangible/wearables/pants/shared_pants_s02.iff",
              }
 
 }

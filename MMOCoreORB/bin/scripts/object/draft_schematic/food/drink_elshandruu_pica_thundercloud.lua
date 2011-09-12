@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_elshandruu_pica_thundercloud = object_draft_sc
 
    customObjectName = "Elshandruu Pica Thundercloud",
 
-   groupName = "craftFoodDrinkGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_elshandruu_pica_thundercloud = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              3328378890, -- Script: 'object/tangible/food/crafted/drink_elshandruu_pica_thundercloud.iff'
+              "object/tangible/food/crafted/shared_drink_elshandruu_pica_thundercloud.iff",
              }
 
 }

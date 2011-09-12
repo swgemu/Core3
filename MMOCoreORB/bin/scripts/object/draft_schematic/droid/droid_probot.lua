@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_probot = object_draft_schematic_droid_shared_
 
    customObjectName = "Deed for: Probot",
 
-   groupName = "craftdroidGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_probot = object_draft_schematic_droid_shared_
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1602379937, -- Script: 'object/tangible/deed/pet_deed/deed_probot_basic.iff'
+              "object/tangible/deed/pet_deed/shared_deed_probot_basic.iff",
              }
 
 }

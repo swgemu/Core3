@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_carrion_spat = object_draf
 
    customObjectName = "Carrion Spat",
 
-   groupName = "craftAggressiveCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_carrion_spat = object_draf
    contribution = {100, 100, 100},
 
    templates = {
-              3368776755, -- Script: 'object/tangible/deed/pet_deed/carrion_spat_deed.iff'
+              "object/tangible/deed/pet_deed/shared_carrion_spat_deed.iff",
              }
 
 }

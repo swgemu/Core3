@@ -47,8 +47,6 @@ object_draft_schematic_item_item_parrot_cage = object_draft_schematic_item_share
 
    customObjectName = "Nemoidian Bird Cage",
 
-   groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 6, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_parrot_cage = object_draft_schematic_item_share
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2124499242, -- Script: 'object/tangible/parrot_cage/parrot_cage.iff'
+              "object/tangible/parrot_cage/shared_parrot_cage.iff",
              }
 
 }

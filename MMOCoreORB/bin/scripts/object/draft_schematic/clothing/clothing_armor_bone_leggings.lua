@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_bone_leggings = object_draft_sche
 
    customObjectName = "Bone Armor Leggings",
 
-   groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_bone_leggings = object_draft_sche
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3381208818, -- Script: 'object/tangible/wearables/armor/bone/armor_bone_s01_leggings.iff'
+              "object/tangible/wearables/armor/bone/shared_armor_bone_s01_leggings.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jewelry_ring_01 = object_draft_schemati
 
    customObjectName = "Band",
 
-   groupName = "craftClothingFormalGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jewelry_ring_01 = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              2106144434, -- Script: 'object/tangible/wearables/ring/ring_s01.iff'
+              "object/tangible/wearables/ring/shared_ring_s01.iff",
              }
 
 }

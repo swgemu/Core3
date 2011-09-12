@@ -47,8 +47,6 @@ object_draft_schematic_armor_component_deflector_shield_emitter_assembly = objec
 
    customObjectName = "Deflector Shield Emitter Assembly",
 
-   groupName = "craftArmorShieldsGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_component_deflector_shield_emitter_assembly = objec
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2379696201, -- Script: 'object/tangible/component/armor/deflector_shield_emitter_assembly.iff'
+              "object/tangible/component/armor/shared_deflector_shield_emitter_assembly.iff",
              }
 
 }

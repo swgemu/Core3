@@ -47,8 +47,6 @@ object_draft_schematic_structure_component_structure_manufacturing_mechanism = o
 
    customObjectName = "Manufacturing Mechanism",
 
-   groupName = "craftInstallationGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 10, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_component_structure_manufacturing_mechanism = o
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2607616608, -- Script: 'object/tangible/component/structure/manufacturing_mechanism.iff'
+              "object/tangible/component/structure/shared_manufacturing_mechanism.iff",
              }
 
 }

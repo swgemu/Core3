@@ -47,8 +47,6 @@ object_draft_schematic_item_item_space_station = object_draft_schematic_item_sha
 
    customObjectName = "Starship Crafting Station",
 
-   groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_space_station = object_draft_schematic_item_sha
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2102867079, -- Script: 'object/tangible/crafting/station/space_station.iff'
+              "object/tangible/crafting/station/shared_space_station.iff",
              }
 
 }

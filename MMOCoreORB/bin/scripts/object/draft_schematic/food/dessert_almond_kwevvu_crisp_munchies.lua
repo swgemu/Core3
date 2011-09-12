@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_almond_kwevvu_crisp_munchies = object_draft_
 
    customObjectName = "Almond-Kwevvu Crisp Munchies",
 
-   groupName = "craftFoodNoviceGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_almond_kwevvu_crisp_munchies = object_draft_
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3988122695, -- Script: 'object/tangible/food/crafted/dessert_almond_kwevvu_crisp_munchies.iff'
+              "object/tangible/food/crafted/shared_dessert_almond_kwevvu_crisp_munchies.iff",
              }
 
 }

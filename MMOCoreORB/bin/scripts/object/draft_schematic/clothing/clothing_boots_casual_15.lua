@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_boots_casual_15 = object_draft_schemati
 
    customObjectName = "Standard Boots",
 
-   groupName = "craftClothingCasualGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_boots_casual_15 = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              2619230613, -- Script: 'object/tangible/wearables/boots/boots_s15.iff'
+              "object/tangible/wearables/boots/shared_boots_s15.iff",
              }
 
 }

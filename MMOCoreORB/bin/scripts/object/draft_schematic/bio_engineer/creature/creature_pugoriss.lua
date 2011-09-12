@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_pugoriss = object_draft_sc
 
    customObjectName = "Pugoriss",
 
-   groupName = "craftAggressiveCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_pugoriss = object_draft_sc
    contribution = {100, 100, 100},
 
    templates = {
-              2442014990, -- Script: 'object/tangible/deed/pet_deed/pugoriss_deed.iff'
+              "object/tangible/deed/pet_deed/shared_pugoriss_deed.iff",
              }
 
 }

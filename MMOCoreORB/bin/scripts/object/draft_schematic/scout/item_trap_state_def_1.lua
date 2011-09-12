@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_trap_state_def_1 = object_draft_schematic_scou
 
    customObjectName = "Stink Bomb",
 
-   groupName = "craftScoutTrapGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 7, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_trap_state_def_1 = object_draft_schematic_scou
    contribution = {100, 100},
 
    templates = {
-              2574486094, -- Script: 'object/tangible/scout/trap/trap_state_def_1.iff'
+              "object/tangible/scout/trap/shared_trap_state_def_1.iff",
              }
 
 }

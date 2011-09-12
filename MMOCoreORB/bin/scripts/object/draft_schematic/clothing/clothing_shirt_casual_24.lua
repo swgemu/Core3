@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_shirt_casual_24 = object_draft_schemati
 
    customObjectName = "Sports Wrap",
 
-   groupName = "craftClothingCasualGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_shirt_casual_24 = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              3744273977, -- Script: 'object/tangible/wearables/shirt/shirt_s24.iff'
+              "object/tangible/wearables/shirt/shared_shirt_s24.iff",
              }
 
 }

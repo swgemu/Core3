@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_capacitor_low_discharge = object_draft_sc
 
    customObjectName = "Capacitor Discharge Unit",
 
-   groupName = "craftDroidRepairCompA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_capacitor_low_discharge = object_draft_sc
    contribution = {100, 100, 100},
 
    templates = {
-              1008525171, -- Script: 'object/tangible/component/droid/repair/capacitor_low_discharge.iff'
+              "object/tangible/component/droid/repair/shared_capacitor_low_discharge.iff",
              }
 
 }

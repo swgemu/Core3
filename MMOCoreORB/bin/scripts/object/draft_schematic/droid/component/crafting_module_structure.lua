@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_crafting_module_structure = object_draft_
 
    customObjectName = "Structure Droid Crafting Station Module",
 
-   groupName = "craftdroidgenmodGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_crafting_module_structure = object_draft_
    contribution = {100, 100, 100},
 
    templates = {
-              2910357169, -- Script: 'object/tangible/component/droid/crafting_module_structure.iff'
+              "object/tangible/component/droid/shared_crafting_module_structure.iff",
              }
 
 }

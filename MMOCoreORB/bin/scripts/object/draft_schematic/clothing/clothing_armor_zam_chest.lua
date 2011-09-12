@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_zam_chest = object_draft_schemati
 
    customObjectName = "Mabari Armorweave Chest Plate",
 
-   groupName = "craftArmorPersonalGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_zam_chest = object_draft_schemati
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3874964107, -- Script: 'object/tangible/wearables/armor/zam/armor_zam_wesell_chest_plate.iff'
+              "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_chest_plate.iff",
              }
 
 }

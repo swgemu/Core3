@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_shirt_formal_12 = object_draft_schemati
 
    customObjectName = "Flared Cuff Shirt",
 
-   groupName = "craftClothingFormalGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_shirt_formal_12 = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              1086016808, -- Script: 'object/tangible/wearables/shirt/shirt_s12.iff'
+              "object/tangible/wearables/shirt/shared_shirt_s12.iff",
              }
 
 }

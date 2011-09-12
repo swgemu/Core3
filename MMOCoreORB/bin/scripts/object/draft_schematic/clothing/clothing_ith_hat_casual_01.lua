@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_hat_casual_01 = object_draft_schema
 
    customObjectName = "Ithorian Newsboy",
 
-   groupName = "craftClothingCasualGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_hat_casual_01 = object_draft_schema
    contribution = {100, 100, 100},
 
    templates = {
-              1968466663, -- Script: 'object/tangible/wearables/ithorian/ith_hat_s01.iff'
+              "object/tangible/wearables/ithorian/shared_ith_hat_s01.iff",
              }
 
 }

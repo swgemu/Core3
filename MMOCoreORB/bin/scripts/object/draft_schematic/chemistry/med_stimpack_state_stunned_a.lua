@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_med_stimpack_state_stunned_a = object_draft_sch
 
    customObjectName = "Stun State Stimpack - A",
 
-   groupName = "craftStimpackStateGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_med_stimpack_state_stunned_a = object_draft_sch
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              4197276444, -- Script: 'object/tangible/medicine/crafted/medpack_stunned_a.iff'
+              "object/tangible/medicine/crafted/shared_medpack_stunned_a.iff",
              }
 
 }

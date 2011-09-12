@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_teltier_noodles = object_draft_schematic_food_s
 
    customObjectName = "Teltier Noodles",
 
-   groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_teltier_noodles = object_draft_schematic_food_s
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1664157751, -- Script: 'object/tangible/food/crafted/dish_teltier_noodles.iff'
+              "object/tangible/food/crafted/shared_dish_teltier_noodles.iff",
              }
 
 }

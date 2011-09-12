@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_lamp_freestanding = object_draft_sche
 
    customObjectName = "Free-standing Lamp 'Blueleaf'",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_lamp_freestanding = object_draft_sche
    contribution = {100, 100, 100, 100},
 
    templates = {
-              304186597, -- Script: 'object/tangible/furniture/all/frn_all_lamp_free_s01.iff'
+              "object/tangible/furniture/all/shared_frn_all_lamp_free_s01.iff",
              }
 
 }

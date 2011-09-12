@@ -47,8 +47,6 @@ object_draft_schematic_spices_spice_droid_lube = object_draft_schematic_spices_s
 
    customObjectName = "Zypolene Droid Lubricant",
 
-   groupName = "craftSmugglerSpiceB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_spices_spice_droid_lube = object_draft_schematic_spices_s
    contribution = {100, 100, 100},
 
    templates = {
-              3974108643, -- Script: 'object/tangible/food/spice/spice_droid_lube.iff'
+              "object/tangible/food/spice/shared_spice_droid_lube.iff",
              }
 
 }

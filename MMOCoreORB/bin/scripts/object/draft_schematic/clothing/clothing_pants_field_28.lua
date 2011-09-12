@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_pants_field_28 = object_draft_schematic
 
    customObjectName = "Reinforced Pants",
 
-   groupName = "craftClothingFieldGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_pants_field_28 = object_draft_schematic
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2624367572, -- Script: 'object/tangible/wearables/pants/pants_s28.iff'
+              "object/tangible/wearables/pants/shared_pants_s28.iff",
              }
 
 }

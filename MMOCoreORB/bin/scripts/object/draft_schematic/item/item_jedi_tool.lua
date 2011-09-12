@@ -47,8 +47,6 @@ object_draft_schematic_item_item_jedi_tool = object_draft_schematic_item_shared_
 
    customObjectName = "Lightsaber Crafting Toolkit",
 
-   groupName = "craftJediTool", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_jedi_tool = object_draft_schematic_item_shared_
    contribution = {100, 100, 100},
 
    templates = {
-              3651422589, -- Script: 'object/tangible/crafting/station/jedi_tool.iff'
+              "object/tangible/crafting/station/shared_jedi_tool.iff",
              }
 
 }

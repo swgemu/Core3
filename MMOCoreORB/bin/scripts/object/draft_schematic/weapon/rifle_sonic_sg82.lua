@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_sonic_sg82 = object_draft_schematic_weapon_s
 
    customObjectName = "SG82 Rifle",
 
-   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_sonic_sg82 = object_draft_schematic_weapon_s
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3146716110, -- Script: 'object/weapon/ranged/rifle/rifle_sg82.iff'
+              "object/weapon/ranged/rifle/shared_rifle_sg82.iff",
              }
 
 }

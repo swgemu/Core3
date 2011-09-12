@@ -47,8 +47,6 @@ object_draft_schematic_structure_component_structure_generator_turbine = object_
 
    customObjectName = "Generator Turbine",
 
-   groupName = "craftStructureGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 8, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_component_structure_generator_turbine = object_
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3265938450, -- Script: 'object/tangible/component/structure/generator_turbine.iff'
+              "object/tangible/component/structure/shared_generator_turbine.iff",
              }
 
 }

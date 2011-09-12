@@ -47,8 +47,6 @@ object_draft_schematic_instrument_instrument_slitherhorn = object_draft_schemati
 
    customObjectName = "a Slitherhorn",
 
-   groupName = "craftInstrumentGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_instrument_instrument_slitherhorn = object_draft_schemati
    contribution = {100, 100},
 
    templates = {
-              1194649487, -- Script: 'object/tangible/instrument/slitherhorn.iff'
+              "object/tangible/instrument/shared_slitherhorn.iff",
              }
 
 }

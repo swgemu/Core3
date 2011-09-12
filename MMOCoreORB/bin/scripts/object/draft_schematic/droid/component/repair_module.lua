@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_repair_module = object_draft_schematic_dr
 
    customObjectName = "Repair Module",
 
-   groupName = "craftdroiddefmodGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_repair_module = object_draft_schematic_dr
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1152198535, -- Script: 'object/tangible/component/droid/repair_module.iff'
+              "object/tangible/component/droid/shared_repair_module.iff",
              }
 
 }

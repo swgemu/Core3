@@ -47,8 +47,6 @@ object_draft_schematic_item_item_weapon_tool = object_draft_schematic_item_share
 
    customObjectName = "Weapon, Droid, and General Item Crafting Tool",
 
-   groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_weapon_tool = object_draft_schematic_item_share
    contribution = {100, 100, 100},
 
    templates = {
-              1777192720, -- Script: 'object/tangible/crafting/station/weapon_tool.iff'
+              "object/tangible/crafting/station/shared_weapon_tool.iff",
              }
 
 }

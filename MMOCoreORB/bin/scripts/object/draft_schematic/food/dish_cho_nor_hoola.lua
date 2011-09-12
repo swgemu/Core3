@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_cho_nor_hoola = object_draft_schematic_food_sha
 
    customObjectName = "Cho-Nor-Hoola",
 
-   groupName = "craftFoodDishGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 6, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_cho_nor_hoola = object_draft_schematic_food_sha
    contribution = {100, 100, 100, 100},
 
    templates = {
-              536694865, -- Script: 'object/tangible/food/crafted/dish_cho_nor_hoola.iff'
+              "object/tangible/food/crafted/shared_dish_cho_nor_hoola.iff",
              }
 
 }

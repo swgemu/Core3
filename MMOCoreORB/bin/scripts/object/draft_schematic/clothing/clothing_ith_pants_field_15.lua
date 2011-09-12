@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_pants_field_15 = object_draft_schem
 
    customObjectName = "Ithorian Jungle Shorts",
 
-   groupName = "craftClothingFieldGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_pants_field_15 = object_draft_schem
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3719749647, -- Script: 'object/tangible/wearables/ithorian/ith_pants_s15.iff'
+              "object/tangible/wearables/ithorian/shared_ith_pants_s15.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_pistol_scatter = object_draft_schematic_weapon_sha
 
    customObjectName = "Scatter Pistol",
 
-   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_pistol_scatter = object_draft_schematic_weapon_sha
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              322519616, -- Script: 'object/weapon/ranged/pistol/pistol_scatter.iff'
+              "object/weapon/ranged/pistol/shared_pistol_scatter.iff",
              }
 
 }

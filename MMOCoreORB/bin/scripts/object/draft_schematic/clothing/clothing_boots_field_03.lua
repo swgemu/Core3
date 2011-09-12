@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_boots_field_03 = object_draft_schematic
 
    customObjectName = "Wrapped Boots",
 
-   groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 14, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_boots_field_03 = object_draft_schematic
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              903350388, -- Script: 'object/tangible/wearables/boots/boots_s03.iff'
+              "object/tangible/wearables/boots/shared_boots_s03.iff",
              }
 
 }

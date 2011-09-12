@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_bolma = object_draft_schem
 
    customObjectName = "Bolma",
 
-   groupName = "craftDomesticCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 26, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_bolma = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              4048411108, -- Script: 'object/tangible/deed/pet_deed/bolma_deed.iff'
+              "object/tangible/deed/pet_deed/shared_bolma_deed.iff",
              }
 
 }

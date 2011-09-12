@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_aitha = object_draft_schematic_food_shared_dri
 
    customObjectName = "Aitha",
 
-   groupName = "craftArtisanDomesticGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_aitha = object_draft_schematic_food_shared_dri
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1706352715, -- Script: 'object/tangible/food/crafted/drink_aitha.iff'
+              "object/tangible/food/crafted/shared_drink_aitha.iff",
              }
 
 }

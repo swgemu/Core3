@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_padded_bracer_l = object_draft_sc
 
    customObjectName = "Padded Armor Left Bracer",
 
-   groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_padded_bracer_l = object_draft_sc
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2244256329, -- Script: 'object/tangible/wearables/armor/padded/armor_padded_s01_bracer_l.iff'
+              "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bracer_l.iff",
              }
 
 }

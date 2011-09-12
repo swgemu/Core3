@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_falumpaset = object_draft_
 
    customObjectName = "Falumpaset",
 
-   groupName = "craftDomesticCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_falumpaset = object_draft_
    contribution = {100, 100, 100},
 
    templates = {
-              4174936327, -- Script: 'object/tangible/deed/pet_deed/falumpaset_deed.iff'
+              "object/tangible/deed/pet_deed/shared_falumpaset_deed.iff",
              }
 
 }

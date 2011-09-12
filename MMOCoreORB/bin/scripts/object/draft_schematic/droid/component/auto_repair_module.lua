@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_auto_repair_module = object_draft_schemat
 
    customObjectName = "Auto-Repair Module",
 
-   groupName = "craftdroidgenmodGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_auto_repair_module = object_draft_schemat
    contribution = {100, 100, 100},
 
    templates = {
-              682587057, -- Script: 'object/tangible/component/droid/auto_repair_module.iff'
+              "object/tangible/component/droid/shared_auto_repair_module.iff",
              }
 
 }

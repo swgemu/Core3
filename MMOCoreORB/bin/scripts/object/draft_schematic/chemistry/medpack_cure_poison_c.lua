@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_cure_poison_c = object_draft_schematic_
 
    customObjectName = "Cure Poison Medpack - C",
 
-   groupName = "craftCurePoisonGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_cure_poison_c = object_draft_schematic_
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2544506730, -- Script: 'object/tangible/medicine/crafted/medpack_cure_poison_c.iff'
+              "object/tangible/medicine/crafted/shared_medpack_cure_poison_c.iff",
              }
 
 }

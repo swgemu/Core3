@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_le_repair = object_draft_schematic_droid_shar
 
    customObjectName = "Deed for: LE Repair Droid",
 
-   groupName = "craftdroidGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_le_repair = object_draft_schematic_droid_shar
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              15781339, -- Script: 'object/tangible/deed/pet_deed/deed_le_repair_basic.iff'
+              "object/tangible/deed/pet_deed/shared_deed_le_repair_basic.iff",
              }
 
 }

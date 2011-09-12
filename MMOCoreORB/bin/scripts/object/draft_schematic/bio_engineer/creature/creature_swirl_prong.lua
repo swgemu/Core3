@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_swirl_prong = object_draft
 
    customObjectName = "Swirl Prong",
 
-   groupName = "craftBasicCreatureGroup", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_swirl_prong = object_draft
    contribution = {100, 100, 100},
 
    templates = {
-              1542507372, -- Script: 'object/tangible/deed/pet_deed/swirl_prong_deed.iff'
+              "object/tangible/deed/pet_deed/shared_swirl_prong_deed.iff",
              }
 
 }

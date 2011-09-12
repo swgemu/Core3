@@ -47,8 +47,6 @@ object_draft_schematic_structure_house_player_large = object_draft_schematic_str
 
    customObjectName = "Deed for: Large Tatooine House",
 
-   groupName = "craftStructureGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 14, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_house_player_large = object_draft_schematic_str
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              804050572, -- Script: 'object/tangible/deed/player_house_deed/tatooine_house_large_deed.iff'
+              "object/tangible/deed/player_house_deed/shared_tatooine_house_large_deed.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_component_blaster_pistol_barrel_advanced = object_
 
    customObjectName = "Advanced Blaster Pistol Barrel",
 
-   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_component_blaster_pistol_barrel_advanced = object_
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2856502376, -- Script: 'object/tangible/component/weapon/blaster_pistol_barrel_advanced.iff'
+              "object/tangible/component/weapon/shared_blaster_pistol_barrel_advanced.iff",
              }
 
 }

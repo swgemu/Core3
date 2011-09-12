@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_bocatt = object_draft_sche
 
    customObjectName = "Bocatt",
 
-   groupName = "craftAggressiveCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_bocatt = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              3037633332, -- Script: 'object/tangible/deed/pet_deed/bocatt_deed.iff'
+              "object/tangible/deed/pet_deed/shared_bocatt_deed.iff",
              }
 
 }

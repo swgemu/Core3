@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_flame_thrower = object_draft_schematic_weapo
 
    customObjectName = "Flame Thrower",
 
-   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_flame_thrower = object_draft_schematic_weapo
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              4089446987, -- Script: 'object/weapon/ranged/rifle/rifle_flame_thrower.iff'
+              "object/weapon/ranged/rifle/shared_rifle_flame_thrower.iff",
              }
 
 }

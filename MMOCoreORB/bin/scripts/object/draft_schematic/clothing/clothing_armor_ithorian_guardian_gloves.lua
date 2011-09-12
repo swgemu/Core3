@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_ithorian_guardian_gloves = object
 
    customObjectName = "Ithorian Guardian Gloves",
 
-   groupName = "craftArmorPersonalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_ithorian_guardian_gloves = object
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2742940187, -- Script: 'object/tangible/wearables/armor/ithorian_guardian/ith_armor_s02_gloves.iff'
+              "object/tangible/wearables/armor/ithorian_guardian/shared_ith_armor_s02_gloves.iff",
              }
 
 }

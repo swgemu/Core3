@@ -47,8 +47,6 @@ object_draft_schematic_space_repair_engine_repair_kit = object_draft_schematic_s
 
    customObjectName = "Engine Repair Kit",
 
-   groupName = "craftShipwrightNoviceGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
    size = 0, 
@@ -73,7 +71,7 @@ object_draft_schematic_space_repair_engine_repair_kit = object_draft_schematic_s
    contribution = {100, 100},
 
    templates = {
-              1455294754, -- Script: 'object/tangible/ship/crafted/repair/repair_kit_engine.iff'
+              "object/tangible/ship/crafted/repair/shared_repair_kit_engine.iff",
              }
 
 }

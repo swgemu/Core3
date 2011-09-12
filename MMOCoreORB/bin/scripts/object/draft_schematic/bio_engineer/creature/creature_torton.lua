@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_torton = object_draft_sche
 
    customObjectName = "Torton",
 
-   groupName = "craftAdvancedCreatureGroup", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_torton = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              3896526172, -- Script: 'object/tangible/deed/pet_deed/torton_deed.iff'
+              "object/tangible/deed/pet_deed/shared_torton_deed.iff",
              }
 
 }

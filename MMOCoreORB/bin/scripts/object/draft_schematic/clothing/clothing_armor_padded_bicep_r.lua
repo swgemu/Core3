@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_padded_bicep_r = object_draft_sch
 
    customObjectName = "Padded Armor Right Bicep",
 
-   groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_padded_bicep_r = object_draft_sch
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1871505314, -- Script: 'object/tangible/wearables/armor/padded/armor_padded_s01_bicep_r.iff'
+              "object/tangible/wearables/armor/padded/shared_armor_padded_s01_bicep_r.iff",
              }
 
 }

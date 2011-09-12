@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_med_stimpack_range_a = object_draft_schematic_c
 
    customObjectName = "Ranged Stimpack - A",
 
-   groupName = "craftStimpackRangeGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_med_stimpack_range_a = object_draft_schematic_c
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              37400964, -- Script: 'object/tangible/medicine/crafted/medpack_grenade_damage_a.iff'
+              "object/tangible/medicine/crafted/shared_medpack_grenade_damage_a.iff",
              }
 
 }

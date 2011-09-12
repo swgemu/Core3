@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_chair_loveseat_cheap = object_draft_s
 
    customObjectName = "Loveseat",
 
-   groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 14, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_chair_loveseat_cheap = object_draft_s
    contribution = {100, 100},
 
    templates = {
-              3899164510, -- Script: 'object/tangible/furniture/cheap/love_seat_s01.iff'
+              "object/tangible/furniture/cheap/shared_love_seat_s01.iff",
              }
 
 }

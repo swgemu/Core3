@@ -47,8 +47,6 @@ object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen4 = object_draft
 
    customObjectName = "Fourth Generation Lightsaber",
 
-   groupName = "craftSaberMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_one_hand_gen4 = object_draft
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2570823762, -- Script: 'object/weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen4.iff'
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_one_handed_gen4.iff",
              }
 
 }

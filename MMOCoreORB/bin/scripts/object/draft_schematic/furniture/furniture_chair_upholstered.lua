@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_chair_upholstered = object_draft_sche
 
    customObjectName = "Upholstered Chair",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_chair_upholstered = object_draft_sche
    contribution = {100, 100},
 
    templates = {
-              3884115433, -- Script: 'object/tangible/furniture/all/frn_all_chair_upholstered_s1.iff'
+              "object/tangible/furniture/all/shared_frn_all_chair_upholstered_s1.iff",
              }
 
 }

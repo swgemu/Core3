@@ -47,8 +47,6 @@ object_draft_schematic_item_item_weapon_station = object_draft_schematic_item_sh
 
    customObjectName = "Weapon, Droid, and General Item Crafting Station",
 
-   groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 5, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_weapon_station = object_draft_schematic_item_sh
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              889081003, -- Script: 'object/tangible/crafting/station/weapon_station.iff'
+              "object/tangible/crafting/station/shared_weapon_station.iff",
              }
 
 }

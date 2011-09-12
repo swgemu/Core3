@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_blaster_e11 = object_draft_schematic_weapon_
 
    customObjectName = "E11 Rifle",
 
-   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_blaster_e11 = object_draft_schematic_weapon_
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              709369610, -- Script: 'object/weapon/ranged/rifle/rifle_e11.iff'
+              "object/weapon/ranged/rifle/shared_rifle_e11.iff",
              }
 
 }

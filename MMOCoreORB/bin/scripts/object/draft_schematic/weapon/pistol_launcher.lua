@@ -47,8 +47,6 @@ object_draft_schematic_weapon_pistol_launcher = object_draft_schematic_weapon_sh
 
    customObjectName = "Launcher Pistol",
 
-   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_pistol_launcher = object_draft_schematic_weapon_sh
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1980615506, -- Script: 'object/weapon/ranged/pistol/pistol_launcher.iff'
+              "object/weapon/ranged/pistol/shared_pistol_launcher.iff",
              }
 
 }

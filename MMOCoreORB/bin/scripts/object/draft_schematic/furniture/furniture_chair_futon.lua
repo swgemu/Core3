@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_chair_futon = object_draft_schematic_
 
    customObjectName = "Futon",
 
-   groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_chair_futon = object_draft_schematic_
    contribution = {100},
 
    templates = {
-              4013183612, -- Script: 'object/tangible/furniture/all/frn_all_couch_futon_s1.iff'
+              "object/tangible/furniture/all/shared_frn_all_couch_futon_s1.iff",
              }
 
 }

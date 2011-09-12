@@ -47,8 +47,6 @@ object_draft_schematic_item_item_configurable_sided_dice = object_draft_schemati
 
    customObjectName = "Configurable Dice",
 
-   groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 6, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_configurable_sided_dice = object_draft_schemati
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1611798992, -- Script: 'object/tangible/dice/eqp_configurable_group_dice.iff'
+              "object/tangible/dice/shared_eqp_configurable_group_dice.iff",
              }
 
 }

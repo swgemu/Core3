@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_gnort = object_draft_schem
 
    customObjectName = "Gnort",
 
-   groupName = "craftBasicCreatureGroup", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_gnort = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              2099819272, -- Script: 'object/tangible/deed/pet_deed/gnort_deed.iff'
+              "object/tangible/deed/pet_deed/shared_gnort_deed.iff",
              }
 
 }

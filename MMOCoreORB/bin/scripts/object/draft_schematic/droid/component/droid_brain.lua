@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_droid_brain = object_draft_schematic_droi
 
    customObjectName = "Droid Brain",
 
-   groupName = "craftdroidGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 8, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_droid_brain = object_draft_schematic_droi
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              4059156645, -- Script: 'object/tangible/component/droid/droid_brain.iff'
+              "object/tangible/component/droid/shared_droid_brain.iff",
              }
 
 }

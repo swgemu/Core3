@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_gloves_casual_03 = object_draft_schemat
 
    customObjectName = "Cold Weather Gloves",
 
-   groupName = "craftClothingCasualGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_gloves_casual_03 = object_draft_schemat
    contribution = {100, 100, 100},
 
    templates = {
-              2708556357, -- Script: 'object/tangible/wearables/gloves/gloves_s03.iff'
+              "object/tangible/wearables/gloves/shared_gloves_s03.iff",
              }
 
 }

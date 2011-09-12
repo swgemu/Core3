@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_bantha_butter = object_draft_schematic_food_
 
    customObjectName = "Bantha Butter",
 
-   groupName = "craftFoodDessertGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 6, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_bantha_butter = object_draft_schematic_food_
    contribution = {100, 100},
 
    templates = {
-              3006616343, -- Script: 'object/tangible/food/crafted/dessert_bantha_butter.iff'
+              "object/tangible/food/crafted/shared_dessert_bantha_butter.iff",
              }
 
 }

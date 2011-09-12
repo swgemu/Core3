@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_tiki_torch = object_draft_schematic_f
 
    customObjectName = "Torch",
 
-   groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_tiki_torch = object_draft_schematic_f
    contribution = {100, 100, 100},
 
    templates = {
-              3927885786, -- Script: 'object/tangible/furniture/all/frn_all_tiki_torch_s1.iff'
+              "object/tangible/furniture/all/shared_frn_all_tiki_torch_s1.iff",
              }
 
 }

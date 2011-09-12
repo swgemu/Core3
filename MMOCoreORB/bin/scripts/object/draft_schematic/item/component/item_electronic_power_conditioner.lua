@@ -47,8 +47,6 @@ object_draft_schematic_item_component_item_electronic_power_conditioner = object
 
    customObjectName = "Power Conditioner",
 
-   groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_component_item_electronic_power_conditioner = object
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3329911704, -- Script: 'object/tangible/component/item/electronic_power_conditioner.iff'
+              "object/tangible/component/item/shared_electronic_power_conditioner.iff",
              }
 
 }

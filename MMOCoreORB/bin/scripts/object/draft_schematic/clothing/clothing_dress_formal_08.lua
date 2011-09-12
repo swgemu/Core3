@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_dress_formal_08 = object_draft_schemati
 
    customObjectName = "Exotic Leotard",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_dress_formal_08 = object_draft_schemati
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              3788966488, -- Script: 'object/tangible/wearables/dress/dress_s08.iff'
+              "object/tangible/wearables/dress/shared_dress_s08.iff",
              }
 
 }

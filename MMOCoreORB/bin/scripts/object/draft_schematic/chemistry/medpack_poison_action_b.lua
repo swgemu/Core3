@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_poison_action_b = object_draft_schemati
 
    customObjectName = "Action Poison Delivery Unit - B",
 
-   groupName = "craftApplyPoisonGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_poison_action_b = object_draft_schemati
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1187313672, -- Script: 'object/tangible/medicine/crafted/medpack_poison_action_b.iff'
+              "object/tangible/medicine/crafted/shared_medpack_poison_action_b.iff",
              }
 
 }

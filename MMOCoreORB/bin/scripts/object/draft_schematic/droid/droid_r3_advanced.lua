@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_r3_advanced = object_draft_schematic_droid_sh
 
    customObjectName = "Deed for: R3 Droid, Advanced Model",
 
-   groupName = "craftdroidGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 45, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_r3_advanced = object_draft_schematic_droid_sh
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              820872126, -- Script: 'object/tangible/deed/pet_deed/deed_r3_advanced_basic.iff'
+              "object/tangible/deed/pet_deed/shared_deed_r3_advanced_basic.iff",
              }
 
 }

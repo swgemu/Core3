@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_deneelian_fizz_pudding = object_draft_schema
 
    customObjectName = "Deneelian Fizz Pudding",
 
-   groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_deneelian_fizz_pudding = object_draft_schema
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3172775594, -- Script: 'object/tangible/food/crafted/dessert_deneelian_fizz_pudding.iff'
+              "object/tangible/food/crafted/shared_dessert_deneelian_fizz_pudding.iff",
              }
 
 }

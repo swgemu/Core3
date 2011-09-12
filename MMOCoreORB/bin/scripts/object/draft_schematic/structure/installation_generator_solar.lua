@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_generator_solar = object_draft_sch
 
    customObjectName = "Deed for: Solar Power Generator",
 
-   groupName = "craftInstallationGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 10, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_generator_solar = object_draft_sch
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3849933819, -- Script: 'object/tangible/deed/generator_deed/generator_solar_deed.iff'
+              "object/tangible/deed/generator_deed/shared_generator_solar_deed.iff",
              }
 
 }

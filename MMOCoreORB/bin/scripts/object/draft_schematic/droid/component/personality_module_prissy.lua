@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_personality_module_prissy = object_draft_
 
    customObjectName = "Prissy Droid Personality Chip",
 
-   groupName = "craftdroidgenmodGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_personality_module_prissy = object_draft_
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2491560891, -- Script: 'object/tangible/component/droid/personality_module_prissy.iff'
+              "object/tangible/component/droid/shared_personality_module_prissy.iff",
              }
 
 }

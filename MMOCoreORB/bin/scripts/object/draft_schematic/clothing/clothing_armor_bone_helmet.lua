@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_bone_helmet = object_draft_schema
 
    customObjectName = "Bone Armor Helmet",
 
-   groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_bone_helmet = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              301359835, -- Script: 'object/tangible/wearables/armor/bone/armor_bone_s01_helmet.iff'
+              "object/tangible/wearables/armor/bone/shared_armor_bone_s01_helmet.iff",
              }
 
 }

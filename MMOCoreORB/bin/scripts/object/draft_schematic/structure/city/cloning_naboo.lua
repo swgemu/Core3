@@ -47,8 +47,6 @@ object_draft_schematic_structure_city_cloning_naboo = object_draft_schematic_str
 
    customObjectName = "Deed for: Naboo Cloning Facility",
 
-   groupName = "craftPlayerCityB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 14, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_city_cloning_naboo = object_draft_schematic_str
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              330359378, -- Script: 'object/tangible/deed/city_deed/cloning_naboo_deed.iff'
+              "object/tangible/deed/city_deed/shared_cloning_naboo_deed.iff",
              }
 
 }

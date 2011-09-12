@@ -47,8 +47,6 @@ object_draft_schematic_weapon_heavy_lightning_beam = object_draft_schematic_weap
 
    customObjectName = "Lightning Beam Cannon",
 
-   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 50, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_heavy_lightning_beam = object_draft_schematic_weap
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              949442296, -- Script: 'object/weapon/ranged/heavy/heavy_lightning_beam.iff'
+              "object/weapon/ranged/heavy/shared_heavy_lightning_beam.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_enhance_constitution_c = object_draft_s
 
    customObjectName = "Enhance Constitution Medpack - C",
 
-   groupName = "craftMedpackBEnhanceGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 32, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_enhance_constitution_c = object_draft_s
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2576833284, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_constitution_c.iff'
+              "object/tangible/medicine/crafted/shared_medpack_enhance_constitution_c.iff",
              }
 
 }

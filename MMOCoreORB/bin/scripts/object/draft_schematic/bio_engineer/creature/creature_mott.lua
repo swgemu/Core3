@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_mott = object_draft_schema
 
    customObjectName = "Mott",
 
-   groupName = "craftDomesticCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_mott = object_draft_schema
    contribution = {100, 100, 100},
 
    templates = {
-              2572395223, -- Script: 'object/tangible/deed/pet_deed/mott_deed.iff'
+              "object/tangible/deed/pet_deed/shared_mott_deed.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
 
    customObjectName = "Creature Habitat",
 
-   groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 14, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_craftable_bug_habitat = object_draft_schematic_item_
    contribution = {100, 100, 100},
 
    templates = {
-              2142449639, -- Script: 'object/tangible/bug_jar/craftable_bug_habitat.iff'
+              "object/tangible/bug_jar/shared_craftable_bug_habitat.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_camokit_lok = object_draft_schematic_scout_sha
 
    customObjectName = "Camo Kit: Lok",
 
-   groupName = "craftRangerCamoGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 2, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_camokit_lok = object_draft_schematic_scout_sha
    contribution = {100, 100, 100},
 
    templates = {
-              977748045, -- Script: 'object/tangible/scout/camokit/camokit_lok.iff'
+              "object/tangible/scout/camokit/shared_camokit_lok.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_field_02 = object_draft_sc
 
    customObjectName = "Ithorian Technical Suit",
 
-   groupName = "craftClothingFieldGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_bodysuit_field_02 = object_draft_sc
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3313588733, -- Script: 'object/tangible/wearables/ithorian/ith_bodysuit_s02.iff'
+              "object/tangible/wearables/ithorian/shared_ith_bodysuit_s02.iff",
              }
 
 }

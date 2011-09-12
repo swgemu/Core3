@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_dress_casual_12 = object_draft_schemati
 
    customObjectName = "Plain Short Robe",
 
-   groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_dress_casual_12 = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              688705340, -- Script: 'object/tangible/wearables/dress/dress_s12.iff'
+              "object/tangible/wearables/dress/shared_dress_s12.iff",
              }
 
 }

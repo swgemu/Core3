@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_enhance_stamina_b = object_draft_schema
 
    customObjectName = "Enhance Stamina Medpack - B",
 
-   groupName = "craftMedpackBEnhanceGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 27, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_enhance_stamina_b = object_draft_schema
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2257535641, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_stamina_b.iff'
+              "object/tangible/medicine/crafted/shared_medpack_enhance_stamina_b.iff",
              }
 
 }

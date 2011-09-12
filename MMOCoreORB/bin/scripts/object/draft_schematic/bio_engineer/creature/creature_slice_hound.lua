@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_slice_hound = object_draft
 
    customObjectName = "Slice Hound",
 
-   groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_slice_hound = object_draft
    contribution = {100, 100, 100},
 
    templates = {
-              3062512367, -- Script: 'object/tangible/deed/pet_deed/slice_hound_deed.iff'
+              "object/tangible/deed/pet_deed/shared_slice_hound_deed.iff",
              }
 
 }

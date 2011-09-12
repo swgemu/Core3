@@ -47,8 +47,6 @@ object_draft_schematic_weapon_component_projectile_pistol_barrel_advanced = obje
 
    customObjectName = "Advanced Projectile Pistol Barrel",
 
-   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 4, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_component_projectile_pistol_barrel_advanced = obje
    contribution = {100, 100},
 
    templates = {
-              2132239519, -- Script: 'object/tangible/component/weapon/projectile_pistol_barrel_advanced.iff'
+              "object/tangible/component/weapon/shared_projectile_pistol_barrel_advanced.iff",
              }
 
 }

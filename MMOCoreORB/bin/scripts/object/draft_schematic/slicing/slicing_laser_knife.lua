@@ -47,8 +47,6 @@ object_draft_schematic_slicing_slicing_laser_knife = object_draft_schematic_slic
 
    customObjectName = "Precision Laser Knife",
 
-   groupName = "craftSmugglerToolsA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 7, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_slicing_slicing_laser_knife = object_draft_schematic_slic
    contribution = {100, 100, 100},
 
    templates = {
-              1709158065, -- Script: 'object/tangible/slicing/slicing_laser_knife.iff'
+              "object/tangible/slicing/shared_slicing_laser_knife.iff",
              }
 
 }

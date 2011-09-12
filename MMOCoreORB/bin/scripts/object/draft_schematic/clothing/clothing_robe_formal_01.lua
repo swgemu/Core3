@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_robe_formal_01 = object_draft_schematic
 
    customObjectName = "Robe of Honor",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_robe_formal_01 = object_draft_schematic
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2025480696, -- Script: 'object/tangible/wearables/robe/robe_s01.iff'
+              "object/tangible/wearables/robe/shared_robe_s01.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_pistol_blaster_scout_trooper = object_draft_schema
 
    customObjectName = "Scout Blaster",
 
-   groupName = "craftWeaponRangedGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_pistol_blaster_scout_trooper = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              129228399, -- Script: 'object/weapon/ranged/pistol/pistol_scout_blaster.iff'
+              "object/weapon/ranged/pistol/shared_pistol_scout_blaster.iff",
              }
 
 }

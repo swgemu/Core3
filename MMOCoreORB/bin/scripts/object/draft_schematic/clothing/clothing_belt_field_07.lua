@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_belt_field_07 = object_draft_schematic_
 
    customObjectName = "Multipocket Belt",
 
-   groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_belt_field_07 = object_draft_schematic_
    contribution = {100, 100, 100},
 
    templates = {
-              592494546, -- Script: 'object/tangible/wearables/belt/belt_s07.iff'
+              "object/tangible/wearables/belt/shared_belt_s07.iff",
              }
 
 }

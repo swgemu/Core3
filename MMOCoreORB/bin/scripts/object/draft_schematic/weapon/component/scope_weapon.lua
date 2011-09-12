@@ -47,8 +47,6 @@ object_draft_schematic_weapon_component_scope_weapon = object_draft_schematic_we
 
    customObjectName = "Weapon Scope",
 
-   groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 14, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_component_scope_weapon = object_draft_schematic_we
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              403078591, -- Script: 'object/tangible/component/weapon/scope_weapon.iff'
+              "object/tangible/component/weapon/shared_scope_weapon.iff",
              }
 
 }

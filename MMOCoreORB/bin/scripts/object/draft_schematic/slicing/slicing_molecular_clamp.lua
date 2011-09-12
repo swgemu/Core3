@@ -47,8 +47,6 @@ object_draft_schematic_slicing_slicing_molecular_clamp = object_draft_schematic_
 
    customObjectName = "Molecular Clamp",
 
-   groupName = "craftSmugglerToolsC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 7, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_slicing_slicing_molecular_clamp = object_draft_schematic_
    contribution = {100, 100, 100},
 
    templates = {
-              2757688576, -- Script: 'object/tangible/slicing/slicing_molecular_clamp.iff'
+              "object/tangible/slicing/shared_slicing_molecular_clamp.iff",
              }
 
 }

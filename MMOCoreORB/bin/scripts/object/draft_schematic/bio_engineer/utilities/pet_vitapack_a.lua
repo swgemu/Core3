@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_utilities_pet_vitapack_a = object_draft_sche
 
    customObjectName = "Pet Vitality Medpack - A",
 
-   groupName = "craftTissueGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_utilities_pet_vitapack_a = object_draft_sche
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2489159188, -- Script: 'object/tangible/medicine/pet/pet_vitapack_a.iff'
+              "object/tangible/medicine/pet/shared_pet_vitapack_a.iff",
              }
 
 }

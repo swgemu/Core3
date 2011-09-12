@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_sofachair_modern = object_draft_schem
 
    customObjectName = "Sofa Chair",
 
-   groupName = "craftFurnitureGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 32, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_sofachair_modern = object_draft_schem
    contribution = {100, 100},
 
    templates = {
-              3295963423, -- Script: 'object/tangible/furniture/modern/sofa_chair_modern_style_01.iff'
+              "object/tangible/furniture/modern/shared_sofa_chair_modern_style_01.iff",
              }
 
 }

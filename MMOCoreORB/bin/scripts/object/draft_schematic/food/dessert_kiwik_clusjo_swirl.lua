@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_kiwik_clusjo_swirl = object_draft_schematic_
 
    customObjectName = "Kiwik Clusjo Swirl",
 
-   groupName = "craftFoodDessertGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_kiwik_clusjo_swirl = object_draft_schematic_
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2974799889, -- Script: 'object/tangible/food/crafted/dessert_kiwik_clusjo_swirl.iff'
+              "object/tangible/food/crafted/shared_dessert_kiwik_clusjo_swirl.iff",
              }
 
 }

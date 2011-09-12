@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_bandolier_field_08 = object_draft_schem
 
    customObjectName = "Dark Sash",
 
-   groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_08 = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              2340733240, -- Script: 'object/tangible/wearables/bandolier/bandolier_s08.iff'
+              "object/tangible/wearables/bandolier/shared_bandolier_s08.iff",
              }
 
 }

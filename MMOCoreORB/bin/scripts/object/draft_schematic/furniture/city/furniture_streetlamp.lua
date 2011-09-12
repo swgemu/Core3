@@ -47,8 +47,6 @@ object_draft_schematic_furniture_city_furniture_streetlamp = object_draft_schema
 
    customObjectName = "Streetlamp",
 
-   groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_city_furniture_streetlamp = object_draft_schema
    contribution = {100, 100, 100},
 
    templates = {
-              206484018, -- Script: 'object/tangible/furniture/city/streetlamp_large_01.iff'
+              "object/tangible/furniture/city/shared_streetlamp_large_01.iff",
              }
 
 }

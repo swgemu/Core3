@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_tybis = object_draft_schem
 
    customObjectName = "Tybis",
 
-   groupName = "craftDomesticCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_tybis = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              734407367, -- Script: 'object/tangible/deed/pet_deed/tybis_deed.iff'
+              "object/tangible/deed/pet_deed/shared_tybis_deed.iff",
              }
 
 }

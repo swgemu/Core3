@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_combat_module = object_draft_schematic_dr
 
    customObjectName = "Droid Combat Module",
 
-   groupName = "craftdroiddefmodGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_combat_module = object_draft_schematic_dr
    contribution = {100, 100, 100, 100},
 
    templates = {
-              946727014, -- Script: 'object/tangible/component/droid/combat_module.iff'
+              "object/tangible/component/droid/shared_combat_module.iff",
              }
 
 }

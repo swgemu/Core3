@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_starshine_surprise = object_draft_schematic_fo
 
    customObjectName = "Starshine Surprise",
 
-   groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_starshine_surprise = object_draft_schematic_fo
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3571886042, -- Script: 'object/tangible/food/crafted/drink_starshine_surprise.iff'
+              "object/tangible/food/crafted/shared_drink_starshine_surprise.iff",
              }
 
 }

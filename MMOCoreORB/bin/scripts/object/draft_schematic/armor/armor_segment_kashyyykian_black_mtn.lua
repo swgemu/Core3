@@ -47,8 +47,6 @@ object_draft_schematic_armor_armor_segment_kashyyykian_black_mtn = object_draft_
 
    customObjectName = "Kashyyykian Black Mountain Armor Segment",
 
-   groupName = "craftArmorPersonalGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_armor_segment_kashyyykian_black_mtn = object_draft_
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              775748867, -- Script: 'object/tangible/component/armor/armor_segment_kashyyykian_black_mtn.iff'
+              "object/tangible/component/armor/shared_armor_segment_kashyyykian_black_mtn.iff",
              }
 
 }

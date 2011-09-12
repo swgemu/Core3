@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_3p0 = object_draft_schematic_droid_shared_dro
 
    customObjectName = "Deed for: Protocol Droid",
 
-   groupName = "craftdroidGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 32, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_3p0 = object_draft_schematic_droid_shared_dro
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3056760053, -- Script: 'object/tangible/deed/pet_deed/deed_3p0_basic.iff'
+              "object/tangible/deed/pet_deed/shared_deed_3p0_basic.iff",
              }
 
 }

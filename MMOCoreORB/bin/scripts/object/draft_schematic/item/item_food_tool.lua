@@ -47,17 +47,15 @@ object_draft_schematic_item_item_food_tool = object_draft_schematic_item_shared_
 
    customObjectName = "Food and Chemical Crafting Tool",
 
-   groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 2, 
 
-   xpType = "crafting_general", 
+   xpType = "crafting_medicine_general", 
    xp = 65, 
 
-   assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
+   assemblySkill = "medicine_assembly", 
+   experimentingSkill = "medicine_experimentation", 
    customizationSkill = "clothing_customization", 
 
    customizationOptions = {},
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_food_tool = object_draft_schematic_item_shared_
    contribution = {100, 100, 100},
 
    templates = {
-              1552915488, -- Script: 'object/tangible/crafting/station/food_tool.iff'
+              "object/tangible/crafting/station/shared_food_tool.iff",
              }
 
 }

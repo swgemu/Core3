@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_cavaellin_creams = object_draft_schematic_fo
 
    customObjectName = "Cavaellin Creams",
 
-   groupName = "craftFoodDessertGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_cavaellin_creams = object_draft_schematic_fo
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2361562246, -- Script: 'object/tangible/food/crafted/dessert_cavaellin_creams.iff'
+              "object/tangible/food/crafted/shared_dessert_cavaellin_creams.iff",
              }
 
 }

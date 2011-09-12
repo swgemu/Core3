@@ -47,8 +47,6 @@ object_draft_schematic_weapon_katana = object_draft_schematic_weapon_shared_kata
 
    customObjectName = "Two-handed Curved Sword",
 
-   groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_katana = object_draft_schematic_weapon_shared_kata
    contribution = {100, 100, 100},
 
    templates = {
-              653612816, -- Script: 'object/weapon/melee/2h_sword/2h_sword_katana.iff'
+              "object/weapon/melee/2h_sword/shared_2h_sword_katana.iff",
              }
 
 }

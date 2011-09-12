@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_bookcase_elegant = object_draft_schem
 
    customObjectName = "Bookcase",
 
-   groupName = "craftFurnitureGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_bookcase_elegant = object_draft_schem
    contribution = {100, 100},
 
    templates = {
-              69743767, -- Script: 'object/tangible/furniture/elegant/bookcase_s01.iff'
+              "object/tangible/furniture/elegant/shared_bookcase_s01.iff",
              }
 
 }

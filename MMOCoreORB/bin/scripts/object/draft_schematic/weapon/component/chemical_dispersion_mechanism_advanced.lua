@@ -47,8 +47,6 @@ object_draft_schematic_weapon_component_chemical_dispersion_mechanism_advanced =
 
    customObjectName = "Advanced Chemical Dispersion Mechanism",
 
-   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_component_chemical_dispersion_mechanism_advanced =
    contribution = {100, 100, 100},
 
    templates = {
-              3394909007, -- Script: 'object/tangible/component/weapon/chemical_dispersion_mechanism_advanced.iff'
+              "object/tangible/component/weapon/shared_chemical_dispersion_mechanism_advanced.iff",
              }
 
 }

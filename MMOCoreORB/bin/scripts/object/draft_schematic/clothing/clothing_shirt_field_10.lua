@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_shirt_field_10 = object_draft_schematic
 
    customObjectName = "Reinforced Work Shirt",
 
-   groupName = "craftClothingFieldGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_shirt_field_10 = object_draft_schematic
    contribution = {100, 100, 100},
 
    templates = {
-              3533799986, -- Script: 'object/tangible/wearables/shirt/shirt_s10.iff'
+              "object/tangible/wearables/shirt/shared_shirt_s10.iff",
              }
 
 }

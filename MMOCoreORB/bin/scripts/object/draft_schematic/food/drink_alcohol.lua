@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_alcohol = object_draft_schematic_food_shared_d
 
    customObjectName = "Alcohol",
 
-   groupName = "craftFoodNoviceGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_alcohol = object_draft_schematic_food_shared_d
    contribution = {100},
 
    templates = {
-              181145794, -- Script: 'object/tangible/food/crafted/drink_alcohol.iff'
+              "object/tangible/food/crafted/shared_drink_alcohol.iff",
              }
 
 }

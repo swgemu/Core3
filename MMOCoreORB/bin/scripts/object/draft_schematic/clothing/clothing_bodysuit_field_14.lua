@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_bodysuit_field_14 = object_draft_schema
 
    customObjectName = "Fighter Flightsuit",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_bodysuit_field_14 = object_draft_schema
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1479458468, -- Script: 'object/tangible/wearables/bodysuit/bodysuit_s14.iff'
+              "object/tangible/wearables/bodysuit/shared_bodysuit_s14.iff",
              }
 
 }

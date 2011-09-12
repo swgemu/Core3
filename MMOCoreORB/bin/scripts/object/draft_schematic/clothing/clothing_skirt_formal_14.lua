@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_skirt_formal_14 = object_draft_schemati
 
    customObjectName = "Two-Tone Formal Skirt",
 
-   groupName = "craftClothingFormalGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_skirt_formal_14 = object_draft_schemati
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2099725203, -- Script: 'object/tangible/wearables/skirt/skirt_s14.iff'
+              "object/tangible/wearables/skirt/shared_skirt_s14.iff",
              }
 
 }

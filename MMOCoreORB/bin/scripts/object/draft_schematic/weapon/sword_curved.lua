@@ -47,8 +47,6 @@ object_draft_schematic_weapon_sword_curved = object_draft_schematic_weapon_share
 
    customObjectName = "Curved Sword",
 
-   groupName = "craftWeaponMeleeGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 14, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_sword_curved = object_draft_schematic_weapon_share
    contribution = {100, 100, 100},
 
    templates = {
-              213992376, -- Script: 'object/weapon/melee/sword/sword_02.iff'
+              "object/weapon/melee/sword/shared_sword_02.iff",
              }
 
 }

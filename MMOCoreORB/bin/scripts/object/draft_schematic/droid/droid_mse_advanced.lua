@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_mse_advanced = object_draft_schematic_droid_s
 
    customObjectName = "Deed for: MSE Droid, Advanced Model",
 
-   groupName = "craftdroidGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_mse_advanced = object_draft_schematic_droid_s
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2405642020, -- Script: 'object/tangible/deed/pet_deed/deed_mse_advanced_basic.iff'
+              "object/tangible/deed/pet_deed/shared_deed_mse_advanced_basic.iff",
              }
 
 }

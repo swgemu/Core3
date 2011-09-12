@@ -47,8 +47,6 @@ object_draft_schematic_structure_naboo_house_player_small_style_02 = object_draf
 
    customObjectName = "Deed for: Small Naboo House (Style 2)",
 
-   groupName = "craftStructureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 10, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_naboo_house_player_small_style_02 = object_draf
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1077688102, -- Script: 'object/tangible/deed/player_house_deed/naboo_house_small_style_02_deed.iff'
+              "object/tangible/deed/player_house_deed/shared_naboo_house_small_style_02_deed.iff",
              }
 
 }

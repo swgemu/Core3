@@ -47,8 +47,6 @@ object_draft_schematic_item_component_item_micro_sensor_suite = object_draft_sch
 
    customObjectName = "Micro Sensor Suite",
 
-   groupName = "craftArtisanMasterGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 5, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_component_item_micro_sensor_suite = object_draft_sch
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3778626740, -- Script: 'object/tangible/component/item/micro_sensor_suite.iff'
+              "object/tangible/component/item/shared_micro_sensor_suite.iff",
              }
 
 }

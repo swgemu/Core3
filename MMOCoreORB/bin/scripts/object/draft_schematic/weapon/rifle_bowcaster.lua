@@ -47,8 +47,6 @@ object_draft_schematic_weapon_rifle_bowcaster = object_draft_schematic_weapon_sh
 
    customObjectName = "Bowcaster",
 
-   groupName = "craftWookieItems", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_rifle_bowcaster = object_draft_schematic_weapon_sh
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2364395151, -- Script: 'object/weapon/ranged/rifle/rifle_bowcaster.iff'
+              "object/weapon/ranged/rifle/shared_rifle_bowcaster.iff",
              }
 
 }

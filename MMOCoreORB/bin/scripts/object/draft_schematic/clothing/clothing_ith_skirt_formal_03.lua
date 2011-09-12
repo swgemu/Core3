@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_skirt_formal_03 = object_draft_sche
 
    customObjectName = "Ithorian Patterned Skirt",
 
-   groupName = "craftClothingFormalGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_skirt_formal_03 = object_draft_sche
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1164164953, -- Script: 'object/tangible/wearables/ithorian/ith_skirt_s03.iff'
+              "object/tangible/wearables/ithorian/shared_ith_skirt_s03.iff",
              }
 
 }

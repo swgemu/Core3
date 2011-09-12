@@ -47,8 +47,6 @@ object_draft_schematic_spices_spice_gunjack = object_draft_schematic_spices_shar
 
    customObjectName = "Gunjack",
 
-   groupName = "craftSmugglerSpiceC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_spices_spice_gunjack = object_draft_schematic_spices_shar
    contribution = {100, 100, 100},
 
    templates = {
-              2706114624, -- Script: 'object/tangible/food/spice/spice_gunjack.iff'
+              "object/tangible/food/spice/shared_spice_gunjack.iff",
              }
 
 }

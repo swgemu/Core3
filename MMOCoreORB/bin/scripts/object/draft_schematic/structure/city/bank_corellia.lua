@@ -47,8 +47,6 @@ object_draft_schematic_structure_city_bank_corellia = object_draft_schematic_str
 
    customObjectName = "Deed for: Corellia Bank",
 
-   groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 12, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_city_bank_corellia = object_draft_schematic_str
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2461359060, -- Script: 'object/tangible/deed/city_deed/bank_corellia_deed.iff'
+              "object/tangible/deed/city_deed/shared_bank_corellia_deed.iff",
              }
 
 }

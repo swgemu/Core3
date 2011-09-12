@@ -47,8 +47,6 @@ object_draft_schematic_food_component_container_small_glass = object_draft_schem
 
    customObjectName = "Small Glass",
 
-   groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_component_container_small_glass = object_draft_schem
    contribution = {100},
 
    templates = {
-              4144999161, -- Script: 'object/tangible/component/food/container_small_glass.iff'
+              "object/tangible/component/food/shared_container_small_glass.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_component_projectile_feed_mechanism = object_draft
 
    customObjectName = "Projectile Feed Mechanism",
 
-   groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_component_projectile_feed_mechanism = object_draft
    contribution = {100, 100, 100},
 
    templates = {
-              2820353414, -- Script: 'object/tangible/component/weapon/projectile_feed_mechanism.iff'
+              "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff",
              }
 
 }

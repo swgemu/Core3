@@ -47,8 +47,6 @@ object_draft_schematic_armor_shield_generator_personal_b = object_draft_schemati
 
    customObjectName = "Personal Shield Generator Mk.2",
 
-   groupName = "craftArmorShieldsGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 55, 
    size = 14, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_shield_generator_personal_b = object_draft_schemati
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              4256080763, -- Script: 'object/tangible/component/armor/shield_generator_personal_b.iff'
+              "object/tangible/component/armor/shared_shield_generator_personal_b.iff",
              }
 
 }

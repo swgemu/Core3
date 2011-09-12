@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_zam_pants = object_draft_schemati
 
    customObjectName = "Mabari Armorweave Pants",
 
-   groupName = "craftArmorPersonalGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_zam_pants = object_draft_schemati
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              416123005, -- Script: 'object/tangible/wearables/armor/zam/armor_zam_wesell_pants.iff'
+              "object/tangible/wearables/armor/zam/shared_armor_zam_wesell_pants.iff",
              }
 
 }

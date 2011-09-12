@@ -47,8 +47,6 @@ object_draft_schematic_item_item_powerup_weapon_ranged_two = object_draft_schema
 
    customObjectName = "Grip",
 
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_powerup_weapon_ranged_two = object_draft_schema
    contribution = {100, 100},
 
    templates = {
-              130303407, -- Script: 'object/tangible/powerup/weapon/ranged_grip.iff'
+              "object/tangible/powerup/weapon/shared_ranged_grip.iff",
              }
 
 }

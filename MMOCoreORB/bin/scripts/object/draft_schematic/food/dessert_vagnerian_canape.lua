@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_vagnerian_canape = object_draft_schematic_fo
 
    customObjectName = "Vagnerian Canape",
 
-   groupName = "craftFoodDessertGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_vagnerian_canape = object_draft_schematic_fo
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2242480065, -- Script: 'object/tangible/food/crafted/dessert_vagnerian_canape.iff'
+              "object/tangible/food/crafted/shared_dessert_vagnerian_canape.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_item_storage_module_5 = object_draft_sche
 
    customObjectName = "Level 5 Droid Item Storage Module",
 
-   groupName = "craftdroidgenmodGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_item_storage_module_5 = object_draft_sche
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              4215681681, -- Script: 'object/tangible/component/droid/item_storage_module_5.iff'
+              "object/tangible/component/droid/shared_item_storage_module_5.iff",
              }
 
 }

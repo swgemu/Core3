@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_plants_potted_large = object_draft_sc
 
    customObjectName = "Large Potted Plant, Style One",
 
-   groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_plants_potted_large = object_draft_sc
    contribution = {100, 100, 100},
 
    templates = {
-              2514690538, -- Script: 'object/tangible/furniture/all/frn_all_plant_potted_lg_s1.iff'
+              "object/tangible/furniture/all/shared_frn_all_plant_potted_lg_s1.iff",
              }
 
 }

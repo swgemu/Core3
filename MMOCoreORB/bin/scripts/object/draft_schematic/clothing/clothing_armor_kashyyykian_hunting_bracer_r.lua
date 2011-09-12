@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_hunting_bracer_r = ob
 
    customObjectName = "Kashyyykian Hunting Right Bracer",
 
-   groupName = "craftArmorPersonalGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 45, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_hunting_bracer_r = ob
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1082734665, -- Script: 'object/tangible/wearables/armor/kashyyykian_hunting/armor_kashyyykian_hunting_bracer_r.iff'
+              "object/tangible/wearables/armor/kashyyykian_hunting/shared_armor_kashyyykian_hunting_bracer_r.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_weapon_staff_metal = object_draft_schematic_weapon_shared
 
    customObjectName = "Metal Staff",
 
-   groupName = "craftWeaponMeleeGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_staff_metal = object_draft_schematic_weapon_shared
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3821153504, -- Script: 'object/weapon/melee/polearm/lance_staff_metal.iff'
+              "object/weapon/melee/polearm/shared_lance_staff_metal.iff",
              }
 
 }

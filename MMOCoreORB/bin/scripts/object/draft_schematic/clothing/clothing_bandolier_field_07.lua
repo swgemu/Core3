@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_bandolier_field_07 = object_draft_schem
 
    customObjectName = "Shoulder Strap",
 
-   groupName = "craftArtisanDomesticGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 13, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_07 = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              831450410, -- Script: 'object/tangible/wearables/bandolier/bandolier_s07.iff'
+              "object/tangible/wearables/bandolier/shared_bandolier_s07.iff",
              }
 
 }

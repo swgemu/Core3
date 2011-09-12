@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_bone_boots = object_draft_schemat
 
    customObjectName = "Bone Armor Boots",
 
-   groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_bone_boots = object_draft_schemat
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1652891098, -- Script: 'object/tangible/wearables/armor/bone/armor_bone_s01_boots.iff'
+              "object/tangible/wearables/armor/bone/shared_armor_bone_s01_boots.iff",
              }
 
 }

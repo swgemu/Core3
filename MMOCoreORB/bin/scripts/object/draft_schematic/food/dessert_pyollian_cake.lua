@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_pyollian_cake = object_draft_schematic_food_
 
    customObjectName = "Pyollian Cake",
 
-   groupName = "craftFoodDessertGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_pyollian_cake = object_draft_schematic_food_
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1472463975, -- Script: 'object/tangible/food/crafted/dessert_pyollian_cake.iff'
+              "object/tangible/food/crafted/shared_dessert_pyollian_cake.iff",
              }
 
 }

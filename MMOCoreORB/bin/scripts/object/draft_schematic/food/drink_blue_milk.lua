@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_blue_milk = object_draft_schematic_food_shared
 
    customObjectName = "Blue Milk",
 
-   groupName = "craftFoodDrinkGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_blue_milk = object_draft_schematic_food_shared
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1731904862, -- Script: 'object/tangible/food/crafted/drink_blue_milk.iff'
+              "object/tangible/food/crafted/shared_drink_blue_milk.iff",
              }
 
 }

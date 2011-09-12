@@ -47,8 +47,6 @@ object_draft_schematic_spices_spice_thruster_head = object_draft_schematic_spice
 
    customObjectName = "Thruster Head",
 
-   groupName = "craftSmugglerSpiceC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_spices_spice_thruster_head = object_draft_schematic_spice
    contribution = {100, 100, 100},
 
    templates = {
-              4162250224, -- Script: 'object/tangible/food/spice/spice_thruster_head.iff'
+              "object/tangible/food/spice/shared_spice_thruster_head.iff",
              }
 
 }

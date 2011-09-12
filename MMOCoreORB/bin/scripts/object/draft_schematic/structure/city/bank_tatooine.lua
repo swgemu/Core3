@@ -47,8 +47,6 @@ object_draft_schematic_structure_city_bank_tatooine = object_draft_schematic_str
 
    customObjectName = "Deed for: Tatooine Bank",
 
-   groupName = "craftPlayerCityA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 12, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_city_bank_tatooine = object_draft_schematic_str
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2714210765, -- Script: 'object/tangible/deed/city_deed/bank_tatooine_deed.iff'
+              "object/tangible/deed/city_deed/shared_bank_tatooine_deed.iff",
              }
 
 }

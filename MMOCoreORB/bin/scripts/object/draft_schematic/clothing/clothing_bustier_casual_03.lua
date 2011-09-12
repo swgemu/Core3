@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_bustier_casual_03 = object_draft_schema
 
    customObjectName = "Sports Bustier",
 
-   groupName = "craftClothingCasualGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_bustier_casual_03 = object_draft_schema
    contribution = {100, 100, 100},
 
    templates = {
-              1766263168, -- Script: 'object/tangible/wearables/bustier/bustier_s03.iff'
+              "object/tangible/wearables/bustier/shared_bustier_s03.iff",
              }
 
 }

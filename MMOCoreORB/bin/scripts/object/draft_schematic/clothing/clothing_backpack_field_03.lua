@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_backpack_field_03 = object_draft_schema
 
    customObjectName = "Military Travel Pack",
 
-   groupName = "craftClothingNoviceGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_backpack_field_03 = object_draft_schema
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2689628237, -- Script: 'object/tangible/wearables/backpack/backpack_s03.iff'
+              "object/tangible/wearables/backpack/shared_backpack_s03.iff",
              }
 
 }

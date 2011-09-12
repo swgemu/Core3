@@ -47,8 +47,6 @@ object_draft_schematic_armor_armor_segment_zam_advanced = object_draft_schematic
 
    customObjectName = "Advanced Armorweave Segment",
 
-   groupName = "craftArmorPersonalGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_armor_segment_zam_advanced = object_draft_schematic
    contribution = {100, 100, 100},
 
    templates = {
-              1505456979, -- Script: 'object/tangible/component/armor/armor_segment_zam_advanced.iff'
+              "object/tangible/component/armor/shared_armor_segment_zam_advanced.iff",
              }
 
 }

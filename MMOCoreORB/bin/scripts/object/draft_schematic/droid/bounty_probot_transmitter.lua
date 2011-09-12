@@ -47,8 +47,6 @@ object_draft_schematic_droid_bounty_probot_transmitter = object_draft_schematic_
 
    customObjectName = "Arakyd Probe Droid",
 
-   groupName = "craftdroidGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_bounty_probot_transmitter = object_draft_schematic_
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              97250743, -- Script: 'object/tangible/mission/mission_bounty_droid_probot.iff'
+              "object/tangible/mission/shared_mission_bounty_droid_probot.iff",
              }
 
 }

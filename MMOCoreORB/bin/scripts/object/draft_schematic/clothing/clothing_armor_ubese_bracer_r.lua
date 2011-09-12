@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_ubese_bracer_r = object_draft_sch
 
    customObjectName = "Ubese Armor Right Bracer",
 
-   groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_ubese_bracer_r = object_draft_sch
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2707050763, -- Script: 'object/tangible/wearables/armor/ubese/armor_ubese_bracer_r.iff'
+              "object/tangible/wearables/armor/ubese/shared_armor_ubese_bracer_r.iff",
              }
 
 }

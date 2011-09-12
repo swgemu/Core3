@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_04 = object_draft_sche
 
    customObjectName = "Gemstone Crest",
 
-   groupName = "craftClothingMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_04 = object_draft_sche
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1376785380, -- Script: 'object/tangible/wearables/necklace/necklace_s04.iff'
+              "object/tangible/wearables/necklace/shared_necklace_s04.iff",
              }
 
 }

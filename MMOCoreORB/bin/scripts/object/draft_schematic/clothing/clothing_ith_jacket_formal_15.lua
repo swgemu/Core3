@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_ith_jacket_formal_15 = object_draft_sch
 
    customObjectName = "Ithorian Fade Pattern Jacket",
 
-   groupName = "craftClothingFormalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_ith_jacket_formal_15 = object_draft_sch
    contribution = {100, 100, 100, 100},
 
    templates = {
-              576192234, -- Script: 'object/tangible/wearables/ithorian/ith_jacket_s15.iff'
+              "object/tangible/wearables/ithorian/shared_ith_jacket_s15.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_wke_gloves_s04 = object_draft_schematic
 
    customObjectName = "Wookiee Strapped Gloves",
 
-   groupName = "craftClothingCasualGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_wke_gloves_s04 = object_draft_schematic
    contribution = {100, 100, 100},
 
    templates = {
-              1812666894, -- Script: 'object/tangible/wearables/wookiee/wke_gloves_s04.iff'
+              "object/tangible/wearables/wookiee/shared_wke_gloves_s04.iff",
              }
 
 }

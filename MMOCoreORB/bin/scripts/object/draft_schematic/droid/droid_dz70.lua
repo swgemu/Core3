@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_dz70 = object_draft_schematic_droid_shared_dr
 
    customObjectName = "Deed for: DZ70 Droid",
 
-   groupName = "craftdroidGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_dz70 = object_draft_schematic_droid_shared_dr
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              471981963, -- Script: 'object/tangible/deed/pet_deed/deed_dz70_basic.iff'
+              "object/tangible/deed/pet_deed/shared_deed_dz70_basic.iff",
              }
 
 }

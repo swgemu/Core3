@@ -47,8 +47,6 @@ object_draft_schematic_item_item_ballot_box_terminal = object_draft_schematic_it
 
    customObjectName = "Ballot Box Terminal",
 
-   groupName = "craftFurnitureGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_ballot_box_terminal = object_draft_schematic_it
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2743027205, -- Script: 'object/tangible/terminal/terminal_ballot_box.iff'
+              "object/tangible/terminal/shared_terminal_ballot_box.iff",
              }
 
 }

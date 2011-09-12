@@ -47,8 +47,6 @@ object_draft_schematic_weapon_pistol_republic_blaster = object_draft_schematic_w
 
    customObjectName = "Republic Blaster",
 
-   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_pistol_republic_blaster = object_draft_schematic_w
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              2262347426, -- Script: 'object/weapon/ranged/pistol/pistol_republic_blaster.iff'
+              "object/weapon/ranged/pistol/shared_pistol_republic_blaster.iff",
              }
 
 }

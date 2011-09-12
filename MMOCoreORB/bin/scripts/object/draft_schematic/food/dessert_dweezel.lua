@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_dweezel = object_draft_schematic_food_shared
 
    customObjectName = "Dweezel",
 
-   groupName = "craftFoodDessertGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_dweezel = object_draft_schematic_food_shared
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              22306368, -- Script: 'object/tangible/food/crafted/dessert_dweezel.iff'
+              "object/tangible/food/crafted/shared_dessert_dweezel.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_shirt_casual_30 = object_draft_schemati
 
    customObjectName = "Leather Trim Shirt",
 
-   groupName = "craftClothingCasualGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_shirt_casual_30 = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              3841038530, -- Script: 'object/tangible/wearables/shirt/shirt_s30.iff'
+              "object/tangible/wearables/shirt/shared_shirt_s30.iff",
              }
 
 }

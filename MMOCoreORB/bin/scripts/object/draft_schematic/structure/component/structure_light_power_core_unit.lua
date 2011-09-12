@@ -47,8 +47,6 @@ object_draft_schematic_structure_component_structure_light_power_core_unit = obj
 
    customObjectName = "Light Power Core Unit",
 
-   groupName = "craftStructureGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 10, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_component_structure_light_power_core_unit = obj
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3219788767, -- Script: 'object/tangible/component/structure/light_power_core_unit.iff'
+              "object/tangible/component/structure/shared_light_power_core_unit.iff",
              }
 
 }

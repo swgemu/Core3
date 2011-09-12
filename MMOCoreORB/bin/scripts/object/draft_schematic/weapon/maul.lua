@@ -47,8 +47,6 @@ object_draft_schematic_weapon_maul = object_draft_schematic_weapon_shared_maul:n
 
    customObjectName = "Power Hammer",
 
-   groupName = "craftWeaponMeleeGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_maul = object_draft_schematic_weapon_shared_maul:n
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3681800010, -- Script: 'object/weapon/melee/2h_sword/2h_sword_maul.iff'
+              "object/weapon/melee/2h_sword/shared_2h_sword_maul.iff",
              }
 
 }

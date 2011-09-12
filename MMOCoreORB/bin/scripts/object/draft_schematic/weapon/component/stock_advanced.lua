@@ -47,8 +47,6 @@ object_draft_schematic_weapon_component_stock_advanced = object_draft_schematic_
 
    customObjectName = "Advanced Weapon Stock",
 
-   groupName = "craftWeaponRangedGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_component_stock_advanced = object_draft_schematic_
    contribution = {100, 100},
 
    templates = {
-              2723582498, -- Script: 'object/tangible/component/weapon/stock_advanced.iff'
+              "object/tangible/component/weapon/shared_stock_advanced.iff",
              }
 
 }

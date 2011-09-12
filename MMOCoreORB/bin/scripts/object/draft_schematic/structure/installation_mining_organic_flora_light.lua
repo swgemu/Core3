@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_mining_organic_flora_light = objec
 
    customObjectName = "Deed for: Micro Flora Farm",
 
-   groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 8, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_mining_organic_flora_light = objec
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1562242514, -- Script: 'object/tangible/deed/harvester_deed/harvester_flora_deed.iff'
+              "object/tangible/deed/harvester_deed/shared_harvester_flora_deed.iff",
              }
 
 }

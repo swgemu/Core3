@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draf
 
    customObjectName = "Unprogrammed Droid Command Module",
 
-   groupName = "craftdroidgenmodGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_droid_space_memory_module_1 = object_draf
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              628706991, -- Script: 'object/tangible/droid/droid_space_memory_module_1.iff'
+              "object/tangible/droid/shared_droid_space_memory_module_1.iff",
              }
 
 }

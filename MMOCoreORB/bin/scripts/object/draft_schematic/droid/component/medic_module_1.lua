@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_medic_module_1 = object_draft_schematic_d
 
    customObjectName = "Level 1 Droid Medical Module",
 
-   groupName = "craftdroidgenmodGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_medic_module_1 = object_draft_schematic_d
    contribution = {100, 100, 100},
 
    templates = {
-              2373886672, -- Script: 'object/tangible/component/droid/medic_module_1.iff'
+              "object/tangible/component/droid/shared_medic_module_1.iff",
              }
 
 }

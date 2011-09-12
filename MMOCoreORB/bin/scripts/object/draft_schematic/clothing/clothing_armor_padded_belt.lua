@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_padded_belt = object_draft_schema
 
    customObjectName = "Padded Armor Belt",
 
-   groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_padded_belt = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3361978968, -- Script: 'object/tangible/wearables/armor/padded/armor_padded_s01_belt.iff'
+              "object/tangible/wearables/armor/padded/shared_armor_padded_s01_belt.iff",
              }
 
 }

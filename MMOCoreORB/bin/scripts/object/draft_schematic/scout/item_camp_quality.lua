@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_camp_quality = object_draft_schematic_scout_sh
 
    customObjectName = "High Quality Camp Kit",
 
-   groupName = "craftRangerCampGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_camp_quality = object_draft_schematic_scout_sh
    contribution = {100, 100, 100},
 
    templates = {
-              2951574168, -- Script: 'object/tangible/scout/camp/camp_quality.iff'
+              "object/tangible/scout/camp/shared_camp_quality.iff",
              }
 
 }

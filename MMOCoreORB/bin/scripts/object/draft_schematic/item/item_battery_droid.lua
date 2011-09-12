@@ -47,8 +47,6 @@ object_draft_schematic_item_item_battery_droid = object_draft_schematic_item_sha
 
    customObjectName = "A Droid Battery",
 
-   groupName = "craftArtisanEngineeringGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 7, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_battery_droid = object_draft_schematic_item_sha
    contribution = {100, 100, 100},
 
    templates = {
-              1496112814, -- Script: 'object/tangible/droid_battery/battery.iff'
+              "object/tangible/droid_battery/shared_battery.iff",
              }
 
 }

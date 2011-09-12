@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_utilities_pet_stimpack_a = object_draft_sche
 
    customObjectName = "Pet Stimpack - A",
 
-   groupName = "craftBasicTissueGroup", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 128, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_utilities_pet_stimpack_a = object_draft_sche
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              38436739, -- Script: 'object/tangible/medicine/pet/pet_stimpack_a.iff'
+              "object/tangible/medicine/pet/shared_pet_stimpack_a.iff",
              }
 
 }

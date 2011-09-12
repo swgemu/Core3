@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_unit_delivery_cartridge = object_draft_sc
 
    customObjectName = "Unit Delivery Cartridge",
 
-   groupName = "craftDroidRepairCompA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_unit_delivery_cartridge = object_draft_sc
    contribution = {100, 100},
 
    templates = {
-              1096288591, -- Script: 'object/tangible/component/droid/repair/unit_delivery_cartridge.iff'
+              "object/tangible/component/droid/repair/shared_unit_delivery_cartridge.iff",
              }
 
 }

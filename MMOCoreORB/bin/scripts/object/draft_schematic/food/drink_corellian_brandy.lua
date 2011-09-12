@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_corellian_brandy = object_draft_schematic_food
 
    customObjectName = "Corellian Brandy",
 
-   groupName = "craftFoodDrinkGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_corellian_brandy = object_draft_schematic_food
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3159619198, -- Script: 'object/tangible/food/crafted/drink_corellian_brandy.iff'
+              "object/tangible/food/crafted/shared_drink_corellian_brandy.iff",
              }
 
 }

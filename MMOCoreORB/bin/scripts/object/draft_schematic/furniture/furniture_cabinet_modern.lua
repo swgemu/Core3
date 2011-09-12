@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_cabinet_modern = object_draft_schemat
 
    customObjectName = "Cabinet",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_cabinet_modern = object_draft_schemat
    contribution = {100, 100, 100},
 
    templates = {
-              589965537, -- Script: 'object/tangible/furniture/modern/cabinet_modern_style_01.iff'
+              "object/tangible/furniture/modern/shared_cabinet_modern_style_01.iff",
              }
 
 }

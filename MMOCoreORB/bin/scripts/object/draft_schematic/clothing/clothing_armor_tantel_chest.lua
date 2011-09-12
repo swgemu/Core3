@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_tantel_chest = object_draft_schem
 
    customObjectName = "Tantel Armor Chest Plate",
 
-   groupName = "craftArmorPersonalGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_tantel_chest = object_draft_schem
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3641538473, -- Script: 'object/tangible/wearables/armor/tantel/armor_tantel_skreej_chest_plate.iff'
+              "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_chest_plate.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_data_storage_module_6 = object_draft_sche
 
    customObjectName = "Level 6 Droid Data Module",
 
-   groupName = "craftdroidgenmodGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 8, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_data_storage_module_6 = object_draft_sche
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              4130518646, -- Script: 'object/tangible/component/droid/data_storage_module_6.iff'
+              "object/tangible/component/droid/shared_data_storage_module_6.iff",
              }
 
 }

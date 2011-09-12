@@ -47,8 +47,6 @@ object_draft_schematic_spices_spice_booster_blue = object_draft_schematic_spices
 
    customObjectName = "Booster Blue",
 
-   groupName = "craftSmugglerSpiceD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 13, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_spices_spice_booster_blue = object_draft_schematic_spices
    contribution = {100, 100, 100},
 
    templates = {
-              1672986063, -- Script: 'object/tangible/food/spice/spice_booster_blue.iff'
+              "object/tangible/food/spice/shared_spice_booster_blue.iff",
              }
 
 }

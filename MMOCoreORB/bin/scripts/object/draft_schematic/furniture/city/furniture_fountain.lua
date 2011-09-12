@@ -47,8 +47,6 @@ object_draft_schematic_furniture_city_furniture_fountain = object_draft_schemati
 
    customObjectName = "Fountain",
 
-   groupName = "craftPlayerCityB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_city_furniture_fountain = object_draft_schemati
    contribution = {100, 100, 100},
 
    templates = {
-              1159824029, -- Script: 'object/tangible/furniture/city/fountain_generic.iff'
+              "object/tangible/furniture/city/shared_fountain_generic.iff",
              }
 
 }

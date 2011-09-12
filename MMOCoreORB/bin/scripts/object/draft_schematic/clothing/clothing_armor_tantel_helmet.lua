@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_tantel_helmet = object_draft_sche
 
    customObjectName = "Tantel Armor Helmet",
 
-   groupName = "craftArmorPersonalGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_tantel_helmet = object_draft_sche
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1855229351, -- Script: 'object/tangible/wearables/armor/tantel/armor_tantel_skreej_helmet.iff'
+              "object/tangible/wearables/armor/tantel/shared_armor_tantel_skreej_helmet.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_trap_drowsy_dart = object_draft_schematic_scou
 
    customObjectName = "Lecepanine Dart",
 
-   groupName = "craftScoutTrapGroupNovice", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 2, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_trap_drowsy_dart = object_draft_schematic_scou
    contribution = {100, 100},
 
    templates = {
-              2680342323, -- Script: 'object/tangible/scout/trap/trap_drowsy_dart.iff'
+              "object/tangible/scout/trap/shared_trap_drowsy_dart.iff",
              }
 
 }

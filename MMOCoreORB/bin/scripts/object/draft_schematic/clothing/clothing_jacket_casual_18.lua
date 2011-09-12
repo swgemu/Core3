@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jacket_casual_18 = object_draft_schemat
 
    customObjectName = "Reinforced Pullover",
 
-   groupName = "craftClothingCasualGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jacket_casual_18 = object_draft_schemat
    contribution = {100, 100, 100},
 
    templates = {
-              2021449769, -- Script: 'object/tangible/wearables/jacket/jacket_s18.iff'
+              "object/tangible/wearables/jacket/shared_jacket_s18.iff",
              }
 
 }

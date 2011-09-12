@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_wke_skirt_s03 = object_draft_schematic_
 
    customObjectName = "Weighted Waist Wrap",
 
-   groupName = "craftClothingNoviceGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_wke_skirt_s03 = object_draft_schematic_
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1748302432, -- Script: 'object/tangible/wearables/wookiee/wke_skirt_s03.iff'
+              "object/tangible/wearables/wookiee/shared_wke_skirt_s03.iff",
              }
 
 }

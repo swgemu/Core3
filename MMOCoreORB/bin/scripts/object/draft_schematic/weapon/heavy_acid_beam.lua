@@ -47,8 +47,6 @@ object_draft_schematic_weapon_heavy_acid_beam = object_draft_schematic_weapon_sh
 
    customObjectName = "Acid Stream Launcher",
 
-   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 50, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_heavy_acid_beam = object_draft_schematic_weapon_sh
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              100102071, -- Script: 'object/weapon/ranged/heavy/heavy_acid_beam.iff'
+              "object/weapon/ranged/heavy/shared_heavy_acid_beam.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_instrument_instrument_bandfill = object_draft_schematic_i
 
    customObjectName = "a Bandfill",
 
-   groupName = "craftInstrumentGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_instrument_instrument_bandfill = object_draft_schematic_i
    contribution = {100, 100},
 
    templates = {
-              1160164155, -- Script: 'object/tangible/instrument/bandfill.iff'
+              "object/tangible/instrument/shared_bandfill.iff",
              }
 
 }

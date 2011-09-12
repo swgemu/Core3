@@ -47,8 +47,6 @@ object_draft_schematic_vehicle_vehicle_customization_kit = object_draft_schemati
 
    customObjectName = "Vehicle Customization Kit",
 
-   groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 16, -- (See DraftSchemticImplementation.h)
    complexity = 12, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_vehicle_vehicle_customization_kit = object_draft_schemati
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2275981129, -- Script: 'object/tangible/item/vehicle_customization.iff'
+              "object/tangible/item/shared_vehicle_customization.iff",
              }
 
 }

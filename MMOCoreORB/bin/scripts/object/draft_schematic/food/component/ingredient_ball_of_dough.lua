@@ -47,8 +47,6 @@ object_draft_schematic_food_component_ingredient_ball_of_dough = object_draft_sc
 
    customObjectName = "Dough",
 
-   groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_component_ingredient_ball_of_dough = object_draft_sc
    contribution = {100},
 
    templates = {
-              2225013790, -- Script: 'object/tangible/component/food/ingredient_ball_of_dough.iff'
+              "object/tangible/component/food/shared_ingredient_ball_of_dough.iff",
              }
 
 }

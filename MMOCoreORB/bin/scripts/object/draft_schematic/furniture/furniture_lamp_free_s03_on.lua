@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_lamp_free_s03_on = object_draft_schem
 
    customObjectName = "Free-standing Lamp 'Tallbirch'",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_lamp_free_s03_on = object_draft_schem
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2400550847, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_free_s03.iff'
+              "object/tangible/furniture/all/shared_frn_all_light_lamp_free_s03.iff",
              }
 
 }

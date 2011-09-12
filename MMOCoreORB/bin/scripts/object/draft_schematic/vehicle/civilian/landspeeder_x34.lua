@@ -47,8 +47,6 @@ object_draft_schematic_vehicle_civilian_landspeeder_x34 = object_draft_schematic
 
    customObjectName = "X34 Landspeeder",
 
-   groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 16, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_vehicle_civilian_landspeeder_x34 = object_draft_schematic
    contribution = {100, 100},
 
    templates = {
-              3267740067, -- Script: 'object/tangible/deed/vehicle_deed/landspeeder_x34_deed.iff'
+              "object/tangible/deed/vehicle_deed/shared_landspeeder_x34_deed.iff",
              }
 
 }

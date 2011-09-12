@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_pastebread = object_draft_schematic_food_sha
 
    customObjectName = "Pastebread",
 
-   groupName = "craftFoodDessertGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 6, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_pastebread = object_draft_schematic_food_sha
    contribution = {100, 100, 100, 100},
 
    templates = {
-              920119228, -- Script: 'object/tangible/food/crafted/dessert_pastebread.iff'
+              "object/tangible/food/crafted/shared_dessert_pastebread.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_ormachek = object_draft_schematic_food_shared_d
 
    customObjectName = "Ormachek",
 
-   groupName = "craftFoodDishGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 8, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_ormachek = object_draft_schematic_food_shared_d
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1599302627, -- Script: 'object/tangible/food/crafted/dish_ormachek.iff'
+              "object/tangible/food/crafted/shared_dish_ormachek.iff",
              }
 
 }

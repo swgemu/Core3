@@ -47,8 +47,6 @@ object_draft_schematic_armor_armor_segment_ubese = object_draft_schematic_armor_
 
    customObjectName = "Ubese Armor Segment",
 
-   groupName = "craftArmorPersonalGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_armor_armor_segment_ubese = object_draft_schematic_armor_
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              810339444, -- Script: 'object/tangible/component/armor/armor_segment_ubese.iff'
+              "object/tangible/component/armor/shared_armor_segment_ubese.iff",
              }
 
 }

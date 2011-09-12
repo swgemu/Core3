@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_blap_biscuit = object_draft_schematic_food_s
 
    customObjectName = "Blap Biscuit",
 
-   groupName = "craftFoodNoviceGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_blap_biscuit = object_draft_schematic_food_s
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              1901385280, -- Script: 'object/tangible/food/crafted/dessert_blap_biscuit.iff'
+              "object/tangible/food/crafted/shared_dessert_blap_biscuit.iff",
              }
 
 }

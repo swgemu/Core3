@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_chest_modern = object_draft_schematic
 
    customObjectName = "Chest",
 
-   groupName = "craftFurnitureGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_chest_modern = object_draft_schematic
    contribution = {100, 100},
 
    templates = {
-              3586167261, -- Script: 'object/tangible/furniture/modern/chest_modern_style_01.iff'
+              "object/tangible/furniture/modern/shared_chest_modern_style_01.iff",
              }
 
 }

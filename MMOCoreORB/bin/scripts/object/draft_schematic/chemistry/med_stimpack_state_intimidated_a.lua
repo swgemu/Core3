@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_med_stimpack_state_intimidated_a = object_draft
 
    customObjectName = "Intimidated State Stimpack - A",
 
-   groupName = "craftStimpackStateGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_med_stimpack_state_intimidated_a = object_draft
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1529266630, -- Script: 'object/tangible/medicine/crafted/medpack_intimidated_a.iff'
+              "object/tangible/medicine/crafted/shared_medpack_intimidated_a.iff",
              }
 
 }

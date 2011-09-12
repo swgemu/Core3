@@ -47,8 +47,6 @@ object_draft_schematic_weapon_pistol_blaster_d18 = object_draft_schematic_weapon
 
    customObjectName = "D18 Pistol",
 
-   groupName = "craftWeaponRangedGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_pistol_blaster_d18 = object_draft_schematic_weapon
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              252668529, -- Script: 'object/weapon/ranged/pistol/pistol_d18.iff'
+              "object/weapon/ranged/pistol/shared_pistol_d18.iff",
              }
 
 }

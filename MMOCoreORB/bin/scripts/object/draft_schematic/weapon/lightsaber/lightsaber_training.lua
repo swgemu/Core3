@@ -47,8 +47,6 @@ object_draft_schematic_weapon_lightsaber_lightsaber_training = object_draft_sche
 
    customObjectName = "A Training Lightsaber",
 
-   groupName = "craftSaberTraining", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
    complexity = 16, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_training = object_draft_sche
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1530854406, -- Script: 'object/weapon/melee/sword/crafted_saber/sword_lightsaber_training.iff'
+              "object/weapon/melee/sword/crafted_saber/shared_sword_lightsaber_training.iff",
              }
 
 }

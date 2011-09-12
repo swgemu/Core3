@@ -47,8 +47,6 @@ object_draft_schematic_scout_item_camokit_yavin = object_draft_schematic_scout_s
 
    customObjectName = "Camo Kit: Yavin",
 
-   groupName = "craftRangerCamoGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 2, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_scout_item_camokit_yavin = object_draft_schematic_scout_s
    contribution = {100, 100, 100},
 
    templates = {
-              823720266, -- Script: 'object/tangible/scout/camokit/camokit_yavin.iff'
+              "object/tangible/scout/camokit/shared_camokit_yavin.iff",
              }
 
 }

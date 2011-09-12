@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_06 = object_draft_sche
 
    customObjectName = "Metal Necklace",
 
-   groupName = "craftClothingNoviceGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_jewelry_necklace_06 = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              3221937406, -- Script: 'object/tangible/wearables/necklace/necklace_s06.iff'
+              "object/tangible/wearables/necklace/shared_necklace_s06.iff",
              }
 
 }

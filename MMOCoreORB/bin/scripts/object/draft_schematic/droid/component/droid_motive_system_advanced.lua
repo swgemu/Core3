@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_droid_motive_system_advanced = object_dra
 
    customObjectName = "Advanced Droid Motive System",
 
-   groupName = "craftdroidGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 28, 
    size = 6, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_droid_motive_system_advanced = object_dra
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1479171359, -- Script: 'object/tangible/component/droid/droid_motive_system_advanced.iff'
+              "object/tangible/component/droid/shared_droid_motive_system_advanced.iff",
              }
 
 }

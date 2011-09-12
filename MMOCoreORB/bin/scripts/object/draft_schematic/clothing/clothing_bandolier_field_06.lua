@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_bandolier_field_06 = object_draft_schem
 
    customObjectName = "Rank Sash",
 
-   groupName = "craftClothingFieldGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_06 = object_draft_schem
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2021886631, -- Script: 'object/tangible/wearables/bandolier/bandolier_s06.iff'
+              "object/tangible/wearables/bandolier/shared_bandolier_s06.iff",
              }
 
 }

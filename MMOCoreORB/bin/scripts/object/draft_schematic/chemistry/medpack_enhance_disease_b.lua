@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_enhance_disease_b = object_draft_schema
 
    customObjectName = "Enhance Disease Resist Medpack - B",
 
-   groupName = "craftMedpackBEnhanceGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 32, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_enhance_disease_b = object_draft_schema
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              1203539532, -- Script: 'object/tangible/medicine/crafted/medpack_enhance_disease_b.iff'
+              "object/tangible/medicine/crafted/shared_medpack_enhance_disease_b.iff",
              }
 
 }

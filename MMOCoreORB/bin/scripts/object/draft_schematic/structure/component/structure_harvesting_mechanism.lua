@@ -47,8 +47,6 @@ object_draft_schematic_structure_component_structure_harvesting_mechanism = obje
 
    customObjectName = "Harvesting Mechanism",
 
-   groupName = "craftInstallationGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 14, 
    size = 8, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_component_structure_harvesting_mechanism = obje
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2971470632, -- Script: 'object/tangible/component/structure/harvesting_mechanism.iff'
+              "object/tangible/component/structure/shared_harvesting_mechanism.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_candle_free_s01_on = object_draft_sch
 
    customObjectName = "Candle 'Bestine'",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_candle_free_s01_on = object_draft_sch
    contribution = {100, 100, 100},
 
    templates = {
-              3378039776, -- Script: 'object/tangible/furniture/all/frn_all_light_lamp_candlestick_free_s01.iff'
+              "object/tangible/furniture/all/shared_frn_all_light_lamp_candlestick_free_s01.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_pants_casual_25 = object_draft_schemati
 
    customObjectName = "Casual Pants",
 
-   groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 4, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_pants_casual_25 = object_draft_schemati
    contribution = {100, 100},
 
    templates = {
-              3028043996, -- Script: 'object/tangible/wearables/pants/pants_s25.iff'
+              "object/tangible/wearables/pants/shared_pants_s25.iff",
              }
 
 }

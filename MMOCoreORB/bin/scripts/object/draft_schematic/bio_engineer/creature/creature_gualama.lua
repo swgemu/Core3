@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_gualama = object_draft_sch
 
    customObjectName = "Gualama",
 
-   groupName = "craftDomesticCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 18, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_gualama = object_draft_sch
    contribution = {100, 100, 100},
 
    templates = {
-              1819952879, -- Script: 'object/tangible/deed/pet_deed/gualama_deed.iff'
+              "object/tangible/deed/pet_deed/shared_gualama_deed.iff",
              }
 
 }

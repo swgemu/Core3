@@ -47,8 +47,6 @@ object_draft_schematic_item_item_space_tool = object_draft_schematic_item_shared
 
    customObjectName = "Starship Crafting Tool",
 
-   groupName = "craftArtisanToolGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_space_tool = object_draft_schematic_item_shared
    contribution = {100, 100, 100},
 
    templates = {
-              1702405330, -- Script: 'object/tangible/crafting/station/space_tool.iff'
+              "object/tangible/crafting/station/shared_space_tool.iff",
              }
 
 }

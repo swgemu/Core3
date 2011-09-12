@@ -47,8 +47,6 @@ object_draft_schematic_item_item_powerup_weapon_thrown_wiring = object_draft_sch
 
    customObjectName = "Grenade Wiring Kit",
 
-   groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_powerup_weapon_thrown_wiring = object_draft_sch
    contribution = {100, 100},
 
    templates = {
-              1021288392, -- Script: 'object/tangible/powerup/weapon/thrown_wiring.iff'
+              "object/tangible/powerup/weapon/shared_thrown_wiring.iff",
              }
 
 }

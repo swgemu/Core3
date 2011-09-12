@@ -47,8 +47,6 @@ object_draft_schematic_droid_navicomputer_5 = object_draft_schematic_droid_share
 
    customObjectName = "v5 Flight Computer",
 
-   groupName = "craftdroidGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 23, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_navicomputer_5 = object_draft_schematic_droid_share
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2054353411, -- Script: 'object/tangible/droid/navicomputer_5.iff'
+              "object/tangible/droid/shared_navicomputer_5.iff",
              }
 
 }

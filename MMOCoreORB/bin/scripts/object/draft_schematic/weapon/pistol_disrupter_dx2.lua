@@ -47,8 +47,6 @@ object_draft_schematic_weapon_pistol_disrupter_dx2 = object_draft_schematic_weap
 
    customObjectName = "DX2 Pistol",
 
-   groupName = "craftWeaponRangedGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_pistol_disrupter_dx2 = object_draft_schematic_weap
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              3457275751, -- Script: 'object/weapon/ranged/pistol/pistol_dx2.iff'
+              "object/weapon/ranged/pistol/shared_pistol_dx2.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_couch_large = object_draft_schematic_
 
    customObjectName = "Large Couch",
 
-   groupName = "craftFurnitureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_couch_large = object_draft_schematic_
    contribution = {100, 100},
 
    templates = {
-              2198026176, -- Script: 'object/tangible/furniture/all/frn_all_couch_lg_s1.iff'
+              "object/tangible/furniture/all/shared_frn_all_couch_lg_s1.iff",
              }
 
 }

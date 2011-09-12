@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_accarragm = object_draft_schematic_food_shared
 
    customObjectName = "Accarragm",
 
-   groupName = "craftFoodDrinkGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_accarragm = object_draft_schematic_food_shared
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2228808394, -- Script: 'object/tangible/food/crafted/drink_accarragm.iff'
+              "object/tangible/food/crafted/shared_drink_accarragm.iff",
              }
 
 }

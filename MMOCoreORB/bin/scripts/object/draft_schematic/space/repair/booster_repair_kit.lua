@@ -47,8 +47,6 @@ object_draft_schematic_space_repair_booster_repair_kit = object_draft_schematic_
 
    customObjectName = "Booster Repair Kit",
 
-   groupName = "craftShipwrightNoviceGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 262144, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_space_repair_booster_repair_kit = object_draft_schematic_
    contribution = {100, 100},
 
    templates = {
-              3614661440, -- Script: 'object/tangible/ship/crafted/repair/repair_kit_booster.iff'
+              "object/tangible/ship/crafted/repair/shared_repair_kit_booster.iff",
              }
 
 }

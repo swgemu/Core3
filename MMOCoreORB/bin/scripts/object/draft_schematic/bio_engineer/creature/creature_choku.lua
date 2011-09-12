@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_choku = object_draft_schem
 
    customObjectName = "Choku",
 
-   groupName = "craftAggressiveCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 21, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_choku = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              351654250, -- Script: 'object/tangible/deed/pet_deed/choku_deed.iff'
+              "object/tangible/deed/pet_deed/shared_choku_deed.iff",
              }
 
 }

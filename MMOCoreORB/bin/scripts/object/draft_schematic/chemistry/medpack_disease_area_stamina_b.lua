@@ -47,8 +47,6 @@ object_draft_schematic_chemistry_medpack_disease_area_stamina_b = object_draft_s
 
    customObjectName = "Stamina Area Disease Delivery Unit - B",
 
-   groupName = "craftApplyDiseaseAreaGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 64, -- (See DraftSchemticImplementation.h)
    complexity = 35, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_chemistry_medpack_disease_area_stamina_b = object_draft_s
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              3048767642, -- Script: 'object/tangible/medicine/crafted/medpack_disease_area_stamina_b.iff'
+              "object/tangible/medicine/crafted/shared_medpack_disease_area_stamina_b.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_table_small_tatooine = object_draft_s
 
    customObjectName = "Small Table",
 
-   groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 14, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_table_small_tatooine = object_draft_s
    contribution = {100, 100},
 
    templates = {
-              3724040631, -- Script: 'object/tangible/furniture/tatooine/frn_tato_table_small_style_01.iff'
+              "object/tangible/furniture/tatooine/shared_frn_tato_table_small_style_01.iff",
              }
 
 }

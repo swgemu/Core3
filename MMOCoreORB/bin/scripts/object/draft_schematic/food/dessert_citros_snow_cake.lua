@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_citros_snow_cake = object_draft_schematic_fo
 
    customObjectName = "Citros Snow Cake",
 
-   groupName = "craftFoodDessertGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_citros_snow_cake = object_draft_schematic_fo
    contribution = {100, 100, 100, 100},
 
    templates = {
-              144581616, -- Script: 'object/tangible/food/crafted/dessert_citros_snow_cake.iff'
+              "object/tangible/food/crafted/shared_dessert_citros_snow_cake.iff",
              }
 
 }

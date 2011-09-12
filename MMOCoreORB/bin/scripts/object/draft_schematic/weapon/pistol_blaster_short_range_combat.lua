@@ -47,8 +47,6 @@ object_draft_schematic_weapon_pistol_blaster_short_range_combat = object_draft_s
 
    customObjectName = "SR Combat Pistol",
 
-   groupName = "craftWeaponRangedGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_pistol_blaster_short_range_combat = object_draft_s
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1691705957, -- Script: 'object/weapon/ranged/pistol/pistol_srcombat.iff'
+              "object/weapon/ranged/pistol/shared_pistol_srcombat.iff",
              }
 
 }

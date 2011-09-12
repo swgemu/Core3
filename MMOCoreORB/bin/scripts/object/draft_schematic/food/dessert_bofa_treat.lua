@@ -47,8 +47,6 @@ object_draft_schematic_food_dessert_bofa_treat = object_draft_schematic_food_sha
 
    customObjectName = "Bofa Treat",
 
-   groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dessert_bofa_treat = object_draft_schematic_food_sha
    contribution = {100, 100, 100},
 
    templates = {
-              4271319597, -- Script: 'object/tangible/food/crafted/dessert_bofa_treat.iff'
+              "object/tangible/food/crafted/shared_dessert_bofa_treat.iff",
              }
 
 }

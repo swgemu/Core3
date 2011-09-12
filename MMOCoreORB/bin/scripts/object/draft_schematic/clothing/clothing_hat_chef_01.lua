@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_hat_chef_01 = object_draft_schematic_cl
 
    customObjectName = "Kitchen Master's Hat",
 
-   groupName = "craftClothingFormalGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_hat_chef_01 = object_draft_schematic_cl
    contribution = {100, 100, 100, 100},
 
    templates = {
-              3597855144, -- Script: 'object/tangible/wearables/hat/hat_chef_s01.iff'
+              "object/tangible/wearables/hat/shared_hat_chef_s01.iff",
              }
 
 }

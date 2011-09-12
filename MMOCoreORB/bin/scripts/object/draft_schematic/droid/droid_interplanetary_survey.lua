@@ -47,8 +47,6 @@ object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schemati
 
    customObjectName = "Interplanetary Survey Droid",
 
-   groupName = "craftdroidGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_droid_interplanetary_survey = object_draft_schemati
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3351452767, -- Script: 'object/tangible/component/droid/droid_interplanetary_survey.iff'
+              "object/tangible/component/droid/shared_droid_interplanetary_survey.iff",
              }
 
 }

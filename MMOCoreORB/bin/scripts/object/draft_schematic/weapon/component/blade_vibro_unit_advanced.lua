@@ -47,8 +47,6 @@ object_draft_schematic_weapon_component_blade_vibro_unit_advanced = object_draft
 
    customObjectName = "Advanced Vibro Blade Unit",
 
-   groupName = "craftWeaponMeleeGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_component_blade_vibro_unit_advanced = object_draft
    contribution = {100, 100, 100, 100},
 
    templates = {
-              344340565, -- Script: 'object/tangible/component/weapon/vibro_unit_advanced.iff'
+              "object/tangible/component/weapon/shared_vibro_unit_advanced.iff",
              }
 
 }

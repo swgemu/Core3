@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_struct_maint_module_3 = object_draft_sche
 
    customObjectName = "Level 3 Droid Structure Maintenance Module",
 
-   groupName = "craftdroidgenmodGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_struct_maint_module_3 = object_draft_sche
    contribution = {100, 100, 100, 100},
 
    templates = {
-              2563892581, -- Script: 'object/tangible/component/droid/struct_maint_module_3.iff'
+              "object/tangible/component/droid/shared_struct_maint_module_3.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_space_weapon_missile_countermeasure_chaff_pack = object_d
 
    customObjectName = "Chaff Pack",
 
-   groupName = "craftShipwrightNoviceGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 131072, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_space_weapon_missile_countermeasure_chaff_pack = object_d
    contribution = {100, 100},
 
    templates = {
-              3507929913, -- Script: 'object/tangible/ship/crafted/weapon/missile/countermeasure_chaff_pack.iff'
+              "object/tangible/ship/crafted/weapon/missile/shared_countermeasure_chaff_pack.iff",
              }
 
 }

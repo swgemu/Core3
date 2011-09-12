@@ -47,8 +47,6 @@ object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen2 = object_draft_
 
    customObjectName = "Double-Bladed Second Generation Lightsaber",
 
-   groupName = "craftSaberPoleArm2", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2048, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen2 = object_draft_
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              774140657, -- Script: 'object/weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen2.iff'
+              "object/weapon/melee/polearm/crafted_saber/shared_sword_lightsaber_polearm_gen2.iff",
              }
 
 }

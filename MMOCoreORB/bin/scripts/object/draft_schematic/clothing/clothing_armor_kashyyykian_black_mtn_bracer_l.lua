@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_black_mtn_bracer_l = 
 
    customObjectName = "Kashyyykian Black Mountain Left Bracer",
 
-   groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_black_mtn_bracer_l = 
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              2417131114, -- Script: 'object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_bracer_l.iff'
+              "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_bracer_l.iff",
              }
 
 }

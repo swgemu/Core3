@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_table_endtable_cheap = object_draft_s
 
    customObjectName = "End Table",
 
-   groupName = "craftFurnitureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 9, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_table_endtable_cheap = object_draft_s
    contribution = {100, 100},
 
    templates = {
-              3505302549, -- Script: 'object/tangible/furniture/cheap/end_table_s01.iff'
+              "object/tangible/furniture/cheap/shared_end_table_s01.iff",
              }
 
 }

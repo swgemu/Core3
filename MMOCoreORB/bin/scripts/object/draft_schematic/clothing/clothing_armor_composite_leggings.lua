@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_composite_leggings = object_draft
 
    customObjectName = "Composite Armor Pants",
 
-   groupName = "craftArmorPersonalGroupF", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 45, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_composite_leggings = object_draft
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              729327903, -- Script: 'object/tangible/wearables/armor/composite/armor_composite_leggings.iff'
+              "object/tangible/wearables/armor/composite/shared_armor_composite_leggings.iff",
              }
 
 }

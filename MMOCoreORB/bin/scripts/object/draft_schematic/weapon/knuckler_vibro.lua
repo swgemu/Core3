@@ -47,8 +47,6 @@ object_draft_schematic_weapon_knuckler_vibro = object_draft_schematic_weapon_sha
 
    customObjectName = "Vibro Knuckler",
 
-   groupName = "craftWeaponMeleeGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 25, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_knuckler_vibro = object_draft_schematic_weapon_sha
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              102348899, -- Script: 'object/weapon/melee/special/vibroknuckler.iff'
+              "object/weapon/melee/special/shared_vibroknuckler.iff",
              }
 
 }

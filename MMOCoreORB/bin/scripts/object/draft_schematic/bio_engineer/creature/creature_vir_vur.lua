@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_vir_vur = object_draft_sch
 
    customObjectName = "Vir Vur",
 
-   groupName = "craftBasicCreatureGroup", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 11, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_vir_vur = object_draft_sch
    contribution = {100, 100, 100},
 
    templates = {
-              774509881, -- Script: 'object/tangible/deed/pet_deed/vir_vur_deed.iff'
+              "object/tangible/deed/pet_deed/shared_vir_vur_deed.iff",
              }
 
 }

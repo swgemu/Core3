@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_durni = object_draft_schem
 
    customObjectName = "Durni",
 
-   groupName = "craftBasicCreatureGroup", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_durni = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              348221754, -- Script: 'object/tangible/deed/pet_deed/durni_deed.iff'
+              "object/tangible/deed/pet_deed/shared_durni_deed.iff",
              }
 
 }

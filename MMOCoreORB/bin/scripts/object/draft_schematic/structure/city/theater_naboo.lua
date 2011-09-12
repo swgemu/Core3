@@ -47,8 +47,6 @@ object_draft_schematic_structure_city_theater_naboo = object_draft_schematic_str
 
    customObjectName = "Deed for: Naboo Theater",
 
-   groupName = "craftPlayerCityC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 14, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_city_theater_naboo = object_draft_schematic_str
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              829956410, -- Script: 'object/tangible/deed/city_deed/theater_naboo_deed.iff'
+              "object/tangible/deed/city_deed/shared_theater_naboo_deed.iff",
              }
 
 }

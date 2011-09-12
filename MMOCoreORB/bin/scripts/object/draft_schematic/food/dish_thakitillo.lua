@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_thakitillo = object_draft_schematic_food_shared
 
    customObjectName = "Thakitillo",
 
-   groupName = "craftFoodMaster", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_thakitillo = object_draft_schematic_food_shared
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              4057409963, -- Script: 'object/tangible/food/crafted/dish_thakitillo.iff'
+              "object/tangible/food/crafted/shared_dish_thakitillo.iff",
              }
 
 }

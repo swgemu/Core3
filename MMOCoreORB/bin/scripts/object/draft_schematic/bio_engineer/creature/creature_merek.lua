@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_merek = object_draft_schem
 
    customObjectName = "Merek",
 
-   groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 29, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_merek = object_draft_schem
    contribution = {100, 100, 100},
 
    templates = {
-              188126542, -- Script: 'object/tangible/deed/pet_deed/merek_deed.iff'
+              "object/tangible/deed/pet_deed/shared_merek_deed.iff",
              }
 
 }

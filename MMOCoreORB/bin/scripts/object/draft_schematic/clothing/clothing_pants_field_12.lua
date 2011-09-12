@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_pants_field_12 = object_draft_schematic
 
    customObjectName = "Work Slacks",
 
-   groupName = "craftArtisanDomesticGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 10, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_pants_field_12 = object_draft_schematic
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1659335744, -- Script: 'object/tangible/wearables/pants/pants_s12.iff'
+              "object/tangible/wearables/pants/shared_pants_s12.iff",
              }
 
 }

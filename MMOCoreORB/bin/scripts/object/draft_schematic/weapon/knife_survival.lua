@@ -47,8 +47,6 @@ object_draft_schematic_weapon_knife_survival = object_draft_schematic_weapon_sha
 
    customObjectName = "Survival Knife",
 
-   groupName = "craftArtisanNewbieGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_knife_survival = object_draft_schematic_weapon_sha
    contribution = {100, 100, 100, 100},
 
    templates = {
-              4162479504, -- Script: 'object/weapon/melee/knife/knife_survival.iff'
+              "object/weapon/melee/knife/shared_knife_survival.iff",
              }
 
 }

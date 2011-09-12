@@ -47,8 +47,6 @@ object_draft_schematic_structure_installation_generator_wind = object_draft_sche
 
    customObjectName = "Deed for: Wind Power Generator",
 
-   groupName = "craftArtisanEngineeringGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 13, 
    size = 10, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_installation_generator_wind = object_draft_sche
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              3948268743, -- Script: 'object/tangible/deed/generator_deed/generator_wind_deed.iff'
+              "object/tangible/deed/generator_deed/shared_generator_wind_deed.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_component_clothing_metal_fasteners = object_draf
 
    customObjectName = "Metal Fasteners",
 
-   groupName = "craftArtisanDomesticGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 6, 
    size = 2, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_component_clothing_metal_fasteners = object_draf
    contribution = {100, 100},
 
    templates = {
-              1764248948, -- Script: 'object/tangible/component/clothing/metal_fasteners.iff'
+              "object/tangible/component/clothing/shared_metal_fasteners.iff",
              }
 
 }

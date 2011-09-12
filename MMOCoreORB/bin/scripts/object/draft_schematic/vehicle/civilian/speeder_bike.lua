@@ -47,8 +47,6 @@ object_draft_schematic_vehicle_civilian_speeder_bike = object_draft_schematic_ve
 
    customObjectName = "Speederbike",
 
-   groupName = "craftArtisanVehicle", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 16, -- (See DraftSchemticImplementation.h)
    complexity = 20, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_vehicle_civilian_speeder_bike = object_draft_schematic_ve
    contribution = {100, 100},
 
    templates = {
-              1418540261, -- Script: 'object/tangible/deed/vehicle_deed/speederbike_deed.iff'
+              "object/tangible/deed/vehicle_deed/shared_speederbike_deed.iff",
              }
 
 }

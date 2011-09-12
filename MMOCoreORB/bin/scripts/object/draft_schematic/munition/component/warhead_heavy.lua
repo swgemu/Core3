@@ -47,8 +47,6 @@ object_draft_schematic_munition_component_warhead_heavy = object_draft_schematic
 
    customObjectName = "Heavy Warhead Mechanism",
 
-   groupName = "craftMunitionsGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_munition_component_warhead_heavy = object_draft_schematic
    contribution = {100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              3888248350, -- Script: 'object/tangible/component/munition/warhead_heavy.iff'
+              "object/tangible/component/munition/shared_warhead_heavy.iff",
              }
 
 }

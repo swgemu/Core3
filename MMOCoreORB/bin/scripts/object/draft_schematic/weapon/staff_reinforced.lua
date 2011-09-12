@@ -47,8 +47,6 @@ object_draft_schematic_weapon_staff_reinforced = object_draft_schematic_weapon_s
 
    customObjectName = "Reinforced Combat Staff",
 
-   groupName = "craftArtisanEngineeringGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_staff_reinforced = object_draft_schematic_weapon_s
    contribution = {100, 100, 100, 100},
 
    templates = {
-              238936831, -- Script: 'object/weapon/melee/polearm/lance_staff_wood_s2.iff'
+              "object/weapon/melee/polearm/shared_lance_staff_wood_s2.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_vest_formal_15 = object_draft_schematic
 
    customObjectName = "Decorative Vest",
 
-   groupName = "craftClothingFormalGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 17, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_vest_formal_15 = object_draft_schematic
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1396547578, -- Script: 'object/tangible/wearables/vest/vest_s15.iff'
+              "object/tangible/wearables/vest/shared_vest_s15.iff",
              }
 
 }

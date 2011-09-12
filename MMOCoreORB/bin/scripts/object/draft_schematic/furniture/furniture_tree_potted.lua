@@ -47,8 +47,6 @@ object_draft_schematic_furniture_furniture_tree_potted = object_draft_schematic_
 
    customObjectName = "Potted Tree, Style One",
 
-   groupName = "craftFurnitureGroupAA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_furniture_furniture_tree_potted = object_draft_schematic_
    contribution = {100, 100, 100},
 
    templates = {
-              3849941999, -- Script: 'object/tangible/furniture/all/frn_all_tree_potted_s1.iff'
+              "object/tangible/furniture/all/shared_frn_all_tree_potted_s1.iff",
              }
 
 }

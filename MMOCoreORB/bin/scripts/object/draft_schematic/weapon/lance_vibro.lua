@@ -47,8 +47,6 @@ object_draft_schematic_weapon_lance_vibro = object_draft_schematic_weapon_shared
 
    customObjectName = "Vibro Lance",
 
-   groupName = "craftWeaponMeleeGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 30, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_lance_vibro = object_draft_schematic_weapon_shared
    contribution = {100, 100, 100, 100},
 
    templates = {
-              1358850609, -- Script: 'object/weapon/melee/polearm/lance_vibrolance.iff'
+              "object/weapon/melee/polearm/shared_lance_vibrolance.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_wke_shirt_s04 = object_draft_schematic_
 
    customObjectName = "Crested Battle Padding",
 
-   groupName = "craftClothingFieldGroupD", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
    complexity = 15, 
    size = 3, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_wke_shirt_s04 = object_draft_schematic_
    contribution = {100, 100, 100, 100, 100},
 
    templates = {
-              2613900414, -- Script: 'object/tangible/wearables/wookiee/wke_shirt_s04.iff'
+              "object/tangible/wearables/wookiee/shared_wke_shirt_s04.iff",
              }
 
 }

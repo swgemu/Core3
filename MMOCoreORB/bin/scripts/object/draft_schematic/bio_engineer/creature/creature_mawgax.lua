@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_mawgax = object_draft_sche
 
    customObjectName = "Mawgax",
 
-   groupName = "craftAggressiveCreatureGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 27, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_mawgax = object_draft_sche
    contribution = {100, 100, 100},
 
    templates = {
-              1512304694, -- Script: 'object/tangible/deed/pet_deed/mawgax_deed.iff'
+              "object/tangible/deed/pet_deed/shared_mawgax_deed.iff",
              }
 
 }

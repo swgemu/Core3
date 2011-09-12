@@ -47,8 +47,6 @@ object_draft_schematic_structure_city_garage_naboo = object_draft_schematic_stru
 
    customObjectName = "Deed for: Naboo Garage",
 
-   groupName = "craftPlayerCityC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1024, -- (See DraftSchemticImplementation.h)
    complexity = 24, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_structure_city_garage_naboo = object_draft_schematic_stru
    contribution = {100, 100, 100, 100, 100, 100},
 
    templates = {
-              1620325682, -- Script: 'object/tangible/deed/city_deed/garage_naboo_deed.iff'
+              "object/tangible/deed/city_deed/shared_garage_naboo_deed.iff",
              }
 
 }

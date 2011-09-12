@@ -47,8 +47,6 @@ object_draft_schematic_item_item_survey_tool_flora = object_draft_schematic_item
 
    customObjectName = "Flora Survey Tool",
 
-   groupName = "craftArtisanSurveyGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 7, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_survey_tool_flora = object_draft_schematic_item
    contribution = {100, 100, 100, 100},
 
    templates = {
-              342190368, -- Script: 'object/tangible/survey_tool/survey_tool_lumber.iff'
+              "object/tangible/survey_tool/shared_survey_tool_lumber.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_food_drink_spiced_tea = object_draft_schematic_food_share
 
    customObjectName = "Spiced Tea",
 
-   groupName = "craftArtisanNewbieGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 3, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_drink_spiced_tea = object_draft_schematic_food_share
    contribution = {100, 100, 100, 100},
 
    templates = {
-              4186354523, -- Script: 'object/tangible/food/crafted/drink_spiced_tea.iff'
+              "object/tangible/food/crafted/shared_drink_spiced_tea.iff",
              }
 
 }

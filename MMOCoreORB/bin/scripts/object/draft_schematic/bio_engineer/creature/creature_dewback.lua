@@ -47,8 +47,6 @@ object_draft_schematic_bio_engineer_creature_creature_dewback = object_draft_sch
 
    customObjectName = "Dewback",
 
-   groupName = "craftDomesticCreatureGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 256, -- (See DraftSchemticImplementation.h)
    complexity = 22, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_bio_engineer_creature_creature_dewback = object_draft_sch
    contribution = {100, 100, 100},
 
    templates = {
-              4178408464, -- Script: 'object/tangible/deed/pet_deed/dewback_deed.iff'
+              "object/tangible/deed/pet_deed/shared_dewback_deed.iff",
              }
 
 }

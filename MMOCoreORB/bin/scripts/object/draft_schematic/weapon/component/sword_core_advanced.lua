@@ -47,8 +47,6 @@ object_draft_schematic_weapon_component_sword_core_advanced = object_draft_schem
 
    customObjectName = "Advanced Sword Core",
 
-   groupName = "craftWeaponMeleeGroupC", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 1, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_weapon_component_sword_core_advanced = object_draft_schem
    contribution = {100},
 
    templates = {
-              1944034997, -- Script: 'object/tangible/component/weapon/sword_core_advanced.iff'
+              "object/tangible/component/weapon/shared_sword_core_advanced.iff",
              }
 
 }

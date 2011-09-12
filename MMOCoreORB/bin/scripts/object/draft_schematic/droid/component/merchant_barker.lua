@@ -47,8 +47,6 @@ object_draft_schematic_droid_component_merchant_barker = object_draft_schematic_
 
    customObjectName = "Get Merchant Waypoint",
 
-   groupName = "craftdroidgenmodGroupB", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 32, -- (See DraftSchemticImplementation.h)
    complexity = 19, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_droid_component_merchant_barker = object_draft_schematic_
    contribution = {100, 100, 100},
 
    templates = {
-              3461912486, -- Script: 'object/tangible/component/droid/merchant_barker.iff'
+              "object/tangible/component/droid/shared_merchant_barker.iff",
              }
 
 }

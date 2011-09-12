@@ -47,8 +47,6 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_black_mtn_leggings = 
 
    customObjectName = "Kashyyykian Black Mountain Leggings",
 
-   groupName = "craftArmorPersonalGroupE", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
    complexity = 40, 
    size = 4, 
@@ -73,7 +71,7 @@ object_draft_schematic_clothing_clothing_armor_kashyyykian_black_mtn_leggings = 
    contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
 
    templates = {
-              523674485, -- Script: 'object/tangible/wearables/armor/kashyyykian_black_mtn/armor_kashyyykian_black_mtn_leggings.iff'
+              "object/tangible/wearables/armor/kashyyykian_black_mtn/shared_armor_kashyyykian_black_mtn_leggings.iff",
              }
 
 }

@@ -47,8 +47,6 @@ object_draft_schematic_item_item_survey_tool_solar = object_draft_schematic_item
 
    customObjectName = "Ambient Solar Energy Surveying Tool",
 
-   groupName = "craftArtisanSurveyGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
    complexity = 5, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_item_item_survey_tool_solar = object_draft_schematic_item
    contribution = {100, 100, 100},
 
    templates = {
-              2609023122, -- Script: 'object/tangible/survey_tool/survey_tool_solar.iff'
+              "object/tangible/survey_tool/shared_survey_tool_solar.iff",
              }
 
 }

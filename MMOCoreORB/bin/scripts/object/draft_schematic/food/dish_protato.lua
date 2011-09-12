@@ -47,8 +47,6 @@ object_draft_schematic_food_dish_protato = object_draft_schematic_food_shared_di
 
    customObjectName = "Protato",
 
-   groupName = "craftFoodDishGroupA", -- Group schematic is awarded in (See skills table)
-
    craftingToolTab = 4, -- (See DraftSchemticImplementation.h)
    complexity = 6, 
    size = 1, 
@@ -73,7 +71,7 @@ object_draft_schematic_food_dish_protato = object_draft_schematic_food_shared_di
    contribution = {100, 100},
 
    templates = {
-              3308445162, -- Script: 'object/tangible/food/crafted/dish_protato.iff'
+              "object/tangible/food/crafted/shared_dish_protato.iff",
              }
 
 }
