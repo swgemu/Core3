@@ -129,14 +129,15 @@ public:
 		insertInt(0);
 		insertInt(0);
 
-		/// Pallete List
-		insertInt(0);
-		insertInt(0);
-
-		insertInt(0);
-
 		/// Customization Counter
 		insertByte(0);
+
+		/// Risk Factor
+		insertFloat(0);
+
+		// Template List - sent in delta
+		insertInt(0);
+		insertInt(0);
 
 		//ready
 		insertByte(1);

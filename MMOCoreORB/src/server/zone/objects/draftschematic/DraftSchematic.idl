@@ -239,4 +239,12 @@ class DraftSchematic extends IntangibleObject {
 	public void increaseUseCount(int count) {
 		setUseCount(useCount + count);
 	}
+	
+	public int getTemplateListSize() {
+		return schematicTemplate.getTemplateListSize();
+	}
+	
+	public string getTemplate(int i) {
+		return schematicTemplate.getTemplate(i);
+	}
 }

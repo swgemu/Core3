@@ -26,7 +26,7 @@
  *	CraftingToolStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_GETTOOLTYPE__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,RPC_REQUESTCRAFTINGSESSION__CREATUREOBJECT_CRAFTINGSTATION_,RPC_CANCELCRAFTINGSESSION__CREATUREOBJECT_,RPC_CLEARCRAFTINGSESSION__,RPC_SELECTDRAFTSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATESESSIONOBJECTS__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEMANUFACTURESCHEMATIC__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__CREATUREOBJECT_,RPC_ADDINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__CREATUREOBJECT_INT_,RPC_EXPERIMENT__CREATUREOBJECT_INT_STRING_INT_,RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_INT_STRING_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_INT_INT_,RPC_CREATEMANFSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATEOBJECT__CREATUREOBJECT_INT_BOOL_,RPC_DEPOSITOBJECT__CREATUREOBJECT_BOOL_,RPC_GETLASTEXPERIMENTATIONTIMESTAMP__,RPC_GETEXPERIMENTATIONRESULT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_UPDATECRAFTINGVALUES__MANUFACTURESCHEMATIC_,RPC_ISCRAFTINGTOOL__,RPC_ISREADY__,RPC_GETTOOLTYPE__,RPC_GETPROTOTYPE__,RPC_GETMANUFACTURESCHEMATIC__,RPC_REQUESTCRAFTINGSESSION__CREATUREOBJECT_CRAFTINGSTATION_,RPC_CANCELCRAFTINGSESSION__CREATUREOBJECT_,RPC_CLEARCRAFTINGSESSION__,RPC_SELECTDRAFTSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATESESSIONOBJECTS__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEMANUFACTURESCHEMATIC__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_DRAFTSCHEMATIC_,RPC_SYNCHRONIZEDUILISTENFORSCHEMATIC__CREATUREOBJECT_,RPC_ADDINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__CREATUREOBJECT_TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__CREATUREOBJECT_INT_,RPC_EXPERIMENT__CREATUREOBJECT_INT_STRING_INT_,RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_BYTE_INT_STRING_,RPC_CREATEPROTOTYPE__CREATUREOBJECT_INT_INT_,RPC_CREATEMANFSCHEMATIC__CREATUREOBJECT_INT_,RPC_CREATEOBJECT__CREATUREOBJECT_INT_BOOL_,RPC_DEPOSITOBJECT__CREATUREOBJECT_BOOL_,RPC_GETLASTEXPERIMENTATIONTIMESTAMP__,RPC_GETEXPERIMENTATIONRESULT__};
 
 CraftingTool::CraftingTool() : ToolTangibleObject(DummyConstructorParameter::instance()) {
 	CraftingToolImplementation* _implementation = new CraftingToolImplementation();
@@ -366,21 +366,22 @@ void CraftingTool::experiment(CreatureObject* player, int numRowsAttempted, Stri
 		_implementation->experiment(player, numRowsAttempted, expString, clientCounter);
 }
 
-void CraftingTool::customization(CreatureObject* player, String& name, int schematicCount, String& customization) {
+void CraftingTool::customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization) {
 	CraftingToolImplementation* _implementation = (CraftingToolImplementation*) _getImplementation();
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_INT_STRING_);
+		DistributedMethod method(this, RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_BYTE_INT_STRING_);
 		method.addObjectParameter(player);
 		method.addAsciiParameter(name);
+		method.addByteParameter(templateChoice);
 		method.addSignedIntParameter(schematicCount);
 		method.addAsciiParameter(customization);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->customization(player, name, schematicCount, customization);
+		_implementation->customization(player, name, templateChoice, schematicCount, customization);
 }
 
 void CraftingTool::createPrototype(CreatureObject* player, int clientCounter, int practice) {
@@ -832,8 +833,8 @@ Packet* CraftingToolAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_EXPERIMENT__CREATUREOBJECT_INT_STRING_INT_:
 		experiment((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param2_experiment__CreatureObject_int_String_int_), inv->getSignedIntParameter());
 		break;
-	case RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_INT_STRING_:
-		customization((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_customization__CreatureObject_String_int_String_), inv->getSignedIntParameter(), inv->getAsciiParameter(_param3_customization__CreatureObject_String_int_String_));
+	case RPC_CUSTOMIZATION__CREATUREOBJECT_STRING_BYTE_INT_STRING_:
+		customization((CreatureObject*) inv->getObjectParameter(), inv->getAsciiParameter(_param1_customization__CreatureObject_String_byte_int_String_), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getAsciiParameter(_param4_customization__CreatureObject_String_byte_int_String_));
 		break;
 	case RPC_CREATEPROTOTYPE__CREATUREOBJECT_INT_INT_:
 		createPrototype((CreatureObject*) inv->getObjectParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter());
@@ -940,8 +941,8 @@ void CraftingToolAdapter::experiment(CreatureObject* player, int numRowsAttempte
 	((CraftingToolImplementation*) impl)->experiment(player, numRowsAttempted, expString, clientCounter);
 }
 
-void CraftingToolAdapter::customization(CreatureObject* player, String& name, int schematicCount, String& customization) {
-	((CraftingToolImplementation*) impl)->customization(player, name, schematicCount, customization);
+void CraftingToolAdapter::customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization) {
+	((CraftingToolImplementation*) impl)->customization(player, name, templateChoice, schematicCount, customization);
 }
 
 void CraftingToolAdapter::createPrototype(CreatureObject* player, int clientCounter, int practice) {

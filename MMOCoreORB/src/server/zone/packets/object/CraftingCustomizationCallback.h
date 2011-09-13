@@ -20,6 +20,7 @@ class CraftingCustomizationCallback : public MessageCallback {
 	String customizationString;
 	int schematicCount;
 	int counter;
+	byte templateChoice;
 
 	ObjectControllerMessageCallback* objectControllerMain;
 public:
@@ -38,7 +39,7 @@ public:
 
 		name = n.toString();
 
-		message->shiftOffset(1);
+		templateChoice = message->parseByte();
 
 		schematicCount = message->parseInt();
 
@@ -77,7 +78,7 @@ public:
 
 		Locker _locker(craftingTool);
 
-		craftingTool->customization(player, name, schematicCount, customizationString);
+		craftingTool->customization(player, name, templateChoice, schematicCount, customizationString);
 
 
 	}

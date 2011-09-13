@@ -151,7 +151,8 @@ void SchematicMap::loadDraftSchematicFile() {
 		lua_rawgeti(L, -1, i + 1);
 		LuaObject luaObject(L);
 
-		uint32 servercrc = luaObject.getIntField("crc");
+		String path = luaObject.getStringField("path");
+		uint32 servercrc = path.hashCode();
 
 		DraftSchematic* schematic = schematicCrcMap.get(servercrc);
 

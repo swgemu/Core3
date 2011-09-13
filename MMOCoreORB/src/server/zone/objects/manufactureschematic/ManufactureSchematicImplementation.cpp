@@ -304,4 +304,3 @@ void ManufactureSchematicImplementation::manufactureItem() {
 	factoryBlueprint.manufactureItem();
 	setManufactureLimit(getManufactureLimit() - 1);
 }
-

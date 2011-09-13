@@ -18,7 +18,7 @@
  *	DraftSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETSCHEMATICID__INT_,RPC_GETSCHEMATICID__,RPC_SETGROUPNAME__STRING_,RPC_GETGROUPNAME__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_,RPC_DECREASEUSECOUNT__INT_,RPC_INCREASEUSECOUNT__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETSCHEMATICID__INT_,RPC_GETSCHEMATICID__,RPC_SETGROUPNAME__STRING_,RPC_GETGROUPNAME__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETUSECOUNT__,RPC_SETUSECOUNT__INT_,RPC_DECREASEUSECOUNT__INT_,RPC_INCREASEUSECOUNT__INT_,RPC_GETTEMPLATELISTSIZE__,RPC_GETTEMPLATE__INT_};
 
 DraftSchematic::DraftSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	DraftSchematicImplementation* _implementation = new DraftSchematicImplementation();
@@ -449,6 +449,34 @@ void DraftSchematic::increaseUseCount(int count) {
 		_implementation->increaseUseCount(count);
 }
 
+int DraftSchematic::getTemplateListSize() {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTEMPLATELISTSIZE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getTemplateListSize();
+}
+
+String DraftSchematic::getTemplate(int i) {
+	DraftSchematicImplementation* _implementation = (DraftSchematicImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTEMPLATE__INT_);
+		method.addSignedIntParameter(i);
+
+		method.executeWithAsciiReturn(_return_getTemplate);
+		return _return_getTemplate;
+	} else
+		return _implementation->getTemplate(i);
+}
+
 DistributedObjectServant* DraftSchematic::_getImplementation() {
 
 	_updated = true;
@@ -658,6 +686,16 @@ void DraftSchematicImplementation::increaseUseCount(int count) {
 	setUseCount(useCount + count);
 }
 
+int DraftSchematicImplementation::getTemplateListSize() {
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		return schematicTemplate.getTemplateListSize();
+	return schematicTemplate->getTemplateListSize();
+}
+
+String DraftSchematicImplementation::getTemplate(int i) {
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		return schematicTemplate.getTemplate(i);
+	return schematicTemplate->getTemplate(i);
+}
+
 /*
  *	DraftSchematicAdapter
  */
@@ -746,6 +784,12 @@ Packet* DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 		break;
 	case RPC_INCREASEUSECOUNT__INT_:
 		increaseUseCount(inv->getSignedIntParameter());
+		break;
+	case RPC_GETTEMPLATELISTSIZE__:
+		resp->insertSignedInt(getTemplateListSize());
+		break;
+	case RPC_GETTEMPLATE__INT_:
+		resp->insertAscii(getTemplate(inv->getSignedIntParameter()));
 		break;
 	default:
 		return NULL;
@@ -856,6 +900,14 @@ void DraftSchematicAdapter::decreaseUseCount(int count) {
 
 void DraftSchematicAdapter::increaseUseCount(int count) {
 	((DraftSchematicImplementation*) impl)->increaseUseCount(count);
+}
+
+int DraftSchematicAdapter::getTemplateListSize() {
+	return ((DraftSchematicImplementation*) impl)->getTemplateListSize();
+}
+
+String DraftSchematicAdapter::getTemplate(int i) {
+	return ((DraftSchematicImplementation*) impl)->getTemplate(i);
 }
 
 /*

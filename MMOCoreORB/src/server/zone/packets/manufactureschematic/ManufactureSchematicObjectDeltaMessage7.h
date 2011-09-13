@@ -69,7 +69,6 @@ public:
 		update5(size+1, size+1, slot);
 		update6(size, size, slot);
 		update7(manufactureSchematic->getIngredientCounter());
-		//initializeExperimentalValues(draftSchematic);
 		update14();
 	}
 
@@ -112,6 +111,7 @@ public:
 		update0B(manufactureSchematic);
 		update0C(manufactureSchematic);
 		update12(failureRate);
+		update13(manufactureSchematic);
 	}
 
 	void updateCustomizationOptions(ManufactureSchematic* manufactureSchematic, int custpoints){
@@ -497,6 +497,27 @@ public:
 	void update12(float failureRate){
 		startUpdate(0x12);
 		insertFloat(failureRate);
+	}
+
+	void update13(ManufactureSchematic* manufactureSchematic){
+
+		ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
+		if(draftSchematic == NULL)
+			return;
+
+		startUpdate(0x13);
+
+		/// Template List
+		int templateCount = draftSchematic->getTemplateListSize();
+
+		startList(templateCount, templateCount);
+
+		/// The first template is the
+		for(int i = 0; i < templateCount; ++i) {
+			insertByte(0x01);
+			insertShort(i);
+			insertAscii(draftSchematic->getTemplate(i));
+		}
 	}
 
 	void update14() {

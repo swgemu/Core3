@@ -217,7 +217,7 @@ public:
 
 	void experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter);
 
-	void customization(CreatureObject* player, String& name, int schematicCount, String& customization);
+	void customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization);
 
 	void createPrototype(CreatureObject* player, int clientCounter, int practice);
 
@@ -388,7 +388,7 @@ private:
 	void experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure);
 
 public:
-	void customization(CreatureObject* player, String& name, int schematicCount, String& customization);
+	void customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization);
 
 private:
 	void finishStage1(CreatureObject* player, int clientCounter);
@@ -491,7 +491,7 @@ public:
 
 	void experiment(CreatureObject* player, int numRowsAttempted, String& expString, int clientCounter);
 
-	void customization(CreatureObject* player, String& name, int schematicCount, String& customization);
+	void customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization);
 
 	void createPrototype(CreatureObject* player, int clientCounter, int practice);
 
@@ -507,8 +507,8 @@ public:
 
 protected:
 	String _param2_experiment__CreatureObject_int_String_int_;
-	String _param1_customization__CreatureObject_String_int_String_;
-	String _param3_customization__CreatureObject_String_int_String_;
+	String _param1_customization__CreatureObject_String_byte_int_String_;
+	String _param4_customization__CreatureObject_String_byte_int_String_;
 };
 
 class CraftingToolHelper : public DistributedObjectClassHelper, public Singleton<CraftingToolHelper> {

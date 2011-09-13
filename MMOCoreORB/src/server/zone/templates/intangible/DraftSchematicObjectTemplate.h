@@ -67,11 +67,13 @@ protected:
 	Vector<short>* combineTypes;
 	Vector<short>* contribution;
 
-	Vector<uint32>* availableTemplates;
+	Vector<String>* additionalTemplates;
 
 	Vector<Reference<DraftSlot* > >* draftSlots;
 
 	SharedTangibleObjectTemplate* tangibleTemplate;
+
+	uint32 tanoCRC;
 
 public:
 	DraftSchematicObjectTemplate();
@@ -155,7 +157,7 @@ public:
     }
 
     uint32 getTanoCRC() {
-        return availableTemplates->get(0);
+        return tanoCRC;
     }
 
     int getXp() {
@@ -168,6 +170,14 @@ public:
 
     String getCustomObjectName() {
         return customObjectName;
+    }
+
+    int getTemplateListSize() {
+    	return additionalTemplates->size();
+    }
+
+    String getTemplate(int i) {
+    	return additionalTemplates->get(i);
     }
 
 	Vector<Reference<ResourceWeight* > >* getResourceWeights();

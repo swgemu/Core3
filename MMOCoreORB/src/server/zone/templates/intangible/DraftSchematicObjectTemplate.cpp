@@ -23,9 +23,11 @@ DraftSchematicObjectTemplate::DraftSchematicObjectTemplate() {
 
 	draftSlots = new Vector<Reference<DraftSlot* > >();
 
-	availableTemplates = new Vector<uint32>();
+	additionalTemplates = new Vector<String>();
 
 	tangibleTemplate = NULL;
+
+	tanoCRC = 0;
 }
 
 DraftSchematicObjectTemplate::~DraftSchematicObjectTemplate() {
@@ -47,7 +49,7 @@ DraftSchematicObjectTemplate::~DraftSchematicObjectTemplate() {
 	delete combineTypes;
 	delete contribution;
 
-	delete availableTemplates;
+	delete additionalTemplates;
 
 	delete draftSlots;
 
@@ -141,9 +143,11 @@ void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 		addSlot(newSlot);
 	}
 
-	LuaObject availableTemplateList = templateData->getObjectField("templates");
+	tanoCRC = templateData->getStringField("targetTemplate").hashCode();
+
+	LuaObject availableTemplateList = templateData->getObjectField("additionalTemplates");
 	for (int i = 1; i <= availableTemplateList.getTableSize(); ++i) {
-		availableTemplates->add(availableTemplateList.getIntAt(i));
+		additionalTemplates->add(availableTemplateList.getStringAt(i));
 	}
 	contributionList.pop();
 }
@@ -155,10 +159,10 @@ Vector<Reference<ResourceWeight* > >* DraftSchematicObjectTemplate::getResourceW
 		if (tangibleTemplate == NULL)
 			tangibleTemplate
 					= dynamic_cast<SharedTangibleObjectTemplate*> (TemplateManager::instance()->getTemplate(
-							availableTemplates->get(0)));
+							tanoCRC));
 
 		if (tangibleTemplate == NULL) {
-			Logger::console.error("Template not found for server crc: " + availableTemplates->get(0));
+			Logger::console.error("Template not found for server crc: " + additionalTemplates->get(0));
 			return NULL;
 		}
 	} catch (...) {

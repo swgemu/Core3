@@ -1136,7 +1136,7 @@ void CraftingToolImplementation::experimentRow(CraftingValues* craftingValues,
 }
 
 
-void CraftingToolImplementation::customization(CreatureObject* player, String& name, int schematicCount, String& customization) {
+void CraftingToolImplementation::customization(CreatureObject* player, String& name, byte templateChoice, int schematicCount, String& customization) {
 
 	ManagedReference<ManufactureSchematic* > manufactureSchematic = getManufactureSchematic();
 	ManagedReference<TangibleObject *> prototype = getPrototype();
@@ -1149,6 +1149,19 @@ void CraftingToolImplementation::customization(CreatureObject* player, String& n
 	if (prototype == NULL) {
 		sendSlotMessage(player, 0, IngredientSlot::PROTOTYPENOTFOUND);
 		return;
+	}
+
+	if(templateChoice != 0xFF) {
+
+		DraftSchematic* draftSchematic = manufactureSchematic->getDraftSchematic();
+
+		if(draftSchematic != NULL) {
+			uint32 clientCRC = draftSchematic->getTemplate((int)templateChoice).hashCode();
+			prototype->setClientObjectCRC(clientCRC);
+
+			prototype->sendDestroyTo(player);
+			prototype->sendTo(player, true);
+		}
 	}
 
 	manufactureSchematic->setManufactureLimit(schematicCount);
