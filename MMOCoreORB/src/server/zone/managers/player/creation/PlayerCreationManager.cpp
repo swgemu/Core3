@@ -403,7 +403,11 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 			error(e.getMessage());
 		}
 
+		//********************************
+		// Uncomment to make all new players admins
 		//ghost->setAdminLevel(2);
+		//skillManager->addAbility(ghost, "admin", false);
+		//********************************
 
 		if (doTutorial)
 			playerManager->createTutorialBuilding(playerCreature);
