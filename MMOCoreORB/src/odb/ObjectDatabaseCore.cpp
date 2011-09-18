@@ -42,78 +42,43 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "engine/engine.h"
+#include "server/zone/managers/object/ObjectManager.h"
 
-#include "TestClass.h"
+#include "ObjectDatabaseCore.h"
 
-void testTransactions() {
-#ifdef WITH_STM
-	Vector<TransactionalReference<TestClass*> > references;
+ObjectDatabaseCore::ObjectDatabaseCore() : Core("log/odb3.log"), Logger("ObjectDatabaseCore") {
+	setInfoLogLevel();
+}
 
-	printf("creating objects\n");
+void ObjectDatabaseCore::initialize() {
+	info("starting up ObjectDatabase..");
 
-	for (int i = 0; i < 10000; ++i)
-		references.add(new TestClass(1));
+	DistributedObjectBroker* orb = DistributedObjectBroker::initialize("", 44440);
 
-	printf("adding tasks\n");
+	orb->setCustomObjectManager(ObjectManager::instance());
 
-	for (int i = 0; i < 10000; ++i) {
-		Task* task = new TestTask(&references);
+}
 
-		//Core::getTaskManager()->scheduleTask(task, 1000);
-		Core::getTaskManager()->executeTask(task);
-	}
+void ObjectDatabaseCore::run() {
+	info("initialized", true);
+}
 
-	TransactionalMemoryManager::commitPureTransaction();
-
-	printf("starting tasks\n");
-
-	Thread::sleep(3000);
-
-	while(true) {
-		Thread::sleep(1000);
-
-		int scheduledTasks = Core::getTaskManager()->getScheduledTaskSize();
-		int executedTasks = Core::getTaskManager()->getExecutingTaskSize();
-
-		int taskToSchedule = 500;
-		int taskToExecute = 1000;
-
-		if (scheduledTasks > 20000)
-			taskToSchedule = 0;
-		else if (scheduledTasks < 1000)
-			taskToSchedule = 5000;
-
-		if (executedTasks > 20000)
-			taskToExecute = 0;
-		else if (executedTasks < 1000)
-			taskToExecute = 5000;
-
-		for (int i = 0; i < taskToSchedule; ++i) {
-			Task* task = new TestTask(&references);
-
-			Core::getTaskManager()->scheduleTask(task, System::random(2000));
+int main(int argc, char* argv[]) {
+	try {
+		Vector<String> arguments;
+		for (int i = 1; i < argc; ++i) {
+			arguments.add(argv[i]);
 		}
 
-		for (int i = 0; i < taskToExecute; ++i) {
-			Task* task = new TestTask(&references);
+		StackTrace::setBinaryName("odb3");
 
-			Core::getTaskManager()->executeTask(task);
-		}
+		ObjectDatabaseCore core;
 
-		TransactionalMemoryManager::commitPureTransaction();
+		core.start();
+	} catch (Exception& e) {
+		System::out << e.getMessage() << "\n";
+		e.printStackTrace();
 	}
 
-	for (int i = 0; i < references.size(); ++i) {
-		TestClass* object = references.get(i);
-
-		printf("%i\n", object->get());
-	}
-
-	TransactionalMemoryManager::commitPureTransaction();
-
-	Thread::sleep(1000);
-#endif
-
-	exit(0);
+	return 0;
 }

@@ -54,14 +54,15 @@ LIBS =	$(SYSTEM_LIBS)  \
 	$(USER_LD_FLAGS) \
 	-L../../../build/unix/src/client \
 	-L/usr/local/BerkeleyDB.5.0/lib \
-	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
+	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
+	-L$(ENGINE3_PATH)/lib/unix -L$(ENGINE3_PATH)/external/ptmalloc3 \
 	-L/usr/local/lib \
-	-lmysqlclient -lz -lengine3 -llua -ldb-5.0
+	-lptmalloc3 -lmysqlclient -lz -lengine3 -llua -ldb-5.0
 	
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 #AM_LDFLAGS = --enable-stdcall-fixup
 
-bin_PROGRAMS = core3
+bin_PROGRAMS = core3 #odb3
 
 core3_IDLS =	server/zone/managers/director/ScreenPlayObserver.cpp \
 				server/zone/objects/region/CityRegion.cpp \
@@ -525,3 +526,12 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/tangible/SharedWeaponObjectTemplate.cpp \
 		server/zone/templates/customization/AssetCustomizationManagerTemplate.cpp \
 		main.cpp
+
+#odb3_SOURCES = \
+#		odb/ObjectDatabaseCore.cpp \
+#		server/zone/managers/object/ObjectManager.cpp \
+#		server/zone/managers/object/ObjectVersionUpdateManager.cpp \
+#		server/zone/managers/object/UpdateModifiedObjectsThread.cpp \
+#		server/zone/objects/scene/SceneObject.cpp \
+#		server/zone/objects/scene/SceneObjectImplementation.cpp
+		

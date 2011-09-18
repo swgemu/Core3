@@ -51,6 +51,8 @@ which carries forward this exception.
 
 ClientCore::ClientCore(int instances) : Core("log/core3client.log"), Logger("CoreClient") {
 	ClientCore::instances = instances;
+
+	setInfoLogLevel();
 }
 
 void ClientCore::initialize() {
@@ -71,7 +73,7 @@ void ClientCore::run() {
 	while (true) {
 		int index = System::random(instances - 1);
 
-		if (System::random(100) < 66)
+		if (System::random(100) < 80)
 			loginCharacter(index);
 		else
 			logoutCharacter(index);
@@ -83,10 +85,10 @@ void ClientCore::run() {
 		}
 	#endif
 
-		info(String::valueOf(connectCount) + " connects, " + String::valueOf(disconnectCount) + " disconnects. " +
-				String::valueOf(++rounds) + " rounds", true);
+		debug(String::valueOf(connectCount) + " connects, " + String::valueOf(disconnectCount) + " disconnects. " +
+				String::valueOf(++rounds) + " rounds");
 
-		Thread::sleep(100 + System::random(400));
+		Thread::sleep(10 + System::random(40));
 	}
 
 	//handleCommands();

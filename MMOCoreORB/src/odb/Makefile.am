@@ -52,27 +52,10 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 LIBS =	$(SYSTEM_LIBS)  \
 	-L../../../build/unix/src/client \
 	-L/usr/local/BerkeleyDB.5.0/lib \
-	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
-	-L$(ENGINE3_PATH)/lib/unix -L$(ENGINE3_PATH)/external/ptmalloc3 \
-	-lptmalloc3 -lengine3 -lmysqlclient -llua -lz -ldb
+	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua -L$(ENGINE3_PATH)/lib/unix \
+	-lengine3 -lmysqlclient -llua -lz -ldb
 
-bin_PROGRAMS = core3client
+bin_PROGRAMS = odb3
 
-core3client_SOURCES = \
-		ClientCore.cpp \
-		login/LoginClient.cpp \
-		login/LoginSession.cpp \
-		login/LoginPacketHandler.cpp \
-		zone/Zone.cpp \
-		zone/ZoneClient.cpp \
-		zone/ZonePacketHandler.cpp \
-		zone/ZoneClientThread.cpp \
-		zone/managers/object/ObjectManager.cpp \
-		zone/managers/objectcontroller/ObjectController.cpp \
-		zone/objects/scene/SceneObject.cpp \
-		zone/objects/scene/variables/StringId.cpp \
-		zone/objects/creature/CreatureObject.cpp \
-		zone/objects/tangible/TangibleObject.cpp \
-		zone/objects/intangible/IntangibleObject.cpp \
-		zone/objects/player/PlayerObject.cpp \
-		zone/objects/player/PlayerCreature.cpp  
+odb3_SOURCES = \
+		ObjectDatabaseCore.cpp

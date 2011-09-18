@@ -44,7 +44,10 @@ which carries forward this exception.
 
 #include "server/ServerCore.h"
 
+#include "server/zone/objects/tangible/Container.h"
+
 #include "test/stmtest.h"
+#include "test/memprottest.h"
 
 int main(int argc, char* argv[]) {
 	try {
@@ -55,9 +58,14 @@ int main(int argc, char* argv[]) {
 
 		ServerCore core;
 
-		core.start();
+		if (!arguments.isEmpty()) {
+			if (arguments.get(0) == "stmtest")
+				testTransactions();
+			else if (arguments.get(0) == "memtest")
+				testMemoryProtection();
+		} else
+			core.start();
 
-		//testTransactions();
 	} catch (Exception& e) {
 		System::out << e.getMessage() << "\n";
 		e.printStackTrace();

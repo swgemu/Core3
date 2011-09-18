@@ -42,78 +42,94 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#include "system/lang/SignalException.h"
+
 #include "engine/engine.h"
+
+#include "system/mm/Heap.h"
 
 #include "TestClass.h"
 
-void testTransactions() {
+class SegFault : public Exception {
+public:
+	SegFault() : Exception() {
+		System::out << "Memory protection works!\n";
+
+		throw TransactionAbortedException();
+	}
+
+	static int GetSignalNumber() {
+		return SIGSEGV;
+	}
+};
+
+SignalTranslator<SegFault> segmentationFaultTranslator;
+
 #ifdef WITH_STM
-	Vector<TransactionalReference<TestClass*> > references;
+class MemoryTestTask : public Task {
+	TransactionalReference<TestClass*> reference;
 
-	printf("creating objects\n");
-
-	for (int i = 0; i < 10000; ++i)
-		references.add(new TestClass(1));
-
-	printf("adding tasks\n");
-
-	for (int i = 0; i < 10000; ++i) {
-		Task* task = new TestTask(&references);
-
-		//Core::getTaskManager()->scheduleTask(task, 1000);
-		Core::getTaskManager()->executeTask(task);
+public:
+	MemoryTestTask() {
+		reference = new TestClass(1);
 	}
 
-	TransactionalMemoryManager::commitPureTransaction();
+	void run() {
+		TestClass* object = reference.get();
 
-	printf("starting tasks\n");
+		printf("writing to read opened object %p\n", object);
 
-	Thread::sleep(3000);
-
-	while(true) {
-		Thread::sleep(1000);
-
-		int scheduledTasks = Core::getTaskManager()->getScheduledTaskSize();
-		int executedTasks = Core::getTaskManager()->getExecutingTaskSize();
-
-		int taskToSchedule = 500;
-		int taskToExecute = 1000;
-
-		if (scheduledTasks > 20000)
-			taskToSchedule = 0;
-		else if (scheduledTasks < 1000)
-			taskToSchedule = 5000;
-
-		if (executedTasks > 20000)
-			taskToExecute = 0;
-		else if (executedTasks < 1000)
-			taskToExecute = 5000;
-
-		for (int i = 0; i < taskToSchedule; ++i) {
-			Task* task = new TestTask(&references);
-
-			Core::getTaskManager()->scheduleTask(task, System::random(2000));
-		}
-
-		for (int i = 0; i < taskToExecute; ++i) {
-			Task* task = new TestTask(&references);
-
-			Core::getTaskManager()->executeTask(task);
-		}
-
-		TransactionalMemoryManager::commitPureTransaction();
+		object->increment();
 	}
-
-	for (int i = 0; i < references.size(); ++i) {
-		TestClass* object = references.get(i);
-
-		printf("%i\n", object->get());
-	}
-
-	TransactionalMemoryManager::commitPureTransaction();
-
-	Thread::sleep(1000);
+};
 #endif
+
+
+void testMemoryProtection() {
+#ifdef WITH_STM
+	Task* task = new MemoryTestTask();
+
+	Core::getTaskManager()->executeTask(task);
+
+	TransactionalMemoryManager::commitPureTransaction();
+
+	while (true) {
+		Thread::sleep(1000);
+	}
+#else
+	ProtectedHeap kernelHeap;
+	kernelHeap.create(512*1024*1024);
+
+	int* mem = (int*) kernelHeap.allocate(8);
+
+	kernelHeap.protect();
+	mem[1000] = 12;
+
+	kernelHeap.unprotect();
+	*mem = 12;
+	printf("Write works\n");
+#endif
+
+	/*Thread* thread1 = new TestThread();
+	thread1->start();
+
+	Thread* thread2 = new TestThread();
+	thread2->start();
+
+	Thread* thread3 = new TestThread();
+	thread3->start();
+
+	Thread* thread4 = new TestThread();
+	thread4->start();
+
+	thread1->join();*/
+
+	//core.start();
+
+	/*Task* task = new TestTask2();
+	task->execute();
+
+	TransactionalMemoryManager::commitPureTransaction();*/
 
 	exit(0);
 }

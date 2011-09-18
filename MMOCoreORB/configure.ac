@@ -46,7 +46,7 @@ case "$host_cpu-$host_os" in
       ;;
     *)
       SYSTEM_INCLUDES="" 
-      SYSTEM_LIBS="-lrt -ldl -lpthread"
+      SYSTEM_LIBS="-lrt -ldl -pthread"
       USER_INCLUDES_PATH="/usr/local/include"
       USER_LIBS_PATH="/usr/local/lib"
 esac
@@ -62,4 +62,6 @@ AC_SUBST(USER_LIBS_PATH)
 
 AC_CONFIG_FILES([Makefile src/Makefile])
 AC_CONFIG_SUBDIRS([src/client])
+#AC_CONFIG_SUBDIRS([src/odb])
+
 AC_OUTPUT

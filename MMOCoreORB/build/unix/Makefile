@@ -78,10 +78,10 @@ subdir = .
 DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/configure AUTHORS COPYING.LESSER ChangeLog \
-	INSTALL NEWS build/unix/config/config.guess \
-	build/unix/config/config.sub build/unix/config/depcomp \
-	build/unix/config/install-sh build/unix/config/missing \
-	config.guess config.sub install-sh
+	INSTALL NEWS build/unix/config/compile \
+	build/unix/config/config.guess build/unix/config/config.sub \
+	build/unix/config/depcomp build/unix/config/install-sh \
+	build/unix/config/missing config.guess config.sub install-sh
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -163,7 +163,7 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = 
 SYSTEM_INCLUDES = 
-SYSTEM_LIBS = -lrt -ldl -lpthread
+SYSTEM_LIBS = -lrt -ldl -pthread
 USER_INCLUDES_PATH = /usr/local/include
 USER_LIBS_PATH = /usr/local/lib
 VERSION = 1.0

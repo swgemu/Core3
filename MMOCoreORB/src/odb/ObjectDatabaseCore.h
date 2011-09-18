@@ -42,78 +42,19 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
+#ifndef OBJECTDATABASECORE_H_
+#define OBJECTDATABASECORE_H_
+
 #include "engine/engine.h"
 
-#include "TestClass.h"
+class ObjectDatabaseCore : public Core, public Logger {
 
-void testTransactions() {
-#ifdef WITH_STM
-	Vector<TransactionalReference<TestClass*> > references;
+public:
+	ObjectDatabaseCore();
 
-	printf("creating objects\n");
+	void initialize();
 
-	for (int i = 0; i < 10000; ++i)
-		references.add(new TestClass(1));
+	void run();
+};
 
-	printf("adding tasks\n");
-
-	for (int i = 0; i < 10000; ++i) {
-		Task* task = new TestTask(&references);
-
-		//Core::getTaskManager()->scheduleTask(task, 1000);
-		Core::getTaskManager()->executeTask(task);
-	}
-
-	TransactionalMemoryManager::commitPureTransaction();
-
-	printf("starting tasks\n");
-
-	Thread::sleep(3000);
-
-	while(true) {
-		Thread::sleep(1000);
-
-		int scheduledTasks = Core::getTaskManager()->getScheduledTaskSize();
-		int executedTasks = Core::getTaskManager()->getExecutingTaskSize();
-
-		int taskToSchedule = 500;
-		int taskToExecute = 1000;
-
-		if (scheduledTasks > 20000)
-			taskToSchedule = 0;
-		else if (scheduledTasks < 1000)
-			taskToSchedule = 5000;
-
-		if (executedTasks > 20000)
-			taskToExecute = 0;
-		else if (executedTasks < 1000)
-			taskToExecute = 5000;
-
-		for (int i = 0; i < taskToSchedule; ++i) {
-			Task* task = new TestTask(&references);
-
-			Core::getTaskManager()->scheduleTask(task, System::random(2000));
-		}
-
-		for (int i = 0; i < taskToExecute; ++i) {
-			Task* task = new TestTask(&references);
-
-			Core::getTaskManager()->executeTask(task);
-		}
-
-		TransactionalMemoryManager::commitPureTransaction();
-	}
-
-	for (int i = 0; i < references.size(); ++i) {
-		TestClass* object = references.get(i);
-
-		printf("%i\n", object->get());
-	}
-
-	TransactionalMemoryManager::commitPureTransaction();
-
-	Thread::sleep(1000);
-#endif
-
-	exit(0);
-}
+#endif /*OBJECTDATABASECORE_H_*/
