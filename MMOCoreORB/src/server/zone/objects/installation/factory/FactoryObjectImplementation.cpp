@@ -555,7 +555,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 		return false;
 	}
 
-	outputHopper->addObject(crate, -1, true);
+	outputHopper->addObject(crate, -1, false);
 
 	return crate;
 }
