@@ -137,13 +137,6 @@ public:
 	inline void setValue(const float& value) {
 		if (locked)
 			return;
-		if (values.contains("currentValue")) {
-			values.drop("currentValue");
-		}
-
-		if (values.contains("currentPercentage")) {
-			values.drop("currentPercentage");
-		}
 
 		float newpercentage;
 
@@ -151,6 +144,17 @@ public:
 			newpercentage = (value - minValue) / (maxValue - minValue);
 		else
 			newpercentage = 1 - ((value - maxValue) / (minValue - maxValue));
+
+		if(newpercentage > 100 || newpercentage < 0)
+			return;
+
+		if (values.contains("currentValue")) {
+			values.drop("currentValue");
+		}
+
+		if (values.contains("currentPercentage")) {
+			values.drop("currentPercentage");
+		}
 
 		values.put("currentValue", value);
 		values.put("currentPercentage", newpercentage);
@@ -171,12 +175,20 @@ public:
 	inline void setPrecision(const int& value) {
 		if (locked)
 			return;
+
+		if(value < 0)
+			return;
+
 		precision = value;
 	}
 
 	inline void setMaxPercentage(const float& value) {
 		if (locked)
 			return;
+
+		if(value > 100 || value < 0)
+			return;
+
 		if (values.contains("maxPercentage")) {
 			values.drop("maxPercentage");
 		}
@@ -185,8 +197,13 @@ public:
 	}
 
 	inline void setPercentage(const float& value) {
+
 		if (locked)
 			return;
+
+		if(value > 100 || value < 0)
+			return;
+
 		if (values.contains("currentPercentage")) {
 			values.drop("currentPercentage");
 		}
