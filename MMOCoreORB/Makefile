@@ -71,6 +71,7 @@ config:
 	automake --add-missing
 	autoreconf --force
 	cd build/unix && ../../configure
+	cd ../MMOEngine/external/ptmalloc3 && make
 	#done
 
 clean: cleanidl
