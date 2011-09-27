@@ -1221,16 +1221,21 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 	if (priority < 0)
 		priority = queueCommand->getDefaultPriority();
 
-	Reference<CommandQueueAction*> action = new CommandQueueAction(_this, targetID, actionCRC, actionCount, arguments);
+	Reference<CommandQueueAction*> action = NULL;
 
 	if (priority == QueueCommand::IMMEDIATE) {
-		//objectController->activateCommand(_this, actionCRC, actionCount, targetID, arguments);
+#ifndef WITH_STM
+		objectController->activateCommand(_this, actionCRC, actionCount, targetID, arguments);
+#else
+		action = new CommandQueueAction(_this, targetID, actionCRC, actionCount, arguments);
+
 		immediateQueue->put(action.get());
 
 		if (immediateQueue->size() == 1) {
 			Reference<CommandQueueActionEvent*> ev = new CommandQueueActionEvent(_this, CommandQueueActionEvent::IMMEDIATE);
 			Core::getTaskManager()->executeTask(ev);
 		}
+#endif
 
 		return;
 	}
@@ -1240,6 +1245,8 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC, unsign
 
 		return;
 	}
+
+	action = new CommandQueueAction(_this, targetID, actionCRC, actionCount, arguments);
 
 	if (commandQueue->size() != 0 || !nextAction.isPast()) {
 		if (commandQueue->size() == 0) {

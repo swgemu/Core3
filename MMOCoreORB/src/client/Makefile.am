@@ -54,7 +54,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L/usr/local/BerkeleyDB.5.0/lib \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
 	-L$(ENGINE3_PATH)/lib/unix -L$(ENGINE3_PATH)/external/ptmalloc3 \
-	-lptmalloc3 -lengine3 -lmysqlclient -llua -lz -ldb
+	-lengine3 -lmysqlclient -llua -lz -ldb
 
 bin_PROGRAMS = core3client
 

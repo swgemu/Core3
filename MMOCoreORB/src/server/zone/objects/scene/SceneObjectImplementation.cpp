@@ -411,7 +411,7 @@ void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* playe
 void SceneObjectImplementation::notifyLoadFromDatabase() {
 	//Correcting linked list errors becaused of DB errors
 
-	if (containerComponent != NULL) {
+	/*if (containerComponent != NULL) {
 		for (int i = 0; i < getSlottedObjectsSize(); ++i) {
 			SceneObject* object = getSlottedObject(i);
 
@@ -484,7 +484,7 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 			} else
 				object->setContainmentType(-1);
 		}
-	}
+	}*/
 
 	if (parent == NULL && getZone() != NULL) {
 		//insertToZone(getZone());
@@ -500,11 +500,11 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
 		SceneObject* object = getSlottedObject(i);
 
-		if (object->getParent() == NULL)
+		/*if (object->getParent() == NULL)
 			object->setParent(_this);
 
 		if (object->getContainmentType() != 4)
-			object->setContainmentType(4);
+			object->setContainmentType(4);*/
 
 		if (objects.put(object) != -1) {
 			if (object->isInQuadTree()) {
@@ -524,11 +524,11 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
 		SceneObject* containerObject = getContainerObject(j);
 
-		if (containerObject->getParent() == NULL)
+		/*if (containerObject->getParent() == NULL)
 			containerObject->setParent(_this);
 
 		if (containerObject->getContainmentType() != -1)
-			containerObject->setContainmentType(-1);
+			containerObject->setContainmentType(-1);*/
 
 		if (objects.put(containerObject->getObjectID()) != -1) {
 			if (containerObject->isInQuadTree()) {

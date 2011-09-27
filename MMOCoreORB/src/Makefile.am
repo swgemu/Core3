@@ -57,7 +57,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
 	-L$(ENGINE3_PATH)/lib/unix -L$(ENGINE3_PATH)/external/ptmalloc3 \
 	-L/usr/local/lib \
-	-lptmalloc3 -lmysqlclient -lz -lengine3 -llua -ldb-5.0
+	-lmysqlclient -lz -lengine3 -llua -ldb-5.0
 	
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 #AM_LDFLAGS = --enable-stdcall-fixup
