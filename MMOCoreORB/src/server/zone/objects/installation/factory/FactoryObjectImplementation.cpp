@@ -552,7 +552,7 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 
 	if(outputHopper == NULL) {
 		stopFactory("manf_error_6", "", "", -1);
-		return false;
+		return NULL;
 	}
 
 	outputHopper->addObject(crate, -1, false);
