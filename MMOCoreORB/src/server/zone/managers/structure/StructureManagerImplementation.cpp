@@ -379,11 +379,15 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 
 	float l = 5; //Along the x axis.
 	float w = 5; //Along the y axis.
+	float zIncreaseWhenNoAvailableFootprint = 0.f; //TODO: remove this when it has been verified that all buildings have astructure footprint.
 
 	if (structureFootprint != NULL) {
 		//If the angle is odd, then swap them.
 		l = (angle & 1) ? structureFootprint->getWidth() : structureFootprint->getLength();
 		w = (angle & 1) ? structureFootprint->getLength() : structureFootprint->getWidth();
+	} else {
+		error("Structure with template '" + structureTemplatePath + "' has no structure footprint.");
+		zIncreaseWhenNoAvailableFootprint = 5.f;
 	}
 
 	//Half the dimensions since we are starting from the center point and going outward.
@@ -391,7 +395,7 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 	w /= 2;
 
 	if (floraRadius > 0 && !snapToTerrain)
-		z = terrainManager->getHighestHeight(x - w, y - l, x + w, y + l, 1) + 2.f; //Add a little extra to help with terrain issues.
+		z = terrainManager->getHighestHeight(x - w, y - l, x + w, y + l, 1) + zIncreaseWhenNoAvailableFootprint;
 
 	ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(structureTemplatePath.hashCode(), 1, "playerstructures");
 
@@ -722,7 +726,8 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 	}
 	*/
 	status->addMenuItem("@player_structure:maintenance_pool_prompt " + String::valueOf((int) floor((float)structure->getSurplusMaintenance())));
-	status->addMenuItem("@player_structure:maintenance_rate_prompt " + String::valueOf(structure->getBaseMaintenanceRate()) + " cr/hr");
+	status->addMenuItem("@player_structure:maintenance_rate_prompt " + String::valueOf(structure->getMaintenanceRate()) + " cr/hr");
+	status->addMenuItem("@player_structure:maintenance_mods_prompt " + structure->getMaintenanceMods());
 
 	if (structure->isInstallationObject()) {
 		InstallationObject* installation = cast<InstallationObject*>( structure);

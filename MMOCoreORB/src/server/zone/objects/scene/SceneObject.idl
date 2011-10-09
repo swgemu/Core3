@@ -966,6 +966,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return pendingTasks.get(name);
 	}
 	
+	public boolean containsPendingTask(final string name) {
+		return pendingTasks.contains(name);
+	}
+	
 	public native void showFlyText(final string file, final string uax, byte red, byte green, byte blue);
 	
 	/**

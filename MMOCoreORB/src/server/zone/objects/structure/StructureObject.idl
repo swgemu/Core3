@@ -52,6 +52,7 @@ import server.zone.objects.structure.events.StructureMaintenanceTask;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerObject;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.ActiveArea;
 import engine.util.u3d.AABBTree;
@@ -85,6 +86,8 @@ class StructureObject extends TangibleObject {
 	
 	protected float surplusMaintenance;
 	protected float surplusPower;
+
+	private static final string MAINTENANCE_FEES_1;
 	
 	public StructureObject() {
 		Logger.setLoggingName("StructureObject");
@@ -244,6 +247,8 @@ class StructureObject extends TangibleObject {
 	public int getRedeedCost() {
 		return (baseMaintenanceRate * 50);
 	}
+
+	public native PlayerObject getOwnerObject();
 	
 	public unsigned long getOwnerObjectID() {
 		return ownerObjectID;
@@ -254,6 +259,10 @@ class StructureObject extends TangibleObject {
 	}
 	
 	public native int getLotSize();
+
+	public native float getMaintenanceRate();
+
+	public native string getMaintenanceMods();
 	
 	public int getBaseMaintenanceRate() { //TODO: Move to template
 		return baseMaintenanceRate;

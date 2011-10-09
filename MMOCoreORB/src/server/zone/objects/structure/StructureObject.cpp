@@ -12,6 +12,8 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/player/PlayerObject.h"
+
 #include "server/zone/templates/SharedObjectTemplate.h"
 
 #include "server/zone/objects/area/ActiveArea.h"
@@ -20,7 +22,7 @@
  *	StructureObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_CREATECHILDOBJECTS__,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_CHECKREQUISITESFORPLACEMENT__CREATUREOBJECT_,RPC_GETTIMESTRING__INT_,RPC_SCHEDULEMAINTENANCEEXPIRATIONEVENT__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISONADMINLIST__STRING_,RPC_ISONENTRYLIST__STRING_,RPC_ISONBANLIST__STRING_,RPC_ISONHOPPERLIST__STRING_,RPC_ISONPERMISSIONLIST__STRING_STRING_,RPC_ISOWNEROF__SCENEOBJECT_,RPC_ISOWNEROF__LONG_,RPC_ISONACCESSLIST__SCENEOBJECT_,RPC_ISONACCESSLIST__LONG_,RPC_SENDPERMISSIONLISTTO__CREATUREOBJECT_STRING_,RPC_HASPERMISSIONLIST__STRING_,RPC_ISPERMISSIONLISTFULL__STRING_,RPC_TOGGLEPERMISSION__STRING_STRING_,RPC_GRANTPERMISSION__STRING_STRING_,RPC_REVOKEPERMISSION__STRING_STRING_,RPC_REVOKEALLPERMISSIONS__STRING_,RPC_CREATEVENDOR__CREATUREOBJECT_,RPC_GETREDEEDCOST__,RPC_GETOWNEROBJECT__,RPC_GETOWNEROBJECTID__,RPC_GETDEEDOBJECTID__,RPC_GETLOTSIZE__,RPC_GETMAINTENANCERATE__,RPC_GETMAINTENANCEMODS__,RPC_GETBASEMAINTENANCERATE__,RPC_GETBASEPOWERRATE__,RPC_GETSURPLUSMAINTENANCE__,RPC_GETSURPLUSPOWER__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETOWNEROBJECTID__LONG_,RPC_SETDEEDOBJECTID__LONG_,RPC_SETBASEMAINTENANCERATE__INT_,RPC_SETBASEPOWERRATE__INT_,RPC_SETSURPLUSMAINTENANCE__INT_,RPC_ADDMAINTENANCE__INT_,RPC_SETSURPLUSPOWER__INT_,RPC_ADDPOWER__INT_,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISSTRUCTUREOBJECT__,RPC_ISREDEEDABLE__,};
 
 StructureObject::StructureObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	StructureObjectImplementation* _implementation = new StructureObjectImplementation();
@@ -396,6 +398,19 @@ int StructureObject::getRedeedCost() {
 		return _implementation->getRedeedCost();
 }
 
+PlayerObject* StructureObject::getOwnerObject() {
+	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETOWNEROBJECT__);
+
+		return (PlayerObject*) method.executeWithObjectReturn();
+	} else
+		return _implementation->getOwnerObject();
+}
+
 unsigned long long StructureObject::getOwnerObjectID() {
 	StructureObjectImplementation* _implementation = static_cast<StructureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -433,6 +448,33 @@ int StructureObject::getLotSize() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getLotSize();
+}
+
+float StructureObject::getMaintenanceRate() {
+	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMAINTENANCERATE__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getMaintenanceRate();
+}
+
+String StructureObject::getMaintenanceMods() {
+	StructureObjectImplementation* _implementation = (StructureObjectImplementation*) _getImplementation();
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMAINTENANCEMODS__);
+
+		method.executeWithAsciiReturn(_return_getMaintenanceMods);
+		return _return_getMaintenanceMods;
+	} else
+		return _implementation->getMaintenanceMods();
 }
 
 int StructureObject::getBaseMaintenanceRate() {
@@ -1220,6 +1262,9 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_GETREDEEDCOST__:
 		resp->insertSignedInt(getRedeedCost());
 		break;
+	case RPC_GETOWNEROBJECT__:
+		resp->insertLong(getOwnerObject()->_getObjectID());
+		break;
 	case RPC_GETOWNEROBJECTID__:
 		resp->insertLong(getOwnerObjectID());
 		break;
@@ -1228,6 +1273,12 @@ Packet* StructureObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 		break;
 	case RPC_GETLOTSIZE__:
 		resp->insertSignedInt(getLotSize());
+		break;
+	case RPC_GETMAINTENANCERATE__:
+		resp->insertFloat(getMaintenanceRate());
+		break;
+	case RPC_GETMAINTENANCEMODS__:
+		resp->insertAscii(getMaintenanceMods());
 		break;
 	case RPC_GETBASEMAINTENANCERATE__:
 		resp->insertSignedInt(getBaseMaintenanceRate());
@@ -1391,6 +1442,10 @@ int StructureObjectAdapter::getRedeedCost() {
 	return (static_cast<StructureObjectImplementation*>(impl))->getRedeedCost();
 }
 
+PlayerObject* StructureObjectAdapter::getOwnerObject() {
+	return ((StructureObjectImplementation*) impl)->getOwnerObject();
+}
+
 unsigned long long StructureObjectAdapter::getOwnerObjectID() {
 	return (static_cast<StructureObjectImplementation*>(impl))->getOwnerObjectID();
 }
@@ -1401,6 +1456,14 @@ unsigned long long StructureObjectAdapter::getDeedObjectID() {
 
 int StructureObjectAdapter::getLotSize() {
 	return (static_cast<StructureObjectImplementation*>(impl))->getLotSize();
+}
+
+float StructureObjectAdapter::getMaintenanceRate() {
+	return ((StructureObjectImplementation*) impl)->getMaintenanceRate();
+}
+
+String StructureObjectAdapter::getMaintenanceMods() {
+	return ((StructureObjectImplementation*) impl)->getMaintenanceMods();
 }
 
 int StructureObjectAdapter::getBaseMaintenanceRate() {

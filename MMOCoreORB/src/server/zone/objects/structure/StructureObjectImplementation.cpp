@@ -27,6 +27,8 @@
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 
+const String StructureObjectImplementation::MAINTENANCE_FEES_1 = "maintenance_fees_1";
+
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
@@ -56,6 +58,42 @@ int StructureObjectImplementation::getLotSize() {
 		return 0;
 
 	return ssot->getLotSize();
+}
+
+PlayerObject* StructureObjectImplementation::getOwnerObject() {
+	//Get the owner of the structure
+	ManagedReference<SceneObject*> owner = zone->getZoneServer()->getObject(getOwnerObjectID());
+
+	if (owner != NULL) {
+		ManagedReference<SceneObject*> ghost = owner->getSlottedObject("ghost");
+
+		if (ghost != NULL && ghost->isPlayerObject()) {
+			return cast<PlayerObject*>(ghost.get());
+		}
+	}
+
+	//Owner not found.
+	return NULL;
+}
+
+float StructureObjectImplementation::getMaintenanceRate() {
+	PlayerObject* playerOjbect = getOwnerObject();
+
+	if (playerOjbect != NULL && playerOjbect->hasAbility(MAINTENANCE_FEES_1)) {
+		return (int)((float)baseMaintenanceRate * 0.8f);
+	}
+
+	return baseMaintenanceRate;
+}
+
+String StructureObjectImplementation::getMaintenanceMods() {
+	PlayerObject* playerOjbect = getOwnerObject();
+
+	if (playerOjbect != NULL && playerOjbect->hasAbility(MAINTENANCE_FEES_1)) {
+			return "-20%";
+	}
+
+	return "-";
 }
 
 AABBTree* StructureObjectImplementation::getAABBTree() {
@@ -155,7 +193,7 @@ void StructureObjectImplementation::updateStructureStatus() {
 	float timeDiff = ((float) lastUpdateTimestamp.miliDifference()) / 1000.f;
 	lastUpdateTimestamp.updateToCurrentTime();
 
-	float maintenanceDue = ((float) baseMaintenanceRate / 3600.f) * timeDiff;
+	float maintenanceDue = (getMaintenanceRate() / 3600.f) * timeDiff;
 	float powerDue = ((float) basePowerRate / 3600.f) * timeDiff;
 
 	if (surplusMaintenance > 0.f)

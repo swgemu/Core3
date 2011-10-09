@@ -874,6 +874,8 @@ public:
 
 	Task* getPendingTask(const String& name);
 
+	bool containsPendingTask(const String& name);
+
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
 	Facade* getActiveSession(unsigned int type);
@@ -1936,6 +1938,8 @@ public:
 
 	Task* getPendingTask(const String& name);
 
+	bool containsPendingTask(const String& name);
+
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
 	Facade* getActiveSession(unsigned int type);
@@ -2409,6 +2413,8 @@ public:
 
 	unsigned long long getParentID();
 
+	bool containsPendingTask(const String& name);
+
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
 	Facade* getActiveSession(unsigned int type);
@@ -2699,6 +2705,7 @@ protected:
 	String _param2_canAddObject__SceneObject_int_String_;
 	UnicodeString _param0_setCustomObjectName__UnicodeString_bool_;
 	String _param0_switchZone__String_float_float_float_long_;
+	String _param0_containsPendingTask__String_;
 	String _param0_showFlyText__String_String_byte_byte_byte_;
 	String _param1_showFlyText__String_String_byte_byte_byte_;
 	String _param0_hasSlotDescriptor__String_;

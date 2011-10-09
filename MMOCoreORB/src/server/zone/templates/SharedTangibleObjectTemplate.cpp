@@ -191,7 +191,7 @@ void SharedTangibleObjectTemplate::parseVariableData(const String& varName, Chun
 		StringParam structureFootprintFileName;
 
 		if (structureFootprintFileName.parse(data))
-			templateManager->loadStructureFootprint(structureFootprintFileName.get());
+			structureFootprint = templateManager->loadStructureFootprint(structureFootprintFileName.get());
 	} else if (varName == "useStructureFootprintOutline") {
 /*		useStructureFootprintOutline.parse(data);
 		variables[varName] = &useStructureFootprintOutline;*/

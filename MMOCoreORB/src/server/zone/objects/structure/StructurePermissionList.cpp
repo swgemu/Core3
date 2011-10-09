@@ -22,7 +22,7 @@ StructurePermissionList::StructurePermissionList() {
 	addSerializableVariables();
 }
 
-StructurePermissionList::StructurePermissionList(const StructurePermissionList& spl) : Object() {
+StructurePermissionList::StructurePermissionList(const StructurePermissionList& spl) : Object(), Serializable() {
 	permissionLists = spl.permissionLists;
 
 	addSerializableVariables();

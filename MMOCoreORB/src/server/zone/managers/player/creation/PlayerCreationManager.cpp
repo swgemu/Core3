@@ -369,6 +369,10 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	addStartingItems(playerCreature, clientTemplate);
 	addRacialMods(playerCreature, fileName);
 
+	// Set starting cash and starting bank
+	playerCreature->setCashCredits(startingCash, false);
+	playerCreature->setBankCredits(startingBank, false);
+
 	ManagedReference<PlayerObject*> ghost = playerCreature->getPlayerObject();
 
 	if (ghost != NULL) {

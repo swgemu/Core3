@@ -71,6 +71,20 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace player {
+
+class PlayerObject;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
 namespace templates {
 
 class SharedObjectTemplate;
@@ -170,11 +184,17 @@ public:
 
 	int getRedeedCost();
 
+	PlayerObject* getOwnerObject();
+
 	unsigned long long getOwnerObjectID();
 
 	unsigned long long getDeedObjectID();
 
 	int getLotSize();
+
+	float getMaintenanceRate();
+
+	String getMaintenanceMods();
 
 	int getBaseMaintenanceRate();
 
@@ -221,6 +241,7 @@ protected:
 
 	virtual ~StructureObject();
 
+	String _return_getMaintenanceMods;
 	String _return_getTimeString;
 
 	friend class StructureObjectHelper;
@@ -261,6 +282,9 @@ protected:
 	float surplusMaintenance;
 
 	float surplusPower;
+
+private:
+	static const String MAINTENANCE_FEES_1;
 
 public:
 	StructureObjectImplementation();
@@ -321,11 +345,17 @@ public:
 
 	int getRedeedCost();
 
+	PlayerObject* getOwnerObject();
+
 	unsigned long long getOwnerObjectID();
 
 	unsigned long long getDeedObjectID();
 
 	int getLotSize();
+
+	float getMaintenanceRate();
+
+	String getMaintenanceMods();
 
 	int getBaseMaintenanceRate();
 
@@ -456,11 +486,17 @@ public:
 
 	int getRedeedCost();
 
+	PlayerObject* getOwnerObject();
+
 	unsigned long long getOwnerObjectID();
 
 	unsigned long long getDeedObjectID();
 
 	int getLotSize();
+
+	float getMaintenanceRate();
+
+	String getMaintenanceMods();
 
 	int getBaseMaintenanceRate();
 
