@@ -305,6 +305,21 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Component>(SceneObject::STRUCTURECOMPONENT);
 	objectFactory.registerObject<Component>(SceneObject::TISSUECOMPONENT);
 
+	objectFactory.registerObject<Component>(SceneObject::SHIPATTACHMENT);
+	objectFactory.registerObject<Component>(SceneObject::SHIPREACTOR);
+	objectFactory.registerObject<Component>(SceneObject::SHIPENGINE);
+	objectFactory.registerObject<Component>(SceneObject::SHIPSHIELDGENERATOR);
+	objectFactory.registerObject<Component>(SceneObject::SHIPARMOR);
+	objectFactory.registerObject<Component>(SceneObject::SHIPWEAPON);
+	objectFactory.registerObject<Component>(SceneObject::SHIPWEAPONCAPACITOR);
+	objectFactory.registerObject<Component>(SceneObject::SHIPBOOSTER);
+	objectFactory.registerObject<Component>(SceneObject::SHIPDRIODINTERFACE);
+	objectFactory.registerObject<Component>(SceneObject::SHIPCHASSIS);
+	objectFactory.registerObject<Component>(SceneObject::SHIPMISSILE);
+	objectFactory.registerObject<Component>(SceneObject::SHIPCOUNTERMEASURE);
+	objectFactory.registerObject<Component>(SceneObject::SHIPWEAPONLAUNCHER);
+	objectFactory.registerObject<Component>(SceneObject::SHIPCOUNTERMEASURELAUNCHER);
+
 	objectFactory.registerObject<FactoryCrate>(SceneObject::FACTORYCRATE);
 
 	objectFactory.registerObject<AiGroup>(SceneObject::AIGROUP);
